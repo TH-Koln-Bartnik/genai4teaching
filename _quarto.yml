@@ -2,7 +2,7 @@ project:
   type: book
   output-dir: docs
 
-number-depth: 2   # optional
+number-depth: 2
 
 book:
   title: "KI als Hilfe zum Lehren und Lernen"
@@ -17,44 +17,23 @@ book:
     - kapitel03.qmd
     - kapitel04.qmd
     - kapitel05.qmd
-    - kapitel06.qmd
     
   cover-image: images/logos/logo.svg
   image: images/logos/logo.svg
-  # favicon: images/logos/favicon.ico
-  cookie-consent: false
-  # google-analytics: "..."
-  page-navigation: true
   search: true
-  # comments:
-  #   hypothesis:
-  #     theme: clean
-  #     openSidebar: false
-  repo-url: https://th-koln-bartnik.github.io/genai4teaching
-  repo-branch: master
-  repo-actions: [edit, issue, source]
-  downloads: [pdf, epub]
-  # sharing: [twitter]
-  # sidebar:
-  #   style: docked
-  #   background: light
-  margin-header: ""
-  page-footer:
-    left: "Bartnik, R. (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898"
 
-# Left sidebar tools
-  search: true
+  # GitHub integration + sidebar tools
+  repo-url: https://github.com/TH-Koln-Bartnik/genai4teaching
+  repo-branch: main
+  repo-actions: [edit, issue, source]
   downloads: [pdf, epub]
   sharing: [twitter, linkedin]
 
-  # GitHub integration + right-side links
-  repo-url: https://github.com/TH-Koln-Bartnik/genai4teaching
-  repo-branch: main
-  # repo-subdir: .   # only if your book lives in a subfolder
-  repo-actions: [edit, issue, source]
-
   sidebar:
     style: "floating"
+
+  page-footer:
+    left: "Bartnik, R. (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898"
 
 format:
   pdf:
@@ -62,27 +41,24 @@ format:
     number-sections: true
     colorlinks: true
     df-print: kable
-    html-table-processing: none
   epub:
     toc: true
     df-print: kable
-    html-table-processing: none
   html:
     toc: true
     toc-location: right
     toc-depth: 3
     number-sections: true
-    section-bibliographies: true      # 💡 REQUIRED for per-chapter references
+    section-bibliographies: true
     theme:
       light:
-      - flatly
-      - include/light.scss
+        - flatly
+        - include/light.scss
       dark:
-      - darkly
-      - include/dark.scss
+        - darkly
+        - include/dark.scss
     css: [include/booktem.css, include/style.css, include/webex.css]
     df-print: kable
-    html-table-processing: none
     code-link: true
     code-fold: false
     code-line-numbers: true
