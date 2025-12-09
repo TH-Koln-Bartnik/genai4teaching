@@ -14,12 +14,42 @@ book:
     - kapitel01.qmd
     - kapitel02.qmd
     - kapitel03.qmd
+    - kapitel04.qmd
+    - kapitel05.qmd
+    - kapitel06.qmd
+
+# Left sidebar tools (like Lakens)
+  search: true
+  downloads: [pdf, epub]
+  sharing: [twitter, linkedin]
+
+  # GitHub integration + right-side links
+  repo-url: https://github.com/TH-Koln-Bartnik/genai4teaching
+  repo-branch: main
+  # repo-subdir: .   # only if your book lives in a subfolder
+  repo-actions: [edit, issue, source]
+
+  sidebar:
+    style: "floating"
 
 format:
   html:
     toc: true
     toc-location: right
+    toc-depth: 3
     number-sections: true
     section-bibliographies: true      # 💡 REQUIRED for per-chapter references
 
+# Optional: light/dark like Lakens
+    theme:
+      light: cosmo
+      dark: darkly
+    respect-user-color-scheme: true
+
+  pdf:
+    number-sections: true
+  epub:
+    number-sections: true
+
 bibliography: references.json
+csl: apa.csl
