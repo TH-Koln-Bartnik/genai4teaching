@@ -1,0 +1,25 @@
+project:
+  type: book
+  output-dir: _book
+
+number-depth: 2   # optional
+
+book:
+  title: "KI als Hilfe zum Lehren und Lernen"
+  author: "Roman Bartnik"
+  date: "2025-12-05"
+  page-navigation: true
+  chapters:
+    - index.qmd
+    - kapitel01.qmd
+    - kapitel02.qmd
+    - kapitel03.qmd
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    number-sections: true
+    section-bibliographies: true      # 💡 REQUIRED for per-chapter references
+
+bibliography: references.json
