@@ -7,6 +7,7 @@ number-depth: 2   # optional
 book:
   title: "KI als Hilfe zum Lehren und Lernen"
   author: "Roman Bartnik"
+  description: "Dieses Skript ist eine frei verfügbare Ressource, die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen."
   date: "2025-12-05"
   page-navigation: true
   chapters:
@@ -17,8 +18,31 @@ book:
     - kapitel04.qmd
     - kapitel05.qmd
     - kapitel06.qmd
+    
+  cover-image: images/logos/logo.svg
+  image: images/logos/logo.svg
+  # favicon: images/logos/favicon.ico
+  cookie-consent: false
+  # google-analytics: "..."
+  page-navigation: true
+  search: true
+  # comments:
+  #   hypothesis:
+  #     theme: clean
+  #     openSidebar: false
+  repo-url: https://th-koln-bartnik.github.io/genai4teaching
+  repo-branch: master
+  repo-actions: [edit, issue, source]
+  downloads: [pdf, epub]
+  # sharing: [twitter]
+  # sidebar:
+  #   style: docked
+  #   background: light
+  margin-header: ""
+  page-footer:
+    left: "Bartnik, R. (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898"
 
-# Left sidebar tools (like Lakens)
+# Left sidebar tools
   search: true
   downloads: [pdf, epub]
   sharing: [twitter, linkedin]
@@ -33,23 +57,41 @@ book:
     style: "floating"
 
 format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    df-print: kable
+    html-table-processing: none
+  epub:
+    toc: true
+    df-print: kable
+    html-table-processing: none
   html:
     toc: true
     toc-location: right
     toc-depth: 3
     number-sections: true
     section-bibliographies: true      # 💡 REQUIRED for per-chapter references
-
-# Optional: light/dark like Lakens
     theme:
-      light: cosmo
-      dark: darkly
-    respect-user-color-scheme: true
-
-  pdf:
-    number-sections: true
-  epub:
-    number-sections: true
+      light:
+      - flatly
+      - include/light.scss
+      dark:
+      - darkly
+      - include/dark.scss
+    css: [include/booktem.css, include/style.css, include/webex.css]
+    df-print: kable
+    html-table-processing: none
+    code-link: true
+    code-fold: false
+    code-line-numbers: true
+    code-overflow: wrap
+    code-copy: hover
+    highlight-style: a11y
+    monofont: Fira Code
+    mainfont: Open Sans
+    include-after-body: [include/webex.js, include/script.js]
 
 bibliography: references.json
 csl: apa.csl
