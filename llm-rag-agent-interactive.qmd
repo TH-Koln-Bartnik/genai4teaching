@@ -1,0 +1,544 @@
+---
+title: "LLM vs RAG vs Agent"
+subtitle: "Interaktives Lern-Diagramm"
+format:
+  html:
+    page-layout: full
+    toc: false
+    embed-resources: true
+---
+
+```{=html}
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div id="llm-rag-agent-root"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+const LLMvsRAGvsAgent = () => {
+  const [activeTab, setActiveTab] = useState('llm');
+  const [answers, setAnswers] = useState({});
+  const [showFeedback, setShowFeedback] = useState({});
+
+  const correctAnswers = {
+    // LLM
+    llm_a: 'two bags',
+    llm_b: 'internet',
+    llm_c: 'apples',
+    // RAG
+    rag_a: 'database',
+    rag_b: 'diapers',
+    rag_c: 'brief',
+    rag_d: '$20',
+    // Agent Step 1
+    agent_a: 'tool',
+    agent_b: 'promotional representative',
+    agent_c: 'discount',
+    agent_d: 'discount',
+    // Agent Step 2
+    agent2_a: 'server',
+    agent2_b: '15%',
+    agent2_c: 'HAPPY36',
+    // Key Differences
+    diff_llm_source: 'internet data',
+    diff_rag_source: 'retrieved data',
+    diff_agent_source: 'tools and apis',
+    diff_llm_logic: 'single-step',
+    diff_rag_logic: 'fetch-then-answer',
+    diff_agent_logic: 'multi-step reasoning',
+  };
+
+  const handleInputChange = (id, value) => {
+    setAnswers(prev => ({ ...prev, [id]: value }));
+    setShowFeedback(prev => ({ ...prev, [id]: false }));
+  };
+
+  const checkAnswer = (id) => {
+    setShowFeedback(prev => ({ ...prev, [id]: true }));
+  };
+
+  const isCorrect = (id) => {
+    const userAnswer = (answers[id] || '').toLowerCase().trim();
+    const correct = correctAnswers[id].toLowerCase();
+    return userAnswer === correct || correct.includes(userAnswer) || userAnswer.includes(correct);
+  };
+
+  const GapInput = ({ id, width = 120, placeholder = "..." }) => {
+    const answered = showFeedback[id];
+    const correct = isCorrect(id);
+    
+    let inputClass = "px-2 py-1 rounded border-2 border-dashed text-center font-medium transition-all duration-300 outline-none ";
+    if (answered) {
+      inputClass += correct 
+        ? "border-green-500 bg-green-50 text-green-700" 
+        : "border-red-400 bg-red-50 text-red-600";
+    } else {
+      inputClass += "border-blue-300 bg-blue-50 hover:border-blue-400 focus:border-blue-500";
+    }
+    
+    return (
+      <span className="inline-flex items-center gap-1">
+        <input
+          type="text"
+          value={answers[id] || ''}
+          onChange={(e) => handleInputChange(id, e.target.value)}
+          onBlur={() => checkAnswer(id)}
+          onKeyPress={(e) => e.key === 'Enter' && checkAnswer(id)}
+          placeholder={placeholder}
+          className={inputClass}
+          style={{ width: `${width}px` }}
+        />
+        {answered && (
+          <span className={`text-lg ${correct ? 'text-green-500' : 'text-red-500'}`}>
+            {correct ? '✓' : '✗'}
+          </span>
+        )}
+      </span>
+    );
+  };
+
+  const Arrow = ({ direction = 'right', label = '' }) => {
+    const isDown = direction === 'down';
+    return (
+      <div className={`flex items-center justify-center ${isDown ? 'flex-col py-2' : 'px-2'}`}>
+        <div className={isDown ? 'w-0.5 h-8 bg-gray-400' : 'w-8 h-0.5 bg-gray-400'} />
+        {label && <span className="text-xs text-gray-500 mx-1">{label}</span>}
+        <div 
+          className="w-0 h-0"
+          style={isDown 
+            ? { borderLeft: '6px solid transparent', borderRight: '6px solid transparent', borderTop: '10px solid #9ca3af' }
+            : { borderTop: '6px solid transparent', borderBottom: '6px solid transparent', borderLeft: '10px solid #9ca3af' }
+          }
+        />
+      </div>
+    );
+  };
+
+  const colorClasses = {
+    blue: 'bg-blue-100 border-blue-300',
+    green: 'bg-green-100 border-green-300',
+    orange: 'bg-orange-100 border-orange-300',
+    purple: 'bg-purple-100 border-purple-300',
+    gray: 'bg-gray-100 border-gray-300',
+    yellow: 'bg-yellow-100 border-yellow-300',
+  };
+
+  const Box = ({ children, color = 'blue', className = '' }) => (
+    <div className={`rounded-lg border-2 p-4 shadow-sm ${colorClasses[color]} ${className}`}>
+      {children}
+    </div>
+  );
+
+  const TabButton = ({ id, label, icon }) => {
+    const isActive = activeTab === id;
+    const baseClass = "px-6 py-3 rounded-t-lg font-semibold transition-all duration-200 flex items-center gap-2 ";
+    const activeClass = isActive 
+      ? "bg-white text-blue-600 border-2 border-b-0 border-blue-200 -mb-px"
+      : "bg-gray-100 text-gray-600 hover:bg-gray-200 border-2 border-transparent";
+    
+    return (
+      <button onClick={() => setActiveTab(id)} className={baseClass + activeClass}>
+        <span className="text-xl">{icon}</span>
+        {label}
+      </button>
+    );
+  };
+
+  const resetSection = () => {
+    const prefixes = {
+      llm: ['llm_'],
+      rag: ['rag_'],
+      agent: ['agent_', 'agent2_'],
+      comparison: ['diff_'],
+    };
+    
+    const toReset = prefixes[activeTab] || [];
+    const newAnswers = { ...answers };
+    const newFeedback = { ...showFeedback };
+    
+    Object.keys(newAnswers).forEach(key => {
+      if (toReset.some(prefix => key.startsWith(prefix))) {
+        delete newAnswers[key];
+        delete newFeedback[key];
+      }
+    });
+    
+    setAnswers(newAnswers);
+    setShowFeedback(newFeedback);
+  };
+
+  const showSolution = () => {
+    const prefixes = {
+      llm: ['llm_'],
+      rag: ['rag_'],
+      agent: ['agent_', 'agent2_'],
+      comparison: ['diff_'],
+    };
+    
+    const toShow = prefixes[activeTab] || [];
+    const newAnswers = { ...answers };
+    const newFeedback = { ...showFeedback };
+    
+    Object.entries(correctAnswers).forEach(([key, value]) => {
+      if (toShow.some(prefix => key.startsWith(prefix))) {
+        newAnswers[key] = value;
+        newFeedback[key] = true;
+      }
+    });
+    
+    setAnswers(newAnswers);
+    setShowFeedback(newFeedback);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">
+            🤖 LLM vs RAG vs Agent
+          </h1>
+          <p className="text-gray-600">
+            Interaktives Lern-Diagramm — Fülle die Lücken aus!
+          </p>
+          <p className="text-sm text-gray-500 mt-2">
+            Basierend auf dem <a href="https://www.byhand.ai/p/llm-vs-rag-vs-agent-workbook" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">AI by Hand Workbook</a> von Prof. Tom Yeh
+          </p>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-1 mb-0">
+          <TabButton id="llm" label="LLM" icon="🧠" />
+          <TabButton id="rag" label="RAG" icon="📚" />
+          <TabButton id="agent" label="Agent" icon="🤖" />
+          <TabButton id="comparison" label="Vergleich" icon="⚖️" />
+        </div>
+
+        {/* Content Area */}
+        <div className="bg-white rounded-b-lg rounded-tr-lg border-2 border-blue-200 p-6 shadow-lg">
+          {/* Action Buttons */}
+          <div className="flex justify-end gap-2 mb-4">
+            <button
+              onClick={resetSection}
+              className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            >
+              🔄 Zurücksetzen
+            </button>
+            <button
+              onClick={showSolution}
+              className="px-4 py-2 text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg transition-colors"
+            >
+              💡 Lösung zeigen
+            </button>
+          </div>
+
+          {/* LLM Tab */}
+          {activeTab === 'llm' && (
+            <div className="space-y-6">
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-700">🧠 Large Language Model (LLM)</h2>
+                <p className="text-gray-500">Nur Trainingswissen, keine externen Daten</p>
+              </div>
+
+              <div className="flex flex-col items-center gap-4">
+                <Box color="green" className="w-80 text-center">
+                  <div className="font-bold text-green-700 mb-2">👤 User</div>
+                  <p className="text-gray-700">
+                    "How much are <GapInput id="llm_a" width={100} placeholder="(a) ?" />?"
+                  </p>
+                </Box>
+
+                <Arrow direction="down" />
+
+                <Box color="blue" className="w-96 text-center">
+                  <div className="font-bold text-blue-700 mb-2">🧠 LLM</div>
+                  <p className="text-sm text-gray-600 mb-2">
+                    Trainiert auf <GapInput id="llm_b" width={100} placeholder="(b) ?" /> Daten
+                  </p>
+                  <div className="bg-white rounded p-3 border border-blue-200">
+                    <p className="text-gray-700 italic">
+                      "Hmm... bags... probably apples? 
+                      <br />A bag costs ~$12..."
+                    </p>
+                  </div>
+                </Box>
+
+                <Arrow direction="down" />
+
+                <Box color="purple" className="w-80 text-center">
+                  <div className="font-bold text-purple-700 mb-2">💬 Response</div>
+                  <p className="text-gray-700">
+                    "Two bags of <GapInput id="llm_c" width={80} placeholder="(c) ?" /> are worth $24."
+                  </p>
+                </Box>
+
+                <div className="mt-4 p-4 bg-red-50 border-2 border-red-200 rounded-lg max-w-lg">
+                  <p className="text-red-700 text-center">
+                    ⚠️ <strong>Problem:</strong> Im Baby Store wären "bags" = Windeln, nicht Äpfel!
+                    <br />
+                    <span className="text-sm">Das LLM kennt den Kontext nicht.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* RAG Tab */}
+          {activeTab === 'rag' && (
+            <div className="space-y-6">
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-700">📚 Retrieval-Augmented Generation (RAG)</h2>
+                <p className="text-gray-500">LLM + Externe Datenabfrage</p>
+              </div>
+
+              <div className="flex flex-col items-center gap-4">
+                <Box color="green" className="w-80 text-center">
+                  <div className="font-bold text-green-700 mb-2">👤 User</div>
+                  <p className="text-gray-700">"How much are two bags?"</p>
+                </Box>
+
+                <div className="flex items-start gap-8">
+                  <div className="flex flex-col items-center">
+                    <Arrow direction="down" />
+                    <Box color="orange" className="w-48 text-center">
+                      <div className="font-bold text-orange-700 mb-2">🗄️ Store</div>
+                      <p className="text-sm text-gray-600">
+                        <GapInput id="rag_a" width={90} placeholder="(a) ?" />
+                      </p>
+                      <div className="mt-2 text-xs bg-white rounded p-2">
+                        <GapInput id="rag_b" width={80} placeholder="(b) ?" /> = $10/bag
+                      </div>
+                    </Box>
+                    <Arrow direction="down" />
+                  </div>
+                </div>
+
+                <Box color="yellow" className="w-full max-w-lg text-center">
+                  <div className="font-bold text-yellow-700 mb-2">📝 Augmented Prompt</div>
+                  <div className="text-left text-sm space-y-2 bg-white rounded p-3 border">
+                    <p><strong>System:</strong> "Keep response <GapInput id="rag_c" width={70} placeholder="(c) ?" />"</p>
+                    <p><strong>Context:</strong> "Diapers cost $10 per bag"</p>
+                    <p><strong>User:</strong> "How much are two bags?"</p>
+                  </div>
+                </Box>
+
+                <Arrow direction="down" />
+
+                <Box color="blue" className="w-64 text-center">
+                  <div className="font-bold text-blue-700 mb-2">🧠 LLM</div>
+                  <p className="text-sm text-gray-600">Verarbeitet mit Kontext</p>
+                </Box>
+
+                <Arrow direction="down" />
+
+                <Box color="purple" className="w-48 text-center">
+                  <div className="font-bold text-purple-700 mb-2">💬 Response</div>
+                  <p className="text-xl font-bold text-gray-700">
+                    <GapInput id="rag_d" width={60} placeholder="(d) ?" />
+                  </p>
+                </Box>
+              </div>
+            </div>
+          )}
+
+          {/* Agent Tab */}
+          {activeTab === 'agent' && (
+            <div className="space-y-8">
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-700">🤖 AI Agent</h2>
+                <p className="text-gray-500">LLM + Tools + Entscheidungslogik</p>
+              </div>
+
+              {/* Step 1 */}
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+                <h3 className="text-lg font-semibold text-gray-600 mb-4 text-center">
+                  Schritt 1: Tool-Auswahl
+                </h3>
+                
+                <div className="flex flex-col items-center gap-4">
+                  <Box color="green" className="w-80 text-center">
+                    <div className="font-bold text-green-700 mb-2">👤 User</div>
+                    <p className="text-gray-700">"How much are two bags?"</p>
+                  </Box>
+
+                  <Arrow direction="down" />
+
+                  <Box color="yellow" className="w-full max-w-2xl">
+                    <div className="font-bold text-yellow-700 mb-3 text-center">📝 Agent Prompt</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div className="bg-white rounded p-3 border">
+                        <p className="font-semibold text-gray-600">🎭 Role:</p>
+                        <p><GapInput id="agent_b" width={180} placeholder="(b) ?" /></p>
+                      </div>
+                      <div className="bg-white rounded p-3 border">
+                        <p className="font-semibold text-gray-600">🔧 Available Tools:</p>
+                        <ul className="text-gray-700">
+                          <li>• Database Search</li>
+                          <li>• <GapInput id="agent_c" width={80} placeholder="(c) ?" /></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="text-center mt-3 text-gray-600">
+                      Agent wählt das richtige <GapInput id="agent_a" width={60} placeholder="(a) ?" />
+                    </p>
+                  </Box>
+
+                  <Arrow direction="down" />
+
+                  <Box color="blue" className="w-64 text-center">
+                    <div className="font-bold text-blue-700 mb-2">🧠 LLM Decision</div>
+                    <p className="text-gray-700">
+                      "Use tool: <GapInput id="agent_d" width={80} placeholder="(d) ?" />"
+                    </p>
+                  </Box>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+                <h3 className="text-lg font-semibold text-gray-600 mb-4 text-center">
+                  Schritt 2: Tool-Ausführung
+                </h3>
+                
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                    <Box color="orange" className="w-48 text-center">
+                      <div className="font-bold text-orange-700 mb-2">🎫 Discount</div>
+                      <p className="text-sm text-gray-600">
+                        <GapInput id="agent2_a" width={70} placeholder="(a) ?" />
+                      </p>
+                    </Box>
+
+                    <Arrow direction="right" />
+
+                    <Box color="purple" className="w-48 text-center">
+                      <div className="font-bold text-purple-700 mb-2">🏷️ New Coupon</div>
+                      <p className="text-gray-700">
+                        <GapInput id="agent2_b" width={50} placeholder="(b)?" /> off
+                      </p>
+                      <p className="font-mono font-bold text-lg mt-1">HAPPY36</p>
+                    </Box>
+                  </div>
+
+                  <Arrow direction="down" />
+
+                  <Box color="blue" className="w-64 text-center">
+                    <div className="font-bold text-blue-700 mb-2">🧠 LLM (2. Aufruf)</div>
+                    <p className="text-sm text-gray-600">Generiert finale Antwort</p>
+                  </Box>
+
+                  <Arrow direction="down" />
+
+                  <Box color="green" className="w-80 text-center">
+                    <div className="font-bold text-green-700 mb-2">💬 Final Response</div>
+                    <p className="text-gray-700">
+                      "Here's your 15% off code: <GapInput id="agent2_c" width={90} placeholder="(c) ?" />"
+                    </p>
+                  </Box>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Comparison Tab */}
+          {activeTab === 'comparison' && (
+            <div className="space-y-6">
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-700">⚖️ Vergleich der Ansätze</h2>
+                <p className="text-gray-500">Wissensquelle & Kontrolllogik</p>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="border-2 border-gray-300 p-3 text-left">Aspekt</th>
+                      <th className="border-2 border-gray-300 p-3 text-center">🧠 LLM</th>
+                      <th className="border-2 border-gray-300 p-3 text-center">📚 RAG</th>
+                      <th className="border-2 border-gray-300 p-3 text-center">🤖 Agent</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border-2 border-gray-300 p-3 font-semibold bg-blue-50">
+                        📖 Wissensquelle
+                      </td>
+                      <td className="border-2 border-gray-300 p-3 text-center">
+                        <GapInput id="diff_llm_source" width={110} placeholder="?" />
+                      </td>
+                      <td className="border-2 border-gray-300 p-3 text-center">
+                        <GapInput id="diff_rag_source" width={110} placeholder="?" />
+                      </td>
+                      <td className="border-2 border-gray-300 p-3 text-center">
+                        <GapInput id="diff_agent_source" width={110} placeholder="?" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border-2 border-gray-300 p-3 font-semibold bg-green-50">
+                        ⚙️ Kontrolllogik
+                      </td>
+                      <td className="border-2 border-gray-300 p-3 text-center">
+                        <GapInput id="diff_llm_logic" width={110} placeholder="?" />
+                      </td>
+                      <td className="border-2 border-gray-300 p-3 text-center">
+                        <GapInput id="diff_rag_logic" width={130} placeholder="?" />
+                      </td>
+                      <td className="border-2 border-gray-300 p-3 text-center">
+                        <GapInput id="diff_agent_logic" width={150} placeholder="?" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <Box color="blue" className="text-center">
+                  <div className="text-3xl mb-2">🧠</div>
+                  <h3 className="font-bold text-blue-700 mb-2">LLM</h3>
+                  <p className="text-sm text-gray-600">
+                    Nutzt nur <strong>Trainingswissen</strong>. 
+                    Rät den wahrscheinlichsten Kontext.
+                  </p>
+                </Box>
+                
+                <Box color="green" className="text-center">
+                  <div className="text-3xl mb-2">📚</div>
+                  <h3 className="font-bold text-green-700 mb-2">RAG</h3>
+                  <p className="text-sm text-gray-600">
+                    Ergänzt mit <strong>abgerufenen Daten</strong>.
+                    Antworten basieren auf Fakten.
+                  </p>
+                </Box>
+                
+                <Box color="orange" className="text-center">
+                  <div className="text-3xl mb-2">🤖</div>
+                  <h3 className="font-bold text-orange-700 mb-2">Agent</h3>
+                  <p className="text-sm text-gray-600">
+                    Wählt <strong>Tools</strong> selbstständig.
+                    Plant, handelt, reagiert adaptiv.
+                  </p>
+                </Box>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-6 text-center text-sm text-gray-500">
+          <p>
+            💡 Tipp: Klicke auf ein Eingabefeld und drücke Enter, um deine Antwort zu prüfen.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('llm-rag-agent-root'));
+root.render(<LLMvsRAGvsAgent />);
+</script>
+```

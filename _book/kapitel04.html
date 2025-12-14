@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource, die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen.">
+
+<title>4&nbsp; Vier Szenarien: Hiwi, Copilot, Tutor, Simulator – KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./kapitel05.html" rel="next">
+<link href="./kapitel03.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-224a6a8105d986795636933823094265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7aa9416085d47580ec37213528db77fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-224a6a8105d986795636933823094265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel04.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien: Hiwi, Copilot, Tutor, Simulator</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">KI als Hilfe zum Lehren und Lernen</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./KI-als-Hilfe-zum-Lehren-und-Lernen.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./KI-als-Hilfe-zum-Lehren-und-Lernen.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ziele und didaktische Mechanismen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#ki-als-hiwi" id="toc-ki-als-hiwi" class="nav-link active" data-scroll-target="#ki-als-hiwi"><span class="header-section-number">4.1</span> KI als Hiwi</a>
+  <ul class="collapse">
+  <li><a href="#wobei-soll-die-hilfskraft-unterstützen" id="toc-wobei-soll-die-hilfskraft-unterstützen" class="nav-link" data-scroll-target="#wobei-soll-die-hilfskraft-unterstützen">Wobei soll die Hilfskraft unterstützen?</a></li>
+  <li><a href="#wobei-unterstützt-ki-besonders-gut" id="toc-wobei-unterstützt-ki-besonders-gut" class="nav-link" data-scroll-target="#wobei-unterstützt-ki-besonders-gut">Wobei unterstützt KI besonders gut?</a></li>
+  </ul></li>
+  <li><a href="#ki-als-copilot" id="toc-ki-als-copilot" class="nav-link" data-scroll-target="#ki-als-copilot"><span class="header-section-number">4.2</span> KI als Copilot</a>
+  <ul class="collapse">
+  <li><a href="#besser-schreiben-als-cyborg" id="toc-besser-schreiben-als-cyborg" class="nav-link" data-scroll-target="#besser-schreiben-als-cyborg">Besser schreiben – als Cyborg</a></li>
+  <li><a href="#jeder-kann-jetzt-programmieren" id="toc-jeder-kann-jetzt-programmieren" class="nav-link" data-scroll-target="#jeder-kann-jetzt-programmieren">Jeder kann jetzt programmieren</a></li>
+  </ul></li>
+  <li><a href="#ki-als-tutor" id="toc-ki-als-tutor" class="nav-link" data-scroll-target="#ki-als-tutor"><span class="header-section-number">4.3</span> KI als Tutor</a>
+  <ul class="collapse">
+  <li><a href="#beispiele-für-einfache-tutoren" id="toc-beispiele-für-einfache-tutoren" class="nav-link" data-scroll-target="#beispiele-für-einfache-tutoren">Beispiele für einfache Tutoren</a></li>
+  <li><a href="#komplexer-physik-tutor-mit-musterlösungen" id="toc-komplexer-physik-tutor-mit-musterlösungen" class="nav-link" data-scroll-target="#komplexer-physik-tutor-mit-musterlösungen">Komplexer Physik Tutor mit Musterlösungen</a></li>
+  </ul></li>
+  <li><a href="#ki-als-simulator" id="toc-ki-als-simulator" class="nav-link" data-scroll-target="#ki-als-simulator"><span class="header-section-number">4.4</span> KI als Simulator</a>
+  <ul class="collapse">
+  <li><a href="#role-play" id="toc-role-play" class="nav-link" data-scroll-target="#role-play">Role Play</a></li>
+  <li><a href="#goal-play-zielgerichtete-spiele" id="toc-goal-play-zielgerichtete-spiele" class="nav-link" data-scroll-target="#goal-play-zielgerichtete-spiele">Goal Play – zielgerichtete Spiele</a></li>
+  </ul></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel04.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel04.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien: Hiwi, Copilot, Tutor, Simulator</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Wie nutzen Lehrende aktuell generative KI? Zur ersten Orientierung stellen wir in Tabelle 1 eine Reihe von exemplarischen aktuellen Anwendungsfällen aus deutschen und internationalen Hochschulen zusammen (Stand April 2025). Die Abgrenzung der verschiedenen Kategorien und Details der Umsetzung erklären wir im Folgenden.</p>
+<div id="tbl-usecases" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-usecases-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.1: Tabelle 1: Anwendungsfälle zur Nutzung von KI als Hilfskraft, Copilot, Tutor oder Simulator aus deutschen und internationalen Hochschulen
+</figcaption>
+<div aria-describedby="tbl-usecases-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Kategorie</th>
+<th style="text-align: left;">Use Case &amp; KI-Bot-Funktion</th>
+<th style="text-align: left;">Lernbereich &amp; Mehrwert</th>
+<th style="text-align: left;">Hochschule/Institution</th>
+<th style="text-align: left;">Quelle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>KI als Hilfskraft</strong></td>
+<td style="text-align: left;">KI-generierte Übungsaufgaben und Skripte (“Instructors as Innovators”)</td>
+<td style="text-align: left;">Entlastung der Lehrenden, Effizienz bei Materialerstellung</td>
+<td style="text-align: left;">Wharton School (UPenn)</td>
+<td style="text-align: left;"><span class="citation" data-cites="mollick2024f">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Automatisierte Transkription qualitativer Interviews (“Mit KI über KI qualitativ forschen”)</td>
+<td style="text-align: left;">Zeitersparnis, Unterstützung in qualitativer Forschung</td>
+<td style="text-align: left;">LMU München</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 040</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Erstellung multimedialer Lernmaterialien (“KI-gestützte Entwicklung von Lernmedien”)</td>
+<td style="text-align: left;">Höhere Flexibilität im Selbststudium, vielfältige Lernwege</td>
+<td style="text-align: left;">Hochschule Ruhr West</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 137</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Entwicklung KI-basierter Audioerklärungen (“HAnS – Hochschul-Assistenzsystem”)</td>
+<td style="text-align: left;">Orts- und zeitunabhängiges Lernen</td>
+<td style="text-align: left;">Universität Münster</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 162</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Analyse offener Antworten aus Befragungen (“Analyse offener Antworten”)</td>
+<td style="text-align: left;">Verbesserte Auswertung und Feedbackqualität</td>
+<td style="text-align: left;">Hochschule München</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 189</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>KI als Co-Pilot</strong></td>
+<td style="text-align: left;">Unterstützung beim Schreiben von Texten &amp; Coding</td>
+<td style="text-align: left;">Kreativitätsförderung, individuelle Hilfestellung</td>
+<td style="text-align: left;">Wharton School (UPenn)</td>
+<td style="text-align: left;"><span class="citation" data-cites="mollick2024f">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Analyse von Geschäftsberichten mit KI (“TEAM with AI”)</td>
+<td style="text-align: left;">Vertieftes Verständnis von Geschäftsmodellen</td>
+<td style="text-align: left;">DHBW Heilbronn</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 172</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Erstellung von Präsentationen &amp; Podcasts (“TEAM with AI”)</td>
+<td style="text-align: left;">Innovative Lehrmedien, Förderung digitaler Kompetenz</td>
+<td style="text-align: left;">DHBW Heilbronn</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 172</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Coding-Unterstützung für Data-Science-Kurse (“Generative AI for Data Science 101”)</td>
+<td style="text-align: left;">Niedrigschwelliger Zugang zum Programmieren, Fokus auf Fachinhalte</td>
+<td style="text-align: left;">University of Southern California (USC)</td>
+<td style="text-align: left;"><span class="citation" data-cites="bien2025a">Bien &amp; Mukherjee (<a href="#ref-bien2025a" role="doc-biblioref">2025</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>KI als Tutor</strong></td>
+<td style="text-align: left;">KI-Tutoren für Physikvorlesungen</td>
+<td style="text-align: left;">Signifikante Leistungssteigerung, höheres Engagement</td>
+<td style="text-align: left;">Harvard University</td>
+<td style="text-align: left;"><span class="citation" data-cites="kestin2024b">Kestin et al. (<a href="#ref-kestin2024b" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">KI-basierte Tutoren für Geschäftsverhandlungen</td>
+<td style="text-align: left;">Verbesserte Kommunikationsfähigkeiten</td>
+<td style="text-align: left;">Wharton School (UPenn)</td>
+<td style="text-align: left;"><span class="citation" data-cites="mollick2024f">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Digitaler Assistent zur Prüfungsvorbereitung</td>
+<td style="text-align: left;">Sofortiges Feedback, individualisierte Vorbereitung</td>
+<td style="text-align: left;">Hochschule Hof</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 208</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Individuelles formatives Feedback, personalisierte Lernunterstützung (“COFFEE &amp; MIND”)</td>
+<td style="text-align: left;">Bessere Lernergebnisse, passgenaue Betreuung</td>
+<td style="text-align: left;">FernUniversität Hagen</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 061</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>KI als Simulator</strong></td>
+<td style="text-align: left;">“PitchQuest” Entrepreneurship-Simulation (“Simulated Practice at Scale”)</td>
+<td style="text-align: left;">Praxisnahe Übung für Unternehmenspitches</td>
+<td style="text-align: left;">Wharton School (UPenn)</td>
+<td style="text-align: left;"><span class="citation" data-cites="mollick2024d">E. Mollick et al. (<a href="#ref-mollick2024d" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Fortgeschrittene Voice-Mode-Simulation (“ChatGPT’s Advanced Voice Mode”)</td>
+<td style="text-align: left;">Dynamische Patienten- / Szenariensimulation, z.B. für medizinische Trainings</td>
+<td style="text-align: left;">Verschiedene Simulationseinrichtungen</td>
+<td style="text-align: left;"><span class="citation" data-cites="barra2024a">Barra et al. (<a href="#ref-barra2024a" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Generative KI für Sprachlern-Simulationen (“Reconceptualizing the Role of the University Language Teacher”)</td>
+<td style="text-align: left;">Interaktive Übung, realitätsnahe Konversation in der Fremdsprache</td>
+<td style="text-align: left;">University of Technology, Sydney &amp; Manchester</td>
+<td style="text-align: left;"><span class="citation" data-cites="tutton2025b">Tutton &amp; Cohen (<a href="#ref-tutton2025b" role="doc-biblioref">2025</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Dokumentenbasierte KI-Simulation (“Enhancing History Education with Google NotebookLM”)</td>
+<td style="text-align: left;">Umwandlung historischer Quellen in dynamische Lernformate, Audio-Podcasts</td>
+<td style="text-align: left;">Lindenwood University</td>
+<td style="text-align: left;"><span class="citation" data-cites="huffman2024">Huffman &amp; Hutson (<a href="#ref-huffman2024" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">“Talk2Transform” – Gesprächssimulation für Managementtrainings</td>
+<td style="text-align: left;">Realitätsnahe Management-/Führungstrainings</td>
+<td style="text-align: left;">TH Brandenburg</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 132</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">“TEAM with AI” – Verhandlungstrainings in der BWL-Grundlagenlehre</td>
+<td style="text-align: left;">Praktische Anwendung &amp; tieferes Verständnis</td>
+<td style="text-align: left;">DHBW Heilbronn</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 172</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">KI-basierte Gesprächssimulation in der Personalpsychologie (“Gesprächssimulationen für Personalpsychologie”)</td>
+<td style="text-align: left;">Training sozialer Kompetenzen, Deeskalation</td>
+<td style="text-align: left;">HAW Hamburg</td>
+<td style="text-align: left;"><span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span>, Fall Nr. 177</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="ki-als-hiwi" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="ki-als-hiwi"><span class="header-section-number">4.1</span> KI als Hiwi</h2>
+<section id="wobei-soll-die-hilfskraft-unterstützen" class="level3">
+<h3 class="anchored" data-anchor-id="wobei-soll-die-hilfskraft-unterstützen">Wobei soll die Hilfskraft unterstützen?</h3>
+<p>Beschäftigte in Forschung und Lehre erfüllen eine Vielzahl sehr heterogener Aufgaben, mit einem wachsenden Teil an „Verwaltung“. Wer lehrt, merkt schnell, dass die Präsenzveranstaltung nur die Spitze eines ganzen Eisbergs an Aufgaben darstellt. Eine Umfrage unter Lehrenden in Österreich zeigt, dass sie etwa ein Drittel ihrer Zeit mit Lehraktivitäten verbringen (32%) und etwa ein Fünftel mit Verwaltungstätigkeiten in der Hochschule (20%) sowie ein weiteres Fünftel mit externen Verpflichtungen wie Gutachten oder Tätigkeiten in wissenschaftlichen Gesellschaften (9%, 10%) <span class="citation" data-cites="oesterreichischeruniversitaetsprofessor/innenverband2018">(<a href="#ref-oesterreichischeruniversitaetsprofessor/innenverband2018" role="doc-biblioref">Österreichischer Universitätsprofessor/innenverband, 2018</a>)</span>. Wie Unkraut im Garten, wächst der Anteil, den Lehrende mit „sonstigem“ verbringen: Vor allem der Zeitaufwand für Verwaltung stieg an <span class="citation" data-cites="schomburg2012a">(<a href="#ref-schomburg2012a" role="doc-biblioref">Schomburg et al., 2012</a>)</span>.</p>
+<p>Woraus besteht das im Detail und wo könnten LLMs helfen? Vor- und Nachbereitung, Evaluation, Beratung, Planung und vieles mehr lassen die Stunden eines Tages schnell vergehen. Abbildung 9 zeigt die 25 Hauptaufgaben, die Lehrende nach Umfragen des US Arbeitsministeriums verrichten (https://www.onetonline.org/link/summary/25-1011.00). Welche Auswirkungen können wir von LLM auf diese konkreten Aufgaben erwarten?</p>
+<div id="fig-onet-tasks" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-onet-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script04-01.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-onet-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.1: Abbildung 9: Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ nach Umfragen des US Arbeitsministeriums auf O<em>Net. Quelle: O</em>Net, 2025
+</figcaption>
+</figure>
+</div>
+<p>Historische Studien zeigen, dass Technologie typischerweise <strong>Tätigkeiten</strong> (tasks) beeinflusst und eher selten ganze Jobs ersetzt. Führend sind dazu Untersuchungen von David Autor und dem Nobelpreisträger Daron Acemoglu <span class="citation" data-cites="acemoglu2019a autor2015">(<a href="#ref-acemoglu2019a" role="doc-biblioref">Acemoglu &amp; Restrepo, 2019</a>; <a href="#ref-autor2015" role="doc-biblioref">Autor, 2015</a>)</span>. Eine nützliche Kategorisierung unterscheidet <strong>drei Effekte</strong> neuer Technologien auf den Faktor Arbeit: Technologische Veränderungen können menschliche Arbeit ersetzen (<strong>Verdrängungseffekt</strong> / displacement effect), spezifische Arbeitskräfte produktiver machen (<strong>Produktivitätseffekt</strong> / productivity effect / augmentation), oder neue Aufgaben (und Jobs) schaffen (<strong>Wiedereinsetzungseffekt</strong> / reinstatement effect) <span class="citation" data-cites="acemoglu2019a">(<a href="#ref-acemoglu2019a" role="doc-biblioref">Acemoglu &amp; Restrepo, 2019</a>)</span>.</p>
+<div id="tbl-acemoglu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-acemoglu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.2: Tabelle 2: Für welche Aufgaben in der Lehre erwarten wir Verdrängung und Erhöhung der Produktivität und welche Aufgaben kommen hinzu? Legende: x = klarer Effekt, ? = gemischter Effekt. Quelle: Theorierahmen nach <span class="citation" data-cites="acemoglu2019a">Acemoglu &amp; Restrepo (<a href="#ref-acemoglu2019a" role="doc-biblioref">2019</a>)</span>
+</figcaption>
+<div aria-describedby="tbl-acemoglu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Effekt</th>
+<th style="text-align: left;">Beschreibung</th>
+<th style="text-align: left;">Aufgaben in der Lehre (Beispiele)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Verdrängung</strong></td>
+<td style="text-align: left;">Technologie übernimmt Aufgaben</td>
+<td style="text-align: left;">• Erstellung, Durchführung und Bewertung von Prüfungen (x)<br>• Verwaltung von Noten und Anwesenheit (x)<br>• Vorbereitung standardisierter Lehrmaterialien (x)<br>• Zusammenstellung von Bibliographien (x)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Produktivität</strong></td>
+<td style="text-align: left;">Technologie macht Arbeit effizienter</td>
+<td style="text-align: left;">• Vorbereitung und Durchführung von Vorlesungen (x)<br>• Durchführung von Seminaren und Diskussionen (x)<br>• Akademische und berufliche Beratung (?/x)<br>• Forschung und Publikation (x)<br>• Pflege von Webseiten und digitalen Ressourcen (?/x)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Wiedereinsetzung</strong></td>
+<td style="text-align: left;">Technologie schafft neue Aufgaben</td>
+<td style="text-align: left;">• Entwicklung KI-gestützter Lehrkonzepte (x)<br>• Qualitätskontrolle von KI-Materialien (x)<br>• Gestaltung individueller Lernpfade (x)<br>• Ethische und rechtliche Begleitung (x)<br>• Weiterbildung des Personals (x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In <a href="#tbl-acemoglu" class="quarto-xref">Tabelle&nbsp;<span>4.2</span></a> übertragen wir die genannten drei Effekte auf konkrete Aufgaben in der Hochschullehre.</p>
+<p>Der <strong>Verdrängungseffekt</strong> betrifft hauptsächlich administrative und stark standardisierte Tätigkeiten. Aufgaben wie das Erstellen, Durchführen und Bewerten von Prüfungen, die Verwaltung von Noten und Anwesenheiten sowie die Vorbereitung standardisierter Lehrmaterialien oder Literaturzusammenstellungen werden voraussichtlich vollständig oder überwiegend von KI übernommen. Anwendungsstudien und Umfragen der letzten zwei Jahre geben hierzu deutliche Hinweise <span class="citation" data-cites="morgan2024a naddaf2025c ogunleye2024a ou2024a tutton2025b">(<a href="#ref-morgan2024a" role="doc-biblioref">Morgan, 2024</a>; <a href="#ref-naddaf2025c" role="doc-biblioref">Naddaf, 2025b</a>; <a href="#ref-ogunleye2024a" role="doc-biblioref">Ogunleye et al., 2024</a>; <a href="#ref-ou2024a" role="doc-biblioref">Ou et al., 2024</a>; <a href="#ref-tutton2025b" role="doc-biblioref">Tutton &amp; Cohen, 2025</a>)</span>.</p>
+<p>Der <strong>Produktivitätseffekt</strong> bezieht sich auf zentrale Lehr-, Forschungs- und Betreuungstätigkeiten, die durch KI effizienter werden. Dazu zählen die Vorbereitung und Durchführung von Vorlesungen, Seminaren und Diskussionen, akademische und berufliche Beratung der Studierenden sowie Forschung und Publikationen. KI unterstützt hier durch automatische Literaturauswertungen, personalisierte Lerninhalte oder Pflege digitaler Ressourcen, sodass Lehrende ihre Kernaufgaben besser und effektiver erfüllen können <span class="citation" data-cites="gottweis2025a meincke2024a mollick2024f mollick2023i schwarcz2025a">(<a href="#ref-gottweis2025a" role="doc-biblioref">Gottweis et al., 2025</a>; <a href="#ref-meincke2024a" role="doc-biblioref">Meincke et al., 2024</a>; <a href="#ref-mollick2023i" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2023b</a>, <a href="#ref-mollick2024f" role="doc-biblioref">2024</a>; <a href="#ref-schwarcz2025a" role="doc-biblioref">Schwarcz et al., 2025</a>)</span>.</p>
+<p><strong>Gemischte Effekte</strong> treten bei einigen Aufgaben wie der Entwicklung und Pflege von Kurswebseiten, dem digitalen Aufzeichnen von Vorträgen und der Auswahl von Lehrmaterialien auf, bei denen KI sowohl Teile der Aufgaben ersetzt als auch deren Durchführung produktiver macht.</p>
+<p>Der <strong>Wiedereinsetzungseffekt</strong> zeigt, dass durch den Einsatz von generativer KI gänzlich neue Aufgaben entstehen. Dazu gehören beispielsweise die Entwicklung neuer KI-gestützter Lehrkonzepte und -methoden, Qualitätskontrollen von KI-generierten Lehrmaterialien, Gestaltung individueller Lernpfade, ethische und rechtliche Begleitung des KI-Einsatzes sowie die Weiterbildung des Lehrpersonals im Umgang mit KI-Technologien <span class="citation" data-cites="dihan2025a mollick2024d mollick2024f">(<a href="#ref-dihan2025a" role="doc-biblioref">Dihan et al., 2025</a>; <a href="#ref-mollick2024d" role="doc-biblioref">E. Mollick et al., 2024</a>; <a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024</a>)</span>.</p>
+<p>Durch diese differenziertere Analyse der drei Effekte wird klar, dass die Einführung von KI in die Lehre zwar mit hoher Sicherheit <strong>deutliche Änderungen im Aufgaben-Mix</strong> und der Zeitanteile bedeutet, die wir mit verschiedenen Aufgaben verbringen. Das ist nicht neu: Wer bestellt heute noch regelmäßig per Fernleihe, schickt Briefe oder kopiert in großem Umfang? Wir sehen, dass generative KI wahrscheinlich mittelfristig einen Teil der aktuellen Tätigkeiten verdrängen, zentrale Kernaufgaben produktiver gestalten und zugleich neue, spezialisierte Aufgaben in der Lehre schaffen wird.</p>
+<p>Ob das <strong>insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher</strong>, denn die neuen Aufgaben um die Einrichtung und Betreuung der KI-Unterstützung können sehr zeitintensiv sein, als Beispiel sei hier etwa die Einrichtung eines Physik-Tutor-Bots <span class="citation" data-cites="kestin2024b">(<a href="#ref-kestin2024b" role="doc-biblioref">Kestin et al., 2024</a>)</span> oder einer Startup-Simulation, in der KI in verschiedenen Rollen beim Aufsetzen und Verbessern von Geschäftsplänen hilft <span class="citation" data-cites="mollick2024d">(<a href="#ref-mollick2024d" role="doc-biblioref">E. Mollick et al., 2024</a>)</span>. Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt es auch hier nicht umsonst.</p>
+</section>
+<section id="wobei-unterstützt-ki-besonders-gut" class="level3">
+<h3 class="anchored" data-anchor-id="wobei-unterstützt-ki-besonders-gut">Wobei unterstützt KI besonders gut?</h3>
+<p>Was sind typische Anwendungsfelder für Lehrende und Studierende? KI unterstützt Lehrende <strong>ähnlich einer Hilfskraft</strong> beim Erstellen von Lehrmaterialien, indem sie Beispiele generiert, die abstrakte Konzepte in realen Kontexten veranschaulichen <span class="citation" data-cites="mollick2023i">(<a href="#ref-mollick2023i" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2023b</a>)</span>. Dies fördert ein tieferes Verständnis und eine breitere Anwendbarkeit der Inhalte. Ebenso kann KI den Verwaltungsaufwand für Kurse verringern, indem sie dabei hilft, Übersichten, Dokumente und Präsentationen zu erstellen. Idealerweise verschiebt sich dann die Energie der Lehrenden auf Kernkompetenzen wie individuelle Erläuterung, Motivation und Coaching von Arbeitsgruppen.</p>
+<p><strong>KI kann dabei helfen</strong>: Von der Analyse der Lernenden über die Erstellung, Anpassung und Verknüpfung von Inhalten bis hin zur Unterstützung bei Recherche und Literaturarbeit. Während die Sprachmodelle noch vor drei Jahren vor allem einfache Fragen beantworten konnten, können die stärksten Modelle mittlerweile ganze Aufgabenbündel abarbeiten, (s. Abbildung 7), wie etwa komplexe Recherchen, Datenanalyse oder Code-Generierung <span class="citation" data-cites="naddaf2025 naddaf2025c">(<a href="#ref-naddaf2025" role="doc-biblioref">Naddaf, 2025a</a>, <a href="#ref-naddaf2025c" role="doc-biblioref">2025b</a>)</span>. KI als „Co-Scientist“ <span class="citation" data-cites="gottweis2025a">(<a href="#ref-gottweis2025a" role="doc-biblioref">Gottweis et al., 2025</a>)</span> – positiv gesehen <strong>werden die Hiwis immer schlauer</strong>.</p>
+<p><strong>Erste Untersuchungen zeigen positive Effekte auf Lehrende</strong> – weniger Stress, mehr Energie - wenn sie ChatGPT zur Unterstützung einsetzen. Wie auch bei anderen neuen Technologien hängen die positiven Effekte mit der Einfachheit der Nutzung und der empfundenen Nützlichkeit zusammen, wie etwa eine neuere Umfrage unter 401 Dozierenden zeigt <span class="citation" data-cites="cambra-fierro2025a">(<a href="#ref-cambra-fierro2025a" role="doc-biblioref">Cambra-Fierro et al., 2025</a>)</span>.</p>
+<p>Die folgende Tabelle fasst eine Reihe von Anwendungsfeldern zusammen.</p>
+<div id="tbl-prep-apps" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-prep-apps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.3: Tabelle 3: Detaillierte Anwendungsfelder von KI zur Kursvorbereitung. Quelle: Basierend auf <span class="citation" data-cites="gimpel2023a">Gimpel et al. (<a href="#ref-gimpel2023a" role="doc-biblioref">2023</a>)</span>; <span class="citation" data-cites="mollick2023i">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2023i" role="doc-biblioref">2023b</a>)</span>; <span class="citation" data-cites="mollick2022b">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2022b" role="doc-biblioref">2022</a>)</span>
+</figcaption>
+<div aria-describedby="tbl-prep-apps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Kategorie</th>
+<th style="text-align: left;">Empfehlung</th>
+<th style="text-align: left;">Beispiele</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Analyse der Lernenden</strong></td>
+<td style="text-align: left;">Vorkenntnisse und Lerntypen analysieren</td>
+<td style="text-align: left;">Auswertung von Fragebögen, Lernstandserhebungen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Rückmeldungen zusammenfassen und auswerten</td>
+<td style="text-align: left;">Analyse von Feedbackformularen, Forenbeiträgen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Generierung von Inhalten</strong></td>
+<td style="text-align: left;">Vielfältige Beispiele und Erklärungen</td>
+<td style="text-align: left;">Anwendungsbeispiele, Analogien, Visualisierungen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Übungsaufgaben, Quizfragen und Tests</td>
+<td style="text-align: left;">Aufgaben verschiedener Schwierigkeitsgrate und Formate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Zusammenfassungen und Analysen von Materialien</td>
+<td style="text-align: left;">Kernaussagen von Texten, Vergleich von Konzepten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Anpassung von Materialien</strong></td>
+<td style="text-align: left;">Automatische Anpassung an Niveaus und Formate</td>
+<td style="text-align: left;">Vereinfachung von Texten, Ergänzung von Erklärungen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Optimierung basierend auf Rückmeldungen</td>
+<td style="text-align: left;">Überarbeitung von Beispielen, Aufgaben, Erklärungen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Verknüpfung und Wiederholung</strong></td>
+<td style="text-align: left;">Bezüge zwischen Themen herstellen</td>
+<td style="text-align: left;">Querverweise, Analogien, Anwendung in neuen Kontexten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Integration in Aufgaben und Tests zum verteilten Üben</td>
+<td style="text-align: left;">Wiederholungsfragen zu Vorwissen in späteren Einheiten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Recherche und Literatur</strong></td>
+<td style="text-align: left;">Suche und Vorschläge relevanter Quellen</td>
+<td style="text-align: left;">Literaturempfehlungen passend zum Thema</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Zusammenfassungen und Vergleiche von Literatur</td>
+<td style="text-align: left;">Synopsen, Gegenüberstellungen, Forschungsüberblicke</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>KI kann bei <strong>Schreib- und Formatierarbeiten</strong> viel Zeit sparen. Textbausteine in eine Tabelle zusammenfassen, Tabellen umformatieren oder Tabelleninhalte in Fließtext verwandeln, Hauptpunkte mit anschaulichen Beispielen für verschiedene Adressatenkreise illustrieren, Literaturangaben in ein bestimmtes Format wie BibTeX verwandeln, das sich mit einem Klick in Zotero einlesen lässt, Übersetzungen in verschiedene Sprachen, Erstellung von Übersichtsdokumenten oder Websites… Viele Fleißarbeiten lassen sich bei sorgfältiger Aufsicht sehr gut an den digitalen Hiwi delegieren. Nutzungsberichte und Experimente zeigen einen deutlichen Mehrwert etwa bei Recherche, Texterstellung und Zusammenfassung <span class="citation" data-cites="brynjolfsson2025 handa2025c schwarcz2025a">(<a href="#ref-brynjolfsson2025" role="doc-biblioref">Brynjolfsson et al., 2025</a>; <a href="#ref-handa2025c" role="doc-biblioref">Handa et al., 2025</a>; <a href="#ref-schwarcz2025a" role="doc-biblioref">Schwarcz et al., 2025</a>)</span>.</p>
+<p>Für die <strong>Recherche und Textgenerierung</strong> lässt sich der Hiwi gut nutzen <span class="citation" data-cites="mcknight2022a">(<a href="#ref-mcknight2022a" role="doc-biblioref">McKnight, 2022</a>)</span>: Machen Sie die KI zu Recherche-Assistenten, um Themen umfassend zu recherchieren und Texte zur Überprüfung sowie Referenzen für nachfolgende Untersuchungen der Studierenden zu kompilieren (z.B. mit Complexity.ai oder dem Consensus GPT (Add-on zu ChatGPT) sowie neueren Lösungen wie Deep Research <span class="citation" data-cites="schwarcz2025a">(<a href="#ref-schwarcz2025a" role="doc-biblioref">Schwarcz et al., 2025</a>)</span> und spezialisierte Lösungen wie Elicit, die auf akademische Datenbanken zurückgreifen (jedoch oft nur auf Abstracts, keine Volltexte). Diese Materialien können als Grundlage für originale und sorgfältig referenzierte Schreibarbeiten dienen. Nutzen Sie KI-Tools für routinemäßige Texte, wie Blog-Inhalte, und bewerten Sie kritisch, wo und warum KI-Texte, menschliche Texte oder Hybridtexte angebracht sind. Erforschen Sie die spezifischen Möglichkeiten von KI-basierten Inhalts-Generatoren für Ihr Fachgebiet, beispielsweise die Produktion von Texten in mehreren Sprachen innerhalb von Sekunden oder die Erstellung von für Suchmaschinen optimierten Texten.</p>
+<p>Speziell zur <strong>Kursvorbereitung</strong> schlagen Experten eine Reihe von Möglichkeiten vor, wie die KI Lehrende unterstützen kann <span class="citation" data-cites="gimpel2023a mollick2023i mollick2022b">(<a href="#ref-gimpel2023a" role="doc-biblioref">Gimpel et al., 2023</a>; <a href="#ref-mollick2022b" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2022</a>, <a href="#ref-mollick2023i" role="doc-biblioref">2023b</a>)</span>: KI kann die <strong>Vorkenntnisse der Studierenden analysieren</strong>, um Materialien und Methoden passgenau auszuwählen und anzupassen – etwa um Startup Pitches vorzubereiten <span class="citation" data-cites="mollick2024d">(<a href="#ref-mollick2024d" role="doc-biblioref">E. Mollick et al., 2024</a>)</span>. Durch <strong>Zusammenfassung und Analyse von Rückmeldungen</strong> der Studierenden können Verständnisprobleme und Lernlücken identifiziert werden. KI kann weiterhin <strong>Beispiele und Erklärungen</strong> zu Kursthemen generieren, um das Verständnis zu fördern. Lehrende können <strong>Zusammenfassungen und Analysen von Kursmaterialien und Literatur</strong> anfertigen, Lernmaterialien an verschiedene Niveaus und Formate anpassen, Erklärungen und Materialien basierend auf Rückmeldungen der Studierenden optimieren. So bieten etwa Mollick und andere Teilnehmern <strong>angepasste Feedbacks und Videos</strong> an, je nachdem was in einem anfänglichen Fragebogen berichtet wurde und welches Level an Vorwissen die User zeigen <span class="citation" data-cites="mollick2024d">(<a href="#ref-mollick2024d" role="doc-biblioref">E. Mollick et al., 2024</a>)</span>. KI kann Bezüge zwischen aktuellen und zuvor gelernten Themen herstellen und diese in Aufgaben und Tests zum verteilten Üben über den Kursverlauf hinweg integrieren. Der effektive Einsatz erfordert aber stets die Prüfung, Auswahl und Einbettung durch die Lehrenden auf Basis ihrer didaktischen Expertise <span class="citation" data-cites="mollick2023i mollick2024f">(<a href="#ref-mollick2023i" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2023b</a>, <a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span>.</p>
+<p><strong>Übungsaufgaben, Quizfragen und Tests</strong> mit adaptivem Feedback können in kurzer Zeit erstellt werden. Wie eine neuere Studie zeigt, können auch „simulierte Studierende“ genutzt werden, um die <strong>Qualität neuer Multiple-Choice Fragen zu bewerten</strong> <span class="citation" data-cites="lu2024b">(<a href="#ref-lu2024b" role="doc-biblioref">Lu &amp; Wang, 2024</a>)</span>.</p>
+<p>Was für <strong>konkrete Nutzungsbeispiele</strong> finden wir Anfang 2025 in aktuellen Berichten? Ein Artikel der Fachzeitschrift <em>Nature</em> (Tabelle 4) fasst Anwendungen aus verschiedenen Bereichen zusammen, die von Fehlersuche zur Erstellung von Simulationsübungen und Wochenplänen reicht <span class="citation" data-cites="heidt2025a">(<a href="#ref-heidt2025a" role="doc-biblioref">Heidt, 2025</a>)</span>.</p>
+<div id="tbl-nature-examples" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nature-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.4: Tabelle 4: Aktuelle Nutzungsbeispiele von KI zur Lehrunterstützung. Quelle: Zusammengestellt nach <span class="citation" data-cites="heidt2025a">Heidt (<a href="#ref-heidt2025a" role="doc-biblioref">2025</a>)</span>
+</figcaption>
+<div aria-describedby="tbl-nature-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fachgebiete</th>
+<th style="text-align: left;">KI-Nutzung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Informatik</strong></td>
+<td style="text-align: left;">Selbstentwickelter KI-Chatbot „Class Primer“ analysiert mithilfe von ChatGPT-4 Kursinhalte und erstellt strukturierte Zusammenfassungen sowie visuelle Lernhilfen, um komplexe Themen bereits vor der Vorlesung zu verstehen.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Wirtschaftswissenschaften</strong> (Geschichte/Wirtschaftsgeschichte)</td>
+<td style="text-align: left;">Im Rahmen der Erstellung wissenschaftlicher Essays simulieren Studierende mithilfe von ChatGPT historische Persönlichkeiten (z.B. Henry Kissinger), um deren Perspektiven und Argumente bezüglich historischer Ereignisse besser nachvollziehen und kritisch hinterfragen zu können.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Psychologie und Sprachbildung</strong></td>
+<td style="text-align: left;">Nutzung von KI-basierten Chatbots („Language Buddy“), um Fremdsprachenkenntnisse interaktiv und dialektspezifisch zu trainieren und damit sprachliche Kompetenzen zu verbessern.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Neurowissenschaften</strong> (Data Science)</td>
+<td style="text-align: left;">Einsatz von Chatbots als „technische Assistenten“ zur effizienteren Fehlersuche in datenanalytischen Programmiercodes, was den Rechercheaufwand reduziert und direkte, spezifische Lösungsvorschläge bietet.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Literatur- und Wissenschaftskommunikation</strong></td>
+<td style="text-align: left;">Nutzung von KI (NotebookLM), um wissenschaftliche Literatur in Form von automatisch generierten Podcasts aufzubereiten. Dabei entstehen fiktive Dialoge zwischen Moderatoren, was einen kreativeren Zugang zu wissenschaftlichen Inhalten ermöglicht.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Luft- und Raumfahrttechnik</strong> (Projektmanagement)</td>
+<td style="text-align: left;">KI-Chatbots unterstützen bei der Erstellung detaillierter Wochenpläne und der rollenbasierten Aufgabenverteilung in studentischen Gruppenprojekten. Dies verbessert die organisatorischen Abläufe und berücksichtigt individuelle Stärken der Gruppenmitglieder.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Allgemeine Studierendenberatung und persönliche Entwicklung</strong></td>
+<td style="text-align: left;">Hilfe für Studierende verschiedener Fachrichtungen durch KI-basierte Tools, um individuelle Zeitpläne für Studium, Freizeitaktivitäten und soziales Leben zu erstellen. KI unterstützt sie dabei, persönliche Ziele (wie Sport, Musik oder zwischenmenschliche Beziehungen) effektiver und bewusster zu gestalten.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Die <strong>Aufgaben für Studierende</strong> müssen unter diesen neuen Rahmenbedingungen <strong>angepasst werden</strong>. Einfache Recherche-Übungen werden stark entwertet, da der Arbeitsfluss mittlerweile weitgehend automatisiert ist. Abbildung 10 zeigt den Unterschied für eine einfache Recherche-Übung. Was für Einzelschritte müssen Studierende erledigen, um einen Bericht zum Stand der Industrie 4.0 (etwa: sensorgestützte Vernetzung von Maschinen) in Deutschland zu erstellen? Links sehen wir einige typische Arbeitsschritte, die Studierende manuell durchführen müssen: Begriffe klären, Quellen recherchieren und zusammenfassen, Gliederung erstellen und Bericht formulieren und formatieren. Rechts sehen wir, wie die selben Arbeitsschritte mit der Unterstützung von LLMs durchgeführt werden. Grün markierte Aufgaben führt das LLM automatisch durch, Gelb markiert Aufgaben, die Iterationen mit den Usern erfordern (etwa: mehrere Prompts, Fine-Tuning, Anpassung). Das Beispiel setzt sorgfältige Nutzung der technischen Hilfsmittel voraus – wenn Studierende nur den Aufwand minimieren wollen, kann ihnen das LLM auch in einem einzigen Schritt einen (meist: weniger guten, aber zum Bestehen dieser Aufgabe wahrscheinlich noch ausreichenden) Bericht erstellen.</p>
+<div id="fig-report-workflow" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-report-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script04-02.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-report-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.2: Abbildung 10: Einfache Aufgaben müssen angepasst werden: Die traditionelle Erstellung eines Berichts durch Studierende (Szenario A) kann durch LLMs weitgehend automatisiert werden (Szenario B). Blau = manuell, grün = automatisch, gelb = hybrid. Quelle: Selbst erstellt mit GPT-o und Google Colab im Mermaid-Format.
+</figcaption>
+</figure>
+</div>
+<p><strong>Wie einfach das tatsächlich mittlerweile für Studierende geht</strong>, verdeutlicht ein Beispiel (s. Abbildung 11): Wir nutzen die im Hochschulnetz frei verfügbare Lizenz von Statista und die hier angebotene LLM-Funktion „Research AI“, um einen Textausschnitt zum Thema „Industrie 4.0 in Deutschland“ zu generieren und erhalten auf einen sehr einfachen Prompt praktisch sofort einen korrekt formulierten und formatierten Ausschnitt mit 5 von Statista kuratierten Quellen zurück. Der hier angebotene Mehrwert zu breiteren Modellen wie GPT oder Gemini besteht vor allem in der Auswahl und Zusammenstellung der Quellen durch Statista. Ähnliche Angebote gibt es inzwischen aus verschiedenen Bereichen, etwa vom juristischen Verlag Wolters Kluwer (https://www.wolterskluwer.com/de-de/solutions/wolters-kluwer-online).</p>
+<div id="fig-statista-researchai" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-statista-researchai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script04-03.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-statista-researchai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.3: Abbildung 11: Beispiel mit ResearchAI von statista – automatisierte Recherche, Zusammenfassung und Zitation
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ki-als-copilot" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="ki-als-copilot"><span class="header-section-number">4.2</span> KI als Copilot</h2>
+<p>In dieser Kategorie hilft das Sprachmodell uns dabei, etwas zu tun, was wir sonst nicht könnten. <span class="citation" data-cites="mollick2024f">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span> beschreiben mehrere solcher Ansätze: Bei der <strong>“Case Co-Creation”</strong> <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.25–28</a>)</span> arbeiten Studierende mit der KI zusammen, um ein Fallbeispiel für Kommilitonen zu erstellen. Dies fördert die Artikulation von Ideen und die kritische Auseinandersetzung mit dem KI-Output, da die initialen Entwürfe oft oberflächlich sind und durch studentische Expertise verbessert werden müssen. Die Übung <strong>“Critique the AI”</strong> lässt die KI ein Szenario zu einem Konzept (z.B. Groupthink) erstellen, das die Studierenden dann kritisch bewerten und ggf. verbessern müssen. Dies schult das Erkennen von Konzeptmerkmalen und die Fähigkeit, Wissen durch Korrektur zu artikulieren. Eine Herausforderung ist, dass die KI Konzepte manchmal unvollständig oder fehlerhaft illustriert, was aber Teil des Lerneffekts sein kann <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024</a>)</span>.</p>
+<p>Wie können <strong>LLMs als Programmierassistenten</strong> bei Coden und Datenanalyse helfen? <span class="citation" data-cites="bien2025a">Bien &amp; Mukherjee (<a href="#ref-bien2025a" role="doc-biblioref">2025</a>)</span> beschreiben den Einsatz von GitHub Copilot in einer <strong>Einführung in die Datenanalyse für MBA-Studierende</strong> an der University of Southern California. Studierende lernen, englische Prompts zu schreiben, die Copilot in R-Code übersetzt, um Datenanalysen durchzuführen, ohne selbst R-Syntax lernen zu müssen <span class="citation" data-cites="bien2025a">(<a href="#ref-bien2025a" role="doc-biblioref">Bien &amp; Mukherjee, 2025, S.129</a>)</span>. Der Mehrwert ist, dass Studierende direkt mit Daten interagieren und experimentieren können (“translator-in-your-ear”), was das Verständnis fördert und die Hemmschwelle senkt <span class="citation" data-cites="bien2025a">(<a href="#ref-bien2025a" role="doc-biblioref">Bien &amp; Mukherjee, 2025</a>)</span>. Herausforderungen liegen in der Inkonsistenz der KI (gleicher Prompt kann unterschiedlichen Code erzeugen), der Notwendigkeit, spezifische Prompting-Fähigkeiten zu lehren, und der Schwierigkeit für Studierende, die Korrektheit des generierten Codes zu überprüfen, was durch häufiges Plotten und Prüfen der Ergebnisse mitigiert werden muss <span class="citation" data-cites="bien2025a">(<a href="#ref-bien2025a" role="doc-biblioref">Bien &amp; Mukherjee, 2025, S.131, 133</a>)</span>.</p>
+<p><span class="citation" data-cites="liang2024a">Liang et al. (<a href="#ref-liang2024a" role="doc-biblioref">2024</a>)</span> untersuchten in einer großangelegten Umfrage die <strong>Usability von KI-Programmierassistenten</strong> wie GitHub Copilot. Sie fanden heraus, dass Entwickler diese Tools vor allem nutzen, um Tastenanschläge zu reduzieren, Aufgaben schneller zu erledigen und Syntax abzurufen <span class="citation" data-cites="liang2024a">(<a href="#ref-liang2024a" role="doc-biblioref">Liang et al., 2024, S.2</a>)</span>. Erfolgreiche Anwendungen sind die Generierung von repetitivem Code oder Code mit einfacher Logik sowie Unterstützung beim Lernen neuer Sprachen/APIs <span class="citation" data-cites="liang2024a">(<a href="#ref-liang2024a" role="doc-biblioref">Liang et al., 2024, S.5–6</a>)</span>. Als zentrale Herausforderungen wurden genannt, dass der generierte Code oft funktionale oder nicht-funktionale Anforderungen nicht erfüllt, die Steuerung des Tools schwierig ist und Nutzer oft nicht verstehen, welcher Input zum Output führte <span class="citation" data-cites="liang2024a">(<a href="#ref-liang2024a" role="doc-biblioref">Liang et al., 2024, S.2, 7</a>)</span>.</p>
+<p>Weitere Anwendungsbeispiele nutzen <strong>LLM als Hilfe für Schreibprozesse</strong>: Aus Deutschland wird das Projekt <strong>“DeepWrite”</strong> (U Passau, FAU, HöD Bayern) beschrieben, das KI-Assistenzsysteme zur Förderung der <strong>Schreib- und Argumentationskompetenz</strong> in Jura und Wirtschaft entwickelt <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 66)</span>. An der Universität Kiel erproben Studierende der Mittelalterlichen Geschichte den Einsatz von KI zur Unterstützung des <strong>Hausarbeitenprozesses</strong> (Recherche, Übersetzung, Gliederung) und diskutieren den Mehrwert im Vergleich zu traditionellen Methoden <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 193)</span>. An der Universität Marburg wird KI testweise zur Hilfe beim <strong>Verfassen von Laborprotokollen</strong> in der Pharmazie eingesetzt, um insbesondere sprachliche Hürden zu überwinden <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 25)</span>.</p>
+<p>An der LMU München nutzen Soziologie-Studierende im Projekt <strong>“Mit KI über KI qualitativ forschen”</strong> verschiedene KI-Tools (Qualia, MAXQDA AI assist) zur <strong>Durchführung und Auswertung qualitativer Interviews</strong>, um deren Potenzial und Grenzen im Forschungsprozess kritisch zu reflektieren <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025, S.29–31</a>, Case 040)</span>. Herausforderungen hierbei sind der hohe Einarbeitungsaufwand für Lehrende, die dynamische Tool-Entwicklung und offene datenschutzrechtliche und methodologische Fragen <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025, S.30</a>)</span>.</p>
+<p>Im Projekt <strong>“Held:innenreise mit KI”</strong> an der Universität des Saarlandes dient KI (ChatGPT, Transkribus) Studierenden der Mittelalterlichen Geschichte als Werkzeug zur <strong>Transkription, Übersetzung und Interpretation handschriftlicher lateinischer Quellen</strong>, was den Zugang erleichtert und digitale Kompetenzen fördert <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 146)</span>. Als Hürde wird der Umgang mit unterschiedlichen Vorkenntnissen der Studierenden und die Notwendigkeit genannt, die KI-Nutzung eng zu begleiten, ohne bei Fehlern sofort einzugreifen <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025, S.33</a>)</span>. Im Lehrkonzept <strong>“TEAM with AI”</strong> (DHBW Heilbronn) nutzt KI Geschäftsberichte, um <strong>Analysen durchzuführen</strong> und Entwürfe für Geschäftsmodellanalysen zu erstellen, was die Studierenden bei komplexen Aufgaben unterstützt <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025, S.27</a>, Case 172)</span>.</p>
+<p>Generell besteht bei Co-Pilot-Anwendungen die Gefahr der Überabhängigkeit <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024</a>)</span>. Die Notwendigkeit einer kritischen Prüfung der KI-Ergebnisse (“Human in the Loop”) durch die Nutzer ist zentral <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.7</a>)</span>.</p>
+<section id="besser-schreiben-als-cyborg" class="level3">
+<h3 class="anchored" data-anchor-id="besser-schreiben-als-cyborg">Besser schreiben – als Cyborg</h3>
+<p>Wer akademisch schreibt, lässt sich zunehmend von einer Vielzahl an unterstützenden KI-Systemen über die Schultern schauen – oder die Hand führen - , die Vorschläge zur besseren Sprachverwendung machen, wie DeepL, Grammarly, oder ChatGPT <span class="citation" data-cites="ou2024a">(<a href="#ref-ou2024a" role="doc-biblioref">Ou et al., 2024</a>)</span>. <span class="citation" data-cites="ou2024a">Ou et al. (<a href="#ref-ou2024a" role="doc-biblioref">2024</a>)</span> sprechen von AI-assisted language tools (AILT), die Studierenden dabei helfen, ihre Sprachfähigkeiten etwa von einer in die andere Sprache zu übertragen und das Sprachniveau ihrer Schreibprodukte generell zu verbessern. In ihrer Studie analysieren sie die Kommentare von 1703 schwedischen Studierenden und stellen komplexe Muster der Nutzung fest: „…students align their own languages, writing skills and thinking with the algorithm-based language processes (e.g., lexical, grammatical, and textual corrections, word choice suggestions, language translation) within AI chatbots, writing assistance, and machine language translation to optimise the outcomes of their academic writing. … students have become ‘spatially extended cyborg[s]’”.</p>
+<p>Studierende schreiben durch die zunehmend mächtigere technische Unterstützung ihre Haus- und Abschlussarbeiten deutlich anders. Bedeutet dies das Ende der Hausarbeit? Wohl eher einen starken Wandel, denn es wird weiter wichtig sein, die saubere Argumentation zu üben <span class="citation" data-cites="friedrich2023a klein2023a">(<a href="#ref-friedrich2023a" role="doc-biblioref">Friedrich, 2023</a>; <a href="#ref-klein2023a" role="doc-biblioref">Klein, 2023</a>)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Probieren Sie mal">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Probieren Sie mal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hier haben wir einen kleinen <strong>Schreib-Trainer-Bot für Studierende</strong> erstellt, der ihnen dabei helfen soll, eine <strong>Einleitung für die Abschlussarbeit</strong> zu schreiben. Dabei werden zunächst Beispiele gezeigt die nach richtig/falsch sortiert werden müssen, dann kommen nach und nach komplexere Fragen: <a href="https://chatgpt.com/g/g-68767cb33afc8191b1cfb9da1ed5c15a-bot-1-einleitungstrainer">Link zum Einleitungstrainer</a></p>
+<p>Hier eine zweite Übung (erstellt von Julia Schmid), zum die strukturiertes <strong>Schreiben mit Einleitungssätzen (Topic-Sentences)</strong> beibringen soll: <a href="https://chatgpt.com/g/g-68768c3031c08191b752ef66df258979-topic-sentence-bot">Link zum Topic-Sentence-Bot</a>.</p>
+</div>
+</div>
+<p>Die Studienberatung der Universität Frankfurt hat eine Übersicht nach Phasen des Prozesses erstellt <span class="citation" data-cites="lehrevirtuell-universitaetfrankfurt2023">(<a href="#ref-lehrevirtuell-universitaetfrankfurt2023" role="doc-biblioref">Lehre virtuell - Universität Frankfurt, 2023</a>)</span>, s. Tabelle 5:</p>
+<div id="tbl-writing-process" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-writing-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.5: Tabelle 5: Integration von KI in den Schreibprozess. Quelle: Studienberatung der Universität Frankfurt <span class="citation" data-cites="lehrevirtuell-universitaetfrankfurt2023">(<a href="#ref-lehrevirtuell-universitaetfrankfurt2023" role="doc-biblioref">Lehre virtuell - Universität Frankfurt, 2023</a>)</span>, Stand 10.3.2024
+</figcaption>
+<div aria-describedby="tbl-writing-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Phase im Schreibprozess</th>
+<th style="text-align: left;">Unterstützung durch KI</th>
+<th style="text-align: left;">Eigenanteil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Themenfindung und Literaturrecherche</strong></td>
+<td style="text-align: left;">Brainstorming<br>Grober Themenüberblick</td>
+<td style="text-align: left;">Schwerpunktsetzung<br>Wissenschaftliche Quellen finden</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lesen und Exzerpieren</strong></td>
+<td style="text-align: left;">Zusammenfassung/Gliederung für ersten Überblick<br>Textpassagen vereinfachen</td>
+<td style="text-align: left;">Gründliches Lesen<br>KI-generierte Texte überarbeiten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Rohfassung</strong></td>
+<td style="text-align: left;">Ausformulieren von Stichpunkten<br>Kooperatives Freewriting</td>
+<td style="text-align: left;">Stichpunkte festhalten<br>“Schreiben, um eigene Gedanken zu klären”<br>KI-generierte Texte überarbeiten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Überarbeiten</strong></td>
+<td style="text-align: left;">Verschiedene Textversionen generieren<br>Stil/Perspektive anpassen</td>
+<td style="text-align: left;">Passende Textversion aussuchen und anpassen<br>Menschliches Feedback einholen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sprachliche Korrektur</strong></td>
+<td style="text-align: left;">Spezialisierte Tools wie DeepL, Write und Duden Mentor</td>
+<td style="text-align: left;">Prüfen, ob Bedeutung verändert wurde</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Mit einer einfachen Skala lässt sich auch die Intensität der LLM-Nutzung grob beschreiben. (s. Tabelle 6): Je nach Phase im Arbeitsprozess kann LLM zur Ideenfindung, zur Ausarbeitung möglicher Fragestellungen oder Inhalte dienen. Je nach Intensität sollte dann die Nutzung stärker begründet und durch Prüfschritte abgesichert werden <span class="citation" data-cites="baresel2024a rowland2023a">(<a href="#ref-baresel2024a" role="doc-biblioref">Baresel et al., 2024</a>; <a href="#ref-rowland2023a" role="doc-biblioref">Rowland, 2023</a>)</span>.</p>
+<div id="tbl-llm-scale" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-llm-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.6: Tabelle 6: Erläuterungen zum Grad der LLM-Nutzung. Quelle: <span class="citation" data-cites="baresel2024a">Baresel et al. (<a href="#ref-baresel2024a" role="doc-biblioref">2024</a>)</span>, basierend auf <span class="citation" data-cites="rowland2023a">Rowland (<a href="#ref-rowland2023a" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+<div aria-describedby="tbl-llm-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Grad der KI-Nutzung</th>
+<th style="text-align: left;">Charakterisierung</th>
+<th style="text-align: left;">Beispiele</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>1</strong></td>
+<td style="text-align: left;"><strong>Zur Inspiration</strong></td>
+<td style="text-align: left;">Sie haben sich Vorschläge für Themen unterbreiten lassen; Tools eingesetzt, um sich aus eigenen Notizen heraus Themenschwerpunkte zu bilden; sich Formulierungen vorschlagen lassen; die Rechtschreibung-/Grammatikprüfung genutzt.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>2</strong></td>
+<td style="text-align: left;"><strong>Ergänzend</strong></td>
+<td style="text-align: left;">Sie haben sich mögliche Fragestellungen vorschlagen lassen, einzelne Begriffe der Aufgabenstellung oder Stellen in der Literatur erklären lassen, Gliederungen der eigenen Notizen vorschlagen oder eigene Texte zusammenfassen lassen, Reverse Outline zum eigenen Text (eine basierend auf dem Geschriebenen erzeugte Gliederung) generieren lassen.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>3</strong></td>
+<td style="text-align: left;"><strong>Unterstützend</strong></td>
+<td style="text-align: left;">Sie haben sich Anforderungen der Aufgabe (z.B. Aufbau einer HA) erklären, Literatur zusammenfassen, mögliche Gliederungen zum Thema vorschlagen lassen; <br>Sie haben die Fragestellung dialogisch verfeinert bzw. Textteile dialogisch verfasst und dabei LLM-Output iterativ ergänzt; <br>Sie haben sich Überarbeitungsvorschläge bzgl. Leserlichkeit und Stil generieren lassen.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>4</strong></td>
+<td style="text-align: left;"><strong>Inhaltsgestaltend</strong></td>
+<td style="text-align: left;">Sie haben sich Hintergrundwissen zur Aufgabe bzw. Antworten auf Fragestellung generieren, Gliederung zum Thema vorgeben, Kürzungen und Ergänzungen vornehmen lassen oder KI-generierten Text direkt übernommen.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Wie können wir konstruktiv mit den neuen technischen Möglichkeiten umgehen? Die folgende Tabelle fasst konkrete Beispiele für Hausarbeiten unter Einbindung von KI zusammen, die Ethan und Lilach Mollick in verschiedenen Beiträgen ausgeführt haben <span class="citation" data-cites="mollick2023i mollick2023h">(<a href="#ref-mollick2023h" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2023a</a>, <a href="#ref-mollick2023i" role="doc-biblioref">2023b</a>)</span>. Der übergeordnete Gedanke ist, KI nicht nur zur Automatisierung einzusetzen, sondern neue, interaktivere und individuellere Lernerfahrungen zu ermöglichen - mit mehr Reflexion, verschiedenen Perspektiven, Kreativität und Kollaboration. Die Rolle der Lehrenden wandelt sich hin zur Begleitung und Moderation dieser KI-gestützten Prozesse.</p>
+<div id="tbl-mollick-assignments" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mollick-assignments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.7: Tabelle 7: Neue Ansätze für Hausarbeiten mit KI. Quelle: <span class="citation" data-cites="mollick2023i">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2023i" role="doc-biblioref">2023b</a>)</span> sowie die verlinkten Blogeinträge
+</figcaption>
+<div aria-describedby="tbl-mollick-assignments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ansatz</th>
+<th style="text-align: left;">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Copilot: Kollaboratives Schreiben mit KI</strong></td>
+<td style="text-align: left;">Gruppen von Studierenden schreiben gemeinsam einen Text und nutzen KI als zusätzliches “Teammitglied”. Sie dokumentieren die Interaktion mit KI und reflektieren Vor- und Nachteile.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Copilot: Multimediale Anreicherung mit KI</strong></td>
+<td style="text-align: left;">Studierende nutzen KI, um ihre Arbeiten mit Visualisierungen, Animationen oder Audio anzureichern und reflektieren, wie dies Verständnis und Attraktivität erhöht.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Copilot: KI als Coach und Reflexionspartner</strong></td>
+<td style="text-align: left;">KI stellt Fragen bezogen auf die Teamarbeit, um Studierende zur Reflexion ihrer Lernerfahrungen, Herausforderungen und Lehren anzuregen.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Tutor: KI-generierte Beispiele zur Erklärung von Konzepten</strong></td>
+<td style="text-align: left;">KI erstellt schnell viele Beispiele, die ein abstraktes Konzept in unterschiedlichen realen Kontexten illustrieren. Dies hilft Studierenden, die Idee zu erfassen und breiter anzuwenden.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Tutor: KI-Tutor, den Studierende kritisieren</strong></td>
+<td style="text-align: left;">KI erstellt einen Essay zu einem Thema, den Studierende dann kollaborativ verbessern, indem sie Informationen ergänzen, Punkte klären, Belege liefern etc. Fördert kritische Analyse.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Tutor: Simulation von Anwendungsszenarien mit KI</strong></td>
+<td style="text-align: left;">Besonders in praxisorientierten Fächern erstellen Studierende mit KI Simulationen, in denen sie ihre Erkenntnisse anwenden, z.B. Unterrichtsszenarien in der Lehramtsausbildung.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Prompts für ausgewählte Anwendungen finden Sie im Appendix. Im Anwendungsteil des Workshops wollen wir diese Ansätze intensiv üben und diskutieren. Letztlich ist die Anpassung der didaktischen Ansätze und technischen Möglichkeiten auf die konkrete Kombination von Lerninhalt und Studierendengruppe entscheidend. Es besteht die Hoffnung, dass die neuen Möglichkeiten der administrativen Entlastung, höheren Niveaus bei Arbeitsaufgaben und schnellerer Individualisierung der Lernunterstützung in der Summe zu einem höheren Niveau des Lehrens und Lernens führt. Voraussetzung dafür ist sicherlich eine Anpassung der Lehrstrategie und die nüchterne und proaktive Beschäftigung mit den unvermeidlichen Risiken und Nebenwirkungen von neuen technischen Möglichkeiten. Wie kann kritisches Denken in diesen neuen Recherche- und Schreibprozessen erfolgen <span class="citation" data-cites="lee2025a">(<a href="#ref-lee2025a" role="doc-biblioref">Lee et al., 2025</a>)</span>? In diesem Fall darf man vermuten, dass die negativen Effekte noch höher wären, wenn wir die Lehre nicht anpassen.</p>
+</section>
+<section id="jeder-kann-jetzt-programmieren" class="level3">
+<h3 class="anchored" data-anchor-id="jeder-kann-jetzt-programmieren">Jeder kann jetzt programmieren</h3>
+<p>Mit KI als Copilot können wir <strong>viel umfangreicher und schneller mit Code arbeiten</strong>. Ein Beispiel ist Programmieren: Professionelle Programmierer werden mit KI Copiloten deutlich schneller <span class="citation" data-cites="peng2023a">(<a href="#ref-peng2023a" role="doc-biblioref">Peng et al., 2023</a>)</span> und Lehrbücher haben zunehmend Namen wie „Learn AI-assisted Python Programming“ <span class="citation" data-cites="porter2024a">(<a href="#ref-porter2024a" role="doc-biblioref">Porter &amp; Zingaro, 2024</a>)</span>. Studierende können so zum Beispiel viel schneller ein funktionierendes Spiel oder eine Simulation erstellen, was die Motivation erhöht. Der <strong>Raum der kreativen Möglichkeiten weitet sich deutlich aus</strong>. Mit KI-Unterstützung können Schüler/innen mit Sonic Pi Musikstücke programmieren <span class="citation" data-cites="gieselmann2024a">(<a href="#ref-gieselmann2024a" role="doc-biblioref">Gieselmann, 2024</a>)</span> oder mit Tools wie Violentmonkey kleine Skripte für die individuelle Anzeige von Lieblings-Websites erstellen <span class="citation" data-cites="eikenberg2025">(<a href="#ref-eikenberg2025" role="doc-biblioref">Eikenberg, 2025</a>)</span>.</p>
+<p>Wie helfen solche Copiloten beim Coden? Aktuelle Studien untersuchen etwa, wie man mit KI Copiloten auch Nicht-Informatiker an fortgeschrittene statistische Auswertungen heranführen kann <span class="citation" data-cites="bien2025a">(<a href="#ref-bien2025a" role="doc-biblioref">Bien &amp; Mukherjee, 2025</a>)</span>. In einer Einführungsvorlesung für <strong>MBA-Studierende</strong> wurde GitHub Copilot genutzt, wobei die Studierenden natürliche Spracheingaben verwendeten, um <strong>R-Code automatisch</strong> generieren zu lassen. Das Ziel war, komplexe Syntax zu vermeiden und die Studierenden direkt mit Datenanalyse vertraut zu machen. Im Ergebnis ermöglichte die Nutzung von GitHub Copilot es Studierenden ohne Programmierkenntnisse, statistische Methoden effektiv und eigenständig anzuwenden. Studierende bewerteten die Nutzung der KI-Tools überwiegend positiv, da diese die Lernerfahrung verbesserten und den Zugang zur Programmierung erleichterten. Die empirische Untersuchung zeigte, dass ein Großteil der universitären Programmieraufgaben teilweise oder vollständig durch die KI-Tools gelöst werden konnte.</p>
+<p>Eine weitere Studie sammelt qualitative Erfahrungen in einem <strong>Einführungskurs in Informatik</strong>, wie sich die Nutzung von Copilot auf das Lernen auswirkte <span class="citation" data-cites="puryear2022a">(<a href="#ref-puryear2022a" role="doc-biblioref">Puryear &amp; Sprint, 2022</a>)</span>. Studierende profitierten deutlich von Copilot, insbesondere bei der Entwicklung von Programmierfähigkeiten und beim Lösen konkreter Programmierprobleme. Allerdings zeigte sich, dass die Studierenden weiterhin ein fundiertes Verständnis der Programmiersprache benötigen, um KI-generierte Lösungen richtig beurteilen und gegebenenfalls korrigieren zu können. Die KI unterstützte den Lernprozess effektiv, konnte aber die grundlegenden Konzepte nicht vollständig ersetzen.</p>
+<p>Mehrere Studien testen, <strong>wie gut ein KI Assistent typische Programmieraufgaben</strong> aus einer Einführungsveranstaltung löst – zunächst allein durch KI und dann mit Anpassung der Eingaben durch Studierende (GitHub Copilot) <span class="citation" data-cites="denny2023a">(<a href="#ref-denny2023a" role="doc-biblioref">Denny et al., 2023</a>)</span>. Eine öffentliche Datenbank mit 166 typischen CS1-Problemen wurde genutzt, um Copilot zu testen. Wenn Copilot anfangs scheiterte, versuchten Studierende, die Beschreibung der Aufgaben in natürlicher Sprache anzupassen („Prompt Engineering“), um das Ergebnis zu verbessern. Copilot löste etwa die Hälfte der Programmieraufgaben auf Anhieb korrekt. Durch gezieltes Prompt Engineering konnten weitere 60 % der anfänglich nicht gelösten Aufgaben erfolgreich bearbeitet werden. Dies deutet darauf hin, dass die bewusste Formulierung von Aufgabenstellungen ein wichtiger Bestandteil der Lernaktivitäten wird und das Erlernen von Programmierkompetenzen verändert.</p>
+<p>Eine weitere Studie an der niederländischen Universität Twente zeigt basierend auf Interviews und Umfragen mit Studierenden, dass ein Großteil der universitären Programmieraufgaben teilweise oder vollständig durch die KI-Tools gelöst werden konnte. Dies erfordert, dass Lehrende ihre Unterrichtsstrategien anpassen, um sicherzustellen, dass Kernkompetenzen dennoch vermittelt werden <span class="citation" data-cites="nizamudeen2024a">(<a href="#ref-nizamudeen2024a" role="doc-biblioref">Nizamudeen et al., 2024</a>)</span>.</p>
+<p>Wofür nutzen professionelle Programmierer*innen die Copiloten? Eine Studie untersucht dies mit einer Umfrage unter 410 Entwicklern <span class="citation" data-cites="liang2024a">(<a href="#ref-liang2024a" role="doc-biblioref">Liang et al., 2024</a>)</span>. Die wichtigsten Gründe der Nutzung waren Autovervollständigung, schnelleres Abschließen von Programmieraufgaben sowie Unterstützung beim Erinnern von Syntax. Als besonders erfolgreich erwiesen sich die Tools bei repetitiven und einfachen Programmieraufgaben. Häufige Probleme waren jedoch, dass generierter Code oft nicht die gewünschten funktionalen oder nicht-funktionalen Anforderungen erfüllte, wodurch Entwickler diesen oft modifizieren mussten oder ganz darauf verzichteten.</p>
+<p>Alle fünf Studien zeigen, dass KI-Programmierassistenten, insbesondere GitHub Copilot, effektiv dabei helfen, <strong>Einstiegshürden beim Programmieren zu reduzieren</strong>, indem sie Entwicklern helfen, repetitive und einfache Programmieraufgaben effizienter zu erledigen <span class="citation" data-cites="bien2025a liang2024a nizamudeen2024a puryear2022a">(<a href="#ref-bien2025a" role="doc-biblioref">Bien &amp; Mukherjee, 2025</a>; <a href="#ref-liang2024a" role="doc-biblioref">Liang et al., 2024</a>; <a href="#ref-nizamudeen2024a" role="doc-biblioref">Nizamudeen et al., 2024</a>; <a href="#ref-puryear2022a" role="doc-biblioref">Puryear &amp; Sprint, 2022</a>)</span>. Ein wesentliches Potenzial dieser Tools liegt in der <strong>Steigerung der Motivation und der Verkürzung der Lernkurve</strong> bei Programmieranfängern. Besonders wichtige neue Kompetenzbereiche sind „Prompt Engineering“, die gezielte Steuerung der KI-Ausgaben <span class="citation" data-cites="denny2023a">(<a href="#ref-denny2023a" role="doc-biblioref">Denny et al., 2023</a>)</span>, sowie das Verständnis dafür, wie Input den generierten Output beeinflusst <span class="citation" data-cites="liang2024a">(<a href="#ref-liang2024a" role="doc-biblioref">Liang et al., 2024</a>)</span>. Jedoch treten auch <strong>Herausforderungen</strong> auf: Häufig erfüllen KI-generierte Lösungen nicht alle funktionalen oder nicht-funktionalen Anforderungen, weshalb Entwickler oft erhebliche Anpassungen vornehmen müssen oder den KI-generierten Code ganz verwerfen <span class="citation" data-cites="liang2024a">(<a href="#ref-liang2024a" role="doc-biblioref">Liang et al., 2024</a>)</span>. Dies unterstreicht, dass trotz erheblicher Erleichterungen durch KI grundlegende Programmierkenntnisse weiterhin notwendig sind, um Lösungen kritisch zu bewerten und effektiv anzupassen <span class="citation" data-cites="puryear2022a">(<a href="#ref-puryear2022a" role="doc-biblioref">Puryear &amp; Sprint, 2022</a>)</span>.</p>
+<p><strong>Praktisch alles, was Code ist, lässt sich mit Sprachmodellen erstellen und anpassen</strong>. Wir brauchen also nur Code-Schnittstellen. Das klingt kompliziert, ist aber überall schon vorhanden. Im Schreibprozess importieren wir Zitationen über das Bibtex-Format (.bib). Kalendertermine werden im Kalenderstandard (.ics) geführt. Für Flußdiagramme gibt es z.B. den Mermaid Standard. Wir können insofern mit Sprachmodellen:</p>
+<ul>
+<li>Zitationen von einem Foto aus importieren („Scanne das Foto und gib mir die Quellen als Bibtex Code aus. Erkläre mir dann, wie ich ihn importiere“)</li>
+<li>Kalendereinträge aus einer Liste in unser Terminprogramm überführen („Erstelle mir aus dieser Liste Einträge im ICS Standard. Erkläre mir dann, wie ich den Code in Google Calendar importiere.“)</li>
+<li>Ablaufdiagramme in Mermaid visualisieren und als Grafik speichern („Erstelle mir einen typischen Kaufprozess in Mermaid. Erkläre mir dann, wie ich ihn visualisieren und als Grafik exportieren kann.“</li>
+<li>Interaktive Simulationen mit den Claude Artifacts erstellen (s.o.)</li>
+<li>Dialogbasiert Grafiken und statistische Analysen in Google Colab erstellen (s.u.)</li>
+<li>(Für viele weitere Ideen für solche Hilfsmittel können wir einfach das Sprachmodell fragen.)</li>
+</ul>
+<div id="fig-mermaid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script04-04.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.4: Abbildung 12: Visualisierung von Ablaufdiagrammen in Mermaid (Chat GPT – https://mermaid.live/)
+</figcaption>
+</figure>
+</div>
+<p>Wichtig für Hochschulen: Mit verschiedenen browserbasierten Tools wie <strong>Google Colab oder Cursor</strong> steht mittlerweile eine sehr mächtige Programmierhilfe mit integriertem Sprachmodell (Gemini) zur kostenlosen Verfügung. Visualisierungen und statistische Analysen können hier komplett dialogbasiert begonnen werden. Auch ohne Grundkenntnisse in der Programmiersprache Python sind Studierende hier gleich handlungsfähig und können durch häufige Nutzung Wissen aufbauen. Dadurch wird es etwa möglich, von Studierenden durchgängig die Nutzung von Programmiertools zur Erstellung von Visualisierungen zu verlangen. Die Hilfestellung durch die KI Assistenz lässt dies deutlich leichter werden, als das händische Gefrickel in den Grafiken von Excel oder gar PowerPoint. Zur Illustration hier ein Beispiel-Notebook. Rechts können die Prompts eingegeben werden: <a href="https://colab.research.google.com/drive/1mFJWvghahGor87gwkNZAqPYoejD3KDwK?usp=sharing">Beispiel-Notebook</a></p>
+<p><strong>Beispiel-Prompts:</strong> * Erstelle mir eine einfache Visualisierung von vertikalen und horizontalen <strong>Balkendiagrammen</strong> in Python. * <strong>Passe die Balken so an</strong>, dass die Prozentwerte auf den Balken sichtbar sind. * Füge Beispiele für <strong>Violin Charts</strong> mit einem etwas komplexeren <strong>Beispieldatensatz</strong> hinzu. * Erstelle jetzt einen Beispieldatensatz und führe eine einfache <strong>Explorative Datenanalyse</strong> (EDA) mit Visualisierungen durch.</p>
+<div id="fig-colab" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-colab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script04-05.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.5: Abbildung 13: Visualisierung im Dialog mit Google Colab und KI
+</figcaption>
+</figure>
+</div>
+<p>Anmerkung: Rechts schreibt man den Prompt, links entsteht der Code und die Grafik. Besondere Stärken sind die Nachvollziehbarkeit (da alles im Code steht) und die einfachen Anpassungsmöglichkeiten (da die KI sich um die Syntax kümmert). Code ist hier einsehbar: <a href="https://colab.research.google.com/drive/1mFJWvghahGor87gwkNZAqPYoejD3KDwK?usp=sharing">Link zum Code</a>.</p>
+<p>Solche <strong>Hilfestellungen sind mittlerweile Alltag</strong> geworden: Alle großen Anbieter von Code Editoren wie <strong>Pycharm, VS Code (Microsoft/GitHub) und neue Anbieter wie Cursor</strong> und (noch extremer, als Agent) <strong>Devin</strong> (https://preview.devin.ai/) bieten mittlerweile Programmierung mit KI-Unterstützung an. Für Hochschulen stellt sich die Frage, wie diese Fähigkeit am Besten trainiert werden kann. Ein extremes Anwendungsbeispiel ist dieser Youtuber, der in Trainingsvideos mit einer Vielzahl verschiedener KI-Tools programmiert, auch selbst beschrieben eher in der Rolle eines Supervisors, der die verschiedenen KI Helfer überwacht und koordiniert: <a href="https://www.youtube.com/watch?v=C59LC1WJIbE">Build Anything with Cursor, David Ondrej, 2024-09-1</a>.</p>
+</section>
+</section>
+<section id="ki-als-tutor" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="ki-als-tutor"><span class="header-section-number">4.3</span> KI als Tutor</h2>
+<p>Diese Kategorie umfasst KI-Systeme, die Studierende direkt beim Lernen anleiten, beraten oder ihnen Feedback geben.</p>
+<section id="beispiele-für-einfache-tutoren" class="level3">
+<h3 class="anchored" data-anchor-id="beispiele-für-einfache-tutoren">Beispiele für einfache Tutoren</h3>
+<p><span class="citation" data-cites="mollick2024f">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span> beschreiben eine Reihe allgemeiner Tutorenkonzepte: Der <strong>“Integration Agent”</strong> <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.31–33</a>)</span> fordert Studierende durch offene Fragen heraus, Verbindungen zwischen verschiedenen Kurskonzepten herzustellen, was vernetztes Denken fördert. Der <strong>“Reflection Coach”</strong> <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.30</a>)</span> regt zur Reflexion über Erfahrungen an, um das Gelernte zu konsolidieren. Der <strong>“AI Tutor Blueprint”</strong> <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.38–40</a>)</span> ermöglicht es Lehrenden, eigene, auf ihre spezifischen Themen zugeschnittene Tutoren-Prompts zu erstellen.</p>
+<p>An deutschen Hochschulen gibt es ebenfalls vielfältige Tutor-Anwendungen: Der Lern- und Informationsassistent <strong>“LISA”</strong> an der Hochschule Hof unterstützt Studierende bei der <strong>Prüfungsvorbereitung</strong> durch personalisierte Lernpläne, Übungsaufgaben und Feedback basierend auf hochgeladenen Materialien <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 208)</span>. Herausforderungen sind hier die Bekanntmachung des Tools und die potenziell geringere Ergebnisqualität im Vergleich zu großen kommerziellen Modellen. An der FernUniversität in Hagen bietet <strong>“COFFEE”</strong> skalierbares, kriterienbasiertes <strong>Feedback zu Freitextaufgaben</strong>, während <strong>“MIND”</strong> Feedback zu Lernaktivitäten liefert, um die <strong>Selbstreflexion</strong> zu fördern <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 61)</span>. Hier sind der hohe initiale Implementierungsaufwand, Datenschutzanforderungen und die Notwendigkeit interdisziplinärer Expertise einschränkende Faktoren <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>)</span>.</p>
+<p><strong>“KI-Folio”</strong> (U Passau, LMU München) gibt als Chatbot <strong>Feedback zu E-Portfolio-Aufgaben</strong> und Reflexionen, um begrenzte Betreuungsressourcen zu kompensieren <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 36)</span>. <strong>“THI Success AI”</strong> (TH Ingolstadt) ermöglicht <strong>individualisierte Lernpfade</strong> und bietet einen Chatbot für Übungsaufgaben und Fragen <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025, S.17–18</a>, Case 210)</span>. Der <strong>“Mentor-Bot”</strong> an der CBS Köln unterstützt bei der Übungsvorbereitung und bietet <strong>Trainingsmodi</strong> <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 98)</span>. An der HU Berlin wird KI für <strong>formatives Assessment-Feedback</strong> in der Sprachbildung genutzt, wobei Lehrende als “Human in the Loop” die KI-Vorschläge prüfen <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 222)</span>. An der Hochschule Kempten bewertet KI <strong>Freitextantworten</strong> in Übungen automatisch und gibt direktes Feedback <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025, S.18</a>, Case 169)</span>. Die Wilhelm Büchner Hochschule setzt <strong>“WBH A[I]ssist”</strong> als allgemeinen <strong>KI-Tutor im Fernstudium</strong> ein <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 63)</span>.</p>
+<p>Für all diese allgemeinen Tutoren gilt: Ihre Effektivität hängt von der Qualität des Prompts und der Fähigkeit der KI ab, die Tutor-Rolle konsistent und pädagogisch sinnvoll auszufüllen, was nicht immer gegeben ist und von Modell zu Modell variieren kann <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.36</a>)</span>. Die KI kann oberflächlich bleiben oder halluzinieren <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.36</a>)</span>.</p>
+<p><strong>Sprachen lernen und schwierige Situationen simulieren</strong> kann man jetzt sehr einfach und auf hohem Niveau mit KI-Modellen wie ChatGPT oder Gemini <span class="citation" data-cites="jurran2025a">(<a href="#ref-jurran2025a" role="doc-biblioref">Jurran, 2025</a>)</span>. Vorreiter war der „Voice Mode“ von OpenAI, den man als App auf dem Handy ausprobieren kann (gut in der kostenfreien, sehr gut in der kostenpflichtigen Version), inzwischen bietet Google/Gemini ähnliche Funktionen an. Die KI spricht auf Wunsch über ein beliebiges Thema in einer beliebigen Sprache. Im fortgeschrittenen Modus („<strong>Advanced Voice Mode</strong>“, für Abonnenten) ist die Stimme noch realistischer und man kann unter anderem die Geschwindigkeit und andere Stimmparameter anpassen. Im Standardmodus kann man Dokumente hinzufügen, auf die sich die Unterhaltung beziehen soll (s. das zweite Beispiel für Anwendungen). Damit lassen sich zum Beispiel im Hochschulunterricht interaktive und unmittelbare Anwendungen realisieren: Studierende könnten ihre Fragen in Seminar- oder Vorlesungsphasen mündlich stellen, wobei die KI entsprechende Antworten gibt, visuelle Inhalte erklärt oder sogar aktuelle Daten aus dem Internet integriert. Besonders gut eignet es sich auch zum Lernen von Sprachen: Man kann die englische Präsentation ausprobieren und sich Feedback geben lassen. Solche Interaktionen kommen dem Ideal eines persönlichen Tutors schon sehr nahe, ermöglicht eine enge, interaktive und sehr auf die eigenen Bedürfnisse und Lernziele zugeschnittene Zusammenarbeit und kann so Lernprozesse dynamischer gestalten.</p>
+<p><strong>Wie passt man die Lehre an?</strong> Ein aktueller Artikel bespricht, wie sich diese neuen Möglichkeiten auf die Rolle des Sprachunterrichts an Hochschulen auswirken <span class="citation" data-cites="tutton2025b">(<a href="#ref-tutton2025b" role="doc-biblioref">Tutton &amp; Cohen, 2025</a>)</span>: Es werden eine breite Reihe an Tools besprochen und konkrete Empfehlungen zur Umsetzung angeboten: Lehrende sollen mit Studierenden die Stärken und Schwächen der Tools erproben und sie so an die Nutzung heranführen. Unterrichtskonzepte sollten so angepasst werden, dass sich die Stärken der KI-Tools und des Präsenz-Unterrichts ergänzen.</p>
+</section>
+<section id="komplexer-physik-tutor-mit-musterlösungen" class="level3">
+<h3 class="anchored" data-anchor-id="komplexer-physik-tutor-mit-musterlösungen">Komplexer Physik Tutor mit Musterlösungen</h3>
+<p>Als <strong>Beispiel für einen ausführlich getesteten Tutor-Bot</strong> wollen wir hier exemplarisch einen <strong>Physik-Tutor der Harvard Universität</strong> etwas ausführlicher darstellen <span class="citation" data-cites="kestin2024b">(<a href="#ref-kestin2024b" role="doc-biblioref">Kestin et al., 2024</a>)</span>. Der Physik-Tutor “PS2 Pal” betreut Studierende in Physik-Einsteigerkursen interaktiv und mit adaptiven Fragestellungen, was in der Evaluation zu einem deutlich verbesserten Lernerfolg führte. Im Verbund mit kürzeren Input-Phasen erhalten die Studierenden Aufgaben und Fragestellungen, die sie direkt in Interaktion mit dem KI-Tutor bearbeiten können. Der Tutor stellt Fragen, gibt bei Bedarf Hinweise und passt den Schwierigkeitsgrad an den Fortschritt der bzw. des Lernenden an.</p>
+<p>Studierenden loggen sich über eine Weboberfläche – oder in manchen Fällen eine in den Kurs integrierte Lernplattform – ein und erhalten dann Aufgabenpakete zu Teilthemen (z. B. Kinematik, Kräfte oder Energieerhaltung). Die KI analysiert die eingegebenen Antworten und entscheidet anhand vorab definierter Parameter und eines Maschinenlern-Modells, ob und wie viel zusätzliche Hilfestellung nötig ist. Bei korrekten oder fast korrekten Lösungen wird ein vertiefender Schritt vorgeschlagen (etwa eine weiterführende Frage), während bei fehlerhaften Lösungsschritten gezielt ein Tipp oder ein Hinweis auf das entsprechende Lehrmaterial gegeben wird. Dadurch werden die Lernenden kontinuierlich im Lernprozess unterstützt, ohne gleich eine komplette Lösung zu sehen.</p>
+<p>Aus didaktischer Sicht entfaltet der Tutor seinen Mehrwert vor allem in vier Punkten: * <strong>Individuelle Anpassung</strong>: Das System erkennt unterschiedliche Lernstände (etwa durch Analyse typischer Fehler oder wiederkehrender Wissenslücken) und kann dadurch passgenauere Folgefragen stellen. * <strong>Unmittelbares Feedback</strong>: Während in großen Lehrveranstaltungen Lehrende nur sehr eingeschränkt auf einzelne Fragen von Studierenden eingehen können, liefert das KI-Tool praktisch sofort Rückmeldungen. * <strong>Motivation und aktive Teilhabe</strong>: Studierende werden durch die permanenten Interaktionsmöglichkeiten stärker einbezogen, was sich positiv auf die Lernergebnisse auswirkt. * <strong>Zeitersparnis für Lehrende</strong>: Ein Teil der individuellen Betreuung kann – bei inhaltlich gut vorbereitetem KI-System – durch den Tutor übernommen werden. Allerdings behält die Lehrkraft jederzeit die Oberaufsicht, indem sie zum Beispiel relevante KI-Antworten stichprobenartig überprüft oder spezielle Fälle selbst übernimmt (z. B. wenn die KI Auskünfte gibt, die nicht zur jeweiligen Kursstruktur passen).</p>
+<p>Generell ist bei KI-Tutoren die <strong>Gefahr von Fehlinformationen und Halluzinationen</strong> zu beachten. Hierfür gibt es jedoch gute Gegenmaßnahmen, vor allem durch Kontrolle des Inputs und systematische Qualitätstests der LLM-Tools. Eine interessante Möglichkeit, die beim Physik-Tutor der Harvard Studie besprochen wird <span class="citation" data-cites="kestin2024b">(<a href="#ref-kestin2024b" role="doc-biblioref">Kestin et al., 2024</a>)</span>, ist die <strong>Bereitstellung von Musterlösungen als Input</strong> (nicht nur der Fragen), was die Gefahr von Ungenauigkeiten, Halluzinationen und Inkonsistenzen in den Antworten des Sprachmodells deutlich reduziert. Der Aufwand für die Erstaufsetzung steigt hier zwar, aber im Gegenzug verspricht dieser Ansatz die Vorteile der individuellen Anleitung ohne die Nachteile der Qualitätsunsicherheit. Insgesamt ist eine solche Durchsicht und intensive Qualitätskontrolle klar zu empfehlen (dieser Aspekt der intensiven Qualitätstests wird bei der Kurzvorstellung einiger deutscher Fallstudien in <span class="citation" data-cites="wannemacher2025">Wannemacher et al. (<a href="#ref-wannemacher2025" role="doc-biblioref">2025</a>)</span> vernachlässigt).</p>
+</section>
+</section>
+<section id="ki-als-simulator" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="ki-als-simulator"><span class="header-section-number">4.4</span> KI als Simulator</h2>
+<p>Hier erstellt die KI interaktive Umgebungen für praxisnahes Training. In einfachen Rollenspielen simuliert das Sprachmodell ein Gegenüber, um z.B. Analyse- oder Verhaltensmuster einzuüben. <span class="citation" data-cites="mollick2024f">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span> unterscheiden dabei <strong>Role Play</strong> (Rollenspiele) und <strong>Goal Play</strong> (zielgerichtete Spiele).</p>
+<section id="role-play" class="level3">
+<h3 class="anchored" data-anchor-id="role-play">Role Play</h3>
+<p><strong>Rollenspiel-Simulationen</strong> z.B. für Verhandlungen lassen Studierende eine neue Rolle einnehmen und dadurch risikofrei zu Üben, etwa von Verhandlungssituationen. In Deutschland wird an der TH Brandenburg das Format “Talk2Transform” eingesetzt, das <strong>Mitarbeitergespräche in Transformationsprozessen</strong> simuliert, wobei KI die Mitarbeiterrollen spielt <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 132)</span>. Der Mehrwert liegt im praxisnahen Training von Kommunikations- und Führungskompetenz. Herausforderungen sind der hohe Konfigurationsaufwand, die technische Stabilität und die Tatsache, dass KI menschliche Interaktion nicht vollständig ersetzen kann und Rollen nicht immer fehlerfrei spielt <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>)</span>. In der HAW Hamburg werden <strong>Gesprächssimulationen zur deeskalierenden Kommunikation</strong> genutzt <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 177)</span>. An der Hochschule Kempten kommen <strong>KI-Avatare</strong> zur Simulation von <strong>Führungsgesprächen</strong> zum Einsatz <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 95)</span>. An der Deutschen Hochschule der Polizei dient eine Simulation der <strong>Sensibilisierung für LLM-Missbrauchspotenziale</strong>, indem Studierende explorativ deren missbräuchliche Nutzung erproben <span class="citation" data-cites="wannemacher2025">(<a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>, Case 031)</span>.</p>
+<p><strong>Direkt mit der KI zu sprechen</strong> kann die Situation dabei noch realistischer machen: <span class="citation" data-cites="barra2024a">Barra et al. (<a href="#ref-barra2024a" role="doc-biblioref">2024</a>)</span> beschreiben den Einsatz von <strong>ChatGPT’s Advanced Voice Mode (AVM) in medizinischen Simulationen</strong>, speziell für das CPR-Training (s. Abbildung 14). AVM ermöglicht der Simulationspuppe, mit einer natürlichen, emotional reagierenden Stimme zu “sprechen”, was den Realismus steigert. Der Mehrwert liegt in der verbesserten Immersion, Zugänglichkeit und Entlastung der Trainer. Herausforderungen sind die Sicherstellung der Konsistenz, die Abhängigkeit von den Prompting-Fähigkeiten des Trainers und technische Limitierungen des AVM bezüglich vorab eingebetteten Wissens.</p>
+<p><strong>Auch Juristen simulieren</strong>: Einen ähnlichen Ansatz verfolgt die simulierte Zeugenbefragung von Heetkamp, der es so etwa Rechtsreferendaren ermöglicht, diese Kompetenz im Rollenspiel mit VR-Brillen einzuüben <span class="citation" data-cites="heetkamp2023a">(<a href="#ref-heetkamp2023a" role="doc-biblioref">Heetkamp, 2023</a>)</span>.</p>
+<div id="fig-voice-mode" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-voice-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script04-06.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-voice-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.6: Abbildung 14: Nutzung der Voice Modes von ChatGPT für medizinische Simulationen. Quelle: <span class="citation" data-cites="barra2024a">Barra et al. (<a href="#ref-barra2024a" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+<p>Eine umfangreiche Simulation beschreiben <span class="citation" data-cites="mollick2024d">E. Mollick et al. (<a href="#ref-mollick2024d" role="doc-biblioref">2024</a>)</span>: <strong>“Pitch Quest”</strong> an der <strong>Wharton School</strong> ist ein Simulator für <strong>Venture-Capital-Pitches</strong>, der mehrere KI-Agenten (Mentor, Investor, Bewerter) nutzt, um personalisierte Übung und Feedback zu ermöglichen <span class="citation" data-cites="mollick2024d">(<a href="#ref-mollick2024d" role="doc-biblioref">E. Mollick et al., 2024, S.5–10</a>)</span>. Der Mehrwert liegt in der skalierbaren Bereitstellung von Übungsmöglichkeiten für komplexe Skills. Herausforderungen sind die Aufrechterhaltung der Konsistenz, die Vermeidung von Bias und Halluzinationen sowie der hohe Entwicklungsaufwand für solche Multi-Agenten-Systeme <span class="citation" data-cites="mollick2024d">(<a href="#ref-mollick2024d" role="doc-biblioref">E. Mollick et al., 2024, S.2–3</a>)</span>.</p>
+</section>
+<section id="goal-play-zielgerichtete-spiele" class="level3">
+<h3 class="anchored" data-anchor-id="goal-play-zielgerichtete-spiele">Goal Play – zielgerichtete Spiele</h3>
+<p>In <strong>zielgerichteten Spielen</strong> (“Goal Play”, <span class="citation" data-cites="mollick2024f">E. R. Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span>) bleiben Studierende in ihrer normalen Rolle und wenden in einer Situation bestimmtes Wissen oder theoretische Konzepte an (z.B. Zielsetzung, Selbst-Distanzierung oder Analyseraster wie Transaktionskostenanalyse), indem sie einen KI-Charakter anleiten. Wichtig dabei: Die Studierenden wissen etwas, das das KI-Gegenüber im Spiel nicht weiß.</p>
+<p>So nehmen etwa bei dem einfachen Rollenspiel <strong>“Teach the AI”</strong> <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.21–23</a>)</span> Studierende die Rolle des Lehrenden ein und erklären der KI (die einen unwissenden Studenten spielt) ein Konzept. Der Mehrwert liegt im vertieften Lernen durch Lehren (Protégé-Effekt) und dem Aufdecken eigener Wissenslücken. Als Herausforderung kann die KI manchmal vom Thema abweichen oder Fragen stellen, die die Studierenden an ihre Grenzen bringen; zudem ist die Simulation eines “Novizen” durch die KI nur begrenzt realistisch <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.24</a>)</span>.</p>
+<p>Für beide Typen gilt: Die KI kann von der Rolle abweichen oder inkonsistent agieren, und die Qualität der Erfahrung kann variieren. Eine sorgfältige Einbettung und Reflexion durch Lehrende ist entscheidend <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024</a>)</span>. Bei allen Simulatoren ist die Notwendigkeit einer klaren didaktischen Rahmung und eines Debriefings durch Lehrende (“Human in the Loop”) zentral, um den Lernerfolg zu sichern und die Grenzen sowie potenzielle Fehler der KI zu reflektieren <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024, S.16</a>)</span>.</p>
+
+
+</section>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-acemoglu2019a" class="csl-entry" role="listitem">
+Acemoglu, D., &amp; Restrepo, P. (2019). Automation and New Tasks: How Technology Displaces and Reinstates Labor. <em>Journal of Economic Perspectives</em>, <em>33</em>(2), 3–30. <a href="https://doi.org/10.1257/jep.33.2.3">https://doi.org/10.1257/jep.33.2.3</a>.
+</div>
+<div id="ref-autor2015" class="csl-entry" role="listitem">
+Autor, D. H. (2015). <a href="https://www.aeaweb.org/articles?id=10.1257%2Fjep.29.3.3&amp;source=post_page">Why are there still so many jobs? The history and future of workplace automation</a>. <em>Journal of economic perspectives</em>, <em>29</em>(3), 3–30.
+</div>
+<div id="ref-baresel2024a" class="csl-entry" role="listitem">
+Baresel, K., Eube, C., Knorr, D., Lutter, L., Nys, J. de, &amp; Röben, M. (2024). <em>KI-Gebrauch im Studienkontext dokumentieren</em>. 304839 b. <a href="https://doi.org/10.48548/PUBDATA-1476">https://doi.org/10.48548/PUBDATA-1476</a>.
+</div>
+<div id="ref-barra2024a" class="csl-entry" role="listitem">
+Barra, F. L., Costa, A., Rodella, G., Semeraro, F., &amp; Carenzo, L. (2024). Shaping the future of simulator interactions: The role of ChatGPT’s Advanced Voice Mode. <em>Resuscitation</em>, <em>205</em>, 110452. <a href="https://doi.org/10.1016/j.resuscitation.2024.110452">https://doi.org/10.1016/j.resuscitation.2024.110452</a>.
+</div>
+<div id="ref-bien2025a" class="csl-entry" role="listitem">
+Bien, J., &amp; Mukherjee, G. (2025). Generative AI for Data Science 101: Coding Without Learning to Code. <em>Journal of Statistics and Data Science Education</em>, <em>33</em>(2), 129–142. <a href="https://doi.org/10.1080/26939169.2024.2432397">https://doi.org/10.1080/26939169.2024.2432397</a>.
+</div>
+<div id="ref-brynjolfsson2025" class="csl-entry" role="listitem">
+Brynjolfsson, E., Li, D., &amp; Raymond, L. (2025). Generative AI at work. <em>The Quarterly Journal of Economics</em>, qjae044.
+</div>
+<div id="ref-cambra-fierro2025a" class="csl-entry" role="listitem">
+Cambra-Fierro, J. J., Blasco, M. F., López-Pérez, M.-E. E., &amp; Trifu, A. (2025). ChatGPT adoption and its influence on faculty well-being: An empirical research in higher education. <em>Education and Information Technologies</em>, <em>30</em>(2), 1517–1538. <a href="https://doi.org/10.1007/s10639-024-12871-0">https://doi.org/10.1007/s10639-024-12871-0</a>.
+</div>
+<div id="ref-denny2023a" class="csl-entry" role="listitem">
+Denny, P., Kumar, V., &amp; Giacaman, N. (2023). Conversing with copilot: Exploring prompt engineering for solving cs1 problems using natural language.
+</div>
+<div id="ref-dihan2025a" class="csl-entry" role="listitem">
+Dihan, Q. A., Nihalani, B. R., Tooley, A. A., &amp; Elhusseiny, A. M. (2025). Eyes on Google’s NotebookLM: using generative AI to create ophthalmology podcasts with a single click. <em>Eye</em>, <em>39</em>(2), 215–216. <a href="https://doi.org/10.1038/s41433-024-03481-8">https://doi.org/10.1038/s41433-024-03481-8</a>.
+</div>
+<div id="ref-eikenberg2025" class="csl-entry" role="listitem">
+Eikenberg, R. (2025). Browser-Helferlein per KI generieren. <em>c’t Special</em>, <em>2</em>, 94–99.
+</div>
+<div id="ref-friedrich2023a" class="csl-entry" role="listitem">
+Friedrich, J.-D. (2023, Februar 8). Zur Bedeutung von ChatGPT &amp; der Notwendigkeit eines progressiven Umgangs mit neuen KI-Technologien im Hochschulbereich. Ein Zwischenstand in 6 Thesen. <a href="https://hochschulforumdigitalisierung.de/zur-bedeutung-von-chatgpt-der-notwendigkeit-eines-progressiven-umgangs-mit-neuen-ki-technologien-im-hochschulbereich-ein-zwischenstand-in-6-thesen/">https://hochschulforumdigitalisierung.de/zur-bedeutung-von-chatgpt-der-notwendigkeit-eines-progressiven-umgangs-mit-neuen-ki-technologien-im-hochschulbereich-ein-zwischenstand-in-6-thesen/</a>.
+</div>
+<div id="ref-gieselmann2024a" class="csl-entry" role="listitem">
+Gieselmann, H. (2024, August 16). Wie Sie Musik live coden mit Sonic Pi unterstützt von Sprachmodellen. <em>c’t Magazin</em>. <a href="https://www.heise.de/ratgeber/Wie-Sie-Musik-live-coden-mit-Sonic-Pi-unterstuetzt-von-Sprachmodellen-9829751.html">https://www.heise.de/ratgeber/Wie-Sie-Musik-live-coden-mit-Sonic-Pi-unterstuetzt-von-Sprachmodellen-9829751.html</a>.
+</div>
+<div id="ref-gimpel2023a" class="csl-entry" role="listitem">
+Gimpel, H., Hall, K., Decker, S., Eymann, T., Lämmermann, L., Mädche, A., Röglinger, M., Ruiner, C., Schoch, M., &amp; Schoop, M. (2023). <em>Unlocking the power of generative AI models and systems such as GPT-4 and ChatGPT for higher education: A guide for students and lecturers</em>. Hohenheim Discussion Papers in Business, Economics and Social Sciences.
+</div>
+<div id="ref-gottweis2025a" class="csl-entry" role="listitem">
+Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/ARXIV.2502.18864">https://doi.org/10.48550/ARXIV.2502.18864</a>.
+</div>
+<div id="ref-handa2025c" class="csl-entry" role="listitem">
+Handa, K., Tamkin, A., McCain, M., Huang, S., Durmus, E., Heck, S., Mueller, J., Hong, J., Ritchie, S., Belonax, T., Troy, K. K., Amodei, D., Kaplan, J., Clark, J., &amp; Ganguli, D. (2025). <em><a href="https://assets.anthropic.com/m/2e23255f1e84ca97/original/Economic_Tasks_AI_Paper.pdf">Which economic tasks are performed with AI? Evidence from millions of claude conversations</a></em> (Report). Anthropic.
+</div>
+<div id="ref-heetkamp2023a" class="csl-entry" role="listitem">
+Heetkamp, S. J. (2023, Dezember 13). Die VR-Revolution im Justizwesen. <a href="https://www.deutscheranwaltspiegel.de/e-justice/digitalisierung/die-vr-revolution-im-justizwesen-151520/">https://www.deutscheranwaltspiegel.de/e-justice/digitalisierung/die-vr-revolution-im-justizwesen-151520/</a>.
+</div>
+<div id="ref-heidt2025a" class="csl-entry" role="listitem">
+Heidt, A. (2025). ChatGPT for students: learners find creative new uses for chatbots. <em>Nature</em>, <em>639</em>(8053), 265–266. <a href="https://doi.org/10.1038/d41586-025-00621-2">https://doi.org/10.1038/d41586-025-00621-2</a>.
+</div>
+<div id="ref-huffman2024" class="csl-entry" role="listitem">
+Huffman, P., &amp; Hutson, J. (2024). <a href="https://digitalcommons.lindenwood.edu/faculty-research-papers/683">Enhancing History Education with Google NotebookLM: Case Study of Mary Easton Sibley’s Diary for Multimedia Content and Podcast Creation</a>. <em>ISRG Journal of Arts, Humanities and Social Sciences</em>, <em>2</em>(5).
+</div>
+<div id="ref-jurran2025a" class="csl-entry" role="listitem">
+Jurran, N. (2025). ChatGPT als sprechtrainer. <em>c’t Special</em>, <em>2</em>, 100–103.
+</div>
+<div id="ref-kestin2024b" class="csl-entry" role="listitem">
+Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2024). <em>AI Tutoring Outperforms Active Learning</em>. <a href="https://doi.org/10.21203/rs.3.rs-4243877/v1">https://doi.org/10.21203/rs.3.rs-4243877/v1</a>.
+</div>
+<div id="ref-klein2023a" class="csl-entry" role="listitem">
+Klein, D. A. (2023, Februar 17). „Die Hausarbeit ist tot, es lebe die Hausarbeit!“ - Entwicklungsorientierung, wissenschaftliches Arbeiten und KI gemeinsam denken. <a href="https://hochschulforumdigitalisierung.de/die-hausarbeit-ist-tot-es-lebe-die-hausarbeit-entwicklungsorientierung-wissenschaftliches-arbeiten-und-ki-gemeinsam-denken/">https://hochschulforumdigitalisierung.de/die-hausarbeit-ist-tot-es-lebe-die-hausarbeit-entwicklungsorientierung-wissenschaftliches-arbeiten-und-ki-gemeinsam-denken/</a>.
+</div>
+<div id="ref-lee2025a" class="csl-entry" role="listitem">
+Lee, H.-P. H., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R., &amp; Wilson, N. (2025). <em>The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers</em>.
+</div>
+<div id="ref-lehrevirtuell-universitaetfrankfurt2023" class="csl-entry" role="listitem">
+Lehre virtuell - Universität Frankfurt (2023, Oktober 6). Einsatz von generativer KI im Studium – Handlungsempfehlungen für Studierende – Lehre virtuell. <a href="https://lehre-virtuell.uni-frankfurt.de/knowhow/einsatz-von-generativer-ki-im-studium-handlungsempfehlungen-fuer-studierende/">https://lehre-virtuell.uni-frankfurt.de/knowhow/einsatz-von-generativer-ki-im-studium-handlungsempfehlungen-fuer-studierende/</a>.
+</div>
+<div id="ref-liang2024a" class="csl-entry" role="listitem">
+Liang, J. T., Yang, C., &amp; Myers, B. A. (2024). A large-scale survey on the usability of ai programming assistants: Successes and challenges.
+</div>
+<div id="ref-lu2024b" class="csl-entry" role="listitem">
+Lu, X., &amp; Wang, X. (2024). Generative students: Using LLM-simulated student profiles to support question item evaluation. <a href="https://doi.org/10.48550/arXiv.2405.11591">https://doi.org/10.48550/arXiv.2405.11591</a>.
+</div>
+<div id="ref-mcknight2022a" class="csl-entry" role="listitem">
+McKnight, L. (2022). <a href="https://www.timeshighereducation.com/campus/eight-ways-engage-ai-writers-higher-education">Eight ways to engage with AI writers in higher education</a>. <em>THE Campus Learn, Share, Connect</em>.
+</div>
+<div id="ref-meincke2024a" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E. R., &amp; Terwiesch, C. (2024). <em>Prompting Diverse Ideas: Increasing AI Idea Variance</em>. <a href="https://papers.ssrn.com/abstract=4708466">https://papers.ssrn.com/abstract=4708466</a>.
+</div>
+<div id="ref-mollick2022b" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2022). <em>New Modes of Learning Enabled by AI Chatbots: Three Methods and Assignments</em>. <a href="https://doi.org/10.2139/ssrn.4300783">https://doi.org/10.2139/ssrn.4300783</a>.
+</div>
+<div id="ref-mollick2023h" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2023a). <em>Assigning AI: Seven approaches for students, with prompts</em>. <a href="https://doi.org/10.2139/ssrn.4564159">https://doi.org/10.2139/ssrn.4564159</a>.
+</div>
+<div id="ref-mollick2023i" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2023b). <em>Using AI to Implement Effective Teaching Strategies in Classrooms: Five Strategies, Including Prompts</em>. <a href="https://doi.org/10.2139/ssrn.4391243">https://doi.org/10.2139/ssrn.4391243</a>.
+</div>
+<div id="ref-mollick2024f" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2024). <em>Instructors as Innovators: a Future-focused Approach to New AI Learning Opportunities, With Prompts</em>. <a href="https://doi.org/10.2139/ssrn.4802463">https://doi.org/10.2139/ssrn.4802463</a>.
+</div>
+<div id="ref-mollick2024d" class="csl-entry" role="listitem">
+Mollick, E., Mollick, L., Bach, N., Ciccarelli, L. J., Przystanski, B., &amp; Ravipinto, D. (2024). AI agents and education: Simulated practice at scale. <em>arXiv preprint arXiv:2407.12796</em>.
+</div>
+<div id="ref-morgan2024a" class="csl-entry" role="listitem">
+Morgan, G. (2024, Juli 11). <a href="https://onedtech.philhillaa.com/p/what-students-want-when-it-comes-to-ai">What Students Want When It Comes To AI - The Digital Education Council Global AI Student Survey 2024</a>. <em>On EdTech Newsletter</em>.
+</div>
+<div id="ref-naddaf2025" class="csl-entry" role="listitem">
+Naddaf, M. (2025a). How are researchers using AI? Survey reveals pros and cons for science. <em>Nature</em>. <a href="https://doi.org/10.1038/d41586-025-00343-5">https://doi.org/10.1038/d41586-025-00343-5</a>.
+</div>
+<div id="ref-naddaf2025c" class="csl-entry" role="listitem">
+Naddaf, M. (2025b). AI is transforming peer review — and many scientists are worried. <em>Nature</em>, <em>639</em>(8056), 852–854. <a href="https://doi.org/10.1038/d41586-025-00894-7">https://doi.org/10.1038/d41586-025-00894-7</a>.
+</div>
+<div id="ref-nizamudeen2024a" class="csl-entry" role="listitem">
+Nizamudeen, F., Gatti, L., Bouali, N., &amp; Ahmed, F. (2024). Investigating the Impact of Code Generation Tools (ChatGPT &amp; Github CoPilot) on Programming Education. <a href="https://doi.org/10.5220/0012628000003693">https://doi.org/10.5220/0012628000003693</a>.
+</div>
+<div id="ref-ogunleye2024a" class="csl-entry" role="listitem">
+Ogunleye, B., Zakariyyah, K. I., Ajao, O., Olayinka, O., &amp; Sharma, H. (2024). A Systematic Review of Generative AI for Teaching and Learning Practice. <em>Education Sciences</em>, <em>14</em>(6), 636. <a href="https://doi.org/10.3390/educsci14060636">https://doi.org/10.3390/educsci14060636</a>.
+</div>
+<div id="ref-oesterreichischeruniversitaetsprofessor/innenverband2018" class="csl-entry" role="listitem">
+Österreichischer Universitätsprofessor/innenverband (2018). <em><a href="https://de.statista.com/statistik/daten/studie/831638/umfrage/arbeitszeitverteilung-von-professoren-in-oesterreich/">Österreich - Arbeitszeitverteilung von Professoren 2017</a></em>.
+</div>
+<div id="ref-ou2024a" class="csl-entry" role="listitem">
+Ou, A. W., Stöhr, C., &amp; Malmström, H. (2024). Academic communication with AI-powered language tools in higher education: From a post-humanist perspective. <em>System</em>, <em>121</em>, 103225. <a href="https://doi.org/10.1016/j.system.2024.103225">https://doi.org/10.1016/j.system.2024.103225</a>.
+</div>
+<div id="ref-peng2023a" class="csl-entry" role="listitem">
+Peng, S., Kalliamvakou, E., Cihon, P., &amp; Demirer, M. (2023). <em>The Impact of AI on Developer Productivity: Evidence from GitHub Copilot</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2302.06590">https://doi.org/10.48550/arXiv.2302.06590</a>.
+</div>
+<div id="ref-porter2024a" class="csl-entry" role="listitem">
+Porter, L., &amp; Zingaro, D. (2024). <em>Learn AI-Assisted Python Programming: With Github Copilot and ChatGPT</em>. Simon and Schuster.
+</div>
+<div id="ref-puryear2022a" class="csl-entry" role="listitem">
+Puryear, B., &amp; Sprint, G. (2022). Github copilot in the classroom: learning to code with AI assistance. <em>Journal of Computing Sciences in Colleges</em>, <em>38</em>(1), 37–47.
+</div>
+<div id="ref-rowland2023a" class="csl-entry" role="listitem">
+Rowland, D. R. (2023). Two frameworks to guide discussions around levels of acceptable use of generative AI in student academic research and writing. <em>Journal of Academic Language and Learning</em>, <em>17</em>(1), T31–T69.
+</div>
+<div id="ref-schomburg2012a" class="csl-entry" role="listitem">
+Schomburg, H., Flöther, C., &amp; Wolf, V. (2012). Wandel von Lehre und Studium an deutschen Hochschulen–Erfahrungen und Sichtweisen der Lehrenden. <em>Projektbericht. Kassel: Internationales Zentrum für Hochschulforschung (INCHER-Kassel), Universität Kassel</em>.
+</div>
+<div id="ref-schwarcz2025a" class="csl-entry" role="listitem">
+Schwarcz, D., Manning, S., Barry, P. J., Cleveland, D. R., Prescott, J. J., &amp; Rich, B. (2025). <em>AI-Powered Lawyering: AI Reasoning Models, Retrieval Augmented Generation, and the Future of Legal Practice</em>. <a href="https://doi.org/10.2139/ssrn.5162111">https://doi.org/10.2139/ssrn.5162111</a>.
+</div>
+<div id="ref-tutton2025b" class="csl-entry" role="listitem">
+Tutton, M., &amp; Cohen, D. (2025). Reconceptualizing the Role of the University Language Teacher in Light of Generative AI. <em>Education Sciences</em>, <em>15</em>(1), 56. <a href="https://doi.org/10.3390/educsci15010056">https://doi.org/10.3390/educsci15010056</a>.
+</div>
+<div id="ref-wannemacher2025" class="csl-entry" role="listitem">
+Wannemacher, K., Bosse, E., Lübcke, M., &amp; Kaemena, A. (2025). <em><a href="https://hochschulforumdigitalisierung.de/dossier/generative-ki/">Wie KI studium und lehre verändert. Anwendungsfelder, use-cases und gelingensbedingungen</a></em> (Arbeitspapier Nr. 87). Hochschulforum Digitalisierung.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./kapitel03.html" class="pagination-link" aria-label="Ziele und didaktische Mechanismen">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ziele und didaktische Mechanismen</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./kapitel05.html" class="pagination-link" aria-label="Empfehlungen zur Umsetzung">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, R. (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel04.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel04.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
