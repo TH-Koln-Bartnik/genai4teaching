@@ -1,6 +1,8 @@
 project:
   type: book
-  output-dir: _book
+  output-dir: docs
+  resources:
+    - downloads/**
 
 number-depth: 2
 
@@ -21,6 +23,7 @@ book:
   cover-image: images/logos/logo.svg
   image: images/logos/logo.svg
   search: true
+  output-file: downloads/genai4teaching
 
   # GitHub integration + sidebar tools
   repo-url: https://github.com/TH-Koln-Bartnik/genai4teaching
@@ -50,6 +53,13 @@ format:
         - darkly
         - include/dark.scss
     css: [include/booktem.css, include/style.css, include/webex.css]
+  
+   pdf:
+    documentclass: scrreprt
+    number-sections: true
+
+   epub:
+    toc: true
   
 bibliography: references.json
 csl: apa.csl
