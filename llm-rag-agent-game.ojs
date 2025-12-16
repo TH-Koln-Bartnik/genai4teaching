@@ -1,0 +1,908 @@
+// LLM vs RAG vs Agent - Interaktives Lernspiel
+// Basierend auf Prof. Tom Yeh's Workbook
+
+// Import htl für HTML Templates
+htl = require("htl")
+
+// State Management
+viewof gameState = {
+  const initialState = {
+    currentStep: 'intro',
+    currentSystem: null,
+    llmAnswer: '',
+    ragContext: '',
+    agentRole: '',
+    agentTool: '',
+    showTips: {
+      llm: false,
+      rag: false,
+      agentRole: false,
+      agentTool: false
+    }
+  };
+  
+  const form = htl.html`<div></div>`;
+  form.value = initialState;
+  return form;
+}
+
+// Hilfsfunktionen
+function checkAnswer(answer, correct) {
+  return answer.toLowerCase().trim() === correct.toLowerCase().trim();
+}
+
+function setStep(step) {
+  gameState.value = {...gameState.value, currentStep: step};
+  gameState.dispatchEvent(new CustomEvent("input"));
+}
+
+function setSystem(system) {
+  gameState.value = {...gameState.value, currentSystem: system, currentStep: 'question'};
+  gameState.dispatchEvent(new CustomEvent("input"));
+}
+
+function updateAnswer(field, value) {
+  gameState.value = {...gameState.value, [field]: value};
+  gameState.dispatchEvent(new CustomEvent("input"));
+}
+
+function toggleTip(tipKey) {
+  const newTips = {...gameState.value.showTips};
+  newTips[tipKey] = !newTips[tipKey];
+  gameState.value = {...gameState.value, showTips: newTips};
+  gameState.dispatchEvent(new CustomEvent("input"));
+}
+
+function resetGame() {
+  gameState.value = {
+    currentStep: 'intro',
+    currentSystem: null,
+    llmAnswer: '',
+    ragContext: '',
+    agentRole: '',
+    agentTool: '',
+    showTips: {
+      llm: false,
+      rag: false,
+      agentRole: false,
+      agentTool: false
+    }
+  };
+  gameState.dispatchEvent(new CustomEvent("input"));
+}
+
+// Styles
+styles = htl.html`<style>
+  .game-container {
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .bg-gradient-blue { background: linear-gradient(to bottom right, #eff6ff, #e0e7ff); }
+  .bg-gradient-purple { background: linear-gradient(to bottom right, #faf5ff, #f3e8ff); }
+  .bg-gradient-green { background: linear-gradient(to bottom right, #f0fdf4, #dcfce7); }
+  .bg-gradient-orange { background: linear-gradient(to bottom right, #fff7ed, #ffedd5); }
+  .bg-gradient-gray { background: linear-gradient(to bottom right, #f9fafb, #f3f4f6); }
+  
+  .card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 2rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+  
+  .btn {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-size: 1rem;
+  }
+  
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+  .btn-primary { background: #4f46e5; color: white; }
+  .btn-primary:hover { background: #4338ca; }
+  .btn-secondary { background: #6b7280; color: white; }
+  .btn-secondary:hover { background: #4b5563; }
+  .btn-purple { background: #9333ea; color: white; }
+  .btn-purple:hover { background: #7e22ce; }
+  .btn-green { background: #16a34a; color: white; }
+  .btn-green:hover { background: #15803d; }
+  .btn-orange { background: #ea580c; color: white; }
+  .btn-orange:hover { background: #c2410c; }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #fde047;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .alert-box {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .alert-blue { background: #dbeafe; border-left: 4px solid #3b82f6; }
+  .alert-yellow { background: #fef3c7; border: 2px solid #fde047; }
+  .alert-green { background: #d1fae5; border: 2px solid #10b981; }
+  .alert-red { background: #fee2e2; border: 2px solid #ef4444; }
+  .alert-purple { background: #f3e8ff; border-left: 4px solid #9333ea; }
+  .alert-orange { background: #ffedd5; border-left: 4px solid #ea580c; }
+  
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .system-card {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 2px solid;
+    transition: all 0.2s;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .system-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+  
+  .system-card-purple { background: #faf5ff; border-color: #e9d5ff; }
+  .system-card-purple:hover { border-color: #c084fc; }
+  .system-card-green { background: #f0fdf4; border-color: #bbf7d0; }
+  .system-card-green:hover { border-color: #4ade80; }
+  .system-card-orange { background: #fff7ed; border-color: #fed7aa; }
+  .system-card-orange:hover { border-color: #fb923c; }
+  
+  .tip-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #2563eb;
+    font-size: 0.875rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .tip-button:hover { color: #1e40af; }
+  
+  .tip-content {
+    background: #dbeafe;
+    border-left: 4px solid #60a5fa;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  
+  .icon { width: 24px; height: 24px; display: inline-block; }
+  .icon-lg { width: 48px; height: 48px; }
+  
+  .feedback-success { display: flex; align-items: center; gap: 0.5rem; color: #16a34a; margin-top: 0.75rem; }
+  .feedback-error { display: flex; align-items: center; gap: 0.5rem; color: #dc2626; margin-top: 0.75rem; }
+  
+  h1 { font-size: 2.25rem; font-weight: bold; color: #1f2937; margin-bottom: 1rem; text-align: center; }
+  h2 { font-size: 1.875rem; font-weight: bold; color: #1f2937; margin-bottom: 1.5rem; }
+  h3 { font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; }
+  
+  .space-y { display: flex; flex-direction: column; gap: 1.5rem; }
+  
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 0.75rem; font-weight: 600; border-bottom: 2px solid #d1d5db; }
+  td { padding: 0.75rem; border-bottom: 1px solid #e5e7eb; font-size: 0.875rem; }
+  
+  .text-center { text-align: center; }
+  .text-lg { font-size: 1.125rem; }
+  .text-xl { font-size: 1.25rem; }
+  .text-2xl { font-size: 1.5rem; }
+  .font-bold { font-weight: bold; }
+  .font-semibold { font-weight: 600; }
+  .mb-2 { margin-bottom: 0.5rem; }
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-6 { margin-bottom: 1.5rem; }
+  .mt-4 { margin-top: 1rem; }
+  .p-4 { padding: 1rem; }
+  .bg-white { background: white; }
+  .rounded { border-radius: 0.5rem; }
+  .border { border: 1px solid #e5e7eb; }
+  .border-2 { border: 2px solid #e5e7eb; }
+</style>`
+
+// Main Game Rendering
+game = {
+  const state = gameState.value;
+  
+  // Intro Screen
+  if (state.currentStep === 'intro') {
+    return htl.html`
+      ${styles}
+      <div class="game-container bg-gradient-blue">
+        <div class="card">
+          <h1>🍼 Das Baby-Geschäft Experiment</h1>
+          <p class="text-xl text-center mb-6" style="color: #6b7280;">
+            Entdecke die Unterschiede zwischen LLM, RAG und Agent
+          </p>
+          
+          <div class="alert-box alert-blue">
+            <h3>🎯 Deine Aufgabe:</h3>
+            <p class="mb-4" style="color: #374151;">
+              Du bist in einem <strong>Baby-Geschäft</strong> und stellst die gleiche Frage an drei verschiedene KI-Systeme:
+            </p>
+            <p class="text-2xl font-bold text-center p-4 bg-white rounded" style="color: #1d4ed8;">
+              "Wie viel kosten zwei Tüten?"
+            </p>
+            <p class="mt-4" style="color: #374151;">
+              Beobachte, wie unterschiedlich die Systeme reagieren – und warum!
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="text-center p-4 rounded" style="background: #faf5ff;">
+              <div class="text-center mb-2">✨</div>
+              <h3>LLM</h3>
+              <p style="font-size: 0.875rem; color: #6b7280;">Nur Trainingsdaten</p>
+            </div>
+            <div class="text-center p-4 rounded" style="background: #f0fdf4;">
+              <div class="text-center mb-2">🗄️</div>
+              <h3>RAG</h3>
+              <p style="font-size: 0.875rem; color: #6b7280;">Mit Datenbankzugriff</p>
+            </div>
+            <div class="text-center p-4 rounded" style="background: #fff7ed;">
+              <div class="text-center mb-2">🛠️</div>
+              <h3>Agent</h3>
+              <p style="font-size: 0.875rem; color: #6b7280;">Mit Tools & Rollen</p>
+            </div>
+          </div>
+
+          <p class="text-center mb-6" style="color: #6b7280; font-style: italic;">
+            Basierend auf dem Workbook von Prof. Tom Yeh
+          </p>
+
+          <button class="btn btn-primary" style="width: 100%;" onclick=${() => setStep('menu')}>
+            Los geht's! 🚀
+          </button>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Menu
+  if (state.currentStep === 'menu') {
+    return htl.html`
+      ${styles}
+      <div class="game-container bg-gradient-blue">
+        <div class="card">
+          <h2 class="text-center">Wähle ein System</h2>
+          <p class="text-center mb-6" style="color: #6b7280;">
+            Klicke auf ein System, um zu sehen, wie es auf deine Frage reagiert
+          </p>
+
+          <div class="grid-3">
+            <div class="system-card system-card-purple" onclick=${() => setSystem('llm')}>
+              <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+              <h3 style="color: #7c3aed;">LLM</h3>
+              <p style="font-size: 0.875rem; color: #6b7280;">Large Language Model</p>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">Nutzt nur Trainingsdaten</p>
+            </div>
+
+            <div class="system-card system-card-green" onclick=${() => setSystem('rag')}>
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🗄️</div>
+              <h3 style="color: #16a34a;">RAG</h3>
+              <p style="font-size: 0.875rem; color: #6b7280;">Retrieval Augmented Generation</p>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">Holt relevante Daten</p>
+            </div>
+
+            <div class="system-card system-card-orange" onclick=${() => setSystem('agent')}>
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🛠️</div>
+              <h3 style="color: #ea580c;">Agent</h3>
+              <p style="font-size: 0.875rem; color: #6b7280;">Intelligenter Agent</p>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">Wählt Tools & handelt</p>
+            </div>
+          </div>
+
+          <button class="btn btn-secondary" style="width: 100%; margin-top: 2rem;" onclick=${() => setStep('comparison')}>
+            📊 Direkt zum Vergleich
+          </button>
+        </div>
+      </div>
+    `;
+  }
+  
+  // LLM System
+  if (state.currentStep === 'question' && state.currentSystem === 'llm') {
+    const isCorrect = checkAnswer(state.llmAnswer, 'Äpfel') || checkAnswer(state.llmAnswer, 'Apfel');
+    
+    return htl.html`
+      ${styles}
+      <div class="game-container bg-gradient-purple">
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2 style="margin: 0; color: #7c3aed; display: flex; align-items: center; gap: 0.75rem;">
+              ✨ LLM System
+            </h2>
+            <button class="btn btn-secondary" style="padding: 0.5rem 1rem;" onclick=${() => setStep('menu')}>
+              ← Zurück
+            </button>
+          </div>
+
+          <div class="alert-box alert-purple">
+            <p class="text-lg mb-2">🗣️ Du fragst:</p>
+            <p class="text-2xl font-bold" style="color: #7c3aed;">
+              "Wie viel kosten zwei Tüten?"
+            </p>
+          </div>
+
+          <div class="space-y">
+            <div class="alert-box" style="background: #f9fafb;">
+              <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                🧠 Was macht das LLM?
+              </h3>
+              <p class="mb-4" style="color: #374151;">
+                Das LLM hat nur Zugriff auf seine <strong>Trainingsdaten aus dem Internet</strong>. 
+                Es weiß nicht, dass du in einem Baby-Geschäft bist!
+              </p>
+              <div class="p-4 bg-white rounded border-2">
+                <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">💭 LLM denkt:</p>
+                <p style="font-style: italic; color: #374151;">
+                  "Tüten... vermutlich Einkaufstüten mit Obst oder Gemüse. 
+                  Am wahrscheinlichsten: Äpfel. Eine Tüte Äpfel kostet etwa 12€."
+                </p>
+              </div>
+            </div>
+
+            <div class="alert-box alert-yellow">
+              <p class="font-semibold mb-2">📝 Fülle die Lücke aus:</p>
+              <p class="mb-2">Zwei Tüten _______ kosten etwa 24€.</p>
+              <input 
+                class="input-field" 
+                type="text" 
+                placeholder="Was glaubt das LLM?"
+                value=${state.llmAnswer}
+                oninput=${(e) => updateAnswer('llmAnswer', e.target.value)}
+              />
+              
+              <button class="tip-button" onclick=${() => toggleTip('llm')}>
+                💡 ${state.showTips.llm ? 'Tipp ausblenden' : 'Tipp anzeigen'}
+              </button>
+
+              ${state.showTips.llm ? htl.html`
+                <div class="tip-content">
+                  <p style="font-size: 0.875rem; color: #1e40af;">
+                    <strong>💡 Tipp:</strong> Das LLM hat keine Information über das Geschäft. 
+                    Es nutzt nur sein Wissen aus dem Internet. Was kauft man häufig in Tüten? 
+                    Denk an Obst, das in Supermärkten verkauft wird...
+                  </p>
+                </div>
+              ` : ''}
+
+              ${state.llmAnswer ? (isCorrect ? htl.html`
+                <div class="feedback-success">
+                  ✅ Richtig! Das LLM rät "Äpfel"
+                </div>
+              ` : htl.html`
+                <div class="feedback-error">
+                  ❌ Nicht ganz. Tipp: Was kauft man oft in Tüten?
+                </div>
+              `) : ''}
+            </div>
+
+            ${isCorrect ? htl.html`
+              <div class="alert-box alert-red">
+                <h3 style="color: #991b1b; display: flex; align-items: center; gap: 0.5rem;">
+                  ❌ Problem erkannt!
+                </h3>
+                <p style="color: #374151;">
+                  Du bist aber in einem <strong>Baby-Geschäft</strong>! Die Tüten enthalten wahrscheinlich 
+                  <strong> Windeln</strong>, nicht Äpfel. Das LLM hat falsch geraten, weil es den 
+                  <strong> Kontext nicht kennt</strong>.
+                </p>
+              </div>
+
+              <button class="btn btn-purple" style="width: 100%;" onclick=${() => setStep('menu')}>
+                Weiter zum nächsten System →
+              </button>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // RAG System
+  if (state.currentStep === 'question' && state.currentSystem === 'rag') {
+    const isCorrect = checkAnswer(state.ragContext, 'Datenbank') || checkAnswer(state.ragContext, 'Database');
+    
+    return htl.html`
+      ${styles}
+      <div class="game-container bg-gradient-green">
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2 style="margin: 0; color: #16a34a; display: flex; align-items: center; gap: 0.75rem;">
+              🗄️ RAG System
+            </h2>
+            <button class="btn btn-secondary" style="padding: 0.5rem 1rem;" onclick=${() => setStep('menu')}>
+              ← Zurück
+            </button>
+          </div>
+
+          <div class="alert-box alert-green" style="background: #dcfce7; border-color: #16a34a;">
+            <p class="text-lg mb-2">🗣️ Du fragst:</p>
+            <p class="text-2xl font-bold" style="color: #15803d;">
+              "Wie viel kosten zwei Tüten?"
+            </p>
+          </div>
+
+          <div class="space-y">
+            <div class="alert-box" style="background: #f9fafb;">
+              <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                🔍 Schritt 1: Datenbank durchsuchen
+              </h3>
+              <p class="mb-4" style="color: #374151;">
+                Das RAG-System durchsucht <strong>zuerst die Geschäftsdatenbank</strong>, 
+                bevor es antwortet!
+              </p>
+              <div class="p-4 bg-white rounded border-2" style="border-color: #86efac;">
+                <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">🗄️ Datenbank gefunden:</p>
+                <div class="p-3 rounded" style="background: #d1fae5; font-family: monospace; font-size: 0.875rem;">
+                  Produkt: Windeln<br/>
+                  Preis: 10€ pro Tüte
+                </div>
+              </div>
+            </div>
+
+            <div class="alert-box alert-yellow">
+              <p class="font-semibold mb-2">📝 Fülle die Lücke aus:</p>
+              <p class="mb-2">Das RAG-System hat aus der _______ die Information geholt, dass Windeln 10€ kosten.</p>
+              <input 
+                class="input-field" 
+                type="text" 
+                placeholder="Woher kommen die Daten?"
+                value=${state.ragContext}
+                oninput=${(e) => updateAnswer('ragContext', e.target.value)}
+              />
+              
+              <button class="tip-button" onclick=${() => toggleTip('rag')}>
+                💡 ${state.showTips.rag ? 'Tipp ausblenden' : 'Tipp anzeigen'}
+              </button>
+
+              ${state.showTips.rag ? htl.html`
+                <div class="tip-content">
+                  <p style="font-size: 0.875rem; color: #1e40af;">
+                    <strong>💡 Tipp:</strong> RAG steht für "Retrieval Augmented Generation". 
+                    Das bedeutet, dass das System zuerst Informationen <em>abruft</em>, bevor es antwortet. 
+                    Wo werden strukturierte Geschäftsdaten normalerweise gespeichert? 🗄️
+                  </p>
+                </div>
+              ` : ''}
+
+              ${state.ragContext ? (isCorrect ? htl.html`
+                <div class="feedback-success">
+                  ✅ Richtig! RAG holt Daten aus der Datenbank
+                </div>
+              ` : htl.html`
+                <div class="feedback-error">
+                  ❌ Nicht ganz. Tipp: Wo werden Geschäftsdaten gespeichert?
+                </div>
+              `) : ''}
+            </div>
+
+            ${isCorrect ? htl.html`
+              <div class="alert-box" style="background: #f9fafb;">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                  💬 Schritt 2: LLM generiert Antwort
+                </h3>
+                <div class="p-4 bg-white rounded border-2" style="border-color: #86efac;">
+                  <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">📨 Augmentierter Prompt an LLM:</p>
+                  <div class="p-3 rounded mb-3" style="background: #f3f4f6; font-family: monospace; font-size: 0.875rem;">
+                    Kontext: Windeln kosten 10€ pro Tüte<br/>
+                    Anweisung: Antwort kurz halten<br/>
+                    Frage: Wie viel kosten zwei Tüten?
+                  </div>
+                  <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">🤖 LLM antwortet:</p>
+                  <div class="p-3 rounded font-semibold" style="background: #d1fae5;">
+                    "20€"
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert-box alert-green">
+                <h3 style="color: #15803d; display: flex; align-items: center; gap: 0.5rem;">
+                  ✅ Korrekte Antwort!
+                </h3>
+                <p style="color: #374151;">
+                  Das RAG-System hat die <strong>richtige Antwort</strong> gegeben, weil es 
+                  <strong> echte Daten aus der Datenbank</strong> verwendet hat – nicht nur geraten!
+                </p>
+              </div>
+
+              <button class="btn btn-green" style="width: 100%;" onclick=${() => setStep('menu')}>
+                Weiter zum nächsten System →
+              </button>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Agent System
+  if (state.currentStep === 'question' && state.currentSystem === 'agent') {
+    const hasRole = checkAnswer(state.agentRole, 'Verkäufer') || 
+                    checkAnswer(state.agentRole, 'Verkaufsberater') || 
+                    checkAnswer(state.agentRole, 'Promotion') ||
+                    state.agentRole.toLowerCase().includes('verkauf') ||
+                    state.agentRole.toLowerCase().includes('promotion');
+    
+    const hasTool = checkAnswer(state.agentTool, 'Rabatt') || 
+                    checkAnswer(state.agentTool, 'Discount') ||
+                    state.agentTool.toLowerCase().includes('rabatt') ||
+                    state.agentTool.toLowerCase().includes('coupon');
+    
+    return htl.html`
+      ${styles}
+      <div class="game-container bg-gradient-orange">
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2 style="margin: 0; color: #ea580c; display: flex; align-items: center; gap: 0.75rem;">
+              🛠️ Agent System
+            </h2>
+            <button class="btn btn-secondary" style="padding: 0.5rem 1rem;" onclick=${() => setStep('menu')}>
+              ← Zurück
+            </button>
+          </div>
+
+          <div class="alert-box alert-orange">
+            <p class="text-lg mb-2">🗣️ Du fragst:</p>
+            <p class="text-2xl font-bold" style="color: #c2410c;">
+              "Wie viel kosten zwei Tüten?"
+            </p>
+          </div>
+
+          <div class="space-y">
+            <div class="alert-box" style="background: #f9fafb;">
+              <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                🎭 Der Agent bekommt eine Rolle
+              </h3>
+              <p class="mb-4" style="color: #374151;">
+                Anders als LLM und RAG bekommt der Agent eine <strong>Rolle zugewiesen</strong>: 
+                Er soll als <strong>Verkaufsberater</strong> agieren!
+              </p>
+              <div class="p-4 bg-white rounded border-2" style="border-color: #fed7aa;">
+                <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">🎯 Rollenbeschreibung:</p>
+                <div class="p-3 rounded" style="background: #ffedd5; font-style: italic;">
+                  "Du bist ein Verkaufsberater im Baby-Geschäft. Dein Ziel ist es, 
+                  Kunden zu begeistern und Verkäufe zu fördern."
+                </div>
+              </div>
+            </div>
+
+            <div class="alert-box alert-yellow">
+              <p class="font-semibold mb-2">📝 Fülle die Lücke aus:</p>
+              <p class="mb-2">Der Agent agiert als _______.</p>
+              <input 
+                class="input-field" 
+                type="text" 
+                placeholder="Welche Rolle?"
+                value=${state.agentRole}
+                oninput=${(e) => updateAnswer('agentRole', e.target.value)}
+              />
+              
+              <button class="tip-button" onclick=${() => toggleTip('agentRole')}>
+                💡 ${state.showTips.agentRole ? 'Tipp ausblenden' : 'Tipp anzeigen'}
+              </button>
+
+              ${state.showTips.agentRole ? htl.html`
+                <div class="tip-content">
+                  <p style="font-size: 0.875rem; color: #1e40af;">
+                    <strong>💡 Tipp:</strong> Der Agent wurde so programmiert, dass er nicht nur Preise 
+                    nachschlägt, sondern aktiv Produkte verkaufen möchte. Welche Rolle würde jemand 
+                    haben, der Kunden begeistern und zum Kauf motivieren soll? 🎯
+                  </p>
+                </div>
+              ` : ''}
+
+              ${state.agentRole ? (hasRole ? htl.html`
+                <div class="feedback-success">
+                  ✅ Richtig! Der Agent ist ein Verkaufsberater/Promoter
+                </div>
+              ` : htl.html`
+                <div class="feedback-error">
+                  ❌ Nicht ganz. Tipp: Wer möchte Produkte verkaufen?
+                </div>
+              `) : ''}
+            </div>
+
+            ${hasRole ? htl.html`
+              <div class="alert-box" style="background: #f9fafb;">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                  🛠️ Schritt 1: Tool-Auswahl
+                </h3>
+                <p class="mb-4" style="color: #374151;">
+                  Der Agent hat mehrere Tools zur Verfügung:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1rem;">
+                  <div class="p-3 bg-white rounded border-2">
+                    <strong>🗄️ Datenbank</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280;">Preise nachschlagen</p>
+                  </div>
+                  <div class="p-3 bg-white rounded border-2">
+                    <strong>🎁 Rabatt</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280;">Gutschein erstellen</p>
+                  </div>
+                </div>
+                <div class="p-4 bg-white rounded border-2" style="border-color: #fed7aa;">
+                  <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">💭 Agent entscheidet:</p>
+                  <p style="font-style: italic; color: #374151;">
+                    "Als Verkaufsberater sollte ich den Kunden begeistern! 
+                    Statt nur den Preis zu nennen, erstelle ich einen attraktiven Rabatt-Code."
+                  </p>
+                </div>
+              </div>
+
+              <div class="alert-box alert-yellow">
+                <p class="font-semibold mb-2">📝 Fülle die Lücke aus:</p>
+                <p class="mb-2">Welches Tool wählt der Agent?</p>
+                <input 
+                  class="input-field" 
+                  type="text" 
+                  placeholder="Datenbank oder Rabatt?"
+                  value=${state.agentTool}
+                  oninput=${(e) => updateAnswer('agentTool', e.target.value)}
+                />
+                
+                <button class="tip-button" onclick=${() => toggleTip('agentTool')}>
+                  💡 ${state.showTips.agentTool ? 'Tipp ausblenden' : 'Tipp anzeigen'}
+                </button>
+
+                ${state.showTips.agentTool ? htl.html`
+                  <div class="tip-content">
+                    <p style="font-size: 0.875rem; color: #1e40af;">
+                      <strong>💡 Tipp:</strong> Der Agent hat die Rolle eines Verkaufsberaters. 
+                      Was wäre kundenfreundlicher: Einfach nur den Preis zu nennen, oder dem Kunden 
+                      etwas Besonderes anzubieten, das ihn zum Kauf motiviert? 🎁
+                    </p>
+                  </div>
+                ` : ''}
+
+                ${state.agentTool ? (hasTool ? htl.html`
+                  <div class="feedback-success">
+                    ✅ Richtig! Der Agent wählt das Rabatt-Tool
+                  </div>
+                ` : htl.html`
+                  <div class="feedback-error">
+                    ❌ Nicht ganz. Was würde ein Verkaufsberater tun?
+                  </div>
+                `) : ''}
+              </div>
+            ` : ''}
+
+            ${hasRole && hasTool ? htl.html`
+              <div class="alert-box" style="background: #f9fafb;">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                  🔄 Schritt 2: Tool ausführen
+                </h3>
+                <div class="p-4 bg-white rounded border-2 mb-3" style="border-color: #fed7aa;">
+                  <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">🛠️ Rabatt-Server Aufruf:</p>
+                  <div class="p-3 rounded" style="background: #f3f4f6; font-family: monospace; font-size: 0.875rem;">
+                    create_discount(15%)<br/>
+                    → Code: HAPPY36
+                  </div>
+                </div>
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                  💬 Schritt 3: Finale Antwort generieren
+                </h3>
+                <div class="p-4 bg-white rounded border-2" style="border-color: #fed7aa;">
+                  <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">🤖 Agent antwortet:</p>
+                  <div class="p-4 rounded font-semibold text-lg" style="background: #ffedd5;">
+                    "Hier ist Ihr 15% Rabatt-Code: HAPPY36 🎉"
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert-box alert-orange">
+                <h3 style="color: #c2410c; display: flex; align-items: center; gap: 0.5rem;">
+                  ✨ Intelligente Entscheidung!
+                </h3>
+                <p style="color: #374151;">
+                  Der Agent hat <strong>nicht einfach den Preis genannt</strong>, sondern 
+                  <strong> intelligent entschieden</strong>, welches Tool am besten zu seiner 
+                  Rolle passt. Das ist der Unterschied zu RAG!
+                </p>
+              </div>
+
+              <button class="btn btn-orange" style="width: 100%;" onclick=${() => setStep('menu')}>
+                Zurück zum Menü
+              </button>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Comparison View
+  if (state.currentStep === 'comparison') {
+    return htl.html`
+      ${styles}
+      <div class="game-container bg-gradient-gray">
+        <div class="card" style="max-width: 80rem;">
+          <h2 class="text-center">📊 Vergleich: LLM vs RAG vs Agent</h2>
+
+          <div class="alert-box alert-blue">
+            <p class="text-lg font-semibold mb-2">Die gleiche Frage, drei verschiedene Antworten:</p>
+            <p class="text-2xl font-bold" style="color: #1d4ed8;">
+              "Wie viel kosten zwei Tüten?" (im Baby-Geschäft)
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <!-- LLM -->
+            <div class="rounded border-2 p-6" style="background: #faf5ff; border-color: #e9d5ff;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                <span style="font-size: 1.5rem;">✨</span>
+                <h3 style="color: #7c3aed;">LLM</h3>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Wissensquelle:</p>
+                  <p style="font-size: 0.875rem; color: #6b7280;">Nur Trainingsdaten aus dem Internet</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Ablauf:</p>
+                  <p style="font-size: 0.875rem; color: #6b7280;">Ein-Schritt-Logik: Frage → Antwort</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Antwort:</p>
+                  <p class="p-2 bg-white rounded border" style="font-size: 0.875rem; border-color: #e9d5ff;">
+                    "Zwei Tüten Äpfel kosten 24€"
+                  </p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #991b1b;">Problem:</p>
+                  <p style="font-size: 0.875rem; color: #dc2626;">❌ Falsch! Kontext nicht bekannt</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- RAG -->
+            <div class="rounded border-2 p-6" style="background: #f0fdf4; border-color: #bbf7d0;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                <span style="font-size: 1.5rem;">🗄️</span>
+                <h3 style="color: #16a34a;">RAG</h3>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Wissensquelle:</p>
+                  <p style="font-size: 0.875rem; color: #6b7280;">Datenbank + Trainingsdaten</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Ablauf:</p>
+                  <p style="font-size: 0.875rem; color: #6b7280;">Abrufen → Dann antworten</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Antwort:</p>
+                  <p class="p-2 bg-white rounded border" style="font-size: 0.875rem; border-color: #bbf7d0;">
+                    "20€"
+                  </p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #15803d;">Vorteil:</p>
+                  <p style="font-size: 0.875rem; color: #16a34a;">✅ Korrekt! Nutzt echte Daten</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Agent -->
+            <div class="rounded border-2 p-6" style="background: #fff7ed; border-color: #fed7aa;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                <span style="font-size: 1.5rem;">🛠️</span>
+                <h3 style="color: #ea580c;">Agent</h3>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Wissensquelle:</p>
+                  <p style="font-size: 0.875rem; color: #6b7280;">Tools & APIs + Trainingsdaten</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Ablauf:</p>
+                  <p style="font-size: 0.875rem; color: #6b7280;">Mehrschritt-Logik mit Tool-Wahl</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #374151;">Antwort:</p>
+                  <p class="p-2 bg-white rounded border" style="font-size: 0.875rem; border-color: #fed7aa;">
+                    "Ihr 15% Rabatt-Code: HAPPY36 🎉"
+                  </p>
+                </div>
+                <div>
+                  <p style="font-size: 0.875rem; font-weight: 600; color: #c2410c;">Vorteil:</p>
+                  <p style="font-size: 0.875rem; color: #ea580c;">✨ Intelligent! Wählt beste Aktion</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Differences Table -->
+          <div class="alert-box" style="background: #f9fafb; margin-top: 2rem;">
+            <h3>🔑 Kernunterschiede</h3>
+            <div style="overflow-x: auto;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Aspekt</th>
+                    <th style="color: #7c3aed;">LLM</th>
+                    <th style="color: #16a34a;">RAG</th>
+                    <th style="color: #ea580c;">Agent</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 600;">Wissensquelle</td>
+                    <td>Internet-Trainingsdaten</td>
+                    <td>Abgerufene echte Daten</td>
+                    <td>Tools & APIs</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600;">Kontroll-Logik</td>
+                    <td>Ein-Schritt</td>
+                    <td>Abrufen → Antworten</td>
+                    <td>Mehrschritt-Reasoning</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600;">Kontext</td>
+                    <td>❌ Kein Zugriff</td>
+                    <td>✅ Spezifische Daten</td>
+                    <td>✅ Rollenbasiert</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600;">Entscheidung</td>
+                    <td>Keine</td>
+                    <td>Keine</td>
+                    <td>✅ Wählt Tools intelligent</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="alert-box" style="background: #eef2ff; border: 2px solid #c7d2fe; margin-top: 1.5rem;">
+            <h3 style="color: #4338ca; margin-bottom: 0.75rem;">💡 Was hast du gelernt?</h3>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+              <li style="display: flex; align-items: start; gap: 0.5rem; color: #374151;">
+                <span style="color: #7c3aed; font-weight: bold;">→</span>
+                <span><strong>LLM</strong> nutzt nur Trainingsdaten und rät den Kontext</span>
+              </li>
+              <li style="display: flex; align-items: start; gap: 0.5rem; color: #374151;">
+                <span style="color: #16a34a; font-weight: bold;">→</span>
+                <span><strong>RAG</strong> holt relevante Fakten aus Datenbanken für präzise Antworten</span>
+              </li>
+              <li style="display: flex; align-items: start; gap: 0.5rem; color: #374151;">
+                <span style="color: #ea580c; font-weight: bold;">→</span>
+                <span><strong>Agent</strong> entscheidet intelligent, welche Tools zu nutzen sind, basierend auf seiner Rolle</span>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <button class="btn btn-secondary" style="flex: 1;" onclick=${() => setStep('menu')}>
+              ← Nochmal erleben
+            </button>
+            <button class="btn btn-primary" style="flex: 1;" onclick=${resetGame}>
+              🔄 Von vorne starten
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}

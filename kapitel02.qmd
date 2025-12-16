@@ -35,6 +35,8 @@ format: revealjs
   height="700px"
   frameborder="0">
 </iframe>
+
+
 (am besten auf dem Computer spielen).
 Hier auch Online abrufbar (so etwas nennt sich "Artifact" beim Sprachmodell "Claude")
 [[https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8]{.underline}](https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8)
@@ -57,9 +59,7 @@ Siehe dazu auch die animierte Darstellung von Grant Sanderson:
 
 ![Visualisierung von Transformator-Sprachmodellen. Quelle: Grant Sanderson, https://youtu.be/LPZh9BOjkQs](images/script02-01.svg){#fig-transformer}
 
-
 Sprachmodelle wie ChatGPT funktionieren insofern wie ein sehr gut trainierter **Autovervollständiger** für Texte. Wenn man ihm den Anfang eines Satzes gibt, sagt es mit hoher Wahrscheinlichkeit voraus, wie der Satz weitergeht – basierend auf Milliarden von Textbeispielen, die es zuvor „gelesen“ hat.
-
 Damit GPT Sprache verstehen und erzeugen kann, zerlegt es jeden Text in sogenannte **Tokens** – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen. Jedes dieser Tokens wird in einen **Vektor** umgewandelt – eine Zahlenreihe, die das Wort mathematisch beschreibt. Dieser Vorgang nennt sich **Embedding**. Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, beispielsweise „Hund“ und „Katze“.
 
 Das Herzstück von GPT, dem Generative Pre-trained Transformer, ist der sogenannte **Transformer** – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (**Attention**) erkennt, welche Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen. GPT „achtet“ besonders auf bestimmte Tokens (Wörter oder Satzteile), die für die jeweilige Aussage wichtig sind (s. \@fig-transformer). Damit bestimmt das Modell, welche Begriffe stärker zur Bedeutung beitragen und in welchem Verhältnis sie zueinander stehen.
@@ -81,6 +81,17 @@ Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte gener
 Ein **Prompt** ist eine Eingabeaufforderung, die an ein LLM gesendet wird, um eine spezifische Antwort zu erhalten. Die Gestaltung dieser Prompts ist entscheidend für die Qualität der generierten Antworten und wird als **Prompt Engineering** bezeichnet.
 
 **Agenten** im Kontext von KI sind fortgeschrittene Prompts, die spezifische Aufgaben in natürlicher Sprache umsetzen. GPT-basierte Agenten können Text analysieren, generieren und verschiedene Aufgaben automatisieren, indem sie vorab definierte Muster und Regeln befolgen. Durch die Erstellung solcher Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten.
+
+Wie unterscheiden sich Agenten von Sprachmodellen und RAG? Hier wird das anhand von Beispielen erläutert:
+
+---
+title: "LLM vs RAG vs Agent"
+---
+```{ojs}
+//| echo: false
+import { game } from "./llm-rag-agent-game.ojs"
+game
+```
 
 Sprachmodelle haben mittlerweile mehrere **Nutzungs-Muster** - verschiedene Ansätze also, eine Anfrage zu beantworten. Hier stellt das Prof. Tom Yeh schön anschaulich an der Frage "Was ist der Sinn des Lebens?" dar:
 

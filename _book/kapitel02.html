@@ -8,7 +8,7 @@
 
 <meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource, die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen.">
 
-<title>Mini-Lernspiel-Grundbegriffe LLMs – KI als Hilfe zum Lehren und Lernen</title>
+<title>LLM vs RAG vs Agent – KI als Hilfe zum Lehren und Lernen</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -94,6 +129,8 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="include/booktem.css">
@@ -272,7 +309,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel02.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mini-Lernspiel-Grundbegriffe LLMs</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel02.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">LLM vs RAG vs Agent</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
@@ -350,7 +387,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kapitel02.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mini-Lernspiel-Grundbegriffe LLMs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">LLM vs RAG vs Agent</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -402,7 +439,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Mini-Lernspiel-Grundbegriffe LLMs</h1>
+<h1 class="title">LLM vs RAG vs Agent</h1>
 </div>
 
 
@@ -459,8 +496,7 @@ Abbildung&nbsp;2.1: Visualisierung von Transformator-Sprachmodellen. Quelle: Gra
 </figcaption>
 </figure>
 </div>
-<p>Sprachmodelle wie ChatGPT funktionieren insofern wie ein sehr gut trainierter <strong>Autovervollständiger</strong> für Texte. Wenn man ihm den Anfang eines Satzes gibt, sagt es mit hoher Wahrscheinlichkeit voraus, wie der Satz weitergeht – basierend auf Milliarden von Textbeispielen, die es zuvor „gelesen“ hat.</p>
-<p>Damit GPT Sprache verstehen und erzeugen kann, zerlegt es jeden Text in sogenannte <strong>Tokens</strong> – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen. Jedes dieser Tokens wird in einen <strong>Vektor</strong> umgewandelt – eine Zahlenreihe, die das Wort mathematisch beschreibt. Dieser Vorgang nennt sich <strong>Embedding</strong>. Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, beispielsweise „Hund“ und „Katze“.</p>
+<p>Sprachmodelle wie ChatGPT funktionieren insofern wie ein sehr gut trainierter <strong>Autovervollständiger</strong> für Texte. Wenn man ihm den Anfang eines Satzes gibt, sagt es mit hoher Wahrscheinlichkeit voraus, wie der Satz weitergeht – basierend auf Milliarden von Textbeispielen, die es zuvor „gelesen“ hat. Damit GPT Sprache verstehen und erzeugen kann, zerlegt es jeden Text in sogenannte <strong>Tokens</strong> – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen. Jedes dieser Tokens wird in einen <strong>Vektor</strong> umgewandelt – eine Zahlenreihe, die das Wort mathematisch beschreibt. Dieser Vorgang nennt sich <strong>Embedding</strong>. Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, beispielsweise „Hund“ und „Katze“.</p>
 <p>Das Herzstück von GPT, dem Generative Pre-trained Transformer, ist der sogenannte <strong>Transformer</strong> – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (<strong>Attention</strong>) erkennt, welche Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen. GPT „achtet“ besonders auf bestimmte Tokens (Wörter oder Satzteile), die für die jeweilige Aussage wichtig sind (s. @fig-transformer). Damit bestimmt das Modell, welche Begriffe stärker zur Bedeutung beitragen und in welchem Verhältnis sie zueinander stehen.</p>
 <p>Beispielsweise erkennt GPT dank Attention in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint. Attention ist ein zentraler Bestandteil des Transformer-Modells und sorgt dafür, dass GPT Texte nicht nur wortweise, sondern im Gesamtkontext verstehen und sinnvoll vervollständigen kann.</p>
 <p>GPT wurde mit riesigen Textmengen <strong>vortrainiert</strong> (<strong>Pretraining</strong>), ohne konkrete Aufgaben lösen zu müssen – dieser Vorgang erfolgt unüberwacht (<em>unsupervised learning</em>).</p>
@@ -480,6 +516,25 @@ Abbildung&nbsp;2.2: Beispiel für die Umwandlung von Text in Token
 <p><strong>Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?</strong> Neuere LLMs können schon ganze Bücher schnell aufsaugen und dann zusammenfassen (z.B. Claude, GPT-4o oder Gemini). Das <strong>Kontext-Fenster</strong> eines LLM beschreibt die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu verstehen.</p>
 <p>Ein <strong>Prompt</strong> ist eine Eingabeaufforderung, die an ein LLM gesendet wird, um eine spezifische Antwort zu erhalten. Die Gestaltung dieser Prompts ist entscheidend für die Qualität der generierten Antworten und wird als <strong>Prompt Engineering</strong> bezeichnet.</p>
 <p><strong>Agenten</strong> im Kontext von KI sind fortgeschrittene Prompts, die spezifische Aufgaben in natürlicher Sprache umsetzen. GPT-basierte Agenten können Text analysieren, generieren und verschiedene Aufgaben automatisieren, indem sie vorab definierte Muster und Regeln befolgen. Durch die Erstellung solcher Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten.</p>
+<p>Wie unterscheiden sich Agenten von Sprachmodellen und RAG? Hier wird das anhand von Beispielen erläutert:</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="92" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 91;"><span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { game } <span class="im">from</span> <span class="st">"./llm-rag-agent-game.ojs"</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>game</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
 <p>Sprachmodelle haben mittlerweile mehrere <strong>Nutzungs-Muster</strong> - verschiedene Ansätze also, eine Anfrage zu beantworten. Hier stellt das Prof.&nbsp;Tom Yeh schön anschaulich an der Frage “Was ist der Sinn des Lebens?” dar:</p>
 <iframe src="llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
 </iframe>
@@ -715,6 +770,17 @@ You, J. (2025, Februar 7). How much energy does ChatGPT use? <em>Epoch AI</em>. 
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7IGdhbWUgfSBmcm9tIFwiLi9sbG0tcmFnLWFnZW50LWdhbWUub2pzXCJcclxuZ2FtZVxyXG4ifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
