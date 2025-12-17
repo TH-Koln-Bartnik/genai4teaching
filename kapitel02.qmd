@@ -16,29 +16,22 @@ editor:
 
 ## Definition einiger Grundbegriffe
 
-Hier führen wir kurz ein, was es mit Begriffen wie Transformer, Token, Kontextfenstern und Prompts auf sich hat.
-Technische Details klammern wir dabei aus, es geht nur um eine kurze Begriffsbestimmung.
+In diesem Abschnitt wollen wir einigen Definitionen und Bedeutungen klären. Dabei nutzen wir immer wieder kleine Interaktionen und Lernspiele, auch um so zu zeigen, wie wir einfacher "fragend" und aktivierend lehren können. 
 
-Als visuelle Begleitung empfehle ich das sehr schöne Einführungsvideo des Mathematik-Didaktikers Grant Sanderson (7 Minuten).
-Tiefer in die mathematischen Details geht die grafische und interaktive Einführung als Animation von Brendan Bycroft.
-Wer tiefer in die Hintergründe einsteigen will, kann das Lehrbuch-Standardwerk von @jurafsky2025a nutzen, das online frei verfügbar ist.
 
-::: {.callout-tip title="Lernspiel: Begriffe prüfen"}
-Wollen Sie gleich prüfen, welche der Begriffe Sie schon kennen?
+Wo finden Sie zusätzliches oder vertiefendes Material? Als visuelle Begleitung empfehle ich das sehr schöne Einführungsvideo des Mathematik-Didaktikers Grant Sanderson (7 Minuten, <https://youtu.be/LPZh9BOjkQs>).
+Tiefer in die mathematischen Details geht die grafische und interaktive Einführung als Animation von Brendan Bycroft (<https://bbycroft.net/llm>).
+Wer sich auch die technischen Hintergründe genauer erschließen will, kann das Lehrbuch-Standardwerk von @jurafsky2025a nutzen, das online frei verfügbar ist.
 
-Hier ist ein kleines **Lernspiel** (als Artifact mit dem Sprachmodell Claude erstellt), in dem Sie die Begriffe den richtigen Definitionen zuordnen müssen:
+Von Prompt bis Token, über Temperatur und RAG: Was ist Ihnen schon an Grundbegriffen in diesem Kontext vertraut? Testen Sie sich selbst mit dem folgenden kleinen Spiel. Bei voller Punktzahl winkt Ihnen ein Preis!
 
----
-title: "Mini-Lernspiel-Grundbegriffe LLMs"
-format: revealjs
----
+::: {.callout-tip title="Lernspiel: Welche Grundbegriffe kennen Sie schon?"}
 
-## LLM-Lernspiel
+*Ordnen Sie die Begriffe den korrekten Definitionen zu!*
 
 <iframe src="interactions\llm-game-standalone.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
-
 (am besten auf dem Computer spielen).
 Hier auch Online abrufbar (so etwas nennt sich "Artifact" beim Sprachmodell "Claude") [[https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8]{.underline}](https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8)
 :::
@@ -49,63 +42,50 @@ Die Modelle können erstaunliche Mengen von Textdaten verarbeiten, um vielseitig
 Die **generative Künstliche Intelligenz** (GenAI) bezieht sich auf Systeme, die fähig sind, neue Inhalte zu erzeugen, wie etwa Texte, die noch nicht existierten.
 LLMs sind ein zentraler Teil dieser generativen KI und können eigenständig Texte zu einem breiten Spektrum von Themen generieren.
 
+::: {.callout-tip title="Tipp: Mini-Interaktionen einfach als HTML erstellen"}
+Können Sie in HTML programmieren? Jetzt schon. Die *Lernspiele in diesem Abschnitt* wurden mit Hilfe von Sprachmodellen  erstellt (Gemini, ChatGPT, Claude). Meist mit einer Variation des einfachen Prompts: **Erstelle mir ein browser-basiertes Lernspiel zum Thema / zur Illustration von ..."**. Oft hat man nach 5-10 Minuten eine gute erste Version. In der Lehre mache ich das oft auch als Übung mit Studierenden. Sie sollen dann erst mit Hilfe der KI ein Lernspiel erstellen und dann begründet bewerten, welcher Spiel-Prototyp das Konzept am besten darstellt. Bei etwas mehr Zeit kann man sie gegenseitig bewerten lassen, selbst Kriterien erstellen oder stärkere Gamification hinzufügen. Im Ergebnis beschäftigen sich idealerweise die Teilnehmer intensiv mit einem theoretischen Konzept (Bei komplexeren Themen hilft es, einen Fachtext als Hintergrund zum Konzept hochzuladen.)
+:::
+
 Das **Sprachmodell** (s. Abbildung 3) zerlegt dazu grob gesagt Inputs wie Texte in kleine Bausteine (Tokens), verwandelt diese in Zahlen (Embeddings), erkennt mithilfe komplexer Muster (Transformer und Attention) deren Zusammenhänge, und erzeugt auf diese Weise selbstständig basierend auf kontextbezogen berechneten Wahrscheinlichkeiten neue Texte (generative Sprachproduktion).
 
-Hier kann man das selbst einfach ausprobieren: Das interaktive Widget simuliert eine GPT-2-ähnliche Tokenisierung.
-
-![So wandeln Sprachmodelle Text in "Token" um.](images/script02-01.svg){#fig-token} Quelle: Erstellt basierend auf Miguel Grinberg, https://blog.miguelgrinberg.com/post/how-llms-work-explained-without-math <iframe src="tokenizer-explorer.html" width="100%" height="700px" frameborder="0"></iframe>
-
-Siehe dazu auch die animierte Darstellung von Grant Sanderson:
-
-![Visualisierung von Transformator-Sprachmodellen. Quelle: Grant Sanderson, https://youtu.be/LPZh9BOjkQs](images/script02-01.svg){#fig-transformer}
-
-Sprachmodelle wie ChatGPT funktionieren insofern wie ein sehr gut trainierter **Autovervollständiger** für Texte.
-Wenn man ihm den Anfang eines Satzes gibt, sagt es mit hoher Wahrscheinlichkeit voraus, wie der Satz weitergeht – basierend auf Milliarden von Textbeispielen, die es zuvor „gelesen“ hat.
-Damit GPT Sprache verstehen und erzeugen kann, zerlegt es jeden Text in sogenannte **Tokens** – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen.
+Damit Sprachmodelle wie ChatGPT Sprache verstehen und erzeugen kann, zerlegen sie  Text in sogenannte **Tokens** – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen [s. etwa @jurafsky2025a, Kapitel 2].
 Jedes dieser Tokens wird in einen **Vektor** umgewandelt – eine Zahlenreihe, die das Wort mathematisch beschreibt.
 Dieser Vorgang nennt sich **Embedding**.
 Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, beispielsweise „Hund“ und „Katze“.
 
-Das Herzstück von GPT, dem Generative Pre-trained Transformer, ist der sogenannte **Transformer** – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (**Attention**) erkennt, welche Wörter im Zusammenhang wichtig sind.
-Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen.
-GPT „achtet“ besonders auf bestimmte Tokens (Wörter oder Satzteile), die für die jeweilige Aussage wichtig sind (s. \@fig-transformer).
-Damit bestimmt das Modell, welche Begriffe stärker zur Bedeutung beitragen und in welchem Verhältnis sie zueinander stehen.
+Hier kann man das selbst einfach ausprobieren: Das interaktive Widget simuliert eine GPT-2-ähnliche Tokenisierung.
 
-Beispielsweise erkennt GPT dank Attention in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint.
-Attention ist ein zentraler Bestandteil des Transformer-Modells und sorgt dafür, dass GPT Texte nicht nur wortweise, sondern im Gesamtkontext verstehen und sinnvoll vervollständigen kann.
-
-GPT wurde mit riesigen Textmengen **vortrainiert** (**Pretraining**), ohne konkrete Aufgaben lösen zu müssen – dieser Vorgang erfolgt unüberwacht (*unsupervised learning*).
-
-Sprachmodelle nutzen häufig die Methode **„Reinforcement Learning with Human Feedback“ (RLHF)**, um noch bessere Texte zu generieren.
-Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern nach Qualität beurteilt werden.
-Diese Bewertungen dienen dazu, das Modell zusätzlich zu trainieren und zu steuern, indem Texte belohnt werden, die von Menschen als besonders gut, klar oder hilfreich eingeschätzt wurden.
-Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind.
-
-Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte generieren kann – also kreativ Sprache produziert, ohne bloß zu kopieren (generativ).
-Der Begriff „**generativ**“ bedeutet in diesem Zusammenhang, dass GPT eigenständig neue, sinnvolle Texte erzeugen kann, indem es gelernte Muster neu kombiniert, anstatt fertige Texte zu übernehmen.
-
-**Token** sind die Bausteine der Sprachverarbeitung in LLMs und repräsentieren oft Wörter oder Satzzeichen.
-Die Zerlegung von Text in Token ermöglicht es dem Modell, mit Sprache auf einer granularen Ebene zu arbeiten.
-Auf Webseiten wie Tiktokenizer können wir selbst Text eingeben und diese Zerlegung ausprobieren.
-
-![Beispiel für die Umwandlung von Text in Token](images/script02-02.svg)
-
-**Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?** Neuere LLMs können schon ganze Bücher schnell aufsaugen und dann zusammenfassen (z.B. Claude, GPT-4o oder Gemini).
-Das **Kontext-Fenster** eines LLM beschreibt die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu verstehen.
+::: {.callout-tip title="Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen umgewandelt"}
+ <iframe src="interactions\tokenizer-explorer.html" width="100%" height="700px" frameborder="0"></iframe>
+:::
 
 Ein **Prompt** ist eine Eingabeaufforderung, die an ein LLM gesendet wird, um eine spezifische Antwort zu erhalten.
 Die Gestaltung dieser Prompts ist entscheidend für die Qualität der generierten Antworten und wird als **Prompt Engineering** bezeichnet.
 
-**Agenten** im Kontext von KI sind fortgeschrittene Prompts, die spezifische Aufgaben in natürlicher Sprache umsetzen.
+
+### Was heißt hier GPT?
+GPT steht für **Generative Pre-trained Transformer**. Wir schauen zunächst, was diese drei Begriffe bedeuten. 
+
+*Generative*: Der Begriff „**generativ**“ bedeutet in diesem Zusammenhang, dass GPT eigenständig neue, sinnvolle Texte erzeugen kann, indem es gelernte Muster neu kombiniert, anstatt fertige Texte zu übernehmen.
+
+*'Pretrained'*: GPT wurde mit riesigen Textmengen **vortrainiert** (**Pretraining**), ohne konkrete Aufgaben lösen zu müssen – dieser Vorgang erfolgt unüberwacht (*unsupervised learning*).
+Sprachmodelle nutzen häufig die Methode **„Reinforcement Learning with Human Feedback“ (RLHF)**, um noch bessere Texte zu generieren. Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern nach Qualität beurteilt werden.Diese Bewertungen dienen dazu, das Modell zusätzlich zu trainieren und zu steuern, indem Texte belohnt werden, die von Menschen als besonders gut, klar oder hilfreich eingeschätzt wurden. Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind.
+Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte generieren kann – also kreativ Sprache produziert, ohne bloß zu kopieren (generativ).
+
+*Transformer*: Das Herzstück des GPT ist der sogenannte **Transformer** – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (**Attention**) erkennt, welche Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen.
+
+Im Transformer bedeutet „Attention“: Jedes Wort (genauer: jedes Token) entscheidet dynamisch, auf welche anderen Tokens es beim Verstehen oder Generieren am stärksten „hören“ sollte. Technisch ist das eine gewichtete Mischung von Informationen: Das Modell bildet eine Art Relevanzscore zwischen einem „aktuellen Interesse“ und möglichen „Informationsquellen“ und macht daraus Gewichte, die sich zu 1 aufsummieren. Die Ausgabe ist dann eine gewichtete Summe der Informationsinhalte. Das ist wie bei einer Literaturrecherche: Eine Fragestellung (Query) wird mit Titeln/Abstracts als „Hinweis-Schilder“ (Keys) abgeglichen; die eigentlichen Inhalte (Values) aus den passenden Quellen fließen dann stärker in das Gesamtverständnis ein.
+
+Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint (s. Abbildung _).
+(Der zentrale Fachartikel von 2017, ein zentraler Auslöser der aktuellen KI-Welle, hatte den knackigen Titel "Attention is all you need" @vaswani2017 - der Artikel wurde mittlerweile mehr als 200.000 fach zitiert.)
+
+
+**Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?** Neuere LLMs können schon ganze Bücher schnell aufsaugen und dann zusammenfassen (z.B. Claude, ChatGPT oder Gemini).
+Das **Kontext-Fenster** eines LLM beschreibt die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu verstehen.
+
+**Agenten** im Kontext von GenAI sind fortgeschrittene Prompts, die spezifische Aufgaben in natürlicher Sprache umsetzen.
 GPT-basierte Agenten können Text analysieren, generieren und verschiedene Aufgaben automatisieren, indem sie vorab definierte Muster und Regeln befolgen.
 Durch die Erstellung solcher Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten.
-
-Sprachmodelle haben mittlerweile mehrere **Nutzungs-Muster** - verschiedene Ansätze also, eine Anfrage zu beantworten.
-Hier stellt das Prof. Tom Yeh schön anschaulich an der Frage "Was ist der Sinn des Lebens?" dar:
-
-<iframe src="llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
-
-</iframe>
 
 **RAG (Retrieval-Augmented Generation)** beschreibt die Möglichkeit, zusätzliche Daten wie Fachtexte, Statistiken oder Gesetzesbücher in Kombination mit einem KI Modell zu nutzen.
 Die KI ist das Gehirn, die zusätzliche Wissensdatenbank quasi das Bücherregal, das zu Rate gezogen werden kann.
@@ -113,11 +93,34 @@ Je nach Kontextfenster stehen dort mehr oder weniger Bücher.
 Insofern umschreibt RAG ein KI-Modell, das die Fähigkeiten von Textgenerierungsmodellen (wie GPT) mit einer Wissensdatenbank kombiniert.
 So wird etwa der Prompt-Agent (s.u.) mit einer Reihe von Fachtexten „gefüttert“, in denen Best Practices des Prompting erklärt werden.
 
+Einige Unterschiede zwischen einem einfachen Sprachmodell (LLM) und dem Setup mit Zusatzmaterial (RAG) und erlaubter Werkzeugnutzung (Tool Use, Agenten) sehen wir an der folgenden Interaktion. Wählen Sie hier jeweils die passende Antwort (einfach, aber so bleiben Sie dran!).
+
+::: {.callout-tip title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?"}
+Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen für LLM, RAG und Agent auswählen und die Fragen beantworten.
+
+<iframe src="interactions\llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
+
+</iframe>
+::: 
+
 Das Modell sucht nach relevanten Daten und integriert diese in die generierte Antwort.
 In der Lehre kann RAG verwendet werden, um den Studierenden Fachtexte oder besonders aktuelle Informationen zur Verfügung zu stellen.
 Beispielsweise könnten Studierende in einem Geschichtsseminar eine KI befragen, die externe Quellen durchforstet, um aktuelle Erkenntnisse zu historischen Ereignissen zu präsentieren.
 Unternehmen nutzen diese Technik, um etwa 1000-seitige Gebrauchsanweisungen mit KI durchsuchbar zu machen, oder Chatbots zu trainieren, die typische, repetitive Kundenanfragen beantworten.
 Insofern ermöglicht RAG eine dynamische und zeitgemäße Wissensvermittlung, die nicht auf das festgelegte Wissen des KI-Modells beschränkt ist.
+
+### Was nutzen - LLM, RAG oder Agent?
+Wie unterscheiden sich die verschiedenen *Nutzungs-Muster*, die wir bis jetzt kennengelernt haben? Frage ich nur das Sprachmodell? Oder lieber das Sprachmodell mit Zusatz-Material (RAG)? Oder vielleicht das Sprachmodell mit Tools (Agenten)? 
+Prüfen Sie Ihr Verständnis: Welche der links gezeigten Antworten passen zu welchem der rechts gezeigten Muster? Nutzt das Sprachmodell nur sein "Standard-Wissen" (LLM only), oder werden "Werkzeuge" wie Internet-Nutzung erlaubt? 
+
+::: {.callout-tip title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?"}
+<iframe src="interactions\llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
+
+</iframe>
+:::
+
+Das beendet unsere kurze Begriffsbestimmung. Ein etwas breiteres Glossar für Anwender finden Sie etwa bei der populärwissenschaftlichen Zeitschrift CIO (Chief Intelligence Officer): <https://www.cio.de/article/3700849/die-wichtigsten-begriffe-im-genai-umfeld.html>.
+
 
 ## Wie denken Sprachmodelle und warum halluzinieren sie?
 
