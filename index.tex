@@ -221,7 +221,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={KI als Hilfe zum Lehren und Lernen},
+  pdftitle={Mini-Lernspiel-Grundbegriffe LLMs},
   pdfauthor={Roman Bartnik},
   pdflang={de},
   colorlinks=true,
@@ -232,7 +232,7 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{KI als Hilfe zum Lehren und Lernen}
+\title{Mini-Lernspiel-Grundbegriffe LLMs}
 \author{Roman Bartnik}
 \date{2025-12-05}
 \begin{document}
@@ -387,18 +387,17 @@ Auswirkungen auf den Arbeitsprozess in der Wissensarbeit W. Liang et al.
 GenAI?}\label{wie-nutzen-studierende-und-lehrende-genai}
 
 Auch \textbf{Studierende nutzen bereits umfangreich Sprachmodelle} für
-einen breiten Strauß an Zielen (s.
-\textbf{?@fig-nutzung-fachrichtungen}). Eine Auswertung der KI-Forscher
-des KI-Unternehmens Anthropic von 1 Millionen anonymisierten Chats
-zwischen Usern mit Universitätskonto und dem KI Bot zeigt typische
-Muster der Nutzung (Handa et al., 2025): Studierende setzen das
-Sprachmodell \textbf{vor allem für anspruchsvolle Tätigkeiten} ein, wie
-das \textbf{Erstellen neuer Inhalte und das Analysieren komplexer
-Themen}, was höheren Ebenen der Bloomschen Taxonomie entspricht. Daraus
-ergibt sich die Herausforderung sicherzustellen, dass Studierende
-wesentliche kognitive Aufgaben nicht vollständig an KI delegieren:
-Aufgaben müssen angepasst und der verantwortungsvolle Umgang mit der
-Technik muss eingeübt werden.
+einen breiten Strauß an Zielen (s. Abbildung~\ref{fig-script}). Eine
+Auswertung der KI-Forscher des KI-Unternehmens Anthropic von 1 Millionen
+anonymisierten Chats zwischen Usern mit Universitätskonto und dem KI Bot
+zeigt typische Muster der Nutzung (Handa et al., 2025): Studierende
+setzen das Sprachmodell \textbf{vor allem für anspruchsvolle
+Tätigkeiten} ein, wie das \textbf{Erstellen neuer Inhalte und das
+Analysieren komplexer Themen}, was höheren Ebenen der Bloomschen
+Taxonomie entspricht. Daraus ergibt sich die Herausforderung
+sicherzustellen, dass Studierende wesentliche kognitive Aufgaben nicht
+vollständig an KI delegieren: Aufgaben müssen angepasst und der
+verantwortungsvolle Umgang mit der Technik muss eingeübt werden.
 
 \begin{figure}
 
@@ -522,16 +521,19 @@ Animation von Brendan Bycroft. Wer tiefer in die Hintergründe einsteigen
 will, kann das Lehrbuch-Standardwerk von Jurafsky \& Martin (2025)
 nutzen, das online frei verfügbar ist.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, arc=.35mm, left=2mm, titlerule=0mm, opacityback=0, leftrule=.75mm, breakable, toprule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Begriffe prüfen}, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, opacityback=0, opacitybacktitle=0.6, left=2mm, bottomrule=.15mm, leftrule=.75mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Begriffe prüfen}, toptitle=1mm, colback=white, bottomtitle=1mm, breakable, arc=.35mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, rightrule=.15mm]
 
 Wollen Sie gleich prüfen, welche der Begriffe Sie schon kennen?
 
 Hier ist ein kleines \textbf{Lernspiel} (als Artifact mit dem
 Sprachmodell Claude erstellt), in dem Sie die Begriffe den richtigen
 Definitionen zuordnen müssen:
-\href{https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8}{\ul{https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8}}
 
-(am besten auf dem Computer spielen).
+\section{LLM-Lernspiel}\label{llm-lernspiel}
+
+(am besten auf dem Computer spielen). Hier auch Online abrufbar (so
+etwas nennt sich ``Artifact'' beim Sprachmodell ``Claude'')
+\href{https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8}{\ul{https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8}}
 
 \end{tcolorbox}
 
@@ -554,6 +556,15 @@ Attention) deren Zusammenhänge, und erzeugt auf diese Weise
 selbstständig basierend auf kontextbezogen berechneten
 Wahrscheinlichkeiten neue Texte (generative Sprachproduktion).
 
+Hier kann man das selbst einfach ausprobieren: Das interaktive Widget
+simuliert eine GPT-2-ähnliche Tokenisierung.
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/images/script02-01.pdf}}
+Quelle: Erstellt basierend auf Miguel Grinberg,
+https://blog.miguelgrinberg.com/post/how-llms-work-explained-without-math
+
+Siehe dazu auch die animierte Darstellung von Grant Sanderson:
+
 \begin{figure}
 
 \centering{
@@ -572,15 +583,13 @@ Sprachmodelle wie ChatGPT funktionieren insofern wie ein sehr gut
 trainierter \textbf{Autovervollständiger} für Texte. Wenn man ihm den
 Anfang eines Satzes gibt, sagt es mit hoher Wahrscheinlichkeit voraus,
 wie der Satz weitergeht -- basierend auf Milliarden von Textbeispielen,
-die es zuvor „gelesen`` hat.
-
-Damit GPT Sprache verstehen und erzeugen kann, zerlegt es jeden Text in
-sogenannte \textbf{Tokens} -- kleine Bausteine wie Wörter, Wortteile
-oder Satzzeichen. Jedes dieser Tokens wird in einen \textbf{Vektor}
-umgewandelt -- eine Zahlenreihe, die das Wort mathematisch beschreibt.
-Dieser Vorgang nennt sich \textbf{Embedding}. Dabei wird darauf
-geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten,
-beispielsweise „Hund`` und „Katze``.
+die es zuvor „gelesen`` hat. Damit GPT Sprache verstehen und erzeugen
+kann, zerlegt es jeden Text in sogenannte \textbf{Tokens} -- kleine
+Bausteine wie Wörter, Wortteile oder Satzzeichen. Jedes dieser Tokens
+wird in einen \textbf{Vektor} umgewandelt -- eine Zahlenreihe, die das
+Wort mathematisch beschreibt. Dieser Vorgang nennt sich
+\textbf{Embedding}. Dabei wird darauf geachtet, dass ähnliche Wörter
+ähnliche Vektoren erhalten, beispielsweise „Hund`` und „Katze``.
 
 Das Herzstück von GPT, dem Generative Pre-trained Transformer, ist der
 sogenannte \textbf{Transformer} -- ein Rechenmodell, das durch ein
@@ -625,15 +634,13 @@ Token ermöglicht es dem Modell, mit Sprache auf einer granularen Ebene
 zu arbeiten. Auf Webseiten wie Tiktokenizer können wir selbst Text
 eingeben und diese Zerlegung ausprobieren.
 
-\begin{figure}
+\begin{figure}[H]
 
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/images/script02-02.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/images/script02-02.pdf}}
 
 }
 
-\caption{\label{fig-token}Beispiel für die Umwandlung von Text in Token}
+\caption{Beispiel für die Umwandlung von Text in Token}
 
 \end{figure}%
 
@@ -656,6 +663,14 @@ Agenten können Text analysieren, generieren und verschiedene Aufgaben
 automatisieren, indem sie vorab definierte Muster und Regeln befolgen.
 Durch die Erstellung solcher Agenten können Lehrende interaktive und
 personalisierte Lerninhalte einfacher gestalten.
+
+Wie unterscheiden sich Agenten von Sprachmodellen und RAG? Hier wird das
+anhand von Beispielen erläutert:
+
+Sprachmodelle haben mittlerweile mehrere \textbf{Nutzungs-Muster} -
+verschiedene Ansätze also, eine Anfrage zu beantworten. Hier stellt das
+Prof.~Tom Yeh schön anschaulich an der Frage ``Was ist der Sinn des
+Lebens?'' dar:
 
 \textbf{RAG (Retrieval-Augmented Generation)} beschreibt die
 Möglichkeit, zusätzliche Daten wie Fachtexte, Statistiken oder
@@ -812,7 +827,7 @@ Modelle (die komplexe Fragestellungen bearbeiten können) von OpenAI sind
 GPT 5 oder Gemini 2.5 Flash (Stand 08/2025). Kostenfrei nutzbare Open
 Source Alternativen sind z.B. Mistral (eines der wenigen europäischen
 Modelle) und Llama4 (von Meta/Facebook) sowie die chinesische Konkurrenz
-DeepSeek V3.1 Ethan Mollick (2025a); sowie (\textbf{Vellum2024?}).
+DeepSeek V3.1 Ethan Mollick (2025a); sowie Vellum (2024).
 
 \textbf{Welches Sprachmodell sollte man aktuell nutzen?} Die kurze
 Antwort ist, dass aktuell \textbf{GPT-5 eine gute Wahl} ist. \textbf{Für
@@ -1093,7 +1108,7 @@ Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten
 verbessert. So können wir auch besser nachsteuern und das Ergebnis an
 unsere Ziele anpassen.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, rightrule=.15mm, colframe=quarto-callout-note-color-frame, arc=.35mm, left=2mm, titlerule=0mm, opacityback=0, leftrule=.75mm, breakable, toprule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hinweis}, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, opacityback=0, opacitybacktitle=0.6, left=2mm, bottomrule=.15mm, leftrule=.75mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hinweis}, toptitle=1mm, colback=white, bottomtitle=1mm, breakable, arc=.35mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, rightrule=.15mm]
 
 Wollen Sie sich interaktiv einen ausführlichen Prompt erstellen lassen?
 Nutzen Sie diesen \textbf{Prompt-Bot}, den wir für Sie auf Basis der
@@ -1109,7 +1124,7 @@ und meist widerlegt}. Prompts funktionieren nicht immer gleich und so
 kommt es schnell zu anektodischer Evidenz, dass eine Formulierung
 „besser geklappt`` hätte. Die wenigsten der Empfehlungen helfen
 zuverlässig Meincke et al. (2025b); Meincke et al. (2025a); Meincke et
-al. (2025c){]}. Hilft es, \textbf{höflich} zu sein (nein), zu
+al. (2025c). Hilft es, \textbf{höflich} zu sein (nein), zu
 \textbf{drohen} (nein), \textbf{Geld} anzubieten (nein), oder den
 Hiwi-Bot \textbf{Schritt für Schritt} vorgehen zu lassen (ja, aber das
 machen die neueren Reasoning-Sprachmodelle auch selbst)?
@@ -2215,7 +2230,7 @@ dies das Ende der Hausarbeit? Wohl eher einen starken Wandel, denn es
 wird weiter wichtig sein, die saubere Argumentation zu üben (Friedrich,
 2023; Klein, 2023).
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, bottomrule=.15mm, toptitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, arc=.35mm, left=2mm, titlerule=0mm, opacityback=0, leftrule=.75mm, breakable, toprule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Probieren Sie mal}, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, opacityback=0, opacitybacktitle=0.6, left=2mm, bottomrule=.15mm, leftrule=.75mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Probieren Sie mal}, toptitle=1mm, colback=white, bottomtitle=1mm, breakable, arc=.35mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, rightrule=.15mm]
 
 Hier haben wir einen kleinen \textbf{Schreib-Trainer-Bot für
 Studierende} erstellt, der ihnen dabei helfen soll, eine
