@@ -221,7 +221,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Mini-Lernspiel-Grundbegriffe LLMs},
+  pdftitle={KI als Hilfe zum Lehren und Lernen},
   pdfauthor={Roman Bartnik},
   pdflang={de},
   colorlinks=true,
@@ -232,9 +232,9 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Mini-Lernspiel-Grundbegriffe LLMs}
+\title{KI als Hilfe zum Lehren und Lernen}
 \author{Roman Bartnik}
-\date{2025-12-05}
+\date{Invalid Date}
 \begin{document}
 \maketitle
 
@@ -257,7 +257,7 @@ Lehre, Lernen und Forschung verändern kann. Es richtet sich an Lehrende,
 Forschende und Studierende, die verstehen möchten, \textbf{wie KI als
 Werkzeug der Hochschuldidaktik} eingesetzt werden kann.
 
-Das Buch besteht aus fünf Kapiteln:
+Das Buch besteht aus den folgenden Kapiteln:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -272,6 +272,9 @@ Das Buch besteht aus fünf Kapiteln:
   Praxisbeispiele: KI als Hiwi, Copilot, Tutor, Simulator\\
 \item
   Empfehlungen zur Umsetzung\\
+\item
+  Appendix: Best-Practice Sammlung didaktischer Prompts und
+  Aufgabenstellungen\\
 \end{enumerate}
 
 Im ersten Teil fassen wir die aktuelle Forschungslage zusammen.
@@ -327,40 +330,65 @@ und Nachteilen, die das mit sich bringt (Naddaf, 2025a). Wie wir in den
 späteren Kapiteln sehen, experimentieren Hochschulen weltweit intensiv
 mit den neuen Möglichkeiten für Lehre und Forschung.
 
+\textbf{Wie ein Laie im Cockpit eines Verkehrsflugzeugs} fällt es
+Lehrenden teils schwer zu entscheiden, welche der neuen Möglichkeiten
+sinnvoll für die eigene Lehre sind. Zunächst gibt es immer wieder
+Hype-Zyklen: Virtuelle Realität, Blockchain, Roboter, Internet der
+Dinge\ldots{} (Allen \& Edelson, 2024), viel wurde schon ins Rampenlicht
+gestellt und dann wieder vergessen. Es werden gerade für die Lehre
+regelmäßig neue Technologien beworben und gehyped, so dass Lehrende
+schon aus Selbstschutz eine gewisse Grundskepsis mitbringen (sollten),
+ob ein neuer technischer Zugang wirklich auch didaktischen Nutzen bringt
+(für eine wirkungsbasierte Übersicht s. etwa Hattie, 2023, Kap.14).
+Lehrende sind außderdem paradoxen Spannung zwischen den Identitäten als
+Experten und Innovatoren/Faszilitatoren ausgesetzt
+(\textbf{fischer2025?}): Ausgestrahlte Kompetenz ist einerseits Teil
+ihres Wertversprechens, was zur Abwehr ungewohnter Technologien einlädt.
+Andererseits sollen Lehrende auch zu Neugier und Innovation anleiten und
+insofern den Umgang mit neuen, auch für die Lehrenden selbst ungewohnten
+Technologien erleichtern.
+
 \section{Aktuelle Weiterentwicklungen der
 Sprachmodelle}\label{aktuelle-weiterentwicklungen-der-sprachmodelle}
 
-\textbf{Drei zentrale Weiterentwicklungen} zwischen 2024 und 2025 sind
-laut Korinek für den deutlichen Sprung in forschungsrelevanten
-Fähigkeiten der Sprachmodelle verantwortlich (Korinek, 2024-12 (update),
-S.2--3): Erstens \textbf{neue Interaktionsmöglichkeiten} -- während die
-typische Nutzung früher auf Texteingabe im Eingabefenster beschränkt
-war, bieten die großen Sprachmodelle mittlerweile die Möglichkeit an, in
-einem Workspace gemeinsam an Text oder Code zu arbeiten (z.B. ChatGPT
-Canvas, Claude Artifacts). Zweitens eine deutliche Verbesserung der
-\textbf{Problemlösefähigkeit} (reasoning) der Modelle. Den stärksten
+Ende 2025 sehen wir im Rückblick, dass die Sprachbots immer
+selbstständiger werden, man spricht vom ``Agentic Turn''Ethan Mollick
+(2025a): Wir verbringen jetzt weniger Zeit damit, über die
+`Zaubersprüche' einzelner Prompts nachzudenken und mehr Zeit in
+`Mitarbeitergesprächen' - Anleitung und Kritik der digitalen ``Agenten''
+- Sprachmodelle, die selbstständig und auf hohem Niveau mehrere
+Arbeitsschritte durchführen. Die wichtigsten technologischen Durchbrüche
+sind die massive Steigerung der Kontextfenster (bis zu mehreren
+Millionen Token) und die Fähigkeit der Modelle, digitale ``Werkzeuge''
+wie Browser und Dateisysteme autonom zu bedienen. Ein zentrales Thema
+für die praktische Nutzung ist die Parallelisierung und Beschleunigung:
+Experten arbeiten nicht mehr mit einer KI, sondern orchestrieren mehrere
+von Agenten, die etwa parallel an Recherche, Schreibarbeit oder Code
+arbeiten Willison (2025).
+
+Was hat sich in den letzten 2 Jahren praktisch in der Bedienung solcher
+Chatbots geändert? \textbf{Drei zentrale Weiterentwicklungen} zwischen
+2024 und 2025 sind laut Korinek für den deutlichen Sprung in
+forschungsrelevanten Fähigkeiten der Sprachmodelle verantwortlich
+(Korinek, 2024-12 (update), S.2--3): Erstens \textbf{neue
+Interaktionsmöglichkeiten} -- während die typische Nutzung früher auf
+Texteingabe im Eingabefenster beschränkt war, bieten die großen
+Sprachmodelle mittlerweile die Möglichkeit an, in einem Workspace
+gemeinsam an Text oder Code zu arbeiten (z.B. ChatGPT Canvas, Claude
+Artifacts). Zweitens sehen wir eine deutliche Verbesserung der
+\textbf{Problemlösefähigkeit} der Modelle (`reasoning') . Den stärksten
 Modellen (Chat GPT-5, Gemini 2.5, Claude Opus 4.1) kann man mittlerweile
 dabei zusehen, wie sie mehrstufiges Problemlösen und logisches
-Schlussfolgern etwa bei Rechercheaufgaben durchführen. Die Bedeutung von
-präzisen Prompt-„Zaubersprüchen'' nimmt ab, da die neueren (Reasoning)
-Modelle ohnehin selbst Schritt für Schritt vorgehen und nachfragen
-(Meincke et al., 2025b). Insgesamt steigt seit 2023 die Qualität der
-Aufgaben, die Sprachmodelle erledigen können, rasant. Empirische
-Untersuchungen zeigen, dass die Sprachmodelle immer längere Aufgaben auf
-hohem Niveau erledigen können (Kwa et al., 2025).
+Schlussfolgern etwa bei Rechercheaufgaben durchführen. Die
+\textbf{Bedeutung von präzisen Prompt-„Zaubersprüchen'' nimmt ab}, da
+die neueren (Reasoning) Modelle ohnehin selbst Schritt für Schritt
+vorgehen und nachfragen (Meincke et al., 2025b). Insgesamt steigt seit
+2023 die Qualität der Aufgaben, die Sprachmodelle erledigen können,
+rasant. Empirische Untersuchungen zeigen, dass die Sprachmodelle immer
+längere Aufgaben auf hohem Niveau erledigen können (Kwa et al., 2025).
 
-\textbf{Was ändert sich durch GTP-5?} Aus User-Sicht ist GPT-5 im
-Vergleich zu Vormodellen selbstständiger geworden, User müssen nicht
-mehr selbst zwischen vielen unterschiedlichen Modellen auswählen. Je
-nachdem, wie einfach die Frage ist, wird Schnelligkeit bevorzugt (durch
-Nutzung eines kleineren Modells wie GPT-5 nano) oder es wird ein
-schwereres Werkzeug angelegt (mehrstufiges Suchen und Reflektieren mit
-einem größeren Modell). Diese „schlaueren'' Reasoning Modelle werden
-somit jetzt gerade für komplexere Fragen häufiger zur Anwendung kommen
--- nach Herstellerangaben stieg die Nutzung dieser stärkeren Modelle
-unter den zahlenden Usern von 7\% auf 24\%, was insgesamt die Qualität
-der Ergebnisse steigern sollte. Die neuen Modelle sind wiederum deutlich
-effizienter geworden, mit stark sinkenden Kosten pro Prompt. Eine
+Die neuen Modelle sind außderdem günstiger und effizienter geworden: die
+Kosten pro Interaktion sind stark gesunken. Illustratives Beispiel: Eine
 Millionen Token kosteten mit GPT-4 noch 50 Dollar, jetzt nur noch 14
 Cent (InvertedStone, 2025; Ethan Mollick, 2025b). Das Modell
 halluziniert (weiterhin, also Vorsicht, aber) deutlich seltener als
@@ -499,9 +527,9 @@ beim Schreiben und Coden) und \textbf{KI als Tutor} (Feedback und
 Lernunterstützung) sowie \textbf{KI als Simulator} (Role Play und Goal
 Play). Abschließend zeigen wir verschiedene Anwendungen von KI in
 verschiedenen Kurstypen und gehen auf neue \textbf{Herausforderungen für
-Prüfungen} ein (Abschnitt 5). Im Appendix werden Risiken von KI,
-rechtliche Rahmenbedingungen und konkrete Prompts und Aufgabenbeispiele
-aufgeführt.
+Prüfungen} ein (Abschnitt 5). Im Appendix finden Sie eine breite
+Sammlung von didaktischen Prompts und auf GenAI ausgerichteten
+Aufgabenstellungen von führenden Hochschulen.
 
 \bookmarksetup{startatroot}
 
@@ -510,26 +538,28 @@ aufgeführt.
 \section{Definition einiger
 Grundbegriffe}\label{definition-einiger-grundbegriffe}
 
-Hier führen wir kurz ein, was es mit Begriffen wie Transformer, Token,
-Kontextfenstern und Prompts auf sich hat. Technische Details klammern
-wir dabei aus, es geht nur um eine kurze Begriffsbestimmung.
+In diesem Abschnitt wollen wir einigen Definitionen und Bedeutungen
+klären. Dabei nutzen wir immer wieder kleine Interaktionen und
+Lernspiele, auch um so zu zeigen, wie wir einfacher ``fragend'' und
+aktivierend lehren können.
 
-Als visuelle Begleitung empfehle ich das sehr schöne Einführungsvideo
-des Mathematik-Didaktikers Grant Sanderson (7 Minuten). Tiefer in die
-mathematischen Details geht die grafische und interaktive Einführung als
-Animation von Brendan Bycroft. Wer tiefer in die Hintergründe einsteigen
-will, kann das Lehrbuch-Standardwerk von Jurafsky \& Martin (2025)
-nutzen, das online frei verfügbar ist.
+Wo finden Sie zusätzliches oder vertiefendes Material? Als visuelle
+Begleitung empfehle ich das sehr schöne Einführungsvideo des
+Mathematik-Didaktikers Grant Sanderson (7 Minuten,
+\url{https://youtu.be/LPZh9BOjkQs}). Tiefer in die mathematischen
+Details geht die grafische und interaktive Einführung als Animation von
+Brendan Bycroft (\url{https://bbycroft.net/llm}). Wer sich auch die
+technischen Hintergründe genauer erschließen will, kann das
+Lehrbuch-Standardwerk von Jurafsky \& Martin (2025) nutzen, das online
+frei verfügbar ist.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, opacityback=0, opacitybacktitle=0.6, left=2mm, bottomrule=.15mm, leftrule=.75mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Begriffe prüfen}, toptitle=1mm, colback=white, bottomtitle=1mm, breakable, arc=.35mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, rightrule=.15mm]
+Von Prompt bis Token, über Temperatur und RAG: Was ist Ihnen schon an
+Grundbegriffen in diesem Kontext vertraut? Testen Sie sich selbst mit
+dem folgenden kleinen Spiel. Bei voller Punktzahl winkt Ihnen ein Preis!
 
-Wollen Sie gleich prüfen, welche der Begriffe Sie schon kennen?
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, leftrule=.75mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Welche Grundbegriffe kennen Sie schon?}, colback=white, coltitle=black, arc=.35mm, toprule=.15mm, rightrule=.15mm, opacityback=0, bottomrule=.15mm, bottomtitle=1mm, left=2mm, breakable, opacitybacktitle=0.6, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm]
 
-Hier ist ein kleines \textbf{Lernspiel} (als Artifact mit dem
-Sprachmodell Claude erstellt), in dem Sie die Begriffe den richtigen
-Definitionen zuordnen müssen:
-
-\section{LLM-Lernspiel}\label{llm-lernspiel}
+\emph{Ordnen Sie die Begriffe den korrekten Definitionen zu!}
 
 (am besten auf dem Computer spielen). Hier auch Online abrufbar (so
 etwas nennt sich ``Artifact'' beim Sprachmodell ``Claude'')
@@ -549,6 +579,25 @@ noch nicht existierten. LLMs sind ein zentraler Teil dieser generativen
 KI und können eigenständig Texte zu einem breiten Spektrum von Themen
 generieren.
 
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, leftrule=.75mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tipp: Mini-Interaktionen einfach als HTML erstellen}, colback=white, coltitle=black, arc=.35mm, toprule=.15mm, rightrule=.15mm, opacityback=0, bottomrule=.15mm, bottomtitle=1mm, left=2mm, breakable, opacitybacktitle=0.6, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm]
+
+Können Sie in HTML programmieren? Jetzt schon. Die \emph{Lernspiele in
+diesem Abschnitt} wurden mit Hilfe von Sprachmodellen erstellt (Gemini,
+ChatGPT, Claude). Meist mit einer Variation des einfachen Prompts:
+\textbf{Erstelle mir ein browser-basiertes Lernspiel zum Thema / zur
+Illustration von \ldots``}. Oft hat man nach 5-10 Minuten eine gute
+erste Version. In der Lehre mache ich das oft auch als Übung mit
+Studierenden. Sie sollen dann erst mit Hilfe der KI ein Lernspiel
+erstellen und dann begründet bewerten, welcher Spiel-Prototyp das
+Konzept am besten darstellt. Bei etwas mehr Zeit kann man sie
+gegenseitig bewerten lassen, selbst Kriterien erstellen oder stärkere
+Gamification hinzufügen. Im Ergebnis beschäftigen sich idealerweise die
+Teilnehmer intensiv mit einem theoretischen Konzept (Bei komplexeren
+Themen hilft es, einen Fachtext als Hintergrund zum Konzept
+hochzuladen.)
+
+\end{tcolorbox}
+
 Das \textbf{Sprachmodell} (s. Abbildung 3) zerlegt dazu grob gesagt
 Inputs wie Texte in kleine Bausteine (Tokens), verwandelt diese in
 Zahlen (Embeddings), erkennt mithilfe komplexer Muster (Transformer und
@@ -556,121 +605,97 @@ Attention) deren Zusammenhänge, und erzeugt auf diese Weise
 selbstständig basierend auf kontextbezogen berechneten
 Wahrscheinlichkeiten neue Texte (generative Sprachproduktion).
 
+Damit Sprachmodelle wie ChatGPT Sprache verstehen und erzeugen kann,
+zerlegen sie Text in sogenannte \textbf{Tokens} -- kleine Bausteine wie
+Wörter, Wortteile oder Satzzeichen (s. etwa Jurafsky \& Martin, 2025,
+Kap.2). Jedes dieser Tokens wird in einen \textbf{Vektor} umgewandelt --
+eine Zahlenreihe, die das Wort mathematisch beschreibt. Dieser Vorgang
+nennt sich \textbf{Embedding}. Dabei wird darauf geachtet, dass ähnliche
+Wörter ähnliche Vektoren erhalten, beispielsweise „Hund`` und „Katze``.
+
 Hier kann man das selbst einfach ausprobieren: Das interaktive Widget
 simuliert eine GPT-2-ähnliche Tokenisierung.
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/images/script02-01.pdf}}
-Quelle: Erstellt basierend auf Miguel Grinberg,
-https://blog.miguelgrinberg.com/post/how-llms-work-explained-without-math
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, leftrule=.75mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen
+umgewandelt}, colback=white, coltitle=black, arc=.35mm, toprule=.15mm, rightrule=.15mm, opacityback=0, bottomrule=.15mm, bottomtitle=1mm, left=2mm, breakable, opacitybacktitle=0.6, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm]
 
-Siehe dazu auch die animierte Darstellung von Grant Sanderson:
+\end{tcolorbox}
 
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/images/script02-01.pdf}}
-
-}
-
-\caption{\label{fig-transformer}Visualisierung von
-Transformator-Sprachmodellen. Quelle: Grant Sanderson,
-https://youtu.be/LPZh9BOjkQs}
-
-\end{figure}%
-
-Sprachmodelle wie ChatGPT funktionieren insofern wie ein sehr gut
-trainierter \textbf{Autovervollständiger} für Texte. Wenn man ihm den
-Anfang eines Satzes gibt, sagt es mit hoher Wahrscheinlichkeit voraus,
-wie der Satz weitergeht -- basierend auf Milliarden von Textbeispielen,
-die es zuvor „gelesen`` hat. Damit GPT Sprache verstehen und erzeugen
-kann, zerlegt es jeden Text in sogenannte \textbf{Tokens} -- kleine
-Bausteine wie Wörter, Wortteile oder Satzzeichen. Jedes dieser Tokens
-wird in einen \textbf{Vektor} umgewandelt -- eine Zahlenreihe, die das
-Wort mathematisch beschreibt. Dieser Vorgang nennt sich
-\textbf{Embedding}. Dabei wird darauf geachtet, dass ähnliche Wörter
-ähnliche Vektoren erhalten, beispielsweise „Hund`` und „Katze``.
-
-Das Herzstück von GPT, dem Generative Pre-trained Transformer, ist der
-sogenannte \textbf{Transformer} -- ein Rechenmodell, das durch ein
-spezielles Aufmerksamkeitsverfahren (\textbf{Attention}) erkennt, welche
-Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von
-Wörtern im Kontext richtig einschätzen. GPT „achtet`` besonders auf
-bestimmte Tokens (Wörter oder Satzteile), die für die jeweilige Aussage
-wichtig sind (s. @fig-transformer). Damit bestimmt das Modell, welche
-Begriffe stärker zur Bedeutung beitragen und in welchem Verhältnis sie
-zueinander stehen.
-
-Beispielsweise erkennt GPT dank Attention in einem Satz wie „Die Bank
-steht unter einem Baum`` anhand des Kontextes, ob „Bank`` ein Möbelstück
-oder eine Institution meint. Attention ist ein zentraler Bestandteil des
-Transformer-Modells und sorgt dafür, dass GPT Texte nicht nur wortweise,
-sondern im Gesamtkontext verstehen und sinnvoll vervollständigen kann.
-
-GPT wurde mit riesigen Textmengen \textbf{vortrainiert}
-(\textbf{Pretraining}), ohne konkrete Aufgaben lösen zu müssen -- dieser
-Vorgang erfolgt unüberwacht (\emph{unsupervised learning}).
-
-Sprachmodelle nutzen häufig die Methode \textbf{„Reinforcement Learning
-with Human Feedback`` (RLHF)}, um noch bessere Texte zu generieren.
-Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von
-menschlichen Bewertern nach Qualität beurteilt werden. Diese Bewertungen
-dienen dazu, das Modell zusätzlich zu trainieren und zu steuern, indem
-Texte belohnt werden, die von Menschen als besonders gut, klar oder
-hilfreich eingeschätzt wurden. Durch diesen Prozess „lernt`` das LLM,
-Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für
-Menschen besonders verständlich und nützlich sind.
-
-Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte
-generieren kann -- also kreativ Sprache produziert, ohne bloß zu
-kopieren (generativ). Der Begriff „\textbf{generativ}`` bedeutet in
-diesem Zusammenhang, dass GPT eigenständig neue, sinnvolle Texte
-erzeugen kann, indem es gelernte Muster neu kombiniert, anstatt fertige
-Texte zu übernehmen.
-
-\textbf{Token} sind die Bausteine der Sprachverarbeitung in LLMs und
-repräsentieren oft Wörter oder Satzzeichen. Die Zerlegung von Text in
-Token ermöglicht es dem Modell, mit Sprache auf einer granularen Ebene
-zu arbeiten. Auf Webseiten wie Tiktokenizer können wir selbst Text
-eingeben und diese Zerlegung ausprobieren.
-
-\begin{figure}[H]
-
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/images/script02-02.pdf}}
-
-}
-
-\caption{Beispiel für die Umwandlung von Text in Token}
-
-\end{figure}%
-
-\textbf{Was behält das Sprachmodell von unserer Unterhaltung? Wie viel
-Text kann ich -- auch als PDF -- hochladen?} Neuere LLMs können schon
-ganze Bücher schnell aufsaugen und dann zusammenfassen (z.B. Claude,
-GPT-4o oder Gemini). Das \textbf{Kontext-Fenster} eines LLM beschreibt
-die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer
-Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu
-verstehen.
+Die kleine Simulation hier soll nur ein Gefühl für den Prozess geben.
+Wie die Umwandlung eines bestimmten Textes genau in verschiedenen
+Sprachmodellen aussieht, können Sie interaktiv auf Webseiten wie
+Tiktokenizer ausprobieren: https://tiktokenizer.vercel.app/.
 
 Ein \textbf{Prompt} ist eine Eingabeaufforderung, die an ein LLM
 gesendet wird, um eine spezifische Antwort zu erhalten. Die Gestaltung
 dieser Prompts ist entscheidend für die Qualität der generierten
 Antworten und wird als \textbf{Prompt Engineering} bezeichnet.
 
-\textbf{Agenten} im Kontext von KI sind fortgeschrittene Prompts, die
+\subsection{Was heißt hier GPT?}\label{was-heiuxdft-hier-gpt}
+
+GPT steht für \textbf{Generative Pre-trained Transformer}. Wir schauen
+zunächst, was diese drei Begriffe bedeuten.
+
+\emph{Generative}: Der Begriff „\textbf{generativ}`` bedeutet in diesem
+Zusammenhang, dass GPT eigenständig neue, sinnvolle Texte erzeugen kann,
+indem es gelernte Muster neu kombiniert, anstatt fertige Texte zu
+übernehmen.
+
+\emph{`Pretrained'}: GPT wurde mit riesigen Textmengen
+\textbf{vortrainiert} (\textbf{Pretraining}), ohne konkrete Aufgaben
+lösen zu müssen -- dieser Vorgang erfolgt unüberwacht
+(\emph{unsupervised learning}). Sprachmodelle nutzen häufig die Methode
+\textbf{„Reinforcement Learning with Human Feedback`` (RLHF)}, um noch
+bessere Texte zu generieren. Dabei erzeugt das LLM zunächst verschiedene
+Textversionen, die von menschlichen Bewertern nach Qualität beurteilt
+werden.Diese Bewertungen dienen dazu, das Modell zusätzlich zu
+trainieren und zu steuern, indem Texte belohnt werden, die von Menschen
+als besonders gut, klar oder hilfreich eingeschätzt wurden. Durch diesen
+Prozess „lernt`` das LLM, Texte zu bevorzugen, die nicht nur sprachlich
+richtig, sondern für Menschen besonders verständlich und nützlich sind.
+Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte
+generieren kann -- also kreativ Sprache produziert, ohne bloß zu
+kopieren (generativ).
+
+\emph{Transformer}: Das Herzstück des GPT ist der sogenannte
+\textbf{Transformer} -- ein Rechenmodell, das durch ein spezielles
+Aufmerksamkeitsverfahren (\textbf{Attention}) erkennt, welche Wörter im
+Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im
+Kontext richtig einschätzen.
+
+Im Transformer bedeutet „Attention``: Jedes Wort (genauer: jedes Token)
+entscheidet dynamisch, auf welche anderen Tokens es beim Verstehen oder
+Generieren am stärksten „hören`` sollte. Technisch ist das eine
+gewichtete Mischung von Informationen: Das Modell bildet eine Art
+Relevanzscore zwischen einem „aktuellen Interesse`` und möglichen
+„Informationsquellen`` und macht daraus Gewichte, die sich zu 1
+aufsummieren. Die Ausgabe ist dann eine gewichtete Summe der
+Informationsinhalte. Das ist wie bei einer Literaturrecherche: Eine
+Fragestellung (Query) wird mit Titeln/Abstracts als „Hinweis-Schilder``
+(Keys) abgeglichen; die eigentlichen Inhalte (Values) aus den passenden
+Quellen fließen dann stärker in das Gesamtverständnis ein.
+
+Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter
+einem Baum`` anhand des Kontextes, ob „Bank`` ein Möbelstück oder eine
+Institution meint (s. Abbildung \_). (Der zentrale Fachartikel von 2017,
+ein zentraler Auslöser der aktuellen KI-Welle, hatte den knackigen Titel
+``Attention is all you need'' Vaswani et al. (2017) - der Artikel wurde
+mittlerweile mehr als 200.000 fach zitiert.)
+
+\textbf{Was behält das Sprachmodell von unserer Unterhaltung? Wie viel
+Text kann ich -- auch als PDF -- hochladen?} Neuere LLMs können schon
+ganze Bücher schnell aufsaugen und dann zusammenfassen (z.B. Claude,
+ChatGPT oder Gemini). Das \textbf{Kontext-Fenster} eines LLM beschreibt
+die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer
+Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu
+verstehen.
+
+\textbf{Agenten} im Kontext von GenAI sind fortgeschrittene Prompts, die
 spezifische Aufgaben in natürlicher Sprache umsetzen. GPT-basierte
 Agenten können Text analysieren, generieren und verschiedene Aufgaben
 automatisieren, indem sie vorab definierte Muster und Regeln befolgen.
 Durch die Erstellung solcher Agenten können Lehrende interaktive und
 personalisierte Lerninhalte einfacher gestalten.
-
-Wie unterscheiden sich Agenten von Sprachmodellen und RAG? Hier wird das
-anhand von Beispielen erläutert:
-
-Sprachmodelle haben mittlerweile mehrere \textbf{Nutzungs-Muster} -
-verschiedene Ansätze also, eine Anfrage zu beantworten. Hier stellt das
-Prof.~Tom Yeh schön anschaulich an der Frage ``Was ist der Sinn des
-Lebens?'' dar:
 
 \textbf{RAG (Retrieval-Augmented Generation)} beschreibt die
 Möglichkeit, zusätzliche Daten wie Fachtexte, Statistiken oder
@@ -682,6 +707,20 @@ Fähigkeiten von Textgenerierungsmodellen (wie GPT) mit einer
 Wissensdatenbank kombiniert. So wird etwa der Prompt-Agent (s.u.) mit
 einer Reihe von Fachtexten „gefüttert``, in denen Best Practices des
 Prompting erklärt werden.
+
+Einige Unterschiede zwischen einem einfachen Sprachmodell (LLM) und dem
+Setup mit Zusatzmaterial (RAG) und erlaubter Werkzeugnutzung (Tool Use,
+Agenten) sehen wir an der folgenden Interaktion. Wählen Sie hier jeweils
+die passende Antwort (einfach, aber so bleiben Sie dran!).
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, leftrule=.75mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und
+Anwendungsfelder?}, colback=white, coltitle=black, arc=.35mm, toprule=.15mm, rightrule=.15mm, opacityback=0, bottomrule=.15mm, bottomtitle=1mm, left=2mm, breakable, opacitybacktitle=0.6, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm]
+
+Runter scrollen und ``Los gehts!'' auswählen, dann nacheinander die
+Interaktionen für LLM, RAG und Agent auswählen und die Fragen
+beantworten.
+
+\end{tcolorbox}
 
 Das Modell sucht nach relevanten Daten und integriert diese in die
 generierte Antwort. In der Lehre kann RAG verwendet werden, um den
@@ -695,6 +734,27 @@ trainieren, die typische, repetitive Kundenanfragen beantworten.
 Insofern ermöglicht RAG eine dynamische und zeitgemäße
 Wissensvermittlung, die nicht auf das festgelegte Wissen des KI-Modells
 beschränkt ist.
+
+\subsection{Was nutzen - LLM, RAG oder
+Agent?}\label{was-nutzen---llm-rag-oder-agent}
+
+Wie unterscheiden sich die verschiedenen \emph{Nutzungs-Muster}, die wir
+bis jetzt kennengelernt haben? Frage ich nur das Sprachmodell? Oder
+lieber das Sprachmodell mit Zusatz-Material (RAG)? Oder vielleicht das
+Sprachmodell mit Tools (Agenten)? Prüfen Sie Ihr Verständnis: Welche der
+links gezeigten Antworten passen zu welchem der rechts gezeigten Muster?
+Nutzt das Sprachmodell nur sein ``Standard-Wissen'' (LLM only), oder
+werden ``Werkzeuge'' wie Internet-Nutzung erlaubt?
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, leftrule=.75mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten
+Antworten oder Denkprozessen?}, colback=white, coltitle=black, arc=.35mm, toprule=.15mm, rightrule=.15mm, opacityback=0, bottomrule=.15mm, bottomtitle=1mm, left=2mm, breakable, opacitybacktitle=0.6, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm]
+
+\end{tcolorbox}
+
+Das beendet unsere kurze Begriffsbestimmung. Ein etwas breiteres Glossar
+für Anwender finden Sie etwa bei der populärwissenschaftlichen
+Zeitschrift CIO (Chief Intelligence Officer):
+\url{https://www.cio.de/article/3700849/die-wichtigsten-begriffe-im-genai-umfeld.html}.
 
 \section{Wie denken Sprachmodelle und warum halluzinieren
 sie?}\label{wie-denken-sprachmodelle-und-warum-halluzinieren-sie}
@@ -1108,7 +1168,7 @@ Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten
 verbessert. So können wir auch besser nachsteuern und das Ergebnis an
 unsere Ziele anpassen.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, opacityback=0, opacitybacktitle=0.6, left=2mm, bottomrule=.15mm, leftrule=.75mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hinweis}, toptitle=1mm, colback=white, bottomtitle=1mm, breakable, arc=.35mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hinweis}, colback=white, coltitle=black, arc=.35mm, toprule=.15mm, rightrule=.15mm, opacityback=0, bottomrule=.15mm, bottomtitle=1mm, left=2mm, breakable, opacitybacktitle=0.6, toptitle=1mm, colframe=quarto-callout-note-color-frame, titlerule=0mm]
 
 Wollen Sie sich interaktiv einen ausführlichen Prompt erstellen lassen?
 Nutzen Sie diesen \textbf{Prompt-Bot}, den wir für Sie auf Basis der
@@ -2230,7 +2290,7 @@ dies das Ende der Hausarbeit? Wohl eher einen starken Wandel, denn es
 wird weiter wichtig sein, die saubere Argumentation zu üben (Friedrich,
 2023; Klein, 2023).
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, opacityback=0, opacitybacktitle=0.6, left=2mm, bottomrule=.15mm, leftrule=.75mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Probieren Sie mal}, toptitle=1mm, colback=white, bottomtitle=1mm, breakable, arc=.35mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, leftrule=.75mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Probieren Sie mal}, colback=white, coltitle=black, arc=.35mm, toprule=.15mm, rightrule=.15mm, opacityback=0, bottomrule=.15mm, bottomtitle=1mm, left=2mm, breakable, opacitybacktitle=0.6, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm]
 
 Hier haben wir einen kleinen \textbf{Schreib-Trainer-Bot für
 Studierende} erstellt, der ihnen dabei helfen soll, eine
@@ -4023,6 +4083,281 @@ Empfehlungen für gute Informationsquellen zum Thema Generative KI:
   https://anthropic.skilljar.com/ai-fluency-framework-foundations.
 \end{itemize}
 
+\bookmarksetup{startatroot}
+
+\chapter{Didaktische Prompts und Aufgabenstellungen -- Best Practice
+Sammlung}\label{didaktische-prompts-und-aufgabenstellungen-best-practice-sammlung}
+
+\section{Kurze Einordnung der Prompt-Vielfalt -- was sind gemeinsame
+Muster?}\label{kurze-einordnung-der-prompt-vielfalt-was-sind-gemeinsame-muster}
+
+\subsection{Übersicht}\label{uxfcbersicht-1}
+
+Die hier gesammelten \textbf{Prompts} umfassen ausgesuchte
+Best-Practice-Beispiele der Harvard System Prompt Library, der Wharton
+Business School (Ethan \& Lilach Mollick), der Informatik-Fakultät der
+Universität Stanford und der Hongkong City University sowie der Firma
+Anthropic. Beispiele für \textbf{komplexere Aufgabenstellungen, die
+GenAI in mehreren Schritten integrieren}, stammen vor allem vom Harvard
+AI Pedagogy Project (Links zu den Quellen sind jeweils beim Prompt
+angegeben).
+
+Vorab sollen die Arten von Prompts hier kurz exemplarisch diskutiert und
+nach vier Kategorien der GenAI-Unterstützung geordnet werden (Hiwi,
+Tutor, Copilot, Simulator). Wir fragen außerdem, welche allgemeinen
+Muster erkennbar sind.
+
+Die \textbf{Hiwi}-Prompts erfüllen klassische Entlastungsaufgaben:
+CSV-Konverter und Data Organizer verwandeln unstrukturierte Eingaben in
+saubere Tabellen oder in ein Standard-Format, wie etwa JSON; der
+Excel-Formel-Experte generiert und erklärt komplexe Formeln Schritt für
+Schritt; LaTeX-Unterstützung liefert Bausteine für Formeln und Tabellen;
+der Meeting Scribe fasst Sitzungen knapp mit Verantwortlichkeiten
+zusammen. Didaktisch gesehen senkt diese Rolle extrinsische kognitive
+Last und schafft Zeit für anspruchsvollere Lernaktivitäten --
+vergleichbar mit Labortechnik, die die Versuchsanordnung vorbereitet,
+damit Studierende die eigentliche Analyse vertiefen können. Wichtig ist
+hier Transparenz: Studierende sollten sehen, wie Datenstrukturen,
+Formellogik und Protokollierung entstehen (Prozesssicht), damit die
+Hilfskraft nicht zur Black Box wird (E. R. Mollick \& Mollick, 2024
+betonen explizit die Festlegung der KI mit klaren Schritten und
+Constraints).
+
+Die Prompts in der \textbf{Tutor}-Kategorie decken ein breites Spektrum
+ab: vom „Allgemeinen Tutor'' (sokratische Fragen, Scaffolding mit
+Ein-Frage-Takt) über Mentor-Bots für Entwurfsfeedback,
+Reflexionscoaches, Debattenvorbereitung, Argumentüberarbeitung,
+Assignment-Mentor bis zu Übungsaufgaben-Generatoren
+(Statistik/Regression), Vektor-Explorer und Diskussionspartner für
+soziologische Theorien. Gemeinsame didaktische Muster sind adaptive
+Erklärungen, Analogien, schrittweises Fragen, das gezielte Adressieren
+von Fehlvorstellungen, metakognitive Reflexion sowie der Protégé-Effekt
+(Lernende lehren die KI bzw. eine Novizin) (E. R. Mollick \& Mollick,
+2024, „Mentoring, Coaching, and Tutoring''; E. R. Mollick \& Mollick,
+2023b). Ein anschauliches Beispiel ist „KI agiert als Schüler, der vom
+Lernenden unterrichtet wird'': Die KI spielt eine inquisitive oder
+skeptische Novizin, wodurch Studierende ihr Wissen strukturieren, Lücken
+entdecken und Begriffe in eigenen Worten anwenden -- wie in einem
+Mikroseminar, in dem die Rollen bewusst gedreht werden.
+
+Die Prompts zur Nutzung von GenAI als \textbf{Copilot} nutzen es als
+Hilfe in Projekten und bei der Co-Creation. Für Lehrende und Teams
+finden sich Copilot-Prompts, die reale Arbeitspraktiken abbilden:
+Team-Charter erstellen (Rollen, Ziele, Normen),
+Team-Reflexion/After-Action-Review, Projekt-Pre-Mortem (prospektive
+Nachbetrachtung), „Devil's Advocate'' zur systematischen Gegenposition,
+gemeinsame Fallstudienerstellung mit Versionierung und Peer-Feedback.
+Didaktisch verbindet diese Rolle Co-Creation (gemeinsames
+Fällen/Strukturieren), Debiasing (Exploration von Alternativen/Annahmen)
+sowie „learning from projects'' durch strukturierte Nachbereitung. Sie
+operationalisiert Mollicks „Learning through Co-Creation'' und „Building
+Opportunities for Critique'': Lernende konstruieren Artefakte (Case
+Drafts) und erleben Qualitätssicherung als geführten Prozess; Teams
+kultivieren Fehlerkultur und Entscheidungsqualität über Leitfragen und
+Priorisierung von Risiken (analog zu Checklisten in der Luftfahrt) (E.
+R. Mollick \& Mollick, 2024). Beispiele: Team-Charter als Startartefakt
+der Kollaboration; Pre-Mortem mit
+Eintrittswahrscheinlichkeit/Schadenshöhe und Ableitung von
+Gegenmaßnahmen; Devil's-Advocate-Prompt mit Fokus auf Konsensfalle,
+versteckte Annahmen und Beleglage -- abschließend visualisiert als
+Vergleichstabelle „Initial Decision vs.~Hidden Assumptions''. Der
+Copilot ähnelt einer gut vorbereiteten Kollegin im Projektmeeting, die
+methodisch führt, aber Ownership bei den Lernenden belässt.
+
+Die \textbf{Simulations}-Prompts modellieren „Role Play'' (z. B.
+Verhandlungstraining) und „Goal Play'' (z. B. Goal-Setting,
+Self-Distancing nach Kross) mit klaren Phasen: Informationssammlung,
+Szenarioauswahl, Szenenaufruf („BEGIN ROLE PLAY''), sechs Züge bis zur
+konsekutiven Entscheidung, danach strukturierte, balancierte
+Feedback-Sequenz und Transferhinweise. Genau diese Sequenz betonen E. R.
+Mollick \& Mollick (2024): simulationsbasiertes Üben, narrative
+Einbettung, adaptive Schwierigkeit, individuelles Feedback plus
+obligatorisches Debriefing im Kurs („Learning through Simulations'').
+Die Verhandlungssimulation adressiert u. a. BATNA, ZOPA, Anker,
+Täuschung, First-Offer-Effekte, Kooperations-/Wettbewerbsdynamik und
+Beziehungsmanagement am Abschluss der Verhandlung; die
+Self-Distancing-Simulation trainiert Perspektivwechsel und
+Emotionsregulation; die Goal-Setting-Simulation operationalisiert
+Prinzipien wie Spezifität, Zerlegung, Priorisierung, Flexibilität und
+Hürdenanalyse -- jeweils mit klaren „Do/Don't''-Leitplanken, damit die
+KI in-character bleibt und nicht „übermoderiert''. Sinnbildlich ist der
+Simulator der „Flugsimulator der Lehre'': sicher scheitern, Muster
+erkennen, Taktiken verfeinern -- gefolgt von reflektierter Auswertung.
+
+Zusammengeführt ergeben sich einige Muster der komplexeren didaktischen
+Prompts: Die Hilfskraft reduziert Routine-Lasten und macht Prozesse
+sichtbar; der Tutor aktiviert aktive Reflexion im Dialog und setzt auf
+Erklären-Üben-Reflektieren; der Copilot stärkt kollaborative
+Entscheidungs- und Projektkompetenz durch Co-Creation und
+Gegenpositionen; der Simulator verlagert Wissen in performatives Handeln
+mit unmittelbarer Rückmeldung und geplanter Nachbesprechung. So entsteht
+ein durchgängiger Lernpfad vom Strukturieren über das Verstehen zum
+Anwenden -- mit KI als gut „programmierter'' Partnerin, die stets durch
+Lehrdesign, Leitfragen und Debriefing gerahmt bleibt (E. R. Mollick \&
+Mollick, 2024).
+
+\section{Didaktische Prompts: Gezielte
+Einschränkungen}\label{didaktische-prompts-gezielte-einschruxe4nkungen}
+
+Wenn wir die KI als Hiwi nutzen, ist unser Ziel meist eine möglichst
+schnelle und effiziente Antwort. Das ist bei den drei anderen Rollen
+anders: Hier schränken wir das Sprachmodell oft bewusst ein. Das liegt
+kurz gesagt daran, dass Studierende mehr lernen, wenn sie etwas
+schwitzen. Die Lernforschung nennt das „desirable difficulties''
+(\textbf{bjork2011?}).
+
+Ein charakteristisches Merkmal fortgeschrittener didaktischer
+Eingabeaufforderungen ist die Verwendung expliziter Einschränkungen --
+Regeln, die dem LLM bestimmte Verhaltensweisen verbieten oder verhindern
+(E. R. Mollick \& Mollick, 2023b, 2024). Diese Einschränkungen sind
+entscheidend für die Umwandlung eines allgemeinen Sprachmodells in ein
+spezialisiertes pädagogisches Werkzeug. Durch die Einschränkung der
+Standardtendenzen der KI stellen diese Regeln sicher, dass die
+Interaktion spezifischen Lernzielen dient und nicht nur Informationen
+liefert. Die Analyse der gesammelten Eingabeaufforderungen zeigt mehrere
+wiederkehrende Kategorien von Einschränkungen.
+
+\textbf{1. Zulassung erwünschter Schwierigkeiten zum aktiven Lernen}
+
+Die grundlegendste Einschränkung zielt darauf ab, den Schüler von einem
+passiven Empfänger von Informationen zu einem aktiven Teilnehmer an
+seinem eigenen Lernprozess zu machen. Dies wird erreicht, indem die KI
+daran gehindert wird, einfach die Antwort zu geben.
+
+\begin{itemize}
+\item
+  „Keine direkte Antwort geben'' / „Zur Selbstkorrektur anleiten'':
+  Diese Regel, die im Mittelpunkt der sokratischen Eingabeaufforderungen
+  steht, zwingt das LLM, eher als Wegweiser denn als Orakel zu
+  fungieren. Anstatt die Frage eines Schülers direkt zu beantworten,
+  muss die KI durch Nachfragen, einem Hinweis oder der Aufforderung an
+  den Lernenden reagieren, seine Überlegungen zu erklären. Dies fördert
+  das aktive Erinnern und eine tiefere kognitive Verarbeitung.
+\item
+  „Löse KEINE benoteten Aufgaben'': Diese Einschränkung, die in der
+  Stanford NumPy-Aufforderung zu finden ist, wahrt die akademische
+  Integrität, indem sie Betrug verhindert. Noch wichtiger ist, dass sie
+  die Lernenden dazu zwingt, ihr Wissen selbstständig anzuwenden, was
+  für den Erwerb von Fähigkeiten unerlässlich ist.
+\item
+  „Halte keine längeren Vorträge ohne Interaktion'': Diese Regel stellt
+  sicher, dass der Lernprozess dialogisch und interaktiv bleibt und
+  verhindert, dass sich der Lernende abwendet.
+\end{itemize}
+
+\textbf{2. Aufrechterhaltung der Integrität und des Realismus der
+Simulation}
+
+In Simulator-Aufgaben sind Einschränkungen unerlässlich, um eine
+glaubwürdige und effektive Rollenspiel- oder Problemlösungsumgebung zu
+schaffen.
+
+\begin{itemize}
+\item
+  „Verlasse nicht Deine Rolle'': Diese Anweisung, die in der Aufgabe
+  „Interview mit einer Figur'' zu finden ist, ist entscheidend für die
+  Aufrechterhaltung der immersiven Qualität der Simulation, die für
+  situiertes Lernen von zentraler Bedeutung ist.
+\item
+  „Gebe nicht alle Informationen auf einmal'': Wie in der Simulation
+  „Telefonische Triage'' zu sehen ist, sorgt diese Einschränkung für
+  eine realistische Informationslücke. Sie zwingt den Lernenden dazu,
+  systematische, professionelle Fähigkeiten (wie diagnostische Fragen)
+  zu üben, anstatt einfach nur eine Datenflut zu erhalten.
+\item
+  „Entscheide nicht zu schnell und gehe keine Kompromisse ein'': Im
+  Verhandlungssimulator sorgt diese Regel dafür, dass die Simulation
+  eine echte Herausforderung darstellt und die Studierenden gezwungen
+  sind, ihre Überzeugungs- und Konfliktlösungsfähigkeiten unter
+  realistischem Druck zu üben.
+\end{itemize}
+
+\textbf{3. Sicherstellung einer sachlichen Grundlage und Verhinderung
+von Halluzinationen}
+
+LLMs sind dafür bekannt, dass sie „halluzinieren'' oder Informationen
+erfinden. Didaktische Aufforderungen enthalten oft Einschränkungen, um
+dieses Risiko zu mindern und die Übung im Rahmen des Kursmaterials zu
+halten.
+
+Beispiel: „Deine Antworten dürfen sich NUR auf Ereignisse und
+Informationen stützen, die in \ldots{} dem Quelltext zu finden sind'':
+Diese Regel aus der Aufforderung „Interview mit einer fiktiven Figur''
+ist ein wirksames Mittel, um zu verhindern, dass die KI nicht kanonische
+oder ungenaue Informationen einbringt. Sie konzentriert die Übung auf
+die Textanalyse und -interpretation.
+
+\textbf{4. Kognitive Belastung (cognitive load) begrenzen}
+
+Um sicherzustellen, dass die Lernerfahrung effektiv und nicht
+überfordernd ist, enthalten Aufforderungen oft Einschränkungen
+hinsichtlich der Komplexität und des Tempos der Informationen.
+
+\begin{itemize}
+\item
+  „Vermeide komplizierte/unnötige Notationen'': Diese Richtlinie aus der
+  Stanford NumPy-Aufgabe („Stanford Tutor\ldots``) ist eine direkte
+  Anwendung der kognitiven Belastungstheorie, die unnötige mentale
+  Anstrengungen reduziert, damit sich der Lernende auf das Kernkonzept
+  konzentrieren kann (\textbf{sweller2011?}).
+\item
+  „Stelle nicht mehr als eine Frage auf einmal'': Diese gängige Regel in
+  mehrstufigen Aufgaben verhindert, dass sich der Benutzer überfordert
+  fühlt, und ermöglicht einen natürlicheren, schrittweisen
+  Gesprächsfluss.
+\item
+  „Sprich NUR in {[}Zielsprache{]}``: In Sprachübungs-Prompts sorgt
+  diese Einschränkung für Immersion, wird jedoch oft mit einer
+  „Fluchtmöglichkeit'' kombiniert (z. B. „es sei denn, ich gebe HILFE
+  AUF DEUTSCH ein''), um Frustrationen zu vermeiden, wenn die kognitive
+  Belastung zu hoch wird.
+\end{itemize}
+
+\section{Integration der KI in breitere Aufgabenstellungen und
+Artefakte}\label{integration-der-ki-in-breitere-aufgabenstellungen-und-artefakte}
+
+Die Sammlung enthält Aufgaben, die tiefes Lernen durch Elaboration,
+Selbst-Erklärung und wiederholte Anwendung fördern. Sokratische Dialoge,
+Argumentationskritik und die Essay-Revision erzwingen Begründungen,
+Gegenbeispiele und explizite Kriterienarbeit, wodurch sich der Fokus von
+bloßen Ergebnissen auf nachvollziehbare Denk- und Entscheidungsprozesse
+verschiebt (\textbf{harvard\_yuen?}; \textbf{harvard\_meehan?};
+\textbf{harvard\_newman?}).
+
+Simulationsaufgaben erzeugen handlungsnahe Übungssituationen für
+Kommunikation und klinische Entscheidungen; dadurch werden Abruf- und
+Transferleistungen in realitätsnahen Bedingungen gefördert
+(\textbf{harvard\_welsh?}; \textbf{harvard\_hobbick?};
+\textbf{harvard\_kentz?}).
+
+Copilot-Szenarien wie die DuPont-Analyse und das iterative Ausprobieren
+von Prompts (Prompt-Playtesting) verbinden fachliche Rechenwege mit
+Interpretation, Berichterstellung und Qualitätskontrolle der eigenen
+Prompting-Strategien (\textbf{harvard\_pedersen?};
+\textbf{harvard\_landfair?}).
+
+\textbf{Wie wird Reflexion und Eigenleistung gefördert?} Die Integration
+von GenAI ist in allen Beispielen explizit gesteuert und an sichtbare
+Lernprodukte gebunden. Aufgaben definieren die Rolle der KI und koppeln
+deren Einsatz an Protokolle der KI-Interaktion, kommentierte Revisionen,
+Evidenz-Logs oder Entscheidungsbäume. So verankert etwa die Aufgabe
+„AI-Sandwich'' die KI-Nutzung als Mittel zum Zweck: Zuerst werden Ziele
+und Kriterien ohne KI fixiert, anschließend liefert die KI Varianten und
+Gegenpositionen, und zum Abschluss erfolgt die menschliche Prüfung mit
+Quellenarbeit und Reflexion (\textbf{harvard\_ippolito?}).
+
+Für \textbf{KI-resistente Prüfungsleistungen} empfehlen sich Artefakte
+und Peer-Elemente, die den individuellen Arbeitsprozess sichtbar machen.
+Dazu gehören Versionen ‚vorher/nachher` mit Änderungsbegründungen,
+Annotierungen der eigenen Entscheidungswege, Protokolle der
+Prompt-Iteration oder Evidenztabellen sowie strukturierte Peer-Reviews
+und Debrief-Diskussionen. Prüfungen sollten diese Prozessartefakte
+bewerten, nicht nur das Endprodukt, und Transparenzpflichten verankern:
+Studierende legen ihre KI-Nutzung offen, benennen Prompts und Tools,
+dokumentieren Quellenprüfungen und begründen Überarbeitungen. Auf diese
+Weise bleibt akademische Integrität gewahrt, während die produktiven
+Potenziale von GenAI genutzt werden (\textbf{harvard\_taylor?}).
+
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-acemoglu2019a}
@@ -4035,6 +4370,12 @@ Perspectives}, \emph{33}(2), 3--30.
 Akimov, A., \& Malin, M. (2020). When old becomes new: a case study of
 oral examination as an online assessment tool. \emph{Assessment \&
 Evaluation in Higher Education}, \emph{45}(8), 1205--1221.
+
+\bibitem[\citeproctext]{ref-allen2024}
+Allen, S. J., \& Edelson, S. A. (2024). Brave New Classroom: Navigating
+Educational Technology in Management Education. \emph{Journal of
+Management Education}, \emph{48}(4), 603--609.
+\url{https://doi.org/10.1177/10525629241243339}.
 
 \bibitem[\citeproctext]{ref-an2025a}
 An, Y., Yu, J. H., \& James, S. (2025). Investigating the higher
@@ -4630,6 +4971,11 @@ Spencer, T., \& Singh, S. (2025).
 \emph{\href{https://www.iea.org/reports/energy-and-ai}{Energy and AI}}
 (World Energy Outlook Special Report). International Energy Agency.
 
+\bibitem[\citeproctext]{ref-steinberger2025}
+Steinberger, P. (2025, Oktober 14). \emph{Just Talk To It - the no-bs
+Way of Agentic Engineering \textbar{} Peter Steinberger}.
+\url{https://steipete.me/posts/just-talk-to-it}.
+
 \bibitem[\citeproctext]{ref-tobor2024a}
 Tobor, J. (2024).
 \emph{\href{https://hochschulforumdigitalisierung.de/wp-content/uploads/2024/02/HFD_Blickpunkt_KI-Leitlinien_final.pdf}{Leitlinien
@@ -4645,6 +4991,11 @@ Tutton, M., \& Cohen, D. (2025). Reconceptualizing the Role of the
 University Language Teacher in Light of Generative AI. \emph{Education
 Sciences}, \emph{15}(1), 56.
 \url{https://doi.org/10.3390/educsci15010056}.
+
+\bibitem[\citeproctext]{ref-vaswani2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez,
+A. N., Kaiser, Ł., \& Polosukhin, I. (2017). Attention is all you need.
+\emph{Advances in neural information processing systems}, \emph{30}.
 
 \bibitem[\citeproctext]{ref-vellum2024}
 Vellum (2024, September 4). \emph{LLM Leaderboard 2024}.
@@ -4675,6 +5026,11 @@ case studies: An innovative, academically rigorous, authentic assessment
 approach. \emph{Innovations in Education and Teaching International},
 \emph{61}(5), 930--947.
 \url{https://doi.org/10.1080/14703297.2023.2251967}.
+
+\bibitem[\citeproctext]{ref-willison2025}
+Willison, S. (2025, Oktober 5). Embracing the parallel coding agent
+lifestyle. \emph{Simon Willison's Weblog}.
+\url{https://simonwillison.net/2025/Oct/5/parallel-coding-agents/}.
 
 \bibitem[\citeproctext]{ref-wittenberg2025a}
 Wittenberg, A. (2025, Mai 6).
