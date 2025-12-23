@@ -9,7 +9,7 @@
 <meta name="author" content="Roman Bartnik">
 <meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource, die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen.">
 
-<title>KI als Hilfe zum Lehren und Lernen</title>
+<title>6&nbsp; Didaktische Prompts und Aufgabenstellungen – Best Practice Sammlung – KI als Hilfe zum Lehren und Lernen</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -32,7 +52,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./kapitel01.html" rel="next">
+<link href="./kapitel05.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -252,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Übersicht</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix01-prompt-sammlung.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Didaktische Prompts und Aufgabenstellungen – Best Practice Sammlung</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
@@ -317,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Übersicht</span></a>
   </div>
 </li>
@@ -330,7 +350,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kapitel02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mini-Lernspiel-Grundbegriffe LLMs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -351,6 +371,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix01-prompt-sammlung.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Didaktische Prompts und Aufgabenstellungen – Best Practice Sammlung</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -361,9 +387,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#übersicht" id="toc-übersicht" class="nav-link active" data-scroll-target="#übersicht">Übersicht</a></li>
+  <li><a href="#kurze-einordnung-der-prompt-vielfalt-was-sind-gemeinsame-muster" id="toc-kurze-einordnung-der-prompt-vielfalt-was-sind-gemeinsame-muster" class="nav-link active" data-scroll-target="#kurze-einordnung-der-prompt-vielfalt-was-sind-gemeinsame-muster"><span class="header-section-number">6.1</span> Kurze Einordnung der Prompt-Vielfalt – was sind gemeinsame Muster?</a>
+  <ul class="collapse">
+  <li><a href="#übersicht" id="toc-übersicht" class="nav-link" data-scroll-target="#übersicht">Übersicht</a></li>
+  </ul></li>
+  <li><a href="#didaktische-prompts-gezielte-einschränkungen" id="toc-didaktische-prompts-gezielte-einschränkungen" class="nav-link" data-scroll-target="#didaktische-prompts-gezielte-einschränkungen"><span class="header-section-number">6.2</span> Didaktische Prompts: Gezielte Einschränkungen</a></li>
+  <li><a href="#integration-der-ki-in-breitere-aufgabenstellungen-und-artefakte" id="toc-integration-der-ki-in-breitere-aufgabenstellungen-und-artefakte" class="nav-link" data-scroll-target="#integration-der-ki-in-breitere-aufgabenstellungen-und-artefakte"><span class="header-section-number">6.3</span> Integration der KI in breitere Aufgabenstellungen und Artefakte</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/appendix01-prompt-sammlung.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/appendix01-prompt-sammlung.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -371,14 +403,9 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">KI als Hilfe zum Lehren und Lernen</h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Didaktische Prompts und Aufgabenstellungen – Best Practice Sammlung</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    Dieses Skript ist eine frei verfügbare Ressource, die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -393,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5. Dezember 2025</p>
+      <p class="date">1. November 2025</p>
     </div>
   </div>
   
@@ -405,26 +432,68 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="kurze-einordnung-der-prompt-vielfalt-was-sind-gemeinsame-muster" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="kurze-einordnung-der-prompt-vielfalt-was-sind-gemeinsame-muster"><span class="header-section-number">6.1</span> Kurze Einordnung der Prompt-Vielfalt – was sind gemeinsame Muster?</h2>
+<section id="übersicht" class="level3">
+<h3 class="anchored" data-anchor-id="übersicht">Übersicht</h3>
+<p>Die hier gesammelten <strong>Prompts</strong> umfassen ausgesuchte Best-Practice-Beispiele der Harvard System Prompt Library, der Wharton Business School (Ethan &amp; Lilach Mollick), der Informatik-Fakultät der Universität Stanford und der Hongkong City University sowie der Firma Anthropic. Beispiele für <strong>komplexere Aufgabenstellungen, die GenAI in mehreren Schritten integrieren</strong>, stammen vor allem vom Harvard AI Pedagogy Project (Links zu den Quellen sind jeweils beim Prompt angegeben).</p>
+<p>Vorab sollen die Arten von Prompts hier kurz exemplarisch diskutiert und nach vier Kategorien der GenAI-Unterstützung geordnet werden (Hiwi, Tutor, Copilot, Simulator). Wir fragen außerdem, welche allgemeinen Muster erkennbar sind.</p>
+<p>Die <strong>Hiwi</strong>-Prompts erfüllen klassische Entlastungsaufgaben: CSV-Konverter und Data Organizer verwandeln unstrukturierte Eingaben in saubere Tabellen oder in ein Standard-Format, wie etwa JSON; der Excel-Formel-Experte generiert und erklärt komplexe Formeln Schritt für Schritt; LaTeX-Unterstützung liefert Bausteine für Formeln und Tabellen; der Meeting Scribe fasst Sitzungen knapp mit Verantwortlichkeiten zusammen. Didaktisch gesehen senkt diese Rolle extrinsische kognitive Last und schafft Zeit für anspruchsvollere Lernaktivitäten – vergleichbar mit Labortechnik, die die Versuchsanordnung vorbereitet, damit Studierende die eigentliche Analyse vertiefen können. Wichtig ist hier Transparenz: Studierende sollten sehen, wie Datenstrukturen, Formellogik und Protokollierung entstehen (Prozesssicht), damit die Hilfskraft nicht zur Black Box wird <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">Mollick &amp; Mollick, 2024</a> betonen explizit die Festlegung der KI mit klaren Schritten und Constraints)</span>.</p>
+<p>Die Prompts in der <strong>Tutor</strong>-Kategorie decken ein breites Spektrum ab: vom „Allgemeinen Tutor” (sokratische Fragen, Scaffolding mit Ein-Frage-Takt) über Mentor-Bots für Entwurfsfeedback, Reflexionscoaches, Debattenvorbereitung, Argumentüberarbeitung, Assignment-Mentor bis zu Übungsaufgaben-Generatoren (Statistik/Regression), Vektor-Explorer und Diskussionspartner für soziologische Theorien. Gemeinsame didaktische Muster sind adaptive Erklärungen, Analogien, schrittweises Fragen, das gezielte Adressieren von Fehlvorstellungen, metakognitive Reflexion sowie der Protégé-Effekt (Lernende lehren die KI bzw. eine Novizin) <span class="citation" data-cites="mollick2024f mollick2023i">(<a href="#ref-mollick2024f" role="doc-biblioref">Mollick &amp; Mollick, 2024</a>, „Mentoring, Coaching, and Tutoring”; <a href="#ref-mollick2023i" role="doc-biblioref">Mollick &amp; Mollick, 2023</a>)</span>. Ein anschauliches Beispiel ist „KI agiert als Schüler, der vom Lernenden unterrichtet wird”: Die KI spielt eine inquisitive oder skeptische Novizin, wodurch Studierende ihr Wissen strukturieren, Lücken entdecken und Begriffe in eigenen Worten anwenden – wie in einem Mikroseminar, in dem die Rollen bewusst gedreht werden.</p>
+<p>Die Prompts zur Nutzung von GenAI als <strong>Copilot</strong> nutzen es als Hilfe in Projekten und bei der Co-Creation. Für Lehrende und Teams finden sich Copilot-Prompts, die reale Arbeitspraktiken abbilden: Team-Charter erstellen (Rollen, Ziele, Normen), Team-Reflexion/After-Action-Review, Projekt-Pre-Mortem (prospektive Nachbetrachtung), „Devil’s Advocate” zur systematischen Gegenposition, gemeinsame Fallstudienerstellung mit Versionierung und Peer-Feedback. Didaktisch verbindet diese Rolle Co-Creation (gemeinsames Fällen/Strukturieren), Debiasing (Exploration von Alternativen/Annahmen) sowie „learning from projects” durch strukturierte Nachbereitung. Sie operationalisiert Mollicks „Learning through Co-Creation” und „Building Opportunities for Critique”: Lernende konstruieren Artefakte (Case Drafts) und erleben Qualitätssicherung als geführten Prozess; Teams kultivieren Fehlerkultur und Entscheidungsqualität über Leitfragen und Priorisierung von Risiken (analog zu Checklisten in der Luftfahrt) <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">Mollick &amp; Mollick, 2024</a>)</span>. Beispiele: Team-Charter als Startartefakt der Kollaboration; Pre-Mortem mit Eintrittswahrscheinlichkeit/Schadenshöhe und Ableitung von Gegenmaßnahmen; Devil’s-Advocate-Prompt mit Fokus auf Konsensfalle, versteckte Annahmen und Beleglage – abschließend visualisiert als Vergleichstabelle „Initial Decision vs.&nbsp;Hidden Assumptions”. Der Copilot ähnelt einer gut vorbereiteten Kollegin im Projektmeeting, die methodisch führt, aber Ownership bei den Lernenden belässt.</p>
+<p>Die <strong>Simulations</strong>-Prompts modellieren „Role Play” (z. B. Verhandlungstraining) und „Goal Play” (z. B. Goal-Setting, Self-Distancing nach Kross) mit klaren Phasen: Informationssammlung, Szenarioauswahl, Szenenaufruf („BEGIN ROLE PLAY”), sechs Züge bis zur konsekutiven Entscheidung, danach strukturierte, balancierte Feedback-Sequenz und Transferhinweise. Genau diese Sequenz betonen <span class="citation" data-cites="mollick2024f">Mollick &amp; Mollick (<a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span>: simulationsbasiertes Üben, narrative Einbettung, adaptive Schwierigkeit, individuelles Feedback plus obligatorisches Debriefing im Kurs („Learning through Simulations”). Die Verhandlungssimulation adressiert u. a. BATNA, ZOPA, Anker, Täuschung, First-Offer-Effekte, Kooperations-/Wettbewerbsdynamik und Beziehungsmanagement am Abschluss der Verhandlung; die Self-Distancing-Simulation trainiert Perspektivwechsel und Emotionsregulation; die Goal-Setting-Simulation operationalisiert Prinzipien wie Spezifität, Zerlegung, Priorisierung, Flexibilität und Hürdenanalyse – jeweils mit klaren „Do/Don’t”-Leitplanken, damit die KI in-character bleibt und nicht „übermoderiert”. Sinnbildlich ist der Simulator der „Flugsimulator der Lehre”: sicher scheitern, Muster erkennen, Taktiken verfeinern – gefolgt von reflektierter Auswertung.</p>
+<p>Zusammengeführt ergeben sich einige Muster der komplexeren didaktischen Prompts: Die Hilfskraft reduziert Routine-Lasten und macht Prozesse sichtbar; der Tutor aktiviert aktive Reflexion im Dialog und setzt auf Erklären-Üben-Reflektieren; der Copilot stärkt kollaborative Entscheidungs- und Projektkompetenz durch Co-Creation und Gegenpositionen; der Simulator verlagert Wissen in performatives Handeln mit unmittelbarer Rückmeldung und geplanter Nachbesprechung. So entsteht ein durchgängiger Lernpfad vom Strukturieren über das Verstehen zum Anwenden – mit KI als gut „programmierter” Partnerin, die stets durch Lehrdesign, Leitfragen und Debriefing gerahmt bleibt <span class="citation" data-cites="mollick2024f">(<a href="#ref-mollick2024f" role="doc-biblioref">Mollick &amp; Mollick, 2024</a>)</span>.</p>
+</section>
+</section>
+<section id="didaktische-prompts-gezielte-einschränkungen" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="didaktische-prompts-gezielte-einschränkungen"><span class="header-section-number">6.2</span> Didaktische Prompts: Gezielte Einschränkungen</h2>
+<p>Wenn wir die KI als Hiwi nutzen, ist unser Ziel meist eine möglichst schnelle und effiziente Antwort. Das ist bei den drei anderen Rollen anders: Hier schränken wir das Sprachmodell oft bewusst ein. Das liegt kurz gesagt daran, dass Studierende mehr lernen, wenn sie etwas schwitzen. Die Lernforschung nennt das „desirable difficulties” <span class="citation" data-cites="bjork2011">(<a href="#ref-bjork2011" role="doc-biblioref"><strong>bjork2011?</strong></a>)</span>.</p>
+<p>Ein charakteristisches Merkmal fortgeschrittener didaktischer Eingabeaufforderungen ist die Verwendung expliziter Einschränkungen – Regeln, die dem LLM bestimmte Verhaltensweisen verbieten oder verhindern <span class="citation" data-cites="mollick2023i mollick2024f">(<a href="#ref-mollick2023i" role="doc-biblioref">Mollick &amp; Mollick, 2023</a>, <a href="#ref-mollick2024f" role="doc-biblioref">2024</a>)</span>. Diese Einschränkungen sind entscheidend für die Umwandlung eines allgemeinen Sprachmodells in ein spezialisiertes pädagogisches Werkzeug. Durch die Einschränkung der Standardtendenzen der KI stellen diese Regeln sicher, dass die Interaktion spezifischen Lernzielen dient und nicht nur Informationen liefert. Die Analyse der gesammelten Eingabeaufforderungen zeigt mehrere wiederkehrende Kategorien von Einschränkungen.</p>
+<p><strong>1. Zulassung erwünschter Schwierigkeiten zum aktiven Lernen</strong></p>
+<p>Die grundlegendste Einschränkung zielt darauf ab, den Schüler von einem passiven Empfänger von Informationen zu einem aktiven Teilnehmer an seinem eigenen Lernprozess zu machen. Dies wird erreicht, indem die KI daran gehindert wird, einfach die Antwort zu geben.</p>
+<ul>
+<li><p>„Keine direkte Antwort geben” / „Zur Selbstkorrektur anleiten”: Diese Regel, die im Mittelpunkt der sokratischen Eingabeaufforderungen steht, zwingt das LLM, eher als Wegweiser denn als Orakel zu fungieren. Anstatt die Frage eines Schülers direkt zu beantworten, muss die KI durch Nachfragen, einem Hinweis oder der Aufforderung an den Lernenden reagieren, seine Überlegungen zu erklären. Dies fördert das aktive Erinnern und eine tiefere kognitive Verarbeitung.</p></li>
+<li><p>„Löse KEINE benoteten Aufgaben”: Diese Einschränkung, die in der Stanford NumPy-Aufforderung zu finden ist, wahrt die akademische Integrität, indem sie Betrug verhindert. Noch wichtiger ist, dass sie die Lernenden dazu zwingt, ihr Wissen selbstständig anzuwenden, was für den Erwerb von Fähigkeiten unerlässlich ist.</p></li>
+<li><p>„Halte keine längeren Vorträge ohne Interaktion”: Diese Regel stellt sicher, dass der Lernprozess dialogisch und interaktiv bleibt und verhindert, dass sich der Lernende abwendet.</p></li>
+</ul>
+<p><strong>2. Aufrechterhaltung der Integrität und des Realismus der Simulation</strong></p>
+<p>In Simulator-Aufgaben sind Einschränkungen unerlässlich, um eine glaubwürdige und effektive Rollenspiel- oder Problemlösungsumgebung zu schaffen.</p>
+<ul>
+<li><p>„Verlasse nicht Deine Rolle”: Diese Anweisung, die in der Aufgabe „Interview mit einer Figur” zu finden ist, ist entscheidend für die Aufrechterhaltung der immersiven Qualität der Simulation, die für situiertes Lernen von zentraler Bedeutung ist.</p></li>
+<li><p>„Gebe nicht alle Informationen auf einmal”: Wie in der Simulation „Telefonische Triage” zu sehen ist, sorgt diese Einschränkung für eine realistische Informationslücke. Sie zwingt den Lernenden dazu, systematische, professionelle Fähigkeiten (wie diagnostische Fragen) zu üben, anstatt einfach nur eine Datenflut zu erhalten.</p></li>
+<li><p>„Entscheide nicht zu schnell und gehe keine Kompromisse ein”: Im Verhandlungssimulator sorgt diese Regel dafür, dass die Simulation eine echte Herausforderung darstellt und die Studierenden gezwungen sind, ihre Überzeugungs- und Konfliktlösungsfähigkeiten unter realistischem Druck zu üben.</p></li>
+</ul>
+<p><strong>3. Sicherstellung einer sachlichen Grundlage und Verhinderung von Halluzinationen</strong></p>
+<p>LLMs sind dafür bekannt, dass sie „halluzinieren” oder Informationen erfinden. Didaktische Aufforderungen enthalten oft Einschränkungen, um dieses Risiko zu mindern und die Übung im Rahmen des Kursmaterials zu halten.</p>
+<p>Beispiel: „Deine Antworten dürfen sich NUR auf Ereignisse und Informationen stützen, die in … dem Quelltext zu finden sind”: Diese Regel aus der Aufforderung „Interview mit einer fiktiven Figur” ist ein wirksames Mittel, um zu verhindern, dass die KI nicht kanonische oder ungenaue Informationen einbringt. Sie konzentriert die Übung auf die Textanalyse und -interpretation.</p>
+<p><strong>4. Kognitive Belastung (cognitive load) begrenzen</strong></p>
+<p>Um sicherzustellen, dass die Lernerfahrung effektiv und nicht überfordernd ist, enthalten Aufforderungen oft Einschränkungen hinsichtlich der Komplexität und des Tempos der Informationen.</p>
+<ul>
+<li><p>„Vermeide komplizierte/unnötige Notationen”: Diese Richtlinie aus der Stanford NumPy-Aufgabe („Stanford Tutor…“) ist eine direkte Anwendung der kognitiven Belastungstheorie, die unnötige mentale Anstrengungen reduziert, damit sich der Lernende auf das Kernkonzept konzentrieren kann <span class="citation" data-cites="sweller2011">(<a href="#ref-sweller2011" role="doc-biblioref"><strong>sweller2011?</strong></a>)</span>.</p></li>
+<li><p>„Stelle nicht mehr als eine Frage auf einmal”: Diese gängige Regel in mehrstufigen Aufgaben verhindert, dass sich der Benutzer überfordert fühlt, und ermöglicht einen natürlicheren, schrittweisen Gesprächsfluss.</p></li>
+<li><p>„Sprich NUR in [Zielsprache]“: In Sprachübungs-Prompts sorgt diese Einschränkung für Immersion, wird jedoch oft mit einer „Fluchtmöglichkeit” kombiniert (z. B. „es sei denn, ich gebe HILFE AUF DEUTSCH ein”), um Frustrationen zu vermeiden, wenn die kognitive Belastung zu hoch wird.</p></li>
+</ul>
+</section>
+<section id="integration-der-ki-in-breitere-aufgabenstellungen-und-artefakte" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="integration-der-ki-in-breitere-aufgabenstellungen-und-artefakte"><span class="header-section-number">6.3</span> Integration der KI in breitere Aufgabenstellungen und Artefakte</h2>
+<p>Die Sammlung enthält Aufgaben, die tiefes Lernen durch Elaboration, Selbst-Erklärung und wiederholte Anwendung fördern. Sokratische Dialoge, Argumentationskritik und die Essay-Revision erzwingen Begründungen, Gegenbeispiele und explizite Kriterienarbeit, wodurch sich der Fokus von bloßen Ergebnissen auf nachvollziehbare Denk- und Entscheidungsprozesse verschiebt <span class="citation" data-cites="harvard_yuen harvard_meehan harvard_newman">(<a href="#ref-harvard_yuen" role="doc-biblioref"><strong>harvard_yuen?</strong></a>; <a href="#ref-harvard_meehan" role="doc-biblioref"><strong>harvard_meehan?</strong></a>; <a href="#ref-harvard_newman" role="doc-biblioref"><strong>harvard_newman?</strong></a>)</span>.</p>
+<p>Simulationsaufgaben erzeugen handlungsnahe Übungssituationen für Kommunikation und klinische Entscheidungen; dadurch werden Abruf- und Transferleistungen in realitätsnahen Bedingungen gefördert <span class="citation" data-cites="harvard_welsh harvard_hobbick harvard_kentz">(<a href="#ref-harvard_welsh" role="doc-biblioref"><strong>harvard_welsh?</strong></a>; <a href="#ref-harvard_hobbick" role="doc-biblioref"><strong>harvard_hobbick?</strong></a>; <a href="#ref-harvard_kentz" role="doc-biblioref"><strong>harvard_kentz?</strong></a>)</span>.</p>
+<p>Copilot-Szenarien wie die DuPont-Analyse und das iterative Ausprobieren von Prompts (Prompt-Playtesting) verbinden fachliche Rechenwege mit Interpretation, Berichterstellung und Qualitätskontrolle der eigenen Prompting-Strategien <span class="citation" data-cites="harvard_pedersen harvard_landfair">(<a href="#ref-harvard_pedersen" role="doc-biblioref"><strong>harvard_pedersen?</strong></a>; <a href="#ref-harvard_landfair" role="doc-biblioref"><strong>harvard_landfair?</strong></a>)</span>.</p>
+<p><strong>Wie wird Reflexion und Eigenleistung gefördert?</strong> Die Integration von GenAI ist in allen Beispielen explizit gesteuert und an sichtbare Lernprodukte gebunden. Aufgaben definieren die Rolle der KI und koppeln deren Einsatz an Protokolle der KI-Interaktion, kommentierte Revisionen, Evidenz-Logs oder Entscheidungsbäume. So verankert etwa die Aufgabe „AI-Sandwich” die KI-Nutzung als Mittel zum Zweck: Zuerst werden Ziele und Kriterien ohne KI fixiert, anschließend liefert die KI Varianten und Gegenpositionen, und zum Abschluss erfolgt die menschliche Prüfung mit Quellenarbeit und Reflexion <span class="citation" data-cites="harvard_ippolito">(<a href="#ref-harvard_ippolito" role="doc-biblioref"><strong>harvard_ippolito?</strong></a>)</span>.</p>
+<p>Für <strong>KI-resistente Prüfungsleistungen</strong> empfehlen sich Artefakte und Peer-Elemente, die den individuellen Arbeitsprozess sichtbar machen. Dazu gehören Versionen ‚vorher/nachher‘ mit Änderungsbegründungen, Annotierungen der eigenen Entscheidungswege, Protokolle der Prompt-Iteration oder Evidenztabellen sowie strukturierte Peer-Reviews und Debrief-Diskussionen. Prüfungen sollten diese Prozessartefakte bewerten, nicht nur das Endprodukt, und Transparenzpflichten verankern: Studierende legen ihre KI-Nutzung offen, benennen Prompts und Tools, dokumentieren Quellenprüfungen und begründen Überarbeitungen. Auf diese Weise bleibt akademische Integrität gewahrt, während die produktiven Potenziale von GenAI genutzt werden <span class="citation" data-cites="harvard_taylor">(<a href="#ref-harvard_taylor" role="doc-biblioref"><strong>harvard_taylor?</strong></a>)</span>.</p>
 
-<section id="übersicht" class="level1 unnumbered">
-<h1 class="unnumbered">Übersicht</h1><p><img src="images/logos/logo.svg" title="KI als Hilfe zum Lehren und Lernen" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>Dieses Buch untersucht, wie generative künstliche Intelligenz (GenAI) Lehre, Lernen und Forschung verändern kann. Es richtet sich an Lehrende, Forschende und Studierende, die verstehen möchten, <strong>wie KI als Werkzeug der Hochschuldidaktik</strong> eingesetzt werden kann.</p>
-<p>Das Buch besteht aus fünf Kapiteln:</p>
-<ol type="1">
-<li>Überblick: KI als Hilfe zum Lehren und Lernen<br>
-</li>
-<li>Grundbegriffe und technische Grundlagen<br>
-</li>
-<li>Didaktische Prinzipien und Cognitive Science<br>
-</li>
-<li>Praxisbeispiele: KI als Hiwi, Copilot, Tutor, Simulator<br>
-</li>
-<li>Empfehlungen zur Umsetzung<br>
-</li>
-</ol>
-<p>Im ersten Teil fassen wir die aktuelle Forschungslage zusammen.</p>
 
-
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-mollick2023i" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2023). <em>Using AI to Implement Effective Teaching Strategies in Classrooms: Five Strategies, Including Prompts</em>. <a href="https://doi.org/10.2139/ssrn.4391243">https://doi.org/10.2139/ssrn.4391243</a>.
+</div>
+<div id="ref-mollick2024f" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2024). <em>Instructors as Innovators: a Future-focused Approach to New AI Learning Opportunities, With Prompts</em>. <a href="https://doi.org/10.2139/ssrn.4802463">https://doi.org/10.2139/ssrn.4802463</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -842,11 +911,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./kapitel05.html" class="pagination-link" aria-label="Empfehlungen zur Umsetzung">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./kapitel01.html" class="pagination-link" aria-label="Einleitung">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -857,7 +926,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/appendix01-prompt-sammlung.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/appendix01-prompt-sammlung.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
