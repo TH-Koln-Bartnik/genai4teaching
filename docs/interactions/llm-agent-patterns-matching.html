@@ -259,21 +259,21 @@
     <h1>🤖 LLM Agent Patterns erkennen</h1>
     
     <div class="prompt-box">
-      <div class="prompt-label">User Prompt:</div>
-      <div class="prompt-text">"What is the meaning of life?"</div>
+      <div class="prompt-label">Benutzer-Anfrage (Prompt):</div>
+      <div class="prompt-text">"Was ist der Sinn des Lebens?"</div>
     </div>
     
-    <p class="instructions">Klicke zuerst auf eine Antwort (links), dann auf das passende Pattern (rechts).</p>
+    <p class="instructions">Klicke zuerst auf eine Antwort (links), dann auf das passende Agenten-Muster (rechts).</p>
     
     <div class="matching-area" id="matchingArea">
       <div class="column responses" id="responses">
-        <div class="column-title">Antworten</div>
+        <div class="column-title">KI-Antworten</div>
       </div>
       
       <svg class="svg-container" id="svgContainer"></svg>
       
       <div class="column patterns" id="patterns">
-        <div class="column-title">Agent Patterns</div>
+        <div class="column-title">Agenten-Muster</div>
       </div>
     </div>
     
@@ -295,32 +295,32 @@
     const data = [
       {
         id: 1,
-        response: "It's 42.",
-        pattern: "LLM only",
+        response: "Es ist 42.",
+        pattern: "Nur LLM",
         explanation: "Direkter Abruf aus dem Modellwissen ohne weitere Verarbeitung"
       },
       {
         id: 2,
-        response: "I will use a search engine.",
-        pattern: "Tool Use",
+        response: "Ich werde eine Suchmaschine benutzen.",
+        pattern: "Werkzeugnutzung (Tool Use)",
         explanation: "Nutzung eines externen Werkzeugs (Suchmaschine)"
       },
       {
         id: 3,
-        response: "First, understand the motivation.",
-        pattern: "Planning",
+        response: "Zuerst muss ich die Motivation verstehen.",
+        pattern: "Planung (Planning)",
         explanation: "Zerlegung der Aufgabe in Teilschritte"
       },
       {
         id: 4,
-        response: "I will ask a Librarian.",
-        pattern: "Multi Agent",
+        response: "Ich werde einen Bibliothekar fragen.",
+        pattern: "Multi-Agenten",
         explanation: "Delegation an einen spezialisierten Agenten"
       },
       {
         id: 5,
-        response: "Please clarify. Whose life?",
-        pattern: "Reflection",
+        response: "Bitte präzisieren Sie: Wessen Leben?",
+        pattern: "Reflektion (Reflection)",
         explanation: "Selbst-Evaluation und Nachfrage zur Verbesserung"
       }
     ];
@@ -342,14 +342,11 @@
       const responsesContainer = document.getElementById('responses');
       const patternsContainer = document.getElementById('patterns');
       
-      // Clear existing items (keep titles)
-      responsesContainer.innerHTML = '<div class="column-title">Antworten</div>';
-      patternsContainer.innerHTML = '<div class="column-title">Agent Patterns</div>';
+      responsesContainer.innerHTML = '<div class="column-title">KI-Antworten</div>';
+      patternsContainer.innerHTML = '<div class="column-title">Agenten-Muster</div>';
       
-      // Shuffle patterns for display
       shuffledPatterns = shuffle(data.map(d => ({ id: d.id, pattern: d.pattern })));
       
-      // Create response items
       data.forEach(item => {
         const div = document.createElement('div');
         div.className = 'item response-item';
@@ -362,7 +359,6 @@
         responsesContainer.appendChild(div);
       });
       
-      // Create pattern items (shuffled)
       shuffledPatterns.forEach(item => {
         const div = document.createElement('div');
         div.className = 'item pattern-item';
@@ -377,13 +373,8 @@
     }
     
     function selectResponse(id) {
-      // Check if already matched
       if (connections.some(c => c.responseId === id)) return;
-      
-      // Deselect previous
       document.querySelectorAll('.response-item').forEach(el => el.classList.remove('selected'));
-      
-      // Select new
       const item = document.querySelector(`.response-item[data-id="${id}"]`);
       item.classList.add('selected');
       selectedResponse = id;
@@ -391,23 +382,15 @@
     
     function selectPattern(id) {
       if (!selectedResponse) return;
-      
-      // Check if pattern already matched
       if (connections.some(c => c.patternId === id)) return;
-      
-      // Create connection
       connections.push({
         responseId: selectedResponse,
         patternId: id
       });
-      
-      // Mark as matched
       document.querySelector(`.response-item[data-id="${selectedResponse}"]`).classList.add('matched');
       document.querySelector(`.response-item[data-id="${selectedResponse}"]`).classList.remove('selected');
       document.querySelector(`.pattern-item[data-id="${id}"]`).classList.add('matched');
-      
       selectedResponse = null;
-      
       drawConnections();
     }
     
@@ -415,33 +398,23 @@
       const svg = document.getElementById('svgContainer');
       const area = document.getElementById('matchingArea');
       const areaRect = area.getBoundingClientRect();
-      
       svg.innerHTML = '';
       svg.setAttribute('viewBox', `0 0 ${areaRect.width} ${areaRect.height}`);
-      
       connections.forEach(conn => {
         const responseEl = document.querySelector(`.response-item[data-id="${conn.responseId}"]`);
         const patternEl = document.querySelector(`.pattern-item[data-id="${conn.patternId}"]`);
-        
         const responseDot = responseEl.querySelector('.connection-dot');
         const patternDot = patternEl.querySelector('.connection-dot');
-        
         const responseRect = responseDot.getBoundingClientRect();
         const patternRect = patternDot.getBoundingClientRect();
-        
         const x1 = responseRect.left + responseRect.width/2 - areaRect.left;
         const y1 = responseRect.top + responseRect.height/2 - areaRect.top;
         const x2 = patternRect.left + patternRect.width/2 - areaRect.left;
         const y2 = patternRect.top + patternRect.height/2 - areaRect.top;
-        
-        // Create curved path
         const midX = (x1 + x2) / 2;
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path.setAttribute('d', `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`);
         path.setAttribute('class', `connection-line ${conn.status || ''}`);
-        path.dataset.responseId = conn.responseId;
-        path.dataset.patternId = conn.patternId;
-        
         svg.appendChild(path);
       });
     }
@@ -451,31 +424,22 @@
         alert('Bitte ordne alle Antworten zu, bevor du überprüfst!');
         return;
       }
-      
       let correct = 0;
-      
       connections.forEach(conn => {
         const isCorrect = conn.responseId === conn.patternId;
         conn.status = isCorrect ? 'correct' : 'incorrect';
-        
         const responseEl = document.querySelector(`.response-item[data-id="${conn.responseId}"]`);
         const patternEl = document.querySelector(`.pattern-item[data-id="${conn.patternId}"]`);
-        
         responseEl.classList.remove('matched');
         patternEl.classList.remove('matched');
         responseEl.classList.add(isCorrect ? 'correct' : 'incorrect');
         patternEl.classList.add(isCorrect ? 'correct' : 'incorrect');
-        
         if (isCorrect) correct++;
       });
-      
       drawConnections();
-      
       const feedback = document.getElementById('feedback');
       const scoreDisplay = document.getElementById('scoreDisplay');
-      
       feedback.classList.add('show');
-      
       if (correct === data.length) {
         feedback.className = 'feedback show success';
         feedback.textContent = '🎉 Perfekt! Alle Zuordnungen sind korrekt!';
@@ -483,22 +447,18 @@
         feedback.className = 'feedback show partial';
         feedback.textContent = `${correct} von ${data.length} richtig. Versuche es noch einmal!`;
       }
-      
-      scoreDisplay.textContent = `Score: ${correct}/${data.length}`;
+      scoreDisplay.textContent = `Ergebnis: ${correct}/${data.length}`;
     }
     
     function resetGame() {
       connections = [];
       selectedResponse = null;
-      
       document.getElementById('feedback').classList.remove('show');
       document.getElementById('scoreDisplay').textContent = '';
       document.getElementById('svgContainer').innerHTML = '';
-      
       initGame();
     }
     
-    // Initialize on load
     window.onload = initGame;
     window.onresize = drawConnections;
   </script>
