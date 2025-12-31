@@ -1,0 +1,85 @@
+<div id="relevance-widget" style="max-width: 450px; font-family: system-ui, sans-serif;">
+  <div style="padding: 20px; background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-radius: 12px; border: 1px solid #ddd6fe;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+      <span style="font-size: 24px;">💡</span>
+      <h3 style="margin: 0; font-size: 18px; color: #1f2937;">Warum ist das für dich relevant?</h3>
+      <span style="font-size: 11px; background: #ddd6fe; color: #5b21b6; padding: 2px 8px; border-radius: 12px;">KI</span>
+    </div>
+    
+    <p style="font-size: 14px; color: #6b7280; margin-bottom: 16px;">
+      Gib deinen Bereich ein – ein LLM erklärt dir die Relevanz dieses Kapitels.
+    </p>
+    
+    <div style="display: flex; gap: 8px;">
+      <input 
+        type="text" 
+        id="industry-input" 
+        placeholder="z.B. Maschinenbau, Logistik, Marketing..."
+        style="flex: 1; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;"
+      >
+      <button 
+        id="submit-btn"
+        style="padding: 10px 20px; background: #7c3aed; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500;"
+      >
+        Los
+      </button>
+    </div>
+    
+    <div id="response-area" style="display: none; margin-top: 16px; padding: 16px; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <p id="response-text" style="margin: 0; color: #374151; line-height: 1.6;"></p>
+      <p style="margin: 12px 0 0 0; font-size: 11px; color: #9ca3af;">
+        ⚡ Powered by Mistral-7B · Kann Fehler enthalten
+      </p>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js";
+
+  const SPACE_URL = "DEIN-USERNAME/DEIN-SPACE-NAME";  // <- ANPASSEN!
+  const ARTICLE_TOPIC = "Large Language Models in der Praxis";  // <- ANPASSEN!
+
+  const btn = document.getElementById('submit-btn');
+  const input = document.getElementById('industry-input');
+  const responseArea = document.getElementById('response-area');
+  const responseText = document.getElementById('response-text');
+
+  async function getRelevance() {
+    const industry = input.value.trim();
+    if (!industry) {
+      alert('Bitte gib einen Bereich ein.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '⏳';
+    responseArea.style.display = 'block';
+    responseText.textContent = 'Denke nach...';
+
+    try {
+      const client = await Client.connect(SPACE_URL);
+      const result = await client.predict("/predict", {
+        industry: industry,
+        article_topic: ARTICLE_TOPIC
+      });
+      
+      responseText.textContent = result.data[0];
+    } catch (error) {
+      console.error(error);
+      if (error.message.includes('loading')) {
+        responseText.textContent = '⏳ Das Modell startet gerade. Bitte in 20 Sekunden erneut versuchen.';
+      } else {
+        responseText.textContent = 'Fehler bei der Anfrage. Bitte später erneut versuchen.';
+      }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Los';
+    }
+  }
+
+  btn.addEventListener('click', getRelevance);
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') getRelevance();
+  });
+</script>

@@ -1,0 +1,88 @@
+export default {
+  async fetch(request, env) {
+    // CORS: Preflight Request
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      });
+    }
+
+    // Nur POST erlauben
+    if (request.method !== 'POST') {
+      return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+      const { industry, topic } = await request.json();
+
+      // Validierung
+      if (!industry || industry.length > 100) {
+        return new Response(JSON.stringify({ error: 'Invalid input' }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
+      // OpenAI API Call
+      const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${env.OPENAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          max_tokens: 200,
+          temperature: 0.7,
+          messages: [
+            {
+              role: 'system',
+              content: 'Du bist ein hilfreicher Assistent. Erkläre in genau 2-3 kurzen, prägnanten Sätzen auf Deutsch, warum ein Thema für eine bestimmte Branche praktisch relevant ist. Nenne einen konkreten Anwendungsfall.'
+            },
+            {
+              role: 'user',
+              content: `Thema: ${topic}\nBranche des Lesers: ${industry}\n\nErkläre die praktische Relevanz.`
+            }
+          ]
+        })
+      });
+
+      const data = await openaiResponse.json();
+
+      if (data.error) {
+        console.error('OpenAI Error:', data.error);
+        return new Response(JSON.stringify({ error: 'API error' }), {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
+        });
+      }
+
+      return new Response(JSON.stringify({
+        relevance: data.choices[0].message.content
+      }), {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+
+    } catch (error) {
+      console.error('Worker Error:', error);
+      return new Response(JSON.stringify({ error: 'Server error' }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+    }
+  }
+};
+```
