@@ -1,0 +1,86 @@
+---
+title: "Didaktische Prompts - Übersicht" 
+author: "Roman Bartnik"
+date: "2025-12"
+bibliography: references.json
+csl: apa.csl
+lang: de
+reference-section-title: "Literaturverzeichnis"
+format:
+  html:
+    toc: true
+    toc-location: right
+    number-sections: true
+---
+
+## Kurze Einordnung der Prompt-Vielfalt – was sind gemeinsame Muster?
+
+### Übersicht
+
+Die hier gesammelten **Prompts** umfassen ausgesuchte Best-Practice-Beispiele der Harvard System Prompt Library, der Wharton Business School (Ethan & Lilach Mollick), der Informatik-Fakultät der Universität Stanford und der Hongkong City University sowie der Firma Anthropic. Beispiele für **komplexere Aufgabenstellungen, die GenAI in mehreren Schritten integrieren**, stammen vor allem vom Harvard AI Pedagogy Project (Links zu den Quellen sind jeweils beim Prompt angegeben).
+
+Vorab sollen die Arten von Prompts hier kurz exemplarisch diskutiert und nach vier Kategorien der GenAI-Unterstützung geordnet werden (Hiwi, Tutor, Copilot, Simulator). Wir fragen außerdem, welche allgemeinen Muster erkennbar sind.
+
+Die **Hiwi**-Prompts erfüllen klassische Entlastungsaufgaben: CSV-Konverter und Data Organizer verwandeln unstrukturierte Eingaben in saubere Tabellen oder in ein Standard-Format, wie etwa JSON; der Excel-Formel-Experte generiert und erklärt komplexe Formeln Schritt für Schritt; LaTeX-Unterstützung liefert Bausteine für Formeln und Tabellen; der Meeting Scribe fasst Sitzungen knapp mit Verantwortlichkeiten zusammen. Didaktisch gesehen senkt diese Rolle extrinsische kognitive Last und schafft Zeit für anspruchsvollere Lernaktivitäten – vergleichbar mit Labortechnik, die die Versuchsanordnung vorbereitet, damit Studierende die eigentliche Analyse vertiefen können. Wichtig ist hier Transparenz: Studierende sollten sehen, wie Datenstrukturen, Formellogik und Protokollierung entstehen (Prozesssicht), damit die Hilfskraft nicht zur Black Box wird [@mollick2024f betonen explizit die Festlegung der KI mit klaren Schritten und Constraints].
+
+Die Prompts in der **Tutor**-Kategorie decken ein breites Spektrum ab: vom „Allgemeinen Tutor" (sokratische Fragen, Scaffolding mit Ein-Frage-Takt) über Mentor-Bots für Entwurfsfeedback, Reflexionscoaches, Debattenvorbereitung, Argumentüberarbeitung, Assignment-Mentor bis zu Übungsaufgaben-Generatoren (Statistik/Regression), Vektor-Explorer und Diskussionspartner für soziologische Theorien. Gemeinsame didaktische Muster sind adaptive Erklärungen, Analogien, schrittweises Fragen, das gezielte Adressieren von Fehlvorstellungen, metakognitive Reflexion sowie der Protégé-Effekt (Lernende lehren die KI bzw. eine Novizin) [@mollick2024f, „Mentoring, Coaching, and Tutoring"; @mollick2023i]. Ein anschauliches Beispiel ist „KI agiert als Schüler, der vom Lernenden unterrichtet wird": Die KI spielt eine inquisitive oder skeptische Novizin, wodurch Studierende ihr Wissen strukturieren, Lücken entdecken und Begriffe in eigenen Worten anwenden – wie in einem Mikroseminar, in dem die Rollen bewusst gedreht werden.
+
+Die Prompts zur Nutzung von GenAI als **Copilot** nutzen es als Hilfe in Projekten und bei der Co-Creation. Für Lehrende und Teams finden sich Copilot-Prompts, die reale Arbeitspraktiken abbilden: Team-Charter erstellen (Rollen, Ziele, Normen), Team-Reflexion/After-Action-Review, Projekt-Pre-Mortem (prospektive Nachbetrachtung), „Devil's Advocate" zur systematischen Gegenposition, gemeinsame Fallstudienerstellung mit Versionierung und Peer-Feedback. Didaktisch verbindet diese Rolle Co-Creation (gemeinsames Fällen/Strukturieren), Debiasing (Exploration von Alternativen/Annahmen) sowie „learning from projects" durch strukturierte Nachbereitung. Sie operationalisiert Mollicks „Learning through Co-Creation" und „Building Opportunities for Critique": Lernende konstruieren Artefakte (Case Drafts) und erleben Qualitätssicherung als geführten Prozess; Teams kultivieren Fehlerkultur und Entscheidungsqualität über Leitfragen und Priorisierung von Risiken (analog zu Checklisten in der Luftfahrt) [@mollick2024f]. Beispiele: Team-Charter als Startartefakt der Kollaboration; Pre-Mortem mit Eintrittswahrscheinlichkeit/Schadenshöhe und Ableitung von Gegenmaßnahmen; Devil's-Advocate-Prompt mit Fokus auf Konsensfalle, versteckte Annahmen und Beleglage – abschließend visualisiert als Vergleichstabelle „Initial Decision vs. Hidden Assumptions". Der Copilot ähnelt einer gut vorbereiteten Kollegin im Projektmeeting, die methodisch führt, aber Ownership bei den Lernenden belässt.
+
+Die **Simulations**-Prompts modellieren „Role Play" (z. B. Verhandlungstraining) und „Goal Play" (z. B. Goal-Setting, Self-Distancing nach Kross) mit klaren Phasen: Informationssammlung, Szenarioauswahl, Szenenaufruf („BEGIN ROLE PLAY"), sechs Züge bis zur konsekutiven Entscheidung, danach strukturierte, balancierte Feedback-Sequenz und Transferhinweise. Genau diese Sequenz betonen @mollick2024f: simulationsbasiertes Üben, narrative Einbettung, adaptive Schwierigkeit, individuelles Feedback plus obligatorisches Debriefing im Kurs („Learning through Simulations"). Die Verhandlungssimulation adressiert u. a. BATNA, ZOPA, Anker, Täuschung, First-Offer-Effekte, Kooperations-/Wettbewerbsdynamik und Beziehungsmanagement am Abschluss der Verhandlung; die Self-Distancing-Simulation trainiert Perspektivwechsel und Emotionsregulation; die Goal-Setting-Simulation operationalisiert Prinzipien wie Spezifität, Zerlegung, Priorisierung, Flexibilität und Hürdenanalyse – jeweils mit klaren „Do/Don't"-Leitplanken, damit die KI in-character bleibt und nicht „übermoderiert". Sinnbildlich ist der Simulator der „Flugsimulator der Lehre": sicher scheitern, Muster erkennen, Taktiken verfeinern – gefolgt von reflektierter Auswertung.
+
+Zusammengeführt ergeben sich einige Muster der komplexeren didaktischen Prompts: Die Hilfskraft reduziert Routine-Lasten und macht Prozesse sichtbar; der Tutor aktiviert aktive Reflexion im Dialog und setzt auf Erklären-Üben-Reflektieren; der Copilot stärkt kollaborative Entscheidungs- und Projektkompetenz durch Co-Creation und Gegenpositionen; der Simulator verlagert Wissen in performatives Handeln mit unmittelbarer Rückmeldung und geplanter Nachbesprechung. So entsteht ein durchgängiger Lernpfad vom Strukturieren über das Verstehen zum Anwenden – mit KI als gut „programmierter" Partnerin, die stets durch Lehrdesign, Leitfragen und Debriefing gerahmt bleibt [@mollick2024f].
+
+## Didaktische Prompts: Gezielte Einschränkungen
+
+Wenn wir die KI als Hiwi nutzen, ist unser Ziel meist eine möglichst schnelle und effiziente Antwort. Das ist bei den drei anderen Rollen anders: Hier schränken wir das Sprachmodell oft bewusst ein. Das liegt kurz gesagt daran, dass Studierende mehr lernen, wenn sie etwas schwitzen. Die Lernforschung nennt das „desirable difficulties" [@bjork2011].
+
+Ein charakteristisches Merkmal fortgeschrittener didaktischer Eingabeaufforderungen ist die Verwendung expliziter Einschränkungen – Regeln, die dem LLM bestimmte Verhaltensweisen verbieten oder verhindern [@mollick2023i; @mollick2024f]. Diese Einschränkungen sind entscheidend für die Umwandlung eines allgemeinen Sprachmodells in ein spezialisiertes pädagogisches Werkzeug. Durch die Einschränkung der Standardtendenzen der KI stellen diese Regeln sicher, dass die Interaktion spezifischen Lernzielen dient und nicht nur Informationen liefert. Die Analyse der gesammelten Eingabeaufforderungen zeigt mehrere wiederkehrende Kategorien von Einschränkungen.
+
+**1. Zulassung erwünschter Schwierigkeiten zum aktiven Lernen**
+
+Die grundlegendste Einschränkung zielt darauf ab, den Schüler von einem passiven Empfänger von Informationen zu einem aktiven Teilnehmer an seinem eigenen Lernprozess zu machen. Dies wird erreicht, indem die KI daran gehindert wird, einfach die Antwort zu geben.
+
+- „Keine direkte Antwort geben" / „Zur Selbstkorrektur anleiten": Diese Regel, die im Mittelpunkt der sokratischen Eingabeaufforderungen steht, zwingt das LLM, eher als Wegweiser denn als Orakel zu fungieren. Anstatt die Frage eines Schülers direkt zu beantworten, muss die KI durch Nachfragen, einem Hinweis oder der Aufforderung an den Lernenden reagieren, seine Überlegungen zu erklären. Dies fördert das aktive Erinnern und eine tiefere kognitive Verarbeitung.
+
+- „Löse KEINE benoteten Aufgaben": Diese Einschränkung, die in der Stanford NumPy-Aufforderung zu finden ist, wahrt die akademische Integrität, indem sie Betrug verhindert. Noch wichtiger ist, dass sie die Lernenden dazu zwingt, ihr Wissen selbstständig anzuwenden, was für den Erwerb von Fähigkeiten unerlässlich ist.
+
+- „Halte keine längeren Vorträge ohne Interaktion": Diese Regel stellt sicher, dass der Lernprozess dialogisch und interaktiv bleibt und verhindert, dass sich der Lernende abwendet.
+
+**2. Aufrechterhaltung der Integrität und des Realismus der Simulation**
+
+In Simulator-Aufgaben sind Einschränkungen unerlässlich, um eine glaubwürdige und effektive Rollenspiel- oder Problemlösungsumgebung zu schaffen.
+
+- „Verlasse nicht Deine Rolle": Diese Anweisung, die in der Aufgabe „Interview mit einer Figur" zu finden ist, ist entscheidend für die Aufrechterhaltung der immersiven Qualität der Simulation, die für situiertes Lernen von zentraler Bedeutung ist.
+
+- „Gebe nicht alle Informationen auf einmal": Wie in der Simulation „Telefonische Triage" zu sehen ist, sorgt diese Einschränkung für eine realistische Informationslücke. Sie zwingt den Lernenden dazu, systematische, professionelle Fähigkeiten (wie diagnostische Fragen) zu üben, anstatt einfach nur eine Datenflut zu erhalten.
+
+- „Entscheide nicht zu schnell und gehe keine Kompromisse ein": Im Verhandlungssimulator sorgt diese Regel dafür, dass die Simulation eine echte Herausforderung darstellt und die Studierenden gezwungen sind, ihre Überzeugungs- und Konfliktlösungsfähigkeiten unter realistischem Druck zu üben.
+
+**3. Sicherstellung einer sachlichen Grundlage und Verhinderung von Halluzinationen**
+
+LLMs sind dafür bekannt, dass sie „halluzinieren" oder Informationen erfinden. Didaktische Aufforderungen enthalten oft Einschränkungen, um dieses Risiko zu mindern und die Übung im Rahmen des Kursmaterials zu halten.
+
+Beispiel: „Deine Antworten dürfen sich NUR auf Ereignisse und Informationen stützen, die in ... dem Quelltext zu finden sind": Diese Regel aus der Aufforderung „Interview mit einer fiktiven Figur" ist ein wirksames Mittel, um zu verhindern, dass die KI nicht kanonische oder ungenaue Informationen einbringt. Sie konzentriert die Übung auf die Textanalyse und -interpretation.
+
+**4. Kognitive Belastung (cognitive load) begrenzen**
+
+Um sicherzustellen, dass die Lernerfahrung effektiv und nicht überfordernd ist, enthalten Aufforderungen oft Einschränkungen hinsichtlich der Komplexität und des Tempos der Informationen.
+
+- „Vermeide komplizierte/unnötige Notationen": Diese Richtlinie aus der Stanford NumPy-Aufgabe („Stanford Tutor...") ist eine direkte Anwendung der kognitiven Belastungstheorie, die unnötige mentale Anstrengungen reduziert, damit sich der Lernende auf das Kernkonzept konzentrieren kann [@sweller2011].
+
+- „Stelle nicht mehr als eine Frage auf einmal": Diese gängige Regel in mehrstufigen Aufgaben verhindert, dass sich der Benutzer überfordert fühlt, und ermöglicht einen natürlicheren, schrittweisen Gesprächsfluss.
+
+- „Sprich NUR in [Zielsprache]": In Sprachübungs-Prompts sorgt diese Einschränkung für Immersion, wird jedoch oft mit einer „Fluchtmöglichkeit" kombiniert (z. B. „es sei denn, ich gebe HILFE AUF DEUTSCH ein"), um Frustrationen zu vermeiden, wenn die kognitive Belastung zu hoch wird.
+
+## Integration der KI in breitere Aufgabenstellungen und Artefakte
+
+Die Sammlung enthält Aufgaben, die tiefes Lernen durch Elaboration, Selbst-Erklärung und wiederholte Anwendung fördern. Sokratische Dialoge, Argumentationskritik und die Essay-Revision erzwingen Begründungen, Gegenbeispiele und explizite Kriterienarbeit, wodurch sich der Fokus von bloßen Ergebnissen auf nachvollziehbare Denk- und Entscheidungsprozesse verschiebt [@yuen2025; @meehan2025; @newman2025].
+
+Simulationsaufgaben erzeugen handlungsnahe Übungssituationen für Kommunikation und klinische Entscheidungen; dadurch werden Abruf- und Transferleistungen in realitätsnahen Bedingungen gefördert [@welsh2025; @hobbick2025; @kentz2025].
+
+Copilot-Szenarien wie die DuPont-Analyse und das iterative Ausprobieren von Prompts (Prompt-Playtesting) verbinden fachliche Rechenwege mit Interpretation, Berichterstellung und Qualitätskontrolle der eigenen Prompting-Strategien [@pedersen2025; @landfair2025].
+
+**Wie wird Reflexion und Eigenleistung gefördert?** Die Integration von GenAI ist in allen Beispielen explizit gesteuert und an sichtbare Lernprodukte gebunden. Aufgaben definieren die Rolle der KI und koppeln deren Einsatz an Protokolle der KI-Interaktion, kommentierte Revisionen, Evidenz-Logs oder Entscheidungsbäume. So verankert etwa die Aufgabe „AI-Sandwich" die KI-Nutzung als Mittel zum Zweck: Zuerst werden Ziele und Kriterien ohne KI fixiert, anschließend liefert die KI Varianten und Gegenpositionen, und zum Abschluss erfolgt die menschliche Prüfung mit Quellenarbeit und Reflexion [@ippolito2025].
+
+Für **KI-resistente Prüfungsleistungen** empfehlen sich Artefakte und Peer-Elemente, die den individuellen Arbeitsprozess sichtbar machen. Dazu gehören Versionen ‚vorher/nachher‘ mit Änderungsbegründungen, Annotierungen der eigenen Entscheidungswege, Protokolle der Prompt-Iteration oder Evidenztabellen sowie strukturierte Peer-Reviews und Debrief-Diskussionen. Prüfungen sollten diese Prozessartefakte bewerten, nicht nur das Endprodukt, und Transparenzpflichten verankern: Studierende legen ihre KI-Nutzung offen, benennen Prompts und Tools, dokumentieren Quellenprüfungen und begründen Überarbeitungen. Auf diese Weise bleibt akademische Integrität gewahrt, während die produktiven Potenziale von GenAI genutzt werden [@taylor2025].
