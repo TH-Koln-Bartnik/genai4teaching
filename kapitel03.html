@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource, die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen.">
+<meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource (CC-BY-SA), die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen (zu den Details der sehr weit definierten freien Nutzung siehe https://creativecommons.org/licenses/by-sa/4.0/)">
 
 <title>3&nbsp; Didaktische Ziele und Mechanismen – KI als Hilfe zum Lehren und Lernen (Beta-Version! Format wird noch optimiert)</title>
 <style>
@@ -567,52 +567,6 @@ Zhang, Y.-F., Li, H., Song, D., Sun, L., Xu, T., &amp; Wen, Q. (2025). <em>From 
 </section>
 
 </main> <!-- /main -->
-// callout-toggle.js
-
-window.addEventListener('DOMContentLoaded', () =&gt; {
-
-  // Quarto-Callouts haben die Klasse .callout; collapsible Callouts besitzen ein Toggle in der Header-Zeile.
-
-  // Wir öffnen/schließen den Body-Container aller "collapsible" Callouts.
-
-  function setAllCallouts(open = true) {
-
-    document.querySelectorAll('.callout').forEach(co =&gt; {
-
-      // Quarto rendert collapsible Callouts mit einem Header-Button, der den Body ein-/ausblendet.
-
-      const headerBtn = co.querySelector('.callout-header button, .callout-toggle, [data-bs-toggle="collapse"]');
-
-      const body = co.querySelector('.callout-body, .collapse'); // je nach Quarto/Bootstrap-Version
-
-      if (!headerBtn || !body) return;
-
-
-
-      const isOpen = body.classList.contains('show') || body.style.display !== 'none';
-
-      if (open &amp;&amp; !isOpen) headerBtn.click();
-
-      if (!open &amp;&amp; isOpen) headerBtn.click();
-
-    });
-
-  }
-
-
-
-  const expandBtn = document.getElementById('expand-callouts');
-
-  const collapseBtn = document.getElementById('collapse-callouts');
-
-
-
-  if (expandBtn)   expandBtn.addEventListener('click', () =&gt; setAllCallouts(true));
-
-  if (collapseBtn) collapseBtn.addEventListener('click', () =&gt; setAllCallouts(false));
-
-});
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1041,7 +995,7 @@ window.addEventListener('DOMContentLoaded', () =&gt; {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Bartnik, R. (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898</p>
+<p>Bartnik, Roman (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Lizenz: CC-BY-SA. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
