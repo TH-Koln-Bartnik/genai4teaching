@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource, die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen.">
+
+<title>2&nbsp; Grundbegriffe – KI als Hilfe zum Lehren und Lernen (Beta-Version! Format wird noch optimiert)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./kapitel03.html" rel="next">
+<link href="./kapitel01.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-33747247844c1f9d2da9c06fe75dcb45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1f753b6b2854c80ed0bff00cffd445a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-33747247844c1f9d2da9c06fe75dcb45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel02.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">KI als Hilfe zum Lehren und Lernen (Beta-Version! Format wird noch optimiert)</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien der Nutzung von GenAI: Hiwi, Tutor, Copilot, Simulator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Überblick didaktischer Prompts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#definition-einiger-grundbegriffe" id="toc-definition-einiger-grundbegriffe" class="nav-link active" data-scroll-target="#definition-einiger-grundbegriffe"><span class="header-section-number">2.1</span> Definition einiger Grundbegriffe</a>
+  <ul>
+  <li><a href="#was-heißt-hier-gpt" id="toc-was-heißt-hier-gpt" class="nav-link" data-scroll-target="#was-heißt-hier-gpt"><span class="header-section-number">2.1.1</span> Was heißt hier GPT?</a></li>
+  <li><a href="#was-nutzen---llm-rag-oder-agent" id="toc-was-nutzen---llm-rag-oder-agent" class="nav-link" data-scroll-target="#was-nutzen---llm-rag-oder-agent"><span class="header-section-number">2.1.2</span> Was nutzen - LLM, RAG oder Agent?</a></li>
+  </ul></li>
+  <li><a href="#wie-denken-sprachmodelle-und-warum-halluzinieren-sie" id="toc-wie-denken-sprachmodelle-und-warum-halluzinieren-sie" class="nav-link" data-scroll-target="#wie-denken-sprachmodelle-und-warum-halluzinieren-sie"><span class="header-section-number">2.2</span> Wie denken Sprachmodelle und warum halluzinieren sie?</a></li>
+  <li><a href="#welches-modell-wählen" id="toc-welches-modell-wählen" class="nav-link" data-scroll-target="#welches-modell-wählen"><span class="header-section-number">2.3</span> Welches Modell wählen?</a></li>
+  <li><a href="#was-können-die-modelle-und-was-nicht" id="toc-was-können-die-modelle-und-was-nicht" class="nav-link" data-scroll-target="#was-können-die-modelle-und-was-nicht"><span class="header-section-number">2.4</span> Was können die Modelle – und was nicht?</a></li>
+  <li><a href="#wo-und-wie-spreche-ich-mit-der-ki" id="toc-wo-und-wie-spreche-ich-mit-der-ki" class="nav-link" data-scroll-target="#wo-und-wie-spreche-ich-mit-der-ki"><span class="header-section-number">2.5</span> Wo und wie spreche ich mit der KI?</a>
+  <ul>
+  <li><a href="#sec-prompt-vorgehen" id="toc-sec-prompt-vorgehen" class="nav-link" data-scroll-target="#sec-prompt-vorgehen"><span class="header-section-number">2.5.1</span> Wo sprechen? Verschiedene Zugänge zu Sprachmodellen</a></li>
+  <li><a href="#wie-sprechen-prompt-befehle" id="toc-wie-sprechen-prompt-befehle" class="nav-link" data-scroll-target="#wie-sprechen-prompt-befehle"><span class="header-section-number">2.5.2</span> Wie sprechen? Prompt-Befehle</a></li>
+  </ul></li>
+  <li><a href="#wie-steht-es-mit-dem-energieverbrauch-der-modelle" id="toc-wie-steht-es-mit-dem-energieverbrauch-der-modelle" class="nav-link" data-scroll-target="#wie-steht-es-mit-dem-energieverbrauch-der-modelle"><span class="header-section-number">2.6</span> Wie steht es mit dem Energieverbrauch der Modelle?</a></li>
+  <li><a href="#energieverbrauch-und-politische-steuerung" id="toc-energieverbrauch-und-politische-steuerung" class="nav-link" data-scroll-target="#energieverbrauch-und-politische-steuerung"><span class="header-section-number">2.7</span> Energieverbrauch und politische Steuerung</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel02.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel02.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-grundbegriffe" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="definition-einiger-grundbegriffe" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="definition-einiger-grundbegriffe"><span class="header-section-number">2.1</span> Definition einiger Grundbegriffe</h2>
+<p>In diesem Abschnitt wollen wir einigen Definitionen und Bedeutungen klären. Dabei nutzen wir immer wieder kleine Interaktionen und Lernspiele, auch um so zu zeigen, wie wir einfacher “fragend” und aktivierend lehren können.</p>
+<p>Wo finden Sie zusätzliches oder vertiefendes Material? Als visuelle Begleitung empfehle ich das sehr schöne Einführungsvideo des Mathematik-Didaktikers Grant Sanderson (7 Minuten, <a href="https://youtu.be/LPZh9BOjkQs" class="uri">https://youtu.be/LPZh9BOjkQs</a>). Tiefer in die mathematischen Details geht die grafische und interaktive Einführung als Animation von Brendan Bycroft (<a href="https://bbycroft.net/llm" class="uri">https://bbycroft.net/llm</a>). Wer sich auch die technischen Hintergründe genauer erschließen will, kann das Lehrbuch-Standardwerk von <span class="citation" data-cites="jurafsky2025">Jurafsky &amp; Martin (<a href="#ref-jurafsky2025" role="doc-biblioref">2025</a>)</span> nutzen, das online frei verfügbar ist.</p>
+<p>Von Prompt bis Token, über Temperatur und RAG: Was ist Ihnen schon an Grundbegriffen in diesem Kontext vertraut? Testen Sie sich selbst mit dem folgenden kleinen Spiel. Bei voller Punktzahl winkt Ihnen ein Preis!</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lernspiel: Welche Grundbegriffe kennen Sie schon?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lernspiel: Welche Grundbegriffe kennen Sie schon?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Ordnen Sie die Begriffe den korrekten Definitionen zu!</em></p>
+<iframe src="interactions\llm-game-standalone.html" width="100%" height="700px" frameborder="0">
+</iframe>
+<p>(am besten auf dem Computer spielen). Hier auch Online abrufbar (so etwas nennt sich “Artifact” beim Sprachmodell “Claude”) <a href="https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8"><u>https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8</u></a></p>
+</div>
+</div>
+<p>Ein Sprachmodell ist ein Rechensystem, das das nächste Wort in einer Wortkette vorhersagt, basierend auf den vorher genannten Wörtern in dieser Kette <span class="citation" data-cites="jurafsky2025">Jurafsky &amp; Martin (<a href="#ref-jurafsky2025" role="doc-biblioref">2025</a>)</span>, Kap.7, S.2). Ein großes Sprachmodell Ein <strong>Large Language Model (LLM)</strong> ist ein fortschrittliches maschinelles Lernmodell, das speziell darauf trainiert ist, menschliche Sprache zu verstehen und Texte zu erzeugen, die natürlich erscheinen. Die Modelle können erstaunliche Mengen von Textdaten verarbeiten, um vielseitige Sprachanwendungen zu ermöglichen.</p>
+<p>Die <strong>generative Künstliche Intelligenz</strong> (GenAI) bezieht sich auf Systeme, die fähig sind, neue Inhalte zu erzeugen, wie etwa Texte, die noch nicht existierten. LLMs sind ein zentraler Teil dieser generativen KI und können eigenständig Texte zu einem breiten Spektrum von Themen generieren.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Tipp: Mini-Interaktionen einfach als HTML erstellen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp: Mini-Interaktionen einfach als HTML erstellen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Können Sie in HTML programmieren? Jetzt schon. Die <em>Lernspiele in diesem Abschnitt</em> wurden mit Hilfe von Sprachmodellen erstellt (Gemini, ChatGPT, Claude). Meist mit einer Variation des einfachen Prompts: <strong>Erstelle mir ein browser-basiertes Lernspiel zum Thema / zur Illustration von …“</strong>. Oft hat man nach 5-10 Minuten eine gute erste Version. In der Lehre mache ich das oft auch als Übung mit Studierenden. Sie sollen dann erst mit Hilfe der KI ein Lernspiel erstellen und dann begründet bewerten, welcher Spiel-Prototyp das Konzept am besten darstellt. Bei etwas mehr Zeit kann man sie gegenseitig bewerten lassen, selbst Kriterien erstellen oder stärkere Gamification hinzufügen. Im Ergebnis beschäftigen sich idealerweise die Teilnehmer intensiv mit einem theoretischen Konzept (Bei komplexeren Themen hilft es, einen Fachtext als Hintergrund zum Konzept hochzuladen.)</p>
+</div>
+</div>
+<p>Das <strong>Sprachmodell</strong> (s. Abbildung 3) zerlegt dazu grob gesagt Inputs wie Texte in kleine Bausteine (Tokens), verwandelt diese in Zahlen (Embeddings), erkennt mithilfe komplexer Muster (Transformer und Attention) deren Zusammenhänge, und erzeugt auf diese Weise selbstständig basierend auf kontextbezogen berechneten Wahrscheinlichkeiten neue Texte (generative Sprachproduktion).</p>
+<p>Damit Sprachmodelle wie ChatGPT Sprache verstehen und erzeugen kann, zerlegen sie Text in sogenannte <strong>Tokens</strong> – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen <span class="citation" data-cites="jurafsky2025">(s. etwa <a href="#ref-jurafsky2025" role="doc-biblioref">Jurafsky &amp; Martin, 2025, Kap.2</a>)</span>. Jedes dieser Tokens wird in einen <strong>Vektor</strong> umgewandelt – eine Zahlenreihe, die das Wort mathematisch beschreibt. Dieser Vorgang nennt sich <strong>Embedding</strong>. Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, beispielsweise „Hund“ und „Katze“.</p>
+<p>Hier kann man das selbst einfach ausprobieren: Das interaktive Widget simuliert eine GPT-2-ähnliche Tokenisierung.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen umgewandelt">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen umgewandelt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><iframe src="interactions\tokenizer-explorer.html" width="100%" height="700px" frameborder="0"></iframe></p>
+</div>
+</div>
+<p>Die kleine Simulation hier soll nur ein Gefühl für den Prozess geben. Wie die Umwandlung eines bestimmten Textes genau in verschiedenen Sprachmodellen aussieht, können Sie interaktiv auf Webseiten wie Tiktokenizer ausprobieren: https://tiktokenizer.vercel.app/.</p>
+<p>Ein <strong>Prompt</strong> ist eine Eingabeaufforderung, die an ein LLM gesendet wird, um eine spezifische Antwort zu erhalten. Die Gestaltung dieser Prompts ist entscheidend für die Qualität der generierten Antworten und wird als <strong>Prompt Engineering</strong> bezeichnet.</p>
+<section id="was-heißt-hier-gpt" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="was-heißt-hier-gpt"><span class="header-section-number">2.1.1</span> Was heißt hier GPT?</h3>
+<p>GPT steht für <strong>Generative Pre-trained Transformer</strong>. Wir schauen zunächst, was diese drei Begriffe bedeuten.</p>
+<p><em>‘Generative’</em>: Der Begriff „<strong>generativ</strong>“ bedeutet in diesem Zusammenhang, dass GPT eigenständig neue, sinnvolle Texte erzeugen kann, indem es gelernte Muster neu kombiniert, anstatt fertige Texte zu übernehmen.</p>
+<p><em>‘Pretrained’</em>: GPT wurde mit riesigen Textmengen <strong>vortrainiert</strong> (<strong>Pretraining</strong>), ohne konkrete Aufgaben lösen zu müssen – dieser Vorgang erfolgt unüberwacht (<em>unsupervised learning</em>). Sprachmodelle nutzen häufig die Methode <strong>„Reinforcement Learning with Human Feedback“ (RLHF)</strong>, um noch bessere Texte zu generieren. Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern nach Qualität beurteilt werden.Diese Bewertungen dienen dazu, das Modell zusätzlich zu trainieren und zu steuern, indem Texte belohnt werden, die von Menschen als besonders gut, klar oder hilfreich eingeschätzt wurden. Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind. Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte generieren kann – also kreativ Sprache produziert, ohne bloß zu kopieren (generativ).</p>
+<p><em>‘Transformer’</em>: Das Herzstück des GPT ist der sogenannte <strong>Transformer</strong> – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (<strong>Attention</strong>) erkennt, welche Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen.</p>
+<p>Im Transformer bedeutet „Attention“: Jedes Wort (genauer: jedes Token) entscheidet dynamisch, auf welche anderen Tokens es beim Verstehen oder Generieren am stärksten „hören“ sollte. Technisch ist das eine gewichtete Mischung von Informationen: Das Modell bildet eine Art Relevanzscore zwischen einem „aktuellen Interesse“ und möglichen „Informationsquellen“ und erstellt daraus Gewichte, die sich zu 1 aufsummieren. Die Ausgabe ist dann eine gewichtete Summe der Informationsinhalte. Das ist wie bei einer Literaturrecherche: Eine Fragestellung (Query) wird mit Titeln/Abstracts als „Hinweis-Schilder“ (Keys) abgeglichen; die eigentlichen Inhalte (Values) aus den passenden Quellen fließen dann stärker in das Gesamtverständnis ein.</p>
+<p>Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint (s. Abbildung _). (Der zentrale Fachartikel von 2017, ein zentraler Auslöser der aktuellen KI-Welle, hatte den knackigen Titel “Attention is all you need” <span class="citation" data-cites="vaswani2017">Vaswani et al. (<a href="#ref-vaswani2017" role="doc-biblioref">2017</a>)</span> - der Artikel wurde mittlerweile mehr als 200.000 fach zitiert.)</p>
+<p><strong>Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?</strong> Neuere LLMs können schon ganze Bücher schnell aufsaugen und dann zusammenfassen (z.B. Claude, ChatGPT oder Gemini). Das <strong>Kontext-Fenster</strong> eines LLM beschreibt die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu verstehen.</p>
+<p>Ein <strong>Agent</strong> im Kontext von Automation und künstlicher Intelligenz meint zunächst allgemein etwas, das seine Umwelt wahrnimmt (durch Sensoren) und auf sie einwirkt (durch Aktoren) <span class="citation" data-cites="russell2021">(<a href="#ref-russell2021" role="doc-biblioref">Russell &amp; Norvig, 2021, S.54</a>)</span>. Agenten bestehen aus einer Architektur, die bestimmt, was möglich ist und einem Programm, das vorgibt, wie der Agent handeln soll <span class="citation" data-cites="russell2021">(<a href="#ref-russell2021" role="doc-biblioref">Russell &amp; Norvig, 2021, S.65ff</a>.)</span>. Ersteres meint bildlich gesprochen die Augen und Hände des Agenten: Die <em>Agenten-Architektur</em> beschreibt den spezifischen Setup von Sensoren und Aktoren, die bestimmen, was für den Agenten wahrnehmbar und handelbar ist. Für GenAI Agenten fragt das etwa: Hat er Web-Anbindung? Kann er programmieren? Das <em>Agenten-Programm</em> ist das Regelbuch: es bestimmt, wie der Agent reagiert. Von einfachen Wenn-Dann-Regeln bis hin zu komplexen Weltmodellen (z.B. Physik-Modelle, die die Schwerkraft berücksichtigen oder Kosten-Gewinn Rechnungen für eine Wirtschaftssimulation).</p>
+<p>GPT-basierte Agenten können Text analysieren, generieren und verschiedene Aufgaben automatisieren, indem sie vorab definierte Muster und Regeln befolgen. Durch die Erstellung solcher Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten.</p>
+<p><strong>RAG (Retrieval-Augmented Generation)</strong> beschreibt die Möglichkeit, zusätzliche Daten wie Fachtexte, Statistiken oder Gesetzesbücher in Kombination mit einem KI Modell zu nutzen. Die KI ist das Gehirn, die zusätzliche Wissensdatenbank quasi das Bücherregal, das zu Rate gezogen werden kann. Je nach Kontextfenster stehen dort mehr oder weniger Bücher. Insofern umschreibt RAG ein KI-Modell, das die Fähigkeiten von Textgenerierungsmodellen (wie GPT) mit einer Wissensdatenbank kombiniert. So wird etwa der Prompt-Agent (s.u.) mit einer Reihe von Fachtexten „gefüttert“, in denen Best Practices des Prompting erklärt werden.</p>
+<p>Einige Unterschiede zwischen einem einfachen Sprachmodell (LLM) und dem Setup mit Zusatzmaterial (RAG) und erlaubter Werkzeugnutzung (Tool Use, Agenten) sehen wir an der folgenden Interaktion. Wählen Sie hier jeweils die passende Antwort (einfach, aber so bleiben Sie dran!).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Runter scrollen und “Los gehts!” auswählen, dann nacheinander die Interaktionen für LLM, RAG und Agent auswählen und die Fragen beantworten.</p>
+<iframe src="interactions\llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
+</iframe>
+</div>
+</div>
+<p>Das Modell sucht nach relevanten Daten und integriert diese in die generierte Antwort. In der Lehre kann RAG verwendet werden, um den Studierenden Fachtexte oder besonders aktuelle Informationen zur Verfügung zu stellen. Beispielsweise könnten Studierende in einem Geschichtsseminar eine KI befragen, die externe Quellen durchforstet, um aktuelle Erkenntnisse zu historischen Ereignissen zu präsentieren. Unternehmen nutzen diese Technik, um etwa 1000-seitige Gebrauchsanweisungen mit KI durchsuchbar zu machen, oder Chatbots zu trainieren, die typische, repetitive Kundenanfragen beantworten. Insofern ermöglicht RAG eine dynamische und zeitgemäße Wissensvermittlung, die nicht auf das festgelegte Wissen des KI-Modells beschränkt ist.</p>
+</section>
+<section id="was-nutzen---llm-rag-oder-agent" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="was-nutzen---llm-rag-oder-agent"><span class="header-section-number">2.1.2</span> Was nutzen - LLM, RAG oder Agent?</h3>
+<p>Wie unterscheiden sich die verschiedenen <em>Nutzungs-Muster</em>, die wir bis jetzt kennengelernt haben? Frage ich nur das Sprachmodell? Oder lieber das Sprachmodell mit Zusatz-Material (RAG)? Oder vielleicht das Sprachmodell mit Tools (Agenten)? Prüfen Sie Ihr Verständnis: Welche der links gezeigten Antworten passen zu welchem der rechts gezeigten Muster? Nutzt das Sprachmodell nur sein “Standard-Wissen” (LLM only), oder werden “Werkzeuge” wie Internet-Nutzung erlaubt?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<iframe src="interactions\llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
+</iframe>
+</div>
+</div>
+<p>Das beendet unsere kurze Begriffsbestimmung. Ein etwas breiteres Glossar für Anwender finden Sie etwa bei der populärwissenschaftlichen Zeitschrift CIO (Chief Intelligence Officer): <a href="https://www.cio.de/article/3700849/die-wichtigsten-begriffe-im-genai-umfeld.html" class="uri">https://www.cio.de/article/3700849/die-wichtigsten-begriffe-im-genai-umfeld.html</a>.</p>
+</section>
+</section>
+<section id="wie-denken-sprachmodelle-und-warum-halluzinieren-sie" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="wie-denken-sprachmodelle-und-warum-halluzinieren-sie"><span class="header-section-number">2.2</span> Wie denken Sprachmodelle und warum halluzinieren sie?</h2>
+<p>Eine Studie des KI-Labors Anthropic hat mit neuen Methoden den <strong>Denkprozess eines Sprachmodells im Detail nachgezeichnet</strong> <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>, was uns erstmals etwas genauer verstehen lässt, wie Sprachmodelle mit verschiedenen Sprachen umgehen, wie sie den Schreibprozess „planen“, wie sie bei Kalkulationen vorgehen, wie weit ihre Selbsterkenntnis reicht und warum sie manchmal Antworten erfinden („halluzinieren“).</p>
+<div id="fig-thoughtprocess" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-thoughtprocess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script02-03.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-thoughtprocess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;2.1: Visualisierte Gedanken eines Sprachmodells [@lindsey2025]
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Sprachübergreifend gleich:</strong> Das Modell nutzt einen gemeinsamen sprachübergreifenden Bedeutungsraum.</li>
+<li><strong>Textplanung:</strong> Bei der Texterstellung plant das Modell mehrere Wörter im Voraus.</li>
+<li><strong>Paralleles Rechnen:</strong> Für Kalkulationen nutzt das Modell parallele Rechenpfade, die am Ende verbunden werden.</li>
+<li><strong>Man traue nicht der Selbstkenntnis:</strong> Das Modell erfindet manchmal Argumentationsketten (<em>motivated reasoning</em>).</li>
+<li><strong>Bekanntheit führt zu Halluzinationen:</strong> Wenn das Modell eine genannte Entität „kennt“ (hier: den Namen des Forschers, Karpathy), aber nicht die Antwort auf die Frage (Titel des Fachartikels) führt das zu erfundenen Antworten (die „can’t answer“-Funktion wird unterdrückt).</li>
+</ul>
+<p>Claude nutzt einen <strong>gemeinsamen Bedeutungsraum für verschiedene Sprachen</strong> – ein Hinweis auf eine Art „universelle Denksprache“. Claude verarbeitet Informationen in einem sprachunabhängigen, abstrakten Bedeutungsraum. Bei der Frage nach dem „Gegenteil von klein“ in verschiedenen Sprachen (z. B. Englisch, Französisch, Chinesisch) aktivieren sich im Modell dieselben internen Merkmale für „Kleinheit“ und „Gegenteil“, unabhängig von der Eingabesprache. Erst in einem späteren Schritt wird die Antwort in die jeweilige Zielsprache übersetzt. Diese Erkenntnis legt nahe, dass Claude Wissen und Konzepte sprachübergreifend anwenden kann.</p>
+<p><strong>Plant das Sprachmodell die Textgeneration?</strong> Entgegen der Annahme, dass Sprachmodelle Texte strikt Wort für Wort basierend auf dem unmittelbaren Kontext generieren, zeigt Claude die Fähigkeit, mehrere Wörter im Voraus zu planen. In Aufgaben zur Gedichtgenerierung identifiziert Claude beispielsweise Reimwörter, bevor es die vorhergehenden Zeilen formuliert. Ein Beispiel: Soll ein Gedicht mit dem Wort „Kaninchen“ enden, wählt Claude dieses Zielwort frühzeitig aus und gestaltet die Zeile so, dass sie darauf hinführt. ​Diese Fähigkeit zur Vorausplanung deutet darauf hin, dass Claude in der Lage ist, komplexe Textstrukturen zu erstellen, die über einfache Wortassoziationen hinausgehen.</p>
+<p><strong>Wie kalkulieren Sprachmodelle?</strong> Anthropic hat in seiner Studie zu Claude 3.5 Haiku detailliert untersucht, wie das Modell mathematische Berechnungen intern verarbeitet. Dabei wurde festgestellt, dass Claude bei Aufgaben wie der Addition von Zahlen parallele Rechenpfade nutzt, um zu einem Ergebnis zu gelangen.​ Claude verwendet zwei Hauptpfade, um Additionen durchzuführen: 1. <strong>Grobabschätzung:</strong> Ein Pfad schätzt das Ergebnis basierend auf den Größenordnungen der Zahlen. 2. <strong>Präzise Berechnung:</strong> Ein anderer Pfad fokussiert sich auf die genaue Berechnung, insbesondere auf die Bestimmung der letzten Ziffer der Summe.</p>
+<p>Diese beiden Pfade arbeiten zusammen, um das finale Ergebnis zu erzeugen. Wenn beispielsweise der Pfad für die letzte Ziffer deaktiviert wird, liefert Claude nur eine grobe Schätzung, ohne die genaue Endziffer korrekt zu bestimmen.</p>
+<p><strong>Können wir das Modell fragen, wie es zu einem Ergebnis gekommen ist?</strong> Eher nicht. Anthropics Studie zeigt, dass das Modell bei komplexen Aufgaben manchmal überzeugende, aber erfundene Argumentationsketten präsentiert. Bei einfachen Berechnungen, wie der Quadratwurzel von 0,64, lassen sich klare interne Rechenschritte nachweisen. Bei schwierigeren Aufgaben, etwa der Berechnung des Kosinus einer großen Zahl, gibt Claude jedoch vor, Berechnungen durchgeführt zu haben, obwohl keine entsprechenden internen Prozesse erkennbar sind. In solchen Fällen konstruiert das Modell plausible, aber unbegründete Erklärungen – ein Verhalten, das als „motiviertes Denken“ bezeichnet wird. Diese Fähigkeit, überzeugend zu argumentieren, ohne tatsächlich die zugrunde liegende Logik zu befolgen, kann für Nutzer irreführend sein. Die von Anthropic entwickelten Interpretationswerkzeuge ermöglichen es, solche untreuen Denkprozesse zu identifizieren, indem sie die tatsächlichen internen Abläufe des Modells sichtbar machen. Dies ist ein wichtiger Schritt, um die Zuverlässigkeit und Transparenz von KI-Systemen zu verbessern.</p>
+<p><strong>Was kann zu Halluzinationen führen?</strong> Wie wir im oben gezeigten Beispiel sehen, ist den Antworten des Sprachmodells nicht immer zu trauen. Das LLM verfügt über einen standardmäßig aktiven „Refusal Circuit“, der das Modell dazu bringt, keine Antwort zu geben, wenn es keine ausreichenden Informationen hat. Wenn eine bekannte Entität erfasst wird, aktiviert sich ein konkurrierender „Known Entity“-Mechanismus, der den Refusal Circuit hemmt und eine Antwort ermöglicht. Problematisch wird es, wenn Claude einen Namen erkennt, aber keine spezifischen Informationen dazu hat. In solchen Fällen kann der „Known Entity“-Mechanismus fälschlicherweise den Refusal Circuit unterdrücken, was zu einer Halluzination führt. Ein Beispiel: Bei der Frage nach einem Fachartikel des bekannten Forschers Karpathy gibt Claude einen erfundenen Titel an, da das Modell zwar den Namen kennt, in diesem Fall aber keine Informationen über den Artikel hat. Bei weniger bekannten Namen gibt das Modell an, die Antwort nicht zu kennen <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>.</p>
+</section>
+<section id="welches-modell-wählen" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="welches-modell-wählen"><span class="header-section-number">2.3</span> Welches Modell wählen?</h2>
+<p><strong>Was für LLMs gibt es aktuell?</strong> Die großen Anbieter mit den jeweils stärksten Modellen (s. @fig-leaderboard) sind OpenAI (Chat GPT-5), Google (Gemini 2.5) und Anthropic (Claude Opus 4.1 / Sonnet 4). Je nach Anwendung werden günstigere Modelle angeboten, die weniger Rechenaufwand benötigen, meist mit dem Zusatz „Mini“. Starke Reasoning Modelle (die komplexe Fragestellungen bearbeiten können) von OpenAI sind GPT 5 oder Gemini 2.5 Flash (Stand 08/2025). Kostenfrei nutzbare Open Source Alternativen sind z.B. Mistral (eines der wenigen europäischen Modelle) und Llama4 (von Meta/Facebook) sowie die chinesische Konkurrenz DeepSeek V3.1 <span class="citation" data-cites="mollick2025 vellum2024">(<a href="#ref-mollick2025" role="doc-biblioref">Mollick, 2025a</a>; sowie <a href="#ref-vellum2024" role="doc-biblioref">Vellum, 2024</a>)</span>.</p>
+<p><strong>Welches Sprachmodell sollte man aktuell nutzen?</strong> Die kurze Antwort ist, dass aktuell <strong>GPT-5 eine gute Wahl</strong> ist. <strong>Für Lehrende kostenfrei nutzbar</strong> gibt es aktuell (August 2025) den zentralen Dienst „Chat-AI“ / Academic Cloud der Gesellschaft für wissenschaftliche Datenverarbeitung Göttingen (GWDG) (https://chat-ai.academiccloud.de/), über den neben einer Reihe von quelloffenen Modellen mittlerweile auch Chat GPT-5 nutzbar ist. Hier kann man sich einfach mit einer Hochschuladresse registrieren und den Dienst nutzen. Hochschulen bieten teils einen eigenen KI-Zugang an, die TH-Köln etwa einen begrenzten Zugang zu ChatGPT und einzelnen quelloffenen Modellen über das THKI-Lab (https://ki.th-koeln.de/login.php). <strong>Im September 2025 wurde</strong> an der TH Köln und weiteren NRW-Hochschulen die Lösung KI:connect ausgerollt, die ähnliche Funktionalitäten bereitstellt (https://kiconnect.pages.rwth-aachen.de/pages/).</p>
+<p>Außerdem können Lehrende über die Hochschullizenz Microsoft 365 Copilot herunterladen und dann einen KI-Chat als Desktop-Anwendung nutzen, eine Anwendung, unter deren Haube auch wieder verschiedene Versionen von ChatGPT stecken (hier einloggen und einfach herunterladen: https://www.office.com/). Hier kann man auch GPT 5 nutzen, Chats speichern und komplexere Anweisungen als „Agenten“ entwerfen und teilen.</p>
+<p>Diese kostenfreien Lösungen sind in den letzten Monaten stark ausgebaut worden und mittlerweile schon sehr nützlich geworden. Sie stellen allerdings i.d.R. nicht den aktuellen Stand der Performanz der KI-Modelle dar. Lehrende sollten daher unbedingt 1 bis 2 Monate die 20 Euro investieren und auch die stärksten Bezahlmodelle ausprobieren (also ChatGPT oder Gemini in der Bezahlversion). Nur so erhält man ein Gefühl dafür, was aktuell technisch möglich ist und wie „sicher“ die eigenen Prüfungsleistungen sind (z.B. „im Gespräch“ mit der KI, über das Voice Modell, was bei den kostenfreien Zugängen aktuell meist abgeklemmt ist).</p>
+<p><img src="images/script02-10.svg" id="fig-leaderboard" class="img-fluid" alt="Je nach Ziel ein anderer Platz in der Bestenliste: „Schlauste“ …"> <img src="images/script02-11.svg" class="img-fluid" alt="…und günstigste oder schnellste Modelle"></p>
+<p>Quelle: <span class="citation" data-cites="vellum2024">(<a href="#ref-vellum2024" role="doc-biblioref">Vellum, 2024</a>)</span>, Stand 08/2025.</p>
+<p><strong>Hier kann man vergleichen:</strong> In der LM-Arena kann man verschiedene Modelle ausprobieren und ihre Antwort auf eine bestimmte Frage gegenüberstellen: https://lmarena.ai/ (Untermenü: „Arena (side-by-side)“).</p>
+</section>
+<section id="was-können-die-modelle-und-was-nicht" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="was-können-die-modelle-und-was-nicht"><span class="header-section-number">2.4</span> Was können die Modelle – und was nicht?</h2>
+<p>Was für Aufgaben LLMs beherrschen ist sehr uneinheitlich und <strong>verändert sich dynamisch</strong>. Es gibt Bereiche, in denen heutige KI auf menschlichem Niveau oder besser agiert, und andere, oft nur geringfügig andersartige Aufgaben, an denen die KI (noch) scheitert <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. Mollick und Kollegen prägen hierfür den Begriff einer „<strong>Jagged Technological Frontier</strong>“ (zerklüftete Technik-Grenze) <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. Zwei Aufgaben von ähnlicher Schwierigkeit für Menschen können mit sehr unterschiedlicher Qualität durch ein LLM gelöst werden – eine liegt innerhalb der KI-Frontier (d.&nbsp;h. die KI kann sie lösen), die andere außerhalb (KI liefert unbrauchbare oder falsche Resultate) <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>.</p>
+<p>In einem Experiment mit Consultants wurden 18 verschiedene Beratungsaufgaben gestellt. Für die meisten („inside the frontier“) brachte KI enorme Vorteile, doch bei einer gezielt außerhalb der Frontier gewählten Aufgabe schnitt die KI-Gruppe deutlich schlechter ab: Hier waren die Consultants in der Gruppe mit KI 19 Prozentpunkte weniger häufig korrekt als die ohne KI <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. Dieses Ergebnis unterstreicht die <strong>Gefahr, LLMs unkritisch auf Probleme anzuwenden, die ihre aktuellen Fähigkeiten übersteigen</strong> – die Leistung fällt dann hinter menschliches Niveau zurück. Praktisch bedeutet die Jagged Frontier, dass Organisationen und Individuen lernen müssen, die Grenze der KI-Fähigkeiten zu erkennen und entsprechend zu navigieren <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>.</p>
+<p>Für folgende Anwendungsfälle sind LLMs mittlerweile gut nutzbar <span class="citation" data-cites="handa2025 korinek2024 schwarcz2025">(<a href="#ref-handa2025" role="doc-biblioref">Handa et al., 2025-04-08, 2025</a>; <a href="#ref-korinek2024" role="doc-biblioref">Korinek, 2024</a>; <a href="#ref-schwarcz2025" role="doc-biblioref">Schwarcz et al., 2025</a>)</span>:</p>
+<ul>
+<li>Zusammenfassung von Fachartikeln</li>
+<li>Fortgeschrittene mathematische Ableitungen</li>
+<li>Anspruchsvolle Codierungsaufgaben</li>
+<li>Erstellen eines Podcasts zu einer Forschungsarbeit</li>
+<li>Erstellen von Präsentationsfolien</li>
+<li>Verfassen von Blogbeiträgen</li>
+<li>Simulieren von Interviews mit der Sprachausgabe von ChatGPT oder Gemini</li>
+<li>KI-gestützte Suche (mit kritischer Prüfung natürlich)</li>
+</ul>
+<p>Die Fähigkeiten der Modelle wuchsen in den letzten Monaten rasant und damit werden die Aufgaben, die man an sie delegieren kann komplexer. Die Länge der Aufgaben, die KI Sprachmodelle relativ genau erledigen können, verdoppelt sich seit 2019 etwa alle 7 Monate <span class="citation" data-cites="kwa2025">(<a href="#ref-kwa2025" role="doc-biblioref">Kwa et al., 2025</a>)</span>. Auch die Bewertung von Forschungsarbeiten im Rahmen des Peer-Reviews wird zunehmend teil-automatisiert, etwa durch die automatische Prüfung von Quellen oder Code und Teilbewertungen durch Dienste wie Veracity oder Paper Wizard <span class="citation" data-cites="lovely2025 naddaf2025">(<a href="#ref-lovely2025" role="doc-biblioref">Lovely, 2025</a>; <a href="#ref-naddaf2025" role="doc-biblioref">Naddaf, 2025</a>)</span>.</p>
+<p><strong>Ist das ein Mensch, oder ein Bot?</strong> Eine neuere Studie zeigt, dass neue Sprachmodelle uns bei dieser Frage mittlerweile <strong>erfolgreich täuschen können</strong> und so den Turing Test bestehen, da sie in einer sozialen Interaktion Menschen erfolgreich imitieren können <span class="citation" data-cites="jones2025">(<a href="#ref-jones2025" role="doc-biblioref">Jones &amp; Bergen, 2025</a>)</span>. In einem randomisierten Drei-Parteien-Turing-Test mit über 1.000 Spielen wurde ein mit speziellen Eingabe-Anweisungen (Persona-Prompt) versehenes Sprachmodell (GPT-4.5) von den Respondenten zu 73 % für den Menschen gehalten, häufiger als echte Menschen in der Vergleichsgruppe. Weniger komplexe Modelle (wie Llama 3.1) schritten schlechter ab. Die Autoren diskutieren daraus resultierende Risiken von sozialer Manipulation oder Arbeitsplatzsubstitution, sowie die Notwendigkeit robusterer menschlicher Erkennungsstrategien.</p>
+<p>Auch durch diesen Fähigkeitsschub ist der <strong>Einsatz von Sprachmodellen in Support-Funktionen wie Call Centern stark gestiegen</strong>, empirische Studien belegen hier einen starken Produktivitätszuwachs <span class="citation" data-cites="brynjolfsson2025">(<a href="#ref-brynjolfsson2025" role="doc-biblioref">Brynjolfsson et al., 2025</a>)</span>.</p>
+<p>Die Gründe für die Produktivitätssteigerung von KI-Modellen lassen sich durch <strong>Scaling Laws</strong> (Training Scaling Law, Inference Scaling Law, <span class="citation" data-cites="mollick2025">(<a href="#ref-mollick2025" role="doc-biblioref">Mollick, 2025a</a>)</span> beschreiben: KI-Modelle werden einerseits exponentiell besser, je mehr Daten, Rechenleistung und Parameter genutzt werden und andererseits, wenn sie mehr Zeit zum „nachdenken“ erhalten. (FÜr eine schöne visuelle Beschreibung, s. <span class="citation" data-cites="grootendorst2025">Grootendorst (<a href="#ref-grootendorst2025" role="doc-biblioref">2025</a>)</span>)</p>
+<p>Der erste Zusammenhang (<strong>Training Scaling Law</strong>) besagt, dass größere KI-Modelle mit mehr Parametern und Trainingsdaten systematisch leistungsfähiger werden. Allerdings sind solche Ertragszuwächse mit hohen Kosten verbunden: Eine 10-fache Steigerung an Rechenaufwand führt etwa zu einer Erhöhung der Leistungsmetriken um einen festen Betrag, was abnehmende Grenzerträge andeutet.</p>
+<p>Neben dem positiven Effekt der Modellgröße wurde in den letzten Monaten ein zweiter Scaling-Effekt (<strong>Inference Scaling Law</strong>) auf der Anwenderseite deutlich: LLMs liefern bessere Lösungen, wenn man ihnen mehr „<strong>Denkzeit</strong>“ gibt. OpenAI fand heraus, dass ein Modell mit längerer Schritt-für-Schritt-Reasoning-Phase merklich bessere Ergebnisse erzielt, analog zu einem Menschen, dem man mehr Zeit für eine schwierige Aufgabe gibt. Dieser Inference Scaling Law führte zur Entwicklung von <strong>Reasonern</strong> – KI-Systemen, die bei Bedarf intern zusätzliche Rechenschritte durchführen, um schwierige Probleme genauer zu lösen <span class="citation" data-cites="gottweis2025 openai2024 schwarcz2025">(<a href="#ref-gottweis2025" role="doc-biblioref">Gottweis et al., 2025</a>; <a href="#ref-openai2024" role="doc-biblioref">OpenAI, 2024</a>; <a href="#ref-schwarcz2025" role="doc-biblioref">Schwarcz et al., 2025</a>)</span>.</p>
+<p>Zusammengenommen bedeuten diese Skalierungsgesetze, dass KI-Systeme <strong>durch höheren Ressourceneinsatz (beim Training und bei der Nutzung) immer leistungsfähiger</strong> und vielseitiger werden, wenn auch zu steigenden Kosten. Ökonomisch relevant ist hier vor allem, dass die <strong>Grenzkosten der KI-Nutzung sehr niedrig</strong> bleiben, sobald ein großes Modell einmal trainiert ist: Ist das Modell erstellt, kann es millionenfach eingesetzt werden, was <strong>Skaleneffekte in der Verbreitung</strong> ermöglicht. Somit schafft das Scaling Law die Grundlage dafür, dass <strong>hochleistungsfähige KI als allgemein verfügbares Gut</strong> in Wirtschaft und Bildung eingesetzt werden kann. Durch diese Eigenschaft ermöglicht KI eine schnelle und kosteneffiziente Skalierung personalisierter und adaptiver Lernangebote <span class="citation" data-cites="mollick2025">(<a href="#ref-mollick2025" role="doc-biblioref">Mollick, 2025a</a>)</span>. Dieses exponentielle Wachstum unterscheidet KI grundlegend von bisherigen technologischen Entwicklungen, bei denen Verbesserungen oft linear verliefen.</p>
+<p>OpenAI hat allein in den ersten Monaten von <strong>2025 mehrere neue Funktionen</strong> eingeführt, die den Einsatz von KI in der Hochschullehre deutlich erweitern könnten: Mit der Bildgenerierungsfunktion in GPT4o lassen sich nun auch fotorealistische Visualisierungen erstellen, was z.B. in der technischen Bildung oder bei Designprojekten didaktisch genutzt werden kann (März 2025). Die neuen Audio-Modelle ermöglichen eine präzise Steuerung von Sprachstil und Tonfall – hilfreich etwa für simulierte Rollenspiele, interaktive Lernbegleiter oder barrierefreie Lerninhalte (März 2025). Das im Februar eingeführte <strong>deep research</strong>-Modul erlaubt KI-gestützte Rechercheprozesse, die Studierende bei komplexen Projektarbeiten oder der Literatursichtung unterstützen könnten (Februar 2025). Zusätzlich wurde mit <strong>o3-mini</strong> ein kostengünstigeres Modell vorgestellt, das den Zugang zu leistungsfähigen KI-Anwendungen auch in Bildungseinrichtungen erleichtert (Januar 2025).</p>
+<p><img src="images/script02-05.svg" id="fig-performance" class="img-fluid" alt="Die Länge der Aufgaben, die KI relativ genau erledigen kann verdoppelt sich seit 2019 etwa alle 7 Monate.">. Quelle: <span class="citation" data-cites="lovely2025">Kwa et al. (<a href="#ref-kwa2025" role="doc-biblioref">2025</a>)</span></p>
+<p>Es lassen sich nach dieser Studie <strong>zwei Kooperationsmodelle zwischen Mensch und LLM</strong> unterscheiden, um die Technologiegrenze optimal auszunutzen <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>: Der <strong>Centaur-Ansatz</strong> teilt die Aufgabe, indem der Mensch der KI die Teilprobleme überlässt, die innerhalb der Frontier liegen, und sich selbst auf den Rest konzentriert. Der <strong>Cyborg-Ansatz</strong> integriert die KI tiefer, indem der Mensch kontinuierlich mit der KI interagiert und Feedback-Schleifen nutzt. Beide setzen implizit voraus, dass der Nutzer um die Stärken und Schwächen des LLM weiß.</p>
+<p>Eine spätere Studie des weitgehend selben Teams mit 776 Praktikern bei Procter &amp; Gamble zeigt, dass Individuen mit LLM Unterstützung deutlich produktiver Probleme lösen oder neue Ideen generieren konnten. Das Sprachmodell scheint einen deutlichen Mehrwert als „<strong>Cybernetic Teammate</strong>“ zu bringen und Einzelne teils auf das Leistungsniveau von ganzen Teams zu bringen <span class="citation" data-cites="dellacqua2025">(<a href="#ref-dellacqua2025" role="doc-biblioref">Dell’Acqua et al., 2025</a>)</span>.</p>
+<p>Wenn man <strong>ältere oder weniger starke (offene) Modelle nutzt, fährt man mit dem Fahrrad auf der Autobahn</strong>. Vergleiche zeigen starke Performanzunterschiede zwischen GPT-3.5 und den folgenden Updates zu GPT-4 und GPT-4o. Auch die frei verfügbaren Modelle wie Llama sind teils deutlich weniger „schlau“! Hier muss man insofern aufpassen, dass die einfache Verfügbarkeit solcher Modelle über Plattformen wie Academic Cloud nicht zu einem falschen Bild führt.</p>
+</section>
+<section id="wo-und-wie-spreche-ich-mit-der-ki" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="wo-und-wie-spreche-ich-mit-der-ki"><span class="header-section-number">2.5</span> Wo und wie spreche ich mit der KI?</h2>
+<section id="sec-prompt-vorgehen" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="sec-prompt-vorgehen"><span class="header-section-number">2.5.1</span> Wo sprechen? Verschiedene Zugänge zu Sprachmodellen</h3>
+<p><strong>Wo</strong> sprechen wir mit dem Sprachmodell? Welche Zugänge zur KI gibt es? Es gibt <strong>grob gesagt drei Ansätze</strong>:</p>
+<ol type="1">
+<li><p>Die einfache Eingabe in das Chat-Interface (z.B. bei Chat GPT oder Claude), ist am leichtesten umzusetzen. Um verschiedene Modelle zu nutzen, muss man sich aber neu einloggen und evtl. ein weiteres Abonnement bezahlen. Die meisten Modelle erlauben aber auch recht umfangreiche kostenlose Nutzung, was meist zum Kennenlernen ausreicht. Für Hochschulen werden zentral nach und nach verschiedene Dienste mit solchen Oberflächen aufgesetzt, die meist aber aus Gründen des Datenschutzes einige Funktionen abklemmen (z.B. meist die direkte Sprachinteraktion und das Speichern von Benutzerprofilen).</p></li>
+<li><p>Nutzung einer Bedienoberfläche wie Witsy oder Typingmind, die Prompts speichert und Agenten erstellen lässt, die mit verschiedenen Modellen funktionieren <span class="citation" data-cites="schwarze2025">(<a href="#ref-schwarze2025" role="doc-biblioref">Schwarze, 2025</a>)</span>. Hier muss man einmalig das System aufsetzen (Witsy) und für den höheren Komfort teils eine eine Lizenz kaufen (TypingMind, ca. 40 $ für Hochschulangehörige), dafür kann man dann einfacher Modelle wechseln und über einen sogenannten API Key nur die tatsächliche Nutzung abrechnen (was sich bei einfacher Nutzung auf ein paar Cent beläuft, siehe die oben gezeigte Übersicht der Preise pro Millionen Token).</p></li>
+<li><p>Wenn man sich nicht vor etwas Code scheut, kann man auch einfach selbst programmieren (mit KI-Unterstützung in Tools wie Google Colab) und kleine Sprachagenten aufsetzen. (Evtl. dann in Verbindung mit <strong>Replit</strong> für die Online-Bereitstellung und Diensten wie <strong>Voiceflow</strong> für die Oberfläche.) Auch hierfür braucht man eigentlich nur API Keys zur Identifizierung. Fragen Sie Chat GPT, wie das geht und lassen sich den Code schreiben, es ist überraschend einfach! Es gibt bei Youtube auch eine Vielzahl von kurzen Erläuterungen.</p></li>
+</ol>
+</section>
+<section id="wie-sprechen-prompt-befehle" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="wie-sprechen-prompt-befehle"><span class="header-section-number">2.5.2</span> Wie sprechen? Prompt-Befehle</h3>
+<p><strong>Wie</strong> spreche ich mit dem LLM? Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, <strong>genau zu sagen, was man eigentlich will</strong>. Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist!</p>
+<p>Wie beschreibe ich genau, was ich will? Einfache <strong>Daumenregeln für Prompts</strong> gliedern das in vier Schritte: dem Sprachmodell eine <strong>Rolle</strong> zuzuweisen („Du bist Verhandlungsexpertin“), ein klares <strong>Ziel</strong> zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein <strong>Vorgehen</strong> (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie <strong>Beispiele</strong> („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form [Autor]-[Jahr]-[Kurztitel]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“).</p>
+<p>Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen. Das Modell zeigt seine Überlegungen Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten verbessert. So können wir auch besser nachsteuern und das Ergebnis an unsere Ziele anpassen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wollen Sie sich interaktiv einen ausführlichen Prompt erstellen lassen? Nutzen Sie diesen <strong>Prompt-Bot</strong>, den wir für Sie auf Basis der Best-Practice Empfehlungen von OpenAI, Anthropic und wissenschaftlichen Studien zu Prompt-Strategien erstellt haben: <a href="https://chatgpt.com/g/g-sF6vTgq2U-prompt-bot" class="uri">https://chatgpt.com/g/g-sF6vTgq2U-prompt-bot</a></p>
+</div>
+</div>
+<p>Neuere empirische Untersuchungen haben eine Reihe von <strong>anekdotischen Hausrezepten des Promptings systematisch geprüft und meist widerlegt</strong>. Prompts funktionieren nicht immer gleich und so kommt es schnell zu anektodischer Evidenz, dass eine Formulierung „besser geklappt“ hätte. Die wenigsten der Empfehlungen helfen zuverlässig <span class="citation" data-cites="meincke2025a meincke2025 meincke2025">(<a href="#ref-meincke2025" role="doc-biblioref">Meincke et al., 2025b</a>, <a href="#ref-meincke2025" role="doc-biblioref">2025b</a>, <a href="#ref-meincke2025a" role="doc-biblioref">2025a</a>)</span>. Hilft es, <strong>höflich</strong> zu sein (nein), zu <strong>drohen</strong> (nein), <strong>Geld</strong> anzubieten (nein), oder den Hiwi-Bot <strong>Schritt für Schritt</strong> vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)?</p>
+<p>Für die Lehre wollen wir <strong>den Prompts speziell didaktische Elemente hinzufügen</strong>, also etwa verhindern, dass den Studierenden sofort eine Lösung ausgegeben wird, da das eigene Nachdenken in Form von Fragen und sokratischem Dialog ihnen dabei hilft, die Ergebnisse auch zu behalten <span class="citation" data-cites="roediger2012">(<a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>. Konkrete und sehr detaillierte <strong>Prompt-Beispiele speziell für die Lehre</strong> finden Sie im Appendix 3: Ausgewählte Prompts zur Lehr- und Lernunterstützung. Weitere Beispiele dafür finden sich in der Prompt-Bibliothek von Ethan Mollick (https://www.moreusefulthings.com/prompts).</p>
+<p>Gerade <strong>für „Agenten“</strong>, die einigermaßen zuverlässig bestimmte Aufgaben erfüllen sollen, lohnt es sich aber im Sinne der o.g. Empfehlung (sag, was Du willst), sehr detaillierte Prompts mit Beispielen zu formulieren. Wer hier tiefer einsteigen will, kann hier die <strong>detaillierten Empfehlungen der KI-Labore zum Prompt-Design lesen:</strong> von Anthropic/Claude, alternativ hier die Details von OpenAI.</p>
+</section>
+</section>
+<section id="wie-steht-es-mit-dem-energieverbrauch-der-modelle" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="wie-steht-es-mit-dem-energieverbrauch-der-modelle"><span class="header-section-number">2.6</span> Wie steht es mit dem Energieverbrauch der Modelle?</h2>
+<p>Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert <span class="citation" data-cites="spencer2025">Spencer &amp; Singh (<a href="#ref-spencer2025" role="doc-biblioref">2025</a>)</span>. Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen. In diesem Bereich gibt es viel Hype und Desinformation in beide Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), so dass hier ein kurzer Überblick seriöser Studien nützlich erscheint. Dieser sehr knappe Abriss soll vor allem eine kurze Orientierung und den Verweis auf weiterführende Literatur zur vertieften Beschäftigung bieten.</p>
+<p><strong>Wie schmutzig ist es also, KI zu nutzen? Die kurze Antwort</strong> ist, dass ein typischer Prompt aktuell etwa soviel Energie verbraucht wie ca. 10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre 2008 <span class="citation" data-cites="elsworth2025 mollick2025d">(<a href="#ref-elsworth2025" role="doc-biblioref">Elsworth et al., 2025</a>; <a href="#ref-mollick2025d" role="doc-biblioref">Mollick, 2025b</a>)</span>. Die gute Nachricht ist, dass die Modelle effizienter werden und der Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken. Gegenläufig und problematisch ist die stark steigende Nutzung, die z.B. zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen führt <span class="citation" data-cites="wittenberg2025a">(<a href="#ref-wittenberg2025a" role="doc-biblioref">Wittenberg, 2025</a>)</span>.</p>
+<p><strong>Solche Vergleiche sind nicht trivial</strong>, da etwa bei der Nutzung in Unternehmen auch die Umweltfolgen der aktuellen Alternativen „bepreist“ werden müssen, um einen sinnvollen Vergleich zu erzielen. Wie belastet die Lieferkette eines physischen Buchs die Umwelt im Vergleich zu einem E-Book? Ein aktueller Mitarbeiter im physischen Callcenter mit seinem Arbeitsweg, Schreibtisch und Heizbedarf im Vergleich zum KI-Chatbot? Unabhängig davon, wie diese Rechnungen ausgehen, sind sie sichtlich komplex.</p>
+<p>Im Folgenden sollen dazu einige Kernaussagen aus Untersuchungen der International Energy Agency (IEA), dem World Economic Forum und des MIT Technology Reviews zusammengefasst werden. Basierend auf die aktuelle Untersuchung des MIT Technology Survey <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span> gliedere ich diesen kurzen Abriss zum Energieverbrauch in vier Teile: Die Modellbildung, die Anfrage (query), die Emissionen und Prognosen für das weitere Wachstum.</p>
+<p><strong>Modellbildung.</strong> Daten-Zentren und KI-Nutzung machen aktuell nur wenige Prozent der globalen Energienutzung aus. Schätzungen der Energieagentur IEA liegen etwa bei 3-5%. Deutlich höhere Anteile liegen in den Bereichen Gebäude, Industrie und Fahrzeuge <span class="citation" data-cites="ritchie2024 spencer2024">(<a href="#ref-ritchie2024" role="doc-biblioref">Ritchie, 2024a</a>; <a href="#ref-spencer2024" role="doc-biblioref">Spencer &amp; Singh, 2024</a>)</span>. Mit Blick auf die Zukunft ist der rasant wachsende Energiebedarf durch Bevölkerungswachstum und wachsenden Wohlstand ärmerer Bevölkerungsgruppen bei weitem ein stärkerer Treiber für Emissionswachstum und Klimawandel <span class="citation" data-cites="spencer2024">(<a href="#ref-spencer2024" role="doc-biblioref">Spencer &amp; Singh, 2024</a>)</span>. Einige Klimaaktivisten warnen sogar vor „distraction“ - davor, sich durch solche Ablenkungen und Modethemen wie KI Energieverbrauch von dem Fokus auf die großen Hebel der Emissionsvermeidung ablenken zu lassen <span class="citation" data-cites="masley2025 ritchie2024a">(<a href="#ref-masley2025" role="doc-biblioref">Masley, 2025</a>; <a href="#ref-ritchie2024a" role="doc-biblioref">Ritchie, 2024b</a>)</span>. Während die Einmalaufwände für das Training der Modelle erheblich sind, hat das schnelle Wachsen der Nutzerzahlen sie mittlerweile in den Schatten gestellt. Die Energieaufwände für Anfragen (Inferenz) bedingen nunmehr einen größeren Energieverbrauch als das Training der Modelle <span class="citation" data-cites="odonnell2025 spencer2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>.</p>
+<p><strong>Anfrage.</strong> Der Energieverbrauch einer einzelnen KI-Textanfrage ist relativ gering. Er liegt unter dem Energieverbrauch von wenigen Minuten für eine kleine LED-Lampe. Konkret liegen die Schätzungen hier aktuell zwischen 0.3 Wattstunden (Wh) für GPT-4o und 0.03 Wh für kleine Modelle <span class="citation" data-cites="odonnell2025 you2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="#ref-you2025" role="doc-biblioref">You, 2025</a>)</span>.</p>
+<p><strong>Im Vergleich zu anderen Energieverbrauchen ist das nicht viel.</strong> Vergleicht man den höheren Wert von 0.3 Wh mit den 12.000 Wattstunden, die ein durchschnittlicher britischen Haushalt pro Tag verbraucht (für US-Haushalte wird die deutlich höhere Zahl von 28.000 Wattstunden pro Tag genannt!), wird schnell klar, dass weniger KI-Nutzung zumindest aktuell kein großer Hebel für Energiesparen oder Klimaschutz ist. Die oft zitierte Statistik, nach der eine Anfrage bei ChatGPT 10x mehr verbraucht als eine Google Suche vergisst meist zu erwähnen, dass die Basisrate dieser Internetnutzung im Vergleich zu anderen Dingen, in die unser Energieverbrauch fließt, extrem niedrig ist <span class="citation" data-cites="ritchie2024a">(<a href="#ref-ritchie2024a" role="doc-biblioref">Ritchie, 2024b</a>)</span>.</p>
+<p><strong>Modellgröße ist allerdings ein zentraler Faktor für den Energiebedarf</strong> pro Anfrage und hieraus speisen sich plausiblere Sorgen. Zwar ist Bildgenerierung i.d.R. weniger energieintensiv als Textgenerierung, da Modelle zur Bildgenerierung oft mit weniger Parametern arbeiten als Textmodelle. Aber komplexere Anfragen (etwa mehrstufige lange Reasoning Aufträge) und speziell Video-Generierung benötigen deutlich mehr Energie: Ein hochqualitatives Video von 5 Sekunden kann bis zu 1.000 Wattstunden verbrauchen (0.94 kWh), was etwas mehr als einer Stunde Mikrowellennutzung entspricht – ein deutlicher Unterschied <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>.</p>
+<p><strong>Der Anteil größerer Modelle und komplexerer Anfragen wird voraussichtlich deutlich zunehmen</strong>, wenn die Modellgrößen weiter ansteigen und komplexere Anfragen, wie Video-Generierung zunehmen. Gegenläufig wirkt der starke Anreiz für die Anbieter (und speziell für die kleineren Konkurrenten von OpenAI, die über geringere finanzielle Mittel verfügen), den Energieverbrauch pro Inferenz durch effizientere Chip-Konstruktionen und neue Trainingsansätze zu senken. Wie die Analysten der IEA zusammenfassen: „The efficiency of AI-related computer chips has doubled roughly every two-and-a-half to three years, and a modern AI-related computer chip uses 99% less power to perform the same calculations as a model from 2008” <span class="citation" data-cites="spencer2024">(<a href="#ref-spencer2024" role="doc-biblioref">Spencer &amp; Singh, 2024</a>)</span>.</p>
+<p>Insgesamt wird perspektivisch die punktuelle Einzelnutzung durch <strong>einzelne Anfragen weniger wichtig werden, als die strukturell bedingte Integration der KI-Technologien</strong> in immer mehr digitale Anwendungen, die als Folge des rasanten technologischen Wandels und der hohen Investitionen absehbar ist <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>.</p>
+<p><strong>Emissionen.</strong> In diesem Zusammenhang wird der ungünstige Energiemix der aktuell entstehenden Datenzentren kritisiert: Da KI-Rechenzentren rund um die Uhr laufen und meist in Regionen mit fossilen Energieträgern stehen, ist der durchschnittliche CO₂-Ausstoß ihrer Stromversorgung etwa 48% höher als der US-Durchschnitt <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>. Dem gegenüber stehen <strong>gegenläufige Effekte wie höhere Effizienz der Steuerung</strong>, etwa von Energienetzen <span class="citation" data-cites="greene-dewasmes2025a">(<a href="#ref-greene-dewasmes2025a" role="doc-biblioref">Greene-Dewasmes &amp; Tladi, 2025</a>)</span> und dem <strong>Ersatz von manuellen menschlichen Aufwänden durch Digitalisierung</strong>, etwa durch Reisen für einen Film-Dreh (ohne KI) oder dem Energiebedarf eines menschlichen Call-Centers. Das starke Wachstum der Nutzung muss insofern mit politischer Anreizsetzung für emissionslose Energiegewinnung verbunden sein, wenn eine starke Zunahme an Emissionen vermieden werden soll. Hierfür gibt etwa die IEA klare Empfehlungen und technische Lösungen sind bekannt. Besorgt stimmt die Analysten die Prognose eines starken Wachstums von Datencentern im asiatischen Raum, die meist nicht mit emissionsfreier Energie betrieben werden <span class="citation" data-cites="spencer2025">(<a href="#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>.</p>
+<p><strong>Prognose.</strong> In der Summe sehen viele der Untersuchungen <strong>Probleme eher in der prognostizierten zukünftigen Entwicklung als in den aktuellen Energieaufwänden</strong>. Das starke prognostizierte Wachstum könnte etwa dazu führen, dass KI-Anwendungen bis 2028 mehr als 12% des US-Strombedarfs ausmachen <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>.</p>
+</section>
+<section id="energieverbrauch-und-politische-steuerung" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="energieverbrauch-und-politische-steuerung"><span class="header-section-number">2.7</span> Energieverbrauch und politische Steuerung</h2>
+<p>Die <strong>IEA</strong> prognostiziert ebenfalls eine <strong>Verdreifachung des Energieverbrauchs von Rechenzentren bis 2030</strong>, getrieben durch KI. Maßnahmen wie <strong>Effizienzgewinne</strong> und <strong>nachhaltige Architektur</strong> können diese Entwicklung abbremsen <span class="citation" data-cites="spencer2025">(<a href="#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>.</p>
+<p>Wie der <strong>MIT-Bericht</strong> hervorhebt, sollte vor diesem Hintergrund der starke und kurzfristig induzierte Ausbau der Infrastruktur <strong>politisch durch Anreize zur Emissionsvermeidung gesteuert</strong> werden, sodass ein starkes Wachstum der Emissionen durch diesen – wahrscheinlich im Kern unvermeidlichen – technologischen Wandel vermieden wird <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>.</p>
+<p>So besteht die Hoffnung, dass <strong>positive Effekte auf Emissionen</strong> in den Hauptbereichen von CO₂-Emissionen (Gebäude, Industrie, Transport sowie die verbundenen Energienetze) durch <strong>höhere Effizienz in Planung und Nutzung</strong> genutzt werden können, ohne dass sie durch die wachsenden Kosten von immer komplexeren Inferenz-Anfragen überlagert werden <span class="citation" data-cites="greene-dewasmes2025a spencer2025">(<a href="#ref-greene-dewasmes2025a" role="doc-biblioref">Greene-Dewasmes &amp; Tladi, 2025</a>; <a href="#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>.</p>
+<p>Politisch gesehen ergibt sich insofern ein <strong>Bedarf an Steuerung dieses strukturellen technologischen Wandels</strong>, damit die Ziele denen der Gesellschaft entsprechen. Dazu müssen die <strong>Fakten klar sein</strong>: Um Kosten und Effekte abschätzen, abfedern und verteilen zu können, fordern die Forscher eine <strong>deutlich höhere Transparenz der Energiebedarfe durch die Modellanbieter</strong> <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>.</p>
+
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-brynjolfsson2025" class="csl-entry" role="listitem">
+Brynjolfsson, E., Li, D., &amp; Raymond, L. (2025). Generative AI at work. <em>The Quarterly Journal of Economics</em>, qjae044.
+</div>
+<div id="ref-dellacqua2025" class="csl-entry" role="listitem">
+Dell’Acqua, F., Ayoubi, C., Lifshitz-Assaf, H., Sadun, R., Mollick, E. R., Mollick, L., Han, Y., Goldman, J., Nair, H., &amp; Taub, S. (2025). <em>The Cybernetic Teammate: A Field Experiment on Generative AI Reshaping Teamwork and Expertise</em>.
+</div>
+<div id="ref-dellacqua2023" class="csl-entry" role="listitem">
+Dell’Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., &amp; Lakhani, K. R. (2023). <em>Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality</em>. <a href="https://doi.org/10.2139/ssrn.4573321">https://doi.org/10.2139/ssrn.4573321</a>.
+</div>
+<div id="ref-elsworth2025" class="csl-entry" role="listitem">
+Elsworth, C., Huang, K., Patterson, D., Schneider, I., Sedivy, R., Goodman, S., Townsend, B., Ranganathan, P., Dean, J., &amp; Vahdat, A. (2025). Measuring the environmental impact of delivering AI at Google Scale. <em>arXiv preprint arXiv:2508.15734</em>.
+</div>
+<div id="ref-gottweis2025" class="csl-entry" role="listitem">
+Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2502.18864">https://doi.org/10.48550/arXiv.2502.18864</a>.
+</div>
+<div id="ref-greene-dewasmes2025a" class="csl-entry" role="listitem">
+Greene-Dewasmes, G., &amp; Tladi, T. (2025, Januar 21). <em>AI’s energy dilemma: Challenges, opportunities, and a path forward</em>. <a href="https://www.weforum.org/stories/2025/01/ai-energy-dilemma-challenges-opportunities-and-path-forward/">https://www.weforum.org/stories/2025/01/ai-energy-dilemma-challenges-opportunities-and-path-forward/</a>.
+</div>
+<div id="ref-grootendorst2025" class="csl-entry" role="listitem">
+Grootendorst, M. (2025, Februar 3). <em>A Visual Guide to Reasoning LLMs</em>. <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-reasoning-llms">https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-reasoning-llms</a>.
+</div>
+<div id="ref-handa2025" class="csl-entry" role="listitem">
+Handa, K., Bent, D., Tamkin, A., McCain, M., Durmus, E., Stern, M., Schiraldi, M., Huang, S., Ritchie, S., Syverud, S., Jagadish, K., Vo, M., Bell, M., &amp; Ganguli, D. (2025-04-08, 2025). <em><a href="https://www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude">Anthropic education report: How university students use claude</a></em>.
+</div>
+<div id="ref-jones2025" class="csl-entry" role="listitem">
+Jones, C. R., &amp; Bergen, B. K. (2025). <em>Large Language Models Pass the Turing Test</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2503.23674">https://doi.org/10.48550/arXiv.2503.23674</a>.
+</div>
+<div id="ref-jurafsky2025" class="csl-entry" role="listitem">
+Jurafsky, D., &amp; Martin, J. H. (2025). <em><a href="https://web.stanford.edu/~jurafsky/slp3/">Speech and language processing: An introduction to natural language processing, computational linguistics, and speech recognition with language models</a></em>.
+</div>
+<div id="ref-korinek2024" class="csl-entry" role="listitem">
+Korinek, A. (2024). <em>Large language models learn to collaborate and reason: December 2024 update on generative AI</em>.
+</div>
+<div id="ref-kwa2025" class="csl-entry" role="listitem">
+Kwa, T., West, B., Becker, J., Deng, A., Garcia, K., Hasin, M., Jawhar, S., Kinniment, M., Rush, N., Arx, S. V., Bloom, R., Broadley, T., Du, H., Goodrich, B., Jurkovic, N., Miles, L. H., Nix, S., Lin, T., Parikh, N., … Chan, L. (2025). <em>Measuring AI Ability to Complete Long Tasks</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2503.14499">https://doi.org/10.48550/arXiv.2503.14499</a>.
+</div>
+<div id="ref-lindsey2025" class="csl-entry" role="listitem">
+Lindsey, J., Gurnee, W., Ameisen, E., Chen, B., Pearce, A., Turner, N. L., Citro, C., Abrahams, D., Carter, S., Hosmer, B., Marcus, J., Sklar, M., Templeton, A., Bricken, T., McDougall, C., Cunningham, H., Henighan, T., Jermyn, A., Jones, A., … Batson, J. (2025). <a href="https://transformer-circuits.pub/2025/attribution-graphs/biology.html">On the biology of a large language model</a>. <em>Transformer Circuits Thread</em>.
+</div>
+<div id="ref-lovely2025" class="csl-entry" role="listitem">
+Lovely, G. (2025). AI could soon tackle projects that take humans weeks. <em>Nature</em>. <a href="https://doi.org/10.1038/d41586-025-00831-8">https://doi.org/10.1038/d41586-025-00831-8</a>.
+</div>
+<div id="ref-masley2025" class="csl-entry" role="listitem">
+Masley, A. (2025, April 28). A cheat sheet for why using ChatGPT is not bad for the environment. <a href="https://andymasley.substack.com/p/a-cheat-sheet-for-conversations-about">https://andymasley.substack.com/p/a-cheat-sheet-for-conversations-about</a>.
+</div>
+<div id="ref-meincke2025a" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E. R., Mollick, L., &amp; Shapiro, D. (2025a). <em>Prompting Science Report 2: The Decreasing Value of Chain of Thought in Prompting</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2506.07142">https://doi.org/10.48550/arXiv.2506.07142</a>.
+</div>
+<div id="ref-meincke2025" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E., Mollick, L., &amp; Shapiro, D. (2025b). <em>Prompting Science Report 1: Prompt Engineering is Complicated and Contingent</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2503.04818">https://doi.org/10.48550/arXiv.2503.04818</a>.
+</div>
+<div id="ref-mollick2025" class="csl-entry" role="listitem">
+Mollick, E. R. (2025a, Januar 26). <em>A new generation of AIs: Claude 3.7 and Grok 3</em>. <a href="https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37">https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37</a>.
+</div>
+<div id="ref-mollick2025d" class="csl-entry" role="listitem">
+Mollick, E. R. (2025b, August 7). <em>The Shape of AI: Jaggedness, Bottlenecks and Salients</em>. <a href="https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks">https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks</a>.
+</div>
+<div id="ref-naddaf2025" class="csl-entry" role="listitem">
+Naddaf, M. (2025). How are researchers using AI? Survey reveals pros and cons for science. <em>Nature</em>. <a href="https://doi.org/10.1038/d41586-025-00343-5">https://doi.org/10.1038/d41586-025-00343-5</a>.
+</div>
+<div id="ref-odonnell2025" class="csl-entry" role="listitem">
+O’Donnell, J., &amp; Crownhart, C. (2025, Mai 20). <a href="https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/">We did the math on AI’s energy footprint. Here’s the story you haven’t heard.</a> <em>MIT Technology Review</em>.
+</div>
+<div id="ref-openai2024" class="csl-entry" role="listitem">
+OpenAI (2024). <em><a href="https://openai.com/index/learning-to-reason-with-llms/">Learning to reason with LLMs</a></em>.
+</div>
+<div id="ref-ritchie2024" class="csl-entry" role="listitem">
+Ritchie, H. (2024a, September 19). <em>What’s the impact of artificial intelligence on energy demand?</em> <a href="https://www.sustainabilitybynumbers.com/p/ai-energy-demand">https://www.sustainabilitybynumbers.com/p/ai-energy-demand</a>.
+</div>
+<div id="ref-ritchie2024a" class="csl-entry" role="listitem">
+Ritchie, H. (2024b, November 18). <em>What’s the carbon footprint of using ChatGPT?</em> <a href="https://www.sustainabilitybynumbers.com/p/carbon-footprint-chatgpt">https://www.sustainabilitybynumbers.com/p/carbon-footprint-chatgpt</a>.
+</div>
+<div id="ref-roediger2012" class="csl-entry" role="listitem">
+Roediger, H. L., &amp; Pyc, M. A. (2012). Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice. <em>Journal of Applied Research in Memory and Cognition</em>, <em>1</em>(4), 242–248. <a href="https://doi.org/10.1016/j.jarmac.2012.09.002">https://doi.org/10.1016/j.jarmac.2012.09.002</a>.
+</div>
+<div id="ref-russell2021" class="csl-entry" role="listitem">
+Russell, S. J., &amp; Norvig, P. (2021). <em>Artificial intelligence: a modern approach</em>. Pearson.
+</div>
+<div id="ref-schwarcz2025" class="csl-entry" role="listitem">
+Schwarcz, D., Manning, S., Barry, P. J., Cleveland, D. R., Prescott, J. J., &amp; Rich, B. (2025). <em>AI-Powered Lawyering: AI Reasoning Models, Retrieval Augmented Generation, and the Future of Legal Practice</em>. <a href="https://doi.org/10.2139/ssrn.5162111">https://doi.org/10.2139/ssrn.5162111</a>.
+</div>
+<div id="ref-schwarze2025" class="csl-entry" role="listitem">
+Schwarze, M. (2025, Juli 16). <a href="https://www.faz.net/pro/digitalwirtschaft/prompt-der-woche/ki-assistent-witsy-kann-kostenlos-das-chatgpt-monatsabo-ersetzen-110586296.html">KI-Assistent Witsy kann kostenlos das ChatGPT-Monatsabo ersetzen</a>. <em>Frankfurter Allgemeine Zeitung (FAZ)</em>.
+</div>
+<div id="ref-spencer2024" class="csl-entry" role="listitem">
+Spencer, T., &amp; Singh, S. (2024, Oktober 18). What the data centre and AI boom could mean for the energy sector – Analysis. <a href="https://www.iea.org/commentaries/what-the-data-centre-and-ai-boom-could-mean-for-the-energy-sector">https://www.iea.org/commentaries/what-the-data-centre-and-ai-boom-could-mean-for-the-energy-sector</a>.
+</div>
+<div id="ref-spencer2025" class="csl-entry" role="listitem">
+Spencer, T., &amp; Singh, S. (2025). <em><a href="https://www.iea.org/reports/energy-and-ai">Energy and AI</a></em> (World Energy Outlook Special Report). International Energy Agency.
+</div>
+<div id="ref-vaswani2017" class="csl-entry" role="listitem">
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., &amp; Polosukhin, I. (2017). Attention is all you need. <em>Advances in neural information processing systems</em>, <em>30</em>.
+</div>
+<div id="ref-vellum2024" class="csl-entry" role="listitem">
+Vellum (2024, September 4). <em>LLM Leaderboard 2024</em>. <a href="https://www.vellum.ai/llm-leaderboard">https://www.vellum.ai/llm-leaderboard</a>.
+</div>
+<div id="ref-wittenberg2025a" class="csl-entry" role="listitem">
+Wittenberg, A. (2025, Mai 6). <a href="https://www.politico.com/news/2025/05/06/elon-musk-xai-memphis-gas-turbines-air-pollution-permits-00317582"><span>„How come I can’t breathe?“</span>: Musk’s data company draws a backlash in Memphis - POLITICO</a>. <em>Politico</em>.
+</div>
+<div id="ref-you2025" class="csl-entry" role="listitem">
+You, J. (2025, Februar 7). How much energy does ChatGPT use? <em>Epoch AI</em>. <a href="https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use">https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+// callout-toggle.js
+
+window.addEventListener('DOMContentLoaded', () =&gt; {
+
+  // Quarto-Callouts haben die Klasse .callout; collapsible Callouts besitzen ein Toggle in der Header-Zeile.
+
+  // Wir öffnen/schließen den Body-Container aller "collapsible" Callouts.
+
+  function setAllCallouts(open = true) {
+
+    document.querySelectorAll('.callout').forEach(co =&gt; {
+
+      // Quarto rendert collapsible Callouts mit einem Header-Button, der den Body ein-/ausblendet.
+
+      const headerBtn = co.querySelector('.callout-header button, .callout-toggle, [data-bs-toggle="collapse"]');
+
+      const body = co.querySelector('.callout-body, .collapse'); // je nach Quarto/Bootstrap-Version
+
+      if (!headerBtn || !body) return;
+
+
+
+      const isOpen = body.classList.contains('show') || body.style.display !== 'none';
+
+      if (open &amp;&amp; !isOpen) headerBtn.click();
+
+      if (!open &amp;&amp; isOpen) headerBtn.click();
+
+    });
+
+  }
+
+
+
+  const expandBtn = document.getElementById('expand-callouts');
+
+  const collapseBtn = document.getElementById('collapse-callouts');
+
+
+
+  if (expandBtn)   expandBtn.addEventListener('click', () =&gt; setAllCallouts(true));
+
+  if (collapseBtn) collapseBtn.addEventListener('click', () =&gt; setAllCallouts(false));
+
+});
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./kapitel01.html" class="pagination-link" aria-label="Einleitung">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./kapitel03.html" class="pagination-link" aria-label="Didaktische Ziele und Mechanismen">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, R. (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel02.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel02.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
