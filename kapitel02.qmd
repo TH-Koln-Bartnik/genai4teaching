@@ -296,15 +296,39 @@ Es gibt **grob gesagt drei Ansätze**:
 ### Wie sprechen? Prompt-Befehle
 
 **Wie** spreche ich mit dem LLM?
-Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, **genau zu sagen, was man eigentlich will**.
-Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist!
+In einem modernen Märchen von N.K. Jemisin gibt es gefangene Götter. Sie erfüllen ihren Wächtern jeden Wunsch, sind ihnen aber nicht wohlgesonnen: Eine falsche Formulierung kann so katastrophale Folgen haben. Präzision wird zentral. Diesen Tenor finden wir auch in den wichtigsten Empfehlungen zum Prompting: Präzise Anweisungen geben.
 
+Wie das geht zeigen wir zuerst an einem einfachen Schema. Dann schauen wir uns an, was Ende 2025 durch die großen drei KI-Labore an Prompting-Strategien empfehlen.
+
+### Zentrale Bausteine: Rolle, Aufgabe, Format und Beispiele
 Wie beschreibe ich genau, was ich will?
-Einfache **Daumenregeln für Prompts** gliedern das in vier Schritte: dem Sprachmodell eine **Rolle** zuzuweisen („Du bist Verhandlungsexpertin“), ein klares **Ziel** zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein **Vorgehen** (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie **Beispiele** („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form \[Autor\]-\[Jahr\]-\[Kurztitel\]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“).
-
-Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen.
+Einfache **Daumenregeln für Prompts** gliedern das in vier Schritte: dem Sprachmodell eine **Rolle** zuzuweisen („Du bist Verhandlungsexpertin“), ein klares **Ziel** zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein **Vorgehen** (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie **Beispiele** („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form \[Autor\]-\[Jahr\]-\[Kurztitel\]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“). Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen.
 Das Modell zeigt seine Überlegungen Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten verbessert.
 So können wir auch besser nachsteuern und das Ergebnis an unsere Ziele anpassen.
+
+
+### Wie Prompten? Was Ende 2025 die größten KI-Labore  empfehlen. 
+Ende 2025 geben die drei führenden KI-Labs uns detaillierte Tipps, wie wir mit ihren Geschöpfen GPT, Gemini und Claude reden sollen [@kotha2025; @google2025: @anthropic2025c]. Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.
+
+Die drei führenden Anbieter betonen die Bedeutung von **Präzision der Anweisungen** - wenig überraschend, aber im Detail nicht einfach zu bewerkstelligen: (1) Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, **genau zu sagen, was man eigentlich will**.
+
+::: {.callout-note collapse="true" title="Meta-Prompts: Den Bot den Prompt verbessern lassen"}
+```text
+**Probleme mit dem Prompt?** OpenAI schlägt vor, man soll mit einer klaren Problembeschreibung wie folgt prompten:
+
+Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts ist, dass der Agent [GEWÜNSCHTES VERHALTEN BESCHREIBEN] ausführt, stattdessen führt er jedoch [UNERWÜNSCHTES VERHALTEN BESCHREIBEN] aus. Wie würdest Du die Eingabeaufforderung möglichst unverändert lassen und dennoch minimale Änderungen/Ergänzungen vornehmen, um den Agenten dazu zu bewegen, diese Mängel konsequenter zu beheben? 
+```
+:::
+
+(1) **Aufgaben präzise beschreiben**: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen. (2) **Beispiele helfen** der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele ("gib mir..."/"bemühe dich um..." ist besser als "gib mir nicht" / "vermeide...") [@google2025]. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt. (3) **Ordnung macht hier Meisterschaft**: durch klare Strukturierung des Textflusses durch <Hinweis-Schilder> sogenannte [Tags]. Ob solche 'Post-it-Notizen' für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <Hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein. 
+
+(4) Zunehmend wird bei einer interaktiven Form der Zusammenarbeit mit dem Sprachmodell **der Weg zum Ziel**. Prompten wird hier zum iterativen Prozess, in dem die Interaktion den eigentlichen Mehrwert bietet, da nach und nach mit dem Sprachmodell ein Lösungsweg erarbeitet wird. Dies verlangt eine deutlich andere Herangehensweise als Werkzeuge wie Taschenrechner, von denen wir erwarten, dass sie sofort eine Lösung ausspucken.
+
+(5) Agenten erfordern neue Verhaltensweisen. Da die **Zeitspanne des autonomen Handelns immer breiter** wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern. 
+Zweitens gewinnt die Frage an Beduetung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als 'Eagerness-Kalibrierung' einstellen [@kotha2025].
+
+(6) *Bots help bots*: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir **mit dem Tool das Tool bedienen**. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer [@kotha2025] oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen (siehe hier für einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format).
+
 
 ::: {.callout-note icon="true"}
 Wollen Sie sich interaktiv einen ausführlichen Prompt erstellen lassen?

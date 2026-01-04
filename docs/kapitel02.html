@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource (CC-BY-SA), die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen (zu den Details der sehr weit definierten freien Nutzung siehe https://creativecommons.org/licenses/by-sa/4.0/)">
+<meta name="description" content="Dieses Skript ist eine frei verfügbare Ressource (CC-BY-SA), die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen.">
 
-<title>2&nbsp; Grundbegriffe – KI als Hilfe zum Lehren und Lernen (Beta-Version! Format wird noch optimiert)</title>
+<title>2&nbsp; Grundbegriffe – Generative KI als Hilfe zum Lehren und Lernen</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -287,7 +287,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">KI als Hilfe zum Lehren und Lernen (Beta-Version! Format wird noch optimiert)</a> 
+      <a href="./">Generative KI als Hilfe zum Lehren und Lernen</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
@@ -416,6 +416,8 @@ div.csl-indent {
   <ul>
   <li><a href="#sec-prompt-vorgehen" id="toc-sec-prompt-vorgehen" class="nav-link" data-scroll-target="#sec-prompt-vorgehen"><span class="header-section-number">2.5.1</span> Wo sprechen? Verschiedene Zugänge zu Sprachmodellen</a></li>
   <li><a href="#wie-sprechen-prompt-befehle" id="toc-wie-sprechen-prompt-befehle" class="nav-link" data-scroll-target="#wie-sprechen-prompt-befehle"><span class="header-section-number">2.5.2</span> Wie sprechen? Prompt-Befehle</a></li>
+  <li><a href="#zentrale-bausteine-rolle-aufgabe-format-und-beispiele" id="toc-zentrale-bausteine-rolle-aufgabe-format-und-beispiele" class="nav-link" data-scroll-target="#zentrale-bausteine-rolle-aufgabe-format-und-beispiele"><span class="header-section-number">2.5.3</span> Zentrale Bausteine: Rolle, Aufgabe, Format und Beispiele</a></li>
+  <li><a href="#wie-prompten-was-ende-2025-die-größten-ki-labore-empfehlen." id="toc-wie-prompten-was-ende-2025-die-größten-ki-labore-empfehlen." class="nav-link" data-scroll-target="#wie-prompten-was-ende-2025-die-größten-ki-labore-empfehlen."><span class="header-section-number">2.5.4</span> Wie Prompten? Was Ende 2025 die größten KI-Labore empfehlen.</a></li>
   </ul></li>
   <li><a href="#wie-steht-es-mit-dem-energieverbrauch-der-modelle" id="toc-wie-steht-es-mit-dem-energieverbrauch-der-modelle" class="nav-link" data-scroll-target="#wie-steht-es-mit-dem-energieverbrauch-der-modelle"><span class="header-section-number">2.6</span> Wie steht es mit dem Energieverbrauch der Modelle?</a></li>
   <li><a href="#energieverbrauch-und-politische-steuerung" id="toc-energieverbrauch-und-politische-steuerung" class="nav-link" data-scroll-target="#energieverbrauch-und-politische-steuerung"><span class="header-section-number">2.7</span> Energieverbrauch und politische Steuerung</a></li>
@@ -628,9 +630,41 @@ Abbildung&nbsp;2.1: Visualisierte Gedanken eines Sprachmodells [@lindsey2025]
 </section>
 <section id="wie-sprechen-prompt-befehle" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="wie-sprechen-prompt-befehle"><span class="header-section-number">2.5.2</span> Wie sprechen? Prompt-Befehle</h3>
-<p><strong>Wie</strong> spreche ich mit dem LLM? Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, <strong>genau zu sagen, was man eigentlich will</strong>. Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist!</p>
-<p>Wie beschreibe ich genau, was ich will? Einfache <strong>Daumenregeln für Prompts</strong> gliedern das in vier Schritte: dem Sprachmodell eine <strong>Rolle</strong> zuzuweisen („Du bist Verhandlungsexpertin“), ein klares <strong>Ziel</strong> zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein <strong>Vorgehen</strong> (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie <strong>Beispiele</strong> („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form [Autor]-[Jahr]-[Kurztitel]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“).</p>
-<p>Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen. Das Modell zeigt seine Überlegungen Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten verbessert. So können wir auch besser nachsteuern und das Ergebnis an unsere Ziele anpassen.</p>
+<p><strong>Wie</strong> spreche ich mit dem LLM? In einem modernen Märchen von N.K. Jemisin gibt es gefangene Götter. Sie erfüllen ihren Wächtern jeden Wunsch, sind ihnen aber nicht wohlgesonnen: Eine falsche Formulierung kann so katastrophale Folgen haben. Präzision wird zentral. Diesen Tenor finden wir auch in den wichtigsten Empfehlungen zum Prompting: Präzise Anweisungen geben.</p>
+<p>Wie das geht zeigen wir zuerst an einem einfachen Schema. Dann schauen wir uns an, was Ende 2025 durch die großen drei KI-Labore an Prompting-Strategien empfehlen.</p>
+</section>
+<section id="zentrale-bausteine-rolle-aufgabe-format-und-beispiele" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="zentrale-bausteine-rolle-aufgabe-format-und-beispiele"><span class="header-section-number">2.5.3</span> Zentrale Bausteine: Rolle, Aufgabe, Format und Beispiele</h3>
+<p>Wie beschreibe ich genau, was ich will? Einfache <strong>Daumenregeln für Prompts</strong> gliedern das in vier Schritte: dem Sprachmodell eine <strong>Rolle</strong> zuzuweisen („Du bist Verhandlungsexpertin“), ein klares <strong>Ziel</strong> zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein <strong>Vorgehen</strong> (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie <strong>Beispiele</strong> („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form [Autor]-[Jahr]-[Kurztitel]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“). Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen. Das Modell zeigt seine Überlegungen Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten verbessert. So können wir auch besser nachsteuern und das Ergebnis an unsere Ziele anpassen.</p>
+</section>
+<section id="wie-prompten-was-ende-2025-die-größten-ki-labore-empfehlen." class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="wie-prompten-was-ende-2025-die-größten-ki-labore-empfehlen."><span class="header-section-number">2.5.4</span> Wie Prompten? Was Ende 2025 die größten KI-Labore empfehlen.</h3>
+<p>Ende 2025 geben die drei führenden KI-Labs uns detaillierte Tipps, wie wir mit ihren Geschöpfen GPT, Gemini und Claude reden sollen <span class="citation" data-cites="kotha2025 google2025">Anthropic (<a href="#ref-anthropic2025c" role="doc-biblioref">2025</a>)</span>. Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.</p>
+<p>Die drei führenden Anbieter betonen die Bedeutung von <strong>Präzision der Anweisungen</strong> - wenig überraschend, aber im Detail nicht einfach zu bewerkstelligen: (1) Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, <strong>genau zu sagen, was man eigentlich will</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Meta-Prompts: Den Bot den Prompt verbessern lassen">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Meta-Prompts: Den Bot den Prompt verbessern lassen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="text"><code>**Probleme mit dem Prompt?** OpenAI schlägt vor, man soll mit einer klaren Problembeschreibung wie folgt prompten:
+
+Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts ist, dass der Agent [GEWÜNSCHTES VERHALTEN BESCHREIBEN] ausführt, stattdessen führt er jedoch [UNERWÜNSCHTES VERHALTEN BESCHREIBEN] aus. Wie würdest Du die Eingabeaufforderung möglichst unverändert lassen und dennoch minimale Änderungen/Ergänzungen vornehmen, um den Agenten dazu zu bewegen, diese Mängel konsequenter zu beheben? </code></pre>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p><strong>Aufgaben präzise beschreiben</strong>: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen. (2) <strong>Beispiele helfen</strong> der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele (“gib mir…”/“bemühe dich um…” ist besser als “gib mir nicht” / “vermeide…”) <span class="citation" data-cites="google2025">(<a href="#ref-google2025" role="doc-biblioref">Google, 2025</a>)</span>. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt. (3) <strong>Ordnung macht hier Meisterschaft</strong>: durch klare Strukturierung des Textflusses durch <hinweis-schilder> sogenannte [Tags]. Ob solche ‘Post-it-Notizen’ für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein.</hinweise></hinweis-schilder></p></li>
+<li><p>Zunehmend wird bei einer interaktiven Form der Zusammenarbeit mit dem Sprachmodell <strong>der Weg zum Ziel</strong>. Prompten wird hier zum iterativen Prozess, in dem die Interaktion den eigentlichen Mehrwert bietet, da nach und nach mit dem Sprachmodell ein Lösungsweg erarbeitet wird. Dies verlangt eine deutlich andere Herangehensweise als Werkzeuge wie Taschenrechner, von denen wir erwarten, dass sie sofort eine Lösung ausspucken.</p></li>
+<li><p>Agenten erfordern neue Verhaltensweisen. Da die <strong>Zeitspanne des autonomen Handelns immer breiter</strong> wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern. Zweitens gewinnt die Frage an Beduetung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als ‘Eagerness-Kalibrierung’ einstellen <span class="citation" data-cites="kotha2025">(<a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span>.</p></li>
+<li><p><em>Bots help bots</em>: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir <strong>mit dem Tool das Tool bedienen</strong>. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer <span class="citation" data-cites="kotha2025">(<a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span> oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen (siehe hier für einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format).</p></li>
+</ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -676,6 +710,9 @@ Hinweis
 <section id="bibliography" class="level1 unnumbered">
 <h1 class="unnumbered">Literaturverzeichnis</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-anthropic2025c" class="csl-entry" role="listitem">
+Anthropic (2025). <em><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices">Prompting Best Practices</a></em>.
+</div>
 <div id="ref-brynjolfsson2025" class="csl-entry" role="listitem">
 Brynjolfsson, E., Li, D., &amp; Raymond, L. (2025). Generative AI at work. <em>The Quarterly Journal of Economics</em>, qjae044.
 </div>
@@ -687,6 +724,9 @@ Dell’Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K.
 </div>
 <div id="ref-elsworth2025" class="csl-entry" role="listitem">
 Elsworth, C., Huang, K., Patterson, D., Schneider, I., Sedivy, R., Goodman, S., Townsend, B., Ranganathan, P., Dean, J., &amp; Vahdat, A. (2025). Measuring the environmental impact of delivering AI at Google Scale. <em>arXiv preprint arXiv:2508.15734</em>.
+</div>
+<div id="ref-google2025" class="csl-entry" role="listitem">
+Google (2025). <em><a href="https://ai.google.dev/gemini-api/docs/prompting-strategies?hl=de">Strategien für Prompt-Design</a></em>. Google.
 </div>
 <div id="ref-gottweis2025" class="csl-entry" role="listitem">
 Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2502.18864">https://doi.org/10.48550/arXiv.2502.18864</a>.
@@ -708,6 +748,9 @@ Jurafsky, D., &amp; Martin, J. H. (2025). <em><a href="https://web.stanford.edu/
 </div>
 <div id="ref-korinek2024" class="csl-entry" role="listitem">
 Korinek, A. (2024). <em>Large language models learn to collaborate and reason: December 2024 update on generative AI</em>.
+</div>
+<div id="ref-kotha2025" class="csl-entry" role="listitem">
+Kotha, A., Lee, J., Zakariasson, E., et al. (2025). <em><a href="https://cookbook.openai.com/examples/gpt-5/gpt-5_prompting_guide">GPT-5 Prompting Guide</a></em>. OpenAI.
 </div>
 <div id="ref-kwa2025" class="csl-entry" role="listitem">
 Kwa, T., West, B., Becker, J., Deng, A., Garcia, K., Hasin, M., Jawhar, S., Kinniment, M., Rush, N., Arx, S. V., Bloom, R., Broadley, T., Du, H., Goodrich, B., Jurkovic, N., Miles, L. H., Nix, S., Lin, T., Parikh, N., … Chan, L. (2025). <em>Measuring AI Ability to Complete Long Tasks</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2503.14499">https://doi.org/10.48550/arXiv.2503.14499</a>.
