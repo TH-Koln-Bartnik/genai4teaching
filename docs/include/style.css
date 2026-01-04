@@ -17,3 +17,19 @@ a, a:link, a:visited, a:active, a:hover {
 }
 
 div.hanging-indent { margin-left: -1.5em !important; }
+
+
+/* Fix für Problem, dass in Callouts keine Zeilenumbrüche angezeigt wurden/*
+
+/* Wrap long lines inside code blocks that appear in callouts */
+.callout pre,
+.callout pre code {
+  white-space: pre-wrap;     /* preserve line breaks, but allow wrapping */
+  overflow-wrap: anywhere;   /* break very long tokens/URLs if needed */
+  word-break: break-word;    /* fallback for older browsers */
+}
+
+/* Optional: remove horizontal scrollbars in callouts */
+.callout pre {
+  overflow-x: hidden;
+}

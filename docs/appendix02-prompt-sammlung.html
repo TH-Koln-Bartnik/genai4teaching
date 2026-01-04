@@ -467,7 +467,7 @@ div.csl-indent {
 <h2 data-number="B.1" class="anchored" data-anchor-id="hiwi-von-formathilfe-zur-lehrgestaltung"><span class="header-section-number">B.1</span> Hiwi: Von Formathilfe zur Lehrgestaltung</h2>
 <section id="hiwi-csv-umwandler" class="level3" data-number="B.1.1">
 <h3 data-number="B.1.1" class="anchored" data-anchor-id="hiwi-csv-umwandler"><span class="header-section-number">B.1.1</span> Hiwi: CSV Umwandler</h3>
-<p><strong>Funktion:</strong> Datenkonvertierung; CSV-Formatierung; Strukturklärung.</p>
+<!-- **Funktion:** Datenkonvertierung; CSV-Formatierung; Strukturklärung. -->
 <p><strong>Didaktische Elemente:</strong> Scaffolding; Klärungsfragen; prozedurale Anleitung.</p>
 <p><strong>Quelle:</strong> Angepasst &amp; übersetzt basierend auf <a href="https://docs.anthropic.com/en/prompt-library/csv-converter">Anthropic</a> <span class="citation" data-cites="anthropicCsvConverter">(<a href="#ref-anthropicCsvConverter" role="doc-biblioref">Anthropic, 2025</a>)</span>; GitHub-Version: <a href="https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Administrative%20Activities/CSV%20Converter.md">Harvard System Prompt Library (CSV Converter)</a> <span class="citation" data-cites="anthropicCsvConverter">(<a href="#ref-anthropicCsvConverter" role="doc-biblioref">Anthropic, 2025</a>)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Hiwi: CSV Umwandler">
@@ -865,6 +865,52 @@ Wilson, N., &amp; Tingley, D. (n.d.n.d.). <em>System prompt library</em>. <a hre
 </section>
 
 </main> <!-- /main -->
+// callout-toggle.js
+
+window.addEventListener('DOMContentLoaded', () =&gt; {
+
+  // Quarto-Callouts haben die Klasse .callout; collapsible Callouts besitzen ein Toggle in der Header-Zeile.
+
+  // Wir öffnen/schließen den Body-Container aller "collapsible" Callouts.
+
+  function setAllCallouts(open = true) {
+
+    document.querySelectorAll('.callout').forEach(co =&gt; {
+
+      // Quarto rendert collapsible Callouts mit einem Header-Button, der den Body ein-/ausblendet.
+
+      const headerBtn = co.querySelector('.callout-header button, .callout-toggle, [data-bs-toggle="collapse"]');
+
+      const body = co.querySelector('.callout-body, .collapse'); // je nach Quarto/Bootstrap-Version
+
+      if (!headerBtn || !body) return;
+
+
+
+      const isOpen = body.classList.contains('show') || body.style.display !== 'none';
+
+      if (open &amp;&amp; !isOpen) headerBtn.click();
+
+      if (!open &amp;&amp; isOpen) headerBtn.click();
+
+    });
+
+  }
+
+
+
+  const expandBtn = document.getElementById('expand-callouts');
+
+  const collapseBtn = document.getElementById('collapse-callouts');
+
+
+
+  if (expandBtn)   expandBtn.addEventListener('click', () =&gt; setAllCallouts(true));
+
+  if (collapseBtn) collapseBtn.addEventListener('click', () =&gt; setAllCallouts(false));
+
+});
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

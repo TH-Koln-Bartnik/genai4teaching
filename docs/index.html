@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-224a6a8105d986795636933823094265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7aa9416085d47580ec37213528db77fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-224a6a8105d986795636933823094265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-33747247844c1f9d2da9c06fe75dcb45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1f753b6b2854c80ed0bff00cffd445a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-33747247844c1f9d2da9c06fe75dcb45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -336,13 +336,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ziele und didaktische Mechanismen</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kapitel04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien der Nutzung von GenAI: Hiwi, Tutor, Copilot, Simulator</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -363,13 +363,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Didaktische Prompts - Übersicht</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Überblick didaktischer Prompts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best Practice Sammlung didaktischer Prompts und Aufgabenstellungen</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
   </div>
 </li>
       </ul>
@@ -455,6 +455,52 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+// callout-toggle.js
+
+window.addEventListener('DOMContentLoaded', () =&gt; {
+
+  // Quarto-Callouts haben die Klasse .callout; collapsible Callouts besitzen ein Toggle in der Header-Zeile.
+
+  // Wir öffnen/schließen den Body-Container aller "collapsible" Callouts.
+
+  function setAllCallouts(open = true) {
+
+    document.querySelectorAll('.callout').forEach(co =&gt; {
+
+      // Quarto rendert collapsible Callouts mit einem Header-Button, der den Body ein-/ausblendet.
+
+      const headerBtn = co.querySelector('.callout-header button, .callout-toggle, [data-bs-toggle="collapse"]');
+
+      const body = co.querySelector('.callout-body, .collapse'); // je nach Quarto/Bootstrap-Version
+
+      if (!headerBtn || !body) return;
+
+
+
+      const isOpen = body.classList.contains('show') || body.style.display !== 'none';
+
+      if (open &amp;&amp; !isOpen) headerBtn.click();
+
+      if (!open &amp;&amp; isOpen) headerBtn.click();
+
+    });
+
+  }
+
+
+
+  const expandBtn = document.getElementById('expand-callouts');
+
+  const collapseBtn = document.getElementById('collapse-callouts');
+
+
+
+  if (expandBtn)   expandBtn.addEventListener('click', () =&gt; setAllCallouts(true));
+
+  if (collapseBtn) collapseBtn.addEventListener('click', () =&gt; setAllCallouts(false));
+
+});
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

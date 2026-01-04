@@ -324,7 +324,7 @@ Im ersten Teil fassen wir die aktuelle Forschungslage zusammen.
 
 \bookmarksetup{startatroot}
 
-\chapter{Einleitung}\label{einleitung}
+\chapter{Einleitung}\label{sec-einleitung}
 
 \section{KI als Hilfe für die
 Lehre}\label{ki-als-hilfe-fuxfcr-die-lehre}
@@ -336,15 +336,15 @@ haben nur \textbf{begrenzte Zeit}, auf diese einzugehen. Wie können wir
 Einzelne möglichst intensiv fördern, ohne vor Arbeit unterzugehen?
 Zweitens ist der \textbf{Aufwand gerade für effektive Lehrmethoden} oft
 sehr hoch, so etwa für häufige niedrigschwellige Tests, oder
-individuelles Feedback zu Studienarbeiten (s. etwa Hattie, 2023, Kap.13;
-\textbf{brown2014a?}). Wer lehrt, fühlt sich aus Zeit- und Stoffdruck
-oft gezwungen, Abstriche von idealen Lehrsetups zu machen
-(\textbf{henderson2007a?}; \textbf{schmidt2005a?}). Gerade Lehrmethoden,
+individuelles Feedback zu Studienarbeiten (Brown et al., 2014; s. etwa
+Hattie, 2023, Kap.13). Wer lehrt, fühlt sich aus Zeit- und Stoffdruck
+oft gezwungen, Abstriche von idealen Lehrsetups zu machen (Henderson \&
+Dancy, 2007; Schmidt \& Tippelt, 2005, S.104--105). Gerade Lehrmethoden,
 die didaktisch sinnvoll, aber mit höherem Aufwand verbunden sind, drohen
 dabei auf der Strecke zu bleiben (s. etwa Dunlosky et al., 2013;
-\textbf{roediger2012b?}).
+Roediger \& Pyc, 2012).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Schnelles Brainstorming mit der KI}, colframe=quarto-callout-tip-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Schnelles Brainstorming mit der KI}, opacitybacktitle=0.6]
 
 \end{tcolorbox}
 
@@ -355,9 +355,9 @@ bringt „\textbf{generally faster}'' (McAfee, 2024). Lehrende können mit
 KI-Unterstützung etwa deutlich schneller eine Recherche durchführen, ein
 Set von Übungsaufgaben erstellen, mehrere Anwendungsbeispiele pro
 Konzept hinzufügen, Quizfragen zur schnellen Lernüberprüfung generieren,
-oder mit den Studierenden Rollenspiele durchführen (E. Mollick \&
-Mollick, 2023; \textbf{meincke2024a?}). Der Berg ist noch da, aber mit
-dem E-Bike kommt man weiter.
+oder mit den Studierenden Rollenspiele durchführen (Meincke et al.,
+2024; Mollick \& Mollick, 2023b). Der Berg ist noch da, aber mit dem
+E-Bike kommt man weiter.
 
 \begin{figure}
 
@@ -388,7 +388,7 @@ und Fachzeitschriften nach aktuellen Beispielen suchen.
 
 }
 
-\caption{\label{fig-deep-research2}Recherche-Hiwi-Denkprozess}
+\caption{\label{fig-deep-research2}Recherche-Hiwi-Vorgehen}
 
 \end{figure}%
 
@@ -445,20 +445,20 @@ mittlerweile auch Text erstellen (Willison, 2025b) und damit auch
 komplexe Infografiken (und Folien). Das Sprachmodell \emph{Claude}
 liefert eine Beschreibung (`Skill') von 3500 Wörtern mit, die dem
 Sprachmodell genau erklärt, wie es Schritt für Schritt eine PowerPoint
-Präsentation erstellt und testet (Anthropic, 2025).
+Präsentation erstellt und testet (Anthropic, 2025b).
 
 Eine grafisch ansprechende Präsentation zu erstellen ist recht
 zeitaufwändig - und Brillianz als Grafiker gehört vielleicht auch nicht
 zu den Kernkompetenzen von Lehrenden. Wir bitten daher Gemini
 (NotebookLM) und Claude, uns basierend auf Überblicksartikeln zwei
 Präsentationen zu erstellen: Eine zur Frage, welche Lerntechniken für
-Studierende besonders gut funktionieren (s. (\textbf{kapitel03?})) und
-die zweite zur Frage, welche Best-Practices es gibt, Aufgabenstellungen
-mit der intensiven Nutzung von GenAI zu verbinden (s.
-(\textbf{kapitel06?})).
+Studierende besonders gut funktionieren (s.
+Kapitel~\ref{sec-grundbegriffe}) und die zweite zur Frage, welche
+Best-Practices es gibt, Aufgabenstellungen mit der intensiven Nutzung
+von GenAI zu verbinden (s. Anhang~\ref{sec-prompts}).
 
 Zu integrierten Aufgaben mit GenAI liefert uns das Sprachmodell nach
-etwa 5 Minuten 15 sehr schicke Folien (NotebookLM, basierend auf 13
+wenigen Minuten 15 sehr schicke Folien (NotebookLM, basierend auf 13
 Quellen-PDFs).
 
 \begin{figure}
@@ -500,15 +500,82 @@ denen wir die banalen Schreibprodukte der KI nur belächeln konnten. Ein
 Economic Literature vom Dezember 2024 fasst die deutlich höhere Qualität
 des Outputs zusammen: „die derzeitige Generation von LLMs ist in hohem
 Maße in der Lage, die wichtigsten Erkenntnisse von Forschungsarbeiten zu
-verarbeiten'' (\textbf{korinek2024b?}, Übersetzung RB mit DeepL). Die
-professionelle Nutzung ist hier teils noch weiter: So demonstrierte etwa
-Google 2025 ein mehrstufiges Modell für die Pharma-Forschung
-(„\textbf{AI co-scientist}''), das den Forschenden zeitintensive
-Zwischenschritte abnimmt (\textbf{gottweis2025a?}). Auch im Peer-Review
-werden zunehmend Sprachmodelle eingesetzt -- mit allen Vor- und
-Nachteilen, die das mit sich bringt (Naddaf, 2025). Wie wir in den
-späteren Kapiteln sehen, experimentieren Hochschulen weltweit intensiv
-mit den neuen Möglichkeiten für Lehre und Forschung.
+verarbeiten'' (Korinek, 2024, S.3, Übersetzung RB mit DeepL).
+
+\textbf{Die professionelle Nutzung durch Forscher etwa in
+Laborumgebungen oder der Mathematik ist hier teils noch weiter.} Eine
+schöne visuelle Verdeutlichung davon, was jetzt möglich ist, findet sich
+hier: Eine Visualisierung von über 6000 Konferenzbeiträgen, die jeweils
+zusammengefasst werden und denen durch ein Sprachmodell eine Erklärung
+in einfacher Sprache beigefügt wurde (``explain-it-like-I'm-5''):
+\textbf{Hier kann man das interaktiv ausprobieren:}
+https://jalammar.github.io/assets/neurips\_2025.html.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/neuips-papers-visualization-eli5.jpg}}
+
+}
+
+\caption{\label{fig-conference-papers}Visualisierung und Erläuterung in
+einfacher Sprache von 6000+ Konferenzbeiträgen}
+
+\end{figure}%
+
+\textbf{Wie kann GenAI uns bei der Forschung direkt unterstützen?}
+Google demonstrierte 2025 ein mehrstufiges Modell für die
+Pharma-Forschung (\emph{`AI co-scientist'}), das den Forschenden
+zeitintensive Zwischenschritte abnimmt (Gottweis et al., 2025) (s.
+Abbildung~\ref{fig-coscientist}). OpenAI zeigte Ende 2023 schon in einem
+ausführlichen Bericht eine Vielzahl möglicher Hilfsanwendungen im
+Wissenschaftsbereich. Mit deutlichen Warnhinweisen (speziell wegen
+selbstbewusst vertretenen Halluzinationen) aber auch teils erstaunlich
+hoher Qualität (Bubeck et al., 2023). Auch im Peer-Review werden
+zunehmend Sprachmodelle eingesetzt -- mit allen Vor- und Nachteilen, die
+das mit sich bringt (Naddaf, 2025). Wie wir in den späteren Kapiteln
+sehen, experimentieren Hochschulen weltweit intensiv mit den neuen
+Möglichkeiten für Lehre und Forschung.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/co-scientist-design.jpg}}
+
+}
+
+\caption{\label{fig-coscientist}Google's Co-Scientist Ansatz an einem
+Beispiel aus der Pharmaforschung}
+
+\end{figure}%
+
+Ende 2025, hat sich \textbf{der potenzielle Mehrwert (und speziell
+Zeitgewinn) \emph{bei fachgemäßer Nutzung} } noch einmal erweitert. Ein
+aktueller Bericht (November 2025) von OpenAI stellt eine Reihe von
+Fallstudien dar, wie Forschende starke Sprachmodelle nutzen (Bubeck et
+al., 2025). Die Quelle der Ergebnisse ist natürlich nicht neutral
+(OpenAI), die Ergebnisse sind aber m.E. mit Blick auf die eigene
+Nutzungserfahrung sehr plausibel: Als Mehrwert wird häufig eine
+\textbf{außerordentliche Zeitersparnis bei Routinetätigkeiten} genannt,
+speziell bei der Nutzung von Verfahren und Wissensquellen, die die
+Forscher zwar bewerten können, deren Aneignung aber ohne die Hilfe der
+Sprachmodelle deutlich länger dauern würde. Dies ist sehr wertvoll und
+wird die Verbreitung solcher Tools treiben. Wir sehen in den
+Einzelberichten aber auch \textbf{klare Warnsignale}: Wenn man die
+Zwischenergebnisse mangels Fachkenntnis nicht kritisch hinterfragen
+kann, ist die Wahrscheinlichkeit hoch, Fehler zu übernehmen. Auch starke
+Sprachmodelle vertreten sehr überzeugend falsche Ergebnisse und Ansätze.
+Nur durch Fachwissen haben Nutzer die erforderlichen Bewertungsmuster.
+\textbf{Erst durch eigenes Fachwissen \emph{und} der Erfahrung im
+kritischen Umgang mit dem Tool entsteht der Mehrwert}. Man muss insofern
+das Terrain kennen \emph{und} lernen, wie man den Sportwagen
+Sprachmodell fahren muss, können Unfälle vermieden werden.
+
+Am Ende dieses Kapitels können Sie Details der Bewertungen aus den
+verschiedenen Disziplinen sehen (Bubeck et al., 2025).
+Kapitel~\ref{sec-forschung-details}
 
 \textbf{Wie ein Laie im Cockpit eines Verkehrsflugzeugs} fällt es
 Lehrenden teils schwer zu entscheiden, welche der neuen Möglichkeiten
@@ -548,40 +615,40 @@ Sprachmodelle}\label{aktuelle-weiterentwicklungen-der-sprachmodelle}
 sogenannte ``Reasoning''-Modelle werden breit verfügbar. Aus
 didaktischer Sicht ist das auch deshalb interessant, weil man Lernenden
 jetzt Denkstrategien vorführen kann, speziell Hypothesenbildung und
-Prüfung (etwa (\textbf{brown2014a?}), S.90-94, ``generative learning'',
+Prüfung (etwa (Brown et al., 2014), S.90-94, ``generative learning'',
 oder die Studien von Willemain zur Modellierung von Problemen durch
-Experten (Willemain, 1994; \textbf{willemain1995b?})). Ein neuer
-Ansatzpunkt zur Verbesserung der Ergebnisse wird hier genutzt
-(Grootendorst, 2025) : Statt (nur) mehr Ressourcen in das Training immer
-komplexerer Modelle zu investieren (train-time compute), werden die
-Modelle jetzt dazu angehalten, länger ``nachzudenken'', bevor sie ein
-Ergebnis anbieten (test-time compute). Hinter diesem ``besseren
-Nachdenken'' stehen zwei Prinzipien (Grootendorst, 2025; Snell et al.,
-2024): Die Sprachmodelle werden einerseits instruiert, schrittweise
-vorzugehen (Input-Verbesserung der Vorschlagsverteilung) und
-andererseits dazu angehalten, die eigenen Antworten zu prüfen
-(Output-Verbesserung, Verifizierer). Die Sprachmodelle führen insofern
-jetzt teils selbstständig Prüfschritte durch, die man früher durch
-komplexe Prompts induziert hätte. Ende 2025 sehen wir in der Konsequenz,
-dass die Sprachbots immer selbstständiger werden, man spricht vom
-``Agentic Turn''(E. R. Mollick, 2025a; Steinberger, 2025; Willison,
-2025a): Als Nutzer solcher Reasoning Modelle verbringen wir jetzt
-weniger Zeit damit, über die `Zaubersprüche' einzelner Prompts
-nachzudenken und mehr Zeit in `Mitarbeitergesprächen' - Anleitung und
-Kritik der digitalen ``Agenten'' - Sprachmodelle, die selbstständig und
-auf hohem Niveau mehrere Arbeitsschritte durchführen. Insgesamt steigt
-seit 2023 die Qualität der Aufgaben, die Sprachmodelle erledigen können,
-rasant. Empirische Untersuchungen zeigen, dass die Sprachmodelle immer
-längere Aufgaben auf hohem Niveau erledigen können (\textbf{kwa2025a?}).
+Experten (Willemain, 1994, 1995)). Ein neuer Ansatzpunkt zur
+Verbesserung der Ergebnisse wird hier genutzt (Grootendorst, 2025) :
+Statt (nur) mehr Ressourcen in das Training immer komplexerer Modelle zu
+investieren (train-time compute), werden die Modelle jetzt dazu
+angehalten, länger ``nachzudenken'', bevor sie ein Ergebnis anbieten
+(test-time compute). Hinter diesem ``besseren Nachdenken'' stehen zwei
+Prinzipien (Grootendorst, 2025; Snell et al., 2024): Die Sprachmodelle
+werden einerseits instruiert, schrittweise vorzugehen
+(Input-Verbesserung der Vorschlagsverteilung) und andererseits dazu
+angehalten, die eigenen Antworten zu prüfen (Output-Verbesserung,
+Verifizierer). Die Sprachmodelle führen insofern jetzt teils
+selbstständig Prüfschritte durch, die man früher durch komplexe Prompts
+induziert hätte. Ende 2025 sehen wir in der Konsequenz, dass die
+Sprachbots immer selbstständiger werden, man spricht vom ``Agentic
+Turn''(Mollick, 2025a; Steinberger, 2025; Willison, 2025a): Als Nutzer
+solcher Reasoning Modelle verbringen wir jetzt weniger Zeit damit, über
+die `Zaubersprüche' einzelner Prompts nachzudenken und mehr Zeit in
+`Mitarbeitergesprächen' - Anleitung und Kritik der digitalen ``Agenten''
+- Sprachmodelle, die selbstständig und auf hohem Niveau mehrere
+Arbeitsschritte durchführen. Insgesamt steigt seit 2023 die Qualität der
+Aufgaben, die Sprachmodelle erledigen können, rasant. Empirische
+Untersuchungen zeigen, dass die Sprachmodelle immer längere Aufgaben auf
+hohem Niveau erledigen können (Kwa et al., 2025).
 
 Die neuen Modelle sind außderdem günstiger und effizienter geworden: die
 Kosten pro Interaktion sind stark gesunken. Illustratives Beispiel: Eine
 Millionen Token kosteten mit GPT-4 noch 50 Dollar, jetzt nur noch 14
-Cent (InvertedStone, 2025; E. R. Mollick, 2025b). Das Modell
-halluziniert (weiterhin, also Vorsicht, aber) deutlich seltener als
-seine Vorgänger: OpenAI gibt hier ca. 1\% Halluzinationen der Antworten
-statt ca. 5\% bei Vorgängermodellen (o3, 4o) an, je nach Komplexität der
-Frage und erlaubter „Bedenkzeit'' (OpenAI, 2025).
+Cent (InvertedStone, 2025; Mollick, 2025b). Das Modell halluziniert
+(weiterhin, also Vorsicht, aber) deutlich seltener als seine Vorgänger:
+OpenAI gibt hier ca. 1\% Halluzinationen der Antworten statt ca. 5\% bei
+Vorgängermodellen (o3, 4o) an, je nach Komplexität der Frage und
+erlaubter „Bedenkzeit'' (OpenAI, 2025).
 
 Weiterhin hat sich die \textbf{Internetsuche mit LLMs deutlich
 verbessert}. Während man früher noch oft über sinnlose oder erfundene
@@ -590,32 +657,42 @@ speziellen Suchanbietern wie Perplexity mittlerweile eine große
 Zeitersparnis dar: „a useful tool to provide up-to-date answers to
 questions that are grounded in facts found on the internet, together
 with the requisite citations---a crucial capability for researchers''
-(\textbf{korinek2024b?}). Das gilt zunehmend für die stärksten
-allgemeinen Modelle und erst recht für Anbieter, die auf
-Forschungsrecherche (und Studierende) spezialisiert sind, wie Elicit
-oder Paperpal. Auch breite Internet-Recherchen und Textproduktionen sind
-zunehmend komplett delegierbar („deep research''), mit deutlichen
-Auswirkungen auf den Arbeitsprozess in der Wissensarbeit (s. etwa
-(\textbf{schwarcz2025a?}) für juristische Recherchen,
-(\textbf{korinek2024b?}) für Ökonomie und (\textbf{liang2025a?}) für
-PR-Tätigkeiten).
+(Korinek, 2024, S.3). Das gilt zunehmend für die stärksten allgemeinen
+Modelle und erst recht für Anbieter, die auf Forschungsrecherche (und
+Studierende) spezialisiert sind, wie Elicit oder Paperpal. Auch breite
+Internet-Recherchen und Textproduktionen sind zunehmend komplett
+delegierbar („deep research''), mit deutlichen Auswirkungen auf den
+Arbeitsprozess in der Wissensarbeit (s. etwa Schwarcz et al. (2025) für
+juristische Recherchen, Korinek (2024) für Ökonomie und Liang et al.
+(2025) für PR-Tätigkeiten).
 
 \section{Wie nutzen Studierende und Lehrende
 GenAI?}\label{wie-nutzen-studierende-und-lehrende-genai}
 
-Auch \textbf{Studierende nutzen bereits umfangreich Sprachmodelle} für
-einen breiten Strauß an Zielen (s. Abbildung~\ref{fig-llm-nutzung}).
-Eine Auswertung der KI-Forscher des KI-Unternehmens \emph{Anthropic} von
-1 Millionen anonymisierten Chats zwischen Usern mit Universitätskonto
-und dem KI Bot zeigt typische Muster der Nutzung (\textbf{handa2025c?}):
-Studierende setzen das Sprachmodell \textbf{vor allem für anspruchsvolle
-Tätigkeiten} ein, wie das \textbf{Erstellen neuer Inhalte und das
+\textbf{Für Studierende sind GenAI Chatbots zum Standard für
+Informationssuche und Schreibaufgaben geworden}: So berichten 92 \% der
+befragten britischen Vollzeitstudierenden (n=1.041, Erhebung im Dezember
+2024), dass sie KI-Tools wie ChatGPT regelmäßig verwenden, und 88 \%
+geben an, solche Tools für Prüfungsleistungen (``for assessments'') zu
+nutzen (Freeman, 2025). Deutsche Daten des CHE-Centrum für
+Hochschulentwicklung bestätigen dies: etwa zwei Drittel der Studierenden
+gaben Ende 2024 an, KI-Tools mindestens wöchentlich zu nutzen (Hüsch,
+Marc et al., 2025) (65\%, n=23.288 von 171 Hochschulen).
+
+\textbf{Wofür genau nutzen Studierende GenAI?} Studierende geben an,
+dass sie sich am häufigsten Konzepte erklären lassen, Artikel
+zusammenfassen oder Ideen für Schreib- und Forschungsprojekte sammeln
+(Freeman, 2025). Nutzungsstudien zeigen sogar noch stärkeren Einsatz
+speziell für Schreibprojekte (s. Abbildung~\ref{fig-llm-nutzung}): Wie
+eine Auswertung von 1 Millionen anonymisierten Chats zwischen Usern mit
+Universitätskonto und dem Sprachmodell zeigt nutzen Studierende die
+KI-Bots vor allem zum \textbf{Erstellen neuer Inhalte und das
 Analysieren komplexer Themen}, was höheren Ebenen der Bloomschen
-Taxonomie entspricht (s. Abbildung~\ref{fig-llm-nutzung-bloom}). Daraus
-ergibt sich die Herausforderung sicherzustellen, dass Studierende
-wesentliche kognitive Aufgaben nicht vollständig an GenAI delegieren:
-Aufgaben müssen angepasst und der verantwortungsvolle Umgang mit der
-Technik muss eingeübt werden.
+Taxonomie entspricht (s. Abbildung~\ref{fig-llm-nutzung-bloom}). Ein
+Großteil der befragten britischen Studierenden gibt an,
+Prüfungsleistungen durch GenAI zu unterstützen. Dieser Anteil sprang
+zwischen den Erhebungszeiträumen Ende 2023 und 2024 von der Hälfte auf
+fast 90\% (53\% auf 88\%, Freeman, 2025).
 
 \begin{figure}
 
@@ -626,22 +703,21 @@ Technik muss eingeübt werden.
 }
 
 \caption{\label{fig-llm-nutzung}Wofür Studierende LLMs nutzen.
-\emph{Quelle:} (\textbf{handa2025c?})}
+\emph{Quelle:} Handa et al. (2025-04-08, 2025)}
 
 \end{figure}%
 
-\textbf{Auch außerhalb der Hochschule steigt die Nutzung}. Eine Reihe
-von Studien zeigen \textbf{erhöhte Produktivität von Büroarbeitenden mit
-LLM-Unterstützung}: der Kundensupport arbeitet 15\% schneller, wenn das
-Sprachmodell Antwortoptionen vorschlägt und Verweise auf interne
-technische Dokumentation anbietet (Brynjolfsson et al., 2025),
-Programmierer programmieren schneller (\textbf{peng2023a?}), Consultants
-sind produktiver bei komplexen Beratungsprojekten
-(\textbf{dellacqua2023a?}) und Sprachmodelle wie ChatGPT können eine
-Vielzahl kleiner Aufgaben beschleunigen (\textbf{handa2025c?}) und
-werden insofern gerade zur Texterstellung schon millionenfach als
-Hilfsmittel im Beruf genutzt: Von Kundenbewertungen über
-Pressemitteilungen und Stellenanzeigen (\textbf{liang2025a?}).
+\textbf{Hochschulen müssen insofern sicherstellen, dass
+Prüfungsleistungen nicht entwertet und Studierende die produktive
+Nutzung solcher Tools erlernen}. Studierende dürfen einerseits
+wesentliche kognitive Aufgaben nicht vollständig an GenAI delegieren:
+Aufgaben und Prüfungsleistungen müssen angepasst werden. Weiterhin
+entsteht ein \textbf{neuer Bedarf an Kompetenzschulung}, den Studierende
+wie Unternehmen äußern: der produktive Umgang mit den neuen GenAI Tools
+muss eingeübt werden. \textbf{Deutsche Studierende fühlen sich hierauf
+nicht gut vorbereitet}: In der CHE-Studie bewerten sie das bestehende
+Angebot zum Erwerb von KI-Kompetenzen mit nur 2,7 von 5 Sternen (Hüsch,
+Marc et al., 2025).
 
 \begin{figure}
 
@@ -663,14 +739,13 @@ Acceptance Model} (TAM, s. Abbildung~\ref{fig-tam}) von der
 \textbf{wahrgenommenen Benutzerfreundlichkeit} (perceived ease of use)
 und der \textbf{wahrgenommenen Nützlichkeit} (perceived usefulness) ab
 (Marangunić \& Granić, 2015). Generative KI wie ChatGPT decken sichtlich
-beide Aspekte ab: Sie sind einfach zu nutzen (Kestin et al., 2025;
-\textbf{lee2025a?}; \textbf{monib2025a?}; \textbf{naddaf2025c?}) und
-erzeugen einen deutlichen Mehrwert, wie Studierende und Lehrende in
-einer Vielzahl von Umfragen der letzten zwei Jahren berichten
-(\textbf{heidt2025a?}; \textbf{morgan2024a?}; \textbf{ou2024a?}).
-Lehrende ziehen nach: Meta-Untersuchungen zeigen ein extremes Wachstum
-an Publikationen zur Nutzung von LLM im Hochschulalltag
-(\textbf{ma2025a?}; \textbf{ogunleye2024a?}).
+beide Aspekte ab: Sie sind einfach zu nutzen (Kestin et al., 2025; Lee
+et al., 2025; Monib et al., 2025; Naddaf, 2025) und erzeugen einen
+deutlichen Mehrwert, wie Studierende und Lehrende in einer Vielzahl von
+Umfragen der letzten zwei Jahren berichten (Heidt, 2025; Morgan, 2024;
+Ou et al., 2024). Lehrende ziehen nach: Meta-Untersuchungen zeigen ein
+extremes Wachstum an Publikationen zur Nutzung von LLM im
+Hochschulalltag (Ma, 2025; Ogunleye et al., 2024).
 
 \begin{figure}
 
@@ -685,6 +760,41 @@ Technologie-Akzeptanz-Modell}
 
 \end{figure}%
 
+\textbf{Auch außerhalb der Hochschule steigt die Nutzung}. Eine Reihe
+von Studien zeigen \textbf{erhöhte Produktivität von Büroarbeitenden mit
+LLM-Unterstützung}: der Kundensupport arbeitet 15\% schneller, wenn das
+Sprachmodell Antwortoptionen vorschlägt und Verweise auf interne
+technische Dokumentation anbietet (Brynjolfsson et al., 2025),
+Programmierer programmieren schneller (Peng et al., 2023), Consultants
+sind produktiver bei komplexen Beratungsprojekten (Dell'Acqua et al.,
+2023) und Sprachmodelle wie ChatGPT können eine Vielzahl kleiner
+Aufgaben beschleunigen (\textbf{handa2025c?}) und werden insofern gerade
+zur Texterstellung schon millionenfach als Hilfsmittel im Beruf genutzt:
+Von Kundenbewertungen über Pressemitteilungen und Stellenanzeigen (Liang
+et al., 2025).
+
+Schauen wir auf die Abnehmern unserer Graduierten: \textbf{Wie nutzen
+die Unternehmen Mitte 2025 solche Sprachmodelle?} Eine aktuelle Studie
+(2025/12) zur Nutzung von GenAI in Unternehmen stellt ein extremes
+Wachstum fest sowie einen deutlichen Unterschied in der Nutzung von
+erfahrenen und weniger routinierten Usern (Chatterji, 2025). Der
+OpenAI-Report zeigt, dass die Nutzung von Sprachmodellen in Unternehmen
+2025 deutlich \emph{breiter und tiefer} wird:
+ChatGPT-Enterprise-Nachrichten stiegen im Jahresvergleich etwa um das
+Achtfache, gleichzeitig wachsen wiederholbare Arbeitsabläufe stark
+(Nutzung von Projects/Custom GPTs \textasciitilde19-fach seit
+Jahresbeginn; rund 20 \% der Enterprise-Nachrichten laufen bereits über
+solche strukturierten Workflows). Gleichzeitig bleibt bei
+fortgeschritteneren Funktionen noch viel ungenutztes Potenzial. Vor
+allem der Mehrwert von neueren Funktionen wie \emph{DeepSearch}
+(Delegation ausführlicher Recherchen), \emph{Reasoning} (schrittweises,
+sorgfältiges Antworten mit deutlich höherer Qualität) und
+\emph{Datenanalyse} mit Coding Tools wie Codex werden von Praktikern mit
+Firmen-Lizenz noch sehr selten genutzt. Selbst unter monatlich aktiven
+Enterprise-Nutzern haben 19 \% noch nie Datenanalyse, 14 \% noch nie
+Reasoning und 12 \% noch nie (Deep) Search genutzt (bei täglich Aktiven
+sinkt das auf 3 \%, 1 \% und 1 \%).
+
 \section{Risiken und Nebenwirkungen}\label{risiken-und-nebenwirkungen}
 
 Die Metapher mit dem E-Bike trägt allerdings auch, was die
@@ -694,24 +804,16 @@ bestehen -- wie empirische Studien zeigen, erfordern die neuen Workflows
 der Wissensarbeit durch KI-Unterstützung auch neue Formen der kritischen
 Auseinandersetzung mit den Inhalten.
 
-\textbf{Studierende nutzen GenAI bereits umfangreich für anspruchsvolle
-Aufgaben.} Die Analyse von 1 Millionen anonymisierten Studierenden-Chats
-durch Anthropic (\textbf{handa2025c?}) zeigt einerseits, dass
-\textbf{Studierende das LLM vor allem für kognitiv anspruchsvollere
-Aufgaben einsetzen}, vor allem in den Kategorien „Creating'' und
-„Analyzing'' (s. \textbf{?@fig-bloom-taxonomie}).
-
 Im Gegensatz zur einfachen Faktensuche im Internet werden hier nicht nur
 ein paar dornige Zweige im Aufgabenbündel mechanisch `geerntet', sondern
-gleich das gesamte Bündel fertig verschnürt bereitgestellt.
-Schlimmstenfalls droht das, was ein Artikel von Walsh
-(\textbf{walsh2025a?}) prägnant betitelt: ``Everybody is cheating their
-way through college''. Wenn klassische Projektaufgaben quasi auf
-Knopfdruck erstellt werden können, droht diese Form von Leistung sinnlos
-zu werden. Mit etwas Lust an Dramatik können wir uns Endzeit-Szenarien
-vorstellen, in denen Lehrende klagend durch die Trümmer ihrer schönen
-Portfolio-Prüfungen stolpern: Die Homework-Apocalypse
-(\textbf{mollick2023d?}).
+\textbf{gleich das gesamte Bündel fertig verschnürt bereitgestellt.}
+Schlimmstenfalls droht das, was ein Artikel von Walsh (2025) prägnant
+betitelt: \textbf{``Everybody is cheating their way through college''.}
+Wenn klassische Projektaufgaben quasi auf Knopfdruck erstellt werden
+können, droht diese Form von Leistung sinnlos zu werden. Mit etwas Lust
+an Dramatik können wir uns Endzeit-Szenarien vorstellen, in denen
+\textbf{Lehrende klagend durch die Trümmer ihrer schönen
+Portfolio-Prüfungen stolpern:} Die Homework-Apocalypse (Mollick, 2023).
 
 \textbf{Aber so schlimm muss es nicht werden.} Es gibt schon eine Reihe
 plausibler Ansätze, Lehrformate so umzugestalten, dass erwünschte
@@ -727,7 +829,7 @@ steigt anderseits der Aufwand für Management-ähnliche Aufgaben:
 Koordination der Einzelaufgaben für Mensch und Maschine, kritische
 Prüfung der berichteten Ergebnisse und die Integration von Ergebnissen
 in den Gesamtprozess (etwa zur Erstellung eines Gesamtberichtes, einer
-Test-Spezifikation oder eines Protokolls) (\textbf{lee2025a?}).
+Test-Spezifikation oder eines Protokolls) (Lee et al., 2025).
 
 Wie kann man also verhindern, dass die Studierenden kritische kognitive
 Aufgaben allein den KI-Systemen übergeben? Lehre heißt in diesem Kontext
@@ -736,28 +838,520 @@ gehen kann, sehen wir in den folgenden Kapiteln.
 
 \section{Kapitelübersicht}\label{kapiteluxfcbersicht}
 
-Im Folgenden werden wir zunächst einige \textbf{Grundbegriffe} klären:
-Was sind große Sprachmodelle und was ist mit Begriffen wie Token, Prompt
-und RAG gemeint? \textbf{Welche Modelle} können Lehrende aktuell nutzen
-und welche \textbf{Empfehlungen für Prompts} sind belastbar (Abschnitt
-2.5)? Dann fragen wir nach \textbf{Zielen}: Welche Art von Wissen und
-Methoden unterscheidet und empfiehlt die Lernforschung? Welche
+Im Folgenden werden wir zunächst einige \textbf{Grundbegriffe} klären
+\{Kapitel~\ref{sec-grundbegriffe}\}: Was sind große Sprachmodelle und
+was ist mit Begriffen wie Token, Prompt und RAG gemeint? \textbf{Welche
+Modelle} können Lehrende aktuell nutzen und welche \textbf{Empfehlungen
+für Prompts} sind belastbar \{Kapitel~\ref{sec-prompt-vorgehen}\}? Dann
+fragen wir nach \textbf{Zielen}: Welche Art von Wissen und Methoden
+unterscheidet und empfiehlt die Lernforschung? Welche
 \textbf{didaktischen Wirkmechanismen} können durch KI genutzt werden, um
-typische Probleme der Hochschullehre anzugehen (Abschnitt 3)? Im
-Abschnitt 4 schauen wir auf \textbf{Praxisbeispiele} für vier
-Anwendungsfelder von Sprachmodellen an Hochschulen: \textbf{KI als Hiwi}
+typische Probleme der Hochschullehre anzugehen
+\{Kapitel~\ref{sec-didaktik}\}? Im Abschnitt 4 schauen wir auf
+\textbf{Praxisbeispiele} für vier Anwendungsfelder von Sprachmodellen an
+Hochschulen \{Kapitel~\ref{sec-szenarien}\}: \textbf{KI als Hiwi}
 (direkte Arbeitserleichterung), \textbf{KI als Copilot} (Unterstützung
 beim Schreiben und Coden) und \textbf{KI als Tutor} (Feedback und
 Lernunterstützung) sowie \textbf{KI als Simulator} (Role Play und Goal
 Play). Abschließend zeigen wir verschiedene Anwendungen von KI in
 verschiedenen Kurstypen und gehen auf neue \textbf{Herausforderungen für
-Prüfungen} ein (Abschnitt 5). Im Appendix finden Sie eine breite
-Sammlung von didaktischen Prompts und auf GenAI ausgerichteten
-Aufgabenstellungen von führenden Hochschulen.
+Prüfungen} ein \{Kapitel~\ref{sec-umsetzung}\}. Im Appendix finden Sie
+eine breite Sammlung von didaktischen Prompts und auf GenAI
+ausgerichteten Aufgabenstellungen von führenden Hochschulen
+\{Anhang~\ref{sec-prompts}\}
+
+\section{Schlaglichter aus der Forschung mit GenAI: Erfahrungsberichte
+aus den Disziplinen (GPT-5 und 5-Pro)}\label{sec-forschung-details}
+
+Wie und wofür lassen sich die stärksten Sprachmodelle aktuell in der
+Forschung nutzen? Hier finden Sie Schlaglichter aus den verschiedenen
+Disziplinen (Bubeck et al., 2025). Es sei darauf hingewiesen, dass die
+Forschenden teils GPT-5 (die Version für ca. 20 EUR im Monat) und teils
+GPT-5 Pro (die stärkste Version für ca. 200 EUR im Monat) verwendet
+haben.
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Mathematik / Optimierung der Schrittweite}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Sébastien Bubeck
+
+\textbf{Thema:} Untersuchung, ob GPT-5 ein kürzlich veröffentlichtes
+Resultat zur Konvexität von Optimierungskurven verbessern oder
+reproduzieren kann.
+
+\textbf{Mehrwert:}
+
+„\ldots one can see that GPT-5 claims to have improved the condition
+from η≤1/L to η≤1.5/L, thus approaching the optimal bound (but not quite
+getting there) of η≤1.75/L. But is this claim substantiated? It is
+indeed, and the proof given by GPT-5 is shown in Figure I.2, which the
+present author has verified to be correct.``
+
+„\ldots the proof given by GPT-5 is quite different from the one in v2.
+Indeed, the GPT-5 proof can be viewed as a more canonical variant of the
+v1 proof\ldots``
+
+\textbf{Probleme:}
+
+„GPT-5 did not manage to fully rederive the v2 result, but it basically
+went half-way between v1 and v2.``
+
+\textbf{Schlussfolgerungen:}
+
+„To say it plainly, such a result (improving from 1/L to 1.5/L) could
+probably have been achieved by some experts in the field in a matter of
+hours, and likely for most experts it would have taken a few days. This
+is the type of science acceleration that we will see time and again in
+this report.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Mathematik / Literaturrecherche zu Erdős-Problemen}, opacitybacktitle=0.6]
+
+\textbf{Forschende:} Mehtaab Sawhney und Mark Sellke
+
+\textbf{Thema:} Nutzung von GPT-5 zur Identifizierung bereits
+veröffentlichter Lösungen für Probleme aus der Erdős-Datenbank, die dort
+als „offen`` gelistet waren.
+
+\textbf{Mehrwert:}
+
+„GPT-5 located references solving the above problems\ldots{} Identifying
+these decades-old papers required GPT-5 to go far beyond the
+functionality of a search engine, and indeed to read each of these
+papers in detail and apply a genuine understanding of mathematics.``
+
+„GPT-5 translated and explained the proofs from {[}Pom59{]} to us so
+that we could verify them ourselves.``
+
+„GPT-5 assisted us in pointing out parts of the paper that made the
+intended definition clear.``
+
+\textbf{Probleme:}
+
+„\ldots in some cases it was overly enthusiastic about partial progress
+it had found.``
+
+\textbf{Schlussfolgerungen:}
+
+„GPT-5 therefore provides the practicing mathematician a new mechanism
+to access the collective breadth of the mathematical literature.``
+
+„This provides a convenient, crowd-sourceable `soft certificate' that
+the solution is unlikely to appear in the published literature.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Mathematik / LLMs als Forschungspartner}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Timothy Gowers
+
+\textbf{Thema:} Erfahrungen bei der Nutzung von LLMs für mathematische
+Probleme im Frühstadium.
+
+\textbf{Mehrwert:}
+
+„\ldots with GPT-5 my experience has been that the references are rarely
+hallucinated, and even the hallucinations can turn out to be pointers to
+references that exist and are useful.``
+
+„\ldots GPT-5 has solved them {[}well-defined subproblems{]} for me in a
+matter of seconds.``
+
+„\ldots I have had reasonably precise ideas for solving problems that I
+have run past GPT-5 Pro, which has explained to me why them cannot
+work.``
+
+„\ldots even the less good ideas of an LLM can sometimes stimulate me to
+make progress. (I think of this as the `That clearly doesn't work
+\ldots{} but wait a minute!' phenomenon.)``
+
+\textbf{Probleme:}
+
+„\ldots on the negative side, if I ask more open-ended questions, or
+offer more sketchy ideas for proof attempts, then that seems to
+encourage the more annoying characteristics of LLMs to come to the fore:
+they will tell me that my ideas do indeed work, and will write something
+that supposedly fleshes out the details but that does not withstand
+close scrutiny.``
+
+„\ldots it gave me a hallucinated reference but by an author who had
+written on closely related topics.``
+
+\textbf{Schlussfolgerungen:}
+
+„\ldots my current assessment of LLMs is that they are just beginning to
+be useful as research collaborators\ldots``
+
+„\ldots LLMs can speed up the process of thinking about a problem,
+especially if that problem is a little outside one's primary domain of
+expertise\ldots``
+
+„\ldots they are capable of playing this
+knowledgeable-research-supervisor role with me\ldots{} but that they are
+not yet at the level\ldots{} at which a human mathematician\ldots{}
+would ask for joint authorship.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Mathematik / Neue Resultate zum Erdős-Problem \#848}, opacitybacktitle=0.6]
+
+\textbf{Forschende:} Mehtaab Sawhney und Mark Sellke
+
+\textbf{Thema:} Lösung eines offenen Problems über Teilmengen von \{1,
+\ldots, N\}, bei denen ab+1 nicht quadratfrei ist.
+
+\textbf{Mehrwert:}
+
+„GPT-5 put forward the new idea that led to our solution\ldots``
+
+„The idea suggested by GPT-5's reply\ldots{} gives a method to use any
+single number b ∈ A to obtain similarly harsh constraints on all other a
+∈ A.``
+
+\textbf{Probleme:}
+
+„GPT-5 made attempts in this direction but had numerous errors in its
+implementation (as can be seen in the transcript).``
+
+„\ldots current models remain limited in perceiving the `negative space'
+of mathematics. While models are able to suggest plausible proof
+strategies, they often do not realize certain `obvious' examples which
+block progress, and are overly confident in the power of existing
+methods.``
+
+\textbf{Schlussfolgerungen:}
+
+„\ldots GPT-5 has the ability to serve as an effective mathematical
+assistant, capable of recalling relevant lemmas, identifying analogies
+and locating relevant results from vague, ill-specified prompts.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Mathematik / Graphentheorie: Teilgraphen-Zählungen}, opacitybacktitle=0.6]
+
+\textbf{Forschende:} Sébastien Bubeck, Mark Sellke und Steven Yin
+
+\textbf{Thema:} Beweis von Ungleichungen für die Anzahl bestimmter
+induzierter Teilgraphen in Bäumen.
+
+\textbf{Mehrwert:}
+
+„Both of GPT-5's proofs are quite different from any of the arguments in
+{[}BL16; Bub+16{]}.``
+
+„\ldots GPT-5's proof is short and elegant, and based on a somewhat
+miraculous identity.``
+
+\textbf{Probleme:}
+
+„A few incorrect proofs were also generated and rejected by human
+checking.``
+
+\textbf{Schlussfolgerungen:}
+
+„\ldots GPT-5 was able to reprove the first inequality, and then build
+on this to also prove the second (open) inequality.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Mathematik / Lerntheorie: Dynamische Netzwerke}, opacitybacktitle=0.6]
+
+\textbf{Forschende:} Sébastien Bubeck, Mark Sellke und Steven Yin
+
+\textbf{Thema:} Identifizierbarkeit des Parameters w in einem
+modifizierten präferenziellen Bindungsprozess.
+
+\textbf{Mehrwert:}
+
+„GPT-5 was able to prove that w is indeed identifiable\ldots``
+
+„\ldots this illustrates that GPT-5's decision to focus on the quantity
+L(t) is already non-obvious.``
+
+\textbf{Probleme:}
+
+„\ldots when we asked (an unscaffolded) GPT-5 to provide more detail for
+these latter arguments, it made several false starts\ldots{} After some
+human pushback, GPT-5 eventually came up with a correct but
+unnecessarily complicated proof\ldots``
+
+\textbf{Schlussfolgerungen:}
+
+„While all major proof ideas below are due to GPT-5, a few details of
+proof writing are human-supplied.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Physik / Symmetrien Schwarzer Löcher}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Alex Lupsasca
+
+\textbf{Thema:} (Re-)Derivation nichttrivialer Lie-Punkt-Symmetrien der
+Wellengleichung in einer Kerr-Raumzeit.
+
+\textbf{Mehrwert:}
+
+„Within 18 minutes, the model produced the correct curved-space
+generators closing into SL(2, R)\ldots``
+
+„The final generators are too structured to be a lucky guess. The model
+likely executed (implicitly) a mix of: recognizing conformal invariance
+in the flat equation, hypothesizing a curved analogue, and/or exploiting
+a coordinate map\ldots``
+
+\textbf{Probleme:}
+
+„The model initially failed on the curved-space problem, but then
+succeeded after a flat-space warm-up\ldots``
+
+„What GPT-5 got wrong (along the way). The cold start on Eq. (I.1)
+incorrectly concluded `no symmetries.'\,``
+
+\textbf{Schlussfolgerungen:}
+
+„AI as a symmetry engine. With minimal domain scaffolding, current
+models can carry out nontrivial Lie-symmetry discovery for PDEs with
+non-constant coefficients.``
+
+„Research velocity. Given such capabilities, the time from idea to
+publishable result can compress from months to days once the right
+prompts and scaffolds are in place.``
+
+„\ldots contemporary LLMs can act as practical assistants for symmetry
+discovery and analytic structure mining in theoretical physics.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Physik / Fusionsforschung: Thermonukleare Brandwellen}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Brian Keith Spears
+
+\textbf{Thema:} Entwicklung eines reduzierten physikalischen Modells für
+thermonuklearer Brandwellen in ICF-Kapseln.
+
+\textbf{Mehrwert:}
+
+„GPT-5 is quite good at this kind of model development and setup. It
+required little intervention on my part to make this plausible and
+complete.``
+
+„The point is that I can now deliver in minutes as if I were at the
+highest level I have ever been at for this kind of work. \ldots{} to
+have it in minutes is remarkable.``
+
+„However, when re-prompted to examine a pathological result or null
+signal, GPT-5 offered quite sophisticated solutions, including different
+implementations of FFTs to prevent aliasing, improved resolutions to
+track burn fronts\ldots``
+
+\textbf{Probleme:}
+
+„GPT-5 was a bad designer, offering results that were null, noisy, or
+invalid (NaNs), while claiming that glory had been achieved.``
+
+„The model, in its eagerness to please, often introduces numerical duct
+tape to smooth over a thorny issue, silently swaps out detailed
+numerical solves for approximations with trends it knows I want, and
+confidently declares victory when numerical signals are still obviously
+noise.``
+
+\textbf{Schlussfolgerungen:}
+
+„\ldots executing this workflow from concept, to numerical exploration,
+to theoretical supporting statement in hours is rather amazing.``
+
+„I feel like my 6 hours of work here yielded something I could have done
+over a month or two with a very good pair of postdocs\ldots{} That is a
+compression of about a factor of 1000.``
+
+„\ldots users must be expert enough to catch the oversimplifications,
+must persist to get the model to reconsider, and must be
+vigilant\ldots``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Physik / Astrophysik: Gravitationsstrahlung}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Robert Scherrer
+
+\textbf{Thema:} Analytische Integration des Leistungsspektrums von
+Garfinkle-Vachaspati-Strings.
+
+\textbf{Mehrwert:}
+
+„After reasoning for 40 minutes, GPT-5 Pro produced a result for large
+odd n identical to the asymptotic result I had previously
+derived\ldots{} It used a completely different method of solution from
+my own.``
+
+„GPT-5 Pro also gave the leading order correction term to this
+formula\ldots{} I was not aware of this correction term\ldots``
+
+\textbf{Probleme:}
+
+„The program hung up for quite a long time, giving me no details about
+its thought process. After several hours I became frustrated and killed
+it.``
+
+\textbf{Schlussfolgerungen:}
+
+„GPT-5 Pro is capable of solving complex analytic integrations that are
+beyond the reach of symbolic manipulation programs such as
+Mathematica.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Biologie / Immunologische In-vitro-Experimente}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Derya Unutmaz
+
+\textbf{Thema:} Mechanistische Analyse der Wirkung von 2-DG auf die
+Differenzierung von T-Zellen und Vorhersage der Zytotoxizität von
+CAR-T-Zellen.
+
+\textbf{Mehrwert:}
+
+„GPT-5 Pro provided the key mechanism that could explain these findings
+and, in addition, made highly relevant experimental suggestions.``
+
+„The mechanistic insight and further hypothesis to dissect these
+findings were highly valuable and not immediately obvious, despite our
+deep expertise in this field.``
+
+„GPT-5 Pro perfectly analyzed and described the data in the
+figure\ldots``
+
+„\ldots GPT-5 Pro made sufficient contributions to this work to the
+extent that it would warrant its inclusion as a co-author in this new
+study.``
+
+\textbf{Probleme:}
+
+„\ldots a caveat for this suggestion is that GPT-5 Pro may have known
+about this finding and made the connection with this result.``
+
+\textbf{Schlussfolgerungen:}
+
+„GPT-5 Pro can function as a true mechanistic co-investigator in
+biomedical research, compressing months of reasoning into minutes,
+uncovering non-obvious hypotheses, and directly shaping experimentally
+testable strategies.``
+
+„Precision interpretation of complex biology. GPT-5 Pro rapidly
+connected the observed phenotypes to a mechanistic hypothesis\ldots``
+
+„The net effect will be a much higher discovery rate per experiment and
+a shorter route from observation to discovery to intervention, thus
+profoundly accelerating the biomedical scientific process.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Informatik / Geometrie: Literaturrecherche zur Optimierung}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Nikita Zhivotovskiy
+
+\textbf{Thema:} Suche nach Anwendungen und verwandter Literatur für eine
+neue geometrische Aussage über „α-ratio covers``.
+
+\textbf{Mehrwert:}
+
+„\ldots given only a core mathematical statement, GPT-5 can rapidly
+surface nontrivial and technically aligned links across areas\ldots{}
+providing context for new applications.``
+
+„At first sight\ldots{} this seems unrelated to Theorem II.1.1 and could
+be mistaken for a hallucination. However, unpacking their proof shows
+that their result can be phrased as a coordinatewise (1+ϵ)-ratio
+cover\ldots``
+
+\textbf{Schlussfolgerungen:}
+
+„\ldots GPT-5 can rapidly surface nontrivial and technically aligned
+links across areas\ldots{} providing context for new applications.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Informatik / Schranken für Online-Algorithmen}, opacitybacktitle=0.6]
+
+\textbf{Forschender:} Christian Coester
+
+\textbf{Thema:} Verbesserung der unteren Schranken für das Problem des
+„Convex Body Chasing``.
+
+\textbf{Mehrwert:}
+
+„Given a single short prompt, GPT-5 produced a rather non-obvious
+counter-example against the algorithm.``
+
+„GPT-5 suggested a much simpler and cleaner solution: trigger the switch
+once the algorithm is below the semicircle at distance ≥ ε from pt.~This
+avoids the freeze\ldots{} The idea seems obvious in hindsight, yet far
+more elegant\ldots``
+
+„\ldots the inspiring appearance of the number π/2 in its reasoning
+trace\ldots``
+
+\textbf{Probleme:}
+
+„The argument it gives for this {[}feasibility of the construction{]} is
+actually incorrect, but a correct argument is easy to see\ldots``
+
+„\ldots it initially failed to understand how viewing the problem in
+continuous time could yield stronger bounds, and upon later
+attempts\ldots{} it presented arguments containing serious flaws.``
+
+„\ldots GPT-5's responses also contained some errors, but these were
+easy to fix for a human, overall accelerating the research process.``
+
+\textbf{Schlussfolgerungen:}
+
+„Perhaps the most impressive part is its proof refuting the
+follow-the-leader algorithm, produced from a single prompt without any
+guidance on how to approach the task.``
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Informatik / Clique-avoiding Codes (Warnbeispiel)}, opacitybacktitle=0.6]
+
+\textbf{Forschende:} Venkatesan Guruswami und Parikshit Gopalan
+
+\textbf{Thema:} Suche nach einer unteren Schranke für die Co-Dimension
+von Codes, die Clique-Indikatoren vermeiden.
+
+\textbf{Mehrwert:}
+
+\emph{Kein expliziter Mehrwert im Text außer der Reproduktion bekannter
+Beweise.}
+
+\textbf{Probleme:}
+
+„Initially, it was convinced that this bound was tight (up to an
+additive constant), and tried to convince us of this using a sequence of
+buggy arguments, resorting to linear algebra and proof by
+authority\ldots``
+
+„The most amusing was a hallucinated response to the effect that one of
+us had asked this question on TCS Stack Exchange\ldots{} Both these
+claims are incorrect.``
+
+„\ldots it appears that GPT-5 reproduced Alon's proof and passed it
+along to us without realizing its source.``
+
+\textbf{Schlussfolgerungen:}
+
+„Our experience illustrates a pitfall in using AI: although GPT-5
+possesses enormous internal knowledge\ldots{} it may not always report
+the original information sources accurately. This has the potential to
+deceive even seasoned researchers into thinking their findings are
+novel.``
+
+\end{tcolorbox}
+
+\textbf{Link zurück zum Fließtext:} \textbf{?@sec-herausforderungen}
 
 \bookmarksetup{startatroot}
 
-\chapter{Grundbegriffe}\label{grundbegriffe}
+\chapter{Grundbegriffe}\label{sec-grundbegriffe}
 
 \section{Definition einiger
 Grundbegriffe}\label{definition-einiger-grundbegriffe}
@@ -781,7 +1375,7 @@ Von Prompt bis Token, über Temperatur und RAG: Was ist Ihnen schon an
 Grundbegriffen in diesem Kontext vertraut? Testen Sie sich selbst mit
 dem folgenden kleinen Spiel. Bei voller Punktzahl winkt Ihnen ein Preis!
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Welche Grundbegriffe kennen Sie schon?}, colframe=quarto-callout-tip-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Welche Grundbegriffe kennen Sie schon?}, opacitybacktitle=0.6]
 
 \emph{Ordnen Sie die Begriffe den korrekten Definitionen zu!}
 
@@ -806,7 +1400,7 @@ noch nicht existierten. LLMs sind ein zentraler Teil dieser generativen
 KI und können eigenständig Texte zu einem breiten Spektrum von Themen
 generieren.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tipp: Mini-Interaktionen einfach als HTML erstellen}, colframe=quarto-callout-tip-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tipp: Mini-Interaktionen einfach als HTML erstellen}, opacitybacktitle=0.6]
 
 Können Sie in HTML programmieren? Jetzt schon. Die \emph{Lernspiele in
 diesem Abschnitt} wurden mit Hilfe von Sprachmodellen erstellt (Gemini,
@@ -843,8 +1437,8 @@ Wörter ähnliche Vektoren erhalten, beispielsweise „Hund`` und „Katze``.
 Hier kann man das selbst einfach ausprobieren: Das interaktive Widget
 simuliert eine GPT-2-ähnliche Tokenisierung.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen
-umgewandelt}, colframe=quarto-callout-tip-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen
+umgewandelt}, opacitybacktitle=0.6]
 
 \end{tcolorbox}
 
@@ -954,8 +1548,8 @@ Setup mit Zusatzmaterial (RAG) und erlaubter Werkzeugnutzung (Tool Use,
 Agenten) sehen wir an der folgenden Interaktion. Wählen Sie hier jeweils
 die passende Antwort (einfach, aber so bleiben Sie dran!).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und
-Anwendungsfelder?}, colframe=quarto-callout-tip-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und
+Anwendungsfelder?}, opacitybacktitle=0.6]
 
 Runter scrollen und ``Los gehts!'' auswählen, dann nacheinander die
 Interaktionen für LLM, RAG und Agent auswählen und die Fragen
@@ -987,8 +1581,8 @@ links gezeigten Antworten passen zu welchem der rechts gezeigten Muster?
 Nutzt das Sprachmodell nur sein ``Standard-Wissen'' (LLM only), oder
 werden ``Werkzeuge'' wie Internet-Nutzung erlaubt?
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten
-Antworten oder Denkprozessen?}, colframe=quarto-callout-tip-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten
+Antworten oder Denkprozessen?}, opacitybacktitle=0.6]
 
 \end{tcolorbox}
 
@@ -1128,7 +1722,7 @@ Modelle (die komplexe Fragestellungen bearbeiten können) von OpenAI sind
 GPT 5 oder Gemini 2.5 Flash (Stand 08/2025). Kostenfrei nutzbare Open
 Source Alternativen sind z.B. Mistral (eines der wenigen europäischen
 Modelle) und Llama4 (von Meta/Facebook) sowie die chinesische Konkurrenz
-DeepSeek V3.1 (E. R. Mollick, 2025a; sowie Vellum, 2024).
+DeepSeek V3.1 (Mollick, 2025a; sowie Vellum, 2024).
 
 \textbf{Welches Sprachmodell sollte man aktuell nutzen?} Die kurze
 Antwort ist, dass aktuell \textbf{GPT-5 eine gute Wahl} ist. \textbf{Für
@@ -1256,7 +1850,7 @@ empirische Studien belegen hier einen starken Produktivitätszuwachs
 
 Die Gründe für die Produktivitätssteigerung von KI-Modellen lassen sich
 durch \textbf{Scaling Laws} (Training Scaling Law, Inference Scaling
-Law, (\textbf{mollick2025d?})) beschreiben: KI-Modelle werden einerseits
+Law, (Mollick, 2025c, S.3)) beschreiben: KI-Modelle werden einerseits
 exponentiell besser, je mehr Daten, Rechenleistung und Parameter genutzt
 werden und andererseits, wenn sie mehr Zeit zum „nachdenken`` erhalten.
 
@@ -1342,7 +1936,7 @@ Cloud nicht zu einem falschen Bild führt.
 KI?}\label{wo-und-wie-spreche-ich-mit-der-ki}
 
 \subsection{Wo sprechen? Verschiedene Zugänge zu
-Sprachmodellen}\label{wo-sprechen-verschiedene-zuguxe4nge-zu-sprachmodellen}
+Sprachmodellen}\label{sec-prompt-vorgehen}
 
 \textbf{Wo} sprechen wir mit dem Sprachmodell? Welche Zugänge zur KI
 gibt es? Es gibt \textbf{grob gesagt drei Ansätze}:
@@ -1409,7 +2003,7 @@ Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten
 verbessert. So können wir auch besser nachsteuern und das Ergebnis an
 unsere Ziele anpassen.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hinweis}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hinweis}, opacitybacktitle=0.6]
 
 Wollen Sie sich interaktiv einen ausführlichen Prompt erstellen lassen?
 Nutzen Sie diesen \textbf{Prompt-Bot}, den wir für Sie auf Basis der
@@ -1464,13 +2058,13 @@ Beschäftigung bieten.
 \textbf{Wie schmutzig ist es also, KI zu nutzen? Die kurze Antwort} ist,
 dass ein typischer Prompt aktuell etwa soviel Energie verbraucht wie ca.
 10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre
-2008 (\textbf{elsworth2025a?}; \textbf{mollick2025d?}). Die gute
-Nachricht ist, dass die Modelle effizienter werden und der
-Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für
-die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch
-weiter zu senken. Gegenläufig und problematisch ist die stark steigende
-Nutzung, die z.B. zur Ausweitung gerade umweltbelastender Energieformen
-wie Gasturbinen führt (Wittenberg, 2025).
+2008 (Mollick, 2025c; \textbf{elsworth2025a?}). Die gute Nachricht ist,
+dass die Modelle effizienter werden und der Energieverbrauch pro
+Output-Token rasant sinkt und dass die Anreize für die großen Anbieter
+stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken.
+Gegenläufig und problematisch ist die stark steigende Nutzung, die z.B.
+zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen
+führt (Wittenberg, 2025).
 
 \textbf{Solche Vergleiche sind nicht trivial}, da etwa bei der Nutzung
 in Unternehmen auch die Umweltfolgen der aktuellen Alternativen
@@ -1609,8 +2203,7 @@ durch die Modellanbieter} (\textbf{odonnell2025a?}).
 
 \bookmarksetup{startatroot}
 
-\chapter{Ziele und didaktische
-Mechanismen}\label{ziele-und-didaktische-mechanismen}
+\chapter{Didaktische Ziele und Mechanismen}\label{sec-didaktik}
 
 \section{Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der
 Lehre?}\label{was-fuxfcr-ziele-verfolgen-wir-mit-dem-einsatz-von-genai-in-der-lehre}
@@ -1867,8 +2460,8 @@ oder Simulator.
 
 \bookmarksetup{startatroot}
 
-\chapter{Vier Szenarien: Hiwi, Copilot, Tutor,
-Simulator}\label{vier-szenarien-hiwi-copilot-tutor-simulator}
+\chapter{Vier Szenarien der Nutzung von GenAI: Hiwi, Tutor, Copilot,
+Simulator}\label{sec-szenarien}
 
 Wie nutzen Lehrende aktuell generative KI? Zur ersten Orientierung
 stellen wir in Tabelle 1 eine Reihe von exemplarischen aktuellen
@@ -2529,7 +3122,7 @@ dies das Ende der Hausarbeit? Wohl eher einen starken Wandel, denn es
 wird weiter wichtig sein, die saubere Argumentation zu üben
 (\textbf{friedrich2023a?}; \textbf{klein2023a?}).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Probieren Sie mal}, colframe=quarto-callout-tip-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Probieren Sie mal}, opacitybacktitle=0.6]
 
 Hier haben wir einen kleinen \textbf{Schreib-Trainer-Bot für
 Studierende} erstellt, der ihnen dabei helfen soll, eine
@@ -2658,9 +3251,9 @@ vornehmen lassen oder KI-generierten Text direkt übernommen. \\
 Wie können wir konstruktiv mit den neuen technischen Möglichkeiten
 umgehen? Die folgende Tabelle fasst konkrete Beispiele für Hausarbeiten
 unter Einbindung von KI zusammen, die Ethan und Lilach Mollick in
-verschiedenen Beiträgen ausgeführt haben (E. R. Mollick \& Mollick,
-2023; \textbf{mollick2023i?}). Der übergeordnete Gedanke ist, KI nicht
-nur zur Automatisierung einzusetzen, sondern neue, interaktivere und
+verschiedenen Beiträgen ausgeführt haben (Mollick \& Mollick, 2023a;
+\textbf{mollick2023i?}). Der übergeordnete Gedanke ist, KI nicht nur zur
+Automatisierung einzusetzen, sondern neue, interaktivere und
 individuellere Lernerfahrungen zu ermöglichen - mit mehr Reflexion,
 verschiedenen Perspektiven, Kreativität und Kollaboration. Die Rolle der
 Lehrenden wandelt sich hin zur Begleitung und Moderation dieser
@@ -3184,7 +3777,7 @@ sichern und die Grenzen sowie potenzielle Fehler der KI zu reflektieren
 
 \bookmarksetup{startatroot}
 
-\chapter{Empfehlungen zur Umsetzung}\label{empfehlungen-zur-umsetzung}
+\chapter{Empfehlungen zur Umsetzung}\label{sec-umsetzung}
 
 \section{Typische Aufgaben und Fragestellungen mit der KI durchspielen,
 Prompts anpassen,
@@ -4333,8 +4926,7 @@ Empfehlungen für gute Informationsquellen zum Thema Generative KI:
 \addcontentsline{toc}{part}{Appendices}
 \appendix
 
-\chapter{Didaktische Prompts -
-Übersicht}\label{didaktische-prompts---uxfcbersicht}
+\chapter{Überblick didaktischer Prompts}\label{sec-prompts-ueberblick}
 
 \section{Kurze Einordnung der Prompt-Vielfalt -- was sind gemeinsame
 Muster?}\label{kurze-einordnung-der-prompt-vielfalt-was-sind-gemeinsame-muster}
@@ -4568,8 +5160,7 @@ Selbst-Erklärung und wiederholte Anwendung fördern. Sokratische Dialoge,
 Argumentationskritik und die Essay-Revision erzwingen Begründungen,
 Gegenbeispiele und explizite Kriterienarbeit, wodurch sich der Fokus von
 bloßen Ergebnissen auf nachvollziehbare Denk- und Entscheidungsprozesse
-verschiebt (\textbf{yuen2025?}; \textbf{meehan2025?};
-\textbf{newman2025?}).
+verschiebt (Newman, 2025; \textbf{yuen2025?}; \textbf{meehan2025?}).
 
 Simulationsaufgaben erzeugen handlungsnahe Übungssituationen für
 Kommunikation und klinische Entscheidungen; dadurch werden Abruf- und
@@ -4603,8 +5194,8 @@ dokumentieren Quellenprüfungen und begründen Überarbeitungen. Auf diese
 Weise bleibt akademische Integrität gewahrt, während die produktiven
 Potenziale von GenAI genutzt werden (\textbf{taylor2025?}).
 
-\chapter{Best Practice Sammlung didaktischer Prompts und
-Aufgabenstellungen}\label{best-practice-sammlung-didaktischer-prompts-und-aufgabenstellungen}
+\chapter{Best-Practice-Sammlung didaktischer Prompts und GenAI
+Aufgabenstellungen}\label{sec-prompts}
 
 \section{Hiwi: Von Formathilfe zur
 Lehrgestaltung}\label{hiwi-von-formathilfe-zur-lehrgestaltung}
@@ -4619,12 +5210,11 @@ Anleitung.
 
 \textbf{Quelle:} Angepasst \& übersetzt basierend auf
 \href{https://docs.anthropic.com/en/prompt-library/csv-converter}{Anthropic}
-(Anthropic, n.d.a); GitHub-Version:
+(Anthropic, 2025a); GitHub-Version:
 \href{https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Administrative\%20Activities/CSV\%20Converter.md}{Harvard
-System Prompt Library (CSV Converter)}
-(\textbf{saadCsvConverterPrompt?}).
+System Prompt Library (CSV Converter)} (Anthropic, 2025a).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: CSV Umwandler}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: CSV Umwandler}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4648,11 +5238,10 @@ System Prompt Library (CSV Converter)}
 
 \textbf{Quelle:} Angepasst \& übersetzt basierend auf
 \href{https://docs.anthropic.com/claude/page/data-organizer}{Anthropic}
-(\textbf{anthropicDataOrganizer?}); Prompt-Typ auch in der Harvard
-\textbf{System Prompt Library} (VPAL) dokumentiert (Wilson \& Tingley,
-n.d.).
+(Anthropic, o. J.-a); Prompt-Typ auch in der Harvard \textbf{System
+Prompt Library} (VPAL) dokumentiert (Wilson \& Tingley, n.d.).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Daten-Organisierer}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Daten-Organisierer}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4672,11 +5261,11 @@ Teilschritte; „Explain-why``-Erklärungen.
 
 \textbf{Quelle:} Angepasst \& übersetzt basierend auf
 \href{https://docs.anthropic.com/en/prompt-library/excel-formula-expert}{Anthropic}
-(Anthropic, n.d.b); GitHub-Variante in der
+(Anthropic, n.d.a); GitHub-Variante in der
 \href{https://github.com/ncwilson78/System-Prompt-Library}{System Prompt
 Library} (Wilson \& Tingley, n.d.).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Excel Formel-Helfer}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Excel Formel-Helfer}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4696,9 +5285,9 @@ kurze Erläuterung); Transferhinweise.
 
 \textbf{Quelle:} Angepasst \& übersetzt basierend auf
 \href{https://docs.anthropic.com/en/prompt-library/latex-legend}{Anthropic}
-(Anthropic, n.d.c).
+(Anthropic, n.d.b).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: LaTeX generation}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: LaTeX generation}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4718,11 +5307,11 @@ Verantwortlichkeiten zuordnen.
 
 \textbf{Quelle:} Angepasst \& übersetzt basierend auf
 \href{https://docs.anthropic.com/en/prompt-library/meeting-scribe}{Anthropic}
-(\textbf{anthropicMeetingScribe?}); GitHub-Variante in der
+(Anthropic, o. J.-b); GitHub-Variante in der
 \href{https://github.com/ncwilson78/System-Prompt-Library}{System Prompt
 Library} (Wilson \& Tingley, n.d.).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Transkribieren: Meeting scribe}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Transkribieren: Meeting scribe}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4748,7 +5337,7 @@ Prompt im Fork als Datei:
 \href{https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching\%20Activities/Course\%20Content\%20Curator\%20GPT.md}{Course
 Content Curator}.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Course content curator}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Course content curator}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4774,7 +5363,7 @@ Prompt im Fork als Datei:
 \href{https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching\%20Activities/Interactive\%20Lecture\%20Assistant\%20GPT.md}{Interactive
 Lecture Assistant}.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Interactive lecture assistant}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Interactive lecture assistant}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4794,9 +5383,9 @@ Rolle/Stakeholder-Analyse.
 
 \textbf{Quelle:} Angepasst basierend auf
 \href{https://hbsp.harvard.edu/inspiring-minds/ai-flash-debates-student-engagement}{Azamy
-(2025)} (\textbf{Azamy2025AIFlashDebates?}).
+(2025)} (Azamy, 2025).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Flash debate starter --- Prompt 1 (Statements erzeugen)}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Flash debate starter --- Prompt 1 (Statements erzeugen)}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4806,7 +5395,7 @@ Rolle/Stakeholder-Analyse.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Flash debate starter --- Prompt 2 (Rollenspiel ableiten)}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Flash debate starter --- Prompt 2 (Rollenspiel ableiten)}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4828,9 +5417,9 @@ Qualitätskriterien explizit machen.
 
 \textbf{Quelle:} Angepasst basierend auf
 \href{https://aipedagogy.org/assignment/correct-a-bad-essay/}{Newman
-(2025)} (\textbf{newman2025?}).
+(2025)} (Newman, 2025).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Übung zum Korrigieren schlechter Aufsätze}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Übung zum Korrigieren schlechter Aufsätze}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4862,7 +5451,7 @@ Prompt im Fork als Datei:
 \href{https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching\%20Activities/Student\%20Engagement\%20Enhancer\%20GPT.md}{Student
 Engagement Enhancer}.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Student engagement enhancer}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Student engagement enhancer}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4883,9 +5472,9 @@ Leitfragen; Beispiele/Constraints; Iterationsschleifen.
 
 \textbf{Quelle:} Angepasst basierend auf
 \href{https://www.moreusefulthings.com/instructor-prompts}{Mollick \&
-Mollick (n.d.)} (E. Mollick \& Mollick, n.d.).
+Mollick (n.d.)} (Mollick \& Mollick, n.d.).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Structured prompt designer}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Hiwi: Structured prompt designer}, opacitybacktitle=0.6]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4922,7 +5511,7 @@ fragen``); Analogien/Beispiele zur Konzeptklärung.
 \href{https://www.moreusefulthings.com/student-exercises}{Mollick \&
 Mollick / More Useful Things} (More Useful Things, o. J.).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Tutor: Allgemeiner Tutor}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Tutor: Allgemeiner Tutor}, opacitybacktitle=0.6]
 
 Sie sind ein fröhlicher, ermutigender Tutor, der den Studierenden hilft,
 Konzepte zu verstehen, indem Sie Ideen erklären und ihnen Fragen
@@ -4992,7 +5581,7 @@ the work`` (Ownership/Agency).
 \textbf{Quelle:} Angepasst \& übersetzt basierend auf Mollick \& Mollick
 / More Useful Things (More Useful Things, o. J.).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Tutor: Mentor-Bot}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Tutor: Mentor-Bot}, opacitybacktitle=0.6]
 
 Dies ist eine Rollenspielübung. Sie sind ein freundlicher und
 hilfsbereiter Mentor, der Studierenden wirksames, spezifisches und
@@ -5069,7 +5658,7 @@ Strukturierung; „One question at a time``.
 Quelle: Angepasst \& übersetzt basierend auf Mollick \& Mollick / More
 Useful Things (More Useful Things, o. J.).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, leftrule=.75mm, opacitybacktitle=0.6, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, colback=white, bottomrule=.15mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Tutor: Reflexionshilfe}, colframe=quarto-callout-note-color-frame, opacityback=0, left=2mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, toprule=.15mm, coltitle=black, leftrule=.75mm, colback=white, arc=.35mm, left=2mm, rightrule=.15mm, toptitle=1mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Tutor: Reflexionshilfe}, opacitybacktitle=0.6]
 
 Sie sind ein hilfreicher und freundlicher Mentor und ein Experte darin,
 Studierenden zu helfen, über Erfahrungen zu reflektieren, damit sie aus
@@ -5119,21 +5708,29 @@ Educational Technology in Management Education. \emph{Journal of
 Management Education}, \emph{48}(4), 603--609.
 \url{https://doi.org/10.1177/10525629241243339}.
 
+\bibitem[\citeproctext]{ref-docs_anthropic_com_data_organizer}
+Anthropic (o. J.-a). \emph{Data organizer (prompt library)}.
+\url{https://docs.anthropic.com/claude/page/data-organizer}.
+
+\bibitem[\citeproctext]{ref-docs_anthropic_com_meeting_scribe}
+Anthropic (o. J.-b). \emph{Meeting scribe (prompt library)}.
+\url{https://docs.anthropic.com/claude/page/meeting-scribe}.
+
+\bibitem[\citeproctext]{ref-anthropicCsvConverter}
+Anthropic (2025a). \emph{CSV converter}.
+\url{https://docs.anthropic.com/en/prompt-library/csv-converter}.
+
 \bibitem[\citeproctext]{ref-anthropic2025a}
-Anthropic (2025, Dezember). Erste Schritte mit Agent Skills in der API.
+Anthropic (2025b, Dezember). Erste Schritte mit Agent Skills in der API.
 \emph{Claude Docs}.
 \url{https://platform.claude.com/docs/de/agents-and-tools/agent-skills/quickstart}.
 
-\bibitem[\citeproctext]{ref-anthropicCsvConverter}
-Anthropic (n.d.an.d.). \emph{CSV converter}.
-\url{https://docs.anthropic.com/en/prompt-library/csv-converter}.
-
 \bibitem[\citeproctext]{ref-anthropicExcelFormulaExpert}
-Anthropic (n.d.bn.d.). \emph{Excel formula expert}.
+Anthropic (n.d.an.d.). \emph{Excel formula expert}.
 \url{https://docs.anthropic.com/en/prompt-library/excel-formula-expert}.
 
 \bibitem[\citeproctext]{ref-anthropicLatexLegend}
-Anthropic (n.d.cn.d.). \emph{LaTeX legend}.
+Anthropic (n.d.bn.d.). \emph{LaTeX legend}.
 \url{https://docs.anthropic.com/en/prompt-library/latex-legend}.
 
 \bibitem[\citeproctext]{ref-autor2015}
@@ -5142,6 +5739,11 @@ Autor, D. H. (2015).
 are there still so many jobs? The history and future of workplace
 automation}. \emph{Journal of economic perspectives}, \emph{29}(3),
 3--30.
+
+\bibitem[\citeproctext]{ref-azamy2025a}
+Azamy, H. (2025, September). \emph{AI flash debates: Student
+engagement}.
+\url{https://hbsp.harvard.edu/inspiring-minds/ai-flash-debates-student-engagement}.
 
 \bibitem[\citeproctext]{ref-baresel2024a}
 Baresel, K., Eube, C., Knorr, D., Lutter, L., Nys, J. de, \& Röben, M.
@@ -5160,9 +5762,39 @@ but in a good way: Creating desirable difficulties to enhance learning.
 \emph{Psychology and the real world: Essays illustrating fundamental
 contributions to society}, \emph{2}(59--68), 56--64.
 
+\bibitem[\citeproctext]{ref-brown2014}
+Brown, P. C., Roediger, H. L., \& McDaniel, M. A. (2014).
+\emph{\href{http://search.ebscohost.com/login.aspx?direct=true&scope=site&db=nlebk&db=nlabk&AN=771951}{Make
+it stick: The science of successful learning}}. The Belknap Press of
+Harvard University Press.
+
 \bibitem[\citeproctext]{ref-brynjolfsson2025}
 Brynjolfsson, E., Li, D., \& Raymond, L. (2025). Generative AI at work.
 \emph{The Quarterly Journal of Economics}, qjae044.
+
+\bibitem[\citeproctext]{ref-bubeck2023}
+Bubeck, S., Chandrasekaran, V., Eldan, R., Gehrke, J., Horvitz, E.,
+Kamar, E., Lee, P., Lee, Y. T., Li, Y., Lundberg, S., Nori, H., Palangi,
+H., Ribeiro, M. T., \& Zhang, Y. (2023). \emph{Sparks of Artificial
+General Intelligence: Early experiments with GPT-4}. arXiv.
+\url{https://doi.org/10.48550/arXiv.2303.12712}.
+
+\bibitem[\citeproctext]{ref-bubeck2025}
+Bubeck, S., Coester, C., Eldan, R., Gowers, T., Lee, Y. T., Lupsasca,
+A., Sawhney, M., Scherrer, R., Sellke, M., \& Spears, B. K. (2025).
+\emph{Early science acceleration experiments with GPT-5}.
+
+\bibitem[\citeproctext]{ref-chatterji2025a}
+Chatterji, A. (2025).
+\emph{\href{https://openai.com/index/the-state-of-enterprise-ai-2025-report/}{The
+state of enterprise AI: 2025 report}} (Research Report). OpenAI.
+
+\bibitem[\citeproctext]{ref-dellacqua2023}
+Dell'Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H.,
+Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., \& Lakhani, K. R.
+(2023). \emph{Navigating the Jagged Technological Frontier: Field
+Experimental Evidence of the Effects of AI on Knowledge Worker
+Productivity and Quality}. \url{https://doi.org/10.2139/ssrn.4573321}.
 
 \bibitem[\citeproctext]{ref-dunlosky2013}
 Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., \& Willingham,
@@ -5183,6 +5815,12 @@ Embrace Transformative Technologies in their Teaching. \emph{Journal of
 Management Education}, \emph{48}(4), 829--848.
 \url{https://doi.org/10.1177/10525629231201843}.
 
+\bibitem[\citeproctext]{ref-freeman2025}
+Freeman, J. (2025).
+\href{https://www.hepi.ac.uk/reports/student-generative-ai-survey-2025/}{Student
+generative AI survey 2025}. \emph{Higher Education Policy Institute:
+London, UK}, (HEPI Policy Note 61).
+
 \bibitem[\citeproctext]{ref-gimpel2023a}
 Gimpel, H., Hall, K., Decker, S., Eymann, T., Lämmermann, L., Mädche,
 A., Röglinger, M., Ruiner, C., Schoch, M., \& Schoop, M. (2023).
@@ -5190,6 +5828,14 @@ A., Röglinger, M., Ruiner, C., Schoch, M., \& Schoop, M. (2023).
 GPT-4 and ChatGPT for higher education: A guide for students and
 lecturers}. Hohenheim Discussion Papers in Business, Economics and
 Social Sciences.
+
+\bibitem[\citeproctext]{ref-gottweis2025}
+Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P.,
+Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K.,
+Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B.,
+Vahdat, A., Kohli, P., \ldots{} Natarajan, V. (2025). \emph{Towards an
+AI co-scientist}. arXiv.
+\url{https://doi.org/10.48550/arXiv.2502.18864}.
 
 \bibitem[\citeproctext]{ref-greene-dewasmes2025a}
 Greene-Dewasmes, G., \& Tladi, T. (2025, Januar 21). \emph{AI's energy
@@ -5201,10 +5847,28 @@ Grootendorst, M. (2025, Februar 3). \emph{A Visual Guide to Reasoning
 LLMs}.
 \url{https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-reasoning-llms}.
 
+\bibitem[\citeproctext]{ref-handa2025}
+Handa, K., Bent, D., Tamkin, A., McCain, M., Durmus, E., Stern, M.,
+Schiraldi, M., Huang, S., Ritchie, S., Syverud, S., Jagadish, K., Vo,
+M., Bell, M., \& Ganguli, D. (2025-04-08, 2025).
+\emph{\href{https://www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude}{Anthropic
+education report: How university students use claude}}.
+
 \bibitem[\citeproctext]{ref-hattie2023}
 Hattie, J. (2023). \emph{Visible learning, the sequel: a synthesis of
 over 2,100 meta-analyses relating to achievement}. Routledge, Taylor \&
 Francis Group. \url{https://doi.org/10.4324/9781003380542}.
+
+\bibitem[\citeproctext]{ref-heidt2025}
+Heidt, A. (2025). ChatGPT for students: learners find creative new uses
+for chatbots. \emph{Nature}, \emph{639}(8053), 265--266.
+\url{https://doi.org/10.1038/d41586-025-00621-2}.
+
+\bibitem[\citeproctext]{ref-henderson2007}
+Henderson, C., \& Dancy, M. H. (2007). Barriers to the use of
+research-based instructional strategies: The influence of both
+individual and situational characteristics. \emph{Physical Review
+Special Topics---Physics Education Research}, \emph{3}(2), 020102.
 
 \bibitem[\citeproctext]{ref-huffman2024}
 Huffman, P., \& Hutson, J. (2024).
@@ -5212,6 +5876,12 @@ Huffman, P., \& Hutson, J. (2024).
 History Education with Google NotebookLM: Case Study of Mary Easton
 Sibley's Diary for Multimedia Content and Podcast Creation}. \emph{ISRG
 Journal of Arts, Humanities and Social Sciences}, \emph{2}(5).
+
+\bibitem[\citeproctext]{ref-che2025ki}
+Hüsch, Marc, Horstmann, N., \& Breiter, A. (2025).
+\emph{\href{https://hochschuldaten.che.de/kuenstliche-intelligenz-im-studium-die-sicht-von-studierenden-im-wintersemester-2024-25/}{Künstliche
+Intelligenz im Studium: Die Sicht von Studierenden im Wintersemester
+2024/25}}.
 
 \bibitem[\citeproctext]{ref-invertedstone2025}
 InvertedStone (2025, August 30). \emph{OpenAI API Pricing Calculator}.
@@ -5228,11 +5898,36 @@ novel research-based design in an authentic educational setting.
 Korinek, A. (2024). \emph{Large language models learn to collaborate and
 reason: December 2024 update on generative AI}.
 
+\bibitem[\citeproctext]{ref-kwa2025}
+Kwa, T., West, B., Becker, J., Deng, A., Garcia, K., Hasin, M., Jawhar,
+S., Kinniment, M., Rush, N., Arx, S. V., Bloom, R., Broadley, T., Du,
+H., Goodrich, B., Jurkovic, N., Miles, L. H., Nix, S., Lin, T., Parikh,
+N., \ldots{} Chan, L. (2025). \emph{Measuring AI Ability to Complete
+Long Tasks}. arXiv. \url{https://doi.org/10.48550/arXiv.2503.14499}.
+
+\bibitem[\citeproctext]{ref-lee2025}
+Lee, H.-P. H., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S.,
+Banks, R., \& Wilson, N. (2025). \emph{The Impact of Generative AI on
+Critical Thinking: Self-Reported Reductions in Cognitive Effort and
+Confidence Effects From a Survey of Knowledge Workers}.
+
 \bibitem[\citeproctext]{ref-lehrevirtuell-universitaetfrankfurt2023}
 Lehre virtuell - Universität Frankfurt (2023, Oktober 6). Einsatz von
 generativer KI im Studium -- Handlungsempfehlungen für Studierende --
 Lehre virtuell.
 \url{https://lehre-virtuell.uni-frankfurt.de/knowhow/einsatz-von-generativer-ki-im-studium-handlungsempfehlungen-fuer-studierende/}.
+
+\bibitem[\citeproctext]{ref-liang2025}
+Liang, W., Zhang, Y., Codreanu, M., Wang, J., Cao, H., \& Zou, J.
+(2025). The Widespread Adoption of Large Language Model-Assisted Writing
+Across Society. \emph{arXiv preprint arXiv:2502.09747}.
+
+\bibitem[\citeproctext]{ref-ma2025}
+Ma, T. (2025). Systematically visualizing ChatGPT used in higher
+education: Publication trend, disciplinary domains, research themes,
+adoption and acceptance. \emph{Computers and Education: Artificial
+Intelligence}, \emph{8}, 100336.
+\url{https://doi.org/10.1016/j.caeai.2024.100336}.
 
 \bibitem[\citeproctext]{ref-marangunic2015b}
 Marangunić, N., \& Granić, A. (2015). Technology acceptance model: a
@@ -5251,6 +5946,11 @@ Meincke, L., Mollick, E. R., Mollick, L., \& Shapiro, D. (2025a).
 Thought in Prompting}. arXiv.
 \url{https://doi.org/10.48550/arXiv.2506.07142}.
 
+\bibitem[\citeproctext]{ref-meincke2024}
+Meincke, L., Mollick, E. R., \& Terwiesch, C. (2024). \emph{Prompting
+Diverse Ideas: Increasing AI Idea Variance}.
+\url{https://papers.ssrn.com/abstract=4708466}.
+
 \bibitem[\citeproctext]{ref-meincke2025}
 Meincke, L., Mollick, E., Mollick, L., \& Shapiro, D. (2025b).
 \emph{Prompting Science Report 1: Prompt Engineering is Complicated and
@@ -5261,6 +5961,10 @@ MIT Teaching + Learning Lab (2023). \emph{Rethinking Your Problem Sets
 in the World of Generative AI \textbar{} Teaching + Learning Lab}.
 \url{https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/}.
 
+\bibitem[\citeproctext]{ref-mollick2023}
+Mollick, E. R. (2023, Juli 1). The Homework Apocalypse.
+\url{https://www.oneusefulthing.org/p/the-homework-apocalypse}.
+
 \bibitem[\citeproctext]{ref-mollick2025}
 Mollick, E. R. (2025a, Januar 26). \emph{A new generation of AIs: Claude
 3.7 and Grok 3}.
@@ -5270,18 +5974,23 @@ Mollick, E. R. (2025a, Januar 26). \emph{A new generation of AIs: Claude
 Mollick, E. R. (2025b, Juni 23). \emph{GPT-5: It Just Does Stuff}.
 \url{https://www.oneusefulthing.org/p/gpt-5-it-just-does-stuff}.
 
+\bibitem[\citeproctext]{ref-mollick2025d}
+Mollick, E. R. (2025c, August 7). \emph{The Shape of AI: Jaggedness,
+Bottlenecks and Salients}.
+\url{https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks}.
+
 \bibitem[\citeproctext]{ref-mollick2023h}
-Mollick, E. R., \& Mollick, L. (2023). \emph{Assigning AI: Seven
+Mollick, E. R., \& Mollick, L. (2023a). \emph{Assigning AI: Seven
 approaches for students, with prompts}.
 \url{https://doi.org/10.2139/ssrn.4564159}.
 
 \bibitem[\citeproctext]{ref-mollick2023a}
-Mollick, E., \& Mollick, L. (2023). \emph{Assigning AI: Seven Approaches
-for Students, with Prompts}. arXiv.
+Mollick, E. R., \& Mollick, L. (2023b). \emph{Assigning AI: Seven
+Approaches for Students, with Prompts}. arXiv.
 \url{https://doi.org/10.48550/arXiv.2306.10052}.
 
 \bibitem[\citeproctext]{ref-moreUsefulThingsInstructorPrompts}
-Mollick, E., \& Mollick, L. (n.d.n.d.). \emph{Instructor prompts}.
+Mollick, E. R., \& Mollick, L. (n.d.n.d.). \emph{Instructor prompts}.
 \url{https://www.moreusefulthings.com/instructor-prompts}.
 
 \bibitem[\citeproctext]{ref-monashuniversity2025}
@@ -5289,14 +5998,36 @@ Monash University (2025).
 \emph{\href{https://www.monash.edu/learning-teaching/teachhq/Assessment/academic-integrity/how-to/design-assessment-for-academic-integrity}{Choosing
 assessment tasks}}.
 
+\bibitem[\citeproctext]{ref-monib2025}
+Monib, W. K., Qazi, A., \& Mahmud, M. M. (2025). Exploring learners'
+experiences and perceptions of ChatGPT as a learning tool in higher
+education. \emph{Education and Information Technologies}, \emph{30}(1),
+917--939. \url{https://doi.org/10.1007/s10639-024-13065-4}.
+
 \bibitem[\citeproctext]{ref-MoreUsefulThingsStudentExercises}
 More Useful Things (o. J.). \emph{Student exercises}.
 \url{https://www.moreusefulthings.com/student-exercises}.
+
+\bibitem[\citeproctext]{ref-morgan2024}
+Morgan, G. (2024, Juli 11).
+\href{https://onedtech.philhillaa.com/p/what-students-want-when-it-comes-to-ai}{What
+Students Want When It Comes To AI - The Digital Education Council Global
+AI Student Survey 2024}. \emph{On EdTech Newsletter}.
 
 \bibitem[\citeproctext]{ref-naddaf2025}
 Naddaf, M. (2025). How are researchers using AI? Survey reveals pros and
 cons for science. \emph{Nature}.
 \url{https://doi.org/10.1038/d41586-025-00343-5}.
+
+\bibitem[\citeproctext]{ref-newman2025}
+Newman, S. (2025). \emph{Correct a bad essay}.
+\url{https://aipedagogy.org/assignment/correct-a-bad-essay/}.
+
+\bibitem[\citeproctext]{ref-ogunleye2024}
+Ogunleye, B., Zakariyyah, K. I., Ajao, O., Olayinka, O., \& Sharma, H.
+(2024). A Systematic Review of Generative AI for Teaching and Learning
+Practice. \emph{Education Sciences}, \emph{14}(6), 636.
+\url{https://doi.org/10.3390/educsci14060636}.
 
 \bibitem[\citeproctext]{ref-openai2025b}
 OpenAI (2025).
@@ -5308,6 +6039,17 @@ GPT-5}}.
 \emph{\href{https://de.statista.com/statistik/daten/studie/831638/umfrage/arbeitszeitverteilung-von-professoren-in-oesterreich/}{Österreich
 - Arbeitszeitverteilung von Professoren 2017}}.
 
+\bibitem[\citeproctext]{ref-ou2024}
+Ou, A. W., Stöhr, C., \& Malmström, H. (2024). Academic communication
+with AI-powered language tools in higher education: From a post-humanist
+perspective. \emph{System}, \emph{121}, 103225.
+\url{https://doi.org/10.1016/j.system.2024.103225}.
+
+\bibitem[\citeproctext]{ref-peng2023}
+Peng, S., Kalliamvakou, E., Cihon, P., \& Demirer, M. (2023). \emph{The
+Impact of AI on Developer Productivity: Evidence from GitHub Copilot}.
+arXiv. \url{https://doi.org/10.48550/arXiv.2302.06590}.
+
 \bibitem[\citeproctext]{ref-ritchie2024}
 Ritchie, H. (2024a, September 19). \emph{What's the impact of artificial
 intelligence on energy demand?}
@@ -5318,9 +6060,26 @@ Ritchie, H. (2024b, November 18). \emph{What's the carbon footprint of
 using ChatGPT?}
 \url{https://www.sustainabilitybynumbers.com/p/carbon-footprint-chatgpt}.
 
+\bibitem[\citeproctext]{ref-roediger2012}
+Roediger, H. L., \& Pyc, M. A. (2012). Inexpensive techniques to improve
+education: Applying cognitive psychology to enhance educational
+practice. \emph{Journal of Applied Research in Memory and Cognition},
+\emph{1}(4), 242--248.
+\url{https://doi.org/10.1016/j.jarmac.2012.09.002}.
+
 \bibitem[\citeproctext]{ref-russell2021}
 Russell, S. J., \& Norvig, P. (2021). \emph{Artificial intelligence: a
 modern approach}. Pearson.
+
+\bibitem[\citeproctext]{ref-schmidt2005}
+Schmidt, B., \& Tippelt, R. (2005). Besser Lehren-Neues von der
+Hochschuldidaktik?
+
+\bibitem[\citeproctext]{ref-schwarcz2025}
+Schwarcz, D., Manning, S., Barry, P. J., Cleveland, D. R., Prescott, J.
+J., \& Rich, B. (2025). \emph{AI-Powered Lawyering: AI Reasoning Models,
+Retrieval Augmented Generation, and the Future of Legal Practice}.
+\url{https://doi.org/10.2139/ssrn.5162111}.
 
 \bibitem[\citeproctext]{ref-snell2024}
 Snell, C., Lee, J., Xu, K., \& Kumar, A. (2024). Scaling llm test-time
@@ -5345,6 +6104,12 @@ A. N., Kaiser, Ł., \& Polosukhin, I. (2017). Attention is all you need.
 Vellum (2024, September 4). \emph{LLM Leaderboard 2024}.
 \url{https://www.vellum.ai/llm-leaderboard}.
 
+\bibitem[\citeproctext]{ref-walsh2025}
+Walsh, J. D. (2025).
+\href{https://nymag.com/intelligencer/article/openai-chatgpt-ai-cheating-education-college-students-school.html}{Everyone
+is cheating their way through college: ChatGPT has unraveled the entire
+academic project}. \emph{New York Magazine}.
+
 \bibitem[\citeproctext]{ref-wannemacher2025}
 Wannemacher, K., Bosse, E., Lübcke, M., \& Kaemena, A. (2025).
 \emph{\href{https://hochschulforumdigitalisierung.de/dossier/generative-ki/}{Wie
@@ -5355,6 +6120,11 @@ Digitalisierung.
 \bibitem[\citeproctext]{ref-willemain1994}
 Willemain, T. R. (1994). Insights on modeling from a dozen experts.
 \emph{Operations Research}, \emph{42}(2), 213--222.
+
+\bibitem[\citeproctext]{ref-willemain1995}
+Willemain, T. R. (1995). Model Formulation: What Experts Think About and
+When. \emph{Operations Research}, \emph{43}(6), 916--932.
+\url{https://doi.org/10.1287/opre.43.6.916}.
 
 \bibitem[\citeproctext]{ref-willison2025}
 Willison, S. (2025a, Oktober 5). Embracing the parallel coding agent
