@@ -306,6 +306,13 @@ Einfache **Daumenregeln für Prompts** gliedern das in vier Schritte: dem Sprach
 Das Modell zeigt seine Überlegungen Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten verbessert.
 So können wir auch besser nachsteuern und das Ergebnis an unsere Ziele anpassen.
 
+::: {.callout-note icon="true" title="Strukturierte Prompts einfach erstellen lassen"}
+```text
+Wollen Sie sich interaktiv einen ausführlichen, strukturierten Prompt erstellen lassen?
+Hier finden Sie einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format).
+```
+:::
+
 
 ### Wie Prompten? Was Ende 2025 die größten KI-Labore  empfehlen. 
 Ende 2025 geben die drei führenden KI-Labs uns detaillierte Tipps, wie wir mit ihren Geschöpfen GPT, Gemini und Claude reden sollen [@kotha2025; @google2025; @anthropic2025c]. Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.
@@ -320,19 +327,16 @@ Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts
 ```
 :::
 
-(1) **Aufgaben präzise beschreiben**: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen. (2) **Beispiele helfen** der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele ("gib mir..."/"bemühe dich um..." ist besser als "gib mir nicht" / "vermeide...") [@google2025]. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt. (3) **Ordnung macht hier Meisterschaft**: durch klare Strukturierung des Textflusses durch <Hinweis-Schilder> sogenannte [Tags]. Ob solche 'Post-it-Notizen' für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <Hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein. 
+(1) **Aufgaben präzise beschreiben**: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen. 
+
+(2) **Beispiele helfen** der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele ("gib mir..."/"bemühe dich um..." ist besser als "gib mir nicht" / "vermeide...") [@google2025]. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt. (3) **Ordnung macht hier Meisterschaft**: durch klare Strukturierung des Textflusses durch <Hinweis-Schilder> sogenannte [Tags]. Ob solche 'Post-it-Notizen' für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <Hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein. 
 
 (4) Zunehmend wird bei einer interaktiven Form der Zusammenarbeit mit dem Sprachmodell **der Weg zum Ziel**. Prompten wird hier zum iterativen Prozess, in dem die Interaktion den eigentlichen Mehrwert bietet, da nach und nach mit dem Sprachmodell ein Lösungsweg erarbeitet wird. Dies verlangt eine deutlich andere Herangehensweise als Werkzeuge wie Taschenrechner, von denen wir erwarten, dass sie sofort eine Lösung ausspucken.
 
 (5) Agenten erfordern neue Verhaltensweisen. Da die **Zeitspanne des autonomen Handelns immer breiter** wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern. 
-Zweitens gewinnt die Frage an Beduetung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als 'Eagerness-Kalibrierung' einstellen [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das **'Gedächtnis'** des Agenten-Bots nachgenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen ("Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...") [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
+Zweitens gewinnt die Frage an Bedeutung, **wieviel Eigenständigkeit** wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als 'Eagerness-Kalibrierung' einstellen [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das **'Gedächtnis'** des Agenten-Bots nachgenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen ("Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...") [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon **stärker in Richtung der Führung von Mitarbeitern** gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
 
-(6) *Bots help bots*: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir **mit dem Tool das Tool bedienen**. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer [@kotha2025] oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen (siehe hier für einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format).
-
-::: {.callout-note icon="true"}
-Wollen Sie sich interaktiv einen ausführlichen, strukturierten Prompt erstellen lassen?
-Nutzen Sie diesen **Prompt-Bot**, den wir für Sie auf Basis der Best-Practice Empfehlungen von OpenAI, Anthropic und wissenschaftlichen Studien zu Prompt-Strategien erstellt haben: <https://chatgpt.com/g/g-sF6vTgq2U-prompt-bot>
-:::
+(6) *Bots help bots*: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir **mit dem Tool das Tool bedienen**. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer [@kotha2025] oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen. 
 
 ### Es könnt' alles so einfach ein! Es bringt nichts, Bots zu bedrohen oder zu bestechen.
 Neuere empirische Untersuchungen haben eine Reihe von **anekdotischen Hausrezepten des Promptings systematisch geprüft und meist widerlegt**.

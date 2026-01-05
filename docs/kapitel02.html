@@ -638,13 +638,27 @@ Abbildung&nbsp;2.1: Visualisierte Gedanken eines Sprachmodells [@lindsey2025]
 <section id="zentrale-bausteine-rolle-aufgabe-format-und-beispiele" class="level3" data-number="2.5.3">
 <h3 data-number="2.5.3" class="anchored" data-anchor-id="zentrale-bausteine-rolle-aufgabe-format-und-beispiele"><span class="header-section-number">2.5.3</span> Zentrale Bausteine: Rolle, Aufgabe, Format und Beispiele</h3>
 <p>Wie beschreibe ich genau, was ich will? Einfache <strong>Daumenregeln für Prompts</strong> gliedern das in vier Schritte: dem Sprachmodell eine <strong>Rolle</strong> zuzuweisen („Du bist Verhandlungsexpertin“), ein klares <strong>Ziel</strong> zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein <strong>Vorgehen</strong> (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie <strong>Beispiele</strong> („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form [Autor]-[Jahr]-[Kurztitel]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“). Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen. Das Modell zeigt seine Überlegungen Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten verbessert. So können wir auch besser nachsteuern und das Ergebnis an unsere Ziele anpassen.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Strukturierte Prompts einfach erstellen lassen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Strukturierte Prompts einfach erstellen lassen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre class="text"><code>Wollen Sie sich interaktiv einen ausführlichen, strukturierten Prompt erstellen lassen?
+Hier finden Sie einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format).</code></pre>
+</div>
+</div>
 </section>
 <section id="wie-prompten-was-ende-2025-die-größten-ki-labore-empfehlen." class="level3" data-number="2.5.4">
 <h3 data-number="2.5.4" class="anchored" data-anchor-id="wie-prompten-was-ende-2025-die-größten-ki-labore-empfehlen."><span class="header-section-number">2.5.4</span> Wie Prompten? Was Ende 2025 die größten KI-Labore empfehlen.</h3>
 <p>Ende 2025 geben die drei führenden KI-Labs uns detaillierte Tipps, wie wir mit ihren Geschöpfen GPT, Gemini und Claude reden sollen <span class="citation" data-cites="kotha2025 google2025 anthropic2025c">(<a href="#ref-anthropic2025c" role="doc-biblioref">Anthropic, 2025</a>; <a href="#ref-google2025" role="doc-biblioref">Google, 2025</a>; <a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span>. Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.</p>
 <p>Die drei führenden Anbieter betonen die Bedeutung von <strong>Präzision der Anweisungen</strong> - wenig überraschend, aber im Detail nicht einfach zu bewerkstelligen: (1) Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, <strong>genau zu sagen, was man eigentlich will</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Meta-Prompts: Den Bot den Prompt verbessern lassen">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -653,7 +667,7 @@ Meta-Prompts: Den Bot den Prompt verbessern lassen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre class="text"><code>**Probleme mit dem Prompt?** OpenAI schlägt vor, man soll mit einer klaren Problembeschreibung wie folgt prompten:
 
@@ -662,24 +676,12 @@ Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts
 </div>
 </div>
 <ol type="1">
-<li><p><strong>Aufgaben präzise beschreiben</strong>: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen. (2) <strong>Beispiele helfen</strong> der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele (“gib mir…”/“bemühe dich um…” ist besser als “gib mir nicht” / “vermeide…”) <span class="citation" data-cites="google2025">(<a href="#ref-google2025" role="doc-biblioref">Google, 2025</a>)</span>. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt. (3) <strong>Ordnung macht hier Meisterschaft</strong>: durch klare Strukturierung des Textflusses durch <hinweis-schilder> sogenannte [Tags]. Ob solche ‘Post-it-Notizen’ für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein.</hinweise></hinweis-schilder></p></li>
+<li><p><strong>Aufgaben präzise beschreiben</strong>: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen.</p></li>
+<li><p><strong>Beispiele helfen</strong> der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele (“gib mir…”/“bemühe dich um…” ist besser als “gib mir nicht” / “vermeide…”) <span class="citation" data-cites="google2025">(<a href="#ref-google2025" role="doc-biblioref">Google, 2025</a>)</span>. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt. (3) <strong>Ordnung macht hier Meisterschaft</strong>: durch klare Strukturierung des Textflusses durch <hinweis-schilder> sogenannte [Tags]. Ob solche ‘Post-it-Notizen’ für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein.</hinweise></hinweis-schilder></p></li>
 <li><p>Zunehmend wird bei einer interaktiven Form der Zusammenarbeit mit dem Sprachmodell <strong>der Weg zum Ziel</strong>. Prompten wird hier zum iterativen Prozess, in dem die Interaktion den eigentlichen Mehrwert bietet, da nach und nach mit dem Sprachmodell ein Lösungsweg erarbeitet wird. Dies verlangt eine deutlich andere Herangehensweise als Werkzeuge wie Taschenrechner, von denen wir erwarten, dass sie sofort eine Lösung ausspucken.</p></li>
-<li><p>Agenten erfordern neue Verhaltensweisen. Da die <strong>Zeitspanne des autonomen Handelns immer breiter</strong> wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern. Zweitens gewinnt die Frage an Beduetung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als ‘Eagerness-Kalibrierung’ einstellen <span class="citation" data-cites="kotha2025">(<a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span>. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das <strong>‘Gedächtnis’</strong> des Agenten-Bots nachgenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen (“Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen…”) <span class="citation" data-cites="anthropic2025c">(<a href="#ref-anthropic2025c" role="doc-biblioref">Anthropic, 2025</a>)</span>. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser ‘cybernetic teammates’ <span class="citation" data-cites="dellacqua2025">(<a href="#ref-dellacqua2025" role="doc-biblioref">Dell’Acqua et al., 2025</a>)</span>.</p></li>
-<li><p><em>Bots help bots</em>: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir <strong>mit dem Tool das Tool bedienen</strong>. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer <span class="citation" data-cites="kotha2025">(<a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span> oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen (siehe hier für einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format).</p></li>
+<li><p>Agenten erfordern neue Verhaltensweisen. Da die <strong>Zeitspanne des autonomen Handelns immer breiter</strong> wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern. Zweitens gewinnt die Frage an Bedeutung, <strong>wieviel Eigenständigkeit</strong> wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als ‘Eagerness-Kalibrierung’ einstellen <span class="citation" data-cites="kotha2025">(<a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span>. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das <strong>‘Gedächtnis’</strong> des Agenten-Bots nachgenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse (‘states’) in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen (“Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen…”) <span class="citation" data-cites="anthropic2025c">(<a href="#ref-anthropic2025c" role="doc-biblioref">Anthropic, 2025</a>)</span>. Wir sehen, dass hier die Empfehlungen schon <strong>stärker in Richtung der Führung von Mitarbeitern</strong> gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser ‘cybernetic teammates’ <span class="citation" data-cites="dellacqua2025">(<a href="#ref-dellacqua2025" role="doc-biblioref">Dell’Acqua et al., 2025</a>)</span>.</p></li>
+<li><p><em>Bots help bots</em>: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir <strong>mit dem Tool das Tool bedienen</strong>. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer <span class="citation" data-cites="kotha2025">(<a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span> oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen.</p></li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hinweis
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Wollen Sie sich interaktiv einen ausführlichen, strukturierten Prompt erstellen lassen? Nutzen Sie diesen <strong>Prompt-Bot</strong>, den wir für Sie auf Basis der Best-Practice Empfehlungen von OpenAI, Anthropic und wissenschaftlichen Studien zu Prompt-Strategien erstellt haben: <a href="https://chatgpt.com/g/g-sF6vTgq2U-prompt-bot" class="uri">https://chatgpt.com/g/g-sF6vTgq2U-prompt-bot</a></p>
-</div>
-</div>
 </section>
 <section id="es-könnt-alles-so-einfach-ein-es-bringt-nichts-bots-zu-bedrohen-oder-zu-bestechen." class="level3" data-number="2.5.5">
 <h3 data-number="2.5.5" class="anchored" data-anchor-id="es-könnt-alles-so-einfach-ein-es-bringt-nichts-bots-zu-bedrohen-oder-zu-bestechen."><span class="header-section-number">2.5.5</span> Es könnt’ alles so einfach ein! Es bringt nichts, Bots zu bedrohen oder zu bestechen.</h3>
