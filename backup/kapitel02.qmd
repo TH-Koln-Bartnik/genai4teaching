@@ -15,7 +15,8 @@ editor:
 # Grundbegriffe {#sec-grundbegriffe}
 ## Definition einiger Grundbegriffe
 
-In diesem Abschnitt wollen wir einige Definitionen und Bedeutungen klären. Dabei nutzen wir immer wieder kleine Interaktionen und Lernspiele, auch um so zu zeigen, wie wir einfacher "fragend" und aktivierend lehren können. 
+In diesem Abschnitt wollen wir einigen Definitionen und Bedeutungen klären. Dabei nutzen wir immer wieder kleine Interaktionen und Lernspiele, auch um so zu zeigen, wie wir einfacher "fragend" und aktivierend lehren können. 
+
 
 Wo finden Sie zusätzliches oder vertiefendes Material? Als visuelle Begleitung empfehle ich das sehr schöne Einführungsvideo des Mathematik-Didaktikers Grant Sanderson (7 Minuten, <https://youtu.be/LPZh9BOjkQs>).
 Tiefer in die mathematischen Details geht die grafische und interaktive Einführung als Animation von Brendan Bycroft (<https://bbycroft.net/llm>).
@@ -27,27 +28,27 @@ Von Prompt bis Token, über Temperatur und RAG: Was ist Ihnen schon an Grundbegr
 
 *Ordnen Sie die Begriffe den korrekten Definitionen zu!*
 
-<iframe src="interactions/llm-game-standalone.html" width="100%" height="700px" frameborder="0">
+<iframe src="interactions\llm-game-standalone.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
 (am besten auf dem Computer spielen).
-Hier auch Online abrufbar (so etwas nennt sich "Artifact" beim Sprachmodell "Claude"): [https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8](https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8)
+Hier auch Online abrufbar (so etwas nennt sich "Artifact" beim Sprachmodell "Claude") [[https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8]{.underline}](https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8)
 :::
 
+Ein Sprachmodell ist ein Rechensystem, das das nächste Wort in einer Wortkette vorhersagt, basierend auf den vorher genannten Wörtern in dieser Kette @jurafsky2025, Kap.7, S.2). Ein großes Sprachmodell 
 Ein **Large Language Model (LLM)** ist ein fortschrittliches maschinelles Lernmodell, das speziell darauf trainiert ist, menschliche Sprache zu verstehen und Texte zu erzeugen, die natürlich erscheinen.
-Ein Sprachmodell ist ein Rechensystem, das das nächste Wort in einer Wortkette vorhersagt, basierend auf den vorher genannten Wörtern in dieser Kette [@jurafsky2025, Kap.7, S.2].
 Die Modelle können erstaunliche Mengen von Textdaten verarbeiten, um vielseitige Sprachanwendungen zu ermöglichen.
 
 Die **generative Künstliche Intelligenz** (GenAI) bezieht sich auf Systeme, die fähig sind, neue Inhalte zu erzeugen, wie etwa Texte, die noch nicht existierten.
 LLMs sind ein zentraler Teil dieser generativen KI und können eigenständig Texte zu einem breiten Spektrum von Themen generieren.
 
 ::: {.callout-tip title="Tipp: Mini-Interaktionen einfach als HTML erstellen"}
-Können Sie in HTML programmieren? Jetzt schon. Die *Lernspiele in diesem Abschnitt* wurden mit Hilfe von Sprachmodellen erstellt (Gemini, ChatGPT, Claude). Meist mit einer Variation des einfachen Prompts: **„Erstelle mir ein browser-basiertes Lernspiel zum Thema / zur Illustration von ...“**. Oft hat man nach 5–10 Minuten eine gute erste Version. In der Lehre mache ich das oft auch als Übung mit Studierenden. Sie sollen dann erst mit Hilfe der KI ein Lernspiel erstellen und dann begründet bewerten, welcher Spiel-Prototyp das Konzept am besten darstellt. Bei etwas mehr Zeit kann man sie gegenseitig bewerten lassen, selbst Kriterien erstellen oder stärkere Gamification hinzufügen. Im Ergebnis beschäftigen sich idealerweise die Teilnehmer intensiv mit einem theoretischen Konzept (Bei komplexeren Themen hilft es, einen Fachtext als Hintergrund zum Konzept hochzuladen.)
+Können Sie in HTML programmieren? Jetzt schon. Die *Lernspiele in diesem Abschnitt* wurden mit Hilfe von Sprachmodellen  erstellt (Gemini, ChatGPT, Claude). Meist mit einer Variation des einfachen Prompts: **Erstelle mir ein browser-basiertes Lernspiel zum Thema / zur Illustration von ..."**. Oft hat man nach 5-10 Minuten eine gute erste Version. In der Lehre mache ich das oft auch als Übung mit Studierenden. Sie sollen dann erst mit Hilfe der KI ein Lernspiel erstellen und dann begründet bewerten, welcher Spiel-Prototyp das Konzept am besten darstellt. Bei etwas mehr Zeit kann man sie gegenseitig bewerten lassen, selbst Kriterien erstellen oder stärkere Gamification hinzufügen. Im Ergebnis beschäftigen sich idealerweise die Teilnehmer intensiv mit einem theoretischen Konzept (Bei komplexeren Themen hilft es, einen Fachtext als Hintergrund zum Konzept hochzuladen.)
 :::
 
-Das **Sprachmodell** zerlegt dazu grob gesagt Inputs wie Texte in kleine Bausteine (Tokens), verwandelt diese in Zahlen (Embeddings), erkennt mithilfe komplexer Muster (Transformer und Attention) deren Zusammenhänge, und erzeugt auf diese Weise selbstständig basierend auf kontextbezogen berechneten Wahrscheinlichkeiten neue Texte (generative Sprachproduktion).
+Das **Sprachmodell** (s. Abbildung 3) zerlegt dazu grob gesagt Inputs wie Texte in kleine Bausteine (Tokens), verwandelt diese in Zahlen (Embeddings), erkennt mithilfe komplexer Muster (Transformer und Attention) deren Zusammenhänge, und erzeugt auf diese Weise selbstständig basierend auf kontextbezogen berechneten Wahrscheinlichkeiten neue Texte (generative Sprachproduktion).
 
-Damit Sprachmodelle wie ChatGPT Sprache verstehen und erzeugen können, zerlegen sie Text in sogenannte **Tokens** – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen [s. etwa @jurafsky2025, Kapitel 2].
+Damit Sprachmodelle wie ChatGPT Sprache verstehen und erzeugen kann, zerlegen sie  Text in sogenannte **Tokens** – kleine Bausteine wie Wörter, Wortteile oder Satzzeichen [s. etwa @jurafsky2025, Kapitel 2].
 Jedes dieser Tokens wird in einen **Vektor** umgewandelt – eine Zahlenreihe, die das Wort mathematisch beschreibt.
 Dieser Vorgang nennt sich **Embedding**.
 Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, beispielsweise „Hund“ und „Katze“.
@@ -55,10 +56,10 @@ Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, 
 Hier kann man das selbst einfach ausprobieren: Das interaktive Widget simuliert eine GPT-2-ähnliche Tokenisierung.
 
 ::: {.callout-tip title="Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen umgewandelt"}
- <iframe src="interactions/tokenizer-explorer.html" width="100%" height="700px" frameborder="0"></iframe>
+ <iframe src="interactions\tokenizer-explorer.html" width="100%" height="700px" frameborder="0"></iframe>
 :::
 
-Die kleine Simulation hier soll nur ein Gefühl für den Prozess geben. Wie die Umwandlung eines bestimmten Textes genau in verschiedenen Sprachmodellen aussieht, können Sie interaktiv auf Webseiten wie Tiktokenizer ausprobieren: <https://tiktokenizer.vercel.app/>.
+Die kleine Simulation hier soll nur ein Gefühl für den Prozess geben. Wie die Umwandlung eines bestimmten Textes genau in verschiedenen Sprachmodellen aussieht, können Sie interaktiv auf Webseiten wie Tiktokenizer ausprobieren: https://tiktokenizer.vercel.app/.
 
 Ein **Prompt** ist eine Eingabeaufforderung, die an ein LLM gesendet wird, um eine spezifische Antwort zu erhalten.
 Die Gestaltung dieser Prompts ist entscheidend für die Qualität der generierten Antworten und wird als **Prompt Engineering** bezeichnet.
@@ -70,15 +71,15 @@ GPT steht für **Generative Pre-trained Transformer**. Wir schauen zunächst, wa
 *'Generative'*: Der Begriff „**generativ**“ bedeutet in diesem Zusammenhang, dass GPT eigenständig neue, sinnvolle Texte erzeugen kann, indem es gelernte Muster neu kombiniert, anstatt fertige Texte zu übernehmen.
 
 *'Pretrained'*: GPT wurde mit riesigen Textmengen **vortrainiert** (**Pretraining**), ohne konkrete Aufgaben lösen zu müssen – dieser Vorgang erfolgt unüberwacht (*unsupervised learning*).
-Sprachmodelle nutzen häufig die Methode **„Reinforcement Learning with Human Feedback“ (RLHF)**, um noch bessere Texte zu generieren. Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern nach Qualität beurteilt werden. Diese Bewertungen dienen dazu, das Modell zusätzlich zu trainieren und zu steuern, indem Texte belohnt werden, die von Menschen als besonders gut, klar oder hilfreich eingeschätzt wurden. Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind.
+Sprachmodelle nutzen häufig die Methode **„Reinforcement Learning with Human Feedback“ (RLHF)**, um noch bessere Texte zu generieren. Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern nach Qualität beurteilt werden.Diese Bewertungen dienen dazu, das Modell zusätzlich zu trainieren und zu steuern, indem Texte belohnt werden, die von Menschen als besonders gut, klar oder hilfreich eingeschätzt wurden. Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind.
 Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte generieren kann – also kreativ Sprache produziert, ohne bloß zu kopieren (generativ).
 
 *'Transformer'*: Das Herzstück des GPT ist der sogenannte **Transformer** – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (**Attention**) erkennt, welche Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen.
 
 Im Transformer bedeutet „Attention“: Jedes Wort (genauer: jedes Token) entscheidet dynamisch, auf welche anderen Tokens es beim Verstehen oder Generieren am stärksten „hören“ sollte. Technisch ist das eine gewichtete Mischung von Informationen: Das Modell bildet eine Art Relevanzscore zwischen einem „aktuellen Interesse“ und möglichen „Informationsquellen“ und erstellt daraus Gewichte, die sich zu 1 aufsummieren. Die Ausgabe ist dann eine gewichtete Summe der Informationsinhalte. Das ist wie bei einer Literaturrecherche: Eine Fragestellung (Query) wird mit Titeln/Abstracts als „Hinweis-Schilder“ (Keys) abgeglichen; die eigentlichen Inhalte (Values) aus den passenden Quellen fließen dann stärker in das Gesamtverständnis ein.
 
-Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint.
-(Der zentrale Fachartikel von 2017, ein zentraler Auslöser der aktuellen KI-Welle, hatte den knackigen Titel "Attention is all you need" @vaswani2017 - der Artikel wurde mittlerweile mehr als 200.000-fach zitiert.)
+Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint (s. Abbildung _).
+(Der zentrale Fachartikel von 2017, ein zentraler Auslöser der aktuellen KI-Welle, hatte den knackigen Titel "Attention is all you need" @vaswani2017 - der Artikel wurde mittlerweile mehr als 200.000 fach zitiert.)
 
 
 **Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?** Neuere LLMs können schon ganze Bücher schnell aufsaugen und dann zusammenfassen (z.B. Claude, ChatGPT oder Gemini).
@@ -100,7 +101,7 @@ Einige Unterschiede zwischen einem einfachen Sprachmodell (LLM) und dem Setup mi
 ::: {.callout-tip title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?"}
 Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen für LLM, RAG und Agent auswählen und die Fragen beantworten.
 
-<iframe src="interactions/llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
+<iframe src="interactions\llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
 ::: 
@@ -116,7 +117,7 @@ Wie unterscheiden sich die verschiedenen *Nutzungs-Muster*, die wir bis jetzt ke
 Prüfen Sie Ihr Verständnis: Welche der links gezeigten Antworten passen zu welchem der rechts gezeigten Muster? Nutzt das Sprachmodell nur sein "Standard-Wissen" (LLM only), oder werden "Werkzeuge" wie Internet-Nutzung erlaubt? 
 
 ::: {.callout-tip title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?"}
-<iframe src="interactions/llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
+<iframe src="interactions\llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
 :::
@@ -148,9 +149,10 @@ Ein Beispiel: Soll ein Gedicht mit dem Wort „Kaninchen“ enden, wählt Claude
 ​Diese Fähigkeit zur Vorausplanung deutet darauf hin, dass Claude in der Lage ist, komplexe Textstrukturen zu erstellen, die über einfache Wortassoziationen hinausgehen.
 
 **Wie kalkulieren Sprachmodelle?** Anthropic hat in seiner Studie zu Claude 3.5 Haiku detailliert untersucht, wie das Modell mathematische Berechnungen intern verarbeitet.
-Dabei wurde festgestellt, dass Claude bei Aufgaben wie der Addition von Zahlen parallele Rechenpfade nutzt, um zu einem Ergebnis zu gelangen.​ Claude verwendet zwei Hauptpfade, um Additionen durchzuführen: 
-1. **Grobabschätzung:** Ein Pfad schätzt das Ergebnis basierend auf den Größenordnungen der Zahlen.
-2. **Präzise Berechnung:** Ein anderer Pfad fokussiert sich auf die genaue Berechnung, insbesondere auf die Bestimmung der letzten Ziffer der Summe.
+Dabei wurde festgestellt, dass Claude bei Aufgaben wie der Addition von Zahlen parallele Rechenpfade nutzt, um zu einem Ergebnis zu gelangen.​ Claude verwendet zwei Hauptpfade, um Additionen durchzuführen: 1.
+**Grobabschätzung:** Ein Pfad schätzt das Ergebnis basierend auf den Größenordnungen der Zahlen.
+2.
+**Präzise Berechnung:** Ein anderer Pfad fokussiert sich auf die genaue Berechnung, insbesondere auf die Bestimmung der letzten Ziffer der Summe.
 
 Diese beiden Pfade arbeiten zusammen, um das finale Ergebnis zu erzeugen.
 Wenn beispielsweise der Pfad für die letzte Ziffer deaktiviert wird, liefert Claude nur eine grobe Schätzung, ohne die genaue Endziffer korrekt zu bestimmen.
@@ -174,7 +176,7 @@ Bei weniger bekannten Namen gibt das Modell an, die Antwort nicht zu kennen [@li
 
 ## Welches Modell wählen?
 
-**Was für LLMs gibt es aktuell?** Die großen Anbieter mit den jeweils stärksten Modellen (s. @fig-leaderboard) sind OpenAI (Chat GPT-5), Google (Gemini 2.5) und Anthropic (Claude Opus 4.1 / Sonnet 4).
+**Was für LLMs gibt es aktuell?** Die großen Anbieter mit den jeweils stärksten Modellen (s. \@fig-leaderboard) sind OpenAI (Chat GPT-5), Google (Gemini 2.5) und Anthropic (Claude Opus 4.1 / Sonnet 4).
 Je nach Anwendung werden günstigere Modelle angeboten, die weniger Rechenaufwand benötigen, meist mit dem Zusatz „Mini“.
 Starke Reasoning Modelle (die komplexe Fragestellungen bearbeiten können) von OpenAI sind GPT 5 oder Gemini 2.5 Flash (Stand 08/2025).
 Kostenfrei nutzbare Open Source Alternativen sind z.B.
@@ -194,11 +196,11 @@ Sie stellen allerdings i.d.R. nicht den aktuellen Stand der Performanz der KI-Mo
 Lehrende sollten daher unbedingt 1 bis 2 Monate die 20 Euro investieren und auch die stärksten Bezahlmodelle ausprobieren (also ChatGPT oder Gemini in der Bezahlversion).
 Nur so erhält man ein Gefühl dafür, was aktuell technisch möglich ist und wie „sicher“ die eigenen Prüfungsleistungen sind (z.B. „im Gespräch“ mit der KI, über das Voice Modell, was bei den kostenfreien Zugängen aktuell meist abgeklemmt ist).
 
-![Je nach Ziel ein anderer Platz in der Bestenliste](images/script02-10.svg){#fig-leaderboard} 
+![Je nach Ziel ein anderer Platz in der Bestenliste: „Schlauste“ ...](images/script02-10.svg){#fig-leaderboard} ![...und günstigste oder schnellste Modelle](images/script02-11.svg)
 
-Quelle: @vellum2024, Stand 08/2025.
+Quelle: [@vellum2024], Stand 08/2025.
 
-**Hier kann man vergleichen:** In der LM-Arena kann man verschiedene Modelle ausprobieren und ihre Antwort auf eine bestimmte Frage gegenüberstellen: <https://lmarena.ai/> (Untermenü: „Arena (side-by-side)“).
+**Hier kann man vergleichen:** In der LM-Arena kann man verschiedene Modelle ausprobieren und ihre Antwort auf eine bestimmte Frage gegenüberstellen: https://lmarena.ai/ (Untermenü: „Arena (side-by-side)“).
 
 ## Was können die Modelle – und was nicht?
 
@@ -234,7 +236,7 @@ Die Autoren diskutieren daraus resultierende Risiken von sozialer Manipulation o
 
 Auch durch diesen Fähigkeitsschub ist der **Einsatz von Sprachmodellen in Support-Funktionen wie Call Centern stark gestiegen**, empirische Studien belegen hier einen starken Produktivitätszuwachs [@brynjolfsson2025].
 
-Die Gründe für die Produktivitätssteigerung von KI-Modellen lassen sich durch **Scaling Laws** (Training Scaling Law, Inference Scaling Law, [@mollick2025]) beschreiben: KI-Modelle werden einerseits exponentiell besser, je mehr Daten, Rechenleistung und Parameter genutzt werden und andererseits, wenn sie mehr Zeit zum „nachdenken“ erhalten. (Für eine schöne visuelle Beschreibung, s. @grootendorst2025)
+Die Gründe für die Produktivitätssteigerung von KI-Modellen lassen sich durch **Scaling Laws** (Training Scaling Law, Inference Scaling Law, [@mollick2025] beschreiben: KI-Modelle werden einerseits exponentiell besser, je mehr Daten, Rechenleistung und Parameter genutzt werden und andererseits, wenn sie mehr Zeit zum „nachdenken“ erhalten. (FÜr eine schöne visuelle Beschreibung, s. @grootendorst2025)
 
 Der erste Zusammenhang (**Training Scaling Law**) besagt, dass größere KI-Modelle mit mehr Parametern und Trainingsdaten systematisch leistungsfähiger werden.
 Allerdings sind solche Ertragszuwächse mit hohen Kosten verbunden: Eine 10-fache Steigerung an Rechenaufwand führt etwa zu einer Erhöhung der Leistungsmetriken um einen festen Betrag, was abnehmende Grenzerträge andeutet.
@@ -284,7 +286,7 @@ Es gibt **grob gesagt drei Ansätze**:
     Für Hochschulen werden zentral nach und nach verschiedene Dienste mit solchen Oberflächen aufgesetzt, die meist aber aus Gründen des Datenschutzes einige Funktionen abklemmen (z.B. meist die direkte Sprachinteraktion und das Speichern von Benutzerprofilen).
 
 2.  Nutzung einer Bedienoberfläche wie Witsy oder Typingmind, die Prompts speichert und Agenten erstellen lässt, die mit verschiedenen Modellen funktionieren [@schwarze2025].
-    Hier muss man einmalig das System aufsetzen (Witsy) und für den höheren Komfort teils eine Lizenz kaufen (TypingMind, ca. 40 $ für Hochschulangehörige), dafür kann man dann einfacher Modelle wechseln und über einen sogenannten API Key nur die tatsächliche Nutzung abrechnen (was sich bei einfacher Nutzung auf ein paar Cent beläuft, siehe die oben gezeigte Übersicht der Preise pro Millionen Token).
+    Hier muss man einmalig das System aufsetzen (Witsy) und für den höheren Komfort teils eine eine Lizenz kaufen (TypingMind, ca. 40 \$ für Hochschulangehörige), dafür kann man dann einfacher Modelle wechseln und über einen sogenannten API Key nur die tatsächliche Nutzung abrechnen (was sich bei einfacher Nutzung auf ein paar Cent beläuft, siehe die oben gezeigte Übersicht der Preise pro Millionen Token).
 
 3.  Wenn man sich nicht vor etwas Code scheut, kann man auch einfach selbst programmieren (mit KI-Unterstützung in Tools wie Google Colab) und kleine Sprachagenten aufsetzen.
     (Evtl. dann in Verbindung mit **Replit** für die Online-Bereitstellung und Diensten wie **Voiceflow** für die Oberfläche.) Auch hierfür braucht man eigentlich nur API Keys zur Identifizierung.
@@ -300,76 +302,122 @@ Wie das geht, zeigen wir zuerst an einem einfachen Schema. Dann schauen wir uns 
 
 ### Zentrale Bausteine: Rolle, Aufgabe, Format und Beispiele
 Wie beschreibe ich genau, was ich will?
-Einfache **Daumenregeln für Prompts** gliedern das in vier Schritte: dem Sprachmodell eine **Rolle** zuzuweisen („Du bist Verhandlungsexpertin“), ein klares **Ziel** zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein **Vorgehen** (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie **Beispiele** („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form [Autor]-[Jahr]-[Kurztitel]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“). Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen.
+Einfache **Daumenregeln für Prompts** gliedern das in vier Schritte: dem Sprachmodell eine **Rolle** zuzuweisen („Du bist Verhandlungsexpertin“), ein klares **Ziel** zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein **Vorgehen** (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie **Beispiele** („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form \[Autor\]-\[Jahr\]-\[Kurztitel\]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“). Dabei veranlasst die Chain of Thought-Methode das LLM, seine Gedankengänge offen zu legen.
 Das Modell zeigt seine Überlegungen Schritt für Schritt, was die Nachvollziehbarkeit seiner Antworten verbessert.
 So können wir auch besser nachsteuern und das Ergebnis an unsere Ziele anpassen.
 
 
-::: {.callout-tip title="Strukturierten Prompt einfach erstellen lassen"}
+::: {.callout-note collapse="true" title="Strukturierten Prompt einfach erstellen lassen"}
 
+```text
 Wollen Sie sich interaktiv einen ausführlichen, strukturierten Prompt erstellen lassen?
-Hier finden Sie einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: [https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format](https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format)).
+Hier finden Sie einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format).
+
+```
+
 :::
 
-### Wie Prompten? Was Ende 2025 die größten KI-Labore empfehlen. 
+
+### Wie Prompten? Was Ende 2025 die größten KI-Labore  empfehlen. 
 Ende 2025 geben die drei führenden KI-Labs uns detaillierte Tipps, wie wir mit ihren Geschöpfen GPT, Gemini und Claude reden sollen [@kotha2025; @google2025; @anthropic2025c]. Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.
 
 Die drei führenden Anbieter betonen die Bedeutung von **Präzision der Anweisungen** - wenig überraschend, aber im Detail nicht einfach zu bewerkstelligen: (1) Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, **genau zu sagen, was man eigentlich will**.
 
-::: {.callout-tip title="Meta-Prompts: Den Bot den Prompt verbessern lassen"}
+::: {.callout-note collapse="true" title="Meta-Prompts: Den Bot den Prompt verbessern lassen"}
+```text
 **Probleme mit dem Prompt?** OpenAI schlägt vor, man soll mit einer klaren Problembeschreibung wie folgt prompten:
 
 Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts ist, dass der Agent [GEWÜNSCHTES VERHALTEN BESCHREIBEN] ausführt, stattdessen führt er jedoch [UNERWÜNSCHTES VERHALTEN BESCHREIBEN] aus. Wie würdest Du die Eingabeaufforderung möglichst unverändert lassen und dennoch minimale Änderungen/Ergänzungen vornehmen, um den Agenten dazu zu bewegen, diese Mängel konsequenter zu beheben? 
+```
 :::
 
-(1) Aufgaben präzise beschreiben: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen.
+(1) **Aufgaben präzise beschreiben**: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen. 
 
-(2) Beispiele helfen der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele ("gib mir..."/"bemühe dich um..." ist besser als "gib mir nicht" / "vermeide...") [@google2025]. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt.
+(2) **Beispiele helfen** der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte. Positiv-Beispiele sind dabei besser als Negativbeispiele ("gib mir..."/"bemühe dich um..." ist besser als "gib mir nicht" / "vermeide...") [@google2025]. Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt. 
 
-(3) Ordnung macht hier Meisterschaft: durch klare Strukturierung des Textflusses durch <Hinweis-Schilder> sogenannte [Tags]. Ob solche 'Post-it-Notizen' für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <Hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein.
+(3) **Ordnung macht hier Meisterschaft**: durch klare Strukturierung des Textflusses durch <Hinweis-Schilder> sogenannte [Tags]. Ob solche 'Post-it-Notizen' für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <Hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein. 
 
-(4) Zunehmend wird bei einer interaktiven Form der Zusammenarbeit mit dem Sprachmodell der Weg zum Ziel. Prompten wird hier zum iterativen Prozess, in dem die Interaktion den eigentlichen Mehrwert bietet, da nach und nach mit dem Sprachmodell ein Lösungsweg erarbeitet wird. Dies verlangt eine deutlich andere Herangehensweise als Werkzeuge wie Taschenrechner, von denen wir erwarten, dass sie sofort eine Lösung ausspucken.
+(4) Zunehmend wird bei einer interaktiven Form der Zusammenarbeit mit dem Sprachmodell **der Weg zum Ziel**. Prompten wird hier zum iterativen Prozess, in dem die Interaktion den eigentlichen Mehrwert bietet, da nach und nach mit dem Sprachmodell ein Lösungsweg erarbeitet wird. Dies verlangt eine deutlich andere Herangehensweise als Werkzeuge wie Taschenrechner, von denen wir erwarten, dass sie sofort eine Lösung ausspucken.
 
-(5) Agenten erfordern neue Verhaltensweisen. Da die Zeitspanne des autonomen Handelns immer breiter wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern. Zweitens gewinnt die Frage an Bedeutung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als 'Eagerness-Kalibrierung' einstellen [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das 'Gedächtnis' des Agenten-Bots nachdenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen ("Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...") [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
+(5) Agenten erfordern neue Verhaltensweisen. Da die **Zeitspanne des autonomen Handelns immer breiter** wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern. 
+Zweitens gewinnt die Frage an Bedeutung, **wieviel Eigenständigkeit** wir uns von dem Bot denn wünschen. Bei GPT kann man dies z.B. als 'Eagerness-Kalibrierung' einstellen [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das **'Gedächtnis'** des Agenten-Bots nachgenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen ("Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...") [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon **stärker in Richtung der Führung von Mitarbeitern** gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
 
-(6) Bots help bots: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir mit dem Tool das Tool bedienen. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer [@kotha2025] oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen.
+(6) *Bots help bots*: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir **mit dem Tool das Tool bedienen**. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer [@kotha2025] oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen. 
 
-Es könnt' alles so einfach sein! Es bringt nichts, Bots zu bedrohen oder zu bestechen.
-Neuere empirische Untersuchungen haben eine Reihe von anekdotischen Hausrezepten des Promptings systematisch geprüft und meist widerlegt. Prompts funktionieren nicht immer gleich und so kommt es schnell zu anekdotischer Evidenz, dass eine Formulierung „besser geklappt“ hätte. Die wenigsten der Empfehlungen helfen zuverlässig [@meincke2025; @meincke2025a; @meincke2025b]. Hilft es, höflich zu sein (nein), zu drohen (nein), Geld anzubieten (nein), oder den Hiwi-Bot Schritt für Schritt vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)? Auch hier sehen wir, dass die stärkeren neueren Modelle auch etwas andere Bedienung erfordern. Wie ein neuer Sportwagen kommen mit den neuen Fähigkeiten auch neue Anfälligkeiten: Die neuen Modelle können selbst iterativ vorgehen, das muss man ihnen nicht mehr empfehlen. Tut man es doch, sinkt teils die Performanz [@meincke2025a], etwa wenn man so verhindert, dass ein starkes Modell eine Frage aus seinem Vorwissen beantwortet und es stattdessen zu mehreren - eigentlich unnötigen - Denkschritten mit entsprechendem Token-Verbrauch zwingt). Da sie schlauer sind, werden sie durch unpräzise Anweisungen teils schneller aus der Bahn geworfen. Die Modelle halten sich genauer an Anweisungen - aber eben auch an falsche [@anthropic2025c; @google2025].
+### Es könnt' alles so einfach ein! Es bringt nichts, Bots zu bedrohen oder zu bestechen.
+Neuere empirische Untersuchungen haben eine Reihe von **anekdotischen Hausrezepten des Promptings systematisch geprüft und meist widerlegt**.
+Prompts funktionieren nicht immer gleich und so kommt es schnell zu anektodischer Evidenz, dass eine Formulierung „besser geklappt“ hätte.
+Die wenigsten der Empfehlungen helfen zuverlässig [@meincke2025; ; @meincke2025a; @meincke2025b].
+Hilft es, **höflich** zu sein (nein), zu **drohen** (nein), **Geld** anzubieten (nein), oder den Hiwi-Bot **Schritt für Schritt** vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)? 
+Auch hier sehen wir, dass die stärkeren neueren Modelle auch etwas andere Bedienung erfordern. **Wie ein neuer Sportwagen kommen mit den neuen Fähigkeiten auch neue Anfälligkeiten**: Die neuen Modelle können selbst iterativ vorgehen, das muss man ihnen nicht mehr empfehlen. Tut man es doch, sinkt teils die Performanz [@meincke2025a], etwa wenn man so verhindert, dass ein starkes Modell eine Frage aus seinem Vorwissen beantwortet und es stattdessen zu mehreren - eigentlich unnötigen - Denkschritten mit entsprechendem Token-Verbrauch zwingt). Da sie schlauer sind, werden sie durch unpräzise Anweisungen teils schneller aus der Bahn geworfen. Die Modelle halten sich genauer an Anweisungen - aber eben auch an falsche [@anthropic2025c; @google2025]. 
 
-Was heißt das für Prompts in der Lehre?
-Für die Lehre wollen wir den Prompts speziell didaktische Elemente hinzufügen, also etwa verhindern, dass den Studierenden sofort eine Lösung ausgegeben wird, da das eigene Nachdenken in Form von Fragen und sokratischem Dialog ihnen dabei hilft, die Ergebnisse auch zu behalten [@roediger2012]. Hier müssen wir also teils bewusst Hürden einführen, die die Studierenden zum Nachdenken, diskutieren und überlegen anregen. Wie das geht, sehen wir in den nächsten zwei Hauptkapiteln. Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellungen mit GenAI Tools finden Sie im Appendix (@sec-prompts).
+### Was heißt das für Prompts in der Lehre?
+Für die Lehre wollen wir **den Prompts speziell didaktische Elemente hinzufügen**, also etwa verhindern, dass den Studierenden sofort eine Lösung ausgegeben wird, da das eigene Nachdenken in Form von Fragen und sokratischem Dialog ihnen dabei hilft, die Ergebnisse auch zu behalten [@roediger2012]. Hier müssen wir also teils bewusst Hürden einführen, die die Studierenden zum Nachdenken, diskutieren und überlegen anregen. Wie das geht, sehen wir in den nächsten zwei Hauptkapiteln.
+Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellungen mit GenAI Tools finden Sie im Appendix [@sec-prompts].
 
-Wie steht es mit dem Energieverbrauch der Modelle?
-Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert [@spencer2025]. Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen. In diesem Bereich gibt es viel Hype und Desinformation in beide Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), so dass hier ein kurzer Überblick seriöser Studien nützlich erscheint. Dieser sehr knappe Abriss soll vor allem eine kurze Orientierung und den Verweis auf weiterführende Literatur zur vertieften Beschäftigung bieten.
+## Wie steht es mit dem Energieverbrauch der Modelle?
 
-Wie schmutzig ist es also, KI zu nutzen? Die kurze Antwort ist, dass ein typischer Prompt aktuell etwa soviel Energie verbraucht wie ca. 10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre 2008 [@elsworth2025; @mollick2025d]. Die gute Nachricht ist, dass die Modelle effizienter werden und der Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken. Gegenläufig und problematisch ist die stark steigende Nutzung, die z.B. zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen führt [@wittenberg2025a].
+Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert [@spencer2025].
+Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen.
+In diesem Bereich gibt es viel Hype und Desinformation in beide Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), so dass hier ein kurzer Überblick seriöser Studien nützlich erscheint.
+Dieser sehr knappe Abriss soll vor allem eine kurze Orientierung und den Verweis auf weiterführende Literatur zur vertieften Beschäftigung bieten.
 
-Solche Vergleiche sind nicht trivial, da etwa bei der Nutzung in Unternehmen auch die Umweltfolgen der aktuellen Alternativen „bepreist“ werden müssen, um einen sinnvollen Vergleich zu erzielen. Wie belastet die Lieferkette eines physischen Buchs die Umwelt im Vergleich zu einem E-Book? Ein aktueller Mitarbeiter im physischen Callcenter mit seinem Arbeitsweg, Schreibtisch und Heizbedarf im Vergleich zum KI-Chatbot? Unabhängig davon, wie diese Rechnungen ausgehen, sind sie sichtlich komplex.
+**Wie schmutzig ist es also, KI zu nutzen? Die kurze Antwort** ist, dass ein typischer Prompt aktuell etwa soviel Energie verbraucht wie ca.
+10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre 2008 [@elsworth2025; @mollick2025d].
+Die gute Nachricht ist, dass die Modelle effizienter werden und der Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken.
+Gegenläufig und problematisch ist die stark steigende Nutzung, die z.B.
+zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen führt [@wittenberg2025a].
 
-Im Folgenden sollen dazu einige Kernaussagen aus Untersuchungen der International Energy Agency (IEA), dem World Economic Forum und des MIT Technology Reviews zusammengefasst werden. Basierend auf die aktuelle Untersuchung des MIT Technology Survey [@odonnell2025] gliedere ich diesen kurzen Abriss zum Energieverbrauch in vier Teile: Die Modellbildung, die Anfrage (query), die Emissionen und Prognosen für das weitere Wachstum.
+**Solche Vergleiche sind nicht trivial**, da etwa bei der Nutzung in Unternehmen auch die Umweltfolgen der aktuellen Alternativen „bepreist“ werden müssen, um einen sinnvollen Vergleich zu erzielen.
+Wie belastet die Lieferkette eines physischen Buchs die Umwelt im Vergleich zu einem E-Book?
+Ein aktueller Mitarbeiter im physischen Callcenter mit seinem Arbeitsweg, Schreibtisch und Heizbedarf im Vergleich zum KI-Chatbot?
+Unabhängig davon, wie diese Rechnungen ausgehen, sind sie sichtlich komplex.
 
-Modellbildung. Daten-Zentren und KI-Nutzung machen aktuell nur wenige Prozent der globalen Energienutzung aus. Schätzungen der Energieagentur IEA liegen etwa bei 3–5 %. Deutlich höhere Anteile liegen in den Bereichen Gebäude, Industrie und Fahrzeuge [@ritchie2024; @spencer2024]. Mit Blick auf die Zukunft ist der rasant wachsende Energiebedarf durch Bevölkerungswachstum und wachsenden Wohlstand ärmerer Bevölkerungsgruppen bei weitem ein stärkerer Treiber für Emissionswachstum und Klimawandel [@spencer2024]. Einige Klimaaktivisten warnen sogar vor „distraction“ - davor, sich durch solche Ablenkungen und Modethemen wie KI Energieverbrauch von dem Fokus auf die großen Hebel der Emissionsvermeidung ablenken zu lassen [@masley2025; @ritchie2024a]. Während die Einmalaufwände für das Training der Modelle erheblich sind, hat das schnelle Wachsen der Nutzerzahlen sie mittlerweile in den Schatten gestellt. Die Energieaufwände für Anfragen (Inferenz) bedingen nunmehr einen größeren Energieverbrauch als das Training der Modelle [@odonnell2025; @spencer2025].
+Im Folgenden sollen dazu einige Kernaussagen aus Untersuchungen der International Energy Agency (IEA), dem World Economic Forum und des MIT Technology Reviews zusammengefasst werden.
+Basierend auf die aktuelle Untersuchung des MIT Technology Survey [@odonnell2025] gliedere ich diesen kurzen Abriss zum Energieverbrauch in vier Teile: Die Modellbildung, die Anfrage (query), die Emissionen und Prognosen für das weitere Wachstum.
 
-Anfrage. Der Energieverbrauch einer einzelnen KI-Textanfrage ist relativ gering. Er liegt unter dem Energieverbrauch von wenigen Minuten für eine kleine LED-Lampe. Konkret liegen die Schätzungen hier aktuell zwischen 0,3 Wattstunden (Wh) für GPT-4o und 0,03 Wh für kleine Modelle [@odonnell2025; @you2025].
+**Modellbildung.** Daten-Zentren und KI-Nutzung machen aktuell nur wenige Prozent der globalen Energienutzung aus.
+Schätzungen der Energieagentur IEA liegen etwa bei 3-5%.
+Deutlich höhere Anteile liegen in den Bereichen Gebäude, Industrie und Fahrzeuge [@ritchie2024; @spencer2024].
+Mit Blick auf die Zukunft ist der rasant wachsende Energiebedarf durch Bevölkerungswachstum und wachsenden Wohlstand ärmerer Bevölkerungsgruppen bei weitem ein stärkerer Treiber für Emissionswachstum und Klimawandel [@spencer2024].
+Einige Klimaaktivisten warnen sogar vor „distraction“ - davor, sich durch solche Ablenkungen und Modethemen wie KI Energieverbrauch von dem Fokus auf die großen Hebel der Emissionsvermeidung ablenken zu lassen [@masley2025; @ritchie2024a].
+Während die Einmalaufwände für das Training der Modelle erheblich sind, hat das schnelle Wachsen der Nutzerzahlen sie mittlerweile in den Schatten gestellt.
+Die Energieaufwände für Anfragen (Inferenz) bedingen nunmehr einen größeren Energieverbrauch als das Training der Modelle [@odonnell2025; @spencer2025].
 
-Im Vergleich zu anderen Energieverbrauchen ist das nicht viel. Vergleicht man den höheren Wert von 0,3 Wh mit den 12.000 Wattstunden, die ein durchschnittlicher britischer Haushalt pro Tag verbraucht (für US-Haushalte wird die deutlich höhere Zahl von 28.000 Wattstunden pro Tag genannt!), wird schnell klar, dass weniger KI-Nutzung zumindest aktuell kein großer Hebel für Energiesparen oder Klimaschutz ist. Die oft zitierte Statistik, nach der eine Anfrage bei ChatGPT 10x mehr verbraucht als eine Google Suche vergisst meist zu erwähnen, dass die Basisrate dieser Internetnutzung im Vergleich zu anderen Dingen, in die unser Energieverbrauch fließt, extrem niedrig ist [@ritchie2024a].
+**Anfrage.** Der Energieverbrauch einer einzelnen KI-Textanfrage ist relativ gering.
+Er liegt unter dem Energieverbrauch von wenigen Minuten für eine kleine LED-Lampe.
+Konkret liegen die Schätzungen hier aktuell zwischen 0.3 Wattstunden (Wh) für GPT-4o und 0.03 Wh für kleine Modelle [@odonnell2025; @you2025].
 
-Modellgröße ist allerdings ein zentraler Faktor für den Energiebedarf pro Anfrage und hieraus speisen sich plausiblere Sorgen. Zwar ist Bildgenerierung i.d.R. weniger energieintensiv als Textgenerierung, da Modelle zur Bildgenerierung oft mit weniger Parametern arbeiten als Textmodelle. Aber komplexere Anfragen (etwa mehrstufige lange Reasoning Aufträge) und speziell Video-Generierung benötigen deutlich mehr Energie: Ein hochqualitatives Video von 5 Sekunden kann bis zu 1.000 Wattstunden verbrauchen (0,94 kWh), was etwas mehr als einer Stunde Mikrowellennutzung entspricht – ein deutlicher Unterschied [@odonnell2025].
+**Im Vergleich zu anderen Energieverbrauchen ist das nicht viel.** Vergleicht man den höheren Wert von 0.3 Wh mit den 12.000 Wattstunden, die ein durchschnittlicher britischen Haushalt pro Tag verbraucht (für US-Haushalte wird die deutlich höhere Zahl von 28.000 Wattstunden pro Tag genannt!), wird schnell klar, dass weniger KI-Nutzung zumindest aktuell kein großer Hebel für Energiesparen oder Klimaschutz ist.
+Die oft zitierte Statistik, nach der eine Anfrage bei ChatGPT 10x mehr verbraucht als eine Google Suche vergisst meist zu erwähnen, dass die Basisrate dieser Internetnutzung im Vergleich zu anderen Dingen, in die unser Energieverbrauch fließt, extrem niedrig ist [@ritchie2024a].
 
-Der Anteil größerer Modelle und komplexerer Anfragen wird voraussichtlich deutlich zunehmen, wenn die Modellgrößen weiter ansteigen und komplexere Anfragen, wie Video-Generierung zunehmen. Gegenläufig wirkt der starke Anreiz für die Anbieter (und speziell für die kleineren Konkurrenten von OpenAI, die über geringere finanzielle Mittel verfügen), den Energieverbrauch pro Inferenz durch effizientere Chip-Konstruktionen und neue Trainingsansätze zu senken. Wie die Analysten der IEA zusammenfassen: „The efficiency of AI-related computer chips has doubled roughly every two-and-a-half to three years, and a modern AI-related computer chip uses 99% less power to perform the same calculations as a model from 2008” [@spencer2024].
+**Modellgröße ist allerdings ein zentraler Faktor für den Energiebedarf** pro Anfrage und hieraus speisen sich plausiblere Sorgen.
+Zwar ist Bildgenerierung i.d.R. weniger energieintensiv als Textgenerierung, da Modelle zur Bildgenerierung oft mit weniger Parametern arbeiten als Textmodelle.
+Aber komplexere Anfragen (etwa mehrstufige lange Reasoning Aufträge) und speziell Video-Generierung benötigen deutlich mehr Energie: Ein hochqualitatives Video von 5 Sekunden kann bis zu 1.000 Wattstunden verbrauchen (0.94 kWh), was etwas mehr als einer Stunde Mikrowellennutzung entspricht – ein deutlicher Unterschied [@odonnell2025].
 
-Insgesamt wird perspektivisch die punktuelle Einzelnutzung durch einzelne Anfragen weniger wichtig werden, als die strukturell bedingte Integration der KI-Technologien in immer mehr digitale Anwendungen, die als Folge des rasanten technologischen Wandels und der hohen Investitionen absehbar ist [@odonnell2025].
+**Der Anteil größerer Modelle und komplexerer Anfragen wird voraussichtlich deutlich zunehmen**, wenn die Modellgrößen weiter ansteigen und komplexere Anfragen, wie Video-Generierung zunehmen.
+Gegenläufig wirkt der starke Anreiz für die Anbieter (und speziell für die kleineren Konkurrenten von OpenAI, die über geringere finanzielle Mittel verfügen), den Energieverbrauch pro Inferenz durch effizientere Chip-Konstruktionen und neue Trainingsansätze zu senken.
+Wie die Analysten der IEA zusammenfassen: „The efficiency of AI-related computer chips has doubled roughly every two-and-a-half to three years, and a modern AI-related computer chip uses 99% less power to perform the same calculations as a model from 2008” [@spencer2024].
 
-Emissionen. In diesem Zusammenhang wird der ungünstige Energiemix der aktuell entstehenden Datenzentren kritisiert: Da KI-Rechenzentren rund um die Uhr laufen und meist in Regionen mit fossilen Energieträgern stehen, ist der durchschnittliche CO₂-Ausstoß ihrer Stromversorgung etwa 48 % höher als der US-Durchschnitt [@odonnell2025]. Dem gegenüber stehen gegenläufige Effekte wie höhere Effizienz der Steuerung, etwa von Energienetzen [@greene-dewasmes2025a] und dem Ersatz von manuellen menschlichen Aufwänden durch Digitalisierung, etwa durch Reisen für einen Film-Dreh (ohne KI) oder dem Energiebedarf eines menschlichen Call-Centers. Das starke Wachstum der Nutzung muss insofern mit politischer Anreizsetzung für emissionslose Energiegewinnung verbunden sein, wenn eine starke Zunahme an Emissionen vermieden werden soll. Hierfür gibt etwa die IEA klare Empfehlungen und technische Lösungen sind bekannt. Besorgt stimmt die Analysten die Prognose eines starken Wachstums von Datencentern im asiatischen Raum, die meist nicht mit emissionsfreier Energie betrieben werden [@spencer2025].
+Insgesamt wird perspektivisch die punktuelle Einzelnutzung durch **einzelne Anfragen weniger wichtig werden, als die strukturell bedingte Integration der KI-Technologien** in immer mehr digitale Anwendungen, die als Folge des rasanten technologischen Wandels und der hohen Investitionen absehbar ist [@odonnell2025].
 
-Prognose. In der Summe sehen viele der Untersuchungen Probleme eher in der prognostizierten zukünftigen Entwicklung als in den aktuellen Energieaufwänden. Das starke prognostizierte Wachstum könnte etwa dazu führen, dass KI-Anwendungen bis 2028 mehr als 12 % des US-Strombedarfs ausmachen [@odonnell2025].
+**Emissionen.** In diesem Zusammenhang wird der ungünstige Energiemix der aktuell entstehenden Datenzentren kritisiert: Da KI-Rechenzentren rund um die Uhr laufen und meist in Regionen mit fossilen Energieträgern stehen, ist der durchschnittliche CO₂-Ausstoß ihrer Stromversorgung etwa 48% höher als der US-Durchschnitt [@odonnell2025].
+Dem gegenüber stehen **gegenläufige Effekte wie höhere Effizienz der Steuerung**, etwa von Energienetzen [@greene-dewasmes2025a] und dem **Ersatz von manuellen menschlichen Aufwänden durch Digitalisierung**, etwa durch Reisen für einen Film-Dreh (ohne KI) oder dem Energiebedarf eines menschlichen Call-Centers.
+Das starke Wachstum der Nutzung muss insofern mit politischer Anreizsetzung für emissionslose Energiegewinnung verbunden sein, wenn eine starke Zunahme an Emissionen vermieden werden soll.
+Hierfür gibt etwa die IEA klare Empfehlungen und technische Lösungen sind bekannt.
+Besorgt stimmt die Analysten die Prognose eines starken Wachstums von Datencentern im asiatischen Raum, die meist nicht mit emissionsfreier Energie betrieben werden [@spencer2025].
 
-Energieverbrauch und politische Steuerung
-Die IEA prognostiziert ebenfalls eine Verdreifachung des Energieverbrauchs von Rechenzentren bis 2030, getrieben durch KI. Maßnahmen wie Effizienzgewinne und nachhaltige Architektur können diese Entwicklung abbremsen [@spencer2025].
+**Prognose.** In der Summe sehen viele der Untersuchungen **Probleme eher in der prognostizierten zukünftigen Entwicklung als in den aktuellen Energieaufwänden**.
+Das starke prognostizierte Wachstum könnte etwa dazu führen, dass KI-Anwendungen bis 2028 mehr als 12% des US-Strombedarfs ausmachen [@odonnell2025].
 
-Wie der MIT-Bericht hervorhebt, sollte vor diesem Hintergrund der starke und kurzfristig induzierte Ausbau der Infrastruktur politisch durch Anreize zur Emissionsvermeidung gesteuert werden, sodass ein starkes Wachstum der Emissionen durch diesen – wahrscheinlich im Kern unvermeidlichen – technologischen Wandel vermieden wird [@odonnell2025].
+## Energieverbrauch und politische Steuerung
 
-So besteht die Hoffnung, dass positive Effekte auf Emissionen in den Hauptbereichen von CO₂-Emissionen (Gebäude, Industrie, Transport sowie die verbundenen Energienetze) durch höhere Effizienz in Planung und Nutzung genutzt werden können, ohne dass sie durch die wachsenden Kosten von immer komplexeren Inferenz-Anfragen überlagert werden [@greene-dewasmes2025a; @spencer2025].
+Die **IEA** prognostiziert ebenfalls eine **Verdreifachung des Energieverbrauchs von Rechenzentren bis 2030**, getrieben durch KI.
+Maßnahmen wie **Effizienzgewinne** und **nachhaltige Architektur** können diese Entwicklung abbremsen [@spencer2025].
 
-Politisch gesehen ergibt sich insofern ein Bedarf an Steuerung dieses strukturellen technologischen Wandels, damit die Ziele denen der Gesellschaft entsprechen. Dazu müssen die Fakten klar sein: Um Kosten und Effekte abschätzen, abfedern und verteilen zu können, fordern die Forscher eine deutlich höhere Transparenz der Energiebedarfe durch die Modellanbieter [@odonnell2025].
+Wie der **MIT-Bericht** hervorhebt, sollte vor diesem Hintergrund der starke und kurzfristig induzierte Ausbau der Infrastruktur **politisch durch Anreize zur Emissionsvermeidung gesteuert** werden, sodass ein starkes Wachstum der Emissionen durch diesen – wahrscheinlich im Kern unvermeidlichen – technologischen Wandel vermieden wird [@odonnell2025].
+
+So besteht die Hoffnung, dass **positive Effekte auf Emissionen** in den Hauptbereichen von CO₂-Emissionen (Gebäude, Industrie, Transport sowie die verbundenen Energienetze) durch **höhere Effizienz in Planung und Nutzung** genutzt werden können, ohne dass sie durch die wachsenden Kosten von immer komplexeren Inferenz-Anfragen überlagert werden [@greene-dewasmes2025a; @spencer2025].
+
+Politisch gesehen ergibt sich insofern ein **Bedarf an Steuerung dieses strukturellen technologischen Wandels**, damit die Ziele denen der Gesellschaft entsprechen.
+Dazu müssen die **Fakten klar sein**: Um Kosten und Effekte abschätzen, abfedern und verteilen zu können, fordern die Forscher eine **deutlich höhere Transparenz der Energiebedarfe durch die Modellanbieter** [@odonnell2025].
