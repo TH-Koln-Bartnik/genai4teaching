@@ -1,5 +1,4 @@
 /*-- scss:defaults --*/
-
 // ===== TH KÖLN FARBPALETTE =====
 // Primärfarben (aus dem Corporate Design)
 $th-red: #c81e0f;        // Das markante TH-Rot
@@ -21,7 +20,6 @@ $body-bg: $paper;
 
 
 /*-- scss:rules --*/
-
 // ===== GRUNDLEGENDE TYPOGRAFIE =====
 
 body {
@@ -63,6 +61,7 @@ h2::after {
   border-bottom: 2px solid rgba($th-magenta, 0.35);
 }
 
+
 // ===== CALLOUT-BOXEN =====
 // Design-Prinzip: Weißer Hintergrund, farbiger linker Akzent-Rand
 
@@ -88,8 +87,15 @@ h2::after {
   border-left-color: $th-magenta;
 }
 
-.callout-tip {
-  border-left-color: $th-red;
+// Nachher (überschreibt alles):
+.callout.callout-tip,
+.callout-tip.callout {
+  border-left-color: $th-magenta !important;
+}
+
+// Auch das Icon färben:
+.callout.callout-tip .callout-icon::before {
+  color: $th-magenta !important;
 }
 
 .callout-warning {
@@ -118,12 +124,12 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: 1rem 0;
-  border: 1px solid $gray-200;
+  border: none;
 }
 
 thead th {
   background: $gray-100;
-  border-bottom: 2px solid rgba($th-magenta, 0.55);
+  border-bottom: none;
   padding: 0.6rem;
   text-align: left;
   font-weight: 600;
@@ -141,11 +147,14 @@ tbody tr:nth-child(even) {
 }
 
 // ===== ABBILDUNGEN =====
-.quarto-figure, figure {
-  padding: 0.5rem;
-  border: 1px solid rgba($th-magenta, 0.4);
-  background: $paper;
-  margin: 1rem 0;
+// NUR das Äußere bekommt den Rahmen
+.quarto-figure {
+  border: none;
+}
+
+// Das Innere: KEIN Rahmen!
+.quarto-figure figure {
+  border: none !important;
 }
 
 .quarto-figure figcaption, figure figcaption {
@@ -166,6 +175,7 @@ tbody tr:nth-child(even) {
   font-weight: 600;
 }
 
+
 // ===== INHALTSVERZEICHNIS (TOC) =====
 #TOC a {
   color: $ink;
@@ -178,6 +188,7 @@ tbody tr:nth-child(even) {
 #TOC .active {
   border-left: 3px solid $th-magenta;
 }
+
 
 // ===== DARK/LIGHT MODE SWITCHING =====
 // Diese Klassen ermöglichen verschiedene Bilder für Dark/Light Mode
@@ -201,4 +212,9 @@ tbody tr:nth-child(even) {
 // ===== FOOTER =====
 .nav-footer {
   border-top: 2px solid rgba($th-magenta, 0.3);
+}
+
+
+.terminal {
+  border-color: #D6DADC;
 }

@@ -10,14 +10,14 @@ format:
     number-sections: true
 ---
 # Didaktische Ziele und Mechanismen {#sec-didaktik}
-## Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre?
+## Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre? {#sec-ziele-genai}
 Bevor wir uns der konkreten Umsetzung zuwenden, müssen wir uns zunächst fragen, was wir überhaupt bezwecken: Was sind unsere Ziele für die konkrete Umsetzung in Lehrsituationen?
 
 @mollick2023b argumentieren, dass KI als "Kraftverstärker" für Lehrkräfte dienen kann, indem sie die Implementierung evidenzbasierter Lehransätze erleichtert, die sonst aufgrund von Zeit- und Arbeitsaufwand oft schwer umzusetzen sind. Aber wie wirkt das? Was begründet die erhoffte Wirkung?
 
-Zur Orientierung sollen hier kurz Kategorien von Wissen und Lernmethoden eingeführt werden. Dann können wir im Detail diskutieren, für welche Ziele und Methodenwahl welche Art der Unterstützung geeignet ist. Ziele? Was für Wissen? Fakten, Prozesse, Übertrag.
+Zur Orientierung sollen hier kurz Kategorien von Wissen und Lernmethoden eingeführt werden. Dann können wir im Detail diskutieren, für welche Ziele und Methodenwahl welche Art der Unterstützung geeignet ist.
 
-## Wissenstypen
+## Wissenstypen {#sec-wissenstypen}
 
 @hattie2023 [S. 358, 340ff.] unterscheidet drei Stufen des Lernens (s. @fig-wissenstypen).
 
@@ -29,15 +29,15 @@ Die höchste Stufe nennt Hattie **„knowing with“**: Wissen wird flexibel **a
 
 Mit welchen **Methoden** werden diese **Wissenstypen in der Lehre** vertieft?
 
-![Abbildung 8: Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle: Basierend auf @hattie2023, S. 358, 340ff.](images/abbildung8_placeholder.png){#fig-wissenstypen}
+![Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle: Basierend auf @hattie2023, S. 358, 340ff.](images/script03-01.svg){#fig-wissenstypen}
 
 Wo können wir neue technische Hilfsmittel wie LLMs zur Unterstützung dieser Methoden besonders effektiv einsetzen?
 
-## Anwendungsbeispiele nach Wissenskategorien
+## Anwendungsbeispiele nach Wissenskategorien {#sec-anwendungsbeispiele}
 
 Zur Unterstützung des **Aufbaus von Faktenwissen („knowing that“)** können neuere LLMs inzwischen gut grundlegende Konzepte erklären [@korinek2024, S. 48] und zum Selbststudium komplette Abruf-Übungen erzeugen: Sie formulieren Multiple-Choice- und Kurzantwortfragen, bewerten die Eingaben sofort und erklären fehlerhafte Distraktoren – ein Verfahren, das in einer STEM-Untersuchung zur automatischen Item-Generierung überzeugende Validitätswerte zeigte [@sauberli2024].
 
-Ebenso lassen sich sehr schnell Definitionen, Paraphrasen oder Mini-Zusammenfassungen erzeugen, was personalisierte Glossare ermöglicht [@chen2024]. @wang2024 sprechen von KI als „Confusion Helper“. Um Halluzinationen zu vermeiden, wird das Modell häufig per Retrieval-Augmentation an externe Wissensbasen gekoppelt (also z.B. durch Beigabe von Skripten oder Fachartikeln als PDF. Siehe auch das Harvard-Tutor-Bot Beispiel in Abschnitt 4.3, wo Musterlösungen beigegeben werden.).
+Ebenso lassen sich sehr schnell Definitionen, Paraphrasen oder Mini-Zusammenfassungen erzeugen, was personalisierte Glossare ermöglicht [@chen2024]. @wang2024 sprechen von KI als „Confusion Helper“. Um Halluzinationen zu vermeiden, wird das Modell häufig per Retrieval-Augmentation an externe Wissensbasen gekoppelt (also z. B. durch Beigabe von Skripten oder Fachartikeln als PDF. Siehe auch das Harvard-Tutor-Bot Beispiel in Abschnitt 4.3, wo Musterlösungen beigegeben werden.).
 
 Zur **Festigung von Prozessen und Strategien („knowing how“)** dient das LLM als dialogischer Coach: Feingranulierte Prompts („Erkläre den Beschaffungsprozess in 5 Schritten und stelle nach jeder Stufe eine Kontrollfrage“) steigern die Lösungswahrscheinlichkeit in Tutorendialogen [@scarlatos2025]. Sprachmodelle können Lehrenden dabei helfen, komplette „worked examples“ mitsamt Zwischenschritten zu generieren [@hassany2024].
 
@@ -45,17 +45,18 @@ Angepasste Sprachmodelle können Lernende zur Selbstkorrektur anleiten, vor alle
 
 Der **Teachable-Agent-Ansatz** nutzt umgekehrt das Lernen-durch-Lehren-Prinzip: Studierende bringen dem LLM eine Methode bei und reflektieren dabei ihre eigene Strategie. Dies basiert auf der Annahme, dass Interaktionen besonders effektiv zum Lernen beitragen [@chi2018; @hayashi2025]. Wie auch in der persönlichen Interaktion scheint hierbei wichtig zu sein, welche „Persönlichkeit“ der KI-Bot hat, dem Studierende etwas beibringen sollen [@lyu2025] und mehr Anstrengung in der Interaktion (etwa durch ausführlicheres Formulieren beim Erklären) führt zu mehr Lernerfolg [@love2025].
 
-Sprachmodelle können genutzt werden, um komplexe (mathematische) Anwendungsprobleme mit einem simulierten User **„durchzuspielen“,** so dass **logische Fehler im Lösungsprozess sichtbar werden,** wie der Prototyp „MathChat“ von @wu2023a zeigt. Meta-Analysen zeigen starke positive Lerneffekte, deuten aber auch auf mögliche Einschränkungen hin. So gibt es Anzeichen dafür, dass die Effekte höher für Studierende sind als für Schüler und möglicherweise schwinden Motivationsschübe durch **abnehmende 'novelty effects'** einfacher Chat-Interfaces über die Zeit der Nutzung. Die Autoren der Metastudie empfehlen, hier mit stärkerer **Gamifizierung und Personalisierung** der Chatbots gegenzusteuern [@wu2024a], was sich mit praktischen Ansätzen etwa von Duolingo deckt [@kazu2025] (z.B.: Gamifizierung durch Streaks und Leaderboards, Challenges, Video-Chats mit dem Emo-Teen Lili usw.). Solche aufwändigen Setups sind im Hochschulkontext natürlich schwieriger abzudecken, ließen sich aber vielleicht graduell als Studierendenprojekt entwickeln?   
+Sprachmodelle können genutzt werden, um komplexe (mathematische) Anwendungsprobleme mit einem simulierten User **„durchzuspielen“,** so dass **logische Fehler im Lösungsprozess sichtbar werden,** wie der Prototyp „MathChat“ von @wu2023a zeigt. Meta-Analysen zeigen starke positive Lerneffekte, deuten aber auch auf mögliche Einschränkungen hin. So gibt es Anzeichen dafür, dass die Effekte höher für Studierende sind als für Schüler und möglicherweise schwinden Motivationsschübe durch **abnehmende 'novelty effects'** einfacher Chat-Interfaces über die Zeit der Nutzung. Die Autoren der Metastudie empfehlen, hier mit stärkerer **Gamifizierung und Personalisierung** der Chatbots gegenzusteuern [@wu2024a], was sich mit praktischen Ansätzen etwa von Duolingo deckt [@kazu2025] (z. B. Gamifizierung durch Streaks und Leaderboards, Challenges, Video-Chats mit dem Emo-Teen Lili usw.). Solche aufwändigen Setups sind im Hochschulkontext natürlich schwieriger abzudecken, ließen sich aber vielleicht graduell als Studierendenprojekt entwickeln?
 
 Für **Transfer und Anwendung („knowing with“)** entwirft das LLM realitätsnahe Szenarien – etwa Rollenspiele zu Lieferantenausfällen – und übernimmt Stakeholder-Rollen, wobei Analysen des Brookings-Instituts das Potenzial für kollaboratives Reasoning hervorheben [@korinek2024]. Cross-Domain-Prompts fördern Analogiebildung („Welche Parallelen bestehen zwischen agilem Projektmanagement und Lean-Procurement?“) [@mollick2023b].
 
 In Gruppenarbeiten funktioniert das Modell als Co-Autor: KI-unterstützte Schreibprozesse können die Menge und Vielfalt der Ideen steigern [@meincke2024; @shaer2024]. Auch hier ist jedoch die sorgfältige Gestaltung des Lernprozesses wichtig, so dass nicht erwünschte Schwierigkeiten an die KI delegiert und so kritische Denkprozesse nicht eingeübt werden [@lee2025].
 
-## Effektive Lerntechniken und Unterstützung mit KI
+## Effektive Lerntechniken und Unterstützung mit KI {#sec-lerntechniken}
 
-**Wie lernen wir besonders effektiv?** In diesem Abschnitt verdeutlichen wir kurz die angestrebten Wirkmechanismen mit Fokus auf drei Lehrtechniken, die die Kognitionswissenschaft als besonders effektiv heraushebt (siehe @morth2021 für eine gute deutschsprachige Übersicht).
+### Wie lernen wir besonders effektiv? 
+In diesem Abschnitt verdeutlichen wir kurz die angestrebten Wirkmechanismen mit Fokus auf drei Lehrtechniken, die die Kognitionswissenschaft als besonders effektiv heraushebt (siehe @morth2021 für eine gute deutschsprachige Übersicht).
 
-Die moderne Lernforschung der Kognitionspsychologie stellt drei Gruppen von Techniken als besonders gute Kombination zwischen Effektivität und einfacher Anwendung heraus: **Verteiltes und gemischtes Lernen**, **testgestütztes Lernen** und **fragebasierte Ausarbeitung** (Dunlosky, Rawson, Marsh, Nathan & Willingham, 2013; @morth2021; @roediger2012). Diese Wirkung gibt es allerdings nicht umsonst: Den positiven Effekten der Techniken steht oft ein deutlich höherer Vorbereitungsaufwand gegenüber. Wie im Folgenden kurz skizziert wird, lassen sich KI-Tools nutzen, um den Aufwand dieser drei Mechanismen zu verringern, was die Lernwirkung im Vergleich zu traditionellen Ansätzen deutlich erhöhen kann.
+Die moderne Lernforschung der Kognitionspsychologie stellt drei Gruppen von Techniken als besonders gute Kombination zwischen Effektivität und einfacher Anwendung heraus: **Verteiltes und gemischtes Lernen**, **testgestütztes Lernen** und **fragebasierte Ausarbeitung** [@dunlosky2013; @morth2021; @roediger2012]. Diese Wirkung gibt es allerdings nicht umsonst: Den positiven Effekten der Techniken steht oft ein deutlich höherer Vorbereitungsaufwand gegenüber. Wie im Folgenden kurz skizziert wird, lassen sich KI-Tools nutzen, um den Aufwand dieser drei Mechanismen zu verringern, was die Lernwirkung im Vergleich zu traditionellen Ansätzen deutlich erhöhen kann.
 
 **Zeitliche Verteilung und inhaltliche Mischung von Lerninhalten (Spacing & interleaving)**: Diese Technik basiert auf dem Prinzip, dass Informationen besser behalten werden, wenn das Lernen über die Zeit verteilt und in verschiedenen Kontexten stattfindet, anstatt in einer einzigen, intensiven Sitzung [@brown2014; @murre2015; @roediger2012]. **Abstände** zwischen Lerneinheiten und die wiederholte Aktivierung von Wissensstrukturen stärken die Verbindung zwischen Hinweisreizen und Gedächtnis und geben dem Gehirn Zeit, Erinnerungen effektiv zu speichern. Dies fördert die Langzeiterinnerung, denn der wiederholte Abruf verstärkt die gespeicherten Muster und vertieft sie so.
 
@@ -69,7 +70,7 @@ Häufige Aktivierung von Lerninhalten durch Fragen verbessert den Lernerfolg dur
 
 Indem Lernende über die Gründe hinter den Fakten nachdenken, werden Verbindungen zu bereits bekanntem Wissen hergestellt, was zu einem tieferen Verständnis und besserer Erinnerung führt. Dies deckt sich mit dem Postulat der ICAP-Theorie des kognitiven Engagements [@chi2018]: Interaktion (I) ist effektiver als individuelle Konstruktion, was wiederum effektiver ist als aktive (aber nicht konstruktive) Beteiligung, was wiederum die passive Lernteilnahme schlägt (I > C > A > P).
 
-**Wie können LLMs genutzt werden, um diese Lerntechniken zu unterstützen?**
+### Wie können LLMs genutzt werden, um diese Lerntechniken zu unterstützen?
 
 Wir skizzieren das hier kurz an einem Seminar zum interkulturellen Management. Um **zeitliche Verteilung und Mischung** zu fördern, kann mit LLMs eine Serie von kurzen, thematisch variierenden Aufgaben und Fallstudien über das Semester verteilt erstellt werden. Diese könnten reale Szenarien abbilden, in denen Studierende ihre Fähigkeiten im interkulturellen Management anwenden müssen. Beispielsweise könnte das Sprachmodell Aufgaben generieren, bei denen Studierende Strategien für die Überwindung kultureller Barrieren in internationalen Teams entwickeln.
 

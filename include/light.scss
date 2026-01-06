@@ -1,33 +1,98 @@
 /*-- scss:defaults --*/
 // ===== TH KÖLN FARBPALETTE =====
-// Primärfarben (aus dem Corporate Design)
-$th-red: #c81e0f;        // Das markante TH-Rot
-$th-magenta: #b43092;    // Magenta für Akzente
-$th-orange: #ea5a00;     // Orange - NUR für Warnungen!
+$th-red: #c81e0f;
+$th-magenta: #b43092;
+$th-orange: #ea5a00;
 
-// Neutrale Farben (viel Weißraum, klare Struktur)
-$ink: #111111;           // Fast-Schwarz für Text
-$paper: #ffffff;         // Reines Weiß für Hintergrund
-$gray-100: #f5f5f7;      // Sehr helles Grau (Codeblöcke, Tabellenköpfe)
-$gray-200: #e6e6ea;      // Helles Grau (Rahmen, Trennlinien)
-$gray-500: #6b6b73;      // Mittleres Grau (Captions, Nebentexte)
+$ink: #111111;
+$paper: #ffffff;
+$gray-100: #f5f5f7;
+$gray-200: #e6e6ea;
+$gray-500: #6b6b73;
 
-// ===== BOOTSTRAP-VARIABLEN ÜBERSCHREIBEN =====
-// Diese Variablen werden von Bootstrap/Flatly verwendet
 $link-color: $th-red;
 $body-color: $ink;
 $body-bg: $paper;
 
 
 /*-- scss:rules --*/
-// ===== GRUNDLEGENDE TYPOGRAFIE =====
+
+// =============================================================================
+// TH KÖLN FARBLEISTE - OPTION 1: UNTER SIDEBAR-TITEL
+// =============================================================================
+
+.sidebar-title::after {
+  content: "";
+  display: block;
+  margin-top: 0.75rem;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    $th-red 0%,
+    $th-red 45%,
+    $th-magenta 45%,
+    $th-magenta 80%,
+    $th-orange 80%,
+    $th-orange 100%
+  );
+}
+
+
+// =============================================================================
+// TH KÖLN FARBLEISTE - OPTION 4: IM FOOTER
+// =============================================================================
+
+.nav-footer::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 100%;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    to right,
+    $th-red 0%,
+    $th-red 45%,
+    $th-magenta 45%,
+    $th-magenta 80%,
+    $th-orange 80%,
+    $th-orange 100%
+  );
+}
+
+
+// =============================================================================
+// OPTION 5: UNTER JEDER H1 (auskommentiert - zum Ausprobieren)
+// =============================================================================
+// Entferne die // am Anfang jeder Zeile, um diese Option zu aktivieren
+//
+// h1::after {
+//   content: "";
+//   display: block;
+//   margin-top: 0.5rem;
+//   height: 4px;
+//   width: 60%;  // Nicht volle Breite - sieht eleganter aus
+//   background: linear-gradient(
+//     to right,
+//     $th-red 0%,
+//     $th-red 45%,
+//     $th-magenta 45%,
+//     $th-magenta 80%,
+//     $th-orange 80%,
+//     $th-orange 100%
+//   );
+// }
+
+
+// =============================================================================
+// GRUNDLEGENDE TYPOGRAFIE
+// =============================================================================
 
 body {
   color: $ink;
   background: $paper;
 }
 
-// ===== LINKS =====
 a {
   color: $th-red;
   text-decoration: none;
@@ -42,17 +107,14 @@ a {
   }
 }
 
-// Glossar-Links (speziell für dein Buch)
 a.glossary, a:visited.glossary {
   color: $th-red !important;
 }
 
-// ===== ÜBERSCHRIFTEN =====
 h1, h2, h3, h4 {
   color: $ink;
 }
 
-// Dezente Magenta-Linie unter H2 (wie im TH-Design)
 h2::after {
   content: "";
   display: block;
@@ -62,14 +124,15 @@ h2::after {
 }
 
 
-// ===== CALLOUT-BOXEN =====
-// Design-Prinzip: Weißer Hintergrund, farbiger linker Akzent-Rand
+// =============================================================================
+// CALLOUT-BOXEN
+// =============================================================================
 
 .callout {
   background: $paper;
   border: 1px solid $gray-200;
   border-left: 4px solid $th-magenta;
-  border-radius: 0;  // Keine runden Ecken = cleaner TH-Look
+  border-radius: 0;
   
   .callout-header {
     background: rgba($gray-100, 0.6);
@@ -82,31 +145,32 @@ h2::after {
   }
 }
 
-// Verschiedene Callout-Typen
 .callout-note {
   border-left-color: $th-magenta;
 }
 
-// Nachher (überschreibt alles):
 .callout.callout-tip,
 .callout-tip.callout {
   border-left-color: $th-magenta !important;
 }
 
-// Auch das Icon färben:
 .callout.callout-tip .callout-icon::before {
   color: $th-magenta !important;
 }
 
 .callout-warning {
-  border-left-color: $th-orange;  // Hier darf Orange sein!
+  border-left-color: $th-orange;
 }
 
 .callout-important, .callout-caution {
   border-left-color: $th-red;
 }
 
-// ===== CODEBLÖCKE =====
+
+// =============================================================================
+// CODEBLÖCKE
+// =============================================================================
+
 pre, pre code {
   background: $gray-100;
   border: 1px solid $gray-200;
@@ -119,7 +183,11 @@ div.sourceCode {
   border-radius: 4px;
 }
 
-// ===== TABELLEN =====
+
+// =============================================================================
+// TABELLEN
+// =============================================================================
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -141,18 +209,19 @@ tbody td {
   border-bottom: 1px solid $gray-200;
 }
 
-// Zebra-Streifen für bessere Lesbarkeit
 tbody tr:nth-child(even) {
   background: rgba($gray-100, 0.45);
 }
 
-// ===== ABBILDUNGEN =====
-// NUR das Äußere bekommt den Rahmen
+
+// =============================================================================
+// ABBILDUNGEN
+// =============================================================================
+
 .quarto-figure {
   border: none;
 }
 
-// Das Innere: KEIN Rahmen!
 .quarto-figure figure {
   border: none !important;
 }
@@ -164,19 +233,20 @@ tbody tr:nth-child(even) {
   font-style: italic;
 }
 
-// ===== SIDEBAR & NAVIGATION =====
+
+// =============================================================================
+// SIDEBAR & NAVIGATION
+// =============================================================================
+
 .sidebar-title {
   color: $th-red;
 }
 
-// Aktives Kapitel in der Navigation
 .sidebar-item-text.active {
   color: $th-red;
   font-weight: 600;
 }
 
-
-// ===== INHALTSVERZEICHNIS (TOC) =====
 #TOC a {
   color: $ink;
   
@@ -190,8 +260,10 @@ tbody tr:nth-child(even) {
 }
 
 
-// ===== DARK/LIGHT MODE SWITCHING =====
-// Diese Klassen ermöglichen verschiedene Bilder für Dark/Light Mode
+// =============================================================================
+// DARK/LIGHT MODE SWITCHING
+// =============================================================================
+
 .dark-mode,
 .dark-light .cell-output-display figure,
 .dark-light .cell-output-display img {
@@ -204,17 +276,15 @@ tbody tr:nth-child(even) {
   display: block;
 }
 
-// Terminal-Boxen
 .terminal {
   border-color: #D6DADC;
 }
 
-// ===== FOOTER =====
+
+// =============================================================================
+// FOOTER (der Rand wird durch die Farbleiste ersetzt)
+// =============================================================================
+
 .nav-footer {
-  border-top: 2px solid rgba($th-magenta, 0.3);
-}
-
-
-.terminal {
-  border-color: #D6DADC;
+  border-top: none;  // Entfernt, da Farbleiste jetzt da ist
 }

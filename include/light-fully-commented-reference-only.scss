@@ -1,0 +1,663 @@
+// =============================================================================
+// LIGHT.SCSS - TH KÖLN DESIGN FÜR QUARTO
+// Vollständig kommentierte Version für Lernzwecke
+// =============================================================================
+
+
+// =============================================================================
+// TEIL 1: VARIABLEN-DEFINITIONEN (scss:defaults)
+// =============================================================================
+// Alles unter diesem Marker wird VOR Bootstrap geladen.
+// So können wir Bootstrap-Standardwerte überschreiben.
+
+/*-- scss:defaults --*/
+
+// ===== TH KÖLN FARBPALETTE =====
+// Variablen beginnen immer mit $ (Dollar-Zeichen)
+// Format: $name: wert;
+
+$th-red: #c81e0f;
+// Das markante TH-Köln-Rot
+// #c81e0f ist ein Hex-Code: c8=Rot, 1e=Grün, 0f=Blau
+
+$th-magenta: #b43092;
+// Magenta/Pink für Akzente und Strukturlinien
+// Wird für Callout-Ränder, TOC-Markierungen etc. verwendet
+
+$th-orange: #ea5a00;
+// Orange - wird NUR für Warnungen verwendet (sparsam!)
+// Zu viel Orange würde das Design "zukleistern"
+
+$ink: #111111;
+// Fast-Schwarz für Fließtext
+// Nicht reines Schwarz (#000000), da das zu hart wirkt
+
+$paper: #ffffff;
+// Reines Weiß für den Hintergrund
+// Erzeugt maximalen Kontrast zum dunklen Text
+
+$gray-100: #f5f5f7;
+// Sehr helles Grau (fast weiß)
+// Verwendet für: Codeblock-Hintergründe, Tabellenköpfe
+
+$gray-200: #e6e6ea;
+// Helles Grau
+// Verwendet für: Rahmen, Trennlinien, Borders
+
+$gray-500: #6b6b73;
+// Mittleres Grau
+// Verwendet für: Bildunterschriften, Nebentexte, weniger wichtige Infos
+
+
+// ===== BOOTSTRAP-VARIABLEN ÜBERSCHREIBEN =====
+// Diese Variablen sind von Bootstrap vordefiniert.
+// Indem wir sie hier setzen, ändern wir das gesamte Bootstrap-Theme.
+
+$link-color: $th-red;
+// Farbe für alle Links (<a>-Tags)
+// Wir verwenden unsere Variable $th-red (Wiederverwendung!)
+
+$body-color: $ink;
+// Standard-Textfarbe für den gesamten Body
+// Bootstrap wendet das automatisch auf <body> an
+
+$body-bg: $paper;
+// Hintergrundfarbe für den gesamten Body
+// Bootstrap setzt das als background-color auf <body>
+
+
+// =============================================================================
+// TEIL 2: CSS-REGELN (scss:rules)
+// =============================================================================
+// Alles unter diesem Marker wird NACH Bootstrap geladen.
+// Hier können wir Bootstrap-Styles überschreiben und eigene hinzufügen.
+
+/*-- scss:rules --*/
+
+
+// =============================================================================
+// TH KÖLN FARBLEISTE - OPTION 1: UNTER SIDEBAR-TITEL
+// =============================================================================
+// Die dreifarbige Leiste erscheint unter "Generative KI als Hilfe..."
+
+.sidebar-title::after {
+  // ::after ist ein "Pseudo-Element"
+  // Es erzeugt ein unsichtbares Element NACH dem .sidebar-title
+  // Wie ein automatischer Stempel, der nach jedem Titel gesetzt wird
+  
+  content: "";
+  // Was soll als Inhalt eingefügt werden?
+  // "" = leerer String = kein Text, aber das Element existiert trotzdem
+  // WICHTIG: Ohne content wird ::after nicht angezeigt!
+  
+  display: block;
+  // Wie soll das Element dargestellt werden?
+  // block = nimmt die volle verfügbare Breite ein
+  // Alternative: inline (fließt im Text mit)
+  
+  margin-top: 0.75rem;
+  // Abstand OBERHALB des Elements (zur Überschrift)
+  // rem = "root em" = relativ zur Basis-Schriftgröße (meist 16px)
+  // 0.75rem = 0.75 × 16px = 12px
+  
+  height: 6px;
+  // Höhe der Farbleiste
+  // px = Pixel = absolute Einheit
+  
+  width: 100%;
+  // Breite der Farbleiste
+  // 100% = volle Breite des Eltern-Elements (sidebar-title)
+  
+  background: linear-gradient(
+    // linear-gradient() erzeugt einen Farbverlauf
+    // Hier nutzen wir es für HARTE Übergänge (keine Verläufe)
+    
+    to right,
+    // Richtung des Gradienten: von links nach rechts
+    // Alternativen: to left, to bottom, to top, 45deg, etc.
+    
+    $th-red 0%,
+    // Rot startet bei 0% (ganz links)
+    
+    $th-red 45%,
+    // Rot endet bei 45%
+    // Weil Start und Ende die gleiche Farbe haben = solide Fläche
+    
+    $th-magenta 45%,
+    // Magenta startet EXAKT bei 45%
+    // Gleicher Punkt wie Rot-Ende = HARTER Übergang (kein Verlauf)
+    
+    $th-magenta 80%,
+    // Magenta endet bei 80%
+    
+    $th-orange 80%,
+    // Orange startet bei 80%
+    
+    $th-orange 100%
+    // Orange endet bei 100% (ganz rechts)
+  );
+  // Ergebnis: |---ROT (45%)---|---MAGENTA (35%)---|--ORANGE (20%)--|
+}
+
+
+// =============================================================================
+// TH KÖLN FARBLEISTE - OPTION 4: IM FOOTER
+// =============================================================================
+// Die Farbleiste erscheint ÜBER dem Footer-Text
+
+.nav-footer::before {
+  // ::before ist wie ::after, aber fügt VORHER ein Element ein
+  // Also: Farbleiste erscheint VOR dem Footer-Inhalt
+  
+  content: "";
+  // Leerer Inhalt (aber Element existiert)
+  
+  display: block;
+  // Block-Element = eigene Zeile
+  
+  height: 4px;
+  // Etwas dünner als die Sidebar-Leiste (6px vs 4px)
+  // Hierarchie: Sidebar = wichtiger = dicker
+  
+  width: 100%;
+  // Volle Breite
+  
+  margin-bottom: 1rem;
+  // Abstand UNTERHALB zum Footer-Text
+  // 1rem = 16px
+  
+  background: linear-gradient(
+    to right,
+    $th-red 0%,
+    $th-red 45%,
+    $th-magenta 45%,
+    $th-magenta 80%,
+    $th-orange 80%,
+    $th-orange 100%
+  );
+  // Gleicher Gradient wie oben
+}
+
+
+// =============================================================================
+// OPTION 5: UNTER JEDER H1 (auskommentiert)
+// =============================================================================
+// Entferne die // am Anfang jeder Zeile zum Aktivieren
+
+// h1::after {
+//   // Fügt nach JEDER h1-Überschrift eine Farbleiste ein
+//   
+//   content: "";
+//   // Leerer Inhalt
+//   
+//   display: block;
+//   // Eigene Zeile
+//   
+//   margin-top: 0.5rem;
+//   // 8px Abstand zur Überschrift
+//   
+//   height: 4px;
+//   // 4px dick
+//   
+//   width: 60%;
+//   // NUR 60% Breite - sieht eleganter aus als 100%
+//   // Die Leiste ist kürzer als die Überschrift
+//   
+//   background: linear-gradient(
+//     to right,
+//     $th-red 0%,
+//     $th-red 45%,
+//     $th-magenta 45%,
+//     $th-magenta 80%,
+//     $th-orange 80%,
+//     $th-orange 100%
+//   );
+// }
+
+
+// =============================================================================
+// GRUNDLEGENDE TYPOGRAFIE
+// =============================================================================
+
+body {
+  // <body> ist das Haupt-Container-Element der Seite
+  // Alle sichtbaren Inhalte sind darin enthalten
+  
+  color: $ink;
+  // Textfarbe für den gesamten Body
+  // Wird an alle Kind-Elemente vererbt (außer sie überschreiben es)
+  
+  background: $paper;
+  // Hintergrundfarbe
+  // Kurzform für background-color
+}
+
+
+// =============================================================================
+// LINKS
+// =============================================================================
+
+a {
+  // Selektiert alle <a>-Tags (Hyperlinks)
+  
+  color: $th-red;
+  // Linkfarbe = TH-Rot
+  
+  text-decoration: none;
+  // Entfernt die Standard-Unterstreichung
+  // none = keine Dekoration
+  // Alternativen: underline, overline, line-through
+  
+  &:hover {
+    // Das & steht für das Eltern-Element (hier: a)
+    // &:hover = a:hover = "wenn Maus über dem Link schwebt"
+    
+    color: darken($th-red, 12%);
+    // darken() ist eine SCSS-Funktion
+    // Macht $th-red um 12% dunkler
+    // Erzeugt einen subtilen Hover-Effekt
+    
+    text-decoration: underline;
+    // Unterstreichung erscheint beim Hover
+    // Zeigt dem Nutzer: "Das ist klickbar"
+  }
+  
+  &:visited {
+    // a:visited = "bereits besuchte Links"
+    // Browser merkt sich, welche Links angeklickt wurden
+    
+    color: $th-magenta;
+    // Besuchte Links in Magenta
+    // So sieht der Nutzer, wo er schon war
+  }
+}
+
+a.glossary, a:visited.glossary {
+  // Selektiert Links mit der Klasse "glossary"
+  // Sowohl normale als auch besuchte
+  // Das Komma bedeutet ODER (beide Selektoren)
+  
+  color: $th-red !important;
+  // !important überschreibt ALLE anderen Regeln
+  // Glossar-Links sollen immer rot sein
+  // Normalerweise sparsam verwenden!
+}
+
+
+// =============================================================================
+// ÜBERSCHRIFTEN
+// =============================================================================
+
+h1, h2, h3, h4 {
+  // Selektiert alle Überschriften-Ebenen
+  // Das Komma bedeutet: h1 ODER h2 ODER h3 ODER h4
+  
+  color: $ink;
+  // Überschriften in der dunklen Textfarbe
+  // Könnte auch eine andere Farbe sein (z.B. $th-red für h1)
+}
+
+h2::after {
+  // Fügt nach jeder h2-Überschrift ein Element ein
+  // Hier: eine dezente Magenta-Linie
+  
+  content: "";
+  // Leerer Inhalt
+  
+  display: block;
+  // Block-Element (eigene Zeile)
+  
+  margin-top: 0.3rem;
+  // Kleiner Abstand zur Überschrift (ca. 5px)
+  
+  width: 100%;
+  // Volle Breite
+  
+  border-bottom: 2px solid rgba($th-magenta, 0.35);
+  // border-bottom = Linie am unteren Rand
+  // 2px = Dicke
+  // solid = durchgezogene Linie (nicht gestrichelt)
+  // rgba() = Farbe mit Transparenz
+  // $th-magenta = die Farbe
+  // 0.35 = 35% Deckkraft (ziemlich transparent)
+}
+
+
+// =============================================================================
+// CALLOUT-BOXEN
+// =============================================================================
+// Callouts sind die farbigen Hinweisboxen in Quarto
+// z.B. ::: {.callout-note} ... :::
+
+.callout {
+  // Basis-Styling für ALLE Callout-Typen
+  
+  background: $paper;
+  // Weißer Hintergrund
+  
+  border: 1px solid $gray-200;
+  // Dünner grauer Rahmen rundherum
+  // 1px = Dicke
+  // solid = durchgezogen
+  // $gray-200 = helles Grau
+  
+  border-left: 4px solid $th-magenta;
+  // LINKER Rand: dicker und farbig
+  // Überschreibt den linken Teil von "border"
+  // Das ist das charakteristische Callout-Design
+  
+  border-radius: 0;
+  // Ecken-Rundung = 0 = eckig
+  // Alternativen: 4px (leicht rund), 50% (Kreis)
+  // TH-Design: kantig, nicht rund
+  
+  .callout-header {
+    // Verschachtelter Selektor!
+    // = .callout .callout-header
+    // = "Header INNERHALB eines Callouts"
+    
+    background: rgba($gray-100, 0.6);
+    // Leicht grauer Hintergrund mit 60% Deckkraft
+    
+    border-bottom: 1px solid $gray-200;
+    // Linie unter dem Header
+  }
+  
+  .callout-title {
+    // Der Titel-Text im Header
+    
+    color: $ink;
+    // Dunkle Textfarbe
+    
+    font-weight: 600;
+    // Schriftgewicht (Dicke)
+    // 400 = normal, 600 = semi-bold, 700 = bold
+  }
+}
+
+.callout-note {
+  // Spezifisches Styling für "Note"-Callouts
+  
+  border-left-color: $th-magenta;
+  // Linker Rand in Magenta
+}
+
+.callout.callout-tip,
+.callout-tip.callout {
+  // Zwei Selektoren für "Tip"-Callouts
+  // (Quarto setzt die Klassen manchmal in unterschiedlicher Reihenfolge)
+  
+  border-left-color: $th-magenta !important;
+  // Magenta statt dem Standard-Grün
+  // !important weil Bootstrap/Quarto sonst überschreibt
+}
+
+.callout.callout-tip .callout-icon::before {
+  // Das Icon im Tip-Callout
+  // ::before = Pseudo-Element VOR dem Icon-Element
+  // Hier wird das Icon als content eingefügt
+  
+  color: $th-magenta !important;
+  // Icon-Farbe auch in Magenta
+}
+
+.callout-warning {
+  // Warning-Callouts
+  
+  border-left-color: $th-orange;
+  // HIER darf Orange verwendet werden!
+  // Warnung = Aufmerksamkeit = Orange passt semantisch
+}
+
+.callout-important, .callout-caution {
+  // Important und Caution-Callouts
+  // Komma = ODER
+  
+  border-left-color: $th-red;
+  // Rot für "wichtig" und "Vorsicht"
+}
+
+
+// =============================================================================
+// CODEBLÖCKE
+// =============================================================================
+
+pre, pre code {
+  // <pre> = preformatted text (Code-Blöcke)
+  // <code> = inline oder Block-Code
+  // pre code = code INNERHALB von pre
+  
+  background: $gray-100;
+  // Hellgrauer Hintergrund
+  // Hebt Code vom normalen Text ab
+  
+  border: 1px solid $gray-200;
+  // Dünner Rahmen
+  
+  border-radius: 4px;
+  // Leicht abgerundete Ecken
+  // 4px = subtil, nicht zu rund
+}
+
+div.sourceCode {
+  // Quarto wickelt Code in <div class="sourceCode">
+  // Gleiche Styles wie oben anwenden
+  
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  border-radius: 4px;
+}
+
+
+// =============================================================================
+// TABELLEN
+// =============================================================================
+
+table {
+  // Alle <table>-Elemente
+  
+  border-collapse: collapse;
+  // Wie Zellränder behandelt werden
+  // collapse = angrenzende Ränder verschmelzen zu einem
+  // Ohne das: doppelte Linien zwischen Zellen
+  
+  width: 100%;
+  // Tabelle füllt die volle verfügbare Breite
+  
+  margin: 1rem 0;
+  // Außenabstand: 1rem oben und unten, 0 links und rechts
+  // Kurzschreibweise: margin: oben rechts unten links;
+  // Oder: margin: vertikal horizontal;
+  
+  border: none;
+  // Kein Außenrahmen um die gesamte Tabelle
+}
+
+thead th {
+  // <th> Elemente innerhalb von <thead>
+  // = Tabellen-Header-Zellen
+  
+  background: $gray-100;
+  // Hellgrauer Hintergrund für Header
+  
+  border-bottom: none;
+  // Keine Linie unter dem Header
+  // (wird durch andere Styles ersetzt)
+  
+  padding: 0.6rem;
+  // Innenabstand in der Zelle
+  // Macht die Zelle "luftiger"
+  
+  text-align: left;
+  // Text linksbündig
+  // Standard in manchen Browsern ist zentriert
+  
+  font-weight: 600;
+  // Semi-bold für Header
+  
+  color: $ink;
+  // Dunkle Textfarbe
+}
+
+tbody td {
+  // <td> Elemente innerhalb von <tbody>
+  // = Normale Tabellenzellen
+  
+  padding: 0.5rem 0.6rem;
+  // Kurzschreibweise: oben/unten rechts/links
+  // 0.5rem vertikal, 0.6rem horizontal
+  
+  border-bottom: 1px solid $gray-200;
+  // Horizontale Linie unter jeder Zelle
+  // Erzeugt die Zeilen-Trennung
+}
+
+tbody tr:nth-child(even) {
+  // :nth-child(even) = jedes GERADE Kind-Element
+  // tr:nth-child(even) = jede 2., 4., 6. Zeile...
+  // = "Zebra-Streifen"
+  
+  background: rgba($gray-100, 0.45);
+  // Leicht grauer Hintergrund mit 45% Deckkraft
+  // Verbessert die Lesbarkeit bei vielen Zeilen
+}
+
+
+// =============================================================================
+// ABBILDUNGEN
+// =============================================================================
+
+.quarto-figure {
+  // Quartos Wrapper für Abbildungen
+  
+  border: none;
+  // Kein Rahmen um Bilder
+}
+
+.quarto-figure figure {
+  // Das <figure>-Element innerhalb des Wrappers
+  
+  border: none !important;
+  // Auch kein Rahmen (mit !important erzwungen)
+}
+
+.quarto-figure figcaption, figure figcaption {
+  // <figcaption> = Bildunterschrift
+  // Komma = beide Selektoren (mit und ohne .quarto-figure)
+  
+  color: $gray-500;
+  // Mittleres Grau für Captions
+  // Weniger prominent als Haupttext
+  
+  font-size: 0.9em;
+  // 90% der normalen Schriftgröße
+  // em = relativ zur aktuellen Schriftgröße
+  
+  margin-top: 0.5rem;
+  // Abstand zum Bild darüber
+  
+  font-style: italic;
+  // Kursiv
+  // Traditioneller Stil für Bildunterschriften
+}
+
+
+// =============================================================================
+// SIDEBAR & NAVIGATION
+// =============================================================================
+
+.sidebar-title {
+  // Der Buchtitel in der Sidebar
+  // "Generative KI als Hilfe zum Lehren und Lernen"
+  
+  color: $th-red;
+  // In TH-Rot
+}
+
+.sidebar-item-text.active {
+  // Das aktuell ausgewählte Kapitel in der Navigation
+  // .active wird von Quarto automatisch gesetzt
+  
+  color: $th-red;
+  // Rot hervorgehoben
+  
+  font-weight: 600;
+  // Semi-bold
+}
+
+
+// =============================================================================
+// INHALTSVERZEICHNIS (TOC = Table of Contents)
+// =============================================================================
+
+#TOC a {
+  // Links innerhalb des TOC
+  // #TOC = Element mit ID "TOC"
+  // #TOC a = alle <a> Tags darin
+  
+  color: $ink;
+  // Normale dunkle Textfarbe
+  
+  &:hover {
+    // Beim Hover
+    
+    color: $th-red;
+    // Rot
+  }
+}
+
+#TOC .active {
+  // Das aktuell sichtbare Kapitel im TOC
+  
+  border-left: 3px solid $th-magenta;
+  // Magenta-Markierung am linken Rand
+  // Zeigt dem Leser "Du bist hier"
+}
+
+
+// =============================================================================
+// DARK/LIGHT MODE SWITCHING
+// =============================================================================
+// Diese Klassen ermöglichen verschiedene Bilder für Dark/Light Mode
+// Du kannst in Quarto zwei Versionen eines Bildes einbinden
+
+.dark-mode,
+.dark-light .cell-output-display figure,
+.dark-light .cell-output-display img {
+  // Elemente mit Klasse .dark-mode
+  // UND Bilder in .dark-light Containern
+  
+  display: none;
+  // Im Light Mode: VERSTECKEN
+  // Diese Bilder sind für den Dark Mode gedacht
+}
+
+.light-mode,
+.dark-light .cell-output-display + .cell-output-display figure,
+.dark-light .cell-output-display + .cell-output-display img {
+  // Elemente mit Klasse .light-mode
+  // + = "direkt folgendes Geschwister-Element"
+  
+  display: block;
+  // Im Light Mode: ANZEIGEN
+}
+
+.terminal {
+  // Terminal/Konsolen-Boxen
+  
+  border-color: #D6DADC;
+  // Heller Rand
+}
+
+
+// =============================================================================
+// FOOTER
+// =============================================================================
+
+.nav-footer {
+  // Der Footer am Seitenende
+  
+  border-top: none;
+  // Kein oberer Rand mehr
+  // (wird durch die Farbleiste in ::before ersetzt)
+}

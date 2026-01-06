@@ -1,35 +1,99 @@
 /*-- scss:defaults --*/
-
 // ===== TH KÖLN FARBPALETTE =====
-// Primärfarben bleiben gleich
 $th-red: #c81e0f;
 $th-magenta: #b43092;
 $th-orange: #ea5a00;
 
-// Neutrale Farben - INVERTIERT für Dark Mode
-$ink: #e8e8e8;           // Heller Text auf dunklem Grund
-$paper: #1a1a2e;         // Dunkler Hintergrund
-$gray-100: #2d2d44;      // Dunkles Grau (Codeblöcke)
-$gray-200: #3d3d5c;      // Etwas heller (Rahmen)
-$gray-500: #9999aa;      // Mittleres Grau (Captions)
+// Invertierte Farben für Dark Mode
+$ink: #e8e8e8;
+$paper: #1a1a2e;
+$gray-100: #2d2d44;
+$gray-200: #3d3d5c;
+$gray-500: #9999aa;
 
-// ===== BOOTSTRAP-VARIABLEN ÜBERSCHREIBEN =====
-$link-color: lighten($th-red, 15%);  // Links heller für besseren Kontrast
+$link-color: lighten($th-red, 15%);
 $body-color: $ink;
 $body-bg: $paper;
-$code-color: #bb8acf;  // Lila für Code (gut lesbar auf dunkel)
+$code-color: #bb8acf;
 
 
 /*-- scss:rules --*/
 
-// ===== GRUNDLEGENDE TYPOGRAFIE =====
+// =============================================================================
+// TH KÖLN FARBLEISTE - OPTION 1: UNTER SIDEBAR-TITEL
+// =============================================================================
+
+.sidebar-title::after {
+  content: "";
+  display: block;
+  margin-top: 0.75rem;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    $th-red 0%,
+    $th-red 45%,
+    $th-magenta 45%,
+    $th-magenta 80%,
+    $th-orange 80%,
+    $th-orange 100%
+  );
+}
+
+
+// =============================================================================
+// TH KÖLN FARBLEISTE - OPTION 4: IM FOOTER
+// =============================================================================
+
+.nav-footer::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 100%;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    to right,
+    $th-red 0%,
+    $th-red 45%,
+    $th-magenta 45%,
+    $th-magenta 80%,
+    $th-orange 80%,
+    $th-orange 100%
+  );
+}
+
+
+// =============================================================================
+// OPTION 5: UNTER JEDER H1 (auskommentiert - zum Ausprobieren)
+// =============================================================================
+//
+// h1::after {
+//   content: "";
+//   display: block;
+//   margin-top: 0.5rem;
+//   height: 4px;
+//   width: 60%;
+//   background: linear-gradient(
+//     to right,
+//     $th-red 0%,
+//     $th-red 45%,
+//     $th-magenta 45%,
+//     $th-magenta 80%,
+//     $th-orange 80%,
+//     $th-orange 100%
+//   );
+// }
+
+
+// =============================================================================
+// GRUNDLEGENDE TYPOGRAFIE
+// =============================================================================
 
 body {
   color: $ink;
   background: $paper;
 }
 
-// ===== LINKS =====
 a {
   color: lighten($th-red, 15%);
   text-decoration: none;
@@ -44,17 +108,14 @@ a {
   }
 }
 
-// Glossar-Links
 a.glossary, a:visited.glossary {
   color: lighten($th-red, 15%) !important;
 }
 
-// ===== ÜBERSCHRIFTEN =====
 h1, h2, h3, h4 {
   color: $ink;
 }
 
-// Dezente Magenta-Linie unter H2
 h2::after {
   content: "";
   display: block;
@@ -63,7 +124,11 @@ h2::after {
   border-bottom: 2px solid rgba($th-magenta, 0.5);
 }
 
-// ===== CALLOUT-BOXEN =====
+
+// =============================================================================
+// CALLOUT-BOXEN
+// =============================================================================
+
 .callout {
   background: rgba($gray-100, 0.6);
   border: 1px solid $gray-200;
@@ -85,8 +150,13 @@ h2::after {
   border-left-color: $th-magenta;
 }
 
-.callout-tip {
-  border-left-color: lighten($th-red, 10%);
+.callout.callout-tip,
+.callout-tip.callout {
+  border-left-color: $th-magenta !important;
+}
+
+.callout.callout-tip .callout-icon::before {
+  color: $th-magenta !important;
 }
 
 .callout-warning {
@@ -97,7 +167,11 @@ h2::after {
   border-left-color: lighten($th-red, 10%);
 }
 
-// ===== CODEBLÖCKE =====
+
+// =============================================================================
+// CODEBLÖCKE
+// =============================================================================
+
 pre, pre code {
   background: $gray-100;
   border: 1px solid $gray-200;
@@ -111,17 +185,21 @@ div.sourceCode {
   border-radius: 4px;
 }
 
-// ===== TABELLEN =====
+
+// =============================================================================
+// TABELLEN
+// =============================================================================
+
 table {
   border-collapse: collapse;
   width: 100%;
   margin: 1rem 0;
-  border: 1px solid $gray-200;
+  border: none;
 }
 
 thead th {
   background: $gray-100;
-  border-bottom: 2px solid rgba($th-magenta, 0.6);
+  border-bottom: none;
   padding: 0.6rem;
   text-align: left;
   font-weight: 600;
@@ -137,12 +215,17 @@ tbody tr:nth-child(even) {
   background: rgba($gray-100, 0.5);
 }
 
-// ===== ABBILDUNGEN =====
-.quarto-figure, figure {
-  padding: 0.5rem;
-  border: 1px solid rgba($th-magenta, 0.5);
-  background: rgba($paper, 0.5);
-  margin: 1rem 0;
+
+// =============================================================================
+// ABBILDUNGEN
+// =============================================================================
+
+.quarto-figure {
+  border: none;
+}
+
+.quarto-figure figure {
+  border: none !important;
 }
 
 .quarto-figure figcaption, figure figcaption {
@@ -152,7 +235,11 @@ tbody tr:nth-child(even) {
   font-style: italic;
 }
 
-// ===== SIDEBAR & NAVIGATION =====
+
+// =============================================================================
+// SIDEBAR & NAVIGATION
+// =============================================================================
+
 .sidebar-title {
   color: lighten($th-red, 15%);
 }
@@ -162,7 +249,6 @@ tbody tr:nth-child(even) {
   font-weight: 600;
 }
 
-// ===== INHALTSVERZEICHNIS =====
 #TOC a {
   color: $ink;
   
@@ -175,7 +261,11 @@ tbody tr:nth-child(even) {
   border-left: 3px solid $th-magenta;
 }
 
-// ===== DARK/LIGHT MODE SWITCHING =====
+
+// =============================================================================
+// DARK/LIGHT MODE SWITCHING
+// =============================================================================
+
 .dark-mode,
 .dark-light .cell-output-display figure,
 .dark-light .cell-output-display img {
@@ -188,12 +278,15 @@ tbody tr:nth-child(even) {
   display: none;
 }
 
-// Terminal-Boxen
 .terminal {
   border-color: #324C63;
 }
 
-// ===== FOOTER =====
+
+// =============================================================================
+// FOOTER
+// =============================================================================
+
 .nav-footer {
-  border-top: 2px solid rgba($th-magenta, 0.4);
+  border-top: none;
 }
