@@ -48,7 +48,7 @@ Auch hierzu bitten wir ChatGPT (5.2) um Vorschläge.
 
 ![Recherche-Hiwi-Erklärung-Ergebnis. Quelle: ChatGPT-5.2](images/multiple-choice-test-beispiele-gen-chatgpt.svg){#fig-testfragen fig-align="center"}
 
-Ende 2025 kann GenAI **professionelle Folien-Präsentationen sehr schnell erstellen.** Sprachmodelle wie Googles *Gemini* können mittlerweile auch Text in Bildern erstellen [@willison2025a] und damit auch komplexe Infografiken (und Folien). Das Sprachmodell *Claude* liefert eine Beschreibung ('Skill') von 3500 Wörtern mit, die dem Sprachmodell genau erklärt, wie es Schritt für Schritt eine PowerPoint-Präsentation erstellt und testet [@anthropic2025a].
+Ende 2025 kann GenAI **professionelle Folien-Präsentationen sehr schnell erstellen.** Sprachmodelle wie Googles *Gemini* können mittlerweile auch Text in Bildern erstellen [@willison2025a] und damit auch komplexe Infografiken (und Folien). Das Sprachmodell *Claude* liefert eine Beschreibung ('Skill') von 3500 Wörtern mit, die dem Sprachmodell genau erklärt, wie es Schritt für Schritt eine PowerPoint-Präsentation erstellt und testet [@anthropic2025a]. Weiter unten zeigen wir, wie so ein Skill etwa bei der Erstellung komplexer Dokumente (Hausarbeiten!) hilft.
 
 Eine grafisch ansprechende Präsentation zu erstellen ist recht zeitaufwändig – und Brillanz als Grafiker gehört vielleicht auch nicht zu den Kernkompetenzen von Lehrenden. Wir bitten daher Gemini (NotebookLM) und Claude, uns basierend auf Überblicksartikeln zwei Präsentationen zu erstellen: Eine zur Frage, welche Lerntechniken für Studierende besonders gut funktionieren (s. @sec-grundbegriffe) und die zweite zur Frage, welche Best-Practices es gibt, Aufgabenstellungen mit der intensiven Nutzung von GenAI zu verbinden (s. @sec-prompts).
 
@@ -86,6 +86,29 @@ Am Ende dieses Kapitels haben wir aus einer aktuellen Studie Schlaglichter zu Fo
 Die neuen Modelle sind außerdem günstiger und effizienter geworden: die Kosten pro Interaktion sind stark gesunken. Illustratives Beispiel: Eine Million Token kosteten mit GPT-4 noch 50 Dollar, jetzt nur noch 14 Cent [@invertedstone2025; @mollick2025a]. Das Modell halluziniert (weiterhin, also Vorsicht, aber) deutlich seltener als seine Vorgänger: OpenAI gibt hier ca. 1 % Halluzinationen der Antworten statt ca. 5 % bei Vorgängermodellen (o3, 4o) an, je nach Komplexität der Frage und erlaubter „Bedenkzeit“ [@openai2025b].
 
 Weiterhin hat sich die **Internetsuche mit LLMs deutlich verbessert**. Während man früher noch oft über sinnlose oder erfundene Ergebnisse lachte, stellt die Suche von ChatGPT, Google/Gemini oder speziellen Suchanbietern wie Perplexity mittlerweile eine große Zeitersparnis dar: „a useful tool to provide up-to-date answers to questions that are grounded in facts found on the internet, together with the requisite citations—a crucial capability for researchers“ [@korinek2024, S. 3]. Das gilt zunehmend für die stärksten allgemeinen Modelle und erst recht für Anbieter, die auf Forschungsrecherche (und Studierende) spezialisiert sind, wie Elicit oder Paperpal. Auch breite Internet-Recherchen und Textproduktionen sind zunehmend komplett delegierbar („deep research“), mit deutlichen Auswirkungen auf den Arbeitsprozess in der Wissensarbeit (s. etwa @schwarcz2025 für juristische Recherchen, @korinek2024 für Ökonomie und @liang2025 für PR-Tätigkeiten).
+
+**Auch komplexe Texte können die Sprachmodelle mittlerweile erstellen, prüfen und verbessern**. Wie weit sich das fortentwickelt hat, sehen wir am folgenden Beispiel: Einem vorgefertigten **'Skill'** - einer detaillierten Ablaufbeschreibung zur Erstellung komplexer Texte (@openai2025a; anthropic2025a; willison2025b).
+
+
+::: {.callout-tip title="'I know Kung-Fu now' - modular Wissen hinzubuchen über 'Skills'"}
+Mit 'Skills' können wir dem Sprachmodell einen Block an sehr konkreten Anweisungen mitgeben. Zum Beispiel um komplexe längere Texte zu schreiben. Wie detailliert das ist, sehen wir hier am Beispiel des Skills "Co-Authoring", der folgendes detailliert beschreibt:
+
+1- Erfragt Meta-Informationen (Dokumenttyp, Zielgruppe, Zielsetzung) und integriert vorhandene Templates oder Dokumente.
+
+2- Fordert den Nutzer zu einem "Info-Dump" auf und stellt anschließend gezielte Fragen, um Verständnis- und Kontextlücken zu schließen.
+
+3- Erstellt eine initiale Dokumentenstruktur als bearbeitbares Artefakt (Datei) mit Platzhaltern.
+
+4- Führt für jeden Abschnitt ein Brainstorming von Inhaltsoptionen durch und lässt den Nutzer auswählen, bevor der Text formuliert wird.
+
+5- Erstellt den Entwurf für den jeweiligen Abschnitt und führt iterative Änderungen auf Basis präziser Nutzeranweisungen durch.
+
+6- Simuliert Leserfragen ("Reader Testing") mit einer kontextfreien Instanz, um logische Lücken, Unklarheiten oder fehlendes Vorwissen aufzudecken.
+
+7- Korrigiert identifizierte Schwachstellen und führt eine abschließende Gesamtkohärenzprüfung durch.
+
+Den kompletten Skill finden Sie hier: https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md
+:::
 
 ## Wie nutzen Studierende und Lehrende GenAI? {#sec-nutzung}
 
