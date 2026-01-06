@@ -1,23 +1,219 @@
 /*-- scss:defaults --*/
-$link-color: #a60a0a;
-$body-color: #1c1717;
-$body-bg: #fffafa;
+// ===== TH KÖLN FARBPALETTE =====
+// Primärfarben (aus dem Corporate Design)
+$th-red: #c81e0f;        // Das markante TH-Rot
+$th-magenta: #b43092;    // Magenta für Akzente
+$th-orange: #ea5a00;     // Orange - NUR für Warnungen!
+
+// Neutrale Farben (viel Weißraum, klare Struktur)
+$ink: #111111;           // Fast-Schwarz für Text
+$paper: #ffffff;         // Reines Weiß für Hintergrund
+$gray-100: #f5f5f7;      // Sehr helles Grau (Codeblöcke, Tabellenköpfe)
+$gray-200: #e6e6ea;      // Helles Grau (Rahmen, Trennlinien)
+$gray-500: #6b6b73;      // Mittleres Grau (Captions, Nebentexte)
+
+// ===== BOOTSTRAP-VARIABLEN ÜBERSCHREIBEN =====
+// Diese Variablen werden von Bootstrap/Flatly verwendet
+$link-color: $th-red;
+$body-color: $ink;
+$body-bg: $paper;
 
 
 /*-- scss:rules --*/
+// ===== GRUNDLEGENDE TYPOGRAFIE =====
+
+body {
+  color: $ink;
+  background: $paper;
+}
+
+// ===== LINKS =====
+a {
+  color: $th-red;
+  text-decoration: none;
+  
+  &:hover {
+    color: darken($th-red, 12%);
+    text-decoration: underline;
+  }
+  
+  &:visited {
+    color: $th-magenta;
+  }
+}
+
+// Glossar-Links (speziell für dein Buch)
+a.glossary, a:visited.glossary {
+  color: $th-red !important;
+}
+
+// ===== ÜBERSCHRIFTEN =====
+h1, h2, h3, h4 {
+  color: $ink;
+}
+
+// Dezente Magenta-Linie unter H2 (wie im TH-Design)
+h2::after {
+  content: "";
+  display: block;
+  margin-top: 0.3rem;
+  width: 100%;
+  border-bottom: 2px solid rgba($th-magenta, 0.35);
+}
+
+
+// ===== CALLOUT-BOXEN =====
+// Design-Prinzip: Weißer Hintergrund, farbiger linker Akzent-Rand
+
+.callout {
+  background: $paper;
+  border: 1px solid $gray-200;
+  border-left: 4px solid $th-magenta;
+  border-radius: 0;  // Keine runden Ecken = cleaner TH-Look
+  
+  .callout-header {
+    background: rgba($gray-100, 0.6);
+    border-bottom: 1px solid $gray-200;
+  }
+  
+  .callout-title {
+    color: $ink;
+    font-weight: 600;
+  }
+}
+
+// Verschiedene Callout-Typen
+.callout-note {
+  border-left-color: $th-magenta;
+}
+
+// Nachher (überschreibt alles):
+.callout.callout-tip,
+.callout-tip.callout {
+  border-left-color: $th-magenta !important;
+}
+
+// Auch das Icon färben:
+.callout.callout-tip .callout-icon::before {
+  color: $th-magenta !important;
+}
+
+.callout-warning {
+  border-left-color: $th-orange;  // Hier darf Orange sein!
+}
+
+.callout-important, .callout-caution {
+  border-left-color: $th-red;
+}
+
+// ===== CODEBLÖCKE =====
+pre, pre code {
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  border-radius: 4px;
+}
+
+div.sourceCode {
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  border-radius: 4px;
+}
+
+// ===== TABELLEN =====
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  border: none;
+}
+
+thead th {
+  background: $gray-100;
+  border-bottom: none;
+  padding: 0.6rem;
+  text-align: left;
+  font-weight: 600;
+  color: $ink;
+}
+
+tbody td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid $gray-200;
+}
+
+// Zebra-Streifen für bessere Lesbarkeit
+tbody tr:nth-child(even) {
+  background: rgba($gray-100, 0.45);
+}
+
+// ===== ABBILDUNGEN =====
+// NUR das Äußere bekommt den Rahmen
+.quarto-figure {
+  border: none;
+}
+
+// Das Innere: KEIN Rahmen!
+.quarto-figure figure {
+  border: none !important;
+}
+
+.quarto-figure figcaption, figure figcaption {
+  color: $gray-500;
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+// ===== SIDEBAR & NAVIGATION =====
+.sidebar-title {
+  color: $th-red;
+}
+
+// Aktives Kapitel in der Navigation
+.sidebar-item-text.active {
+  color: $th-red;
+  font-weight: 600;
+}
+
+
+// ===== INHALTSVERZEICHNIS (TOC) =====
+#TOC a {
+  color: $ink;
+  
+  &:hover {
+    color: $th-red;
+  }
+}
+
+#TOC .active {
+  border-left: 3px solid $th-magenta;
+}
+
+
+// ===== DARK/LIGHT MODE SWITCHING =====
+// Diese Klassen ermöglichen verschiedene Bilder für Dark/Light Mode
 .dark-mode,
 .dark-light .cell-output-display figure,
-.dark-light .cell-output-display img
-{ display: none; }
+.dark-light .cell-output-display img {
+  display: none;
+}
 
 .light-mode,
-.dark-light .cell-output-display + .cell-output-display figure ,
-.dark-light .cell-output-display + .cell-output-display img
-{ display: block; }
-
-a.glossary, a:visited.glossary {
-  color: #a60a0a !important;
+.dark-light .cell-output-display + .cell-output-display figure,
+.dark-light .cell-output-display + .cell-output-display img {
+  display: block;
 }
+
+// Terminal-Boxen
+.terminal {
+  border-color: #D6DADC;
+}
+
+// ===== FOOTER =====
+.nav-footer {
+  border-top: 2px solid rgba($th-magenta, 0.3);
+}
+
 
 .terminal {
   border-color: #D6DADC;

@@ -1,35 +1,83 @@
-/* edit this file to add custom styles */
+/* style.css - Finale Anpassungen (nach SCSS/Bootstrap geladen) */
+/* TH Köln Design - Roman Bartnik 2026 */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+/* ===== SCHRIFTARTEN ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
-.inline-figure { border: none; }
-.quarto-cover-image { display: block; }
-
+/* Überschriften: Montserrat (wie TH Köln) */
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 200%;
+  font-family: 'Montserrat', sans-serif;
 }
 
-a, a:link, a:visited, a:active, a:hover {
-	color: #a60a0a;
+/* Code: Fira Code für bessere Lesbarkeit */
+code, pre, .sourceCode {
+  font-family: 'Fira Code', monospace;
 }
 
-div.hanging-indent { margin-left: -1.5em !important; }
+
+/* ===== QUARTO-SPEZIFISCHE FIXES ===== */
+
+/* Inline-Figures ohne extra Rahmen */
+.inline-figure { 
+  border: none; 
+}
+
+/* Cover-Image anzeigen */
+.quarto-cover-image { 
+  display: block; 
+}
+
+/* Hanging Indent für Literaturverzeichnis (APA-Stil) */
+div.hanging-indent { 
+  margin-left: -1.5em !important; 
+}
+
+/* Literaturverzeichnis-Einträge */
+.csl-entry {
+  padding-left: 2em;
+  text-indent: -2em;
+}
 
 
-/* Fix für Problem, dass in Callouts keine Zeilenumbrüche angezeigt wurden/*
+/* ===== FIX: ZEILENUMBRÜCHE IN CALLOUTS ===== */
 
-/* Wrap long lines inside code blocks that appear in callouts */
 .callout pre,
 .callout pre code {
-  white-space: pre-wrap;     /* preserve line breaks, but allow wrapping */
-  overflow-wrap: anywhere;   /* break very long tokens/URLs if needed */
-  word-break: break-word;    /* fallback for older browsers */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-/* Optional: remove horizontal scrollbars in callouts */
 .callout pre {
   overflow-x: hidden;
+}
+
+
+/* ===== BILDER RESPONSIVE ===== */
+
+img { 
+  max-width: 100%; 
+}
+
+
+/* ===== CODE-DARSTELLUNG ===== */
+
+/* Code-Output mit Rahmen */
+.cell-output code {
+  white-space: pre-wrap;
+  border: 1px solid grey;
+  padding: 1em;
+}
+
+/* SourceCode nach divs */
+div.sourceCode {
+  clear: both;
+}
+
+/* Fix: Code mit Zeilennummern */
+pre > code.sourceCode > span {
+  text-indent: 0;
+  padding-left: 0;
 }

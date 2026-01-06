@@ -1,0 +1,85 @@
+project:
+  type: book
+  output-dir: docs
+  resources:
+    - downloads/**
+
+number-depth: 4
+
+book:
+  title: "Generative KI als Hilfe zum Lehren und Lernen"
+  author: "Roman Bartnik"
+  description: "Dieses Skript ist eine frei verfügbare Ressource (CC-BY-SA), die dabei helfen soll, GenAI in Lehr- und Lernprozessen erfolgreich einzusetzen."
+  date: "2026-01-06"
+  page-navigation: true
+  chapters:
+    - index.qmd
+    - kapitel01.qmd
+    - kapitel02.qmd
+    - kapitel03.qmd
+    - kapitel04.qmd
+    - kapitel05.qmd
+    
+  appendices:
+    - kapitel06-appendix01-prompt-ueberblick.qmd
+    - kapitel07-appendix02-prompt-sammlung.qmd
+
+  cover-image: images/logos/logo.svg
+  image: images/logos/logo.svg
+  search: true
+  output-file: downloads/genai4teaching
+
+  # GitHub integration
+  repo-url: https://github.com/TH-Koln-Bartnik/genai4teaching
+  repo-branch: main
+  repo-actions: [edit, issue, source]
+  downloads: [pdf, epub]
+  sharing: [twitter, linkedin]
+
+  sidebar:
+    style: "floating"
+
+  page-footer:
+    left: "Bartnik, Roman (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Lizenz: CC-BY-SA. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898"
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-depth: 4
+    toc-expand: 4
+    number-sections: true
+    section-bibliographies: true
+    code-copy: true
+    
+    # TH Köln Themes
+    theme:
+      light:
+        - flatly
+        - include/light.scss
+      dark:
+        - darkly
+        - include/dark.scss
+    
+    # CSS-Dateien (Reihenfolge wichtig!)
+    css: 
+      - include/booktem.css
+      - include/style.css
+      - include/callout-style.css
+      - include/webex.css
+    
+    # JavaScript
+    include-after-body: 
+      - include/script.js
+      - include/webex.js
+  
+  pdf:
+    documentclass: scrreprt
+    number-sections: true
+    include-in-header: include/preamble.tex
+
+  epub:
+    toc: true
+  
+bibliography: references.json
+csl: apa.csl
