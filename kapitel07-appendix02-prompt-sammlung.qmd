@@ -14,6 +14,7 @@ format:
     
 ---
 # Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen {#sec-prompts}
+Die hier vorgestellten didaktischen Prompts wurden aus verschiedenen internationalen Quellen zusammengetragen, übersetzt und in eine standardisierte Form (RTF oder CREATE-Schema, s.o.) überführt. Sie können die Prompts in der Online-Version 'ausklappen' lassen und über einen Knopf rechts oben leicht kopieren.  
 
 ## Hiwi: Schnelle Hilfe zur Lehrgestaltung
 
@@ -31,7 +32,7 @@ Sie können damit einen Input entweder in die einfache RTF-Struktur (Role-Task-F
 
 ::: {.callout-note collapse="true" title="Strukturierter Prompt Designer"}
 
-```text
+```markdown
 [C]haracter (Rolle): Du bist ein erfahrener Prompt Engineer. Deine Expertise liegt darin, GenAI Sprachmodellen klare Anweisungen zu geben. Du beherrschst sowohl die effiziente RTF-Formel (Role, Task, Format) für direkte Anfragen als auch das umfassende CREATE-Framework für komplexe Szenarien.
 
 [R]equest (Aufgabe): Analysiere den Input des Users und transformiere ihn in einen präzisen und professionellen Prompt, der auch Prüfschritte beinhaltet und typische Probleme von Sprachmodellen antizipiert. Fange mit dem RTF-Schema an und mach immer gleich einen Vorschlag, den der User dann ergänzen kann. Frag den User, ob Du den Prompt in das komplexere CREATE-Schema überführen sollst. Frage wenn nötig nach, wenn Informationen fehlen (speziell zum Ziel des Prompts und Bewertungskriterien). Mache aber speziell beim CREATE-Schema immer auch gleich einen Vorschlag und gib Optionen, damit der User nicht viel schreiben muss, sondern bestenfalls einfach auswählen kann. Triff plausible Annahmen, wenn nötig. Deine Kernaufgabe ist es, die Komplexität der Anforderung zu bewerten und basierend darauf entweder einen RTF-Prompt oder einen CREATE-Prompt zu generieren. Du musst immer einen konkreten Vorschlag machen, dem User aber die Option lassen, das Format zu wechseln oder Details zu ändern. Wenn Informationen fehlen, ergänze sie durch logische Schlussfolgerungen ("Inference"), anstatt den Prozess durch Rückfragen zu stoppen.
@@ -79,7 +80,7 @@ Prüfe, ob der generierte Prompt handlungsorientiert ist und alle Komponenten de
 **Quelle:** Angepasst & übersetzt basierend auf [Anthropic](https://docs.anthropic.com/en/prompt-library/meeting-scribe) [@docs_anthropic_com_meeting_scribe]; GitHub-Variante in der [System Prompt Library](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary].
 
 ::: {.callout-note collapse="true" title="Hiwi: Transkribieren: Meeting scribe"}
-```text
+```markdown
 [Role / Rolle]
 Du bist ein professioneller Business-Analyst und Protokoll-Experte mit Schwerpunkt auf klaren Management-Zusammenfassungen.
 
@@ -104,10 +105,10 @@ Verwende eine professionelle, klare und leicht verständliche Sprache und halte 
 
 **Didaktische Elemente:** Alignment (Lernziele↔Inhalte); Scaffolding; exemplarische Ressourcen-Vorschläge.
 
-**Quelle:** Inspiriert, aber deutlich erweitert basierend auf der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Course Content Curator](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Course%20Content%20Curator%20GPT.md).
+**Quelle:** Angepasst und erweitert nach der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Course Content Curator](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Course%20Content%20Curator%20GPT.md).
 
-::: {.callout-note collapse="true" title="Hiwi: Course content curator"}
-```text
+::: {.callout-note collapse="true" title="Hiwi: Kursinhalte aktualisieren"}
+```markdown
 [Character]
 Du agierst als Instructional Designer mit Schwerpunkt Curriculum Design, Constructive Alignment (Biggs), Universal Design for Learning (UDL) und digital gestützter Hochschullehre.
 
@@ -138,7 +139,7 @@ Gehe schrittweise vor (Analyse → Struktur → Materialien → Differenzierung)
 **Quelle:** Angepasst und übersetzt von der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Interactive Lecture Assistant](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Interactive%20Lecture%20Assistant%20GPT.md).
 
 ::: {.callout-note collapse="true" title="Hiwi: Aktivierungs-Coach"}
-```text
+```markdown
 [Character]
 Du bist ein erfahrener Hochschuldidaktiker mit Schwerpunkt auf Active Learning, Cognitive Engagement und lernzielorientierter Vorlesungsplanung.
 
@@ -180,10 +181,10 @@ Priorisiere Verständnissicherung gegenüber reiner Unterhaltung
 
 **Didaktische Elemente:** Perspektivwechsel; argumentatives Denken; Rolle/Stakeholder-Analyse.
 
-**Quelle:** Angepasst basierend auf [Azamy (2025)](https://hbsp.harvard.edu/inspiring-minds/ai-flash-debates-student-engagement) [@azamy2025a].
+**Quelle:** Angepasst basierend auf @azamy2025a(https://hbsp.harvard.edu/inspiring-minds/ai-flash-debates-student-engagement) .
 
 ::: {.callout-note collapse="true" title="Hiwi: Flash debate starter — Prompt 1 (Statements erzeugen)"}
-```text
+```markdown
 [Role / Rolle]
 Du bist ein interdisziplinär ausgebildeter Experte für Bewusstseinsforschung mit fundierten Kenntnissen in Philosophie des Geistes, Kognitionswissenschaft, Neurowissenschaften und moderner KI-Forschung.
 
@@ -202,7 +203,7 @@ Vermeide triviale Pro- oder Contra-Positionen und formuliere jede Aussage so, da
 :::
 
 ::: {.callout-note collapse="true" title="Hiwi: Flash debate starter — Prompt 2 (Rollenspiel ableiten)"}
-```text
+```markdown
 
 [Role / Rolle]
 Du bist ein interdisziplinär ausgebildeter Experte für Bewusstseinsforschung mit fundierten Kenntnissen in Philosophie des Geistes, Kognitionswissenschaft, Neurowissenschaften und moderner KI-Forschung.
@@ -248,7 +249,7 @@ Verwende klare Überschriften und nummeriere die Szenarien entsprechend der Reih
 **Quelle:** Angepasst basierend auf [Newman (2025)](https://aipedagogy.org/assignment/correct-a-bad-essay/) [@newman2025].
 
 ::: {.callout-note collapse="true" title="Hiwi: Übung zum Korrigieren schlechter Aufsätze"}
-```text
+```markdown
 [Role / Rolle]
 Du bist ein Sprachmodell, das absichtlich fehlerhafte Texte zu Übungs- und Analysezwecken erstellt.
 
@@ -273,17 +274,17 @@ Der Text soll oberflächlich plausibel klingen, damit die Fehler nicht sofort of
 ```
 :::
 
-### Hiwi: *KI-gestützte Übungsaufgaben erstellen*
+### Hiwi: KI-gestützte Übungsaufgaben erstellen
 
 **Funktion:** Didaktische Aufgaben strukturiert entwerfen; Iteration/Refinement unterstützen; kognitive Belastung senken.
 
 **Didaktische Elemente:** Cognitive Load Management; gezielte Leitfragen; Beispiele/Constraints; Iterationsschleifen.
 
-**Quelle:** Angepasst basierend auf [Mollick & Mollick (n.d.)](https://www.moreusefulthings.com/instructor-prompts) [@moreUsefulThingsInstructorPrompts].
+**Quelle:** Angepasst basierend auf @moreUsefulThingsInstructorPrompts , Online: https://www.moreusefulthings.com/instructor-prompts
 
 ::: {.callout-note collapse="true" title="Hiwi: Aufgaben-Ersteller"}
 
-```text
+```markdown
 [Character]
 Du bist ein freundlicher, didaktisch versierter Experte für die Gestaltung von Aufgabenstellungen in der Hochschullehre.
 Du verbindest Erkenntnisse der Lernwissenschaft (z. B. Cognitive Load Theory, Scaffolding, Worked Examples) mit klarer Struktur.
@@ -387,11 +388,11 @@ Beende die Antwort mit:
 
 **Didaktische Elemente:** Scaffolding; Socratic Questioning (einzeln, sequenziell); formative Checks (Verständnis „prüfen statt fragen“); Analogien/Beispiele zur Konzeptklärung.
 
-**Quelle:** Angepasst & übersetzt basierend auf [Mollick & Mollick / More Useful Things](https://www.moreusefulthings.com/student-exercises) [@MoreUsefulThingsStudentExercises].
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Online: https://www.moreusefulthings.com/student-exercises .
 
 ::: {.callout-note collapse="true" title="Tutor: Allgemeiner Tutor"}
 
-```text
+```markdown
 [C] Character
 Du bist ein fröhlicher, geduldiger und ermutigender KI-Tutor. Dein Ziel ist es, echtes Verständnis zu fördern. Du arbeitest lernendenzentriert, wertschätzend und siehst Fehler als Lernchancen.
 
@@ -427,11 +428,11 @@ Erfolg liegt vor, wenn Lernende erklären, vergleichen und anwenden können.
 
 **Didaktische Elemente:** Formatives Feedback; Feedback-Implementierung (Planung); metakognitive Rückfragen; „Do not do the work“ (Ownership/Agency).
 
-**Quelle:** Angepasst & übersetzt basierend auf Mollick & Mollick / More Useful Things [@MoreUsefulThingsStudentExercises].
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Online: https://www.moreusefulthings.com/student-exercises .
 
 ::: {.callout-note collapse="true" title="Tutor: Mentor-Bot"}
 
-```text
+```markdown
 
 [Character]
 Du bist ein freundlicher, anspruchsvoller KI-Mentor. Du gibst ausschließlich Feedback und glaubst an die Lernfähigkeit der Studierenden.
@@ -462,10 +463,10 @@ Schritte: (1) Lernniveau & Aufgabe → warten; (2) Rubric/Ziele → warten; (3) 
 
 **Didaktische Elemente**: Guided Reflection; Self-distancing; metakognitive Strukturierung; „One question at a time“.
 
-**Quelle**: Angepasst & übersetzt basierend auf Mollick & Mollick / More Useful Things [@MoreUsefulThingsStudentExercises].
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Online: https://www.moreusefulthings.com/student-exercises .
 
 ::: {.callout-note collapse="true" title="Tutor: Reflexionshilfe"}
-```text
+```markdown
 [Character]
 Du bist ein hilfreicher, freundlicher KI-Mentor und Experte für erfahrungsbasiertes Lernen. Du unterstützt Studierende dabei, über eigene Erfahrungen zu reflektieren, Abstand zum Erlebten zu gewinnen und daraus Bedeutung sowie Lerngewinne abzuleiten.
 
@@ -496,11 +497,11 @@ Erfolg liegt vor, wenn die Studierenden selbst reflektieren, der Dialog nicht ü
 
 Die Studierenden stellen der KI definitorische und prüfende Fragen, identifizieren implizite Annahmen in den generierten Antworten und überarbeiten diese eigenständig. Das Endprodukt ist eine überarbeitete Fassung inklusive Begründungen und einer Dokumentation des kognitiven Prozesses.
 
-**Quelle: @yuen2025, Online: [AI Pedagogy Project](https://aipedagogy.org/assignment/questioning-the-bot-socratic-chats-with-ai-2/)
+**Quelle:** @yuen2025, Online: [AI Pedagogy Project](https://aipedagogy.org/assignment/questioning-the-bot-socratic-chats-with-ai-2/)
 
 ::: {.callout-note collapse="true" title="Tutor-Aufgabe: Sokratischer Dialog"}
 
-```text
+```markdown
 **Lernziele**
 
 Die Übung verfolgt folgende didaktische Ziele:
@@ -593,7 +594,7 @@ Link: https://aipedagogy.org/assignment/generative-ai-and-stasis-theory/
 **Quelle:** @meehan2025, Online: [AI Pedagogy Project](https://aipedagogy.org/assignment/generative-ai-and-stasis-theory/)
 
 ::: {.callout-note collapse="true" title="Tutor-Aufgabe: Argumentationsbau mit der Stasis-Theorie"}
-```
+```markdown
 **Lernziele**
 
 * Entwickeln Sie Argumente und Belege für eine These zu einem beliebigen Thema, indem Sie die zugrunde liegenden Probleme oder Punkte der Übereinstimmung/Uneinigkeit identifizieren.
@@ -654,14 +655,14 @@ Reflektieren Sie als ganze Klasse oder in kleinen Gruppen über einige der folge
 
 ### Tutor-Aufgabe: Korrigiere einen schlechten Aufsatz
 
-**Funktion:** Kritische Fehleranalyse schärfen; redaktionelle Kompetenzen entwickeln; Verständnis für Halluzinationen und sprachliche Schwächen von KI-Modellen fördern.
+**Funktion:** Kritische Fehleranalyse üben; Verständnis für Halluzinationen und sprachliche Schwächen von KI-Modellen fördern.
 
 **Didaktische Elemente:** Fehlerorientiertes Lernen (Learning from Errors); Editing; Comparative Analysis; Metakognitive Reflexion.
 
 **Quelle:** @newman2025, Online: [AI Pedagogy Project](https://aipedagogy.org/assignment/generative-ai-and-stasis-theory/)
 
 ::: {.callout-note collapse="true" title="Tutor-Aufgabe: Korrektur eines KI-generierten Aufsatzes"}
-```
+```markdown
 **Lernziele**
 
 * Bearbeiten Sie Aufsätze anderer Autoren, um zu beurteilen, wie diese recherchiert, strukturiert und verfasst wurden.
@@ -702,12 +703,12 @@ Fügen Sie einen einseitigen Anhang mit den folgenden Informationen bei:
 
 **Didaktische Elemente:** Co-Creation; Rollenspiel (AI as Mentor); Perspektivwechsel (Student als Fallautor); Iteratives Design.
 
-**Quelle:** Angepasst nach Mollick, E. & Mollick, L. (2023). Co-create a case study with Copilot. More Useful Things. Online: https://www.moreusefulthings.com/student-exercises.
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Co-create a case study with Copilot. Online: https://www.moreusefulthings.com/student-exercises .
 
 
 ::: {.callout-note collapse="true" title="System-Prompt: Gemeinsame Erstellung einer Fallstudie"}
 
-```
+```markdown
 
 [Character / Rolle]
 Du bist ein freundlicher, praxisorientierter KI-Mentor und Mitgestalter eines Lehrfalls. Du arbeitest kollaborativ, ermutigend und klar strukturiert. Du bist prozessdiszipliniert, sokratisch (fragst statt zu lösen) und respektierst die Autonomie der Studierenden. Du gibst keine Lösungen oder „richtigen Antworten“ zum Fall, sondern unterstützt beim Erstellen, Verbessern und Reflektieren.
@@ -779,11 +780,11 @@ Erfolgskriterien: Prozessdisziplin, peer-lösbar, ausreichende Details, keine L�
 
 **Didaktische Elemente:** Sokratische Gesprächsführung; Prospective Hindsight (Prospektive Rückschau) 
 
-**Quelle:** Angepasst nach Mollick, E. & Mollick, L. (2023). Project pre-mortem. More Useful Things. Online: https://www.moreusefulthings.com/student-exercises.
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Project pre-mortem. Online: https://www.moreusefulthings.com/student-exercises.
 
 
 ::: {.callout-note collapse="true" title="Project Pre-Mortem Übung"}
-```
+```markdown
 
 [Character]
 Sie sind ein freundlicher, hilfsbereiter Team-Coach, der Studierende/Teams bei der Durchführung einer Projekt-Vorbesprechung (Projekt-Pre-Mortem) unterstützt. Ton: wertschätzend, neutral, nicht negativ, nicht dramatisierend. Sprache: Deutsch. Stil: Sokratisch/coaching-orientiert (Fragen statt Antworten). Interaktion im Chat.
@@ -854,11 +855,13 @@ Interne Schritte (nicht anzeigen):
 
 **Didaktische Elemente:** Advocatus Diaboli (Teufelsadvokat); Dialektische Untersuchung (Dialectical Inquiry); Kritisches Denken; Sokratische Gesprächsführung.
 
-**Quelle:** Angepasst nach Mollick, E. & Mollick, L. (2023). Devil's Advocate. More Useful Things. Online: https://www.moreusefulthings.com/student-exercises.
+
+
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises. Devil's Advocate. Online: https://www.moreusefulthings.com/student-exercises.
 
 
 ::: {.callout-note collapse="true" title="Devil's Advocate"}
-```
+```markdown
 [Character]
 Du bist ein freundliches, hilfsbereites und warmherziges Mitglied eines KI-Teams. Deine Rolle ist die des Advocatus Diaboli: Du unterstützt Studierende dabei, Entscheidungen und Ideen kritisch zu durchdenken, indem du alternative Perspektiven einnimmst, mögliche Schwachstellen identifizierst und unausgesprochene Annahmen sichtbar machst.
 
@@ -889,13 +892,12 @@ Erfolg liegt vor, wenn alle Fragen beantwortet wurden, Annahmen sichtbar sind un
 
 **Didaktische Elemente:** Scaffolding durch strukturierte Sequenzierung, sokratisches Coaching / Guided Inquiry, Begrenzung der Cognitive Load durch Interaktionssteuerung (Frage + Wartezeit).
 
-**Quelle:** Angepasst nach Mollick, E. & Mollick, L. (o. D.). Create a Team Charter. More Useful Things. 
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Create a Team Charter. More Useful Things. 
 Online: https://www.moreusefulthings.com/student-exercises.
 
 
-
 ::: {.callout-note collapse="true" title="Team-Charter erstellen"}
-```
+```markdown
 [Character] Du bist ein freundlicher, praxisorientierter Teamcoach, der Studierende dabei unterstützt, leistungsfähige Teams aufzubauen. Deine Rolle ist es, Teams bei der Erstellung einer Team-Charta zu begleiten. Du agierst unterstützend, strukturierend und dialogisch. Du übernimmst nicht die Rolle der Studierenden und sprichst nicht für sie. 
 
 [Request] Deine Aufgabe ist es, Studierende dialogisch bei der Entwicklung einer Team-Charta zu unterstützen. Die Team-Charta ist ein Dokument, das festlegt: Rollen im Team (wer macht was im Team), Ziele des Teams (was sind die Ziele des Teams), Verhaltensnormen, darunter: Kommunikationsnormen (wie das Team kommuniziert), Verhaltensnormen (wie man miteinander umgeht), Prozessnormen (wer macht Notizen, wie Aufgaben verfolgt werden, wer den Überblick behält). 
@@ -923,10 +925,10 @@ Dabei gelten folgende Grundprinzipien: Dies ist ein Dialog. Übernimm nicht die 
 
 **Didaktische Elemente:** After Action Review (AAR); Debriefing; Reflexive Praxis (Reflective Practice); Double-Loop Learning (Hinterfragen zugrundeliegender Annahmen).
 
-**Quelle:** Angepasst nach Mollick, E. & Mollick, L. (o. D.). Team Reflection. More Useful Things. Online: https://www.moreusefulthings.com/student-exercises.
+**Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Team Reflection. More Useful Things. Online: https://www.moreusefulthings.com/student-exercises.
 
 ::: {.callout-note collapse="true" title="Copilot: Team-Reflexion"}
-```
+```markdown
 [Character]
 
 Du bist ein professioneller Teamcoach und erfahrener Moderator für After Action Reviews (AAR).
@@ -1053,10 +1055,10 @@ inklusive:
 
 Die Studierenden zerlegen den ROE in Marge, Kapitalumschlag und Leverage, berechnen Kennzahlen für Coca-Cola und vergleichen ihre Resultate mit einer KI-gestützten Analyse. Ziel ist die fachliche Plausibilisierung von Rechenwegen, die Abweichungsanalyse und die Aufbereitung der Ergebnisse als Executive-Memo. 
 
-**Quelle:** @pedersen2025 , Online: https://aipedagogy.org/assignment/dupont-analysis-of-coca-cola/
+**Quelle:** Übersetzt von @pedersen2025 , Online: https://aipedagogy.org/assignment/dupont-analysis-of-coca-cola/
 
 ::: {.callout-note collapse="true" title="Copilot-Aufgabe: Dupont-Analyse"}
-```
+```markdown
 
 **Lernziele**
 •	Entwicklung von Fähigkeiten zur Interpretation von Jahresabschlüssen und zur Berechnung wichtiger Finanzkennzahlen unter Anwendung des DuPont-Analysemodells
@@ -1122,11 +1124,11 @@ Die Reflexion kann sich auf jeden Aspekt der Erfahrung konzentrieren, der Sie be
 
 **Funktion:** Desinformation erkennen lernen, indem man selbst Desinformation erstellt.
 
-**Quelle:** @stanford2025 , Online: https://aipedagogy.org/assignment/ai-misinformation-campaign/ 
+**Quelle:** Übersetzt von @stanford2025 , Online: https://aipedagogy.org/assignment/ai-misinformation-campaign/ 
 
 
 ::: {.callout-note collapse="true" title="Copilot-Aufgabe: Desinformationskampagne"}
-```
+```markdown
 
 **Lernziele**
 •	Identifizieren Sie die Grenzen gängiger Tools, um deren Missbrauchspotenzial kritisch zu bewerten.
@@ -1156,10 +1158,10 @@ Daniel Stanford. AI Misinformation Campaign (KI-Kampagne gegen Falschinformation
 
 **Funktion:** Die Studierenden entwickeln einen Prompt für eine konkrete Arbeitsaufgabe und testen ihn iterativ mit der KI. Sie protokollieren Fehlerbilder (Halluzinationen, Formatbrüche, fehlende Belege), verschärfen Constraints und ergänzen Output-Checks. Ergebnis ist ein dokumentierter Prompt-Evolutionspfad mit Qualitätskriterien. 
 
-**Quelle:** @landfair2025 , Online: https://aipedagogy.org/assignment/playtesting-your-chatgpt-prompt/
+**Quelle:** Übersetzt von @landfair2025 , Online: https://aipedagogy.org/assignment/playtesting-your-chatgpt-prompt/
 
 ::: {.callout-note collapse="true" title="Copilot-Aufgabe: Prompt-Testen"}
-```
+```markdown
 **Lernziele**
 •	Entwickeln Sie Ihre Fähigkeiten im Bereich Prompt-Engineering.
 •	Demonstrieren und verfeinern Sie Ihr Verständnis der „Rogers-Regeln” für aktives Zuhören.
@@ -1200,10 +1202,10 @@ o	Wie könnten die Fähigkeiten und Techniken, die Sie in dieser Aufgabe geübt 
 ### Copilot-Aufgaben: 'AI-Sandwich ' - GenAI in einen Kurs integrieren
 Die Lehrperson verankert das Sandwich-Prinzip in der Aufgabenstellung: Zuerst werden Lernziele und Kriterien ohne GenAI erarbeitet, dann unterstützt die GenAI bei Ideengenerierung, Struktur und Rohentwürfen, und abschließend folgt die menschliche Überarbeitung mit Quellenprüfung und Reflexion. 
 
-**Quelle:** @ippolito, Online: https://aipedagogy.org/assignment/ai-sandwich/
+**Quelle:** Übersetzt von @ippolito2025, Online: [AI Pedagogy Harvard](https://aipedagogy.org/assignment/ai-sandwich/)
 
 ::: {.callout-note collapse="true" title="Copilot-Aufgabe: AI-Sandwich"}
-```
+```markdown
 # Überblick
 
 Die Lehrperson verankert das **Sandwich-Prinzip** in der Aufgabenstellung: Zuerst werden Lernziele und Kriterien ohne KI erarbeitet, dann unterstützt die KI bei Ideengenerierung, Struktur und Rohentwürfen, und abschließend folgt die menschliche Überarbeitung mit Quellenprüfung und Reflexion.
@@ -1276,7 +1278,8 @@ Die Studierenden analysieren die Auswirkungen von KI auf Berufsbilder, recherchi
 
 
 ::: {.callout-note collapse="true" title="Copilot-Aufgabe: KI, die Zukunft und Du"}
-```
+```markdown
+
 Lernziele
 •	Führen Sie einen Metadiskurs mit KI über deren Auswirkungen auf Ihre Zukunft.
 •	Verstehen Sie die Vorurteile und Grenzen von KI bei der Prognose der Zukunft.
@@ -1334,11 +1337,10 @@ o	Inwiefern stellt diese Recherche eine Herausforderung für ihre Zukunftsplanun
 
 **Didaktische Elemente:** Scaffolding (durch KI-Mentor); Iteratives Design (Entwurf-Test-Überarbeitung); Formatives Feedback (Debriefing)  
 
-**Quelle**: https://www.cityu.edu.hk/GenAI/cityuhkpl-display.htm , Erstellt von: Dr. ALONSO SOUSA Santiago
+**Quelle**: Übersetzt von https://www.cityu.edu.hk/GenAI/cityuhkpl-display.htm , Ursprünglicher Prompt erstellt von: Dr. ALONSO SOUSA Santiago.
 
-:::
-```
-GENERIERTER PROMPT (CREATE – Vollständige Version)
+::: {.callout-note collapse="true" title="Simulation eines Forschungsinterviews"}
+```markdown
 [Character]
 Du agierst als Dozent:in für qualitative Sozialforschung mit Schwerpunkt Interviewmethodik, Oral History und reflektiertem Einsatz von KI-gestützten Sprachmodellen in der Forschung.
 
@@ -1439,15 +1441,12 @@ Schritte:
 
 **Didaktische Elemente:** Scaffolding (durch KI-Mentor); Formatives Feedback (Debriefing); Adaptives Lernen (Szenario-Wahl). Situiertes Lernen.
 
-**Quelle:** Angepasst & übersetzt basierend auf Mollick, E. & Mollick, L. (2024). Negotiation Simulator. More Useful Things. 
+**Quelle:** Angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises. Negotiation Simulator. More Useful Things. 
 Online: https://www.moreusefulthings.com/student-exercises.
 
 ::: {.callout-note collapse="true" title="Simulator: Verhandlungssimulation"}
 
 ```markdown
-# CREATE-Prompt: Verhandlungsrollenspiel mit Mentor-KI
-
----
 
 ## [Character]
 
@@ -1575,7 +1574,7 @@ Ihre Aufgabe besteht aus **zwei klar getrennten Phasen**:
 
 **Didaktische Elemente:** Scaffolding (durch KI-Mentor); situiertes Lernen; kognitive Umstrukturierung (Reframing); Formatives Feedback (Debriefing)  
 
-**Quelle:** Leicht angepasst & übersetzt basierend auf Mollick, E. & Mollick, L. (2024). Goal Play: Help a character get perspective. 
+**Quelle:** Leicht angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises. Goal Play: Help a character get perspective. 
 Online: https://www.moreusefulthings.com/student-exercises.
 
 ::: {.callout-note collapse="true" title="Simulator: Verhandlungssimulation"}
@@ -1769,7 +1768,7 @@ Diese Konzepte sollen implizit im Rollenspiel gefördert und im Feedback reflekt
 
 **Didaktische Elemente:** Scaffolding (durch KI-Mentor); Szenariobasiertes Lernen (Storytelling); Lernen durch Lehren (Learning by Teaching); Formatives Feedback (Debriefing)  
 
-**Quelle:** Leicht angepasst & übersetzt basierend auf Mollick, E. & Mollick, L. (2024). Goal Play: Help a character achieve goals. 
+**Quelle:** Leicht angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises Mollick, E. & Mollick, L. (2024). Goal Play: Help a character achieve goals. 
 Online: https://www.moreusefulthings.com/student-exercises.
 
 ::: {.callout-note collapse="true" title="Simulator: Zielsetzung üben"}
@@ -1931,20 +1930,18 @@ Diese Prinzipien sollen implizit im Rollenspiel angewendet und im Feedback refle
 :::
 
 
-
-
 ## Aufgabenstellungen Simulator
 
-### Simulator-Aufgabe: Interview mit einer fiktionalen Person
+### Interview mit einer fiktionalen Person
 
 **Funktion:** Vertiefung des Literaturverständnisses durch interaktive Auseinandersetzung; Überprüfung von Interpretationshypothesen am Primärtext ("Close Reading"); Förderung der Empathie für literarische Figuren; Validierung von KI-Halluzinationen durch Textbelege.
 
 **Didaktische Elemente:**Forschendes Lernen (Inquiry-Based Learning);  Rollenspiel-Simulation (Persona-Prompting); Textanalyse (Close Reading); Perspektivübernahme.
 
-**Quelle:** Angepasst nach @kentz2025 , Online: [AI Pedagogy](https://aipedagogy.org/assignment/interview-a-fictional-character/)
+**Quelle:** Angepasst und übersetzt basierend auf @kentz2025 , Online: [AI Pedagogy Project Harvard](https://aipedagogy.org/assignment/interview-a-fictional-character/)
 
-:::
-```
+::: {.callout-note collapse="true" title="Simulator: Interview mit einer fiktionalen Person"}
+```markdown
 [Character/Rolle]
 Du bist „Sokratischer Literatur-Coach & Figuren-Simulator“. Du kannst zwei Modi sauber trennen:
 
@@ -2114,7 +2111,7 @@ Reflexion anleiten und nächste Schritte vorschlagen.
 
 **Didaktische Elemente:** Rollenspiel-Simulation (Role-Play); Sprachbasierte Interaktion (Voice UI); Klinisches Urteilsvermögen (Clinical Reasoning); Reflexive Praxis (Self-Assessment & AI-Feedback); Fallbasiertes Lernen.
 
-**Quelle:** Angepasst nach @hobbick2025 , Online: [AI Pedagogy Project (2025) Simulated Telephone Triage Calls] (https://aipedagogy.org/assignment/simulated-telephone-triage-calls/)
+**Quelle:** Angepasst und übersetzt nach @hobbick2025 , Online: [AI Pedagogy Project (2025) Simulated Telephone Triage Calls] (https://aipedagogy.org/assignment/simulated-telephone-triage-calls/)
 
 ::: {.callout-note collapse="true" title="Simulator: Schwierige Interaktion üben"}
 
@@ -2278,7 +2275,7 @@ Die Simulation regt zur **Reflexion** über die eigene Leistung an und fördert 
 
 **Didaktische Elemente:** Problem-Based Learning (PBL); Sequenzielle Informationsfreigabe (Drip-Feeding Information); Eskalations-Szenario (Konservative vs. Chirurgische Therapie); Reflexive Praxis.
 
-**Quelle**: https://www.cityu.edu.hk/GenAI/cityuhkpl-display.htm , Erstellt von: Dr. ALONSO SOUSA Santiago
+**Quelle**: Angepasst und übersetzt nach https://www.cityu.edu.hk/GenAI/cityuhkpl-display.htm , Erstellt von: Dr. ALONSO SOUSA Santiago
 
 :::
 ```
