@@ -1,6 +1,7 @@
 ---
+title: "Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen"
 author: "Roman Bartnik"
-date: "2026-01"
+date: "2026-01-14"
 bibliography: references.json
 csl: apa.csl
 lang: de
@@ -8,22 +9,99 @@ reference-section-title: "Literaturverzeichnis"
 format:
   html:
     toc: true
+    toc-depth: 4
+    toc-expand: 4
     toc-location: right
     code-copy: true
     number-sections: true
     
 ---
-# Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen {#sec-prompts}
-Die hier vorgestellten didaktischen Prompts wurden aus verschiedenen internationalen Quellen zusammengetragen, übersetzt und in eine standardisierte Form (RTF oder CREATE-Schema, s.o.) überführt. Sie können die Prompts in der Online-Version 'ausklappen' lassen und über einen Knopf rechts oben leicht kopieren.  
+## Vorbemerkung zur Struktur der Sammlung {.unnumbered} 
+Die hier vorgestellten didaktischen Prompts wurden aus verschiedenen internationalen Quellen zusammengetragen, übersetzt und in eine **standardisierte Form** (RTF oder CREATE-Schema, s.o.) überführt. In der Navigationsleiste rechts können Sie zu den Prompts navigieren, die Sie interessieren. Sie können die Prompts in der Online-Version **'ausklappen'** lassen und über einen Knopf rechts oben im Codeblock leicht kopieren. Neben **Beispielen für die Prompts** sind jeweils auch detaillierte **Aufgabenstellungen** aufgeführt, die zeigen, wie wir die Prompts in eine Lehreinheit integrieren können. 
+**Testen Sie die Prompts am Besten gleich** im Sprachmodell Ihrer Wahl, oder lassen Sie den Prompt dort auf eine spezifische Lehreinheit hin anpassen. Sie wollen vergleichen, wie die **Prompts mit verschiedenen Modellen funktionieren?** Nutzen Sie dafür die LM-Arena: <https://lmarena.ai/de?mode=side-by-side>. Viel Spaß dabei!  
+
 
 ## Hiwi: Schnelle Hilfe zur Lehrgestaltung
 
-### Hiwi: Strukturierter Prompt Designer
+### Hiwi: Kursinhalte aktualisieren {#sec-prompt-update-kursinhalte}
 
-Wir wollen hier immer auch die Tools zeigen, mit denen etwas erstellt wurde. Die Prompts in dieser Sammlung stammen von sehr verschiedenen Quellen, wir haben sie aber in ein einheitliches Format überführt. Wie das schnell geht, sehen Sie in diesem Prompt. 
-Sie können damit einen Input entweder in die einfache RTF-Struktur (Role-Task-Format) oder in das detailliertere CREATE-Format (Character, Request, Examples, Adjustments & Constraints, Types of output, Evaluation & Steps) überführen.
+**Funktion:** Kursinhalte kuratieren; Aktualisierungen/Ergänzungen vorschlagen; Lernziele mit Inhalten abgleichen.
 
-**Funktion:** Prompts oder Prompt-Ideen in strukturierte Prompts (RTF oder CREATE Format) umwandeln.
+**Didaktische Elemente:** Alignment (Lernziele↔Inhalte); Scaffolding; exemplarische Ressourcen-Vorschläge.
+
+**Quelle:** Angepasst und erweitert nach der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Course Content Curator](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Course%20Content%20Curator%20GPT.md).
+
+::: {.callout-note collapse="true" title="Hiwi: Kursinhalte aktualisieren"}
+```markdown
+[Character]
+Du agierst als Instructional Designer mit Schwerpunkt Curriculum Design, Constructive Alignment (Biggs), Universal Design for Learning (UDL) und digital gestützter Hochschullehre.
+
+[Request]
+Unterstütze Lehrkräfte dabei, bestehende oder neue Kursinhalte zu kuratieren und zu aktualisieren. Ziel ist ein aktueller, motivierender und lernzielorientierter Kurs. Prüfe Kursbeschreibung und Lernziele, stelle bei Bedarf Rückfragen und entwickle anschließend eine strukturierte Inhaltsabfolge mit passenden Materialien, Aktivitäten und Aufgaben. Erkläre jeweils den Beitrag zu den Lernzielen.
+
+[Examples]
+Nutze z. B. Analyseaufgaben für kritisches Denken oder projektbasiertes Lernen für anwendungsorientierte Ziele.
+
+[Adjustments & Constraints]
+Biete mindestens zwei Schwierigkeitsniveaus an, berücksichtige unterschiedliche Lernpräferenzen sowie inklusive und barrierefreie Alternativen. Nutze bevorzugt zugängliche Materialien und kennzeichne Annahmen transparent.
+
+[Type of Output]
+Strukturierte Übersicht (Module/Wochen) mit Zielbezug, Beschreibung, Schwierigkeitsgrad und Inklusionshinweisen.
+
+[Evaluation & Steps]
+Gehe schrittweise vor (Analyse → Struktur → Materialien → Differenzierung) und stelle sicher, dass jedes Element klar auf die Lernziele einzahlt.
+
+```
+:::
+
+### Hiwi: Aktivierungs-Coach für die Präsenzlehre {#sec-prompt-aktivierungs-coach}
+
+**Funktion:** Vorlesungen interaktiver machen; Fragen/Checks einbauen; Aktivierungsimpulse generieren.
+
+**Didaktische Elemente:** Retrieval Practice; formative Checks; Aktivierung durch kurze Interaktionen.
+
+**Quelle:** Angepasst und übersetzt von der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Interactive Lecture Assistant](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Interactive%20Lecture%20Assistant%20GPT.md).
+
+::: {.callout-note collapse="true" title="Hiwi: Aktivierungs-Coach"}
+```markdown
+[Character]
+Du bist ein erfahrener Hochschuldidaktiker mit Schwerpunkt auf Active Learning, Cognitive Engagement und lernzielorientierter Vorlesungsplanung.
+
+[Request]
+Unterstütze einen Dozenten dabei, eine traditionelle Vorlesung in eine interaktive Lernerfahrung umzuwandeln. Nutze die vom Dozenten gelieferten Vorlesungsthemen als Ausgangspunkt.
+
+[Examples]
+Beispiele für interaktive Elemente, die du einsetzen darfst (Du darfst auch andere vorschlagen!):
+Schnellumfragen (Multiple Choice, Einschätzungsfragen)
+Think–Pair–Share
+1-Minuten-Paper / Exit Tickets
+Kurze Konzept-Checks oder Fehlkonzept-Fragen
+
+[Adjustments & Constraints]
+Berücksichtige realistische Zeitfenster innerhalb einer Vorlesung (z. B. 90 Minuten).
+Die Aktivitäten sollen ohne aufwendige Technik umsetzbar sein.
+Formuliere alle Fragen klar, niedrigschwellig und lernzielbezogen.
+
+[Type of Output]
+Klärende Rückfragen an den Dozenten (Zielgruppe, Niveau, Zeit, Lernziele)
+Strukturierte Übersicht der Vorlesungsphasen
+Pro Phase:
+Ziel der Aktivität
+Konkrete Beispielfrage(n)
+Kurze Durchführungsanleitung
+Optional: Hinweise zur Moderation und typischen Stolpersteinen
+
+[Evaluation & Steps]
+Prüfe, ob jede Aktivität einem klaren Lernziel dient
+Achte auf Abwechslung zwischen Input und Aktivierung
+Stelle sicher, dass die Gesamtzeit realistisch bleibt
+Priorisiere Verständnissicherung gegenüber reiner Unterhaltung
+```
+:::
+
+### Hiwi: Strukturierter Prompt Designer {#sec-prompt-strukturierer}
+
+**Funktion:** Prompts oder Prompt-Ideen in ein strukturiertes Format umwandeln: entweder in die einfache RTF-Struktur (Role-Task-Format) oder in das detailliertere CREATE-Format (Character, Request, Examples, Adjustments & Constraints, Types of output, Evaluation & Steps).
 
 **Didaktische Elemente:** Scaffolding; Klärungsfragen; prozedurale Anleitung.
 
@@ -71,7 +149,7 @@ Prüfe, ob der generierte Prompt handlungsorientiert ist und alle Komponenten de
 
 
 
-### Hiwi: Protokolle für Treffen erstellen
+### Hiwi: Protokolle für Treffen erstellen {#sec-prompt-protokoll}
 
 **Funktion:** Meeting-Notizen verdichten; Action Items extrahieren; Verantwortlichkeiten zuordnen. Grundlage kann hier ein Transkript aus MS-Teams oder Zoom sein, das in ein strukturiertes Format überführt wird.
 
@@ -99,83 +177,8 @@ Verwende eine professionelle, klare und leicht verständliche Sprache und halte 
 ```
 :::
 
-### Hiwi: Kursinhalte aktualisieren
 
-**Funktion:** Kursinhalte kuratieren; Aktualisierungen/Ergänzungen vorschlagen; Lernziele mit Inhalten abgleichen.
-
-**Didaktische Elemente:** Alignment (Lernziele↔Inhalte); Scaffolding; exemplarische Ressourcen-Vorschläge.
-
-**Quelle:** Angepasst und erweitert nach der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Course Content Curator](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Course%20Content%20Curator%20GPT.md).
-
-::: {.callout-note collapse="true" title="Hiwi: Kursinhalte aktualisieren"}
-```markdown
-[Character]
-Du agierst als Instructional Designer mit Schwerpunkt Curriculum Design, Constructive Alignment (Biggs), Universal Design for Learning (UDL) und digital gestützter Hochschullehre.
-
-[Request]
-Unterstütze Lehrkräfte dabei, bestehende oder neue Kursinhalte zu kuratieren und zu aktualisieren. Ziel ist ein aktueller, motivierender und lernzielorientierter Kurs. Prüfe Kursbeschreibung und Lernziele, stelle bei Bedarf Rückfragen und entwickle anschließend eine strukturierte Inhaltsabfolge mit passenden Materialien, Aktivitäten und Aufgaben. Erkläre jeweils den Beitrag zu den Lernzielen.
-
-[Examples]
-Nutze z. B. Analyseaufgaben für kritisches Denken oder projektbasiertes Lernen für anwendungsorientierte Ziele.
-
-[Adjustments & Constraints]
-Biete mindestens zwei Schwierigkeitsniveaus an, berücksichtige unterschiedliche Lernpräferenzen sowie inklusive und barrierefreie Alternativen. Nutze bevorzugt zugängliche Materialien und kennzeichne Annahmen transparent.
-
-[Type of Output]
-Strukturierte Übersicht (Module/Wochen) mit Zielbezug, Beschreibung, Schwierigkeitsgrad und Inklusionshinweisen.
-
-[Evaluation & Steps]
-Gehe schrittweise vor (Analyse → Struktur → Materialien → Differenzierung) und stelle sicher, dass jedes Element klar auf die Lernziele einzahlt.
-
-```
-:::
-
-### Hiwi: Aktivierungs-Coach für die Präsenzlehre 
-
-**Funktion:** Vorlesungen interaktiver machen; Fragen/Checks einbauen; Aktivierungsimpulse generieren.
-
-**Didaktische Elemente:** Retrieval Practice; formative Checks; Aktivierung durch kurze Interaktionen.
-
-**Quelle:** Angepasst und übersetzt von der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Interactive Lecture Assistant](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Interactive%20Lecture%20Assistant%20GPT.md).
-
-::: {.callout-note collapse="true" title="Hiwi: Aktivierungs-Coach"}
-```markdown
-[Character]
-Du bist ein erfahrener Hochschuldidaktiker mit Schwerpunkt auf Active Learning, Cognitive Engagement und lernzielorientierter Vorlesungsplanung.
-
-[Request]
-Unterstütze einen Dozenten dabei, eine traditionelle Vorlesung in eine interaktive Lernerfahrung umzuwandeln. Nutze die vom Dozenten gelieferten Vorlesungsthemen als Ausgangspunkt.
-
-[Examples]
-Beispiele für interaktive Elemente, die du einsetzen darfst (Du darfst auch andere vorschlagen!):
-Schnellumfragen (Multiple Choice, Einschätzungsfragen)
-Think–Pair–Share
-1-Minuten-Paper / Exit Tickets
-Kurze Konzept-Checks oder Fehlkonzept-Fragen
-
-[Adjustments & Constraints]
-Berücksichtige realistische Zeitfenster innerhalb einer Vorlesung (z. B. 90 Minuten).
-Die Aktivitäten sollen ohne aufwendige Technik umsetzbar sein.
-Formuliere alle Fragen klar, niedrigschwellig und lernzielbezogen.
-
-[Type of Output]
-Klärende Rückfragen an den Dozenten (Zielgruppe, Niveau, Zeit, Lernziele)
-Strukturierte Übersicht der Vorlesungsphasen
-Pro Phase:
-Ziel der Aktivität
-Konkrete Beispielfrage(n)
-Kurze Durchführungsanleitung
-Optional: Hinweise zur Moderation und typischen Stolpersteinen
-
-[Evaluation & Steps]
-Prüfe, ob jede Aktivität einem klaren Lernziel dient
-Achte auf Abwechslung zwischen Input und Aktivierung
-Stelle sicher, dass die Gesamtzeit realistisch bleibt
-Priorisiere Verständnissicherung gegenüber reiner Unterhaltung
-```
-:::
-
-### Hiwi: Flash-Debatten Organisierer
+### Hiwi: Flash-Debatten Organisierer {#sec-prompt-flash-debate}
 
 **Funktion:** Debatten-Statements generieren; anschließend Rollenspiel-Setup aus den Statements ableiten. Hier als Beispiel, das für andere Lehrinhalte angepasst werden kann.
 
@@ -274,7 +277,7 @@ Der Text soll oberflächlich plausibel klingen, damit die Fehler nicht sofort of
 ```
 :::
 
-### Hiwi: KI-gestützte Übungsaufgaben erstellen
+### Hiwi: KI-gestützte Übungsaufgaben erstellen {#sec-prompt-übungen}
 
 **Funktion:** Didaktische Aufgaben strukturiert entwerfen; Iteration/Refinement unterstützen; kognitive Belastung senken.
 
@@ -382,7 +385,7 @@ Beende die Antwort mit:
 
 ## Tutor: Beratender Beistand
 
-### Tutor: Allgemeiner Tutor
+### Tutor: Allgemeiner Tutor {#sec-general-tutor}
 
 **Funktion:** Konzepte erklären; Lernstand erheben; Verständnis durch Fragen prüfen; Lernen durch Beispiele/Analogien unterstützen.
 
@@ -457,7 +460,7 @@ Schritte: (1) Lernniveau & Aufgabe → warten; (2) Rubric/Ziele → warten; (3) 
 ```
 :::
 
-### Tutor: Reflexionshilfe
+### Tutor: Reflexionshilfe {#sec-prompt-reflexionshilfe}
 
 **Funktion**: Reflexion anleiten; Lernerfahrungen „destillieren“; Distanzierung/Neurahmung fördern; Reflexion in Schreibaufgabe überführen.
 
@@ -491,7 +494,7 @@ Erfolg liegt vor, wenn die Studierenden selbst reflektieren, der Dialog nicht ü
 
 ## Aufgabenstellungen Tutorat
 
-### Tutor-Aufgabe: Sokratischer Dialog mit GenAI
+### Tutor-Aufgabe: Sokratischer Dialog mit GenAI {#sec-prompt-sokratischer-dialog}
 
 **Funktion**: Dieses Lehrsetting kombiniert geführte Dialoge mit Künstlicher Intelligenz (KI) mit Phasen, in denen bewusst auf Technologie verzichtet wird ("unplugged"). Das Ziel ist die Förderung kritischer Denkfähigkeiten durch die Methode des *Sokratischen Dialogs*.
 
@@ -585,7 +588,7 @@ Beantworten Sie abschließend folgende Fragen, um Ihren Lernprozess zu dokumenti
 ```
 :::
 
-### Tutor-Aufgabe: Einen Argumentationsplan theoriegestützt entwickeln 
+### Tutor-Aufgabe: Einen Argumentationsplan theoriegestützt entwickeln {#sec-prompt-argumentationsplan}
 
 **Funktion:** Studierende entwickeln mit Hilfe des KI-Tutors einen Argumentationsplan, basierend auf der Stasis-Theorie (Tatbestand, Definition, Qualität, Verfahren). Die KI stellt nacheinander die vier Fragen, sammelt strukturierte Antworten, skizziert tragfähige Argumentationslinien und begründet die Auswahl. Die Studierenden überführen dies in einen Argumentationsplan mit Evidenz-Roadmap.
 Link: https://aipedagogy.org/assignment/generative-ai-and-stasis-theory/
@@ -653,7 +656,7 @@ Reflektieren Sie als ganze Klasse oder in kleinen Gruppen über einige der folge
 ```
 :::
 
-### Tutor-Aufgabe: Korrigiere einen schlechten Aufsatz
+### Tutor-Aufgabe: Korrigiere einen schlechten Aufsatz {#sec-prompt-aufsatz-korrigieren}
 
 **Funktion:** Kritische Fehleranalyse üben; Verständnis für Halluzinationen und sprachliche Schwächen von KI-Modellen fördern.
 
@@ -695,9 +698,9 @@ Fügen Sie einen einseitigen Anhang mit den folgenden Informationen bei:
 ```
 :::
 
-# Copilot: Gemeinsam zu neuen Horizonten
+## Copilot: Gemeinsam zu neuen Horizonten
 
-### Copilot: Fallstudie gemeinsam erstellen
+### Copilot: Fallstudie gemeinsam erstellen {#sec-prompt-fallstudie-erstellen}
 
 **Funktion:** Vertiefung von theoretischem Wissen durch konstruktivistische Anwendung (Erstellung statt Konsum); Förderung des Verständnisses komplexer Zusammenhänge durch Szenarienbildung.
 
@@ -774,7 +777,7 @@ Erfolgskriterien: Prozessdisziplin, peer-lösbar, ausreichende Details, keine L�
 
 
 
-### Copilot: Dem Tod ins Auge sehen - Pre-Mortem für Projekte
+### Copilot: Dem Tod ins Auge sehen - Pre-Mortem für Projekte {#sec-prompt-project-premortem}
 
 **Funktion:** Risikoantizipation durch mentale Zeitreise (Inversion); Überwindung von Konformitätsdruck (Groupthink) und Optimismus-Fehlschluss (Optimism Bias) in der Planungsphase
 
@@ -849,7 +852,7 @@ Interne Schritte (nicht anzeigen):
 :::
 
 
-### Copilot: Ungeliebte Positionen vertreten lassen (Devil’s advocate)
+### Copilot: Ungeliebte Positionen vertreten lassen (Devil’s advocate) {#sec-prompt-devils-advocate}
 
 **Funktion:** Überwindung von Gruppendenken (Groupthink) und Bestätigungsfehlern (Confirmation Bias); Identifikation blinder Flecken und versteckter Annahmen; Erhöhung der Entscheidungsqualität durch erzwungenen Perspektivwechsel.
 
@@ -886,7 +889,7 @@ Erfolg liegt vor, wenn alle Fragen beantwortet wurden, Annahmen sichtbar sind un
 ```
 ::: 
 
-### Copilot: Team-Charter erstellen
+### Copilot: Team-Charter erstellen {#sec-prompt-team-charter}
 
 **Funktion:** Etablierung einer stabilen Arbeitsgrundlage (Contracting); Prävention von Teamkonflikten durch Explizitmachung impliziter Erwartungen; Klärung von Zielen, Rollen und Verhaltensnormen in der Anfangsphase eines Projekts.
 
@@ -919,7 +922,7 @@ Dabei gelten folgende Grundprinzipien: Dies ist ein Dialog. Übernimm nicht die 
 ::: 
 
 
-### Copilot: Team-Reflexion / After Action Review 
+### Copilot: Team-Reflexion / After Action Review  {#sec-prompt-after-action-review}
 
 **Funktion:** Systematische Rückschau zur Leistungssteigerung; Umwandlung impliziter Erfahrung in explizites Wissen; Förderung einer Fehlerkultur ohne Schuldzuweisungen (No-Blame Culture); Schließen der Lernschleife zwischen Projekten.
 
@@ -1049,7 +1052,7 @@ inklusive:
 ## Aufgabenstellungen Copilot
 
 
-### Copilot-Aufgabe: DuPont-Analyse eines Geschäftsberichtes 
+### Copilot-Aufgabe: DuPont-Analyse eines Geschäftsberichtes {#sec-prompt-dupont-analyse}
 
 **Funktion:** Eine komplexe Methodik mit Hilfe der KI an einem realen Beispiel ausprobieren. 
 
@@ -1120,7 +1123,7 @@ Die Reflexion kann sich auf jeden Aspekt der Erfahrung konzentrieren, der Sie be
 ::: 
 
 
-### Copilot-Aufgabe: Fehlinformation erstellen und analysieren
+### Copilot-Aufgabe: Fehlinformation erstellen und analysieren {#sec-prompt-desinformation}
 
 **Funktion:** Desinformation erkennen lernen, indem man selbst Desinformation erstellt.
 
@@ -1152,9 +1155,7 @@ Daniel Stanford. AI Misinformation Campaign (KI-Kampagne gegen Falschinformation
 ::: 
 
 
-## Copilot-Aufgabe: Iteratives, systematisches Testen von Prompts  
-
-
+### Copilot-Aufgabe: Iteratives, systematisches Testen von Prompts  {#sec-prompt-testen}
 
 **Funktion:** Die Studierenden entwickeln einen Prompt für eine konkrete Arbeitsaufgabe und testen ihn iterativ mit der KI. Sie protokollieren Fehlerbilder (Halluzinationen, Formatbrüche, fehlende Belege), verschärfen Constraints und ergänzen Output-Checks. Ergebnis ist ein dokumentierter Prompt-Evolutionspfad mit Qualitätskriterien. 
 
@@ -1199,7 +1200,7 @@ o	Wie könnten die Fähigkeiten und Techniken, die Sie in dieser Aufgabe geübt 
 ```
 ::: 
 
-### Copilot-Aufgaben: 'AI-Sandwich ' - GenAI in einen Kurs integrieren
+### Copilot-Aufgaben: 'AI-Sandwich ' - GenAI in einen Kurs integrieren {#sec-prompt-ai-sandwich}
 Die Lehrperson verankert das Sandwich-Prinzip in der Aufgabenstellung: Zuerst werden Lernziele und Kriterien ohne GenAI erarbeitet, dann unterstützt die GenAI bei Ideengenerierung, Struktur und Rohentwürfen, und abschließend folgt die menschliche Überarbeitung mit Quellenprüfung und Reflexion. 
 
 **Quelle:** Übersetzt von @ippolito2025, Online: [AI Pedagogy Harvard](https://aipedagogy.org/assignment/ai-sandwich/)
@@ -1268,7 +1269,7 @@ Die Studierenden sollten eine abschließende Reflexion von 1–2 Absätzen über
 ```
 ::: 
 
-### Copilot-Aufgabe: KI, die Zukunft und Du 
+### Copilot-Aufgabe: KI, die Zukunft und Du {#sec-prompt-ai-zukunft} 
 Die Lehrperson verankert das Sandwich-Prinzip in der Aufgabenstellung: Zuerst werden Lernziele und Kriterien ohne GenAI erarbeitet, dann unterstützt die GenAI bei Ideengenerierung, Struktur und Rohentwürfen, und abschließend folgt die menschliche Überarbeitung mit Quellenprüfung und Reflexion. 
 
 Die Studierenden analysieren die Auswirkungen von KI auf Berufsbilder, recherchieren Quellen und entwickeln einen individuellen Aktionsplan. Die KI unterstützt bei der Perspektivenbildung, der Strukturierung der Argumente und bei der Vorbereitung von Diskussionen; die Bewertung erfordert überprüfbare Quellenarbeit und reflektierte Begründung. 
@@ -1329,9 +1330,9 @@ o	Inwiefern stellt diese Recherche eine Herausforderung für ihre Zukunftsplanun
 ```
 :::
 
-# Simulator: Didaktisches Erleben
+## Simulator: Didaktisches Erleben
 
-## Simulator: Simulation eines Forschungsinterviews
+### Simulator: Simulation eines Forschungsinterviews {#sec-prompt-interview-simulator}
 
 **Funktion:** Qualitätssteigerung qualitativer Interviews durch Simulation (Pre-Testing); Sensibilisierung für den Unterschied zwischen stereotypen KI-Antworten und menschlicher Nuance; Training von Aktivem Zuhören und Nachfragetechniken (Probing); Abbau von Hemmschwellen vor der Feldarbeit.
 
@@ -1435,7 +1436,7 @@ Schritte:
 ```
 :::
 
-## Simulator: Verhandlungssimulation
+### Simulator: Verhandlungssimulation {#sec-prompt-verhandlungssimulator}
 
 **Funktion:** Simulation komplexer Verhandlungssituationen in einer risikofreien Umgebung (Sandbox); Anwendung theoretischer Konzepte (BATNA, ZOPA) in der Praxis; Förderung der kommunikativen Kompetenz und strategischen Planung.
 
@@ -1566,7 +1567,7 @@ Ihre Aufgabe besteht aus **zwei klar getrennten Phasen**:
 ```
 :::
 
-## Simulator: Goal Play - Lernsimulation zur Anwendung einer Analysetechnik
+### Simulator: Goal Play - Lernsimulation zur Anwendung einer Analysetechnik {#sec-prompt-methoden-simulator}
 
 **Funktion:** Training von angewandter Methodikkompetenz (hier z. B. Selbstdistanzierung nach Ethan Kross) in einer sicheren Simulationsumgebung; Transfer von theoretischem Wissen in praktische Anwendungsszenarien; Förderung der emotionalen Regulation und kognitiven Umstrukturierung durch Perspektivübernahme.
 
@@ -1762,7 +1763,7 @@ Diese Konzepte sollen implizit im Rollenspiel gefördert und im Feedback reflekt
 ```
 :::
 
-## Simulator: Goal Play - Zielsetzung üben
+### Simulator: Goal Play - Zielsetzung üben {#sec-prompt-goal-setting}
 
 **Funktion:** Training von Methodenkompetenz (Zielsetzung, Priorisierung) in einer risikofreien Simulationsumgebung; Transfer theoretischen Wissens (z. B. SMART-Kriterien) in praktische Beratungssituationen; Förderung der Handlungskompetenz durch Perspektivübernahme (Beraterrolle).
 
@@ -1932,7 +1933,7 @@ Diese Prinzipien sollen implizit im Rollenspiel angewendet und im Feedback refle
 
 ## Aufgabenstellungen Simulator
 
-### Interview mit einer fiktionalen Person
+### Interview mit einer fiktionalen Person {#sec-prompt-interview-fiktionale-person}
 
 **Funktion:** Vertiefung des Literaturverständnisses durch interaktive Auseinandersetzung; Überprüfung von Interpretationshypothesen am Primärtext ("Close Reading"); Förderung der Empathie für literarische Figuren; Validierung von KI-Halluzinationen durch Textbelege.
 
@@ -2105,7 +2106,7 @@ Reflexion anleiten und nächste Schritte vorschlagen.
 ```
 :::
 
-### Simulator-Aufgabe: Schwierige Interaktionen üben (Beispiel: Telefongespräch von Pflegenden mit Patienten)
+### Simulator-Aufgabe: Schwierige Interaktionen üben (Beispiel: Telefongespräch von Pflegenden mit Patienten) {#sec-prompt-simulation-interaktion}
 
 **Funktion:** Training klinischer Entscheidungsfindung und kommunikativer Kompetenzen in einer risikofreien Umgebung; Anwendung theoretischer Triage-Protokolle in simulierten Echtzeit-Szenarien; Förderung der verbalen Souveränität durch sprachbasierte Interaktion.
 
@@ -2269,7 +2270,7 @@ Die Simulation regt zur **Reflexion** über die eigene Leistung an und fördert 
 :::
 
 
-### Simulator-Aufgabe: Simulation in der Veterinärmedizin
+### Simulator-Aufgabe: Simulation in der Veterinärmedizin {#sec-prompt-simulation-veterinärmedizin}
 
 **Funktion:** Simulation eines komplexen klinischen Falls (Equine Kolik); Training des diagnostischen Pfads ("Clinical Reasoning") von der Anamnese bis zur chirurgischen Entscheidung; Förderung der strukturierten Datenerhebung bei Patienten (bzw. Tierbesitzern).
 
