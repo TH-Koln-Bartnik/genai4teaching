@@ -16,13 +16,11 @@ editor:
 
 ## Definition einiger Grundbegriffe {#sec-definitionen}
 
-In diesem Abschnitt wollen wir einige Definitionen und Bedeutungen klären. Dabei nutzen wir immer wieder kleine Interaktionen und Lernspiele, auch um so zu zeigen, wie wir einfacher „fragend“ und aktivierend lehren können.
+In diesem Abschnitt definieren wir anfangs **sehr kurz einige Grundbegriffe**. Dies kratzt bewusst nur an der Oberfläche eines komplexen technischen Themas: Unser Fokus liegt auf der didaktischen Nutzung. 
 
-Wo finden Sie zusätzliches oder vertiefendes Material? Als visuelle Begleitung empfehle ich das sehr schöne Einführungsvideo des Mathematik-Didaktikers Grant Sanderson (7 Minuten, <https://youtu.be/LPZh9BOjkQs>).
-Tiefer in die mathematischen Details geht die grafische und interaktive Einführung als Animation von Brendan Bycroft (<https://bbycroft.net/llm>).
-Wer sich auch die technischen Hintergründe genauer erschließen will, kann das Lehrbuch-Standardwerk von @jurafsky2025 nutzen, das online frei verfügbar ist.
+Wenn Sie neugierig geworden sind, gibt es jenseits dieses Buches **gute Quellen, um tiefer einzusteigen**: Als visuelle Begleitung empfehle ich das sehr schöne Einführungsvideo des Mathematik-Didaktikers Grant Sanderson (7 Minuten, <https://youtu.be/LPZh9BOjkQs>). Tiefer in die mathematischen Details geht die grafische und interaktive Einführung als Animation von Brendan Bycroft (<https://bbycroft.net/llm>). Wer sich auch die technischen Hintergründe genauer erschließen will, dem sei das Lehrbuch-Standardwerk von @jurafsky2025 empfohlen, das online frei verfügbar ist.
 
-Von Prompt bis Token, über Temperatur und RAG: Was ist Ihnen schon an Grundbegriffen in diesem Kontext vertraut? Testen Sie sich selbst mit dem folgenden kleinen Spiel. Bei voller Punktzahl winkt Ihnen ein Preis!
+**Welche der Fachbegriffe kennen Sie schon?** Von Prompt bis Token, über Temperatur und RAG:  Testen Sie sich selbst mit dem folgenden kleinen Spiel. 
 
 ::: {.callout-tip title="Lernspiel: Welche Grundbegriffe kennen Sie schon?"}
 
@@ -59,26 +57,20 @@ Hier kann man das selbst einfach ausprobieren: Das interaktive Widget simuliert 
  <iframe src="interactions/tokenizer-explorer.html" width="100%" height="700px" frameborder="0"></iframe>
 :::
 
-Die kleine Simulation hier soll nur ein Gefühl für den Prozess geben. Wie die Umwandlung eines bestimmten Textes genau in verschiedenen Sprachmodellen aussieht, können Sie interaktiv auf Webseiten wie Tiktokenizer ausprobieren: <https://tiktokenizer.vercel.app/>.
+Die Simulation vermittelt ein Gefühl für den Prozess. Wie die Umwandlung eines bestimmten Textes genau in verschiedenen Sprachmodellen aussieht, können Sie interaktiv auf Webseiten wie Tiktokenizer ausprobieren: <https://tiktokenizer.vercel.app/>.
 
 Ein **Prompt** ist eine Eingabeaufforderung, die an ein LLM gesendet wird, um eine spezifische Antwort zu erhalten.
-Die Gestaltung dieser Prompts ist entscheidend für die Qualität der generierten Antworten und wird als **Prompt Engineering** bezeichnet.
+Wie der Prompt formuliert wird, kann entscheidend für die Qualität der generierten Antworten sein. Die Kunst, solche Befehle zu schmieden nennt sich **Prompt Engineering**.
 
 ### Was heißt hier GPT? {#sec-gpt-bedeutung}
 GPT steht für **Generative Pre-trained Transformer**. Wir schauen zunächst, was diese drei Begriffe bedeuten.
 
-*'Generative'*: Der Begriff „**generativ**“ bedeutet in diesem Zusammenhang, dass GPT eigenständig neue, sinnvolle Texte erzeugen kann, indem es gelernte Muster neu kombiniert, anstatt fertige Texte zu übernehmen.
+*'Generative'*: Der Begriff „**generativ**“ bedeutet in diesem Zusammenhang, dass GPT eigenständig Texte erzeugt, indem es gelernte Muster neu kombiniert.
 
 *'Pretrained'*: GPT wurde mit riesigen Textmengen **vortrainiert** (**Pretraining**), ohne konkrete Aufgaben lösen zu müssen – dieser Vorgang erfolgt unüberwacht (*unsupervised learning*).
-Sprachmodelle nutzen häufig die Methode **„Reinforcement Learning with Human Feedback“ (RLHF)**, um noch bessere Texte zu generieren. Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern nach Qualität beurteilt werden. Diese Bewertungen dienen dazu, das Modell zusätzlich zu trainieren und zu steuern, indem Texte belohnt werden, die von Menschen als besonders gut, klar oder hilfreich eingeschätzt wurden. Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind.
-Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte generieren kann – also kreativ Sprache produziert, ohne bloß zu kopieren (generativ).
+Beim 'Bau' solcher Sprachmodelle bewerten menschliche Expertinnen und Experten den ersten Output  (**„Reinforcement Learning with Human Feedback“ (RLHF)**), um so ein genaueres Modell dafür zu erstellen, was für User nützlich ist und was nicht. Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern beurteilt werden.Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind. Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte generieren kann – also kreativ Sprache produziert, ohne bloß zu kopieren (generativ).
 
-*'Transformer'*: Das Herzstück des GPT ist der sogenannte **Transformer** – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (**Attention**) erkennt, welche Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen.
-
-Im Transformer bedeutet „Attention“: Jedes Wort (genauer: jedes Token) entscheidet dynamisch, auf welche anderen Tokens es beim Verstehen oder Generieren am stärksten „hören“ sollte. Technisch ist das eine gewichtete Mischung von Informationen: Das Modell bildet eine Art Relevanzscore zwischen einem „aktuellen Interesse“ und möglichen „Informationsquellen“ und erstellt daraus Gewichte, die sich zu 1 aufsummieren. Die Ausgabe ist dann eine gewichtete Summe der Informationsinhalte. Das ist wie bei einer Literaturrecherche: Eine Fragestellung (Query) wird mit Titeln/Abstracts als „Hinweis-Schilder“ (Keys) abgeglichen; die eigentlichen Inhalte (Values) aus den passenden Quellen fließen dann stärker in das Gesamtverständnis ein.
-
-Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint.
-(Der zentrale Fachartikel von 2017, ein zentraler Auslöser der aktuellen KI-Welle, hatte den knackigen Titel "Attention is all you need" @vaswani2017 – der Artikel wurde mittlerweile mehr als 200.000-fach zitiert.)
+*'Transformer'*: Das Herzstück des GPT ist der sogenannte **Transformer** – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (**Attention**) erkennt, welche Wörter im Zusammenhang wichtig sind. Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen. Im Transformer bedeutet **„Attention“**: Jedes Wort (genauer: jedes Token) entscheidet dynamisch, auf welche anderen Tokens es beim Verstehen oder Generieren am stärksten „hören“ sollte. Technisch ist das eine gewichtete Mischung von Informationen: Das Modell bildet eine Art Relevanzscore zwischen einem „aktuellen Interesse“ und möglichen „Informationsquellen“ und erstellt daraus Gewichte, die sich zu 1 aufsummieren. Die Ausgabe ist dann eine gewichtete Summe der Informationsinhalte. Das ist wie bei einer Literaturrecherche: Eine Fragestellung (Query) wird mit Titeln/Abstracts als „Hinweis-Schilder“ (Keys) abgeglichen; die eigentlichen Inhalte (Values) aus den passenden Quellen fließen dann stärker in das Gesamtverständnis ein. Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint. Der zentrale Fachartikel von 2017, ein zentraler Auslöser der aktuellen KI-Welle, hatte den knackigen Titel "Attention is all you need" @vaswani2017 – der Artikel wurde mittlerweile mehr als 200.000-fach zitiert.
 
 **Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?** Neuere LLMs können schon ganze Bücher schnell aufsaugen und dann zusammenfassen (z. B. Claude, ChatGPT oder Gemini).
 Das **Kontext-Fenster** eines LLM beschreibt die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu verstehen.
@@ -86,15 +78,26 @@ Das **Kontext-Fenster** eines LLM beschreibt die Menge an vorherigem Text, die d
 Ein **Agent** im Kontext von Automation und künstlicher Intelligenz meint zunächst allgemein etwas, das seine Umwelt wahrnimmt (durch Sensoren) und auf sie einwirkt (durch Aktoren) [@russell2021, S.54]. Agenten bestehen aus einer Architektur, die bestimmt, was möglich ist und einem Programm, das vorgibt, wie der Agent handeln soll [@russell2021, S.65ff.]. Ersteres meint bildlich gesprochen die Augen und Hände des Agenten: Die *Agenten-Architektur* beschreibt den spezifischen Setup von Sensoren und Aktoren, die bestimmen, was für den Agenten wahrnehmbar und handelbar ist. Für GenAI Agenten fragt das etwa: Hat er Web-Anbindung? Kann er programmieren? Das *Agenten-Programm* ist das Regelbuch: es bestimmt, wie der Agent reagiert. Von einfachen Wenn-Dann-Regeln bis hin zu komplexen Weltmodellen (z. B. Physik-Modelle, die die Schwerkraft berücksichtigen oder Kosten-Gewinn Rechnungen für eine Wirtschaftssimulation).
 
 GPT-basierte Agenten können Text analysieren, generieren und verschiedene Aufgaben automatisieren, indem sie vorab definierte Muster und Regeln befolgen.
-Durch die Erstellung solcher Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten.
+Durch die Erstellung solcher Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten [@mollick2024a].
 
-**RAG (Retrieval-Augmented Generation)** beschreibt die Möglichkeit, zusätzliche Daten wie Fachtexte, Statistiken oder Gesetzesbücher in Kombination mit einem KI Modell zu nutzen.
-Die KI ist das Gehirn, die zusätzliche Wissensdatenbank quasi das Bücherregal, das zu Rate gezogen werden kann.
-Je nach Kontextfenster stehen dort mehr oder weniger Bücher.
-Insofern umschreibt RAG ein KI-Modell, das die Fähigkeiten von Textgenerierungsmodellen (wie GPT) mit einer Wissensdatenbank kombiniert.
+Schlau sein allein reicht nicht: Ein Sprachmodell muss zwar einerseits 'intelligent' genug sein, um eine gestellte Aufgabe zu lösen. Aber auch der schlauste helfende Geist kann uns nur helfen, wenn er auch versteht, was wir eigentlich wollen und brauchen - er muss den **Kontext unserer Aufgabe kennen**. 
+
+Einen solchen Kontext können wir der KI auf zwei Arten bereitstellen: Bildlich gesprochen geben wir ihr ein paar **Bücher oder einen Werkzeugkoffer.** Präziser ausgedrückt geht es um die Methoden **"RAG" und "Agenten"** [@huyen2025, Kapitel 6]: 
+
+```
+"Two dominating patterns for context construction are RAG, 
+or retrieval-augmented generation, and agents. 
+The RAG pattern allows the model to retrieve relevant information
+from external data sources. 
+The agentic pattern allows the model to use tools
+such as web search and news APIs to gather information."
+```
+
+
+**RAG (Retrieval-Augmented Generation)** beschreibt insofern die Möglichkeit, zusätzliche Daten wie Fachtexte, Statistiken oder Gesetzesbücher in Kombination mit einem KI Modell zu verwenden [@huyen2025, Kapitel 6]. Die KI ist das Gehirn, die zusätzliche Wissensdatenbank quasi das Bücherregal, das zu Rate gezogen werden kann.Je nach Kontextfenster stehen dort mehr oder weniger Bücher.Insofern umschreibt RAG ein KI-Modell, das die Fähigkeiten von Textgenerierungsmodellen (wie GPT) mit einer Wissensdatenbank kombiniert.
 So wird etwa der Prompt-Agent (s. u.) mit einer Reihe von Fachtexten „gefüttert“, in denen Best Practices des Prompting erklärt werden.
 
-Einige Unterschiede zwischen einem einfachen Sprachmodell (LLM) und dem Setup mit Zusatzmaterial (RAG) und erlaubter Werkzeugnutzung (Tool Use, Agenten) sehen wir an der folgenden Interaktion. Wählen Sie hier jeweils die passende Antwort (einfach, aber so bleiben Sie dran!).
+Einige Unterschiede zwischen einem einfachen Sprachmodell (LLM) und dem Setup mit Zusatzmaterial (RAG) und erlaubter Werkzeugnutzung (Tool Use, Agenten) sehen wir an der folgenden Interaktion. Wählen Sie hier jeweils die passende Antwort (die Übung ist nicht schwer - überlegen Sie sich zusätzlich ein Beispiel dafür aus Ihrem Berufsalltag!).
 
 ::: {.callout-tip title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?"}
 Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen für LLM, RAG und Agent auswählen und die Fragen beantworten.
@@ -104,10 +107,10 @@ Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen
 </iframe>
 :::
 
-Das Modell sucht nach relevanten Daten und integriert diese in die generierte Antwort.
+
 In der Lehre kann RAG verwendet werden, um den Studierenden Fachtexte oder besonders aktuelle Informationen zur Verfügung zu stellen.
-Beispielsweise könnten Studierende in einem Geschichtsseminar eine KI befragen, die externe Quellen durchforstet, um aktuelle Erkenntnisse zu historischen Ereignissen zu präsentieren.
-Unternehmen nutzen diese Technik, um etwa 1000-seitige Gebrauchsanweisungen mit KI durchsuchbar zu machen, oder Chatbots zu trainieren, die typische, repetitive Kundenanfragen beantworten.
+Beispielsweise könnten Studierende in einem Geschichtsseminar eine KI befragen, die externe Quellen durchforstet, um aktuelle Erkenntnisse zu historischen Ereignissen zu präsentieren [@huffman2024].
+Unternehmen nutzen diese Technik, um etwa riesige Gebrauchsanweisungen mit KI durchsuchbar zu machen [@brynjolfsson2025], oder Chatbots zu trainieren, die typische, repetitive Kundenanfragen beantworten [@handa2025].
 Insofern ermöglicht RAG eine dynamische und zeitgemäße Wissensvermittlung, die nicht auf das festgelegte Wissen des KI-Modells beschränkt ist.
 
 ### Was nutzen - LLM, RAG oder Agent? {#sec-patterns-usage}
@@ -334,16 +337,18 @@ Neuere empirische Untersuchungen haben eine Reihe von anekdotischen Hausrezepten
 ### Was heißt das für Prompts in der Lehre? {#sec-prompts-teaching}
 Für die Lehre wollen wir den Prompts speziell didaktische Elemente hinzufügen, also etwa verhindern, dass den Studierenden sofort eine Lösung ausgegeben wird, da das eigene Nachdenken in Form von Fragen und sokratischem Dialog ihnen dabei hilft, die Ergebnisse auch zu behalten [@roediger2012]. Hier müssen wir also teils bewusst Hürden einführen, die die Studierenden zum Nachdenken, diskutieren und überlegen anregen. Wie das geht, sehen wir in den nächsten zwei Hauptkapiteln. Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellungen mit GenAI Tools finden Sie im Appendix (s. @sec-prompts).
 
-## Wie steht es mit dem Energieverbrauch der Modelle? {#sec-energy}
-Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert [@spencer2025]. Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen. In diesem Bereich gibt es viel Hype und Desinformation in beide Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), so dass hier ein kurzer Überblick seriöser Studien nützlich erscheint. Dieser sehr knappe Abriss soll vor allem eine kurze Orientierung und den Verweis auf weiterführende Literatur zur vertieften Beschäftigung bieten.
+## Wie steht es mit dem Ressourcenverbrauch der Modelle? {#sec-energy}
+Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert [@spencer2025]. Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen. Angesichts von Hype und Desinformation in beiden Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), **lohnt ein Blick auf seriöse Studien**. Der folgende Abriss gibt einen Überblick über die Hauptargumente und gibt ein Gefühl für die Komplexität der Modellierung.
 
-Wie schmutzig ist es also, KI zu nutzen? Die kurze Antwort ist, dass ein typischer Prompt aktuell etwa soviel Energie verbraucht wie ca. 10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre 2008 [@elsworth2025; @mollick2025d]. Die gute Nachricht ist, dass die Modelle effizienter werden und der Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken. Gegenläufig und problematisch ist die stark steigende Nutzung, die z. B. zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen führt [@wittenberg2025a].
+**Über welche Größenordnung von Energie reden wir etwa?** Wieviel Energie kostet es also, GenAI zu nutzen? Das Problem dabei ist, dass wir uns 'Energie' nur schlecht vorstellen können. Wir brauchen Analogien: Ein typischer Prompt verbraucht aktuell etwa soviel Energie wie ca. 10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre 2008 [@elsworth2025; @mollick2025d]. 
+
+Die gute Nachricht ist, dass die Modelle effizienter werden und der Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken [@spencer2025]. Gegenläufig und problematisch ist die stark steigende Nutzung, die z. B. zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen führt [@wittenberg2025a].
 
 Solche Vergleiche sind nicht trivial, da etwa bei der Nutzung in Unternehmen auch die Umweltfolgen der aktuellen Alternativen „bepreist“ werden müssen, um einen sinnvollen Vergleich zu erzielen. Wie belastet die Lieferkette eines physischen Buchs die Umwelt im Vergleich zu einem E-Book? Ein aktueller Mitarbeiter im physischen Callcenter mit seinem Arbeitsweg, Schreibtisch und Heizbedarf im Vergleich zum KI-Chatbot? Unabhängig davon, wie diese Rechnungen ausgehen, sind sie sichtlich komplex.
 
-Im Folgenden sollen dazu einige Kernaussagen aus Untersuchungen der International Energy Agency (IEA), dem World Economic Forum und des MIT Technology Reviews zusammengefasst werden. Basierend auf die aktuelle Untersuchung des MIT Technology Survey [@odonnell2025] gliedere ich diesen kurzen Abriss zum Energieverbrauch in vier Teile: Die Modellbildung, die Anfrage (query), die Emissionen und Prognosen für das weitere Wachstum.
+Im Folgenden sollen dazu einige Kernaussagen aus Untersuchungen der International Energy Agency (IEA), dem World Economic Forum und des MIT Technology Reviews zusammengefasst werden. Basierend auf der aktuellen Untersuchung des MIT Technology Survey [@odonnell2025] gliedere ich diesen kurzen Abriss zum Energieverbrauch in vier Teile: Die Modellbildung, die Anfrage (query), die Emissionen und Prognosen für das weitere Wachstum.
 
-Modellbildung. Daten-Zentren und KI-Nutzung machen aktuell nur wenige Prozent der globalen Energienutzung aus. Schätzungen der Energieagentur IEA liegen etwa bei 3–5 %. Deutlich höhere Anteile liegen in den Bereichen Gebäude, Industrie und Fahrzeuge [@ritchie2024; @spencer2024]. Mit Blick auf die Zukunft ist der rasant wachsende Energiebedarf durch Bevölkerungswachstum und wachsenden Wohlstand ärmerer Bevölkerungsgruppen bei weitem ein stärkerer Treiber für Emissionswachstum und Klimawandel [@spencer2024]. Einige Klimaaktivisten warnen sogar vor „distraction“ - davor, sich durch solche Ablenkungen und Modethemen wie KI Energieverbrauch von dem Fokus auf die großen Hebel der Emissionsvermeidung ablenken zu lassen [@masley2025; @ritchie2024a]. Während die Einmalaufwände für das Training der Modelle erheblich sind, hat das schnelle Wachsen der Nutzerzahlen sie mittlerweile in den Schatten gestellt. Die Energieaufwände für Anfragen (Inferenz) bedingen nunmehr einen größeren Energieverbrauch als das Training der Modelle [@odonnell2025; @spencer2025].
+Modellbildung. Daten-Zentren und KI-Nutzung machen aktuell nur wenige Prozent der globalen Energienutzung aus. Schätzungen der Energieagentur IEA liegen etwa bei 3–5 %. Deutlich höhere Anteile liegen in den Bereichen Gebäude, Industrie und Fahrzeuge [@ritchie2024; @spencer2024]. Mit Blick auf die Zukunft ist der rasant wachsende Energiebedarf durch Bevölkerungswachstum und wachsenden Wohlstand ärmerer Bevölkerungsgruppen bei weitem ein stärkerer Treiber für Emissionswachstum und Klimawandel [@spencer2024]. Einige Klimaaktivisten warnen sogar vor „distraction“ - davor, sich durch Modethemen wie den KI Energieverbrauch vom Fokus auf die großen Hebel der Emissionsvermeidung abbringen zu lassen [@masley2025; @ritchie2024a]. Während der einmalige Aufwand für das Training der Modelle erheblich ist, hat das schnelle Wachsen der Nutzerzahlen sie mittlerweile in den Schatten gestellt. Die Energieaufwände für Anfragen (Inferenz) bedingen nunmehr einen größeren Energieverbrauch als das Training der Modelle [@odonnell2025; @spencer2025].
 
 Anfrage. Der Energieverbrauch einer einzelnen KI-Textanfrage ist relativ gering. Er liegt unter dem Energieverbrauch von wenigen Minuten für eine kleine LED-Lampe. Konkret liegen die Schätzungen hier aktuell zwischen 0,3 Wattstunden (Wh) für GPT-4o und 0,03 Wh für kleine Modelle [@odonnell2025; @you2025].
 
@@ -366,4 +371,4 @@ Wie der MIT-Bericht hervorhebt, sollte vor diesem Hintergrund der starke und kur
 
 So besteht die Hoffnung, dass positive Effekte auf Emissionen in den Hauptbereichen von CO₂-Emissionen (Gebäude, Industrie, Transport sowie die verbundenen Energienetze) durch höhere Effizienz in Planung und Nutzung genutzt werden können, ohne dass sie durch die wachsenden Kosten von immer komplexeren Inferenz-Anfragen überlagert werden [@greene-dewasmes2025a; @spencer2025].
 
-Politisch gesehen ergibt sich insofern ein Bedarf an Steuerung dieses strukturellen technologischen Wandels, damit die Ziele denen der Gesellschaft entsprechen. Dazu müssen die Fakten klar sein: Um Kosten und Effekte abschätzen, abfedern und verteilen zu können, fordern die Forscher eine deutlich höhere Transparenz der Energiebedarfe durch die Modellanbieter [@odonnell2025].
+Die Politik muss diesen Wandel steuern, damit die Ziele der Gesellschaft  - und nicht nur der Hersteller der Sprachmodelle - berücksichtigt werden. Dazu müssen die Fakten klar sein: Um Kosten und Effekte abschätzen, abfedern und verteilen zu können, fordern die Forscher eine deutlich höhere Transparenz der Energiebedarfe durch die Modellanbieter [@odonnell2025].
