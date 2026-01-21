@@ -313,15 +313,15 @@ Hier finden Sie einen Beispiel-Bot, dem man Prompts füttern kann, die er dann i
 :::
 
 ### Wie Prompten? Was Ende 2025 die größten KI-Labore empfehlen. {#sec-lab-recommendations}
-Ende 2025 geben die drei führenden KI-Labs uns detaillierte Tipps, wie wir mit ihren Geschöpfen GPT, Gemini und Claude reden sollen [@kotha2025; @google2025; @anthropic2025c]. Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.
+Vor detaillierten Tipps hilft ein Bild [@mollick2024d]: Behandeln Sie das Sprachmodell wie eine junge Hilfskraft. Sie wird am Anfang nicht alles richtig machen, sondern muss klar angeleitet werden, so dass die Ergebnisse nach und nach besser werden. Junge Mitarbeiter sind keine Taschenrechner, die sofort perfekt und immer gleich funktionieren. GenAI Chatbots auch nicht. Iterieren und erläutern Sie. Das Ergebnis nähert sich dann Schritt für Schritt dem Wunschbild an. Der Vorteil hier ist, dass die Ergebnisse schon nach wenigen Sekunden vorliegen.
 
-Die drei führenden Anbieter betonen die Bedeutung von **Präzision der Anweisungen** - wenig überraschend, aber im Detail nicht einfach zu bewerkstelligen: (1) Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, **genau zu sagen, was man eigentlich will**.
+![Empfehlung: Das KI-Modell wie eine junge Hilfskraft behandeln - nach und nach anlernen, klar anweisen](images/script02-prompting-empfehlung-behandeln-wie-hilfskraft.png){#fig-prompten-iterieren fig-align="center"}
 
-::: {.callout-tip title="Meta-Prompts: Den Bot den Prompt verbessern lassen"}
-**Probleme mit dem Prompt?** OpenAI [@kotha2025] schlägt vor, man soll mit einer klaren Problembeschreibung wie folgt prompten:
+Quelle: Erstellt mit Gemini3, basierend auf @mollick2024d.
 
-Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts ist, dass der Agent [GEWÜNSCHTES VERHALTEN BESCHREIBEN] ausführt, stattdessen führt er jedoch [UNERWÜNSCHTES VERHALTEN BESCHREIBEN] aus. Wie würdest Du die Eingabeaufforderung möglichst unverändert lassen und dennoch minimale Änderungen/Ergänzungen vornehmen, um den Agenten dazu zu bewegen, diese Mängel konsequenter zu beheben?
-:::
+**Was empfehlen Prompt-Profis im Detail?** Ende 2025 geben die drei führenden KI-Labs uns ausführliche Tipps, wie wir mit ihren Geschöpfen GPT, Gemini und Claude reden sollen [@kotha2025; @google2025; @anthropic2025c]. Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.
+
+Die drei führenden Anbieter betonen die Bedeutung von **Präzision der Anweisungen** - wenig überraschend, aber im Detail nicht einfach zu bewerkstelligen: Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, **genau zu sagen, was man eigentlich will**. Wie bei einem Bauprojekt, muss man sich bei vagen Anweisungen nicht wundern, wenn das Haus nachher anders aussieht als gewünscht.
 
 (1) Aufgaben präzise beschreiben: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist! Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen.
 
@@ -335,11 +335,25 @@ Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts
 
 (6) Bots help bots: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen. So können wir mit dem Tool das Tool bedienen. Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem GPT Prompt Optimierer [@kotha2025] oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen.
 
+**Unzufrieden mit dem Ergebnis?** Was, wenn der 'Lieferant' Sprachmodell mal nicht wie gewünscht liefert? @kotha2025 empfiehlt: Gleich reklamieren (s. der folgende Kasten)!
+
+::: {.callout-tip title="Meta-Prompts: Den Bot den Prompt verbessern lassen"}
+**Probleme mit dem Prompt?** OpenAI [@kotha2025] schlägt vor, man soll mit einer klaren Problembeschreibung wie folgt prompten:
+
+Hier ist ein Prompt: [PROMPT EINFÜGEN] Das gewünschte Verhalten dieses Prompts ist, dass der Agent [GEWÜNSCHTES VERHALTEN BESCHREIBEN] ausführt, stattdessen führt er jedoch [UNERWÜNSCHTES VERHALTEN BESCHREIBEN] aus. Wie würdest Du die Eingabeaufforderung möglichst unverändert lassen und dennoch minimale Änderungen/Ergänzungen vornehmen, um den Agenten dazu zu bewegen, diese Mängel konsequenter zu beheben?
+:::
+
+
+
 ### Es könnt' alles so einfach sein! Es bringt nichts, Bots zu bedrohen oder zu bestechen. {#sec-prompting-myths}
-Neuere empirische Untersuchungen haben eine Reihe von anekdotischen Hausrezepten des Promptings systematisch geprüft und meist widerlegt. Prompts funktionieren nicht immer gleich und so kommt es schnell zu anekdotischer Evidenz, dass eine Formulierung „besser geklappt“ hätte. Die wenigsten der Empfehlungen helfen zuverlässig [@meincke2025; @meincke2025a; @meincke2025b]. Hilft es, höflich zu sein (nein), zu drohen (nein), Geld anzubieten (nein), oder den Hiwi-Bot Schritt für Schritt vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)? Auch hier sehen wir, dass die stärkeren neueren Modelle auch etwas andere Bedienung erfordern. Wie ein neuer Sportwagen kommen mit den neuen Fähigkeiten auch neue Anfälligkeiten: Die neuen Modelle können selbst iterativ vorgehen, das muss man ihnen nicht mehr empfehlen. Tut man es doch, sinkt teils die Performanz [@meincke2025a], etwa wenn man so verhindert, dass ein starkes Modell eine Frage aus seinem Vorwissen beantwortet und es stattdessen zu mehreren - eigentlich unnötigen - Denkschritten mit entsprechendem Token-Verbrauch zwingt). Da sie schlauer sind, werden sie durch unpräzise Anweisungen teils schneller aus der Bahn geworfen. Die Modelle halten sich genauer an Anweisungen - aber eben auch an falsche [@anthropic2025c; @google2025].
+**Die Bots zu bedrohen, bringt nichts**. Empirische Untersuchungen haben mehrere anekdotische Geheimtipps des Promptings systematisch geprüft und meist widerlegt. Prompts funktionieren nicht immer gleich und **so kommt es schnell zu anekdotischer Evidenz,** dass eine Formulierung „besser geklappt“ hätte. 
+
+**Die wenigsten der folgenden Hausrezepte helfen zuverlässig** [@meincke2025; @meincke2025a; @meincke2025b]: Hilft es, höflich zu sein (nein), zu drohen (nein), Geld anzubieten (nein), oder den Hiwi-Bot Schritt für Schritt vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)? 
+
+Auch hier sehen wir, dass die **stärkeren neueren Modelle auch etwas andere Bedienung erfordern.** Wie ein neuer Sportwagen kommen **mit den größeren Fähigkeiten auch neue Anfälligkeiten**: Die neuen Modelle können selbst iterativ vorgehen, das muss man ihnen nicht mehr empfehlen. Tut man es doch, sinkt teils die Performanz [@meincke2025a], etwa wenn man so verhindert, dass ein starkes Modell eine Frage aus seinem Vorwissen beantwortet und es stattdessen zu mehreren - eigentlich unnötigen - Denkschritten mit entsprechendem Token-Verbrauch zwingt). Da sie schlauer sind, werden sie durch unpräzise Anweisungen teils schneller aus der Bahn geworfen. Die Modelle halten sich genauer an Anweisungen - aber eben auch an falsche [@anthropic2025c; @google2025].
 
 ### Was heißt das für Prompts in der Lehre? {#sec-prompts-teaching}
-Für die Lehre wollen wir den Prompts speziell didaktische Elemente hinzufügen, also etwa verhindern, dass den Studierenden sofort eine Lösung ausgegeben wird, da das eigene Nachdenken in Form von Fragen und sokratischem Dialog ihnen dabei hilft, die Ergebnisse auch zu behalten [@roediger2012]. Hier müssen wir also teils bewusst Hürden einführen, die die Studierenden zum Nachdenken, diskutieren und überlegen anregen. Wie das geht, sehen wir in den nächsten zwei Hauptkapiteln. Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellungen mit GenAI Tools finden Sie im Appendix (s. @sec-prompts).
+**Didaktische Prompts sollen den Studierenden das Leben gezielt schwer machen.** Für die Lehre wollen wir den Prompts speziell didaktische Elemente hinzufügen, also etwa verhindern, dass den Studierenden sofort eine Lösung ausgegeben wird, da das eigene Nachdenken in Form von Fragen und sokratischem Dialog ihnen dabei hilft, die Ergebnisse auch zu behalten [@roediger2012]. Hier müssen wir also teils bewusst Hürden einführen, die die Studierenden zum Nachdenken, diskutieren und überlegen anregen. Wie das geht, sehen wir in den nächsten zwei Hauptkapiteln. Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellungen mit GenAI Tools finden Sie im Appendix (s. @sec-prompts).
 
 ## Wie steht es mit dem Ressourcenverbrauch der Modelle? {#sec-energy}
 Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert [@spencer2025]. Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen. Angesichts von Hype und Desinformation in beiden Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), **lohnt ein Blick auf seriöse Studien**. Der folgende Abriss gibt einen Überblick über die Hauptargumente und gibt ein Gefühl für die Komplexität der Modellierung.

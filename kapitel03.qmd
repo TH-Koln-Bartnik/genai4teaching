@@ -9,8 +9,11 @@ format:
     toc-location: right
     number-sections: true
 ---
+
 # Didaktische Ziele und Mechanismen {#sec-didaktik}
+
 ## Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre? {#sec-ziele-genai}
+
 Bevor wir uns der konkreten Umsetzung zuwenden, müssen wir uns zunächst fragen, was wir überhaupt bezwecken: Was sind unsere Ziele für die konkrete Umsetzung in Lehrsituationen?
 
 @mollick2023b argumentieren, dass KI als "Kraftverstärker" für Lehrkräfte dienen kann, indem sie die Implementierung evidenzbasierter Lehransätze erleichtert, die sonst aufgrund von Zeit- und Arbeitsaufwand oft schwer umzusetzen sind. Aber wie wirkt das? Was begründet die erhoffte Wirkung?
@@ -27,11 +30,17 @@ Darauf baut **„knowing how“** auf, das **prozedurale und strategische Könne
 
 Die höchste Stufe nennt Hattie **„knowing with“**: Wissen wird flexibel **auf neue Situationen übertragen**. Problembasiertes Lernen, authentische Fallstudien, bewusste Reflexionsphasen und kooperativ angelegte Projekte helfen dabei, Konzepte in unbekannten Kontexten sicher anzuwenden und weiterzuentwickeln.
 
-Mit welchen **Methoden** werden diese **Wissenstypen in der Lehre** vertieft?
-
-![Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle: Basierend auf @hattie2023, S. 358, 340ff.](images/script03-01.svg){#fig-wissenstypen}
-
 Wo können wir neue technische Hilfsmittel wie LLMs zur Unterstützung dieser Methoden besonders effektiv einsetzen?
+
+| Kategorie | Phase | Typische Methoden |
+|:-----------------------|:-----------------------|:-----------------------|
+| **Wissen, dass** („Knowing that“) | **Erwerben** | Notizen zusammenführen; Zusammenfassen; Heft-/Notizbuch-Durchsicht; Bildhafte Notizen |
+| **Wissen, dass** („Knowing that“) | **Festigen** | Argumente prüfen; Fehler identifizieren; Einschränkungen formulieren; Formale Argumentstrukturen darstellen; Belege liefern; Durchgearbeitete Beispiele |
+| **Wissen, wie** („Knowing how“) | **Erwerben** | Aufgabenüberarbeitung; Häufiges Üben; Übungseinheit vor Tests; Zweispaltige Notizen; Problemorientiertes Lernen |
+| **Wissen, wie** („Knowing how“) | **Festigen** | Peer-Feedback / Peer-Response-Gruppen; Peer-Tutoring; Studierenden-Turniere; Think-Pair-Share; Kumulative Wiederholung |
+| **Wissen anwenden** („Knowing with“) | **Transfer** | Sortieren, Zuordnen, Kategorisieren; Dichotome Schlüssel; Von Studierenden erstellte Klassifikationsmuster; Klassifikationsdiagramme |
+
+: Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle: Basierend auf @hattie2023, S. 358, 340ff. {#tbl-wissenstypen}
 
 ## Anwendungsbeispiele nach Wissenskategorien {#sec-anwendungsbeispiele}
 
@@ -53,22 +62,38 @@ In Gruppenarbeiten funktioniert das Modell als Co-Autor: KI-unterstützte Schrei
 
 ## Effektive Lerntechniken und Unterstützung mit KI {#sec-lerntechniken}
 
-### Wie lernen wir besonders effektiv? 
+### Wie lernen wir besonders effektiv?
+
 In diesem Abschnitt verdeutlichen wir kurz die angestrebten Wirkmechanismen mit Fokus auf drei Lehrtechniken, die die Kognitionswissenschaft als besonders effektiv heraushebt (siehe @morth2021 für eine gute deutschsprachige Übersicht).
 
 Die moderne Lernforschung der Kognitionspsychologie stellt drei Gruppen von Techniken als besonders gute Kombination zwischen Effektivität und einfacher Anwendung heraus: **Verteiltes und gemischtes Lernen**, **testgestütztes Lernen** und **fragebasierte Ausarbeitung** [@dunlosky2013; @morth2021; @roediger2012]. Diese Wirkung gibt es allerdings nicht umsonst: Den positiven Effekten der Techniken steht oft ein deutlich höherer Vorbereitungsaufwand gegenüber. Wie im Folgenden kurz skizziert wird, lassen sich KI-Tools nutzen, um den Aufwand dieser drei Mechanismen zu verringern, was die Lernwirkung im Vergleich zu traditionellen Ansätzen deutlich erhöhen kann.
 
-**Zeitliche Verteilung und inhaltliche Mischung von Lerninhalten (Spacing & interleaving)**: Diese Technik basiert auf dem Prinzip, dass Informationen besser behalten werden, wenn das Lernen über die Zeit verteilt und in verschiedenen Kontexten stattfindet, anstatt in einer einzigen, intensiven Sitzung [@brown2014; @murre2015; @roediger2012]. **Abstände** zwischen Lerneinheiten und die wiederholte Aktivierung von Wissensstrukturen stärken die Verbindung zwischen Hinweisreizen und Gedächtnis und geben dem Gehirn Zeit, Erinnerungen effektiv zu speichern. Dies fördert die Langzeiterinnerung, denn der wiederholte Abruf verstärkt die gespeicherten Muster und vertieft sie so.
+**Zeitliche Verteilung und inhaltliche Mischung von Lerninhalten (Spacing & interleaving)**: Diese Technik basiert auf dem Prinzip, dass Informationen besser behalten werden, wenn das Lernen über die Zeit verteilt und in verschiedenen Kontexten stattfindet, anstatt in einer einzigen, intensiven Sitzung [@brown2014; @murre2015; @roediger2012].
+
+**Abstände** zwischen Lerneinheiten und die wiederholte Aktivierung von Wissensstrukturen stärken die Verbindung zwischen Hinweisreizen und Gedächtnis und geben dem Gehirn Zeit, Erinnerungen effektiv zu speichern. Dies fördert die Langzeiterinnerung, denn der wiederholte Abruf verstärkt die gespeicherten Muster und vertieft sie so.
+
+![Illustration Zeitlich verteiltes Lernen - spacing](images/script03-lerntechniken-spacing.png){#fig-spacing fig-align="center"}
+
+Quelle: Erstellt mit Gemini3, basierend auf @roediger2012.
 
 Weiterhin hilft es, zu „mischen“: **inhaltlich gemischtes Üben** (*interleaving*) ist effektiver als die isolierte Behandlung von Themenblöcken, die linear im Semesterverlauf abgehandelt werden [@morth2021]. Das liegt daran, dass das gemischte Üben die Unterscheidung zwischen verschiedenen Aufgabentypen fördert, was entscheidend für die spätere Anwendungskompetenz ist. Nur durch den geübten Vergleich verschiedener Kombinationen von Anwendungskontexten und Lösungsansätzen kann ein Gefühl dafür ausgebildet werden, welches Werkzeug zu welchem Problem passt. Fallstudien und Simulationen bieten sich hier an, wenn diese ausreichend komplex sind, um bekannte Analysen in neuen Kontexten anzuwenden und neue einzuführen.
 
+![Illustration Inhaltliche Mischung von Lerninhalten - interleaving](images/script03-lerntechniken-interleaving.png){#fig-interleaginv fig-align="center"}. 
+
+Quelle: Erstellt mit Gemini3, basierend auf @roediger2012.
+
+
 **Testgestütztes Lernen (Test-enhanced learning)**: Das Abrufen von Informationen durch Tests fördert das Langzeitgedächtnis deutlich stärker als das erneute Lesen des Stoffes. Für Studierende ist das anstrengender, es bringt aber deutlich mehr [@brown2014]. Ein ‚Test‘ kann dabei auch die Bearbeitung von Lerninhalten im Rahmen einer Fallstudie, die kritische Bewertung potenziell falscher Aussagen eines LLMs oder die Beantwortung von Verständnisfragen im Dialog mit einem Tutor-Bot sein.
+
+![Illustration Testgestütztes Lernen - test-enhanced learning](images/script03-lerntechniken-testing-effect.png.png){#fig-testing-effect fig-align="center"}
+
+Quelle: Erstellt mit Gemini3, basierend auf @roediger2012.
 
 Häufige Aktivierung von Lerninhalten durch Fragen verbessert den Lernerfolg durch mehrere Mechanismen [@roediger2006]. Erstens fördert solches Testen das transfergerechte Verarbeiten, da die mentalen Prozesse beim Testen und beim späteren Abrufen ähnlich sind, was die Erinnerungsfähigkeit verbessert. Zweitens stärkt die Wiederholung durch Tests einerseits den erinnerten Inhalt und fügt andererseits neue ‚Haken‘ hinzu, mit denen wir den Inhalt aus dem Gedächtnis ziehen: die Beziehungen zwischen Hinweisreizen (*cues*) und dem Inhalt im Gedächtnis, indem zusätzliche Abrufwege zu gespeicherten Wissensmustern geschaffen werden, was den Abruf verbessert. Praktisch kann man diesen tollen Effekt auch recht einfach durch regelmäßige kurze Fragerunden nutzen: Wie die Lernforscher herausstellen: „frequent low-stakes quizzes (last only 5 or 10 min) can produce a large boost in performance“ [@roediger2012, S. 246].
 
 **Fragebasierte Ausarbeitung (Explanatory questioning)**: Bei dieser Technik wird das tiefergehende Verständnis von Material durch das Stellen und Beantworten von „Warum“-Fragen gefördert. In **Rollenspielen und Simulationen** können Teilnehmer durch bewusste Praxis aktiv Szenarien durchspielen, während sie gleichzeitig durch gezielte Fragen angeleitet werden, die zum tieferen Nachdenken und zur Reflexion anregen. Diese Fragen können dazu dienen, die Teilnehmer dazu zu bringen, ihre Entscheidungen und Handlungen im Kontext des Rollenspiels zu erklären, wodurch das Verständnis für die Anwendung von Konzepten in realen oder simulierten Situationen vertieft wird.
 
-Indem Lernende über die Gründe hinter den Fakten nachdenken, werden Verbindungen zu bereits bekanntem Wissen hergestellt, was zu einem tieferen Verständnis und besserer Erinnerung führt. Dies deckt sich mit dem Postulat der ICAP-Theorie des kognitiven Engagements [@chi2018]: Interaktion (I) ist effektiver als individuelle Konstruktion, was wiederum effektiver ist als aktive (aber nicht konstruktive) Beteiligung, was wiederum die passive Lernteilnahme schlägt (I > C > A > P).
+Indem Lernende über die Gründe hinter den Fakten nachdenken, werden Verbindungen zu bereits bekanntem Wissen hergestellt, was zu einem tieferen Verständnis und besserer Erinnerung führt. Dies deckt sich mit dem Postulat der ICAP-Theorie des kognitiven Engagements [@chi2018]: Interaktion (I) ist effektiver als individuelle Konstruktion, was wiederum effektiver ist als aktive (aber nicht konstruktive) Beteiligung, was wiederum die passive Lernteilnahme schlägt (I \> C \> A \> P).
 
 ### Wie können LLMs genutzt werden, um diese Lerntechniken zu unterstützen?
 
