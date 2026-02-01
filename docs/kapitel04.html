@@ -419,6 +419,7 @@ div.csl-indent {
   <li><a href="#sec-hiwi" id="toc-sec-hiwi" class="nav-link active" data-scroll-target="#sec-hiwi"><span class="header-section-number">4.1</span> KI als Hiwi</a>
   <ul>
   <li><a href="#sec-unterstuetzung" id="toc-sec-unterstuetzung" class="nav-link" data-scroll-target="#sec-unterstuetzung"><span class="header-section-number">4.1.1</span> Wobei unterstützt KI besonders gut?</a></li>
+  <li><a href="#fachartikel-finden-und-auswerten-was-können-die-vielen-tools-aktuell" id="toc-fachartikel-finden-und-auswerten-was-können-die-vielen-tools-aktuell" class="nav-link" data-scroll-target="#fachartikel-finden-und-auswerten-was-können-die-vielen-tools-aktuell"><span class="header-section-number">4.1.2</span> Fachartikel finden und auswerten: Was können die vielen Tools aktuell?</a></li>
   </ul></li>
   <li><a href="#sec-copilot" id="toc-sec-copilot" class="nav-link" data-scroll-target="#sec-copilot"><span class="header-section-number">4.2</span> KI als Copilot</a>
   <ul>
@@ -690,7 +691,7 @@ Abbildung&nbsp;4.3: Einfache Aufgaben müssen angepasst werden: Die traditionell
 </figcaption>
 </figure>
 </div>
-<p><strong>Wie einfach das tatsächlich mittlerweile für Studierende geht</strong>, verdeutlicht ein Beispiel (s. <a href="#fig-statista-researchai" class="quarto-xref">Abbildung&nbsp;<span>4.4</span></a>): Wir nutzen die im Hochschulnetz frei verfügbare Lizenz von Statista und die hier angebotene LLM-Funktion „Research AI“, um einen Textausschnitt zum Thema „Industrie 4.0 in Deutschland“ zu generieren und erhalten auf einen sehr einfachen Prompt praktisch sofort einen korrekt formulierten und formatierten Ausschnitt mit 5 von Statista kuratierten Quellen zurück. Der hier angebotene Mehrwert zu breiteren Modellen wie GPT oder Gemini besteht vor allem in der Auswahl und Zusammenstellung der Quellen durch Statista. Ähnliche Angebote gibt es inzwischen aus verschiedenen Bereichen, etwa vom juristischen Verlag Wolters Kluwer (https://www.wolterskluwer.com/de-de/solutions/wolters-kluwer-online).</p>
+<p><strong>Wie einfach das tatsächlich mittlerweile für Studierende geht</strong>, verdeutlicht ein Beispiel (s. <a href="#fig-statista-researchai" class="quarto-xref">Abbildung&nbsp;<span>4.4</span></a>): Wir nutzen die im Hochschulnetz frei verfügbare Lizenz von Statista und die hier angebotene LLM-Funktion „Research AI“, um einen Textausschnitt zum Thema „Industrie 4.0 in Deutschland“ zu generieren und erhalten auf einen sehr einfachen Prompt praktisch sofort einen korrekt formulierten und formatierten Ausschnitt mit 5 von Statista kuratierten Quellen zurück.</p>
 <div id="fig-statista-researchai" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-statista-researchai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -701,6 +702,122 @@ Abbildung&nbsp;4.4: Beispiel mit ResearchAI von statista – automatisierte Rech
 </figcaption>
 </figure>
 </div>
+<p>Der hier angebotene Mehrwert zu breiteren Modellen wie GPT oder Gemini besteht vor allem in der Auswahl und Zusammenstellung der Quellen durch Statista. Ähnliche Angebote gibt es inzwischen aus verschiedenen Bereichen, etwa vom juristischen Verlag Wolters Kluwer (https://www.wolterskluwer.com/de-de/solutions/wolters-kluwer-online).</p>
+</section>
+<section id="fachartikel-finden-und-auswerten-was-können-die-vielen-tools-aktuell" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="fachartikel-finden-und-auswerten-was-können-die-vielen-tools-aktuell"><span class="header-section-number">4.1.2</span> Fachartikel finden und auswerten: Was können die vielen Tools aktuell?</h3>
+<p>Was leisten die LLM-Helfer bei der Dokumentensuche? Aaron Tay von der Singapore Management University (SMU) liefert hierzu sehr gute Zusammenfassungen aus der Perspektive eines Bibliothekars und mit detaillierten Anwendungstests der Tools (https://aarontay.substack.com/) <span class="citation" data-cites="tay2025agentic">(<a href="#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>. Einige praktische Unterscheidungen und Erkenntnisse fassen wir hier kurz zusammen.</p>
+<p>Welche Helfer tun was? Zwei Unterscheidungen helfen, hier einen Überblick zu bewahren: Einmalige Suche oder mehrfaches Iterieren? Nur Ergebnisse oder auch Analyse? Wir unterscheiden hier also danach, ob die Sprachmodelle oder Software-Tools eine einmalige Suche durchführen oder iterieren (eine Iteration vs.&nbsp;agentenbasierte Suche) und ob sie nur eine Liste von Dokumenten liefern oder deren Inhalt zusammenfassen (Ergebnisliste vs.&nbsp;RAG) <span class="citation" data-cites="tay2025agentic">(<a href="#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Retrieval</th>
+<th>Output</th>
+<th>Tay’s Bezeichnung</th>
+<th>Beispiele (Anbieter/Produkt)</th>
+<th>Was du praktisch bekommst</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One-Shot</td>
+<td>Liste</td>
+<td>Quick Search</td>
+<td><strong>Scopus</strong>, <strong>Lens.org</strong>, <strong>JSTOR Semantic Search</strong>, <strong>Web of Science Research Assistant</strong>, <strong>Google Scholar</strong></td>
+<td>Eine klassische Trefferliste (lexikalisch/BM25, semantisch oder hybrid) mit Ranking, ohne generierten Antworttext.</td>
+</tr>
+<tr class="even">
+<td>One-Shot</td>
+<td>Zusammenfassung</td>
+<td>Quick RAG</td>
+<td><strong>Primo Research Assistant</strong>, <strong>Scite Assistant</strong>; außerdem als typische „answers-with-citations“-Beispiele: <strong>Elicit</strong>, <strong>Consensus</strong></td>
+<td>Kurze „Antwort mit Zitaten“, erzeugt aus den Top-Treffern; meist wenige Absätze.</td>
+</tr>
+<tr class="odd">
+<td>Iterativ</td>
+<td>Liste</td>
+<td>Deep Search</td>
+<td><strong>AI2 Paperfinder (Asta)</strong>, <strong>Scholar Labs</strong></td>
+<td>Mehrere Iterationen über Minuten: Query-Variationen, semantische Suche, ggf. Citation-Chasing; ein LLM wirkt als Relevanz-Richter fürs Re-Ranking; Output bleibt eine Liste, aber typischerweise eine bessere.</td>
+</tr>
+<tr class="even">
+<td>Iterativ</td>
+<td>Zusammenfassung/Report</td>
+<td>Deep Research</td>
+<td><strong>Undermind</strong>, <strong>Elicit Reports</strong>, <strong>Consensus Deep Search</strong></td>
+<td>Deep Search plus Report-Generierung: längere Synthese/Literatur-Report auf Basis eines iterativ gefundenen Korpus.</td>
+</tr>
+</tbody>
+</table>
+<p>Einige Beispiele, welche Anbieter das jeweils meint, finden sich in der folgenden Abbildung.</p>
+<p><img src="images/tay-2026-one_shot-vs-iterative-results_only-vs-analysis-4-quadrants-of-academic-search.jpg" id="fig-paper-discovery-types" class="img-fluid" alt="Einmal fragen oder mehrfach? Nur Ergebnisse oder Analyse? Zwei Unterscheidungen und vier Quadranten von Such-Helfern mit KI"><br>
+</p>
+<p>Eine weitere Unterscheidung schaut tiefer auf die Art der Iteration <span class="citation" data-cites="tay2025agentic">(<a href="#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>: Nicht nur, ob ein Tool iteriert, sondern <strong>wie es iteriert – ob es im Kern ein fest verdrahteter Workflow</strong> mit ein paar „AI-Entscheidungspunkten“ ist (handcrafted) oder ob es <strong>flexibel Aufgaben zerlegen kann</strong>, die nicht in das Template passen. Tay beschreibt hier ein <strong>„Agency-Spektrum“</strong> und argumentiert, dass viele akademische Deep-(Re)Search-Tools eher am handwerklich-templatisierten Ende sitzen: beeindruckend innerhalb ihrer Schablonen, spröde außerhalb, mit dem Risiko, plausibel klingende Ergebnisse zu liefern, obwohl die Aufgabe gar nicht sauber gelöst wurde <span class="citation" data-cites="tay2025agentic">(<a href="#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>. Sein Stresstest ist dabei sehr sozialwissenschaftlich gedacht: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert.“ Ein menschlicher Hiwi zerlegt das in Schritte (ähnliche Arbeiten finden; Referenzen extrahieren; Überlappung abziehen). Tay berichtet, dass allgemeine LLMs diese Logik eher ausführen können, während spezialisierte „deep“ Tools teilweise scheitern, weil die Aufgabe nicht zum eingebauten Ablauf passt <span class="citation" data-cites="tay2025agentic">(<a href="#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>.</p>
+<p>Tay argumentiert, dass „Answer-with-citations“ für akademische Arbeit oft nur ein Teaser ist. Man braucht den Originaltext für Kontext, Nuancen, Operationalisierung und Identifikationslogik; und generierter Text kann Quellen falsch „anbinden“ („source faithfulness“), also etwas behaupten, das der zitierte Text so nicht trägt <span class="citation" data-cites="tay2025agentic">(<a href="#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>. In sozialwissenschaftlicher Praxis trifft das besonders (a) kausale Claims (Identifikation, Robustheit, Messvalidität) und (b) qualitative Inferenz (Sampling-Logik, Positionsgebundenheit, Geltungsgrenzen), weil die entscheidenden Stellen häufig nicht im Abstract stehen und disziplinierte Lektüre verlangen.</p>
+<p><strong>Gefundene Ergebnisse verdichten und Fachartikel zusammenfassen</strong> - was können die KI-Helfer hier aktuell leisten? Wir folgen hier einer Gliederung der KI-Helfer nach der Funktion <span class="citation" data-cites="tay2024classifying">(<a href="#ref-tay2024classifying" role="doc-biblioref">Tay, 2024</a>)</span>: Bieten sie an, einmal ein einzelnes Dokument zu verdichten oder mehrfach ein einzelnes? Eine dritte Option ist eine Literatur-Synthese über mehrere Dokumente. Aus diesen Unterscheidungen von einfacher oder sequenzieller Durchführung und fokussierter vs.&nbsp;übergreifender Synthese ergeben sich folgende Ausprägungen, die wir hier je kurz mit Beispielen erläutern <span class="citation" data-cites="tay2024classifying">(<a href="#ref-tay2024classifying" role="doc-biblioref">Tay, 2024</a>)</span>:</p>
+<div id="tbl-paper-analysis-types" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-paper-analysis-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.4: Paper mit KI analysieren: Einfach oder sequenziell, ein Artikel oder Synthese mehrerer Artikel? Quelle: <span class="citation" data-cites="tay2024classifying">Tay (<a href="#ref-tay2024classifying" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+<div aria-describedby="tbl-paper-analysis-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Form der LLM-Zusammenfassung (Tay)</th>
+<th>Was passiert technisch/funktional?</th>
+<th>Typische UI-Form</th>
+<th>Beispiele (Anbieter/Produktnamen)</th>
+<th>Nutzen in sozialwissenschaftlicher Forschung</th>
+<th>Typische Risiken und worauf man testet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Single-Document Summarisation</strong> (ein Dokument)</td>
+<td>Ein einzelner Text wird zusammengefasst; Tay unterscheidet innerhalb dieser Kategorie drei Varianten je nach Prompt-Freiheit: (1a) fester Button, (1b) feste, aber query-abhängige Antwort, (1c) freies Q&amp;A/Chat über ein Dokument. Viele Implementierungen nutzen intern RAG-Muster und zeigen „Snippets“ als Beleg.</td>
+<td>Button/Sidebar/Chat neben einem Treffer</td>
+<td><strong>1a</strong>: EBSCO „AI Insights“; <strong>1a</strong>: Ex Libris „Document Insights“ (Primo/ProQuest-Kontext); <strong>1b</strong>: ProQuest „Research Assistant“ (z. B. „Relationship to your search terms“); <strong>1c</strong>: JSTOR Research Tool (beta) „Chat“.</td>
+<td>Sehr gut fürs schnelle Triage-Lesen: „Ist das Paper relevant?“; hilfreich bei überlappenden Begriffen zwischen Soziologie/Politikwissenschaft/Erziehungswissenschaft. Query-abhängige Varianten (1b) machen sichtbar, wenn ein Treffer nur semantisch „ähnlich“ ist, aber nicht zur Fragestellung passt.</td>
+<td>Bei festen Buttons geringeres Risiko, aber oft nur „aufgebohrte Abstract-Paraphrase“; bei Chat-mit-PDF höheres Risiko durch unvorhersehbare Fragen. Tests: Stabilität (gleicher Text → ähnliche Ausgabe), Grounding-Spotchecks (Behauptungen im PDF prüfen), Negativkontrolle („steht das überhaupt drin?“), Scope-Klarheit (Abstract vs.&nbsp;Volltext).</td>
+</tr>
+<tr class="even">
+<td><strong>2. Sequential Single-Document Summarisation</strong> (mehrere Dokumente, aber jeweils einzeln)</td>
+<td>Mehrere Treffer werden nacheinander dokumentweise verarbeitet; typisch sind „Synthesis tables“/Matrizen. Extraktion klar definierter Variablen ist meist zuverlässiger als freie Zusammenfassung. Query-abhängige Ein-Zeilen-Zusammenfassungen dienen nebenbei als Relevanz-Signal.</td>
+<td>Tabelle/Matrix über Top-K Treffer</td>
+<td><strong>Elicit</strong>: automatische Summary-Spalte plus frei definierbare Extraktions-Spalten (Design, Sample, Outcome etc.).</td>
+<td>„Codier-Werkbank“: Konstrukte, Kontext, Designlogik und Findings als Spalten definieren, Paper für Paper füllen lassen; macht Muster, Cluster und Ausreißer sichtbar (wie ein standardisiertes Codebuch mit beschleunigter Erstbefüllung).</td>
+<td>Stille Inkonsistenzen: driftende Begriffe/Einheiten, „Missingness“ wird mit Vermutungen gefüllt. Tests: Stichproben-Audit gegen PDF, Konsistenzchecks, „Missingness-Ehrlichkeit“, Provenance je Zelle (Textstelle muss rückverfolgbar sein).</td>
+</tr>
+<tr class="odd">
+<td><strong>3. Query-based Multi-Document Summarisation</strong> (Synthese über mehrere Dokumente)</td>
+<td>Synthese über mehrere Dokumente zur Beantwortung einer Frage; häufig RAG. Varianten: nur Suchtreffer, nur Uploads oder Hybrid. Manche Systeme fixieren zuerst ein Korpus (z. B. Top-25) und erlauben danach Folgefragen über dieses Set.</td>
+<td>„Answer with citations“ / Report über mehrere Papers</td>
+<td><strong>Ex Libris/Primo Research Assistant</strong>; <strong>Google NotebookLM</strong> (Upload-Korpus); <strong>Elicit Systematic Review</strong> (Hybrid); <strong>JSTOR Research Tool (beta)</strong> (fixes Top-K-Set); <strong>Undermind.ai</strong> („Ask Expert“) nach iterativer Phase.</td>
+<td>„Narrativ-Maschine“: gut für Landschaftsskizzen (Themencluster, Mechanismen, Kontroversen). Kann beim Strukturieren eines Review-Kapitels helfen (Abschnitte nach Mechanismen, Kontexten, Messansätzen).</td>
+<td>Höchstes Fehlerrisiko durch Kombination aus Retrieval-Fehlern, kontextuntreuer Paper-Zusammenfassung und schwacher Evidenzgewichtung. In Sozialwissenschaften heikel wegen heterogener Designs. Tests: Claim-zu-Quelle-Mapping, Coverage („Must-cite“-Set), Widerspruchstest, „Not in sources“-Test, Retraktions-/Korrekturtest.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Entsprechen die spezialisierten Angebote wirklich menschlichen Hilfskräften?</strong> Noch eher nicht im Sinne dass sie flexibel und autonom agieren. Für einzelne Teilaufgaben ist der Anspruch eher erfüllt. Der Bibliothekar Tay führt hierfür einen Stresstest durch, er promptet eine komplexe Aufgabe, für die mehrere Schritte flexibel angepasst werden müssten: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert.“ Ein menschlicher Hiwi zerlegt das in Schritte (ähnliche Arbeiten finden; Referenzen extrahieren; Überlappung abziehen). Tay berichtet, dass allgemeine LLMs diese Logik eher ausführen können, während spezialisierte „deep“ Tools teilweise scheitern, weil die Aufgabe nicht in ihren eingebauten Ablauf passt <span class="citation" data-cites="tay2025agentic">(<a href="#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>.</p>
 </section>
 </section>
 <section id="sec-copilot" class="level2" data-number="4.2">
@@ -730,11 +847,11 @@ Probieren Sie mal
 <p>Hier eine zweite Übung (erstellt von Julia Schmid), zum die strukturiertes <strong>Schreiben mit Einleitungssätzen (Topic-Sentences)</strong> beibringen soll: <a href="https://chatgpt.com/g/g-68768c3031c08191b752ef66df258979-topic-sentence-bot">Link zum Topic-Sentence-Bot</a>.</p>
 </div>
 </div>
-<p>Die Studienberatung der Universität Frankfurt hat eine Übersicht nach Phasen des Prozesses erstellt <span class="citation" data-cites="lehrevirtuell-universitaetfrankfurt2023">(<a href="#ref-lehrevirtuell-universitaetfrankfurt2023" role="doc-biblioref">Lehre virtuell - Universität Frankfurt, 2023</a>)</span>, s. <a href="#tbl-writing-process" class="quarto-xref">Tabelle&nbsp;<span>4.4</span></a>:</p>
+<p>Die Studienberatung der Universität Frankfurt hat eine Übersicht nach Phasen des Prozesses erstellt <span class="citation" data-cites="lehrevirtuell-universitaetfrankfurt2023">(<a href="#ref-lehrevirtuell-universitaetfrankfurt2023" role="doc-biblioref">Lehre virtuell - Universität Frankfurt, 2023</a>)</span>, s. <a href="#tbl-writing-process" class="quarto-xref">Tabelle&nbsp;<span>4.5</span></a>:</p>
 <div id="tbl-writing-process" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-writing-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;4.4: Integration von KI in den Schreibprozess. Quelle: Studienberatung der Universität Frankfurt <span class="citation" data-cites="lehrevirtuell-universitaetfrankfurt2023">(<a href="#ref-lehrevirtuell-universitaetfrankfurt2023" role="doc-biblioref">Lehre virtuell - Universität Frankfurt, 2023</a>)</span>, Stand 10.3.2024
+Tabelle&nbsp;4.5: Integration von KI in den Schreibprozess. Quelle: Studienberatung der Universität Frankfurt <span class="citation" data-cites="lehrevirtuell-universitaetfrankfurt2023">(<a href="#ref-lehrevirtuell-universitaetfrankfurt2023" role="doc-biblioref">Lehre virtuell - Universität Frankfurt, 2023</a>)</span>, Stand 10.3.2024
 </figcaption>
 <div aria-describedby="tbl-writing-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -781,11 +898,11 @@ Tabelle&nbsp;4.4: Integration von KI in den Schreibprozess. Quelle: Studienberat
 </div>
 </figure>
 </div>
-<p>Mit einer einfachen Skala lässt sich auch die Intensität der LLM-Nutzung grob beschreiben. (s. <a href="#tbl-llm-scale" class="quarto-xref">Tabelle&nbsp;<span>4.5</span></a>): Je nach Phase im Arbeitsprozess kann LLM zur Ideenfindung, zur Ausarbeitung möglicher Fragestellungen oder Inhalte dienen. Je nach Intensität sollte dann die Nutzung stärker begründet und durch Prüfschritte abgesichert werden <span class="citation" data-cites="baresel2024a rowland2023">(<a href="#ref-baresel2024a" role="doc-biblioref">Baresel et al., 2024</a>; <a href="#ref-rowland2023" role="doc-biblioref">Rowland, 2023</a>)</span>.</p>
+<p>Mit einer einfachen Skala lässt sich auch die Intensität der LLM-Nutzung grob beschreiben. (s. <a href="#tbl-llm-scale" class="quarto-xref">Tabelle&nbsp;<span>4.6</span></a>): Je nach Phase im Arbeitsprozess kann LLM zur Ideenfindung, zur Ausarbeitung möglicher Fragestellungen oder Inhalte dienen. Je nach Intensität sollte dann die Nutzung stärker begründet und durch Prüfschritte abgesichert werden <span class="citation" data-cites="baresel2024a rowland2023">(<a href="#ref-baresel2024a" role="doc-biblioref">Baresel et al., 2024</a>; <a href="#ref-rowland2023" role="doc-biblioref">Rowland, 2023</a>)</span>.</p>
 <div id="tbl-llm-scale" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-llm-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;4.5: Erläuterungen zum Grad der LLM-Nutzung. Quelle: <span class="citation" data-cites="baresel2024a">Baresel et al. (<a href="#ref-baresel2024a" role="doc-biblioref">2024</a>)</span>, basierend auf <span class="citation" data-cites="rowland2023">Rowland (<a href="#ref-rowland2023" role="doc-biblioref">2023</a>)</span>
+Tabelle&nbsp;4.6: Erläuterungen zum Grad der LLM-Nutzung. Quelle: <span class="citation" data-cites="baresel2024a">Baresel et al. (<a href="#ref-baresel2024a" role="doc-biblioref">2024</a>)</span>, basierend auf <span class="citation" data-cites="rowland2023">Rowland (<a href="#ref-rowland2023" role="doc-biblioref">2023</a>)</span>
 </figcaption>
 <div aria-describedby="tbl-llm-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -831,7 +948,7 @@ Tabelle&nbsp;4.5: Erläuterungen zum Grad der LLM-Nutzung. Quelle: <span class="
 <div id="tbl-mollick-assignments" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mollick-assignments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;4.6: Neue Ansätze für Hausarbeiten mit KI. Quelle: <span class="citation" data-cites="mollick2023b">Mollick &amp; Mollick (<a href="#ref-mollick2023b" role="doc-biblioref">2023a</a>)</span> sowie die verlinkten Blogeinträge
+Tabelle&nbsp;4.7: Neue Ansätze für Hausarbeiten mit KI. Quelle: <span class="citation" data-cites="mollick2023b">Mollick &amp; Mollick (<a href="#ref-mollick2023b" role="doc-biblioref">2023a</a>)</span> sowie die verlinkten Blogeinträge
 </figcaption>
 <div aria-describedby="tbl-mollick-assignments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1122,6 +1239,12 @@ Schwarcz, D., Manning, S., Barry, P. J., Cleveland, D. R., Prescott, J. J., &amp
 </div>
 <div id="ref-steinberger2025" class="csl-entry" role="listitem">
 Steinberger, P. (2025, Oktober 14). <em>Just Talk To It - the no-bs Way of Agentic Engineering | Peter Steinberger</em>. <a href="https://steipete.me/posts/just-talk-to-it">https://steipete.me/posts/just-talk-to-it</a>.
+</div>
+<div id="ref-tay2024classifying" class="csl-entry" role="listitem">
+Tay, A. (2024, Oktober 20). <em>Classifying the ways LLMs summarise - Individual vs Aggregate vs Visual summaries</em>. <a href="https://aarontay.substack.com/p/classifying-the-ways-llms-summarise">https://aarontay.substack.com/p/classifying-the-ways-llms-summarise</a>.
+</div>
+<div id="ref-tay2025agentic" class="csl-entry" role="listitem">
+Tay, A. (2025, Januar 19). <em>How agentic are academic deep research tools? Testing Perplexity, Elicit, Consensus and Academic GPTs</em>. <a href="https://aarontay.substack.com/p/how-agentic-are-academic-deep-research">https://aarontay.substack.com/p/how-agentic-are-academic-deep-research</a>.
 </div>
 <div id="ref-tutton2025" class="csl-entry" role="listitem">
 Tutton, M., &amp; Cohen, D. (2025). Reconceptualizing the Role of the University Language Teacher in Light of Generative AI. <em>Education Sciences</em>, <em>15</em>(1), 56. <a href="https://doi.org/10.3390/educsci15010056">https://doi.org/10.3390/educsci15010056</a>.

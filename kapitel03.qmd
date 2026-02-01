@@ -14,11 +14,26 @@ format:
 
 ## Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre? {#sec-ziele-genai}
 
-Bevor wir uns der konkreten Umsetzung zuwenden, müssen wir uns zunächst fragen, was wir überhaupt bezwecken: Was sind unsere Ziele für die konkrete Umsetzung in Lehrsituationen?
+Bevor wir uns der konkreten Umsetzung zuwenden, müssen wir uns zunächst fragen, was wir überhaupt bezwecken: Was sind typische Probleme und was sind unsere Ziele für die konkrete Umsetzung in Lehrsituationen?
 
-@mollick2023b argumentieren, dass KI als "Kraftverstärker" für Lehrkräfte dienen kann, indem sie die Implementierung evidenzbasierter Lehransätze erleichtert, die sonst aufgrund von Zeit- und Arbeitsaufwand oft schwer umzusetzen sind. Aber wie wirkt das? Was begründet die erhoffte Wirkung?
+Schauen wir uns zunächst ein zentrales Problem der Lernsituation an Hochschulen an [@freeman2014, @roediger2012]: **Wir wissen, was effektive Formen der Lehre sind, diese werden jedoch häufig nicht angewendet.** Studien deuten darauf hin, dass dies eher an situativen Hindernissen der Lernumgebung liegt als am Willen der Lehrenden [@henderson2007].
 
-Zur Orientierung sollen hier kurz Kategorien von Wissen und Lernmethoden eingeführt werden. Dann können wir im Detail diskutieren, für welche Ziele und Methodenwahl welche Art der Unterstützung geeignet ist.
+Ein Beispiel ist die **Vorlesung**. Es ist gut belegt, dass diese Form des passiven Konsums eine sehr schwache Form der Wissensvermittlung ist. **Man lernt nicht nichts, aber anders würde man mehr lernen.** Empirisch und theoretisch ist sehr gut belegt, dass Studierende Wissen besser behalten, wenn sie dieselbe Zeit für aktives Üben, Frage-Antwort Interaktionen oder Diskussion in Kleingruppen verwenden [@freeman2014a, @hake1998].
+
+Praktisch wird oft mit dem positiven Effekt der reinen Anwesenheit argumentiert (besser als wenn die Studierenden zu Hause Netflix schauen; wer zur Vorleseung kommt hat bessere Noten), aber **diese spezielle Form der Präsenzlehre hat durch mangelnde Interaktion klare Nachteile.** Der Harvard Physiker @kestin2025 fasst drei zentrale Probleme von Vorlesungen zusammen: Mangelnde Anpassung, mangelndes individuelles Feedback und mangelnde Aktivierung der Lernenden. Genauer [@kestin2025, S.2-3]: "1. They move too quickly for some students and too slowly for others because the teacher controls the pace of instruction; 2. Students do not receive personalized feedback to their questions as they arise; and 3. They fail to maintain consistent student engagement."
+
+**Warum werden trotzdem Vorlesungen sehr häufig und aktivere Lehrformen relativ selten eingesetzt** [@stains2018]? Studien deuten an, dass es oft nicht am Willen der Lehrenden liegt, sondern dass **situative Hindernisse** eine große Rolle spielen, vor allem Zeitmangel wird sehr häufig in Umfragen genannt [@shadle2017], außerdem bremsen Faktoren wie Gruppengröße oder ein ungünstiger Setup der Räume [@henderson2007]. Auch erfolgt die **Umsetzung oft zu optimistisch und ohne Berücksichtigung von Widerständen und Hindernissen** (z.B. Anreize für Studierende, zu Gruppenübungen auch zu kommen, oder nicht lieber ihr Wochenende in Kleingruppen zu besprechen als die Übungsaufgabe), so dass z.B. mangels notwendiger Anreizsetzung die erhoffte Lernwirkung ausbleibt und schnell Frust bei der Umsetzung entsteht [@henderson2007].
+
+Wir argumentieren hier, dass GenAI **helfen kann, solche situativen Barrieren zu verringern,** speziell das häufig genannte **Zeitproblem** bei der Umsetzung effektiver Lehrmethoden [@shadle2017]. Bei sorgfältiger Umsetzung könnte GenAI so als "Kraftverstärker" für Lehrkräfte dienen [@mollick2023b], indem es die Implementierung evidenzbasierter Lehransätze erleichtert, die sonst aufgrund von Zeit- und Arbeitsaufwand oft schwer umzusetzen sind.
+
+Auch hier gibt es allerdings nichts umsonst: Die **neuen Tools haben ihre eigenen Risiken und Nebenwirkungen** und **der Aufwand für Anpassung und Umsetzung** darf nicht unterschätzt werden. Einfach Sprachmodelle ohne Anpassung und didaktische 'Bremsen' einzusetzen ist oft nicht sinnvoll. Wie wir in der weiteren Diskussion sehen werden, nehmen sonst die KI-Chatbots den Studierenden erwünschte Schwierigkeiten ab (*desirable difficulties*), ermuntern sie nicht dazu, selbst Informationen abzuwägen, das eigene Verständnis zu vertiefen und so den aktuellen Fähigkeitsstand aktiv zu verbessern (*growth mindset*) oder überfordern die kognitive Aufnahmefähigkeit der Lernenden durch Wissens-Dumps (*cognitive load*). Werden die Sprachmodelle nicht dazu angehalten, klar zu sagen, wenn sie zu etwas keine Informationen haben, so können sie die Lernenden durch überzeugend vorgetragene Halluzinationen oder Fehlschlüsse in die Irre führen. Um effektiv zu sein, müssen GenAI Lernhilfen insofern didaktisch gebremst, themenspezifisch angepasst und systematisch erprobt werden [@kestin2025]:
+
+```         
+"AI chatbots are generally designed to be helpful, not to promote learning. They are not trained to follow pedagogical best practices (e.g., facilitating active learning, managing cognitive load and promoting
+a growth mindset) (...) . Another well-known flaw of AI tutors is their uncanny confidence when giving an incorrect answer or when marking a correct reply as incorrect [@kestin2025]."
+```
+
+Die nächsten Abschnitte geben eine theoriegestützte Orientierung, wie solche Anpassungen erfolgen könnten und welche Mechanismen die Lernforschung als besonders effektiv herausstellt. Zunächst führen wir zur genaueren Zielbestimmung Kategorien von Wissen und Lernmethoden ein. Dann können wir im Detail diskutieren, für welche Ziele und Methodenwahl welche Art der Unterstützung geeignet ist.
 
 ## Wissenstypen {#sec-wissenstypen}
 
@@ -73,7 +88,6 @@ Die moderne Lernforschung der Kognitionspsychologie stellt drei Gruppen von Tech
 **Abstände** zwischen Lerneinheiten und die wiederholte Aktivierung von Wissensstrukturen stärken die Verbindung zwischen Hinweisreizen und Gedächtnis und geben dem Gehirn Zeit, Erinnerungen effektiv zu speichern. Dies fördert die Langzeiterinnerung, denn der wiederholte Abruf verstärkt die gespeicherten Muster und vertieft sie so.
 
 ![Illustration Zeitlich verteiltes Lernen - spacing](images/script03-lerntechniken-spacing.png){#fig-spacing fig-align="center"}
-
 
 *Quelle: Erstellt mit Gemini3, basierend auf @roediger2012.*
 
