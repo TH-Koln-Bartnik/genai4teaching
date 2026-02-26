@@ -454,100 +454,6 @@ div.csl-indent {
 <section id="sec-ki-hilfe" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-ki-hilfe"><span class="header-section-number">1.1</span> KI als Hilfe für die Lehre</h2>
 <p><strong>Wie kann uns generative künstliche Intelligenz</strong> (KI) <strong>in der Lehre helfen</strong>? Hoffnung besteht hier für zwei typische Probleme: Erstens haben Studierende <strong>individuelle Bedürfnisse</strong>, aber wir haben nur <strong>begrenzte Zeit</strong>, auf diese einzugehen. Wie können wir Einzelne möglichst intensiv fördern, ohne vor Arbeit unterzugehen? Zweitens ist der <strong>Aufwand gerade für effektive Lehrmethoden</strong> oft sehr hoch, so etwa für häufige niedrigschwellige Tests oder individuelles Feedback zu Studienarbeiten <span class="citation" data-cites="hattie2023 brown2014">(<a href="#ref-brown2014" role="doc-biblioref">Brown et al., 2014</a>; s. etwa <a href="#ref-hattie2023" role="doc-biblioref">Hattie, 2023, Kap.13</a>)</span>. Wer lehrt, fühlt sich aus Zeit- und Stoffdruck oft gezwungen, Abstriche von idealen Lehrsetups zu machen <span class="citation" data-cites="henderson2007 schmidt2005">(<a href="#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>; <a href="#ref-schmidt2005" role="doc-biblioref">Schmidt &amp; Tippelt, 2005, S.104–105</a>)</span>. Gerade Lehrmethoden, die didaktisch sinnvoll, aber mit höherem Aufwand verbunden sind, drohen dabei auf der Strecke zu bleiben <span class="citation" data-cites="dunlosky2013 roediger2012">(s. etwa <a href="#ref-dunlosky2013" role="doc-biblioref">Dunlosky et al., 2013</a>; <a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Schnelles Brainstorming mit der KI">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Schnelles Brainstorming mit der KI
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div id="relevance-widget" style="max-width: 450px; font-family: system-ui, sans-serif;">
-  <div style="padding: 20px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px; border: 1px solid #bbf7d0;">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-      <span style="font-size: 24px;">💡</span>
-      <h3 style="margin: 0; font-size: 18px; color: #1f2937;" class="anchored">Wie kann ich GenAI in meiner Lehre nutzen?</h3>
-      <span style="font-size: 11px; background: #bbf7d0; color: #166534; padding: 2px 8px; border-radius: 12px;">KI</span>
-    </div>
-    
-    <p style="font-size: 14px; color: #6b7280; margin-bottom: 16px;">
-      Geben Sie Ihren Fachbereich ein. Das Sprachmodell hilft beim Brainstormen.
-    </p>
-    
-    <div style="display: flex; gap: 8px;">
-      <input type="text" id="industry-input" placeholder="z.B. Maschinenbau, Logistik, Marketing..." style="flex: 1; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;">
-      <button id="submit-btn" style="padding: 10px 20px; background: #16a34a; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500;">
-        Los
-      </button>
-    </div>
-    
-    <div id="response-area" style="display: none; margin-top: 16px; padding: 16px; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
-      <p id="response-text" style="margin: 0; color: #374151; line-height: 1.6;"></p>
-      <p style="margin: 12px 0 0 0; font-size: 11px; color: #9ca3af;">
-        ⚡ Antworten von GPT-4o-mini - ein effizientes, aber nicht das schlauste Modell · Kann Fehler enthalten
-      </p>
-    </div>
-  </div>
-</div>
-
-<script>
-(function() {
-  const WORKER_URL = 'https://mute-poetry-9d98.roman-bartnik.workers.dev/';
-  const ARTICLE_TOPIC = 'Beispiele für 5 spezifische schwierige Konzepte und Schwierigkeiten für Studierende in dem genannten Bereich. 5 Stichpunkte für Ideen, wie Studierende hierfür individuelle Erklärungen oder Feedback erhalten können';
-
-  const btn = document.getElementById('submit-btn');
-  const input = document.getElementById('industry-input');
-  const responseArea = document.getElementById('response-area');
-  const responseText = document.getElementById('response-text');
-
-  async function getRelevance() {
-    const industry = input.value.trim();
-    if (!industry) {
-      alert('In welchem Fachgebiet unterrichten Sie? (z.B. Maschinenbau');
-      return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = '⏳';
-    responseArea.style.display = 'block';
-    responseText.textContent = 'Denke nach...';
-
-    try {
-      const response = await fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          industry: industry,
-          topic: ARTICLE_TOPIC
-        })
-      });
-
-      const data = await response.json();
-
-      if (data.error) {
-        responseText.textContent = 'Fehler: ' + data.error;
-      } else {
-        responseText.textContent = data.relevance;
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      responseText.textContent = 'Netzwerkfehler. Bitte erneut versuchen.';
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Los';
-    }
-  }
-
-  btn.addEventListener('click', getRelevance);
-  input.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') getRelevance();
-  });
-})();
-</script>
-</div>
-</div>
 <p><strong>Für die Lehre</strong> erschließen sich durch die großen KI-Sprachmodelle (LLM = Large Language Models) neue Möglichkeiten. Sie sind, wie es eine Analyse des MIT Professors Andrew McAfee auf den Punkt bringt, „<strong>generally faster</strong>“ <span class="citation" data-cites="mcafee2024">(<a href="#ref-mcafee2024" role="doc-biblioref">McAfee, 2024</a>)</span>. Lehrende können mit KI-Unterstützung etwa deutlich schneller eine Recherche durchführen, ein Set von Übungsaufgaben erstellen, mehrere Anwendungsbeispiele pro Konzept hinzufügen, Quizfragen zur schnellen Lernüberprüfung generieren oder mit den Studierenden Rollenspiele durchführen <span class="citation" data-cites="meincke2024 mollick2023a">(<a href="#ref-meincke2024" role="doc-biblioref">Meincke et al., 2024</a>; <a href="#ref-mollick2023a" role="doc-biblioref">Mollick &amp; Mollick, 2023</a>)</span>. Der Berg ist noch da, aber mit dem E-Bike kommt man weiter.</p>
 <div id="fig-ai-ebike" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -562,7 +468,7 @@ Abbildung&nbsp;1.1: GenAI als Kraftverstärker. Quelle: Gemini 2
 </section>
 <section id="sec-2025-examples" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="sec-2025-examples"><span class="header-section-number">1.2</span> Was 2026 möglich ist: Praktische Beispiele für Recherche, Übungsaufgaben, Erklärungen</h2>
-<p>“KI nutzen” heißt Anfang 2026 nicht mehr nur “chatten mit dem Bot”, sondern <strong>Delegation an Agenten</strong> <span class="citation" data-cites="mollick2026">(<a href="#ref-mollick2026" role="doc-biblioref"><strong>mollick2026?</strong></a>)</span>: Man delegiert Aufgaben, die KI nutzt Werkzeuge und arbeitet mehrstufig, prüft also selbstständig Zwischenergebnisse. Praktisch unterschieden wir dabei drei Ebenen: <strong>Modelle</strong> (das Sprachmodell, z.B. GPT 5.2), <strong>Apps</strong> (die Oberfläche, z.B. die Texteingabe im Browser bei Chat GPT) und <strong>Harnesses</strong> („Arbeitsgeschirr“ oder Werkzeugkasten, etwa Web-Recherche, Zugriff auf einen Ordner mit Daten oder die Fähigkeit zum Rechnen mit Programmiersprachen wie Python). Wichtig für die Lehre: <strong>Wenig Kosten heißt oft auch wenig(er) Nutzen</strong> (“No such thing as a free lunch”, hört man die Ökonomen murmeln…<span class="citation" data-cites="friedman1975">(<a href="#ref-friedman1975" role="doc-biblioref"><strong>friedman1975?</strong></a>)</span>). Viele Plattformen locken Nutzer in kostenlose Tarife oder per „Auto“-Auswahl in <strong>schwächere Modellvarianten</strong>, denen dann das iterative Vorgehen fehlt (<em>reasoning</em>), oft ohne oder nur mit sehr begrenztem Harness-Werkzeugkasten. Das wirkt zunächst „gut genug“, erhöht aber das Risiko von Fehlern, veralteten Informationen und oberflächlichem Denken. Für die Lehre heißt das: Wer GenAI als Lehrassistenz nutzen will, sollte <strong>bewusst eine starke Modellvariante</strong> und ein passendes Harness wählen – und Ergebnisse grundsätzlich didaktisch gegenprüfen.</p>
+<p>“KI nutzen” heißt Anfang 2026 nicht mehr nur “chatten mit dem Bot”, sondern <strong>Delegation an Agenten</strong> <span class="citation" data-cites="mollick2026">(<a href="#ref-mollick2026" role="doc-biblioref"><strong>mollick2026?</strong></a>)</span>: Man delegiert Aufgaben, die KI nutzt Werkzeuge und arbeitet mehrstufig, prüft also selbstständig Zwischenergebnisse. Praktisch unterschieden wir dabei drei Ebenen: <strong>Modelle</strong> (das Sprachmodell, z.B. GPT 5.2), <strong>Apps</strong> (die Oberfläche, z.B. die Texteingabe im Browser bei Chat GPT) und <strong>Harnesses</strong> („Arbeitsgeschirr“ oder Werkzeugkasten, etwa Web-Recherche, Zugriff auf einen Ordner mit Daten oder die Fähigkeit zum Rechnen mit Programmiersprachen wie Python). Wichtig für die Lehre: <strong>Wenig Kosten heißt oft auch wenig(er) Nutzen</strong> (“No such thing as a free lunch”, hört man die Ökonomen murmeln…<span class="citation" data-cites="friedman1975">(<a href="#ref-friedman1975" role="doc-biblioref">Friedman &amp; Friedman, 1975</a>)</span>). Viele Plattformen locken Nutzer in kostenlose Tarife oder per „Auto“-Auswahl in <strong>schwächere Modellvarianten</strong>, denen dann das iterative Vorgehen fehlt (<em>reasoning</em>), oft ohne oder nur mit sehr begrenztem Harness-Werkzeugkasten. Das wirkt zunächst „gut genug“, erhöht aber das Risiko von Fehlern, veralteten Informationen und oberflächlichem Denken. Für die Lehre heißt das: Wer GenAI als Lehrassistenz nutzen will, sollte <strong>bewusst eine starke Modellvariante</strong> und ein passendes Harness wählen – und Ergebnisse grundsätzlich didaktisch gegenprüfen.</p>
 <p><strong>Schauen wir uns einige praktische Beispiele an</strong>, was mit schlauen Modellen und gut gefülltem Werkzeugkasten mittlerweile möglich ist. Wir suchen aktuelle Fallstudien zu Lieferketten-Problemen. Als Recherche-Hiwi sucht das Sprachmodell auf akademischen Blogs und Fachzeitschriften nach aktuellen Beispielen.</p>
 <div id="fig-deep-research-plan" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -765,7 +671,7 @@ Abbildung&nbsp;1.14: Gründe für die Verbreitung von GenAI nach dem Technologie
 <h2 data-number="1.8" class="anchored" data-anchor-id="sec-forschung-details"><span class="header-section-number">1.8</span> Schlaglichter aus der Forschung mit GenAI: Erfahrungsberichte aus den Disziplinen (GPT-5 und 5-Pro)</h2>
 <p>Wie und wofür lassen sich die stärksten Sprachmodelle aktuell in der Forschung nutzen? Zum optionalen Abschluss dieses Kapitels finden Sie hier kurze Zusammenfassungen der Ergebnisse aus den verschiedenen Disziplinen <span class="citation" data-cites="bubeck2025">(<a href="#ref-bubeck2025" role="doc-biblioref">Bubeck et al., 2025</a>)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Optimierung der Schrittweite">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -774,7 +680,7 @@ Mathematik / Optimierung der Schrittweite
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Sébastien Bubeck</p>
 <p><strong>Thema:</strong> Untersuchung, ob GPT-5 ein kürzlich veröffentlichtes Resultat zur Konvexität von Optimierungskurven verbessern oder reproduzieren kann.</p>
@@ -789,7 +695,7 @@ Mathematik / Optimierung der Schrittweite
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Literaturrecherche zu Erdős-Problemen">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -798,7 +704,7 @@ Mathematik / Literaturrecherche zu Erdős-Problemen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschende:</strong> Mehtaab Sawhney und Mark Sellke</p>
 <p><strong>Thema:</strong> Nutzung von GPT-5 zur Identifizierung bereits veröffentlichter Lösungen für Probleme aus der Erdős-Datenbank, die dort als „offen“ gelistet waren.</p>
@@ -815,7 +721,7 @@ Mathematik / Literaturrecherche zu Erdős-Problemen
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Mathematik / LLMs als Forschungspartner">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -824,7 +730,7 @@ Mathematik / LLMs als Forschungspartner
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Timothy Gowers</p>
 <p><strong>Thema:</strong> Erfahrungen bei der Nutzung von LLMs für mathematische Probleme im Frühstadium.</p>
@@ -844,7 +750,7 @@ Mathematik / LLMs als Forschungspartner
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Neue Resultate zum Erdős-Problem #848">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -853,7 +759,7 @@ Mathematik / Neue Resultate zum Erdős-Problem #848
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschende:</strong> Mehtaab Sawhney und Mark Sellke</p>
 <p><strong>Thema:</strong> Lösung eines offenen Problems über Teilmengen von {1, …, N}, bei denen ab+1 nicht quadratfrei ist.</p>
@@ -869,7 +775,7 @@ Mathematik / Neue Resultate zum Erdős-Problem #848
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Graphentheorie: Teilgraphen-Zählungen">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -878,7 +784,7 @@ Mathematik / Graphentheorie: Teilgraphen-Zählungen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschende:</strong> Sébastien Bubeck, Mark Sellke und Steven Yin</p>
 <p><strong>Thema:</strong> Beweis von Ungleichungen für die Anzahl bestimmter induzierter Teilgraphen in Bäumen.</p>
@@ -893,7 +799,7 @@ Mathematik / Graphentheorie: Teilgraphen-Zählungen
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Lerntheorie: Dynamische Netzwerke">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -902,7 +808,7 @@ Mathematik / Lerntheorie: Dynamische Netzwerke
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschende:</strong> Sébastien Bubeck, Mark Sellke und Steven Yin</p>
 <p><strong>Thema:</strong> Identifizierbarkeit des Parameters w in einem modifizierten präferenziellen Bindungsprozess.</p>
@@ -917,7 +823,7 @@ Mathematik / Lerntheorie: Dynamische Netzwerke
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Physik / Symmetrien Schwarzer Löcher">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -926,7 +832,7 @@ Physik / Symmetrien Schwarzer Löcher
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Alex Lupsasca</p>
 <p><strong>Thema:</strong> (Re-)Derivation nichttrivialer Lie-Punkt-Symmetrien der Wellengleichung in einer Kerr-Raumzeit.</p>
@@ -944,7 +850,7 @@ Physik / Symmetrien Schwarzer Löcher
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Physik / Fusionsforschung: Thermonukleare Brandwellen">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -953,7 +859,7 @@ Physik / Fusionsforschung: Thermonukleare Brandwellen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Brian Keith Spears</p>
 <p><strong>Thema:</strong> Entwicklung eines reduzierten physikalischen Modells für thermonuklearer Brandwellen in ICF-Kapseln.</p>
@@ -972,7 +878,7 @@ Physik / Fusionsforschung: Thermonukleare Brandwellen
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Physik / Astrophysik: Gravitationsstrahlung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -981,7 +887,7 @@ Physik / Astrophysik: Gravitationsstrahlung
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Robert Scherrer</p>
 <p><strong>Thema:</strong> Analytische Integration des Leistungsspektrums von Garfinkle-Vachaspati-Strings.</p>
@@ -996,7 +902,7 @@ Physik / Astrophysik: Gravitationsstrahlung
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Biologie / Immunologische In-vitro-Experimente">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1005,7 +911,7 @@ Biologie / Immunologische In-vitro-Experimente
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Derya Unutmaz</p>
 <p><strong>Thema:</strong> Mechanistische Analyse der Wirkung von 2-DG auf die Differenzierung von T-Zellen und Vorhersage der Zytotoxizität von CAR-T-Zellen.</p>
@@ -1024,7 +930,7 @@ Biologie / Immunologische In-vitro-Experimente
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Informatik / Geometrie: Literaturrecherche zur Optimierung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1033,7 +939,7 @@ Informatik / Geometrie: Literaturrecherche zur Optimierung
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Nikita Zhivotovskiy</p>
 <p><strong>Thema:</strong> Suche nach Anwendungen und verwandter Literatur für eine neue geometrische Aussage über „α-ratio covers“.</p>
@@ -1046,7 +952,7 @@ Informatik / Geometrie: Literaturrecherche zur Optimierung
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Informatik / Schranken für Online-Algorithmen">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1055,7 +961,7 @@ Informatik / Schranken für Online-Algorithmen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschender:</strong> Christian Coester</p>
 <p><strong>Thema:</strong> Verbesserung der unteren Schranken für das Problem des „Convex Body Chasing“.</p>
@@ -1073,7 +979,7 @@ Informatik / Schranken für Online-Algorithmen
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Informatik / Clique-avoiding Codes (Warnbeispiel)">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1082,7 +988,7 @@ Informatik / Clique-avoiding Codes (Warnbeispiel)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Forschende:</strong> Venkatesan Guruswami und Parikshit Gopalan</p>
 <p><strong>Thema:</strong> Suche nach einer unteren Schranke für die Co-Dimension von Codes, die Clique-Indikatoren vermeiden.</p>
@@ -1157,6 +1063,9 @@ Fischer, I., &amp; Dobbins, K. (2024). Is it Worth it? How Paradoxical Tensions 
 </div>
 <div id="ref-freeman2025" class="csl-entry" role="listitem">
 Freeman, J. (2025). <a href="https://www.hepi.ac.uk/reports/student-generative-ai-survey-2025/">Student generative AI survey 2025</a>. <em>Higher Education Policy Institute: London, UK</em>, (HEPI Policy Note 61).
+</div>
+<div id="ref-friedman1975" class="csl-entry" role="listitem">
+Friedman, M., &amp; Friedman, M. (1975). <em>There’s no such thing as a free lunch</em>. Open Court.
 </div>
 <div id="ref-gottweis2025" class="csl-entry" role="listitem">
 Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2502.18864">https://doi.org/10.48550/arXiv.2502.18864</a>.
