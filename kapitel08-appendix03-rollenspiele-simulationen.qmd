@@ -1,0 +1,414 @@
+---
+title: "Rollenspiele und Simulationen mit generativer KI in der Lehre nutzen"
+author: "Roman Bartnik"
+date: "2026-07-14"
+bibliography: references.json
+csl: apa.csl
+lang: de
+reference-section-title: "Literaturverzeichnis"
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-expand: 4
+    toc-location: right
+    code-copy: true
+    number-sections: true
+editor:
+  markdown:
+    wrap: sentence
+---
+
+## Vorbemerkung {.unnumbered}
+
+Dieses Kapitel basiert auf dem Skript zum Workshop "Rollenspiele und Simulationen mit generativer KI in der Lehre nutzen" (Version 2).
+Details zu Grundlagen gibt es woanders -- hier soll es speziell um Rollenspiele und Simulationen gehen.
+Grundlagen von Sprachmodellen, Nutzung von KI als Hilfskraft, Tutor oder Copilot und allgemeine Empfehlungen für Prompts usw. werden hier ausgeklammert, hierzu sei auf die ausführliche Darstellung in den Kapiteln 1 bis 5 dieses Skripts verwiesen.
+
+## Was bringen Rollenspiele und Simulationen? Didaktische Mechanismen und Lernziele
+
+Was ist der Mehrwert von Rollenspielen und Simulationen (R&S) mit generativer künstlicher Intelligenz?
+Worauf muss man achten und womit anfangen?
+In diesem Beitrag sollen Ziele und Möglichkeiten dieser neuen didaktischen Toolbox besprochen werden.
+Dabei arbeiten wir uns von allgemeinen Lernzielen zu konkreten technischen Möglichkeiten, Warnungen und Umsetzungsempfehlungen vor.
+
+Was hilft uns beim Lernen?
+Besonders effektive Lernmethoden und hohe Motivation gehören zu den wichtigsten Einflüssen [@dunlosky2013; @hattie2023].
+Aber natürlich verlagert das die Frage nur -- was ist denn besonders effektiv, und was steigert die Lernmotivation?
+
+Zunächst aber zu den erhofften didaktischen Vorteilen von interaktiven Rollenspielen und Simulationen.
+Diese lassen sich grob in die Bereiche Retention und Motivation einteilen.
+
+### Besser behalten
+
+Die Retention von Wissen hängt wesentlich davon ab, wie Informationen verarbeitet und im Gedächtnis verankert werden.
+Rollenspiele und Simulationen wirken hier über mehrere ineinandergreifende Mechanismen.
+Erstens fördern sie das **abrufbasierte Lernen**: Wiederholtes Erinnern und Anwenden ("practice testing") stärkt die Gedächtnisspuren deutlicher als passives Wiederholen; unmittelbares Feedback in simulierten Situationen fungiert dabei als Praxistest und steigert die langfristige Behaltensleistung, insbesondere wenn der Abruf unter wechselnden Bedingungen erfolgt [@bjork1994; @roediger2006].
+Der Transfer profitiert, wenn die Lernsituation die spätere Anwendung abbildet -- ganz im Sinne des Prinzips "Practice like you play, and you will play like you practice".
+Dabei sollten Lernende sowohl wiederkehrende Muster (z. B. typische Teamprobleme oder Krankheitsbilder) als auch Variation durch unterschiedliche Problemtypen erfahren; bewusstes Üben mit gezielter Rückmeldung bildet die Grundlage fortschreitender Expertise [@brown2014, S. 57--58; @ericsson1993].
+
+Zweitens erleichtern **Chunking und narratives Einbetten** den Zugriff auf komplexes Wissen: Das Gehirn organisiert Informationen in zusammenhängende Einheiten, und erzählerische Strukturen mit klaren Akteuren und emotionaler Bedeutung verbessern die Abrufbarkeit.
+Eine Chirurgin muss entscheiden, wie sie unter Zeitdruck die Kugel aus dem Gehirn eines Patienten entfernen soll.
+Solch eine exemplarische Szene für die Bedeutung von Erfahrungswissen [@brown2014, S. 26--27] erhöht die Wahrscheinlichkeit dauerhafter Speicherung [@gobet2001; @willingham2021].
+
+Drittens ermöglicht generative KI **individuelle Anpassung**: Szenarien können an Vorwissen und Kompetenzstand angepasst, Anforderungen fein justiert und Gruppenarbeit trotz heterogener Niveaus effizient betreut werden -- ein Hebel, um besonders wirksame aktive und kollaborative Lernformen zuverlässig umzusetzen [@dunlosky2013; @mollick2024a].
+
+Viertens unterstützen **Spacing und Interleaving** die Konsolidierung: Diese Form von zeitlich verteiltem Üben sowie das Mischen verschiedener Problemtypen fördern flexible Wissensanwendung und reduzieren die Illusion von Kompetenz.
+Rollenspiele bieten hierfür ideale Bedingungen, weil sie Inhalte in verschiedenen Szenarien und Abständen wiederkehren lassen [@brown2014, S. 51--52; @dunlosky2013; @murre2015; @roediger2006].
+Schließlich stärkt **reflektierende Eigenarbeit** die Gedächtnisbildung: Wenn Lernende Entscheidungen und Konzepte in der Simulation begründen -- etwa indem sie die Handlungen einer KI-Figur hinterfragen und die zugrunde liegenden Prinzipien erläutern --, strukturieren sie ihr Wissen, identifizieren Lücken und vertiefen das Verständnis [@dunlosky2013; @ericsson1993; @wannemacher2025, Fall 031].
+
+### Motivieren
+
+Ob Studierende lernen, hängt zentral (und ganz banal) auch davon ab, ob sie lernen **wollen**.
+KI-gestützte Rollenspiele können bedeutsame, herausfordernde und zugleich passgenaue Interaktionen schaffen, die Lernende aktiv einbeziehen und sofortige, personalisierte Rückmeldungen bereitstellen.
+Eine maßgeschneiderte Passung an Vorwissen reduziert irrelevante Inhalte, fokussiert individuell sinnvolle Herausforderungen und hält das Anspruchsniveau im **Flow-Bereich** -- ein Arrangement, das intrinsische Motivation, Ausdauer und Behalten gleichermaßen stützt [@csikszentmihalyi2008].
+
+Zugleich verlagern KI-Simulationen die Lernaktivität in Richtung Interaktion.
+Nach der **ICAP-Taxonomie** ist aktive Interaktion hoch motivierend und effektiv: interaktives Arbeiten (I) führt zu tieferen Lerngewinnen als konstruktives (C), aktives (A) oder passives (P) Verhalten; dialogische Auseinandersetzungen mit KI-Rollen, in denen Lernende Ideen gemeinsam erzeugen, prüfen und weiterentwickeln, begünstigen deshalb nicht nur das Verständnis, sondern auch das Motivationsniveau [@chi2018; @chi2014].
+
+Insgesamt verbinden gut gestaltete, KI-gestützte Simulationen insofern potentiell hohe kognitive Wirksamkeit mit motivationaler Qualität: Sie machen fachliche Herausforderungen greifbar, liefern unmittelbar verwertbares Feedback und geben Lernenden zugleich das Gefühl, wirksam handeln zu können -- zentrale Bedingungen für nachhaltiges, transferfähiges Lernen.
+Ob dieses Potenzial eingelöst wird -- gerade mit neuen technologischen Werkzeugen, wie der generativen künstlichen Intelligenz (GenAI), hängt natürlich von der konkreten Umsetzung ab.
+In den folgenden Abschnitten werden hierfür Beispiele analysiert und Empfehlungen abgeleitet.
+
+## Datengrundlage und Methodik
+
+Ein Nebenziel dieses Beitrags ist es, publizierte Best Practices zusammenzustellen.
+Hier soll ein Überblick zu aktuellen Umsetzungen gegeben werden: Was probieren andere Hochschulen schon aus, in Bezug auf Rollenspiele und Simulationen mit KI?
+
+Welcher Stand der Forschung wird hier mit welchem Vorgehen zusammengefasst?
+Auf Grund der rasanten Entwicklung der technischen Möglichkeiten wurde der Suchhorizont auf 2025 publizierte Studien eingeengt.
+Weiterhin wurde nur in einer Reihe von führenden akademischen Zeitschriften gesucht (s. @sec-journals-rs), die sich speziell mit Hochschuldidaktik beschäftigen.
+
+Die Suche wurde in Scopus mit der Software Publish or Perish (v. 8) durchgeführt.
+Eine Suche mit den Suchbegriffen "simulation" OR roleplay OR game AND GenAI OR LLM" ergab 160 Treffer, die durch Begrenzung auf Studien zu Rollenspielen und Simulationen mit KI in der Einzeldurchsicht von Titeln und Abstracts auf 13 aktuelle Studien verdichtet wurden.
+Eine Übersicht der neuen Studien findet sich in @sec-studien-2025-rs.
+
+Vereinzelt wurden händisch besonders interessante Studien aus dem Vorjahr aus einer vorherigen Suche hinzugefügt [@barra2024; @huffman2024; @mollick2024a] sowie ein Arbeitspapier des Hochschulforums Digitalisierung, das KI-Anwendungsbeispiele aufführt [@wannemacher2025].
+Ebenfalls händisch wurden eine Reihe von Studien zu Sprachsimulationen mit KI ergänzt, die in der sonstigen Literatur nicht explizit besprochen wurden [@nguyen2025a; @nguyen2024a; @vega2025].
+
+Insofern decken die weiteren Ausführungen eine aktuelle, exemplarische, aber natürlich keineswegs umfassende Darstellung von besprochenen Effekten und Umsetzungsbeispielen ab.
+
+## Welchen Mehrwert bringt generative KI?
+
+Generative KI in Rollenspielen entfaltet ihren besonderen Mehrwert dort, wo sie Rollen glaubwürdig übernimmt, Interaktionen situativ anpasst, schnell Varianten erzeugt, bereitgestellte Texte zuverlässig verdichtet und didaktisch nutzbar aufbereitet, mehrstufige Reasoning-Prozesse übernimmt und Szenarien multimodal plastisch macht.
+
+In diesem Abschnitt werden diese Facetten des potenziellen Mehrwerts der Technologie generative KI (GenAI) für Rollenspiele und Simulationen beleuchtet und mit Beispielen verdeutlicht.
+Was kann die Technologie schon gut und was noch nicht?
+
+### GenAI kann glaubwürdig Gesprächspartner simulieren
+
+In Rollenspielen zeigt sich dieser Vorteil zunächst in der realistischen Rollenausübung: KI-Akteure verhalten sich in dialogischen Situationen hinreichend konsistent, um reale Druck- und Entscheidungslagen zu simulieren -- etwa in Interview-Trainings, in denen LLM-gestützte Personas realitätsnahe Antworten geben und individuelles Feedback liefern [@nofal2025].
+Solche KI-Figuren werden durch Sprachschnittstellen noch überzeugender, weil prosodische Signale, Pausen und Emotionslagen mitschwingen; frühe Designstudien zum "Advanced Voice Mode" zeigen, wie Sprachdialoge die Immersion und damit die Lernwirksamkeit von Simulationen erhöhen [@barra2024].
+
+Ein zentrales Einsatzfeld ist das Training professioneller Interviews.
+@nofal2025 entwickelten eine KI-gestützte Interviewsimulation, in der Studierende mit realistisch wirkenden, durch GPT-basierte Agenten gesteuerten Gesprächspartnern interagierten, um Interview-, Dokumentations- und Empathiefähigkeiten zu üben.
+Das Lernziel war die sichere, wiederholbare Praxis komplexer Gesprächssituationen (z. B. sensible Gesundheitsdaten, Demografie, Persönlichkeitsmerkmale) ohne Risiko für reale Betroffene.
+Technisch wurden LLM-Agenten mit Rollenprofilen, Leitfäden und Reflexionsaufgaben kombiniert; der Ablauf umfasste Vorgespräch, geführtes Interview, automatische Protokollanalyse und Nachbereitung.
+Berichtet wurden Zugewinne in Selbstwirksamkeit und Vorbereitung auf reale Interaktionen; statistisch signifikant war insbesondere die Steigerung des Selbstvertrauens im Führen von Interviews.
+Als Lehreffekt betonen die Autor:innen die Bedeutung klarer Interviewleitfäden, expliziter Ethik-Hinweise (z. B. Datenschutz) und strukturierter Reflexion nach der Simulation.
+
+Ergänzend zeigen hochschulische Use-Cases aus dem deutschsprachigen Raum, dass glaubwürdige KI-Dialogpartner in Management-, Verhandlungs- und Personaltrainings wirksam sind: In den Fällen "Talk2Transform" (Führung/Management), "TEAM with AI" (BWL-Verhandlung) und Gesprächssimulationen für Personalpsychologie agieren LLM-Avatare als Rollenpartner, die situativ Einwände einbringen und deeskalierende Strategien herausfordern.
+Das Lernziel ist die sichere Anwendung sozial-kommunikativer Kompetenzen unter Zeit- und Druckbedingungen; praktische Lehreffekte betreffen insbesondere die Skalierbarkeit von Übungsgelegenheiten sowie die Reduktion der Dozierendenlast durch automatisiertes, formatives Feedback [@wannemacher2025, Fälle 132/172/177].
+
+Als weiteres Beispiel diskutieren @barra2024 das Potenzial von ChatGPTs "Advanced Voice Mode" für Simulatoren, u. a. in der medizinischen Ausbildung.
+Lernziel ist hier, Interaktionen mit Patienten zu üben.
+Dabei sollen authentische, spontane und multimodal (Stimme, Prosodie) glaubhafte Interaktionen ermöglicht werden, die über textbasierte Chats hinausgehen.
+Die Studie/Positionsarbeit skizziert Szenarien, in denen die KI als dynamische Patient:in agiert, situativ Emotion, Tempo und Sprechweise anpasst und damit realitätsnahe Stressoren einführt; zentrale Implikation ist, dass Voice-basierte KI-Gegenüber die Präsenz und situative Komplexität erhöhen können, zugleich aber qualitativ kuratiert werden müssen, um sachliche Fehler und inadäquate Affekte zu vermeiden [@barra2024].
+
+### GenAI kann die Interaktion dem Gesprächspartner anpassen (z.B. nach Vorwissen)
+
+Deutlich wird der Mehrwert auch in der adaptiven Passung: In spielbasierten Lernumgebungen können LLMs aus Logdaten individuelle Handlungspläne generieren, die Studierende bei Zielsetzung und Strategieentwicklung anleiten; damit verschiebt sich Scaffolding von statischen Hinweisen zu situativ-passenden Planvorschlägen [@goslen2025].
+In kollaborativen Diskussionssettings verstärkt GenAI -- sinnvoll gerahmt, etwa durch Six-Thinking-Hats -- kognitive Präsenz und Ideengenerierung, wobei Effekte je nach Kreativitätsprofil variieren; das spricht für bewusste didaktische Orchestrierung statt "freier" Nutzung [@yu2025a].
+
+Für "goal play" sind adaptive Scaffolds entscheidend.
+LLM-basierte Plangenerierung unterstützt Lernende beim Setzen erreichbarer Zwischenziele und beim Auswählen nächster Schritte in offenen Spielwelten -- eine Form der metakognitiven Stützung, die Spiel-Flow und Lernfortschritt zugleich stabilisiert [@goslen2025].
+In kollaborativen Settings lässt sich diese Unterstützung durch Denkrahmen wie Six-Thinking-Hats bündeln; so steigt die kognitive Präsenz und die Qualität der Ideen, sofern Anleitung und Rollenklärung mitgeliefert werden [@yu2025a].
+
+@goslen2025 zeigen in einer Game-Based-Learning-Umgebung, wie ein LLM individuelle "Student Plans" generiert, die Aufgabenfolge, Hilfestufen und Reflexionsprompts an Vorwissen und Spielverlauf anpassen.
+Lernziel war, adaptive Scaffolds zu bieten, ohne den Spielfluss zu stören.
+Implementation: Das LLM analysiert Spieltelemetrie und kurze Lernstandseingaben und erzeugt dann maßgeschneiderte nächste Schritte (z. B. "erst Diagnose-Quest, dann kurzer Concept-Check, danach offener Anwendungsfall").
+Ergebnisse weisen auf eine bessere Zielklarheit und nutzernahe Hilfedosierung hin; als Lesson Learned gilt, dass Transparenz über die Herkunft der Empfehlungen (Why-behind-the-hint) und Guardrails gegen Übersteuerung zentral sind [@goslen2025].
+
+@wang2025c integrieren ChatGPT-Feedback in eine VR-Lernumgebung (IoT-Aufgaben) und evaluieren das in einem RCT (n = 81).
+Lernziel waren höhere kognitive Niveaus (HOTS) und bessere Selbstregulation (SRL).
+Ablauf: Sechs VR-Units entlang Bloom-Stufen; Experimentalgruppe erhielt zeitnahe, auf Lernhandlungen bezogene GPT-Rückmeldungen (Zielsetzung, Strategiehinweise, Reflexionsprompts), die Kontrollgruppe konventionelles Feedback.
+Resultat: signifikant höhere Werte in Erinnern, Verstehen, Anwenden sowie verbesserte SRL-Indikatoren in der GPT-Gruppe; der Kreativitätsgewinn blieb begrenzt -- eine Lehre ist, dass zu direktive KI-Hilfen offene Exploration dämpfen können [@wang2025c].
+
+### GenAI spricht Fremdsprachen fehlerfrei
+
+Sprachlich eröffnen generative Modelle einen zusätzlichen Vektor: Sie ermöglichen gesprächsnahe, fehlerarme Kommunikation in der Zielsprache und reduzieren Sprechangst, was vor allem beim Einüben von Gesprächsroutinen hilft.
+Minimale Übersetzungsfehler verblassen für die meisten User vor der Gelegenheit, täglich auf Muttersprachenniveau die Fremdsprache üben zu können (ganz zu schweigen von den gesparten Reisekosten und -abgasen!).
+Systematische Übersichten berichten, dass GenAI im Sprachunterricht als Feedback-Geber, Tutor und Gesprächspartner eingesetzt wird, während Einzelfallstudien Zugewinne in Selbstvertrauen und Sprechbereitschaft zeigen [@lee2025a; @nguyen2025a; @nguyen2024a].
+
+In Sprachlern-Simulationen wird der Mehrwert besonders greifbar: Reviews ordnen GenAI als Gesprächspartner, Feedback-Geber und Tutor ein; Fallstudien berichten über mehr Sprechbereitschaft, geringere Angst und kurzfristig verbesserte Aussprache und Fluency, wenngleich Langzeitwirkungen und höhere Niveaus noch untererforscht sind [@lee2025a; @nguyen2024a].
+
+Eine systematische Übersichtsarbeit zeigt, dass GenAI-Tools im Sprachunterricht besonders für gesprochene Interaktion, Aussprache und situative Dialoge eingesetzt werden; wiederkehrende Befunde sind gesteigertes Sprechvolumen, mehr risikobereites Üben und unmittelbares Feedback -- sofern Aufgaben gut gerahmt sind [@lee2025a].
+
+Auf Kurs-/Studienlevel berichtete @nguyen2024a über eine sprechen-zentrierte Intervention mit KI-Assistenten: Lernziel war die Verbesserung der mündlichen Flüssigkeit und der Selbstsicherheit; der Ablauf kombinierte vorbereitete Prompts (z. B. Problemszenarien) mit Spontandialogen und anschließender Reflexion.
+Ergebnisse deuten auf Zugewinne in Sprechflüssigkeit und Reduktion von Sprechangst, gleichzeitig mahnt die Studie Qualitätssicherung der KI-Rückmeldungen an.
+
+### GenAI kann schnell Varianten von Situationen erstellen
+
+Für die didaktische Konstruktion ist die Variantenproduktion zentral -- auch damit es nicht schnell langweilig wird: Mit wenigen Prompt-Anpassungen entstehen Fallvarianten mit gesteuerter Schwierigkeit, alternativen Stakeholder-Positionen oder ungewöhnlichen Ereignisverläufen.
+Dieses "goal play" -- zielgerichtete, auf Lernergebnisse hin entworfene Spiel- und Übungsformate -- lässt sich in kurzen Sprintzyklen entwickeln und iterieren [@mollick2024; @mollick2024a].
+
+Mollick und Kollegen demonstrieren mit "Simulated Practice at Scale" und dem Entrepreneurship-Simulator "PitchQuest", wie Multi-Agent-Setups in Sekunden neue, konsistente Pitch-Gegenspieler und Stakeholder-Konstellationen generieren.
+Lernziel ist adaptives Üben von Pitches unter sich verändernden Bedingungen (z. B. unterschiedliche Investor:innen-Profile, Markt-Schocks).
+Ablauf: Rollenbesetzung durch Agenten (Mentor, Kunde, Investor), gestufte Aufgaben, sofortiges Feedback.
+Lessons Learned: Variantenvielfalt steigert Transfer, aber verlangt klare Bewertungsraster und Debriefings, um Lernziele stabil zu halten [@mollick2024].
+
+Es werden grobe Ablaufkonzepte erstellt (Playbooks): Lehrende iterieren kleine, zielgerichtete Spiele und Rollenspiele in schnellen Schleifen, nutzen Variantenbildung, Agenten-Rollen und Prüf-Prompts zur Qualitätssicherung und skalieren gelungene Muster in die Breite [@mollick2024; @mollick2024a].
+Deutsche Hochschul-Praxisbeispiele bestätigen die Breite des Einsatzspektrums -- von Management-Dialogtrainings ("Talk2Transform") bis zu Verhandlungssimulationen ("TEAM with AI") -- und benennen zugleich Gelingensbedingungen wie Prompt-Design, Feedback-Regime und rechtliche Klärungen [@wannemacher2025].
+
+Der Historiker @kindenberg2025 simuliert Ereignisse aus der Zeit der französischen Revolution.
+Durch GenAI ließen sich hier mit relativ geringem Aufwand Ereignis-, Rollen- und Quellenvarianten erzeugen, die an Vorwissen und Lernziele gekoppelt sind.
+Lernziel ist Quellenkritik und Perspektivübernahme unter wechselnden Szenarioparametern.
+Umsetzung: Kuratierte Promptbausteine für Ereignis-Timing, Akteursziele und soziale Spannungen; Lehrende selektieren/feintunen Varianten vor dem Einsatz.
+Eine zentrale Lehre ist, dass ein didaktischer "Scaffold" (Aufgabenstruktur, Reflexionsfragen) nötig bleibt, um inhaltliche Tiefe trotz generativer Vielfalt zu sichern [@kindenberg2025].
+
+### GenAI kann zur Verfügung gestellte Texte i.d.R. gut wiedergeben
+
+Wo Quellenmaterial vorliegt, liefert KI robuste Verdichtungen und strukturierte Wiedergaben, die unmittelbar in Szenarien überführt werden können.
+
+Originalquellen erlebbar machen, kann Lernenden neue Zugänge eröffnen.
+@huffman2024 beschreiben "NotebookLM" als dokumentengebundenen Assistenten, der historische Primärquellen (Mary-Sibley-Tagebuch) in strukturierte Lernpfade und Audio-Dialoge überführt.
+Lernziel ist, Quellenverständnis und Kontextualisierung zu vertiefen, ohne den Originalbezug zu verlieren.
+Ablauf: Upload kuratierter Quellen, Generierung von erklärenden Podcasts/Dialogscripten samt Quellen-Referenzierung; Lesson Learned: Grounding reduziert Halluzinationen deutlich, verlangt aber sorgfältige Quellenauswahl und Aufgaben, die Prüf- und Reflexionsphasen erzwingen [@huffman2024].
+
+Im naturwissenschaftlichen Kontext skizziert @choi2025, wie GenAI Erdwissenschaftssimulationen mit fachlichen Texten "füttert", um Aufgaben, Messprotokolle und Deutungsdialoge zu erzeugen, die eng an bereitgestellten Materialien haften.
+Lernziel ist die Übersetzung von Fachtexten in handlungsnahe Simulationen.
+Die Studie betont, dass dokumentengebundenes Prompting didaktisch starke Ergebnisse liefern kann, wenn Qualitätskriterien (Aktualität, Autorität, fachliche Konsistenz) erfüllt und durch Reflexionsaufträge abgesichert werden.
+
+### GenAI kann in mehreren Schritten selbstständig agieren
+
+Schließlich erleichtert KI mehrschrittiges "Nachdenken" (Reasoning) samt Selbstprüfung: In Spielumgebungen generieren Modelle nicht nur nächste Aktionen, sondern begründen Planalternativen und vergleichen sie mit Zielzuständen; das eröffnet neue Formen des reflektierten Übens, setzt aber didaktische Leitplanken gegen Scheinpräzision und Halluzination voraus [@goslen2025].
+
+@mollick2024 berichten, dass mehrschrittige, agentenbasierte Orchestrierungen ("Goal Play") innerhalb von Simulationen Aufgaben wie Informationssuche, Rollenbriefings, Gegenargumente und Bewertungsfeedback autonom durchführen.
+Lernziel ist, komplexe, mehrzügige Entscheidungssituationen zu üben.
+Der Ablauf bindet Agenten mit komplementären Rollen (z. B. "Skeptical Investor", "Method Coach") ein; Lessons Learned: Agenten erhöhen Realismus und Dichte der Interaktionen, benötigen aber explizite Sicherheits- und Qualitätschecks (Rubrics, menschliche Supervision), um Fehlerketten zu verhindern [@mollick2024].
+
+@goslen2025 zeigen die mehrschrittige Plan-Generierung für Lernpfade im Spiel: Das LLM analysiert Statusdaten, prüft Zwischenergebnisse gegen Zielkriterien und passt Such-/Lernstrategien an (z. B. "Erst Konzeptlücke schließen, dann Praxisquest").
+Lernziel ist metakognitives Planen und effiziente Hilfe zur rechten Zeit.
+Die Autor:innen betonen, dass Erklärbarkeit ("warum dieser Schritt?") und Fail-Safes gegen falsche Pfade zentral für Akzeptanz und Wirksamkeit sind [@goslen2025].
+
+### GenAI kann Szenarien plastischer machen
+
+Realistischere und mit verschiedenen Sinnen wahrnehmbare Szenarien helfen beim Behalten und motivieren.
+GenAI kann hier unterstützen, durch Generierung von Sprache (Voice, ElevenLabs), Bildern (Firefly), Videos (Sora), Dialogen (Podcasts, z.B. NotebookLM) und Musik (z.B. Suno).
+Diese Multimodalität wird von den Anbietern der Sprachmodelle aktuell stark ausgebaut.
+Sprachdialoge und paralinguistische Signale erhöhen Gegenwartsnähe und soziale Dichte von Gesprächen; generierte Audios oder Podcast-Dialoge verdichten Quellen zu hörbaren Szenen, dadurch wird es einfacher, greifbare, emotional anschlussfähige Erfahrungswelten in die Rollenspiele einzubauen [@barra2024; @huffman2024; @nofal2025].
+
+@barra2024 argumentieren, dass fortgeschrittene Voice-Fähigkeiten (Echtzeit-Prosodie, Unterbrechungen, Emotion) Simulatoren deutlich realistischer machen, insbesondere in kritischen Gesprächssettings wie der Medizin.
+Lernziel ist situatives Handeln unter Zeitdruck mit authentischem, emotionalem Gegenüber.
+Die Kernerkenntnis ist, dass multimodale Signale (Stimme, Timing, nonverbale Hinweise) die Präsenz erhöhen, zugleich aber technische/ethische Qualitätskontrollen benötigen [@barra2024].
+
+@nguyen2025a zeigen, wie "embodied GenAI" in Mixed-Reality-Umgebungen Lernende mit verkörperten KI-Agenten interagieren lässt.
+Lernziel ist aktives Lernen durch körperlich-räumliche Einbettung plus dialogische KI-Unterstützung.
+Umsetzung: MR-Szenen mit KI-Avatar-Verhalten, das auf Handlungen, Position und Sprache der Lernenden reagiert; zentrale Lehre: Multimodalität erhöht Engagement und Handlungsvalidität, benötigt aber präzises Szenariodesign und instrumentierte Reflexionsphasen, damit Wahrnehmung und Konzeptverständnis zusammenfinden [@nguyen2025a].
+
+Über die Beispiele hinweg zeigt sich, dass GenAI-basierte Simulationen besonders dann wirksam sind, wenn sie (a) klare Lernziele, Rubrics und Reflexionsschritte verankern, (b) dokumenten- oder quellengebunden arbeiten, um Halluzinationen zu dämpfen, und (c) adaptive Scaffolds fein dosieren, damit Explorations- und Problemlöseanteile erhalten bleiben [@goslen2025; @huffman2024; @wang2025c].
+
+Eine exemplarische Übersicht von solchen Umsetzungen in verschiedenen Anwendungsbereichen zeigt @tbl-anwendungsbeispiele-rs.
+
+| Disziplin/Feld | Art der Simulation/des Rollenspiels | Wichtige Lernziele/entwickelte Fähigkeiten | Spezifische Beispiele für KI-Integration | Beispiel-Quelle |
+|:---------------|:------------------------------------|:--------------------------------------------|:------------------------------------------|:----------------|
+| Gesundheitswesen | Notfallmaßnahmen, Patienteninteraktion | Schnelle Beurteilung, Entscheidungsfindung, multidisziplinäre Zusammenarbeit, klinisches Denken, Empathie, Kommunikation unter Druck | KI-generierte Patientenakten, Echtzeit-Veränderungen von Vitalzeichen, dynamische virtuelle Patienten; KI-Chatbot für interprofessionelle Teamsimulation ("Marie Parker") | @wannemacher2025 |
+| Pharmazie | Arzneimittelmanagement, Patientenberatung | Verordnung prüfen, Fehler erkennen, Aufklärung, Dosierung, Wechselwirkungen | KI-generierte Fallvarianten mit unterschiedlichen Komplexitäten; automatisiertes Feedback zu Dokumentation/Begründung | Lim et al. (2025) |
+| Soziale Arbeit | Krisenmanagement, Familienunterstützung | Aktives Zuhören, Krisenintervention, interprofessionelle Zusammenarbeit, Umgang mit komplexen Familiendynamiken | KI-gestützte Gesprächs-/Interview-Simulationen mit sensiblen Klient\*innenszenarien | @nofal2025 |
+| Betriebswirtschaftslehre | Krisenmanagement, Entscheidungsfindung, VC-Pitching | Führung, Strategie unter Stress, Kommunikation, Datenanalyse, Lösungsbewertung | Mehragenten-Simulation "PitchQuest" (Mentor\*innen, Rollenspieler\*innen, Bewerter\*innen) | @mollick2024 |
+| Soft-Skills-Training | Kundenservice, Verkauf, Manager-Coaching, Konfliktlösung, Interviews, Verhandlungen | Kommunikationsmuster, Konfliktlösung, Emotionsregulation, strategisches Denken, Professionalität, Debatte | Adaptive Dialoge, Echtzeit-Feedback, anpassbare Avatare; z. B. "Talk2Transform", Gesprächssimulationen in der Personalpsychologie | @wannemacher2025 [Fälle 132, 177] |
+| Bildung (Lehrerausbildung) | Classroom-Management, Verhalten von Studierenden | Umgang mit Störungen, Entscheidungen im Unterricht, Differenzierung, Notfalllagen | KI-generierte Klassenzimmer-Szenarien; embodied GenAI in Mixed Reality mit virtuellen Studierenden | @nguyen2025a |
+| Sprachenlernen | Wortschatz, Grammatik, Aussprache, interkulturelle Kommunikation | Sprachliche Genauigkeit, Flüssigkeit, kultureller Kontext, reale Interaktion | KI-gestützte Echtzeit-Korrektur, mehrsprachige Materialien, wiederholbare Rollenspiele (z. B. Chatbots/LLMs) | @lee2025a |
+| Kreativer Ausdruck | Kunst, Musik, Literatur, Problemlösen | Ideengenerierung, Überwinden kreativer Blockaden, Originalwerke, Datenanalyse, strategische Bewertung | Dokumentbasierte KI (NotebookLM) erzeugt Podcasts/Guides aus Quellen; KI-gestützte Story-/Dialogerstellung | @huffman2024 |
+
+: Anwendungsbeispiele für KI-Rollenspiele und Simulationen {#tbl-anwendungsbeispiele-rs}
+
+Die hier skizzierten Potenziale gehen mit einer Reihe von Risiken und Nebenwirkungen einher, die bedacht werden müssen.
+Zentrale Punkte besprechen wir im folgenden Abschnitt.
+
+## Was geht nicht? Herausforderungen und Grenzen von GenAI
+
+Generative KI in der Bildung birgt neben ihren Stärken auch spezifische Herausforderungen, die durch gezielte didaktische Strategien angegangen werden können.
+
+**A. Delegation des Denkprozesses:** Die Nutzung von KI-Tools kann dazu führen, dass Studierende die kognitive Anstrengung des Lernens an die KI delegieren.
+Dies kann ein tieferes Verständnis der Materie verhindern [@dellacqua2023; @lee2025].
+
+Lehrende sollten eine didaktische Rahmung ("Human in the Loop") schaffen, die Studierende explizit dazu anleitet, die KI-Ausgaben kritisch zu reflektieren, anstatt sie blind zu übernehmen.
+Dies kann durch die Gestaltung von Prüfungsformaten erfolgen, die die kritische Auseinandersetzung mit KI-Tools erfordern und nicht die reine Wissenswiedergabe [@corbin2025].
+Lehrpersonen sollten als Experten für die didaktische Einbindung agieren, die den Lernprozess steuern [@tutton2025].
+
+**B1. Halluzinationen:** Generative KI-Modelle können Fehler machen oder falsche Informationen, sogenannte "Halluzinationen", generieren, die zu fehlerhaften Lernerfahrungen führen können [@mollick2024a].
+
+Studierende müssen über die Risiken von Halluzinationen aufgeklärt werden.
+Es ist entscheidend, ihnen beizubringen, die von der KI generierten Informationen immer mit vertrauenswürdigen Quellen abzugleichen.
+Die Integration der KI in den Lernprozess sollte so erfolgen, dass die KI nicht als alleinige Wissensquelle, sondern als Partner im Lernprozess gesehen wird [@moon2025].
+
+**B2. Selbstbewusste Falschaussagen:** KI-Modelle können falsche Informationen sehr selbstbewusst und gut artikuliert präsentieren.
+Studierende mit geringem Vorwissen können dies nur schwer als Fehler erkennen [@mollick2024a].
+
+Um der überzeugenden Darstellung falscher Informationen entgegenzuwirken, sollte der Fokus auf der Entwicklung kritischer Medienkompetenz liegen.
+Lehrpersonen können bewusst Szenarien einbauen, in denen die KI absichtlich falsche Informationen liefert, damit die Studierenden lernen, diese zu identifizieren.
+
+**C. Variable Outputs:** Die Ergebnisse von generativer KI werden stochastisch, nicht deterministisch produziert.
+Bei identischen Eingaben kann der Output variieren [@wolfram2023], was die Reproduzierbarkeit und Kontrolle von Lernerfahrungen erschwert [@mollick2024a].
+
+Die stochastische Natur der KI kann in Lehr- und Lernkontexten als Feature genutzt werden, nicht als Bug.
+Die Variation der Antworten kann Studierende dazu anhalten, flexibel zu denken und sich nicht auf eine einzige "richtige" Antwort zu verlassen.
+
+**D. Mangelnde Erklärbarkeit:** KI-Modelle können ihre Erklärungen oder Ergebnisse oft nicht verlässlich begründen, was in Lehrkontexten, die ein tiefes Verständnis der zugrunde liegenden Konzepte erfordern, einen Nachteil darstellt [@mollick2024a].
+
+Lehrende können die Rolle des "Debriefers" übernehmen, um die KI-gestützten Szenarien im Nachhinein zu analysieren.
+Sie können die Studierenden dazu anleiten, zu erklären, wie sie zu ihren Entscheidungen gelangt sind, und diese mit den Antworten der KI vergleichen, um das zugrundeliegende Konzept zu verinnerlichen [@mollick2024a].
+
+**E. Reproduktion von Bias:** KI-Modelle, die auf riesigen Datensätzen trainiert werden, können Vorurteile und Verzerrungen aus diesen Daten reproduzieren.
+Ohne eine kritische Auseinandersetzung können diese unreflektiert übernommen werden [@bender2021].
+
+Lehrende sollten die Studierenden auf die potenziellen Vorurteile und Verzerrungen in den Trainingsdaten der KI hinweisen.
+Es ist ratsam, Prompts so zu gestalten, dass sie eine breite Perspektive einfordern.
+Im Debriefing sollten die ethischen Implikationen des Bias kritisch beleuchtet werden.
+
+## Wie umsetzen? Empfehlungen für KI-gestützte Rollenspiele
+
+### Gestufter Einstieg
+
+Für einen pragmatischen Einstieg empfiehlt sich zunächst ein **leichtgewichtiger Modus**: vorbereitete, klar gerahmte Chat-Interaktionen mit Rollenprompts und definierter Zielstruktur.
+Diese Form nutzt die Stärken von GenAI -- dialogische Motivation, unmittelbares Feedback und schnelle Variantenbildung -- ohne großen Mehraufwand in Technik oder Betreuung.
+Didaktisch bewährt sind kurze, fokussierte Fälle mit expliziten Lernzielen, Reflexionsfragen und einer einfachen Verifikationsroutine (z. B. "nenne zwei Quellen oder Gegenargumente"), damit Interaktion nicht an kritischem Denken vorbeiführt [@mollick2024a].
+
+Im nächsten Schritt sollten Studierende **in Präsenz kleine Rollenspiele selbst entwerfen und testen**.
+Das fördert Prompt- und Rollenkompetenz, macht Modellgrenzen sichtbar und verlagert Verantwortung in die Lerngruppe.
+Lehrende agieren als Coach und Helfer: Sie stellen Zielkriterien, Rollenbriefe, Feedback-Raster und einfache "Challenge Cards" bereit, mit denen Gruppen ihre Szenarien iterativ verschärfen.
+Am Ende stehen strukturierte Debriefs mit Evidenzcheck [@wannemacher2025; @yu2025a].
+
+Im fortgeschrittenen Stadium entwickeln die Studierenden in **mehrwöchiger Einzel- oder Gruppenarbeit selbst Rollenspiele**.
+Sie übernehmen selbstverantwortlich und mit Anleitung die Recherche-, Entwicklungs- und Testarbeit komplexerer, realitätsnaher Rollenspiele.
+Hier kombinieren Teams agentenbasierte Recherche-Workflows (mehrstufige Promptketten mit Quellenprüfung), adaptives "goal play" mit Plan-/Hint-Mechaniken und Voice- bzw. VR-Interfaces für immersives Training.
+Wichtig sind belastbare Testprotokolle mit Störfall-Checks (Halluzination, Bias, Inkonsistenz), definierte Abbruch- und Korrekturpfade sowie dokumentierte Prompt- und Bewertungsänderungen über mehrere Iterationen.
+Solche Studios verbinden fachliches Urteilen, Methodenkompetenz und KI-Literacy -- und sie erzeugen wiederverwendbare Lehrbausteine, die in weiteren Kohorten skaliert werden können [@mollick2024; @goslen2025; @nofal2025].
+
+In Summe empfiehlt sich insofern ein gestaffelter Ausbau: klein starten, gemeinsam professionalisieren, komplexe Formate mit Studierenden gemeinsam entwickeln -- begleitet von Reflexion, Quellen-Verifikation und klaren ethischen Leitplanken.
+So werden Rollenspiele und Simulationen nicht nur motivierender, sondern auch wirksamer in Hinblick auf Retention, Transfer und professionelle Handlungssicherheit.
+
+### Strukturierte Gestaltung
+
+Welche Empfehlungen zur Gestaltung können wir aus Vorstudien ableiten, in denen komplexe Agenten und Rollenspiel-Szenarios entwickelt wurden?
+
+Ein komplexes Rollenspiel beginnt mit **präzisen Lernzielen und einer interaktiven Klärung des Vorwissens**.
+Für die Vorbereitung bietet sich ein kurzes KI-Tutoring an, das aktivierende Aufgaben, kognitive Entlastung, Wachstumsorientierung, explizite Schritt-für-Schritt-Scaffolds, zeitnahes Feedback und Selbsttaktung kombiniert -- so erreichen alle Teilnehmenden ein vergleichbares Einstiegsniveau und die Präsenzzeit kann für höherstufige Praxis genutzt werden [@kestin2024].
+Alternativ können Lernvideos genutzt werden, um einen gemeinsamen Wissensstand der Gruppe zum Beginn der Interaktion zu erreichen [@mollick2024].
+
+Das eigentliche Rollenspiel folgt einem **klaren, wiederholbaren Ablauf**: Zuerst begrüßt ein KI-Mentor die Lernenden, erhebt kurz Erfahrung und Kontext und passt die Schwierigkeit an.
+Dann bietet die KI mehrere, zur Zielkompetenz passende Szenarien zur Auswahl und setzt narrativ die Bühne mit Rollen, Zielen und relevanten Konflikten.
+Die Durchführung erfolgt in klar abgegrenzten Zügen; die KI reagiert adaptiv, gibt sparsame Hinweise und drängt spätestens gegen Ende auf eine folgenschwere Entscheidung, damit Transferstrategien wirklich angewandt werden.
+Zum Schluss liefert die KI differenziertes, zielbezogenes Feedback mit Stärken, Entwicklungsfeldern und Hinweisen zur Anwendung im nächsten Fall.
+Dieses Muster lässt sich für "Role Play" (Lernende spielen eine fremde Rolle) ebenso nutzen wie für "Goal Play" (Lernende bleiben sie selbst und leiten eine Figur an, z. B. mit einem Entscheidungs- oder Zielsetzungs-Framework).
+Wichtig sind eine abschließende Reflektion in der Gruppe und die Anbindung an Kurskonzepte [@mollick2024a].
+
+Für komplexere Settings empfiehlt sich ein **Agenten-Design mit klar getrennten Aufgaben**: Ein Mentor-Agent berät und aktiviert Vorwissen, ein weiterer Non-Player-Character (NPC) Agent spielt etwa die Gegenrolle (mit konsistenter Persona und interner Planungs- und Abschlusslogik), ein Evaluator-Agent verdichtet Leistungsdaten zu handlungsnahem Feedback, und instruktorgebundene "Progress/Insights-Agents" fassen Transkripte zu individuellen und Klassenmustern zusammen und schlagen Debrief-Aktivitäten vor.
+Dieses mehrstufige "Learning-Loop"-Design -- Instruktion, narrative Praxis, Feedback, Reflexion -- senkt die Entwicklungshürden und skaliert Übung, bleibt aber didaktisch geführt [@mollick2024].[^rs-agents]
+
+[^rs-agents]: Ähnliche verteilte Rollen werden aktuell etwa auch für Forschungsprozesse von Google entwickelt [@gottweis2025].
+
+**Qualitätssicherung und systematische Tests** müssen zwingend erfolgen.
+Testläufe prüfen Konsistenz, Schrittfolge, Robustheit gegenüber "Edge Cases", Niveaudifferenzierung, Output-Qualität und Agenten-Handovers; bei Problemen helfen zusätzliche Kontexte, Beispiele, Constraints, Erinnerungen an Ziele und, wo nötig, engere Interaktionslimits.
+Zudem sollten bekannte Modellrisiken -- Bias, Narrativdrift, Vergessen früherer Passagen -- durch Red-Teaming, präzise Rollenprompts, interne Checklisten und ein konsequentes Debrief adressiert werden [@mollick2024].
+
+Schließlich lohnt der Rückgriff auf **Tutoring-Prinzipien** auch im Rollenspiel: Aktivierung statt Lösungsvorsage, graduelle Schrittführung ohne Überlastung, zeitnahes, zielgerichtetes Feedback und Selbsttaktung erhöhen Lerngewinne nachweislich; in der Studie von Kestin et al. lernten Studierende mit einem gut designten KI-Tutor mehr als doppelt so viel wie in einer aktiven Präsenzsitzung -- ein Befund, der für die Vorbereitungs- und Zwischenphasen von komplexen Simulationen besonders relevant ist [@kestin2024].
+
+### Zum schnellen Start: Gute Prompts, Informationsquellen und zusammenfassende Übersicht
+
+-   Eine große Anzahl an sehr guten **didaktischen Prompts vom Team der Wharton Business School** findet sich hier: <https://www.moreusefulthings.com/prompts>. Hervorzuheben sind v.a. die "Blueprints", also Vorlagen, die für die eigene Lehre angepasst werden können (s.u. für zwei Beispiele).
+-   Die **Universität Harvard** gibt hier eine Reihe von Beispielen, wie GenAI in der Lehre genutzt wird, u.a. mit Beispielen für Simulationen, Sprachdidaktik u.v.m.: <https://bokcenter.harvard.edu/examples-and-ideas-for-using-AI-for-your-teaching>.
+-   Etwas breiter -- wie nutzen 76.000 Lehrende KI an Hochschulen? Die KI-Firma **Anthropic** hat einen Bericht herausgebracht, der anonymisiert basierend auf echten Interaktionen betrachtet, wie KI in der Lehre genutzt wird: <https://www.anthropic.com/news/anthropic-education-report-how-educators-use-claude> [@bent2025]. Im Kontext von Rollenspielen ist hier interessant, wie die Online-Interaktionen des GPT-Konkurrenten genutzt werden ("Claude Artifacts"), speziell für "Interactive Educational Games".
+-   **Fortbildungen und Übersichten mit Anwendungsfokus**: Sowohl Google als auch Anthropic (Claude) und OpenAI bieten Kurse für die technischen Aspekte der Nutzung von KI in der Lehre an: <https://grow.google/ai-for-educators/>, <https://anthropic.skilljar.com/ai-fluency-framework-foundations>.
+-   **Beispiele für Lehrende**: Hier finden Sie eine Übersicht von OpenAI speziell für University Educators: <https://edunewsletter.openai.com/>, hier z.B. eine kleine Konversationsübung: <https://edunewsletter.openai.com/p/ai-as-a-conversation-partner-and>.
+
+Abschließend fassen zwei Übersichten die praktischen Empfehlungen für Rollenspiele und zielgerichtete Spiele zusammen.
+
+::: {.callout-tip title="Rollenspiele / Role Play"}
+**Ziel:** Lernende übernehmen eine fremde Rolle (z. B. Verhandler, Gründer) und wenden erlernte Strategien an.
+
+**Beispiel-Prompt:** "Negotiation Simulator": <https://www.moreusefulthings.com/student-exercises> [@mollickMollickMoreUsefulThingsStudentExercises]
+
+**Empfohlene Komponenten:**
+
+-   **Einführung durch einen AI-Mentor**: Der KI-Mentor fragt nach Vorerfahrungen der Lernenden, um das Szenario individuell anzupassen.
+-   **Szenarienauswahl**: Die KI bietet mehrere Szenarien zur Auswahl, basierend auf den Angaben der Lernenden.
+-   **Narrative Gestaltung**: Die KI beschreibt die Umgebung, Ziele und Herausforderungen. Die Lernenden interagieren mit der KI, die als Gegenpart agiert.
+-   **Interaktive Durchführung**: Die KI reagiert auf die Eingaben der Lernenden, gibt Hinweise und fordert Entscheidungen.
+-   **Feedback**: Nach Abschluss gibt die KI differenziertes Feedback (Stärken, Verbesserungsmöglichkeiten, Anwendungshinweise).
+
+**Didaktischer Nutzen:** Förderung von Perspektivwechsel, Anwendung von Strategien, Reflexion über eigenes Verhalten.
+:::
+
+::: {.callout-tip title="Goal-Play-Simulationen"}
+**Ziel:** Lernende bleiben in ihrer eigenen Rolle und helfen einer fiktiven Figur, ein Problem zu lösen (z. B. Zielsetzung, Selbstreflexion).
+
+**Beispiel-Prompt:** "Goal Play: Help a character achieve goals": <https://www.moreusefulthings.com/student-exercises> [@mollickMollickMoreUsefulThingsStudentExercises]
+
+**Empfohlene Komponenten:**
+
+-   **Dualrolle der KI**: Die KI agiert sowohl als Mentor als auch als Figur im Szenario.
+-   **Szenarienauswahl**: Lernende wählen aus verschiedenen Figuren oder Situationen.
+-   **Narrative Einführung**: Die KI stellt die Szene dar, ohne zu überfrachten, damit der Fokus auf dem Lernziel bleibt.
+-   **Interaktive Phase**: Die Lernenden wenden Frameworks an (z. B. SMART-Ziele, Selbst-Distanzierung nach Kross).
+-   **Abschluss und Feedback**: Die KI reflektiert mit den Lernenden über deren Vorgehen und gibt Hinweise zur Verbesserung.
+
+**Didaktischer Nutzen:** Anwendung theoretischer Konzepte in neuen Kontexten, Förderung von Transfer und Perspektivübernahme.
+:::
+
+## Liste der durchsuchten Fachzeitschriften {#sec-journals-rs}
+
+**VHB-Ranking "University Management":**
+
+-   Studies in Higher Education: 1470-174X
+-   Higher Education: The International Journal of Higher Education Research: 0018-1560, 1573-174X
+-   Academy of Management Learning & Education: 1537-260X, 1944-9585
+-   Research in Higher Education: 0361-0365, 1573-188X
+-   Higher Education Quarterly: 0951-5224, 1468-2273
+
+Auswahl der Fachzeitschriften mit A- und B-Rating nach dem VHB Rating 2024, Teilrating Hochschulmanagement (<https://www.vhbonline.org/verband/wissenschaftliche-kommissionen/hochschulmanagement/vhb-rating-2024-hochschulmanagement>).
+
+**Sonstige Fachzeitschriften im Suchfeld:**
+
+-   Assessment & Evaluation in Higher Education: 0260-2938, 1469-297X
+-   International Journal of Educational Technology in Higher Education: 2365-9440
+-   Journal of Statistics and Data Science Education: 2693-9169
+-   Education and Information Technologies: 1360-2357
+-   Learning and Instruction: 0959-4752
+-   Journal of University Teaching and Learning Practice: 1449-9789
+-   International Journal of Artificial Intelligence in Education: 1560-4292
+-   Computers & Education: 0360-1315
+-   Computers and Education: Artificial Intelligence: 2666-920X
+-   System: 2079-8954
+-   Education Sciences: 2227-7102
+-   Innovations in Education and Teaching International: 1470-3297, 1470-3300
+-   Journal of Academic Language and Learning: 1835-5196
+
+## Im Jahr 2025 publizierte Fachartikel zu GenAI-Rollenspielen und Simulationen in der Lehre {#sec-studien-2025-rs}
+
+| Autor:innen | Titel | Jahr | Quelle |
+|:------------|:------|:-----|:-------|
+| Belkina | Implementing generative AI (GenAI) in higher education: A systematic review of case studies | 2025 | Computers and Education: Artificial Intelligence |
+| Cheah | Integrating generative artificial intelligence in K-12 education: Examining teachers' preparedness, practices, and barriers | 2025 | Computers and Education: Artificial Intelligence |
+| Choi | Earth Science Simulations with Generative Artificial Intelligence (GenAI) | 2025 | Journal of University Teaching and Learning Practice |
+| Goslen | LLM-Based Student Plan Generation for Adaptive Scaffolding in Game-Based Learning Environments | 2025 | International Journal of Artificial Intelligence in Education |
+| Kindenberg | The Role of AI in Historical Simulation Design: A TPACK Perspective on a French Revolution Simulation Design Experience | 2025 | Education Sciences |
+| Kohnke | Exploring the potential of GenAI for personalised English teaching: Learners' experiences and perceptions | 2025 | Computers and Education: Artificial Intelligence |
+| Leahy | AI-ENGAGE: A Multicentre Intervention to Support Teaching and Learning Engagement with Generative Artificial Intelligence Tools | 2025 | Education Sciences |
+| Lim | Development and implementation of a generative artificial intelligence-enhanced simulation to enhance problem-solving skills for pre-service teachers | 2025 | Computers & Education |
+| Lin | Enhancing reflective thinking in STEM education through experiential learning: The role of generative AI as a learning aid | 2025 | Education and Information Technologies |
+| Liu | Chinese university teachers' engagement with generative AI in different stages of foreign language teaching: A qualitative enquiry through the prism of ADDIE | 2025 | Education and Information Technologies |
+| Nguyen | Designing embodied generative artificial intelligence in mixed reality for active learning in higher education | 2025 | Innovations in Education and Teaching International |
+| Nofal | AI-enhanced interview simulation in the metaverse: Transforming professional skills training through VR and generative conversational AI | 2025 | Computers and Education: Artificial Intelligence |
+| O'Riordan | Interactive oral assessment: Staff perceptions, challenges and benefits of this robust, authentic assessment design approach | 2025 | Innovations in Education and Teaching International |
+| Sung | Using AI to Care: Lessons Learned from Leveraging Generative AI for Personalized Affective-Motivational Feedback | 2025 | International Journal of Artificial Intelligence in Education |
+| Wang | Enhancing self-regulated learning and higher-order thinking skills in virtual reality: the impact of ChatGPT-integrated feedback aids | 2025 | Education and Information Technologies |
+| Zhan | Students' engagement with ChatGPT feedback: implications for student feedback literacy in the context of generative artificial intelligence | 2025 | Assessment and Evaluation in Higher Education |
+
+: Im Jahr 2025 publizierte Fachartikel zu GenAI-Rollenspielen und Simulationen in der Lehre {#tbl-studien-2025-rs}
+
+## Transparenzhinweis {.unnumbered}
+
+Bei der Übertragung dieses Workshop-Skripts in das Online-Format wurde Claude / Cowork zur Konvertierung, für Sprach- und Konsistenzchecks sowie zur Gestaltung des Layouts genutzt.
+Alle Inhalte wurden von Roman Bartnik geprüft, überarbeitet und verantwortet.
