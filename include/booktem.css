@@ -33,10 +33,17 @@ div.sourceCode + pre:not(.sourceCode) {
   border: 0.5px solid #BBB;
 }
 
-/* give references a hanging indent */
-.csl-entry {
-  padding-left: 2em ;
-  text-indent: -2em ;
+/* Hanging indent only in the displayed bibliography */
+div.csl-bib-body > .csl-entry {
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
+/* Prevent DOI and URL text from being clipped in citation hover boxes */
+.tippy-box[data-theme~="quarto"] .csl-entry,
+.tippy-box[data-theme~="quarto"] .csl-entry a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 
