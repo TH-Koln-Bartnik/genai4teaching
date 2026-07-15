@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Einleitung – Generative KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./kapitel02.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ff81c85327e100807157346514bcfa6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-35265ac96cfeebd3250022d15ec0c0b0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ff81c85327e100807157346514bcfa6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ko-fi.com/romanbartnik"> 
+<span class="menu-text">Ko-fi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://buymeacoffee.com/roman.bartnik.th"> 
+<span class="menu-text">Buy me a coffee</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien der Nutzung von GenAI: Hiwi, Tutor, Copilot, Simulator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Überblick didaktischer Prompts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel08-appendix03-rollenspiele-simulationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Umsetzung: Rollenspiele und Simulationen mit generativer KI in der Lehre.</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#sec-ki-hilfe" id="toc-sec-ki-hilfe" class="nav-link active" data-scroll-target="#sec-ki-hilfe"><span class="header-section-number">1.1</span> KI als Hilfe für die Lehre</a></li>
+  <li><a href="#sec-2025-examples" id="toc-sec-2025-examples" class="nav-link" data-scroll-target="#sec-2025-examples"><span class="header-section-number">1.2</span> Was 2026 möglich ist: Praktische Beispiele für Recherche, Übungsaufgaben, Erklärungen</a></li>
+  <li><a href="#sec-forschung" id="toc-sec-forschung" class="nav-link" data-scroll-target="#sec-forschung"><span class="header-section-number">1.3</span> Nutzung von GenAI in der Forschung</a></li>
+  <li><a href="#sec-weiterentwicklung" id="toc-sec-weiterentwicklung" class="nav-link" data-scroll-target="#sec-weiterentwicklung"><span class="header-section-number">1.4</span> Aktuelle Weiterentwicklungen der Sprachmodelle</a></li>
+  <li><a href="#sec-nutzung" id="toc-sec-nutzung" class="nav-link" data-scroll-target="#sec-nutzung"><span class="header-section-number">1.5</span> Wie nutzen Studierende und Lehrende GenAI?</a></li>
+  <li><a href="#sec-risiken" id="toc-sec-risiken" class="nav-link" data-scroll-target="#sec-risiken"><span class="header-section-number">1.6</span> Risiken und Nebenwirkungen</a></li>
+  <li><a href="#sec-kapiteluebersicht" id="toc-sec-kapiteluebersicht" class="nav-link" data-scroll-target="#sec-kapiteluebersicht"><span class="header-section-number">1.7</span> Kapitelübersicht</a></li>
+  <li><a href="#sec-forschung-details" id="toc-sec-forschung-details" class="nav-link" data-scroll-target="#sec-forschung-details"><span class="header-section-number">1.8</span> Schlaglichter aus der Forschung mit GenAI: Erfahrungsberichte aus den Disziplinen (GPT-5 und 5-Pro)</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel01.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel01.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-einleitung" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-ki-hilfe" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-ki-hilfe"><span class="header-section-number">1.1</span> KI als Hilfe für die Lehre</h2>
+<p><strong>Wie kann uns generative künstliche Intelligenz</strong> (KI) <strong>in der Lehre helfen</strong>? Hoffnung besteht hier für zwei typische Probleme: Erstens haben Studierende <strong>individuelle Bedürfnisse</strong>, aber wir haben nur <strong>begrenzte Zeit</strong>, auf diese einzugehen. Wie können wir Einzelne möglichst intensiv fördern, ohne vor Arbeit unterzugehen? Zweitens ist der <strong>Aufwand gerade für effektive Lehrmethoden</strong> oft sehr hoch, so etwa für häufige niedrigschwellige Tests oder individuelles Feedback zu Studienarbeiten <span class="citation" data-cites="hattie2023 brown2014">(<a href="#ref-brown2014" role="doc-biblioref">Brown et al., 2014</a>; s. etwa <a href="#ref-hattie2023" role="doc-biblioref">Hattie, 2023, Kap.13</a>)</span>. Wer lehrt, fühlt sich aus Zeit- und Stoffdruck oft gezwungen, Abstriche von idealen Lehrsetups zu machen <span class="citation" data-cites="henderson2007 schmidt2005">(<a href="#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>; <a href="#ref-schmidt2005" role="doc-biblioref">Schmidt &amp; Tippelt, 2005, S.104–105</a>)</span>. Gerade Lehrmethoden, die didaktisch sinnvoll, aber mit höherem Aufwand verbunden sind, drohen dabei auf der Strecke zu bleiben <span class="citation" data-cites="dunlosky2013 roediger2012">(s. etwa <a href="#ref-dunlosky2013" role="doc-biblioref">Dunlosky et al., 2013</a>; <a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>.</p>
+<p><strong>Für die Lehre</strong> erschließen sich durch die großen KI-Sprachmodelle (LLM = Large Language Models) neue Möglichkeiten. Sie sind, wie es eine Analyse des MIT Professors Andrew McAfee auf den Punkt bringt, „<strong>generally faster</strong>“ <span class="citation" data-cites="mcafee2024">(<a href="#ref-mcafee2024" role="doc-biblioref">McAfee, 2024</a>)</span>. Lehrende können mit KI-Unterstützung etwa deutlich schneller eine Recherche durchführen, ein Set von Übungsaufgaben erstellen, mehrere Anwendungsbeispiele pro Konzept hinzufügen, Quizfragen zur schnellen Lernüberprüfung generieren oder mit den Studierenden Rollenspiele durchführen <span class="citation" data-cites="meincke2024 mollick2023a">(<a href="#ref-meincke2024" role="doc-biblioref">Meincke et al., 2024</a>; <a href="#ref-mollick2023a" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2023</a>)</span>. Der Berg ist noch da, aber mit dem E-Bike kommt man weiter.</p>
+<div id="fig-ai-ebike" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-ebike-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ai-ebike-gemini.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-ebike-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.1: GenAI als Kraftverstärker. Quelle: Gemini 2
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-2025-examples" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-2025-examples"><span class="header-section-number">1.2</span> Was 2026 möglich ist: Praktische Beispiele für Recherche, Übungsaufgaben, Erklärungen</h2>
+<p>“KI nutzen” heißt Anfang 2026 nicht mehr nur “chatten mit dem Bot”, sondern <strong>Delegation an Agenten</strong> <span class="citation" data-cites="mollick2025e">(<a href="#ref-mollick2025e" role="doc-biblioref">E. Mollick, 2026</a>)</span>: Man delegiert Aufgaben, die KI nutzt Werkzeuge und arbeitet mehrstufig, prüft also selbstständig Zwischenergebnisse. Praktisch unterschieden wir dabei drei Ebenen: <strong>Modelle</strong> (das Sprachmodell, z.B. GPT 5.2), <strong>Apps</strong> (die Oberfläche, z.B. die Texteingabe im Browser bei Chat GPT) und <strong>Harnesses</strong> („Arbeitsgeschirr“ oder Werkzeugkasten, etwa Web-Recherche, Zugriff auf einen Ordner mit Daten oder die Fähigkeit zum Rechnen mit Programmiersprachen wie Python). Wichtig für die Lehre: <strong>Wenig Kosten heißt oft auch wenig(er) Nutzen</strong> (“No such thing as a free lunch”, hört man die Ökonomen murmeln…<span class="citation" data-cites="friedman1975">(<a href="#ref-friedman1975" role="doc-biblioref">Friedman &amp; Friedman, 1975</a>)</span>). Viele Plattformen locken Nutzer in kostenlose Tarife oder per „Auto“-Auswahl in <strong>schwächere Modellvarianten</strong>, denen dann das iterative Vorgehen fehlt (<em>reasoning</em>), oft ohne oder nur mit sehr begrenztem Harness-Werkzeugkasten. Das wirkt zunächst „gut genug“, erhöht aber das Risiko von Fehlern, veralteten Informationen und oberflächlichem Denken. Für die Lehre heißt das: Wer GenAI als Lehrassistenz nutzen will, sollte <strong>bewusst eine starke Modellvariante</strong> und ein passendes Harness wählen – und Ergebnisse grundsätzlich didaktisch gegenprüfen.</p>
+<p><strong>Schauen wir uns einige praktische Beispiele an</strong>, was mit schlauen Modellen und gut gefülltem Werkzeugkasten mittlerweile möglich ist. Wir suchen aktuelle Fallstudien zu Lieferketten-Problemen. Als Recherche-Hiwi sucht das Sprachmodell auf akademischen Blogs und Fachzeitschriften nach aktuellen Beispielen.</p>
+<div id="fig-deep-research-plan" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-deep-research-plan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script01-dr-plan.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deep-research-plan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.2: Recherche-Hiwi-Vorgehen. Quelle: Gemini 3 Pro
+</figcaption>
+</figure>
+</div>
+<p>Solche Suchen führen Sprachmodelle mittlerweile in mehreren Schritten durch. Hier sehen wir den “Denkprozess”.</p>
+<div id="fig-denkprozess" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-denkprozess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/deep-research-recherche-aktuelle-lieferkettenprobleme-denkprozess-geminipro.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-denkprozess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.3: Recherche-Hiwi-Denkprozess. Quelle: Gemini 3 Pro
+</figcaption>
+</figure>
+</div>
+<p>Hier das Ergebnis: Ein erster ausformulierter Bericht von 13 Seiten nach ca. 5 Minuten Recherche. Die Abbildung zeigt den Auszug mit der tabellarischen Zusammenfassung der Forschungsartikel.</p>
+<div id="fig-ergebnis-bericht" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ergebnis-bericht-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/deep-research-recherche-aktuelle-lieferkettenprobleme-ergebnis-auszug-geminipro.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ergebnis-bericht-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.4: Recherche-Hiwi-Ergebnis. Quelle: Gemini 3 Pro
+</figcaption>
+</figure>
+</div>
+<p>Wie kann man Konzepte einfach und mit Beispielen erklären? Wir bitten ChatGPT um Vorschläge zu zwei Konzepten aus der Wissenschaftstheorie: Der Duhem-Quine-These, die beschreibt, warum Wissenschaft nur graduell, mosaik-bauend zu Erkenntnissen kommen kann, und Mayos Konzept der “Strengen Tests” (severe testing), nach denen man wissenschaftliche Aussagen graduell auf ihre Belastbarkeit bewerten kann.</p>
+<div id="fig-konzepte" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-konzepte-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/konzepterklaerungen-beispiele-gpt5-2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-konzepte-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.5: Recherche-Hiwi-Konzepterklärung. Quelle: ChatGPT-5.2
+</figcaption>
+</figure>
+</div>
+<p>Wie könnte man das in einem Test abfragen? Auch hierzu bitten wir ChatGPT (5.2) um Vorschläge.</p>
+<div id="fig-testfragen" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-testfragen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/multiple-choice-test-beispiele-gen-chatgpt.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-testfragen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.6: Recherche-Hiwi-Erklärung-Ergebnis. Quelle: ChatGPT-5.2
+</figcaption>
+</figure>
+</div>
+<p>Ende 2025 generieren die starken Sprachmodelle <strong>professionelle Folien-Präsentationen in Sekunden.</strong> Sprachmodelle wie Googles <em>Gemini</em> können mittlerweile auch Text in Bildern erstellen <span class="citation" data-cites="willison2025a">(<a href="#ref-willison2025a" role="doc-biblioref">Willison, 2025b</a>)</span> und damit auch komplexe Infografiken (und Folien). Das Sprachmodell <em>Claude</em> liefert eine Beschreibung (‘Skill’) von 3500 Wörtern mit, die dem Sprachmodell genau erklärt, wie es Schritt für Schritt eine PowerPoint-Präsentation erstellt und testet <span class="citation" data-cites="anthropic2025a">(<a href="#ref-anthropic2025a" role="doc-biblioref">Anthropic, 2025</a>)</span>. Weiter unten zeigen wir, wie so ein Skill etwa bei der Erstellung komplexer Dokumente (Hausarbeiten!) hilft.</p>
+<p>Grafisch ansprechende Präsentationen kosten Zeit – und Brillanz als Grafiker gehört vielleicht auch nicht zu den Kernkompetenzen von Lehrenden. Wir bitten daher Gemini (NotebookLM) und Claude, uns basierend auf Überblicksartikeln zwei Präsentationen zu erstellen: Eine zur Frage, welche Lerntechniken für Studierende besonders gut funktionieren (s. <a href="kapitel02.html" class="quarto-xref"><span>Kapitel 2</span></a>) und die zweite zur Frage, welche Best-Practices es gibt, Aufgabenstellungen mit der intensiven Nutzung von GenAI zu verbinden (s. <a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang B</span></a>).</p>
+<p>Zu integrierten Aufgaben mit GenAI liefert uns das Sprachmodell nach wenigen Minuten 15 sehr schicke Folien (NotebookLM, basierend auf 13 Quellen-PDFs).</p>
+<div id="fig-folien-notebooklm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-folien-notebooklm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/genai-integrierte-aufgaben-gen-notebooklm.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-folien-notebooklm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.7: Recherche-Hiwi-Ergebnis - Quelle: NotebookLM
+</figcaption>
+</figure>
+</div>
+<p>Zu Lerntechniken erhielten wir nach etwa 5 Minuten basierend auf einem Fachartikel 8 professionelle Folien (mit kleineren Formatierungsfehlern, etwa Zeilenumbrüchen).</p>
+<div id="fig-folien-claude" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-folien-claude-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lerntechniken-ppt-gen-claude-2025-12.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-folien-claude-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.8: Recherche-Hiwi-Ergebnis. Quelle: Claude
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-forschung" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-forschung"><span class="header-section-number">1.3</span> Nutzung von GenAI in der Forschung</h2>
+<p><strong>Immer mehr Aspekte von typischen Forschungstätigkeiten</strong> – ein zentraler Ausbildungsinhalt der Hochschulen – können <strong>von der KI übernommen</strong> werden und zwar auf hohem Niveau. Vorbei sind die Zeiten, da wir über banale KI-Texte nur lächelten. Ein Überblicksartikel des Forschers Anton Korinek im renommierten Journal of Economic Literature vom Dezember 2024 fasst die deutlich höhere Qualität des Outputs zusammen: „die derzeitige Generation von LLMs ist in hohem Maße in der Lage, die wichtigsten Erkenntnisse von Forschungsarbeiten zu verarbeiten” <span class="citation" data-cites="korinek2024">(<a href="#ref-korinek2024" role="doc-biblioref">Korinek, 2024, S.3</a>, Übersetzung RB mit DeepL)</span>.</p>
+<p><strong>Professionelle Forscher sind hier teils schon weiter.</strong> Eine schöne visuelle Verdeutlichung davon, was jetzt möglich ist, findet sich hier: Eine Visualisierung von über 6000 Konferenzbeiträgen, die jeweils zusammengefasst werden und denen durch ein Sprachmodell eine Erklärung in einfacher Sprache beigefügt wurde (“explain-it-like-I’m-5”): <strong>Hier kann man das interaktiv ausprobieren:</strong> <a href="https://jalammar.github.io/assets/neurips_2025.html" class="uri">https://jalammar.github.io/assets/neurips_2025.html</a>.</p>
+<div id="fig-conference-papers" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-conference-papers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/neurips-papers-visualization-eli5.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conference-papers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.9: Visualisierung und Erläuterung in einfacher Sprache von 6000+ Konferenzbeiträgen <span class="citation" data-cites="alammara">(<a href="#ref-alammara" role="doc-biblioref">Alammar, o. J.</a>)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Wie kann GenAI uns bei der Forschung direkt unterstützen?</strong> Google demonstrierte 2025 ein mehrstufiges Modell für die Pharma-Forschung (<em>‘AI co-scientist’</em>), das den Forschenden zeitintensive Zwischenschritte abnimmt <span class="citation" data-cites="gottweis2025">(<a href="#ref-gottweis2025" role="doc-biblioref">Gottweis et al., 2025</a>)</span> (s. <a href="#fig-coscientist" class="quarto-xref">Abbildung&nbsp;<span>1.10</span></a>). OpenAI zeigte Ende 2023 schon in einem ausführlichen Bericht eine Vielzahl möglicher Hilfsanwendungen im Wissenschaftsbereich. Mit deutlichen Warnhinweisen (speziell wegen selbstbewusst vertretenen Halluzinationen) aber auch teils erstaunlich hoher Qualität <span class="citation" data-cites="bubeck2023">(<a href="#ref-bubeck2023" role="doc-biblioref">Bubeck et al., 2023</a>)</span>. Auch im Peer-Review werden zunehmend Sprachmodelle eingesetzt – mit allen Vor- und Nachteilen, die das mit sich bringt <span class="citation" data-cites="naddaf2025">(<a href="#ref-naddaf2025" role="doc-biblioref">Naddaf, 2025</a>)</span>. Wie wir in den späteren Kapiteln sehen, experimentieren Hochschulen weltweit intensiv mit den neuen Möglichkeiten für Lehre und Forschung.</p>
+<div id="fig-coscientist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coscientist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/co-scientist-design.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coscientist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.10: Google’s Co-Scientist Ansatz an einem Beispiel aus der Pharmaforschung <span class="citation" data-cites="gottweis2025">(<a href="#ref-gottweis2025" role="doc-biblioref">Gottweis et al., 2025</a>)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Ende 2025 hat sich <strong>der potenzielle Mehrwert (und speziell Zeitgewinn) <em>bei fachgemäßer Nutzung</em></strong> noch einmal erweitert. Ein aktueller Bericht (November 2025) von OpenAI stellt eine Reihe von Fallstudien dar, wie Forschende starke Sprachmodelle einsetzen <span class="citation" data-cites="bubeck2025">(<a href="#ref-bubeck2025" role="doc-biblioref">Bubeck et al., 2025</a>)</span>. Die Quelle der Ergebnisse ist natürlich nicht neutral (OpenAI), die Ergebnisse sind aber m. E. mit Blick auf die eigene Nutzungserfahrung sehr plausibel: Als Mehrwert wird häufig eine <strong>außerordentliche Zeitersparnis bei Routinetätigkeiten</strong> genannt, speziell bei der Nutzung von Verfahren und Wissensquellen, die die Forscher zwar bewerten können, deren Aneignung aber ohne die Hilfe der Sprachmodelle deutlich länger dauern würde. Dies ist sehr wertvoll und wird die Verbreitung solcher Tools treiben. Wir sehen in den Einzelberichten aber auch <strong>klare Warnsignale</strong>: Wenn man die Zwischenergebnisse mangels Fachkenntnis nicht kritisch hinterfragen kann, ist die Wahrscheinlichkeit hoch, Fehler zu übernehmen. Auch starke Sprachmodelle vertreten sehr überzeugend falsche Ergebnisse und Ansätze. Nur durch Fachwissen haben Nutzer die erforderlichen Bewertungsmuster. <strong>Erst durch eigenes Fachwissen <em>und</em> durch Erfahrung im kritischen Umgang mit dem Tool entsteht der Mehrwert</strong>. Man muss sozusagen das Terrain kennen <em>und</em> lernen, wie man den Sportwagen Sprachmodell fahren muss. So können dann auch Unfälle besser vermieden werden.</p>
+<p>Am Ende dieses Kapitels haben wir aus einer aktuellen Studie Schlaglichter zu Forschungs-Versuchen aus den verschiedenen Disziplinen zusammengestellt <span class="citation" data-cites="bubeck2025">(<a href="#ref-bubeck2025" role="doc-biblioref">Bubeck et al., 2025</a>)</span> (siehe <a href="#sec-forschung-details" class="quarto-xref"><span>Kapitel 1.8</span></a>).</p>
+<p><strong>Wie ein Laie im Cockpit eines Verkehrsflugzeugs</strong> fällt es Lehrenden teils schwer zu entscheiden, welche der neuen Möglichkeiten sinnvoll für die eigene Lehre sind. Zunächst gibt es immer wieder Hype-Zyklen: Virtuelle Realität, Blockchain, Roboter, Internet der Dinge… <span class="citation" data-cites="allen2024">(<a href="#ref-allen2024" role="doc-biblioref">Allen &amp; Edelson, 2024</a>)</span>, viel wurde schon ins Rampenlicht gestellt und dann wieder vergessen. Hersteller und Beratungen bewerben und ‘hypen’ regelmäßig neue Technologien für die Lehre, so dass wir schon aus Selbstschutz eine gewisse Grundskepsis mitbringen sollten, ob ein neuer technischer Zugang wirklich auch didaktischen Nutzen bringt <span class="citation" data-cites="hattie2023">(für eine wirkungsbasierte Übersicht von Technologien s. etwa <a href="#ref-hattie2023" role="doc-biblioref">Hattie, 2023, Kap.14</a>)</span>. Lehrende sind außerdem paradoxen Spannungen zwischen den Identitäten als Experten und Innovatoren ausgesetzt <span class="citation" data-cites="fischer2024">(<a href="#ref-fischer2024" role="doc-biblioref">Fischer &amp; Dobbins, 2024</a>)</span>: Ausgestrahlte Kompetenz ist einerseits Teil ihres Wertversprechens, was zur Abwehr ungewohnter Technologien einlädt. Andererseits sollen Lehrende auch zu Neugier und Innovation anleiten und insofern den Umgang mit neuen, auch für die Lehrenden selbst ungewohnten Technologien erleichtern.</p>
+<div id="fig-ki-herausforderung" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ki-herausforderung-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ai-as-new-tech-gemini.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ki-herausforderung-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.11: Neue technologische Chancen und Herausforderungen mit GenAI. <em>Quelle:</em> Mit Gemini 2 generiert.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-weiterentwicklung" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-weiterentwicklung"><span class="header-section-number">1.4</span> Aktuelle Weiterentwicklungen der Sprachmodelle</h2>
+<p>2025 lernen die großen Sprachmodelle noch besser „nachzudenken“ – sogenannte „Reasoning“-Modelle werden breit verfügbar. Aus didaktischer Sicht ist das auch deshalb interessant, weil man Lernenden jetzt Denkstrategien vorführen kann, speziell Hypothesenbildung und Prüfung (etwa <span class="citation" data-cites="brown2014">(<a href="#ref-brown2014" role="doc-biblioref">Brown et al., 2014</a>)</span>, S. 90–94, “generative learning”, oder die Studien von Willemain zur Modellierung von Problemen durch Experten <span class="citation" data-cites="willemain1994 willemain1995">(<a href="#ref-willemain1994" role="doc-biblioref">Willemain, 1994</a>, <a href="#ref-willemain1995" role="doc-biblioref">1995</a>)</span>). Ein neuer Ansatzpunkt zur Verbesserung der Ergebnisse wird hier genutzt <span class="citation" data-cites="grootendorst2025">(<a href="#ref-grootendorst2025" role="doc-biblioref">Grootendorst, 2025</a>)</span>: Statt (nur) mehr Ressourcen in das Training immer komplexerer Modelle zu investieren (train-time compute), werden die Modelle jetzt dazu angehalten, länger „nachzudenken“, bevor sie ein Ergebnis anbieten (test-time compute). Hinter diesem „besseren Nachdenken“ stehen zwei Prinzipien <span class="citation" data-cites="snell2024 grootendorst2025">(<a href="#ref-grootendorst2025" role="doc-biblioref">Grootendorst, 2025</a>; <a href="#ref-snell2024" role="doc-biblioref">Snell et al., 2024</a>)</span>: Die Sprachmodelle werden einerseits instruiert, schrittweise vorzugehen (Input-Verbesserung der Vorschlagsverteilung) und andererseits dazu angehalten, die eigenen Antworten zu prüfen (Output-Verbesserung, Verifizierer). Die Sprachmodelle führen insofern jetzt teils selbstständig Prüfschritte durch, die man früher durch komplexe Prompts induziert hätte. Ende 2025 sehen wir in der Konsequenz, dass die Sprachbots immer selbstständiger werden, man spricht vom <strong>„Agentic Turn“</strong> <span class="citation" data-cites="willison2025 steinberger2025 mollick2025">(<a href="#ref-mollick2025" role="doc-biblioref">E. R. Mollick, 2025a</a>; <a href="#ref-steinberger2025" role="doc-biblioref">Steinberger, 2025</a>; <a href="#ref-willison2025" role="doc-biblioref">Willison, 2025a</a>)</span>: Als Nutzer solcher Reasoning Modelle verbringen wir jetzt weniger Zeit damit, über die ‚Zaubersprüche‘ einzelner Prompts nachzudenken und mehr Zeit in ‚Mitarbeitergesprächen‘ – Anleitung und Kritik der digitalen „Agenten“ – Sprachmodelle, die selbstständig und auf hohem Niveau mehrere Arbeitsschritte durchführen. Insgesamt steigt seit 2023 die Qualität der Aufgaben, die Sprachmodelle erledigen können, rasant. Empirische Untersuchungen zeigen, dass die Sprachmodelle immer längere Aufgaben auf hohem Niveau erledigen können <span class="citation" data-cites="kwa2025">(<a href="#ref-kwa2025" role="doc-biblioref">Kwa et al., 2025</a>)</span>.</p>
+<p>Die neuen Modelle sind außerdem günstiger und effizienter geworden: die Kosten pro Interaktion sind stark gesunken. Illustratives Beispiel: Eine Million Token kosteten mit GPT-4 noch 50 Dollar, jetzt nur noch 14 Cent <span class="citation" data-cites="invertedstone2025 mollick2025a">(<a href="#ref-invertedstone2025" role="doc-biblioref">InvertedStone, 2025</a>; <a href="#ref-mollick2025a" role="doc-biblioref">E. R. Mollick, 2025b</a>)</span>. Das Modell halluziniert (weiterhin, also Vorsicht, aber) deutlich seltener als seine Vorgänger: OpenAI gibt hier ca. 1 % Halluzinationen der Antworten statt ca. 5 % bei Vorgängermodellen (o3, 4o) an, je nach Komplexität der Frage und erlaubter „Bedenkzeit“ <span class="citation" data-cites="openai2025b">(<a href="#ref-openai2025b" role="doc-biblioref">OpenAI, 2025b</a>)</span>.</p>
+<p>Weiterhin hat sich die <strong>Internetsuche mit LLMs deutlich verbessert</strong>. Während man früher noch oft über sinnlose oder erfundene Ergebnisse lachte, stellt die Suche von ChatGPT, Google/Gemini oder speziellen Suchanbietern wie Perplexity mittlerweile eine große Zeitersparnis dar: „a useful tool to provide up-to-date answers to questions that are grounded in facts found on the internet, together with the requisite citations—a crucial capability for researchers“ <span class="citation" data-cites="korinek2024">(<a href="#ref-korinek2024" role="doc-biblioref">Korinek, 2024, S.3</a>)</span>. Das gilt zunehmend für die stärksten allgemeinen Modelle und erst recht für Anbieter, die auf Forschungsrecherche (und Studierende) spezialisiert sind, wie Elicit oder Paperpal. Auch breite Internet-Recherchen und Textproduktionen sind zunehmend komplett delegierbar („deep research“), mit deutlichen Auswirkungen auf den Arbeitsprozess in der Wissensarbeit (s. etwa <span class="citation" data-cites="schwarcz2025">Schwarcz et al. (<a href="#ref-schwarcz2025" role="doc-biblioref">2025</a>)</span> für juristische Recherchen, <span class="citation" data-cites="korinek2024">Korinek (<a href="#ref-korinek2024" role="doc-biblioref">2024</a>)</span> für Ökonomie und <span class="citation" data-cites="liang2025">Liang et al. (<a href="#ref-liang2025" role="doc-biblioref">2025</a>)</span> für PR-Tätigkeiten).</p>
+<p><strong>Auch komplexe Texte können die Sprachmodelle mittlerweile erstellen, prüfen und verbessern</strong>. Wie weit sich das fortentwickelt hat, sehen wir am folgenden Beispiel: Einem vorgefertigten <strong>‘Skill’</strong> - einer detaillierten Ablaufbeschreibung zur Erstellung komplexer Texte (<span class="citation" data-cites="openai2025a">OpenAI (<a href="#ref-openai2025a" role="doc-biblioref">2025a</a>)</span>; anthropic2025a; willison2025b).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="'I know Kung-Fu now' - modular Wissen hinzubuchen über 'Skills'">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+‘I know Kung-Fu now’ - modular Wissen hinzubuchen über ‘Skills’
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mit ‘Skills’ können wir dem Sprachmodell einen Block an sehr konkreten Anweisungen mitgeben. Zum Beispiel um komplexe längere Texte zu schreiben. Wie detailliert das ist, sehen wir hier am Beispiel des Skills “Co-Authoring”, der folgendes detailliert beschreibt:</p>
+<p>1- Erfragt Meta-Informationen (Dokumenttyp, Zielgruppe, Zielsetzung) und integriert vorhandene Templates oder Dokumente.</p>
+<p>2- Fordert den Nutzer zu einem “Info-Dump” auf und stellt anschließend gezielte Fragen, um Verständnis- und Kontextlücken zu schließen.</p>
+<p>3- Erstellt eine initiale Dokumentenstruktur als bearbeitbares Artefakt (Datei) mit Platzhaltern.</p>
+<p>4- Führt für jeden Abschnitt ein Brainstorming von Inhaltsoptionen durch und lässt den Nutzer auswählen, bevor der Text formuliert wird.</p>
+<p>5- Erstellt den Entwurf für den jeweiligen Abschnitt und führt iterative Änderungen auf Basis präziser Nutzeranweisungen durch.</p>
+<p>6- Simuliert Leserfragen (“Reader Testing”) mit einer kontextfreien Instanz, um logische Lücken, Unklarheiten oder fehlendes Vorwissen aufzudecken.</p>
+<p>7- Korrigiert identifizierte Schwachstellen und führt eine abschließende Gesamtkohärenzprüfung durch.</p>
+<p>Den kompletten Skill finden Sie hier: https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md</p>
+</div>
+</div>
+</section>
+<section id="sec-nutzung" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sec-nutzung"><span class="header-section-number">1.5</span> Wie nutzen Studierende und Lehrende GenAI?</h2>
+<p><strong>Für Studierende sind GenAI Chatbots zum Standard für Informationssuche und Schreibaufgaben geworden</strong>: So berichten 92 % der befragten britischen Vollzeitstudierenden (n=1.041, Erhebung im Dezember 2024), dass sie KI-Tools wie ChatGPT regelmäßig verwenden, und 88 % geben an, solche Tools für Prüfungsleistungen („for assessments“) zu nutzen <span class="citation" data-cites="freeman2025">(<a href="#ref-freeman2025" role="doc-biblioref">Freeman, 2025</a>)</span>. Deutsche Daten des CHE-Centrum für Hochschulentwicklung bestätigen dies: etwa zwei Drittel der Studierenden gaben Ende 2024 an, KI-Tools mindestens wöchentlich einzusetzen <span class="citation" data-cites="che2025ki">(<a href="#ref-che2025ki" role="doc-biblioref">Hüsch, Marc et al., 2025</a>)</span> (65 %, n=23.288 von 171 Hochschulen).</p>
+<p><strong>Wofür genau nutzen Studierende GenAI?</strong> Studierende berichten, dass sie sich am häufigsten Konzepte erklären lassen, Artikel zusammenfassen oder Ideen für Schreib- und Forschungsprojekte sammeln <span class="citation" data-cites="freeman2025">(<a href="#ref-freeman2025" role="doc-biblioref">Freeman, 2025</a>)</span>. Nutzungsstudien zeigen sogar noch stärkeren Einsatz speziell für Schreibprojekte (s. <a href="#fig-llm-nutzung" class="quarto-xref">Abbildung&nbsp;<span>1.12</span></a>): Wie eine Auswertung von 1 Million anonymisierten Chats zwischen Usern mit Universitätskonto und dem Sprachmodell zeigt, verwenden Studierende die KI-Bots vor allem zum <strong>Erstellen neuer Inhalte und das Analysieren komplexer Themen</strong>, was höheren Ebenen der Bloomschen Taxonomie entspricht (s. <a href="#fig-llm-nutzung-bloom" class="quarto-xref">Abbildung&nbsp;<span>1.13</span></a>). Ein Großteil der befragten britischen Studierenden gibt an, Prüfungsleistungen durch GenAI zu unterstützen. Dieser Anteil sprang zwischen den Erhebungszeiträumen Ende 2023 und 2024 von der Hälfte auf fast 90 % <span class="citation" data-cites="freeman2025">(53 % auf 88 %, <a href="#ref-freeman2025" role="doc-biblioref">Freeman, 2025</a>)</span>.</p>
+<div id="fig-llm-nutzung" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-llm-nutzung-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script01-01.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llm-nutzung-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.12: Wofür Studierende LLMs nutzen <span class="citation" data-cites="handa2025">(<a href="#ref-handa2025" role="doc-biblioref">Handa et al., 2025-04-08, 2025</a>)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Hochschulen müssen insofern sicherstellen, dass Prüfungsleistungen nicht entwertet und Studierende die produktive Nutzung solcher Tools erlernen</strong>. Studierende dürfen einerseits wesentliche kognitive Aufgaben nicht vollständig an GenAI delegieren: Aufgaben und Prüfungsleistungen müssen angepasst werden. Weiterhin entsteht ein <strong>neuer Bedarf an Kompetenzschulung</strong>, den Studierende wie Unternehmen äußern: der produktive Umgang mit den neuen GenAI Tools muss eingeübt werden. <strong>Deutsche Studierende fühlen sich hierauf nicht gut vorbereitet</strong>: In der CHE-Studie bewerten sie das bestehende Angebot zum Erwerb von KI-Kompetenzen mit nur 2,7 von 5 Sternen <span class="citation" data-cites="che2025ki">(<a href="#ref-che2025ki" role="doc-biblioref">Hüsch, Marc et al., 2025</a>)</span>.</p>
+<div id="fig-llm-nutzung-bloom" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-llm-nutzung-bloom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script01-02.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llm-nutzung-bloom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.13: Schwerpunkte der Nutzung von LLMs (Claude) durch Studierende nach der Bloom’schen Taxonomie <span class="citation" data-cites="handa2025">(<a href="#ref-handa2025" role="doc-biblioref">Handa et al., 2025-04-08, 2025</a>)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Die zunehmende Verwendung von KI in der Lehre hat gute Gründe. Wie oft eine neue Technologie genutzt wird, hängt nach dem <strong>Technology Acceptance Model</strong> (TAM, s. <a href="#fig-tam" class="quarto-xref">Abbildung&nbsp;<span>1.14</span></a>) von der <strong>wahrgenommenen Benutzerfreundlichkeit</strong> (perceived ease of use) und der <strong>wahrgenommenen Nützlichkeit</strong> (perceived usefulness) ab <span class="citation" data-cites="marangunic2015b">(<a href="#ref-marangunic2015b" role="doc-biblioref">Marangunić &amp; Granić, 2015</a>)</span>. Generative KI wie ChatGPT decken sichtlich beide Aspekte ab: Sie sind einfach zu nutzen <span class="citation" data-cites="kestin2025 lee2025 monib2025 naddaf2025">(<a href="#ref-kestin2025" role="doc-biblioref">Kestin et al., 2025</a>; <a href="#ref-lee2025" role="doc-biblioref">Lee et al., 2025</a>; <a href="#ref-monib2025" role="doc-biblioref">Monib et al., 2025</a>; <a href="#ref-naddaf2025" role="doc-biblioref">Naddaf, 2025</a>)</span> und erzeugen einen deutlichen Mehrwert, wie Studierende und Lehrende in einer Vielzahl von Umfragen der letzten zwei Jahren berichten <span class="citation" data-cites="heidt2025 morgan2024 ou2024">(<a href="#ref-heidt2025" role="doc-biblioref">Heidt, 2025</a>; <a href="#ref-morgan2024" role="doc-biblioref">Morgan, 2024</a>; <a href="#ref-ou2024" role="doc-biblioref">Ou et al., 2024</a>)</span>. Lehrende ziehen nach: Meta-Untersuchungen zeigen ein extremes Wachstum an Publikationen zur Nutzung von LLM im Hochschulalltag <span class="citation" data-cites="ma2025 ogunleye2024">(<a href="#ref-ma2025" role="doc-biblioref">Ma, 2025</a>; <a href="#ref-ogunleye2024" role="doc-biblioref">Ogunleye et al., 2024</a>)</span>.</p>
+<div id="fig-tam" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/tam-diagram-mermaid.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.14: Gründe für die Verbreitung von GenAI nach dem Technologie-Akzeptanz-Modell. Quelle: Mit ChatGPT 5 im Mermaid Live Editor generiert - https://mermaid.live/edit
+</figcaption>
+</figure>
+</div>
+<p><strong>Auch außerhalb der Hochschule steigt die Nutzung</strong>. Eine Reihe von Studien zeigen <strong>erhöhte Produktivität von Büroarbeitenden mit LLM-Unterstützung</strong>: der Kundensupport arbeitet 15 % schneller, wenn das Sprachmodell Antwortoptionen vorschlägt und Verweise auf interne technische Dokumentation anbietet <span class="citation" data-cites="brynjolfsson2025">(<a href="#ref-brynjolfsson2025" role="doc-biblioref">Brynjolfsson et al., 2025</a>)</span>, Programmierer programmieren schneller <span class="citation" data-cites="peng2023">(<a href="#ref-peng2023" role="doc-biblioref">Peng et al., 2023</a>)</span>, Consultants sind produktiver bei komplexen Beratungsprojekten <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span> und Sprachmodelle wie ChatGPT können eine Vielzahl kleiner Aufgaben beschleunigen <span class="citation" data-cites="handa2025">(<a href="#ref-handa2025" role="doc-biblioref">Handa et al., 2025-04-08, 2025</a>)</span> und werden insofern gerade zur Texterstellung schon millionenfach als Hilfsmittel im Beruf genutzt: Von Kundenbewertungen über Pressemitteilungen und Stellenanzeigen <span class="citation" data-cites="liang2025">(<a href="#ref-liang2025" role="doc-biblioref">Liang et al., 2025</a>)</span>.</p>
+<p>Schauen wir auf die Abnehmer unserer Graduierten: <strong>Wie nutzen die Unternehmen Mitte 2025 solche Sprachmodelle?</strong> Eine aktuelle Studie (2025/12) zur Nutzung von GenAI in Unternehmen stellt ein extremes Wachstum fest sowie einen deutlichen Unterschied in der Nutzung von erfahrenen und weniger routinierten Usern <span class="citation" data-cites="chatterji2025a">(<a href="#ref-chatterji2025a" role="doc-biblioref">Chatterji, 2025</a>)</span>. Der OpenAI-Report zeigt, dass die Nutzung von Sprachmodellen in Unternehmen 2025 deutlich <em>breiter und tiefer</em> wird: ChatGPT-Enterprise-Nachrichten stiegen im Jahresvergleich etwa um das Achtfache, gleichzeitig wachsen wiederholbare Arbeitsabläufe stark (Nutzung von Projects/Custom GPTs ~19-fach seit Jahresbeginn; rund 20 % der Enterprise-Nachrichten laufen bereits über solche strukturierten Workflows). Gleichzeitig bleibt bei fortgeschritteneren Funktionen noch viel ungenutztes Potenzial. Vor allem der Mehrwert von neueren Funktionen wie <em>DeepSearch</em> (Delegation ausführlicher Recherchen), <em>Reasoning</em> (schrittweises, sorgfältiges Antworten mit deutlich höherer Qualität) und <em>Datenanalyse</em> mit Coding Tools wie Codex werden von Praktikern mit Firmen-Lizenz noch sehr selten genutzt. Selbst unter monatlich aktiven Enterprise-Nutzern haben 19 % noch nie Datenanalyse, 14 % noch nie Reasoning und 12 % noch nie (Deep) Search genutzt (bei täglich Aktiven sinkt das auf 3 %, 1 % und 1 %).</p>
+</section>
+<section id="sec-risiken" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="sec-risiken"><span class="header-section-number">1.6</span> Risiken und Nebenwirkungen</h2>
+<p>Die Metapher mit dem E-Bike trägt allerdings auch, was die <strong>Risiken und Nebenwirkungen</strong> angeht: Ab wann lässt die maschinelle Unterstützung wichtige Muskeln verkümmern? Solche Gefahren bestehen – wie empirische Studien zeigen, erfordern die neuen Workflows der Wissensarbeit durch KI-Unterstützung auch neue Formen der kritischen Auseinandersetzung mit den Inhalten.</p>
+<p><strong>Wird der Umgang mit GenAI nicht geübt, droht ein Rückgang des kritischen Denkens.</strong> Eine Studie von 319 Wissensarbeitern zeigt, dass sich das <strong>Gewicht zwischen den Einzelaufgaben der Wissensarbeit mit LLMs verschiebt</strong>: Der Aufwand für die Recherchen selbst sinkt, es steigt andererseits der Aufwand für Management-ähnliche Aufgaben: Koordination der Einzelaufgaben für Mensch und Maschine, kritische Prüfung der berichteten Ergebnisse und die Integration von Ergebnissen in den Gesamtprozess (etwa zur Erstellung eines Gesamtberichtes, einer Test-Spezifikation oder eines Protokolls) <span class="citation" data-cites="lee2025">(<a href="#ref-lee2025" role="doc-biblioref">Lee et al., 2025</a>)</span>.</p>
+<p>Im Gegensatz zur einfachen Faktensuche im Internet werden hier nicht nur ein paar dornige Zweige im Aufgabenbündel mechanisch ‚geerntet‘, sondern <strong>gleich das gesamte Bündel fertig verschnürt bereitgestellt.</strong> Schlimmstenfalls droht das, was ein Artikel von <span class="citation" data-cites="walsh2025">Walsh (<a href="#ref-walsh2025" role="doc-biblioref">2025</a>)</span> prägnant betitelt: <strong>„Everybody is cheating their way through college“.</strong> Wenn klassische Projektaufgaben quasi auf Knopfdruck erstellt werden können, droht diese Form von Leistung sinnlos zu werden. Mit etwas Lust an Dramatik können wir uns Endzeit-Szenarien vorstellen, in denen <strong>Lehrende klagend durch die Trümmer ihrer schönen Portfolio-Prüfungen stolpern:</strong> Die Homework-Apocalypse <span class="citation" data-cites="mollick2023">(<a href="#ref-mollick2023" role="doc-biblioref">E. R. Mollick, 2023</a>)</span>.</p>
+<p><strong>Aber so schlimm muss es nicht werden.</strong> Plausible Ansätze, Lehrformate auf die allgemeine Nutzung von GenAI hin umzugestalten existieren bereits. Unser Ziel dabei muss sein, dass erwünschte Schwierigkeiten nach <span class="citation" data-cites="bjork2011">Bjork &amp; Bjork (<a href="#ref-bjork2011" role="doc-biblioref">2011</a>)</span> beibehalten oder sogar verstärkt werden, auch wenn die meisten Studierenden zu Hause starke Sprachmodelle nutzen können.</p>
+<p>Wie kann man also verhindern, dass die Studierenden kritische kognitive Aufgaben allein den KI-Systemen übergeben? Lehre heißt in diesem Kontext auch, empfohlene Arbeitsweisen mit der neuen Technik zu üben. Wie das gehen kann, sehen wir in den folgenden Kapiteln.</p>
+</section>
+<section id="sec-kapiteluebersicht" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="sec-kapiteluebersicht"><span class="header-section-number">1.7</span> Kapitelübersicht</h2>
+<p>Im folgenden Kapitel werden wir zunächst einige Grundbegriffe (<a href="kapitel02.html" class="quarto-xref"><span>Kapitel 2</span></a>) klären: Was sind große Sprachmodelle und was ist mit Begriffen wie Token, Prompt und RAG gemeint? Welche Modelle können Lehrende aktuell nutzen und welche Empfehlungen für Prompts sind belastbar? Dann fragen wir nach Zielen (<a href="kapitel03.html" class="quarto-xref"><span>Kapitel 3</span></a>): Welche Art von Wissen und Methoden unterscheidet und empfiehlt die Lernforschung? Welche didaktischen Wirkmechanismen können durch KI genutzt werden, um typische Probleme der Hochschullehre anzugehen? Im Abschnitt 4 schauen wir auf Praxisbeispiele (<a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a>) für vier Anwendungsfelder von Sprachmodellen an Hochschulen: KI als Hiwi (direkte Arbeitserleichterung), KI als Copilot (Unterstützung beim Schreiben und Coden) und KI als Tutor (Feedback und Lernunterstützung) sowie KI als Simulator (Role Play und Goal Play). Abschließend zeigen wir verschiedene Anwendungen von KI in verschiedenen Kurstypen und gehen auf neue Herausforderungen für Prüfungen ein (<a href="kapitel05.html" class="quarto-xref"><span>Kapitel 5</span></a>). Im Appendix finden Sie eine breite Sammlung von didaktischen Prompts und auf GenAI ausgerichteten Aufgabenstellungen von führenden Hochschulen. Dabei erläutern wir zunächst, wie die Prompts aufgebaut sind (<a href="kapitel06-appendix01-prompt-ueberblick.html" class="quarto-xref"><span>Anhang A</span></a>) und zeigen dann eine Liste strukturierter Best-Practice Beispiele (<a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang B</span></a>).</p>
+</section>
+<section id="sec-forschung-details" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="sec-forschung-details"><span class="header-section-number">1.8</span> Schlaglichter aus der Forschung mit GenAI: Erfahrungsberichte aus den Disziplinen (GPT-5 und 5-Pro)</h2>
+<p>Wie und wofür lassen sich die stärksten Sprachmodelle aktuell in der Forschung nutzen? Zum optionalen Abschluss dieses Kapitels finden Sie hier kurze Zusammenfassungen der Ergebnisse aus den verschiedenen Disziplinen <span class="citation" data-cites="bubeck2025">(<a href="#ref-bubeck2025" role="doc-biblioref">Bubeck et al., 2025</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Optimierung der Schrittweite">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mathematik / Optimierung der Schrittweite
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Sébastien Bubeck</p>
+<p><strong>Thema:</strong> Untersuchung, ob GPT-5 ein kürzlich veröffentlichtes Resultat zur Konvexität von Optimierungskurven verbessern oder reproduzieren kann.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„…one can see that GPT-5 claims to have improved the condition from η≤1/L to η≤1.5/L, thus approaching the optimal bound (but not quite getting there) of η≤1.75/L. But is this claim substantiated? It is indeed, and the proof given by GPT-5 is shown in Figure I.2, which the present author has verified to be correct.“</p>
+<p>„…the proof given by GPT-5 is quite different from the one in v2. Indeed, the GPT-5 proof can be viewed as a more canonical variant of the v1 proof…“</p>
+<p><strong>Probleme:</strong></p>
+<p>„GPT-5 did not manage to fully rederive the v2 result, but it basically went half-way between v1 and v2.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„To say it plainly, such a result (improving from 1/L to 1.5/L) could probably have been achieved by some experts in the field in a matter of hours, and likely for most experts it would have taken a few days. This is the type of science acceleration that we will see time and again in this report.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Literaturrecherche zu Erdős-Problemen">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mathematik / Literaturrecherche zu Erdős-Problemen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschende:</strong> Mehtaab Sawhney und Mark Sellke</p>
+<p><strong>Thema:</strong> Nutzung von GPT-5 zur Identifizierung bereits veröffentlichter Lösungen für Probleme aus der Erdős-Datenbank, die dort als „offen“ gelistet waren.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„GPT-5 located references solving the above problems… Identifying these decades-old papers required GPT-5 to go far beyond the functionality of a search engine, and indeed to read each of these papers in detail and apply a genuine understanding of mathematics.“</p>
+<p>„GPT-5 translated and explained the proofs from [Pom59] to us so that we could verify them ourselves.“</p>
+<p>„GPT-5 assisted us in pointing out parts of the paper that made the intended definition clear.“</p>
+<p><strong>Probleme:</strong></p>
+<p>„…in some cases it was overly enthusiastic about partial progress it had found.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„GPT-5 therefore provides the practicing mathematician a new mechanism to access the collective breadth of the mathematical literature.“</p>
+<p>„This provides a convenient, crowd-sourceable ‘soft certificate’ that the solution is unlikely to appear in the published literature.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Mathematik / LLMs als Forschungspartner">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mathematik / LLMs als Forschungspartner
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Timothy Gowers</p>
+<p><strong>Thema:</strong> Erfahrungen bei der Nutzung von LLMs für mathematische Probleme im Frühstadium.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„…with GPT-5 my experience has been that the references are rarely hallucinated, and even the hallucinations can turn out to be pointers to references that exist and are useful.“</p>
+<p>„…GPT-5 has solved them [well-defined subproblems] for me in a matter of seconds.“</p>
+<p>„…I have had reasonably precise ideas for solving problems that I have run past GPT-5 Pro, which has explained to me why them cannot work.“</p>
+<p>„…even the less good ideas of an LLM can sometimes stimulate me to make progress. (I think of this as the ‘That clearly doesn’t work … but wait a minute!’ phenomenon.)“</p>
+<p><strong>Probleme:</strong></p>
+<p>„…on the negative side, if I ask more open-ended questions, or offer more sketchy ideas for proof attempts, then that seems to encourage the more annoying characteristics of LLMs to come to the fore: they will tell me that my ideas do indeed work, and will write something that supposedly fleshes out the details but that does not withstand close scrutiny.“</p>
+<p>„…it gave me a hallucinated reference but by an author who had written on closely related topics.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„…my current assessment of LLMs is that they are just beginning to be useful as research collaborators…“</p>
+<p>„…LLMs can speed up the process of thinking about a problem, especially if that problem is a little outside one’s primary domain of expertise…“</p>
+<p>„…they are capable of playing this knowledgeable-research-supervisor role with me… but that they are not yet at the level… at which a human mathematician… would ask for joint authorship.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Neue Resultate zum Erdős-Problem #848">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mathematik / Neue Resultate zum Erdős-Problem #848
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschende:</strong> Mehtaab Sawhney und Mark Sellke</p>
+<p><strong>Thema:</strong> Lösung eines offenen Problems über Teilmengen von {1, …, N}, bei denen ab+1 nicht quadratfrei ist.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„GPT-5 put forward the new idea that led to our solution…“</p>
+<p>„The idea suggested by GPT-5’s reply… gives a method to use any single number b ∈ A to obtain similarly harsh constraints on all other a ∈ A.“</p>
+<p><strong>Probleme:</strong></p>
+<p>„GPT-5 made attempts in this direction but had numerous errors in its implementation (as can be seen in the transcript).“</p>
+<p>„…current models remain limited in perceiving the ‘negative space’ of mathematics. While models are able to suggest plausible proof strategies, they often do not realize certain ‘obvious’ examples which block progress, and are overly confident in the power of existing methods.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„…GPT-5 has the ability to serve as an effective mathematical assistant, capable of recalling relevant lemmas, identifying analogies and locating relevant results from vague, ill-specified prompts.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Graphentheorie: Teilgraphen-Zählungen">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mathematik / Graphentheorie: Teilgraphen-Zählungen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschende:</strong> Sébastien Bubeck, Mark Sellke und Steven Yin</p>
+<p><strong>Thema:</strong> Beweis von Ungleichungen für die Anzahl bestimmter induzierter Teilgraphen in Bäumen.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„Both of GPT-5’s proofs are quite different from any of the arguments in [BL16; Bub+16].“</p>
+<p>„…GPT-5’s proof is short and elegant, and based on a somewhat miraculous identity.“</p>
+<p><strong>Probleme:</strong></p>
+<p>„A few incorrect proofs were also generated and rejected by human checking.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„…GPT-5 was able to reprove the first inequality, and then build on this to also prove the second (open) inequality.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Mathematik / Lerntheorie: Dynamische Netzwerke">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mathematik / Lerntheorie: Dynamische Netzwerke
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschende:</strong> Sébastien Bubeck, Mark Sellke und Steven Yin</p>
+<p><strong>Thema:</strong> Identifizierbarkeit des Parameters w in einem modifizierten präferenziellen Bindungsprozess.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„GPT-5 was able to prove that w is indeed identifiable…“</p>
+<p>„…this illustrates that GPT-5’s decision to focus on the quantity L(t) is already non-obvious.“</p>
+<p><strong>Probleme:</strong></p>
+<p>„…when we asked (an unscaffolded) GPT-5 to provide more detail for these latter arguments, it made several false starts… After some human pushback, GPT-5 eventually came up with a correct but unnecessarily complicated proof…“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„While all major proof ideas below are due to GPT-5, a few details of proof writing are human-supplied.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Physik / Symmetrien Schwarzer Löcher">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Physik / Symmetrien Schwarzer Löcher
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Alex Lupsasca</p>
+<p><strong>Thema:</strong> (Re-)Derivation nichttrivialer Lie-Punkt-Symmetrien der Wellengleichung in einer Kerr-Raumzeit.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„Within 18 minutes, the model produced the correct curved-space generators closing into SL(2, R)…“</p>
+<p>„The final generators are too structured to be a lucky guess. The model likely executed (implicitly) a mix of: recognizing conformal invariance in the flat equation, hypothesizing a curved analogue, and/or exploiting a coordinate map…“</p>
+<p><strong>Probleme:</strong></p>
+<p>„The model initially failed on the curved-space problem, but then succeeded after a flat-space warm-up…“</p>
+<p>„What GPT-5 got wrong (along the way). The cold start on Eq. (I.1) incorrectly concluded ‘no symmetries.’“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„AI as a symmetry engine. With minimal domain scaffolding, current models can carry out nontrivial Lie-symmetry discovery for PDEs with non-constant coefficients.“</p>
+<p>„Research velocity. Given such capabilities, the time from idea to publishable result can compress from months to days once the right prompts and scaffolds are in place.“</p>
+<p>„…contemporary LLMs can act as practical assistants for symmetry discovery and analytic structure mining in theoretical physics.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Physik / Fusionsforschung: Thermonukleare Brandwellen">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Physik / Fusionsforschung: Thermonukleare Brandwellen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Brian Keith Spears</p>
+<p><strong>Thema:</strong> Entwicklung eines reduzierten physikalischen Modells für thermonuklearer Brandwellen in ICF-Kapseln.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„GPT-5 is quite good at this kind of model development and setup. It required little intervention on my part to make this plausible and complete.“</p>
+<p>„The point is that I can now deliver in minutes as if I were at the highest level I have ever been at for this kind of work. … to have it in minutes is remarkable.“</p>
+<p>„However, when re-prompted to examine a pathological result or null signal, GPT-5 offered quite sophisticated solutions, including different implementations of FFTs to prevent aliasing, improved resolutions to track burn fronts…“</p>
+<p><strong>Probleme:</strong></p>
+<p>„GPT-5 was a bad designer, offering results that were null, noisy, or invalid (NaNs), while claiming that glory had been achieved.“</p>
+<p>„The model, in its eagerness to please, often introduces numerical duct tape to smooth over a thorny issue, silently swaps out detailed numerical solves for approximations with trends it knows I want, and confidently declares victory when numerical signals are still obviously noise.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„…executing this workflow from concept, to numerical exploration, to theoretical supporting statement in hours is rather amazing.“</p>
+<p>„I feel like my 6 hours of work here yielded something I could have done over a month or two with a very good pair of postdocs… That is a compression of about a factor of 1000.“</p>
+<p>„…users must be expert enough to catch the oversimplifications, must persist to get the model to reconsider, and must be vigilant…“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Physik / Astrophysik: Gravitationsstrahlung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Physik / Astrophysik: Gravitationsstrahlung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Robert Scherrer</p>
+<p><strong>Thema:</strong> Analytische Integration des Leistungsspektrums von Garfinkle-Vachaspati-Strings.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„After reasoning for 40 minutes, GPT-5 Pro produced a result for large odd n identical to the asymptotic result I had previously derived… It used a completely different method of solution from my own.“</p>
+<p>„GPT-5 Pro also gave the leading order correction term to this formula… I was not aware of this correction term…“</p>
+<p><strong>Probleme:</strong></p>
+<p>„The program hung up for quite a long time, giving me no details about its thought process. After several hours I became frustrated and killed it.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„GPT-5 Pro is capable of solving complex analytic integrations that are beyond the reach of symbolic manipulation programs such as Mathematica.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Biologie / Immunologische In-vitro-Experimente">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Biologie / Immunologische In-vitro-Experimente
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Derya Unutmaz</p>
+<p><strong>Thema:</strong> Mechanistische Analyse der Wirkung von 2-DG auf die Differenzierung von T-Zellen und Vorhersage der Zytotoxizität von CAR-T-Zellen.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„GPT-5 Pro provided the key mechanism that could explain these findings and, in addition, made highly relevant experimental suggestions.“</p>
+<p>„The mechanistic insight and further hypothesis to dissect these findings were highly valuable and not immediately obvious, despite our deep expertise in this field.“</p>
+<p>„GPT-5 Pro perfectly analyzed and described the data in the figure…“</p>
+<p>„…GPT-5 Pro made sufficient contributions to this work to the extent that it would warrant its inclusion as a co-author in this new study.“</p>
+<p><strong>Probleme:</strong></p>
+<p>„…a caveat for this suggestion is that GPT-5 Pro may have known about this finding and made the connection with this result.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„GPT-5 Pro can function as a true mechanistic co-investigator in biomedical research, compressing months of reasoning into minutes, uncovering non-obvious hypotheses, and directly shaping experimentally testable strategies.“</p>
+<p>„Precision interpretation of complex biology. GPT-5 Pro rapidly connected the observed phenotypes to a mechanistic hypothesis…“</p>
+<p>„The net effect will be a much higher discovery rate per experiment and a shorter route from observation to discovery to intervention, thus profoundly accelerating the biomedical scientific process.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Informatik / Geometrie: Literaturrecherche zur Optimierung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Informatik / Geometrie: Literaturrecherche zur Optimierung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Nikita Zhivotovskiy</p>
+<p><strong>Thema:</strong> Suche nach Anwendungen und verwandter Literatur für eine neue geometrische Aussage über „α-ratio covers“.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„…given only a core mathematical statement, GPT-5 can rapidly surface nontrivial and technically aligned links across areas… providing context for new applications.“</p>
+<p>„At first sight… this seems unrelated to Theorem II.1.1 and could be mistaken for a hallucination. However, unpacking their proof shows that their result can be phrased as a coordinatewise (1+ϵ)-ratio cover…“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„…GPT-5 can rapidly surface nontrivial and technically aligned links across areas… providing context for new applications.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Informatik / Schranken für Online-Algorithmen">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Informatik / Schranken für Online-Algorithmen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschender:</strong> Christian Coester</p>
+<p><strong>Thema:</strong> Verbesserung der unteren Schranken für das Problem des „Convex Body Chasing“.</p>
+<p><strong>Mehrwert:</strong></p>
+<p>„Given a single short prompt, GPT-5 produced a rather non-obvious counter-example against the algorithm.“</p>
+<p>„GPT-5 suggested a much simpler and cleaner solution: trigger the switch once the algorithm is below the semicircle at distance ≥ ε from pt.&nbsp;This avoids the freeze… The idea seems obvious in hindsight, yet far more elegant…“</p>
+<p>„…the inspiring appearance of the number π/2 in its reasoning trace…“</p>
+<p><strong>Probleme:</strong></p>
+<p>„The argument it gives for this [feasibility of the construction] is actually incorrect, but a correct argument is easy to see…“</p>
+<p>„…it initially failed to understand how viewing the problem in continuous time could yield stronger bounds, and upon later attempts… it presented arguments containing serious flaws.“</p>
+<p>„…GPT-5’s responses also contained some errors, but these were easy to fix for a human, overall accelerating the research process.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„Perhaps the most impressive part is its proof refuting the follow-the-leader algorithm, produced from a single prompt without any guidance on how to approach the task.“</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Informatik / Clique-avoiding Codes (Warnbeispiel)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Informatik / Clique-avoiding Codes (Warnbeispiel)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Forschende:</strong> Venkatesan Guruswami und Parikshit Gopalan</p>
+<p><strong>Thema:</strong> Suche nach einer unteren Schranke für die Co-Dimension von Codes, die Clique-Indikatoren vermeiden.</p>
+<p><strong>Mehrwert:</strong></p>
+<p><em>Kein expliziter Mehrwert im Text außer der Reproduktion bekannter Beweise.</em></p>
+<p><strong>Probleme:</strong></p>
+<p>„Initially, it was convinced that this bound was tight (up to an additive constant), and tried to convince us of this using a sequence of buggy arguments, resorting to linear algebra and proof by authority…“</p>
+<p>„The most amusing was a hallucinated response to the effect that one of us had asked this question on TCS Stack Exchange… Both these claims are incorrect.“</p>
+<p>„…it appears that GPT-5 reproduced Alon’s proof and passed it along to us without realizing its source.“</p>
+<p><strong>Schlussfolgerungen:</strong></p>
+<p>„Our experience illustrates a pitfall in using AI: although GPT-5 possesses enormous internal knowledge… it may not always report the original information sources accurately. This has the potential to deceive even seasoned researchers into thinking their findings are novel.“</p>
+</div>
+</div>
+</div>
+<p><strong>Link zurück zum Fließtext:</strong> <a href="#fig-ki-herausforderung" class="quarto-xref">Siehe&nbsp;<span>1.11</span></a></p>
+
+
+<div class="support-this-section">
+<h3 class="support-this-heading anchored">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<ul class="support-this-links">
+  <li class="support-this-item">
+    <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Buy Me a Coffee</span>:       <span class="support-this-username">roman.bartnik.th</span>
+    </a>
+  </li>
+  <li class="support-this-item">
+    <a href="https://ko-fi.com/romanbartnik" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Ko-fi</span>:       <span class="support-this-username">romanbartnik</span>
+    </a>
+  </li>
+</ul>
+</div>
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-alammara" class="csl-entry" role="listitem">
+Alammar, J. (o. J.). <em>NeurIPS 2025 Papers</em>. <a href="https://jalammar.github.io/assets/neurips_2025.html">https://jalammar.github.io/assets/neurips_2025.html</a>.
+</div>
+<div id="ref-allen2024" class="csl-entry" role="listitem">
+Allen, S. J., &amp; Edelson, S. A. (2024). Brave New Classroom: Navigating Educational Technology in Management Education. <em>Journal of Management Education</em>, <em>48</em>(4), 603–609. <a href="https://doi.org/10.1177/10525629241243339">https://doi.org/10.1177/10525629241243339</a>.
+</div>
+<div id="ref-anthropic2025a" class="csl-entry" role="listitem">
+Anthropic (2025, Dezember). Erste Schritte mit Agent Skills in der API. <em>Claude Docs</em>. <a href="https://platform.claude.com/docs/de/agents-and-tools/agent-skills/quickstart">https://platform.claude.com/docs/de/agents-and-tools/agent-skills/quickstart</a>.
+</div>
+<div id="ref-bjork2011" class="csl-entry" role="listitem">
+Bjork, E. L., &amp; Bjork, R. A. (2011). Making things hard on yourself, but in a good way: Creating desirable difficulties to enhance learning. <em>Psychology and the real world: Essays illustrating fundamental contributions to society</em>, <em>2</em>(59–68), 56–64.
+</div>
+<div id="ref-brown2014" class="csl-entry" role="listitem">
+Brown, P. C., Roediger, H. L., &amp; McDaniel, M. A. (2014). <em><a href="http://search.ebscohost.com/login.aspx?direct=true&amp;scope=site&amp;db=nlebk&amp;db=nlabk&amp;AN=771951">Make it stick: The science of successful learning</a></em>. The Belknap Press of Harvard University Press.
+</div>
+<div id="ref-brynjolfsson2025" class="csl-entry" role="listitem">
+Brynjolfsson, E., Li, D., &amp; Raymond, L. (2025). Generative AI at work. <em>The Quarterly Journal of Economics</em>, qjae044.
+</div>
+<div id="ref-bubeck2023" class="csl-entry" role="listitem">
+Bubeck, S., Chandrasekaran, V., Eldan, R., Gehrke, J., Horvitz, E., Kamar, E., Lee, P., Lee, Y. T., Li, Y., Lundberg, S., Nori, H., Palangi, H., Ribeiro, M. T., &amp; Zhang, Y. (2023). <em>Sparks of Artificial General Intelligence: Early experiments with GPT-4</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2303.12712">https://doi.org/10.48550/arXiv.2303.12712</a>.
+</div>
+<div id="ref-bubeck2025" class="csl-entry" role="listitem">
+Bubeck, S., Coester, C., Eldan, R., Gowers, T., Lee, Y. T., Lupsasca, A., Sawhney, M., Scherrer, R., Sellke, M., &amp; Spears, B. K. (2025). <em>Early science acceleration experiments with GPT-5</em>.
+</div>
+<div id="ref-chatterji2025a" class="csl-entry" role="listitem">
+Chatterji, A. (2025). <em><a href="https://openai.com/index/the-state-of-enterprise-ai-2025-report/">The state of enterprise AI: 2025 report</a></em> (Research Report). OpenAI.
+</div>
+<div id="ref-dellacqua2023" class="csl-entry" role="listitem">
+Dell’Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., &amp; Lakhani, K. R. (2023). <em>Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality</em>. <a href="https://doi.org/10.2139/ssrn.4573321">https://doi.org/10.2139/ssrn.4573321</a>.
+</div>
+<div id="ref-dunlosky2013" class="csl-entry" role="listitem">
+Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T. (2013). Improving Students’ Learning With Effective Learning Techniques: Promising Directions From Cognitive and Educational Psychology. <em>Psychological science in the public interest : a journal of the American Psychological Society</em>, <em>14</em>(1), 4–58. <a href="https://doi.org/10.1177/1529100612453266">https://doi.org/10.1177/1529100612453266</a>.
+</div>
+<div id="ref-fischer2024" class="csl-entry" role="listitem">
+Fischer, I., &amp; Dobbins, K. (2024). Is it Worth it? How Paradoxical Tensions of Identity Shape the Readiness of Management Educators to Embrace Transformative Technologies in their Teaching. <em>Journal of Management Education</em>, <em>48</em>(4), 829–848. <a href="https://doi.org/10.1177/10525629231201843">https://doi.org/10.1177/10525629231201843</a>.
+</div>
+<div id="ref-freeman2025" class="csl-entry" role="listitem">
+Freeman, J. (2025). <a href="https://www.hepi.ac.uk/reports/student-generative-ai-survey-2025/">Student generative AI survey 2025</a>. <em>Higher Education Policy Institute: London, UK</em>, (HEPI Policy Note 61).
+</div>
+<div id="ref-friedman1975" class="csl-entry" role="listitem">
+Friedman, M., &amp; Friedman, M. (1975). <em>There’s no such thing as a free lunch</em>. Open Court.
+</div>
+<div id="ref-gottweis2025" class="csl-entry" role="listitem">
+Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2502.18864">https://doi.org/10.48550/arXiv.2502.18864</a>.
+</div>
+<div id="ref-grootendorst2025" class="csl-entry" role="listitem">
+Grootendorst, M. (2025, Februar 3). <em>A Visual Guide to Reasoning LLMs</em>. <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-reasoning-llms">https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-reasoning-llms</a>.
+</div>
+<div id="ref-handa2025" class="csl-entry" role="listitem">
+Handa, K., Bent, D., Tamkin, A., McCain, M., Durmus, E., Stern, M., Schiraldi, M., Huang, S., Ritchie, S., Syverud, S., Jagadish, K., Vo, M., Bell, M., &amp; Ganguli, D. (2025-04-08, 2025). <em><a href="https://www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude">Anthropic education report: How university students use claude</a></em>.
+</div>
+<div id="ref-hattie2023" class="csl-entry" role="listitem">
+Hattie, J. (2023). <em>Visible learning, the sequel: a synthesis of over 2,100 meta-analyses relating to achievement</em>. Routledge, Taylor &amp; Francis Group. <a href="https://doi.org/10.4324/9781003380542">https://doi.org/10.4324/9781003380542</a>.
+</div>
+<div id="ref-heidt2025" class="csl-entry" role="listitem">
+Heidt, A. (2025). ChatGPT for students: learners find creative new uses for chatbots. <em>Nature</em>, <em>639</em>(8053), 265–266. <a href="https://doi.org/10.1038/d41586-025-00621-2">https://doi.org/10.1038/d41586-025-00621-2</a>.
+</div>
+<div id="ref-henderson2007" class="csl-entry" role="listitem">
+Henderson, C., &amp; Dancy, M. H. (2007). Barriers to the use of research-based instructional strategies: The influence of both individual and situational characteristics. <em>Physical Review Special Topics—Physics Education Research</em>, <em>3</em>(2), 020102.
+</div>
+<div id="ref-che2025ki" class="csl-entry" role="listitem">
+Hüsch, Marc, Horstmann, N., &amp; Breiter, A. (2025). <em><a href="https://hochschuldaten.che.de/kuenstliche-intelligenz-im-studium-die-sicht-von-studierenden-im-wintersemester-2024-25/">Künstliche Intelligenz im Studium: Die Sicht von Studierenden im Wintersemester 2024/25</a></em>.
+</div>
+<div id="ref-invertedstone2025" class="csl-entry" role="listitem">
+InvertedStone (2025, August 30). <em>OpenAI API Pricing Calculator</em>. <a href="https://invertedstone.com/calculators/openai-pricing">https://invertedstone.com/calculators/openai-pricing</a>.
+</div>
+<div id="ref-kestin2025" class="csl-entry" role="listitem">
+Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting. <em>Scientific Reports</em>, <em>15</em>(1), 17458. <a href="https://doi.org/10.1038/s41598-025-97652-6">https://doi.org/10.1038/s41598-025-97652-6</a>.
+</div>
+<div id="ref-korinek2024" class="csl-entry" role="listitem">
+Korinek, A. (2024). <em>Large language models learn to collaborate and reason: December 2024 update on generative AI</em>.
+</div>
+<div id="ref-kwa2025" class="csl-entry" role="listitem">
+Kwa, T., West, B., Becker, J., Deng, A., Garcia, K., Hasin, M., Jawhar, S., Kinniment, M., Rush, N., Arx, S. V., Bloom, R., Broadley, T., Du, H., Goodrich, B., Jurkovic, N., Miles, L. H., Nix, S., Lin, T., Parikh, N., … Chan, L. (2025). <em>Measuring AI Ability to Complete Long Tasks</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2503.14499">https://doi.org/10.48550/arXiv.2503.14499</a>.
+</div>
+<div id="ref-lee2025" class="csl-entry" role="listitem">
+Lee, H.-P. H., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R., &amp; Wilson, N. (2025). <em>The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers</em>.
+</div>
+<div id="ref-liang2025" class="csl-entry" role="listitem">
+Liang, W., Zhang, Y., Codreanu, M., Wang, J., Cao, H., &amp; Zou, J. (2025). The Widespread Adoption of Large Language Model-Assisted Writing Across Society. <em>arXiv preprint arXiv:2502.09747</em>.
+</div>
+<div id="ref-ma2025" class="csl-entry" role="listitem">
+Ma, T. (2025). Systematically visualizing ChatGPT used in higher education: Publication trend, disciplinary domains, research themes, adoption and acceptance. <em>Computers and Education: Artificial Intelligence</em>, <em>8</em>, 100336. <a href="https://doi.org/10.1016/j.caeai.2024.100336">https://doi.org/10.1016/j.caeai.2024.100336</a>.
+</div>
+<div id="ref-marangunic2015b" class="csl-entry" role="listitem">
+Marangunić, N., &amp; Granić, A. (2015). Technology acceptance model: a literature review from 1986 to 2013. <em>Universal Access in the Information Society</em>, <em>14</em>(1), 81–95. <a href="https://doi.org/10.1007/s10209-014-0348-1">https://doi.org/10.1007/s10209-014-0348-1</a>.
+</div>
+<div id="ref-mcafee2024" class="csl-entry" role="listitem">
+McAfee, A. (2024). <em><a href="https://ide.mit.edu/wp-content/uploads/2024/04/Davos-Report-Draft-XFN-Copy-01112024-Print-Version.pdf?x76181">Generally Faster: The Economic Impact of Generative AI</a></em> (Davos Report). Google.
+</div>
+<div id="ref-meincke2024" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E. R., &amp; Terwiesch, C. (2024). <em>Prompting Diverse Ideas: Increasing AI Idea Variance</em>. <a href="https://papers.ssrn.com/abstract=4708466">https://papers.ssrn.com/abstract=4708466</a>.
+</div>
+<div id="ref-mollick2025e" class="csl-entry" role="listitem">
+Mollick, E. (2026, Februar 18). <em>A Guide to Which AI to Use in the Agentic Era</em>. <a href="https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9">https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9</a>.
+</div>
+<div id="ref-mollick2023" class="csl-entry" role="listitem">
+Mollick, E. R. (2023, Juli 1). The Homework Apocalypse. <a href="https://www.oneusefulthing.org/p/the-homework-apocalypse">https://www.oneusefulthing.org/p/the-homework-apocalypse</a>.
+</div>
+<div id="ref-mollick2025" class="csl-entry" role="listitem">
+Mollick, E. R. (2025a, Januar 26). <em>A new generation of AIs: Claude 3.7 and Grok 3</em>. <a href="https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37">https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37</a>.
+</div>
+<div id="ref-mollick2025a" class="csl-entry" role="listitem">
+Mollick, E. R. (2025b, Juni 23). <em>GPT-5: It Just Does Stuff</em>. <a href="https://www.oneusefulthing.org/p/gpt-5-it-just-does-stuff">https://www.oneusefulthing.org/p/gpt-5-it-just-does-stuff</a>.
+</div>
+<div id="ref-mollick2023a" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2023). <em>Assigning AI: Seven Approaches for Students, with Prompts</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2306.10052">https://doi.org/10.48550/arXiv.2306.10052</a>.
+</div>
+<div id="ref-monib2025" class="csl-entry" role="listitem">
+Monib, W. K., Qazi, A., &amp; Mahmud, M. M. (2025). Exploring learners’ experiences and perceptions of ChatGPT as a learning tool in higher education. <em>Education and Information Technologies</em>, <em>30</em>(1), 917–939. <a href="https://doi.org/10.1007/s10639-024-13065-4">https://doi.org/10.1007/s10639-024-13065-4</a>.
+</div>
+<div id="ref-morgan2024" class="csl-entry" role="listitem">
+Morgan, G. (2024, Juli 11). <a href="https://onedtech.philhillaa.com/p/what-students-want-when-it-comes-to-ai">What Students Want When It Comes To AI - The Digital Education Council Global AI Student Survey 2024</a>. <em>On EdTech Newsletter</em>.
+</div>
+<div id="ref-naddaf2025" class="csl-entry" role="listitem">
+Naddaf, M. (2025). How are researchers using AI? Survey reveals pros and cons for science. <em>Nature</em>. <a href="https://doi.org/10.1038/d41586-025-00343-5">https://doi.org/10.1038/d41586-025-00343-5</a>.
+</div>
+<div id="ref-ogunleye2024" class="csl-entry" role="listitem">
+Ogunleye, B., Zakariyyah, K. I., Ajao, O., Olayinka, O., &amp; Sharma, H. (2024). A Systematic Review of Generative AI for Teaching and Learning Practice. <em>Education Sciences</em>, <em>14</em>(6), 636. <a href="https://doi.org/10.3390/educsci14060636">https://doi.org/10.3390/educsci14060636</a>.
+</div>
+<div id="ref-openai2025a" class="csl-entry" role="listitem">
+OpenAI (2025a). <em>openai/skills: Skills Catalog for Codex</em>. <a href="https://github.com/openai/skills">https://github.com/openai/skills</a>.
+</div>
+<div id="ref-openai2025b" class="csl-entry" role="listitem">
+OpenAI (2025b). <em><a href="https://openai.com/index/introducing-gpt-5/">Introducing GPT-5</a></em>.
+</div>
+<div id="ref-ou2024" class="csl-entry" role="listitem">
+Ou, A. W., Stöhr, C., &amp; Malmström, H. (2024). Academic communication with AI-powered language tools in higher education: From a post-humanist perspective. <em>System</em>, <em>121</em>, 103225. <a href="https://doi.org/10.1016/j.system.2024.103225">https://doi.org/10.1016/j.system.2024.103225</a>.
+</div>
+<div id="ref-peng2023" class="csl-entry" role="listitem">
+Peng, S., Kalliamvakou, E., Cihon, P., &amp; Demirer, M. (2023). <em>The Impact of AI on Developer Productivity: Evidence from GitHub Copilot</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2302.06590">https://doi.org/10.48550/arXiv.2302.06590</a>.
+</div>
+<div id="ref-roediger2012" class="csl-entry" role="listitem">
+Roediger, H. L., &amp; Pyc, M. A. (2012). Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice. <em>Journal of Applied Research in Memory and Cognition</em>, <em>1</em>(4), 242–248. <a href="https://doi.org/10.1016/j.jarmac.2012.09.002">https://doi.org/10.1016/j.jarmac.2012.09.002</a>.
+</div>
+<div id="ref-schmidt2005" class="csl-entry" role="listitem">
+Schmidt, B., &amp; Tippelt, R. (2005). Besser Lehren-Neues von der Hochschuldidaktik?
+</div>
+<div id="ref-schwarcz2025" class="csl-entry" role="listitem">
+Schwarcz, D., Manning, S., Barry, P. J., Cleveland, D. R., Prescott, J. J., &amp; Rich, B. (2025). <em>AI-Powered Lawyering: AI Reasoning Models, Retrieval Augmented Generation, and the Future of Legal Practice</em>. <a href="https://doi.org/10.2139/ssrn.5162111">https://doi.org/10.2139/ssrn.5162111</a>.
+</div>
+<div id="ref-snell2024" class="csl-entry" role="listitem">
+Snell, C., Lee, J., Xu, K., &amp; Kumar, A. (2024). Scaling llm test-time compute optimally can be more effective than scaling model parameters. <em>arXiv preprint arXiv:2408.03314</em>.
+</div>
+<div id="ref-steinberger2025" class="csl-entry" role="listitem">
+Steinberger, P. (2025, Oktober 14). <em>Just Talk To It - the no-bs Way of Agentic Engineering | Peter Steinberger</em>. <a href="https://steipete.me/posts/just-talk-to-it">https://steipete.me/posts/just-talk-to-it</a>.
+</div>
+<div id="ref-walsh2025" class="csl-entry" role="listitem">
+Walsh, J. D. (2025). <a href="https://nymag.com/intelligencer/article/openai-chatgpt-ai-cheating-education-college-students-school.html">Everyone is cheating their way through college: ChatGPT has unraveled the entire academic project</a>. <em>New York Magazine</em>.
+</div>
+<div id="ref-willemain1994" class="csl-entry" role="listitem">
+Willemain, T. R. (1994). Insights on modeling from a dozen experts. <em>Operations Research</em>, <em>42</em>(2), 213–222.
+</div>
+<div id="ref-willemain1995" class="csl-entry" role="listitem">
+Willemain, T. R. (1995). Model Formulation: What Experts Think About and When. <em>Operations Research</em>, <em>43</em>(6), 916–932. <a href="https://doi.org/10.1287/opre.43.6.916">https://doi.org/10.1287/opre.43.6.916</a>.
+</div>
+<div id="ref-willison2025" class="csl-entry" role="listitem">
+Willison, S. (2025a, Oktober 5). Embracing the parallel coding agent lifestyle. <em>Simon Willison’s Weblog</em>. <a href="https://simonwillison.net/2025/Oct/5/parallel-coding-agents/">https://simonwillison.net/2025/Oct/5/parallel-coding-agents/</a>.
+</div>
+<div id="ref-willison2025a" class="csl-entry" role="listitem">
+Willison, S. (2025b, November 20). Nano Banana Pro aka gemini-3-pro-image-preview is the best available image generation model. <em>Simon Willison’s Weblog</em>. <a href="https://simonwillison.net/2025/Nov/20/nano-banana-pro/">https://simonwillison.net/2025/Nov/20/nano-banana-pro/</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Übersicht">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Übersicht</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./kapitel02.html" class="pagination-link" aria-label="Grundbegriffe">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, Roman (2025). Generative KI als Lehr- und Lernhilfe in der Hochschullehre. Lizenz: CC-BY-SA. Online: https://th-koln-bartnik.github.io/genai4teaching/. https://doi.org/10.5281/zenodo.17868898</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel01.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel01.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
