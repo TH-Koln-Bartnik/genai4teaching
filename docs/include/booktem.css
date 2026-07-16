@@ -39,7 +39,16 @@ div.csl-bib-body > .csl-entry {
   text-indent: -2em;
 }
 
-/* Prevent DOI and URL text from being clipped in citation hover boxes */
+/* Citation hover boxes: Quarto clones a bibliography entry into the popup and
+   stamps it with the .hanging-indent class. The site-wide override in
+   style.css (`div.hanging-indent { margin-left: -1.5em !important }`), together
+   with Pandoc's `text-indent: -1.5em`, then drags the popup's first line out of
+   the box on the left and clips it. Restore the positive default margin (the
+   value the workshop script uses) inside the hover box only, and let long
+   DOI/URL text wrap instead of overflowing. */
+.tippy-box[data-theme~="quarto"] .csl-entry {
+  margin-left: 1.5em !important;
+}
 .tippy-box[data-theme~="quarto"] .csl-entry,
 .tippy-box[data-theme~="quarto"] .csl-entry a {
   overflow-wrap: anywhere;
@@ -130,35 +139,4 @@ a[target="_blank"]::after {
 }
 
 a.glossary::after, code a::after {
-  content: none !important;
-  margin: 0 !important;
-}
-
-
-/* mac and PC icons */
-mac, pc {
-  display: inline;
-  border: 1px solid;
-  border-radius: 0.25rem;
-  padding: 0.125rem 0.25rem 0;
-  font-family: monospace;
-  font-size: 90%;
-  white-space: nowrap;
-}
-
-mac { border-color: #a3aaae; }
-pc { border-color: #46A7E2; }
-
-mac::before, pc::before {
-  margin-right: 0.25rem;
-  font-family:"bootstrap-icons";
-}
-mac::before {
-  color: #a3aaae;
-  content:"\F65B";
-}
-
-pc::before {
-  color: #46A7E2;
-  content:"\F65E";
-}
+  content: 

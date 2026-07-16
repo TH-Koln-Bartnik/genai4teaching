@@ -39,7 +39,16 @@ div.csl-bib-body > .csl-entry {
   text-indent: -2em;
 }
 
-/* Prevent DOI and URL text from being clipped in citation hover boxes */
+/* Citation hover boxes: Quarto clones a bibliography entry into the popup and
+   stamps it with the .hanging-indent class. The site-wide override in
+   style.css (`div.hanging-indent { margin-left: -1.5em !important }`), together
+   with Pandoc's `text-indent: -1.5em`, then drags the popup's first line out of
+   the box on the left and clips it. Restore the positive default margin (the
+   value the workshop script uses) inside the hover box only, and let long
+   DOI/URL text wrap instead of overflowing. */
+.tippy-box[data-theme~="quarto"] .csl-entry {
+  margin-left: 1.5em !important;
+}
 .tippy-box[data-theme~="quarto"] .csl-entry,
 .tippy-box[data-theme~="quarto"] .csl-entry a {
   overflow-wrap: anywhere;

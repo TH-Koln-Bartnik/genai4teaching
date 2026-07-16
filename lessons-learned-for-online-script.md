@@ -1,54 +1,49 @@
-# Lessons Learned: Zu viel Rand in den Zitations-Hover-Boxen
+# Lessons Learned: Abgeschnittener Text in den Zitations-Hover-Boxen
 
-*Notiz zum Online-Skript (Quarto-Book), erstellt am 2026-07-15.*
+*Notiz zum Online-Skript (Quarto-Book), erstellt am 2026-07-15, korrigiert am 2026-07-16 nach Messung im Browser.*
 
 ## Worum es geht (in einem Satz)
 
-Wenn man im Skript mit der Maus über eine Quellenangabe fährt, öffnet sich ein kleines Vorschaufenster mit der vollständigen Literaturangabe – eine **Hover-Box** (auch *Tooltip*, wörtlich „Werkzeug-Tipp“, ein eingeblendeter Hinweiskasten). In diesen Kästchen war der Rand zu groß, und lange Links (DOI, URL) wurden am Rand abgeschnitten.
+Wenn man im Skript mit der Maus über eine Quellenangabe fährt, öffnet sich ein kleines Vorschaufenster mit der vollständigen Literaturangabe – eine **Hover-Box** (auch *Tooltip*, wörtlich „Werkzeug-Tipp“, ein eingeblendeter Hinweiskasten). In diesen Kästchen wurde der Anfang jeder Literaturzeile links abgeschnitten.
 
-## Das Problem in Alltagssprache
+## Der erste, falsche Verdacht (und warum er nicht stimmte)
 
-Eine Literaturangabe im *gedruckten* Verzeichnis bekommt bewusst einen hängenden Einzug: Die erste Zeile steht ganz links, alle Folgezeilen sind eingerückt. So findet das Auge die Autorennamen schnell untereinander. In CSS – der Sprache, die dem Browser sagt, *wie* eine Webseite aussehen soll (CSS = *Cascading Style Sheets*, „kaskadierende Gestaltungsvorlagen“) – wird dieser Einzug über zwei Angaben erzeugt: einen linken Innenabstand (`padding-left`) und einen negativen Erstzeilen-Einzug (`text-indent`), die sich gegenseitig ausgleichen.
+Naheliegend war zunächst eine pauschale CSS-Regel für die Klasse `.csl-entry` (CSS = *Cascading Style Sheets*, die Sprache, die dem Browser sagt, *wie* eine Seite aussieht; CSL = *Citation Style Language*, das Format der Zitierstile). Diese Regel gab jeder Literaturangabe 2 em linken Innenabstand. Der Verdacht: Der Abstand wirkt auch in der engen Hover-Box und drängt den Text hinaus.
 
-Der Fehler lag darin, dass diese Einzugs-Regel **pauschal für jede Literaturangabe** galt – gekennzeichnet durch die CSS-Klasse `.csl-entry` (CSL = *Citation Style Language*, das Format, in dem Zitierstile wie APA definiert sind). Quarto verwendet dieselbe Bausteinklasse aber an zwei ganz verschiedenen Orten: einmal im großen Literaturverzeichnis am Kapitelende, und einmal im engen Vorschaukästchen beim Überfahren einer Quelle.
+Diese Erklärung war falsch. Nachgemessen im Browser hatte die Box bereits `padding-left: 0px` – der Innenabstand war also gar nicht die Ursache. Die Lehre daraus steht am Ende: erst messen, dann urteilen. Eine Analogie: Man hört ein Klopfen im Motor und tauscht die Zündkerzen, obwohl das Geräusch aus dem Getriebe kommt. Ohne Blick auf das laufende System repariert man das Falsche.
 
-Die Analogie: Es ist, als hätte man eine Vorschrift „Jeder Tisch bekommt zwei Meter Abstand zur Wand“ erlassen – sinnvoll im großen Speisesaal (Literaturverzeichnis), aber unbrauchbar in der winzigen Abstellkammer (Hover-Box), wo der Tisch dann halb in der Wand steckt. Genau das passierte: Der feste Innenabstand von 2 em fraß die schmale Kastenbreite auf, und weil lange DOI-Links nicht umbrechen durften, verschwand ihr Ende hinter dem Rand.
+## Die tatsächliche Ursache (im Browser bestätigt)
 
-*Randnotiz zur Etymologie:* Die Maßeinheit **em** kommt aus dem Buchdruck und bezeichnete ursprünglich die Breite des Großbuchstabens „M“ in der jeweiligen Schrift – daher der Name. Heute steht 1 em für die aktuelle Schriftgröße; der Einzug wächst also mit dem Text mit.
+Der entscheidende Punkt liegt darin, wie die Hover-Box entsteht. Quarto nutzt die kleine Programmbibliothek **Tippy.js** für diese Einblendungen (eine *Library* ist fertiger, wiederverwendbarer Code, den man einbindet, statt ihn selbst zu schreiben – wie ein Fertigbauteil aus dem Regal). Beim Laden der Seite durchsucht ein Skript den Text nach Quellenverweisen und erzeugt für jeden eine Hover-Box. Der Inhalt ist eine **Kopie** des zugehörigen Eintrags aus dem Literaturverzeichnis: Das Skript legt ein neues `<div>` an, kopiert den Text der Literaturangabe hinein und versieht die Kopie mit **zwei** Klassen-Etiketten – `csl-entry` *und* `hanging-indent`.
 
-## Die Ursache, technisch
-
-Dieselbe Regel stand **doppelt** im Projekt – einmal in `include/booktem.css` und einmal in `include/style.css`:
+Dieses zweite Etikett, `hanging-indent`, war das Problem. Zwei Regeln greifen darauf zu:
 
 ```css
-.csl-entry {
-  padding-left: 2em;
-  text-indent: -2em;
-}
+/* Pandoc, fest eingebaut in jede Seite */
+.hanging-indent { margin-left: 1.5em; text-indent: -1.5em; }
+
+/* eigene Regel in include/style.css */
+div.hanging-indent { margin-left: -1.5em !important; }
 ```
 
-Der Selektor `.csl-entry` (der Teil vor der Klammer, der bestimmt, *worauf* die Regel zielt) ist zu weit gefasst: Er trifft jede Literaturangabe, egal ob im Verzeichnis oder in der Hover-Box.
+Die erste Regel ist der normale hängende Einzug: Der Block rückt 1,5 em nach rechts, die erste Zeile 1,5 em zurück – so stehen die Autorennamen bündig links, die Folgezeilen eingerückt. Die zweite Regel wurde ergänzt, um das *angezeigte* Literaturverzeichnis am Seitenrand bündig auszurichten; sie kippt den Rand mit `!important` auf **minus** 1,5 em.
+
+Das Etikett `hanging-indent` sitzt aber eben auch auf der Kopie in der Hover-Box. Dort addieren sich nun der negative Rand (−1,5 em) und der negative Erstzeilen-Einzug (−1,5 em): Die erste Zeile beginnt rund 3 em **links außerhalb** des Kastens und wird abgeschnitten. Die Messung im Browser bestätigte es – die linke Kante des Eintrags lag 13 px außerhalb des sichtbaren Boxinhalts.
+
+*Randnotiz zur Etymologie:* Die Maßeinheit **em** stammt aus dem Buchsatz und bezeichnete ursprünglich die Breite des Großbuchstabens „M“. Heute steht 1 em für die aktuelle Schriftgröße; der Einzug wächst also mit dem Text mit.
+
+## Der Gegencheck, der die Diagnose absicherte
+
+Im Schwester-Skript (dem Workshop-Skript) trat der Fehler nicht auf. Wenn die Diagnose stimmt, muss dort genau diese Einstellung anders sein. Die Messung bestätigte es Punkt für Punkt: Im Workshop hat die Hover-Box einen Rand von **+22 px** (positive 1,5 em, der Pandoc-Standard), im genai4teaching-Skript **−22 px**. Das Workshop-Skript enthält die Regel `div.hanging-indent { margin-left: -1.5em !important }` schlicht nicht. Dieselbe Ursache, dieselbe Wirkung – der eine Unterschied erklärt den ganzen Effekt. (Nebenbei: Der positive Rand ist auch der Grund, warum die Workshop-Box etwas „geräumiger“ wirkt.)
 
 ## Die Lösung
 
-Der Trick ist, die Einzugs-Regel nur noch dort greifen zu lassen, wo sie hingehört – im *angezeigten* Literaturverzeichnis. Quarto verpackt dieses in einen Container mit der Klasse `csl-bib-body` (*bibliography body*, „Verzeichnis-Körper“). Der Selektor `div.csl-bib-body > .csl-entry` liest sich als „nur die Einträge, die direkt in diesem Verzeichnis-Container stecken“ – das Zeichen `>` bedeutet „direktes Kind von“. Die Hover-Box hat diesen Container nicht als Elternteil und bleibt darum unberührt.
-
-In `include/booktem.css` steht die pauschale Regel nun ersetzt durch:
+Der eigene bündige Rand des Literaturverzeichnisses (−1,5 em) soll erhalten bleiben; nur in der Hover-Box ist er schädlich. Deshalb wird er **ausschließlich innerhalb der Box** wieder auf den positiven Standardwert gesetzt – genau den Wert, den auch das Workshop-Skript nutzt. Der Selektor zielt gezielt auf die Quarto-Hover-Boxen, erkennbar am Attribut `data-theme="quarto"`. In `include/booktem.css`:
 
 ```css
-/* Hanging indent only in the displayed bibliography */
-div.csl-bib-body > .csl-entry {
-  padding-left: 2em;
-  text-indent: -2em;
+.tippy-box[data-theme~="quarto"] .csl-entry {
+  margin-left: 1.5em !important;
 }
-```
-
-Die doppelte Regel in `include/style.css` wurde ersatzlos gelöscht, damit sie den engeren Selektor nicht wieder aushebelt.
-
-Zusätzlich sichern zwei Zeilen die langen Links in der Hover-Box ab. Sie erlauben dem Browser, DOI- und URL-Text notfalls mitten im Wort umzubrechen, statt ihn abzuschneiden (`overflow-wrap: anywhere` und `word-break: break-word` heißt sinngemäß „lieber irgendwo umbrechen als überlaufen lassen“). Der Selektor zielt gezielt auf die Quarto-Hover-Boxen, erkennbar am Attribut `data-theme="quarto"`:
-
-```css
-/* Prevent DOI and URL text from being clipped in citation hover boxes */
 .tippy-box[data-theme~="quarto"] .csl-entry,
 .tippy-box[data-theme~="quarto"] .csl-entry a {
   overflow-wrap: anywhere;
@@ -56,18 +51,18 @@ Zusätzlich sichern zwei Zeilen die langen Links in der Hover-Box ab. Sie erlaub
 }
 ```
 
-*Randnotiz:* Die Kästchen heißen im Code `tippy-box`, nach **Tippy.js** – der kleinen Programmbibliothek, die Quarto für diese Einblendungen nutzt. Eine *Library* („Bibliothek“) ist fertiger, wiederverwendbarer Code, den man einbindet, statt ihn selbst zu schreiben – wie ein Fertigbauteil im Regal statt einer Eigenanfertigung.
+Die erste Regel hebt den negativen Rand nur in der Box auf. Die beiden folgenden Zeilen erlauben es dem Browser, sehr lange DOI- und URL-Zeichenketten notfalls mitten im Wort umzubrechen, statt sie überlaufen zu lassen. Nach der Änderung stimmt die Geometrie der genai4teaching-Box exakt mit der des Workshop-Skripts überein (Rand +22 px, erste Zeile 9 px innerhalb des Kastens, nichts abgeschnitten).
 
-## Ergebnis
+Ergänzend bleibt aus einem früheren Schritt sinnvoll: Die pauschale `.csl-entry`-Einzugsregel wurde auf `div.csl-bib-body > .csl-entry` eingegrenzt, damit der 2-em-Einzug nur im echten Literaturverzeichnis wirkt und nicht in der Kopie. Das war korrekt, aber allein nicht ausreichend – die eigentliche Klippe war der `hanging-indent`-Rand.
 
-Die Hover-Referenzen verhalten sich jetzt praktisch wie im Workshop-Skript: kompakter Rand, nichts wird abgeschnitten. Der hängende Einzug bleibt im Kapitel-Literaturverzeichnis erhalten, wo er gebraucht wird.
+## Wichtig für das Ausrollen
 
-Damit die Änderung online sichtbar wird, muss das Skript neu gebaut (`quarto render`) und der `docs/`-Ordner nach GitHub geschoben werden.
+Die Datei `include/booktem.css` ist die *Quelle*; die Website lädt aber die Kopie in `docs/include/booktem.css`, die Quarto beim Rendern erzeugt. Eine Änderung an der Quelle wird erst online sichtbar, wenn `docs/` neu gebaut (`quarto render`) oder die Kopie mitgeändert und anschließend committet und zu GitHub geschoben (`git push`) wird. Genau das war der Grund, warum ein erster Korrekturversuch „nicht wirkte“: Die Quelle war geändert, die ausgelieferte Kopie nicht neu erzeugt.
 
-## Die verallgemeinerbare Lehre
+## Die verallgemeinerbaren Lehren
 
-Eine Gestaltungsregel sollte so eng gefasst sein wie ihr Zweck. Wird derselbe Baustein (`.csl-entry`) an mehreren Orten wiederverwendet, darf man ihn nicht pauschal ansprechen, sondern nur im gewünschten Kontext (`div.csl-bib-body > .csl-entry`). Und dieselbe Regel an zwei Stellen zu pflegen (hier `booktem.css` und `style.css`) rächt sich früher oder später – eine Quelle der Wahrheit genügt.
+Erstens: Bei einem sichtbaren Darstellungsfehler zuerst das laufende System messen (im Browser die *berechneten* Stilwerte ansehen), statt aus dem Quelltext zu raten – die erste Vermutung (Innenabstand) war plausibel und trotzdem falsch. Zweitens: Ein Gegencheck an einem funktionierenden Fall grenzt die Ursache zuverlässig ein; wenn zwei Seiten sich nur in einer Einstellung unterscheiden und nur eine den Fehler zeigt, ist die Ursache gefunden. Drittens: Wird ein Baustein (hier die Kopie mit den Klassen `csl-entry` und `hanging-indent`) in einem anderen Kontext wiederverwendet, erben ihn auch Regeln, die nie für diesen Kontext gedacht waren; ein `!important` mit weitem Selektor verschärft das. Viertens: Quelle und ausgelieferte Kopie auseinanderzuhalten spart eine ganze Runde vergeblicher Fehlersuche.
 
 ---
 
-*Transparenznotiz: Bei der Erstellung dieser Notiz wurde Claude Opus 4.8 / Cowork zur Fehlerdiagnose, zur Umsetzung der CSS-Korrektur und als Reviewer (Sprach- und Konsistenzcheck) genutzt. Die Selektoren wurden gegen den tatsächlich gerenderten HTML-Code im `docs/`-Ordner geprüft. Alle Inhalte wurden von Roman Bartnik geprüft, überarbeitet und verantwortet.*
+*Transparenznotiz: Bei der Erstellung dieser Notiz wurde Claude Opus 4.8 / Cowork zur Fehlerdiagnose, zur Umsetzung der CSS-Korrektur und als Reviewer (Sprach- und Konsistenzcheck) genutzt. Die Ursache und die Wirkung der Korrektur wurden im Browser an der laufenden Website gemessen (berechnete Stilwerte, Geometrie der Hover-Box) und gegen das Workshop-Skript gegengeprüft. Alle Inhalte wurden von Roman Bartnik geprüft, überarbeitet und verantwortet.*
