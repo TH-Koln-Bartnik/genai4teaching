@@ -1,10 +1,17 @@
 % preamble.tex - LaTeX-Einstellungen für PDF-Export
 % TH Köln Design - Roman Bartnik 2026
+% Eingebunden über _quarto.yml (format: pdf: include-in-header)
+
+% Satzspiegel-Feinheiten für 17 x 24 cm (KOMA-Script)
+% (Satzspiegel kommt aus geometry in _quarto.yml, daher kein DIV=calc)
+\usepackage{microtype}
+\raggedbottom  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
 
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{tcolorbox}
-\usepackage[T1]{fontenc}
+\tcbuselibrary{skins,breakable}  % Quarto-Callouts brauchen diese Bibliotheken
+% fontenc entfällt: XeLaTeX nutzt fontspec (siehe _quarto.yml, mainfont)
 
 % ===== TH KÖLN FARBPALETTE =====
 \definecolor{thred}{HTML}{C81E0F}
@@ -38,13 +45,7 @@
 \newcommand{\thheadrow}{\rowcolor{thlightgray}}
 
 % ===== HYPERLINKS =====
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=thred,
-  urlcolor=thred,
-  citecolor=thmagenta
-}
+% Linkfarben werden in _quarto.yml gesetzt (linkcolor/urlcolor/citecolor = TH-Farben)
 
 % ===== CALLOUT-BOXEN =====
 \newtcolorbox{dangerous}{

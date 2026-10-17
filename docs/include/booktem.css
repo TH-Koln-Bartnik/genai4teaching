@@ -139,4 +139,35 @@ a[target="_blank"]::after {
 }
 
 a.glossary::after, code a::after {
-  content: 
+  content: none !important;
+  margin: 0 !important;
+}
+
+
+/* mac and PC icons */
+mac, pc {
+  display: inline;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem 0;
+  font-family: monospace;
+  font-size: 90%;
+  white-space: nowrap;
+}
+
+mac { border-color: #a3aaae; }
+pc { border-color: #46A7E2; }
+
+mac::before, pc::before {
+  margin-right: 0.25rem;
+  font-family:"bootstrap-icons";
+}
+mac::before {
+  color: #a3aaae;
+  content:"\F65B";
+}
+
+pc::before {
+  color: #46A7E2;
+  content:"\F65E";
+}

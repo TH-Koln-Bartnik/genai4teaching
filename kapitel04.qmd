@@ -1,18 +1,3 @@
----
-bibliography: references.json
-csl: apa.csl
-lang: de
-reference-section-title: "Literaturverzeichnis"
-format:
-  html:
-    toc: true
-    toc-location: right
-    number-sections: true
-editor: 
-  markdown: 
-    wrap: sentence
----
-
 # Vier Szenarien der Nutzung von GenAI: Hiwi, Tutor, Copilot, Simulator {#sec-szenarien}
 
 Wie nutzen Lehrende generative KI?
@@ -72,7 +57,7 @@ Durch diese differenziertere Analyse der drei Effekte wird klar, dass die Einfü
 Das ist nicht neu: Wer bestellt heute noch regelmäßig per Fernleihe, schickt Briefe oder kopiert in großem Umfang?
 Wir sehen, dass generative KI wahrscheinlich mittelfristig einen Teil der aktuellen Tätigkeiten verdrängen, zentrale Kernaufgaben produktiver gestalten und zugleich neue, spezialisierte Aufgaben in der Lehre schaffen wird.
 
-Ob das **insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher**, denn die neuen Aufgaben um die Einrichtung und Betreuung der KI-Unterstützung können sehr zeitintensiv sein, als Beispiel sei hier etwa die Einrichtung eines Physik-Tutor-Bots [@kestin2024] oder einer Startup-Simulation, in der KI in verschiedenen Rollen beim Aufsetzen und Verbessern von Geschäftsplänen hilft [@mollick2024].
+Ob das **insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher**, denn die neuen Aufgaben um die Einrichtung und Betreuung der KI-Unterstützung können sehr zeitintensiv sein, als Beispiel sei hier etwa die Einrichtung eines Physik-Tutor-Bots [@kestin2025] oder einer Startup-Simulation, in der KI in verschiedenen Rollen beim Aufsetzen und Verbessern von Geschäftsplänen hilft [@mollick2024].
 Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt es auch hier nicht umsonst.
 
 
@@ -93,7 +78,7 @@ Einige Beispiele, welche Anbieter das jeweils meint, finden sich in der folgende
 
 ![Einmal fragen oder mehrfach? Nur Ergebnisse oder Analyse? Zwei Unterscheidungen und vier Quadranten von Such-Helfern mit KI](images/tay-2026-one_shot-vs-iterative-results_only-vs-analysis-4-quadrants-of-academic-search.jpg){#fig-paper-discovery-types} \
 
-Eine weitere Unterscheidung schaut tiefer auf die Art der Iteration [@tay2025agentic]: Nicht nur, ob ein Tool iteriert, sondern **wie es iteriert – ob es im Kern ein fest verdrahteter Workflow** mit ein paar „AI-Entscheidungspunkten“ ist (handcrafted) oder ob es **flexibel Aufgaben zerlegen kann**, die nicht in das Template passen. Tay beschreibt hier ein **„Agency-Spektrum“** und argumentiert, dass viele akademische Deep-(Re)Search-Tools eher am handwerklich-templatisierten Ende sitzen: beeindruckend innerhalb ihrer Schablonen, spröde außerhalb, mit dem Risiko, plausibel klingende Ergebnisse zu liefern, obwohl die Aufgabe gar nicht sauber gelöst wurde [@tay2025agentic]. Sein Stresstest ist dabei sehr sozialwissenschaftlich gedacht: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert.“ Ein menschlicher Hiwi zerlegt das in Schritte (ähnliche Arbeiten finden; Referenzen extrahieren; Überlappung abziehen). Tay berichtet, dass allgemeine LLMs diese Logik eher ausführen können, während spezialisierte „deep“ Tools teilweise scheitern, weil die Aufgabe nicht zum eingebauten Ablauf passt [@tay2025agentic].
+Eine weitere Unterscheidung schaut tiefer auf die Art der Iteration [@tay2025agentic]: Nicht nur, ob ein Tool iteriert, sondern **wie es iteriert – ob es im Kern ein fest verdrahteter Workflow** mit ein paar „AI-Entscheidungspunkten“ ist (handcrafted) oder ob es **flexibel Aufgaben zerlegen kann**, die nicht in das Template passen. Tay beschreibt hier ein **„Agency-Spektrum“** und argumentiert, dass viele akademische Deep-(Re)Search-Tools eher am handwerklich-templatisierten Ende sitzen: beeindruckend innerhalb ihrer Schablonen, spröde außerhalb, mit dem Risiko, plausibel klingende Ergebnisse zu liefern, obwohl die Aufgabe gar nicht sauber gelöst wurde [@tay2025agentic]. Seinen Stresstest dazu beschreibt der folgende Abschnitt.
 
 Tay argumentiert, dass die **Kurzversion** der Antwort „Answer-with-citations“ für akademische Arbeit oft nur ein Teaser und kaum verwendbar ist. Man **braucht den Originaltext für Kontext, Nuancen, Operationalisierung und Identifikationslogik**; und generierter Text kann Quellen falsch „anbinden“ (**source faithfulness“**), also etwas behaupten, das der zitierte Text so nicht trägt [@tay2025agentic]. In sozialwissenschaftlicher Praxis trifft das besonders (a) kausale Claims (Identifikation, Robustheit, Messvalidität) und (b) qualitative Inferenz (Sampling-Logik, Positionsgebundenheit, Geltungsgrenzen), weil die entscheidenden Stellen häufig nicht im Abstract stehen und disziplinierte Lektüre verlangen.
 
@@ -197,7 +182,7 @@ Letztlich ist die Anpassung der didaktischen Ansätze und technischen Möglichke
 Wie kann kritisches Denken in diesen neuen Recherche- und Schreibprozessen erfolgen [@lee2025]?
 In diesem Fall darf man vermuten, dass die negativen Effekte noch höher wären, wenn wir die Lehre nicht anpassen.
 
-Wie der nächste Abschnitt zeit, findet aktuell eine ähnlich intensive Diskussion findet im Bereich der Informatik statt, wo speziell Programmieraufgaben ganz neu gedacht werden müssen.
+Wie der nächste Abschnitt zeigt, findet eine ähnlich intensive Diskussion im Bereich der Informatik statt, wo speziell Programmieraufgaben ganz neu gedacht werden müssen.
 
 ### Jeder kann jetzt programmieren {#sec-coding}
 
@@ -287,7 +272,7 @@ Ein extremes Anwendungsbeispiel ist dieser Youtuber, der in Trainingsvideos mit 
 
 Diese Kategorie umfasst KI-Systeme, die Studierende direkt beim Lernen anleiten, beraten oder ihnen Feedback geben. Sogenannte Intelligent Tutor Systems (ITS) werden in der Didaktik schon länger diskutiert, sie wurden klassischerweise regelbasiert als Entscheidungsbäume aufgebaut, ähnlich einem Fortsetzungs-Kinderbuch (A la: "Wenn Du die Tür öffnen willst, lies weiter auf S.145" ). Durch generative KI entstehen breitere Möglichkeiten der Interaktion, jedoch führt das "generative" Element auch etwas Unsicherheit in die Dialogsteuerung ein [@latif2026systematic].
 
-Aus didaktischer Sicht entfaltet der GenAI Tutor seinen Mehrwert vor allem in vier Punkten [@kestin2024]: \* **Individuelle Anpassung**: Das System erkennt unterschiedliche Lernstände (etwa durch Analyse typischer Fehler oder wiederkehrender Wissenslücken) und kann dadurch passgenauere Folgefragen stellen.
+Aus didaktischer Sicht entfaltet der GenAI Tutor seinen Mehrwert vor allem in vier Punkten [@kestin2025]: \* **Individuelle Anpassung**: Das System erkennt unterschiedliche Lernstände (etwa durch Analyse typischer Fehler oder wiederkehrender Wissenslücken) und kann dadurch passgenauere Folgefragen stellen.
 \* **Unmittelbares Feedback**: Während in großen Lehrveranstaltungen Lehrende nur sehr eingeschränkt auf einzelne Fragen von Studierenden eingehen können, liefert das KI-Tool praktisch sofort Rückmeldungen.
 \* **Motivation und aktive Teilhabe**: Studierende werden durch die permanenten Interaktionsmöglichkeiten stärker einbezogen, was sich positiv auf die Lernergebnisse auswirkt.
 \* **Zeitersparnis für Lehrende**: Ein Teil der individuellen Betreuung kann – bei inhaltlich gut vorbereitetem KI-System – durch den Tutor übernommen werden.
@@ -295,7 +280,7 @@ Allerdings behält die Lehrkraft jederzeit die Oberaufsicht, indem sie zum Beisp
 
 Generell ist bei KI-Tutoren die **Gefahr von Fehlinformationen und Halluzinationen** zu beachten.
 Hierfür gibt es jedoch gute Gegenmaßnahmen, vor allem durch Kontrolle des Inputs und systematische Qualitätstests der LLM-Tools.
-Eine interessante Möglichkeit, die beim Physik-Tutor der Harvard Studie besprochen wird [@kestin2024], ist die **Bereitstellung von Musterlösungen als Input** (nicht nur der Fragen), was die Gefahr von Ungenauigkeiten, Halluzinationen und Inkonsistenzen in den Antworten des Sprachmodells deutlich reduziert.
+Eine interessante Möglichkeit, die beim Physik-Tutor der Harvard Studie besprochen wird [@kestin2025], ist die **Bereitstellung von Musterlösungen als Input** (nicht nur der Fragen), was die Gefahr von Ungenauigkeiten, Halluzinationen und Inkonsistenzen in den Antworten des Sprachmodells deutlich reduziert.
 Der Aufwand für die Erstaufsetzung steigt hier zwar, aber im Gegenzug verspricht dieser Ansatz die Vorteile der individuellen Anleitung ohne die Nachteile der Qualitätsunsicherheit.
 Insgesamt ist eine solche Durchsicht und intensive Qualitätskontrolle klar zu empfehlen (dieser Aspekt der intensiven Qualitätstests wird bei der Kurzvorstellung einiger deutscher Fallstudien in @wannemacher2025 vernachlässigt).
 
@@ -327,7 +312,7 @@ Unterrichtskonzepte sollten so angepasst werden, dass sich die Stärken der KI-T
 
 ### Komplexer Physik Tutor mit Musterlösungen {#sec-complex-tutors}
 
-Als **Beispiel für einen ausführlich getesteten Tutor-Bot** wollen wir hier exemplarisch einen **Physik-Tutor der Harvard Universität** etwas ausführlicher darstellen [@kestin2024].
+Als **Beispiel für einen ausführlich getesteten Tutor-Bot** wollen wir hier exemplarisch einen **Physik-Tutor der Harvard Universität** etwas ausführlicher darstellen [@kestin2025].
 Der Physik-Tutor "PS2 Pal" betreut Studierende in Physik-Einsteigerkursen interaktiv und mit adaptiven Fragestellungen, was in der Evaluation zu einem deutlich verbesserten Lernerfolg führte.
 Im Verbund mit kürzeren Input-Phasen erhalten die Studierenden Aufgaben und Fragestellungen, die sie direkt in Interaktion mit dem KI-Tutor bearbeiten können.
 Der Tutor stellt Fragen, gibt bei Bedarf Hinweise und passt den Schwierigkeitsgrad an den Fortschritt der bzw.

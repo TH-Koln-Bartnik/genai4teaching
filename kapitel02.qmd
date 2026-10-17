@@ -1,18 +1,3 @@
----
-bibliography: references.json
-csl: apa.csl
-lang: de
-reference-section-title: "Literaturverzeichnis"
-format:
-  html:
-    toc: true
-    toc-location: right
-    number-sections: true
-editor: 
-  markdown: 
-    wrap: sentence
----
-
 # Grundbegriffe {#sec-grundbegriffe}
 
 ## Definition einiger Grundbegriffe {#sec-definitionen}
@@ -32,9 +17,15 @@ Wer sich auch die technischen Hintergründe genauer erschließen will, dem sei d
 ::: {.callout-tip title="Lernspiel: Welche Grundbegriffe kennen Sie schon?"}
 *Ordnen Sie die Begriffe den korrekten Definitionen zu!*
 
+::: {.content-visible when-format="html"}
 <iframe src="interactions/llm-game-standalone.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Lernspiel „Welche Grundbegriffe kennen Sie schon?“ (Zuordnung von Begriffen und Definitionen). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-game-standalone.html> aufrufen.](images/qr/qr-lernspiel-grundbegriffe.png){#fig-qr-grundbegriffe width="32%" fig-align="center"}
+:::
 
 (am besten auf dem Computer spielen).
 Hier auch Online abrufbar (so etwas nennt sich „Artifact“ beim Sprachmodell „Claude“): <https://claude.site/artifacts/d8e3cee4-ea47-48e3-a84c-a774d408aac8>
@@ -77,9 +68,15 @@ Dabei wird darauf geachtet, dass ähnliche Wörter ähnliche Vektoren erhalten, 
 Hier kann man das selbst einfach ausprobieren: Das interaktive Widget simuliert eine GPT-2-ähnliche Tokenisierung.
 
 ::: {.callout-tip title="Geben Sie eigenen Text ein, unten wird er dann in Tokens und Zahlen umgewandelt"}
+::: {.content-visible when-format="html"}
 <iframe src="interactions/tokenizer-explorer.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Interaktiver Tokenizer: eigener Text wird in Tokens und Zahlen zerlegt. Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/tokenizer-explorer.html> aufrufen.](images/qr/qr-tokenizer-explorer.png){#fig-qr-tokenizer width="32%" fig-align="center"}
+:::
 :::
 
 Die Simulation vermittelt ein Gefühl für den Prozess.
@@ -151,9 +148,15 @@ Wählen Sie hier jeweils die passende Antwort (die Übung ist nicht schwer - üb
 ::: {.callout-tip title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?"}
 Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen für LLM, RAG und Agent auswählen und die Fragen beantworten.
 
+::: {.content-visible when-format="html"}
 <iframe src="interactions/llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Lernspiel „LLM, RAG oder Agent?“ (Probleme und Anwendungsfelder der drei Setups). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-rag-agent-game.html> aufrufen.](images/qr/qr-lernspiel-llm-rag-agent.png){#fig-qr-llm-rag-agent width="32%" fig-align="center"}
+:::
 :::
 
 In der Lehre kann RAG verwendet werden, um den Studierenden Fachtexte oder besonders aktuelle Informationen zur Verfügung zu stellen.
@@ -174,9 +177,15 @@ Nutzt das Sprachmodell nur sein "Standard-Wissen" (LLM only), oder werden "Werkz
 
 
 ::: {.callout-tip title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?"}
+::: {.content-visible when-format="html"}
 <iframe src="interactions/llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
 
 </iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Lernspiel „Welches LLM-Setup passt zur Antwort?“ (Zuordnung von Antwortmustern zu LLM, RAG und Agent). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html> aufrufen.](images/qr/qr-lernspiel-agent-patterns.png){#fig-qr-agent-patterns width="32%" fig-align="center"}
+:::
 :::
 
 Das beendet unsere kurze Begriffsbestimmung.
@@ -420,9 +429,7 @@ Wie bei einem Bauprojekt, muss man sich bei vagen Anweisungen nicht wundern, wen
 (5) Agenten erfordern neue Verhaltensweisen.
     Da die Zeitspanne des autonomen Handelns immer breiter wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern.
     Zweitens gewinnt die Frage an Bedeutung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen.
-    Bei GPT kann man dies z.
-
-    B.  als 'Eagerness-Kalibrierung' einstellen [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das 'Gedächtnis' des Agenten-Bots nachdenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen („Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...“) [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
+    Bei GPT kann man dies z. B. als „Eagerness-Kalibrierung“ einstellen [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das 'Gedächtnis' des Agenten-Bots nachdenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen („Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...“) [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
 
 (6) Bots help bots: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen.
     So können wir mit dem Tool das Tool bedienen.
