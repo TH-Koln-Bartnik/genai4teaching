@@ -1,0 +1,186 @@
+/* core/tokens.css — the only place design values live (STYLE_GUIDE §5–7, PROJECT_SPEC §8.12). */
+:root {
+  /* color roles */
+  --viz-ink: #1F2937;
+  --viz-muted: #6B7280;
+  --viz-line: #CBD5E1;
+  --viz-slot: #E5E7EB;
+  --viz-hatch: #F3F4F6;
+  --viz-bg: #FFFFFF;
+  --viz-material: #1F2937;
+  --viz-information: #0E7490;
+  --viz-financial: #4D7C0F;
+  --viz-accent: #1D4ED8;
+  --viz-warning: #B45309;
+  --viz-error: #B91C1C;
+  --viz-success: #047857;
+
+  /* strokes (canvas units) */
+  --viz-stroke-material-flow: 2.5;
+  --viz-stroke-line: 2;
+  --viz-stroke-station: 1.5;
+  --viz-stroke-information: 1.25;
+  --viz-stroke-guide: 1;
+  --viz-stroke-annotation: 0.75;
+
+  /* radii */
+  --viz-radius-station: 4;
+  --viz-radius-slot: 3;
+  --viz-radius-card: 2;
+  --viz-radius-boundary: 6;
+
+  /* sizes */
+  --viz-station-w: 84;
+  --viz-station-h: 44;
+  --viz-slot-size: 16;
+  --viz-token-r: 7;
+  --viz-badge-r: 7;            /* resource state: rounded-square half-side (STYLE_GUIDE §13) */
+  --viz-badge-quality-r: 5;    /* quality: circle radius (STYLE_GUIDE §13) */
+  --viz-sink-slot: 12;
+
+  /* typography */
+  --viz-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --viz-font-label: 600 13px var(--viz-font-family);
+  --viz-font-small: 400 10px var(--viz-font-family);
+  --viz-font-kpi-label: 500 9px var(--viz-font-family);
+  --viz-font-kpi-value: 600 16px var(--viz-font-family);
+  --viz-font-clock: 600 14px var(--viz-font-family);
+  --viz-font-annotation: 500 11px var(--viz-font-family);
+  --viz-font-card: 700 9px var(--viz-font-family);
+  --viz-font-cite: 400 9px var(--viz-font-family);
+
+  /* motion (process-time units; 1 unit = 1000 ms at 1×) */
+  --viz-unit-ms: 1000;
+  --viz-dur-travel: 1.0;
+  --viz-dur-queue-join: 0.3;
+  --viz-dur-signal: 0.5;
+  --viz-dur-slot: 0.2;
+}
+/* core/theme.css — chrome (controls, title, citation) and SVG classes. Consumes tokens.css only. */
+
+
+.scm-viz { font-family: var(--viz-font-family); color: var(--viz-ink); background: var(--viz-bg); max-width: 100%; }
+.scm-viz * { box-sizing: border-box; }
+
+/* header row: action title left, controls right (STYLE_GUIDE §8) */
+.scm-header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 16px; margin: 0 0 6px 0; }
+.scm-title { font: 600 clamp(14px, 1.6vw, 20px) var(--viz-font-family); line-height: 1.25; margin: 0; }
+.scm-controls { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.scm-controls button, .scm-controls select {
+  font: 500 13px var(--viz-font-family); color: var(--viz-ink); background: var(--viz-bg);
+  border: 1px solid var(--viz-line); border-radius: 4px; padding: 6px 10px; min-height: 34px; cursor: pointer;
+}
+.scm-controls button:hover { border-color: var(--viz-muted); }
+.scm-controls button:focus-visible, .scm-controls select:focus-visible { outline: 2px solid var(--viz-accent); outline-offset: 1px; }
+.scm-controls button[aria-pressed="true"] { border-color: var(--viz-ink); }
+.scm-controls button[disabled] { opacity: 0.45; cursor: default; }
+
+.scm-canvas { display: block; width: 100%; height: auto; background: var(--viz-bg); }
+.scm-cite { font: var(--viz-font-cite); color: var(--viz-muted); margin-top: 4px; }
+.scm-trace { font: 400 11px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--viz-muted); max-height: 6em; overflow: auto; margin-top: 6px; white-space: pre; }
+
+/* ---- SVG classes ---- */
+.scm-line { stroke: var(--viz-line); stroke-width: var(--viz-stroke-line); fill: none; }
+.scm-arrowhead-material { fill: var(--viz-line); }
+.scm-arrowhead-information { fill: none; stroke: var(--viz-information); stroke-width: 1; }
+.scm-hatch-bg { fill: var(--viz-hatch); }
+.scm-hatch-line { stroke: var(--viz-line); stroke-width: 1; }
+
+.scm-station-block { fill: var(--viz-bg); stroke: var(--viz-ink); stroke-width: var(--viz-stroke-station); }
+.scm-station-block.is-down { stroke-width: 3; stroke: var(--viz-error); }
+.scm-station-block.is-focus { stroke: var(--viz-accent); stroke-width: 2.5; }
+.scm-station-centreline { stroke: var(--viz-ink); stroke-width: var(--viz-stroke-station); }
+.scm-station-label { font: var(--viz-font-label); fill: var(--viz-ink); text-anchor: middle; }
+.scm-panel-label { font: var(--viz-font-label); fill: var(--viz-ink); text-anchor: start; }
+.scm-station-sub { font: var(--viz-font-small); fill: var(--viz-muted); text-anchor: middle; }
+.scm-slot { fill: var(--viz-slot); }
+
+/* Badge frames (STYLE_GUIDE §13, owner decision 2026-09-17): resource state is a rounded SQUARE,
+   quality is a CIRCLE. The two frames are told apart by shape, so both keep the same ink and the
+   same fill — nothing here may become the discriminator, because colour does not survive grayscale. */
+.scm-badge-bg { fill: var(--viz-bg); stroke: var(--viz-ink); stroke-width: var(--viz-stroke-guide); }
+.scm-badge-quality .scm-badge-bg { stroke-width: var(--viz-stroke-information); }
+.scm-badge-glyph { fill: var(--viz-ink); stroke: var(--viz-ink); stroke-width: 1.5; stroke-linecap: round; }
+.scm-badge-glyph.is-down { fill: none; stroke: var(--viz-error); }
+.scm-badge-glyph.is-starved, .scm-badge-glyph.is-blocked { fill: none; }
+.scm-badge-glyph.is-idle { stroke: var(--viz-muted); fill: var(--viz-muted); }
+.scm-badge-glyph.is-conforming { fill: none; stroke: var(--viz-success); }
+.scm-badge-glyph.is-defective { fill: none; stroke: var(--viz-error); }
+.scm-badge-glyph.is-unchecked { fill: none; stroke: var(--viz-muted); }
+.scm-badge-glyph.is-suspect { fill: none; stroke: var(--viz-warning); }
+
+.scm-token { fill: var(--viz-material); stroke: none; }
+.scm-token.is-source { opacity: 0.25; }
+
+.scm-zone-label { font: var(--viz-font-kpi-label); fill: var(--viz-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.scm-sink-slot { fill: var(--viz-slot); }
+
+.scm-clock { font: var(--viz-font-clock); fill: var(--viz-ink); font-variant-numeric: tabular-nums; }
+.scm-kpi-label { font: var(--viz-font-kpi-label); fill: var(--viz-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.scm-kpi-value { font: var(--viz-font-kpi-value); fill: var(--viz-ink); font-variant-numeric: tabular-nums; }
+
+.scm-annotation-box { fill: var(--viz-bg); stroke: var(--viz-line); stroke-width: var(--viz-stroke-guide); }
+.scm-annotation-box.is-exception { stroke: var(--viz-warning); }
+.scm-annotation-text { font: var(--viz-font-annotation); fill: var(--viz-ink); }
+.scm-annotation-connector { stroke: var(--viz-line); stroke-width: var(--viz-stroke-guide); fill: none; }
+.scm-annotation-connector.is-exception { stroke: var(--viz-warning); }
+
+.scm-information { stroke: var(--viz-information); fill: none; stroke-width: var(--viz-stroke-information); stroke-dasharray: 4 2; }
+.scm-card { fill: var(--viz-bg); stroke: var(--viz-information); stroke-width: var(--viz-stroke-information); }
+.scm-card-code { font: var(--viz-font-card); fill: var(--viz-information); text-anchor: middle; }
+.scm-financial { fill: var(--viz-bg); stroke: var(--viz-financial); stroke-width: 1.5; }
+
+@media (prefers-reduced-motion: reduce) { .scm-viz .scm-hint-motion { display: none; } }
+
+/* 2C objects */
+.scm-facility-box { fill: var(--viz-bg); stroke: var(--viz-line); stroke-width: var(--viz-stroke-guide); }
+.scm-signal-path { opacity: 0.7; }
+.scm-signal-head { fill: none; stroke: var(--viz-information); stroke-width: 1.25; }
+.scm-signal-dot { fill: var(--viz-information); }
+
+/* inside reveal.js: never let a tall canvas (split screens) run off the slide; the SVG letterboxes (xMidYMid meet) */
+.reveal .scm-canvas { max-height: 72vh; }
+.reveal .scm-viz .scm-trace { max-height: 4em; }
+
+/* Quality / jidoka objects (3I). Every one of these carries its meaning on a GEOMETRIC carrier —
+   frame shape, fill versus outline, stroke weight, position — and colour only reinforces it
+   (STYLE_GUIDE §5.1, and the grayscale check of jidoka-andon's CONTENT_SPEC). */
+.scm-andon-body { fill: none; stroke: var(--viz-muted); stroke-width: 1.25; }
+.scm-andon-body.is-warning { stroke: var(--viz-warning); stroke-width: 1.5; }
+/* outline → FILL is the strongest distinction available and the one that survives grayscale */
+.scm-andon-body.is-stop { fill: var(--viz-error); stroke: var(--viz-error); stroke-width: 1.5; }
+.scm-andon-glyph { fill: none; stroke: var(--viz-bg); stroke-width: 1.5; stroke-linecap: round; }
+.scm-andon.is-warning .scm-andon-glyph { stroke: var(--viz-warning); }
+
+.scm-sensor-bracket { fill: none; stroke: var(--viz-muted); stroke-width: var(--viz-stroke-guide); }
+.scm-sensor-code { font: 700 7px var(--viz-font-family); fill: var(--viz-muted); }
+.scm-sensor-lead { stroke: var(--viz-muted); stroke-width: var(--viz-stroke-guide); stroke-dasharray: 3 2.5; fill: none; }
+.scm-sensor-head { fill: none; stroke: var(--viz-information); stroke-width: var(--viz-stroke-guide); }
+/* the contact cue: one 0.15 u square wave computed from t, never a CSS animation (SPEC_DELTA #6) */
+.scm-sensor.is-contact .scm-sensor-bracket, .scm-sensor-lead.is-contact { stroke: var(--viz-information); stroke-width: 2; }
+.scm-sensor-lead.is-contact { stroke-dasharray: none; }
+.scm-sensor-head.is-contact { stroke-width: 2; }
+
+/* lighter than both the 1.5 station outline and the filled token: a person is not a machine */
+.scm-operator-stroke { fill: none; stroke: var(--viz-muted); stroke-width: var(--viz-stroke-information); stroke-linecap: round; }
+
+/* the interruption itself, immediately BEYOND the station's right edge — at the edge it would merge
+   with the `down` outline, both being --viz-error at stroke 3 (D1_REVIEW §4.3) */
+.scm-stop-mark { fill: none; stroke: var(--viz-error); stroke-width: 3; stroke-linecap: round; }
+
+.scm-signal-carrier-glyph { fill: none; stroke: var(--viz-error); stroke-width: 1.5; stroke-linecap: round; }
+
+/* P2P objects */
+.scm-badge-exception { stroke: var(--viz-warning); }
+.scm-badge-text { font: 700 9px var(--viz-font-family); fill: var(--viz-warning); text-anchor: middle; }
+.scm-financial-glyph { font: 700 10px var(--viz-font-family); fill: var(--viz-financial); text-anchor: middle; }
+.scm-waiting-face { fill: var(--viz-bg); stroke: var(--viz-warning); stroke-width: 1.25; }
+.scm-waiting-hands { fill: none; stroke: var(--viz-warning); stroke-width: 1.25; stroke-linecap: round; }
+.scm-lane-material { stroke: var(--viz-line); stroke-width: var(--viz-stroke-material-flow); fill: none; }
+.scm-lane-information { stroke: var(--viz-information); stroke-width: var(--viz-stroke-information); stroke-dasharray: 4 2; fill: none; opacity: 0.8; }
+.scm-lane-financial { stroke: var(--viz-financial); stroke-width: var(--viz-stroke-information); stroke-dasharray: 4 2; fill: none; opacity: 0.8; }
+.scm-lane-rework { stroke: var(--viz-warning); stroke-width: var(--viz-stroke-information); stroke-dasharray: 4 2; fill: none; }
+.scm-lane-faint { opacity: 0.45; }
+.scm-lane-label { font: var(--viz-font-small); fill: var(--viz-muted); text-anchor: middle; }
+.scm-band-label { font: var(--viz-font-kpi-label); fill: var(--viz-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.scm-stock-slot { fill: var(--viz-slot); }
