@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Galerie: Lernanimationen, die mit generativer KI entstanden sind</title>
+<title>Galerie: Lernmedien, die mit generativer KI entstanden sind</title>
 <link rel="stylesheet" href="scm-viz/scm-viz.css">
 <style>
   :root {
@@ -28,12 +28,16 @@
   .g-nav button:hover { border-color: var(--th-red); color: var(--th-red); }
   .g-nav button:focus-visible { outline: 2px solid var(--th-magenta); outline-offset: 2px; }
 
-  /* Bühne */
+  /* Bühne: Animation aus der Bibliothek, Video oder eingebettete Seite */
   .g-stage { min-height: 300px; }
   .g-stage .scm-viz { background: transparent; }
   .g-error { padding: 24px; border: 1px dashed var(--line); color: var(--muted); border-radius: 6px; }
+  .g-video { display: block; width: 100%; max-height: 560px; background: #000; border-radius: 6px; }
+  .g-frame { display: block; width: 100%; height: 720px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+  .g-source { margin: 6px 0 0; font-size: 12.5px; color: var(--muted); }
+  .g-source a { color: var(--th-red); }
 
-  /* Lehrtext unter der Animation */
+  /* Lehrtext unter dem Medium */
   .g-teach { display: grid; grid-template-columns: 1.6fr 1fr; gap: 18px; margin-top: 14px;
     padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.5; }
   .g-teach h3 { margin: 0 0 4px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--th-magenta); }
@@ -50,6 +54,7 @@
     .g-head { grid-template-columns: 1fr auto; }
     .g-count { grid-column: 1 / -1; }
     .g-teach { grid-template-columns: 1fr; }
+    .g-frame { height: 640px; }
   }
   @media (prefers-color-scheme: dark) {
     :root { --ink: #e6edf3; --muted: #9aa4af; --line: #30363d; --bg: #0d1117; --th-light: #161b22; }
@@ -57,13 +62,13 @@
 </style>
 </head>
 <body>
-<div class="g" id="galerie" role="region" aria-roledescription="Galerie" aria-label="Lernanimationen">
+<div class="g" id="galerie" role="region" aria-roledescription="Galerie" aria-label="Lernmedien">
   <div class="g-head">
     <div class="g-count" id="count"></div>
     <h2 class="g-title" id="title"></h2>
     <div class="g-nav">
-      <button type="button" id="prev" aria-label="Vorherige Animation">&#8249;</button>
-      <button type="button" id="next" aria-label="Nächste Animation">&#8250;</button>
+      <button type="button" id="prev" aria-label="Vorheriger Beitrag">&#8249;</button>
+      <button type="button" id="next" aria-label="Nächster Beitrag">&#8250;</button>
     </div>
   </div>
   <div class="g-stage" id="stage" aria-live="polite"></div>
@@ -74,25 +79,58 @@
 <script src="scm-viz/scm-viz.js"></script>
 <script>
 (function () {
-  /* Die Galerie zeigt Animationen aus dem Bundle scm-viz.js. Ein Eintrag mehr = ein Objekt mehr in SLIDES. */
+  /* Drei Arten von Beiträgen: type "viz" (Animation aus dem Bundle scm-viz.js), "video" (MP4-Datei),
+     "page" (eingebettete Seite). Ein Beitrag mehr = ein Objekt mehr in SLIDES; "slug" ist der Deep-Link (#slug). */
   var SLIDES = [
     {
+      type: "video",
+      slug: "kaya-teaser",
+      src: "https://th-koln-bartnik.github.io/sscm-2026-student/videos/week02_kaya_teaser.mp4",
+      kicker: "Sustainable Supply Chain Management · Woche 2: Prozessstrategie und Kapazität · Fall Backhaus Kaya, Teil 1",
+      title: "Fünf Sekunden, die einen Fall eröffnen: Aylin Kaya, Nachtschicht, 1.800 Brötchen mehr pro Nacht",
+      about: "Der Teaser zum Fall „Backhaus Kaya“: Eine Handwerksbäckerei bekommt einen Supermarktvertrag über 1.800 zusätzliche Brötchen pro Nacht, und bis Montag muss eine Antwort stehen, ob der Ofen das trägt. Das Video setzt in fünf Sekunden eine Figur, einen Einsatz und eine Frist. Den Fall lesen die Studierenden allein, lösen ihn im Team und geben eine Empfehlung in drei Sätzen.",
+      aside_label: "Warum ein Video?",
+      aside: "Fälle lernen sich als Geschichten: eine Person, ein Konflikt, Komplikationen, kausal verknüpfte Ereignisse (Willingham, 2021). Der Teaser liefert nur den Auftakt; die Rechnung folgt im Linien-Widget (nächster Beitrag).",
+      hint: "Bedienung: Abspielen über die Steuerung im Video; das Video ist fünf Sekunden lang und läuft in Schleife.",
+      cite: "KI-generiertes Video (LTX-2.5), R. Bartnik 2026, aus dem Online-Skript „Sustainable Supply Chain Management“, TH Köln, Wintersemester 2026/27, Woche 2. https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week02.html"
+    },
+    {
+      type: "page",
+      slug: "line-widget",
+      src: "https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html",
+      kicker: "Sustainable Supply Chain Management · Woche 2: Prozessstrategie und Kapazität · Fall Backhaus Kaya, Teil 2",
+      title: "Finde den Engpass: Minuten, Personen und Öfen verändern und sehen, wie Kapazität, Durchlaufzeit und Auslastung reagieren",
+      about: "Eine vierstufige Linie, wahlweise die Party-Pizza-Linie (vier Freunde, 24 Pizzen, ein Ofen) oder die Brötchenlinie von Backhaus Kaya. Regler für Minuten pro Einheit, parallele Personen oder Maschinen und Losgröße; rechts erscheinen Linienkapazität, Engpasszeit, Durchlaufzeit und die Kapazität jedes Schritts. Die eingebauten Aufgaben führen zur Einsicht: 24 Pizzen in unter zwei Stunden mit nur einer zusätzlichen Person oder einem Ofen; den Belag-Schritt zum Engpass machen; die Änderung finden, die für den Ausstoß pro Stunde nichts bringt.",
+      aside_label: "Angegriffene Fehlvorstellung",
+      aside: "„Mehr Leute an irgendeiner Stelle machen die Linie schneller.“",
+      hint: "Bedienung: Regler bewegen, Linie oben umschalten, Nachfrage-Regler verschieben; läuft auch auf dem Telefon. Die Seite ist englischsprachig.",
+      cite: "Eigene Darstellung, R. Bartnik 2026, aus dem Online-Skript „Sustainable Supply Chain Management“, TH Köln, Wintersemester 2026/27. https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html"
+    },
+    {
+      type: "viz",
+      slug: "bottleneck-queue",
       viz: "bottleneck-queue",
       scenario: "bottleneck",
-      kicker: "Operations Management · Stufe 1: Grundlagen des Flusses",
+      kicker: "Operations Management · Stufe 1: Grundlagen des Flusses · Fall Backhaus Kaya, Teil 3",
       title: "Ein langsamer Prozessschritt erzeugt eine Warteschlange stromaufwärts",
-      about: "Zwölf Aufträge durchlaufen Zuschnitt, Bohren und Montage. Vor dem langsamsten Schritt staut sich Material. Die vier Szenarien zeigen, dass zusätzliche Kapazität nur dann den Ausstoß erhöht, wenn sie am Engpass ansetzt – und dass der Engpass wandert, sobald er beseitigt ist.",
-      misconception: "„Jede lokale Kapazitätsverbesserung erhöht den Ausstoß des Gesamtsystems.“",
+      about: "Zwölf Aufträge durchlaufen Zuschnitt, Bohren und Montage. Vor dem langsamsten Schritt staut sich Material. Die vier Szenarien zeigen, dass zusätzliche Kapazität nur dann den Ausstoß erhöht, wenn sie am Engpass ansetzt – und dass der Engpass wandert, sobald er beseitigt ist. Was das Linien-Widget als Zahl ausgibt, wird hier als Bewegung sichtbar.",
+      aside_label: "Angegriffene Fehlvorstellung",
+      aside: "„Jede lokale Kapazitätsverbesserung erhöht den Ausstoß des Gesamtsystems.“",
+      hint: "Bedienung: Abspielen oder Schritt für Schritt vorgehen; Szenarien über die Auswahl oberhalb der Zeichnung wechseln. Alles läuft offline in dieser Datei.",
       cite_hinweis: "Die Bibliothek setzt die Quelle selbst unter die Zeichnung.",
       cite: "Goldratt, E. M., & Cox, J. (2014). The goal (4th ed.). North River Press. · Little, J. D. C. (1961). A proof for the queuing formula: L = λW. Operations Research, 9(3), 383–387. https://doi.org/10.1287/opre.9.3.383"
     },
     {
+      type: "viz",
+      slug: "milk-run-emissions",
       viz: "milk-run-emissions",
       scenario: "milkrun-diesel",
       kicker: "Logistik · Stufe 4: Zielkonflikt zwischen Bestand und CO₂",
       title: "Der Milk Run spart Bestand und bezahlt mit CO₂ – und welches Fahrzeug fährt, entscheidet, wie viel",
       about: "Dasselbe Werk, dieselben drei Lieferanten, derselbe Lkw. Im Direktverkehr fährt er 24 km, verursacht rund 19 kg CO₂-Äquivalent und hinterlässt 24 Teile am Band; im Milk Run fährt er 48 km, verursacht rund 38 kg, und am Band stehen nur noch sieben Teile. Danach wird auf derselben Route nur das Fahrzeug getauscht: Batterie-Lkw rund 25 kg, Brennstoffzelle mit Wasserstoff aus Netzstrom rund 44 kg, mit Wasserstoff aus Windstrom rund 4 kg. Bilanzgrenze: well-to-wheel der Fahrzeugenergie, ohne Herstellung von Fahrzeug, Batterie und Infrastruktur.",
-      misconception: "„Weniger Bestand ist automatisch auch besser fürs Klima.“",
+      aside_label: "Angegriffene Fehlvorstellung",
+      aside: "„Weniger Bestand ist automatisch auch besser fürs Klima.“",
+      hint: "Bedienung: Abspielen oder Schritt für Schritt vorgehen; Szenarien über die Auswahl oberhalb der Zeichnung wechseln. Alles läuft offline in dieser Datei.",
       cite: "Demir, E., Bektaş, T., & Laporte, G. (2014). A review of recent research on green road freight transportation. European Journal of Operational Research, 237(3), 775–793. https://doi.org/10.1016/j.ejor.2013.12.033"
     }
   ];
@@ -100,55 +138,86 @@
   var $ = function (id) { return document.getElementById(id); };
   var handle = null, idx = 0;
 
+  function sourceLine(s) {
+    var p = document.createElement("p"); p.className = "g-source";
+    p.appendChild(document.createTextNode("Quelle: " + s.cite.replace(/\s*https?:\S+$/, "") + " "));
+    var m = s.cite.match(/https?:\S+$/);
+    if (m) {
+      var a = document.createElement("a"); a.href = m[0]; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = s.type === "page" ? "In neuem Tab öffnen" : m[0];
+      p.appendChild(a);
+    }
+    return p;
+  }
+
+  function mountStage(s) {
+    if (handle) { try { handle.destroy(); } catch (e) {} handle = null; }
+    var stage = $("stage"); stage.innerHTML = "";
+    if (s.type === "video") {
+      var v = document.createElement("video");
+      v.className = "g-video"; v.src = s.src; v.controls = true; v.loop = true;
+      v.playsInline = true; v.preload = "metadata";
+      v.setAttribute("aria-label", s.title);
+      v.appendChild(document.createTextNode("Ihr Browser spielt dieses Video nicht ab. "));
+      stage.appendChild(v);
+      stage.appendChild(sourceLine(s));
+    } else if (s.type === "page") {
+      var f = document.createElement("iframe");
+      f.className = "g-frame"; f.src = s.src; f.title = s.title; f.loading = "lazy";
+      f.setAttribute("allow", "fullscreen");
+      stage.appendChild(f);
+      stage.appendChild(sourceLine(s));
+    } else {
+      var host = document.createElement("div"); host.id = "host"; stage.appendChild(host);
+      try {
+        handle = SCMViz.mount(host, { viz: s.viz, scenario: s.scenario, lang: "de", title: "hide" });
+      } catch (e) {
+        host.className = "g-error";
+        host.textContent = "Diese Animation konnte nicht geladen werden: " + e.message;
+      }
+    }
+  }
+
   function show(i) {
     idx = (i + SLIDES.length) % SLIDES.length;
     var s = SLIDES[idx];
-    $("count").innerHTML = "Animation <b>" + (idx + 1) + "</b> von " + SLIDES.length;
+    $("count").innerHTML = "Beitrag <b>" + (idx + 1) + "</b> von " + SLIDES.length;
     $("title").innerHTML = "";
     $("title").appendChild(document.createTextNode(s.title));
     var small = document.createElement("small"); small.textContent = s.kicker; $("title").appendChild(small);
 
-    if (handle) { try { handle.destroy(); } catch (e) {} handle = null; }
-    $("stage").innerHTML = '<div id="host"></div>';
-    try {
-      handle = SCMViz.mount($("host"), { viz: s.viz, scenario: s.scenario, lang: "de", title: "hide" });
-    } catch (e) {
-      $("host").className = "g-error";
-      $("host").textContent = "Diese Animation konnte nicht geladen werden: " + e.message;
-    }
+    mountStage(s);
 
     var t = $("teach"); t.textContent = "";
     var left = document.createElement("div"), right = document.createElement("div");
     left.innerHTML = "<h3>Worum es geht</h3>";
     var p = document.createElement("p"); p.textContent = s.about; left.appendChild(p);
-    var h = document.createElement("p"); h.className = "hint";
-    h.textContent = "Bedienung: Abspielen oder Schritt für Schritt vorgehen; Szenarien über die Auswahl oberhalb der Zeichnung wechseln. Alles läuft offline in dieser Datei.";
-    left.appendChild(h);
-    right.innerHTML = "<h3>Angegriffene Fehlvorstellung</h3>";
-    var m = document.createElement("p"); m.className = "misc"; m.textContent = s.misconception; right.appendChild(m);
+    var h = document.createElement("p"); h.className = "hint"; h.textContent = s.hint; left.appendChild(h);
+    var lab = document.createElement("h3"); lab.textContent = s.aside_label; right.appendChild(lab);
+    var m = document.createElement("p"); if (/^„/.test(s.aside)) m.className = "misc"; m.textContent = s.aside; right.appendChild(m);
     t.appendChild(left); t.appendChild(right);
 
     var d = $("dots"); d.textContent = "";
     SLIDES.forEach(function (sl, k) {
       var b = document.createElement("button"); b.type = "button";
-      b.setAttribute("aria-label", "Animation " + (k + 1) + ": " + sl.title);
+      b.setAttribute("aria-label", "Beitrag " + (k + 1) + ": " + sl.title);
       b.setAttribute("aria-current", String(k === idx));
       b.addEventListener("click", function () { show(k); });
       d.appendChild(b);
     });
-    try { history.replaceState(null, "", "#" + s.viz); } catch (e) {}
+    try { history.replaceState(null, "", "#" + s.slug); } catch (e) {}
   }
 
   $("prev").addEventListener("click", function () { show(idx - 1); });
   $("next").addEventListener("click", function () { show(idx + 1); });
   document.addEventListener("keydown", function (e) {
-    if (e.target && /input|select|textarea/i.test(e.target.tagName)) return;
+    if (e.target && /input|select|textarea|video/i.test(e.target.tagName)) return;
     if (e.key === "ArrowLeft") show(idx - 1);
     if (e.key === "ArrowRight") show(idx + 1);
   });
 
   var start = 0, hash = String(location.hash || "").replace(/^#/, "");
-  SLIDES.forEach(function (s, k) { if (s.viz === hash) start = k; });
+  SLIDES.forEach(function (s, k) { if (s.slug === hash || s.viz === hash) start = k; });
   show(start);
 })();
 </script>
