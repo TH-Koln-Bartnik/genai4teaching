@@ -39,6 +39,15 @@
 % Grauer Caption-Text
 \captionsetup{textfont={color=thgray}}
 
+% ===== CODEBLÖCKE (PROMPTS) =====
+% Lange Prompt-Zeilen umbrechen statt rechts abzuschneiden. Quarto definiert die
+% Umgebung "Highlighting" ohne breaklines; diese Datei wird danach eingebunden
+% und überschreibt die Definition. Plain-Codeblöcke (ohne Sprache) laufen über
+% "verbatim" und werden ebenfalls umbrechend gesetzt.
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},breaklines,breakanywhere=false,breaksymbolleft={},breakindent=1em,fontsize=\small}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breakanywhere=false,breaksymbolleft={},breakindent=1em,fontsize=\small}
+
 % ===== TABELLEN =====
 \usepackage{colortbl}
 % Tabellenköpfe mit Hintergrund

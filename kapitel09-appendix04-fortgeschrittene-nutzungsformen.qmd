@@ -24,8 +24,7 @@ Im Chat sind es Sekunden, bei einer Recherche-Agentin Minuten, bei einem automat
 Je länger die Strecke ohne Blick, desto später fällt ein Fehler auf, und desto mehr Arbeit hat er bis dahin verdorben.
 
 Daraus folgt die Gestaltungsfrage dieses Anhangs: Nicht welches Werkzeug ist das beste, sondern an welchen Stellen eines Ablaufs muss ein Mensch entscheiden, damit die Delegation trägt.
-Die Forschung zur Automatisierung nennt solche Stellen Kontrollpunkte; für jede Stufe einer Aufgabe lässt sich getrennt festlegen, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält.
-<!-- TODO: Beleg Parasuraman, Sheridan & Wickens (2000), IEEE SMC-A 30(3), 286–297, doi:10.1109/3468.844354 — Eintrag fehlt in references.json und in beiden Radar-.bib-Dateien; BibTeX liegt im Ablaufplan vom 11.10.2026. -->
+Die Forschung zur Automatisierung nennt solche Stellen Kontrollpunkte; für jede Stufe einer Aufgabe lässt sich getrennt festlegen, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält [@parasuraman2000].
 Die Logik ist alt, die Anwendung neu: In @sec-d-agenten sind es drei Punkte (Quellenkorb freigeben, Rechercheplan prüfen, Aussagen gegen das Original halten), in @sec-d-workflows ist es ein Freigabeknopf vor jedem Schritt, der Geld kostet, und in @sec-d-tutoren sind es vier gestapelte Prüfschichten, weil die Strecke ohne Blick dort am längsten ist.
 
 Dass dieser Übergang vom Chat zum Agenten tatsächlich stattfindet und nicht nur in Produktankündigungen, zeigen drei Datenquellen.
@@ -130,8 +129,8 @@ Der Partnertest in Übung Ü1 prüft genau das: Eine Kollegin sucht in unserem S
 
 Als Beispiel für einen Skill, der eine wiederkehrende Lehraufgabe mit eigenen Regeln regelt, dient unser Folien-Skill.
 KI-Werkzeuge erzeugen auf Knopfdruck Foliensätze, und fast immer Textwüsten: Themenüberschriften, Aufzählungen, dekorative Bilder.
-Die Forschung zur kognitiven Belastung erklärt, warum das schadet: Text, den die Vortragende gleichzeitig spricht, konkurriert mit der gesprochenen Erklärung um dieselbe Verarbeitungsspur im Arbeitsgedächtnis [@sweller2011].
-<!-- TODO: Die Evidenzbasis des Skills (Abschnitt 12) nennt genauer Wecker (2012), Computers & Education 59(2), doi:10.1016/j.compedu.2012.01.013 (Sprachunterdrückungseffekt textreicher Folien) und Mayer & Fiorella (2014), Redundanzprinzip; beide fehlen in references.json. Nach Anlage hier ergänzen oder sweller2011 ersetzen. -->
+Die Forschung zur kognitiven Belastung erklärt, warum das schadet: Text, den die Vortragende gleichzeitig spricht, konkurriert mit der gesprochenen Erklärung um dieselbe Verarbeitungsspur im Arbeitsgedächtnis [@sweller2011; @mayer2014].
+Wecker [-@wecker2012] hat den Effekt in Experimenten mit Studierenden gemessen: Textreiche Folien unterdrückten die Aufnahme der gesprochenen Information, während Folien mit wenigen Stichworten sie nicht beeinträchtigten.
 Der Skill übersetzt diese Forschung in Regeln, die sich abhaken lassen.
 Jede Folie trägt einen Aussagetitel, also einen ganzen Satz mit genau einer Behauptung; der Folienkörper enthält höchstens fünfzehn Wörter und eine Visualisierung, die den Titel belegt; jede Inhaltsfolie nennt genau eine vollständige Quelle mit DOI; komplexe Abläufe werden schrittweise aufgebaut; und direkt nach der Titelfolie steht eine Argumentationsübersicht in vier Blöcken, Problem, Konzepte, Evidenz, Fazit, die das Modell der vortragenden Person zur Freigabe vorlegen muss, bevor es eine einzige Folie baut.
 Eine Stil-Ebene mit Platzhaltern für Akzentfarbe, Schrift und Logo wird durch das Corporate Design der eigenen Hochschule ersetzt; die Inhaltsregeln bleiben unverändert.
@@ -576,8 +575,7 @@ Online-Material zu Ü5 und zu den Workflow-Vorlagen: [Übungsblatt Ü5 mit Vergl
 ### Das Problem: Tutoren helfen zu früh und zu viel
 
 Ein Tutor ist die Nutzungsform, in der die KI später ohne uns handelt.
-Alles, was wir in @sec-tutor über den Mehrwert individueller Anpassung und unmittelbaren Feedbacks gesagt haben, gilt weiter, und die Messlatte bleibt hoch: Menschliche Einzelbetreuung gehört zu den wirksamsten Maßnahmen, die die Bildungsforschung kennt.
-<!-- TODO: Beleg Nickow, Oreopoulos & Quan (2020), NBER WP 27476, doi:10.3386/w27476 — Metaanalyse experimenteller Studien PreK-12, mittlerer Effekt 0,37 Standardabweichungen. Eintrag fehlt in references.json und in beiden .bib-Dateien; BibTeX im Ablaufplan vom 11.10. Zahl erst nach Anlage des Eintrags in den Fließtext. -->
+Alles, was wir in @sec-tutor über den Mehrwert individueller Anpassung und unmittelbaren Feedbacks gesagt haben, gilt weiter, und die Messlatte bleibt hoch: Menschliche Einzelbetreuung gehört zu den wirksamsten Maßnahmen, die die Bildungsforschung kennt: Eine Metaanalyse von 96 randomisierten Studien aus Vorschule und Schule findet einen mittleren Effekt von 0,37 Standardabweichungen auf die Lernleistung [@nickow2020].
 Doch wer Studierende einen Tutor bauen lässt, muss mit einer Eigenschaft heutiger Modelle rechnen, die der Didaktik des Tutorings direkt widerspricht: Sie helfen zu früh und zu viel.
 
 Drei Studien belegen das aus verschiedenen Richtungen; alle drei sind Preprints ohne abgeschlossene Begutachtung und deshalb als Hinweise zu lesen, nicht als Urteil.
@@ -593,15 +591,12 @@ Die Gegenbefunde gegen ein sokratisches Dogma, die wir im Workshop diskutiert ha
 
 ### Der Rahmen: Vier Fragen und vier Prüfschichten
 
-Struktur bekommt ein Tutorprojekt durch vier Fragen, die wir in den Übungen dieses Anhangs durchgängig als 4D-Prüfliste führen: Delegation fragt, was der Tutor tun soll und was nie; Description ist der System-Prompt, also die Beschreibung der Aufgabe in prüfbaren Regeln; Discernment sind die Tests, mit denen wir Antworten beurteilen; Diligence heißt Sorgfalt, also Datenschutz und Freigabe.
-<!-- TODO: Beleg 4D-Modell der AI Fluency: Dakan & Feller (2025), Framework for AI Fluency, Version 1.5, Ringling College, https://ringling.libguides.com/ai/framework — Eintrag fehlt in references.json und in beiden .bib-Dateien; BibTeX im Ablaufplan. Falls das 4D-Modell im Hauptteil (Kap. 2 oder 5) eingeführt wird, hier nur Querverweis. -->
+Struktur bekommt ein Tutorprojekt durch vier Fragen, die wir in den Übungen dieses Anhangs durchgängig als 4D-Prüfliste führen: Delegation fragt, was der Tutor tun soll und was nie; Description ist der System-Prompt, also die Beschreibung der Aufgabe in prüfbaren Regeln; Discernment sind die Tests, mit denen wir Antworten beurteilen; Diligence heißt Sorgfalt, also Datenschutz und Freigabe [4D-Modell der AI Fluency, @dakan2025].
 Weil der Tutor ohne uns handelt, wiegen die letzten beiden Fragen schwerer als bei jeder anderen Nutzungsform.
 
 Wie prüfen wir also?
-Mit einem Modell aus der Sicherheitsforschung, dem Schweizer-Käse-Modell: Jede Prüfschicht hat Löcher, aber jede an anderer Stelle, und gestapelt fangen sie die meisten Fehler.
-<!-- TODO: Beleg Reason (2000), BMJ 320(7237), 768–770, doi:10.1136/bmj.320.7237.768 — Eintrag fehlt; BibTeX im Ablaufplan. -->
-Die erste Schicht sind Prompt-Muster, also erprobte Bausteine für den System-Prompt wie eine Persona, eine Vorlage für die Antwortform, eine Prüfliste für Fakten oder die umgedrehte Interaktion, bei der das Modell fragt statt antwortet; sie fangen unklare Rollen und fehlende Struktur.
-<!-- TODO: Beleg White et al. (2023), Prompt Pattern Catalog, arXiv:2302.11382 — Eintrag fehlt; BibTeX im Ablaufplan. -->
+Mit einem Modell aus der Sicherheitsforschung, dem Schweizer-Käse-Modell: Jede Prüfschicht hat Löcher, aber jede an anderer Stelle, und gestapelt fangen sie die meisten Fehler [@reason2000].
+Die erste Schicht sind Prompt-Muster, also erprobte Bausteine für den System-Prompt wie eine Persona, eine Vorlage für die Antwortform, eine Prüfliste für Fakten oder die umgedrehte Interaktion, bei der das Modell fragt statt antwortet; sie fangen unklare Rollen und fehlende Struktur [Katalog der Muster bei @white2023].
 Die zweite Schicht ist eine deterministische Prüfung: ein Skript, kein Modell, das Regelverstöße erkennt, die sich mechanisch feststellen lassen, etwa ob die Antwort eine Endzahl verrät oder ob ein Zitat wörtlich in der Quelle steht.
 Die dritte Schicht ist Testmanagement: dieselben Testfälle nach jeder Änderung des Prompts erneut laufen lassen, wie ein TÜV-Termin nach jeder Reparatur, damit eine Verbesserung an einer Stelle keinen Rückfall an einer anderen verdeckt.
 Die vierte Schicht ist der Goldstandard: von Fachleuten geprüfte Musterantworten, an denen die Tutorantworten gemessen werden; das ist der Gedanke, den @kestin2025 mit Musterlösungen als Input verfolgen (@sec-complex-tutors), hier auf die Testseite gewendet.
@@ -609,8 +604,7 @@ Erst an dieser vierten Schicht bleiben fachliche Fehler hängen, die die ersten 
 
 Der Goldstandard ist nur so gut wie die Einigkeit derer, die ihn erstellen.
 Deshalb bewerten zwei Personen jede Tutorantwort getrennt, und ein Übereinstimmungsmaß zeigt, wie viel ihrer Einigkeit über den Zufall hinausgeht: Cohens Kappa setzt die beobachtete Übereinstimmung ins Verhältnis zur zufällig erwartbaren.
-Stimmen beide in 80 Prozent der Fälle überein und läge die Zufallsübereinstimmung bei 50 Prozent, ergibt sich κ = (0,80 − 0,50) / (1 − 0,50) = 0,60, ordentlich, aber nicht perfekt.
-<!-- TODO: Beleg Cohen (1960), Educational and Psychological Measurement 20(1), 37–46, doi:10.1177/001316446002000104 — Eintrag fehlt; BibTeX im Ablaufplan. -->
+Stimmen beide in 80 Prozent der Fälle überein und läge die Zufallsübereinstimmung bei 50 Prozent, ergibt sich κ = (0,80 − 0,50) / (1 − 0,50) = 0,60, ordentlich, aber nicht perfekt [@cohen1960].
 Für die Benotung studentischer Tutoren ist diese Zahl der wichtigste Befund der Übung: Sind sich die Bewertenden selten einig, müssen erst die Stufendefinitionen geschärft werden, bevor weiter getestet wird.
 Auch die Regel aus @sec-d-arbeitsumgebung kehrt hier wieder: Eingehalten werden vor allem prüfbare Regeln, und "gib nie sofort die Lösung, sondern bitte erst um einen eigenen Lösungsschritt" ist eine solche.
 
@@ -713,8 +707,8 @@ Die Grundregel dabei: Nichts in einen studierendenseitigen Tutor legen, dessen L
 
 Wer Studierende selbst einen Tutor bauen lässt, verbindet Fachwissen, Methodenkompetenz und KI-Literacy in einem Projekt, das nach den Säulen aus @sec-umsetzung prozessorientiert prüfbar ist.
 Als Abgabe haben sich drei Teile bewährt: drei Versionen des Tutors, ein Änderungsprotokoll, das zu jeder Version sagt, welche Regel warum geändert wurde, und ein Testprotokoll gegen den Goldstandard, bei zwei Bewertenden mit Cohens Kappa beziffert.
-Technisch reicht für ein Bündel das eigene Konto der Studierenden; wer einen Tutor mit eigener Oberfläche und Dokumentenablage bauen lassen will, kann eine Übungswerkstatt in der Cloud nutzen, in der Studierende eine Webseite, die Logik und einen Speicher für die Wissensbasis anlegen und das Sprachmodell per API-Schlüssel anbinden.
-<!-- TODO: AWS Academy Learner Lab (kostenlos, ohne Kreditkarte; Amplify für die Webseite, Lambda für die Logik, S3 für RAG-Dokumente, optional DynamoDB; Stolpersteine: Sitzungen enden nach 4 Stunden, nur Region us-east-1, immer die vorgegebene LabRole). Quelle: AWS Academy, abgerufen 11.10.2026, https://aws.amazon.com/training/awsacademy/ — Eintrag fehlt; Romans Primer dazu liegt im Workshop-Ordner. Beispiele: Projektauftrag WAGP; Manuskript Burdinski & Bartnik zu regelbasierten und generativen Tutoren in Chemie und Wirtschaftsingenieurwesen (AOHER, in Begutachtung; Datei AOHER-Burdinski-Bartnik-Chatbots-regelbasiert-GenAI-v2.docx) — Zitierfähigkeit und Status klären. -->
+Technisch reicht für ein Bündel das eigene Konto der Studierenden; wer einen Tutor mit eigener Oberfläche und Dokumentenablage bauen lassen will, kann eine Übungswerkstatt in der Cloud nutzen, in der Studierende eine Webseite, die Logik und einen Speicher für die Wissensbasis anlegen und das Sprachmodell per API-Schlüssel anbinden; wir nutzen dafür das AWS Academy Learner Lab, das Hochschulen kostenlos und ohne Kreditkarte bereitstellt [@awsacademy2026].
+<!-- TODO (Roman): AWS Academy Learner Lab (kostenlos, ohne Kreditkarte; Amplify für die Webseite, Lambda für die Logik, S3 für RAG-Dokumente, optional DynamoDB; Stolpersteine: Sitzungen enden nach 4 Stunden, nur Region us-east-1, immer die vorgegebene LabRole). Quelle: AWS Academy, abgerufen 11.10.2026, https://aws.amazon.com/training/awsacademy/ — Eintrag fehlt; Romans Primer dazu liegt im Workshop-Ordner. Beispiele: Projektauftrag WAGP; Manuskript Burdinski & Bartnik zu regelbasierten und generativen Tutoren in Chemie und Wirtschaftsingenieurwesen (AOHER, in Begutachtung; Datei AOHER-Burdinski-Bartnik-Chatbots-regelbasiert-GenAI-v2.docx) — Zitierfähigkeit und Status klären. -->
 
 ### Übung Ü6: Testplan für einen KI-Tutor: Mini-Goldstandard und Überhilfe-Audit {#sec-d-ue6}
 
