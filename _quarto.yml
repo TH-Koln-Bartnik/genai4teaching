@@ -1,9 +1,15 @@
 project:
   type: book
   output-dir: docs
+  # Profile: "web" (Standard) fügt die lebenden Online-Seiten hinzu, "print" das Impressum
+  # für die Titelei. PDF rendern mit: quarto render --profile print --to pdf
+  # (Profile werden additiv zusammengeführt; die Basisliste unten ist der gemeinsame Kern.)
   resources:
     - downloads/**
     - interactions/**
+
+profile:
+  default: web
 
 # Globale Einstellungen (gelten für alle Kapitel und Formate)
 lang: de
@@ -35,6 +41,7 @@ book:
         href: https://buymeacoffee.com/roman.bartnik.th
   chapters:
     - index.qmd
+    - vorwort.qmd
     - kapitel01.qmd
     - kapitel02.qmd
     - kapitel03.qmd
@@ -45,6 +52,8 @@ book:
     - kapitel06-appendix01-prompt-ueberblick.qmd
     - kapitel07-appendix02-prompt-sammlung.qmd
     - kapitel08-appendix03-rollenspiele-simulationen.qmd
+    - kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd
+    - transparenz.qmd
     - references.qmd
 
   cover-image: images/logos/logo.svg

@@ -1,0 +1,127 @@
+# Glossar-Kandidaten
+
+Stand: 2026-10-17. Entwurf für `glossar.qmd` (Anhang, `{.unnumbered}`). Alle Begriffe sind per grep in den Kapiteln 1–5 oder den Anhängen A–C belegt; die Fundstelle steht in Klammern. Definitionsliste in Pandoc-Syntax, kann unverändert nach Quarto übernommen werden. Etymologische Notizen stehen kursiv am Ende des Eintrags.
+
+Nicht aufgenommen, weil der Begriff im Buch nicht vorkommt: Fine-Tuning, kognitive Auslagerung (nur umschrieben als „Delegation des Denkens“), 4D-Framework / AI Fluency, Lernmodus / Study Mode, Vibe Coding. Falls Anhang D diese Begriffe einführt, nachtragen.
+
+---
+
+Generative KI (GenAI)
+:   Sammelbegriff für KI-Systeme, die neue Inhalte erzeugen: Texte, Bilder, Ton, Programmcode. Im Buch werden KI, GenAI und Sprachmodell weitgehend gleichbedeutend verwendet, weil die meisten Lehrenden erst seit ChatGPT aktiv mit KI arbeiten (Kap. 2.1). *Lateinisch generare, „hervorbringen, zeugen“.*
+
+Sprachmodell, Large Language Model (LLM)
+:   Ein Rechenmodell, das aus riesigen Textmengen gelernt hat, das jeweils nächste Wort in einer Wortkette vorherzusagen. Aus dieser einfachen Grundoperation entstehen Antworten, Zusammenfassungen und Dialoge; eine eingebaute Prüfung auf Wahrheit gibt es nicht (Kap. 2.1).
+
+GPT
+:   Abkürzung für Generative Pre-trained Transformer: ein Sprachmodell, das Texte erzeugt (generative), vorab mit großen Textmengen trainiert wurde (pre-trained) und auf der Transformer-Architektur beruht. Ursprünglich die Modellreihe von OpenAI, heute oft als Gattungsname gebraucht (Kap. 2.1.1).
+
+Token
+:   Der kleinste Baustein, in den ein Sprachmodell Text zerlegt: ein Wort, ein Wortteil oder ein Satzzeichen. Nach Tokens werden Kontextfenster und Preise bemessen; ein Wort sind oft ein bis zwei Tokens (Kap. 2.1).
+
+Embedding
+:   Die Umwandlung eines Tokens in eine lange Zahlenreihe (einen Vektor), die seine Bedeutung mathematisch beschreibt. Ähnliche Wörter wie „Hund“ und „Katze“ erhalten ähnliche Zahlenreihen, so dass das Modell mit Bedeutung rechnen kann (Kap. 2.1).
+
+Transformer und Attention
+:   Transformer ist die Rechenarchitektur heutiger Sprachmodelle. Ihr Kernverfahren Attention („Aufmerksamkeit“) lässt jedes Token gewichtet entscheiden, auf welche anderen Tokens im Text es achten soll; so erkennt das Modell, ob „Bank“ ein Möbelstück oder ein Geldinstitut meint (Kap. 2.1.1). *Lateinisch transformare, „umformen“; attendere, „hinwenden, beachten“.*
+
+Pretraining und RLHF
+:   Pretraining ist das Vortrainieren des Modells an großen Textmengen ohne konkrete Aufgabe. Danach bewerten Menschen Antwortvarianten, und das Modell lernt, bevorzugt nützliche und verständliche Antworten zu geben: Reinforcement Learning with Human Feedback, bestärkendes Lernen mit menschlicher Rückmeldung (Kap. 2.1.1).
+
+Kontextfenster
+:   Die Menge an Text, die ein Sprachmodell gleichzeitig „im Blick“ hat: die bisherige Unterhaltung, hochgeladene Dokumente und die aktuelle Frage. Was nicht ins Fenster passt, kennt das Modell in diesem Moment nicht (Kap. 2.1.1). *Lateinisch contexere, „zusammenweben“.*
+
+Halluzination
+:   Eine sprachlich überzeugende, aber sachlich falsche oder erfundene Antwort, etwa eine Quelle, die es nicht gibt. Keine Störung, sondern eine Folge der Funktionsweise: Das Modell erzeugt Plausibles, nicht Geprüftes. Gegenmittel sind eingegrenztes Material, Musterlösungen und systematische Prüfung (Kap. 2.2, 4.3). *Lateinisch hallucinari, „gedankenlos reden, träumen“.*
+
+Reasoning-Modell
+:   Ein Sprachmodell, das vor der Antwort schrittweise „nachdenkt“, also Zwischenschritte erzeugt und die eigenen Ergebnisse prüft, bevor es antwortet. Technisch wird mehr Rechenzeit in die Antwort statt ins Training gesteckt (test-time compute). Für anspruchsvolle Aufgaben sind solche Modelle deutlich zuverlässiger als ihre schnellen Varianten (Kap. 1.4). *Lateinisch ratio, „Berechnung, Vernunft“.*
+
+Jagged Frontier
+:   „Zerklüftete Technikgrenze“: Sprachmodelle lösen manche Aufgaben auf Expertenniveau und scheitern an anderen, die für Menschen ähnlich schwer sind. Die Grenze verläuft unregelmäßig und ist nur durch Ausprobieren zu finden; wer sie nicht kennt, arbeitet mit KI schlechter als ohne (Kap. 2.4).
+
+Zentaur und Cyborg
+:   Zwei Arbeitsweisen mit KI entlang der Jagged Frontier. Der Zentaur teilt die Arbeit sauber auf: Dieses übernimmt der Mensch, jenes die Maschine. Der Cyborg verwebt beide in jedem Arbeitsschritt, etwa beim Schreiben Satz für Satz (Kap. 2.4, 4.2.1). *Griechisch kentauros, Mischwesen aus Mensch und Pferd; Cyborg aus cybernetic organism, zu griechisch kybernetes, „Steuermann“.*
+
+Prompt
+:   Die Eingabe an ein Sprachmodell: Frage, Anweisung oder Aufgabe, oft mit Material und Beispielen. Wie der Prompt formuliert ist, bestimmt die Qualität der Antwort wesentlich (Kap. 2.5). *Lateinisch promptus, „bereit, zur Hand“; englisch to prompt, „soufflieren, anstoßen“.*
+
+Prompt Engineering
+:   Das Handwerk, Prompts so zu bauen, dass sie zuverlässig gute Antworten liefern: Rolle, Aufgabe, Format und Beispiele klar benennen, strukturieren, iterieren. Was nichts bringt: Drohen, Bestechen, besondere Höflichkeit (Kap. 2.5.2–2.5.5).
+
+System-Prompt
+:   Eine Dauer-Anweisung, die vor jeder Unterhaltung im Hintergrund wirkt und das Verhalten eines Bots festlegt: Rolle, Regeln, erlaubte und verbotene Reaktionen. Didaktische Tutoren und Simulationen werden im Wesentlichen über den System-Prompt gebaut (Anhang A, B).
+
+Few-Shot-Beispiele
+:   Dem Modell werden im Prompt einige Beispiele gezeigt, wie die gewünschte Antwort aussehen soll. Wenige gute Beispiele helfen; zu viele engen das Modell ein (Kap. 2.5.3).
+
+Chain of Thought
+:   „Gedankenkette“: Das Modell wird aufgefordert, Schritt für Schritt vorzugehen und seinen Lösungsweg auszuformulieren. Bei älteren Modellen eine wichtige Technik, bei Reasoning-Modellen weitgehend eingebaut (Kap. 2.5.3, 2.5.5).
+
+Temperatur
+:   Ein Regler, der steuert, wie stark das Modell von der wahrscheinlichsten Fortsetzung abweicht. Niedrige Temperatur ergibt vorhersagbare, wiederholbare Antworten, hohe Temperatur abwechslungsreichere, aber auch riskantere (Kap. 2.1, Lernspiel). *Lateinisch temperare, „mäßigen, mischen“.*
+
+RAG (Retrieval-Augmented Generation)
+:   Das Modell bekommt eigenes Material an die Hand, etwa Skripte, Fachartikel oder Musterlösungen, und holt sich daraus vor der Antwort die passenden Stellen. Bildlich: Die KI ist das Gehirn, das Material ist das Bücherregal. In der Lehre der wichtigste Hebel gegen Halluzinationen (Kap. 2.1).
+
+Agent
+:   Ein Sprachmodell, das nicht nur antwortet, sondern handelt: Es nutzt Werkzeuge wie Internetsuche, Dateizugriff oder Programmausführung, plant mehrere Schritte und prüft Zwischenergebnisse selbst. Bildlich: der Werkzeugkoffer neben dem Bücherregal (Kap. 2.1). *Lateinisch agere, „handeln, treiben“.*
+
+Harness
+:   Wörtlich „Arbeitsgeschirr“: die Ausstattung, die ein Modell zum Agenten macht, also Werkzeuge, Datenzugriffe und Ablaufregeln. Ohne Harness bleibt „Agent“ ein Etikett (Kap. 1.2, 2.1.2).
+
+Deep Research
+:   Ein Agent für Recherche: Das Modell sucht in mehreren Durchgängen, bewertet Treffer, liest Quellen und schreibt einen Bericht mit Belegen. Nach Aaron Tay eine von vier Klassen von Suchhelfern, unterschieden nach „einmalig oder iterativ“ und „Liste oder Analyse“ (Kap. 1.2, 4.1.2).
+
+Skill
+:   Ein vorgefertigtes Anweisungspaket, das einem Modell für eine bestimmte Aufgabe mitgegeben wird, etwa eine mehrseitige Anleitung, wie es eine Präsentation oder eine Hausarbeit Schritt für Schritt erstellt und prüft. Modulares Wissen zum Hinzubuchen (Kap. 1.2, 1.4).
+
+Konnektor (MCP)
+:   Eine standardisierte Schnittstelle, über die ein Sprachmodell direkt auf externe Dienste zugreift, etwa auf Fachdatenbanken wie Scopus oder Verlagsvolltexte. Technischer Name: Model Context Protocol. Macht Recherchen nachvollziehbarer, weil die Kette von Anfrage bis Fundstelle dokumentiert ist (Kap. 4.1.2). *Lateinisch connectere, „verknüpfen“.*
+
+Artifact
+:   Ein vom Sprachmodell erzeugtes, eigenständig nutzbares Produkt, etwa ein kleines Lernspiel als Webseite, eine Grafik oder ein Dokument, das neben dem Chat angezeigt und weitergegeben werden kann. So wurden die interaktiven Elemente dieses Buchs gebaut (Kap. 2.1, 4.2.2). *Lateinisch arte factum, „mit Kunst gemacht“.*
+
+Custom GPT, Projekt
+:   Ein selbst konfigurierter Bot auf Basis eines Sprachmodells mit festem System-Prompt und hinterlegtem Material, der sich mit Studierenden teilen lässt. Bei OpenAI „Custom GPT“, bei Anthropic „Projekt“. Die einfachste Form, einen Tutor oder eine Simulation in die Lehre zu bringen (Kap. 1.5, Anhang B).
+
+Scaling Laws
+:   Erfahrungsregeln, nach denen Modelle mit mehr Trainingsdaten und Rechenleistung verlässlich besser werden (Training Scaling) und bessere Antworten geben, wenn ihnen mehr Rechenzeit beim Antworten gegeben wird (Inference Scaling) (Kap. 2.4).
+
+Erwünschte Schwierigkeiten (desirable difficulties)
+:   Lernhürden, die das Lernen anstrengender, aber nachhaltiger machen: selbst abrufen statt nachlesen, selbst formulieren statt übernehmen. Ein Chatbot, der sofort die fertige Lösung liefert, räumt genau diese Hürden weg (Kap. 1.6, 3.1, Anhang A).
+
+Testgestütztes Lernen (test-enhanced learning)
+:   Das aktive Abrufen von Wissen durch Fragen und Tests festigt Gelerntes deutlich stärker als wiederholtes Lesen. Häufige, niedrigschwellige Abrufübungen gehören zu den am besten belegten Lerntechniken; Sprachmodelle senken den Aufwand, sie zu erstellen (Kap. 3.4).
+
+Spacing und Interleaving
+:   Zwei Lerntechniken: Übung über die Zeit verteilen statt in einem Block (spacing) und Themen gemischt statt nacheinander üben (interleaving). Beides verbessert das Behalten und die Fähigkeit, das passende Werkzeug für ein Problem zu wählen (Kap. 3.4, 5.2).
+
+Fragebasierte Ausarbeitung (elaborative questioning)
+:   Lerntechnik, bei der Lernende Warum- und Wie-Fragen zum Stoff stellen und beantworten und so neue Inhalte mit vorhandenem Wissen verknüpfen. Tutor-Bots und Simulationen können solche Fragen stellen (Kap. 3.4). *Lateinisch elaborare, „ausarbeiten“.*
+
+ICAP
+:   Rangfolge kognitiven Engagements nach Chi und Wylie: interaktiv wirkt besser als konstruktiv, konstruktiv besser als aktiv, aktiv besser als passiv (I > C > A > P). Maßstab dafür, wie wirksam eine KI-gestützte Lernaktivität sein kann (Kap. 3.4, Anhang C).
+
+Kognitive Belastung (cognitive load)
+:   Die begrenzte Verarbeitungskapazität des Arbeitsgedächtnisses. Lernhilfen sollen diese Kapazität für das Wesentliche freihalten; ein Chatbot, der mit Informationen überschüttet, tut das Gegenteil. Didaktische Prompts begrenzen deshalb die Antwortmenge, etwa auf eine Frage pro Zug (Kap. 3.1, Anhang A). *Lateinisch cognitio, „Erkenntnis“.*
+
+Scaffolding
+:   „Baugerüst“: Lernende bekommen genau so viel Unterstützung, wie sie für den nächsten Schritt brauchen, und das Gerüst wird mit wachsender Kompetenz abgebaut. Grundmuster sokratischer Tutor-Prompts (Anhang A, B, C).
+
+Protégé-Effekt
+:   Wer einem anderen etwas erklären muss, lernt selbst am meisten. In Übungen wie „Teach the AI“ spielt das Modell die unwissende Schülerin, die Studierenden lehren (Kap. 4.4.2, Anhang A). *Französisch protégé, „Schützling“, zu lateinisch protegere, „beschützen“.*
+
+Vier Rollen: Hiwi, Copilot, Tutor, Simulator
+:   Ordnungsrahmen des Buchs nach Mollick und Mollick: Als Hiwi nimmt die KI Lehrenden Arbeit ab, als Copilot ermöglicht sie, was man allein nicht könnte, als Tutor begleitet sie Lernende, als Simulator stellt sie Übungssituationen bereit (Kap. 4).
+
+Role Play und Goal Play
+:   Zwei Formen der Simulation. Im Role Play übernehmen Studierende eine fremde Rolle, etwa in einer Verhandlung, und die KI spielt das Gegenüber. Im Goal Play bleiben sie in ihrer eigenen Rolle und wenden Wissen an, das der KI-Figur fehlt (Kap. 4.4). *Lateinisch simulare, „nachahmen, vortäuschen“.*
+
+Debriefing und Human in the Loop
+:   Die Nachbesprechung einer Simulation durch Lehrende, in der Verlauf, Fehler der KI und Lernertrag reflektiert werden. Steht für den Grundsatz, dass der Mensch in der Schleife bleibt und die Verantwortung behält (Kap. 4.4, Anhang C).
+
+Vier-Säulen-Modell
+:   Prüfungsdesign unter KI-Bedingungen nach Gmeiner: Mündlichkeit, Prozessorientierung, Kontextualisierung und Kollaboration. Jede Säule macht generische KI-Texte als Prüfungsleistung wertlos, ohne die KI-Nutzung zu verbieten (Kap. 5.4).
+
+Homework Apocalypse
+:   Mollicks Schlagwort für die Entwertung klassischer Hausaufgaben und Hausarbeiten, wenn Studierende sie auf Knopfdruck erzeugen können. Gemeint ist weniger das Täuschen als die empfundene Sinnlosigkeit der Aufgabe (Kap. 1.6, 5.4).
