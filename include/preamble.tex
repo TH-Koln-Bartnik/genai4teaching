@@ -6,7 +6,13 @@
 % (Satzspiegel kommt aus geometry in _quarto.yml, daher kein DIV=calc)
 \usepackage{microtype}
 \usepackage{xurl}  % URLs dürfen an jeder Stelle umbrechen (lange Links in schmalen Tabellenspalten)
-\raggedbottom  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
+\raggedbottom
+
+% Tabellen: kleinere Schrift (9 pt) und Flattersatz mit Silbentrennung in den Zellen.
+% Pandoc setzt Zellen mit \raggedright, was die Trennung praktisch abschaltet; \RaggedRight (ragged2e) trennt weiter.
+\usepackage{etoolbox}
+\usepackage{ragged2e}
+\AtBeginEnvironment{longtable}{\small\let\raggedright\RaggedRight}  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
 
 \usepackage{booktabs}
 \usepackage{xcolor}
