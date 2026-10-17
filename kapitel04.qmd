@@ -7,7 +7,13 @@ Hier ein Beispiel für einen Tutor-Bot, den wir seit dem Wintersemester 2025/26 
 
 ![Beispiel: Tutor-Bot BWL Grundlagen. Screenshot der Testversion, Januar 2026](images/tutor-bot-beispiel-bwl-th.jpg){#fig-tutor-bot-bwl}
 
-**Hier können Sie die Live-Version testen:** https://dev.d1czie2npcfbfs.amplifyapp.com
+::: {.content-visible when-format="html"}
+**Hier können Sie die Live-Version testen:** https://dev.d1czie2npcfbfs.amplifyapp.com <!-- TODO Roman: Testinstanz leitet laut Review 17.10. nur noch weiter; stabile Adresse (oder Hinweis „Testbetrieb beendet“) eintragen -->
+:::
+
+::: {.content-visible when-format="pdf"}
+Eine Testversion und der aktuelle Stand des Projekts sind über die Online-Fassung dieses Buches erreichbar; Aufbau, Betrieb und Erfahrungen beschreibt @sec-fallbeispiele. <!-- TODO: Label existiert erst mit Kapitel 6 -->
+:::
 
 <!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
 ::: {.callout-note title="Lernziele"}
@@ -53,6 +59,8 @@ In @tbl-acemoglu übertragen wir die genannten drei Effekte auf konkrete Aufgabe
 Der **Verdrängungseffekt** betrifft hauptsächlich administrative und stark standardisierte Tätigkeiten.
 Aufgaben wie das Erstellen, Durchführen und Bewerten von Prüfungen, die Verwaltung von Noten und Anwesenheiten sowie die Vorbereitung standardisierter Lehrmaterialien oder Literaturzusammenstellungen werden voraussichtlich vollständig oder überwiegend von KI übernommen.
 Anwendungsstudien und Umfragen der letzten zwei Jahre geben hierzu deutliche Hinweise [@morgan2024; @naddaf2025; @ogunleye2024; @ou2024; @tutton2025].
+<!-- Einschub 2026-07-02 (Gegenlesen-Ordner, Baustein 4.1-A), eingesetzt 2026-10-17 -->
+Wie weit die Verdrängung bei der Bewertung tatsächlich reicht, lässt sich inzwischen präzise sagen. Sehfähige Sprachmodelle bewerten fotografierte handschriftliche Mathematik-Abgaben entlang der Rubriken der Lehrenden insgesamt zuverlässig, aber 87 % der verbleibenden Fehler des besten Modells sind **Transkriptionsfehler** (Handschrift lesen, äquivalente Umformungen erkennen, Bildqualität), nicht falsch angewandte Bewertungskriterien [@levine2026]. Verdrängt wird also die Rubrik-Anwendung; die menschliche Arbeit verlagert sich auf Erfassungsqualität und stichprobenartige Kontrolle, ein konkretes Beispiel für die neue Aufgabe „Qualitätskontrolle von KI-Materialien“ im Wiedereinsetzungs-Feld derselben Tabelle (zu den Grenzen KI-gestützten Benotens vgl. @sec-pruefen).
 
 Der **Produktivitätseffekt** bezieht sich auf zentrale Lehr-, Forschungs- und Betreuungstätigkeiten, die durch KI effizienter werden.
 Dazu zählen die Vorbereitung und Durchführung von Vorlesungen, Seminaren und Diskussionen, akademische und berufliche Beratung der Studierenden sowie Forschung und Publikationen.
@@ -289,6 +297,9 @@ Aus didaktischer Sicht entfaltet der GenAI Tutor seinen Mehrwert vor allem in vi
 \* **Zeitersparnis für Lehrende**: Ein Teil der individuellen Betreuung kann – bei inhaltlich gut vorbereitetem KI-System – durch den Tutor übernommen werden.
 Allerdings behält die Lehrkraft jederzeit die Oberaufsicht, indem sie zum Beispiel relevante KI-Antworten stichprobenartig überprüft oder spezielle Fälle selbst übernimmt (z. B. wenn die KI Auskünfte gibt, die nicht zur jeweiligen Kursstruktur passen).
 
+<!-- Einschub 2026-07-02 (Baustein 4.3-A), eingesetzt 2026-10-17; Details zu Chang et al. stehen in Anhang C (@sec-update-2026-07-rs), hier nur die Pointe -->
+Der erste Punkt, die individuelle Anpassung, war bisher konzeptionell begründet; ein Feldexperiment zeigt, dass ein Tutor die Anpassung **selbst lernen** kann. Ein Prompt-Router, der aus vierzehn pädagogischen Merkmalen des Gesprächsverlaufs die Tutoring-Strategie wählt (eher analytisch oder eher gerüstbauend), schlug im A/B-Test mit 359 Oberstufenschülern statische Prompts bei gehaltener pädagogischer Qualität; die Variante, die zwischen Strategien streut, statt stur die beste zu wählen, hob die Quote begonnener Übungen von 19,6 auf 28,1 % [@chang2026]. Zusammen mit dem Musterlösungs-Ansatz von @kestin2025 ergeben sich damit zwei komplementäre Stellschrauben: Musterlösungen kontrollieren den **Inhalt**, adaptives Prompt-Routing die **Strategie**.
+
 Generell ist bei KI-Tutoren die **Gefahr von Fehlinformationen und Halluzinationen** zu beachten.
 Hierfür gibt es jedoch gute Gegenmaßnahmen, vor allem durch Kontrolle des Inputs und systematische Qualitätstests der LLM-Tools.
 Eine interessante Möglichkeit, die beim Physik-Tutor der Harvard Studie besprochen wird [@kestin2025], ist die **Bereitstellung von Musterlösungen als Input** (nicht nur der Fragen), was die Gefahr von Ungenauigkeiten, Halluzinationen und Inkonsistenzen in den Antworten des Sprachmodells deutlich reduziert.
@@ -308,6 +319,9 @@ Hier sind der hohe initiale Implementierungsaufwand, Datenschutzanforderungen un
 
 Für all diese allgemeinen Tutoren gilt: Ihre Effektivität hängt von der Qualität des Prompts und der Fähigkeit der KI ab, die Tutor-Rolle konsistent und pädagogisch sinnvoll auszufüllen, was nicht immer gegeben ist und von Modell zu Modell variieren kann [@mollick2024a, S. 36].
 Die KI kann oberflächlich bleiben oder halluzinieren [@mollick2024a, S. 36].
+
+<!-- Einschub 2026-07-16 (Gegenlesen-Ordner, Einschub 2), eingesetzt und nach Redaktionsregel gekürzt 2026-10-17; Perczel-Zahlen stehen vollständig in Anhang D (@sec-d-tutoren), Banh-Prinzipien in Anhang C (@sec-update-2026-07-rs) -->
+Über solche einzeln erdachten Prompts hinaus gibt es inzwischen systematisches Gestaltungswissen. @banh2026 leiten aus Interviews, Literatur und einem erprobten Prototyp drei übergeordnete Anforderungen an GenAI-Lernagenten ab, Selbststeuerung, Kollaboration und Assessment (von lateinisch *assidēre*, „sich danebensetzen“), sowie neun Design-Prinzipien; die beiden Feedback-Prinzipien geben den Fällen COFFEE und MIND nachträglich eine theoretische Grundlage: Antworten weisen ihre Quelle im Lernmaterial aus, und Feedback benennt Stärken und macht Wissenslücken sichtbar, um die Selbstbewertung der Lernenden zu stützen. Die Wirksamkeit hat allerdings eine Grenze, die im Modell selbst liegt. @perczel2025 messen die dialogische Qualität heutiger Sprachmodelle an echten Eins-zu-eins-Tutorien und finden sie systematisch schwächer als die menschlicher Tutorinnen und Tutoren: Die Modelle lassen Lernenden nur 5 bis 15 Prozent der Redezeit statt rund 30, stellen drei bis vier Fragen auf einmal und drängen früh zur Lösung. Die Ursache ist strukturell: Standard-Modelle sind darauf optimiert, als hilfreiche Assistenten Reibung zu minimieren, während gutes Unterrichten Reibung gezielt erzeugt. Prompt Engineering, das Feinschleifen der Anweisungen an das Modell, bleibt deshalb ein Notbehelf; erst das Nachtrainieren auf 100.000 Stunden echter Tutorien verdoppelte in der Studie die Redezeit der Lernenden. Für die Praxis schärft das den Vorbehalt dieses Abschnitts: Die Qualität eines GenAI-Tutors hängt am Prompt *und* am Modell, und die zuverlässigsten Gegenmaßnahmen liegen jenseits des Prompts, von Musterlösungen als Input bis zu systematischen Testläufen vor dem Einsatz (Testplan in @sec-d-tutoren).
 
 **Sprachen lernen und schwierige Situationen simulieren** kann man sehr einfach und auf hohem Niveau über den Sprachmodus der großen Chat-Interfaces [@jurran2025].
 Vorreiter war der „Voice Mode“ von OpenAI, den man als App auf dem Handy ausprobieren kann (gut in der kostenfreien, sehr gut in der kostenpflichtigen Version); die anderen großen Anbieter bieten seither ähnliche Funktionen an.
@@ -333,6 +347,14 @@ Studierenden loggen sich über eine Weboberfläche – oder in manchen Fällen e
 Die KI analysiert die eingegebenen Antworten und entscheidet anhand vorab definierter Parameter und eines Maschinenlern-Modells, ob und wie viel zusätzliche Hilfestellung nötig ist.
 Bei korrekten oder fast korrekten Lösungen wird ein vertiefender Schritt vorgeschlagen (etwa eine weiterführende Frage), während bei fehlerhaften Lösungsschritten gezielt ein Tipp oder ein Hinweis auf das entsprechende Lehrmaterial gegeben wird.
 Dadurch werden die Lernenden kontinuierlich im Lernprozess unterstützt, ohne gleich eine komplette Lösung zu sehen.
+
+### Vom Prototyp zum Betrieb: Tutoren mit eigenen Quellen {#sec-tutor-betrieb}
+
+<!-- Neu 2026-10-17 (Claude-Entwurf) aus Tutor-Bots-AWS-TH-Koeln (März 2026); modellneutral, Anbieter nur als datierter Beleg. TODO Roman: Architektur des BWL-Tutors bestätigen (Hosting AWS Amplify ist aus der URL ersichtlich; Backend?). -->
+Die bisher gezeigten Tutoren sind Prompts in einem Chat-Interface. Ein Tutor, der einen ganzen Kurs über ein Semester begleiten soll, braucht mehr: eine **Wissensbasis** aus den eigenen Kursmaterialien, damit er aus dem Skript antwortet statt aus dem Netz (das Verfahren dahinter, Retrieval-Augmented Generation, erklärt @sec-d-quellen); eine **Dialogschicht**, die Fragen entgegennimmt und die Antwort an die Studierenden zurückgibt; **Leitplanken**, die bei offensichtlichen Prüfungsfragen auf Lernmaterial verweisen statt zu lösen; und ein **Gedächtnis** über Sitzungen hinweg, damit der Tutor weiß, was eine Person zuletzt geübt hat und Wiederholungsfragen zum passenden Zeitpunkt stellen kann (verteiltes Üben, @sec-lerntechniken). Alle großen Cloud-Anbieter stellen diese vier Bausteine inzwischen als konfigurierbare Dienste bereit, so dass ein erster Tutor mit den eigenen Skripten an einem Nachmittag steht; Referenzarchitekturen für Hochschulen beschreibt zum Beispiel AWS für seine Dienste Bedrock, Lex und AgentCore [@aws2025agentcore; @aws2025companion]. Der BWL-Tutor aus der Kapiteleinleitung läuft als Web-Anwendung in einer solchen Cloud-Umgebung. Die Kosten eines Pilotbetriebs mit einem Kurs liegen bei kleinen Modellen im niedrigen zweistelligen Eurobereich pro Monat; die eigentliche Investition ist organisatorisch: digital vorliegende Materialien, ein didaktisch durchdachter System-Prompt, ein Datenschutzkonzept für studierendenbezogene Daten und ein Testplan, bevor Studierende den Tutor sehen (@sec-d-tutoren). Wie das in konkreten Modulen gelaufen ist, zeigen die Fallbeispiele in @sec-fallbeispiele. <!-- TODO: Label existiert erst mit Kapitel 6 -->
+
+<!-- Einschub 2026-07-02 (Baustein 4.3-B), eingesetzt 2026-10-17 -->
+Offen bleibt bei alledem, wer den Tutor im Hörsaal steuert. Eine Design-Studie aus dem Labor von Vincent Aleven zu ko-orchestrierter Lehre, in der die KI vorschlägt, wann Lernende zwischen Einzel- und Partnerarbeit wechseln, zeigt, dass Lehrendenkontrolle und studentische Agency **kein einzelner Schieberegler** sind, sondern phasenweise variieren: Lehrende wollen ein Echtzeit-Vetorecht beim Wechsel selbst, akzeptieren aber Systemvorschläge für dessen Timing; Studierende wollen Mitsprache bei der Partnerwahl, erwarten die finale Autorität aber bei den Lehrenden [@yang2026orchestration]. Orchestrierungswerkzeuge, die einen einzigen Autonomiewert festlegen, werden deshalb beiden Seiten nicht gerecht; wie sich Kontrollpunkte für KI-Werkzeuge in der Lehre allgemein setzen lassen, behandelt @sec-d-modus.
 
 
 ## KI als Simulator {#sec-simulator}
