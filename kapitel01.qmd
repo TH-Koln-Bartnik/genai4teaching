@@ -32,37 +32,33 @@ Was mit generativer KI inzwischen möglich ist, zeigt die folgende Galerie an dr
 ## Was möglich ist: Praktische Beispiele für Recherche, Übungsaufgaben, Erklärungen {#sec-2025-examples}
 "KI nutzen" heißt seit der agentischen Wende (s. @sec-weiterentwicklung) nicht mehr nur "chatten mit dem Bot", sondern **Delegation an Agenten** [@mollick2025e]: Man delegiert Aufgaben, die KI nutzt Werkzeuge und arbeitet mehrstufig, prüft also selbstständig Zwischenergebnisse. Praktisch unterschieden wir dabei drei Ebenen: **Modelle** (das Sprachmodell selbst, etwa das Flaggschiff eines großen Labors), **Apps** (die Oberfläche, z.B. die Texteingabe im Browser des Chat-Interfaces) und **Harnesses** („Arbeitsgeschirr“ oder Werkzeugkasten, etwa Web-Recherche, Zugriff auf einen Ordner mit Daten oder die Fähigkeit zum Rechnen mit Programmiersprachen wie Python). Wichtig für die Lehre: **Wenig Kosten heißt oft auch wenig(er) Nutzen** ("No such thing as a free lunch", hört man die Ökonomen murmeln...[@friedman1975]). Viele Plattformen locken Nutzer in kostenlose Tarife oder per „Auto“-Auswahl in **schwächere Modellvarianten**, denen dann das iterative Vorgehen fehlt (*reasoning*), oft ohne oder nur mit sehr begrenztem Harness-Werkzeugkasten. Das wirkt zunächst „gut genug“, erhöht aber das Risiko von Fehlern, veralteten Informationen und oberflächlichem Denken. Für die Lehre heißt das: Wer GenAI als Lehrassistenz nutzen will, sollte **bewusst eine starke Modellvariante** und ein passendes Harness wählen – und Ergebnisse grundsätzlich didaktisch gegenprüfen.
 
-**Schauen wir uns einige praktische Beispiele an**, was mit schlauen Modellen und gut gefülltem Werkzeugkasten möglich ist (die Beispiele stammen aus dem Winter 2025/26 <!-- TODO Roman: Zeitraum prüfen -->). Wir suchen neue Fallstudien zu Lieferketten-Problemen. Als Recherche-Hiwi sucht das Sprachmodell auf akademischen Blogs und Fachzeitschriften nach Beispielen aus den letzten Jahren.
+**Drei Beispiele zeigen, was mit schlauen Modellen und gut gefülltem Werkzeugkasten möglich ist** (die Beispiele stammen aus dem Winter 2025/26 <!-- TODO Roman: Zeitraum prüfen -->). Erstens die Recherche: Wir suchen neue Fallstudien zu Lieferkettenproblemen. Als Recherche-Hiwi durchsucht das Sprachmodell akademische Blogs und Fachzeitschriften, legt dafür zunächst einen Suchplan an, arbeitet ihn in mehreren Schritten ab und zeigt dabei seinen „Denkprozess“; nach etwa fünf Minuten liegt ein erster Bericht von 13 Seiten vor (@fig-ergebnis-bericht zeigt den Auszug mit der tabellarischen Zusammenfassung der Forschungsartikel).
 
-![Recherche-Hiwi-Vorgehen. Screenshot Gemini 3 Pro, Januar 2026 <!-- TODO Roman: Monat prüfen -->](images/script01-dr-plan.svg){#fig-deep-research-plan fig-align="center"}
-
-Solche Suchen führen Sprachmodelle mit Research-Harness in mehreren Schritten durch. Hier sehen wir den "Denkprozess".
+::: {.content-visible when-format="html"}
+![Recherche-Hiwi-Vorgehen: der Suchplan. Screenshot Gemini 3 Pro, Januar 2026 <!-- TODO Roman: Monat prüfen -->](images/script01-dr-plan.svg){#fig-deep-research-plan fig-align="center"}
 
 ![Recherche-Hiwi-Denkprozess. Screenshot Gemini 3 Pro, Januar 2026 <!-- TODO Roman: Monat prüfen -->](images/deep-research-recherche-aktuelle-lieferkettenprobleme-denkprozess-geminipro.svg){#fig-denkprozess fig-align="center"}
+:::
 
-Hier das Ergebnis: Ein erster ausformulierter Bericht von 13 Seiten nach ca. 5 Minuten Recherche. Die Abbildung zeigt den Auszug mit der tabellarischen Zusammenfassung der Forschungsartikel.
+![Recherche-Hiwi-Ergebnis: Auszug aus dem Bericht mit der tabellarischen Zusammenfassung. Screenshot Gemini 3 Pro, Januar 2026 <!-- TODO Roman: Monat prüfen -->](images/deep-research-recherche-aktuelle-lieferkettenprobleme-ergebnis-auszug-geminipro.svg){#fig-ergebnis-bericht fig-align="center"}
 
-![Recherche-Hiwi-Ergebnis. Screenshot Gemini 3 Pro, Januar 2026 <!-- TODO Roman: Monat prüfen -->](images/deep-research-recherche-aktuelle-lieferkettenprobleme-ergebnis-auszug-geminipro.svg){#fig-ergebnis-bericht fig-align="center"}
+Zweitens Erklärungen und Tests: Wir bitten das Chat-Interface, zwei Konzepte aus der Wissenschaftstheorie einfach und mit Beispielen zu erklären, die Duhem-Quine-These (warum Wissenschaft nur graduell, mosaikbauend zu Erkenntnissen kommt) und Mayos „strenge Tests“ (severe testing, nach denen sich wissenschaftliche Aussagen graduell auf ihre Belastbarkeit bewerten lassen), und anschließend Multiple-Choice-Fragen dazu vorzuschlagen. Beides liefert das Modell in brauchbarer Qualität; die fachliche Prüfung bleibt bei uns.
 
-Wie kann man Konzepte einfach und mit Beispielen erklären? Wir bitten ChatGPT um Vorschläge zu zwei Konzepten aus der Wissenschaftstheorie: Der Duhem-Quine-These, die beschreibt, warum Wissenschaft nur graduell, mosaik-bauend zu Erkenntnissen kommen kann, und Mayos Konzept der "Strengen Tests" (severe testing), nach denen man wissenschaftliche Aussagen graduell auf ihre Belastbarkeit bewerten kann.
-
+::: {.content-visible when-format="html"}
 ![Recherche-Hiwi-Konzepterklärung. Screenshot ChatGPT 5.2, Januar 2026 <!-- TODO Roman: Monat prüfen -->](images/konzepterklaerungen-beispiele-gpt5-2.svg){#fig-konzepte fig-align="center"}
 
-Wie könnte man das in einem Test abfragen? Auch hierzu bitten wir das Chat-Interface um Vorschläge.
-
 ![Recherche-Hiwi: Vorschläge für Multiple-Choice-Testfragen. Screenshot ChatGPT 5.2, Januar 2026 <!-- TODO Roman: Monat prüfen -->](images/multiple-choice-test-beispiele-gen-chatgpt.svg){#fig-testfragen fig-align="center"}
+:::
 
-Starke Sprachmodelle generieren **professionelle Folien-Präsentationen in Sekunden.** Seit Ende 2025 können Bildmodelle wie das von Google auch Text in Bildern korrekt erstellen [@willison2025a] und damit auch komplexe Infografiken (und Folien). Das Sprachmodell *Claude* liefert eine Beschreibung ('Skill') von 3500 Wörtern mit, die dem Sprachmodell genau erklärt, wie es Schritt für Schritt eine PowerPoint-Präsentation erstellt und testet [@anthropic2025a]. Weiter unten zeigen wir, wie so ein Skill etwa bei der Erstellung komplexer Dokumente (Hausarbeiten!) hilft.
+Drittens Folien: Starke Sprachmodelle generieren **professionelle Präsentationen in Minuten.** Seit Ende 2025 setzen Bildmodelle auch Text in Bildern korrekt und damit komplexe Infografiken [@willison2025a]; das Sprachmodell *Claude* bringt eine Anleitung („Skill“) von 3.500 Wörtern mit, die ihm Schritt für Schritt erklärt, wie es eine PowerPoint-Präsentation erstellt und prüft [@anthropic2025a]. Wir bitten zwei Systeme, aus Überblicksartikeln Folien zu bauen: zur Frage, welche Lerntechniken für Studierende besonders gut funktionieren (s. @sec-grundbegriffe), und zur Frage, wie sich Aufgabenstellungen mit intensiver GenAI-Nutzung verbinden lassen (s. @sec-prompts). Nach wenigen Minuten liegen 15 beziehungsweise 8 Folien vor, grafisch ansprechend und mit kleineren Formatierungsfehlern wie falschen Zeilenumbrüchen (@fig-folien-claude).
 
-Grafisch ansprechende Präsentationen kosten Zeit – und Brillanz als Grafiker gehört vielleicht auch nicht zu den Kernkompetenzen von Lehrenden. Wir bitten daher Gemini (NotebookLM) und Claude, uns basierend auf Überblicksartikeln zwei Präsentationen zu erstellen: Eine zur Frage, welche Lerntechniken für Studierende besonders gut funktionieren (s. @sec-grundbegriffe) und die zweite zur Frage, welche Best-Practices es gibt, Aufgabenstellungen mit der intensiven Nutzung von GenAI zu verbinden (s. @sec-prompts).
-
-Zu integrierten Aufgaben mit GenAI liefert uns das Sprachmodell nach wenigen Minuten 15 sehr schicke Folien (NotebookLM, basierend auf 13 Quellen-PDFs).
-
+::: {.content-visible when-format="html"}
 ![Recherche-Hiwi-Ergebnis: Folien zu integrierten Aufgaben. Screenshot NotebookLM, Dezember 2025 <!-- TODO Roman: Monat prüfen -->](images/genai-integrierte-aufgaben-gen-notebooklm.svg){#fig-folien-notebooklm fig-align="center"}
+:::
 
-Zu Lerntechniken erhielten wir nach etwa 5 Minuten basierend auf einem Fachartikel 8 professionelle Folien (mit kleineren Formatierungsfehlern, etwa Zeilenumbrüchen).
+![Recherche-Hiwi-Ergebnis: Folien zu Lerntechniken aus einem Fachartikel. Screenshot Claude, Dezember 2025 <!-- TODO Roman: Version prüfen -->](images/lerntechniken-ppt-gen-claude-2025-12.svg){#fig-folien-claude fig-align="center"}
 
-![Recherche-Hiwi-Ergebnis: Folien zu Lerntechniken. Screenshot Claude, Dezember 2025 <!-- TODO Roman: Version prüfen -->](images/lerntechniken-ppt-gen-claude-2025-12.svg){#fig-folien-claude fig-align="center"}
+Der Rest des Buches zeigt, wo solche Hilfen in der Lehre sinnvoll sind und wo sie das Lernen gefährden. <!-- TODO Roman: Bausteine 1.2-A/1.3-A/1.5-A/1.5-B/1.8-A aus dem Gegenlesen-Ordner (0_GenAI, Juli 2026) sind noch nicht eingesetzt; Vorschlag aus der Notiz Woche 3: 1.5-B in 1.5 (Nutzungszahlen), 1.8-A als methodische Vorbemerkung, Rest weglassen. -->
 
 ## Nutzung von GenAI in der Forschung {#sec-forschung}
 
