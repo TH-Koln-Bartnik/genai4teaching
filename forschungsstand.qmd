@@ -1,20 +1,164 @@
+---
+bibliography: [references.json, forschungsstand-online.bib]
+---
+
 # Forschungsstand (lebende Seite) {.unnumbered #sec-forschungsstand}
 
 Diese Seite ergänzt die datierten Kästen „Stand der Forschung bei Drucklegung" in den Kapiteln. Das gedruckte Buch nennt zu jeder Gestaltungsfrage höchstens drei Studien; hier stehen auch die Studien, die bei Drucklegung in den Anhang oder in die Online-Fassung ausgelagert wurden, und alles, was der halbjährliche Radar-Scan seither ergänzt hat.
 
 ::: {.callout-note title="Stand dieser Seite: November 2026"}
-Letzte Prüfung: November 2026 (Drucklegung). Nächste planmäßige Aktualisierung: nach dem Radar-Scan zum Sommersemester 2027.
+Letzte Prüfung: 17. Oktober 2026 (Evidenz-Screening der Neuerscheinungen Juli bis Oktober 2026 zu KI-Tutoren; Druckstand November 2026). Nächste planmäßige Aktualisierung: nach dem Radar-Scan zum Sommersemester 2027.
 :::
-
-<!-- TODO (Strang E, Woche 3): Tabelle der B-Quellen je Gestaltungsfrage aus notes/evidenz-screening-radar-2026-10.md übernehmen:
-Gestaltungsfrage | Studie | Design | Kernbefund | Status (im Buch / nur online) -->
 
 ## Wie Sie diese Seite lesen
 
-Die Gestaltungsfragen sind dieselben wie im Buch; die Nummern folgen der Liste in den Kapitelkästen. Zu jeder Studie steht in einem Satz, was sie gefunden hat, und in einem zweiten, wie sie es gefunden hat (Design, Stichprobe, Kontext), damit die Belegkraft eingeschätzt werden kann. Herstellerdaten (Anthropic, OpenAI, Microsoft) sind als solche gekennzeichnet.
+Die Gestaltungsfragen sind dieselben wie im Buch; die Nummern folgen der Liste in den Kapitelkästen. Zu jeder Studie steht in einem Satz, was sie gefunden hat, und, wo es die Belegkraft betrifft, wie sie es gefunden hat (Design, Stichprobe, Kontext). Die Spalte „Status" sagt, ob die Studie im gedruckten Buch den Fließtext trägt (Buch), nur im Kapitelkasten steht (Kasten) oder ausschließlich hier geführt wird (online). Herstellerdaten (Anthropic, OpenAI, Google, Khan Academy) sind als solche gekennzeichnet. Preprints und Working Papers sind nicht begutachtet und als Hinweise zu lesen.
+
+## Kapitel 3: Lernwirkung und kognitive Auslagerung
+
+### Frage 1: Lernen Studierende mit KI-Tutoren mehr als mit herkömmlicher Hilfe?
+
+| Studie | Design und Kontext | Kernbefund | Status |
+|:--|:--|:--|:--|
+| @kestin2025 | RCT, Physik-Einführung, Harvard | Tutor mit Musterlösungen und Portionierung schlägt die aktive Präsenzübung bei geringerer Lernzeit | Buch |
+| @liu2026courseintegrated | RCT, 2.379 Studierende, 30 Lehrende, Maryland, Tutor über LMS-Material | −0,37 SD Note, −0,90 SD Kursbeteiligung; 15 % Nutzung, 74 % Antwortsuche; Erstakademiker −0,50 SD | Buch |
+| @oreopoulos2026productive | präregistrierter 2×2×2-RCT, 6.997 Schüler, verzögerter Test | Tutor nur im Mastery-Ablauf wirksam; nach Fehler +8,5 pp im nächsten Versuch | Buch |
+| @lawson2026 | Methodenkritik | ChatGPT-Kontroll-Vergleiche in @deng2025 und in der zurückgezogenen Meta-Analyse von Wang und Fan sind durch Methode, Übungszeit und Dauer konfundiert | Buch (Vorbehalt) |
+| @fischer2025 | RCT, 334 Studierende, Deutschland, Prüfung mit Anreiz | +0,23 SD; freier Zugang schlägt die Restriktion „erst lesen" um 0,21 SD | Buch |
+| @deng2025; @wu2024a | Meta-Analysen 2022–2024 | positive Effekte auf Leistung und Motivation, kurze Interventionen, Vorbehalt Lawson | Kasten |
+| @ren2026 | Meta-Analyse, 47 RCTs | g = 0,68 Leistung; Dosis-Plateau bei etwa 23 Stunden; Moderation durch menschliche Begleitung | Kasten |
+| @jing2026 | Meta-Analyse Hochschule | g = 0,46 | Kasten |
+| @wuouyang2026 | Bayes-Meta-Analyse Programmieren | trennt KI-gestützte von unbegleiteter Leistung | Kasten |
+| @learnlm2025 | Feldexperiment, 165 Schüler, fünf britische Schulen, menschliche Freigabe jeder Nachricht | 66 statt 61 % gelöste neue Aufgaben; Herstellerangabe | Kasten |
+| @yang2026speak | präregistriertes Feldexperiment, 86 Online-MBA | +6,63 Punkte; Sprache = Text bei 2,8-fachen Kosten | Kasten |
+| @harrison2026medly | Mikro-RCTs, Sekundarstufe, Praktiker-geführt | g = 0,33 | Kasten |
+| @northcutt2026studentbench | 2.383 Erwachsene, GRE-Vorbereitung, Industrieautoren | KI-Tutoring = menschliches Tutoring bei kurzfristigem Testprep | Kasten |
+| @chakraborty2026 | vier Experimente in einem Programmierkurs | Tutor-Rolle hebt Motivation, nicht die Klausur; Löser-Rolle hebt die Aufgabe, nicht den Transfer | Kasten |
+| @kuo2026 | Quasi-Experiment, Programmierkurs, Taiwan | Tutor-Bot plus Tutee-Bot schlägt Antwort-Bot | Kasten, Anhang D |
+| @hanliu2026 | Meta-Analyse Motivation | SMD 0,48 | online |
+| @chung2026personalized | RL-gestützte Aufgabensequenzierung | +0,15 SD; SSRN-Fassung März 2026 abgleichen | online |
+| @lee2026socraticmind | Feldstudie, Georgia Tech | formatives Assessment-Werkzeug, Befunde zu höherem Denken | online |
+| @narine2026aitutor | Feldstudie | Deckeneffekt diskutiert | online |
+| @openai2026studymode | Herstellerstudie, mehr als 300 Studierende | Gewinn in Mikroökonomie, keiner in Neurowissenschaft | Kasten (Herstellerangabe) |
+| @ghahramani2026sierraleone | Feldstudie Sierra Leone, Herstellerangabe | +0,258 SD; 76 % Rückfragen, 2 % Lösungen | Kasten (Herstellerangabe) |
+
+### Frage 2: Wann senkt KI-Hilfe das Lernen, obwohl die Aufgabe schneller gelöst wird?
+
+| Studie | Design und Kontext | Kernbefund | Status |
+|:--|:--|:--|:--|
+| @bastani2025 | RCT, ca. 1.000 Oberstufenschüler, Türkei | ungebremst +48 % Übung, −17 % Prüfung; mit Leitplanken +127 % Übung, kein Schaden | Buch |
+| @rismanchian2026 | Paneldaten, 3,2 Mio. Interaktionen, Lernplattform | −27 % Lernzeit bei kopierbaren Aufgaben (Studierende), −31 % Oberstufe; unter Aufsicht kein Effekt | Buch |
+| @bergh2026cognition | Laborexperiment, 59 CS-Studierende | 89 vs. 69 % Aufgabe, 39 vs. 52 % Behalten nach 48 h, geringere Eigenzuschreibung | Buch |
+| @nakamura2026 | Theorie | Augmentation, wenn Nebenoperationen abgegeben werden; Erosion, wenn lernzielkonstitutive Operationen umgangen werden | Buch |
+| @mittal2026 | RCT, acht Tage Recherche | Chatbot statt Websuche senkt Lernen, am stärksten kritisches Denken | Kasten |
+| @kosmyna2025 | EEG, 54 Teilnehmende, Preprint | geringere neuronale Aktivierung beim Essayschreiben; 18 Personen in der entscheidenden Sitzung | Kasten |
+| @contractor2026learning | präregistrierter RCT, Essay, Test nach einer Woche | +0,27 SD sofort; Erhalt nur bei augmentierender Nutzung | Kasten |
+| @autor2026expertise | NBER, 133 Patentanwälte, drei Monate | Qualität steigt für alle; unbegleitete Fähigkeit nach 90 Tagen nur bei Erfahrenen | Kasten |
+| @sungu2026harmteaching | SSRN, Lehrenden-Tool | senkt Motivation der Lehrenden um 0,11 SD | Kasten |
+| @siyan2026conversational | Log-Analyse | Gesprächsverhalten sagt unbegleitete Leistung voraus | online |
+| @yi2026behavior | Log-Analyse | Lernverhalten erklärt herkunftsbedingten Vorteil bei KI-Hilfe | online |
+| @chen2026informal | 128.569 Gespräche | informelles Lernen entsteht in Alltagsinteraktion | online |
+| @dickey2026solving | Experiment | „Bewerten statt Lösen" ohne Effekt | online |
+| @chenjia2026 | Längsschnitt | Motivation bricht nach Wegfall der KI ein | online |
+| @barshay2026eroding | Journalismus (Hechinger Report) | Überblick zur Erosionsdebatte | online |
+
+### Frage 3: Welche Gestaltungsmerkmale schützen vor Auslagerung?
+
+| Studie | Design und Kontext | Kernbefund | Status |
+|:--|:--|:--|:--|
+| @maier2026deskilling | präregistriertes Online-Experiment, N = 704, LMU | metakognitive Rückmeldung halbiert Auslagerung (OR 0,47), hebt unbegleiteten Test (OR 1,51); Belohnung wirkungslos | Buch |
+| @ates2026 | Multisite-Cluster-RCT, 1.176 Erstsemester, 48 Sektionen, vier Hochschulen | direktes Feedback sofort besser; reflektierend/hybrid beim verzögerten Transfer besser | Buch |
+| @barth2026steering | präregistriertes Crossover, N = 1.059, ETH | kein Effekt von SRL-/ICAP-System-Prompts auf vier konfirmatorische Maße | Buch |
+| @xu2026; @tao2026justification | Experimente | eigene Antwort vor der KI-Antwort; Begründungspflicht senkt Übernahme fehlerhafter Vorschläge um 24 pp | Buch, Kasten |
+| @hou2026 | Drei-Gruppen-Experiment, Bauingenieurwesen | Gewinne nur mit Prompting-Gerüst bei offenen Aufgaben | Kasten |
+| @yang2026visar | zwei Semester, Schreibwerkzeug | Planungs- und Prüfschritte erhalten statt abnehmen | Kasten |
+| @ross2026 | drei präregistrierte Studien | Fehlvorstellungen nur mit korrigierender Rolle auf Vorwissensniveau | Kasten |
+| @akgun2026 | Experiment, sieben Wochen | strukturierte Abruf-Übung schlägt freies KI-Lernen beim Behalten | Kasten |
+| @chen2026transfer | 16-Wochen-Cluster-RCT, 108 Studierende | gleiche Überarbeitung, Transfer nur mit Peer-Schicht um das KI-Feedback | Kasten |
+| @brender2026reflective | Zwei-Phasen-Feldstudie, EPFL | sokratisch Geführte prompten nach Wegfall der Leitplanken verständnisorientierter | Kasten |
+| @guan2026 | Längsschnitt-RCT, 356 Lehramt | KI- vs. Expertenfeedback | Kasten |
+| @su2026engage | Experiment, Engage-to-Unlock | produktive Reibung vor der Freigabe der KI-Antwort | online |
+| @zabelina2026socratic | präregistrierte Feldstudie | strukturierte sokratische Hausaufgaben | online |
+| @bereznikova2026 | Experiment | sokratischer Dialog und kritisches Denken | online |
+| @huangli2026 | Grundschule | artefaktgebundene sokratische Hinweise, g = 0,52 | online |
+| @jin2026 | Experiment | proaktiver vs. reaktiver Tutor | online |
+| @khosravi2026 | Rahmenwerk | Maßstab „unabhängig nach Wegfall der Hilfe" | Kasten |
+| @wulu2026 | Befragung | Verlass auf KI senkt wahrgenommene Agency | online |
+| @fuetterer2026 | Kommentar, Tübingen | Einordnung der Erosionsdebatte | online |
+
+### Frage 4: Trägt die Einbettung oder das Werkzeug?
+
+| Studie | Design und Kontext | Kernbefund | Status |
+|:--|:--|:--|:--|
+| @oreopoulos2026 | RCT, 83 indische Internatsschulen | Gewinne nur mit betreuten Lernzeiten | Buch |
+| @oreopoulos2026khanmigo | Cluster-RCT, 18 Schulen, zwei Jahre | 0,06–0,08 SD/Jahr, nicht besser als ohne KI; Nutzung an einem Drittel der Tage, 17 % der Fehler-Sitzungen | Buch |
+| @melanou2026 | Quasi-Experiment, N = 87, Wirtschaftsinformatik, Deutschland, ein Semester | kein Zusatzgewinn, keine Erosion; Rahmung entscheidet | Buch |
+| @gallegos2026 | zwei RCTs, Ökonometrie, Chile | Ermutigung wirkungslos; Anleitung zur tutoriellen Nutzung +0,21 SD, +12 pp Bestehen | Buch |
+| @robinson2026 | EdWorkingPaper | menschliche Begleitung hebt Nutzung auf 71–80 %, nicht die Leistung | Kasten |
+| @stumpf2026 | bidt, 84 Lehrveranstaltungen, SoSe 2025 | kein Unterschied im wahrgenommenen Lernerfolg | Kasten |
+| @tobler2026 | 407 Studierende, ETH | Gestaltung und Nutzung, kein Lernmaß | Kasten |
+| @turano2026monolith | Synthese, Stanford | Taxonomie nach Beziehungsintensität; reine KI-Tutoren: 40–47 % nutzen nie | Kasten |
+| @korchak2026 | JRTE | Nutzungsmuster | online |
+| @isazadominguez2026 | Ingenieurstudium | Prompting und Leistung | online |
+| @galindo2026 | CHB | Nutzung und Lernen | online |
+| @berger2026 | PNAS | Mensch-KI-Synergie | online |
+| @changli2026 | 60.000 Nachrichten | Nutzungsmuster im Tutor | online |
+
+## Kapitel 4: Tutoren gestalten und betreiben
+
+| Studie | Design und Kontext | Kernbefund | Status |
+|:--|:--|:--|:--|
+| @khan2026firstchapter | Herstellerkommentar | Nullbefund eingeräumt; Tutor in der Aufgabe, keine Antwort vor Versuch, Eingreifen nach Fehler | Buch |
+| @ahtisham2026impasses | 20.462 Tutor-Turns | in Sackgassen hilft Benennen des Fehlers mehr als weitere Rückfragen | Buch |
+| @hou2026comet | Experiment | kontingentes Eskalieren und Ausblenden schlägt starre Varianten | Buch |
+| @tani2026 | Fallstudie, RAG-Assistent im OM-Planspiel, Finnland | 61 % Adoption, 90–95 % Korrektheit, kein Nutzung-Note-Zusammenhang | Buch |
+| @gerber2026 | Pre-Post, 62 Studierende, HS Rhein-Waal, lokaler RAG-Tutor | Fragebereitschaft δ = 0,43, Neugier δ = −0,57 | Buch |
+| @pisan2026withhold | Architektur | Supervisor-Instanz prüft Tutorantworten vor dem Versand | Anhang D |
+| @eastwood2026guardrails | Experiment, 132 Studierende | strikte Leitplanken kosten Engagement; Ausweichen zum freien LLM | Anhang D |
+| @clindeffarges2026socrates | Hirnsensorik, 50 Erwachsene | sokratische Variante verliert kurzfristig, kein verzögerter Test | Anhang D |
+| @zhuyang2026 | Vergleich von Tutorrollen | bevorzugte Rolle ist nicht die lernwirksamste | Anhang D |
+| @lee2026llm; @teo2026ai; @perczel2025 | Klassifikation, Benchmark, Tutoring-Daten | Modelle helfen zu früh und zu viel; Prompt allein behebt es nicht | Anhang D |
+| @dominguez2026learner | Simulation | Optimieren einer pädagogischen Metrik verschlechtert den Tutor | online |
+| @adak2026teach | Synthese | prozessorientierte Sicht auf die Tutoring-Schleife | online |
+| @udeshi2026khanmigo | Herstellerbericht | Qualitätsmethoden für K-12-Tutoring | online |
+| @shapiro2026coursechat | Fallstudie, lokaler Campus-Tutor | Antwortgeschwindigkeit als Nutzungsschwelle | Anhang D |
+| @ziegler2026ragtutor | Blog HU Berlin | RAGflow-Tutor im Betrieb | online |
+
+## Kapitel 5: Richtlinien, Rechtsrahmen, Hochschulen in Deutschland
+
+| Quelle | Art | Kernaussage | Status |
+|:--|:--|:--|:--|
+| @wissenschaftsrat2026 | Empfehlung | Evidenz „(noch) nicht belastbar"; Hochschulen als Betreiber nach KI-VO | Buch |
+| @eu2026omnibus; @kicampus2026omnibus | Rechtsakt, Erläuterung | Artikel 4 bleibt, kein garantiertes Kompetenzniveau | Buch |
+| @baresel2026 | Rechtshandreichung | Szenario eigener RAG-Tutor; Prompt und Quellenanbindung keine Modifikation; 15-%-Schranke | Buch |
+| @mit2026aicommittee | Institutionsbericht | acht Prinzipien, mündliche Prüfung, keine Detektoren, modellagnostische Plattform | Buch |
+| @horstmann2026check | Befragung, 28.584 Studierende | 81 % wöchentlich, 50 % als Tutor/Lernpartner | Buch |
+| @budde2026 | Leitungsbefragung, n = 120 | 53 % Lernassistenten in Umsetzung, 13 im Regelbetrieb | Kasten |
+| @brandenburger2026 | Befragung Lehrender | zwei Drittel geben Material frei, Bedingungen Urheberrecht und kein Training | Kasten, Anhang D |
+| @glomski2026 | Physik, Deutschland | Tutor, der alles verrät, wird so genutzt | Kasten |
+| @zhlbayreuth2026kitutorien | Projektseite | „KI-Tutorien" meint menschliche Tutorinnen und Tutoren | Kasten |
+| @muenzer2026autonomie | HFD-Diskussionspapier | Autonomie und KI in der Lehre | online |
+| @paassen2026misstrauen | HFD-Blog | Misstrauen gegenüber agentischen Ketten | online |
+| @hinzmann2026; @buck2026 | Tagungsband | Bereitstellung garantiert keine Nutzung | online |
+| @kimmelmann2026tobot | Buchkapitel | Potenziale und Grenzen KI-gestützter Lernbegleiter; Buch-DOI | online |
+
+## Anbieter (Herstellerangaben)
+
+| Quelle | Inhalt | Status |
+|:--|:--|:--|
+| @openai2026plugins; @devani2026learninglab; @openai2026teens; @openai2026teensupdate | quellengebundener Tutor in ChatGPT Edu; Learning Lab; Angebote für Jugendliche | Kasten / online |
+| @google2026classroom; @google2026skills | Gemini im Classroom; Abkündigung der Gems im Bildungsbereich frühestens 01.06.2027 | Kasten |
+| @anthropic2026teachers | Claude for Teachers | Kasten |
+| @khan2026firstchapter; @khanacademy2026diagrams; @barshay2026khanmigo | Khanmigo-Umbau; Pressebericht | Kasten / online |
+| @palmer2026nonexistent; @ler2026homeworkhelper | Presseberichte zu ChatGPT-Edu-Lizenzen und Hausaufgabenhilfen | online |
+
+## Offene Prüfungen
+
+Vor der nächsten Aktualisierung zu prüfen: die Stichprobengröße bei @kuo2026 und die Effektstärken bei @gerber2026 aus den Volltexten; @chung2026personalized gegen eine mögliche SSRN-Fassung vom März 2026; die in einem Schweizer Meta-Review zitierte „Wu et al. 2026, g = 0,67" identifizieren oder verwerfen; das Erscheinungsdatum von @kimmelmann2026tobot.
 
 ## Änderungshistorie
 
 | Datum | Änderung |
 |:------|:---------|
-| November 2026 | Seite angelegt; Stand identisch mit den Kapitelkästen der Druckausgabe. |
+| 17. Oktober 2026 | Seite befüllt mit dem Evidenz-Screening der Neuerscheinungen Juli bis Oktober 2026 zu KI-Tutoren (vier parallele Recherchen; alle DOIs und URLs am 17.10.2026 geprüft). |
+| November 2026 | Druckstand; Seite identisch mit den Kapitelkästen der Druckausgabe. |
