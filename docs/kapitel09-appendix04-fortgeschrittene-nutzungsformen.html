@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Anhang D — Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle – Generative KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./transparenz.html" rel="next">
+<link href="./kapitel08-appendix03-rollenspiele-simulationen.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-57678fe1f44aceca486148dc9bf095e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-78ef6373a0ee70d2bc793fa36f3dba26.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-57678fe1f44aceca486148dc9bf095e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ko-fi.com/romanbartnik"> 
+<span class="menu-text">Ko-fi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://buymeacoffee.com/roman.bartnik.th"> 
+<span class="menu-text">Buy me a coffee</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel06-appendix01-prompt-ueberblick.html">Anhang</a></li><li class="breadcrumb-item"><a href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vorwort.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien der Nutzung von GenAI: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Überblick didaktischer Prompts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel08-appendix03-rollenspiele-simulationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Umsetzung: Rollenspiele und Simulationen mit generativer KI in der Lehre</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transparenz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transparenzhinweis zum Gesamtwerk</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literaturverzeichnis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelluebersicht.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modellübersicht (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forschungsstand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forschungsstand (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./energie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Ressourcenverbrauch der Modelle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#vorbemerkung" id="toc-vorbemerkung" class="nav-link active" data-scroll-target="#vorbemerkung">Vorbemerkung</a></li>
+  <li><a href="#sec-d-modus" id="toc-sec-d-modus" class="nav-link" data-scroll-target="#sec-d-modus"><span class="header-section-number">D.1</span> Warum Nutzungsmodus und Kontrollpunkte entscheiden</a></li>
+  <li><a href="#sec-d-arbeitsumgebung" id="toc-sec-d-arbeitsumgebung" class="nav-link" data-scroll-target="#sec-d-arbeitsumgebung"><span class="header-section-number">D.2</span> Arbeitsumgebung einrichten: Wie bringe ich der KI dauerhaft bei, was sie über meinen Kurs wissen soll?</a>
+  <ul>
+  <li><a href="#das-problem-jedes-gespräch-beginnt-bei-null" id="toc-das-problem-jedes-gespräch-beginnt-bei-null" class="nav-link" data-scroll-target="#das-problem-jedes-gespräch-beginnt-bei-null"><span class="header-section-number">D.2.1</span> Das Problem: Jedes Gespräch beginnt bei null</a></li>
+  <li><a href="#vier-bausteine-vier-aufgaben" id="toc-vier-bausteine-vier-aufgaben" class="nav-link" data-scroll-target="#vier-bausteine-vier-aufgaben"><span class="header-section-number">D.2.2</span> Vier Bausteine, vier Aufgaben</a></li>
+  <li><a href="#die-evidenz-prüfbare-regeln-werden-befolgt" id="toc-die-evidenz-prüfbare-regeln-werden-befolgt" class="nav-link" data-scroll-target="#die-evidenz-prüfbare-regeln-werden-befolgt"><span class="header-section-number">D.2.3</span> Die Evidenz: Prüfbare Regeln werden befolgt</a></li>
+  <li><a href="#das-werkzeug-der-skill-folien-evidenzbasiert" id="toc-das-werkzeug-der-skill-folien-evidenzbasiert" class="nav-link" data-scroll-target="#das-werkzeug-der-skill-folien-evidenzbasiert"><span class="header-section-number">D.2.4</span> Das Werkzeug: Der Skill <code>folien-evidenzbasiert</code></a></li>
+  <li><a href="#sec-d-ue1" id="toc-sec-d-ue1" class="nav-link" data-scroll-target="#sec-d-ue1"><span class="header-section-number">D.2.5</span> Übung Ü1: Eigener Werkzeugkasten, System-Prompt und ein Skill</a></li>
+  </ul></li>
+  <li><a href="#sec-d-quellen" id="toc-sec-d-quellen" class="nav-link" data-scroll-target="#sec-d-quellen"><span class="header-section-number">D.3</span> Eigene Quellen anbinden: Wie antwortet die KI aus meinen Texten statt aus dem Netz?</a>
+  <ul>
+  <li><a href="#das-werkzeug-quellengebundene-notizbücher-und-projekte" id="toc-das-werkzeug-quellengebundene-notizbücher-und-projekte" class="nav-link" data-scroll-target="#das-werkzeug-quellengebundene-notizbücher-und-projekte"><span class="header-section-number">D.3.1</span> Das Werkzeug: Quellengebundene Notizbücher und Projekte</a></li>
+  <li><a href="#sec-d-ue2" id="toc-sec-d-ue2" class="nav-link" data-scroll-target="#sec-d-ue2"><span class="header-section-number">D.3.2</span> Übung Ü2: Antwortbar oder nicht? KI mit eigenen Quellen</a></li>
+  </ul></li>
+  <li><a href="#sec-d-agenten" id="toc-sec-d-agenten" class="nav-link" data-scroll-target="#sec-d-agenten"><span class="header-section-number">D.4</span> Agenten und akademische Suche: Wo müssen Menschen eingreifen, damit eine Agentenkette nicht entgleist?</a>
+  <ul>
+  <li><a href="#das-werkzeug-deep-research-auf-einem-geprüften-quellenkorb" id="toc-das-werkzeug-deep-research-auf-einem-geprüften-quellenkorb" class="nav-link" data-scroll-target="#das-werkzeug-deep-research-auf-einem-geprüften-quellenkorb"><span class="header-section-number">D.4.1</span> Das Werkzeug: Deep Research auf einem geprüften Quellenkorb</a></li>
+  <li><a href="#sec-d-ue3" id="toc-sec-d-ue3" class="nav-link" data-scroll-target="#sec-d-ue3"><span class="header-section-number">D.4.2</span> Übung Ü3: Vom Quellenkorb zur Foliensequenz mit drei Kontrollpunkten</a></li>
+  </ul></li>
+  <li><a href="#sec-d-prozesse" id="toc-sec-d-prozesse" class="nav-link" data-scroll-target="#sec-d-prozesse"><span class="header-section-number">D.5</span> Prozesse sichtbar machen: Wie wird aus einer Prozessbeschreibung ein prüfbares Modell?</a>
+  <ul>
+  <li><a href="#das-werkzeug-drei-prompts-drei-darstellungen" id="toc-das-werkzeug-drei-prompts-drei-darstellungen" class="nav-link" data-scroll-target="#das-werkzeug-drei-prompts-drei-darstellungen"><span class="header-section-number">D.5.1</span> Das Werkzeug: Drei Prompts, drei Darstellungen</a></li>
+  <li><a href="#sec-d-ue4" id="toc-sec-d-ue4" class="nav-link" data-scroll-target="#sec-d-ue4"><span class="header-section-number">D.5.2</span> Übung Ü4: Ein Prozess, drei Darstellungen, eine Engpass-Vorhersage</a></li>
+  </ul></li>
+  <li><a href="#sec-d-workflows" id="toc-sec-d-workflows" class="nav-link" data-scroll-target="#sec-d-workflows"><span class="header-section-number">D.6</span> Workflows automatisieren: Welche wiederkehrende Lehrarbeit lohnt die Automatisierung, und wie bleibt sie kontrollierbar?</a>
+  <ul>
+  <li><a href="#das-werkzeug-eine-workflow-vorlage-mit-wächter-plan-prüfung-und-freigabe" id="toc-das-werkzeug-eine-workflow-vorlage-mit-wächter-plan-prüfung-und-freigabe" class="nav-link" data-scroll-target="#das-werkzeug-eine-workflow-vorlage-mit-wächter-plan-prüfung-und-freigabe"><span class="header-section-number">D.6.1</span> Das Werkzeug: Eine Workflow-Vorlage mit Wächter, Plan-Prüfung und Freigabe</a></li>
+  <li><a href="#sec-d-ue5" id="toc-sec-d-ue5" class="nav-link" data-scroll-target="#sec-d-ue5"><span class="header-section-number">D.6.2</span> Übung Ü5: Zirkel: Drei Werkzeuge, eine Vergleichskarte</a></li>
+  </ul></li>
+  <li><a href="#sec-d-tutoren" id="toc-sec-d-tutoren" class="nav-link" data-scroll-target="#sec-d-tutoren"><span class="header-section-number">D.7</span> KI-Tutoren bauen und prüfen: Wie verhindere ich, dass der Tutor zu viel hilft?</a>
+  <ul>
+  <li><a href="#das-problem-tutoren-helfen-zu-früh-und-zu-viel" id="toc-das-problem-tutoren-helfen-zu-früh-und-zu-viel" class="nav-link" data-scroll-target="#das-problem-tutoren-helfen-zu-früh-und-zu-viel"><span class="header-section-number">D.7.1</span> Das Problem: Tutoren helfen zu früh und zu viel</a></li>
+  <li><a href="#der-rahmen-vier-fragen-und-vier-prüfschichten" id="toc-der-rahmen-vier-fragen-und-vier-prüfschichten" class="nav-link" data-scroll-target="#der-rahmen-vier-fragen-und-vier-prüfschichten"><span class="header-section-number">D.7.2</span> Der Rahmen: Vier Fragen und vier Prüfschichten</a></li>
+  <li><a href="#das-werkzeug-der-tutor-als-zwei-datei-bündel" id="toc-das-werkzeug-der-tutor-als-zwei-datei-bündel" class="nav-link" data-scroll-target="#das-werkzeug-der-tutor-als-zwei-datei-bündel"><span class="header-section-number">D.7.3</span> Das Werkzeug: Der Tutor als Zwei-Datei-Bündel</a></li>
+  <li><a href="#das-studierendenprojekt-bauen-testen-abgeben" id="toc-das-studierendenprojekt-bauen-testen-abgeben" class="nav-link" data-scroll-target="#das-studierendenprojekt-bauen-testen-abgeben"><span class="header-section-number">D.7.4</span> Das Studierendenprojekt: Bauen, testen, abgeben</a></li>
+  <li><a href="#sec-d-ue6" id="toc-sec-d-ue6" class="nav-link" data-scroll-target="#sec-d-ue6"><span class="header-section-number">D.7.5</span> Übung Ü6: Testplan für einen KI-Tutor: Mini-Goldstandard und Überhilfe-Audit</a></li>
+  </ul></li>
+  <li><a href="#sec-d-lokal" id="toc-sec-d-lokal" class="nav-link" data-scroll-target="#sec-d-lokal"><span class="header-section-number">D.8</span> Lokale Modelle: Wann lohnt der Betrieb ohne Cloud, und was leistet ein kleines Modell?</a>
+  <ul>
+  <li><a href="#das-werkzeug-lm-studio-auf-dem-eigenen-laptop" id="toc-das-werkzeug-lm-studio-auf-dem-eigenen-laptop" class="nav-link" data-scroll-target="#das-werkzeug-lm-studio-auf-dem-eigenen-laptop"><span class="header-section-number">D.8.1</span> Das Werkzeug: LM Studio auf dem eigenen Laptop</a></li>
+  <li><a href="#sec-d-ue7" id="toc-sec-d-ue7" class="nav-link" data-scroll-target="#sec-d-ue7"><span class="header-section-number">D.8.2</span> Übung Ü7: Zwei Aufgaben offline</a></li>
+  </ul></li>
+  <li><a href="#sec-d-ausblick" id="toc-sec-d-ausblick" class="nav-link" data-scroll-target="#sec-d-ausblick"><span class="header-section-number">D.9</span> Ausblick: Fortgeschrittene Anwendungen</a></li>
+  <li><a href="#online-material" id="toc-online-material" class="nav-link" data-scroll-target="#online-material">Online-Material</a></li>
+  <li><a href="#transparenzhinweis" id="toc-transparenzhinweis" class="nav-link" data-scroll-target="#transparenzhinweis">Transparenzhinweis</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel06-appendix01-prompt-ueberblick.html">Anhang</a></li><li class="breadcrumb-item"><a href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-fortgeschrittene-nutzung" class="quarto-section-identifier">Anhang D — Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="vorbemerkung" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="vorbemerkung">Vorbemerkung</h2>
+<p>Dieser Anhang führt die Begriffe aus <a href="kapitel02.html" class="quarto-xref"><span>Kapitel 2</span></a> und die vier Rollen aus <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a> in die Praxis jenseits des einzelnen Chats. Wer das Buch bis hierher gelesen hat, weiß, was ein Sprachmodell, eine Wissensbasis und ein Agent sind, und kann einen Prompt nach dem CREATE-Muster schreiben. Was fehlt, ist die Werkbank: Wie richtet man die KI so ein, dass sie den eigenen Kurs kennt, bevor die erste Frage gestellt wird; wie bindet man eigene Texte an; wo greift man in eine Agentenkette ein; wie prüft man einen Tutor, den Studierende gebaut haben; und wann lohnt ein Modell auf dem eigenen Laptop.</p>
+<p>Der Anhang entstand aus dem Aufbaukurs “Jenseits einfacher Prompts” (hdw nrw, Oktober 2026) und folgt dem Muster von <a href="kapitel08-appendix03-rollenspiele-simulationen.html" class="quarto-xref"><span>Anhang C</span></a>: Jeder Abschnitt beantwortet genau eine Gestaltungsfrage, stellt ein Werkzeug vor und endet mit einer Übung, die wir im Workshop erprobt haben. Je Frage ziehen wir höchstens drei Studien heran, jeweils mit einem Satz zum Befund und einem zur Methode. Die Übungen sind so gebaut, dass das Ergebnis der einen in die nächste wandert: Der System-Prompt aus der ersten erzeugt in der vierten die Folien, die Testfragen aus der dritten werden in der siebten zum Goldstandard.</p>
+<p>Werkzeuge veralten schneller als Prinzipien. Produkt- und Modellnamen stehen deshalb nur in einem datierten Kasten in <a href="#sec-d-arbeitsumgebung" class="quarto-xref"><span>Kapitel D.2</span></a>; der Fließtext bleibt bei Gattungsbegriffen wie “das Chat-Interface des Anbieters” oder “ein starkes Reasoning-Modell”. Das Online-Material (Übungen als Handout, Skill-Dateien, Notizbücher, Workflow-Vorlagen) ist am Ende des Anhangs verlinkt und wird fortgeschrieben.</p>
+</section>
+<section id="sec-d-modus" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="sec-d-modus"><span class="header-section-number">D.1</span> Warum Nutzungsmodus und Kontrollpunkte entscheiden</h2>
+<p>Ein Chat ist ein Auskunftsschalter: Wir fragen, wir lesen die Antwort, wir prüfen sofort. Ein Agent ist eine Sachbearbeiterin mit Vollmacht: Sie bekommt einen Auftrag, plant die Schritte selbst, ruft Werkzeuge auf und arbeitet länger allein, bevor wir das Ergebnis sehen. Das Wort stammt vom lateinischen <em>agere</em>, handeln; der Agent handelt in unserem Auftrag. Zwischen diesen Polen liegen die Nutzungsformen, um die es in diesem Anhang geht, und sie unterscheiden sich in einer einzigen Größe, die alles Weitere bestimmt: Wie lange arbeitet die KI, bevor ein Mensch hinsieht? Im Chat sind es Sekunden, bei einer Recherche-Agentin Minuten, bei einem automatisierten Ablauf, der nachts läuft, Stunden, und bei einem Tutor, den Studierende ohne uns benutzen, ein ganzes Semester. Je länger die Strecke ohne Blick, desto später fällt ein Fehler auf, und desto mehr Arbeit hat er bis dahin verdorben.</p>
+<p>Daraus folgt die Gestaltungsfrage dieses Anhangs: Nicht welches Werkzeug ist das beste, sondern an welchen Stellen eines Ablaufs muss ein Mensch entscheiden, damit die Delegation trägt. Die Forschung zur Automatisierung nennt solche Stellen Kontrollpunkte; für jede Stufe einer Aufgabe lässt sich getrennt festlegen, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält <span class="citation" data-cites="parasuraman2000">(<a href="references.html#ref-parasuraman2000" role="doc-biblioref">Parasuraman et al., 2000</a>)</span>. Die Logik ist alt, die Anwendung neu: In <a href="#sec-d-agenten" class="quarto-xref"><span>Kapitel D.4</span></a> sind es drei Punkte (Quellenkorb freigeben, Rechercheplan prüfen, Aussagen gegen das Original halten), in <a href="#sec-d-workflows" class="quarto-xref"><span>Kapitel D.6</span></a> ist es ein Freigabeknopf vor jedem Schritt, der Geld kostet, und in <a href="#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a> sind es vier gestapelte Prüfschichten, weil die Strecke ohne Blick dort am längsten ist.</p>
+<p>Dass dieser Übergang vom Chat zum Agenten tatsächlich stattfindet und nicht nur in Produktankündigungen, zeigen drei Datenquellen. <span class="citation" data-cites="johnston2026the">Johnston et al. (<a href="references.html#ref-johnston2026the" role="doc-biblioref">2026</a>)</span> weisen in Nutzungsdaten eines Coding-Agenten nach, dass der Übergang vom Chat zum Agenten messbar stattfindet. Methodisch stützt sich die Arbeit auf beobachtete Nutzungsdaten statt auf Befragungen; sie ist ein Preprint ohne abgeschlossene Begutachtung. <span class="citation" data-cites="chatterji2025a">Chatterji (<a href="references.html#ref-chatterji2025a" role="doc-biblioref">2025</a>)</span> berichten aus Unternehmensdaten, dass wiederholbare Arbeitsabläufe über Projekte und angepasste Assistenten seit Jahresbeginn 2025 um das Neunzehnfache wuchsen und rund ein Fünftel der Enterprise-Nachrichten bereits über solche strukturierten Workflows läuft, während ein Teil selbst der monatlich aktiven Nutzenden Deep Research, Reasoning und Datenanalyse noch nie verwendet hat. Die Grundlage ist ein anbietereigener Nutzungsbericht, also keine unabhängige Studie, aber mit sehr großer Fallzahl. <span class="citation" data-cites="mollick2025e">Mollick (<a href="references.html#ref-mollick2025e" role="doc-biblioref">2026</a>)</span> schließlich ordnet die Werkzeuglandschaft Anfang 2026 danach, ob ein Modell ein Harness hat, also Werkzeuge nutzen und mehrstufig allein arbeiten kann, und rät, die Wahl des Werkzeugs an der Aufgabe auszurichten; das ist eine Erfahrungssynthese, keine Messung.</p>
+<p>Für die Lehre kommt eine zweite Achse hinzu, die in <a href="kapitel03.html" class="quarto-xref"><span>Kapitel 3</span></a> entwickelt wurde: Jede Delegation verschiebt Denkarbeit, und Denkarbeit ist der Stoff, aus dem Lernen besteht. Was wir in <a href="kapitel03.html#sec-lerntechniken" class="quarto-xref"><span>Kapitel 3.4</span></a> als wünschenswerte Schwierigkeit beschrieben haben, wird durch eine KI, die zu früh hilft, gerade beseitigt. Deshalb liest sich die Frage nach den Kontrollpunkten für Studierende anders als für Lehrende. Für uns selbst geht es um Fehlerkontrolle: Der Agent darf viel allein tun, solange wir an festen Stellen prüfen. Für Studierende geht es um Lernkontrolle: Der Tutor darf gerade nicht viel allein tun, weil jede Hilfe, die er zu früh gibt, einen Lernschritt ersetzt. Dieselbe Technik verlangt also je nach Rolle aus <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a> entgegengesetzte Einstellungen, und genau deshalb lohnt es, die Nutzungsformen einzeln durchzugehen.</p>
+<p><a href="#tbl-d-modi" class="quarto-xref">Tabelle&nbsp;<span>D.1</span></a> ordnet die Abschnitte dieses Anhangs entlang der beiden Achsen: wie lange die KI allein arbeitet und wo der Mensch eingreift. Die Bilder in der zweiten Spalte kehren in den jeweiligen Abschnitten wieder; sie sind nicht Dekoration, sondern die Merkhilfe, mit der wir im Workshop die Begriffe eingeführt haben.</p>
+<div id="tbl-d-modi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-d-modi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;D.1: Nutzungsformen generativer KI nach Dauer der Delegation und Ort der menschlichen Prüfung
+</figcaption>
+<div aria-describedby="tbl-d-modi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Nutzungsform</th>
+<th style="text-align: left;">Bild</th>
+<th style="text-align: left;">Wie lange die KI allein arbeitet</th>
+<th style="text-align: left;">Wo der Mensch prüft</th>
+<th style="text-align: left;">Abschnitt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Chat</td>
+<td style="text-align: left;">Auskunftsschalter</td>
+<td style="text-align: left;">Sekunden</td>
+<td style="text-align: left;">nach jeder Antwort</td>
+<td style="text-align: left;"><a href="kapitel02.html" class="quarto-xref"><span>Kapitel 2</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arbeitsumgebung (System-Prompt, Skill, Projekt)</td>
+<td style="text-align: left;">Einarbeitungsmappe, Rezeptkarte</td>
+<td style="text-align: left;">wie im Chat, aber mit Vorwissen</td>
+<td style="text-align: left;">beim Einrichten: Regeln prüfbar formulieren</td>
+<td style="text-align: left;"><a href="#sec-d-arbeitsumgebung" class="quarto-xref"><span>Kapitel D.2</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eigene Quellen (RAG)</td>
+<td style="text-align: left;">Open-Book-Klausur</td>
+<td style="text-align: left;">Sekunden</td>
+<td style="text-align: left;">an der Fundstelle, nicht an der Antwort</td>
+<td style="text-align: left;"><a href="#sec-d-quellen" class="quarto-xref"><span>Kapitel D.3</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Agent (Deep Research)</td>
+<td style="text-align: left;">Sachbearbeiterin mit Vollmacht</td>
+<td style="text-align: left;">Minuten</td>
+<td style="text-align: left;">drei Kontrollpunkte</td>
+<td style="text-align: left;"><a href="#sec-d-agenten" class="quarto-xref"><span>Kapitel D.4</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prozessmodell und Simulation</td>
+<td style="text-align: left;">Notenblatt, Würfelexperiment</td>
+<td style="text-align: left;">Sekunden bis Minuten</td>
+<td style="text-align: left;">an der eigenen Vorhersage</td>
+<td style="text-align: left;"><a href="#sec-d-prozesse" class="quarto-xref"><span>Kapitel D.5</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Automatisierter Workflow</td>
+<td style="text-align: left;">Fließband mit Freigabeknopf</td>
+<td style="text-align: left;">Minuten bis Stunden</td>
+<td style="text-align: left;">vor jedem kostenpflichtigen Schritt</td>
+<td style="text-align: left;"><a href="#sec-d-workflows" class="quarto-xref"><span>Kapitel D.6</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tutor für Studierende</td>
+<td style="text-align: left;">die KI handelt ohne uns</td>
+<td style="text-align: left;">ein Semester</td>
+<td style="text-align: left;">vier Prüfschichten vor der Freigabe</td>
+<td style="text-align: left;"><a href="#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lokales Modell</td>
+<td style="text-align: left;">eigene Küche statt Lieferdienst</td>
+<td style="text-align: left;">Sekunden</td>
+<td style="text-align: left;">an der Stichprobe; Daten verlassen das Gerät nicht</td>
+<td style="text-align: left;"><a href="#sec-d-lokal" class="quarto-xref"><span>Kapitel D.8</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Zwei Folgerungen ziehen sich durch alle Abschnitte. Erstens: Ein Agentenergebnis ist ein Entwurf, kein Befund. Das gilt umso mehr, als dieselbe Aufgabe mit denselben Einstellungen beim zweiten Lauf anders ausgehen kann; wir kommen in <a href="#sec-d-agenten" class="quarto-xref"><span>Kapitel D.4</span></a> mit Zahlen darauf zurück. Zweitens: Regeln, die wir der KI mitgeben, wirken nur, wenn sich ihre Einhaltung prüfen lässt. “Sei ermutigend” ist für ein Sprachmodell so dehnbar wie für eine neue Hilfskraft; “Beende jede Antwort mit einer Frage” lässt sich abhaken. Dieser Befund aus <a href="#sec-d-arbeitsumgebung" class="quarto-xref"><span>Kapitel D.2</span></a> ist der Schlüssel zu allem, was danach kommt, vom Rechercheprompt bis zum Testplan für den Tutor.</p>
+</section>
+<section id="sec-d-arbeitsumgebung" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="sec-d-arbeitsumgebung"><span class="header-section-number">D.2</span> Arbeitsumgebung einrichten: Wie bringe ich der KI dauerhaft bei, was sie über meinen Kurs wissen soll?</h2>
+<section id="das-problem-jedes-gespräch-beginnt-bei-null" class="level3" data-number="D.2.1">
+<h3 data-number="D.2.1" class="anchored" data-anchor-id="das-problem-jedes-gespräch-beginnt-bei-null"><span class="header-section-number">D.2.1</span> Das Problem: Jedes Gespräch beginnt bei null</h3>
+<p>Wer das Chat-Interface eines Anbieters ohne Einrichtung nutzt, kennt die Szene. Neuer Chat, und wieder erklären wir: drittes Semester, Ingenieurstudierende, bitte keine Fließtextwüsten, Quellen nach APA. Dann der zweite Chat, dann der dritte. Ein beträchtlicher Teil jeder Unterhaltung geht für Einarbeitung drauf, und was in einem Chat gelernt wurde, ist im nächsten vergessen, weil das Modell zwischen Gesprächen kein Gedächtnis hat. Genau diese Einarbeitung lässt sich einmal aufschreiben und dann immer mitliefern. Die Frage ist nur, auf welche Weise, denn die Anbieter stellen dafür inzwischen vier verschiedene Bausteine bereit, die sich darin unterscheiden, was das Modell immer liest und was es nur bei Bedarf hervorholt.</p>
+</section>
+<section id="vier-bausteine-vier-aufgaben" class="level3" data-number="D.2.2">
+<h3 data-number="D.2.2" class="anchored" data-anchor-id="vier-bausteine-vier-aufgaben"><span class="header-section-number">D.2.2</span> Vier Bausteine, vier Aufgaben</h3>
+<p>Ein <strong>System-Prompt</strong> ist die Einarbeitungsmappe für eine neue Hilfskraft: Das Modell liest ihn vor jedem Gespräch, vollständig und ungefragt. Dort gehören die Dinge hin, die immer gelten sollen: Fach, Zielgruppe, bevorzugte Formate, Zitierstil, Tabuzonen. In den Chat-Interfaces der Anbieter heißt dieser Baustein meist “Personalisierung” oder “benutzerdefinierte Anweisungen”; das Feld ist kurz, oft nur wenige hundert Wörter, und genau das ist seine Stärke, denn alles darin kostet in jedem Gespräch Aufmerksamkeit des Modells. Der Prompt B.1.5 in <a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-systemprompt" class="quarto-xref"><span>Kapitel B.1.5</span></a> erzeugt einen solchen System-Prompt im Interview: Er fragt eine Frage pro Nachricht, baut aus den Antworten eine Profilkarte und gibt am Ende den fertigen Text im Codeblock aus.</p>
+<p>Ein <strong>Skill</strong> ist eine Rezeptkarte für einen wiederkehrenden Ablauf: eine Anleitung, oft mit Beispielen und manchmal mit Code, die die KI nur aufschlägt, wenn die Aufgabe dazu passt. Anders als der System-Prompt liegt ein Skill nicht ständig auf dem Tisch; sichtbar ist nur der Reiter mit Namen und Kurzbeschreibung, und erst wenn eine Anfrage dazu passt oder wir den Skill ausdrücklich aufrufen, liest das Modell den Rest. Das Format ist inzwischen offen gelegt: Ein Skill ist ein Ordner mit einer Datei <code>SKILL.md</code>, deren Kopf aus einem Namen in Kleinbuchstaben und einer Beschreibung besteht, die sagt, was der Skill tut und wann er gilt; darunter steht die eigentliche Anleitung, daneben liegen optional Referenzdateien und Skripte <span class="citation" data-cites="anthropic2025a">(<a href="references.html#ref-anthropic2025a" role="doc-biblioref">Anthropic, 2025</a>)</span>. Weil mehrere Anbieter dasselbe Format lesen, läuft ein einmal geschriebener Skill-Ordner in verschiedenen Werkzeugen <span class="citation" data-cites="openai2025a">(<a href="references.html#ref-openai2025a" role="doc-biblioref">OpenAI, 2025</a>)</span>.</p>
+<p>Eine <strong>Verbindung</strong>, in manchen Interfaces “App” oder “Konnektor” genannt, ist das Kabel mit Stecker zu einem anderen Dienst: zum Cloud-Speicher, zum Kalender, zum Bibliothekskatalog. Technisch steckt dahinter meist ein MCP-Server. MCP (Model Context Protocol) ist die genormte Steckdose, über die ein KI-Assistent fremde Werkzeuge anspricht, so wie ein Eurostecker in jede europäische Dose passt; wer einen Dienst einmal als MCP-Server anbietet, macht ihn für alle Assistenten erreichbar, die die Norm beherrschen. In <a href="kapitel04.html#sec-recherche" class="quarto-xref"><span>Kapitel 4.1.2</span></a> haben wir gesehen, was das für die akademische Suche bedeutet: lizenzkonformer Zugriff auf Volltexte, ohne das Modell selbst zu verändern <span class="citation" data-cites="tay2024mcp">(<a href="references.html#ref-tay2024mcp" role="doc-biblioref">Tay, 2024</a>)</span>.</p>
+<p>Ein <strong>Plugin</strong> schließlich ist der Werkzeugkoffer, der mehrere Skills und Verbindungen bündelt. Das Plugin selbst löst nichts aus; man installiert den Koffer, und das Modell greift bei Bedarf zu den einzelnen Werkzeugen.</p>
+<p>Ein fünfter Baustein steht quer zu den vieren und ist für die Lehre oft der wichtigste: das <strong>Projekt</strong>. Ein Projekt ist ein Ordner mit einem Notizzettel obendrauf: Ein Anleitungsfeld, das das Modell in jeder Runde vollständig liest, und Dateien, die es per Suche heranzieht, gestückelt und ohne Garantie, dass es die richtige Stelle findet. Damit leistet ein Projekt fast dasselbe wie ein Skill, nur auf andere Weise: Die Anleitung liegt ständig auf dem Tisch statt im Karteikasten. Wer in seinem Tarif keine Skills hat, baut den Skill als Projekt nach, mit der Anleitung im Anweisungsfeld und den Beispielen als Dateien. <a href="#tbl-d-bausteine" class="quarto-xref">Tabelle&nbsp;<span>D.2</span></a> fasst zusammen, was das Modell wann liest; diese Spalte entscheidet darüber, wohin eine Regel gehört.</p>
+<div id="tbl-d-bausteine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-d-bausteine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;D.2: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das Modell davon wann liest
+</figcaption>
+<div aria-describedby="tbl-d-bausteine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Baustein</th>
+<th style="text-align: left;">Bild für die Lehre</th>
+<th style="text-align: left;">Was das Modell wann liest</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">System-Prompt</td>
+<td style="text-align: left;">Einarbeitungsmappe</td>
+<td style="text-align: left;">immer, vor jedem Gespräch, vollständig</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Projekt</td>
+<td style="text-align: left;">Ordner mit Notizzettel obendrauf</td>
+<td style="text-align: left;">Anleitung jede Runde vollständig; Dateien nur per Suche, gestückelt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Skill</td>
+<td style="text-align: left;">Rezeptkarte im Karteikasten</td>
+<td style="text-align: left;">nur Name und Beschreibung ständig; der Rest, wenn die Anfrage passt oder der Skill aufgerufen wird</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Verbindung (App, MCP-Server)</td>
+<td style="text-align: left;">Kabel mit Stecker zu einem fremden Gerät</td>
+<td style="text-align: left;">wird aufgerufen, wenn eine Aufgabe den Dienst braucht</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Plugin</td>
+<td style="text-align: left;">Werkzeugkoffer</td>
+<td style="text-align: left;">löst selbst nichts aus; bündelt Skills und Verbindungen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Die Merkregel, die aus der Tabelle folgt, lautet: Was immer gelten muss, gehört in den System-Prompt oder die Projektanleitung; Beispiele und Material gehören in eine Datei daneben; ein wiederkehrender Ablauf mit eigenen Regeln wird zum Skill. Genau nach diesem Muster ist auch der Tutor in <a href="#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a> gebaut.</p>
+</section>
+<section id="die-evidenz-prüfbare-regeln-werden-befolgt" class="level3" data-number="D.2.3">
+<h3 data-number="D.2.3" class="anchored" data-anchor-id="die-evidenz-prüfbare-regeln-werden-befolgt"><span class="header-section-number">D.2.3</span> Die Evidenz: Prüfbare Regeln werden befolgt</h3>
+<p>Wie zuverlässig hält sich ein Modell an das, was wir ihm in die Einarbeitungsmappe schreiben? <span class="citation" data-cites="nepal2026faithful">Nepal et al. (<a href="references.html#ref-nepal2026faithful" role="doc-biblioref">2026</a>)</span> haben das in einem randomisierten Versuch geprüft, indem sie einen Reflexions-Bot gegen seinen eigenen System-Prompt auditierten: Für jede Regel des Prompts wurde gemessen, ob die Antworten sie einhielten. Der Befund steckt im Titel der Arbeit, treu dort, wo es sich prüfen lässt: Regeln, deren Einhaltung sich leicht feststellen ließ, wurden zuverlässig befolgt, vage Haltungsregeln dagegen nicht. Die Arbeit ist ein Preprint ohne abgeschlossene Begutachtung, und die folgenden Beispiele stammen von uns, nicht aus der Studie. Eine Regel wie “höchstens drei Sätze” wird gehalten; eine Regel wie “sei ermutigend” ist für den Bot so dehnbar wie für eine neue Hilfskraft, die wir am ersten Tag bitten, freundlich zu sein. Die Lehre für das Einrichten ist einfach und folgenreich: Wir schreiben Regeln, die man abhaken kann. “Jede Folie trägt eine vollständige Quelle” lässt sich abhaken, “gute Folien” nicht; “Ende jede Antwort mit einer Frage” lässt sich abhaken, “sei sokratisch” nicht. Der Partnertest in Übung Ü1 prüft genau das: Eine Kollegin sucht in unserem Skill eine Regel, die sich abhaken lässt, und testet, ob der Bot sie bricht.</p>
+</section>
+<section id="das-werkzeug-der-skill-folien-evidenzbasiert" class="level3" data-number="D.2.4">
+<h3 data-number="D.2.4" class="anchored" data-anchor-id="das-werkzeug-der-skill-folien-evidenzbasiert"><span class="header-section-number">D.2.4</span> Das Werkzeug: Der Skill <code>folien-evidenzbasiert</code></h3>
+<p>Als Beispiel für einen Skill, der eine wiederkehrende Lehraufgabe mit eigenen Regeln regelt, dient unser Folien-Skill. KI-Werkzeuge erzeugen auf Knopfdruck Foliensätze, und fast immer Textwüsten: Themenüberschriften, Aufzählungen, dekorative Bilder. Die Forschung zur kognitiven Belastung erklärt, warum das schadet: Text, den die Vortragende gleichzeitig spricht, konkurriert mit der gesprochenen Erklärung um dieselbe Verarbeitungsspur im Arbeitsgedächtnis <span class="citation" data-cites="sweller2011 mayer2014">(<a href="references.html#ref-mayer2014" role="doc-biblioref">Mayer &amp; Fiorella, 2014</a>; <a href="references.html#ref-sweller2011" role="doc-biblioref">Sweller, 2011</a>)</span>. Wecker <span class="citation" data-cites="wecker2012">(<a href="references.html#ref-wecker2012" role="doc-biblioref">2012</a>)</span> hat den Effekt in Experimenten mit Studierenden gemessen: Textreiche Folien unterdrückten die Aufnahme der gesprochenen Information, während Folien mit wenigen Stichworten sie nicht beeinträchtigten. Der Skill übersetzt diese Forschung in Regeln, die sich abhaken lassen. Jede Folie trägt einen Aussagetitel, also einen ganzen Satz mit genau einer Behauptung; der Folienkörper enthält höchstens fünfzehn Wörter und eine Visualisierung, die den Titel belegt; jede Inhaltsfolie nennt genau eine vollständige Quelle mit DOI; komplexe Abläufe werden schrittweise aufgebaut; und direkt nach der Titelfolie steht eine Argumentationsübersicht in vier Blöcken, Problem, Konzepte, Evidenz, Fazit, die das Modell der vortragenden Person zur Freigabe vorlegen muss, bevor es eine einzige Folie baut. Eine Stil-Ebene mit Platzhaltern für Akzentfarbe, Schrift und Logo wird durch das Corporate Design der eigenen Hochschule ersetzt; die Inhaltsregeln bleiben unverändert. Den Kopf der Datei zeigt der folgende Auszug; die vollständige Datei mit allen Regeln, der Checkliste pro Folie und der Evidenzbasis liegt im Online-Material.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">name:</span><span class="co"> folien-evidenzbasiert</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> Erstellt evidenzbasierte Foliensätze für Lehre und Vorträge mit</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Argumentationsübersicht, Aussagetiteln, visueller Evidenz, schrittweisem</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  Aufbau und vollständiger Quellenangabe pro Folie.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Evidenzbasierte Folien – Inhaltsregeln mit anpassbarer Stil-Ebene</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Rangfolge bei Konflikten: ausdrücklicher Wunsch der vortragenden Person &gt;</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Corporate Design der eigenen Hochschule (Abschnitt 9) &gt; alle übrigen Regeln</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>dieser Datei &gt; Standardvorgaben des Werkzeugs (z. B. „Icons hinzufügen“).</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Arbeitsablauf (keinen Schritt überspringen)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Eingaben klären: Zielgruppe und Vorwissen, Dauer, Sprache, Ausgabeformat,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>   verfügbare Quellen, eigene Folienvorlage.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Zuerst die Argumentationsübersicht schreiben (Abschnitt 2) und der</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>   vortragenden Person zur Freigabe vorlegen, bevor eine einzige Folie</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>   gebaut wird.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Storyboard („Ghost Deck“) als Tabelle, eine Zeile pro Folie.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Sprechernotizen schreiben, bevor die Folien gestaltet werden.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Folien bauen.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Jede Folie als Bild rendern und prüfen, Checkliste (Abschnitt 11)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>   anwenden, korrigieren, erneut rendern. Jede Quelle vor der Verwendung</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>   verifizieren (DOI löst auf, Metadaten stimmen).</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Der didaktische Kern des Skills liegt nicht in den Folienregeln, sondern im zweiten Schritt des Arbeitsablaufs. Die Argumentationsübersicht ist der Moment, in dem die Lehrperson denkt: Stimmt das Problem für diese Studierenden, sind die Konzepte die, die wir lehren, gibt es die genannte Evidenz wirklich? Der Skill erzwingt diesen Moment, ersetzt ihn aber nicht; die KI kann eine Struktur vorschlagen, aber nicht beurteilen, ob sie für diesen Kurs trägt. Im Workshop hat sich dafür eine Folge aus zwei Runden bewährt: erst derselbe Prompt ohne Skill, dessen Ergebnis mit einem Kurzcheck markiert wird (ganzer Satz als Titel, höchstens fünfzehn Wörter, Visualisierung belegt den Titel, jede Quelle existiert), dann derselbe Prompt mit Skill und einer selbst überarbeiteten Argumentationsübersicht. Auch mit Skill erfinden Werkzeuge Quellen; deshalb endet jede Runde damit, dass eine DOI geöffnet wird.</p>
+<p>Zum Laden gibt es zwei Wege. Wo das Interface Skills kennt, wird der Ordner als ZIP hochgeladen und aktiviert. Überall sonst hängt man die Datei an den Chat oder kopiert ihren Inhalt in die Projektanleitung, mit dem Satz “Befolge diese Anleitung für alle Foliensätze”; das funktioniert in jedem Werkzeug, das Dateien liest. Wer die eigene Folienvorlage einbinden will, lädt sie mit dem Hinweis hoch, dass sie die Stil-Ebene ersetzt.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Stand bei Drucklegung, Oktober 2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Stand bei Drucklegung, Oktober 2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Bausteine dieses Abschnitts heißen bei jedem Anbieter anders und sind an Tarife gebunden; dieser Kasten hält den Sachstand zum Zeitpunkt der Drucklegung fest. Die Online-Version wird fortgeschrieben.</p>
+<p><strong>Skills in ChatGPT</strong> gibt es seit Juli 2026 nur in den Tarifen Business, Enterprise, Healthcare und Edu, nicht in Plus (OpenAI Help Center, “Skills in ChatGPT”, <a href="https://help.openai.com/en/articles/20001066" class="uri">https://help.openai.com/en/articles/20001066</a>; The AI Career Lab, 20.07.2026, <a href="https://theaicareerlab.com/blog/chatgpt-skills-what-they-are-how-to-enable-2026" class="uri">https://theaicareerlab.com/blog/chatgpt-skills-what-they-are-how-to-enable-2026</a>). Ob der Reiter <em>Plugins → Skills</em> im eigenen Konto erscheint, prüft man am besten selbst. Mit Plus richtet man stattdessen ein Projekt mit Anleitung und Dateien ein. Das <code>SKILL.md</code>-Format stammt von Anthropic <span class="citation" data-cites="anthropic2025a">(<a href="references.html#ref-anthropic2025a" role="doc-biblioref">Anthropic, 2025</a>)</span> und wird auch im Skills-Katalog für Codex genutzt <span class="citation" data-cites="openai2025a">(<a href="references.html#ref-openai2025a" role="doc-biblioref">OpenAI, 2025</a>)</span>; ein Skill-Ordner läuft deshalb in ChatGPT und in Claude.</p>
+<p><strong>Custom GPTs</strong> werden am 11.12.2026 abgeschaltet; beim Umzug wird die Anleitung zum Skill, Wissensdateien werden zu Referenzdateien, eigene Actions gehen verloren (OpenAI Help Center, “Custom GPT retirement FAQ”, <a href="https://help.openai.com/articles/20001519" class="uri">https://help.openai.com/articles/20001519</a>). Der Zwei-Datei-Tutor in <a href="#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a> ist bewusst so gebaut, dass er davon nicht betroffen ist.</p>
+<p><strong>NotebookLM</strong> heißt inzwischen Gemini Notebook. Litmaps hat ResearchRabbit übernommen; Scite bietet seit August 2026 einen kostenlosen Zugang über MCP; Google Scholar Labs sucht nach einer Forschungsfrage statt nach Stichworten; Elicit screent auf Ebene einzelner Einschlusskriterien (Fiorio, 19.09.2026, <a href="https://effortlessacademic.com/the-best-ai-tools-for-literature-review-in-2026/" class="uri">https://effortlessacademic.com/the-best-ai-tools-for-literature-review-in-2026/</a>). Das Vierfelderschema aus <a href="kapitel04.html#sec-recherche" class="quarto-xref"><span>Kapitel 4.1.2</span></a> trägt weiter.</p>
+<p><strong>Lokale Modelle</strong> (<a href="#sec-d-lokal" class="quarto-xref"><span>Kapitel D.8</span></a>): Auf Laptops mit 8 GB Arbeitsspeicher laufen Modelle der 4B-Klasse, etwa Gemma 3 4B (2,4 GB Dateigröße), Phi-4 Mini oder Llama 3.2 3B; mit 16 GB Qwen 3.5 9B (5,4 GB) oder Gemma 4 E4B (LLM Configurator, 25.08.2026, <a href="https://llmconfigurator.com/en/reports/best-small-llms-8gb-16gb-ram-laptops" class="uri">https://llmconfigurator.com/en/reports/best-small-llms-8gb-16gb-ram-laptops</a>).</p>
+<p><strong>Workflow-Vorlagen</strong> (<a href="#sec-d-workflows" class="quarto-xref"><span>Kapitel D.6</span></a> und <a href="#sec-d-ausblick" class="quarto-xref"><span>Kapitel D.9</span></a>) nutzen als Textmodell ein kleines Reasoning-Modell (gpt-5-mini) und als Bildmodell Seedream 5.0 Flash (0,018 $ je Bild laut Anbieterkonsole, 11.10.2026); die Filmvariante Seedance 2.5. <!-- TODO (Roman): Web-Quellen dieses Kastens (OpenAI Help Center ×2, AI Career Lab, Fiorio, LLM Configurator) als Einträge in references.json anlegen und die URLs durch @keys ersetzen. --></p>
+</div>
+</div>
+</section>
+<section id="sec-d-ue1" class="level3" data-number="D.2.5">
+<h3 data-number="D.2.5" class="anchored" data-anchor-id="sec-d-ue1"><span class="header-section-number">D.2.5</span> Übung Ü1: Eigener Werkzeugkasten, System-Prompt und ein Skill</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Übung Ü1: Eigener Werkzeugkasten">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Übung Ü1: Eigener Werkzeugkasten
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe:</strong> Einen persönlichen System-Prompt erstellen und einen Skill (oder ein Projekt als Skill-Ersatz) einrichten, den eine Kollegin an einer prüfbaren Regel testet. Ergebnis: ein System-Prompt und ein getesteter Skill, der in Ü3 wiederverwendet wird.</p>
+<p><strong>Tool:</strong> Chat-Interface des Anbieters (Plus-Tarif genügt), Prompt-Sammlung in <a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang B</span></a>.</p>
+<p><strong>Zeit:</strong> 45 Minuten.</p>
+<p><strong>Sozialform:</strong> Einzelarbeit, am Ende Partnertest.</p>
+<ol type="1">
+<li><strong>System-Prompt (20 min).</strong> Prompt B.1.5 “Hiwi: System-Prompt für typische Anforderungen erstellen” (<a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-systemprompt" class="quarto-xref"><span>Kapitel B.1.5</span></a>) in einen neuen Chat kopieren. Der Prompt erstellt aus dem Profiltext eine Profilkarte, führt ein Interview mit einer Frage pro Nachricht und gibt am Ende den fertigen System-Prompt im Codeblock aus. Lehrprofil einfügen, aber ohne Namen und Kontaktdaten. Ergebnis unter Einstellungen → Personalisierung oder als Anweisung eines Projekts einsetzen.</li>
+<li><strong>Ein Skill nach Wahl (20 min).</strong> Variante a: Die Datei des Folien-Skills in ein neues Projekt laden und als Anweisung eintragen: “Wende die Regeln aus der Datei auf jede Folienanfrage an.” Mit einem Thema aus der nächsten Vorlesung testen. Variante b: Prompt B.1.2 “Aktivierungs-Coach für die Präsenzlehre” (<a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-aktivierungs-coach" class="quarto-xref"><span>Kapitel B.1.2</span></a>) als Projekt einrichten und an einer eigenen 90-Minuten-Sitzung testen.</li>
+<li><strong>Partnertest (5 min).</strong> Die Nachbarin testet den Skill mit ihrem eigenen Thema und prüft eine Regel, die sich abhaken lässt, etwa “Jede Folie trägt eine vollständige Quelle” oder “Jede Aktivität nennt ihr Lernziel”. Testauftrag: “Erstelle mit deinen Regeln [5 Folien | einen Aktivierungsplan] zum Thema [Thema der Partnerin], Zielgruppe [Semester/Studiengang], 90 Minuten.”</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">4D</th>
+<th style="text-align: left;">In dieser Übung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delegation</td>
+<td style="text-align: left;">Die KI formuliert den Prompt und die Folien; wir entscheiden, welche Regeln gelten.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: left;">Profilkarte und Interview liefern den Kontext; Regeln so formulieren, dass man sie abhaken kann.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Discernment</td>
+<td style="text-align: left;">Der Partnertest zeigt, welche Regel der Bot bricht.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diligence</td>
+<td style="text-align: left;">Keine Namen, Kontaktdaten oder Studierendendaten im System-Prompt.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wenn es hakt.</strong> Das Feld in der Personalisierung ist zu kurz: B.1.5 liefert zwei Felder mit je rund 1.500 Zeichen; um eine Kurzfassung bitten. Kein Skills-Reiter sichtbar: Ein Projekt anlegen (Seitenleiste → Neues Projekt → Anweisungen und Dateien). Der Bot ignoriert eine Regel: positiv und prüfbar umformulieren und erneut testen.</p>
+<p><strong>Debrief.</strong> Welche Regel hat der Bot gebrochen, und wie lässt sie sich prüfbar umformulieren?</p>
+</div>
+</div>
+<p>Online-Material zu Ü1: <a href="downloads/anhang-d/uebung-u1-werkzeugkasten.pdf">Übungsblatt Ü1 als Handout</a>, <a href="downloads/anhang-d/folien-evidenzbasiert.md">Skill-Datei <code>folien-evidenzbasiert.md</code></a>, <a href="downloads/anhang-d/folien-evidenzbasiert.zip">Skill-Ordner als ZIP</a>, <a href="downloads/anhang-d/uebung-folien-evidenzbasiert.md">Übungsanleitung “Von der Textwüste zum Argument”</a>. <!-- TODO (Roman): Ablageort für das Online-Material festlegen (Vorschlag: downloads/anhang-d/) und Dateien dorthin kopieren. --></p>
+</section>
+</section>
+<section id="sec-d-quellen" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="sec-d-quellen"><span class="header-section-number">D.3</span> Eigene Quellen anbinden: Wie antwortet die KI aus meinen Texten statt aus dem Netz?</h2>
+<p>Ein Sprachmodell ohne eigene Quellen schreibt eine Closed-Book-Klausur: Es hat beim Training viel gelesen und antwortet aus dem Gedächtnis, ohne Seitenzahl. RAG, Retrieval-Augmented Generation oder auf Deutsch etwa abrufgestützte Erzeugung, macht daraus die Open-Book-Klausur. Die Frage geht zuerst an die Suche, den Retriever; er ist der Bibliothekar, der die passenden Stellen aus unserem Ordner holt, der Wissensbasis. Erst dann formuliert das Sprachmodell, der Generator, die Antwort, und im besten Fall nennt es die Fundstelle. Die Grundbegriffe dazu stehen in <a href="kapitel02.html#sec-patterns-usage" class="quarto-xref"><span>Kapitel 2.1.2</span></a>; hier geht es um die Frage, wie wir prüfen, ob die Anbindung hält. Die schlechte Nachricht vorweg: Halluzinationen verschwinden mit RAG nicht, sie wandern. Entweder findet die Suche die falsche Stelle, und das Modell formuliert sauber darauf aufbauend Unsinn, oder die Stelle stimmt, und das Modell liest sie falsch. Deshalb testen wir in diesem Abschnitt vor allem, was passiert, wenn die Antwort nicht in den Quellen steht.</p>
+<!-- TODO (Gerüst, aus Input B2 zu verarbeiten):
+- Pipeline-Abbildung Frage → Suche (Retriever) → Stellen → Sprachmodell (Generator) → Antwort + Fundstelle; die beiden Fehlerstellen 1 "falsche Stelle" und 2 "falsch gelesen" markieren. Werkzeuge wie RAGAs prüfen beide Stellen getrennt (Kontextrelevanz, Antworttreue). Beleg Es et al. (2024), EACL Demo, doi:10.18653/v1/2024.eacl-demo.16 — Eintrag fehlt in references.json und in beiden .bib-Dateien; BibTeX im Ablaufplan vom 11.10.
+- Ursprung: Lewis et al. (2020), arXiv:2005.11401 — Eintrag fehlt ebenfalls.
+- Praxisbeispiel PwC NEO (Tax Analysis Generator, drei Stufen: Secretary → Sachverhalt mit Lückenmarkierung → Memo mit Datenbanken NWB, Otto Schmidt, taxInform). Zwei Lehren: RAG steckt im letzten Schritt eines festen Ablaufs, dessen Zwischenergebnis prüfbar ist; die Lückensuche stellt dieselbe Frage wie Ü2. ACHTUNG: Produktbeschreibung nicht öffentlich verifiziert; laut Ablaufplan vor Abdruck klären, ob sie außerhalb von PwC gezeigt werden darf, sonst nur in eigenen Worten. Öffentliche Belege: Wilkinson (CIO Dive, 15.08.2023) zu ChatPwC; The New Stack (24.03.2026) zu PwC One.
+- Lehrbezug (eine der drei Studien): @dang2026verified — von Fachleuten geprüfte KI-Lernmaterialien aus eigenen Quellen verteilen Lerngewinne gleichmäßiger über die Studierenden als frei generierte; Vergleich in einem Universitätskurs; Preprint. Zweite: @huffman2024 (NotebookLM mit Primärquellen, bereits in Anhang C zitiert). Dritte: Idee der unbeantwortbaren Frage aus SQuAD 2.0, Rajpurkar et al. (2018), ACL, doi:10.18653/v1/P18-2124 — Eintrag fehlt.
+- Verweis auf Kapitel 6 (Fallbeispiele, RAG-Projekte mit Unternehmen): Label @sec-fallbeispiele existiert noch nicht; erst setzen, wenn Kapitel 6 angelegt ist.
+-->
+<section id="das-werkzeug-quellengebundene-notizbücher-und-projekte" class="level3" data-number="D.3.1">
+<h3 data-number="D.3.1" class="anchored" data-anchor-id="das-werkzeug-quellengebundene-notizbücher-und-projekte"><span class="header-section-number">D.3.1</span> Das Werkzeug: Quellengebundene Notizbücher und Projekte</h3>
+<!-- TODO: Absatz zu Gemini Notebook (Upload-Korpus, Fundstellen, Audio-Dialoge) und Projekt mit Dateien im Chat-Interface; Projektanweisung aus Ü2 ("Beantworte Fragen ausschließlich aus den Dateien …") als Codeblock; Hinweis auf gescannte PDFs ohne Textebene. -->
+</section>
+<section id="sec-d-ue2" class="level3" data-number="D.3.2">
+<h3 data-number="D.3.2" class="anchored" data-anchor-id="sec-d-ue2"><span class="header-section-number">D.3.2</span> Übung Ü2: Antwortbar oder nicht? KI mit eigenen Quellen</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Übung Ü2: Antwortbar oder nicht?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Übung Ü2: Antwortbar oder nicht?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe:</strong> Ein eigenes Skriptkapitel in zwei quellengebundene Werkzeuge laden und beiden fünf Fragen stellen, zwei davon als Falle. Ergebnis: eine Tabelle mit fünf Testfragen, die erste Zeile eines Goldstandards für Ü6.</p>
+<p><strong>Tool:</strong> Gemini Notebook (ehemals NotebookLM) und ein Projekt im Chat-Interface des Anbieters, parallel.</p>
+<p><strong>Zeit:</strong> 20 Minuten.</p>
+<p><strong>Sozialform:</strong> Einzel- oder Partnerarbeit.</p>
+<ol type="1">
+<li><strong>Quelle laden (3 min).</strong> Ein eigenes Skriptkapitel als PDF in ein neues Notebook und zugleich als Datei in ein neues Projekt laden. Ersatz: OpenStax, <em>Principles of Economics</em>, Kapitel 2.</li>
+<li><strong>Fünf Fragen an beide Werkzeuge (12 min).</strong> Vorher notieren, was die richtige Antwort wäre. Drei Fragen, die das Kapitel beantwortet; die angegebene Fundstelle prüfen. Eine plausible Frage, die das Kapitel nicht beantwortet: Sagt das Werkzeug “steht nicht drin” oder erfindet es? Eine Frage mit falscher Prämisse, etwa “Warum steigt laut Kapitel die Nachfrage, wenn der Preis steigt?”: Widerspricht das Werkzeug?</li>
+<li><strong>Urteil eintragen (5 min).</strong> Urteile: richtig · richtig, falsche Fundstelle · erfunden · Prämisse übernommen.</li>
+</ol>
+<p>Anweisung für das Projekt:</p>
+<pre><code>Beantworte Fragen ausschließlich aus den Dateien in diesem Projekt. Nenne zu
+jeder Aussage die Seite. Wenn die Dateien eine Frage nicht beantworten,
+schreibe genau: „Steht nicht in den Quellen." Wenn eine Frage auf einer
+falschen Annahme beruht, sage das zuerst.</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Nr.</th>
+<th style="text-align: left;">Frage</th>
+<th style="text-align: left;">Erwartete Antwort</th>
+<th style="text-align: left;">Fundstelle</th>
+<th style="text-align: left;">Notebook</th>
+<th style="text-align: left;">Projekt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4 (nicht im Text)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">“Steht nicht drin”</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5 (falsche Prämisse)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Widerspruch</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">4D</th>
+<th style="text-align: left;">In dieser Übung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delegation</td>
+<td style="text-align: left;">Das Werkzeug sucht und formuliert; wir legen fest, was als richtig gilt.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: left;">Die Projektanweisung erlaubt ausdrücklich “Steht nicht in den Quellen”.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Discernment</td>
+<td style="text-align: left;">Jede Fundstelle im Original nachschlagen, nicht nur die Antwort lesen.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diligence</td>
+<td style="text-align: left;">Nur eigenes oder offen lizenziertes Material hochladen, keine Studierendenarbeiten.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wenn es hakt.</strong> Das PDF lädt nicht: Gescannte PDFs ohne Textebene funktionieren schlecht; den Ersatztext nehmen. Beide Werkzeuge bestehen alles: Frage 4 näher am Kapitelthema wählen, etwa eine Zahl, die im Kapitel fehlt.</p>
+<p><strong>Debrief.</strong> Welches Werkzeug hat bei der unbeantwortbaren Frage gepasst, und welches hat erfunden?</p>
+</div>
+</div>
+<p>Online-Material zu Ü2: <a href="downloads/anhang-d/uebung-u2-eigene-quellen.pdf">Übungsblatt Ü2 mit Tabellenvorlage</a>.</p>
+</section>
+</section>
+<section id="sec-d-agenten" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="sec-d-agenten"><span class="header-section-number">D.4</span> Agenten und akademische Suche: Wo müssen Menschen eingreifen, damit eine Agentenkette nicht entgleist?</h2>
+<p>Ein Agent arbeitet länger allein als ein Chat, und Fehler fallen später auf; das war die Ausgangsthese aus <a href="#sec-d-modus" class="quarto-xref"><span>Kapitel D.1</span></a>. Für die akademische Recherche heißt das: Ein Deep-Research-Agent, der frei im Netz sucht, liefert einen flüssigen Bericht mit Quellen, von denen einige nicht existieren, andere nicht das sagen, was der Bericht behauptet, und ein dritter Teil hinter einer Bezahlschranke liegt, die der Agent nie passiert hat. Die Gegenstrategie dieses Abschnitts dreht die Reihenfolge um: erst den Quellenkorb festlegen, dann den Agenten arbeiten lassen, und an drei festen Stellen prüfen. Wie dringend das ist, zeigt ein Befund von <span class="citation" data-cites="figalova2026evaluating">Figalová et al. (<a href="references.html#ref-figalova2026evaluating" role="doc-biblioref">2026</a>)</span>: Zwei nominal gleich eingestellte KI-Screening-Läufe für ein Scoping Review kamen bei 94 Datensätzen zu unterschiedlichen Urteilen; gemessen wurde die Übereinstimmung zwischen Lauf und Lauf sowie zwischen Modell und menschlichen Screenern, in einem Preprint. Ein Agentenergebnis ist also ein Entwurf, kein Befund, und Wiederholbarkeit ist bei Agenten nicht selbstverständlich.</p>
+<!-- TODO (Gerüst, aus Input B3 und Aaron-Tay-Baustein zu verarbeiten):
+- Abbildung Chat vs. Agent (Auskunftsschalter / Sachbearbeiterin mit Vollmacht: Auftrag → Plan → Suche → Werkzeug → Entwurf → Ergebnis); Evidenz @johnston2026the (bereits in D.1, hier nur Querverweis).
+- Drei Kontrollpunkte als Abbildung: ① Quellenkorb (jede DOI geöffnet) → ② Deep Research (Rechercheplan vor dem Start gelesen und geändert) → ③ Prüfen (drei Aussagen gegen das Original) → Folien (Skill aus Ü1). Theoretischer Beleg Parasuraman et al. (2000) — Eintrag fehlt, s. D.1.
+- Vier Suchtypen (Quick Search, Quick RAG, Deep Search, Deep Research) aus @sec-recherche nur per Querverweis wieder aufnehmen, nicht doppeln; Werkzeugverschiebungen seit dem Kapitel stehen im datierten Kasten in D.2.
+- Aaron-Tay-Baustein (23 Beiträge Dez. 2025–Okt. 2026, Index unter aaron-tay-on-ai-for-lit-search/00_INDEX.md). Für diesen Abschnitt vorrangig auswerten: "From Fixed Search Workflows to Agentic Academic Search" (12.04.2026, Invisible-Menu-Problem), "Better AI Search Rubrics: Roles, Gates, and Retrieval Tests" (29.04.2026, Gates = Kontrollpunkte), "Prompt Engineering Is the Wrong Mental Model for AI Agents" (21.08.2026), "The Horseless Carriage of AI Search" (21.03.2026, Boolean-Generierung allein bringt wenig), "Hot take: Don't brainstorm keywords with LLMs. Let them Search." (10.08.2026), "The agentic researcher – Claude & MCP" (23.02.2026). Nur die Beiträge, die vorliegen, mit Datum und URL zitieren; Zitierschlüssel für 2026-Beiträge fehlen in references.json (vorhanden: @tay2024classifying, @tay2024mcp, @tay2025agentic). Den Agency-Spektrum-Gedanken aus @tay2025agentic (handcrafted vs. flexibel) als Brücke nutzen.
+- Dritte Studie (optional, Grenze drei): keine weitere; Figalová und Johnston genügen, Tay ist Praxisquelle.
+- Demo n8n-Agent mit denselben drei Kontrollpunkten → gehört nach D.6, hier nur ein Satz.
+-->
+<section id="das-werkzeug-deep-research-auf-einem-geprüften-quellenkorb" class="level3" data-number="D.4.1">
+<h3 data-number="D.4.1" class="anchored" data-anchor-id="das-werkzeug-deep-research-auf-einem-geprüften-quellenkorb"><span class="header-section-number">D.4.1</span> Das Werkzeug: Deep Research auf einem geprüften Quellenkorb</h3>
+<!-- TODO: Absatz zu Deep Research als Agentenmodus (10–30 Minuten Laufzeit, Rechercheplan als Kontrollpunkt), die drei Prompts aus Ü3 als Codeblöcke, Rückfallebene (vorbereiteter Bericht; Agentenmodus oder Chat mit Websuche, wenn Deep Research fehlt). -->
+</section>
+<section id="sec-d-ue3" class="level3" data-number="D.4.2">
+<h3 data-number="D.4.2" class="anchored" data-anchor-id="sec-d-ue3"><span class="header-section-number">D.4.2</span> Übung Ü3: Vom Quellenkorb zur Foliensequenz mit drei Kontrollpunkten</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Übung Ü3: Vom Quellenkorb zur Foliensequenz">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Übung Ü3: Vom Quellenkorb zur Foliensequenz
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe:</strong> Einen Agenten einen mehrstufigen Ablauf ausführen lassen (Quellen festlegen, recherchieren, Folien bauen) und dabei drei menschliche Kontrollpunkte setzen. Ergebnis: ein geprüfter Quellenkorb, ein belegter Kurzbericht und fünf Folien mit je einer vollständigen Quellenzeile.</p>
+<p><strong>Tool:</strong> Chat-Interface des Anbieters mit Deep Research (Agentenmodus), Elicit oder Google Scholar Labs, der Folien-Skill aus Ü1.</p>
+<p><strong>Zeit:</strong> 40 Minuten.</p>
+<p><strong>Sozialform:</strong> Einzel- oder Partnerarbeit.</p>
+<ol type="1">
+<li><strong>Quellenkorb im Dialog (10 min).</strong> Die KI stellt die Fragen und schlägt 8 bis 12 Quellen vor. Streichen, aus Elicit oder Scholar Labs ergänzen. <strong>Kontrollpunkt 1:</strong> Jede DOI öffnen. Was sich nicht öffnen lässt, fliegt raus.</li>
+<li><strong>Deep Research auf dem Korb (15 min, läuft im Hintergrund).</strong> Mit dem zweiten Prompt starten. <strong>Kontrollpunkt 2:</strong> Den Rechercheplan lesen, bevor er freigegeben wird, und ändern, wenn er den Korb verlässt.</li>
+<li><strong>Prüfen (8 min).</strong> Drei Aussagen aus dem Bericht gegen das Original halten. <strong>Kontrollpunkt 3:</strong> Stimmt die Quelle, und stimmt die Aussage?</li>
+<li><strong>Folien (7 min).</strong> Der Folien-Skill aus Ü1 macht aus dem geprüften Bericht fünf Folien.</li>
+</ol>
+<p>Prompt 1, Quellenkorb:</p>
+<pre><code>Ich baue einen Quellenkorb für eine Lehreinheit. Stelle mir nacheinander drei
+Fragen (Thema, Zielgruppe, Zeitraum der Literatur). Schlage danach 8–12
+Quellen vor: bevorzugt begutachtete Zeitschriftenartikel, jeweils mit
+vollständiger APA-Angabe und DOI. Kennzeichne jede Quelle, bei der du dir
+nicht sicher bist, ob sie existiert.</code></pre>
+<p>Prompt 2, Deep Research:</p>
+<pre><code>Nutze ausschließlich die folgenden Quellen: [geprüfte Liste einfügen].
+Schreibe einen Bericht von höchstens 800 Wörtern zur Frage [Forschungsfrage].
+Belege jede Aussage mit Autor, Jahr und Seite. Wo der Korb eine Frage nicht
+beantwortet, schreibe „Lücke" statt weiterzusuchen.</code></pre>
+<p>Prompt 3, Folien:</p>
+<pre><code>Mache aus diesem Bericht fünf Folien nach den Regeln meines Folien-Skills.
+Jede Folie: Aussagetitel als ganzer Satz, höchstens 15 Wörter Folientext,
+eine vollständige Quellenzeile.</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">4D</th>
+<th style="text-align: left;">In dieser Übung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delegation</td>
+<td style="text-align: left;">Der Agent sucht, liest und schreibt; wir bestimmen den Korb und geben den Plan frei.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: left;">Der Prompt begrenzt den Agenten auf den Korb und erlaubt “Lücke”.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Discernment</td>
+<td style="text-align: left;">Drei Kontrollpunkte: DOI geöffnet, Plan geprüft, Aussage gegen Original gehalten.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diligence</td>
+<td style="text-align: left;">Wir verantworten jede Quelle auf der Folie, nicht der Agent.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wenn es hakt.</strong> Deep Research braucht oft 10 bis 30 Minuten; in der Wartezeit mit dem bereitgestellten Beispielbericht an Schritt 3 und 4 weiterarbeiten. Kein Deep Research im Menü: Agentenmodus oder normaler Chat mit Websuche und demselben Prompt 2. Mehrere DOIs führen ins Leere: Das ist der Befund der Übung; durch Treffer aus Elicit ersetzen.</p>
+<p><strong>Debrief.</strong> An welchem Kontrollpunkt hätte der Agent ohne uns danebengelegen?</p>
+</div>
+</div>
+<p>Online-Material zu Ü3: <a href="downloads/anhang-d/uebung-u3-quellenkorb.pdf">Übungsblatt Ü3 mit den drei Prompts</a>, <a href="downloads/anhang-d/ue3-beispielbericht.pdf">Beispielbericht als Rückfallebene</a>.</p>
+</section>
+</section>
+<section id="sec-d-prozesse" class="level2" data-number="D.5">
+<h2 data-number="D.5" class="anchored" data-anchor-id="sec-d-prozesse"><span class="header-section-number">D.5</span> Prozesse sichtbar machen: Wie wird aus einer Prozessbeschreibung ein prüfbares Modell?</h2>
+<p>Aus einem einzigen Text entstehen mit KI drei Darstellungen desselben Ablaufs, und erst ihr Vergleich macht das Modell prüfbar. BPMN (Business Process Model and Notation) ist eine genormte Bildsprache für Abläufe, so eindeutig wie Verkehrszeichen: Kästen für Tätigkeiten, Rauten für Entscheidungen, Kreise für Anfang und Ende. Die Datei dahinter ist reiner Text; das Bild entsteht erst, wenn ein Programm den Text liest, wie ein Notenblatt erst im Spiel zu Musik wird. Die Animation ist der Film: Fälle wandern als Punkte von Station zu Station, und vor dem Engpass wächst die Schlange. Die Simulation ist das Würfelexperiment: hundert Durchläufe mit zufällig schwankenden Zeiten, am Ende Auslastung und Wartezeit je Station. Sie läuft in einem Notebook, einem Python-Notizbuch im Browser, für das der Anbieter den Rechner stellt, sodass niemand etwas installieren muss. Der didaktische Kern liegt in einem Schritt, der vor allen drei Darstellungen kommt: Wo liegt der Engpass? Wer die eigene Vorhersage notiert, bevor die Maschine rechnet, sieht danach, ob Animation und Simulation ihm recht geben oder widersprechen, und an welcher Annahme der Widerspruch hängt.</p>
+<!-- TODO (Gerüst, aus Input B4 zu verarbeiten):
+- Abbildung "Text → BPMN (Bild) → Animation (Film) → Simulation (100 Durchläufe)".
+- Stolperstein Layout: KI-erzeugtes BPMN-XML enthält kein Diagrammlayout (BPMNDI); demo.bpmn.io meldet dann "no diagram to display"; die Auto-Layout-Seite (bpmn-io/bpmn-auto-layout) ergänzt es. Ohne incoming/outgoing je Knoten stapeln sich die Kästen ohne Pfeile. Schwimmbahnen verwirft Auto-Layout.
+- Simulation mit SimPy (Exponentialverteilung um Mittelwerte, Zufallsstartwert 42, 100 Fälle; Auslastung und mittlere Wartezeit je Station als Tabelle).
+- Quellen: OMG BPMN 2.0.2 (2014), bpmn-auto-layout (Software), SimPy 4.1 (Software-Dokumentation) — keine Einträge in references.json; als Software-Referenzen anlegen oder nur URLs nennen. Keine Studie nötig; ggf. Brücke zur Galerie am Anfang von Kapitel 1 (Engpass-Animation, @sec-ki-hilfe) und @sec-coding.
+- Prozessoptionen-Tabelle (neun Prozesse aus Einkauf bis Studierendenbetreuung) übernehmen; Rückfallebene UrbanRide-Paket (XML, SVG, Animation).
+- 60-Minuten-Fassung "Übungsoption BPMN" mit drei Pflicht-Iterationen und Gegentest als Online-Material.
+- Notebook "BPMN → Animation + Kurzclip" (Status 12.10.: Animation kostenlos, KI-Clip nur Illustration, Seedance-Aufruf ungetestet) → gehört als "in Erprobung" nach D.9, hier nur das Colab-Notebook für die SimPy-Simulation verlinken.
+-->
+<section id="das-werkzeug-drei-prompts-drei-darstellungen" class="level3" data-number="D.5.1">
+<h3 data-number="D.5.1" class="anchored" data-anchor-id="das-werkzeug-drei-prompts-drei-darstellungen"><span class="header-section-number">D.5.1</span> Das Werkzeug: Drei Prompts, drei Darstellungen</h3>
+<!-- TODO: Die drei Prompts aus Ü4 (BPMN-XML, Animation als HTML ohne Zufall, Colab-Notebook mit SimPy) als Codeblöcke mit je einem Satz, welche Annahme sie teilen (Schritte, Dauern, Kapazitäten gehen in alle drei Darstellungen). -->
+</section>
+<section id="sec-d-ue4" class="level3" data-number="D.5.2">
+<h3 data-number="D.5.2" class="anchored" data-anchor-id="sec-d-ue4"><span class="header-section-number">D.5.2</span> Übung Ü4: Ein Prozess, drei Darstellungen, eine Engpass-Vorhersage</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Übung Ü4: Ein Prozess, drei Darstellungen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Übung Ü4: Ein Prozess, drei Darstellungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe:</strong> Aus einer Prozessbeschreibung ein BPMN-Diagramm, eine Animation und eine Simulation erzeugen und an einer Engpass-Vorhersage prüfen, ob die drei Darstellungen dasselbe sagen. Ergebnis: ein BPMN-Diagramm, eine Animation als HTML-Datei, ein Notebook und die eigene Vorhersage im Vergleich.</p>
+<p><strong>Tool:</strong> Chat-Interface des Anbieters, Auto-Layout-Seite (<a href="https://bpmn-io.github.io/bpmn-auto-layout/" class="uri">https://bpmn-io.github.io/bpmn-auto-layout/</a>), <a href="https://demo.bpmn.io" class="uri">https://demo.bpmn.io</a>, Google Colab; alles im Browser ohne Installation.</p>
+<p><strong>Zeit:</strong> 26 Minuten.</p>
+<p><strong>Sozialform:</strong> Partnerarbeit.</p>
+<ol type="1">
+<li><strong>Text zu BPMN (8 min).</strong> Prompt 1. Antwort als Datei mit der Endung .bpmn speichern, auf der Auto-Layout-Seite öffnen (Open → Download) und dann in demo.bpmn.io (Datei ins Fenster ziehen).</li>
+<li><strong>Vorhersage (2 min).</strong> Jede Person notiert für sich: An welchem Schritt staut sich die Arbeit?</li>
+<li><strong>Animation (8 min).</strong> Prompt 2 im selben Chat. HTML-Datei herunterladen und per Doppelklick im Browser öffnen.</li>
+<li><strong>Simulation (8 min).</strong> Prompt 3, dann den Code in ein neues Notebook auf <a href="https://colab.research.google.com" class="uri">https://colab.research.google.com</a> kopieren und ausführen. Engpass mit Vorhersage und Animation vergleichen.</li>
+</ol>
+<p>Prozess aus dem eigenen Fach mit vier bis sechs Schritten, oder eine der Optionen: Bedarf melden → Angebote vergleichen → bestellen → Ware prüfen (Einkauf); Störung melden → Ursache untersuchen → reparieren → Anlage freigeben (Ingenieurwesen); Beweis einreichen → prüfen → Rückfragen beantworten → überarbeiten (Mathematik); Beratungsanfrage aufnehmen → Bedarf klären → Unterstützung vereinbaren → Verlauf prüfen (Soziale Arbeit); Antrag auf Anerkennung prüfen → fachlich bewerten → entscheiden → verbuchen (Studierendenbetreuung).</p>
+<p>Prompt 1, BPMN:</p>
+<pre><code>Erstelle für den Prozess [Prozess] eine BPMN-2.0-XML-Datei: ein
+Startereignis, 4–6 Aufgaben, mindestens eine Entscheidung (exklusives
+Gateway) mit allen Ausgängen, ein Endereignis. Wichtig: Jeder Knoten enthält
+seine &lt;bpmn:incoming&gt;- und &lt;bpmn:outgoing&gt;-Elemente. Keine Pools oder Lanes,
+kein Diagrammlayout (BPMNDI). Gib die Datei als Codeblock aus.</code></pre>
+<p>Prompt 2, Animation:</p>
+<pre><code>Mache aus diesem Prozess eine Prozessanimation als eine einzige HTML-Datei
+ohne Internet und ohne externe Bibliotheken. Lege für jeden Schritt eine
+plausible Dauer in Minuten und eine Kapazität fest (meist 1) und nenne die
+Werte als Annahmen. 10 Fälle kommen alle [x] Minuten an. Fälle wandern als
+Punkte von Station zu Station, Warteschlangen vor einer Station werden
+sichtbar, oben laufen eine Uhr und die Zähler Fertig, Im Prozess, Wartend.
+Knöpfe: Start/Pause, Schritt, Zurück. Keine Zufallszahlen, damit jeder Lauf
+gleich aussieht. Nenne danach in einem Satz, wo die Warteschlange entsteht
+und warum.</code></pre>
+<p>Prompt 3, Simulation:</p>
+<pre><code>Schreibe ein Python-Programm für Google Colab mit SimPy für denselben Prozess
+und dieselben Dauern und Kapazitäten. Ankünfte und Bearbeitungszeiten
+schwanken (Exponentialverteilung um die Mittelwerte), Zufallsstartwert 42.
+Simuliere 100 Fälle. Gib je Station die Auslastung in Prozent und die
+mittlere Wartezeit aus, als Tabelle. Erste Zeile: !pip install simpy</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">4D</th>
+<th style="text-align: left;">In dieser Übung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delegation</td>
+<td style="text-align: left;">Die KI schreibt XML, HTML und Python; wir legen Schritte, Dauern und Kapazitäten fest.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: left;">Dieselben Annahmen gehen in alle drei Darstellungen.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Discernment</td>
+<td style="text-align: left;">Die eigene Vorhersage ist der Prüfstein: Sagen Diagramm, Animation und Simulation dasselbe?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diligence</td>
+<td style="text-align: left;">Keine echten Fall- oder Personendaten, besonders in Sozialer Arbeit und Studierendenbetreuung.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wenn es hakt.</strong> “no diagram to display”: Die Datei hat kein Layout; erst über die Auto-Layout-Seite laden. Kästen liegen gestapelt ohne Pfeile: incoming/outgoing fehlen; die KI bitten, sie für jeden Knoten zu ergänzen. Schwimmbahnen nötig: in demo.bpmn.io von Hand ergänzen. Bei Schritt 1 hängen geblieben: das UrbanRide-Paket nehmen und mit Schritt 2 weitermachen.</p>
+<p><strong>Debrief.</strong> Wo widersprechen sich Animation und Simulation, und welche Annahme steckt dahinter?</p>
+</div>
+</div>
+<p>Online-Material zu Ü4: <a href="downloads/anhang-d/uebung-u4-bpmn.pdf">Übungsblatt Ü4</a>, <a href="downloads/anhang-d/ue4-simpy-simulation.ipynb">Colab-Notebook SimPy-Simulation</a>, <a href="downloads/anhang-d/ue4-urbanride.zip">UrbanRide-Paket (XML, SVG, Animation)</a>, <a href="downloads/anhang-d/uebungsoption-bpmn.pdf">Übungsoption BPMN, 60-Minuten-Fassung</a>.</p>
+</section>
+</section>
+<section id="sec-d-workflows" class="level2" data-number="D.6">
+<h2 data-number="D.6" class="anchored" data-anchor-id="sec-d-workflows"><span class="header-section-number">D.6</span> Workflows automatisieren: Welche wiederkehrende Lehrarbeit lohnt die Automatisierung, und wie bleibt sie kontrollierbar?</h2>
+<p>n8n ist ein Baukasten für Arbeitsabläufe: Auf einer Arbeitsfläche verbinden wir Kästchen wie Stationen an einem Fließband; ein Formular nimmt Text an, ein Sprachmodell formuliert, eine feste Regel prüft, ein Mensch gibt frei. Jedes Kästchen heißt Knoten, die ganze Kette Workflow. Wichtig für das Verständnis: n8n selbst denkt nicht. Die Sprach- und Bildarbeit erledigen externe Modelle, die n8n über einen API-Schlüssel anspricht; n8n ist der Dirigent, die Modelle sind das Orchester. Eine API ist der Bestellschalter eines fremden Dienstes, über den Programme miteinander statt mit Menschen sprechen, und der API-Schlüssel ist die Kundenkarte mit Prepaid-Guthaben, die bei jeder Anfrage vorgezeigt und belastet wird. Ein Abonnement des Chat-Interfaces ist kein API-Zugang; die Plattform rechnet getrennt und nach Verbrauch ab. Automation stammt vom griechischen <em>autómatos</em>, aus eigenem Antrieb handelnd, und genau das Selbsttätige braucht feste Haltepunkte für den Menschen: In unseren Vorlagen erscheint vor jedem Schritt, der Geld kostet, eine Kontrollseite mit Plan und geschätzten Kosten, und erst der Klick auf “Freigeben” löst ihn aus.</p>
+<!-- TODO (Gerüst, aus n8n-LIESMICH, Cloud-Primer und Ablaufplan zu verarbeiten):
+- Welche Lehrarbeit lohnt die Automatisierung? Kriterium aus D.1: wiederkehrend, prüfbar, ohne Personenbezug. Beispiele: Text → Folienplan → Bilder → Präsentation (Vorlage 01); Quizfragen aus Skriptkapitel; Protokoll aus Transkript (vgl. B.1.7 Protokolle). Das Protokoll jedes Laufs liegt bei n8n Cloud in Frankfurt (EU); OpenAI-API-Daten ohne Opt-in nicht zum Training, bis 30 Tage Missbrauchskontrolle; BytePlus in Südostasien (Johor) → nur Texte ohne Personenbezug.
+- Eingebaute Sicherungen der Vorlage als Muster für jede Automatisierung: (1) Wächter = Skript, kein Modell, bricht ab bei E-Mail-Adresse, 7–8-stelliger Zahl (Matrikelnummer), Telefonnummer oder Überlänge; (2) Plan-Prüfung = Skript zählt Folien und Wörter (Titel ≤ 12, Folientext ≤ 15), ein Neuversuch für das Modell, dann bessert das Skript nach; (3) Kontrollpunkt = zweite Formularseite mit Plan und Kosten, erst "Freigeben" löst Bildaufträge aus; (4) Fehlertoleranz = ein fehlgeschlagenes Bild stoppt nicht den Rest; (5) Kennzeichnung = Quellenzeile je Folie, Protokollfolie mit Prompts, Modellen, Kosten und Feld "Geprüft von".
+- Kosten im Griff: Prepaid ohne Auto-Reload, Ausgabenlimit im API-Projekt, Freigabeschritte. Testkonto: 14 Tage, 1.000 Ausführungen, 5 gleichzeitige Läufe, 180 s je Lauf; nach Ablauf 90 Tage Export.
+- Veröffentlichte Formularadresse ist öffentlich: nur veröffentlichen, was Studierende nutzen sollen, danach zurücknehmen.
+- Lokale Variante (n8n in Docker + LM Studio auf der Workstation, Primer vom 11.10.) → Querverweis auf D.8, ein Absatz.
+- STATUS: Beide Workflow-Vorlagen (01 Text→Folien, 02 Text→Film) sind nur lokal gegen nachgebaute Dienste getestet; echte Schlüssel, n8n Cloud, echte Bild- und Clipgrößen ungetestet (LIESMICH 11.10.). Im Druck ausdrücklich als "in Erprobung" kennzeichnen; ausführliche Darstellung in D.9.
+- Übung: Der Plan vom 17.10. ordnet Ü5 (Zirkel: drei Werkzeuge, eine Vergleichskarte) diesem Abschnitt zu. Ü5 vergleicht lokale Modelle, Präsentationswerkzeuge und Elicit; eine eigene n8n-Übung existiert in der Übungs-docx nicht. Der Cloud-Primer beschreibt eine 30-Minuten-Einrichtung (Konto, Schlüssel, Vorlage importieren, Testlauf) — Roman entscheiden lassen, ob daraus eine Ü5b entsteht oder Ü5 als Vergleich der Automatisierungsgrade gerahmt wird.
+- Keine Studie im Material für diesen Abschnitt; Redaktionsregel erlaubt null bis drei. Mögliche Brücke: @chatterji2025a (strukturierte Workflows, bereits in D.1).
+-->
+<section id="das-werkzeug-eine-workflow-vorlage-mit-wächter-plan-prüfung-und-freigabe" class="level3" data-number="D.6.1">
+<h3 data-number="D.6.1" class="anchored" data-anchor-id="das-werkzeug-eine-workflow-vorlage-mit-wächter-plan-prüfung-und-freigabe"><span class="header-section-number">D.6.1</span> Das Werkzeug: Eine Workflow-Vorlage mit Wächter, Plan-Prüfung und Freigabe</h3>
+<!-- TODO: Beschreibung der Vorlage 01 "Text zu Folien" in Prosa (Formular → Folienplan durch Sprachmodell → Skript-Prüfung → Kontrollseite → Bilder → Präsentation im Browser mit Protokollfolie); Einrichtung in n8n Cloud in fünf Schritten (Konto, zwei Zugangsdaten im Tresor "Credentials", Import der JSON-Vorlage, Testlauf mit Execute workflow, Publish); Fehlerbilder-Tabelle (401, 429, 180-s-Grenze). Als "in Erprobung" kennzeichnen. -->
+</section>
+<section id="sec-d-ue5" class="level3" data-number="D.6.2">
+<h3 data-number="D.6.2" class="anchored" data-anchor-id="sec-d-ue5"><span class="header-section-number">D.6.2</span> Übung Ü5: Zirkel: Drei Werkzeuge, eine Vergleichskarte</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Übung Ü5: Zirkel: Drei Werkzeuge, eine Vergleichskarte">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Übung Ü5: Zirkel: Drei Werkzeuge, eine Vergleichskarte
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe:</strong> Drei Klassen von GenAI-Angeboten an derselben Aufgabe vergleichen und begründen, wann sich welche lohnt. Alle arbeiten am Thema des Quellenkorbs aus Ü3, damit die Ergebnisse vergleichbar sind. Ergebnis: eine ausgefüllte Vergleichskarte je Gruppe; die drei Karten hängen danach nebeneinander.</p>
+<p><strong>Tool:</strong> Station 1 lokale Modelle (LM Studio für Sprache, ComfyUI als Knotenbaukasten für Bilder), Station 2 Präsentationswerkzeuge (Gamma, Beautiful.ai, Prezi), Station 3 Elicit.</p>
+<p><strong>Zeit:</strong> 40 Minuten: drei Stationen à 12 Minuten, zweimal 2 Minuten Wechsel.</p>
+<p><strong>Sozialform:</strong> Drei Gruppen, die im Uhrzeigersinn wechseln.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Station</th>
+<th style="text-align: left;">Aufgabe</th>
+<th style="text-align: left;">Prüffrage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1 Lokale Modelle</td>
+<td style="text-align: left;">Eine Frage aus Ü2 offline stellen; ein Titelbild zum Thema erzeugen</td>
+<td style="text-align: left;">Wie gut ist es ohne Cloud, und was verlässt den Raum nicht?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2 Präsentationen</td>
+<td style="text-align: left;">Derselbe Prompt in zwei der drei Werkzeuge</td>
+<td style="text-align: left;">Aussagetitel? Höchstens 15 Wörter je Folie? Eine Quelle je Folie?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3 Literatur</td>
+<td style="text-align: left;">Die Forschungsfrage aus Ü3 stellen, eine Tabelle mit den Spalten Stichprobe · Methode · Kernbefund extrahieren lassen</td>
+<td style="text-align: left;">Wie viele Treffer decken sich mit dem Korb, welche Kernquelle fehlt?</td>
+</tr>
+</tbody>
+</table>
+<p>Prompt für Station 2:</p>
+<pre><code>Erstelle 5 Folien zu [Thema aus Ü3] für [Zielgruppe]. Jede Folie: ein
+Aussagetitel als ganzer Satz, höchstens 15 Wörter Folientext, unten eine
+vollständige Quellenangabe.</code></pre>
+<p>Vergleichskarte je Gruppe: Aufwand bis zum ersten Ergebnis (min) · Qualität (1 = unbrauchbar, 5 = übernehmbar) · Datenschutz: Wohin gehen die Daten? · Kosten (Gratis-Stufe reicht? Preis?) · Lohnt sich für …</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">4D</th>
+<th style="text-align: left;">In dieser Übung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delegation</td>
+<td style="text-align: left;">Welche Aufgabe gebe ich welchem Werkzeugtyp, und welche gar keinem?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: left;">Derselbe Prompt in jedem Werkzeug, damit Unterschiede am Werkzeug liegen.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Discernment</td>
+<td style="text-align: left;">Die Prüffragen der Station, nicht der erste Eindruck.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diligence</td>
+<td style="text-align: left;">Datenschutz und Kosten gehören auf die Karte, nicht nur die Qualität.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wenn es hakt.</strong> Kein Konto: an Station 2 und 3 zu zweit am Rechner einer Person mit Konto arbeiten. Gratis-Stufe ausgeschöpft: auf der Karte unter Kosten notieren; das ist ein Befund. Station 1 nicht erreichbar: das kurze Bildschirmvideo ansehen und die Spalte trotzdem füllen.</p>
+<p><strong>Debrief.</strong> Welches Werkzeug würden wir morgen in der Lehre einsetzen, und wofür ausdrücklich nicht?</p>
+</div>
+</div>
+<p>Online-Material zu Ü5 und zu den Workflow-Vorlagen: <a href="downloads/anhang-d/uebung-u5-zirkel.pdf">Übungsblatt Ü5 mit Vergleichskarte</a>, <a href="downloads/anhang-d/n8n-text-zu-folien.zip">n8n-Vorlagen “Text zu Folien” und “Text zu Film” mit LIESMICH (in Erprobung)</a>, <a href="downloads/anhang-d/primer-n8n-cloud.pdf">Primer “n8n in der Cloud”</a>.</p>
+</section>
+</section>
+<section id="sec-d-tutoren" class="level2" data-number="D.7">
+<h2 data-number="D.7" class="anchored" data-anchor-id="sec-d-tutoren"><span class="header-section-number">D.7</span> KI-Tutoren bauen und prüfen: Wie verhindere ich, dass der Tutor zu viel hilft?</h2>
+<section id="das-problem-tutoren-helfen-zu-früh-und-zu-viel" class="level3" data-number="D.7.1">
+<h3 data-number="D.7.1" class="anchored" data-anchor-id="das-problem-tutoren-helfen-zu-früh-und-zu-viel"><span class="header-section-number">D.7.1</span> Das Problem: Tutoren helfen zu früh und zu viel</h3>
+<p>Ein Tutor ist die Nutzungsform, in der die KI später ohne uns handelt. Alles, was wir in <a href="kapitel04.html#sec-tutor" class="quarto-xref"><span>Kapitel 4.3</span></a> über den Mehrwert individueller Anpassung und unmittelbaren Feedbacks gesagt haben, gilt weiter, und die Messlatte bleibt hoch: Menschliche Einzelbetreuung gehört zu den wirksamsten Maßnahmen, die die Bildungsforschung kennt: Eine Metaanalyse von 96 randomisierten Studien aus Vorschule und Schule findet einen mittleren Effekt von 0,37 Standardabweichungen auf die Lernleistung <span class="citation" data-cites="nickow2020">(<a href="references.html#ref-nickow2020" role="doc-biblioref">Nickow et al., 2020</a>)</span>. Doch wer Studierende einen Tutor bauen lässt, muss mit einer Eigenschaft heutiger Modelle rechnen, die der Didaktik des Tutorings direkt widerspricht: Sie helfen zu früh und zu viel.</p>
+<p>Drei Studien belegen das aus verschiedenen Richtungen; alle drei sind Preprints ohne abgeschlossene Begutachtung und deshalb als Hinweise zu lesen, nicht als Urteil. <span class="citation" data-cites="lee2026llm">Lee et al. (<a href="references.html#ref-lee2026llm" role="doc-biblioref">2026</a>)</span> haben 14.637 Antworten von KI-Tutoren je einer von vier Stufen zugeordnet, Frage, Hinweis, Erklären oder Lösen, und fanden über 95 Prozent auf den Stufen Erklären oder Lösen; für Hinweise und Gegenfragen, also das, was eine gute Tutorin meistens tut, blieb fast nichts. Methodisch ist das eine Klassifikation realer Tutoring-Dialoge, keine Lernmessung; sie zeigt das Verhalten der Modelle, nicht dessen Folgen. <span class="citation" data-cites="teo2026ai">Teo et al. (<a href="references.html#ref-teo2026ai" role="doc-biblioref">2026</a>)</span> kommen in einem Benchmark zum selben Bild und benennen es im Titel: KI-Assistenten überhelfen. Methodisch ist das ein fester Satz von Testaufgaben, an dem Modelle verglichen werden; die Assistenten unterbrechen darin den produktiven Kampf mit dem Problem, in dem nach <a href="kapitel03.html#sec-lerntechniken" class="quarto-xref"><span>Kapitel 3.4</span></a> das Lernen stattfindet, und zwar genau dann, wenn die Studentin kurz vor der Einsicht steht. <span class="citation" data-cites="perczel2025">Perczel et al. (<a href="references.html#ref-perczel2025" role="doc-biblioref">2025</a>)</span> schließlich erklären, warum Prompts allein das nicht beheben: Sie verglichen die Dialoge heutiger Modelle mit 100.000 Stunden echter Eins-zu-eins-Tutorien und fanden die Modelle über sechs Kriterien systematisch schwächer, mit Redeanteilen der Lernenden von 5 bis 15 statt rund 30 Prozent, drei bis vier Fragen auf einmal statt ein bis zwei, und einem Rückfall auf Multiple-Choice-artige statt offene Fragen. Die Ursache ist strukturell: Standardmodelle sind darauf optimiert, als hilfreiche Assistenten Reibung zu minimieren, während gutes Unterrichten Reibung gezielt erzeugt; die Autoren beschreiben aus eigener Entwicklung einen endlosen Kreislauf immer detaillierterer Prompts, und erst ein Nachtrainieren auf die Tutoring-Daten verdoppelte den Redeanteil der Lernenden. Für die Praxis heißt das: Der System-Prompt ist notwendig, aber er ist eine Prüfschicht von mehreren, und die Qualität eines Tutors hängt am Modell ebenso wie am Prompt. Die Gegenbefunde gegen ein sokratisches Dogma, die wir im Workshop diskutiert haben, nehmen wir hier nicht auf; sie stehen im Online-Material. <!-- TODO (Roman entscheiden): Die beiden Gegenbefunde aus Input B6 — @clindeffarges2026socrates (freier Chatbot schlug sokratischen Tutor beim sofortigen Faktenlernen, Hirnsensorik, kein verzögerter Test) und @azimi2026ai (selbst formulierte Nutzungsregeln wirkten stärker als strenges Gerüst, Mixed Methods, Programmierlehre) — sind in genai-lehre-radar-2025-26.bib vorhanden und könnten zitiert werden. Die Redaktionsregel (höchstens drei Studien je Frage) ist mit Lee, Teo und Perczel ausgeschöpft. Optionen: (a) als Fußnote mit zwei Sätzen, (b) Perczel durch Clin Deffarges ersetzen, (c) Online-Material. Derzeit (c). --></p>
+</section>
+<section id="der-rahmen-vier-fragen-und-vier-prüfschichten" class="level3" data-number="D.7.2">
+<h3 data-number="D.7.2" class="anchored" data-anchor-id="der-rahmen-vier-fragen-und-vier-prüfschichten"><span class="header-section-number">D.7.2</span> Der Rahmen: Vier Fragen und vier Prüfschichten</h3>
+<p>Struktur bekommt ein Tutorprojekt durch vier Fragen, die wir in den Übungen dieses Anhangs durchgängig als 4D-Prüfliste führen: Delegation fragt, was der Tutor tun soll und was nie; Description ist der System-Prompt, also die Beschreibung der Aufgabe in prüfbaren Regeln; Discernment sind die Tests, mit denen wir Antworten beurteilen; Diligence heißt Sorgfalt, also Datenschutz und Freigabe <span class="citation" data-cites="dakan2025">(4D-Modell der AI Fluency, <a href="references.html#ref-dakan2025" role="doc-biblioref">Dakan &amp; Feller, 2025</a>)</span>. Weil der Tutor ohne uns handelt, wiegen die letzten beiden Fragen schwerer als bei jeder anderen Nutzungsform.</p>
+<p>Wie prüfen wir also? Mit einem Modell aus der Sicherheitsforschung, dem Schweizer-Käse-Modell: Jede Prüfschicht hat Löcher, aber jede an anderer Stelle, und gestapelt fangen sie die meisten Fehler <span class="citation" data-cites="reason2000">(<a href="references.html#ref-reason2000" role="doc-biblioref">Reason, 2000</a>)</span>. Die erste Schicht sind Prompt-Muster, also erprobte Bausteine für den System-Prompt wie eine Persona, eine Vorlage für die Antwortform, eine Prüfliste für Fakten oder die umgedrehte Interaktion, bei der das Modell fragt statt antwortet; sie fangen unklare Rollen und fehlende Struktur <span class="citation" data-cites="white2023">(Katalog der Muster bei <a href="references.html#ref-white2023" role="doc-biblioref">White et al., 2023</a>)</span>. Die zweite Schicht ist eine deterministische Prüfung: ein Skript, kein Modell, das Regelverstöße erkennt, die sich mechanisch feststellen lassen, etwa ob die Antwort eine Endzahl verrät oder ob ein Zitat wörtlich in der Quelle steht. Die dritte Schicht ist Testmanagement: dieselben Testfälle nach jeder Änderung des Prompts erneut laufen lassen, wie ein TÜV-Termin nach jeder Reparatur, damit eine Verbesserung an einer Stelle keinen Rückfall an einer anderen verdeckt. Die vierte Schicht ist der Goldstandard: von Fachleuten geprüfte Musterantworten, an denen die Tutorantworten gemessen werden; das ist der Gedanke, den <span class="citation" data-cites="kestin2025">Kestin et al. (<a href="references.html#ref-kestin2025" role="doc-biblioref">2025</a>)</span> mit Musterlösungen als Input verfolgen (<a href="kapitel04.html#sec-complex-tutors" class="quarto-xref"><span>Kapitel 4.3.2</span></a>), hier auf die Testseite gewendet. Erst an dieser vierten Schicht bleiben fachliche Fehler hängen, die die ersten drei nicht sehen können.</p>
+<p>Der Goldstandard ist nur so gut wie die Einigkeit derer, die ihn erstellen. Deshalb bewerten zwei Personen jede Tutorantwort getrennt, und ein Übereinstimmungsmaß zeigt, wie viel ihrer Einigkeit über den Zufall hinausgeht: Cohens Kappa setzt die beobachtete Übereinstimmung ins Verhältnis zur zufällig erwartbaren. Stimmen beide in 80 Prozent der Fälle überein und läge die Zufallsübereinstimmung bei 50 Prozent, ergibt sich κ = (0,80 − 0,50) / (1 − 0,50) = 0,60, ordentlich, aber nicht perfekt <span class="citation" data-cites="cohen1960">(<a href="references.html#ref-cohen1960" role="doc-biblioref">Cohen, 1960</a>)</span>. Für die Benotung studentischer Tutoren ist diese Zahl der wichtigste Befund der Übung: Sind sich die Bewertenden selten einig, müssen erst die Stufendefinitionen geschärft werden, bevor weiter getestet wird. Auch die Regel aus <a href="#sec-d-arbeitsumgebung" class="quarto-xref"><span>Kapitel D.2</span></a> kehrt hier wieder: Eingehalten werden vor allem prüfbare Regeln, und “gib nie sofort die Lösung, sondern bitte erst um einen eigenen Lösungsschritt” ist eine solche.</p>
+</section>
+<section id="das-werkzeug-der-tutor-als-zwei-datei-bündel" class="level3" data-number="D.7.3">
+<h3 data-number="D.7.3" class="anchored" data-anchor-id="das-werkzeug-der-tutor-als-zwei-datei-bündel"><span class="header-section-number">D.7.3</span> Das Werkzeug: Der Tutor als Zwei-Datei-Bündel</h3>
+<p>Unser Werkzeug für Tutoren folgt der Merkregel aus <a href="#tbl-d-bausteine" class="quarto-xref">Tabelle&nbsp;<span>D.2</span></a>: Was immer gelten muss, steht in der Anleitung; Beispiele und Fachwissen stehen in einer Datei daneben. Das Bündel besteht aus einer Anleitungsdatei <code>SKILL.md</code> und einer JSON-Datei mit durchgearbeiteten Beispielen; JSON ist ein Textformat für strukturierte Daten, in dem jedes Beispiel dieselben Felder trägt, so wie eine Karteikarte immer dieselben Rubriken hat. Dieses Bündel ist zugleich die Bauform eines Skills, und es umgeht zwei Hürden geteilter Assistenten: die Obergrenze für Mitwirkende in geteilten Projekten und die Abhängigkeit von Produkten, die abgeschaltet werden. Studierende laden beide Dateien auf ihr eigenes Konto. Als Musterlösung dient ein Statistik-Tutor für Korrelation und Kausalität im ersten Studienjahr; die Anleitung ist bewusst kurz, und jede ihrer Regeln lässt sich abhaken.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">name:</span><span class="co"> statistik-tutor</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> Sokratischer Tutor für Korrelation und Kausalität in der Einführungsstatistik. Verwenden, wenn Studierende Zusammenhänge deuten, Scheinkorrelationen erkennen oder Studiendesigns beurteilen wollen.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Statistik-Tutor: Korrelation und Kausalität</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>Du begleitest Studierende im ersten Studienjahr beim Üben. Dein Ziel ist, dass sie selbst denken, nicht dass sie schnell eine Antwort haben.</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Regeln</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Gib nie sofort die Lösung. Bitte zuerst um einen eigenen Lösungsschritt mit Begründung.</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Bestätige oder korrigiere erst danach, in höchstens drei Sätzen.</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Erkläre Begriffe, aber schreibe keine fertigen Antworten für Hausaufgaben oder Prüfungen.</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Nutze die Beispiele in references/beispiele.json. Erzeuge daraus neue Varianten mit anderem Kontext, statt die Beispielaufgabe wörtlich zu stellen.</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Achte auf die dort genannten typischen Fehler. Erkennst du einen, frage nach, statt ihn zu benennen.</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Nutze die Fachsprache aus der Datei (Korrelation, Confounder, Selektionseffekt …).</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Liegt eine Frage außerhalb von Korrelation und Kausalität, sag das ausdrücklich und verweise auf die Lehrperson.</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Frage nicht nach Namen oder anderen persönlichen Daten.</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ablauf einer Übungsrunde</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Frage, woran die Studentin gerade arbeitet, oder biete eine Variante aus der Datei an.</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Lass sie den ersten Schritt formulieren und begründen.</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Gib kurzes Feedback und stelle die nächste Frage.</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Fasse am Ende in einem Satz zusammen, was sie selbst herausgefunden hat.</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Die Regeln setzen die drei Befunde von oben um: Regel 1 und 2 erzwingen das Gerüst statt der Lösung, Regel 3 lässt den Tutor erklären, aber nicht schreiben, Regel 7 benennt die Grenze des Stoffs, statt aus Allgemeinwissen zu raten, wie wir es in <a href="#sec-d-quellen" class="quarto-xref"><span>Kapitel D.3</span></a> mit der unbeantwortbaren Frage geübt haben. Die zweite Datei liefert das Fachwissen, aus dem der Tutor Varianten erzeugt, und die typischen Fehler, auf die er achten soll.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"aufgabentyp"</span><span class="fu">:</span> <span class="st">"Scheinkorrelation erkennen"</span><span class="fu">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"beispielaufgabe"</span><span class="fu">:</span> <span class="st">"Eisverkauf und Sonnenbrände steigen gemeinsam. Verursacht Eisessen Sonnenbrand?"</span><span class="fu">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"methode"</span><span class="fu">:</span> <span class="st">"Vor einem Kausalschluss nach einer Drittvariable (Confounder) suchen, die beide beeinflusst"</span><span class="fu">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"loesungsschritte"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Die beobachtete Korrelation benennen"</span><span class="ot">,</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Fragen: Gibt es eine dritte Variable, die beide treibt?"</span><span class="ot">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Hier: Sonnenschein/Temperatur treibt beide"</span><span class="ot">,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Schluss: Korrelation ohne Kausalität"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"typische_fehler"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Aus Gleichzeitigkeit auf Ursache schließen"</span><span class="ot">,</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Richtung der Wirkung verwechseln (umgekehrte Kausalität)"</span><span class="ot">,</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Confounder gar nicht in Betracht ziehen"</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"fachsprache"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Korrelation"</span><span class="ot">,</span> <span class="st">"Kausalität"</span><span class="ot">,</span> <span class="st">"Confounder"</span><span class="ot">,</span> <span class="st">"Drittvariable"</span><span class="ot">,</span> <span class="st">"Scheinkorrelation"</span><span class="ot">]</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"aufgabentyp"</span><span class="fu">:</span> <span class="st">"Studiendesign beurteilen"</span><span class="fu">,</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"beispielaufgabe"</span><span class="fu">:</span> <span class="st">"Eine Beobachtungsstudie findet: Kaffeetrinker leben länger. Darf man Kaffee empfehlen?"</span><span class="fu">,</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"methode"</span><span class="fu">:</span> <span class="st">"Beobachtung erlaubt keinen Kausalschluss; nur ein randomisiertes Experiment kontrolliert Confounder"</span><span class="fu">,</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"loesungsschritte"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Studientyp bestimmen (Beobachtung vs. Experiment)"</span><span class="ot">,</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Mögliche Confounder benennen (z. B. Gesundheitsverhalten)"</span><span class="ot">,</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Prüfen, ob randomisiert zugewiesen wurde"</span><span class="ot">,</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Schluss: Zusammenhang ja, Empfehlung nein"</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"typische_fehler"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Beobachtungsdaten als Kausalbeleg lesen"</span><span class="ot">,</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Selektionseffekte übersehen"</span><span class="ot">,</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Von Korrelation direkt zur Handlungsempfehlung"</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"fachsprache"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Beobachtungsstudie"</span><span class="ot">,</span> <span class="st">"randomisiertes Experiment"</span><span class="ot">,</span> <span class="st">"Confounder"</span><span class="ot">,</span> <span class="st">"Selektionseffekt"</span><span class="ot">,</span> <span class="st">"Kontrollgruppe"</span><span class="ot">]</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Geladen wird das Bündel je nach Konto auf einem von drei Wegen, und der Vergleich der Wege ist selbst ein Lernziel. Als Skill liest das Modell die Anleitung nur bei Bedarf, als Projekt in jeder Runde, im Einzelchat nur so lange, wie der Gesprächsverlauf reicht; wer mehrere Wege ausprobiert, sieht, ob der Tutor überall gleich standhaft bleibt.</p>
+<div id="tbl-d-tutor-laden" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-d-tutor-laden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;D.3: Drei Wege, das Tutor-Bündel zu laden
+</figcaption>
+<div aria-describedby="tbl-d-tutor-laden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Weg</th>
+<th style="text-align: left;">Voraussetzung</th>
+<th style="text-align: left;">Schritte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Als Skill</td>
+<td style="text-align: left;">Das Interface kennt Skills</td>
+<td style="text-align: left;">Ordner hochladen, im Chat mit <code>@statistik-tutor</code> aufrufen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Als Projekt</td>
+<td style="text-align: left;">Jedes Konto mit Projekten</td>
+<td style="text-align: left;">Neues Projekt; Text von <code>SKILL.md</code> ohne die Kopfzeilen ins Anleitungsfeld; <code>beispiele.json</code> als Projektdatei</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Als Einzelchat (etwa KI:connect.nrw)</td>
+<td style="text-align: left;">Jedes Werkzeug mit Dateianhang</td>
+<td style="text-align: left;">Text von <code>SKILL.md</code> als erste Nachricht senden, <code>beispiele.json</code> anhängen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Für den eigenen Tutor erzeugen zwei Build-Prompts die beiden Dateien: Der erste interviewt die Lehrperson zu Fach, Zielgruppe, Lernmoment, typischen Denkfehlern und Fachsprache und schreibt daraus die Anleitung mit den festen Regeln; der zweite macht aus eingefügtem Lehrmaterial die JSON-Datei mit genau den Feldern der Musterlösung und markiert mit “PRÜFEN”, was im Material fehlt, statt es zu erfinden. Beide Prompts liegen im Online-Material. Für die Verteilung an Studierende genügen zwei Dateien im Lernmanagementsystem; Studierende öffnen ihr eigenes Konto, fügen den Prompt ein und hängen die JSON-Datei an. Die Grundregel dabei: Nichts in einen studierendenseitigen Tutor legen, dessen Leak die Prüfung beschädigt, und keine Namen oder Adressen von Studierenden in die Dateien.</p>
+</section>
+<section id="das-studierendenprojekt-bauen-testen-abgeben" class="level3" data-number="D.7.4">
+<h3 data-number="D.7.4" class="anchored" data-anchor-id="das-studierendenprojekt-bauen-testen-abgeben"><span class="header-section-number">D.7.4</span> Das Studierendenprojekt: Bauen, testen, abgeben</h3>
+<p>Wer Studierende selbst einen Tutor bauen lässt, verbindet Fachwissen, Methodenkompetenz und KI-Literacy in einem Projekt, das nach den Säulen aus <a href="kapitel05.html" class="quarto-xref"><span>Kapitel 5</span></a> prozessorientiert prüfbar ist. Als Abgabe haben sich drei Teile bewährt: drei Versionen des Tutors, ein Änderungsprotokoll, das zu jeder Version sagt, welche Regel warum geändert wurde, und ein Testprotokoll gegen den Goldstandard, bei zwei Bewertenden mit Cohens Kappa beziffert. Technisch reicht für ein Bündel das eigene Konto der Studierenden; wer einen Tutor mit eigener Oberfläche und Dokumentenablage bauen lassen will, kann eine Übungswerkstatt in der Cloud nutzen, in der Studierende eine Webseite, die Logik und einen Speicher für die Wissensbasis anlegen und das Sprachmodell per API-Schlüssel anbinden; wir nutzen dafür das AWS Academy Learner Lab, das Hochschulen kostenlos und ohne Kreditkarte bereitstellt <span class="citation" data-cites="awsacademy2026">(<a href="references.html#ref-awsacademy2026" role="doc-biblioref">Amazon Web Services, 2026</a>)</span>. <!-- TODO (Roman): AWS Academy Learner Lab (kostenlos, ohne Kreditkarte; Amplify für die Webseite, Lambda für die Logik, S3 für RAG-Dokumente, optional DynamoDB; Stolpersteine: Sitzungen enden nach 4 Stunden, nur Region us-east-1, immer die vorgegebene LabRole). Quelle: AWS Academy, abgerufen 11.10.2026, https://aws.amazon.com/training/awsacademy/ — Eintrag fehlt; Romans Primer dazu liegt im Workshop-Ordner. Beispiele: Projektauftrag WAGP; Manuskript Burdinski & Bartnik zu regelbasierten und generativen Tutoren in Chemie und Wirtschaftsingenieurwesen (AOHER, in Begutachtung; Datei AOHER-Burdinski-Bartnik-Chatbots-regelbasiert-GenAI-v2.docx) — Zitierfähigkeit und Status klären. --></p>
+</section>
+<section id="sec-d-ue6" class="level3" data-number="D.7.5">
+<h3 data-number="D.7.5" class="anchored" data-anchor-id="sec-d-ue6"><span class="header-section-number">D.7.5</span> Übung Ü6: Testplan für einen KI-Tutor: Mini-Goldstandard und Überhilfe-Audit</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Übung Ü6: Testplan für einen KI-Tutor">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Übung Ü6: Testplan für einen KI-Tutor
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe:</strong> Einen vorbereiteten Tutor oder den eigenen Bot aus Ü1 gegen einen Mini-Goldstandard testen, jede Antwort einer Hilfestufe zuordnen und daraus einen Testplan ableiten. Ergebnis: ein Testplan, den wir Studierenden mitgeben, die selbst einen KI-Tutor bauen.</p>
+<p><strong>Tool:</strong> Das Tutor-Bündel <code>statistik-tutor</code> (als Skill, Projekt oder Einzelchat geladen) oder der eigene Bot aus Ü1.</p>
+<p><strong>Zeit:</strong> 35 Minuten.</p>
+<p><strong>Sozialform:</strong> Dreiergruppen: eine Person spielt die Studierenden, zwei bewerten getrennt.</p>
+<ol type="1">
+<li><strong>Mini-Goldstandard (10 min).</strong> Drei Personas mal zwei Aufgaben aus dem eigenen Fach, je mit dem erwarteten Verhalten des Tutors. Dazu eine unbeantwortbare Frage wie in Ü2.</li>
+<li><strong>Überhilfe-Audit (15 min).</strong> Die spielende Person gibt alle sieben Testfälle ein. Beide Bewertenden ordnen jede Tutorantwort getrennt einer Stufe zu und haken eine prüfbare Regel ab. Danach vergleichen.</li>
+<li><strong>Testplan (10 min).</strong> Welche Prüfschicht fängt welchen Fehler, und was geben die Studierenden ab?</li>
+</ol>
+<p>Stufen der Hilfe, von viel zu wenig: <strong>Lösen</strong> (gibt das Ergebnis) · <strong>Erklären</strong> (erklärt den Weg vollständig) · <strong>Hinweis</strong> (zeigt die Richtung) · <strong>Frage</strong> (lässt die Studierenden den nächsten Schritt selbst finden).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fall</th>
+<th style="text-align: left;">Persona</th>
+<th style="text-align: left;">Aufgabe</th>
+<th style="text-align: left;">Erwartetes Verhalten</th>
+<th style="text-align: left;">Stufe (A)</th>
+<th style="text-align: left;">Stufe (B)</th>
+<th style="text-align: left;">Regel erfüllt?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Unsicher, wenig Vorwissen</td>
+<td style="text-align: left;">Aufgabe 1</td>
+<td style="text-align: left;">Frage oder Hinweis, keine Lösung</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Unsicher, wenig Vorwissen</td>
+<td style="text-align: left;">Aufgabe 2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Solide, will prüfen</td>
+<td style="text-align: left;">Aufgabe 1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Solide, will prüfen</td>
+<td style="text-align: left;">Aufgabe 2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">“Gib mir einfach die Lösung”</td>
+<td style="text-align: left;">Aufgabe 1</td>
+<td style="text-align: left;">Bleibt beim Hinweis</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">“Gib mir einfach die Lösung”</td>
+<td style="text-align: left;">Aufgabe 2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Beliebig</td>
+<td style="text-align: left;">Frage außerhalb des Stoffs</td>
+<td style="text-align: left;">Sagt, dass es das nicht weiß</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Schicht</th>
+<th style="text-align: left;">Was sie fängt</th>
+<th style="text-align: left;">Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Prompt-Muster</td>
+<td style="text-align: left;">Unklare Rolle, fehlende Struktur</td>
+<td style="text-align: left;">Persona, Vorlage, Faktenprüfliste, umgedrehte Interaktion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Deterministische Prüfung</td>
+<td style="text-align: left;">Regelverstöße, die ein Skript erkennt</td>
+<td style="text-align: left;">Verrät die Antwort die Endzahl? Steht das Zitat wörtlich in der Quelle?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Testmanagement</td>
+<td style="text-align: left;">Rückfälle nach Änderungen</td>
+<td style="text-align: left;">Dieselben sieben Fälle nach jeder Änderung erneut laufen lassen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Goldstandard</td>
+<td style="text-align: left;">Fachliche Fehler</td>
+<td style="text-align: left;">Von Fachleuten geprüfte Musterantworten, zwei Bewertende</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">4D</th>
+<th style="text-align: left;">In dieser Übung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delegation</td>
+<td style="text-align: left;">Was soll der Tutor tun, und was nie?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: left;">Der System-Prompt des Tutors; prüfbare Regeln statt Haltungen.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Discernment</td>
+<td style="text-align: left;">Die sieben Testfälle, zwei Bewertende, ein Vergleich.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diligence</td>
+<td style="text-align: left;">Datenschutz und Freigabe: Wer gibt den Tutor für Studierende frei?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wenn es hakt.</strong> Die Bewertenden sind sich selten einig: die Stufendefinitionen schärfen, bevor weiter getestet wird; das ist der wichtigste Befund für die spätere Benotung. Der Tutor gibt sofort die Lösung: den Fall notieren, eine prüfbare Regel im System-Prompt ergänzen und alle sieben Fälle erneut laufen lassen.</p>
+<p><strong>Debrief.</strong> Wie oft waren sich die beiden Bewertenden einig, und was heißt das für die Benotung studentischer Tutoren?</p>
+<p><strong>Für das Studierendenprojekt.</strong> Abgabe: drei Versionen des Tutors, ein Änderungsprotokoll und ein Testprotokoll gegen den Goldstandard. Bei zwei Bewertenden lässt sich die Übereinstimmung mit Cohens Kappa beziffern.</p>
+</div>
+</div>
+<p>Online-Material zu Ü6: <a href="downloads/anhang-d/uebung-u6-tutor-testplan.pdf">Übungsblatt Ü6 mit Vorlage Mini-Goldstandard</a>, <a href="downloads/anhang-d/statistik-tutor.zip">Tutor-Bündel <code>statistik-tutor</code> als ZIP</a>, <a href="downloads/anhang-d/uebung-tutor-buendel.md">Übung “Einen KI-Tutor als Bündel bauen” mit Build-Prompts A und B</a>.</p>
+</section>
+</section>
+<section id="sec-d-lokal" class="level2" data-number="D.8">
+<h2 data-number="D.8" class="anchored" data-anchor-id="sec-d-lokal"><span class="header-section-number">D.8</span> Lokale Modelle: Wann lohnt der Betrieb ohne Cloud, und was leistet ein kleines Modell?</h2>
+<p>Ein lokales Modell ist die eigene Küche statt Lieferdienst. Beim Lieferdienst, also bei jedem Cloud-Dienst, geht die Bestellung samt Zutaten aus dem Haus; in der eigenen Küche verlässt nichts das Haus, dafür sind die Töpfe kleiner. LM Studio ist eine solche Küche: ein Programm, das ein Sprachmodell einmal herunterlädt, auf dem eigenen Laptop ausführt und danach vollständig offline arbeitet. Die Topfgröße bestimmt der Arbeitsspeicher; welche Modellklasse zu welchem Laptop passt, steht im datierten Kasten in <a href="#sec-d-arbeitsumgebung" class="quarto-xref"><span>Kapitel D.2</span></a>. Was solche kleinen Modelle können, lässt sich knapp sagen: Zusammenfassen, Umformulieren und Sortieren gelingen gut; mehrstufiges Rechnen klappt unzuverlässig, und aktuelle Fakten kennen sie nicht, denn sie sind offline. Deshalb gehören in der Übung genau die Aufgaben auf das lokale Modell, bei denen die Daten das Gerät nicht verlassen sollen und bei denen eine Stichprobe genügt, um das Ergebnis zu prüfen: Lesezeichen sortieren und Codenamen erzeugen, mit denen Studierende Tests und Abgaben anonym einreichen.</p>
+<!-- TODO (Gerüst, aus Input B7 und LM-Studio-Primer zu verarbeiten):
+- Quantisierung erklären: "Q4" im Dateinamen heißt komprimiert wie ein JPG, kleiner, etwas unschärfer; ein Gewicht braucht im Original 16 Bit, im Format Q4_K etwa 4,5 Bit, die Datei schrumpft auf gut ein Viertel; Genauigkeitsverlust modellabhängig. Quelle: Hugging Face Hub-Dokumentation GGUF, Abschnitt Quantization Types, abgerufen 11.10.2026, https://huggingface.co/docs/hub/gguf — Eintrag fehlt.
+- Offline-Betrieb: LM Studio Docs, Abschnitt Offline Operation, https://lmstudio.ai/docs/app — Eintrag fehlt. Modell vom USB-Stick statt über das WLAN laden (2–5 GB), danach WLAN testweise abschalten.
+- Rückfallebene ohne Installationsrecht: WebLLM im Browser (https://webllm.mlc.ai/), erster Download dauert, danach lokal.
+- Codenamen: Studierende geben Tests und Abgaben unter Codenamen ab; die Korrektur bleibt anonym, KI-gestützte Feedbackblätter verarbeiten nie echte Namen; die Zuordnung Codename → Person entsteht nur in der eigenen Tabelle, nie im Modell. Beispiel: SSCM-Modul (https://th-koln-bartnik.github.io/sscm-2026-student/), Muster "Nachname einer Fachperson plus Jahreszahl" (Deming1900). Brücke zu D.9 (diagnostisches Feedback je Codename).
+- Hochschul-Hosting und Workstation: lokales n8n in Docker + LM Studio auf der RTX-5090-Workstation (Primer 11.10., englisch): nichts verlässt das Haus, keine Ausführungsgrenzen, lokale Modelle übernehmen Routinearbeit; Geschwindigkeit hängt daran, ob das Modell in den Grafikspeicher (32 GB) passt. Ein Absatz als Ausblick, Rest in D.6 verlinken.
+- Keine Studie im Material für diesen Abschnitt; Datenschutzargument ggf. mit Kap. 5 (Richtlinien, @sec-umsetzung) verknüpfen.
+-->
+<section id="das-werkzeug-lm-studio-auf-dem-eigenen-laptop" class="level3" data-number="D.8.1">
+<h3 data-number="D.8.1" class="anchored" data-anchor-id="das-werkzeug-lm-studio-auf-dem-eigenen-laptop"><span class="header-section-number">D.8.1</span> Das Werkzeug: LM Studio auf dem eigenen Laptop</h3>
+<!-- TODO: Einrichtung in Prosa (installieren, Modelldatei laden, Modell auswählen, Chat; API-Zugang für n8n ab Version 0.4), Prompts aus Ü7 als Codeblöcke, Hinweis auf CSV-Ausgabeformat als prüfbares Ergebnis. -->
+</section>
+<section id="sec-d-ue7" class="level3" data-number="D.8.2">
+<h3 data-number="D.8.2" class="anchored" data-anchor-id="sec-d-ue7"><span class="header-section-number">D.8.2</span> Übung Ü7: Zwei Aufgaben offline</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Übung Ü7: Zwei Aufgaben offline">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Übung Ü7: Zwei Aufgaben offline
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe:</strong> Ein kleines lokales Modell auf dem eigenen Laptop einrichten und damit zwei Alltagsaufgaben erledigen, ohne dass Daten das Gerät verlassen. Ergebnis: ein lokales Modell, das läuft, und zwei erledigte Aufgaben.</p>
+<p><strong>Tool:</strong> LM Studio auf dem eigenen Laptop, Modelldatei vom USB-Stick; ohne Installationsrecht WebLLM im Browser (<a href="https://webllm.mlc.ai/" class="uri">https://webllm.mlc.ai/</a>).</p>
+<p><strong>Zeit:</strong> 22 Minuten.</p>
+<p><strong>Sozialform:</strong> Einzelarbeit.</p>
+<ol type="1">
+<li><strong>Einrichten (8 min).</strong> LM Studio installieren, das Modell vom USB-Stick laden statt über das WLAN (2 bis 5 GB je Modell). Danach das WLAN testweise abschalten und eine Frage stellen.</li>
+<li><strong>Lesezeichen sortieren (7 min).</strong> Browser-Lesezeichen als HTML-Datei exportieren, die Titel herauskopieren und Prompt 1 eingeben. Zehn Zuordnungen stichprobenartig prüfen.</li>
+<li><strong>Codenamen erzeugen (7 min).</strong> Prompt 2. Kleine Modelle wiederholen sich, also die Liste auf Dubletten prüfen (in Excel: Daten → Duplikate entfernen).</li>
+</ol>
+<p>Prompt 1, Lesezeichen:</p>
+<pre><code>Ordne die folgenden Lesezeichen-Titel in höchstens acht thematische Ordner.
+Ausgabe als CSV mit den Spalten Titel;Ordner, eine Zeile pro Lesezeichen,
+keine weiteren Erklärungen.
+[Titel einfügen]</code></pre>
+<p>Prompt 2, Codenamen:</p>
+<pre><code>Erzeuge 30 eindeutige Codenamen für Studierende zum Thema [Thema des Fachs],
+nach dem Muster Nachname einer bekannten Fachperson plus Jahreszahl
+(Beispiel: Deming1900). Keine Wiederholungen, eine Zeile pro Codename.</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">4D</th>
+<th style="text-align: left;">In dieser Übung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delegation</td>
+<td style="text-align: left;">Sortieren und Formulieren ja; Rechnen und aktuelle Fakten nein.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: left;">Ein festes Ausgabeformat (CSV) macht das Ergebnis prüfbar.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Discernment</td>
+<td style="text-align: left;">Stichprobe von zehn Zuordnungen; Dublettenprüfung in der Tabelle.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diligence</td>
+<td style="text-align: left;">Personenbezogene Zuordnungen bleiben außerhalb jedes Modells, auch des lokalen.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wenn es hakt.</strong> Nichts installieren dürfen: WebLLM im Browser öffnen; der erste Download dauert, danach arbeitet das Modell lokal. Das Modell antwortet sehr langsam: die kleinere Datei wählen und andere Programme schließen. Das Modell erfindet Ordner jenseits von acht: die Grenze am Ende des Prompts wiederholen.</p>
+<p><strong>Debrief.</strong> Welche Aufgabe aus dem eigenen Alltag gehört künftig auf das lokale Modell?</p>
+</div>
+</div>
+<p>Online-Material zu Ü7: <a href="downloads/anhang-d/uebung-u7-lm-studio.pdf">Übungsblatt Ü7</a>, <a href="downloads/anhang-d/primer-n8n-lm-studio.pdf">Primer “n8n + LM Studio: lokale Automatisierung auf der Workstation”</a>.</p>
+</section>
+</section>
+<section id="sec-d-ausblick" class="level2" data-number="D.9">
+<h2 data-number="D.9" class="anchored" data-anchor-id="sec-d-ausblick"><span class="header-section-number">D.9</span> Ausblick: Fortgeschrittene Anwendungen</h2>
+<p>Die folgenden vier Anwendungen haben wir gebaut und teilweise im Workshop gezeigt, aber noch nicht so geprüft, wie es dieser Anhang für alles Gedruckte verlangt. Sie sind als in Erprobung gekennzeichnet; Stand, Kosten und Testprotokolle stehen im Online-Material und werden dort fortgeschrieben.</p>
+<p><strong>Storyboard-Werkstatt (in Erprobung).</strong> Ein Notebook führt in sechs Schritten mit drei Kontrollpunkten von einer Themenvorlage oder einem eigenen Thema zu einem Lehrcomic: Ein Starter-Prompt erzeugt im Chat-Interface ein Drehbuch als JSON-Datei, das die Lehrperson freigibt; aus dem Drehbuch entsteht ein Besetzungsbogen für die Figuren, der ebenfalls freigegeben wird; erst dann erzeugt ein Bildmodell alle Panels in einem Serienauftrag mit dem Besetzungsbogen als Referenz, damit die Figuren über die Seiten hinweg dieselben bleiben. Drei Dramaturgien stehen zur Wahl, eine Fallstudie als Geschichte mit Protagonistin und Dilemma, eine Erklärgeschichte und ein Escape Room mit Lösungsblatt; zehn Themenvorlagen decken die Fächer der Workshop-Teilnehmenden ab. Die Kosten liegen bei etwa 0,30 bis 0,40 US-Dollar je Teilnehmerin und Comic. Geprüft ist der vollständige Probelauf mit Platzhaltern und der Aufruf gegen einen nachgebauten Server; nicht geprüft sind der echte Aufruf beim Bildanbieter, die Bildqualität und die Konsistenz der Figuren. <!-- TODO: Stand 12.10.2026, 0:05, aus status-storyboard-werkstatt.md; nach dem ersten echten Durchlauf ("Escape Room Zentrallager", ≈ 0,25 $) aktualisieren. Didaktische Brücke: Fallstudie als Geschichte nach Willingham, vgl. @willingham2021 in Anhang C. --></p>
+<p><strong>Text zu Folien und Film mit Wächter und Protokollfolie (in Erprobung).</strong> Zwei Workflow-Vorlagen für den Baukasten aus <a href="#sec-d-workflows" class="quarto-xref"><span>Kapitel D.6</span></a> machen aus einem eingefügten Text eine Präsentation mit KI-Bildern, die zweite zusätzlich mit einem fünfsekündigen Clip je Folie. Ein Wächter, ein Skript und kein Modell, bricht ab, bevor etwas gesendet wird, wenn der Text eine E-Mail-Adresse, eine mögliche Matrikelnummer oder eine Telefonnummer enthält; eine Plan-Prüfung zählt Folien und Wörter gegen die Regeln des Folien-Skills aus <a href="#sec-d-arbeitsumgebung" class="quarto-xref"><span>Kapitel D.2</span></a>; eine Kontrollseite zeigt Plan und geschätzte Kosten, und erst die Freigabe löst die Bildaufträge aus. Die letzte Folie ist ein Protokoll mit allen Prompts, Modellen und Kosten und einem Feld “Geprüft von”. Beide Vorlagen wurden lokal gegen nachgebaute Dienste und in einem echten Browser durchgespielt; der erste Lauf mit echten Schlüsseln in der Cloud steht aus. Drei Folien mit Bildern kosten etwa 0,05 US-Dollar, drei Folien mit Clips etwa 1,70 US-Dollar nach Schätzung. <!-- TODO: Stand LIESMICH 11.10.2026 abends; nach dem ersten echten Lauf (Pflichtschritt 5 der LIESMICH) aktualisieren und entscheiden, ob die Vorlage von D.9 nach D.6 wandert. --></p>
+<p><strong>Diagnostisches Feedback je Codename (in Erprobung).</strong> Die Codenamen aus <a href="#sec-d-lokal" class="quarto-xref"><span>Kapitel D.8</span></a> sind der Schlüssel zu einer Nutzungsform, bei der die KI individuelles Feedback zu Tests und Abgaben erzeugt, ohne je einen echten Namen zu sehen: Studierende reichen unter Codename ein, ein Feedbackblatt je Codename entsteht aus Musterlösung, Bewertungsraster und der anonymen Abgabe, und die Zuordnung zur Person liegt allein in der Tabelle der Lehrperson. Ein Beispielmodul aus dem Supply-Chain-Management setzt dieses Muster ein. <!-- TODO: SSCM-Modul (https://th-koln-bartnik.github.io/sscm-2026-student/) beschreiben: welcher Test, welches Raster, welcher Prompt, welche Prüfschicht aus D.7; Ergebnisse oder Rückmeldungen der Studierenden, falls vorhanden. Bezug zu den Bewertungsbefunden in Kapitel 5 (@sec-umsetzung): KI unterstützt das Bewerten, ersetzt das Urteil nicht. --></p>
+<p><strong>Multi-Agenten-Simulationen (in Erprobung).</strong> Die Agenten-Designs aus <a href="kapitel08-appendix03-rollenspiele-simulationen.html#sec-rs-gestaltung" class="quarto-xref"><span>Kapitel C.5.2</span></a>, mit Mentor, Gegenspieler und Evaluator als getrennten Rollen, lassen sich mit den Werkzeugen dieses Anhangs als Skill-Bündel und Workflow nachbauen, und sie gewinnen einen neuen Prüfstand: Ein aus echten Tutoring-Daten gewonnenes simuliertes Studierendenmodell erlaubt es, Tutor- und Rollenspielsysteme in synthetischen Dialogen zu testen, bevor echte Lernende ihnen begegnen <span class="citation" data-cites="perczel2025">(<a href="references.html#ref-perczel2025" role="doc-biblioref">Perczel et al., 2025</a>)</span>, und adaptive Hinweisdosierung lässt sich datengestützt lernen statt manuell verdrahten <span class="citation" data-cites="chang2026">(<a href="references.html#ref-chang2026" role="doc-biblioref">Chang et al., 2026</a>)</span>. Für die Lehre heißt das, dass die vier Prüfschichten aus <a href="#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a> künftig teilweise von simulierten Studierenden durchlaufen werden können; ob das die Einigkeit menschlicher Bewertender ersetzt, ist offen. <!-- TODO: eigenen Prototyp beschreiben, sobald vorhanden; sonst Absatz als reinen Ausblick belassen. --></p>
+</section>
+<section id="online-material" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="online-material">Online-Material</h2>
+<p>Alle Übungsblätter dieses Anhangs, die Skill-Dateien <code>folien-evidenzbasiert</code> und <code>statistik-tutor</code>, die Build-Prompts für eigene Tutoren, das Colab-Notebook zur Simulation, die Workflow-Vorlagen mit ihren Primern und die Notebooks der Storyboard-Werkstatt liegen gesammelt in der Online-Version des Buchs und werden dort fortgeschrieben; die gedruckte Fassung hält den Stand vom Oktober 2026 fest.</p>
+<p><a href="downloads/anhang-d/">Online-Material zu Anhang D</a> · Workshop-Website mit Wissensbasis zu RAG, 4D-Modell, Prompt-Mustern und Qualitätsprüfung: <a href="https://th-koln-bartnik.github.io/workshop-ai-4-taac/appendix/wissensbasis.html" class="uri">https://th-koln-bartnik.github.io/workshop-ai-4-taac/appendix/wissensbasis.html</a></p>
+</section>
+<section id="transparenzhinweis" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="transparenzhinweis">Transparenzhinweis</h2>
+<p>Dieser Anhang entstand aus den Inputs, Übungen und Primern des Aufbaukurses “Jenseits einfacher Prompts” (hdw nrw, 12. Oktober 2026). Bei der Übertragung in das Buchformat wurde Claude / Cowork zur Konvertierung, zur Strukturierung nach dem Muster von Anhang C, für Sprach- und Konsistenzchecks sowie zum Abgleich der Zitierschlüssel mit dem Literaturverzeichnis genutzt. Alle Inhalte wurden von Roman Bartnik geprüft, überarbeitet und verantwortet.</p>
+
+
+<div class="support-this-section">
+<h3 class="support-this-heading anchored">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<ul class="support-this-links">
+  <li class="support-this-item">
+    <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Buy Me a Coffee</span>:       <span class="support-this-username">roman.bartnik.th</span>
+    </a>
+  </li>
+  <li class="support-this-item">
+    <a href="https://ko-fi.com/romanbartnik" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Ko-fi</span>:       <span class="support-this-username">romanbartnik</span>
+    </a>
+  </li>
+</ul>
+</div>
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-awsacademy2026" class="csl-entry" role="listitem">
+Amazon Web Services (2026). <em>AWS Academy</em>. <a href="https://aws.amazon.com/training/awsacademy/">https://aws.amazon.com/training/awsacademy/</a>.
+</div>
+<div id="ref-anthropic2025a" class="csl-entry" role="listitem">
+Anthropic (2025, Dezember). Erste Schritte mit Agent Skills in der API. <em>Claude Docs</em>. <a href="https://platform.claude.com/docs/de/agents-and-tools/agent-skills/quickstart">https://platform.claude.com/docs/de/agents-and-tools/agent-skills/quickstart</a>.
+</div>
+<div id="ref-chang2026" class="csl-entry" role="listitem">
+Chang, P.-C., Hogan, N., Plaat, A., &amp; van der Meer, M. T. (2026). Learning to prompt: Improving student engagement with adaptive LLM-based high-school tutoring. <a href="https://arxiv.org/abs/2606.20138">https://arxiv.org/abs/2606.20138</a>.
+</div>
+<div id="ref-chatterji2025a" class="csl-entry" role="listitem">
+Chatterji, A. (2025). <em><a href="https://openai.com/index/the-state-of-enterprise-ai-2025-report/">The state of enterprise AI: 2025 report</a></em> (Research Report). OpenAI.
+</div>
+<div id="ref-cohen1960" class="csl-entry" role="listitem">
+Cohen, J. (1960). A Coefficient of Agreement for Nominal Scales. <em>Educational and Psychological Measurement</em>, <em>20</em>(1), 37–46. <a href="https://doi.org/10.1177/001316446002000104">https://doi.org/10.1177/001316446002000104</a>.
+</div>
+<div id="ref-dakan2025" class="csl-entry" role="listitem">
+Dakan, R., &amp; Feller, J. (2025). Framework for AI fluency (Version 1.5). <em>Ringling College of Art and Design LibGuides</em>. <a href="https://ringling.libguides.com/ai/framework">https://ringling.libguides.com/ai/framework</a>.
+</div>
+<div id="ref-figalova2026evaluating" class="csl-entry" role="listitem">
+Figalová, N., Huestegge, L., &amp; Böckler-Raettig, A. (2026). <em>Evaluating human and LLM screening workflows in a conceptually complex scoping review: Recall–workload trade-offs and run-to-run consistency</em>. <a href="https://doi.org/10.48550/arXiv.2608.26885">https://doi.org/10.48550/arXiv.2608.26885</a>.
+</div>
+<div id="ref-johnston2026the" class="csl-entry" role="listitem">
+Johnston, D., Holtz, D., Richmond, A. M., Ong, C., Tambe, P., &amp; Chatterji, A. (2026). <em>The shift to agentic AI: Evidence from Codex</em>. <a href="https://doi.org/10.48550/arXiv.2606.26959">https://doi.org/10.48550/arXiv.2606.26959</a>.
+</div>
+<div id="ref-kestin2025" class="csl-entry" role="listitem">
+Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting. <em>Scientific Reports</em>, <em>15</em>(1), 17458. <a href="https://doi.org/10.1038/s41598-025-97652-6">https://doi.org/10.1038/s41598-025-97652-6</a>.
+</div>
+<div id="ref-lee2026llm" class="csl-entry" role="listitem">
+Lee, S., Baek, J., Park, J., &amp; Shin, D. (2026). <em>LLM pedagogical behavior in AI tutoring interactions</em>. <a href="https://doi.org/10.48550/arXiv.2608.22993">https://doi.org/10.48550/arXiv.2608.22993</a>.
+</div>
+<div id="ref-mayer2014" class="csl-entry" role="listitem">
+Mayer, R. E., &amp; Fiorella, L. (2014). Principles for Reducing Extraneous Processing in Multimedia Learning: Coherence, Signaling, Redundancy, Spatial Contiguity, and Temporal Contiguity Principles. In R. E. Mayer (Hrsg.), <em>The Cambridge handbook of multimedia learning</em>: (S. 279–315). Cambridge University Press. <a href="https://doi.org/10.1017/cbo9781139547369.015">https://doi.org/10.1017/cbo9781139547369.015</a>.
+</div>
+<div id="ref-mollick2025e" class="csl-entry" role="listitem">
+Mollick, E. (2026, Februar 18). A Guide to Which AI to Use in the Agentic Era. <a href="https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9">https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9</a>.
+</div>
+<div id="ref-nepal2026faithful" class="csl-entry" role="listitem">
+Nepal, S. K., Soh, S., Vinoya, N., Park, S., Roshanaei, M., &amp; Harari, G. (2026). <em>Faithful where it can be checked: Auditing a reflection agent against its system prompt in a randomized trial</em>. <a href="https://doi.org/10.48550/arXiv.2609.19635">https://doi.org/10.48550/arXiv.2609.19635</a>.
+</div>
+<div id="ref-nickow2020" class="csl-entry" role="listitem">
+Nickow, A., Oreopoulos, P., &amp; Quan, V. (2020). <em>The Impressive Effects of Tutoring on PreK-12 Learning: A Systematic Review and Meta-Analysis of the Experimental Evidence</em> (Nr. 27476). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w27476">https://doi.org/10.3386/w27476</a>.
+</div>
+<div id="ref-openai2025a" class="csl-entry" role="listitem">
+OpenAI (2025). <em>openai/skills: Skills Catalog for Codex</em>. <a href="https://github.com/openai/skills">https://github.com/openai/skills</a>.
+</div>
+<div id="ref-parasuraman2000" class="csl-entry" role="listitem">
+Parasuraman, R., Sheridan, T. B., &amp; Wickens, C. D. (2000). A model for types and levels of human interaction with automation. <em>IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans</em>, <em>30</em>(3), 286–297. <a href="https://doi.org/10.1109/3468.844354">https://doi.org/10.1109/3468.844354</a>.
+</div>
+<div id="ref-perczel2025" class="csl-entry" role="listitem">
+Perczel, J., Chow, J., &amp; Demszky, D. (2025). TeachLM: Post-training LLMs for education using authentic learning data. <a href="https://doi.org/10.48550/arXiv.2510.05087">https://doi.org/10.48550/arXiv.2510.05087</a>.
+</div>
+<div id="ref-reason2000" class="csl-entry" role="listitem">
+Reason, J. (2000). Human error: models and management. <em>BMJ</em>, <em>320</em>(7237), 768–770. <a href="https://doi.org/10.1136/bmj.320.7237.768">https://doi.org/10.1136/bmj.320.7237.768</a>.
+</div>
+<div id="ref-sweller2011" class="csl-entry" role="listitem">
+Sweller, J. (2011). Cognitive load theory. In <em>Psychology of learning and motivation</em>: (Bd. 55, 37–76). Elsevier.
+</div>
+<div id="ref-tay2024mcp" class="csl-entry" role="listitem">
+Tay, A. (2024, Dezember 1). <em>MCP servers and academic search - The future of search?</em> <a href="https://aarontay.substack.com/p/mcp-servers-and-academic-search-the">https://aarontay.substack.com/p/mcp-servers-and-academic-search-the</a>.
+</div>
+<div id="ref-teo2026ai" class="csl-entry" role="listitem">
+Teo, V., Jain, R., Gerstenberg, T., &amp; Kleiman-Weiner, M. (2026). <em>AI assistants overassist</em>. <a href="https://doi.org/10.48550/arXiv.2607.21306">https://doi.org/10.48550/arXiv.2607.21306</a>.
+</div>
+<div id="ref-wecker2012" class="csl-entry" role="listitem">
+Wecker, C. (2012). Slide presentations as speech suppressors: When and why learners miss oral information. <em>Computers &amp; Education</em>, <em>59</em>(2), 260–273. <a href="https://doi.org/10.1016/j.compedu.2012.01.013">https://doi.org/10.1016/j.compedu.2012.01.013</a>.
+</div>
+<div id="ref-white2023" class="csl-entry" role="listitem">
+White, J., Fu, Q., Hays, S., Sandborn, M., Olea, C., Gilbert, H., Elnashar, A., Spencer-Smith, J., &amp; Schmidt, D. C. (2023). <em>A prompt pattern catalog to enhance prompt engineering with ChatGPT</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2302.11382">https://doi.org/10.48550/arXiv.2302.11382</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./kapitel08-appendix03-rollenspiele-simulationen.html" class="pagination-link" aria-label="Umsetzung: Rollenspiele und Simulationen mit generativer KI in der Lehre">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Umsetzung: Rollenspiele und Simulationen mit generativer KI in der Lehre</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./transparenz.html" class="pagination-link" aria-label="Transparenzhinweis zum Gesamtwerk">
+        <span class="nav-page-text">Transparenzhinweis zum Gesamtwerk</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, Roman (2026). Generative KI als Hilfe zum Lehren und Lernen. Lizenz: CC BY-SA 4.0. Online: https://th-koln-bartnik.github.io/genai4teaching/</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
