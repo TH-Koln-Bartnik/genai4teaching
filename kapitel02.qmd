@@ -201,6 +201,42 @@ Mit den agentischen Werkzeugen kommt in der Praxis eine vierte Entscheidungsfrag
 :::
 :::
 
+### Agenten in der Praxis: Harness, Skills, Werkzeuganschluss und eigene Quellen {#sec-agenten-praxis}
+
+<!-- Entwurf (Claude, 17.10.2026), Woche 3, Arbeitspaket 2.2; Gestaltungsfrage: Wann lohnt es sich, einer KI einen Auftrag statt einer Frage zu geben, und an welchen Stellen muss ein Mensch eingreifen? Belege nach Redaktionsregel: lewis2020, parasuraman2000, johnston2026the (Evidenz zu Letzterem steht ausführlich in Anhang D.1). Freigabe Roman. -->
+
+Die drei Muster aus dem vorigen Abschnitt beschreiben, *was* die KI zur Verfügung hat: ihr Trainingswissen, zusätzlich eigene Texte oder zusätzlich Werkzeuge.
+Im Alltag der Lehre stellt sich die Frage anders: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden?
+Dafür braucht man vier Begriffe, die in den Produktbeschreibungen durcheinandergehen.
+
+Ein **Agent** ist ein Sprachmodell, das einen Auftrag in Schritte zerlegt, diese Schritte mit Werkzeugen abarbeitet und erst am Ende zurückmeldet.
+Der Unterschied zum Chat ist die Strecke, die die KI allein zurücklegt: Im Chat sehen wir jede Antwort nach Sekunden, ein Recherche-Agent arbeitet Minuten, ein automatisierter Ablauf Stunden.
+Das **Harness** ist der Werkzeugkasten, den der Agent dabei trägt (das Wort kommt über das Altfranzösische *harneis*, Ausrüstung, Rüstzeug): Websuche, ein Rechner in Form einer Programmiersprache, Zugriff auf einen Ordner, die Fähigkeit, Dateien zu erzeugen.
+Ohne Harness bleibt „Agent“ ein Etikett auf einem Chatbot.
+Ein **Skill** ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird.
+Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.
+Der **Werkzeuganschluss** schließlich, meist unter dem Kürzel MCP (Model Context Protocol) angeboten, ist die genormte Steckdose, über die ein Agent fremde Dienste erreicht: den Bibliothekskatalog, die Lernplattform, einen Kalender.
+Für Lehrende ist das die Stelle, an der die KI aufhört, ein Textfenster zu sein, und anfängt, in unseren Systemen zu handeln.
+
+Eigene Quellen sind der Sonderfall, der in der Lehre am häufigsten gebraucht wird.
+Das Verfahren dahinter heißt RAG, Retrieval-Augmented Generation, und wurde als Kombination aus einem Suchschritt über eine Dokumentsammlung und einem Schreibschritt des Sprachmodells beschrieben [@lewis2020].
+Praktisch heißt das: Statt dem Modell zu vertrauen, dass es unseren Skripttext aus dem Training kennt, legen wir ihm den Text vor und lassen es nur daraus antworten.
+Die einfache Form ist ein Projekt oder Notebook im Chat-Interface, in das wir Skript, Übungsblätter und Musterlösungen laden; die anspruchsvolle Form ist ein eigener Tutor, der auf einer Dokumentablage sitzt.
+Beide Formen haben denselben Schwachpunkt: Antwortet die KI aus den Quellen oder doch aus dem Training?
+Das lässt sich prüfen, indem man Fragen stellt, deren Antwort in den Quellen bewusst anders lautet als im Allgemeinwissen; diese Prüfidee kehrt in @sec-d-quellen und @sec-d-tutoren wieder.
+
+Was ändert sich mit der Delegation für die Lehre?
+Dass der Übergang vom Chat zum Agenten in Nutzungsdaten messbar ist und nicht nur in Produktankündigungen, zeigt @johnston2026the an einem Coding-Agenten; die Belege und ihre Grenzen stehen in @sec-d-modus.
+Die Konsequenz ist weniger technisch als organisatorisch.
+Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält [@parasuraman2000].
+Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet.
+Bei einer Literaturrecherche sind das drei Stellen: der Quellenkorb, den der Agent durchsuchen darf, der Rechercheplan, bevor er loslegt, und die Stichprobe von Aussagen, die wir gegen das Original halten.
+Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte, und bei einem Tutor, den Studierende ein Semester lang ohne uns benutzen, ist sie am längsten.
+
+Die praktische Umsetzung dieser vier Begriffe steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows.
+Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellenanbindung selbst aufbauen, zeigt ein Fallbeispiel in Kapitel 6.
+<!-- TODO: Querverweis @sec-fallbeispiele setzen, sobald Kapitel 6 existiert (Fall: WPF Prozessoptimierung / RAG mit Unternehmen). -->
+
 Das beendet unsere kurze Begriffsbestimmung.
 Ein etwas breiteres Glossar für Anwender finden Sie etwa bei der populärwissenschaftlichen Zeitschrift CIO (Chief Intelligence Officer): <https://www.cio.de/article/3700849/die-wichtigsten-begriffe-im-genai-umfeld.html>.
 
