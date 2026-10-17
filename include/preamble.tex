@@ -12,7 +12,8 @@
 % Pandoc setzt Zellen mit \raggedright, was die Trennung praktisch abschaltet; \RaggedRight (ragged2e) trennt weiter.
 \usepackage{etoolbox}
 \usepackage{ragged2e}
-\AtBeginEnvironment{longtable}{\small\let\raggedright\RaggedRight}  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
+\newcommand{\tabellenschrift}{\small}  % je Tabelle übersteuerbar, z. B. \renewcommand{\tabellenschrift}{\footnotesize} in einer Gruppe
+\AtBeginEnvironment{longtable}{\tabellenschrift\let\raggedright\RaggedRight}  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
 
 \usepackage{booktabs}
 \usepackage{xcolor}
@@ -160,3 +161,10 @@
   \textbf{Zitiervorschlag:} Bartnik, R. (2026). \emph{Generative KI als Hilfe zum
   Lehren und Lernen}. Logos Verlag Berlin. [DOI]%
 }
+
+% Kolumnentitel: lange Kapitel- und Abschnittstitel werden mit Auslassungspunkten gekürzt,
+% statt über den Satzspiegel hinauszulaufen (KOMA-Script setzt links das Kapitel, rechts den Abschnitt).
+\usepackage{truncate}
+\renewcommand*{\TruncateMarker}{\,\textellipsis}
+\renewcommand*{\chaptermark}[1]{\markboth{\MakeMarkcase{\truncate{0.92\textwidth}{\ifnumbered{chapter}{\chaptermarkformat}{}#1}}}{}}
+\renewcommand*{\sectionmark}[1]{\markright{\MakeMarkcase{\truncate{0.92\textwidth}{\ifnumbered{section}{\sectionmarkformat}{}#1}}}}
