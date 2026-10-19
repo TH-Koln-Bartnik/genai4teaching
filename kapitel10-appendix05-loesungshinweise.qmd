@@ -1,0 +1,65 @@
+<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
+# Lösungshinweise zu den Lernfragen {#sec-loesungshinweise}
+
+Die Lernfragen am Ende jedes Kapitels steigen in drei Stufen an. Fragen zum **Wiederholen** haben eine Antwort, die im Kapitel steht; die Hinweise geben sie knapp wieder. Fragen zum **Anwenden** und **Beurteilen** beziehen sich auf die eigene Lehre und haben keine Musterlösung; die Hinweise nennen, was eine gute Antwort enthält. Die Wirkung des Abrufens entsteht beim Versuch, nicht beim Nachlesen (@sec-lerntechniken). Schlagen Sie hier deshalb erst nach, wenn Sie eine eigene Antwort formuliert haben.
+
+## Kapitel 1: Einleitung {.unnumbered}
+
+1. Erstens fehlt Lehrenden die Zeit für individuelle Förderung, zweitens sind wirksame Lehrmethoden aufwendig vorzubereiten. Generative KI senkt diesen Aufwand; die didaktische Entscheidung nimmt sie nicht ab.
+2. Täuschen verfälscht die Messung, Auslagern verhindert das Lernen selbst: Wer die Denkarbeit abgibt, übt genau die Operationen nicht, die das Lernziel ausmachen. Das Konzept sind die erwünschten Schwierigkeiten: Anstrengung beim Abrufen und Üben ist Teil des Lernens, kein Hindernis.
+3. Das Modell ist das trainierte Sprachmodell, die App die Oberfläche, über die man es nutzt, das Harness der Werkzeugkasten eines Agenten (Websuche, Code, Dateizugriff). Eine gute Antwort zeigt an einem Fachbeispiel, welche Ebene die Ergebnisqualität begrenzt; bei kostenlosen Zugängen sind es meist ein schwächeres oder automatisch gewähltes Modell und ein fehlendes Harness.
+4. Eine gute Antwort trennt die delegierbare Vorbereitung (Aufgabenvarianten, Fallbeschreibungen, Rückmeldungstexte) von dem, was bei Ihnen bleibt: Auswahl, Qualitätsprüfung und die Beziehung zu den Studierenden.
+5. Gefährdet sind Aufgaben, deren Lernziel genau die Operation ist, die die KI übernimmt, etwa das Formulieren einer Begründung oder der erste eigene Lösungsversuch. Erkennbar wird der Verlust, wenn die Übungsleistung steigt und die Prüfungsleistung ohne KI nicht mitzieht oder wenn Studierende ihre eigene Lösung nicht erklären können (@sec-evidenz).
+6. Eine gute Antwort verbindet Kernaussage 3 mit der Frage, wer Fehler erkennen kann. Wer wenig Vorwissen hat, übernimmt überzeugend formulierte Fehler leichter; Erklärungen und Rückmeldung können Anfängern aber gerade nützen, wenn Leitplanken und Musterlösungen die Fehler eingrenzen. Die Antwort hängt also an der Gestaltung, nicht am Vorwissen allein.
+
+## Kapitel 2: Grundbegriffe {.unnumbered}
+
+1. Der Text wird in Tokens zerlegt; die Tokens werden als Zahlen (Embeddings) dargestellt und über Attention zueinander in Beziehung gesetzt; das Modell sagt das wahrscheinlichste nächste Token voraus, hängt es an und wiederholt den Schritt. Eine eingebaute Wahrheitsprüfung gibt es dabei nicht.
+2. Halluzinationen folgen aus der Funktionsweise: Das Modell erzeugt eine plausible Fortsetzung, keine geprüfte. Gegenmittel sind die Eingrenzung des Inputs auf eigenes Material, Musterlösungen als Vorgabe und eine systematische Prüfung der Ergebnisse.
+3. Höflichkeit, Drohungen und Trinkgeld ändern die Ergebnisse nicht. Es hilft, präzise und strukturiert zu formulieren (Rolle, Aufgabe, Format), Beispiele mitzugeben und iterativ nachzubessern, so wie man eine junge Hilfskraft anleitet.
+4. Ohne Fachwörter: Der Chatbot setzt Text so fort, wie solcher Text gewöhnlich weitergeht. Eine Quellenangabe hat eine typische Form, und diese Form kann er erzeugen, ohne nachzusehen, ob es die Quelle gibt. Mit Fachwörtern: Das Modell sagt Token für Token die wahrscheinlichste Fortsetzung voraus und fragt keine Datenbank ab. Eine gute Antwort endet mit dem Gegenmittel: Quellen immer am Original prüfen.
+5. Das reine Modell antwortet aus dem Trainingswissen; das Risiko sind veraltete oder vom Kurs abweichende Inhalte. Mit Ihrem Skript als Material (RAG) bleibt die Antwort nah am Kurs; das Risiko sind Lücken im Material und falsch gewählte Textstellen. Der Agent mit Internetzugang recherchiert aktuell und mehrstufig; das Risiko sind ungeprüfte Quellen und ein Weg zur Antwort, den man schwer nachvollzieht.
+6. Die Grenze lässt sich nicht aus der Schwierigkeit einer Aufgabe ableiten, nur durch Ausprobieren finden. Eine gute Antwort beschreibt einen Test: die Aufgabe mehrfach in ein starkes Modell geben, die Antworten mit der eigenen Musterlösung vergleichen und typische Fehler notieren, bevor Studierende damit arbeiten.
+7. Eine gute Antwort hält beide Ebenen auseinander. Eine einzelne Textanfrage kostet etwa so viel Energie wie zehn Sekunden Video-Streaming; das rechtfertigt keinen Verzicht auf didaktisch begründete Anwendungen, wohl aber Zurückhaltung bei aufwendigen Aufträgen wie der Videoerzeugung. Über Ausbau, Standorte und Strommix der Rechenzentren entscheidet dagegen die Politik, nicht der einzelne Lehrende (Kernaussage 6).
+
+## Kapitel 3: Didaktische Ziele und Mechanismen {.unnumbered}
+
+1. *Knowing that* (Faktenwissen): Abrufübungen und Erklärungen. *Knowing how* (Prozesswissen): dialogisches Coaching und durchgearbeitete Beispiele. *Knowing with* (Transfer): Szenarien und Rollenspiele.
+2. Interaktiv vor konstruktiv vor aktiv vor passiv. Eine KI-Lernaktivität wirkt umso stärker, je weiter oben sie auf dieser Leiter steht.
+3. Der Testeffekt entsteht durch den Versuch, Wissen aus dem Gedächtnis abzurufen; eine sofort gelieferte Antwort erspart genau diesen Versuch. Der Bot sollte zuerst eine eigene Antwort einfordern, Hinweise vor Lösungen geben und eine Begründung verlangen, wo eine Lösung übernommen wird.
+4. Eine gute Antwort ordnet drei konkrete Lernziele zu und benennt die Lücke; häufig ist es *knowing with*. Die Methode stammt aus der passenden Stufe in Lösung 1.
+5. Eine gute Antwort nennt eine konkrete Stelle im Semester, etwa einen Wochenrückblick mit Aufgaben aus früheren Themen, und hält fest, dass das Modell die Varianten liefert, die Prüfung der Varianten aber bei Ihnen bleibt.
+6. Die entscheidende Frage lautet: Wie haben die Studierenden in einer Prüfung ohne KI abgeschnitten? Bessere Übungsleistung kann mit schlechterer Prüfungsleistung einhergehen; ein Tutor im Stil des normalen ChatGPT verbesserte die Übungsleistung um 48 Prozent und senkte die Prüfungsleistung um 17 Prozent [@bastani2025].
+7. Nein. In einem Crossover-Experiment mit 1.059 Programmieranfängern unterschieden sich Tutoren mit unterschiedlichen didaktischen System-Prompts auf keinem der konfirmatorischen Maße [@barth2026steering]. Die Leitplanke muss in Aufgabe, Rückmeldung und Ablauf liegen (eigene Antwort zuerst, Hinweise vor Lösungen, Begründungspflicht) und in einer verbindlichen, angeleiteten Einbettung in den Kurs [@gallegos2026].
+
+## Kapitel 4: Vier Szenarien der Nutzung von GenAI {.unnumbered}
+
+1. Als Hiwi nimmt die KI Arbeit ab (Zusammenfassungen, Materialvorbereitung), als Copilot ermöglicht sie, was man allein nicht könnte (Recherche, Programmieren von Lernwerkzeugen), als Tutor begleitet sie Lernende (Erklärungen, Rückmeldung), als Simulator stellt sie Übungssituationen bereit (Rollenspiele, Verhandlungen).
+2. Verdrängung heißt, dass Technik Aufgaben übernimmt (standardisierte Materialien, Notenverwaltung). Produktivität heißt, dass Kernaufgaben schneller oder besser gelingen (Rückmeldungen, Aufgabenvarianten). Wiedereinsetzung heißt, dass neue Aufgaben entstehen (Qualitätskontrolle von KI-Ausgaben, Kursdesign mit KI) [@acemoglu2019].
+3. Wird einmalig oder iterativ gesucht, und entsteht eine Trefferliste oder ein erzeugter Text? Daraus ergeben sich Quick Search (einmalig, Liste), Quick RAG (einmalig, Zusammenfassung), Deep Search (iterativ, Liste) und Deep Research (iterativ, Bericht).
+4. Im Role Play übernehmen Studierende eine Rolle und handeln in einer Situation, etwa einer Verhandlung. Im Goal Play bleiben sie in ihrer eigenen Rolle und wenden ein Konzept oder Analyseraster an, zum Beispiel indem sie einer Figur bei der Zielsetzung helfen.
+5. Eine gute Antwort ordnet jede Aufgabe einem der drei Effekte zu und nennt mindestens eine Wiedereinsetzungsaufgabe, die heute nicht im Zeitbudget steht, etwa das Testen eines Tutors oder die Pflege einer Wissensbasis.
+6. Eine gute Antwort enthält drei Bremsen, etwa: keine Lösung vor dem eigenen Versuch, Hinweise vor Lösungen, eine Begründung einfordern. Die Musterlösungen stammen aus den eigenen Unterlagen und werden dem Tutor als Input mitgegeben, damit er an ihnen prüft statt frei zu erzeugen.
+7. Role Play passt zu Situationen mit einem Gegenüber (Verhandlung, Kundengespräch, Konfliktgespräch), Goal Play zur Anwendung eines Analyserasters. Im Debriefing gehören auf den Tisch: was passiert ist, welches Konzept dahinterstand, wo die KI aus der Rolle fiel und was sich auf echte Situationen übertragen lässt.
+8. Eine gute Antwort benennt die Wiedereinsetzungsaufgaben, die Zeit kosten (Einrichtung, Tests, Pflege, Qualitätskontrolle), und eine Bedingung für den Nettogewinn: etwa, dass ein Werkzeug über mehrere Semester und Kohorten genutzt oder im Kollegium geteilt wird.
+
+## Kapitel 5: Empfehlungen zur Umsetzung {.unnumbered}
+
+1. Mündlichkeit (Kolloquium, Präsentation mit strukturierter Fragerunde), Prozessorientierung (Prozessjournal mit Versionsverlauf), Kontextualisierung (Aufgaben mit realen, lokalen oder persönlichen Daten), Kollaboration und Kreation (Gruppenaufgaben in der Veranstaltung, Peer-Beurteilung, gestufte Projekte).
+2. Die Richtlinien passen die Eigenständigkeitserklärung an, klären Verdachtsfälle im Gespräch, schließen eine automatisierte Bewertung aus und verlangen, Prüfungsformate didaktisch weiterzuentwickeln. Detektionssoftware gehört nicht dazu, weil sie als unzuverlässig gilt und selbst Prüfende KI-gestützte Arbeiten nicht von rein menschlichen unterscheiden können; ein Detektionswert taugt höchstens als Anlass für ein Gespräch, nie als Beweis.
+3. Eine Stichwortliste, eine Übersicht nach Arbeitsphase oder nach Werkzeug und ein Reflexionstagebuch.
+4. Eine gute Antwort prüft jede Säule an der eigenen Prüfungsleistung und wählt die mit dem geringsten Umbauaufwand; oft ist es ein kurzes Kolloquium zur schriftlichen Arbeit.
+5. Eine gute Antwort ordnet jeder Phase eine konkrete Aufgabe zu und nennt für das größte Risiko, meist die Auslagerung des Denkens, eine Gegenmaßnahme in der Aufgabe selbst, nicht nur eine Regel.
+6. Eine gute Antwort prüft die eigene Richtlinie auf die Elemente aus Lösung 2 und auf die Frage, ob Studierende und Lehrende sie kennen; eine Richtlinie wirkt erst, wenn sie bekannt ist und diskutiert wird.
+7. Der Vorschlag ist nicht praktikabel: Ein vollständiges Protokoll jeder Interaktion erzeugt Masse ohne Aussagekraft und wird weder sorgfältig geführt noch gelesen. Eine gute Antwort setzt eine der drei Formen aus Lösung 3 dagegen und verbindet sie mit einem mündlichen Element, das die Autorschaft sichert.
+
+## Kapitel 6: Fallbeispiele aus der Lehre {.unnumbered}
+
+<!-- TODO (Claude): Lösungshinweise zu den Fällen 2–4 ergänzen, sobald die Fälle stehen -->
+
+1. Ausgangslage, Umsetzung, Ergebnis und was wir daraus gelernt haben.
+2. Von 2.379 berechtigten Studierenden nutzten nur 15 Prozent den Tutor, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Abschlussnote lag 0,37 Standardabweichungen unter der Kontrollgruppe. Der Tutor war im Standardmodus als Antwortmaschine konfiguriert und ersetzte das eigene Arbeiten am Material [@liu2026courseintegrated].
+3. Der Anteil der Berechtigten, die den Tutor überhaupt nutzen; der Anteil der Anfragen, die eine fertige Antwort verlangen, gegenüber denen, die Rückmeldung auf eigene Arbeit suchen; und ob der Tutor bei einer offensichtlichen Prüfungsfrage auf das Material verweist oder sie löst.
+4. Eine gute Antwort begründet die Wahl des Falls mit Gruppengröße, Prüfungsform oder Partnern und nennt den Engpass, der bei Ihnen zuerst auftreten würde, samt einer Vorkehrung.
+5. Eine gute Antwort füllt die vier Felder, bevor ein Werkzeug genannt wird, und formuliert ein prüfbares Erfolgskriterium.
+6. Ein sokratischer System-Prompt allein verhindert die Nutzung als Antwortmaschine nicht [@gerber2026]. Für Fall 1 folgt daraus, die Leitplanken in Aufgabe und Ablauf zu legen und mit den drei Kennzahlen aus Lösung 3 zu prüfen, ob sie greifen.
