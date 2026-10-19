@@ -31,7 +31,19 @@ Offen: Kapitel 6 hat noch keine Kernaussagen; Lern- und Lösungshinweise zu den 
 
 ## Noch umzusetzen
 
-**„Aus der Praxis“** (halbe Seite, zwei je Kapitel 1–5): Wer (Institution, Kurs, Größe) – Lehrproblem – Gestaltung – Was man weiß – Quelle mit QR-Code. Evidenzmarke: *evaluiert* / *Erfahrungsbericht* / *Ankündigung*. Fremde Fälle mit Namen, eigene Fälle anonymisiert in Kapitel 6. Mischung international und deutsch. Vorbild: „OM in Action“.
+**„Beispiel aus der Lehrpraxis“** (Name festgelegt am 19.10.2026; halbe Seite, zwei je Kapitel 1–5): Wer (Institution, Kurs, Größe) – Lehrproblem – Gestaltung – Was man weiß – Quelle mit QR-Code. Evidenzmarke: *evaluiert* / *Erfahrungsbericht* / *Ankündigung*. Fremde Fälle mit Namen, eigene Fälle anonymisiert in Kapitel 6. Mischung international und deutsch. Vorbild: „OM in Action“. Quarto-Schablone:
+
+```markdown
+::: {.callout-note title="Beispiel aus der Lehrpraxis: <Institution, Kurs>"}
+**Lehrproblem.** …
+
+**Gestaltung.** …
+
+**Was man weiß.** *Evidenz: evaluiert | Erfahrungsbericht | Ankündigung.* …
+
+Quelle: [@key] (QR-Code im Druck)
+:::
+```
 
 **„Ausprobiert“** (Drittelseite, zwei bis drei je Kapitel 1–5), Aufbau nach dem Heizer-„Example“ (Problem – Solution – Insight – Learning Exercise – Related Problems):
 
