@@ -9,7 +9,7 @@ Stand: 2026-10-19. Ergänzt `schablone-lernziele-kernaussagen.md`. Vorbild: Heiz
 3. Prompt-Übungen für Lehrende selbst und für den Einsatz mit Studierenden, gekennzeichnet (3c).
 4. Jede Prompt-Übung trägt ein 4D-Kürzel (4a).
 5. Lösungshinweise zu den Lernfragen stehen im Druck (5a).
-6. Glossar nur mit Definitionen, ohne Herkunftszeile (6b).
+6. Glossar mit Herkunftszeile bei lateinischen und griechischen Wurzeln (zunächst 6b, am 19.10. abends geändert).
 7. Kapitel 6 bekommt ebenfalls Leitfragen und Lernfragen (7).
 8. Leitfragen und Lernfragen werden sofort umgesetzt (8), unabhängig von der Seitenzahl-Antwort von Logos.
 
@@ -49,7 +49,7 @@ Offen: Kapitel 6 hat noch keine Kernaussagen; Lern- und Lösungshinweise zu den 
 
 Kennzeichnung der Zielgruppe: „für Lehrende“ oder „mit Studierenden“. 4D-Kürzel: Delegation, Description, Discernment, Diligence.
 
-**Glossar**: 60–80 Begriffe, Erstnennung im Text fett, zweispaltig 9 pt, nur Definitionen.
+**Glossar** (`glossar.qmd`, `#sec-glossar`, unnummeriert nach Anhang E): 40 Einträge aus `notes/glossar-stub.md`, 30 davon mit Herkunftszeile `*Herkunft:* …` als zweitem Absatz der Definition, nur bei lateinischen oder griechischen Wurzeln und nur wo sie den Begriff erhellt. Offen: Ausbau auf 60–80 Begriffe (4D, Lernmodus, Pretesting nach Kapitel 2.6), Erstnennung im Text fett, zweispaltiger Satz in 9 pt für den Druck, Fundstellen (Kap. x.y) nach der Umnummerierung prüfen.
 
 ## Weitere Heizer-Elemente zur Entscheidung
 
