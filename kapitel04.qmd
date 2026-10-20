@@ -144,6 +144,23 @@ Dies schult das Erkennen von Konzeptmerkmalen und die Fähigkeit, Wissen durch K
 Eine Herausforderung ist, dass die KI Konzepte manchmal unvollständig oder fehlerhaft illustriert, was aber Teil des Lerneffekts sein kann [@mollick2024a].
 
 
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Wer nicht selbst rechnen kann, erkennt die Fehler des Copiloten nicht"}
+**Problem ohne KI.** Eine Kennzahlenanalyse am echten Geschäftsbericht ist mühsam: Zahlen aus Bilanz und Gewinn- und Verlustrechnung heraussuchen, die Komponenten der Eigenkapitalrendite berechnen, das Ergebnis deuten.
+
+**Problem mit KI.** Ein Copilot liefert die DuPont-Analyse in Sekunden und erklärt sie Schritt für Schritt. Ob sie stimmt, erkennt nur, wer den Rechenweg selbst beherrscht.
+
+**Das Dilemma.** David Pedersen lässt Studierende die DuPont-Analyse der Eigenkapitalrendite von Coca-Cola für 2022 zuerst selbst aus dem Jahresbericht (10-K) bei der US-Börsenaufsicht berechnen und kurz deuten. Erst dann führen sie dieselbe Analyse mit Microsoft Copilot durch, stellen mindestens eine Nachfrage, reichen das Protokoll ein und reflektieren in 300 Wörtern, wie viel Führung die KI für ein richtiges Ergebnis brauchte. Die Zeitersparnis des Copiloten gibt es erst nach der eigenen Rechnung.
+
+**Was das für wirksames Lernen heißt.** *Unterrichtsentwurf, keine Ergebnisse berichtet.* Die Reihenfolge schützt vor der Trennung von Leistung und Behalten, die im Labor gemessen ist: Mit ChatGPT lösten Informatikstudierende mehr Aufgaben, behielten den Stoff aber schlechter [@bergh2026cognition]. Und sie macht die zerklüftete Grenze der Modelle erfahrbar [@dellacqua2023]: Ob der Copilot bei dieser Rechnung zuverlässig ist, zeigt erst der Vergleich mit dem eigenen Ergebnis.
+
+[Ablauf und Prompt: @sec-prompt-dupont-analyse.]{.content-visible when-format="html"}[Ablauf und Prompt: Online-Fassung von Anhang B.]{.content-visible unless-format="html"} Quelle: @pedersen2025 (AI Pedagogy Project, metaLAB at Harvard).
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-dupont.png){width="18%"}
+:::
+::::
+
 ### Besser schreiben – als Cyborg {#sec-cyborg-writing}
 
 Wer akademisch schreibt, lässt sich zunehmend von einer Vielzahl an unterstützenden KI-Systemen über die Schultern schauen – oder die Hand führen –, die Vorschläge zur besseren Sprachverwendung machen, wie DeepL, Grammarly, oder ChatGPT [@ou2024].
@@ -380,6 +397,23 @@ Die bisher gezeigten Tutoren sind Prompts in einem Chat-Interface. Ein Tutor, de
 <!-- Einschub 2026-10-17 (Evidenz-Screening KI-Tutoren, Abschnitt 4.3.3 Betrieb): Liu, Gerber, Tani -->
 Drei Betriebserfahrungen aus dem Jahr 2026 zeigen, woran ein solcher Tutor im Semester scheitert oder gelingt, und keine davon liegt in der Technik. An der University of Maryland lief genau diese Architektur, ein Tutor über die Kursmaterialien im Lernmanagementsystem, in den Kursen von 30 Lehrenden; nur 15 Prozent der berechtigten Studierenden nutzten ihn, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Noten der Berechtigten sanken (@sec-evidenz). Der Grund war der Standardmodus: Die Lehrenden hatten den Tutor überwiegend als Antwortmaschine konfiguriert, und wer ihn nutzte, ersetzte damit das eigene Arbeiten am Material [@liu2026courseintegrated]. Das deutsche Gegenstück ist ein sokratisch gebauter Tutor mit eigenen Quellen auf einem lokal betriebenen offenen Modell an der Hochschule Rhein-Waal: Nach einem Semester mit 62 Studierenden war die Bereitschaft, Fragen zu stellen, gestiegen, die Neugier auf das Warum gesunken; die Studierenden nutzten auch den sokratisch gebauten Tutor als Antwortmaschine, sobald er es zuließ [@gerber2026]. Dass es anders geht, zeigt ein Assistent mit eigenen Quellen in einem Planspiel zum Operations Management: 61 Prozent der Teams nutzten ihn, seine Antworten waren zu 90 bis 95 Prozent korrekt, und ein Zusammenhang zwischen Nutzung und Note fehlte, weil die Nutzung über Teamvertreter lief und der Assistent die Regeln des Spiels erklärte statt die Entscheidungen zu treffen [@tani2026]. Die drei Fälle messen am selben Maßstab: Entscheidend ist nicht, ob der Tutor aus den eigenen Quellen antwortet, sondern was die Lehrenden als Standardverhalten eingestellt haben und welche Operationen er den Lernenden abnimmt (@sec-d-tutoren).
 
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Ein Tutor-Bot liefert Lösungen, statt das Lernen zu begleiten"}
+**Problem ohne KI.** In einer großen Grundlagenvorlesung erreichen Lehrende die Fragen der einzelnen Studierenden kaum.
+
+**Problem mit KI.** Ein Chatbot, der als Experte auftritt, liefert fertige Lösungen und nimmt den Studierenden das Lernen ab.
+
+**Der Lösungsansatz.** An der Universität Kiel hat Jan Steinkühler die Entwicklung des Tutors selbst zur Lernaufgabe gemacht. Masterstudierende betreiben ihn lokal mit OpenWebUI, schreiben den Systemprompt, binden die Lernmaterialien per RAG ein und vergleichen verschiedene Modelle darauf, welche Antworten tatsächlich tutoriell helfen. Der Tutor soll schrittweise begleiten, Reflexion und Transfer anregen und keine Lösungen liefern; eingesetzt wird er in der Bachelorvorlesung Grundlagen der Elektrotechnik I. Aus den anonym protokollierten Chats lassen sich die häufigsten Fragen ablesen und in der nächsten Vorlesung aufgreifen.
+
+**Was das für wirksames Lernen heißt.** *Erfahrungsbericht; eine systematische Evaluation ist angekündigt.* Die Gestaltung setzt dort an, wo der Tutor in Maryland scheiterte: am Standardmodus als Antwortmaschine [@liu2026courseintegrated]. Ob die Leitplanken halten, sollen künftig die Studierenden mitbewerten: Was hilft wirklich weiter, wo bleibt der Tutor zu allgemein? Einen verwandten Ansatz aus der eigenen Lehre beschreibt @sec-fall-studierende-bauen.
+
+Quelle: @tobor2026usecases, S. 34–35.
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-hfd-blickpunkt.png){width="18%"}
+:::
+::::
+
 <!-- Einschub 2026-07-02 (Baustein 4.3-B), eingesetzt 2026-10-17 -->
 Offen bleibt bei alledem, wer den Tutor im Hörsaal steuert. Eine Design-Studie aus dem Labor von Vincent Aleven zu ko-orchestrierter Lehre, in der die KI vorschlägt, wann Lernende zwischen Einzel- und Partnerarbeit wechseln, zeigt, dass Lehrendenkontrolle und studentische Agency **kein einzelner Schieberegler** sind, sondern phasenweise variieren: Lehrende wollen ein Echtzeit-Vetorecht beim Wechsel selbst, akzeptieren aber Systemvorschläge für dessen Timing; Studierende wollen Mitsprache bei der Partnerwahl, erwarten die finale Autorität aber bei den Lehrenden [@yang2026orchestration]. Orchestrierungswerkzeuge, die einen einzigen Autonomiewert festlegen, werden deshalb beiden Seiten nicht gerecht; wie sich Kontrollpunkte für KI-Werkzeuge in der Lehre allgemein setzen lassen, behandelt @sec-d-modus.
 
@@ -416,6 +450,23 @@ Herausforderungen sind die Sicherstellung der Konsistenz, die Abhängigkeit von 
 Eine umfangreiche Simulation beschreiben @mollick2024: **"Pitch Quest"** an der **Wharton School** ist ein Simulator für **Venture-Capital-Pitches**, der mehrere KI-Agenten (Mentor, Investor, Bewerter) nutzt, um personalisierte Übung und Feedback zu ermöglichen [@mollick2024, S. 5–10].
 Der Mehrwert liegt in der skalierbaren Bereitstellung von Übungsmöglichkeiten für komplexe Skills.
 Herausforderungen sind die Aufrechterhaltung der Konsistenz, die Vermeidung von Bias und Halluzinationen sowie der hohe Entwicklungsaufwand für solche Multi-Agenten-Systeme [@mollick2024, S. 2–3].
+
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Im Rollenspiel üben wenige Studierende, der Rest schaut zu"}
+**Problem ohne KI.** Im klassischen Rollenspiel üben nur zwei bis vier Studierende aktiv, die anderen beobachten. Beobachtung und Bewertung erzeugen Rollenstress und dämpfen die Lust am Ausprobieren, und manche Rollen liegen weit von der Lebenswelt der Studierenden entfernt.
+
+**Problem mit KI.** Eine KI-Persona kann jedes Gegenüber spielen, verfällt aber in Argumentationsschleifen und überzeichnet Skepsis und Eskalation.
+
+**Der Lösungsansatz.** Michael Barton (Universität Leipzig) macht in einer Übung zur Personal- und Organisationsökonomik im BWL-Master die Prinzipal-Agent-Theorie erfahrbar. Die Studierenden spielen die Führungskraft, die einen erfahrenen Mitarbeiter über 50 von einer Schulung zur Digitalisierung überzeugen soll; die KI spielt den skeptischen Mitarbeiter, samt Hinweisen auf Mimik und Gestik. Ein rund zweiseitiger Systemprompt regelt Rolle, Gesprächsphasen, Schwierigkeit und das Feedback am Ende, eine Info-Karte gibt den Studierenden den Rahmen. Ein Durchlauf dauert fünf bis zehn Minuten und lässt sich wiederholen; danach reflektieren die Studierenden das Gespräch in einem Fragebogen.
+
+**Was das für wirksames Lernen heißt.** *Erfahrungsbericht mit offener Befragung (Wintersemester 2024/25: 17, 2025/26: 9 Studierende).* Alle Studierenden rücken von der passiven Beobachtung in die interaktive Übung, die nach ICAP am stärksten wirkt [@chi2018]. Die Befragten lobten Realitätsnähe und überwiegend hilfreiches Feedback; die genannten Grenzen zeigen, dass der Prompt laufend überarbeitet werden muss und eine abschließende Reflexion der Methode dazugehört [@barton2026poster].
+
+[Prompt zum Nachnutzen: [Systemprompt und Anleitung (PDF)](https://hochschulforumdigitalisierung.de/wp-content/uploads/2025/01/2285-Tag-der-Lehre-Rollenspiel-Prompt-Barton.pdf).]{.content-visible when-format="html"}[Prompt zum Nachnutzen über den QR-Code.]{.content-visible unless-format="html"} Quelle: @barton2026poster; @tobor2026usecases, S. 40–42.
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-leipzig-prompt.png){width="18%"}
+:::
+::::
 
 ### Goal Play – zielgerichtete Spiele {#sec-goal-play}
 
