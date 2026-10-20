@@ -27,21 +27,21 @@ Die Originalberichte wurden über die Links in beiden Publikationen nachgeschlag
 
 Nicht aufgenommen: Fälle aus Studierendenservice und Beratung (HTW Berlin, TH Köln StudiCoachBot, Uni Bremen), Infrastruktur (HAWKI, Tool-Lab), Weiterbildung (UDE Community of Practice), VR-Simulation Osnabrück (KI erst an wenigen Stellen integriert).
 
-## Neuer Verteilungsvorschlag (11 Kästen, 4 international, 7 deutsch)
+## Neuer Verteilungsvorschlag mit Titeln nach Schema „Anwendungsbeispiel: [Problem]“ (11 Kästen, 4 international, 7 deutsch)
 
-| Kap. | Fall | Typ |
-|---|---|---|
-| 1 | AI-Sandwich [@ippolito2025] | Problemlösung |
-| 1 | Held:innenreise, Saarbrücken | Dilemma |
-| 2 | Prompt-Playtesting [@landfair2025] | Problemlösung |
-| 2 | Lecture as Code, Lübeck | Dilemma |
-| 3 | Sokratische Chats [@yuen2025] | Problemlösung |
-| 3 | Digital Literacy, Bonn | Problemlösung |
-| 4 | DuPont-Analyse mit Copilot [@pedersen2025] | Dilemma |
-| 4 | Tutor-Chatbot Elektrotechnik, Kiel | Problemlösung |
-| 4 | KI-Rollenspiel Prinzipal-Agent, Leipzig | Problemlösung |
-| 5 | Digitale Prüfung mit KI, München | Problemlösung |
-| 5 | PrüfungsSimulator, CBS | Dilemma |
+| Kap. | Titel | Fall | Typ |
+|---|---|---|---|
+| 1 | Anwendungsbeispiel: Die KI schreibt, bevor Studierende selbst etwas herausgefunden haben | AI-Sandwich [@ippolito2025] | Problemlösung |
+| 1 | Anwendungsbeispiel: Fehlende Lateinkenntnisse versperren den Zugang zu den Quellen | Held:innenreise, Saarbrücken | Dilemma |
+| 2 | Anwendungsbeispiel: Ein Prompt, der in der Vorführung funktioniert, scheitert im Gespräch | Prompt-Playtesting [@landfair2025] | Problemlösung |
+| 2 | Anwendungsbeispiel: Der Kurs-Bot steht bereit, aber kaum jemand lernt mit ihm | Lecture as Code, Lübeck | Dilemma |
+| 3 | Anwendungsbeispiel: Studierende übernehmen KI-Texte, statt sich mit ihnen auseinanderzusetzen | Sokratische Chats [@yuen2025] | Problemlösung |
+| 3 | Anwendungsbeispiel: KI-Feedback zum Schreiben kommt sofort, ist aber nicht immer richtig | Digital Literacy, Bonn | Problemlösung |
+| 4 | Anwendungsbeispiel: Wer nicht selbst rechnen kann, erkennt die Fehler des Copiloten nicht | DuPont-Analyse mit Copilot [@pedersen2025] | Dilemma |
+| 4 | Anwendungsbeispiel: Ein Tutor-Bot liefert Lösungen, statt das Lernen zu begleiten | Tutor-Chatbot Elektrotechnik, Kiel | Problemlösung |
+| 4 | Anwendungsbeispiel: Im Rollenspiel üben zwei Studierende, der Rest schaut zu | KI-Rollenspiel Prinzipal-Agent, Leipzig | Problemlösung |
+| 5 | Anwendungsbeispiel: Im Beruf programmieren Ingenieure mit KI, in der Prüfung nicht | Digitale Prüfung mit KI, München | Problemlösung |
+| 5 | Anwendungsbeispiel: Performanzprüfungen mit Schauspielern sind teuer und kaum wiederholbar | PrüfungsSimulator, CBS | Dilemma |
 
 Reserve: Talk2Transform (Kap. 4), Furhat (Kap. 4), Desinformation [@stanford2025], Telefontriage [@hobbick2025], Romanfigur [@kentz2025], schlechter Aufsatz [@newman2025]. Gestrichen: Taylor (zielt auf Schulabgänger), OneTutor (steht schon im Text von Kap. 5).
 

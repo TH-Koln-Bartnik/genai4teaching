@@ -31,37 +31,22 @@ Offen: Kapitel 6 hat noch keine Kernaussagen; Lern- und Lösungshinweise zu den 
 
 ## Noch umzusetzen
 
-**„Beispiel aus der Lehrpraxis“** (Name 19.10.2026, Ausrichtung 20.10.2026; halbe Seite, zwei je Kapitel 1–5). Jeder Kasten bildet **entweder ein Dilemma oder eine Problemlösung** ab, immer mit Blick auf wirksames Lernen und auf die neue Herausforderung, die generative KI dafür schafft. Ein Dilemma stellt zwei berechtigte Ziele gegeneinander (etwa Lernwirkung durch eigenes Rechnen gegen Effizienz durch den Copilot) und zeigt, wie der Entwurf die Spannung austariert, ohne sie aufzulösen. Eine Problemlösung zeigt einen Gestaltungszug, der eine konkrete Herausforderung entschärft. Kein eigener Ethik-Kasten (Entscheidung 20.10.2026).
+**„Anwendungsbeispiel: [Problem]“** (Kasten aus der Lehrpraxis; Name 19.10., Ausrichtung und Titelschema 20.10.2026; halbe Seite, zwei je Kapitel 1–5, Kapitel 4 drei). Der Titel benennt das Lernproblem, nicht das Werkzeug oder die Hochschule, und der Kasten ist problembasiert aufgebaut: erst das Problem, dann der Lösungsansatz oder das Dilemma, dann die Folgerung für wirksames Lernen. Ein Dilemma stellt zwei berechtigte Ziele gegeneinander und zeigt, wie der Entwurf sie gewichtet, ohne die Spannung aufzulösen; eine Problemlösung zeigt einen Gestaltungszug, der das Problem entschärft. Fokus auf wirksames Lernen und auf die neue Herausforderung, die generative KI schafft. Kein eigener Ethik-Kasten (Entscheidung 20.10.2026).
 
-Evidenzmarke im letzten Feld: *evaluiert* / *Erfahrungsbericht* / *Unterrichtsentwurf* / *Ankündigung*. Die Fälle des AI Pedagogy Project (metaLAB at Harvard) sind Unterrichtsentwürfe ohne berichtete Ergebnisse; das letzte Feld verbindet sie deshalb mit dem Befund aus dem Kapitel, der ihren Mechanismus stützt oder in Frage stellt. Fremde Fälle mit Namen, eigene Fälle anonymisiert in Kapitel 6. Mischung international und deutsch. Vorbild: „OM in Action“. Quarto-Schablone:
+Evidenzmarke im letzten Feld: *evaluiert* / *Erfahrungsbericht* / *Unterrichtsentwurf* / *Ankündigung*. Fremde Fälle mit Namen von Hochschule und Lehrenden im Text des Kastens, eigene Fälle anonymisiert in Kapitel 6. Mischung international und deutsch. Kandidaten, Originalquellen und Verteilung: `notes/lehrpraxis-kandidaten-2026-10-20.md`. Quarto-Schablone:
 
 ```markdown
-::: {.callout-note title="Beispiel aus der Lehrpraxis · Dilemma: <Kurztitel>"}
-**Die Herausforderung.** Was generative KI an dieser Lernsituation verändert.
+::: {.callout-note title="Anwendungsbeispiel: <Problem als kurze Aussage>"}
+**Das Problem.** Was das Lernen erschwert und was generative KI daran neu macht; Hochschule, Fach, Gruppe.
 
-**Das Dilemma.** Zwei berechtigte Ziele, die gegeneinander stehen, und wie der Entwurf sie gewichtet.
-<!-- bei Problemlösung: **Die Lösung.** Der Gestaltungszug in zwei bis drei Sätzen. -->
+**Der Lösungsansatz.** Der Gestaltungszug in zwei bis drei Sätzen.
+<!-- bei einem Dilemma stattdessen: **Das Dilemma.** Zwei berechtigte Ziele und wie der Entwurf sie gewichtet. -->
 
-**Was das für wirksames Lernen heißt.** *Unterrichtsentwurf, keine Ergebnisse berichtet.* Ein Satz mit Befund aus dem Kapitel.
+**Was das für wirksames Lernen heißt.** *Erfahrungsbericht.* Ein Satz mit dem Befund aus dem Kapitel, der den Ansatz stützt oder in Frage stellt.
 
-Ablauf und Prompt: @sec-prompt-… (online, QR). Quelle: [@key]
+Quelle: [@key] (QR-Code im Druck)
 :::
 ```
-
-Vorgeschlagene Verteilung (Stand 20.10.2026, Freigabe offen):
-
-| Kap. | Fall | Typ | Kern |
-|---|---|---|---|
-| 1 | AI-Sandwich [@ippolito2025] | Problemlösung | Mensch–KI–Mensch: Interviews in der Mitte, KI-Schlüsse gegen eigene Feldforschung prüfen |
-| 1 | KI, die Zukunft und Du [@taylor2025] | Dilemma | KI-Prognosen zur eigenen Berufszukunft nutzen, obwohl sie verzerrt sind |
-| 2 | Prompt-Playtesting [@landfair2025] | Problemlösung | Erst „testen, bis es klappt“, dann „testen, bis es scheitert“ |
-| 2 | Desinformationskampagne [@stanford2025] | Dilemma | Desinformation erkennen lernen, indem man selbst welche erzeugt |
-| 3 | Sokratische Chats [@yuen2025] | Problemlösung | Erst ohne KI schreiben, dann sokratisch nachfragen |
-| 3 | Schlechten Aufsatz korrigieren [@newman2025] | Problemlösung | Flüssigen, aber fehlerhaften Text gezielt erzeugen und korrigieren |
-| 4 | DuPont-Analyse mit Copilot [@pedersen2025] | Dilemma | Selbst rechnen, um die Fehler des Copiloten erkennen zu können |
-| 4 | Telefontriage in der Pflege [@hobbick2025] | Dilemma | KI als Patient und als Feedbackgeber: Wer bespricht nach? |
-| 5 | Interview mit einer Romanfigur [@kentz2025] | Problemlösung | Bewertet wird das Chatprotokoll, nicht nur der Aufsatz |
-| 5 | OneTutor an bayerischen Hochschulen [@stumpf2026] | Dilemma | Tutoren werden ausgebaut, der wahrgenommene Lernerfolg unterscheidet sich nicht |
 
 **„Ausprobiert“** (Drittelseite, zwei bis drei je Kapitel 1–5), Aufbau nach dem Heizer-„Example“ (Problem – Solution – Insight – Learning Exercise – Related Problems):
 
