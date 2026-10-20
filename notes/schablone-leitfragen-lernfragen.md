@@ -31,19 +31,37 @@ Offen: Kapitel 6 hat noch keine Kernaussagen; Lern- und Lösungshinweise zu den 
 
 ## Noch umzusetzen
 
-**„Beispiel aus der Lehrpraxis“** (Name festgelegt am 19.10.2026; halbe Seite, zwei je Kapitel 1–5): Wer (Institution, Kurs, Größe) – Lehrproblem – Gestaltung – Was man weiß – Quelle mit QR-Code. Evidenzmarke: *evaluiert* / *Erfahrungsbericht* / *Ankündigung*. Fremde Fälle mit Namen, eigene Fälle anonymisiert in Kapitel 6. Mischung international und deutsch. Vorbild: „OM in Action“. Quarto-Schablone:
+**„Beispiel aus der Lehrpraxis“** (Name 19.10.2026, Ausrichtung 20.10.2026; halbe Seite, zwei je Kapitel 1–5). Jeder Kasten bildet **entweder ein Dilemma oder eine Problemlösung** ab, immer mit Blick auf wirksames Lernen und auf die neue Herausforderung, die generative KI dafür schafft. Ein Dilemma stellt zwei berechtigte Ziele gegeneinander (etwa Lernwirkung durch eigenes Rechnen gegen Effizienz durch den Copilot) und zeigt, wie der Entwurf die Spannung austariert, ohne sie aufzulösen. Eine Problemlösung zeigt einen Gestaltungszug, der eine konkrete Herausforderung entschärft. Kein eigener Ethik-Kasten (Entscheidung 20.10.2026).
+
+Evidenzmarke im letzten Feld: *evaluiert* / *Erfahrungsbericht* / *Unterrichtsentwurf* / *Ankündigung*. Die Fälle des AI Pedagogy Project (metaLAB at Harvard) sind Unterrichtsentwürfe ohne berichtete Ergebnisse; das letzte Feld verbindet sie deshalb mit dem Befund aus dem Kapitel, der ihren Mechanismus stützt oder in Frage stellt. Fremde Fälle mit Namen, eigene Fälle anonymisiert in Kapitel 6. Mischung international und deutsch. Vorbild: „OM in Action“. Quarto-Schablone:
 
 ```markdown
-::: {.callout-note title="Beispiel aus der Lehrpraxis: <Institution, Kurs>"}
-**Lehrproblem.** …
+::: {.callout-note title="Beispiel aus der Lehrpraxis · Dilemma: <Kurztitel>"}
+**Die Herausforderung.** Was generative KI an dieser Lernsituation verändert.
 
-**Gestaltung.** …
+**Das Dilemma.** Zwei berechtigte Ziele, die gegeneinander stehen, und wie der Entwurf sie gewichtet.
+<!-- bei Problemlösung: **Die Lösung.** Der Gestaltungszug in zwei bis drei Sätzen. -->
 
-**Was man weiß.** *Evidenz: evaluiert | Erfahrungsbericht | Ankündigung.* …
+**Was das für wirksames Lernen heißt.** *Unterrichtsentwurf, keine Ergebnisse berichtet.* Ein Satz mit Befund aus dem Kapitel.
 
-Quelle: [@key] (QR-Code im Druck)
+Ablauf und Prompt: @sec-prompt-… (online, QR). Quelle: [@key]
 :::
 ```
+
+Vorgeschlagene Verteilung (Stand 20.10.2026, Freigabe offen):
+
+| Kap. | Fall | Typ | Kern |
+|---|---|---|---|
+| 1 | AI-Sandwich [@ippolito2025] | Problemlösung | Mensch–KI–Mensch: Interviews in der Mitte, KI-Schlüsse gegen eigene Feldforschung prüfen |
+| 1 | KI, die Zukunft und Du [@taylor2025] | Dilemma | KI-Prognosen zur eigenen Berufszukunft nutzen, obwohl sie verzerrt sind |
+| 2 | Prompt-Playtesting [@landfair2025] | Problemlösung | Erst „testen, bis es klappt“, dann „testen, bis es scheitert“ |
+| 2 | Desinformationskampagne [@stanford2025] | Dilemma | Desinformation erkennen lernen, indem man selbst welche erzeugt |
+| 3 | Sokratische Chats [@yuen2025] | Problemlösung | Erst ohne KI schreiben, dann sokratisch nachfragen |
+| 3 | Schlechten Aufsatz korrigieren [@newman2025] | Problemlösung | Flüssigen, aber fehlerhaften Text gezielt erzeugen und korrigieren |
+| 4 | DuPont-Analyse mit Copilot [@pedersen2025] | Dilemma | Selbst rechnen, um die Fehler des Copiloten erkennen zu können |
+| 4 | Telefontriage in der Pflege [@hobbick2025] | Dilemma | KI als Patient und als Feedbackgeber: Wer bespricht nach? |
+| 5 | Interview mit einer Romanfigur [@kentz2025] | Problemlösung | Bewertet wird das Chatprotokoll, nicht nur der Aufsatz |
+| 5 | OneTutor an bayerischen Hochschulen [@stumpf2026] | Dilemma | Tutoren werden ausgebaut, der wahrgenommene Lernerfolg unterscheidet sich nicht |
 
 **„Ausprobiert“** (Drittelseite, zwei bis drei je Kapitel 1–5), Aufbau nach dem Heizer-„Example“ (Problem – Solution – Insight – Learning Exercise – Related Problems):
 
@@ -65,7 +83,7 @@ Kennzeichnung der Zielgruppe: „für Lehrende“ oder „mit Studierenden“. 4
 
 ## Weitere Heizer-Elemente zur Entscheidung
 
-- *Ethical Dilemma* → Kasten „Abwägung“: ein Fall je Kapitel mit benannter, erfundener Hauptperson und einer Entscheidung ohne saubere Lösung (Detektor-Score als Verdacht, Tutor und Datenschutz, Bezahlzugang und Chancengleichheit). Erfüllt die Willingham-Kriterien auf einer halben Seite.
+- *Ethical Dilemma*: zurückgestellt (Roman, 20.10.2026). Das Dilemma-Format geht stattdessen in die „Beispiele aus der Lehrpraxis“ ein, mit Fokus auf Lernwirkung statt Ethik.
 - *Key Terms mit Seitenzahl* am Kapitelende → Zeile „Kernbegriffe“ mit Verweis ins Glossar; kostet zwei bis drei Zeilen je Kapitel.
 - *Global Company Profile* (Eröffnungsfall) → erster Praxis-Kasten eines Kapitels wandert an den Kapitelanfang.
 - Nicht übernommen: Randspalten-Definitionen und Student Tips (kein Randsatz im 17 × 24-Format), *Rapid Review* (leisten die Kernaussagen), *Problems* und *Using Software* (passen nicht zum Fach).
