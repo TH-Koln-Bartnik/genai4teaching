@@ -31,13 +31,15 @@ Offen: Kapitel 6 hat noch keine Kernaussagen; Lern- und Lösungshinweise zu den 
 
 ## Noch umzusetzen
 
-**„Anwendungsbeispiel: [Problem]“** (Kasten aus der Lehrpraxis; Name 19.10., Ausrichtung und Titelschema 20.10.2026; halbe Seite, zwei je Kapitel 1–5, Kapitel 4 drei). Der Titel benennt das Lernproblem, nicht das Werkzeug oder die Hochschule, und der Kasten ist problembasiert aufgebaut: erst das Problem, dann der Lösungsansatz oder das Dilemma, dann die Folgerung für wirksames Lernen. Ein Dilemma stellt zwei berechtigte Ziele gegeneinander und zeigt, wie der Entwurf sie gewichtet, ohne die Spannung aufzulösen; eine Problemlösung zeigt einen Gestaltungszug, der das Problem entschärft. Fokus auf wirksames Lernen und auf die neue Herausforderung, die generative KI schafft. Kein eigener Ethik-Kasten (Entscheidung 20.10.2026).
+**„Anwendungsbeispiel: [Problem]“** (Kasten aus der Lehrpraxis; Name 19.10., Ausrichtung und Titelschema 20.10.2026; halbe Seite, zwei je Kapitel 1–5, Kapitel 4 drei). Der Titel benennt das Lernproblem, nicht das Werkzeug oder die Hochschule, und der Kasten ist problembasiert aufgebaut: erst das Problem ohne KI (die didaktische Ausgangslage), dann das Problem mit KI (die neue Herausforderung), dann der Lösungsansatz oder das Dilemma, zuletzt die Folgerung für wirksames Lernen (Trennung ohne/mit KI: Roman, 20.10.2026). Ein Dilemma stellt zwei berechtigte Ziele gegeneinander und zeigt, wie der Entwurf sie gewichtet, ohne die Spannung aufzulösen; eine Problemlösung zeigt einen Gestaltungszug, der das Problem entschärft. Fokus auf wirksames Lernen und auf die neue Herausforderung, die generative KI schafft. Kein eigener Ethik-Kasten (Entscheidung 20.10.2026).
 
 Evidenzmarke im letzten Feld: *evaluiert* / *Erfahrungsbericht* / *Unterrichtsentwurf* / *Ankündigung*. Fremde Fälle mit Namen von Hochschule und Lehrenden im Text des Kastens, eigene Fälle anonymisiert in Kapitel 6. Mischung international und deutsch. Kandidaten, Originalquellen und Verteilung: `notes/lehrpraxis-kandidaten-2026-10-20.md`. Quarto-Schablone:
 
 ```markdown
 ::: {.callout-note title="Anwendungsbeispiel: <Problem als kurze Aussage>"}
-**Das Problem.** Was das Lernen erschwert und was generative KI daran neu macht; Hochschule, Fach, Gruppe.
+**Problem ohne KI.** Die didaktische Ausgangslage: was das Lernen schon immer erschwert; Hochschule, Fach, Gruppe.
+
+**Problem mit KI.** Die neue Herausforderung, die generative KI schafft oder verschärft.
 
 **Der Lösungsansatz.** Der Gestaltungszug in zwei bis drei Sätzen.
 <!-- bei einem Dilemma stattdessen: **Das Dilemma.** Zwei berechtigte Ziele und wie der Entwurf sie gewichtet. -->

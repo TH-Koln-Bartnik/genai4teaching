@@ -29,19 +29,21 @@ Nicht aufgenommen: Fälle aus Studierendenservice und Beratung (HTW Berlin, TH K
 
 ## Neuer Verteilungsvorschlag mit Titeln nach Schema „Anwendungsbeispiel: [Problem]“ (11 Kästen, 4 international, 7 deutsch)
 
-| Kap. | Titel | Fall | Typ |
-|---|---|---|---|
-| 1 | Anwendungsbeispiel: Die KI schreibt, bevor Studierende selbst etwas herausgefunden haben | AI-Sandwich [@ippolito2025] | Problemlösung |
-| 1 | Anwendungsbeispiel: Fehlende Lateinkenntnisse versperren den Zugang zu den Quellen | Held:innenreise, Saarbrücken | Dilemma |
-| 2 | Anwendungsbeispiel: Ein Prompt, der in der Vorführung funktioniert, scheitert im Gespräch | Prompt-Playtesting [@landfair2025] | Problemlösung |
-| 2 | Anwendungsbeispiel: Der Kurs-Bot steht bereit, aber kaum jemand lernt mit ihm | Lecture as Code, Lübeck | Dilemma |
-| 3 | Anwendungsbeispiel: Studierende übernehmen KI-Texte, statt sich mit ihnen auseinanderzusetzen | Sokratische Chats [@yuen2025] | Problemlösung |
-| 3 | Anwendungsbeispiel: KI-Feedback zum Schreiben kommt sofort, ist aber nicht immer richtig | Digital Literacy, Bonn | Problemlösung |
-| 4 | Anwendungsbeispiel: Wer nicht selbst rechnen kann, erkennt die Fehler des Copiloten nicht | DuPont-Analyse mit Copilot [@pedersen2025] | Dilemma |
-| 4 | Anwendungsbeispiel: Ein Tutor-Bot liefert Lösungen, statt das Lernen zu begleiten | Tutor-Chatbot Elektrotechnik, Kiel | Problemlösung |
-| 4 | Anwendungsbeispiel: Im Rollenspiel üben zwei Studierende, der Rest schaut zu | KI-Rollenspiel Prinzipal-Agent, Leipzig | Problemlösung |
-| 5 | Anwendungsbeispiel: Im Beruf programmieren Ingenieure mit KI, in der Prüfung nicht | Digitale Prüfung mit KI, München | Problemlösung |
-| 5 | Anwendungsbeispiel: Performanzprüfungen mit Schauspielern sind teuer und kaum wiederholbar | PrüfungsSimulator, CBS | Dilemma |
+Stand 20.10.2026, 9:15: Felder „Problem ohne KI“ und „Problem mit KI“ getrennt; Titel des CBS-Falls umformuliert. Die Spalten „ohne KI“ bei den Fällen des AI Pedagogy Project sind eigene didaktische Rahmung, nicht Aussage der Quelle; bei den HFD-Fällen stammen sie aus den Steckbriefen und Originalmaterialien.
+
+| Kap. | Titel („Anwendungsbeispiel: …“) | Fall | Typ | Problem ohne KI | Problem mit KI |
+|---|---|---|---|---|---|
+| 1 | Die KI schreibt, bevor Studierende selbst etwas herausgefunden haben | AI-Sandwich [@ippolito2025] | Problemlösung | Eigene Recherche mit Interviews ist aufwendig, Strukturieren und Schreiben kosten viel Zeit | Die KI liefert einen fertigen Essay ohne eigene Feldforschung; Studierende können nicht beurteilen, wo sie hilft und wo nicht |
+| 1 | Fehlende Lateinkenntnisse versperren den Zugang zu den Quellen | Held:innenreise, Saarbrücken | Dilemma | Ohne Latein- und Transkriptionskenntnisse bleiben Originalquellen verschlossen; Mittelalter-Veranstaltungen werden gemieden | Transkription und Übersetzung per KI öffnen den Zugang, enthalten aber Fehler, die Anfänger schwer erkennen; Lehrende müssen entscheiden, ob sie eingreifen |
+| 2 | Ein Prompt, der in der Vorführung funktioniert, scheitert im Gespräch | Prompt-Playtesting [@landfair2025] | Problemlösung | Regeln des aktiven Zuhörens (Rogers) lassen sich erklären, aber schwer üben | Ein Prompt, der im einfachen Test funktioniert, bricht unter Widerspruch und schwierigen Themen zusammen |
+| 2 | Der Kurs-Bot steht bereit, aber kaum jemand lernt mit ihm | Lecture as Code, Lübeck | Dilemma | Fragen zum Material bleiben außerhalb der Veranstaltung unbeantwortet; Lehrende sehen nicht, wo Verständnisprobleme liegen | Ein Bot wirkt nur bei aktiv begleitetem Einsatz, nicht durch einen Link; lokal hostbare offene Modelle halluzinieren noch zu stark |
+| 3 | Studierende übernehmen KI-Texte, statt sich mit ihnen auseinanderzusetzen | Sokratische Chats [@yuen2025] | Problemlösung | Eine begründete eigene Position braucht wiederholtes Nachfragen, für das im Seminar wenig Zeit bleibt | Der Chatbot liefert fertige Antworten und verführt zur passiven Übernahme |
+| 3 | KI-Feedback zum Schreiben kommt sofort, ist aber nicht immer richtig | Digital Literacy, Bonn | Problemlösung | Individuelles Feedback zu Texten in Fremdsprachenkursen ist knapp | KI-Feedback ist sofort verfügbar, aber nicht immer korrekt; Studierende müssen es an verlässlichen Quellen prüfen |
+| 4 | Wer nicht selbst rechnen kann, erkennt die Fehler des Copiloten nicht | DuPont-Analyse mit Copilot [@pedersen2025] | Dilemma | Kennzahlenanalyse am echten Geschäftsbericht ist mühsam und fehleranfällig | Der Copilot rechnet schnell; seine Fehler erkennt nur, wer selbst gerechnet hat |
+| 4 | Ein Tutor-Bot liefert Lösungen, statt das Lernen zu begleiten | Tutor-Chatbot Elektrotechnik, Kiel | Problemlösung | In der großen Grundlagenvorlesung bleiben typische Fragen unsichtbar | Ein Bot, der fertige Lösungen liefert, nimmt das Lernen ab; der Tutor soll begleiten statt lösen |
+| 4 | Im Rollenspiel üben zwei Studierende, der Rest schaut zu | KI-Rollenspiel Prinzipal-Agent, Leipzig | Problemlösung | Nur zwei bis vier Studierende üben aktiv, der Rest beobachtet; Rollenstress hemmt das Ausprobieren | Die KI-Persona wiederholt Argumente und eskaliert teils überzogen |
+| 5 | Im Beruf programmieren Ingenieure mit KI, in der Prüfung nicht | Digitale Prüfung mit KI, München | Problemlösung | Prüfungen ohne KI messen nicht, wie Ingenieure heute arbeiten | KI-Code wirkt plausibel, setzt aber Randbedingungen falsch um; identische Prompts liefern verschiedene Lösungen |
+| 5 | Gesprächsführung zu prüfen ist aufwändig und kaum wiederholbar | PrüfungsSimulator, CBS | Dilemma | Performanzprüfungen in Gesprächsführung binden viel Personal und feste Termine (an der CBS bisher mit Schauspieler:innen) | Der Bot reagiert in jeder Prüfung anders: fair gegenüber Auswendiglernen, aber verunsichernd für die Vorbereitung |
 
 Reserve: Talk2Transform (Kap. 4), Furhat (Kap. 4), Desinformation [@stanford2025], Telefontriage [@hobbick2025], Romanfigur [@kentz2025], schlechter Aufsatz [@newman2025]. Gestrichen: Taylor (zielt auf Schulabgänger), OneTutor (steht schon im Text von Kap. 5).
 
