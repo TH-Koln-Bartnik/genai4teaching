@@ -1,6 +1,6 @@
 # Materialkarte Anhang D — „Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle"
 
-Datei: `kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd` (Branch revision-2026-druck). Stand: 2026-10-17, Runde 1 (Woche-2-Ziel: Vorbemerkung, D.1, D.2, D.7 ausformuliert; Rest Gerüst). Quellmaterial liegt unter `/mnt/user-data/uploads/0_GenAI/3-Present/32-Workshop-GenAI-in-der-Lehre-Advanced/` (kurz: WS/).
+Datei: `kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd` (Branch revision-2026-druck). Stand: 2026-10-17, Runde 2 (abends): Vorbemerkung, D.1–D.8 ausformuliert einschließlich aller „Das Werkzeug“-Abschnitte (Runde 2: D.3, D.4, D.5, D.6, D.8 aus Input B2–B4, B7, n8n-LIESMICH und Übungs-docx vom 12.10.); D.9 bleibt Gerüst „in Erprobung“. Neue Einträge in references.json: dang2026verified, omg2014bpmn, huggingface2026gguf, lmstudio2026docs. Verbleibende TODOs (21) betreffen Abbildungen, PwC-Freigabe, Tay-2026-Beiträge, Ü5/Ü5b-Entscheidung, Workstation-Umfang, QR-Codes und Online-Material. HTML-Render 17.10. abends ohne Zitier-/Querverweiswarnungen. Quellmaterial liegt unter `/mnt/user-data/uploads/0_GenAI/3-Present/32-Workshop-GenAI-in-der-Lehre-Advanced/` (kurz: WS/).
 
 | Abschnitt | Wörter (Fließtext / Übungsblock, ohne Code und Kommentare) | Verwendete Quelle(n) | Status | Offene Punkte für Roman |
 |:--|:--|:--|:--|:--|

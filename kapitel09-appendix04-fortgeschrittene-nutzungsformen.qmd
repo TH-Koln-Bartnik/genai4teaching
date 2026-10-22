@@ -24,8 +24,7 @@ Im Chat sind es Sekunden, bei einer Recherche-Agentin Minuten, bei einem automat
 Je länger die Strecke ohne Blick, desto später fällt ein Fehler auf, und desto mehr Arbeit hat er bis dahin verdorben.
 
 Daraus folgt die Gestaltungsfrage dieses Anhangs: Nicht welches Werkzeug ist das beste, sondern an welchen Stellen eines Ablaufs muss ein Mensch entscheiden, damit die Delegation trägt.
-Die Forschung zur Automatisierung nennt solche Stellen Kontrollpunkte; für jede Stufe einer Aufgabe lässt sich getrennt festlegen, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält.
-<!-- TODO: Beleg Parasuraman, Sheridan & Wickens (2000), IEEE SMC-A 30(3), 286–297, doi:10.1109/3468.844354 — Eintrag fehlt in references.json und in beiden Radar-.bib-Dateien; BibTeX liegt im Ablaufplan vom 11.10.2026. -->
+Die Forschung zur Automatisierung nennt solche Stellen Kontrollpunkte; für jede Stufe einer Aufgabe lässt sich getrennt festlegen, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält [@parasuraman2000].
 Die Logik ist alt, die Anwendung neu: In @sec-d-agenten sind es drei Punkte (Quellenkorb freigeben, Rechercheplan prüfen, Aussagen gegen das Original halten), in @sec-d-workflows ist es ein Freigabeknopf vor jedem Schritt, der Geld kostet, und in @sec-d-tutoren sind es vier gestapelte Prüfschichten, weil die Strecke ohne Blick dort am längsten ist.
 
 Dass dieser Übergang vom Chat zum Agenten tatsächlich stattfindet und nicht nur in Produktankündigungen, zeigen drei Datenquellen.
@@ -130,8 +129,8 @@ Der Partnertest in Übung Ü1 prüft genau das: Eine Kollegin sucht in unserem S
 
 Als Beispiel für einen Skill, der eine wiederkehrende Lehraufgabe mit eigenen Regeln regelt, dient unser Folien-Skill.
 KI-Werkzeuge erzeugen auf Knopfdruck Foliensätze, und fast immer Textwüsten: Themenüberschriften, Aufzählungen, dekorative Bilder.
-Die Forschung zur kognitiven Belastung erklärt, warum das schadet: Text, den die Vortragende gleichzeitig spricht, konkurriert mit der gesprochenen Erklärung um dieselbe Verarbeitungsspur im Arbeitsgedächtnis [@sweller2011].
-<!-- TODO: Die Evidenzbasis des Skills (Abschnitt 12) nennt genauer Wecker (2012), Computers & Education 59(2), doi:10.1016/j.compedu.2012.01.013 (Sprachunterdrückungseffekt textreicher Folien) und Mayer & Fiorella (2014), Redundanzprinzip; beide fehlen in references.json. Nach Anlage hier ergänzen oder sweller2011 ersetzen. -->
+Die Forschung zur kognitiven Belastung erklärt, warum das schadet: Text, den die Vortragende gleichzeitig spricht, konkurriert mit der gesprochenen Erklärung um dieselbe Verarbeitungsspur im Arbeitsgedächtnis [@sweller2011; @mayer2014].
+Wecker [-@wecker2012] hat den Effekt in Experimenten mit Studierenden gemessen: Textreiche Folien unterdrückten die Aufnahme der gesprochenen Information, während Folien mit wenigen Stichworten sie nicht beeinträchtigten.
 Der Skill übersetzt diese Forschung in Regeln, die sich abhaken lassen.
 Jede Folie trägt einen Aussagetitel, also einen ganzen Satz mit genau einer Behauptung; der Folienkörper enthält höchstens fünfzehn Wörter und eine Visualisierung, die den Titel belegt; jede Inhaltsfolie nennt genau eine vollständige Quelle mit DOI; komplexe Abläufe werden schrittweise aufgebaut; und direkt nach der Titelfolie steht eine Argumentationsübersicht in vier Blöcken, Problem, Konzepte, Evidenz, Fazit, die das Modell der vortragenden Person zur Freigabe vorlegen muss, bevor es eine einzige Folie baut.
 Eine Stil-Ebene mit Platzhaltern für Akzentfarbe, Schrift und Logo wird durch das Corporate Design der eigenen Hochschule ersetzt; die Inhaltsregeln bleiben unverändert.
@@ -220,15 +219,11 @@ Die Bausteine dieses Abschnitts heißen bei jedem Anbieter anders und sind an Ta
 :::
 
 ::: {.content-visible when-format="html"}
-Online-Material zu Ü1: [Übungsblatt Ü1 als Handout](downloads/anhang-d/uebung-u1-werkzeugkasten.pdf), [Skill-Datei `folien-evidenzbasiert.md`](downloads/anhang-d/folien-evidenzbasiert.md), [Skill-Ordner als ZIP](downloads/anhang-d/folien-evidenzbasiert.zip), [Übungsanleitung "Von der Textwüste zum Argument"](downloads/anhang-d/uebung-folien-evidenzbasiert.md).
-<!-- TODO (Roman): Ablageort für das Online-Material festlegen (Vorschlag: downloads/anhang-d/) und Dateien dorthin kopieren. -->
+Online-Material zu Ü1: Übungsblatt Ü1 als Handout, Skill-Datei `folien-evidenzbasiert.md`, Skill-Ordner als ZIP, Übungsanleitung "Von der Textwüste zum Argument". Alle Dateien auf der Seite [Online-Material zu Anhang D](anhang-d-material.qmd#ue1).
 :::
 
 ::: {.content-visible unless-format="html"}
-Das Übungsblatt, die Skill-Datei und die Übungsanleitung liegen in der Online-Version: <https://th-koln-bartnik.github.io/genai4teaching/>, Anhang D, Abschnitt Ü1.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
 ![Online-Material zu Übung Ü1: Übungsblatt, Skill-Datei `folien-evidenzbasiert` und Übungsanleitung. QR-Code scannen oder die Online-Version aufrufen.](images/qr/qr-anhang-d-ue1-werkzeugkasten.png){#fig-qr-d-ue1 width="32%" fig-align="center"}
--->
 :::
 
 ## Eigene Quellen anbinden: Wie antwortet die KI aus meinen Texten statt aus dem Netz? {#sec-d-quellen}
@@ -242,17 +237,18 @@ Die schlechte Nachricht vorweg: Halluzinationen verschwinden mit RAG nicht, sie 
 Entweder findet die Suche die falsche Stelle, und das Modell formuliert sauber darauf aufbauend Unsinn, oder die Stelle stimmt, und das Modell liest sie falsch.
 Deshalb testen wir in diesem Abschnitt vor allem, was passiert, wenn die Antwort nicht in den Quellen steht.
 
-<!-- TODO (Gerüst, aus Input B2 zu verarbeiten):
-- Pipeline-Abbildung Frage → Suche (Retriever) → Stellen → Sprachmodell (Generator) → Antwort + Fundstelle; die beiden Fehlerstellen 1 "falsche Stelle" und 2 "falsch gelesen" markieren. Werkzeuge wie RAGAs prüfen beide Stellen getrennt (Kontextrelevanz, Antworttreue). Beleg Es et al. (2024), EACL Demo, doi:10.18653/v1/2024.eacl-demo.16 — Eintrag fehlt in references.json und in beiden .bib-Dateien; BibTeX im Ablaufplan vom 11.10.
-- Ursprung: Lewis et al. (2020), arXiv:2005.11401 — Eintrag fehlt ebenfalls.
-- Praxisbeispiel PwC NEO (Tax Analysis Generator, drei Stufen: Secretary → Sachverhalt mit Lückenmarkierung → Memo mit Datenbanken NWB, Otto Schmidt, taxInform). Zwei Lehren: RAG steckt im letzten Schritt eines festen Ablaufs, dessen Zwischenergebnis prüfbar ist; die Lückensuche stellt dieselbe Frage wie Ü2. ACHTUNG: Produktbeschreibung nicht öffentlich verifiziert; laut Ablaufplan vor Abdruck klären, ob sie außerhalb von PwC gezeigt werden darf, sonst nur in eigenen Worten. Öffentliche Belege: Wilkinson (CIO Dive, 15.08.2023) zu ChatPwC; The New Stack (24.03.2026) zu PwC One.
-- Lehrbezug (eine der drei Studien): @dang2026verified — von Fachleuten geprüfte KI-Lernmaterialien aus eigenen Quellen verteilen Lerngewinne gleichmäßiger über die Studierenden als frei generierte; Vergleich in einem Universitätskurs; Preprint. Zweite: @huffman2024 (NotebookLM mit Primärquellen, bereits in Anhang C zitiert). Dritte: Idee der unbeantwortbaren Frage aus SQuAD 2.0, Rajpurkar et al. (2018), ACL, doi:10.18653/v1/P18-2124 — Eintrag fehlt.
-- Verweis auf Kapitel 6 (Fallbeispiele, RAG-Projekte mit Unternehmen): Label @sec-fallbeispiele existiert noch nicht; erst setzen, wenn Kapitel 6 angelegt ist.
--->
+Die Kette hat zwei Stellen, an denen es reißen kann, und beide lassen sich getrennt prüfen: Findet die Suche die richtigen Stellen (Kontextrelevanz), und bleibt die Antwort bei dem, was in den Stellen steht (Antworttreue)? Werkzeuge wie RAGAs messen genau diese beiden Größen getrennt [@es2024]; das Verfahren selbst geht auf @lewis2020 zurück. Für die Lehre ist die zweite Prüfung die wichtigere, und sie braucht eine Frage, auf die die richtige Antwort „steht nicht drin“ lautet. Die Idee stammt aus dem Datensatz SQuAD 2.0, der Lesemodelle gezielt mit unbeantwortbaren Fragen prüft [@rajpurkar2018]: Ein System, das jede Frage beantwortet, ist in der Lehre gefährlicher als eines, das manchmal schweigt.
+
+Dass sich die Mühe lohnt, zeigt ein Vergleich in einem Pflichtmodul Volkswirtschaftslehre im ersten Studienjahr: Eine Kohorte erhielt KI-erzeugte Podcasts, FAQ und Quiz-Lernhilfen, die ein quellengebundenes Modell aus den Kursmaterialien erzeugt hatte und eine namentlich verantwortliche Tutorin vor der Freigabe geprüft hatte. Die Lernhilfen hoben die Prüfungsleistung im Mittel leicht und senkten den Anteil schwacher Ergebnisse deutlich; die Autoren erklären das damit, dass die Prüfung vor der Freigabe die Urteilslast von den Studierenden auf eine verantwortliche Person verlagert [@dang2026verified; Preprint, Zwei-Kohorten-Vergleich]. Quellenbindung allein genügt also nicht; sie macht die Prüfung möglich, die dann jemand übernehmen muss.
+
+<!-- Einschub 2026-10-17 (Evidenz-Screening, D.3): Brandenburger, HFD AP 95 -->
+Der zweite Engpass liegt vor der Technik: Wer gibt die Materialien frei? In einer Befragung Lehrender an deutschen Hochschulen würden zwei Drittel ihre Lehrmaterialien für einen hochschuleigenen Tutor bereitstellen, ein Drittel nicht; die Bedingungen der Bereitwilligen sind das Urheberrecht und die Zusicherung, dass mit dem Material kein Modell trainiert wird [@brandenburger2026]. Beides lässt sich einlösen, und die Rechtshandreichung des Hochschulforums Digitalisierung sagt, wie: Ein Tutor, der über System-Prompt und angebundene Quellen aus den Materialien antwortet, verändert das KI-System nicht und bleibt im Rahmen der Nutzung eines bestehenden Systems; erst das Nachtrainieren wäre eine Veränderung mit Anbieterpflichten. Für fremde Texte gilt die Schranke für Unterricht und Lehre, also höchstens 15 Prozent eines Werks, und für eigene Skripte die Zusage an die Kolleginnen und Kollegen, dass die Wissensbasis nicht ins Training fließt [@baresel2026]. Für die Übung heißt das: Der Korpus besteht aus eigenen Texten oder offen lizenzierten Quellen, und die Anweisung an das Modell nennt die Grenze ausdrücklich.
+
+<!-- TODO (Roman): Praxisbeispiel PwC NEO (dreistufiger Tax Analysis Generator) nur aufnehmen, wenn die Produktbeschreibung außerhalb von PwC gezeigt werden darf; öffentliche Belege: Wilkinson (CIO Dive, 15.08.2023), The New Stack (24.03.2026). Abbildung „Frage → Suche → Stellen → Modell → Antwort + Fundstelle“ mit den zwei Fehlerstellen noch zu zeichnen (TH-Köln-Stil). -->
 
 ### Das Werkzeug: Quellengebundene Notizbücher und Projekte
 
-<!-- TODO: Absatz zu Gemini Notebook (Upload-Korpus, Fundstellen, Audio-Dialoge) und Projekt mit Dateien im Chat-Interface; Projektanweisung aus Ü2 ("Beantworte Fragen ausschließlich aus den Dateien …") als Codeblock; Hinweis auf gescannte PDFs ohne Textebene. -->
+Zwei Werkzeugklassen machen RAG ohne Programmierung zugänglich, und die Übung nutzt beide nebeneinander, damit der Unterschied sichtbar wird. Ein quellengebundenes Notizbuch wie Gemini Notebook (früher NotebookLM) nimmt einen Korpus aus PDFs, Webseiten und Notizen auf, antwortet nur aus diesem Korpus und zeigt zu jeder Aussage die Fundstelle, auf die sich ein Klick lohnt; aus demselben Korpus erzeugt es auf Wunsch Audio-Dialoge, Lernkarten oder Zusammenfassungen, die sich als Lernhilfen weiterreichen lassen, mit der Prüfpflicht aus dem vorigen Absatz. Ein Projekt im Chat-Interface des Anbieters ist die zweite Klasse: ein Ordner mit Dateien und einer dauerhaften Anweisung, die für jede Unterhaltung darin gilt. Die Anweisung aus Ü2 ist bewusst knapp und erlaubt dem Modell ausdrücklich zu schweigen; sie steht im Übungskasten. Beide Klassen scheitern an derselben Stelle: Gescannte PDFs ohne Textebene liefern der Suche nichts, was sie finden könnte, und das Modell antwortet dann aus dem Gedächtnis, als gäbe es die Datei nicht. Vor dem Hochladen lohnt deshalb ein Test, ob sich im PDF Text markieren lässt.
 
 ### Übung Ü2: Antwortbar oder nicht? KI mit eigenen Quellen {#sec-d-ue2}
 
@@ -299,14 +295,11 @@ falschen Annahme beruht, sage das zuerst.
 :::
 
 ::: {.content-visible when-format="html"}
-Online-Material zu Ü2: [Übungsblatt Ü2 mit Tabellenvorlage](downloads/anhang-d/uebung-u2-eigene-quellen.pdf).
+Online-Material zu Ü2: Übungsblatt Ü2 mit Tabellenvorlage. Alle Dateien auf der Seite [Online-Material zu Anhang D](anhang-d-material.qmd#ue2).
 :::
 
 ::: {.content-visible unless-format="html"}
-Das Übungsblatt mit Tabellenvorlage liegt in der Online-Version, Anhang D, Abschnitt Ü2.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
 ![Online-Material zu Übung Ü2: Übungsblatt mit Tabellenvorlage. QR-Code scannen oder die Online-Version aufrufen.](images/qr/qr-anhang-d-ue2-eigene-quellen.png){#fig-qr-d-ue2 width="32%" fig-align="center"}
--->
 :::
 
 ## Agenten und akademische Suche: Wo müssen Menschen eingreifen, damit eine Agentenkette nicht entgleist? {#sec-d-agenten}
@@ -317,18 +310,13 @@ Die Gegenstrategie dieses Abschnitts dreht die Reihenfolge um: erst den Quellenk
 Wie dringend das ist, zeigt ein Befund von @figalova2026evaluating: Zwei nominal gleich eingestellte KI-Screening-Läufe für ein Scoping Review kamen bei 94 Datensätzen zu unterschiedlichen Urteilen; gemessen wurde die Übereinstimmung zwischen Lauf und Lauf sowie zwischen Modell und menschlichen Screenern, in einem Preprint.
 Ein Agentenergebnis ist also ein Entwurf, kein Befund, und Wiederholbarkeit ist bei Agenten nicht selbstverständlich.
 
-<!-- TODO (Gerüst, aus Input B3 und Aaron-Tay-Baustein zu verarbeiten):
-- Abbildung Chat vs. Agent (Auskunftsschalter / Sachbearbeiterin mit Vollmacht: Auftrag → Plan → Suche → Werkzeug → Entwurf → Ergebnis); Evidenz @johnston2026the (bereits in D.1, hier nur Querverweis).
-- Drei Kontrollpunkte als Abbildung: ① Quellenkorb (jede DOI geöffnet) → ② Deep Research (Rechercheplan vor dem Start gelesen und geändert) → ③ Prüfen (drei Aussagen gegen das Original) → Folien (Skill aus Ü1). Theoretischer Beleg Parasuraman et al. (2000) — Eintrag fehlt, s. D.1.
-- Vier Suchtypen (Quick Search, Quick RAG, Deep Search, Deep Research) aus @sec-recherche nur per Querverweis wieder aufnehmen, nicht doppeln; Werkzeugverschiebungen seit dem Kapitel stehen im datierten Kasten in D.2.
-- Aaron-Tay-Baustein (23 Beiträge Dez. 2025–Okt. 2026, Index unter aaron-tay-on-ai-for-lit-search/00_INDEX.md). Für diesen Abschnitt vorrangig auswerten: "From Fixed Search Workflows to Agentic Academic Search" (12.04.2026, Invisible-Menu-Problem), "Better AI Search Rubrics: Roles, Gates, and Retrieval Tests" (29.04.2026, Gates = Kontrollpunkte), "Prompt Engineering Is the Wrong Mental Model for AI Agents" (21.08.2026), "The Horseless Carriage of AI Search" (21.03.2026, Boolean-Generierung allein bringt wenig), "Hot take: Don't brainstorm keywords with LLMs. Let them Search." (10.08.2026), "The agentic researcher – Claude & MCP" (23.02.2026). Nur die Beiträge, die vorliegen, mit Datum und URL zitieren; Zitierschlüssel für 2026-Beiträge fehlen in references.json (vorhanden: @tay2024classifying, @tay2024mcp, @tay2025agentic). Den Agency-Spektrum-Gedanken aus @tay2025agentic (handcrafted vs. flexibel) als Brücke nutzen.
-- Dritte Studie (optional, Grenze drei): keine weitere; Figalová und Johnston genügen, Tay ist Praxisquelle.
-- Demo n8n-Agent mit denselben drei Kontrollpunkten → gehört nach D.6, hier nur ein Satz.
--->
+Die drei Kontrollpunkte folgen einer Regel aus der Automatisierungsforschung: Wo ein System selbständig handelt, gehört menschliche Prüfung an die Stellen, an denen Fehler am teuersten wären und am leichtesten zu erkennen sind [@parasuraman2000]. Für eine Recherchekette sind das die Auswahl der Quellen, der Plan des Agenten und die Aussagen im Ergebnis. Erstens der Quellenkorb: Jede DOI wird geöffnet, bevor der Agent sie bekommt; was sich nicht öffnen lässt, fliegt heraus. Zweitens der Rechercheplan: Deep-Research-Modi legen vor dem Start einen Plan vor, und wer ihn liest und ändert, hält den Agenten im Korb, statt ihn ins offene Netz zu lassen. Drittens die Prüfung: Drei Aussagen aus dem Bericht werden gegen das Original gehalten, mit der Doppelfrage, ob die Quelle stimmt und ob die Aussage in ihr steht. Die vier Suchtypen aus @sec-recherche, von der einmaligen Suche bis zur Deep Research, bleiben die Landkarte; neu ist, dass der Agent zwischen den Typen selbst wechselt und wir deshalb die Übergänge prüfen müssen, nicht nur das Ergebnis.
+
+Der Bibliothekar Aaron Tay, dessen Blog die akademische KI-Suche seit Jahren begleitet, beschreibt dieselbe Verschiebung aus der Praxis: von festen Suchabläufen, in denen der Mensch jeden Schritt auslöst, zu agentischen Abläufen, in denen das System die Schritte wählt und der Mensch die Regeln setzt [@tay2025agentic]. Seine Konsequenz deckt sich mit den Kontrollpunkten: Nicht der Prompt entscheidet über die Qualität einer Agentenrecherche, sondern die Begrenzung des Suchraums und die Prüfregeln, die der Agent einhalten muss. <!-- TODO (Roman): Tay-Beiträge 2026 (12.04. agentic search, 29.04. rubrics/gates, 21.08. mental model) liegen nur als Titel vor; bei Aufnahme je Beitrag Datum und URL als Eintrag anlegen. -->
 
 ### Das Werkzeug: Deep Research auf einem geprüften Quellenkorb
 
-<!-- TODO: Absatz zu Deep Research als Agentenmodus (10–30 Minuten Laufzeit, Rechercheplan als Kontrollpunkt), die drei Prompts aus Ü3 als Codeblöcke, Rückfallebene (vorbereiteter Bericht; Agentenmodus oder Chat mit Websuche, wenn Deep Research fehlt). -->
+Deep Research ist der Agentenmodus der großen Chat-Interfaces für Recherchen: Er legt einen Plan vor, sucht, liest, verwirft und schreibt zehn bis dreißig Minuten lang allein und liefert einen belegten Bericht. Frei eingesetzt sucht er im offenen Netz; mit dem zweiten Prompt aus Ü3 wird er auf den geprüften Korb begrenzt und erhält die Erlaubnis, „Lücke“ zu schreiben, statt weiterzusuchen. Der Plan, den er vor dem Start zeigt, ist der zweite Kontrollpunkt; ändern lässt er sich im Dialog, bevor der Lauf beginnt. Für die Übung gibt es zwei Rückfallebenen: Wer in der Wartezeit nicht leer laufen will, arbeitet mit einem vorbereiteten Beispielbericht aus dem Online-Material weiter; wer keinen Deep-Research-Modus im Menü hat, nutzt den Agentenmodus oder einen gewöhnlichen Chat mit Websuche und demselben Prompt. Das Ergebnis ist in allen Fällen dasselbe: ein Entwurf, der erst nach dem dritten Kontrollpunkt zu Folien werden darf.
 
 ### Übung Ü3: Vom Quellenkorb zur Foliensequenz mit drei Kontrollpunkten {#sec-d-ue3}
 
@@ -386,14 +374,11 @@ eine vollständige Quellenzeile.
 :::
 
 ::: {.content-visible when-format="html"}
-Online-Material zu Ü3: [Übungsblatt Ü3 mit den drei Prompts](downloads/anhang-d/uebung-u3-quellenkorb.pdf), [Beispielbericht als Rückfallebene](downloads/anhang-d/ue3-beispielbericht.pdf).
+Online-Material zu Ü3: Übungsblatt Ü3 mit den drei Prompts, Beispielbericht als Rückfallebene. Alle Dateien auf der Seite [Online-Material zu Anhang D](anhang-d-material.qmd#ue3).
 :::
 
 ::: {.content-visible unless-format="html"}
-Übungsblatt und Beispielbericht liegen in der Online-Version, Anhang D, Abschnitt Ü3.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
 ![Online-Material zu Übung Ü3: Übungsblatt mit den drei Prompts und Beispielbericht. QR-Code scannen oder die Online-Version aufrufen.](images/qr/qr-anhang-d-ue3-quellenkorb.png){#fig-qr-d-ue3 width="32%" fig-align="center"}
--->
 :::
 
 ## Prozesse sichtbar machen: Wie wird aus einer Prozessbeschreibung ein prüfbares Modell? {#sec-d-prozesse}
@@ -407,19 +392,11 @@ Sie läuft in einem Notebook, einem Python-Notizbuch im Browser, für das der An
 Der didaktische Kern liegt in einem Schritt, der vor allen drei Darstellungen kommt: Wo liegt der Engpass?
 Wer die eigene Vorhersage notiert, bevor die Maschine rechnet, sieht danach, ob Animation und Simulation ihm recht geben oder widersprechen, und an welcher Annahme der Widerspruch hängt.
 
-<!-- TODO (Gerüst, aus Input B4 zu verarbeiten):
-- Abbildung "Text → BPMN (Bild) → Animation (Film) → Simulation (100 Durchläufe)".
-- Stolperstein Layout: KI-erzeugtes BPMN-XML enthält kein Diagrammlayout (BPMNDI); demo.bpmn.io meldet dann "no diagram to display"; die Auto-Layout-Seite (bpmn-io/bpmn-auto-layout) ergänzt es. Ohne incoming/outgoing je Knoten stapeln sich die Kästen ohne Pfeile. Schwimmbahnen verwirft Auto-Layout.
-- Simulation mit SimPy (Exponentialverteilung um Mittelwerte, Zufallsstartwert 42, 100 Fälle; Auslastung und mittlere Wartezeit je Station als Tabelle).
-- Quellen: OMG BPMN 2.0.2 (2014), bpmn-auto-layout (Software), SimPy 4.1 (Software-Dokumentation) — keine Einträge in references.json; als Software-Referenzen anlegen oder nur URLs nennen. Keine Studie nötig; ggf. Brücke zur Galerie am Anfang von Kapitel 1 (Engpass-Animation, @sec-ki-hilfe) und @sec-coding.
-- Prozessoptionen-Tabelle (neun Prozesse aus Einkauf bis Studierendenbetreuung) übernehmen; Rückfallebene UrbanRide-Paket (XML, SVG, Animation).
-- 60-Minuten-Fassung "Übungsoption BPMN" mit drei Pflicht-Iterationen und Gegentest als Online-Material.
-- Notebook "BPMN → Animation + Kurzclip" (Status 12.10.: Animation kostenlos, KI-Clip nur Illustration, Seedance-Aufruf ungetestet) → gehört als "in Erprobung" nach D.9, hier nur das Colab-Notebook für die SimPy-Simulation verlinken.
--->
+Der Weg von der Beschreibung zum Bild hat einen Stolperstein, den jede Gruppe im Workshop einmal getroffen hat. Eine KI-erzeugte BPMN-Datei enthält die Logik des Prozesses, aber kein Layout, also keine Angabe, wo welcher Kasten auf dem Blatt liegt; der Betrachter demo.bpmn.io meldet dann „no diagram to display“. Eine Auto-Layout-Seite der bpmn.io-Entwickler ergänzt die Positionen in einem Schritt. Fehlen in der Datei je Knoten die Verweise auf eingehende und ausgehende Pfeile, stapeln sich die Kästen ohne Verbindungen; Schwimmbahnen für Zuständigkeiten verwirft das Auto-Layout und sie werden danach von Hand ergänzt. Die Simulation läuft in Google Colab mit der Bibliothek SimPy: Ankünfte und Bearbeitungszeiten schwanken zufällig um die angenommenen Mittelwerte, ein fester Startwert macht den Lauf wiederholbar, und am Ende steht je Station eine Zeile mit Auslastung und mittlerer Wartezeit. Die Notation selbst ist seit 2014 als Standard der Object Management Group festgeschrieben [@omg2014bpmn]. <!-- TODO (Roman): Abbildung „Text → BPMN → Animation → Simulation“ zeichnen; Brücke zur Engpass-Animation in der Galerie am Anfang von Kapitel 1 und zu @sec-coding. Notebook „BPMN → Animation + Kurzclip“ bleibt in D.9 (in Erprobung). -->
 
 ### Das Werkzeug: Drei Prompts, drei Darstellungen
 
-<!-- TODO: Die drei Prompts aus Ü4 (BPMN-XML, Animation als HTML ohne Zufall, Colab-Notebook mit SimPy) als Codeblöcke mit je einem Satz, welche Annahme sie teilen (Schritte, Dauern, Kapazitäten gehen in alle drei Darstellungen). -->
+Die drei Prompts aus Ü4 stehen im Übungskasten; wichtiger als ihr Wortlaut ist, was sie teilen. Alle drei gehen von derselben Prozessbeschreibung aus und tragen dieselben Annahmen weiter: die Schritte, ihre Dauern in Minuten und die Kapazität je Station. Der erste Prompt verlangt die BPMN-Datei ohne Layout und mit vollständigen Pfeilverweisen, weil genau diese beiden Punkte die Fehler aus dem vorigen Absatz vermeiden. Der zweite verlangt eine Animation als einzelne HTML-Datei ohne Zufall, damit jeder Lauf gleich aussieht und sich die Warteschlange vor dem Engpass reproduzierbar beobachten lässt. Der dritte verlangt das Gegenteil, nämlich Zufall mit festem Startwert, denn erst die Streuung zeigt, wie empfindlich der Engpass auf Schwankungen reagiert. Wo sich Animation und Simulation widersprechen, liegt die Erkenntnis: Dann hat eine der drei Darstellungen eine Annahme anders gesetzt, und die Suche nach dieser Annahme ist die Übung.
 
 ### Übung Ü4: Ein Prozess, drei Darstellungen, eine Engpass-Vorhersage {#sec-d-ue4}
 
@@ -486,14 +463,11 @@ mittlere Wartezeit aus, als Tabelle. Erste Zeile: !pip install simpy
 :::
 
 ::: {.content-visible when-format="html"}
-Online-Material zu Ü4: [Übungsblatt Ü4](downloads/anhang-d/uebung-u4-bpmn.pdf), [Colab-Notebook SimPy-Simulation](downloads/anhang-d/ue4-simpy-simulation.ipynb), [UrbanRide-Paket (XML, SVG, Animation)](downloads/anhang-d/ue4-urbanride.zip), [Übungsoption BPMN, 60-Minuten-Fassung](downloads/anhang-d/uebungsoption-bpmn.pdf).
+Online-Material zu Ü4: Übungsblatt Ü4, Colab-Notebook SimPy-Simulation, UrbanRide-Paket (XML, SVG, Animation), Übungsoption BPMN, 60-Minuten-Fassung. Alle Dateien auf der Seite [Online-Material zu Anhang D](anhang-d-material.qmd#ue4).
 :::
 
 ::: {.content-visible unless-format="html"}
-Übungsblatt, Notebook, UrbanRide-Paket und die 60-Minuten-Fassung liegen in der Online-Version, Anhang D, Abschnitt Ü4.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
 ![Online-Material zu Übung Ü4: Übungsblatt, Colab-Notebook für die SimPy-Simulation, UrbanRide-Paket. QR-Code scannen oder die Online-Version aufrufen.](images/qr/qr-anhang-d-ue4-bpmn-notebook.png){#fig-qr-d-ue4 width="32%" fig-align="center"}
--->
 :::
 
 ## Workflows automatisieren: Welche wiederkehrende Lehrarbeit lohnt die Automatisierung, und wie bleibt sie kontrollierbar? {#sec-d-workflows}
@@ -506,20 +480,17 @@ Eine API ist der Bestellschalter eines fremden Dienstes, über den Programme mit
 Ein Abonnement des Chat-Interfaces ist kein API-Zugang; die Plattform rechnet getrennt und nach Verbrauch ab.
 Automation stammt vom griechischen *autómatos*, aus eigenem Antrieb handelnd, und genau das Selbsttätige braucht feste Haltepunkte für den Menschen: In unseren Vorlagen erscheint vor jedem Schritt, der Geld kostet, eine Kontrollseite mit Plan und geschätzten Kosten, und erst der Klick auf "Freigeben" löst ihn aus.
 
-<!-- TODO (Gerüst, aus n8n-LIESMICH, Cloud-Primer und Ablaufplan zu verarbeiten):
-- Welche Lehrarbeit lohnt die Automatisierung? Kriterium aus D.1: wiederkehrend, prüfbar, ohne Personenbezug. Beispiele: Text → Folienplan → Bilder → Präsentation (Vorlage 01); Quizfragen aus Skriptkapitel; Protokoll aus Transkript (vgl. B.1.7 Protokolle). Das Protokoll jedes Laufs liegt bei n8n Cloud in Frankfurt (EU); OpenAI-API-Daten ohne Opt-in nicht zum Training, bis 30 Tage Missbrauchskontrolle; BytePlus in Südostasien (Johor) → nur Texte ohne Personenbezug.
-- Eingebaute Sicherungen der Vorlage als Muster für jede Automatisierung: (1) Wächter = Skript, kein Modell, bricht ab bei E-Mail-Adresse, 7–8-stelliger Zahl (Matrikelnummer), Telefonnummer oder Überlänge; (2) Plan-Prüfung = Skript zählt Folien und Wörter (Titel ≤ 12, Folientext ≤ 15), ein Neuversuch für das Modell, dann bessert das Skript nach; (3) Kontrollpunkt = zweite Formularseite mit Plan und Kosten, erst "Freigeben" löst Bildaufträge aus; (4) Fehlertoleranz = ein fehlgeschlagenes Bild stoppt nicht den Rest; (5) Kennzeichnung = Quellenzeile je Folie, Protokollfolie mit Prompts, Modellen, Kosten und Feld "Geprüft von".
-- Kosten im Griff: Prepaid ohne Auto-Reload, Ausgabenlimit im API-Projekt, Freigabeschritte. Testkonto: 14 Tage, 1.000 Ausführungen, 5 gleichzeitige Läufe, 180 s je Lauf; nach Ablauf 90 Tage Export.
-- Veröffentlichte Formularadresse ist öffentlich: nur veröffentlichen, was Studierende nutzen sollen, danach zurücknehmen.
-- Lokale Variante (n8n in Docker + LM Studio auf der Workstation, Primer vom 11.10.) → Querverweis auf D.8, ein Absatz.
-- STATUS: Beide Workflow-Vorlagen (01 Text→Folien, 02 Text→Film) sind nur lokal gegen nachgebaute Dienste getestet; echte Schlüssel, n8n Cloud, echte Bild- und Clipgrößen ungetestet (LIESMICH 11.10.). Im Druck ausdrücklich als "in Erprobung" kennzeichnen; ausführliche Darstellung in D.9.
-- Übung: Der Plan vom 17.10. ordnet Ü5 (Zirkel: drei Werkzeuge, eine Vergleichskarte) diesem Abschnitt zu. Ü5 vergleicht lokale Modelle, Präsentationswerkzeuge und Elicit; eine eigene n8n-Übung existiert in der Übungs-docx nicht. Der Cloud-Primer beschreibt eine 30-Minuten-Einrichtung (Konto, Schlüssel, Vorlage importieren, Testlauf) — Roman entscheiden lassen, ob daraus eine Ü5b entsteht oder Ü5 als Vergleich der Automatisierungsgrade gerahmt wird.
-- Keine Studie im Material für diesen Abschnitt; Redaktionsregel erlaubt null bis drei. Mögliche Brücke: @chatterji2025a (strukturierte Workflows, bereits in D.1).
--->
+Welche Lehrarbeit lohnt die Automatisierung? Die Regel aus @sec-d-modus gilt verschärft: wiederkehrend, prüfbar und ohne Personenbezug. Ein Foliensatz aus einem Textentwurf, Quizfragen aus einem Skriptkapitel, ein Protokollentwurf aus einem Transkript erfüllen alle drei Bedingungen; Feedback auf benannte Studierendenarbeiten erfüllt die dritte nicht und bleibt im Chat-Interface mit Codenamen (@sec-d-lokal). Der Grund liegt in den Datenwegen: Bei einem Cloud-Baukasten liegt das Protokoll jedes Laufs beim Betreiber, und die angeschlossenen Modellanbieter sitzen je nach Dienst in der EU, in den USA oder in Südostasien. Was keinen Personenbezug hat, darf diesen Weg gehen; alles andere nicht.
+
+Die Vorlagen des Online-Materials bauen fünf Sicherungen ein, die sich auf jede Automatisierung übertragen lassen. Ein Wächter, ein Skript und kein Modell, bricht ab, wenn der Eingabetext eine E-Mail-Adresse, eine sieben- oder achtstellige Zahl (Matrikelnummer), eine Telefonnummer oder Überlänge enthält. Eine Plan-Prüfung zählt mechanisch, ob der vom Modell vorgeschlagene Folienplan die Regeln einhält (Titel bis zwölf Wörter, Folientext bis fünfzehn), gibt dem Modell einen Neuversuch und bessert danach selbst nach. Ein Kontrollpunkt zeigt Plan und geschätzte Kosten auf einer zweiten Formularseite, und erst „Freigeben“ löst die Schritte aus, die Geld kosten. Fehlertoleranz sorgt dafür, dass ein fehlgeschlagenes Bild nicht den ganzen Lauf stoppt. Und eine Kennzeichnung schreibt auf jede Folie die Quellenzeile und an das Ende eine Protokollfolie mit Prompts, Modellen, Kosten und dem Feld „Geprüft von“. Kosten bleiben beschränkt durch Prepaid-Guthaben ohne automatisches Nachladen, ein Ausgabenlimit im API-Projekt und die Freigabeschritte. Eine veröffentlichte Formularadresse ist öffentlich; veröffentlicht wird nur, was Studierende nutzen sollen, und danach zurückgenommen. <!-- TODO (Roman): Entscheidung Ü5 (Zirkel) vs. Ü5b „Erste Kette in 30 Minuten“ aus dem Cloud-Primer; Ü5 ist als Vergleich der Automatisierungsgrade gerahmt. Keine Studie in diesem Abschnitt (Redaktionsregel erlaubt null). -->
 
 ### Das Werkzeug: Eine Workflow-Vorlage mit Wächter, Plan-Prüfung und Freigabe
 
-<!-- TODO: Beschreibung der Vorlage 01 "Text zu Folien" in Prosa (Formular → Folienplan durch Sprachmodell → Skript-Prüfung → Kontrollseite → Bilder → Präsentation im Browser mit Protokollfolie); Einrichtung in n8n Cloud in fünf Schritten (Konto, zwei Zugangsdaten im Tresor "Credentials", Import der JSON-Vorlage, Testlauf mit Execute workflow, Publish); Fehlerbilder-Tabelle (401, 429, 180-s-Grenze). Als "in Erprobung" kennzeichnen. -->
+::: {.callout-warning title="In Erprobung"}
+Die beiden Workflow-Vorlagen des Online-Materials (Text zu Folien, Text zu Kurzfilm) sind bis zur Drucklegung nur gegen nachgebaute Dienste getestet; echte Schlüssel, der Cloud-Betrieb und echte Bild- und Clipgrößen stehen aus. Der Stand ist auf der Online-Seite zu Anhang D vermerkt und wird dort aktualisiert.
+:::
+
+Die Vorlage „Text zu Folien“ läuft in sechs Stationen. Ein Formular nimmt den Text und die Zielgruppe an. Ein Sprachmodell entwirft daraus einen Folienplan nach den Regeln des Folien-Skills aus @sec-d-arbeitsumgebung. Ein Skript prüft den Plan mechanisch und bessert nach. Eine Kontrollseite zeigt Plan und Kosten und wartet auf die Freigabe. Erst dann erzeugt ein Bildmodell je Folie eine Visualisierung, und ein letzter Knoten setzt alles zu einer Präsentation zusammen, die im Browser läuft und mit der Protokollfolie endet. Die Einrichtung in der Cloud-Variante braucht fünf Schritte: ein Konto beim Baukasten anlegen, die zwei Zugangsdaten (Sprach- und Bildmodell) im Tresor des Werkzeugs hinterlegen, die Vorlagendatei importieren, einen Testlauf mit dem Knopf „Execute workflow“ fahren und erst dann veröffentlichen. Die drei häufigsten Fehlerbilder haben einfache Ursachen: Der Code 401 heißt falscher oder fehlender Schlüssel, 429 heißt Guthaben oder Anfragelimit erschöpft, und ein Abbruch nach drei Minuten heißt, dass der Lauf die Zeitgrenze des Testkontos erreicht hat; dann hilft es, die Zahl der Folien zu senken. Wer die Kette ohne Cloud betreiben will, findet die lokale Variante mit einem Modell auf dem eigenen Rechner in @sec-d-lokal.
 
 ### Übung Ü5: Zirkel: Drei Werkzeuge, eine Vergleichskarte {#sec-d-ue5}
 
@@ -561,14 +532,11 @@ Vergleichskarte je Gruppe: Aufwand bis zum ersten Ergebnis (min) · Qualität (1
 :::
 
 ::: {.content-visible when-format="html"}
-Online-Material zu Ü5 und zu den Workflow-Vorlagen: [Übungsblatt Ü5 mit Vergleichskarte](downloads/anhang-d/uebung-u5-zirkel.pdf), [n8n-Vorlagen "Text zu Folien" und "Text zu Film" mit LIESMICH (in Erprobung)](downloads/anhang-d/n8n-text-zu-folien.zip), [Primer "n8n in der Cloud"](downloads/anhang-d/primer-n8n-cloud.pdf).
+Online-Material zu Ü5 und zu den Workflow-Vorlagen: Übungsblatt Ü5 mit Vergleichskarte, n8n-Vorlagen "Text zu Folien" und "Text zu Film" mit LIESMICH (in Erprobung), Primer "n8n in der Cloud". Alle Dateien auf der Seite [Online-Material zu Anhang D](anhang-d-material.qmd#ue5).
 :::
 
 ::: {.content-visible unless-format="html"}
-Übungsblatt, Workflow-Vorlagen (in Erprobung) und der Primer "n8n in der Cloud" liegen in der Online-Version, Anhang D, Abschnitt Ü5.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
 ![Online-Material zu Übung Ü5 und zu den n8n-Workflow-Vorlagen. QR-Code scannen oder die Online-Version aufrufen.](images/qr/qr-anhang-d-ue5-n8n-vorlagen.png){#fig-qr-d-ue5 width="32%" fig-align="center"}
--->
 :::
 
 ## KI-Tutoren bauen und prüfen: Wie verhindere ich, dass der Tutor zu viel hilft? {#sec-d-tutoren}
@@ -576,8 +544,7 @@ Online-Material zu Ü5 und zu den Workflow-Vorlagen: [Übungsblatt Ü5 mit Vergl
 ### Das Problem: Tutoren helfen zu früh und zu viel
 
 Ein Tutor ist die Nutzungsform, in der die KI später ohne uns handelt.
-Alles, was wir in @sec-tutor über den Mehrwert individueller Anpassung und unmittelbaren Feedbacks gesagt haben, gilt weiter, und die Messlatte bleibt hoch: Menschliche Einzelbetreuung gehört zu den wirksamsten Maßnahmen, die die Bildungsforschung kennt.
-<!-- TODO: Beleg Nickow, Oreopoulos & Quan (2020), NBER WP 27476, doi:10.3386/w27476 — Metaanalyse experimenteller Studien PreK-12, mittlerer Effekt 0,37 Standardabweichungen. Eintrag fehlt in references.json und in beiden .bib-Dateien; BibTeX im Ablaufplan vom 11.10. Zahl erst nach Anlage des Eintrags in den Fließtext. -->
+Alles, was wir in @sec-tutor über den Mehrwert individueller Anpassung und unmittelbaren Feedbacks gesagt haben, gilt weiter, und die Messlatte bleibt hoch: Menschliche Einzelbetreuung gehört zu den wirksamsten Maßnahmen, die die Bildungsforschung kennt: Eine Metaanalyse von 96 randomisierten Studien aus Vorschule und Schule findet einen mittleren Effekt von 0,37 Standardabweichungen auf die Lernleistung [@nickow2020].
 Doch wer Studierende einen Tutor bauen lässt, muss mit einer Eigenschaft heutiger Modelle rechnen, die der Didaktik des Tutorings direkt widerspricht: Sie helfen zu früh und zu viel.
 
 Drei Studien belegen das aus verschiedenen Richtungen; alle drei sind Preprints ohne abgeschlossene Begutachtung und deshalb als Hinweise zu lesen, nicht als Urteil.
@@ -588,20 +555,19 @@ Methodisch ist das ein fester Satz von Testaufgaben, an dem Modelle verglichen w
 @perczel2025 schließlich erklären, warum Prompts allein das nicht beheben: Sie verglichen die Dialoge heutiger Modelle mit 100.000 Stunden echter Eins-zu-eins-Tutorien und fanden die Modelle über sechs Kriterien systematisch schwächer, mit Redeanteilen der Lernenden von 5 bis 15 statt rund 30 Prozent, drei bis vier Fragen auf einmal statt ein bis zwei, und einem Rückfall auf Multiple-Choice-artige statt offene Fragen.
 Die Ursache ist strukturell: Standardmodelle sind darauf optimiert, als hilfreiche Assistenten Reibung zu minimieren, während gutes Unterrichten Reibung gezielt erzeugt; die Autoren beschreiben aus eigener Entwicklung einen endlosen Kreislauf immer detaillierterer Prompts, und erst ein Nachtrainieren auf die Tutoring-Daten verdoppelte den Redeanteil der Lernenden.
 Für die Praxis heißt das: Der System-Prompt ist notwendig, aber er ist eine Prüfschicht von mehreren, und die Qualität eines Tutors hängt am Modell ebenso wie am Prompt.
-Die Gegenbefunde gegen ein sokratisches Dogma, die wir im Workshop diskutiert haben, nehmen wir hier nicht auf; sie stehen im Online-Material.
-<!-- TODO (Roman entscheiden): Die beiden Gegenbefunde aus Input B6 — @clindeffarges2026socrates (freier Chatbot schlug sokratischen Tutor beim sofortigen Faktenlernen, Hirnsensorik, kein verzögerter Test) und @azimi2026ai (selbst formulierte Nutzungsregeln wirkten stärker als strenges Gerüst, Mixed Methods, Programmierlehre) — sind in genai-lehre-radar-2025-26.bib vorhanden und könnten zitiert werden. Die Redaktionsregel (höchstens drei Studien je Frage) ist mit Lee, Teo und Perczel ausgeschöpft. Optionen: (a) als Fußnote mit zwei Sätzen, (b) Perczel durch Clin Deffarges ersetzen, (c) Online-Material. Derzeit (c). -->
+<!-- Neu 2026-10-17 (Evidenz-Screening KI-Tutoren, Abschnitt D.7): zweite Gestaltungsfrage „Reicht der Prompt?“ mit Barth, Pisan, Ahtisham; Gegenbefunde Eastwood, Clin Deffarges, Zhu/Yang/Yang; positives Designbeispiel Kuo & Zhuo. Der frühere TODO zu den Gegenbefunden ist damit entschieden (Option a, in den Fließtext). -->
+Reicht also ein guter System-Prompt? Nein, und das ist seit 2026 nicht mehr Vermutung, sondern präregistriert gemessen: 1.059 Programmieranfänger an der ETH Zürich durchliefen im Crossover-Design Tutoren mit System-Prompts für selbstreguliertes Lernen und für kognitive Aktivierung, und auf keinem der vier vorab festgelegten Maße unterschieden sich die Varianten [@barth2026steering]. Was stattdessen trägt, sind Bausteine außerhalb des Prompts. Erstens eine Aufsichtsinstanz: ein zweites, kleines Modell oder ein Skript, das jede Tutorantwort vor dem Versand prüft und zurückweist, wenn sie die Lösung verrät; @pisan2026withhold beschreiben eine solche Supervisor-Architektur und ein Verfahren, die Strenge an Testdialogen zu kalibrieren statt am Gefühl. Zweitens eine Eskalationsregel: Bei festgefahrenen Lernenden hilft jede weitere Rückfrage weniger und das Benennen des Fehlers mehr, wie eine Auswertung von 20.462 Tutor-Beiträgen zeigt [@ahtisham2026impasses]; ein Tutor, der sein Gerüst daran ausrichtet, was die Person gerade tut, mehr hilft, wenn sie stockt, und weniger, sobald sie trägt, schlägt beide starren Varianten [@hou2026comet]. Drittens eine Rolle, die zum Erklären zwingt: Ein Tutor-Bot, dem ein Tutee-Bot zur Seite steht, den die Studierenden selbst unterrichten müssen, übertraf in einem Programmierkurs den reinen Antwort-Bot in Leistung, Motivation und Selbstwirksamkeit [@kuo2026].
+
+Die Gegenbefunde gehören dazu, weil sie die Grenze der Leitplanken zeigen. Studierende, denen ein strikter Tutor zu wenig gibt, weichen zum freien Chatbot aus; in einem Experiment mit 132 Programmierstudierenden kostete die strenge Variante Engagement, ohne mehr Lernen zu bringen [@eastwood2026guardrails], und in einer Hirnsensorik-Studie mit 50 Erwachsenen lernte die sokratische Variante beim sofortigen Faktentest schlechter als der freie Chatbot, ohne verzögerten Test [@clindeffarges2026socrates]. Dass die Rolle, die Studierende bevorzugen, nicht die lernwirksamste ist, zeigt ein Vergleich mehrerer Tutorrollen: Die beliebteste gab am meisten, die wirksamste am wenigsten [@zhuyang2026]. Die Regel für den eigenen Tutor lautet deshalb: Hinweise vor Lösungen, mit Eskalation bei Sackgassen, geprüft von einer Instanz außerhalb des Prompts, und so in den Kurs eingebettet, dass das Ausweichen zum freien Chatbot nicht die bequemere Wahl bleibt (@sec-evidenz).
 
 ### Der Rahmen: Vier Fragen und vier Prüfschichten
 
-Struktur bekommt ein Tutorprojekt durch vier Fragen, die wir in den Übungen dieses Anhangs durchgängig als 4D-Prüfliste führen: Delegation fragt, was der Tutor tun soll und was nie; Description ist der System-Prompt, also die Beschreibung der Aufgabe in prüfbaren Regeln; Discernment sind die Tests, mit denen wir Antworten beurteilen; Diligence heißt Sorgfalt, also Datenschutz und Freigabe.
-<!-- TODO: Beleg 4D-Modell der AI Fluency: Dakan & Feller (2025), Framework for AI Fluency, Version 1.5, Ringling College, https://ringling.libguides.com/ai/framework — Eintrag fehlt in references.json und in beiden .bib-Dateien; BibTeX im Ablaufplan. Falls das 4D-Modell im Hauptteil (Kap. 2 oder 5) eingeführt wird, hier nur Querverweis. -->
+Struktur bekommt ein Tutorprojekt durch vier Fragen, die wir in den Übungen dieses Anhangs durchgängig als 4D-Prüfliste führen: Delegation fragt, was der Tutor tun soll und was nie; Description ist der System-Prompt, also die Beschreibung der Aufgabe in prüfbaren Regeln; Discernment sind die Tests, mit denen wir Antworten beurteilen; Diligence heißt Sorgfalt, also Datenschutz und Freigabe [4D-Modell der AI Fluency, @dakan2025].
 Weil der Tutor ohne uns handelt, wiegen die letzten beiden Fragen schwerer als bei jeder anderen Nutzungsform.
 
 Wie prüfen wir also?
-Mit einem Modell aus der Sicherheitsforschung, dem Schweizer-Käse-Modell: Jede Prüfschicht hat Löcher, aber jede an anderer Stelle, und gestapelt fangen sie die meisten Fehler.
-<!-- TODO: Beleg Reason (2000), BMJ 320(7237), 768–770, doi:10.1136/bmj.320.7237.768 — Eintrag fehlt; BibTeX im Ablaufplan. -->
-Die erste Schicht sind Prompt-Muster, also erprobte Bausteine für den System-Prompt wie eine Persona, eine Vorlage für die Antwortform, eine Prüfliste für Fakten oder die umgedrehte Interaktion, bei der das Modell fragt statt antwortet; sie fangen unklare Rollen und fehlende Struktur.
-<!-- TODO: Beleg White et al. (2023), Prompt Pattern Catalog, arXiv:2302.11382 — Eintrag fehlt; BibTeX im Ablaufplan. -->
+Mit einem Modell aus der Sicherheitsforschung, dem Schweizer-Käse-Modell: Jede Prüfschicht hat Löcher, aber jede an anderer Stelle, und gestapelt fangen sie die meisten Fehler [@reason2000].
+Die erste Schicht sind Prompt-Muster, also erprobte Bausteine für den System-Prompt wie eine Persona, eine Vorlage für die Antwortform, eine Prüfliste für Fakten oder die umgedrehte Interaktion, bei der das Modell fragt statt antwortet; sie fangen unklare Rollen und fehlende Struktur [Katalog der Muster bei @white2023].
 Die zweite Schicht ist eine deterministische Prüfung: ein Skript, kein Modell, das Regelverstöße erkennt, die sich mechanisch feststellen lassen, etwa ob die Antwort eine Endzahl verrät oder ob ein Zitat wörtlich in der Quelle steht.
 Die dritte Schicht ist Testmanagement: dieselben Testfälle nach jeder Änderung des Prompts erneut laufen lassen, wie ein TÜV-Termin nach jeder Reparatur, damit eine Verbesserung an einer Stelle keinen Rückfall an einer anderen verdeckt.
 Die vierte Schicht ist der Goldstandard: von Fachleuten geprüfte Musterantworten, an denen die Tutorantworten gemessen werden; das ist der Gedanke, den @kestin2025 mit Musterlösungen als Input verfolgen (@sec-complex-tutors), hier auf die Testseite gewendet.
@@ -609,8 +575,7 @@ Erst an dieser vierten Schicht bleiben fachliche Fehler hängen, die die ersten 
 
 Der Goldstandard ist nur so gut wie die Einigkeit derer, die ihn erstellen.
 Deshalb bewerten zwei Personen jede Tutorantwort getrennt, und ein Übereinstimmungsmaß zeigt, wie viel ihrer Einigkeit über den Zufall hinausgeht: Cohens Kappa setzt die beobachtete Übereinstimmung ins Verhältnis zur zufällig erwartbaren.
-Stimmen beide in 80 Prozent der Fälle überein und läge die Zufallsübereinstimmung bei 50 Prozent, ergibt sich κ = (0,80 − 0,50) / (1 − 0,50) = 0,60, ordentlich, aber nicht perfekt.
-<!-- TODO: Beleg Cohen (1960), Educational and Psychological Measurement 20(1), 37–46, doi:10.1177/001316446002000104 — Eintrag fehlt; BibTeX im Ablaufplan. -->
+Stimmen beide in 80 Prozent der Fälle überein und läge die Zufallsübereinstimmung bei 50 Prozent, ergibt sich κ = (0,80 − 0,50) / (1 − 0,50) = 0,60, ordentlich, aber nicht perfekt [@cohen1960].
 Für die Benotung studentischer Tutoren ist diese Zahl der wichtigste Befund der Übung: Sind sich die Bewertenden selten einig, müssen erst die Stufendefinitionen geschärft werden, bevor weiter getestet wird.
 Auch die Regel aus @sec-d-arbeitsumgebung kehrt hier wieder: Eingehalten werden vor allem prüfbare Regeln, und "gib nie sofort die Lösung, sondern bitte erst um einen eigenen Lösungsschritt" ist eine solche.
 
@@ -713,8 +678,8 @@ Die Grundregel dabei: Nichts in einen studierendenseitigen Tutor legen, dessen L
 
 Wer Studierende selbst einen Tutor bauen lässt, verbindet Fachwissen, Methodenkompetenz und KI-Literacy in einem Projekt, das nach den Säulen aus @sec-umsetzung prozessorientiert prüfbar ist.
 Als Abgabe haben sich drei Teile bewährt: drei Versionen des Tutors, ein Änderungsprotokoll, das zu jeder Version sagt, welche Regel warum geändert wurde, und ein Testprotokoll gegen den Goldstandard, bei zwei Bewertenden mit Cohens Kappa beziffert.
-Technisch reicht für ein Bündel das eigene Konto der Studierenden; wer einen Tutor mit eigener Oberfläche und Dokumentenablage bauen lassen will, kann eine Übungswerkstatt in der Cloud nutzen, in der Studierende eine Webseite, die Logik und einen Speicher für die Wissensbasis anlegen und das Sprachmodell per API-Schlüssel anbinden.
-<!-- TODO: AWS Academy Learner Lab (kostenlos, ohne Kreditkarte; Amplify für die Webseite, Lambda für die Logik, S3 für RAG-Dokumente, optional DynamoDB; Stolpersteine: Sitzungen enden nach 4 Stunden, nur Region us-east-1, immer die vorgegebene LabRole). Quelle: AWS Academy, abgerufen 11.10.2026, https://aws.amazon.com/training/awsacademy/ — Eintrag fehlt; Romans Primer dazu liegt im Workshop-Ordner. Beispiele: Projektauftrag WAGP; Manuskript Burdinski & Bartnik zu regelbasierten und generativen Tutoren in Chemie und Wirtschaftsingenieurwesen (AOHER, in Begutachtung; Datei AOHER-Burdinski-Bartnik-Chatbots-regelbasiert-GenAI-v2.docx) — Zitierfähigkeit und Status klären. -->
+Technisch reicht für ein Bündel das eigene Konto der Studierenden; wer einen Tutor mit eigener Oberfläche und Dokumentenablage bauen lassen will, kann eine Übungswerkstatt in der Cloud nutzen, in der Studierende eine Webseite, die Logik und einen Speicher für die Wissensbasis anlegen und das Sprachmodell per API-Schlüssel anbinden; wir nutzen dafür das AWS Academy Learner Lab, das Hochschulen kostenlos und ohne Kreditkarte bereitstellt [@awsacademy2026].
+<!-- TODO (Roman): AWS Academy Learner Lab (kostenlos, ohne Kreditkarte; Amplify für die Webseite, Lambda für die Logik, S3 für RAG-Dokumente, optional DynamoDB; Stolpersteine: Sitzungen enden nach 4 Stunden, nur Region us-east-1, immer die vorgegebene LabRole). Quelle: AWS Academy, abgerufen 11.10.2026, https://aws.amazon.com/training/awsacademy/ — Eintrag fehlt; Romans Primer dazu liegt im Workshop-Ordner. Beispiele: Projektauftrag WAGP; Manuskript Burdinski & Bartnik zu regelbasierten und generativen Tutoren in Chemie und Wirtschaftsingenieurwesen (AOHER, in Begutachtung; Datei AOHER-Burdinski-Bartnik-Chatbots-regelbasiert-GenAI-v2.docx) — Zitierfähigkeit und Status klären. -->
 
 ### Übung Ü6: Testplan für einen KI-Tutor: Mini-Goldstandard und Überhilfe-Audit {#sec-d-ue6}
 
@@ -765,14 +730,11 @@ Stufen der Hilfe, von viel zu wenig: **Lösen** (gibt das Ergebnis) · **Erklär
 :::
 
 ::: {.content-visible when-format="html"}
-Online-Material zu Ü6: [Übungsblatt Ü6 mit Vorlage Mini-Goldstandard](downloads/anhang-d/uebung-u6-tutor-testplan.pdf), [Tutor-Bündel `statistik-tutor` als ZIP](downloads/anhang-d/statistik-tutor.zip), [Übung "Einen KI-Tutor als Bündel bauen" mit Build-Prompts A und B](downloads/anhang-d/uebung-tutor-buendel.md).
+Online-Material zu Ü6: Übungsblatt Ü6 mit Vorlage Mini-Goldstandard, Tutor-Bündel `statistik-tutor` als ZIP, Übung "Einen KI-Tutor als Bündel bauen" mit Build-Prompts A und B. Alle Dateien auf der Seite [Online-Material zu Anhang D](anhang-d-material.qmd#ue6).
 :::
 
 ::: {.content-visible unless-format="html"}
-Übungsblatt, Tutor-Bündel und die Build-Prompts liegen in der Online-Version, Anhang D, Abschnitt Ü6.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
 ![Online-Material zu Übung Ü6: Übungsblatt, Tutor-Bündel `statistik-tutor` und Build-Prompts. QR-Code scannen oder die Online-Version aufrufen.](images/qr/qr-anhang-d-ue6-tutor-buendel.png){#fig-qr-d-ue6 width="32%" fig-align="center"}
--->
 :::
 
 ## Lokale Modelle: Wann lohnt der Betrieb ohne Cloud, und was leistet ein kleines Modell? {#sec-d-lokal}
@@ -782,20 +744,15 @@ Beim Lieferdienst, also bei jedem Cloud-Dienst, geht die Bestellung samt Zutaten
 LM Studio ist eine solche Küche: ein Programm, das ein Sprachmodell einmal herunterlädt, auf dem eigenen Laptop ausführt und danach vollständig offline arbeitet.
 Die Topfgröße bestimmt der Arbeitsspeicher; welche Modellklasse zu welchem Laptop passt, steht im datierten Kasten in @sec-d-arbeitsumgebung.
 Was solche kleinen Modelle können, lässt sich knapp sagen: Zusammenfassen, Umformulieren und Sortieren gelingen gut; mehrstufiges Rechnen klappt unzuverlässig, und aktuelle Fakten kennen sie nicht, denn sie sind offline.
-Deshalb gehören in der Übung genau die Aufgaben auf das lokale Modell, bei denen die Daten das Gerät nicht verlassen sollen und bei denen eine Stichprobe genügt, um das Ergebnis zu prüfen: Lesezeichen sortieren und Codenamen erzeugen, mit denen Studierende Tests und Abgaben anonym einreichen.
+Deshalb gehören in der Übung genau die Aufgaben auf das lokale Modell, bei denen die Daten das Gerät nicht verlassen sollen und bei denen eine Stichprobe genügt, um das Ergebnis zu prüfen: Lesezeichen sortieren und Codenamen erzeugen, mit denen Studierende Tests und Abgaben anonym einreichen. Wer den Schritt vom Laptop zum Campus-Server erwägt, findet die Abwägung in einer Fallstudie zu einem lokal betriebenen Tutor für mehrere betriebswirtschaftliche Kurse: Unterhalb einer bestimmten Antwortgeschwindigkeit brechen Studierende das Gespräch ab, so dass die Wahl der Grafikkarte über die Nutzung entscheidet, nicht die Qualität der Antworten [@shapiro2026coursechat]. <!-- Einschub 2026-10-17 (Evidenz-Screening, D.8) -->
 
-<!-- TODO (Gerüst, aus Input B7 und LM-Studio-Primer zu verarbeiten):
-- Quantisierung erklären: "Q4" im Dateinamen heißt komprimiert wie ein JPG, kleiner, etwas unschärfer; ein Gewicht braucht im Original 16 Bit, im Format Q4_K etwa 4,5 Bit, die Datei schrumpft auf gut ein Viertel; Genauigkeitsverlust modellabhängig. Quelle: Hugging Face Hub-Dokumentation GGUF, Abschnitt Quantization Types, abgerufen 11.10.2026, https://huggingface.co/docs/hub/gguf — Eintrag fehlt.
-- Offline-Betrieb: LM Studio Docs, Abschnitt Offline Operation, https://lmstudio.ai/docs/app — Eintrag fehlt. Modell vom USB-Stick statt über das WLAN laden (2–5 GB), danach WLAN testweise abschalten.
-- Rückfallebene ohne Installationsrecht: WebLLM im Browser (https://webllm.mlc.ai/), erster Download dauert, danach lokal.
-- Codenamen: Studierende geben Tests und Abgaben unter Codenamen ab; die Korrektur bleibt anonym, KI-gestützte Feedbackblätter verarbeiten nie echte Namen; die Zuordnung Codename → Person entsteht nur in der eigenen Tabelle, nie im Modell. Beispiel: SSCM-Modul (https://th-koln-bartnik.github.io/sscm-2026-student/), Muster "Nachname einer Fachperson plus Jahreszahl" (Deming1900). Brücke zu D.9 (diagnostisches Feedback je Codename).
-- Hochschul-Hosting und Workstation: lokales n8n in Docker + LM Studio auf der RTX-5090-Workstation (Primer 11.10., englisch): nichts verlässt das Haus, keine Ausführungsgrenzen, lokale Modelle übernehmen Routinearbeit; Geschwindigkeit hängt daran, ob das Modell in den Grafikspeicher (32 GB) passt. Ein Absatz als Ausblick, Rest in D.6 verlinken.
-- Keine Studie im Material für diesen Abschnitt; Datenschutzargument ggf. mit Kap. 5 (Richtlinien, @sec-umsetzung) verknüpfen.
--->
+Zwei Begriffe aus den Dateinamen der Modelle erklären, warum das überhaupt auf einen Laptop passt. Die Zahl mit dem B, etwa 4B oder 9B, nennt die Parameter in Milliarden, also die Größe des Modells. Das Kürzel Q4 steht für Quantisierung: Das Modell ist komprimiert wie ein JPG, kleiner und etwas unschärfer. Im Original belegt jeder Parameter 16 Bit, im Format Q4_K etwa viereinhalb, und die Datei schrumpft auf gut ein Viertel; wie viel Genauigkeit dabei verloren geht, hängt vom Modell ab [@huggingface2026gguf]. Offline heißt bei LM Studio tatsächlich offline: Nach dem einmaligen Download läuft das Modell ohne Verbindung [@lmstudio2026docs], und in der Übung wird das geprüft, indem das WLAN testweise abgeschaltet wird. Die Modelldatei kommt dafür vom USB-Stick statt aus dem Netz, denn zwei bis fünf Gigabyte je Modell überfordern das WLAN eines Seminarraums. Wer auf dem Dienstgerät nichts installieren darf, nutzt WebLLM, ein Sprachmodell, das nach einem ersten Download vollständig im Browser läuft.
+
+Die Codenamen aus der zweiten Aufgabe sind mehr als eine Übung. Studierende geben Tests und Abgaben unter einem Codenamen ab; die Korrektur bleibt anonym, und KI-gestützte Feedbackblätter verarbeiten nie echte Namen. Die Zuordnung von Codename zu Person entsteht nur in der eigenen Tabelle der Lehrenden und erreicht kein Modell, auch kein lokales. Das Muster „Nachname einer Fachperson plus Jahreszahl“ (Deming1900) ist leicht zu merken und verrät nichts. Ein Beispielmodul mit Codenamen und individuellem Feedback liegt online (SSCM-Modul, verlinkt im Online-Material); wie daraus diagnostisches Feedback je Codename wird, skizziert @sec-d-ausblick. Für den Betrieb an der Hochschule zeigt eine Workstation mit großem Grafikspeicher, wohin der Weg führt: Baukasten und Modell laufen dort gemeinsam, nichts verlässt das Haus, es gibt keine Ausführungsgrenzen, und lokale Modelle übernehmen die Routinearbeit; die Geschwindigkeit hängt daran, ob das Modell in den Grafikspeicher passt. Das Datenschutzargument schließt an die Richtlinien in @sec-umsetzung an. <!-- TODO (Roman): Workstation-Absatz (RTX 5090, 32 GB) auf Umfang festlegen; Codenamen-Beispiel SSCM: URL im Online-Material eintragen. Keine Studie in diesem Abschnitt. -->
 
 ### Das Werkzeug: LM Studio auf dem eigenen Laptop
 
-<!-- TODO: Einrichtung in Prosa (installieren, Modelldatei laden, Modell auswählen, Chat; API-Zugang für n8n ab Version 0.4), Prompts aus Ü7 als Codeblöcke, Hinweis auf CSV-Ausgabeformat als prüfbares Ergebnis. -->
+Die Einrichtung braucht vier Handgriffe: das Programm installieren, die Modelldatei laden (vom Stick oder aus dem eingebauten Katalog), das Modell im Programm auswählen und im Chatfenster eine Frage stellen. Ab Version 0.4 bietet LM Studio zusätzlich einen lokalen API-Zugang, über den ein Workflow-Baukasten das Modell wie einen Cloud-Dienst anspricht, nur ohne Schlüssel und ohne Rechnung; das ist die Brücke zur lokalen Variante von @sec-d-workflows. Die beiden Prompts aus Ü7 stehen im Übungskasten. Beide verlangen ein festes Ausgabeformat, einmal CSV mit zwei Spalten, einmal eine Zeile je Codename, und das ist kein Zufall: Ein kleines Modell erfindet gern Ordner jenseits der gesetzten Grenze und wiederholt Codenamen; ein festes Format macht das in einer Tabellenkalkulation in Sekunden sichtbar (Duplikate entfernen, Ordner zählen), und die Stichprobe von zehn Zuordnungen bleibt die Prüfung, die kein Format ersetzt. Antwortet das Modell sehr langsam, hilft die kleinere Datei (4B statt 9B) und das Schließen anderer Programme.
 
 ### Übung Ü7: Zwei Aufgaben offline {#sec-d-ue7}
 
@@ -842,14 +799,11 @@ nach dem Muster Nachname einer bekannten Fachperson plus Jahreszahl
 :::
 
 ::: {.content-visible when-format="html"}
-Online-Material zu Ü7: [Übungsblatt Ü7](downloads/anhang-d/uebung-u7-lm-studio.pdf), [Primer "n8n + LM Studio: lokale Automatisierung auf der Workstation"](downloads/anhang-d/primer-n8n-lm-studio.pdf).
+Online-Material zu Ü7: Übungsblatt Ü7, Primer "n8n + LM Studio: lokale Automatisierung auf der Workstation". Alle Dateien auf der Seite [Online-Material zu Anhang D](anhang-d-material.qmd#ue7).
 :::
 
 ::: {.content-visible unless-format="html"}
-Übungsblatt und der Primer zur lokalen Automatisierung liegen in der Online-Version, Anhang D, Abschnitt Ü7.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
 ![Online-Material zu Übung Ü7: Übungsblatt und Primer zur lokalen Automatisierung. QR-Code scannen oder die Online-Version aufrufen.](images/qr/qr-anhang-d-ue7-lm-studio.png){#fig-qr-d-ue7 width="32%" fig-align="center"}
--->
 :::
 
 ## Ausblick: Fortgeschrittene Anwendungen {#sec-d-ausblick}
@@ -883,14 +837,11 @@ Für die Lehre heißt das, dass die vier Prüfschichten aus @sec-d-tutoren künf
 Alle Übungsblätter dieses Anhangs, die Skill-Dateien `folien-evidenzbasiert` und `statistik-tutor`, die Build-Prompts für eigene Tutoren, das Colab-Notebook zur Simulation, die Workflow-Vorlagen mit ihren Primern und die Notebooks der Storyboard-Werkstatt liegen gesammelt in der Online-Version des Buchs und werden dort fortgeschrieben; die gedruckte Fassung hält den Stand vom Oktober 2026 fest.
 
 ::: {.content-visible when-format="html"}
-[Online-Material zu Anhang D](downloads/anhang-d/) · Workshop-Website mit Wissensbasis zu RAG, 4D-Modell, Prompt-Mustern und Qualitätsprüfung: <https://th-koln-bartnik.github.io/workshop-ai-4-taac/appendix/wissensbasis.html>
+[Online-Material zu Anhang D](anhang-d-material.qmd) · Workshop-Website mit Wissensbasis zu RAG, 4D-Modell, Prompt-Mustern und Qualitätsprüfung: <https://th-koln-bartnik.github.io/workshop-ai-4-taac/appendix/wissensbasis.html>
 :::
 
 ::: {.content-visible unless-format="html"}
-Online-Version: <https://th-koln-bartnik.github.io/genai4teaching/>, Anhang D.
-<!-- TODO: QR-Code erzeugen und Kommentar entfernen:
-![Online-Material zu Anhang D: Übungsblätter, Skill-Dateien, Notebooks und Workflow-Vorlagen. QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/> aufrufen.](images/qr/qr-anhang-d-online-material.png){#fig-qr-d-online width="32%" fig-align="center"}
--->
+![Online-Material zu Anhang D: Übungsblätter, Skill-Dateien, Notebooks und Workflow-Vorlagen. QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/anhang-d-material.html> aufrufen.](images/qr/qr-anhang-d-online-material.png){#fig-qr-d-online width="32%" fig-align="center"}
 :::
 
 ## Transparenzhinweis {.unnumbered}

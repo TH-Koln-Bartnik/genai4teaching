@@ -1,13 +1,42 @@
-# Vier Szenarien der Nutzung von GenAI: Hiwi, Tutor, Copilot, Simulator {#sec-szenarien}
+# Vier Szenarien der Nutzung von GenAI: Hiwi, Copilot, Tutor, Simulator {#sec-szenarien}
 
 Wie nutzen Lehrende generative KI?
-Wir sortieren die sehr vielfältigen Hilfestellungen der neuen Tools in vier Kategorien von Anwendungen: Hiwi, Tutor, Copilot, Simulator [@mollick2023a; @mollick2024a].
+Wir sortieren die sehr vielfältigen Hilfestellungen der neuen Tools in vier Kategorien von Anwendungen: Hiwi, Copilot, Tutor, Simulator [@mollick2023a; @mollick2024a].
 
 Hier ein Beispiel für einen Tutor-Bot, den wir seit dem Wintersemester 2025/26 <!-- TODO Roman: Zeitraum prüfen --> als Hilfestellung für das Modul "Grundlagen der BWL" erproben; neue Themen werden laufend ergänzt.
 
 ![Beispiel: Tutor-Bot BWL Grundlagen. Screenshot der Testversion, Januar 2026](images/tutor-bot-beispiel-bwl-th.jpg){#fig-tutor-bot-bwl}
 
-**Hier können Sie die Live-Version testen:** https://dev.d1czie2npcfbfs.amplifyapp.com
+::: {.content-visible when-format="html"}
+**Hier können Sie die Live-Version testen:** https://dev.d1czie2npcfbfs.amplifyapp.com <!-- TODO Roman: Testinstanz leitet laut Review 17.10. nur noch weiter; stabile Adresse (oder Hinweis „Testbetrieb beendet“) eintragen -->
+:::
+
+::: {.content-visible when-format="pdf"}
+Eine Testversion und der aktuelle Stand des Projekts sind über die Online-Fassung dieses Buches erreichbar; Aufbau, Betrieb und Erfahrungen beschreibt @sec-fallbeispiele. <!-- TODO: Label existiert erst mit Kapitel 6 -->
+:::
+
+<!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
+::: {.callout-note title="Lernziele"}
+Nach diesem Kapitel können Sie …
+
+- die vier Rollen Hiwi, Copilot, Tutor und Simulator unterscheiden und eigene Anwendungsideen einer Rolle zuordnen;
+- mit dem Dreiklang Verdrängung, Produktivität und Wiedereinsetzung einschätzen, welche Aufgaben Lehrender durch KI wegfallen, schneller werden oder neu entstehen;
+- Recherchewerkzeuge nach den zwei Fragen „einmalig oder iterativ“ und „Liste oder Analyse“ einordnen und ein passendes Werkzeug für eine Literaturaufgabe wählen;
+- Grade der KI-Nutzung beim Schreiben unterscheiden und erklären, warum auch Nicht-Informatiker mit Sprachmodellen Lernwerkzeuge programmieren können;
+- die vier Vorteile eines KI-Tutors nennen und beschreiben, wie Musterlösungen als Input Halluzinationen eindämmen;
+- Role Play und Goal Play unterscheiden und begründen, warum Simulationen Rahmung und Nachbesprechung durch Lehrende brauchen.
+:::
+
+<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
+::: {.callout-note title="Leitfragen"}
+*Versuchen Sie eine Antwort, bevor Sie weiterlesen; die Kernaussagen am Kapitelende greifen die Fragen in derselben Reihenfolge auf.*
+
+1. In welchen Rollen kann generative KI in der Lehre auftreten?
+2. Spart KI Lehrenden am Ende Zeit, oder verschiebt sie die Arbeit nur?
+3. Wonach wählt man ein Recherchewerkzeug, wenn nicht nach dem Markennamen?
+4. Was braucht ein KI-Tutor, damit er keine überzeugend klingenden Fehler produziert?
+5. Warum reicht es nicht, Studierende allein mit einer KI-Simulation üben zu lassen?
+:::
 
 ## KI als Hiwi {#sec-hiwi}
 ### Was sind unsere Aufgaben?
@@ -29,7 +58,7 @@ Führend sind dazu Untersuchungen von David Autor und dem Nobelpreisträger Daro
 Eine nützliche Kategorisierung unterscheidet **drei Effekte** neuer Technologien auf den Faktor Arbeit: Technologische Veränderungen können menschliche Arbeit ersetzen (**Verdrängungseffekt** / displacement effect), spezifische Arbeitskräfte produktiver machen (**Produktivitätseffekt** / productivity effect / augmentation), oder neue Aufgaben (und Jobs) schaffen (**Wiedereinsetzungseffekt** / reinstatement effect) [@acemoglu2019].
 
 | Effekt | Beschreibung | Aufgaben in der Lehre (Beispiele) |
-|:-----------------------|:-----------------------|:-----------------------|
+|:--------|:---------|:-----------------------|
 | **Verdrängung** | Technologie übernimmt Aufgaben | • Erstellung, Durchführung und Bewertung von Prüfungen (x)<br>• Verwaltung von Noten und Anwesenheit (x)<br>• Vorbereitung standardisierter Lehrmaterialien (x)<br>• Zusammenstellung von Bibliographien (x) |
 | **Produktivität** | Technologie macht Arbeit effizienter | • Vorbereitung und Durchführung von Vorlesungen (x)<br>• Durchführung von Seminaren und Diskussionen (x)<br>• Akademische und berufliche Beratung (?/x)<br>• Forschung und Publikation (x)<br>• Pflege von Webseiten und digitalen Ressourcen (?/x) |
 | **Wiedereinsetzung** | Technologie schafft neue Aufgaben | • Entwicklung KI-gestützter Lehrkonzepte (x)<br>• Qualitätskontrolle von KI-Materialien (x)<br>• Gestaltung individueller Lernpfade (x)<br>• Ethische und rechtliche Begleitung (x)<br>• Weiterbildung des Personals (x) |
@@ -41,6 +70,8 @@ In @tbl-acemoglu übertragen wir die genannten drei Effekte auf konkrete Aufgabe
 Der **Verdrängungseffekt** betrifft hauptsächlich administrative und stark standardisierte Tätigkeiten.
 Aufgaben wie das Erstellen, Durchführen und Bewerten von Prüfungen, die Verwaltung von Noten und Anwesenheiten sowie die Vorbereitung standardisierter Lehrmaterialien oder Literaturzusammenstellungen werden voraussichtlich vollständig oder überwiegend von KI übernommen.
 Anwendungsstudien und Umfragen der letzten zwei Jahre geben hierzu deutliche Hinweise [@morgan2024; @naddaf2025; @ogunleye2024; @ou2024; @tutton2025].
+<!-- Einschub 2026-07-02 (Gegenlesen-Ordner, Baustein 4.1-A), eingesetzt 2026-10-17 -->
+Wie weit die Verdrängung bei der Bewertung tatsächlich reicht, lässt sich inzwischen präzise sagen. Sehfähige Sprachmodelle bewerten fotografierte handschriftliche Mathematik-Abgaben entlang der Rubriken der Lehrenden insgesamt zuverlässig, aber 87 % der verbleibenden Fehler des besten Modells sind **Transkriptionsfehler** (Handschrift lesen, äquivalente Umformungen erkennen, Bildqualität), nicht falsch angewandte Bewertungskriterien [@levine2026]. Verdrängt wird also die Rubrik-Anwendung; die menschliche Arbeit verlagert sich auf Erfassungsqualität und stichprobenartige Kontrolle, ein konkretes Beispiel für die neue Aufgabe „Qualitätskontrolle von KI-Materialien“ im Wiedereinsetzungs-Feld derselben Tabelle (zu den Grenzen KI-gestützten Benotens vgl. @sec-pruefen).
 
 Der **Produktivitätseffekt** bezieht sich auf zentrale Lehr-, Forschungs- und Betreuungstätigkeiten, die durch KI effizienter werden.
 Dazu zählen die Vorbereitung und Durchführung von Vorlesungen, Seminaren und Diskussionen, akademische und berufliche Beratung der Studierenden sowie Forschung und Publikationen.
@@ -59,30 +90,39 @@ Ob das **insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher**, denn 
 Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt es auch hier nicht umsonst.
 
 
-### Fachartikel finden und auswerten: Wo setzen die KI-Helfer an und wie gut klappt das? {#sec-recherche}
-Was leisten die LLM-Helfer bei der Recherche? Aaron Tay von der Singapore Management University (SMU) liefert hierzu sehr gute Zusammenfassungen aus der Perspektive eines Bibliothekars und mit detaillierten Anwendungstests der Tools (https://aarontay.substack.com/) [@tay2025agentic].
-Einige praktische Unterscheidungen und Erkenntnisse fassen wir hier kurz zusammen.
+### Fachartikel finden und auswerten: Welches Werkzeug passt zu welcher Aufgabe? {#sec-recherche}
 
-Welche Helfer tun was? Zwei Unterscheidungen helfen, hier einen Überblick zu bewahren: (1) Wird einmalig gesucht, oder in mehreren iterativen Schleifen? (**einmalige Suche vs. agentbasierter Suchprozess**. (2) Werden nur Ergebnisse aufgelistet, oder auch Inhalte der Fachartikel zusammengefasst (**Ergebnisliste vs. RAG-basierte Analyse**) [@tay2025agentic]?
+<!-- Gekürzt (Claude, 17.10.2026) nach der Redaktionsregel: eine Gestaltungsfrage, drei Praxisquellen (Tay); die ausführliche Tabelle zu den Formen der Zusammenfassung steht nur noch online. Freigabe Roman. -->
 
-| Retrieval | Output | Tay’s Bezeichnung | Beispiele (Anbieter/Produkt) | Was du praktisch bekommst |
-|---|---|---|---|---|
-| One-Shot | Liste | Quick Search | **Scopus**, **Lens.org**, **JSTOR Semantic Search**, **Web of Science Research Assistant**, **Google Scholar** | Eine klassische Trefferliste (lexikalisch/BM25, semantisch oder hybrid) mit Ranking, ohne generierten Antworttext. |
-| One-Shot | Zusammenfassung | Quick RAG | **Primo Research Assistant**, **Scite Assistant**; außerdem als typische „answers-with-citations“-Beispiele: **Elicit**, **Consensus** | Kurze „Antwort mit Zitaten“, erzeugt aus den Top-Treffern; meist wenige Absätze. |
-| Iterativ | Liste | Deep Search | **AI2 Paperfinder (Asta)**, **Scholar Labs** | Mehrere Iterationen über Minuten: Query-Variationen, semantische Suche, ggf. Citation-Chasing; ein LLM wirkt als Relevanz-Richter fürs Re-Ranking; Output bleibt eine Liste, aber typischerweise eine bessere. |
-| Iterativ | Zusammenfassung/Report | Deep Research | **Undermind**, **Elicit Reports**, **Consensus Deep Search** | Deep Search plus Report-Generierung: längere Synthese/Literatur-Report auf Basis eines iterativ gefundenen Korpus. |
+Was leisten die KI-Helfer bei der Literaturrecherche, und wie prüft man, was sie liefern?
+Die besten Antworten darauf gibt der Bibliothekar Aaron Tay von der Singapore Management University, der die Werkzeuge seit Jahren systematisch testet (<https://aarontay.substack.com/>) [@tay2025agentic].
+Zwei Unterscheidungen ordnen das Feld: Wird einmalig gesucht oder in mehreren Schleifen (einmalige Suche gegenüber agentischem Suchprozess)? Und bekommt man eine Trefferliste oder eine aus den Treffern erzeugte Zusammenfassung (Ergebnisliste gegenüber RAG-basierter Analyse)? Daraus ergeben sich vier Typen (@tbl-suchtypen und @fig-paper-discovery-types); die Produktnamen in der Abbildung sind ein datierter Schnappschuss, die Typen bleiben.
 
-Einige Beispiele, welche Anbieter das jeweils meint, finden sich in der folgenden Abbildung.
+| Suche | Ausgabe | Typ nach Tay | Was man praktisch bekommt |
+|:---------|:------------------|:--------------|:----------------------------------------|
+| einmalig | Liste | Quick Search | Klassische Trefferliste mit Ranking (etwa der Bibliothekskatalog oder Google Scholar), ohne erzeugten Antworttext |
+| einmalig | Zusammenfassung | Quick RAG | Kurze „Antwort mit Zitaten“ aus den obersten Treffern; meist wenige Absätze |
+| iterativ | Liste | Deep Search | Mehrere Suchschleifen über Minuten mit Abfragevarianten und Zitationsverfolgung; ein Sprachmodell bewertet die Relevanz; das Ergebnis bleibt eine Liste, meist eine bessere |
+| iterativ | Bericht | Deep Research | Deep Search plus Berichterstellung: eine längere Synthese auf Basis des iterativ gefundenen Korpus |
 
-![Einmal fragen oder mehrfach? Nur Ergebnisse oder Analyse? Zwei Unterscheidungen und vier Quadranten von Such-Helfern mit KI](images/tay-2026-one_shot-vs-iterative-results_only-vs-analysis-4-quadrants-of-academic-search.jpg){#fig-paper-discovery-types} \
+: Vier Typen von KI-Suchhelfern nach zwei Unterscheidungen. Quelle: @tay2025agentic {#tbl-suchtypen}
 
-Eine weitere Unterscheidung schaut tiefer auf die Art der Iteration [@tay2025agentic]: Nicht nur, ob ein Tool iteriert, sondern **wie es iteriert – ob es im Kern ein fest verdrahteter Workflow** mit ein paar „AI-Entscheidungspunkten“ ist (handcrafted) oder ob es **flexibel Aufgaben zerlegen kann**, die nicht in das Template passen. Tay beschreibt hier ein **„Agency-Spektrum“** und argumentiert, dass viele akademische Deep-(Re)Search-Tools eher am handwerklich-templatisierten Ende sitzen: beeindruckend innerhalb ihrer Schablonen, spröde außerhalb, mit dem Risiko, plausibel klingende Ergebnisse zu liefern, obwohl die Aufgabe gar nicht sauber gelöst wurde [@tay2025agentic]. Seinen Stresstest dazu beschreibt der folgende Abschnitt.
+![Einmal fragen oder mehrfach? Nur Ergebnisse oder Analyse? Zwei Unterscheidungen und vier Quadranten von Such-Helfern mit KI; Produktbeispiele Stand 2026. Quelle: @tay2025agentic](images/tay-2026-one_shot-vs-iterative-results_only-vs-analysis-4-quadrants-of-academic-search.jpg){#fig-paper-discovery-types}
 
-Tay argumentiert, dass die **Kurzversion** der Antwort „Answer-with-citations“ für akademische Arbeit oft nur ein Teaser und kaum verwendbar ist. Man **braucht den Originaltext für Kontext, Nuancen, Operationalisierung und Identifikationslogik**; und generierter Text kann Quellen falsch „anbinden“ (**source faithfulness“**), also etwas behaupten, das der zitierte Text so nicht trägt [@tay2025agentic]. In sozialwissenschaftlicher Praxis trifft das besonders (a) kausale Claims (Identifikation, Robustheit, Messvalidität) und (b) qualitative Inferenz (Sampling-Logik, Positionsgebundenheit, Geltungsgrenzen), weil die entscheidenden Stellen häufig nicht im Abstract stehen und disziplinierte Lektüre verlangen.
+Hinter dem Wort „iterativ“ verbirgt sich die wichtigere Frage, *wie* ein Werkzeug iteriert: als fest verdrahteter Ablauf mit ein paar KI-Entscheidungspunkten oder als Agent, der eine Aufgabe flexibel zerlegen kann.
+Tay beschreibt ein Agency-Spektrum und ordnet die meisten akademischen Deep-Research-Tools am verdrahteten Ende ein: beeindruckend innerhalb ihrer Schablonen, spröde außerhalb [@tay2025agentic].
+Sein Stresstest macht das sichtbar: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert hat.“ Eine menschliche Hilfskraft zerlegt das in drei Schritte (ähnliche Arbeiten finden, deren Referenzen extrahieren, die Überlappung abziehen); allgemeine Sprachmodelle mit Werkzeugen führen diese Logik eher aus, während spezialisierte Tools scheitern, weil die Aufgabe nicht in ihren eingebauten Ablauf passt.
+Für die Lehre folgt daraus die Regel aus @sec-agenten-praxis: Je freier das Werkzeug arbeitet, desto klarer müssen die Kontrollpunkte sein, an denen wir das Ergebnis prüfen.
 
-**Gefundene Ergebnisse verdichten und Fachartikel zusammenfassen** - was können die KI-Helfer hier leisten?
-Wir folgen hier einer Gliederung der KI-Helfer nach der Funktion [@tay2024classifying]: Bieten sie an, einmal ein einzelnes Dokument zu verdichten oder mehrfach ein einzelnes? Eine dritte Option ist eine Literatur-Synthese über mehrere Dokumente. Aus diesen Unterscheidungen von einfacher oder sequenzieller Durchführung und fokussierter vs. übergreifender Synthese ergeben sich folgende Ausprägungen, die wir hier je kurz mit Beispielen erläutern [@tay2024classifying]:
+Beim Auswerten gefundener Artikel gilt eine ähnliche Staffelung [@tay2024classifying].
+Die Zusammenfassung eines einzelnen Dokuments ist am wenigsten riskant und eignet sich für die schnelle Relevanzprüfung; die sequenzielle Auswertung vieler Dokumente nach denselben Fragen (Design, Stichprobe, Befund) ergibt eine Codier-Tabelle, deren Zellen man stichprobenartig gegen das PDF prüft; die Synthese über mehrere Dokumente zu einer Frage trägt das höchste Fehlerrisiko, weil sich Suchfehler, untreue Zusammenfassung und schwache Gewichtung der Evidenz addieren.
+Die Kurzform „Antwort mit Zitaten“ ist für wissenschaftliche Arbeit deshalb meist nur ein Teaser: Man braucht den Originaltext für Kontext, Operationalisierung und Geltungsgrenzen, und erzeugter Text kann Quellen etwas zuschreiben, das sie so nicht sagen (fehlende *source faithfulness*) [@tay2025agentic].
+Ein praktisches Problem der spezialisierten Suchwerkzeuge kommt hinzu: Sie kommen nicht hinter die Bezahlschranken der Verlage und arbeiten deshalb mit Abstracts oder Open-Access-Korpora.
+Akademische Konnektoren zu den großen Sprachmodellen verschieben die Arbeit hier von abstract-basiertem Raten zu passagenbasiertem Prüfen, weil das Modell über eine institutionelle Anmeldung lizenzierte Volltexte durchsuchen und Behauptungen an Fundstellen binden kann, begrenzt auf den Bestand des jeweiligen Anbieters [@tay2024mcp].
+Wie eine Agentenrecherche mit festen Kontrollpunkten in der Praxis abläuft, zeigt @sec-d-agenten.
 
+::: {.content-visible when-format="html"}
+::: {.callout-note collapse="true" title="Nur online: Ausführliche Übersicht der Formen von KI-Zusammenfassungen nach Tay (2024)"}
 | Form der LLM-Zusammenfassung (Tay) | Was passiert technisch/funktional? | Typische UI-Form | Beispiele (Anbieter/Produktnamen) | Nutzen in sozialwissenschaftlicher Forschung | Typische Risiken und worauf man testet |
 |---|---|---|---|---|---|
 | **1. Single-Document Summarisation** (ein Dokument) | Ein einzelner Text wird zusammengefasst; Tay unterscheidet innerhalb dieser Kategorie drei Varianten je nach Prompt-Freiheit: (1a) fester Button, (1b) feste, aber query-abhängige Antwort, (1c) freies Q&A/Chat über ein Dokument. Viele Implementierungen nutzen intern RAG-Muster und zeigen „Snippets“ als Beleg. | Button/Sidebar/Chat neben einem Treffer | **1a**: EBSCO „AI Insights“; **1a**: Ex Libris „Document Insights“ (Primo/ProQuest-Kontext); **1b**: ProQuest „Research Assistant“ (z. B. „Relationship to your search terms“); **1c**: JSTOR Research Tool (beta) „Chat“. | Sehr gut fürs schnelle Triage-Lesen: „Ist das Paper relevant?“; hilfreich bei überlappenden Begriffen zwischen Soziologie/Politikwissenschaft/Erziehungswissenschaft. Query-abhängige Varianten (1b) machen sichtbar, wenn ein Treffer nur semantisch „ähnlich“ ist, aber nicht zur Fragestellung passt. | Bei festen Buttons geringeres Risiko, aber oft nur „aufgebohrte Abstract-Paraphrase“; bei Chat-mit-PDF höheres Risiko durch unvorhersehbare Fragen. Tests: Stabilität (gleicher Text → ähnliche Ausgabe), Grounding-Spotchecks (Behauptungen im PDF prüfen), Negativkontrolle („steht das überhaupt drin?“), Scope-Klarheit (Abstract vs. Volltext). |
@@ -90,16 +130,8 @@ Wir folgen hier einer Gliederung der KI-Helfer nach der Funktion [@tay2024classi
 | **3. Query-based Multi-Document Summarisation** (Synthese über mehrere Dokumente) | Synthese über mehrere Dokumente zur Beantwortung einer Frage; häufig RAG. Varianten: nur Suchtreffer, nur Uploads oder Hybrid. Manche Systeme fixieren zuerst ein Korpus (z. B. Top-25) und erlauben danach Folgefragen über dieses Set. | „Answer with citations“ / Report über mehrere Papers | **Ex Libris/Primo Research Assistant**; **Google NotebookLM** (Upload-Korpus); **Elicit Systematic Review** (Hybrid); **JSTOR Research Tool (beta)** (fixes Top-K-Set); **Undermind.ai** („Ask Expert“) nach iterativer Phase. | „Narrativ-Maschine“: gut für Landschaftsskizzen (Themencluster, Mechanismen, Kontroversen). Kann beim Strukturieren eines Review-Kapitels helfen (Abschnitte nach Mechanismen, Kontexten, Messansätzen). | Höchstes Fehlerrisiko durch Kombination aus Retrieval-Fehlern, kontextuntreuer Paper-Zusammenfassung und schwacher Evidenzgewichtung. In Sozialwissenschaften heikel wegen heterogener Designs. Tests: Claim-zu-Quelle-Mapping, Coverage („Must-cite“-Set), Widerspruchstest, „Not in sources“-Test, Retraktions-/Korrekturtest. |
 
 : Paper mit KI analysieren: Einfach oder sequenziell, ein Artikel oder Synthese mehrerer Artikel? Quelle: @tay2024classifying {#tbl-paper-analysis-types}
-
-**Entsprechen die spezialisierten Angebote wirklich menschlichen Hilfskräften?** Noch eher nicht im Sinne dass sie flexibel und autonom agieren. Für einzelne Teilaufgaben ist der Anspruch eher erfüllt. Der Bibliothekar Tay führt hierfür einen Stresstest durch, er promptet eine komplexe Aufgabe, für die mehrere Schritte flexibel angepasst werden müssten: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert.“ Ein menschlicher Hiwi zerlegt das in Schritte (ähnliche Arbeiten finden; Referenzen extrahieren; Überlappung abziehen). Tay berichtet, dass allgemeine LLMs diese Logik eher ausführen können, während spezialisierte „deep“ Tools teilweise scheitern, weil die Aufgabe nicht in ihren eingebauten Ablauf passt [@tay2025agentic].
-
-Ein **Problem** der meisten o.g. spezialisierten Such-Tools ist, dass sie **nicht hinter den Paywall der akademischen Verlage kommen** und daher nur auf Open-Access-Korpora oder Abstracts zugreifen. 
-
-Neue Verbindungen geben hier **Hoffnung, dass man zukünftig Suchstrategien direkt mit dem Sprachmodell anpassen kann**: Neben verlagseigenen Angeboten wie Scopus AI (Elsevier) bieten **akademische Konnektoren** zu den großen Sprachmodellen wie Claude eine interessante **neue Möglichkeit**. Der zentrale Punkt ist nicht das Umgehen von Paywalls, sondern lizenzkonformer Zugriff über institutionelle Authentifizierung: Ein allgemeines LLM (z. B. Anthropics Claude) bleibt unverändert, erhält aber über einen Connector einen standardisierten Zugriff auf akademische Datenquellen, deren Volltexte sonst außerhalb des Modells liegen. Damit verschiebt sich die Arbeit von „Abstract-basiertem Raten“ zu „passagenbasiertem Prüfen“ – bei gleichzeitiger Begrenzung auf den jeweiligen Content-Pool des Anbieters (z. B. Wiley) [@tay2024mcp].
-
-Für sozialwissenschaftliche Workflows entstehen daraus **drei konkrete Nutzenmuster.** Erstens wird Discovery belastbarer, weil Suchläufe nicht nur aus generierten Suchstrings bestehen, sondern **als echte Datenbankabfragen ausgeführt und iterativ nachjustiert** werden können; das **reduziert die typische Lücke zwischen „schöner Suchsyntax“ und realer Trefferlandschaft** [@tay2024mcp]. Zweitens wird das **„source-faithfulness“-Problem eingehegt**, weil Antworten stärker an konkrete Volltextpassagen gebunden werden können (RAG über lizenzierte Inhalte); Behauptungen lassen sich damit schneller an Fundstellen prüfen, statt nur auf Abstract-Ebene zu verbleiben [@tay2024mcp]. Drittens **steigt die Dokumentierbarkeit**: Connector-basierte Abläufe machen die Kette aus Frage → Abfrage → Treffer → Passagen sichtbarer und damit eher anschlussfähig an methodische Anforderungen von Reviews (Transparenz, Nachvollziehbarkeit, Audit-Pfad) [@tay2024mcp].
-
-Die **Grenzen** bleiben klar: Der Zugriff ist auf die abgedeckte Plattform beschränkt (kein „universeller“ Volltextzugang), und die Retrieval-Einheit ist häufig chunk-basiert statt „ganzer Artikel am Stück“. Der Zugewinn liegt daher weniger in fertigen Synthesen als in kontrollierterem Zugriff und in der Verlagerung von KI-Unterstützung auf die Stellen, an denen klassische Workflows typischerweise scheitern: Paywall-Blindheit, schwer prüfbare Zusammenfassungen, und geringe Reproduzierbarkeit von generativen Retrieval-Schritten [@tay2024mcp].
+:::
+:::
 
 ## KI als Copilot {#sec-copilot}
 
@@ -111,6 +143,23 @@ verbessern müssen.
 Dies schult das Erkennen von Konzeptmerkmalen und die Fähigkeit, Wissen durch Korrektur zu artikulieren.
 Eine Herausforderung ist, dass die KI Konzepte manchmal unvollständig oder fehlerhaft illustriert, was aber Teil des Lerneffekts sein kann [@mollick2024a].
 
+
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Wer nicht selbst rechnen kann, erkennt die Fehler des Copiloten nicht"}
+**Problem ohne KI.** Eine Kennzahlenanalyse am echten Geschäftsbericht ist mühsam: Zahlen aus Bilanz und Gewinn- und Verlustrechnung heraussuchen, die Komponenten der Eigenkapitalrendite berechnen, das Ergebnis deuten.
+
+**Problem mit KI.** Ein Copilot liefert die DuPont-Analyse in Sekunden und erklärt sie Schritt für Schritt. Ob sie stimmt, erkennt nur, wer den Rechenweg selbst beherrscht.
+
+**Das Dilemma.** David Pedersen lässt Studierende die DuPont-Analyse der Eigenkapitalrendite von Coca-Cola für 2022 zuerst selbst aus dem Jahresbericht (10-K) bei der US-Börsenaufsicht berechnen und kurz deuten. Erst dann führen sie dieselbe Analyse mit Microsoft Copilot durch, stellen mindestens eine Nachfrage, reichen das Protokoll ein und reflektieren in 300 Wörtern, wie viel Führung die KI für ein richtiges Ergebnis brauchte. Die Zeitersparnis des Copiloten gibt es erst nach der eigenen Rechnung.
+
+**Was das für wirksames Lernen heißt.** *Unterrichtsentwurf, keine Ergebnisse berichtet.* Die Reihenfolge schützt vor der Trennung von Leistung und Behalten, die im Labor gemessen ist: Mit ChatGPT lösten Informatikstudierende mehr Aufgaben, behielten den Stoff aber schlechter [@bergh2026cognition]. Und sie macht die zerklüftete Grenze der Modelle erfahrbar [@dellacqua2023]: Ob der Copilot bei dieser Rechnung zuverlässig ist, zeigt erst der Vergleich mit dem eigenen Ergebnis.
+
+[Ablauf und Prompt: @sec-prompt-dupont-analyse.]{.content-visible when-format="html"}[Ablauf und Prompt: Online-Fassung von Anhang B.]{.content-visible unless-format="html"} Quelle: @pedersen2025 (AI Pedagogy Project, metaLAB at Harvard).
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-dupont.png){width="18%"}
+:::
+::::
 
 ### Besser schreiben – als Cyborg {#sec-cyborg-writing}
 
@@ -276,6 +325,9 @@ Aus didaktischer Sicht entfaltet der GenAI Tutor seinen Mehrwert vor allem in vi
 \* **Zeitersparnis für Lehrende**: Ein Teil der individuellen Betreuung kann – bei inhaltlich gut vorbereitetem KI-System – durch den Tutor übernommen werden.
 Allerdings behält die Lehrkraft jederzeit die Oberaufsicht, indem sie zum Beispiel relevante KI-Antworten stichprobenartig überprüft oder spezielle Fälle selbst übernimmt (z. B. wenn die KI Auskünfte gibt, die nicht zur jeweiligen Kursstruktur passen).
 
+<!-- Einschub 2026-07-02 (Baustein 4.3-A), eingesetzt 2026-10-17; Details zu Chang et al. stehen in Anhang C (@sec-update-2026-07-rs), hier nur die Pointe -->
+Der erste Punkt, die individuelle Anpassung, war bisher konzeptionell begründet; ein Feldexperiment zeigt, dass ein Tutor die Anpassung **selbst lernen** kann. Ein Prompt-Router, der aus vierzehn pädagogischen Merkmalen des Gesprächsverlaufs die Tutoring-Strategie wählt (eher analytisch oder eher gerüstbauend), schlug im A/B-Test mit 359 Oberstufenschülern statische Prompts bei gehaltener pädagogischer Qualität; die Variante, die zwischen Strategien streut, statt stur die beste zu wählen, hob die Quote begonnener Übungen von 19,6 auf 28,1 % [@chang2026]. Zusammen mit dem Musterlösungs-Ansatz von @kestin2025 ergeben sich damit zwei komplementäre Stellschrauben: Musterlösungen kontrollieren den **Inhalt**, adaptives Prompt-Routing die **Strategie**.
+
 Generell ist bei KI-Tutoren die **Gefahr von Fehlinformationen und Halluzinationen** zu beachten.
 Hierfür gibt es jedoch gute Gegenmaßnahmen, vor allem durch Kontrolle des Inputs und systematische Qualitätstests der LLM-Tools.
 Eine interessante Möglichkeit, die beim Physik-Tutor der Harvard Studie besprochen wird [@kestin2025], ist die **Bereitstellung von Musterlösungen als Input** (nicht nur der Fragen), was die Gefahr von Ungenauigkeiten, Halluzinationen und Inkonsistenzen in den Antworten des Sprachmodells deutlich reduziert.
@@ -296,6 +348,12 @@ Hier sind der hohe initiale Implementierungsaufwand, Datenschutzanforderungen un
 Für all diese allgemeinen Tutoren gilt: Ihre Effektivität hängt von der Qualität des Prompts und der Fähigkeit der KI ab, die Tutor-Rolle konsistent und pädagogisch sinnvoll auszufüllen, was nicht immer gegeben ist und von Modell zu Modell variieren kann [@mollick2024a, S. 36].
 Die KI kann oberflächlich bleiben oder halluzinieren [@mollick2024a, S. 36].
 
+<!-- Einschub 2026-07-16 (Gegenlesen-Ordner, Einschub 2), eingesetzt und nach Redaktionsregel gekürzt 2026-10-17; Perczel-Zahlen stehen vollständig in Anhang D (@sec-d-tutoren), Banh-Prinzipien in Anhang C (@sec-update-2026-07-rs) -->
+Über solche einzeln erdachten Prompts hinaus gibt es inzwischen systematisches Gestaltungswissen. @banh2026 leiten aus Interviews, Literatur und einem erprobten Prototyp drei übergeordnete Anforderungen an GenAI-Lernagenten ab, Selbststeuerung, Kollaboration und Assessment (von lateinisch *assidēre*, „sich danebensetzen“), sowie neun Design-Prinzipien; die beiden Feedback-Prinzipien geben den Fällen COFFEE und MIND nachträglich eine theoretische Grundlage: Antworten weisen ihre Quelle im Lernmaterial aus, und Feedback benennt Stärken und macht Wissenslücken sichtbar, um die Selbstbewertung der Lernenden zu stützen. Die Wirksamkeit hat allerdings eine Grenze, die im Modell selbst liegt. @perczel2025 messen die dialogische Qualität heutiger Sprachmodelle an echten Eins-zu-eins-Tutorien und finden sie systematisch schwächer als die menschlicher Tutorinnen und Tutoren: Die Modelle lassen Lernenden nur 5 bis 15 Prozent der Redezeit statt rund 30, stellen drei bis vier Fragen auf einmal und drängen früh zur Lösung. Die Ursache ist strukturell: Standard-Modelle sind darauf optimiert, als hilfreiche Assistenten Reibung zu minimieren, während gutes Unterrichten Reibung gezielt erzeugt. Prompt Engineering, das Feinschleifen der Anweisungen an das Modell, bleibt deshalb ein Notbehelf; erst das Nachtrainieren auf 100.000 Stunden echter Tutorien verdoppelte in der Studie die Redezeit der Lernenden. Für die Praxis schärft das den Vorbehalt dieses Abschnitts: Die Qualität eines GenAI-Tutors hängt am Prompt *und* am Modell, und die zuverlässigsten Gegenmaßnahmen liegen jenseits des Prompts, von Musterlösungen als Input bis zu systematischen Testläufen vor dem Einsatz (Testplan in @sec-d-tutoren).
+
+<!-- Einschub 2026-10-17 (Evidenz-Screening KI-Tutoren, Abschnitt 4.3): Khan-Umbau, Ahtisham, Hou/CoMeT; Belege gegen arXiv/URL geprüft -->
+Die Regel „Hinweise vor Lösungen“ hat inzwischen selbst eine Grenze bekommen. Der größte Anbieter eines Schul-Tutors hat nach einem zweijährigen Feldexperiment ohne messbaren Zusatzeffekt (@sec-evidenz) öffentlich eingeräumt, dass ein Tutor, der neben der Aufgabe wartet, kaum angesprochen wird, und ihn umgebaut: in die Aufgabe hinein, keine Antwort vor dem ersten eigenen Versuch, aktives Eingreifen nach dem Fehler [@khan2026firstchapter, Herstellerangabe]. Was nach dem Fehler geschehen soll, zeigt eine Auswertung von 20.462 Tutor-Beiträgen in Sackgassen-Situationen: Bei festgefahrenen Lernenden hilft jede weitere Rückfrage weniger, das Benennen des Fehlers mehr [@ahtisham2026impasses]. Ein Tutor, der sein Gerüst kontingent eskaliert und abbaut, also mehr hilft, wenn die Person stockt, und weniger, sobald sie trägt, schlägt im Vergleich beide starren Varianten, den Lösungsgeber wie den Dauerfrager [@hou2026comet]. Die Gestaltungsregel für @sec-d-tutoren lautet deshalb: Hinweise vor Lösungen, aber mit Eskalation bei Sackgassen, und ohne die Erwartung, dass der Prompt sie allein durchsetzt (@sec-evidenz).
+
 **Sprachen lernen und schwierige Situationen simulieren** kann man sehr einfach und auf hohem Niveau über den Sprachmodus der großen Chat-Interfaces [@jurran2025].
 Vorreiter war der „Voice Mode“ von OpenAI, den man als App auf dem Handy ausprobieren kann (gut in der kostenfreien, sehr gut in der kostenpflichtigen Version); die anderen großen Anbieter bieten seither ähnliche Funktionen an.
 Die KI spricht auf Wunsch über ein beliebiges Thema in einer beliebigen Sprache.
@@ -307,6 +365,16 @@ Solche Interaktionen kommen dem Ideal eines persönlichen Tutors schon sehr nahe
 
 **Wie passt man die Lehre an?** Ein Artikel von 2025 bespricht, wie sich diese neuen Möglichkeiten auf die Rolle des Sprachunterrichts an Hochschulen auswirken [@tutton2025]: Es werden eine breite Reihe an Tools besprochen und konkrete Empfehlungen zur Umsetzung angeboten: Lehrende sollen mit Studierenden die Stärken und Schwächen der Tools erproben und sie so an die Nutzung heranführen.
 Unterrichtskonzepte sollten so angepasst werden, dass sich die Stärken der KI-Tools und des Präsenz-Unterrichts ergänzen.
+
+::: {.callout-note title="Stand bei Drucklegung, November 2026: Tutor-Angebote der Anbieter"}
+<!-- Neu 2026-10-17 (Evidenz-Screening, Anbieter-Kasten). Alle Angaben sind Herstellerangaben; URLs am 17.10.2026 geprüft. -->
+Welche Tutor-Funktionen die großen Anbieter bei Drucklegung in ihren Bildungsprodukten boten, als historischer Schnappschuss; alle Angaben stammen von den Anbietern selbst. Die Online-Seite „Forschungsstand“ führt die Liste fort.
+
+- **OpenAI:** quellengebundener Tutor für Studierende als Erweiterung in ChatGPT Edu, der aus den freigegebenen Kursmaterialien antwortet [@openai2026plugins]; ein „Learning Lab“ für Studien mit Hochschulen, das die Evidenzlage zu den eigenen Produkten verbessern soll [@devani2026learninglab]; die eigene Studie zum Lernmodus fand einen Gewinn in Mikroökonomie und keinen in Neurowissenschaft [@openai2026studymode].
+- **Google:** Gemini im Google Classroom für alle Altersstufen mit kursbezogenen Startprompts [@google2026classroom]; die bisher für Tutoren genutzten „Gems“ werden im Bildungsbereich frühestens zum 1. Juni 2027 abgeschaltet und durch Skills und Guided Learning ersetzt [@google2026skills], ein Beispiel dafür, warum Tutoren nicht an ein einzelnes Produktmerkmal gebunden sein sollten (@sec-d-arbeitsumgebung).
+- **Anthropic:** ein Lernmodus, der Hinweise vor Lösungen setzt, und seit Juli 2026 ein Angebot für Lehrende mit Vorlagen für Rückmeldung und Kursmaterial [@anthropic2026teachers].
+- **Khan Academy:** Umbau von Khanmigo nach dem zweijährigen Feldexperiment ohne messbaren Zusatzeffekt: Tutor in der Aufgabe, keine Antwort vor dem ersten Versuch, Eingreifen nach dem Fehler [@khan2026firstchapter; @oreopoulos2026khanmigo].
+:::
 
 ### Komplexer Physik Tutor mit Musterlösungen {#sec-complex-tutors}
 
@@ -320,6 +388,34 @@ Studierenden loggen sich über eine Weboberfläche – oder in manchen Fällen e
 Die KI analysiert die eingegebenen Antworten und entscheidet anhand vorab definierter Parameter und eines Maschinenlern-Modells, ob und wie viel zusätzliche Hilfestellung nötig ist.
 Bei korrekten oder fast korrekten Lösungen wird ein vertiefender Schritt vorgeschlagen (etwa eine weiterführende Frage), während bei fehlerhaften Lösungsschritten gezielt ein Tipp oder ein Hinweis auf das entsprechende Lehrmaterial gegeben wird.
 Dadurch werden die Lernenden kontinuierlich im Lernprozess unterstützt, ohne gleich eine komplette Lösung zu sehen.
+
+### Vom Prototyp zum Betrieb: Tutoren mit eigenen Quellen {#sec-tutor-betrieb}
+
+<!-- Neu 2026-10-17 (Claude-Entwurf) aus Tutor-Bots-AWS-TH-Koeln (März 2026); modellneutral, Anbieter nur als datierter Beleg. TODO Roman: Architektur des BWL-Tutors bestätigen (Hosting AWS Amplify ist aus der URL ersichtlich; Backend?). -->
+Die bisher gezeigten Tutoren sind Prompts in einem Chat-Interface. Ein Tutor, der einen ganzen Kurs über ein Semester begleiten soll, braucht mehr: eine **Wissensbasis** aus den eigenen Kursmaterialien, damit er aus dem Skript antwortet statt aus dem Netz (das Verfahren dahinter, Retrieval-Augmented Generation, erklärt @sec-d-quellen); eine **Dialogschicht**, die Fragen entgegennimmt und die Antwort an die Studierenden zurückgibt; **Leitplanken**, die bei offensichtlichen Prüfungsfragen auf Lernmaterial verweisen statt zu lösen; und ein **Gedächtnis** über Sitzungen hinweg, damit der Tutor weiß, was eine Person zuletzt geübt hat und Wiederholungsfragen zum passenden Zeitpunkt stellen kann (verteiltes Üben, @sec-lerntechniken). Alle großen Cloud-Anbieter stellen diese vier Bausteine inzwischen als konfigurierbare Dienste bereit, so dass ein erster Tutor mit den eigenen Skripten an einem Nachmittag steht; Referenzarchitekturen für Hochschulen beschreibt zum Beispiel AWS für seine Dienste Bedrock, Lex und AgentCore [@aws2025agentcore; @aws2025companion]. Der BWL-Tutor aus der Kapiteleinleitung läuft als Web-Anwendung in einer solchen Cloud-Umgebung. Die Kosten eines Pilotbetriebs mit einem Kurs liegen bei kleinen Modellen im niedrigen zweistelligen Eurobereich pro Monat; die eigentliche Investition ist organisatorisch: digital vorliegende Materialien, ein didaktisch durchdachter System-Prompt, ein Datenschutzkonzept für studierendenbezogene Daten und ein Testplan, bevor Studierende den Tutor sehen (@sec-d-tutoren). Wie das in konkreten Modulen gelaufen ist, zeigen die Fallbeispiele in @sec-fallbeispiele.
+
+<!-- Einschub 2026-10-17 (Evidenz-Screening KI-Tutoren, Abschnitt 4.3.3 Betrieb): Liu, Gerber, Tani -->
+Drei Betriebserfahrungen aus dem Jahr 2026 zeigen, woran ein solcher Tutor im Semester scheitert oder gelingt, und keine davon liegt in der Technik. An der University of Maryland lief genau diese Architektur, ein Tutor über die Kursmaterialien im Lernmanagementsystem, in den Kursen von 30 Lehrenden; nur 15 Prozent der berechtigten Studierenden nutzten ihn, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Noten der Berechtigten sanken (@sec-evidenz). Der Grund war der Standardmodus: Die Lehrenden hatten den Tutor überwiegend als Antwortmaschine konfiguriert, und wer ihn nutzte, ersetzte damit das eigene Arbeiten am Material [@liu2026courseintegrated]. Das deutsche Gegenstück ist ein sokratisch gebauter Tutor mit eigenen Quellen auf einem lokal betriebenen offenen Modell an der Hochschule Rhein-Waal: Nach einem Semester mit 62 Studierenden war die Bereitschaft, Fragen zu stellen, gestiegen, die Neugier auf das Warum gesunken; die Studierenden nutzten auch den sokratisch gebauten Tutor als Antwortmaschine, sobald er es zuließ [@gerber2026]. Dass es anders geht, zeigt ein Assistent mit eigenen Quellen in einem Planspiel zum Operations Management: 61 Prozent der Teams nutzten ihn, seine Antworten waren zu 90 bis 95 Prozent korrekt, und ein Zusammenhang zwischen Nutzung und Note fehlte, weil die Nutzung über Teamvertreter lief und der Assistent die Regeln des Spiels erklärte statt die Entscheidungen zu treffen [@tani2026]. Die drei Fälle messen am selben Maßstab: Entscheidend ist nicht, ob der Tutor aus den eigenen Quellen antwortet, sondern was die Lehrenden als Standardverhalten eingestellt haben und welche Operationen er den Lernenden abnimmt (@sec-d-tutoren).
+
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Ein Tutor-Bot liefert Lösungen, statt das Lernen zu begleiten"}
+**Problem ohne KI.** In einer großen Grundlagenvorlesung erreichen Lehrende die Fragen der einzelnen Studierenden kaum.
+
+**Problem mit KI.** Ein Chatbot, der als Experte auftritt, liefert fertige Lösungen und nimmt den Studierenden das Lernen ab.
+
+**Der Lösungsansatz.** An der Universität Kiel hat Jan Steinkühler die Entwicklung des Tutors selbst zur Lernaufgabe gemacht. Masterstudierende betreiben ihn lokal mit OpenWebUI, schreiben den Systemprompt, binden die Lernmaterialien per RAG ein und vergleichen verschiedene Modelle darauf, welche Antworten tatsächlich tutoriell helfen. Der Tutor soll schrittweise begleiten, Reflexion und Transfer anregen und keine Lösungen liefern; eingesetzt wird er in der Bachelorvorlesung Grundlagen der Elektrotechnik I. Aus den anonym protokollierten Chats lassen sich die häufigsten Fragen ablesen und in der nächsten Vorlesung aufgreifen.
+
+**Was das für wirksames Lernen heißt.** *Erfahrungsbericht; eine systematische Evaluation ist angekündigt.* Die Gestaltung setzt dort an, wo der Tutor in Maryland scheiterte: am Standardmodus als Antwortmaschine [@liu2026courseintegrated]. Ob die Leitplanken halten, sollen künftig die Studierenden mitbewerten: Was hilft wirklich weiter, wo bleibt der Tutor zu allgemein? Einen verwandten Ansatz aus der eigenen Lehre beschreibt @sec-fall-studierende-bauen.
+
+Quelle: @tobor2026usecases, S. 34–35.
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-hfd-blickpunkt.png){width="18%"}
+:::
+::::
+
+<!-- Einschub 2026-07-02 (Baustein 4.3-B), eingesetzt 2026-10-17 -->
+Offen bleibt bei alledem, wer den Tutor im Hörsaal steuert. Eine Design-Studie aus dem Labor von Vincent Aleven zu ko-orchestrierter Lehre, in der die KI vorschlägt, wann Lernende zwischen Einzel- und Partnerarbeit wechseln, zeigt, dass Lehrendenkontrolle und studentische Agency **kein einzelner Schieberegler** sind, sondern phasenweise variieren: Lehrende wollen ein Echtzeit-Vetorecht beim Wechsel selbst, akzeptieren aber Systemvorschläge für dessen Timing; Studierende wollen Mitsprache bei der Partnerwahl, erwarten die finale Autorität aber bei den Lehrenden [@yang2026orchestration]. Orchestrierungswerkzeuge, die einen einzigen Autonomiewert festlegen, werden deshalb beiden Seiten nicht gerecht; wie sich Kontrollpunkte für KI-Werkzeuge in der Lehre allgemein setzen lassen, behandelt @sec-d-modus.
 
 
 ## KI als Simulator {#sec-simulator}
@@ -355,6 +451,23 @@ Eine umfangreiche Simulation beschreiben @mollick2024: **"Pitch Quest"** an der 
 Der Mehrwert liegt in der skalierbaren Bereitstellung von Übungsmöglichkeiten für komplexe Skills.
 Herausforderungen sind die Aufrechterhaltung der Konsistenz, die Vermeidung von Bias und Halluzinationen sowie der hohe Entwicklungsaufwand für solche Multi-Agenten-Systeme [@mollick2024, S. 2–3].
 
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Im Rollenspiel üben wenige Studierende, der Rest schaut zu"}
+**Problem ohne KI.** Im klassischen Rollenspiel üben nur zwei bis vier Studierende aktiv, die anderen beobachten. Beobachtung und Bewertung erzeugen Rollenstress und dämpfen die Lust am Ausprobieren, und manche Rollen liegen weit von der Lebenswelt der Studierenden entfernt.
+
+**Problem mit KI.** Eine KI-Persona kann jedes Gegenüber spielen, verfällt aber in Argumentationsschleifen und überzeichnet Skepsis und Eskalation.
+
+**Der Lösungsansatz.** Michael Barton (Universität Leipzig) macht in einer Übung zur Personal- und Organisationsökonomik im BWL-Master die Prinzipal-Agent-Theorie erfahrbar. Die Studierenden spielen die Führungskraft, die einen erfahrenen Mitarbeiter über 50 von einer Schulung zur Digitalisierung überzeugen soll; die KI spielt den skeptischen Mitarbeiter, samt Hinweisen auf Mimik und Gestik. Ein rund zweiseitiger Systemprompt regelt Rolle, Gesprächsphasen, Schwierigkeit und das Feedback am Ende, eine Info-Karte gibt den Studierenden den Rahmen. Ein Durchlauf dauert fünf bis zehn Minuten und lässt sich wiederholen; danach reflektieren die Studierenden das Gespräch in einem Fragebogen.
+
+**Was das für wirksames Lernen heißt.** *Erfahrungsbericht mit offener Befragung (Wintersemester 2024/25: 17, 2025/26: 9 Studierende).* Alle Studierenden rücken von der passiven Beobachtung in die interaktive Übung, die nach ICAP am stärksten wirkt [@chi2018]. Die Befragten lobten Realitätsnähe und überwiegend hilfreiches Feedback; die genannten Grenzen zeigen, dass der Prompt laufend überarbeitet werden muss und eine abschließende Reflexion der Methode dazugehört [@barton2026poster].
+
+[Prompt zum Nachnutzen: [Systemprompt und Anleitung (PDF)](https://hochschulforumdigitalisierung.de/wp-content/uploads/2025/01/2285-Tag-der-Lehre-Rollenspiel-Prompt-Barton.pdf).]{.content-visible when-format="html"}[Prompt zum Nachnutzen über den QR-Code.]{.content-visible unless-format="html"} Quelle: @barton2026poster; @tobor2026usecases, S. 40–42.
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-leipzig-prompt.png){width="18%"}
+:::
+::::
+
 ### Goal Play – zielgerichtete Spiele {#sec-goal-play}
 
 In **zielgerichteten Spielen** ("Goal Play", @mollick2024a) bleiben Studierende in ihrer normalen Rolle und wenden in einer Situation bestimmtes Wissen oder theoretische Konzepte an (z. B. Zielsetzung, Selbst-Distanzierung oder Analyseraster wie Transaktionskostenanalyse), indem sie einen KI-Charakter anleiten.
@@ -367,3 +480,35 @@ Als Herausforderung kann die KI manchmal vom Thema abweichen oder Fragen stellen
 Für beide Typen gilt: Die KI kann von der Rolle abweichen oder inkonsistent agieren, und die Qualität der Erfahrung kann variieren.
 Eine **sorgfältige Einbettung und Reflexion** durch Lehrende ist entscheidend [@mollick2024a].
 Bei allen Simulatoren ist die Notwendigkeit einer klaren didaktischen Rahmung und eines Debriefings durch Lehrende ("Human in the Loop") zentral, um den Lernerfolg zu sichern und die Grenzen sowie potenzielle Fehler der KI zu reflektieren [@mollick2024a, S. 16].
+
+<!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
+::: {.callout-tip title="Kernaussagen"}
+1. Vier Rollen ordnen die Praxis: Als Hiwi nimmt die KI Arbeit ab, als Copilot ermöglicht sie, was wir allein nicht könnten, als Tutor begleitet sie Lernende, als Simulator stellt sie Übungssituationen bereit.
+2. Technik ersetzt Tätigkeiten, nicht Berufe. In der Lehre verdrängt KI vor allem Standardisiertes, macht Kernaufgaben produktiver und schafft neue Aufgaben wie Qualitätskontrolle und Kursdesign. Ob am Ende Zeit gespart wird, ist offen.
+3. Bei der Literaturrecherche entscheidet nicht der Markenname, sondern das Muster: einmalige Suche oder iterativer Prozess, Trefferliste oder zusammenfassende Analyse.
+4. Schreiben und Programmieren mit KI sind Cyborg-Tätigkeiten. Der Lernwert hängt davon ab, wie viel die Studierenden selbst verstehen und verantworten müssen.
+5. Ein guter KI-Tutor passt sich an, gibt sofort Rückmeldung, hält Lernende aktiv und entlastet Lehrende. Er braucht Musterlösungen als Input und systematische Qualitätstests, sonst produziert er überzeugende Fehler.
+6. Simulationen wirken, wenn Lehrende sie rahmen und nachbesprechen. Die KI kann aus der Rolle fallen; der Mensch bleibt in der Schleife.
+:::
+
+<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
+::: {.callout-note title="Lernfragen"}
+**Wiederholen**
+
+1. Nennen Sie die vier Rollen und je eine typische Anwendung.
+2. Was bezeichnen Verdrängung, Produktivität und Wiedereinsetzung? Nennen Sie je ein Beispiel aus der Lehre.
+3. Nach welchen zwei Fragen ordnet das Kapitel Recherchewerkzeuge, und welche vier Typen ergeben sich daraus?
+4. Was unterscheidet Role Play von Goal Play?
+
+**Anwenden**
+
+5. Nehmen Sie Ihre eigene Aufgabenliste einer typischen Semesterwoche und sortieren Sie jede Aufgabe nach Verdrängung, Produktivität oder Wiedereinsetzung. Welche neue Aufgabe kommt bei Ihnen dazu, die Sie heute noch nicht einplanen?
+6. Entwerfen Sie aus dem Gedächtnis einen Tutor-Prompt für ein Konzept Ihres Fachs. Welche drei didaktischen Bremsen bauen Sie ein, und woher bekommt der Tutor seine Musterlösungen?
+7. Welche Berufssituation Ihrer Absolventinnen und Absolventen eignet sich für ein Role Play, welche für ein Goal Play? Was muss im Debriefing unbedingt zur Sprache kommen?
+
+**Beurteilen**
+
+8. Ob KI Lehrenden am Ende Zeit spart, bleibt nach diesem Kapitel offen. Welche neuen Aufgaben machen Sie skeptisch, und unter welcher Bedingung würden Sie trotzdem netto Zeit gewinnen?
+
+Lösungshinweise: @sec-loesungshinweise.
+:::

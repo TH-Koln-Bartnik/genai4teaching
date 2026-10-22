@@ -1,0 +1,82 @@
+# Exkurs: Ressourcenverbrauch der Modelle {.unnumbered #sec-energie-online}
+
+Dieser Exkurs gehörte bis zur Buchfassung 2026 als Abschnitt 2.6 und 2.7 zu Kapitel 2. Für den Druck ist er auf eine Zusammenfassung in @sec-energy gekürzt; hier steht der vollständige Text mit allen Quellen. Die Zahlen sind auf den Stand der zitierten Studien (2024 und 2025) datiert und werden mit der Online-Version fortgeschrieben.
+
+## Wie steht es mit dem Ressourcenverbrauch der Modelle? {#sec-energy-online-verbrauch}
+
+Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert [@spencer2025].
+Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen.
+Angesichts von Hype und Desinformation in beiden Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), **lohnt ein Blick auf seriöse Studien**.
+Der folgende Abriss gibt einen Überblick über die Hauptargumente und gibt ein Gefühl für die Komplexität der Modellierung.
+
+**Über welche Größenordnung von Energie reden wir etwa?** Wieviel Energie kostet es also, GenAI zu nutzen?
+Das Problem dabei ist, dass wir uns 'Energie' nur schlecht vorstellen können.
+Wir brauchen Analogien: Nach Schätzungen von 2025 verbraucht ein typischer Prompt etwa soviel Energie wie ca.
+10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre 2008 [@elsworth2025; @mollick2025d].
+
+Die gute Nachricht ist, dass die Modelle effizienter werden und der Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken [@spencer2025].
+Gegenläufig und problematisch ist die stark steigende Nutzung, die z.
+B.
+zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen führt [@wittenberg2025a].
+
+Solche Vergleiche sind nicht trivial, da etwa bei der Nutzung in Unternehmen auch die Umweltfolgen der bisherigen Alternativen „bepreist“ werden müssen, um einen sinnvollen Vergleich zu erzielen.
+Wie belastet die Lieferkette eines physischen Buchs die Umwelt im Vergleich zu einem E-Book?
+Ein menschlicher Mitarbeiter im physischen Callcenter mit seinem Arbeitsweg, Schreibtisch und Heizbedarf im Vergleich zum KI-Chatbot?
+Unabhängig davon, wie diese Rechnungen ausgehen, sind sie sichtlich komplex.
+
+Im Folgenden sollen dazu einige Kernaussagen aus Untersuchungen der International Energy Agency (IEA), dem World Economic Forum und des MIT Technology Reviews zusammengefasst werden.
+Basierend auf der Untersuchung des MIT Technology Review von 2025 [@odonnell2025] gliedere ich diesen kurzen Abriss zum Energieverbrauch in vier Teile: Die Modellbildung, die Anfrage (query), die Emissionen und Prognosen für das weitere Wachstum.
+
+Modellbildung.
+Daten-Zentren und KI-Nutzung machten 2024 nur wenige Prozent der globalen Energienutzung aus.
+Schätzungen der Energieagentur IEA liegen etwa bei 3–5 %.
+Deutlich höhere Anteile liegen in den Bereichen Gebäude, Industrie und Fahrzeuge [@ritchie2024; @spencer2024].
+Mit Blick auf die Zukunft ist der rasant wachsende Energiebedarf durch Bevölkerungswachstum und wachsenden Wohlstand ärmerer Bevölkerungsgruppen bei weitem ein stärkerer Treiber für Emissionswachstum und Klimawandel [@spencer2024].
+Einige Klimaaktivisten warnen sogar vor „distraction“ - davor, sich durch Modethemen wie den KI Energieverbrauch vom Fokus auf die großen Hebel der Emissionsvermeidung abbringen zu lassen [@masley2025; @ritchie2024a].
+Während der einmalige Aufwand für das Training der Modelle erheblich ist, stellt das schnelle Wachsen der Nutzerzahlen ihn in den Schatten.
+Die Energieaufwände für Anfragen (Inferenz) bedingen damit einen größeren Energieverbrauch als das Training der Modelle [@odonnell2025; @spencer2025].
+
+Anfrage.
+Der Energieverbrauch einer einzelnen KI-Textanfrage ist relativ gering.
+Er liegt unter dem Energieverbrauch von wenigen Minuten für eine kleine LED-Lampe.
+Konkret lagen die Schätzungen 2025 zwischen 0,3 Wattstunden (Wh) für ein großes Chat-Modell (GPT-4o) und 0,03 Wh für kleine Modelle [@odonnell2025; @you2025].
+
+Im Vergleich zu anderen Energieverbrauchen ist das nicht viel.
+Vergleicht man den höheren Wert von 0,3 Wh mit den 12.000 Wattstunden, die ein durchschnittlicher britischer Haushalt pro Tag verbraucht (für US-Haushalte wird die deutlich höhere Zahl von 28.000 Wattstunden pro Tag genannt!), wird schnell klar, dass weniger KI-Nutzung zumindest bei diesen Größenordnungen kein großer Hebel für Energiesparen oder Klimaschutz ist.
+Die oft zitierte Statistik, nach der eine Anfrage bei ChatGPT 10x mehr verbraucht als eine Google Suche vergisst meist zu erwähnen, dass die Basisrate dieser Internetnutzung im Vergleich zu anderen Dingen, in die unser Energieverbrauch fließt, extrem niedrig ist [@ritchie2024a].
+
+Modellgröße ist allerdings ein zentraler Faktor für den Energiebedarf pro Anfrage und hieraus speisen sich plausiblere Sorgen.
+Zwar ist Bildgenerierung i.
+d.
+R.
+weniger energieintensiv als Textgenerierung, da Modelle zur Bildgenerierung oft mit weniger Parametern arbeiten als Textmodelle.
+Aber komplexere Anfragen (etwa mehrstufige lange Reasoning Aufträge) und speziell Video-Generierung benötigen deutlich mehr Energie: Ein hochqualitatives Video von 5 Sekunden kann bis zu 1.000 Wattstunden verbrauchen (0,94 kWh), was etwas mehr als einer Stunde Mikrowellennutzung entspricht – ein deutlicher Unterschied [@odonnell2025].
+
+Der Anteil größerer Modelle und komplexerer Anfragen wird voraussichtlich deutlich zunehmen, wenn die Modellgrößen weiter ansteigen und komplexere Anfragen, wie Video-Generierung zunehmen.
+Gegenläufig wirkt der starke Anreiz für die Anbieter (und speziell für die kleineren Konkurrenten von OpenAI, die über geringere finanzielle Mittel verfügen), den Energieverbrauch pro Inferenz durch effizientere Chip-Konstruktionen und neue Trainingsansätze zu senken.
+Wie die Analysten der IEA zusammenfassen: „The efficiency of AI-related computer chips has doubled roughly every two-and-a-half to three years, and a modern AI-related computer chip uses 99% less power to perform the same calculations as a model from 2008” [@spencer2024].
+
+Insgesamt wird perspektivisch die punktuelle Einzelnutzung durch einzelne Anfragen weniger wichtig werden, als die strukturell bedingte Integration der KI-Technologien in immer mehr digitale Anwendungen, die als Folge des rasanten technologischen Wandels und der hohen Investitionen absehbar ist [@odonnell2025].
+
+Emissionen.
+In diesem Zusammenhang wird der ungünstige Energiemix der neu entstehenden Datenzentren kritisiert: Da KI-Rechenzentren rund um die Uhr laufen und meist in Regionen mit fossilen Energieträgern stehen, ist der durchschnittliche CO₂-Ausstoß ihrer Stromversorgung etwa 48 % höher als der US-Durchschnitt [@odonnell2025].
+Dem gegenüber stehen gegenläufige Effekte wie höhere Effizienz der Steuerung, etwa von Energienetzen [@greene-dewasmes2025a] und dem Ersatz von manuellen menschlichen Aufwänden durch Digitalisierung, etwa durch Reisen für einen Film-Dreh (ohne KI) oder dem Energiebedarf eines menschlichen Call-Centers.
+Das starke Wachstum der Nutzung muss insofern mit politischer Anreizsetzung für emissionslose Energiegewinnung verbunden sein, wenn eine starke Zunahme an Emissionen vermieden werden soll.
+Hierfür gibt etwa die IEA klare Empfehlungen und technische Lösungen sind bekannt.
+Besorgt stimmt die Analysten die Prognose eines starken Wachstums von Datencentern im asiatischen Raum, die meist nicht mit emissionsfreier Energie betrieben werden [@spencer2025].
+
+Prognose.
+In der Summe sehen viele der Untersuchungen Probleme eher in der prognostizierten zukünftigen Entwicklung als in den bisherigen Energieaufwänden.
+Das starke prognostizierte Wachstum könnte etwa dazu führen, dass KI-Anwendungen bis 2028 mehr als 12 % des US-Strombedarfs ausmachen [@odonnell2025].
+
+## Energieverbrauch und politische Steuerung {#sec-energy-online-politik}
+
+Die IEA prognostiziert ebenfalls eine Verdreifachung des Energieverbrauchs von Rechenzentren bis 2030, getrieben durch KI.
+Maßnahmen wie Effizienzgewinne und nachhaltige Architektur können diese Entwicklung abbremsen [@spencer2025].
+
+Wie der MIT-Bericht hervorhebt, sollte vor diesem Hintergrund der starke und kurzfristig induzierte Ausbau der Infrastruktur politisch durch Anreize zur Emissionsvermeidung gesteuert werden, sodass ein starkes Wachstum der Emissionen durch diesen – wahrscheinlich im Kern unvermeidlichen – technologischen Wandel vermieden wird [@odonnell2025].
+
+So besteht die Hoffnung, dass positive Effekte auf Emissionen in den Hauptbereichen von CO₂-Emissionen (Gebäude, Industrie, Transport sowie die verbundenen Energienetze) durch höhere Effizienz in Planung und Nutzung genutzt werden können, ohne dass sie durch die wachsenden Kosten von immer komplexeren Inferenz-Anfragen überlagert werden [@greene-dewasmes2025a; @spencer2025].
+
+Die Politik muss diesen Wandel steuern, damit die Ziele der Gesellschaft - und nicht nur der Hersteller der Sprachmodelle - berücksichtigt werden.
+Dazu müssen die Fakten klar sein: Um Kosten und Effekte abschätzen, abfedern und verteilen zu können, fordern die Forscher eine deutlich höhere Transparenz der Energiebedarfe durch die Modellanbieter [@odonnell2025].

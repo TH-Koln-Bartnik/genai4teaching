@@ -5,7 +5,15 @@
 % Satzspiegel-Feinheiten für 17 x 24 cm (KOMA-Script)
 % (Satzspiegel kommt aus geometry in _quarto.yml, daher kein DIV=calc)
 \usepackage{microtype}
-\raggedbottom  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
+\usepackage{xurl}  % URLs dürfen an jeder Stelle umbrechen (lange Links in schmalen Tabellenspalten)
+\raggedbottom
+
+% Tabellen: kleinere Schrift (9 pt) und Flattersatz mit Silbentrennung in den Zellen.
+% Pandoc setzt Zellen mit \raggedright, was die Trennung praktisch abschaltet; \RaggedRight (ragged2e) trennt weiter.
+\usepackage{etoolbox}
+\usepackage{ragged2e}
+\newcommand{\tabellenschrift}{\small}  % je Tabelle übersteuerbar, z. B. \renewcommand{\tabellenschrift}{\footnotesize} in einer Gruppe
+\AtBeginEnvironment{longtable}{\tabellenschrift\let\raggedright\RaggedRight}  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
 
 \usepackage{booktabs}
 \usepackage{xcolor}
@@ -38,6 +46,15 @@
 }
 % Grauer Caption-Text
 \captionsetup{textfont={color=thgray}}
+
+% ===== CODEBLÖCKE (PROMPTS) =====
+% Lange Prompt-Zeilen umbrechen statt rechts abzuschneiden. Quarto definiert die
+% Umgebung "Highlighting" ohne breaklines; diese Datei wird danach eingebunden
+% und überschreibt die Definition. Plain-Codeblöcke (ohne Sprache) laufen über
+% "verbatim" und werden ebenfalls umbrechend gesetzt.
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},breaklines,breakanywhere=false,breaksymbolleft={},breakindent=1em,fontsize=\small}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breakanywhere=false,breaksymbolleft={},breakindent=1em,fontsize=\small}
 
 % ===== TABELLEN =====
 \usepackage{colortbl}
@@ -144,3 +161,10 @@
   \textbf{Zitiervorschlag:} Bartnik, R. (2026). \emph{Generative KI als Hilfe zum
   Lehren und Lernen}. Logos Verlag Berlin. [DOI]%
 }
+
+% Kolumnentitel: lange Kapitel- und Abschnittstitel werden mit Auslassungspunkten gekürzt,
+% statt über den Satzspiegel hinauszulaufen (KOMA-Script setzt links das Kapitel, rechts den Abschnitt).
+\usepackage{truncate}
+\renewcommand*{\TruncateMarker}{\,\textellipsis}
+\renewcommand*{\chaptermark}[1]{\markboth{\MakeMarkcase{\truncate{0.92\textwidth}{\ifnumbered{chapter}{\chaptermarkformat}{}#1}}}{}}
+\renewcommand*{\sectionmark}[1]{\markright{\MakeMarkcase{\truncate{0.92\textwidth}{\ifnumbered{section}{\sectionmarkformat}{}#1}}}}

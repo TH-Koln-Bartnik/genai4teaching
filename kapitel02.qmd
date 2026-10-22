@@ -1,5 +1,28 @@
 # Grundbegriffe {#sec-grundbegriffe}
 
+<!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
+::: {.callout-note title="Lernziele"}
+Nach diesem Kapitel können Sie …
+
+- in Laiensprache erklären, wie ein Sprachmodell Text in Tokens zerlegt, als Zahlen verarbeitet und Wort für Wort neuen Text erzeugt;
+- die drei Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Muster auswählen;
+- beschreiben, warum Sprachmodelle halluzinieren und welche Folgen das für den Einsatz in der Lehre hat;
+- die Jagged Frontier erklären und daraus ableiten, warum Sprachmodelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich gut abschneiden;
+- die Bausteine eines guten Prompts (Rolle, Aufgabe, Format, Beispiele) anwenden und belegen, welche verbreiteten Prompt-Tricks nichts bringen;
+- die Größenordnung des Energieverbrauchs einer Anfrage einordnen und die wichtigsten Argumente der Debatte wiedergeben.
+:::
+
+<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
+::: {.callout-note title="Leitfragen"}
+*Versuchen Sie eine Antwort, bevor Sie weiterlesen; die Kernaussagen am Kapitelende greifen die Fragen in derselben Reihenfolge auf.*
+
+1. Warum erfinden Sprachmodelle gelegentlich Quellen, und lässt sich das ganz abstellen?
+2. Was unterscheidet ein reines Sprachmodell, ein Modell mit eigenem Material (RAG) und einen Agenten?
+3. Warum löst ein Modell eine schwierige Aufgabe und scheitert an einer ähnlich schwierigen?
+4. Bringt es etwas, ein Modell höflich zu bitten, ihm zu drohen oder ein Trinkgeld anzubieten?
+5. Ist der Energieverbrauch einer einzelnen Anfrage ein guter Grund, auf KI in der Lehre zu verzichten?
+:::
+
 ## Definition einiger Grundbegriffe {#sec-definitionen}
 
 In diesem Abschnitt definieren wir anfangs **sehr kurz einige Grundbegriffe**.
@@ -189,6 +212,41 @@ Mit den agentischen Werkzeugen kommt in der Praxis eine vierte Entscheidungsfrag
 :::
 :::
 
+### Agenten in der Praxis: Harness, Skills, Werkzeuganschluss und eigene Quellen {#sec-agenten-praxis}
+
+<!-- Entwurf (Claude, 17.10.2026), Woche 3, Arbeitspaket 2.2; Gestaltungsfrage: Wann lohnt es sich, einer KI einen Auftrag statt einer Frage zu geben, und an welchen Stellen muss ein Mensch eingreifen? Belege nach Redaktionsregel: lewis2020, parasuraman2000, johnston2026the (Evidenz zu Letzterem steht ausführlich in Anhang D.1). Freigabe Roman. -->
+
+Die drei Muster aus dem vorigen Abschnitt beschreiben, *was* die KI zur Verfügung hat: ihr Trainingswissen, zusätzlich eigene Texte oder zusätzlich Werkzeuge.
+Im Alltag der Lehre stellt sich die Frage anders: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden?
+Dafür braucht man vier Begriffe, die in den Produktbeschreibungen durcheinandergehen.
+
+Ein **Agent** ist ein Sprachmodell, das einen Auftrag in Schritte zerlegt, diese Schritte mit Werkzeugen abarbeitet und erst am Ende zurückmeldet.
+Der Unterschied zum Chat ist die Strecke, die die KI allein zurücklegt: Im Chat sehen wir jede Antwort nach Sekunden, ein Recherche-Agent arbeitet Minuten, ein automatisierter Ablauf Stunden.
+Das **Harness** ist der Werkzeugkasten, den der Agent dabei trägt (das Wort kommt über das Altfranzösische *harneis*, Ausrüstung, Rüstzeug): Websuche, ein Rechner in Form einer Programmiersprache, Zugriff auf einen Ordner, die Fähigkeit, Dateien zu erzeugen.
+Ohne Harness bleibt „Agent“ ein Etikett auf einem Chatbot.
+Ein **Skill** ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird.
+Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.
+Der **Werkzeuganschluss** schließlich, meist unter dem Kürzel MCP (Model Context Protocol) angeboten, ist die genormte Steckdose, über die ein Agent fremde Dienste erreicht: den Bibliothekskatalog, die Lernplattform, einen Kalender.
+Für Lehrende ist das die Stelle, an der die KI aufhört, ein Textfenster zu sein, und anfängt, in unseren Systemen zu handeln.
+
+Eigene Quellen sind der Sonderfall, der in der Lehre am häufigsten gebraucht wird.
+Das Verfahren dahinter heißt RAG, Retrieval-Augmented Generation, und wurde als Kombination aus einem Suchschritt über eine Dokumentsammlung und einem Schreibschritt des Sprachmodells beschrieben [@lewis2020].
+Praktisch heißt das: Statt dem Modell zu vertrauen, dass es unseren Skripttext aus dem Training kennt, legen wir ihm den Text vor und lassen es nur daraus antworten.
+Die einfache Form ist ein Projekt oder Notebook im Chat-Interface, in das wir Skript, Übungsblätter und Musterlösungen laden; die anspruchsvolle Form ist ein eigener Tutor, der auf einer Dokumentablage sitzt.
+Beide Formen haben denselben Schwachpunkt: Antwortet die KI aus den Quellen oder doch aus dem Training?
+Das lässt sich prüfen, indem man Fragen stellt, deren Antwort in den Quellen bewusst anders lautet als im Allgemeinwissen; diese Prüfidee kehrt in @sec-d-quellen und @sec-d-tutoren wieder.
+
+Was ändert sich mit der Delegation für die Lehre?
+Dass der Übergang vom Chat zum Agenten in Nutzungsdaten messbar ist und nicht nur in Produktankündigungen, zeigt @johnston2026the an einem Coding-Agenten; die Belege und ihre Grenzen stehen in @sec-d-modus.
+Die Konsequenz ist weniger technisch als organisatorisch.
+Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält [@parasuraman2000].
+Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet.
+Bei einer Literaturrecherche sind das drei Stellen: der Quellenkorb, den der Agent durchsuchen darf, der Rechercheplan, bevor er loslegt, und die Stichprobe von Aussagen, die wir gegen das Original halten.
+Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte, und bei einem Tutor, den Studierende ein Semester lang ohne uns benutzen, ist sie am längsten.
+
+Die praktische Umsetzung dieser vier Begriffe steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows.
+Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellenanbindung selbst aufbauen, zeigt @sec-fall-unternehmen.
+
 Das beendet unsere kurze Begriffsbestimmung.
 Ein etwas breiteres Glossar für Anwender finden Sie etwa bei der populärwissenschaftlichen Zeitschrift CIO (Chief Intelligence Officer): <https://www.cio.de/article/3700849/die-wichtigsten-begriffe-im-genai-umfeld.html>.
 
@@ -243,7 +301,7 @@ Bei weniger bekannten Namen gibt das Modell an, die Antwort nicht zu kennen [@li
 
 ## Welches Modell wählen? {#sec-model-choice}
 
-**Was für Sprachmodelle gibt es?** Der Markt ist überschaubarer, als die Flut an Produktnamen vermuten lässt. Eine Handvoll großer KI-Labore bietet jeweils eine Modellfamilie an, die sich in wenige Klassen sortieren lässt (s. @fig-leaderboard): Das **Flaggschiff-Modell** ist die jeweils stärkste Variante für anspruchsvolle Aufgaben. Daneben gibt es günstigere **Mini-Varianten**, die weniger Rechenaufwand benötigen und für einfache Routineaufgaben ausreichen. Die Flaggschiffe sind **Reasoning-Modelle**: Sie durchlaufen vor der Antwort intern mehrere Denkschritte und können so auch komplexe Fragestellungen bearbeiten (s. @sec-capabilities). Schließlich gibt es **offene Modelle**, deren Gewichte frei verfügbar sind, so dass man sie kostenfrei nutzen oder auf eigener Hardware betreiben kann; darunter eines der wenigen europäischen Modelle und die chinesische Konkurrenz [@mollick2025; sowie @vellum2024]. Offene Modelle sind in der Regel etwas schwächer als die Flaggschiffe der großen Labore (s. @sec-capabilities).
+**Was für Sprachmodelle gibt es?** Der Markt ist überschaubarer, als die Flut an Produktnamen vermuten lässt. Eine Handvoll großer KI-Labore bietet jeweils eine Modellfamilie an, die sich in wenige Klassen sortieren lässt (s. @fig-leaderboard): Das **Flaggschiff-Modell** ist die jeweils stärkste Variante für anspruchsvolle Aufgaben. Daneben gibt es günstigere **Mini-Varianten**, die weniger Rechenaufwand benötigen und für einfache Routineaufgaben ausreichen. Die Flaggschiffe sind **Reasoning-Modelle**: Sie durchlaufen vor der Antwort intern mehrere Denkschritte und können so auch komplexe Fragestellungen bearbeiten (s. @sec-capabilities). Schließlich gibt es **offene Modelle**, deren Gewichte frei verfügbar sind, so dass man sie kostenfrei nutzen oder auf eigener Hardware betreiben kann; darunter eines der wenigen europäischen Modelle und die chinesische Konkurrenz [@mollick2025; sowie @vellum2025]. Offene Modelle sind in der Regel etwas schwächer als die Flaggschiffe der großen Labore (s. @sec-capabilities).
 
 Wer einen Blick auf den nächsten Entwicklungsschritt werfen will, dem sei empfohlen, für einen Monat die **agentische Arbeitsumgebung** eines der großen Anbieter zu abonnieren (die teurere Abonnement-Stufe, s. den Kasten unten). Hier lassen sich sehr komplexe Workflows delegieren und z.B. 10 Excel-Dateien für komplexe Fallstudien mit den dazugehörigen Anweisungen, Visualisierungen und Präsentationen in einem Rutsch erstellen [@rogers2026].
 
@@ -252,7 +310,7 @@ Wer einen Blick auf den nächsten Entwicklungsschritt werfen will, dem sei empfo
 **Für Lehrende kostenfrei nutzbar** sind mehrere institutionelle Zugänge. Zentral für deutsche Hochschulen ist der Dienst „Chat-AI“ / Academic Cloud der Gesellschaft für wissenschaftliche Datenverarbeitung Göttingen (GWDG) (https://chat-ai.academiccloud.de/), über den neben einer Reihe offener Modelle auch Flaggschiff-Modelle der kommerziellen Anbieter nutzbar sind.
 Hier kann man sich einfach mit einer Hochschuladresse registrieren und den Dienst nutzen.
 Hochschulen bieten teils einen eigenen KI-Zugang an, die TH Köln etwa einen begrenzten Zugang zu einem kommerziellen Chat-Modell und einzelnen offenen Modellen über das THKI-Lab (https://ki.th-koeln.de/login.php).
-An der TH Köln und weiteren NRW-Hochschulen steht außerdem die Verbundlösung KI:connect bereit, die ähnliche Funktionalitäten bietet (https://kiconnect.pages.rwth-aachen.de/pages/).
+Für Lehrende an Hochschulen in Nordrhein-Westfalen ist **KI:connect.nrw** der Zugang der ersten Wahl (https://chat.kiconnect.nrw/). Das Land hat den Dienst an der RWTH Aachen aufbauen lassen und stellt ihn allen 36 staatlichen Hochschulen bereit; die Anmeldung läuft über den Hochschul-Login, die Nutzung ist für Studium, Lehre und Forschung vorgesehen und für die Nutzenden kostenfrei [@mkw2025kiconnect]. Hinter der Chat-Oberfläche stehen die Flaggschiff-Modelle der großen Anbieter in ihrer jeweils aktuellen Generation (welche das bei Drucklegung waren, steht im Kasten unten), dazu Bild- und Einbettungsmodelle sowie offene Modelle, die seit Mai 2026 auf landeseigenen Rechnern in Aachen und Köln laufen, so dass die Daten das Hochschulnetz nicht verlassen [@rwthitc2026changes; @kiconnect2026inferenz]. Zwei Eigenschaften machen den Dienst für die Vorhaben dieses Buches besonders brauchbar. Erstens lässt sich das Modell je Chat wechseln, so dass man dieselbe Aufgabe mit einem Flaggschiff, einer Mini-Variante und einem offenen Modell vergleichen kann; das ist genau die Übung, die den Unterschied zwischen den Modellklassen erfahrbar macht. Zweitens bietet KI:connect einen **API-Zugang**. Eine API (*Application Programming Interface*) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen: Wer einen eigenen Tutor baut, ein Skript Quizfragen erzeugen lässt oder ein Werkzeug wie VS Code an das Modell anschließt, braucht keinen Chat, sondern einen Schlüssel, mit dem die eigene Anwendung Anfragen schickt. Diese Schlüssel erzeugen Nutzende selbst im Menü „API-Schlüsselverwaltung“; sie laufen über die Lizenz der Hochschule, unterliegen denselben Kontingenten wie die Chat-Oberfläche, und die Schnittstelle ist mit dem Format von OpenAI kompatibel, sodass die meisten Anleitungen und Bibliotheken ohne Anpassung funktionieren [@persike2025apikeys; @rwthitc2026changes]. Ob und für welche Gruppen eine Hochschule die Schlüssel freischaltet, entscheidet sie selbst; wer das Menü nicht sieht, fragt bei der eigenen IT nach. Was sich damit bauen lässt, zeigen @sec-d-quellen (eigene Quellen anbinden) und @sec-d-tutoren (Tutoren bauen und prüfen).
 Bei allen institutionellen Zugängen gilt: Prüfen Sie vor dem Einsatz in der Lehre, welche Modellgeneration dahinter steckt. Ist es eine ältere Generation oder eine Mini-Variante, bekommt man ein ganz falsches Bild von den Fähigkeiten der Modelle und kann auch nicht sinnvoll in der praktischen Nutzung von KI ausbilden.
 
 Weiterhin können Lehrende über die Hochschullizenz Microsoft 365 Copilot herunterladen und dann einen KI-Chat als Desktop-Anwendung nutzen, eine Anwendung, unter deren Haube wiederum Modelle von OpenAI stecken (hier einloggen und einfach herunterladen: https://www.office.com/).
@@ -266,17 +324,19 @@ Nur so erhält man ein Gefühl dafür, was technisch möglich ist und wie „sic
 ::: {.callout-note title="Stand bei Drucklegung, November 2026"}
 Die folgende Übersicht hält fest, welche Modelle und Zugänge bei Drucklegung die im Text beschriebenen Klassen füllten. Sie ist ein historischer Schnappschuss: Die Namen ändern sich, die Klassen bleiben.
 
+<!-- TODO (Roman, Modellkasten): OpenAI-Zeile am 18.10. nach KI:connect-Changelog v1.27.0 (01.10.2026) auf GPT-5.6/GPT-6 gehoben; welche Variante das Flaggschiff ist, bitte prüfen. Google/Anthropic/Meta/DeepSeek/Mistral weiterhin Stand 02/2026 (offener Punkt 5 im Zeitmarker-Protokoll). -->
 | Anbieter | Modellklasse(n) | Typischer Zugang (Chat, API, institutionell) | Hinweis für die Lehre |
-|:---------|:----------------|:---------------------------------------------|:----------------------|
-| OpenAI | Flaggschiff GPT-5.2 (Reasoning); Mini-Varianten; Codex-Variante für Programmierung | Chat-Interface ChatGPT (kostenfrei mit Einschränkungen; Abonnement im Bereich von ca. 20 € monatlich); API; institutionell über Academic Cloud, THKI-Lab und Microsoft 365 Copilot | Sprachmodus und Deep Research in der Bezahlversion; eigene „GPTs“ lassen sich als Tutoren teilen |
+|:----------------|:-----------------------|:-------------------------------|:-------------------------|
+| OpenAI | Flaggschiff aus der Familie GPT-5.6/GPT-6 (Reasoning; Varianten Sol, Terra, Luna bzw. Astra, Sol, Luna); Mini-Varianten; Codex-Variante für Programmierung | Chat-Interface ChatGPT (kostenfrei mit Einschränkungen; Abonnement im Bereich von ca. 20 € monatlich); API; institutionell über Academic Cloud, THKI-Lab und Microsoft 365 Copilot | Sprachmodus und Deep Research in der Bezahlversion; eigene „GPTs“ lassen sich als Tutoren teilen |
 | Google | Flaggschiff Gemini 3 Pro bzw. 3.1 Pro (Reasoning, „Deep Think“); Mini-Varianten | Chat-Interface Gemini; API; NotebookLM; in Google Workspace und Google Colab integriert | Sehr große Kontextfenster (bis zu 1 Mio. Token) für ganze Skripte; NotebookLM erzeugt Podcasts und Folien aus eigenen Quellen |
 | Anthropic | Flaggschiff Claude Opus 4.6; mittlere Variante Claude Sonnet 4.6 | Chat-Interface Claude; API; agentische Arbeitsumgebungen Claude Cowork und Claude Code (Abonnement-Stufe im Bereich von ca. 90 € monatlich) | Artifacts für interaktive Lernspiele; Skills für komplexe Dokumente; Delegation ganzer Workflows |
 | Meta | Offenes Modell Llama 4 | Gewichte frei verfügbar; über Hoster und Hochschuldienste wie Academic Cloud (Auswahl wechselt) | Kostenfrei, aber in der Regel schwächer als die Flaggschiffe |
 | DeepSeek | Offene Modelle (V3.2, R1 als Reasoning-Variante) | Gewichte frei verfügbar; über Hoster und Hochschuldienste | Chinesische Konkurrenz; interessant für den Vergleich kultureller Perspektiven im Output |
 | Mistral | Offene und kommerzielle Modelle (Mistral 3, Medium 3.1) | Chat-Interface und API des Anbieters; Gewichte teils frei verfügbar | Europäischer Anbieter |
-| GWDG und Hochschulen | Wechselnde Auswahl offener und kommerzieller Modelle | Academic Cloud (Registrierung mit Hochschuladresse); THKI-Lab; KI:connect | Vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist |
+| KI:connect.nrw (Land NRW, RWTH Aachen) | Flaggschiffe von OpenAI (GPT-5.6 und GPT-6 seit Oktober 2026) und Google; Mistral, Qwen und gpt-oss als offene Modelle auf Landesinfrastruktur; Bild- und Einbettungsmodelle | Chat-Oberfläche mit Hochschul-Login; OpenAI-kompatible API über selbst erzeugte Schlüssel (Freigabe je Hochschule) | Erste Wahl in NRW; Modellwechsel je Chat; API für eigene Tutoren und Werkzeuge |
+| GWDG und Hochschulen | Wechselnde Auswahl offener und kommerzieller Modelle | Academic Cloud (Registrierung mit Hochschuladresse); THKI-Lab | Vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist |
 
-: Modelle und Zugänge bei Drucklegung. Quellen: Text dieses Kapitels sowie @vellum2024. {#tbl-modellstand}
+: Modelle und Zugänge bei Drucklegung. Quellen: Text dieses Kapitels, @vellum2025 und @rwthitc2026changes. {#tbl-modellstand}
 
 Die lebende Fassung dieser Übersicht wird online semesterweise aktualisiert.
 
@@ -293,7 +353,25 @@ Die lebende Modellübersicht finden Sie online unter <https://th-koln-bartnik.gi
 
 ![Je nach Ziel ein anderer Platz in der Bestenliste](images/script02-10.svg){#fig-leaderboard}
 
-Quelle: @vellum2024, Stand August 2025.
+Quelle: @vellum2025, Stand August 2025.
+
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Der Kurs-Bot steht bereit, aber kaum jemand lernt mit ihm"}
+**Problem ohne KI.** Zwischen den Veranstaltungen bleiben Fragen zum Material liegen, und Lehrende erfahren kaum, woran ihre Studierenden hängen.
+
+**Problem mit KI.** Ein Chatbot über die Kursmaterialien ist schnell gebaut. Ob er das Lernen fördert, entscheidet sich aber nicht an der Technik, sondern an seiner Einbindung in den Kurs.
+
+**Das Dilemma.** Mit „Lecture as Code“ hat Nane Kratzke an der TH Lübeck eine Infrastruktur geschaffen, die inzwischen über 20 Lehrveranstaltungen aller Fachbereiche nutzen. Lehrende legen Folien, Skripte und Aufgaben in einem Verzeichnis ab; ein Bot antwortet daraus per RAG und ist über Moodle erreichbar, im Programmieren ohne fertige Lösungen. Zwei Spannungen bleiben. Datenschutz und Unabhängigkeit sprechen für selbst betriebene offene Modelle, die Antwortqualität vorerst für kommerzielle, weil kleinere offene Modelle beim Erschließen von Zusammenhängen aus dem Material noch zu oft halluzinieren. Und wirksam wird der Bot nach den Erfahrungen in Lübeck nur durch begleiteten Einsatz in der Veranstaltung, etwa kleine Übungseinheiten und gemeinsam durchlaufene Tests, nicht durch das bloße Bereitstellen eines Links [@tobor2026usecases, S. 38].
+
+**Was das für wirksames Lernen heißt.** *Erfahrungsbericht.* Die großen Feldversuche zeigen dasselbe: Wo ein Tutor nur bereitgestellt wird, nutzen ihn wenige, und dann als Antwortmaschine [@liu2026courseintegrated]; erst eine Anleitung zur tutoriellen Nutzung hebt die Prüfungsleistung [@gallegos2026] (@sec-evidenz).
+
+Quelle: @tobor2026usecases, S. 36–39.
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-hfd-blickpunkt.png){width="18%"}
+:::
+::::
+
 
 **Hier kann man vergleichen:** In der LM-Arena kann man verschiedene Modelle ausprobieren und ihre Antwort auf eine bestimmte Frage gegenüberstellen: <https://lmarena.ai/de?mode=side-by-side> (Untermenü: „Arena (side-by-side)“).
 
@@ -488,81 +566,69 @@ Hier müssen wir also teils bewusst Hürden einführen, die die Studierenden zum
 Wie das geht, sehen wir in den nächsten zwei Hauptkapiteln.
 Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellungen mit GenAI Tools finden Sie im Appendix (s. @sec-prompts).
 
-## Wie steht es mit dem Ressourcenverbrauch der Modelle? {#sec-energy}
+<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
+:::: {.callout-note title="Anwendungsbeispiel: Ein Prompt, der in der Vorführung funktioniert, scheitert im Gespräch"}
+**Problem ohne KI.** Die Regeln des aktiven Zuhörens nach Carl Rogers lassen sich in einer Sitzung erklären, aber kaum üben, weil es dafür Gesprächspartner und Rückmeldung braucht.
 
-Durch das starke Wachstum der neuen Technologie, werden wir verstärkt mit den möglichen Effekten von KI auf Ressourcenverbrauch und Umweltbelastung konfrontiert [@spencer2025].
-Auch bei der Nutzung in der Lehre wird dies regelmäßig von Studierenden angesprochen.
-Angesichts von Hype und Desinformation in beiden Richtungen (von „Weltuntergang durch KI-Energiehunger!“ zu „keinerlei Problem“), **lohnt ein Blick auf seriöse Studien**.
-Der folgende Abriss gibt einen Überblick über die Hauptargumente und gibt ein Gefühl für die Komplexität der Modellierung.
+**Problem mit KI.** Ein Chatbot kann das Gegenüber spielen. Ein Prompt, der ihn auf Rogers' Regeln verpflichtet, funktioniert im freundlichen Test und bricht, sobald jemand widerspricht oder heikle Themen anspricht.
 
-**Über welche Größenordnung von Energie reden wir etwa?** Wieviel Energie kostet es also, GenAI zu nutzen?
-Das Problem dabei ist, dass wir uns 'Energie' nur schlecht vorstellen können.
-Wir brauchen Analogien: Nach Schätzungen von 2025 verbraucht ein typischer Prompt etwa soviel Energie wie ca.
-10 Sekunden Netflix-Streaming oder eine typische Google Suche im Jahre 2008 [@elsworth2025; @mollick2025d].
+**Der Lösungsansatz.** Alexander Landfair lässt Studierende ihren Prompt wie ein Spiel testen. Sie schreiben einen Prompt, der das Modell auf Rogers' Regeln verpflichtet, und prüfen ihn zuerst in einem vorhersehbaren Gespräch über einfache Themen: testen, bis es klappt. Dann verhalten sie sich unberechenbar, widersprechen und wechseln zwischen schwierigen Themen: testen, bis es scheitert. Jeden Fehler notieren sie, überarbeiten den Prompt und beginnen von vorn. Den Abschluss bildet eine Diskussion oder ein kurzer Essay mit den Gesprächsprotokollen.
 
-Die gute Nachricht ist, dass die Modelle effizienter werden und der Energieverbrauch pro Output-Token rasant sinkt und dass die Anreize für die großen Anbieter stark darauf ausgerichtet sind, den Energieverbrauch weiter zu senken [@spencer2025].
-Gegenläufig und problematisch ist die stark steigende Nutzung, die z.
-B.
-zur Ausweitung gerade umweltbelastender Energieformen wie Gasturbinen führt [@wittenberg2025a].
+**Was das für wirksames Lernen heißt.** *Unterrichtsentwurf, keine Ergebnisse berichtet.* Wer beschreiben soll, wann das Modell gegen eine Regel verstößt, muss die Regel selbst genau verstanden haben; das Testen ist deshalb zugleich Übung im Fach. Nebenbei lernen die Studierenden, was die Forschung zum Prompting zeigt: Ein Prompt, der einmal funktioniert hat, beweist wenig [@meincke2025].
 
-Solche Vergleiche sind nicht trivial, da etwa bei der Nutzung in Unternehmen auch die Umweltfolgen der bisherigen Alternativen „bepreist“ werden müssen, um einen sinnvollen Vergleich zu erzielen.
-Wie belastet die Lieferkette eines physischen Buchs die Umwelt im Vergleich zu einem E-Book?
-Ein menschlicher Mitarbeiter im physischen Callcenter mit seinem Arbeitsweg, Schreibtisch und Heizbedarf im Vergleich zum KI-Chatbot?
-Unabhängig davon, wie diese Rechnungen ausgehen, sind sie sichtlich komplex.
+[Ablauf und Prompt: @sec-prompt-testen.]{.content-visible when-format="html"}[Ablauf und Prompt: Online-Fassung von Anhang B.]{.content-visible unless-format="html"} Quelle: @landfair2025 (AI Pedagogy Project, metaLAB at Harvard).
 
-Im Folgenden sollen dazu einige Kernaussagen aus Untersuchungen der International Energy Agency (IEA), dem World Economic Forum und des MIT Technology Reviews zusammengefasst werden.
-Basierend auf der Untersuchung des MIT Technology Review von 2025 [@odonnell2025] gliedere ich diesen kurzen Abriss zum Energieverbrauch in vier Teile: Die Modellbildung, die Anfrage (query), die Emissionen und Prognosen für das weitere Wachstum.
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ab-playtesting.png){width="18%"}
+:::
+::::
 
-Modellbildung.
-Daten-Zentren und KI-Nutzung machten 2024 nur wenige Prozent der globalen Energienutzung aus.
-Schätzungen der Energieagentur IEA liegen etwa bei 3–5 %.
-Deutlich höhere Anteile liegen in den Bereichen Gebäude, Industrie und Fahrzeuge [@ritchie2024; @spencer2024].
-Mit Blick auf die Zukunft ist der rasant wachsende Energiebedarf durch Bevölkerungswachstum und wachsenden Wohlstand ärmerer Bevölkerungsgruppen bei weitem ein stärkerer Treiber für Emissionswachstum und Klimawandel [@spencer2024].
-Einige Klimaaktivisten warnen sogar vor „distraction“ - davor, sich durch Modethemen wie den KI Energieverbrauch vom Fokus auf die großen Hebel der Emissionsvermeidung abbringen zu lassen [@masley2025; @ritchie2024a].
-Während der einmalige Aufwand für das Training der Modelle erheblich ist, stellt das schnelle Wachsen der Nutzerzahlen ihn in den Schatten.
-Die Energieaufwände für Anfragen (Inferenz) bedingen damit einen größeren Energieverbrauch als das Training der Modelle [@odonnell2025; @spencer2025].
+## Exkurs: Wie steht es mit dem Ressourcenverbrauch der Modelle? {#sec-energy}
 
-Anfrage.
-Der Energieverbrauch einer einzelnen KI-Textanfrage ist relativ gering.
-Er liegt unter dem Energieverbrauch von wenigen Minuten für eine kleine LED-Lampe.
-Konkret lagen die Schätzungen 2025 zwischen 0,3 Wattstunden (Wh) für ein großes Chat-Modell (GPT-4o) und 0,03 Wh für kleine Modelle [@odonnell2025; @you2025].
+Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen den Polen „Weltuntergang durch KI-Energiehunger“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen.
+Eine einzelne Textanfrage ist billig: Schätzungen von 2025 liegen zwischen 0,3 Wattstunden für ein großes Chat-Modell und 0,03 Wattstunden für kleine Modelle, also etwa so viel wie zehn Sekunden Video-Streaming [@odonnell2025; @you2025; @elsworth2025].
+Teuer sind die komplexen Aufträge: Ein hochwertiges Video von fünf Sekunden kann rund eine Kilowattstunde kosten, so viel wie eine Stunde Mikrowelle, und weil die Nutzerzahlen schneller wachsen als die Effizienz, übersteigt der Energiebedarf der Anfragen inzwischen den des Trainings [@odonnell2025; @spencer2025].
+Rechenzentren und KI machten 2024 nach Schätzungen der IEA nur drei bis fünf Prozent des globalen Energieverbrauchs aus, weit weniger als Gebäude, Industrie und Verkehr [@ritchie2024; @spencer2024]; die Sorge der Analysten gilt der Prognose, nach der sich der Verbrauch der Rechenzentren bis 2030 verdreifachen und KI bis 2028 mehr als zwölf Prozent des US-Strombedarfs beanspruchen könnte, oft aus fossilen Quellen [@odonnell2025; @spencer2025].
+Die Forderung an die Anbieter lautet deshalb Transparenz über ihren Energiebedarf, damit Politik und Nutzer die Kosten abschätzen und steuern können [@odonnell2025].
+Für die Lehre heißt das: Eine Seminarsitzung mit Chat-Nutzung fällt energetisch nicht ins Gewicht; wer Bilder, Videos oder lange Agentenläufe erzeugen lässt, sollte das wissen und gegenüber den Studierenden benennen.
 
-Im Vergleich zu anderen Energieverbrauchen ist das nicht viel.
-Vergleicht man den höheren Wert von 0,3 Wh mit den 12.000 Wattstunden, die ein durchschnittlicher britischer Haushalt pro Tag verbraucht (für US-Haushalte wird die deutlich höhere Zahl von 28.000 Wattstunden pro Tag genannt!), wird schnell klar, dass weniger KI-Nutzung zumindest bei diesen Größenordnungen kein großer Hebel für Energiesparen oder Klimaschutz ist.
-Die oft zitierte Statistik, nach der eine Anfrage bei ChatGPT 10x mehr verbraucht als eine Google Suche vergisst meist zu erwähnen, dass die Basisrate dieser Internetnutzung im Vergleich zu anderen Dingen, in die unser Energieverbrauch fließt, extrem niedrig ist [@ritchie2024a].
+::: {.content-visible when-format="html"}
+Der vollständige Exkurs mit allen Quellen und Rechenbeispielen steht in der Online-Version: [Ressourcenverbrauch der Modelle](energie.qmd).
+:::
 
-Modellgröße ist allerdings ein zentraler Faktor für den Energiebedarf pro Anfrage und hieraus speisen sich plausiblere Sorgen.
-Zwar ist Bildgenerierung i.
-d.
-R.
-weniger energieintensiv als Textgenerierung, da Modelle zur Bildgenerierung oft mit weniger Parametern arbeiten als Textmodelle.
-Aber komplexere Anfragen (etwa mehrstufige lange Reasoning Aufträge) und speziell Video-Generierung benötigen deutlich mehr Energie: Ein hochqualitatives Video von 5 Sekunden kann bis zu 1.000 Wattstunden verbrauchen (0,94 kWh), was etwas mehr als einer Stunde Mikrowellennutzung entspricht – ein deutlicher Unterschied [@odonnell2025].
+::: {.content-visible unless-format="html"}
+Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierten Zahlen steht online unter <https://th-koln-bartnik.github.io/genai4teaching/energie.html>.
 
-Der Anteil größerer Modelle und komplexerer Anfragen wird voraussichtlich deutlich zunehmen, wenn die Modellgrößen weiter ansteigen und komplexere Anfragen, wie Video-Generierung zunehmen.
-Gegenläufig wirkt der starke Anreiz für die Anbieter (und speziell für die kleineren Konkurrenten von OpenAI, die über geringere finanzielle Mittel verfügen), den Energieverbrauch pro Inferenz durch effizientere Chip-Konstruktionen und neue Trainingsansätze zu senken.
-Wie die Analysten der IEA zusammenfassen: „The efficiency of AI-related computer chips has doubled roughly every two-and-a-half to three years, and a modern AI-related computer chip uses 99% less power to perform the same calculations as a model from 2008” [@spencer2024].
+![Exkurs „Ressourcenverbrauch der Modelle", Online-Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/energie.html> aufrufen.](images/qr/qr-energie.png){#fig-qr-energie width="32%" fig-align="center"}
+:::
 
-Insgesamt wird perspektivisch die punktuelle Einzelnutzung durch einzelne Anfragen weniger wichtig werden, als die strukturell bedingte Integration der KI-Technologien in immer mehr digitale Anwendungen, die als Folge des rasanten technologischen Wandels und der hohen Investitionen absehbar ist [@odonnell2025].
+<!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
+::: {.callout-tip title="Kernaussagen"}
+1. Ein Sprachmodell sagt das nächste Wort voraus. Aus Tokens, Embeddings und Attention entsteht Text, der plausibel klingt, aber keine eingebaute Wahrheitsprüfung hat.
+2. Kontext entscheidet über Nutzen: Ein Modell allein antwortet aus dem Trainingswissen, mit RAG bekommt es ein Bücherregal, als Agent einen Werkzeugkoffer. Für die Lehre ist meist das Setup mit eigenem Material der richtige Einstieg.
+3. Halluzinationen sind kein Betriebsunfall, sondern folgen aus der Funktionsweise. Gegenmittel sind Eingrenzung des Inputs, Musterlösungen und systematische Prüfung.
+4. Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne.
+5. Gute Prompts sind präzise, strukturiert, mit Beispielen und iterativ. Höflichkeit, Drohungen und Trinkgeld ändern nichts; wer das Modell wie eine junge Hilfskraft anleitet, kommt weiter.
+6. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.
+:::
 
-Emissionen.
-In diesem Zusammenhang wird der ungünstige Energiemix der neu entstehenden Datenzentren kritisiert: Da KI-Rechenzentren rund um die Uhr laufen und meist in Regionen mit fossilen Energieträgern stehen, ist der durchschnittliche CO₂-Ausstoß ihrer Stromversorgung etwa 48 % höher als der US-Durchschnitt [@odonnell2025].
-Dem gegenüber stehen gegenläufige Effekte wie höhere Effizienz der Steuerung, etwa von Energienetzen [@greene-dewasmes2025a] und dem Ersatz von manuellen menschlichen Aufwänden durch Digitalisierung, etwa durch Reisen für einen Film-Dreh (ohne KI) oder dem Energiebedarf eines menschlichen Call-Centers.
-Das starke Wachstum der Nutzung muss insofern mit politischer Anreizsetzung für emissionslose Energiegewinnung verbunden sein, wenn eine starke Zunahme an Emissionen vermieden werden soll.
-Hierfür gibt etwa die IEA klare Empfehlungen und technische Lösungen sind bekannt.
-Besorgt stimmt die Analysten die Prognose eines starken Wachstums von Datencentern im asiatischen Raum, die meist nicht mit emissionsfreier Energie betrieben werden [@spencer2025].
+<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
+::: {.callout-note title="Lernfragen"}
+**Wiederholen**
 
-Prognose.
-In der Summe sehen viele der Untersuchungen Probleme eher in der prognostizierten zukünftigen Entwicklung als in den bisherigen Energieaufwänden.
-Das starke prognostizierte Wachstum könnte etwa dazu führen, dass KI-Anwendungen bis 2028 mehr als 12 % des US-Strombedarfs ausmachen [@odonnell2025].
+1. Beschreiben Sie in drei Schritten, wie ein Sprachmodell aus einem Prompt eine Antwort erzeugt.
+2. Warum gelten Halluzinationen nicht als Betriebsunfall, und welche drei Gegenmittel nennt das Kapitel?
+3. Welche verbreiteten Prompt-Tricks bringen nichts, und was hilft stattdessen?
 
-## Energieverbrauch und politische Steuerung {#sec-energy-politics}
+**Anwenden**
 
-Die IEA prognostiziert ebenfalls eine Verdreifachung des Energieverbrauchs von Rechenzentren bis 2030, getrieben durch KI.
-Maßnahmen wie Effizienzgewinne und nachhaltige Architektur können diese Entwicklung abbremsen [@spencer2025].
+4. Ein Studierender fragt Sie, warum der Chatbot eine Quelle erfunden hat, die es nicht gibt. Erklären Sie es ihm in drei Sätzen ohne die Wörter „Token“ und „Wahrscheinlichkeit“, dann noch einmal mit.
+5. Nehmen Sie eine typische Aufgabe aus Ihrer Lehre und spielen Sie durch: Was antwortet ein reines Sprachmodell, was ein Modell mit Ihrem Skript als Material, was ein Agent mit Internetzugang? Wo liegt jeweils das Risiko?
 
-Wie der MIT-Bericht hervorhebt, sollte vor diesem Hintergrund der starke und kurzfristig induzierte Ausbau der Infrastruktur politisch durch Anreize zur Emissionsvermeidung gesteuert werden, sodass ein starkes Wachstum der Emissionen durch diesen – wahrscheinlich im Kern unvermeidlichen – technologischen Wandel vermieden wird [@odonnell2025].
+**Beurteilen**
 
-So besteht die Hoffnung, dass positive Effekte auf Emissionen in den Hauptbereichen von CO₂-Emissionen (Gebäude, Industrie, Transport sowie die verbundenen Energienetze) durch höhere Effizienz in Planung und Nutzung genutzt werden können, ohne dass sie durch die wachsenden Kosten von immer komplexeren Inferenz-Anfragen überlagert werden [@greene-dewasmes2025a; @spencer2025].
+6. Welche Aufgabe in Ihrem Fach liegt vermutlich außerhalb der Jagged Frontier? Wie würden Sie das prüfen, bevor Sie Studierende damit arbeiten lassen?
+7. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Bedarf der Infrastruktur wächst stark. Welche Folgerung ziehen Sie daraus für Ihre eigene Nutzung, und welche Entscheidung liegt nicht bei Ihnen?
 
-Die Politik muss diesen Wandel steuern, damit die Ziele der Gesellschaft - und nicht nur der Hersteller der Sprachmodelle - berücksichtigt werden.
-Dazu müssen die Fakten klar sein: Um Kosten und Effekte abschätzen, abfedern und verteilen zu können, fordern die Forscher eine deutlich höhere Transparenz der Energiebedarfe durch die Modellanbieter [@odonnell2025].
+Lösungshinweise: @sec-loesungshinweise.
+:::
