@@ -286,7 +286,7 @@ Wir können insofern mit Sprachmodellen:
 -   Zitationen von einem Foto aus importieren („Scanne das Foto und gib mir die Quellen als Bibtex Code aus. Erkläre mir dann, wie ich ihn importiere“)
 -   Kalendereinträge aus einer Liste in unser Terminprogramm überführen („Erstelle mir aus dieser Liste Einträge im ICS Standard. Erkläre mir dann, wie ich den Code in Google Calendar importiere.“)
 -   Ablaufdiagramme in Mermaid visualisieren und als Grafik speichern („Erstelle mir einen typischen Kaufprozess in Mermaid. Erkläre mir dann, wie ich ihn visualisieren und als Grafik exportieren kann.“)
--   Interaktive Simulationen mit den Claude Artifacts erstellen (s. o.; ein selbst gebautes Beispiel steht in @sec-widget-littles-law)
+-   Interaktive Simulationen mit den Claude Artifacts erstellen (s. o.; selbst gebaute Beispiele stehen in @sec-widget-littles-law und @sec-widget-bullwhip)
 -   Dialogbasiert Grafiken und statistische Analysen in Google Colab erstellen (s. u.)
 -   (Für viele weitere Ideen für solche Hilfsmittel können wir einfach das Sprachmodell fragen.)
 
@@ -351,8 +351,45 @@ Ein Studienbüro erhält im Mittel 40 Anträge pro Woche, im Stapel liegen 120. 
 *Lösung:* W = L / λ = 120 / 40 = 3 Wochen. Die Rechnung gilt, wenn das Büro über die Zeit so viele Anträge abarbeitet, wie eingehen.
 :::
 
-<!-- Schritt 2: Bullwhip-Widget (#sec-widget-bullwhip) hier anschließen.
-     Schritt 3: Kasten „Beispiel aus der Lehrpraxis“ (scm-visuals: 2 von 6 rechneten), Prompt-Übung, Prüfliste, Querverweise. -->
+<!-- Schritt 2 des Konzepts „Simulationen mit Observable JS und Quarto Live“ (2026-10-29).
+     Modell: interactions/models/bullwhip.js · Tests: tests/models.test.mjs · Widget: _ojs/bullwhip.qmd
+     Druckzwilling: scripts/druck-abbildungen.mjs -> images/druck/bullwhip-szenarien.svg -->
+
+#### Beispiel: Den Bullwhip-Effekt zerlegen {#sec-widget-bullwhip}
+
+Eine kleine Bewegung am Griff einer Peitsche wird an der Spitze zum großen Ausschlag. In einer Lieferkette geschieht dasselbe mit den Bestellungen: Sie schwanken umso stärker, je weiter eine Stufe vom Endkunden entfernt ist, obwohl die Kundennachfrage kaum schwankt. @lee1997information nannten das den Bullwhip-Effekt und führten ihn auf vier Ursachen zurück: die laufende Aktualisierung der Prognosen, das Bündeln von Bestellungen, Preisaktionen und das Horten bei Knappheit. Das zweite selbst gebaute Widget greift die erste Ursache heraus und verbindet sie mit zwei Stellgrößen, die jede Disponentin kennt, der Lieferzeit und der Frage, wer welche Daten sieht.
+
+Das Modell hat vier Stufen: Händler, Großhandel, Verteilzentrum und Fabrik. Jede Stufe prognostiziert ihre Nachfrage als gleitenden Mittelwert über die letzten $p$ Perioden und bestellt so viel, dass Bestand und offene Bestellungen die Prognose über die Lieferzeit $L$ decken. Für genau diese Kette haben @chen2000quantifying gezeigt, dass die Bestellungen des Händlers mindestens um den Faktor
+
+$$\frac{\operatorname{Var}(q)}{\operatorname{Var}(D)} \geq 1 + \frac{2L}{p} + \frac{2L^2}{p^2}$$
+
+stärker streuen als die Kundennachfrage $D$. Bei zwei Wochen Lieferzeit und einem Mittelwert über fünf Wochen ist das gut das Doppelte. Die Lieferzeit zählt dabei wie bei @chen1999bullwhip die Bestellperiode mit: Eine Bestellung vom Ende der Woche $t$ ist zu Beginn der Woche $t + L$ da. Ohne geteilte Information multiplizieren sich die Faktoren von Stufe zu Stufe; teilen alle Stufen die Kassendaten des Händlers, addieren sich nur noch die Lieferzeiten. Der Effekt wird dann kleiner, verschwindet aber nicht. Das Widget leitet sein Modell aus diesen Arbeiten ab und übernimmt keinen Code aus dem Paket `bullwhipgame`, das unter der GPL-3 steht.
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab. Spielen Sie dann das Grundszenario durch, verdoppeln Sie die Lieferzeit und schalten Sie schließlich auf geteilte Kassendaten. Die oberen Diagramme zeigen ein Jahr Bestellungen auf gleicher Skala, das untere das Varianzverhältnis jeder Stufe mit dem Wert nach Chen et al. als Strich.
+
+{{< include _ojs/bullwhip.qmd >}}
+:::
+
+::: {.content-visible unless-format="html"}
+![Bullwhip-Effekt in drei Szenarien mit derselben Kundennachfrage. Oben die Bestellungen eines Jahres auf gleicher Skala, unten das Varianzverhältnis jeder Stufe über 2000 Perioden (logarithmisch), der Strich markiert den Wert nach Chen et al. Verdoppelt sich die Lieferzeit, steigt die Varianz der Fabrikbestellungen vom 41- auf das 692-Fache der Kundennachfrage; geteilte Kassendaten senken sie auf das 9,7-Fache. Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#sec-widget-bullwhip> aufrufen.](images/druck/bullwhip-szenarien.svg){#fig-bullwhip width="100%" fig-pos="H"}
+
+![](images/qr/qr-bullwhip.png){width="18%"}
+:::
+
+::: {.callout-note title="Warum die Peitsche knallt"}
+Jede Bestellung besteht aus zwei Teilen: dem, was gerade verkauft wurde, und der Änderung der Bestellgrenze. Steigt die Prognose um ein Stück pro Woche, muss die Bestellgrenze um $L$ Stück steigen, weil sie $L$ Wochen abdeckt. Die Prognoseänderung kommt also mit der Lieferzeit vervielfacht in der Bestellung an. Die nächste Stufe hält diese schon verstärkte Bestellung für Nachfrage und verstärkt sie erneut. Geteilte Kassendaten unterbrechen die zweite Verstärkung, die erste bleibt.
+:::
+
+Das Modell zeigt die operativen Ursachen, nicht die menschlichen. In den Experimenten von @croson2006behavioral entstand der Bullwhip-Effekt auch dann, als Prognose, Bündelung und Preisaktionen ausgeschaltet waren, weil die Teilnehmenden die bereits bestellte, noch unterwegs befindliche Ware zu wenig berücksichtigten. @sterman1989modeling hatte dieses Verhalten im Beer Game als Verankern und Anpassen beschrieben. Wer das Widget allein zeigt, legt deshalb eine Fehlvorstellung nahe: dass bessere Prognoseverfahren das Problem lösten. In der Lehre passt es besser in die Nachbesprechung eines Beer Game, in der Studierende ihre eigenen Bestellkurven neben die Kurven des Modells legen. Simulationsspiele wirken als Ergänzung anderer Lehrformen stärker denn als alleinige Unterweisung [@sitzmann2011metaanalytic].
+
+::: {.callout-tip title="Probieren Sie mal" collapse="true"}
+Ein Händler bestellt bei drei Wochen Lieferzeit und prognostiziert mit dem Mittelwert der letzten sechs Wochen. Um welchen Faktor streuen seine Bestellungen mindestens stärker als die Nachfrage? Und wie viele Wochen muss er bei vier Wochen Lieferzeit mitteln, damit der Faktor unter 1,5 fällt?
+
+*Lösung:* 1 + 2·3/6 + 2·9/36 = 2,5; die Standardabweichung ist damit gut das 1,6-Fache. Bei L = 4 fällt der Faktor erst ab p = 20 Wochen unter 1,5 (1,48). Ein so langes Fenster reagiert aber träge auf echte Trendwechsel; die Dämpfung hat ihren Preis.
+:::
+
+<!-- Schritt 3: Kasten „Beispiel aus der Lehrpraxis“ (scm-visuals: 2 von 6 rechneten), Prompt-Übung, Prüfliste, Querverweise. -->
 
 ## KI als Tutor {#sec-tutor}
 

@@ -99,3 +99,98 @@ test("Little's Law: Langzeitmittel trifft die M/M/1-Formel L = ρ/(1−ρ)", () 
   const r = simulate({ lambda: 12, service: 3, fenster: 2000, seed: 3, punkte: 1 });
   assert.ok(Math.abs(r.ende.L / 1.5 - 1) < 0.1, `L = ${r.ende.L}`);
 });
+
+// ---------------------------------------------------------------------------
+// Bullwhip-Modell (Schritt 2). Prüfwerte nach Chen et al. (1999, 2000).
+import * as BW from "../interactions/models/bullwhip.js";
+
+const relNah = (a, b, tol) => Math.abs(a / b - 1) < tol;
+
+test("Bullwhip: Handrechnung am Nachfragesprung 100 → 120 (L = 2, p = 4)", () => {
+  // Händler: q = D + (L/p)(D_t − D_{t−p}) = 120 + 0,5 · 20 = 130 für p Perioden, dann 120.
+  // Großhandel: 130 + 0,5 · 30 = 145, dann 120 + 0,5 · (120 − 130) = 115, dann 120.
+  const { bestellungen } = BW.lieferkette({ nachfrage: BW.nachfrageSprung({ perioden: 22 }), L: 2, p: 4 });
+  assert.deepEqual(bestellungen[0].slice(8, 16), [100, 100, 130, 130, 130, 130, 120, 120]);
+  assert.deepEqual(bestellungen[1].slice(8, 20), [100, 100, 145, 145, 145, 145, 115, 115, 115, 115, 120, 120]);
+  assert.deepEqual(bestellungen[2].slice(10, 12), [167.5, 167.5]);
+  assert.deepEqual(bestellungen[3].slice(10, 15), [201.25, 201.25, 201.25, 201.25, 66.25]);
+  // Ohne Sprung bestellt jede Stufe genau die Nachfrage.
+  const ruhig = BW.lieferkette({ nachfrage: Array(30).fill(100), L: 3, p: 6 });
+  assert.ok(ruhig.bestellungen.every(r => r.every(q => q === 100)));
+});
+
+test("Bullwhip: Händler trifft die Chen-Formel 1 + 2L/p + 2L²/p² (auf 4 %)", () => {
+  for (const [L, p] of [[1, 10], [2, 5], [4, 5], [6, 20]]) {
+    const r = BW.simulate({ L, p, seed: 3, lang: 40000 });
+    assert.ok(relNah(r.verhaeltnis[0].wert, BW.chenSchranke(L, p), 0.04), `L ${L}, p ${p}: ${r.verhaeltnis[0].wert}`);
+  }
+});
+
+test("Bullwhip: geteilte Kassendaten treffen 1 + 2kL/p + 2(kL)²/p² auf jeder Stufe (auf 4 %)", () => {
+  for (const [L, p] of [[2, 5], [1, 10]]) {
+    const r = BW.simulate({ L, p, info: "geteilt", seed: 4, lang: 40000 });
+    for (const v of r.verhaeltnis) {
+      assert.ok(relNah(v.wert, BW.schranke(L, p, v.k, "geteilt"), 0.04), `L ${L}, p ${p}, Stufe ${v.k}: ${v.wert}`);
+    }
+  }
+});
+
+test("Bullwhip: getrennt steigt das Verhältnis stromaufwärts und liegt nicht unter der Produktschranke", () => {
+  for (const seed of [1, 2, 71]) {
+    const r = BW.simulate({ L: 2, p: 5, seed, lang: 20000 });
+    const w = r.verhaeltnis.map(v => v.wert);
+    for (let k = 1; k < 4; k++) assert.ok(w[k] > w[k - 1], `seed ${seed}: ${w}`);
+    r.verhaeltnis.forEach(v => assert.ok(v.wert >= 0.97 * v.schranke, `seed ${seed}, Stufe ${v.k}: ${v.wert} < ${v.schranke}`));
+  }
+});
+
+test("Bullwhip: geteilte Kassendaten dämpfen, beseitigen den Effekt aber nicht", () => {
+  const a = BW.simulate({ L: 2, p: 5, info: "getrennt", seed: 71 }).verhaeltnis;
+  const b = BW.simulate({ L: 2, p: 5, info: "geteilt", seed: 71 }).verhaeltnis;
+  assert.ok(relNah(a[0].wert, b[0].wert, 1e-12), "Händler hat in beiden Modi dieselben Daten");
+  for (let k = 1; k < 4; k++) {
+    assert.ok(b[k].wert < a[k].wert, `Stufe ${k + 1}`);
+    assert.ok(b[k].wert > 1, `Stufe ${k + 1} bleibt verstärkend`);
+  }
+});
+
+test("Bullwhip: Lieferzeit und Prognosefenster wirken in die erwartete Richtung", () => {
+  const fabrik = o => BW.simulate({ p: 5, seed: 9, ...o }).verhaeltnis[3].wert;
+  assert.ok(fabrik({ L: 4 }) > fabrik({ L: 2 }), "längere Lieferzeit verstärkt");
+  assert.ok(fabrik({ L: 2, p: 15 }) < fabrik({ L: 2, p: 5 }), "längeres Prognosefenster dämpft");
+});
+
+test("Bullwhip: Sicherheitsfaktor z > 0 erhöht die Schwankung (Schranke gilt dann als untere Grenze)", () => {
+  const r = BW.simulate({ L: 2, p: 5, z: 2, seed: 3, lang: 20000 });
+  assert.ok(r.verhaeltnis[0].wert > BW.chenSchranke(2, 5));
+});
+
+test("Bullwhip: ohne negative Bestellungen gibt es keine, mit ihnen bei langer Lieferzeit schon", () => {
+  const an = BW.simulate({ L: 4, p: 5, negativ: true, seed: 71 });
+  const aus = BW.simulate({ L: 4, p: 5, negativ: false, seed: 71 });
+  assert.ok(an.negativeBestellungen > 0 && an.negImJahr > 0);
+  assert.equal(aus.negativeBestellungen, 0);
+  assert.ok(aus.verlauf.every(d => d.menge >= 0));
+  assert.ok(aus.verhaeltnis[3].wert < an.verhaeltnis[3].wert, "Rücksendungen verstärken die Fabrikschwankung");
+});
+
+test("Bullwhip: gleicher Startwert, gleiches Ergebnis; Parameter ändern den Verlauf", () => {
+  const p = { L: 2, p: 5, seed: 71 };
+  assert.deepEqual(BW.simulate(p), BW.simulate(p));
+  assert.notDeepEqual(BW.simulate(p).verlauf, BW.simulate({ ...p, seed: 72 }).verlauf);
+  const fabrikJahr = r => r.verlauf.filter(d => d.stufe === "Fabrik").map(d => d.menge);
+  assert.notDeepEqual(fabrikJahr(BW.simulate(p)), fabrikJahr(BW.simulate({ ...p, L: 4 })));
+  // Die Kundennachfrage hängt nur vom Startwert ab, nicht von L, p oder dem Modus.
+  const kunde = r => r.verlauf.filter(d => d.stufe === "Kunde").map(d => d.menge);
+  assert.deepEqual(kunde(BW.simulate(p)), kunde(BW.simulate({ ...p, L: 5, p: 12, info: "geteilt" })));
+});
+
+test("Bullwhip: Grenzfälle und Eingabeprüfung", () => {
+  const r = BW.simulate({ L: 2, p: 5, schwankung: 0, seed: 1 });
+  assert.ok(r.verlauf.every(d => d.menge === 100), "ohne Schwankung bestellt jede Stufe 100");
+  assert.ok(r.verhaeltnis.every(v => v.wert === null));
+  assert.throws(() => BW.simulate({ L: 0, p: 5 }));
+  assert.throws(() => BW.simulate({ L: 2, p: 2.5 }));
+  assert.throws(() => BW.simulate({ L: 2, p: 5, info: "zentral" }));
+  assert.ok(BW.SZENARIEN.every(s => s.seed === BW.SZENARIEN[0].seed), "alle Szenarien mit derselben Kundennachfrage");
+});

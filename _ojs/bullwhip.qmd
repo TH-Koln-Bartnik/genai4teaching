@@ -1,0 +1,178 @@
+<!-- Bullwhip-Widget (Observable JS). Eingebunden in kapitel04.qmd, Abschnitt
+     @sec-widget-bullwhip, nur im HTML-Format. Modell: interactions/models/bullwhip.js,
+     Tests: tests/models.test.mjs, Druckzwilling: scripts/druck-abbildungen.mjs.
+     Gestaltung: nutzt die Klassen .ll-widget, .ll-zahlen usw. aus _ojs/littles-law.qmd,
+     das im selben Kapitel vorher eingebunden ist; hier stehen nur die Ergänzungen.
+     Alle OJS-Namen beginnen mit bw, weil alle OJS-Zellen einer Seite einen gemeinsamen
+     Namensraum haben und das Little's-Law-Widget auf derselben Seite steht. -->
+
+```{=html}
+<style>
+.bw-widget .bw-zeile { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; }
+.bw-widget .ll-zahlen b small { font-size: .8rem; font-weight: normal; color: var(--muted); }
+</style>
+```
+
+::: {.ll-widget .bw-widget}
+
+```{ojs}
+//| echo: false
+import {simulate as bwSimulate, SZENARIEN as BW_SZENARIEN, ANNAHMEN as BW_ANNAHMEN, STUFEN as BW_STUFEN}
+  from "./interactions/models/bullwhip.js"
+```
+
+```{ojs}
+//| echo: false
+viewof bwSz = Inputs.radio(BW_SZENARIEN, {label: "Szenario", format: d => d.name, value: BW_SZENARIEN[0]})
+```
+
+```{ojs}
+//| echo: false
+html`<p class="ll-frage">Ihre Vorhersage: Die Kundennachfrage schwankt um etwa ±10 %. Wie stark schwanken die Bestellungen der Fabrik?</p>`
+```
+
+```{ojs}
+//| echo: false
+viewof bwTipp = Inputs.radio(["kaum stärker", "etwa zwei- bis dreimal so stark", "mehr als dreimal so stark"], {label: "Vorhersage"})
+```
+
+```{ojs}
+//| echo: false
+viewof bwL = Inputs.range([1, 6], {value: bwSz.L, step: 1, label: "Lieferzeit L (Perioden)"})
+```
+
+```{ojs}
+//| echo: false
+viewof bwP = Inputs.range([2, 20], {value: bwSz.p, step: 1, label: "Prognosefenster p (Perioden)"})
+```
+
+```{ojs}
+//| echo: false
+viewof bwSchwankung = Inputs.range([0, 30], {value: bwSz.schwankung, step: 1,
+  label: "Schwankung der Kundennachfrage (Stück, bei Mittel 100)"})
+```
+
+```{ojs}
+//| echo: false
+viewof bwInfo = Inputs.radio(new Map([["jede Stufe sieht nur ihren Kunden", "getrennt"], ["geteilte Kassendaten", "geteilt"]]),
+  {label: "Information", value: bwSz.info})
+```
+
+```{ojs}
+//| echo: false
+viewof bwNegativ = Inputs.toggle({label: "Negative Bestellungen (Rücksendungen) zulassen", value: bwSz.negativ})
+```
+
+```{ojs}
+//| echo: false
+viewof bwWurf = Inputs.button("Neu würfeln")
+```
+
+```{ojs}
+//| echo: false
+bwSeed = bwSz.seed + 1000 * bwWurf
+bwRes = bwSimulate({L: bwL, p: bwP, schwankung: bwSchwankung, info: bwInfo, negativ: bwNegativ, seed: bwSeed})
+bwFmt = (x, d = 1) => x === null || x === undefined || !isFinite(x) ? "–"
+  : x.toLocaleString("de-DE", {maximumFractionDigits: d, minimumFractionDigits: d})
+bwFabrik = bwRes.verhaeltnis[3]
+bwFaktor = bwFabrik.wert === null ? null : Math.sqrt(bwFabrik.wert)
+```
+
+```{ojs}
+//| echo: false
+html`<div class="ll-hint">Startwert ${bwSeed}${bwWurf > 0 ? ` (neu gewürfelt; die Druckfassung nutzt ${bwSz.seed})` : " (wie in der Druckfassung)"}.
+Untere Schranke nach Chen et al. für den Händler: 1 + 2L/p + 2L²/p² = <b>${bwFmt(bwRes.verhaeltnis[0].schranke, 2)}</b>.</div>`
+```
+
+```{ojs}
+//| echo: false
+{
+  if (bwTipp === null) return html`<div class="ll-platzhalter">Geben Sie zuerst oben Ihre Vorhersage ab; dann erscheinen Diagramme und Zahlen.</div>`;
+  const reihen = ["Kunde", ...BW_STUFEN];
+  const namen = new Map([["Kunde", "Kundennachfrage"], ...BW_STUFEN.map(s => [s, `Bestellungen ${s}`])]);
+  return Plot.plot({
+    width, height: 5 * 92, marginLeft: 48, marginRight: 12, marginTop: 8,
+    ariaLabel: "Fünf Liniendiagramme übereinander: Kundennachfrage und Bestellungen der vier Stufen über 52 Perioden, gleiche Skala",
+    ariaDescription: `Die Kundennachfrage schwankt mit einer Standardabweichung von ${bwSchwankung} Stück um 100. Die Bestellungen der Fabrik schwanken ${bwFmt(bwFaktor)}-mal so stark.`,
+    fy: {domain: reihen, axis: null, padding: 0.12},
+    x: {label: "Periode (z. B. Woche)", domain: [1, 52]},
+    y: {label: "Stück", grid: true, nice: true, ticks: 3},
+    marks: [
+      Plot.ruleY([100], {stroke: "currentColor", strokeOpacity: 0.35, strokeDasharray: "2 3"}),
+      Plot.ruleY([0], {stroke: "currentColor", strokeOpacity: 0.6}),
+      Plot.lineY(bwRes.verlauf, {x: "t", y: "menge", fy: "stufe",
+        stroke: d => d.stufe === "Kunde" ? "currentColor" : "var(--red)", strokeWidth: 1.6}),
+      Plot.text(reihen, {fy: d => d, text: d => namen.get(d), frameAnchor: "top-left", dx: 4, dy: 2,
+        fontWeight: 600, fill: "currentColor", stroke: "var(--bs-body-bg, white)", strokeWidth: 3, paintOrder: "stroke"})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  if (bwTipp === null) return html``;
+  if (bwFabrik.wert === null) return html`<div class="ll-feedback">Ohne Schwankung der Kundennachfrage bestellt jede Stufe genau 100 Stück; ein Varianzverhältnis gibt es dann nicht.</div>`;
+  const daten = bwRes.verhaeltnis;
+  const oben = Math.max(...daten.map(d => Math.max(d.wert, d.schranke))) * 2;
+  return Plot.plot({
+    width, height: 240, marginLeft: 48, marginRight: 12,
+    ariaLabel: "Balkendiagramm: Varianzverhältnis der Bestellungen zur Kundennachfrage je Stufe, logarithmisch, mit Schranke nach Chen et al. als Strich",
+    ariaDescription: daten.map(d => `${d.stufe}: ${bwFmt(d.wert)}-fache Varianz, Schranke ${bwFmt(d.schranke)}`).join("; "),
+    x: {label: null, domain: BW_STUFEN, padding: 0.3},
+    y: {type: "log", domain: [1, oben], label: "Varianz der Bestellungen ÷ Varianz der Nachfrage (log.)", grid: true},
+    marks: [
+      Plot.barY(daten, {x: "stufe", y1: 1, y2: "wert", fill: "var(--red)", fillOpacity: 0.75}),
+      Plot.tickY(daten, {x: "stufe", y: "schranke", stroke: "currentColor", strokeWidth: 2.5, strokeDasharray: "5 3"}),
+      Plot.text(daten, {x: "stufe", y: "wert", text: d => bwFmt(d.wert), dy: -8, fill: "currentColor"}),
+      Plot.ruleY([1])
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+bwTipp === null || bwFabrik.wert === null ? html`` : html`<p class="ll-hint">Balken: gemessenes Varianzverhältnis über 2000 Perioden derselben Zufallsfolge. Gestrichelter Strich: Wert nach Chen et al. (${bwInfo === "geteilt" ? "bei geteilten Kassendaten exakt" : "ohne geteilte Daten eine untere Schranke"}). 1 heißt: keine Verstärkung.</p>`
+```
+
+```{ojs}
+//| echo: false
+bwTipp === null || bwFabrik.wert === null ? html`` : html`<div class="ll-zahlen" aria-live="polite">
+  ${bwRes.verhaeltnis.map(v => html`<div>${v.stufe} schwankt<b>${bwFmt(Math.sqrt(v.wert))}-mal so stark <small>(Varianz ${bwFmt(v.wert)}-fach)</small></b></div>`)}
+  <div>negative Bestellungen im gezeigten Jahr<b>${bwRes.negImJahr}${bwNegativ ? "" : " (ausgeschaltet)"}</b></div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+{
+  if (bwTipp === null || bwFaktor === null) return html``;
+  const klasse = bwFaktor < 1.5 ? 0 : bwFaktor <= 3 ? 1 : 2;
+  const getippt = ["kaum stärker", "etwa zwei- bis dreimal so stark", "mehr als dreimal so stark"].indexOf(bwTipp);
+  const trifft = klasse === getippt;
+  return html`<div class="${trifft ? "ll-ok" : "ll-feedback"}" aria-live="polite">
+    <b>Bei diesen Einstellungen</b> schwanken die Bestellungen der Fabrik ${bwFmt(bwFaktor)}-mal so stark wie die Kundennachfrage.
+    Ihre Vorhersage ${trifft ? "trifft zu" : "trifft hier nicht zu"}.
+    ${bwInfo === "getrennt"
+      ? "Jede Stufe sieht nur die schon verstärkten Bestellungen ihres Kunden und verstärkt sie erneut. Schalten Sie auf geteilte Kassendaten und vergleichen Sie."
+      : "Mit geteilten Kassendaten prognostizieren alle Stufen aus der Kundennachfrage. Die Verstärkung wächst dann nur noch mit der Summe der Lieferzeiten, verschwindet aber nicht."}
+  </div>`;
+}
+```
+
+```{ojs}
+//| echo: false
+bwTipp !== null && bwRes.negImJahr > 0 ? html`<div class="ll-warn" role="status"><b>Negative Bestellungen.</b>
+  In diesem Jahr ${bwRes.negImJahr === 1 ? "liegt eine Bestellung" : `liegen ${bwRes.negImJahr} Bestellungen`} unter null, das wären Rücksendungen.
+  Das Rechenmodell von Chen et al. lässt sie zu; schalten Sie sie aus, um eine realistischere Kette zu sehen.</div>` : html``
+```
+
+```{ojs}
+//| echo: false
+html`<details><summary>Annahmen des Modells</summary><ul>${BW_ANNAHMEN.map(a => html`<li>${a}</li>`)}</ul>
+<p class="ll-hint">Modellcode: <a href="interactions/models/bullwhip.js">bullwhip.js</a> (reine Funktion ohne Oberfläche, mit Tests). Abgeleitet aus Chen et al. (1999, 2000), ohne Code aus dem Paket bullwhipgame.</p></details>`
+```
+
+:::

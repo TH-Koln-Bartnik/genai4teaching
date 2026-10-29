@@ -9,14 +9,15 @@
 // Ausführen im Repo-Wurzelordner (einmalig vorher: npm install):
 //   npm run druck
 // Ergebnis:
-//   images/druck/littles-law-szenarien.svg
-//   images/qr/qr-littles-law.png
+//   images/druck/littles-law-szenarien.svg, images/druck/bullwhip-szenarien.svg
+//   images/qr/qr-littles-law.png, images/qr/qr-bullwhip.png
 
 import { writeFileSync, mkdirSync } from "node:fs";
 import { JSDOM } from "jsdom";
 import * as Plot from "@observablehq/plot";
 import QRCode from "qrcode";
 import { simulate, SZENARIEN } from "../interactions/models/littles-law.js";
+import * as BW from "../interactions/models/bullwhip.js";
 
 const BASIS = "https://th-koln-bartnik.github.io/genai4teaching/";
 const { document } = new JSDOM("").window;
@@ -93,5 +94,82 @@ async function qr(datei, url) {
   console.log(`${datei} -> ${url}`);
 }
 
+// Bullwhip: oben die Bestellungen eines Jahres (gleiche Skala in allen drei Feldern),
+// unten das Varianzverhältnis je Stufe über 2000 Perioden, logarithmisch, mit dem Wert
+// nach Chen et al. als Strich.
+function bullwhip() {
+  const B = 148, H1 = 150, H2 = 118, GAP = 3, LEG = 22;
+  const ergebnisse = BW.SZENARIEN.map(sz => BW.simulate(sz));
+  const gezeigt = ["Kunde", "Händler", "Fabrik"];
+  const alle = ergebnisse.flatMap(r => r.verlauf.filter(d => gezeigt.includes(d.stufe)).map(d => d.menge));
+  const yDom = [Math.min(0, ...alle), Math.max(...alle)];
+  const vMax = Math.max(...ergebnisse.flatMap(r => r.verhaeltnis.map(v => Math.max(v.wert, v.schranke))));
+  const zahl = d => (d < 0 ? "\u2212" : "") + Math.abs(d).toLocaleString("de-DE");
+  const kurz = { "Händler": "Hän.", "Großhandel": "Groß.", "Verteilzentrum": "Vert.", "Fabrik": "Fab." };
+  const stil = {
+    Kunde: { stroke: "black", strokeWidth: 0.9 },
+    "Händler": { stroke: "#555", strokeWidth: 1.1, strokeDasharray: "3 2" },
+    Fabrik: { stroke: "black", strokeWidth: 1.5 }
+  };
+  const teile = ergebnisse.map((r, i) => {
+    const sz = BW.SZENARIEN[i];
+    const oben = Plot.plot({
+      document, width: B, height: H1,
+      marginLeft: 34, marginRight: 6, marginTop: 40, marginBottom: 18,
+      style: { fontFamily: SCHRIFT, fontSize: "9px", background: "white", color: "black" },
+      x: { label: null, ticks: [1, 26, 52], domain: [1, 52] },
+      y: { label: null, grid: true, domain: yDom, nice: true, ticks: 4, tickFormat: zahl },
+      marks: [
+        Plot.ruleY([0]),
+        ...gezeigt.map(st => Plot.lineY(r.verlauf.filter(d => d.stufe === st), { x: "t", y: "menge", ...stil[st] })),
+        Plot.text([sz.name], { frameAnchor: "top-left", dx: -26, dy: -34, fontWeight: "bold", fontSize: 10 }),
+        Plot.text([`L = ${sz.L}, p = ${sz.p}, ${sz.info === "geteilt" ? "Kassendaten geteilt" : "jede Stufe für sich"}`],
+          { frameAnchor: "top-left", dx: -26, dy: -21 })
+      ]
+    });
+    const unten = Plot.plot({
+      document, width: B, height: H2,
+      marginLeft: 34, marginRight: 6, marginTop: 14, marginBottom: 20,
+      style: { fontFamily: SCHRIFT, fontSize: "9px", background: "white", color: "black" },
+      x: { label: null, domain: BW.STUFEN, tickFormat: d => kurz[d], padding: 0.25 },
+      y: { type: "log", domain: [1, vMax * 1.8], label: null, grid: true, ticks: 3, tickFormat: zahl },
+      marks: [
+        Plot.barY(r.verhaeltnis, { x: "stufe", y1: 1, y2: "wert", fill: "#9a9a9a" }),
+        Plot.tickY(r.verhaeltnis, { x: "stufe", y: "schranke", stroke: "black", strokeWidth: 1.6 }),
+        Plot.text(r.verhaeltnis, { x: "stufe", y: "wert", text: d => de(d.wert, d.wert < 10 ? 1 : 0), dy: -6, fontSize: 8 }),
+        Plot.ruleY([1])
+      ]
+    });
+    return { oben: oben.outerHTML, unten: unten.outerHTML };
+  });
+  const breite = 3 * B + 2 * GAP;
+  let inhalt = teile.map((t, i) =>
+    t.oben.replace("<svg", `<svg x="${i * (B + GAP)}" y="0"`) + "\n" +
+    t.unten.replace("<svg", `<svg x="${i * (B + GAP)}" y="${H1}"`)).join("\n");
+  const y = H1 + H2 + 12;
+  inhalt += `
+  <g font-family="${SCHRIFT}" font-size="9" transform="translate(4, ${y})">
+    <line x1="0" x2="20" y1="0" y2="0" stroke="black" stroke-width="0.9"/><text x="24" y="3">Kundennachfrage</text>
+    <line x1="100" x2="120" y1="0" y2="0" stroke="#555" stroke-width="1.1" stroke-dasharray="3 2"/><text x="124" y="3">Händler</text>
+    <line x1="170" x2="190" y1="0" y2="0" stroke="black" stroke-width="1.5"/><text x="194" y="3">Fabrik</text>
+    <rect x="236" y="-4" width="10" height="8" fill="#9a9a9a"/><text x="250" y="3">Varianz ÷ Nachfrage</text>
+    <line x1="340" x2="352" y1="0" y2="0" stroke="black" stroke-width="1.6"/><text x="356" y="3">Chen et al.</text>
+  </g>`;
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<!-- Erzeugt von scripts/druck-abbildungen.mjs aus interactions/models/bullwhip.js; nicht von Hand bearbeiten. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="${breite}" height="${H1 + H2 + LEG}" viewBox="0 0 ${breite} ${H1 + H2 + LEG}">
+<rect width="100%" height="100%" fill="white"/>
+${inhalt}
+</svg>
+`;
+  mkdirSync("images/druck", { recursive: true });
+  writeFileSync("images/druck/bullwhip-szenarien.svg", svg);
+  for (const [i, r] of ergebnisse.entries()) {
+    console.log(`${BW.SZENARIEN[i].id}: ` + r.verhaeltnis.map(v => `${v.stufe} ${v.wert.toFixed(1)} (Chen ${v.schranke.toFixed(1)})`).join(", ") + `; negativ im Jahr ${r.negImJahr}`);
+  }
+}
+
 littlesLaw();
+bullwhip();
 await qr("images/qr/qr-littles-law.png", BASIS + "kapitel04.html#sec-widget-littles-law");
+await qr("images/qr/qr-bullwhip.png", BASIS + "kapitel04.html#sec-widget-bullwhip");
