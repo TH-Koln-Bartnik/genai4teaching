@@ -199,7 +199,6 @@ Nutzt das Sprachmodell nur sein "Standard-Wissen" (LLM only), oder werden "Werkz
 
 Mit den agentischen Werkzeugen kommt in der Praxis eine vierte Entscheidungsfrage hinzu [@mollick2025e]: **Hat mein Agent ein Harness?** Ohne Harness bleibt „Agent“ oft ein Etikett; mit Harness kann das Modell tatsächlich recherchieren, rechnen, Dateien erzeugen und Zwischenschritte nachvollziehbar machen. Für Lehraufgaben bewährt sich daher ein Workflow, der erst eigenes Material als Kontext nutzt (RAG/Notebook-Ansatz), dann für belastbare Quellen ein Research-Harness (z. B. „Deep Research“) einsetzt und die Ergebnisse als Artefakte exportiert (Quiz, Aufgabenblatt, Folien) – bevor Sie didaktisch zuspitzen.
 
-
 ::: {.callout-tip title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?"}
 ::: {.content-visible when-format="html"}
 <iframe src="interactions/llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
@@ -226,6 +225,23 @@ Das **Harness** ist der Werkzeugkasten, den der Agent dabei trägt (das Wort kom
 Ohne Harness bleibt „Agent“ ein Etikett auf einem Chatbot.
 Ein **Skill** ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird.
 Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.
+
+<!-- Interaktion „Skill-Karte“ (Konzept 7 der Agenten-Animationen, 29.10.2026). Lehrmodell, keine Messung.
+     Datei: interactions/skill-karte.html · Druckzwilling: Playwright-Aufnahme von #druck -> images/druck/skill-karte-qr.png (QR-Code rechts unten) -->
+
+Was ein Skill im Alltag leistet, lässt sich in Minuten ausdrücken. Eine Lehrende lässt vier Wochen lang Feedback auf die Berichte von sechs Projektteams schreiben. In der einen Reihe erklärt sie der KI den Zusammenhang jede Woche neu, in der anderen schreibt sie ihn einmal auf eine Skill-Karte und trägt jede gelernte Regel dort nach.
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Wochen.
+
+<iframe src="interactions/skill-karte.html" width="100%" height="1100px" frameborder="0" title="Animation: Vier Wochen Feedback, improvisiert und mit Skill-Karte"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Einmal aufschreiben, oft verwenden. Oben wird der Zusammenhang jede Woche neu eingegeben, unten steht er auf einer Skill-Karte. Die Karte kostet in Woche 1 vier Minuten mehr, liegt ab Woche 2 vorn und verhindert, dass eine vergessene Regel die alte Panne zurückbringt (Lehrmodell, keine Messung). Die interaktive Fassung mit Vorhersage und einer fehlerhaften Karte: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/skill-karte.html> aufrufen.](images/druck/skill-karte-qr.png){#fig-skill-karte width="100%" fig-pos="htbp"}
+:::
+
+Im Modell kostet die improvisierte Reihe nach vier Wochen 38 Minuten, die Reihe mit Karte 21, und nur oben kehrt ein schon behobener Fehler zurück, weil die Regel „keine Noten“ in Woche 4 vergessen wurde. Der Gewinn wächst, sobald die Karte den Schreibtisch verlässt: Kolleginnen und Kollegen, die sie übernehmen, beginnen mit allen Regeln, die in vier Wochen gelernt wurden. Die Produktion kennt dieses Prinzip als Standardarbeit, bei der jede Tätigkeit nach Inhalt, Reihenfolge, Zeit und Ergebnis festgelegt ist, damit jede Verbesserung auf einem bekannten Stand aufsetzt [@spear1999]. Ein Skill ist Standardarbeit für den Agenten. Technisch ist er ein Ordner mit einer Textdatei, von der der Agent zunächst nur Name und Kurzbeschreibung liest; den Rest lädt er erst, wenn die Aufgabe dazu passt [@zhang2025skills]. In den Nutzungsdaten eines verbreiteten Coding-Agenten verwenden 26,6 % der Nutzenden solche Skills [@johnston2026the]. Die Kehrseite zeigt der letzte Schritt der Animation: Eine Karte verbreitet ihren Fehler ebenso vollständig wie ihre Verbesserungen. Wer einen Skill teilt, lässt ihn deshalb vorher von einer zweiten Person lesen.
 Der **Werkzeuganschluss** schließlich, meist unter dem Kürzel MCP (Model Context Protocol) angeboten, ist die genormte Steckdose, über die ein Agent fremde Dienste erreicht: den Bibliothekskatalog, die Lernplattform, einen Kalender.
 Für Lehrende ist das die Stelle, an der die KI aufhört, ein Textfenster zu sein, und anfängt, in unseren Systemen zu handeln.
 
@@ -243,6 +259,24 @@ Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, 
 Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet.
 Bei einer Literaturrecherche sind das drei Stellen: der Quellenkorb, den der Agent durchsuchen darf, der Rechercheplan, bevor er loslegt, und die Stichprobe von Aussagen, die wir gegen das Original halten.
 Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte, und bei einem Tutor, den Studierende ein Semester lang ohne uns benutzen, ist sie am längsten.
+
+<!-- Interaktion „Agenten-Engpass“ (Konzept 6 der Agenten-Animationen, Fassung Swimlanes vom 29.10.2026).
+     Eine vereinfachte Neufassung (Leitkugel) ist im Konzept-Chat vorgeschlagen und wartet auf drei Entscheidungen.
+     Datei: interactions/agenten-engpass.html · Druckzwilling: #druck -> images/druck/agenten-engpass-qr.png (QR-Code rechts unten) -->
+
+Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen. Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Die Nutzungsdaten zeigen, wie verschieden weit Organisationen auf diesem Weg sind: Bei den Organisationskunden des Coding-Agenten arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst arbeiten nur 10,7 % mit einem einzigen Arbeitsstrang, und 28,6 % steuern fünf oder mehr Agenten gleichzeitig [@johnston2026the]. Das folgende Modell zeigt einen Vormittag von 120 Minuten: Ein Auftrag kostet den Menschen zwei Minuten, der Agent arbeitet zwanzig, das Prüfen kostet vier.
+
+::: {.content-visible when-format="html"}
+Spielen Sie die Szene ab und verändern Sie dann die Zahl der Agenten und die Prüfzeit.
+
+<iframe src="interactions/agenten-engpass.html" width="100%" height="760px" frameborder="0" title="Animation: Ein Mensch, ein Agent oder fünf Agenten an einem Vormittag"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Mehr Agenten machen den Menschen zum Engpass. Oben arbeitet ein Mensch mit einem Agenten wie im Chat, unten mit fünf Agenten parallel. Schwarz: Auftrag geben, schraffiert: Ergebnis prüfen, grau: Agent arbeitet. Nach 120 Minuten stehen 13 statt 4 geprüfte Ergebnisse, der Mensch ist aber zu 70 statt 22 % ausgelastet (Dauern angenommen, keine Messwerte). Die interaktive Fassung mit Schiebereglern: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-engpass.html> aufrufen.](images/druck/agenten-engpass-qr.png){#fig-agenten-engpass width="100%" fig-pos="htbp"}
+:::
+
+Fünf Agenten liefern gut dreimal so viele geprüfte Ergebnisse wie einer, aber ab Minute 28 warten fertige Ergebnisse auf den Menschen, und die Agenten stehen die Hälfte der Zeit still. Das ist die Logik jeder Warteschlange: Der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station, und hier ist das die prüfende Person. Wer die Prüfzeit im Modell von vier auf acht Minuten erhöht, sieht den Stapel schneller wachsen als den Ertrag. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen können. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
 
 Die praktische Umsetzung dieser vier Begriffe steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows.
 Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellenanbindung selbst aufbauen, zeigt @sec-fall-unternehmen.
@@ -372,7 +406,6 @@ Quelle: @tobor2026usecases, S. 36–39.
 :::
 ::::
 
-
 **Hier kann man vergleichen:** In der LM-Arena kann man verschiedene Modelle ausprobieren und ihre Antwort auf eine bestimmte Frage gegenüberstellen: <https://lmarena.ai/de?mode=side-by-side> (Untermenü: „Arena (side-by-side)“).
 
 ## Was können die Modelle – und was nicht? {#sec-capabilities}
@@ -399,7 +432,21 @@ Für folgende Anwendungsfälle sind starke Sprachmodelle gut nutzbar [@handa2025
 -   KI-gestützte Suche (mit kritischer Prüfung natürlich)
 
 Die Fähigkeiten der Modelle wachsen rasant und damit werden die Aufgaben, die man an sie delegieren kann komplexer.
-Die Länge der Aufgaben, die KI Sprachmodelle relativ genau erledigen können, verdoppelt sich seit 2019 etwa alle 7 Monate [@kwa2025].
+Ein anschauliches Maß dafür ist der **Zeithorizont**: die Dauer, die Fachleute für eine Aufgabe brauchen, die ein Modell in der Hälfte der Fälle löst [@kwa2025].
+Er stieg von rund 4 Minuten bei GPT-4 (März 2023) auf rund 17 Stunden bei einer frühen Fassung von Claude Mythos Preview (April 2026) und verdoppelte sich seit 2023 etwa alle 129 Tage, also gut alle vier Monate [@metr2026].
+Den letzten Wert ordnet METR selbst als unsicher ein, weil die Testaufgaben über 16 Stunden nicht mehr für eine verlässliche Messung reichen; die Fähigkeiten sind ihrem Maßstab entwachsen.
+
+<!-- Interaktion „Zeithorizont“ (Mollick-Paket, 29.10.2026). Daten aus der Ursprungsquelle: METR Time Horizon 1.1,
+     benchmark_results_1_1.yaml (Stand 8.5.2026), nachgerechnet; CSV in data/metr-time-horizon-1-1.csv.
+     Ersetzt die frühere Abbildung images/script02-05.svg (Sekundärquelle lovely2025). -->
+
+::: {.content-visible when-format="html"}
+<iframe src="interactions/ki-entwicklung.html?zeige=zeithorizont" width="100%" height="840px" frameborder="0" title="Diagramm: Zeithorizont der KI-Modelle 2019 bis 2026 nach METR"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![KI-Agenten bewältigen immer längere Aufgaben: 50-%-Zeithorizont der Modelle 2019–2026 auf logarithmischer Achse, mit 95-%-Intervallen und Trend ab 2023 (gestrichelt). Links stehen Lehraufgaben ähnlicher Dauer zur Orientierung (eigene Zuordnung). Über 16 Stunden ist die Messung nicht mehr verlässlich. Daten: METR (2026), Stand 8. Mai 2026. Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-entwicklung.html?zeige=zeithorizont> aufrufen.](images/druck/ki-zeithorizont-qr.png){#fig-performance width="100%" fig-pos="htbp"}
+:::
 Auch die Bewertung von Forschungsarbeiten im Rahmen des Peer-Reviews wird zunehmend teil-automatisiert, etwa durch die automatische Prüfung von Quellen oder Code und Teilbewertungen durch Dienste wie Veracity oder Paper Wizard [@lovely2025; @naddaf2025].
 
 **Ist das ein Mensch, oder ein Bot?** Eine Studie von 2025 zeigt, dass Sprachmodelle uns bei dieser Frage **erfolgreich täuschen können** und so den Turing Test bestehen, da sie in einer sozialen Interaktion Menschen erfolgreich imitieren können [@jones2025].
@@ -423,6 +470,24 @@ Zusammengenommen bedeuten diese Skalierungsgesetze, dass KI-Systeme **durch höh
 Ökonomisch relevant ist hier vor allem, dass die **Grenzkosten der KI-Nutzung sehr niedrig** bleiben, sobald ein großes Modell einmal trainiert ist: Ist das Modell erstellt, kann es millionenfach eingesetzt werden, was **Skaleneffekte in der Verbreitung** ermöglicht.
 Somit schafft das Scaling Law die Grundlage dafür, dass **hochleistungsfähige KI als allgemein verfügbares Gut** in Wirtschaft und Bildung eingesetzt werden kann.
 Durch diese Eigenschaft ermöglicht KI eine schnelle und kosteneffiziente Skalierung personalisierter und adaptiver Lernangebote [@mollick2025].
+
+Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
+Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 [@emberson2026].
+Ein Tutor, der 150 Studierenden ein Semester lang je 20 Fragen pro Woche beantwortet, kostete auf dieser Rechengrundlage anfangs rund 12.500 US-Dollar und im Juli 2026 rund 17 US-Dollar.
+Das ist nur eine Größenordnung, denn ein Tutorgespräch ist länger als eine Testfrage, aber sie verschiebt die Frage von „Können wir uns das leisten?“ zu „Wer prüft, was der Tutor sagt?“.
+
+<!-- Interaktion „Kosten“ (Mollick-Paket, 29.10.2026). Daten aus der Ursprungsquelle: Epoch AI, Emberson & Roodman (2026), Abb. 2,
+     Repo droodman/inference-cost (output/slides/Figure 2.csv); CSV in data/epoch-gpqa-kosten-75.csv. Lizenz des Repos noch prüfen. -->
+
+::: {.content-visible when-format="html"}
+Im interaktiven Diagramm lässt sich die Rechnung für den eigenen Kurs anpassen.
+
+<iframe src="interactions/ki-entwicklung.html?zeige=kosten" width="100%" height="760px" frameborder="0" title="Diagramm: Kosten je GPQA-Frage bei 75 % Genauigkeit 2025 bis 2026 nach Epoch AI"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Expertenwissen wird 725-mal billiger: niedrigste Kosten je Frage (API-Preise, logarithmische Achse), mit denen ein Modell 75 % des GPQA Diamond richtig beantwortet, Januar 2025 bis Juli 2026. Daten: Emberson & Roodman (2026), Epoch AI. Interaktive Fassung mit Kostenrechner für den eigenen Kurs: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-entwicklung.html?zeige=kosten> aufrufen.](images/druck/ki-kosten-qr.png){#fig-ki-kosten width="100%" fig-pos="htbp"}
+:::
 Dieses exponentielle Wachstum unterscheidet KI grundlegend von bisherigen technologischen Entwicklungen, bei denen Verbesserungen oft linear verliefen.
 
 Die großen Anbieter haben in kurzer Folge **vier Funktionsklassen** eingeführt, die den Einsatz von KI in der Hochschullehre deutlich erweitern: Integrierte **Bildgenerierung** erlaubt fotorealistische Visualisierungen, was z. B. in der technischen Bildung oder bei Designprojekten didaktisch genutzt werden kann.
@@ -430,8 +495,6 @@ Die großen Anbieter haben in kurzer Folge **vier Funktionsklassen** eingeführt
 **Research-Harnesses** („Deep Research“) erlauben KI-gestützte Rechercheprozesse, die Studierende bei komplexen Projektarbeiten oder der Literatursichtung unterstützen.
 Und kostengünstigere **Mini-Varianten der Reasoning-Modelle** erleichtern den Zugang zu leistungsfähigen KI-Anwendungen auch in Bildungseinrichtungen.
 Den Anfang machte OpenAI im ersten Quartal 2025; vergleichbare Funktionen gehören seither zum Standardumfang der großen Chat-Interfaces (s. die Beispiele in @sec-einleitung).
-
-![Die Länge der Aufgaben, die KI relativ genau erledigen kann, verdoppelt sich seit 2019 etwa alle 7 Monate.](images/script02-05.svg){#fig-performance}. Quelle: [@lovely2025, basierend auf @kwa2025]
 
 Es lassen sich nach dieser Studie **zwei Kooperationsmodelle zwischen Mensch und LLM** unterscheiden, um die Technologiegrenze optimal auszunutzen [@dellacqua2023]: Der **Centaur-Ansatz** teilt die Aufgabe, indem der Mensch der KI die Teilprobleme überlässt, die innerhalb der Frontier liegen, und sich selbst auf den Rest konzentriert.
 Der **Cyborg-Ansatz** integriert die KI tiefer, indem der Mensch kontinuierlich mit der KI interagiert und Feedback-Schleifen nutzt.

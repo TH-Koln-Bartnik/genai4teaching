@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wie schnell sich KI entwickelt: Zeithorizont und Kosten</title>
+<style>
+.viz-root{color-scheme:light;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--wash:rgba(11,11,11,0.035)}
+@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--wash:rgba(255,255,255,0.04)}}
+*{box-sizing:border-box}body{margin:0}
+.viz-root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--plane);color:var(--text-primary);padding:16px 12px 24px;line-height:1.45}
+main{max-width:920px;margin:0 auto}
+section.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:18px 20px 14px;margin:0 0 20px}
+h2{font-size:1.1rem;margin:0 0 2px}
+.sub{color:var(--text-secondary);font-size:.88rem;margin:0 0 10px}
+.src{color:var(--muted);font-size:.75rem;margin:8px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 8px;font-size:.85rem}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:.8rem;border:0;background:transparent;color:var(--text-secondary);padding:4px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
+.chart{position:relative}
+svg text{font-family:inherit}
+.tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.lab{fill:var(--text-primary);font-size:12px;font-weight:600}
+.exl{font-size:11.5px}.mlab{fill:var(--text-secondary);font-size:11px}
+.lab2{fill:var(--text-secondary);font-size:11px}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:6px 9px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;display:none;z-index:2}
+.tip b{display:block}.tip span{color:var(--text-secondary)}
+details{margin-top:6px;font-size:.8rem}summary{cursor:pointer;color:var(--muted)}
+table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;padding:3px 6px;border-bottom:1px solid var(--grid)}td.num{text-align:right;font-variant-numeric:tabular-nums}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:8px}.stat{border:1px solid var(--border);border-radius:10px;padding:8px 12px}.stat .k{font-size:.75rem;color:var(--text-secondary)}.stat .v{font-size:1.3rem;font-weight:650;font-variant-numeric:tabular-nums}input[type=number]{width:70px;font:inherit;padding:2px 6px;background:var(--surface-1);color:var(--text-primary);border:1px solid var(--border);border-radius:6px}.controls label{display:flex;gap:6px;align-items:center;color:var(--text-secondary)}input[type=range]{width:200px}
+.playbtn{font:inherit;font-size:.8rem;border:1px solid var(--border);background:var(--text-primary);color:var(--surface-1);border-radius:8px;padding:4px 12px;cursor:pointer}.now{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-top:6px;font-size:.9rem;min-height:1.6em}.now .d{color:var(--muted);font-variant-numeric:tabular-nums}.now .m{font-weight:650}.now .ex{background:var(--wash);border:1px solid var(--border);border-radius:999px;padding:1px 10px}
+footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
+/* Auswahl über ?zeige=zeithorizont|kosten; Druckansicht über #druck */
+.aus{display:none !important}
+.druck .controls,.druck .now,.druck details,.druck .calc,.druck footer,.druck h2,.druck .sub,.druck .src{display:none !important}
+.druck .viz-root{background:#fff;padding:4px}.druck section.card{border:0;padding:4px;margin:0}
+</style>
+</head>
+<body>
+<div class="viz-root"><main>
+
+<section class="card" id="k-zeithorizont">
+<h2>KI-Agenten bewältigen immer längere Aufgaben</h2>
+<p class="sub">Aufgabendauer für Menschen, die ein Modell in der Hälfte der Fälle löst</p>
+<div class="controls">
+ <button id="play" class="playbtn" aria-label="Zeitlich aufbauen">▶ Abspielen</button>
+ <input type="range" id="tidx" min="0" max="25" step="1" value="25" aria-label="Zeitpunkt">
+ <div class="seg" role="group" aria-label="Achse"><button id="s-log" aria-pressed="true">log</button><button id="s-lin" aria-pressed="false">linear</button></div>
+</div>
+<div class="chart" id="c1"><div class="tip" id="tip1"></div></div>
+<div class="now" id="now1" aria-live="polite"></div>
+<p class="src">Daten: METR (2026), Time Horizon 1.1, 50-%-Horizont mit 95-%-Intervall; Trend ab 2023: Verdopplung alle 129 Tage. Beispiele links: eigene Zuordnung.</p>
+<details><summary>Datentabelle</summary><table id="t1"><thead><tr><th>Modell</th><th>Veröffentlicht</th><th class="num">Horizont</th><th class="num">95-%-Intervall</th></tr></thead><tbody></tbody></table></details>
+</section>
+
+<section class="card" id="k-kosten">
+<h2>Expertenwissen wird 725-mal billiger</h2>
+<p class="sub">Niedrigste Kosten pro Frage für 75 % richtige Antworten im GPQA Diamond (Naturwissenschaft auf Promotionsniveau)</p>
+<div class="chart" id="c2"><div class="tip" id="tip2"></div></div>
+<div class="controls" style="margin-top:6px">
+ <label>Studierende <input type="number" id="n1" value="150" min="1"></label>
+ <label>Fragen/Woche <input type="number" id="n2" value="20" min="0"></label>
+ <label>Wochen <input type="number" id="n3" value="14" min="1"></label>
+ <label>Zeitpunkt <input type="range" id="tsel" min="0" max="7" step="1" value="7"> <strong id="tsv"></strong></label>
+</div>
+<div class="calc" aria-live="polite">
+ <div class="stat"><div class="k">Fragen im Semester</div><div class="v" id="q">–</div></div>
+ <div class="stat"><div class="k">mit o3, Jan. 2025</div><div class="v" id="c-then">–</div></div>
+ <div class="stat"><div class="k" id="c-now-k">gewählter Zeitpunkt</div><div class="v" id="c-now">–</div></div>
+</div>
+<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Nur Größenordnung: Tutor-Chats sind länger als eine GPQA-Frage.</p>
+<details><summary>Datentabelle</summary><table id="t2"><thead><tr><th>Modell</th><th>Datum</th><th class="num">Genauigkeit</th><th class="num">Kosten/Frage</th></tr></thead><tbody></tbody></table></details>
+</section>
+
+<footer>
+<p>Emberson, L., &amp; Roodman, D. (2026, 22. September). <em>The plunging price of thought</em>. Epoch AI. https://epoch.ai/publications/the-plunging-price-of-thought · Daten: https://github.com/droodman/inference-cost</p>
+<p>METR. (2026). <em>Time horizon of frontier AI models</em> (Time Horizon 1.1, Stand 8. Mai 2026). https://metr.org/time-horizons/ · Daten: https://metr.org/assets/benchmark_results_1_1.yaml</p>
+<p>Datenstand: METR 8. Mai 2026; Epoch AI Juli 2026. Die Daten liegen als CSV im Ordner <code>data/</code> des Buch-Repositorys.</p>
+</footer>
+</main></div>
+<script>
+// Auswahl und Druckansicht vor dem Zeichnen setzen, damit die Diagramme die richtige Breite messen
+(function(){const z=new URLSearchParams(location.search).get('zeige');
+  if(z==='zeithorizont')document.getElementById('k-kosten').classList.add('aus');
+  if(z==='kosten')document.getElementById('k-zeithorizont').classList.add('aus');
+  if(location.hash==='#druck')document.documentElement.classList.add('druck');})();
+const METR=[{"n": "GPT-2", "d": "2019-02-14", "s": true, "v": 0.05, "lo": 0.01, "hi": 0.14}, {"n": "GPT-3 (davinci-002)", "d": "2020-05-28", "s": true, "v": 0.14, "lo": 0.09, "hi": 0.22}, {"n": "GPT-3.5", "d": "2022-03-15", "s": true, "v": 0.6, "lo": 0.26, "hi": 1.12}, {"n": "GPT-4", "d": "2023-03-14", "s": true, "v": 3.99, "lo": 1.93, "hi": 8.0}, {"n": "GPT-4 (Nov 2023)", "d": "2023-11-06", "s": true, "v": 4.04, "lo": 1.87, "hi": 8.44}, {"n": "Claude 3 Opus", "d": "2024-03-04", "s": false, "v": 3.95, "lo": 1.71, "hi": 8.76}, {"n": "GPT-4 Turbo", "d": "2024-04-09", "s": false, "v": 3.73, "lo": 1.98, "hi": 6.74}, {"n": "GPT-4o", "d": "2024-05-13", "s": true, "v": 6.99, "lo": 4.0, "hi": 12.91}, {"n": "Claude 3.5 Sonnet", "d": "2024-06-20", "s": true, "v": 11.4, "lo": 5.49, "hi": 22.38}, {"n": "o1-preview", "d": "2024-09-12", "s": true, "v": 20.33, "lo": 11.72, "hi": 33.38}, {"n": "Claude 3.5 Sonnet (neu)", "d": "2024-10-22", "s": true, "v": 20.52, "lo": 10.14, "hi": 40.82}, {"n": "o1", "d": "2024-12-05", "s": true, "v": 38.83, "lo": 21.16, "hi": 64.95}, {"n": "Claude 3.7 Sonnet", "d": "2025-02-24", "s": true, "v": 60.39, "lo": 33.01, "hi": 104.23}, {"n": "o3", "d": "2025-04-16", "s": true, "v": 119.73, "lo": 74.62, "hi": 190.94}, {"n": "Claude Opus 4", "d": "2025-05-22", "s": false, "v": 100.37, "lo": 59.99, "hi": 163.45}, {"n": "Claude Opus 4.1", "d": "2025-08-05", "s": false, "v": 100.47, "lo": 59.27, "hi": 159.45}, {"n": "GPT-5", "d": "2025-08-07", "s": true, "v": 203.01, "lo": 112.64, "hi": 405.55}, {"n": "Gemini 3 Pro", "d": "2025-11-18", "s": true, "v": 224.33, "lo": 139.57, "hi": 379.24}, {"n": "GPT-5.1-Codex-Max", "d": "2025-11-19", "s": false, "v": 223.71, "lo": 134.31, "hi": 396.21}, {"n": "Claude Opus 4.5", "d": "2025-11-24", "s": true, "v": 292.99, "lo": 161.72, "hi": 623.7}, {"n": "GPT-5.2", "d": "2025-12-11", "s": true, "v": 352.25, "lo": 198.07, "hi": 815.18}, {"n": "Claude Opus 4.6", "d": "2026-02-05", "s": true, "v": 718.81, "lo": 316.69, "hi": 3633.79}, {"n": "GPT-5.3-Codex", "d": "2026-02-05", "s": false, "v": 349.53, "lo": 194.91, "hi": 816.35}, {"n": "Gemini 3.1 Pro", "d": "2026-02-19", "s": false, "v": 384.15, "lo": 233.5, "hi": 694.75}, {"n": "GPT-5.4", "d": "2026-03-05", "s": false, "v": 341.74, "lo": 186.58, "hi": 768.78}, {"n": "Claude Mythos Preview (früh)", "d": "2026-04-07", "s": true, "v": 1044.78, "lo": 508.88, "hi": 3304.26}];
+const EPOCH=[{"n": "o3 (high)", "d": "2025-01-31", "c": 29.8906, "a": 75.8}, {"n": "Gemini 2.5 Pro (Jun 2025)", "d": "2025-03-25", "c": 8.9116, "a": 80.4}, {"n": "Gemini 2.5 Pro (Jun 2025)", "d": "2025-06-05", "c": 1.2932, "a": 77.8}, {"n": "DeepSeek-V3.2", "d": "2025-12-01", "c": 0.8821, "a": 77.7}, {"n": "Qwen3.5 397B-A17B", "d": "2026-02-13", "c": 0.7102, "a": 79.8}, {"n": "Qwen 3.5 Flash (hosted 35B-A3B)", "d": "2026-02-25", "c": 0.2181, "a": 76.2}, {"n": "MiniMax-M3", "d": "2026-06-01", "c": 0.1213, "a": 75.1}, {"n": "GPT-5.6 Luna (low)", "d": "2026-07-09", "c": 0.0412, "a": 75.3}];
+
+(function(){
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+const css=v=>getComputedStyle(document.querySelector('.viz-root')).getPropertyValue(v).trim();
+const DAY=864e5, D=s=>new Date(s+'T00:00:00');
+const fD=d=>d.toLocaleDateString('de-DE',{month:'short',year:'numeric'});
+const fMin=m=>m<1?Math.round(m*60)+' s':m<60?m.toLocaleString('de-DE',{maximumFractionDigits:m<10?1:0})+' min':(m/60).toLocaleString('de-DE',{maximumFractionDigits:1})+' h';
+function tipAt(tip,svg,W,H,x,y,html){const r=svg.getBoundingClientRect();tip.innerHTML=html;tip.style.display='block';
+  const tx=x*r.width/W, ty=y*r.height/H; tip.style.left=Math.max(0,Math.min(tx+10,r.width-tip.offsetWidth-4))+'px'; tip.style.top=Math.max(0,ty-tip.offsetHeight-8)+'px';}
+
+/* ---- Diagramm 1: METR ---- */
+let scale='log';
+const M=METR.map(r=>({...r,t:D(r.d)}));
+// Trend: OLS auf log2(Horizont) der jeweils besten Modelle ab 2023 bis 16 h (= METRs Verfahren, ergibt 128,7 Tage)
+const S=M.filter(r=>r.s&&r.d>='2023-01-01'&&r.v<=960);
+const xs0=S.map(r=>(r.t-D('2023-01-01'))/DAY), ys0=S.map(r=>Math.log2(r.v));
+const mx=xs0.reduce((a,b)=>a+b)/xs0.length,my=ys0.reduce((a,b)=>a+b)/ys0.length;
+const slope=xs0.reduce((s,x,i)=>s+(x-mx)*(ys0[i]-my),0)/xs0.reduce((s,x)=>s+(x-mx)**2,0), icpt=my-slope*mx;
+const trend=t=>Math.pow(2,icpt+slope*(t-D('2023-01-01'))/DAY);
+// Beispiele aus dem Lehralltag an METRs Achsenmarken (4 s, 36 s, 6 min, 1 h, 4 h, 16 h)
+const EX=[[4/60,'4 s','Faktenfrage beantworten'],[36/60,'36 s','Kurze E-Mail an Studierende'],[6,'6 min','Feedback zu einer Übungsabgabe'],[60,'1 h','Übungsblatt mit Lösungen'],[240,'4 h','Vorlesungseinheit mit Folien'],[960,'16 h','Fallstudie mit Teaching Note']];
+const LABELED=['GPT-2','GPT-3 (davinci-002)','GPT-3.5','GPT-4','GPT-4o','o1','o3','GPT-5','Claude Opus 4.6','Claude Mythos Preview (früh)'];
+const short=n=>n.replace(' (davinci-002)','').replace(' (früh)','').replace('Claude Mythos Preview','Mythos Preview');
+let idx=M.length-1, timer=null;
+const tI=document.getElementById('tidx'); tI.max=M.length-1; tI.value=idx;
+tI.addEventListener('input',()=>{stop();idx=+tI.value;draw1();});
+const pb=document.getElementById('play');
+function stop(){if(timer){clearInterval(timer);timer=null;pb.textContent='▶ Abspielen';}}
+pb.onclick=()=>{if(timer){stop();return;}if(idx>=M.length-1)idx=0;pb.textContent='❚❚ Pause';
+  timer=setInterval(()=>{idx++;tI.value=idx;draw1();if(idx>=M.length-1)stop();},650);draw1();};
+document.getElementById('s-log').onclick=()=>{scale='log';draw1();};
+document.getElementById('s-lin').onclick=()=>{scale='lin';draw1();};
+document.querySelector('#t1 tbody').innerHTML=M.map(r=>`<tr><td>${r.n}</td><td>${r.d}</td><td class="num">${fMin(r.v)}</td><td class="num">${fMin(r.lo)} – ${fMin(r.hi)}</td></tr>`).join('');
+function draw1(){
+  const box=document.getElementById('c1');box.querySelectorAll('svg').forEach(s=>s.remove());
+  document.getElementById('s-log').setAttribute('aria-pressed',scale==='log');document.getElementById('s-lin').setAttribute('aria-pressed',scale==='lin');
+  const narrow=(box.clientWidth||880)<600;
+  const W=box.clientWidth||880,H=Math.max(300,Math.min(420,W*0.5)),m={l:44,r:narrow?14:96,t:10,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':'METR-Zeithorizonte 2019 bis 2026: von 3 Sekunden (GPT-2) bis 17 Stunden (Claude Mythos Preview)'});box.prepend(svg);
+  const X0=D('2019-01-01'),X1=D('2026-07-01'),xs=t=>m.l+(t-X0)/(X1-X0)*iw;
+  const LMIN=Math.log10(2/60),LMAX=Math.log10(40*60),LINMAX=20*60;
+  const ys=scale==='log'?v=>m.t+ih-(Math.log10(v)-LMIN)/(LMAX-LMIN)*ih:v=>m.t+ih-Math.min(v,LINMAX)/LINMAX*ih;
+  const cp=el('clipPath',{id:'cp1'},el('defs',{},svg));el('rect',{x:m.l,y:m.t,width:iw,height:ih},cp);
+  // schraffierte Zone über 16 h
+  const pat=el('pattern',{id:'hatch',width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},svg.querySelector('defs'));
+  el('line',{x1:0,y1:0,x2:0,y2:6,stroke:css('--axis'),'stroke-width':1.2},pat);
+  const y16=ys(960);el('rect',{x:m.l,y:m.t,width:iw,height:Math.max(0,y16-m.t),fill:'url(#hatch)',opacity:.8},svg);
+  el('text',{x:m.l+iw/2,y:m.t+Math.max(12,(y16-m.t)/2+4),'text-anchor':'middle',class:'lab2'},svg).textContent='über 16 h nicht mehr verlässlich messbar';
+  // Achsenmarken mit Lehrbeispielen
+  const ticks=scale==='log'?EX:[[0,'0',''],[240,'4 h','Vorlesungseinheit mit Folien'],[480,'8 h',''],[960,'16 h','Fallstudie mit Teaching Note']];
+  const best=Math.max(...M.slice(0,idx+1).filter(r=>r.s).map(r=>r.v));
+  ticks.forEach(([v,l,ex])=>{const y=ys(v);el('line',{x1:m.l,x2:m.l+iw,y1:y,y2:y,stroke:css('--grid')},svg);
+    el('text',{x:m.l-6,y:y+4,'text-anchor':'end',class:'tick'},svg).textContent=l;
+    if(ex&&!narrow){const reached=best>=v;const t=el('text',{x:m.l+6,y:y-4,class:'exl'},svg);t.textContent=ex;t.setAttribute('fill',reached?css('--text-primary'):css('--muted'));t.setAttribute('font-weight',reached?'600':'400');}});
+  for(let yr=2019;yr<=2026;yr+=narrow?2:1){el('text',{x:xs(D(yr+'-01-01')),y:H-8,'text-anchor':'middle',class:'tick'},svg).textContent=yr;}
+  el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css('--axis')},svg);
+  const g=el('g',{'clip-path':'url(#cp1)'},svg);
+  const shown=M.slice(0,idx+1), cur=M[idx];
+  // Trend bis zum aktuellen Zeitpunkt
+  const t0=D('2023-03-14'),t1=new Date(Math.min(+cur.t,+D('2026-04-07')));
+  if(cur.t>=t0){let dp='';for(let t=+t0;t<=+t1;t+=14*DAY)dp+=(dp?'L':'M')+xs(new Date(t)).toFixed(1)+','+ys(trend(new Date(t))).toFixed(1);
+    el('path',{d:dp,fill:'none',stroke:css('--series-1'),'stroke-width':1.5,'stroke-dasharray':'5 4',opacity:.6},g);}
+  const tip=document.getElementById('tip1');
+  shown.forEach(r=>{el('line',{x1:xs(r.t),x2:xs(r.t),y1:ys(r.lo),y2:ys(r.hi),stroke:css('--muted'),'stroke-width':1,opacity:.45},g);});
+  shown.slice().sort((a,b)=>a.s-b.s).forEach(r=>{const x=xs(r.t),y=ys(r.v),over=r.v>960;
+    el('circle',{cx:x,cy:y,r:r===cur?7:(r.s?5:4),fill:over?css('--muted'):css('--series-1'),'fill-opacity':r.s?1:.3,stroke:r===cur?css('--text-primary'):css('--surface-1'),'stroke-width':r===cur?2:1.5},g);
+    const h=el('circle',{cx:x,cy:y,r:11,fill:'transparent',tabindex:0},svg);
+    const show=()=>tipAt(tip,svg,W,H,x,y,`<b>${r.n}</b><span>${fD(r.t)} · ${fMin(r.v)} (${fMin(r.lo)}–${fMin(r.hi)})</span>`);
+    h.addEventListener('pointerenter',show);h.addEventListener('focus',show);h.addEventListener('pointerleave',()=>tip.style.display='none');h.addEventListener('blur',()=>tip.style.display='none');
+    if(LABELED.includes(r.n)&&(!narrow||['GPT-2','GPT-4','Claude Mythos Preview (früh)'].includes(r.n))){
+      const right=(x<m.l+40)||(!narrow&&x>m.l+iw*0.8); el('text',{x:right?x+9:x-9,y:y+4,'text-anchor':right?'start':'end',class:'mlab'},svg).textContent=short(r.n);}});
+  // Anzeige
+  const ex=[...EX].reverse().find(e=>best>=e[0]);
+  document.getElementById('now1').innerHTML=`<span class="d">${fD(cur.t)}</span><span class="m">${short(cur.n)}: ${fMin(cur.v)}</span>`+
+    (ex?`<span class="ex">reicht für: ${ex[2]}${best>960?' (jenseits der Messgrenze)':''}</span>`:`<span class="ex">reicht noch für keine der Beispielaufgaben</span>`);
+}
+
+/* ---- Diagramm 2: Epoch ---- */
+const E=EPOCH.map(r=>({...r,t:D(r.d)}));
+document.querySelector('#t2 tbody').innerHTML=E.map(r=>`<tr><td>${r.n}</td><td>${r.d}</td><td class="num">${r.a.toLocaleString('de-DE')} %</td><td class="num">${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})} ct</td></tr>`).join('');
+let sel2=E.length-1;
+const fUSD=v=>v.toLocaleString('de-DE',v<100?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})+' US-$';
+function calc(){const n=(+n1.value||0)*(+n2.value||0)*(+n3.value||0),cur=E[sel2];
+  document.getElementById('q').textContent=n.toLocaleString('de-DE');
+  document.getElementById('c-then').textContent=fUSD(n*E[0].c/100);
+  document.getElementById('c-now').textContent=fUSD(n*cur.c/100);
+  document.getElementById('c-now-k').textContent=cur.n.replace(/ \(.*\)$/,'')+', '+fD(cur.t);
+  document.getElementById('tsv').textContent=fD(cur.t);}
+const n1=document.getElementById('n1'),n2=document.getElementById('n2'),n3=document.getElementById('n3'),ts=document.getElementById('tsel');
+ts.max=E.length-1;ts.value=sel2;
+[n1,n2,n3].forEach(i=>i.addEventListener('input',calc));
+ts.addEventListener('input',()=>{sel2=+ts.value;calc();draw2();});
+function draw2(){
+  const box=document.getElementById('c2');box.querySelectorAll('svg').forEach(s=>s.remove());
+  const W=box.clientWidth||880,H=Math.max(240,Math.min(320,W*0.38)),m={l:50,r:14,t:16,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':'Kosten je GPQA-Frage bei 75 % Genauigkeit: von 29,9 Cent (o3, Januar 2025) auf 0,04 Cent (GPT-5.6 Luna, Juli 2026)'});box.prepend(svg);
+  const X0=D('2025-01-01'),X1=D('2026-09-01'),xs=t=>m.l+(t-X0)/(X1-X0)*iw;
+  const LMIN=-2,LMAX=Math.log10(50),ys=v=>m.t+ih-(Math.log10(v)-LMIN)/(LMAX-LMIN)*ih;
+  [[0.01,'0,01 ct'],[0.1,'0,1 ct'],[1,'1 ct'],[10,'10 ct']].forEach(([v,l])=>{const y=ys(v);el('line',{x1:m.l,x2:m.l+iw,y1:y,y2:y,stroke:css('--grid')},svg);el('text',{x:m.l-6,y:y+4,'text-anchor':'end',class:'tick'},svg).textContent=l;});
+  [['2025-01-01','2025'],['2025-07-01','Jul'],['2026-01-01','2026'],['2026-07-01','Jul']].forEach(([d,l])=>el('text',{x:xs(D(d)),y:H-8,'text-anchor':'middle',class:'tick'},svg).textContent=l);
+  el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css('--axis')},svg);
+  let p='';E.forEach((r,i)=>{const x=xs(r.t),y=ys(r.c);p+=(i?`H${x.toFixed(1)}V${y.toFixed(1)}`:`M${x.toFixed(1)},${y.toFixed(1)}`);});
+  p+=`H${xs(D('2026-08-03')).toFixed(1)}`;
+  el('path',{d:p,fill:'none',stroke:css('--series-2'),'stroke-width':2},svg);
+  const tip=document.getElementById('tip2');
+  E.forEach(r=>{const x=xs(r.t),y=ys(r.c);el('circle',{cx:x,cy:y,r:4.5,fill:css('--series-2'),stroke:css('--surface-1'),'stroke-width':1.5},svg);
+    const h=el('circle',{cx:x,cy:y,r:11,fill:'transparent',tabindex:0},svg);
+    const show=()=>tipAt(tip,svg,W,H,x,y,`<b>${r.n}</b><span>${fD(r.t)} · ${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})} ct · ${r.a.toLocaleString('de-DE')} %</span>`);
+    h.addEventListener('pointerenter',show);h.addEventListener('focus',show);h.addEventListener('pointerleave',()=>tip.style.display='none');h.addEventListener('blur',()=>tip.style.display='none');});
+  const cur=E[sel2],xm=xs(cur.t),ym=ys(cur.c);
+  el('line',{x1:xm,x2:xm,y1:m.t,y2:m.t+ih,stroke:css('--text-secondary'),'stroke-width':1,'stroke-dasharray':'3 3'},svg);
+  el('circle',{cx:xm,cy:ym,r:7,fill:'none',stroke:css('--text-primary'),'stroke-width':2},svg);
+  const a=E[0],b=E[E.length-1];
+  el('text',{x:xs(a.t)+4,y:ys(a.c)+20,class:'lab'},svg).textContent='o3: 29,9 ct';
+  el('text',{x:xs(b.t)-6,y:ys(b.c)-10,'text-anchor':'end',class:'lab'},svg).textContent='GPT-5.6 Luna: 0,04 ct';
+}
+
+function all(){draw1();draw2();}
+all();calc();
+let to;addEventListener('resize',()=>{clearTimeout(to);to=setTimeout(all,120);});
+if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
+window.__ki={METR,EPOCH,slope};
+})();
+</script>
+</body></html>
