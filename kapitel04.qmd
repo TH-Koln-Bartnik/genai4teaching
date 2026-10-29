@@ -286,7 +286,7 @@ Wir können insofern mit Sprachmodellen:
 -   Zitationen von einem Foto aus importieren („Scanne das Foto und gib mir die Quellen als Bibtex Code aus. Erkläre mir dann, wie ich ihn importiere“)
 -   Kalendereinträge aus einer Liste in unser Terminprogramm überführen („Erstelle mir aus dieser Liste Einträge im ICS Standard. Erkläre mir dann, wie ich den Code in Google Calendar importiere.“)
 -   Ablaufdiagramme in Mermaid visualisieren und als Grafik speichern („Erstelle mir einen typischen Kaufprozess in Mermaid. Erkläre mir dann, wie ich ihn visualisieren und als Grafik exportieren kann.“)
--   Interaktive Simulationen mit den Claude Artifacts erstellen (s. o.)
+-   Interaktive Simulationen mit den Claude Artifacts erstellen (s. o.; ein selbst gebautes Beispiel steht in @sec-widget-littles-law)
 -   Dialogbasiert Grafiken und statistische Analysen in Google Colab erstellen (s. u.)
 -   (Für viele weitere Ideen für solche Hilfsmittel können wir einfach das Sprachmodell fragen.)
 
@@ -314,6 +314,45 @@ Code ist hier einsehbar: [Link zum Code](https://colab.research.google.com/drive
 Solche **Hilfestellungen sind Alltag** geworden: Alle großen Anbieter von Code-Editoren wie **Pycharm, VS Code (Microsoft/GitHub) und neuere Anbieter wie Cursor** und (noch extremer, als Agent) **Devin** (https://preview.devin.ai/) bieten Programmierung mit KI-Unterstützung an.
 Für Hochschulen stellt sich die Frage, wie diese Fähigkeit am Besten trainiert werden kann.
 Ein extremes Anwendungsbeispiel ist dieser Youtuber, der in Trainingsvideos mit einer Vielzahl verschiedener KI-Tools programmiert, auch selbst beschrieben eher in der Rolle eines Supervisors, der die verschiedenen KI-Helfer überwacht und koordiniert: [Build Anything with Cursor, David Ondrej, 2024-09-1](https://www.youtube.com/watch?v=C59LC1WJIbE).
+
+<!-- Schritt 1 des Konzepts „Simulationen mit Observable JS und Quarto Live“ (2026-10-29).
+     Modell: interactions/models/littles-law.js · Tests: tests/models.test.mjs · Widget: _ojs/littles-law.qmd
+     Druckzwilling: scripts/druck-abbildungen.mjs -> images/druck/littles-law-szenarien.svg -->
+
+#### Beispiel: Little's Law selbst nachrechnen {#sec-widget-littles-law}
+
+Simulationen, an denen Studierende selbst drehen, haben in der Lehre zu Produktion und Logistik eine lange Tradition. @dobson2006web stellten drei Browser-Simulationen vor, eine Warteschlange, Little's Law in einem einstufigen Prozess und ein Bestellpunktsystem, alle über Schieberegler gesteuert, und erprobten sie in einer Web-Übung mit 74 Studierenden. Das R-Paket `bullwhipgame` simuliert den Bullwhip-Effekt in einer vierstufigen Lieferkette, setzt aber eine eigene R-Installation voraus [@marchena2018bullwhipgame]. Solche Werkzeuge zu bauen, war lange Sache von Spezialisten. Mit einem Sprachmodell als Copilot können Lehrende sie selbst programmieren, und das folgende Widget ist auf diesem Weg entstanden.
+
+Little's Law sagt: Bestand = Durchsatz × Durchlaufzeit, kurz L = λW [@little1961]. Wer jeden Monat zehn Flaschen Wein kauft und jede ein Jahr liegen lässt, hat im Mittel 120 Flaschen im Keller, ohne je eine einzelne Flasche zu verfolgen. Das Gesetz ist eine Bilanz, und Bilanzen stimmen nur über den ganzen Zeitraum. Wer den Keller einen Nachmittag lang beobachtet, sieht vielleicht keine einzige Flasche kommen oder gehen.
+
+::: {.content-visible when-format="html"}
+Die Animation zeigt zuerst, wie man den Bestand L zählt: Aufträge kommen an, warten, werden bearbeitet und verlassen das System.
+
+<iframe src="interactions/littles-law-animation.html" width="100%" height="420px" frameborder="0" title="Animation: Little's Law zählen (Ankunft, Warteschlange, Bearbeitung, Abgang)"></iframe>
+
+Das Widget darunter rechnet dieselbe Station über ein frei wählbares Beobachtungsfenster durch. Es vergleicht den gezählten mittleren Bestand $\bar L$ mit dem, was die Gleichung aus beobachteter Ankunftsrate $\hat\lambda$ und mittlerer Verweilzeit $\hat W$ ergibt. Geben Sie zuerst Ihre Vorhersage ab, spielen Sie dann die drei Szenarien durch und würfeln Sie neu.
+
+{{< include _ojs/littles-law.qmd >}}
+:::
+
+::: {.content-visible unless-format="html"}
+![Little's Law in drei Szenarien: Über acht Stunden trifft die Rechnung $\hat\lambda \cdot \hat W$ (gestrichelt) den gezählten Bestand $\bar L$ (durchgezogen), im Prüfungsamt mit hoher Auslastung erst nach einigen Stunden; im Blick über 20 Minuten verfehlt sie ihn um 13 %. Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#sec-widget-littles-law> aufrufen.](images/druck/littles-law-szenarien.svg){#fig-littles-law width="100%" fig-pos="H"}
+
+![](images/qr/qr-littles-law.png){width="18%"}
+:::
+
+::: {.callout-note title="Warum die Gleichung im kurzen Fenster danebenliegt"}
+Aufträge, die bei Fensterende noch im System sind, zählen im Bestand $\bar L$ mit, haben aber noch keine abgeschlossene Verweilzeit und fehlen deshalb in $\hat W$. Ist das System an beiden Fensterrändern leer, gilt $\bar L = \hat\lambda \cdot \hat W$ exakt; sonst entsteht die Abweichung am Rand. Je höher die Auslastung, desto länger die Verweilzeiten, desto breiter der Rand und desto langsamer nähert sich die Rechnung dem gezählten Bestand. Im kurzen Fenster entscheidet deshalb der Zufall, ob die Gleichung passt.
+:::
+
+::: {.callout-tip title="Probieren Sie mal" collapse="true"}
+Ein Studienbüro erhält im Mittel 40 Anträge pro Woche, im Stapel liegen 120. Wie lange wartet ein Antrag im Mittel, ohne dass jemand Zeiten misst?
+
+*Lösung:* W = L / λ = 120 / 40 = 3 Wochen. Die Rechnung gilt, wenn das Büro über die Zeit so viele Anträge abarbeitet, wie eingehen.
+:::
+
+<!-- Schritt 2: Bullwhip-Widget (#sec-widget-bullwhip) hier anschließen.
+     Schritt 3: Kasten „Beispiel aus der Lehrpraxis“ (scm-visuals: 2 von 6 rechneten), Prompt-Übung, Prüfliste, Querverweise. -->
 
 ## KI als Tutor {#sec-tutor}
 

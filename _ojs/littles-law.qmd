@@ -1,0 +1,194 @@
+<!-- Little's-Law-Widget (Observable JS). Eingebunden in kapitel04.qmd, Abschnitt
+     @sec-widget-littles-law, nur im HTML-Format. Modell: interactions/models/littles-law.js,
+     Tests: tests/models.test.mjs, Druckzwilling: scripts/druck-abbildungen.mjs.
+     Der Importpfad gilt relativ zum einbindenden Kapitel (Projektwurzel). -->
+
+```{=html}
+<style>
+.ll-widget { --red: #c1002a; --red-soft: #f6dde3; --panel: #f4f4f4; --line: #d4d4d4;
+  --muted: #5f5f5f; --ok: #1f7a3f; --ok-soft: #e1f2e6;
+  border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; margin: 1rem 0 1.5rem; }
+body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1f1f; --line: #3a3a3a;
+  --muted: #b5b5b5; --ok: #6fd18f; --ok-soft: #173322; }
+.ll-widget form { max-width: 100%; --label-width: 170px; }
+/* Quarto setzt bei ausgeblendetem Code trotzdem einen Kopierknopf; im Widget ausblenden. */
+.ll-widget .code-copy-button { display: none !important; }
+.ll-widget .ll-frage { font-weight: 600; margin: .75rem 0 .25rem; }
+.ll-widget .ll-legende { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: .85rem; margin: .5rem 0 0; }
+.ll-widget .ll-legende svg { vertical-align: middle; margin-right: 6px; }
+.ll-widget .ll-hint { color: var(--muted); font-size: .9rem; margin: .25rem 0 .75rem; }
+.ll-widget .ll-zahlen { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px; background: var(--panel); border-radius: 6px; padding: 10px 12px; margin: .5rem 0; }
+.ll-widget .ll-zahlen div { font-size: .85rem; color: var(--muted); }
+.ll-widget .ll-zahlen b { display: block; font-size: 1.15rem; color: inherit; font-variant-numeric: tabular-nums; }
+.ll-widget .ll-warn { background: var(--red-soft); border-left: 4px solid var(--red); padding: 8px 12px; margin: .5rem 0; }
+.ll-widget .ll-ok { background: var(--ok-soft); border-left: 4px solid var(--ok); padding: 8px 12px; margin: .5rem 0; }
+.ll-widget .ll-feedback { background: var(--panel); border-left: 4px solid var(--muted); padding: 8px 12px; margin: .5rem 0; }
+.ll-widget .ll-platzhalter { border: 1px dashed var(--line); padding: 24px; text-align: center; color: var(--muted); }
+</style>
+```
+
+::: {.ll-widget}
+
+```{ojs}
+//| echo: false
+import {simulate, SZENARIEN, ANNAHMEN} from "./interactions/models/littles-law.js"
+```
+
+```{ojs}
+//| echo: false
+viewof sz = Inputs.radio(SZENARIEN, {label: "Szenario", format: d => d.name, value: SZENARIEN[0]})
+```
+
+```{ojs}
+//| echo: false
+html`<p class="ll-frage">Ihre Vorhersage: Stimmt L = λW schon nach 30 Minuten Beobachtung auf 5 % genau?</p>`
+```
+
+```{ojs}
+//| echo: false
+viewof tipp = Inputs.radio(["Ja, auf 5 % genau", "Nein, deutlich daneben"], {label: "Vorhersage"})
+```
+
+```{ojs}
+//| echo: false
+viewof lambda = Inputs.range([1, 30], {value: sz.lambda, step: 1, label: "Ankünfte pro Stunde (λ)"})
+```
+
+```{ojs}
+//| echo: false
+viewof service = Inputs.range([0.5, 15], {value: sz.service, step: 0.5, label: "Mittlere Bearbeitungszeit (min)"})
+```
+
+```{ojs}
+//| echo: false
+viewof fensterMin = Inputs.range([10, 2400], {value: sz.fensterMin, step: 1, transform: Math.log,
+  label: "Beobachtungsfenster (min, logarithmisch)"})
+```
+
+```{ojs}
+//| echo: false
+viewof dist = Inputs.radio(new Map([["zufällig (exponentiell)", "exp"], ["fest", "fest"]]),
+  {label: "Bearbeitungszeit", value: sz.dist})
+```
+
+```{ojs}
+//| echo: false
+viewof wurf = Inputs.button("Neu würfeln")
+```
+
+```{ojs}
+//| echo: false
+seed = sz.seed + 1000 * wurf
+res = simulate({lambda, service, dist, fenster: fensterMin / 60, seed})
+kurz = simulate({lambda, service, dist, fenster: 0.5, seed}).ende
+fmt = (x, d = 2) => x === null || x === undefined || !isFinite(x) ? "–"
+  : x.toLocaleString("de-DE", {maximumFractionDigits: d, minimumFractionDigits: d})
+prozent = x => {
+  if (x === null || x === undefined) return "–";
+  const r = Math.round(1000 * x) / 10;
+  return r === 0 ? "0,0 %" : (r > 0 ? "+" : "−") + fmt(Math.abs(r), 1) + " %";
+}
+auftraege = n => n === 1 ? "1 Auftrag" : `${n} Aufträge`
+```
+
+```{ojs}
+//| echo: false
+html`<div class="ll-hint">Startwert ${seed}${wurf > 0 ? ` (neu gewürfelt; die Druckfassung nutzt ${sz.seed})` : " (wie in der Druckfassung)"}.
+Auslastung ρ = λ · Bearbeitungszeit = <b>${fmt(res.rho, 2)}</b>.</div>`
+```
+
+```{ojs}
+//| echo: false
+res.hinweis ? html`<div class="ll-warn" role="alert"><b>Kein Gleichgewicht.</b> ${res.hinweis}
+  Die Gleichung L = λW setzt voraus, dass auf lange Sicht so viel abfließt, wie zufließt.</div>` : html``
+```
+
+```{ojs}
+//| echo: false
+{
+  if (tipp === null) return html`<div class="ll-platzhalter">Geben Sie zuerst oben Ihre Vorhersage ab; dann erscheinen Diagramm und Zahlen.</div>`;
+  const einheit = fensterMin >= 120 ? "h" : "min";
+  const f = einheit === "h" ? 1 : 60;
+  const daten = res.verlauf.map(d => ({t: d.t * f, L: d.L, lambdaW: d.lambdaW}));
+  const lang = daten.flatMap(d => [
+    {t: d.t, wert: d.L, reihe: "L"},
+    ...(d.lambdaW === null ? [] : [{t: d.t, wert: d.lambdaW, reihe: "G"}])
+  ]);
+  const legende = html`<div class="ll-legende" aria-hidden="true">
+    <span><svg width="28" height="8"><line x1="0" x2="28" y1="4" y2="4" stroke="currentColor" stroke-width="2"/></svg>gezählter mittlerer Bestand</span>
+    <span><svg width="28" height="8"><line x1="0" x2="28" y1="4" y2="4" stroke="var(--red)" stroke-width="2" stroke-dasharray="6 4"/></svg>Rechnung λ · W aus Beobachtung</span></div>`;
+  const plot = Plot.plot({
+    width, height: 280, marginRight: 20,
+    ariaLabel: "Liniendiagramm: gezählter Bestand und Little's-Law-Rechnung über die Fensterlänge",
+    ariaDescription: `Bei Fensterende ${fmt(fensterMin, 0)} Minuten beträgt der gezählte mittlere Bestand ${fmt(res.ende.L)} Aufträge, die Rechnung λ mal W ergibt ${fmt(res.ende.lambdaW)}. Abweichung ${prozent(res.ende.abweichung)}.`,
+    x: {label: `Fensterlänge (${einheit})`},
+    y: {label: "Aufträge im System (Mittel)", grid: true, nice: true},
+    marks: [
+      Plot.ruleY([0]),
+      Plot.line(lang.filter(d => d.reihe === "L"), {x: "t", y: "wert", stroke: "currentColor", strokeWidth: 2}),
+      Plot.line(lang.filter(d => d.reihe === "G"), {x: "t", y: "wert", stroke: "var(--red)", strokeDasharray: "6 4", strokeWidth: 2})
+    ]
+  });
+  return html`${legende}${plot}`;
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  if (tipp === null) return html``;
+  const einheit = fensterMin >= 120 ? "h" : "min";
+  const f = einheit === "h" ? 1 : 60;
+  const daten = res.verlauf.filter(d => d.abweichung !== null)
+    .map(d => ({t: d.t * f, a: Math.max(-50, Math.min(50, 100 * d.abweichung))}));
+  return Plot.plot({
+    width, height: 170, marginRight: 20,
+    ariaLabel: "Abweichung der Gleichung vom gezählten Bestand in Prozent, mit Toleranzband plus minus 5 Prozent",
+    ariaDescription: `Am Fensterende beträgt die Abweichung ${prozent(res.ende.abweichung)}.`,
+    x: {label: `Fensterlänge (${einheit})`, domain: [0, fensterMin / 60 * f]},
+    y: {label: "Abweichung (%), grau: Toleranzband ±5 %", domain: [-50, 50], ticks: [-50, -25, -5, 0, 5, 25, 50]},
+    marks: [
+      Plot.rectY([0], {x1: 0, x2: fensterMin / 60 * f, y1: -5, y2: 5, fill: "currentColor", fillOpacity: 0.12}),
+      Plot.ruleY([0]),
+      Plot.line(daten, {x: "t", y: "a", strokeWidth: 1.5})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+tipp === null ? html`` : html`<div class="ll-zahlen" aria-live="polite">
+  <div>gezählter mittlerer Bestand<b>${fmt(res.ende.L)}</b></div>
+  <div>beobachtete Ankünfte λ<b>${fmt(res.ende.lambdaHat, 1)} pro h</b></div>
+  <div>mittlere Verweilzeit W<b>${res.ende.W === null ? "–" : fmt(60 * res.ende.W, 1) + " min"}</b></div>
+  <div>Rechnung λ · W<b>${fmt(res.ende.lambdaW)}</b></div>
+  <div>Abweichung<b>${prozent(res.ende.abweichung)}</b></div>
+  <div>bei Fensterende noch im System<b>${res.ende.inSystem} von ${res.ende.arrived}</b></div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+{
+  if (tipp === null) return html``;
+  const passt = kurz.abweichung !== null && Math.abs(kurz.abweichung) <= 0.05;
+  const getippt = tipp.startsWith("Ja");
+  const leer = kurz.inSystem === 0;
+  return html`<div class="${passt === getippt ? "ll-ok" : "ll-feedback"}" aria-live="polite">
+    <b>Nach 30 Minuten</b> weicht die Gleichung bei diesen Einstellungen um ${prozent(kurz.abweichung)} ab
+    (${auftraege(kurz.inSystem)} noch im System). Ihre Vorhersage ${passt === getippt ? "trifft zu" : "trifft hier nicht zu"}.
+    ${leer ? "Das System ist nach 30 Minuten zufällig gerade leer; dann stimmt die Bilanz exakt. Würfeln Sie neu und vergleichen Sie."
+           : "Aufträge, die bei Fensterende noch warten, zählen im Bestand mit, haben aber noch keine Verweilzeit. Würfeln Sie neu und vergleichen Sie."}
+  </div>`;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<details><summary>Annahmen des Modells</summary><ul>${ANNAHMEN.map(a => html`<li>${a}</li>`)}</ul>
+<p class="ll-hint">Modellcode: <a href="interactions/models/littles-law.js">littles-law.js</a> (reine Funktion ohne Oberfläche, mit Tests).</p></details>`
+```
+
+:::

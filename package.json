@@ -1,0 +1,15 @@
+{
+  "name": "genai4teaching-werkzeuge",
+  "private": true,
+  "description": "Modelltests und Druckabbildungen für die interaktiven Elemente. Der Buch-Build (quarto render) braucht dieses Paket nicht.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/models.test.mjs",
+    "druck": "node scripts/druck-abbildungen.mjs"
+  },
+  "devDependencies": {
+    "@observablehq/plot": "^0.6.17",
+    "jsdom": "^30.1.3",
+    "qrcode": "^1.5.4"
+  }
+}
