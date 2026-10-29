@@ -22,7 +22,7 @@ Nach diesem Kapitel können Sie …
 - die vier Rollen Hiwi, Copilot, Tutor und Simulator unterscheiden und eigene Anwendungsideen einer Rolle zuordnen;
 - mit dem Dreiklang Verdrängung, Produktivität und Wiedereinsetzung einschätzen, welche Aufgaben Lehrender durch KI wegfallen, schneller werden oder neu entstehen;
 - Recherchewerkzeuge nach den zwei Fragen „einmalig oder iterativ“ und „Liste oder Analyse“ einordnen und ein passendes Werkzeug für eine Literaturaufgabe wählen;
-- Grade der KI-Nutzung beim Schreiben unterscheiden und erklären, warum auch Nicht-Informatiker mit Sprachmodellen Lernwerkzeuge programmieren können;
+- Grade der KI-Nutzung beim Schreiben unterscheiden und erklären, warum auch Nicht-Informatiker mit Sprachmodellen Lernwerkzeuge programmieren können, und eine KI-gebaute Simulation daraufhin prüfen, ob sie rechnet oder nur abspielt;
 - die vier Vorteile eines KI-Tutors nennen und beschreiben, wie Musterlösungen als Input Halluzinationen eindämmen;
 - Role Play und Goal Play unterscheiden und begründen, warum Simulationen Rahmung und Nachbesprechung durch Lehrende brauchen.
 :::
@@ -389,7 +389,68 @@ Ein Händler bestellt bei drei Wochen Lieferzeit und prognostiziert mit dem Mitt
 *Lösung:* 1 + 2·3/6 + 2·9/36 = 2,5; die Standardabweichung ist damit gut das 1,6-Fache. Bei L = 4 fällt der Faktor erst ab p = 20 Wochen unter 1,5 (1,48). Ein so langes Fenster reagiert aber träge auf echte Trendwechsel; die Dämpfung hat ihren Preis.
 :::
 
-<!-- Schritt 3: Kasten „Beispiel aus der Lehrpraxis“ (scm-visuals: 2 von 6 rechneten), Prompt-Übung, Prüfliste, Querverweise. -->
+<!-- Schritt 3 des Konzepts „Simulationen mit Observable JS und Quarto Live“ (2026-10-29).
+     Anwendungsbeispiel, Prüfliste und „Ausprobiert“ nach notes/schablone-leitfragen-lernfragen.md;
+     Claude-Entwurf, Freigabe durch Roman. Fakten zu scm-visuals: PROTOTYPE_REVIEW_v1 vom 2026-09-13. -->
+
+#### Prüfen, ob eine KI-gebaute Simulation rechnet {#sec-widget-pruefen}
+
+Beide Widgets hat ein Sprachmodell nach meinen Vorgaben programmiert. Verlässlich macht sie die Reihenfolge, in der sie entstanden sind: zuerst das Rechenmodell als eigene Datei ohne Oberfläche, dazu Tests gegen Handrechnungen und veröffentlichte Formeln, erst danach Regler und Diagramme. Wer die Reihenfolge umkehrt, bekommt in kurzer Zeit etwas, das gut aussieht.
+
+:::: {.callout-note title="Anwendungsbeispiel: Die KI baut überzeugende Animationen, die nichts rechnen"}
+**Problem ohne KI.** Eine Prozessanimation, in der sich vor dem Engpass sichtbar eine Schlange bildet, erklärt Durchlaufzeiten besser als jede Folie. Sie zu programmieren, kostet Lehrende ohne Programmiererfahrung Wochen; deshalb bleibt es meist bei Kästchen und Pfeilen.
+
+**Problem mit KI.** Ein Sprachmodell liefert eine solche Animation in einer Stunde. Ob dahinter ein Modell rechnet oder ein Film mit festem Drehbuch abläuft, sieht man dem Ergebnis nicht an.
+
+**Der Lösungsansatz.** Für die Animationsbibliothek *scm-visuals* ließ ich im September 2026 sechs Prozessanimationen zu Produktion und Beschaffung von einem Sprachmodell entwerfen: einfacher Fluss, Los- gegen Einzelstückfertigung, Engpass und Warteschlange, Push gegen Pull und zwei Bestellabläufe vom Bedarf bis zur Zahlung. Eine Prüfung mit Standbildfolgen und Zustandsprotokollen, also mit Listen, die für jeden Zeitpunkt festhalten, wo jedes Stück steht, ergab: Nur zwei der sechs rechneten ein Modell, Engpass und Push gegen Pull. Die übrigen vier spielten feste Zeitleisten ab, und die Animation zur Losfertigung ließ im Einzelstückmodus die Kapazität der Stationen außer Acht. Alle sechs sahen überzeugend aus. Seitdem entsteht zuerst das Modell mit seinen Tests und dann die Oberfläche; die beiden Widgets in @sec-widget-littles-law und @sec-widget-bullwhip sind so gebaut.
+
+**Was das für wirksames Lernen heißt.** *Erfahrungsbericht aus der eigenen Entwicklung, keine Lernwirkung gemessen.* Eine Simulation lehrt Ursache und Wirkung nur, wenn die Wirkung aus der Ursache folgt. Spielt sie ein festes Drehbuch ab, zeigt sie nach jeder Änderung dasselbe, und wer seine Vorhersage prüft, prüft sie gegen einen Film. Studierende können das nicht erkennen, Lehrende nur am Modell, nicht am Bild. Ein Sprachmodell baut eine glaubwürdige Oberfläche schneller als ein korrektes Modell; die Grenze seiner Leistung verläuft hier mitten durch eine einzige Aufgabe [@dellacqua2023].
+::::
+
+::: {.callout-note title="Prüfliste: Rechnet die Simulation, oder spielt sie ab?"}
+Die fünf Prüfungen brauchen keine Programmierkenntnisse, nur die Regler und einen Taschenrechner. Beide Widgets dieses Abschnitts bestehen sie, und ihre Tests im Repositorium prüfen dieselben Punkte bei jeder Änderung automatisch.
+
+1. **Andere Eingabe, anderer Verlauf.** Wer einen Parameter ändert, muss eine andere Kurve sehen, nicht nur andere Zahlen an derselben Kurve. Im Bullwhip-Widget ändert die doppelte Lieferzeit die Form der Fabrikbestellungen, nicht nur ihre Höhe.
+2. **Grenzfälle.** Kommen fast keine Aufträge an, bleibt das System leer. Liegt die Auslastung bei 100 % oder darüber, warnt das Little's-Law-Widget, statt ein Gleichgewicht vorzutäuschen. Schwankt die Kundennachfrage nicht, bestellt im Bullwhip-Widget jede Stufe genau 100 Stück.
+3. **Eine Handrechnung.** Mindestens ein Fall muss sich auf Papier nachrechnen lassen. Im Little's-Law-Modell sind es zwei Aufträge, im Bullwhip-Modell ein Nachfragesprung von 100 auf 120 Stück: Bei zwei Perioden Lieferzeit und einem Mittel über vier Perioden bestellt der Händler 130 Stück, der Großhandel 145. Wo es eine veröffentlichte Formel gibt, muss das Modell sie treffen, hier die von @chen2000quantifying.
+4. **Gleicher Startwert, gleiches Ergebnis.** Ein Szenario mit demselben Startwert läuft zweimal identisch ab. Neu gewürfelt ändert sich der Verlauf, das Muster bleibt.
+5. **Genannte Annahmen.** Das Widget sagt, was es vereinfacht. Bei beiden Widgets stehen die Annahmen in einem aufklappbaren Kasten unter den Diagrammen.
+:::
+
+::: {.callout-tip title="Ausprobiert: Eine Simulation bauen lassen, die rechnet · 4D: Description, Discernment · für Lehrende"}
+**Ziel.** Das Sprachmodell baut ein Widget zu Little's Law und liefert die Mittel, es zu prüfen, gleich mit.
+
+**Prompt.**
+
+```
+Baue ein interaktives Widget zu Little's Law
+(L = λW) für Studierende im ersten Semester.
+Gehe in zwei Schritten vor.
+Schritt 1: Schreibe das Modell als reine
+Funktion ohne Oberfläche.
+Eingaben: λ, mittlere Bearbeitungszeit,
+Fensterlänge, Startwert für den
+Zufallsgenerator.
+Ausgaben: mittlerer Bestand L̄, beobachtete
+Ankunftsrate λ̂, mittlere Verweilzeit Ŵ. Nenne
+alle Annahmen. Schreibe drei Tests:
+(1) Ist das System zu Beginn und am Ende leer,
+gilt L̄ = λ̂·Ŵ exakt.
+(2) Bei Auslastung 0,6 und langem Fenster liegt
+die Abweichung unter 2 %.
+(3) Derselbe Startwert liefert dasselbe
+Ergebnis.
+Schritt 2: Erst wenn alle Tests bestehen, baue
+Regler und Diagramm.
+Erkläre mir danach in drei Sätzen, wie ich ohne
+Programmierkenntnisse prüfe, dass das Widget
+rechnet und nicht nur abspielt.
+```
+
+**Worauf achten.** Hält das Modell die Reihenfolge ein, oder liefert es sofort Regler? Rechnen die Tests das Modell durch, oder vergleichen sie fest eingetragene Zahlen miteinander? Lässt sich die Erklärung am Ende mit der Prüfliste oben abgleichen?
+
+**Variante mit Studierenden (4D: Discernment).** Lassen Sie das Sprachmodell eine zweite Fassung bauen, die nur eine feste Zeitleiste abspielt, und geben Sie beide Fassungen ohne Kennzeichnung aus. Die Studierenden finden mit der Prüfliste heraus, welche rechnet, und begründen es.
+:::
 
 ## KI als Tutor {#sec-tutor}
 
@@ -557,12 +618,14 @@ Für beide Typen gilt: Die KI kann von der Rolle abweichen oder inkonsistent agi
 Eine **sorgfältige Einbettung und Reflexion** durch Lehrende ist entscheidend [@mollick2024a].
 Bei allen Simulatoren ist die Notwendigkeit einer klaren didaktischen Rahmung und eines Debriefings durch Lehrende ("Human in the Loop") zentral, um den Lernerfolg zu sichern und die Grenzen sowie potenzielle Fehler der KI zu reflektieren [@mollick2024a, S. 16].
 
+Der Simulator dieses Abschnitts ist ein Sprachmodell, das eine Rolle spielt, und deshalb nie ganz vorhersagbar. Für Zusammenhänge, die sich berechnen lassen, etwa Warteschlangen oder den Bullwhip-Effekt in einer Lieferkette, ist ein rechnendes Widget das verlässlichere Übungsfeld; zwei Beispiele und eine Prüfliste stehen am Ende von @sec-coding. Auch dort entscheidet die Nachbesprechung, was gelernt wird.
+
 <!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
 ::: {.callout-tip title="Kernaussagen"}
 1. Vier Rollen ordnen die Praxis: Als Hiwi nimmt die KI Arbeit ab, als Copilot ermöglicht sie, was wir allein nicht könnten, als Tutor begleitet sie Lernende, als Simulator stellt sie Übungssituationen bereit.
 2. Technik ersetzt Tätigkeiten, nicht Berufe. In der Lehre verdrängt KI vor allem Standardisiertes, macht Kernaufgaben produktiver und schafft neue Aufgaben wie Qualitätskontrolle und Kursdesign. Ob am Ende Zeit gespart wird, ist offen.
 3. Bei der Literaturrecherche entscheidet nicht der Markenname, sondern das Muster: einmalige Suche oder iterativer Prozess, Trefferliste oder zusammenfassende Analyse.
-4. Schreiben und Programmieren mit KI sind Cyborg-Tätigkeiten. Der Lernwert hängt davon ab, wie viel die Studierenden selbst verstehen und verantworten müssen.
+4. Schreiben und Programmieren mit KI sind Cyborg-Tätigkeiten. Der Lernwert hängt davon ab, wie viel die Studierenden selbst verstehen und verantworten müssen. Wer eine Simulation von KI bauen lässt, prüft das Modell, nicht das Bild.
 5. Ein guter KI-Tutor passt sich an, gibt sofort Rückmeldung, hält Lernende aktiv und entlastet Lehrende. Er braucht Musterlösungen als Input und systematische Qualitätstests, sonst produziert er überzeugende Fehler.
 6. Simulationen wirken, wenn Lehrende sie rahmen und nachbesprechen. Die KI kann aus der Rolle fallen; der Mensch bleibt in der Schleife.
 :::

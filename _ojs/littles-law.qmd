@@ -119,7 +119,7 @@ res.hinweis ? html`<div class="ll-warn" role="alert"><b>Kein Gleichgewicht.</b> 
     <span><svg width="28" height="8"><line x1="0" x2="28" y1="4" y2="4" stroke="currentColor" stroke-width="2"/></svg>gezählter mittlerer Bestand</span>
     <span><svg width="28" height="8"><line x1="0" x2="28" y1="4" y2="4" stroke="var(--red)" stroke-width="2" stroke-dasharray="6 4"/></svg>Rechnung λ · W aus Beobachtung</span></div>`;
   const plot = Plot.plot({
-    width, height: 280, marginRight: 20,
+    width: Math.max(width, 300), height: 280, marginRight: 20,
     ariaLabel: "Liniendiagramm: gezählter Bestand und Little's-Law-Rechnung über die Fensterlänge",
     ariaDescription: `Bei Fensterende ${fmt(fensterMin, 0)} Minuten beträgt der gezählte mittlere Bestand ${fmt(res.ende.L)} Aufträge, die Rechnung λ mal W ergibt ${fmt(res.ende.lambdaW)}. Abweichung ${prozent(res.ende.abweichung)}.`,
     x: {label: `Fensterlänge (${einheit})`},
@@ -143,7 +143,7 @@ res.hinweis ? html`<div class="ll-warn" role="alert"><b>Kein Gleichgewicht.</b> 
   const daten = res.verlauf.filter(d => d.abweichung !== null)
     .map(d => ({t: d.t * f, a: Math.max(-50, Math.min(50, 100 * d.abweichung))}));
   return Plot.plot({
-    width, height: 170, marginRight: 20,
+    width: Math.max(width, 300), height: 170, marginRight: 20,
     ariaLabel: "Abweichung der Gleichung vom gezählten Bestand in Prozent, mit Toleranzband plus minus 5 Prozent",
     ariaDescription: `Am Fensterende beträgt die Abweichung ${prozent(res.ende.abweichung)}.`,
     x: {label: `Fensterlänge (${einheit})`, domain: [0, fensterMin / 60 * f]},

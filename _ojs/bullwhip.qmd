@@ -91,7 +91,7 @@ Untere Schranke nach Chen et al. für den Händler: 1 + 2L/p + 2L²/p² = <b>${b
   const reihen = ["Kunde", ...BW_STUFEN];
   const namen = new Map([["Kunde", "Kundennachfrage"], ...BW_STUFEN.map(s => [s, `Bestellungen ${s}`])]);
   return Plot.plot({
-    width, height: 5 * 92, marginLeft: 48, marginRight: 12, marginTop: 8,
+    width: Math.max(width, 300), height: 5 * 92, marginLeft: 48, marginRight: 12, marginTop: 8,
     ariaLabel: "Fünf Liniendiagramme übereinander: Kundennachfrage und Bestellungen der vier Stufen über 52 Perioden, gleiche Skala",
     ariaDescription: `Die Kundennachfrage schwankt mit einer Standardabweichung von ${bwSchwankung} Stück um 100. Die Bestellungen der Fabrik schwanken ${bwFmt(bwFaktor)}-mal so stark.`,
     fy: {domain: reihen, axis: null, padding: 0.12},
@@ -117,7 +117,7 @@ Untere Schranke nach Chen et al. für den Händler: 1 + 2L/p + 2L²/p² = <b>${b
   const daten = bwRes.verhaeltnis;
   const oben = Math.max(...daten.map(d => Math.max(d.wert, d.schranke))) * 2;
   return Plot.plot({
-    width, height: 240, marginLeft: 48, marginRight: 12,
+    width: Math.max(width, 300), height: 240, marginLeft: 48, marginRight: 12,
     ariaLabel: "Balkendiagramm: Varianzverhältnis der Bestellungen zur Kundennachfrage je Stufe, logarithmisch, mit Schranke nach Chen et al. als Strich",
     ariaDescription: daten.map(d => `${d.stufe}: ${bwFmt(d.wert)}-fache Varianz, Schranke ${bwFmt(d.schranke)}`).join("; "),
     x: {label: null, domain: BW_STUFEN, padding: 0.3},
