@@ -1,38 +1,197 @@
 # Fallbeispiele aus der Lehre {#sec-fallbeispiele}
 
 <!--
-GERÜST, angelegt 2026-10-17 (Claude-Entwurf nach Entscheidung vom 17.10.: eigenes Kapitel 6, Unternehmen anonymisiert, kurze Verweise aus Kapitel 2, 4, 5 und Anhang D).
-Quellen bisher: 2-Teach/25-GenAI WPF Prozessoptimierung (Modulbeschreibung, Use-Case-Beschreibungen der Partner, Kick-off-Folien SS 2026), 2-Teach/38-Guided-Project-GenAI-Workflows (Kick-off-Mail, Ablaufplan 09/2026), kapitel04.qmd (BWL-Tutor).
-Noch nicht lokalisiert: Material zu den drei Modulen mit studentisch entwickelten Tutoren, Lernspielen und Karriereberatern sowie zum Job-Buddy-Projekt. Ergebnisse, Zahlen und Lessons Learned kommen von Roman; hier stehen nur Rahmen und Leitfragen.
-Fallschablone (einheitlich für alle Fälle): Ausgangslage – Umsetzung – Ergebnis – Was wir gelernt haben. Zielumfang je Fall 1.000–1.400 Wörter, Kapitel insgesamt ca. 5.500 Wörter.
+UMBAU 2026-10-29 (Claude, Freigabe durch Roman): Gliederung nach den Wissensformen von Carlile (2004), Entscheidung Roman vom 29.10.
+Grundlagen: claude/struktur-kapitel6-praxisbeispiele-2026-10-29.md, claude/grundsatz-prinzip-vor-werkzeug-2026-10-29.md,
+claude/kapitel06-beispiele-entwurf-2026-10-29.qmd, claude/begleitnotiz-kapitel6-beispiele-2026-10-29.md (Projektdateien).
+Schablone je Beispiel: Überschrift, Steckbriefzeile (Wissensform, Lerntechnik, Rolle, Gestaltet von), Prinzip, Empfehlung, Umsetzung (Stand MM/JJJJ), eine Lernfrage.
+Ausgeführt: Fragen-Generator, Lernsongs I, Quizspiele, Widgets, Fallstudien, Simulationen selbst bauen, Zusatz Repository (Projektlernen).
+Übernommen aus dem Gerüst vom 17.10.: bisheriger Fall 1 (jetzt Tutoring) und Fall 4 (jetzt Projektlernen), Sprungmarken beibehalten.
+Ohne neues Material (nur Steckbrief und TODO): Lernsongs II, Simulationen durch Lehrende, Karriereberater.
+Labels #sec-fall-studierende-bauen entfällt; Querverweis in Kapitel 4 auf #sec-fall-tutor-bwl umgehängt.
+Druckabbildungen mit QR-Code: images/druck/lernsong-forecast.png, widget-linie.png, fallstudie-kaya.png; QR-Ziele liegen auf der SSCM-Studierendenseite (externe URL).
 -->
 
 ::: {.callout-note title="Lernziele"}
 Nach diesem Kapitel können Sie …
 
-- an vier erprobten Modulen nachvollziehen, wie die Rollen aus @sec-szenarien und die Werkzeuge aus @sec-d-modus in einem Semesterverlauf zusammenkommen;
+- an Beispielen aus der eigenen Lehre nachvollziehen, wie aus einem belegten Lernprinzip eine Empfehlung und daraus eine Umsetzung mit generativer KI wird;
+- ein eigenes Vorhaben einer der drei Wissensformen zuordnen und daraus ableiten, welche Lerntechnik es tragen muss und welche Rolle aus @sec-szenarien die KI dabei spielt;
 - einschätzen, welche Vorbereitung (Material, Zugänge, Partner, Prüfungsform) ein Praxisprojekt mit generativer KI braucht und wo typische Engpässe liegen;
-- die Lessons Learned der Fälle auf ein eigenes Modul übertragen.
+- die Prüfkriterien der Beispiele auf eigene Werkzeuge übertragen.
 :::
 
-<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
+<!-- Entwurf (Claude, 29.10.2026, an die neue Gliederung angepasst); Freigabe durch Roman -->
 ::: {.callout-note title="Leitfragen"}
 *Versuchen Sie eine Antwort, bevor Sie weiterlesen; die Kernaussagen am Kapitelende greifen die Fragen in derselben Reihenfolge auf.*
 
-1. Was braucht ein Modul mit generativer KI über ein Semester hinweg mehr als einen guten Prompt?
-2. Woran erkennt man, ob ein Tutor im Kurs als Lernhilfe oder als Antwortmaschine genutzt wird?
-3. Wo liegen bei Praxisprojekten mit Unternehmen die typischen Engpässe: bei Material, Zugängen, Partnern oder Prüfungsform?
-4. Was lässt sich aus einem Fall auf das eigene Modul übertragen, und was nicht?
+1. Warum sollte man Lehrbeispiele mit KI nach dem Lernziel ordnen und nicht nach dem Werkzeug?
+2. Woran erkennt man, ob ein Werkzeug den Abruf aus dem Gedächtnis fördert oder ihn den Studierenden abnimmt?
+3. Was muss die Lehrperson selbst prüfen, wenn ein Sprachmodell Geschichte, Widget oder Simulationscode schreibt?
+4. Wo liegen bei Praxisprojekten mit Unternehmen die typischen Engpässe: bei Material, Zugängen, Partnern oder Prüfungsform?
 :::
 
-Die Kapitel 2 bis 5 behandeln Werkzeuge, Lernmechanismen, Rollen und Umsetzungsregeln je für sich. In der Lehre treffen sie gleichzeitig aufeinander: Ein Modul hat ein Semester, eine Prüfungsordnung, Studierende mit sehr verschiedenem Vorwissen und, wenn Unternehmen beteiligt sind, Partner mit eigenen Erwartungen an Vertraulichkeit und Ergebnis. Dieses Kapitel zeigt an vier Fällen aus dem Bachelor Wirtschaftsingenieurwesen und benachbarten Studiengängen der TH Köln, wie das zusammenging und wo es hakte. Jeder Fall folgt derselben Gliederung: Ausgangslage, Umsetzung, Ergebnis und was wir daraus gelernt haben. Beteiligte Unternehmen sind nach Branche und Größe beschrieben, nicht mit Namen.
+<!-- Einleitung: Entwurf (Claude, 29.10.2026) nach Strukturnotiz, Abschnitt 6.0; Freigabe durch Roman -->
+Die Kapitel 2 bis 5 behandeln Werkzeuge, Lernmechanismen, Rollen und Umsetzungsregeln je für sich. Dieses Kapitel zeigt, wie sie in Modulen des Bachelors Wirtschaftsingenieurwesen und in Workshops der TH Köln zusammenkommen, und ordnet die Beispiele nach dem, was Studierende lernen sollen, nicht nach dem Werkzeug. Jedes Beispiel beginnt mit einem Prinzip, das die Lernforschung belegt, leitet daraus eine Empfehlung ab, die ohne Produktnamen auskommt, und zeigt erst dann die Umsetzung mit dem Stand bei Drucklegung. Eine Empfehlung ist gut formuliert, wenn sie den Austauschtest besteht: Sie stimmt noch, nachdem man das Werkzeug gegen ein anderes getauscht hat. Werkzeuge altern schneller als Prinzipien, und wer das Prinzip kennt, baut die Umsetzung mit dem Werkzeug des nächsten Jahres nach.
 
-<!-- TODO Roman: Reihenfolge der Fälle festlegen. Vorschlag: chronologisch nach erstem Durchlauf, oder didaktisch von „Studierende nutzen KI“ (Fall 6.1) über „Studierende bauen KI-Werkzeuge“ (6.2, 6.3) zu „Studierende bauen für Partner“ (6.4). -->
+Die Ordnung folgt drei Stufen, die @carlile2004 für Wissen an den Grenzen zwischen Abteilungen beschreibt. Übertragen lässt sich Wissen, wo beide Seiten dieselben Begriffe teilen (syntaktisch); übersetzt werden muss es, wo dieselben Wörter Verschiedenes bedeuten (semantisch); umgeformt wird es, wo Interessen und Folgen auf dem Spiel stehen und Wissen gegen sie angewendet werden muss (pragmatisch). Carlile beschreibt Organisationen, und die Grenze zwischen Studierenden und Fach ist eine Analogie, die wir zum Ordnen nutzen, kein Befund über das Lernen. Wörtlich gilt sie erst beim Projektlernen mit Praxispartnern (@sec-fall-unternehmen), wo Wissen tatsächlich eine Organisationsgrenze überquert.
 
-## Fall 1: Ein Tutor für die Grundlagen der BWL {#sec-fall-tutor-bwl}
+Unter jeder Überschrift steht ein Steckbrief mit vier Angaben: die Wissensform; die Lerntechnik nach @dunlosky2013 mit ihrer Evidenzstärke, hoch für verteiltes und testgestütztes Lernen, mittel für gemischtes Üben und fragebasierte Ausarbeitung, oder das tragende Prinzip, wenn keine der Techniken passt; die Rolle der KI aus @sec-szenarien; und wer das Werkzeug gestaltet hat. Bauen Studierende es selbst, liegt das Lernziel meist eine Stufe höher, weil sie Wissen für ein Publikum übersetzen. @tbl-bsp-uebersicht fasst die Steckbriefe zusammen.
 
-<!-- Material: Kapiteleinleitung Kapitel 4 (Screenshot Januar 2026, Testbetrieb seit WS 2025/26), Tutor-Bots-AWS-TH-Koeln (März 2026). Offen: Architektur (Wissensbasis? Modell? Hosting AWS Amplify), Nutzungszahlen, Rückmeldungen der Studierenden, Testplan vor dem Einsatz, Kosten. -->
+| Beispiel | Wissensform | Lerntechnik (Evidenz) bzw. tragendes Prinzip | Rolle | Gestaltet von |
+|---|---|---|---|---|
+| Fragen-Generator | syntaktisch | testgestützt, verteilt (hoch) | Tutor | Lehrende |
+| Lernsongs I | syntaktisch | verteilt (hoch); Lösungsbeispiele | Copilot | Lehrende |
+| Quizspiele | syntaktisch | testgestützt (hoch) | Copilot | Lehrende |
+| Interaktive Widgets | semantisch | angeleitetes Entdecken, Konkretheitsabbau | Copilot | Lehrende |
+| Tutoring | semantisch | testgestützt (hoch) bzw. Ausarbeitung (mittel) | Tutor | Lehrende, Studierende |
+| Lernsongs II | semantisch | Ausarbeitung (mittel) | Copilot | Lehrende |
+| Fallstudien generieren | pragmatisch | Ausarbeitung (mittel), Vorhersage | Copilot | Lehrende |
+| Simulationen: Prozess und Verhandlung | pragmatisch | Erfahrung mit Nachbesprechung | Simulator | Lehrende |
+| Simulationen und Planspiele selbst bauen | pragmatisch | simulationsbasiertes Lernen; Projektlernen | Simulator | Studierende |
+| Karriereberater | pragmatisch (vorläufig) | offen | Tutor | Studierende |
+| Projektlernen mit Praxispartnern | pragmatisch | Projektlernen | Copilot, Hiwi | Studierende |
 
+: Die Beispiele dieses Kapitels nach Wissensform, Lerntechnik, Rolle der KI und Gestaltung {#tbl-bsp-uebersicht tbl-colwidths="[24,17,30,12,17]"}
+
+## Wissen übertragen: Begriffe, Formeln, Reihenfolgen {#sec-bsp-syntaktisch}
+
+### Fragen-Generator: Abrufübung mit dem eigenen Material {#sec-bsp-fragen-generator}
+
+*Wissensform:* syntaktisch · *Lerntechnik:* testgestützt (hoch), verteilt (hoch) · *Rolle:* Tutor (@sec-tutor) · *Gestaltet von:* Lehrende
+
+<!-- Abweichung vom Strukturplan: Rolle Tutor statt Hiwi, weil das Modell hier mit den Studierenden arbeitet, nicht für die Lehrperson. Vokabel-App „Wörter sammeln“ (Galerie) nicht ausgeführt: privater Kontext, Freigabe offen. -->
+
+::: {.callout-note title="Prinzip"}
+Wer Gelerntes aus dem Gedächtnis abruft, behält es länger als wer es noch einmal liest. Nach fünf Minuten liegt das Wiederlesen noch vorn, nach zwei Tagen und nach einer Woche der Abruf [@roediger2006], und eine Metaanalyse über alle Vergleichsbedingungen bestätigt ihn: Übungstests schlagen das Wiederlesen und jede andere geprüfte Alternative, wobei Merkmale des Tests wie die Rückmeldung die Größe des Effekts mitbestimmen [@adesope2017]. Verteilt man die Abrufrunden über Tage, wächst der Gewinn weiter [@cepeda2006]; beide Techniken stehen bei @dunlosky2013 in der höchsten Nützlichkeitsstufe.
+:::
+
+::: {.callout-tip title="Empfehlung"}
+Wenn Sie Studierenden ein Sprachmodell zum Wiederholen empfehlen, geben Sie ihnen einen Prompt mit, der das Modell auf Ihr Material festlegt, eine eigene Antwort vor jeder Rückmeldung verlangt und die Aufgabenform Ihrer Prüfung nachbildet. Prüfkriterium: Stellt das System eine Frage und wartet, bevor es etwas erklärt?
+:::
+
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
+Im englischsprachigen Modul *Sustainable Supply Chain Management* (SSCM) liegt auf jeder Wochenseite der Kerninhalt der Woche als reine Textdatei: das Problem des Kapitels, ein Satz der Woche, die Formeln, die gerechneten Beispiele aus Studentenleben, Fabrik und Lieferkette mit ihren Zahlen, typische Fehler und Übungsaufgaben ohne Lösung. Ein Anhang des Online-Skripts stellt dazu den Prompt *Quiz me* bereit (<https://th-koln-bartnik.github.io/sscm-2026-student/appendix/quiz-me.html>). Studierende kopieren ihn in einen beliebigen Chat und hängen den Kerninhalt einer Woche an.
+
+Der Prompt legt fünf Dinge fest. Er beschränkt das Modell auf das eingefügte Material und das Lehrbuchkapitel, das es nennt, und verbietet erfundene Zahlen. Er gibt eine Reihenfolge vor: zuerst das Problem in Worten, dann die Formel in Worten, dann eine Rechnung mit den Zahlen eines Beispiels, in der ein Wert geändert ist, zuletzt eine Übungsaufgabe. Nach jeder Antwort sagt das Modell, ob sie stimmt, zeigt die Rechnung in höchstens vier Zeilen und benennt den typischen Fehler, falls einer vorliegt; die Lösung nennt es nie vor dem eigenen Versuch, auf Nachfrage zuerst nur einen Hinweis. Er bildet die Prüfung nach, die auf Papier stattfindet und Rechenaufgaben mit geänderten Werten neben Begriffsfragen stellt, und schließt jede Sitzung mit drei Aufgaben im Prüfungsformat und zwei Zeilen dazu, was noch einmal zu lesen ist. Und er verlangt Ehrlichkeit: Steht etwas nicht im Material, verweist das Modell auf den Kapitelabschnitt, statt zu raten. Ein zweiter, kurzer Prompt dreht die Richtung um und baut aus jedem typischen Fehler eine fehlerhafte Rechnung, die Studierende finden und korrigieren.
+
+Zwei Gestaltungsentscheidungen tragen den Lerneffekt. Die Arbeitsanweisung lautet, jede Antwort zuerst auf Papier zu schreiben und erst dann einzutippen; der Abruf findet also statt, bevor das Modell eingreift. Und weil jedes gerechnete Beispiel im Kerninhalt sein Ergebnis mitführt, können Studierende jede Zahl des Modells gegen eine Zahl der Lehrperson halten. Die Seite schließt mit dem Satz, was der Prompt nicht ersetzt: das Kapitel.
+
+Die zweite Umsetzung stammt aus einem 30-minütigen Workshop für Studierende aller Semester am Campus Gummersbach. Ein Prompt macht das Modell zum Klausur-Lernplaner: Es sortiert eine Themenliste nach inhaltlicher Abhängigkeit, verteilt sie rückwärts auf die zehn Tage vor der Klausur, hält den letzten Tag frei von neuem Stoff und gibt für jeden Tag eine Kontrollfrage aus, die abends ohne Hilfe lösbar sein muss. Die Kontrollfrage ist testgestützt. Verteilt ist der Plan dagegen kaum, denn jedes Thema kommt an einem Tag vor und kehrt erst am Wiederholungstag zurück. Eine Zeile im Prompt behebt das: Jedes Thema zwei und fünf Tage nach dem ersten Lerntag in einer Abrufrunde von zehn Minuten wieder aufnehmen.
+:::
+
+<!-- TODO Roman: Ergebnis. Gibt es Rückmeldungen, wie oft der Quiz-me-Prompt genutzt wurde (Abfrage im Kurs, Exit-Ticket)? Soll die Zeile zum verteilten Wiederholen in den Workshop-Prompt übernommen werden? -->
+
+Ob ein Sprachmodell als Fragesteller mehr leistet als Karteikarten, ist nicht untersucht. Die Evidenz gilt dem Abruf, nicht dem, der abfragt; der Gewinn des Modells liegt in der Variation der Zahlen und in der Rückmeldung zum typischen Fehler, und beide lassen sich mit einem Satz Karteikarten nur mühsam herstellen.
+
+**Lernfrage.** Ein Student lässt sich vom Modell die Lösung zeigen und tippt sie ab, bevor er selbst gerechnet hat. Welche Zeile des Prompts verletzt er, und warum verliert er damit genau den Effekt, für den der Prompt gebaut ist?
+
+### Lernsongs I: ein Verfahrenslied mit Rechenpausen {#sec-bsp-lernsong-forecast}
+
+*Wissensform:* syntaktisch, mit semantischem Rand · *Lerntechnik:* verteilt (hoch); Rechenteil getragen von Lösungsbeispielen · *Rolle:* Copilot (@sec-copilot) · *Gestaltet von:* Lehrende
+
+<!-- Entscheidung offen (Begleitnotiz, Punkt 1): Der erste produzierte Song ist ein Verfahrenslied (K5 der Typologie), kein Merkjingle (K1) oder Reihenlied (K2). Vorschlag umgesetzt: als „Lernsongs I“ behalten, Rechenpausen offen als Lösungsbeispiele benennen; K1/K2 folgen online. -->
+
+::: {.callout-note title="Prinzip"}
+Musik stärkt das wörtliche Behalten von Wortlaut und Reihenfolge: In einer systematischen Übersicht fanden 28 von 37 Studien einen Vorteil musikalischer Merkhilfen, neun keinen [@derksdijkman2024]. Der Vorteil braucht Wiederholung, und zwar verteilte; Studierende, die ein Lied über Tage verteilt übten, behielten es drei Wochen später besser als nach massiertem Üben [@katz2021]. Für das Anwenden und Rechnen gibt es keinen Beleg, dass ein Song hilft. Diesen Teil tragen ausgearbeitete Lösungsbeispiele, die in einer Metaanalyse zur Mathematik einen mittleren Effekt erreichen [@barbieri2023].
+:::
+
+::: {.callout-tip title="Empfehlung"}
+Setzen Sie einen Song für das ein, was wörtlich sitzen soll: die Namen und die Reihenfolge der Verfahren, eine Formel im Wortlaut. Lassen Sie das Rechnen von Lösungsbeispielen tragen, die der Song an markierten Stellen anhält, und planen Sie mindestens zwei Durchgänge mit einigen Tagen Abstand ein. Prüfkriterium: Lässt sich jede Strophe einer Zeile im Skript zuordnen, und steht im Einsatzplan ein zweiter Termin?
+:::
+
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
+*Every Forecast Is Wrong · How Many Cups Tomorrow?* ist ein animiertes Musikvideo von 5:15 Minuten für die fünfte Woche des SSCM-Moduls, in der es um Prognoseverfahren geht. Ein Café auf dem Campus zählt drei Wochen lang seine verkauften Kaffeebecher, und der Song führt an diesen Zahlen durch fünf Verfahren: die naive Prognose, den gleitenden Dreitagesdurchschnitt, die exponentielle Glättung, den Wochentagsindex und den Wochentagsindex mit Trend. Die Refrains vergleichen die Verfahren über zwei Fehlermaße, die mittlere absolute Abweichung (MAD) und die mittlere absolute prozentuale Abweichung (MAPE). Drei Instrumentalteile zeigen je eine durchgerechnete Prognose; die Anweisung auf der Wochenseite lautet, dort anzuhalten und mitzurechnen, bevor die nächste Zeile erscheint. Der Liedtext läuft als Untertitel mit.
+
+Arbeitsteilung und Prüfung stehen in der Bildunterschrift: Text, Beispieldaten und Animationscode schrieb Claude, die Musik erzeugte Suno, Café und Zahlen sind erfunden, geprüft hat die Lehrperson. Das Beispiel ist bewusst neu. Es teilt keine Zahlen mit der Fallstudie der Woche, dem Prognose-Widget oder der folgenden Klausur, sodass der Song einen zweiten Kontext für dieselben Verfahren liefert, ohne Prüfungsaufgaben vorwegzunehmen.
+
+Der Einsatzplan folgt dem Prinzip. Der Song steht am Ende eines Selbstlerntags, nach Kapitellektüre, Widget und Fallstudie, also erst dann, wenn die Verfahren hergeleitet und verstanden sind. Die Aufgabenliste für die Woche danach nennt einen zweiten Durchgang mit Halt an den drei Rechenbeispielen.
+
+In der Typologie des Regelwerks ist das Video ein Verfahrenslied, keiner der drei ausgewählten Typen. Es zeigt deshalb gut, wo die Arbeitsteilung zwischen Musik und Didaktik verläuft: Der Song sichert die Reihenfolge der fünf Verfahren und ihre Namen, die Rechenpausen sind Lösungsbeispiele in einem anderen Gewand.
+:::
+
+::: {.content-visible when-format="html"}
+{{< video https://th-koln-bartnik.github.io/sscm-2026-student/videos/week05_every_forecast_is_wrong.mp4
+    title="Every Forecast Is Wrong · How Many Cups Tomorrow?" >}}
+
+*Video (5:15, englisch; Liedtext als Untertitel auf der [Wochenseite](https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week05.html#revise-with-a-song-5-min)): fünf Prognoseverfahren an den verkauften Kaffeebechern eines erfundenen Campus-Cafés. Text, Beispieldaten und Animationscode: Claude; Musik: Suno; geprüft von der Lehrperson.*
+:::
+
+::: {.content-visible unless-format="html"}
+![Standbild aus dem Lernsong *Every Forecast Is Wrong* (5:15) bei 3:20: Der Refrain vergleicht drei Verfahren über die mittlere absolute Abweichung (MAD) und die mittlere absolute prozentuale Abweichung (MAPE); die Zeile unten ist der Liedtext als Untertitel. Text, Beispieldaten und Animationscode: Claude; Musik: Suno; Café und Zahlen erfunden. Das Video gibt es nur online: QR-Code scannen oder <https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week05.html#revise-with-a-song-5-min> aufrufen.](images/druck/lernsong-forecast.png){#fig-druck-lernsong-forecast width="100%"}
+:::
+
+<!-- TODO Roman: Ergebnis (Abrufzahlen, Rückmeldungen in Woche 6, ggf. Item in Test 3 zur Reihenfolge der Verfahren). Produktionsdauer und Zahl der Suno-Durchläufe für einen Satz zum Aufwand (Planungsdokument im SSCM-Projekt: video-forecasting-plan-2026-10-28). -->
+
+**Lernfrage.** Eine Kollegin will den Song in der Vorlesung einmal abspielen, bevor sie die exponentielle Glättung einführt. Was spricht nach dem Prinzip gegen diesen Zeitpunkt, und was gegen das einmalige Abspielen?
+
+### Quizspiele: Abruf mit Rückmeldung, und wann ein Quiz kein Simulator ist {#sec-bsp-quizspiele}
+
+*Wissensform:* syntaktisch · *Lerntechnik:* testgestützt (hoch) · *Rolle:* Copilot (@sec-coding) · *Gestaltet von:* Lehrende
+
+::: {.callout-note title="Prinzip"}
+Ein Zuordnungs- oder Auswahlspiel ist eine Abrufübung mit sofortiger Rückmeldung und wirkt über denselben Mechanismus wie ein Übungstest [@adesope2017]. Die Spielform selbst ist kein zusätzlicher Wirkfaktor, auf den man sich verlassen kann: Serious Games schnitten in einer Metaanalyse beim Lernen und Behalten besser ab als herkömmlicher Unterricht, motivierten aber nicht stärker [@wouters2013].
+:::
+
+::: {.callout-tip title="Empfehlung"}
+Bauen Sie Quizspiele für Begriffe, Zuordnungen und Erkennungsaufgaben, und nennen Sie sie so. Wenn die Lernenden Entscheidungen unter Zielkonflikten üben sollen, braucht das Spiel einen Zustand, der sich durch ihre Entscheidungen verändert; eine Auswahl mit einer richtigen Antwort leistet das nicht. Prüfkriterium: Ändert eine Entscheidung etwas an der nächsten Runde?
+:::
+
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
+Das Zuordnungsspiel zu den Grundbegriffen generativer KI in @sec-grundbegriffe paart Begriffe mit Definitionen. Die Stufe *Fortgeschritten* ergänzt Begriffe zu Agenten und eine Diagnoserunde mit typischen Problemen im Umgang mit Sprachmodellen. Das Spiel ist eine einzelne HTML-Datei und läuft ohne Anmeldung im Browser; es wird im Skript, im Workshop „KI zum Lernen“ und im Workshop zu interaktiven Skripten eingesetzt.
+
+Lehrreich ist der Vergleich mit einem frühen eigenen Versuch aus dem Jahr 2025. <!-- TODO Roman: Wurden Spiel und Simulator mit einem Sprachmodell gebaut? Dann Satz ergänzen. --> *Einsatzbereit! Strategic Procurement Simulator* versetzt Studierende in die Rolle der Beschaffung in Krisen: Eine Flut verlangt sofort Pumpen, ein Erdbeben erzeugt viele dringende Bedarfe zugleich, und für jede Lage stehen vier Strategien zur Wahl, Sicherheitsbestand, leistungsbasierte Verträge, Lebenszykluskostenrechnung und Dual Sourcing. Das Programm wählt zufällig eine von vier Lagen und erklärt nach der Wahl, welche Strategie die beste gewesen wäre. Der Name verspricht eine Simulation, die Struktur ist ein Auswahlquiz mit Rückmeldung: Es gibt keinen Zustand, keine Folgekosten und keine nächste Runde, die von der vorigen abhängt. Die Musterlösung blendet zudem genau den Zielkonflikt aus, um den es in der Beschaffung geht, denn im Erdbeben konkurrieren Sicherheitsbestand und Dual Sourcing, und die Antwort hängt an Lagerkosten und Lieferzeiten, die das Spiel nicht kennt. Als Erkennungsübung zu vier Begriffen taugt es; Entscheidungen trainiert erst ein Modell, in dem Entscheidungen Folgen haben (@sec-bsp-simulationen-studierende).
+:::
+
+**Lernfrage.** Wie müsste man den Beschaffungs-„Simulator“ verändern, damit aus dem Quiz eine Entscheidungsübung wird? Nennen Sie die kleinste Änderung, die das Prüfkriterium der Empfehlung erfüllt.
+
+## Wissen übersetzen: Bedeutungen erschließen {#sec-bsp-semantisch}
+
+### Interaktive Widgets: vom Studentenleben zur Fabrik {#sec-bsp-widgets}
+
+*Wissensform:* semantisch · *Lerntechnik:* keine der drei; tragend sind angeleitetes Entdecken und Konkretheitsabbau (*concreteness fading*) · *Rolle:* Copilot (@sec-coding) · *Gestaltet von:* Lehrende
+
+::: {.callout-note title="Prinzip"}
+Selbst entdecken lässt Lernende nur dann besser lernen als direkte Instruktion, wenn das Entdecken angeleitet ist: durch Arbeitsaufträge, Rückmeldung, Beispiele oder die Aufforderung, das Gesehene zu erklären; ungeleitetes Entdecken schneidet schlechter ab [@alfieri2011]. Eine zweite Regel betrifft die Reihenfolge der Darstellungen. Wer eine abstrakte Idee zuerst an einem vertrauten, konkreten Fall erlebt und die konkreten Züge dann schrittweise abbaut, überträgt sie besser als wer nur das Konkrete oder nur das Abstrakte sieht [@fyfe2014]. Fachfremde Zierelemente lenken ab [@mayer2014].
+:::
+
+::: {.callout-tip title="Empfehlung"}
+Geben Sie jedem Widget drei bis fünf Arbeitsaufträge mit, von denen mindestens einer eine Vorhersage oder einen Beweis verlangt, und zeigen Sie die Formel neben dem Ergebnis, das sie erzeugt. Führen Sie dieselbe Idee zuerst in einem Alltagskontext der Studierenden ein und erst danach im Fachkontext. Prüfkriterium: Würde ein Student ohne die Arbeitsaufträge wissen, was er ausprobieren soll?
+:::
+
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
+Jede Sitzung des SSCM-Moduls folgt derselben Reihenfolge in fünf Schritten. Ein Problem aus dem Kapitel steht am Anfang, bevor ein Fachbegriff fällt. Dann tragen Partyvorbereitung oder Umzugstag die Idee zum ersten Mal, danach folgt die Formel in Worten mit kurzen Übungen in HTML-Widgets, dann dieselbe Idee in der Produktion mit den Beispielen des Lehrbuchs, zuletzt zwischen Unternehmen in der Lieferkette. Die Reihenfolge ist Konkretheitsabbau im Sinne von @fyfe2014, auf eine ganze Sitzung gestreckt.
+
+Bis zur fünften Woche entstanden sechs Widgets, jedes eine einzelne HTML-Datei, die auf dem Smartphone läuft und keine Anmeldung braucht. Das Linien-Widget zur Kapazität zeigt zwei Produktionslinien zur Wahl: die Pizzalinie einer Party und die Brötchenlinie der Bäckerei aus der Fallstudie (@sec-bsp-fallstudie). Studierende ändern Arbeitsschritte, Personal, Nachfrage und Losgröße und sehen sofort Linienkapazität, Engpasszeit und Durchlaufzeit. Drei Aufträge leiten das Ausprobieren: 24 Pizzen in unter zwei Stunden mit nur einer zusätzlichen Person oder einem zusätzlichen Ofen schaffen, den Belag-Schritt zum Engpass machen, und die Änderung finden, die am Ausstoß pro Stunde nichts ändert, und das beweisen. Das Prognose-Widget hat vier Reiter mit je einem Werkzeug, und jede Prognose entsteht nur aus den Tagen davor, so wie im Betrieb. Neben den Widgets stehen Colab-Notebooks, in denen Studierende eine Rechnung zuerst von Hand lösen und dann als kleines Modell nachbauen, das Was-wäre-wenn-Fragen in Sekunden beantwortet; das Notebook der zweiten Woche endet mit einem Dashboard, das sie in vier Schritten selbst bauen.
+
+Widgets, Notebooks und Datensätze entstanden mit Claude als Copilot nach Vorgaben der Lehrperson. <!-- TODO Roman: bestätigen (Claude Code oder Chat?) --> Eine Regel der Arbeitsanweisung lautet, jede Zahl in Python zu rechnen, nie im Kopf des Modells. Fallstudie, Linienmodell im Notebook, Widget und die Übungsdaten zur Datenbereinigung teilen sich einen einzigen Zahlensatz, sodass ein Ergebnis aus dem Widget in der Fallstudie wieder auftaucht. Wie solche Widgets als geprüftes Modell mit Druckabbildung entstehen, zeigt @sec-widget-littles-law.
+:::
+
+::: {.content-visible when-format="html"}
+<iframe src="https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html" width="100%" height="1150px" frameborder="0" title="Linien-Widget: Engpass finden"></iframe>
+
+*Linien-Widget aus Woche 2 des SSCM-Moduls (englisch), auch [einzeln aufrufbar](https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html). Die Schaltflächen oben wechseln zwischen Pizzalinie und Brötchenlinie der Bäckerei Kaya.*
+:::
+
+::: {.content-visible unless-format="html"}
+![Linien-Widget aus Woche 2 des SSCM-Moduls in der Ausgangslage der Pizzalinie: links die vier Arbeitsschritte mit Schiebereglern, rechts Kennzahlen, Kapazität je Schritt mit dem Engpass Backen und die drei Arbeitsaufträge unter *Try this*. Erstellt mit Claude nach Vorgaben der Lehrperson. Das Widget gibt es nur online: QR-Code scannen oder <https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html> aufrufen.](images/druck/widget-linie.png){#fig-druck-widget-linie width="100%"}
+:::
+
+<!-- TODO Roman: Ergebnis. Nutzungsdaten liegen nicht vor (keine Protokollierung). Beobachtungen aus der Präsenz (Woche 2: Linien-Widget im Konzeptblock) oder aus dem Selbstlerntag der Woche 5? Zeitaufwand je Widget für einen Satz zum Aufwand? -->
+
+Ob die Widgets mehr bewirken als dieselben Aufgaben auf Papier, ist für dieses Modul nicht gemessen. Belegt ist die Wirkung der Bauprinzipien, Anleitung und Reihenfolge; das Widget macht sie für jede Woche praktikabel.
+
+**Lernfrage.** Das Linien-Widget fragt, welche Änderung am Ausstoß pro Stunde nichts ändert. Warum ist dieser Auftrag didaktisch wertvoller als „Finden Sie den Engpass“?
+
+### Tutoring: Übungstutor und sokratischer Tutor {#sec-fall-tutor-bwl}
+
+*Wissensform:* semantisch · *Lerntechnik:* testgestützt (hoch) beim Übungstutor, fragebasierte Ausarbeitung (mittel) beim sokratischen Tutor · *Rolle:* Tutor (@sec-tutor) · *Gestaltet von:* Lehrende; Studierende bei studentisch gebauten Tutoren
+
+<!-- Übernommen aus Fall 1 des Gerüsts vom 17.10. Material: Kapiteleinleitung Kapitel 4 (Screenshot Januar 2026, Testbetrieb seit WS 2025/26), Tutor-Bots-AWS-TH-Koeln (März 2026). Offen: Architektur (Wissensbasis? Modell? Hosting AWS Amplify), Nutzungszahlen, Rückmeldungen der Studierenden, Testplan vor dem Einsatz, Kosten.
+TODO Roman/Claude: Callouts „Prinzip“ und „Empfehlung“ nach der Schablone; Kandidaten für das Prinzip: @kestin2025 (Musterlösungen im Prompt), @liu2026courseintegrated und @gerber2026 (Standardmodus Antwortmaschine), Nullbefunde aus Abschnitt 3.5 als ehrliche Lücke.
+Aus dem bisherigen Fall 2 (studentisch gebaute Tutoren): „In drei Modulen stand nicht die Nutzung, sondern der Bau eines KI-Werkzeugs im Mittelpunkt: Studierende ohne Programmierhintergrund entwickelten in Teams einen fachlichen Tutor, ein Lernspiel oder einen Karriereberater für Kommilitoninnen und Kommilitonen.“ Offen: Modulnamen, Semester, Teilnehmerzahlen, Werkzeuge, Prüfungsform, Beispiele studentischer Produkte, Bewertungsraster. -->
+
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
 **Ausgangslage.** Das Modul „Grundlagen der BWL“ versammelt im ersten Semester mehrere hundert Studierende mit sehr unterschiedlichem Vorwissen; die Sprechstunde erreicht einen Bruchteil, die häufigsten Fragen wiederholen sich. <!-- TODO Roman: Kohortengröße, Studiengänge, Motiv -->
 
 **Umsetzung.** Seit dem Wintersemester 2025/26 erproben wir einen Tutor-Bot als Web-Anwendung, der aus den Modulmaterialien antwortet (vgl. @sec-tutor-betrieb). <!-- TODO Roman: Aufbau in drei bis fünf Sätzen: Materialien, System-Prompt (sokratisch? Musterlösungen als Input nach @kestin2025?), Leitplanken, wer gebaut hat, Testläufe vor Freigabe -->
@@ -40,73 +199,150 @@ Die Kapitel 2 bis 5 behandeln Werkzeuge, Lernmechanismen, Rollen und Umsetzungsr
 **Ergebnis.** <!-- TODO Roman: Nutzung (Sitzungen, Spitzen vor Prüfungen), typische Fragen, beobachtete Überhilfe oder Fehler, Rückmeldungen -->
 
 **Was wir gelernt haben.** <!-- TODO Roman: drei bis fünf Punkte; Kandidaten aus Kapitel 4 und Anhang D: Testplan mit Mini-Goldstandard (@sec-d-ue6), Grenze des Prompts (@perczel2025), Datenschutz, laufende Pflege der Wissensbasis -->
+:::
 
-**Vergleichsfälle.** <!-- Neu 2026-10-17 (Evidenz-Screening): zwei veröffentlichte Fälle mit derselben Architektur als Messlatte für Fall 1; Zahlen zu Fall 1 ergänzt Roman -->
-Zwei veröffentlichte Fälle mit derselben Architektur, ein Tutor über die eigenen Kursmaterialien, geben die Messlatte vor, an der wir unseren Tutor beurteilen. An der University of Maryland erhielten per Los 2.379 Studierende in den Kursen von 30 Lehrenden Zugang zu einem solchen Tutor; nur 15 Prozent nutzten ihn, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Abschlussnote der Berechtigten lag 0,37 Standardabweichungen unter der Kontrollgruppe, weil der Tutor im Standardmodus der Lehrenden als Antwortmaschine konfiguriert war und das eigene Arbeiten am Material ersetzte [@liu2026courseintegrated]. An der Hochschule Rhein-Waal lief ein sokratisch gebauter Tutor mit eigenen Quellen auf einem lokal betriebenen offenen Modell; nach einem Semester mit 62 Studierenden war die Bereitschaft, Fragen zu stellen, gestiegen, die Neugier auf das Warum aber gesunken, weil die Studierenden ihn trotz des sokratischen Designs als Antwortmaschine nutzten, sobald er es zuließ [@gerber2026]. Für Fall 1 ergeben sich daraus drei Kennzahlen, die wir erheben: der Anteil der Berechtigten, die den Tutor überhaupt nutzen; der Anteil der Anfragen, die eine fertige Antwort verlangen, gegenüber denen, die Rückmeldung auf eigene Arbeit suchen; und ob das Standardverhalten des Tutors bei einer offensichtlichen Prüfungsfrage auf das Material verweist oder löst (Testplan in @sec-d-ue6). <!-- TODO Roman: die drei Kennzahlen für den BWL-Tutor eintragen -->
+**Vergleichsfälle.** <!-- Neu 2026-10-17 (Evidenz-Screening): zwei veröffentlichte Fälle mit derselben Architektur als Messlatte; Zahlen zum BWL-Tutor ergänzt Roman -->
+Zwei veröffentlichte Fälle mit derselben Architektur, ein Tutor über die eigenen Kursmaterialien, geben die Messlatte vor, an der wir unseren Tutor beurteilen. An der University of Maryland erhielten per Los 2.379 Studierende in den Kursen von 30 Lehrenden Zugang zu einem solchen Tutor; nur 15 Prozent nutzten ihn, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Abschlussnote der Berechtigten lag 0,37 Standardabweichungen unter der Kontrollgruppe, weil der Tutor im Standardmodus der Lehrenden als Antwortmaschine konfiguriert war und das eigene Arbeiten am Material ersetzte [@liu2026courseintegrated]. An der Hochschule Rhein-Waal lief ein sokratisch gebauter Tutor mit eigenen Quellen auf einem lokal betriebenen offenen Modell; nach einem Semester mit 62 Studierenden war die Bereitschaft, Fragen zu stellen, gestiegen, die Neugier auf das Warum aber gesunken, weil die Studierenden ihn trotz des sokratischen Designs als Antwortmaschine nutzten, sobald er es zuließ [@gerber2026]. Für den BWL-Tutor ergeben sich daraus drei Kennzahlen, die wir erheben: der Anteil der Berechtigten, die den Tutor überhaupt nutzen; der Anteil der Anfragen, die eine fertige Antwort verlangen, gegenüber denen, die Rückmeldung auf eigene Arbeit suchen; und ob das Standardverhalten des Tutors bei einer offensichtlichen Prüfungsfrage auf das Material verweist oder löst (Testplan in @sec-d-ue6). <!-- TODO Roman: die drei Kennzahlen für den BWL-Tutor eintragen -->
 
-## Fall 2: Studierende bauen Tutoren, Lernspiele und Karriereberater {#sec-fall-studierende-bauen}
+<!-- TODO: Lernfrage nach der Schablone, sobald Prinzip und Empfehlung stehen. -->
 
-<!-- Material noch nicht lokalisiert (drei Module laut Projektbeschreibung). Offen: Modulnamen, Semester, Teilnehmerzahlen, Werkzeuge (Chat-Interface mit Artefakten? Vibe Coding? Lernspiel-Vorlagen aus Kapitel 1 (Galerie) und Anhang C?), Prüfungsform, Beispiele studentischer Produkte (Screenshots für den Druck, Links online), Bewertungsraster. Verweis aus @sec-coding (4.2.2 agentisches Coding) vorgesehen. -->
+### Lernsongs II: die Wirkungsketten-Ballade {#sec-bsp-lernsong-ballade}
 
-**Ausgangslage.** In drei Modulen stand nicht die Nutzung, sondern der Bau eines KI-Werkzeugs im Mittelpunkt: Studierende ohne Programmierhintergrund entwickelten in Teams einen fachlichen Tutor, ein Lernspiel oder einen Karriereberater für Kommilitoninnen und Kommilitonen. <!-- TODO Roman: präzisieren -->
+*Wissensform:* semantisch · *Lerntechnik:* fragebasierte Ausarbeitung (mittel) · *Rolle:* Copilot (@sec-copilot) · *Gestaltet von:* Lehrende
 
-**Umsetzung.** <!-- TODO Roman: Ablauf im Semester (Briefing, Prototyp, Test mit Zielgruppe, Abgabe), Werkzeuge, Rolle der Lehrenden, wie Qualität geprüft wurde -->
+<!-- TODO: Song (Typ K4) noch nicht produziert. Grundlage: Regelwerk Lernsongs und K4-Literatur im Projekt (claude/lernsongs/regelwerk-lernsongs-synthese-2026-10-28.md, k4-wirkungsketten-literatur-2026-10-28.md). Prinzip, Empfehlung, Umsetzung und Lernfrage nach Produktion. -->
 
-**Ergebnis.** <!-- TODO Roman: zwei bis drei exemplarische Produkte kurz beschreiben; was funktionierte, was nicht -->
+## Wissen umformen: anwenden gegen Interessen und Folgen {#sec-bsp-pragmatisch}
 
-**Was wir gelernt haben.** <!-- TODO Roman -->
+### Fallstudien generieren: Backhaus Kaya {#sec-bsp-fallstudie}
 
-## Fall 3: Job-Buddy {#sec-fall-job-buddy}
+*Wissensform:* pragmatisch, mit semantischem Übergang · *Lerntechnik:* fragebasierte Ausarbeitung (mittel), Vorhersage vor dem Lernen · *Rolle:* Copilot (@sec-copilot) · *Gestaltet von:* Lehrende
 
-<!-- Material noch nicht lokalisiert. Offen: Was ist Job-Buddy (Karriere-/Bewerbungsassistent?), Zielgruppe, Modulkontext, Partner, Stand. Prüfen, ob Fall 3 in Fall 2 aufgeht (Karriereberater) und das Kapitel dann drei Fälle plus Guided Project hat. -->
+::: {.callout-note title="Prinzip"}
+Geschichten werden besser verstanden und erinnert als Sachtexte; eine Metaanalyse über mehr als 75 Stichproben mit über 33.000 Teilnehmenden fand den Vorteil robust [@mar2021]. @willingham2021 nennt die Merkmale, die eine Geschichte zum Lernanlass machen: eine Figur mit einem Ziel, ein Konflikt, Komplikationen und kausal verbundene Ereignisse. Wer vor dem Lernen eine Vermutung abgibt, auch eine falsche, lernt die richtige Antwort danach oft besser [@pan2023prequestion].
+:::
 
-**Ausgangslage.** <!-- TODO Roman -->
+::: {.callout-tip title="Empfehlung"}
+Lassen Sie das Sprachmodell die Geschichte schreiben, aber legen Sie die Zahlen vorher fest und lassen Sie jede Zahl in Code nachrechnen. Bauen Sie die typische Fehlvorstellung als Figur in die Handlung ein und bitten Sie die Studierenden um eine Vermutung, bevor sie rechnen. Prüfkriterium: Stimmen Fall, Lösungsschlüssel und Teaching Note in jeder Zahl überein?
+:::
 
-**Umsetzung.** <!-- TODO Roman -->
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
+Backhaus Kaya ist eine erfundene Handwerksbäckerei in Gummersbach und begleitet das SSCM-Modul über mehrere Wochen. Der erste Teil beginnt um 2:40 Uhr nachts am Ofen. Aylin Kaya, 34, führt die Bäckerei, die ihr Vater gegründet hat; über dem Ofen hängt sein Satz *Never promise bread you cannot bake*. Die Einkäuferin einer regionalen Supermarktkette legt einen Vertrag auf den Tisch: 1.800 zusätzliche Brötchen pro Tag, sechs Tage die Woche, 0,32 Euro das Stück, Laufzeit ein Jahr, Antwort bis Montag. Gebacken wird in einem Fenster von vier Stunden vor Sonnenaufgang, und heute verlassen schon 1.500 Brötchen pro Nacht die Backstube. Der Backmeister hat sofort eine Lösung: einen dritten Mitarbeiter zum Formen, denn das sei die härteste Arbeit.
 
-**Ergebnis.** <!-- TODO Roman -->
+Diese Figur trägt die Fehlvorstellung, um die es geht. Die Fragen Q1 bis Q6 führen von der Kapazität jedes Schritts über Auslastung und Effizienz des Ofens zu drei Optionen mit Deckungsbeitrag und CO₂-Bilanz. Der Engpass ist der Etagenofen mit 720 Brötchen pro Stunde; ein dritter Former hebt das Formen auf 1.260 Brötchen pro Stunde und ändert am Ausstoß der Linie nichts. Die Empfehlung, die jedes Team in drei Sätzen formuliert, muss ein Risiko nennen: Die längere Nacht bringt im ersten Jahr den kleineren Gewinn ohne Leasingbindung, hat aber keinen Puffer.
 
-**Was wir gelernt haben.** <!-- TODO Roman -->
+Zum Fall gehören eine Teaching Note mit Lernzielen, Zeitplan für 35 Minuten, Lösungsschlüssel und Tafelbild, ein Teaser-Video von fünf Sekunden und ein Satz Rohdaten aus dem Ofenprotokoll, an denen die Studierenden am Nachmittag Datenbereinigung üben. Fall, Colab-Linienmodell, Linien-Widget und Ofenprotokoll teilen sich einen Zahlensatz aus einer gemeinsamen Spezifikation. Claude entwarf und prüfte Geschichte und Teaching Note; die Arbeitsanweisung verlangte, jede Zahl in Python zu rechnen, und jedes Dokument trägt einen Transparenzhinweis.
 
-## Fall 4: KI-Anwendungen für Unternehmen bauen: Wahlpflichtmodul und Guided Project {#sec-fall-unternehmen}
+Der vierte Teil in der Prognosewoche beginnt mit einem Vorhersagekasten. Die Bäckerei liefert jede Nacht 1.800 Brötchen, immer gleich auf drei Filialen verteilt, und 6 Prozent kommen unverkauft zurück; drei Fragen bitten um eine Vermutung, die Studierende mit Datum notieren und am Ende des Tages mit ihrem Ergebnis vergleichen. Die Rechnungen aus dem Fall sind Stoff des zweiten Tests, die Geschichte ist also kein Schmuck, sondern Prüfungsgegenstand.
+:::
 
-<!-- Material: Modulbeschreibung „GenAI im Einsatz: Tools und Anwendungen für den Arbeitsalltag entwickeln“ (4 ECTS, Wahlpflicht, Prüfung 30 % Antwortwahl / 70 % mündlich), Use-Case-Beschreibungen dreier Partner (SS 2026), Kick-off-Folien; Guided Project „Implementing GenAI workflows in PSM“ (WS 2026/27, fünf Masterstudierende Informatik, 16 Wochen, drei Phasen, Thema RFQ-Zyklus). Anonymisierung: Partner A = Automobilzulieferer (Konzern, europäische Zentrale), Partner B = kirchlicher Sozialträger (Großorganisation, Einkaufsleitung), Partner C = Einkauf einer Hochschule; Guided Project = internationaler Hersteller von Antriebstechnik (Konzern, Einkauf). Offen: Ergebnisse des SS 2026 (welche Prototypen entstanden, Rückmeldung der Partner, Noten/Prüfungserfahrung), Stand des Guided Project bei Drucklegung (voraussichtlich Konzeptphase, Prototyp erst Januar 2027). -->
+::: {.content-visible when-format="html"}
+{{< video https://th-koln-bartnik.github.io/sscm-2026-student/videos/week02_kaya_teaser.mp4
+    title="Teaser zur Fallstudie Backhaus Kaya" >}}
 
+*Teaser zur Fallstudie (5 s, ohne Ton): Aylin Kaya nachts in der Backstube. KI-generiertes Video (LTX-2.5); Bäckerei und Figuren sind erfunden. Ablauf der Fallsitzung auf der [Wochenseite](https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week02.html#thursday) des SSCM-Moduls.*
+:::
+
+::: {.content-visible unless-format="html"}
+![Standbild aus dem Teaser zur Fallstudie Backhaus Kaya (5 s, ohne Ton): Aylin Kaya nachts in der Backstube vor dem Etagenofen. KI-generiertes Video (LTX-2.5); Bäckerei und Figuren sind erfunden. Teaser und Ablauf der Fallsitzung gibt es nur online: QR-Code scannen oder <https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week02.html#thursday> aufrufen.](images/druck/fallstudie-kaya.png){#fig-druck-fallstudie-kaya width="100%"}
+:::
+
+<!-- TODO Roman: Ergebnis. Wie liefen die Fallbesprechungen (Woche 2, Teamempfehlungen im Plenum)? Wie fielen die Kaya-Aufgaben in Test 2 aus? Wie viele Iterationen brauchte der Fall bis zur Freigabe, und welche Fehler fand die Prüfung? -->
+
+Ein Sprachmodell schreibt eine solche Geschichte in Minuten. Die Arbeit der Lehrperson verschiebt sich auf zwei Stellen, die das Modell nicht übernimmt: die Wahl der Fehlvorstellung, die der Fall widerlegen soll, und die Prüfung, ob jede Zahl in Fall, Schlüssel und Widget dieselbe ist. Der Prompt *Fallstudie gemeinsam erstellen* (@sec-prompt-fallstudie-erstellen) gibt dafür das Gerüst.
+
+**Lernfrage.** Warum schlägt der Backmeister ausgerechnet einen dritten Former vor, und was ginge didaktisch verloren, wenn der Fall den Engpass gleich im ersten Absatz nennen würde?
+
+### Simulationen: Prozess und Verhandlung {#sec-bsp-simulationen-lehrende}
+
+*Wissensform:* pragmatisch · *Lerntechnik:* keine der drei; tragend ist Erfahrung mit Nachbesprechung · *Rolle:* Simulator (@sec-simulator) · *Gestaltet von:* Lehrende
+
+<!-- TODO: kein neues eigenes Material gefunden (Begleitnotiz 29.10.). Verweise: @sec-rollenspiele (Anhang C), Abschnitt 4.4.3. Prinzip-Kandidat: @chernikova2020. Prinzip, Empfehlung, Umsetzung und Lernfrage nach Schablone. -->
+
+### Simulationen und Planspiele selbst bauen: Gruppenprojekt mit Prüfzelle {#sec-bsp-simulationen-studierende}
+
+*Wissensform:* pragmatisch · *Lerntechnik:* keine der drei; tragend sind simulationsbasiertes Lernen mit Gerüst und Projektlernen · *Rolle:* Simulator (@sec-simulator) · *Gestaltet von:* Studierende
+
+<!-- Entscheidung offen (Begleitnotiz, Punkt 2): Titel nach Vorschlag „Simulationen und Planspiele selbst bauen“, ergänzt um den Untertitel des Entwurfs. Entscheidung offen (Punkt 4): Datenbereinigungs-Prompt „diagnose → ask → clean → check“ (SSCM Woche 2) als eigenes Beispiel oder hier als Gerüst für den Datensatz erwähnen. -->
+
+::: {.callout-note title="Prinzip"}
+Simulationen gehören zu den wirksamsten Mitteln, komplexe Fähigkeiten in der Hochschule zu fördern; eine Metaanalyse über 145 Studien fand einen großen Gesamteffekt (g = 0,85), und Gerüste verstärkten ihn: Lernende mit wenig Vorwissen profitierten von Beispielen, Lernende mit viel Vorwissen von Reflexionsphasen [@chernikova2020]. Projektlernen hat gegenüber lehrerzentriertem Unterricht einen mittleren bis großen Effekt auf die Leistung (d = 0,71) [@chenyang2019].
+:::
+
+::: {.callout-tip title="Empfehlung"}
+Wenn Studierende mit KI-Hilfe ein Modell bauen, prüfen Sie zwei Dinge getrennt: ob das Modell richtig zählt, automatisch und gegen Regeln, die jedes richtige Modell erfüllt, und ob die Studierenden es verstehen, mündlich und mit einer Vorhersage vor jeder Änderung. Erlauben Sie KI für alle Arbeitsschritte, aber nicht als Quelle für Zahlen. Prüfkriterium: Könnte eine Gruppe mit einem fehlerhaften Modell oder ohne eigenes Verständnis bestehen?
+:::
+
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
+Im SSCM-Gruppenprojekt wählen Teams aus vier bis fünf Studierenden ein reales Produkt, dessen Herstellung vier bis sechs Stationen hat, mit einem wichtigen Zukaufteil und zwei Bezugsquellen dafür. Sie bauen einen Datensatz im Format eines vorgegebenen Beispiels und simulieren in Colab ein Jahr Produktion in drei Szenarien: Normalbetrieb, eine Störung nach einem realen Vorbild und die Störung mit einer Gegenmaßnahme, je zehnmal mit verschiedenen Zufallszahlen. Eine Ergebnistafel vergleicht Stück pro Woche, Kosten pro Stück, Kilogramm CO₂-Äquivalent pro Stück und Stillstandsstunden. Aus den Ergebnissen entstehen eine Animation und ein Poster, das zwei begutachtete Fachartikel als Quellen für die verwendeten Konzepte nutzt.
+
+Erlaubt ist KI für jeden Arbeitsschritt, von der Datensuche über den Code bis zum Posterentwurf. Drei Regeln halten die Arbeit bei den Studierenden. Eine KI-Antwort ist keine Quelle; eine Zahl, die ein Modell vorschlägt, kommt erst in die Quellentabelle, wenn das Team sie auf eine öffentliche Angabe zurückführt oder mit eigener Rechnung schätzt. Jede Codezeile muss erklärt werden können. Und eine halbe Seite KI-Notiz hält fest, was an die KI ging, wie die Ausgabe geprüft wurde und welcher KI-Fehler gefunden wurde.
+
+Zwei Prüfinstrumente trennen Richtigkeit und Verständnis. Eine unveränderliche Prüfzelle im Notebook testet fünf Regeln, die jedes korrekte Modell erfüllt, unabhängig vom Produkt: vollständiges Datenformat, keine Station über 100 Prozent ausgelastet, Little's Law innerhalb von zehn Prozent, keine Teile aus dem Nichts, kein Verlust im Normaljahr. Die Projektseite begründet das mit einem Satz, der für jede KI-gestützte Modellierung gilt: Eine Simulation druckt immer Zahlen, auch wenn sie falsch zählt, und Code mit KI-Hilfe läuft glatt und sieht überzeugend aus, ob er stimmt oder nicht. Die Prüfzelle wirkt wie eine Probebilanz in der Buchhaltung, die einen Fehler anzeigt, bevor jemand weiß, wo er steckt. Über das Verständnis entscheidet die Postersession. Jedes Mitglied beantwortet zwei Fragen allein, zu einer Zahl, zum Modell oder zu einem Fachartikel; dann ändert der Prüfer eine Zahl im Datensatz, und die Gruppe sagt vor dem neuen Lauf voraus, in welche Richtung sich jede Kennzahl bewegt und warum. Eine falsche Vorhersage mit tragfähiger Begründung kostet wenig, eine richtige ohne Begründung bringt wenig.
+
+Im Sinne von @carlile2004 ist das Projekt pragmatisch: Die Studierenden wenden ihr Wissen gegen eine Störung und deren Folgen an, und die Gegenmaßnahme kostet Geld, Zeit oder CO₂. In der Sprache des 4D-Modells [@dakan2025] übernimmt die Prüfzelle einen Teil der Urteilsprüfung (*Discernment*), die Postersession prüft die Verantwortung (*Diligence*).
+:::
+
+<!-- TODO Roman: Ergebnis nach dem 12.11.2026. Wie viele Teams bestanden den Checkpoint im ersten Anlauf, welche Tests fielen am häufigsten durch, welche KI-Fehler nannten die KI-Notizen, wie liefen die Live-Änderungen? Zwei Sätze „Was wir gelernt haben“. -->
+
+**Lernfrage.** Die Prüfzelle prüft nicht, ob die gewählte Gegenmaßnahme gut ist. Warum ist das eine Stärke des Verfahrens und keine Lücke?
+
+### Karriereberater: Job-Buddy {#sec-fall-job-buddy}
+
+*Wissensform:* pragmatisch (vorläufig) · *Lerntechnik:* offen · *Rolle:* Tutor (@sec-tutor), je nach Funktion Simulator · *Gestaltet von:* Studierende
+
+<!-- Übernommen aus Fall 3 des Gerüsts vom 17.10. (bisherige Fälle 2 und 3 zusammengeführt). Material noch nicht lokalisiert. Offen: Was tut das Werkzeug genau (Beratung, Bewerbungstraining, Gesprächssimulation)? Davon hängen Wissensform und Rolle ab. Zielgruppe, Modulkontext, Partner, Stand. TODO Roman: Rohmaterial (Ausgangslage, Umsetzung, Ergebnis, Was wir gelernt haben). -->
+
+### Projektlernen mit Praxispartnern: RAG und Einkaufs-Workflows {#sec-fall-unternehmen}
+
+*Wissensform:* pragmatisch · *Lerntechnik:* keine der drei; tragend ist Projektlernen · *Rolle:* Copilot (@sec-copilot), Hiwi (@sec-hiwi) · *Gestaltet von:* Studierende
+
+<!-- Übernommen aus Fall 4 des Gerüsts vom 17.10. Material: Modulbeschreibung „GenAI im Einsatz: Tools und Anwendungen für den Arbeitsalltag entwickeln“ (4 ECTS, Wahlpflicht, Prüfung 30 % Antwortwahl / 70 % mündlich), Use-Case-Beschreibungen dreier Partner (SS 2026), Kick-off-Folien; Guided Project „Implementing GenAI workflows in PSM“ (WS 2026/27, fünf Masterstudierende Informatik, 16 Wochen, drei Phasen, Thema RFQ-Zyklus). Anonymisierung: Partner A = Automobilzulieferer (Konzern, europäische Zentrale), Partner B = kirchlicher Sozialträger (Großorganisation, Einkaufsleitung), Partner C = Einkauf einer Hochschule; Guided Project = internationaler Hersteller von Antriebstechnik (Konzern, Einkauf). Offen: Ergebnisse des SS 2026, Stand des Guided Project bei Drucklegung.
+TODO Roman/Claude: Callouts „Prinzip“ und „Empfehlung“; Kandidat für das Prinzip: @chenyang2019 (Projektlernen), Carlile hier wörtlich (@carlile2002, @carlile2004). Lernfrage nach Schablone. -->
+
+::: {.callout-important title="Umsetzung, Stand 10/2026"}
 **Ausgangslage.** Im Sommersemester 2026 lief erstmals das Wahlpflichtmodul „GenAI im Einsatz“, in dem Studierende für reale Anwendungsfälle aus dem Einkauf von Partnerorganisationen KI-gestützte Werkzeuge entwerfen: ein Automobilzulieferer (Konzern), ein kirchlicher Sozialträger mit eigener Einkaufsabteilung und der Einkauf der eigenen Hochschule hatten vorab beschrieben, wo sie sich Unterstützung vorstellen, von der Gestaltung von Rahmenverträgen über Lieferantenrecherche und Preisbenchmarks bis zu automatisierten Berichten aus Finanz- und Lieferantendaten. Ein Einkaufsleiter formulierte das Kernproblem als Informations- und Kompetenzasymmetrie zwischen Bedarfsträger und Einkauf: Wer einen Laborkühlschrank für 3.000 Euro bestellt, sieht ein Standardgerät; der Einkauf sieht Lieferkonditionen, Energieklasse und Folgekosten, und beide reden aneinander vorbei. Im Wintersemester 2026/27 folgt ein Guided Project mit fünf Masterstudierenden, die für einen internationalen Hersteller von Antriebstechnik den Angebotsanfrage-Zyklus (Request for Quotation) mit generativer KI unterstützen sollen.
 
 **Umsetzung.** Das Wahlpflichtmodul (4 ECTS, 40 Stunden Präsenz) arbeitet in drei Schritten: Studierende wählen einen Use Case und klären ihn mit dem Partner, bauen einen Prototyp mit den Werkzeugen aus Anhang D (eigene Quellen, Agenten, Workflow-Automatisierung; @sec-d-quellen, @sec-d-workflows) und stellen ihn dem Partner vor. Geprüft wird zu 70 Prozent mündlich, zu 30 Prozent im Antwortwahlverfahren, also prozessnah im Sinne von @sec-pruefen. Das Guided Project ist in drei Phasen über 16 Wochen angelegt: Benchmarking (Literatur und Praxis zu GenAI im Einkauf), Konzeptentwicklung mit Experteninterviews und Prozessmodellierung des Ist- und Soll-Prozesses, Prototyp mit Testplan und Testfällen. Da die Studierenden keinen Systemzugang beim Partner haben, arbeiten sie mit Interviews und anonymisierten Beispieldaten. <!-- TODO Roman: SS-2026-Ablauf aus Kick-off-Folien ergänzen (Teamgröße, Zwischenpräsentationen, Werkzeuge, Datenzugang, Vertraulichkeit) -->
 
+Das Guided Project organisiert sich in einem einzigen Git-Repository, das zugleich Projektakte und Arbeitsplatz ist. Fünf Regeln stehen am Anfang der Startseite: kein Projektmaterial außerhalb des Repositorys; nur Text, also Markdown, CSV und Code, Diagramme in Mermaid, Prozessmodelle als BPMN-Export; Termine nur als Meilensteine in der Projektverwaltung, nie in Dokumenten; ausschließlich erfundene Beispieldaten, keine echten Anfragen, Preise oder Lieferantendaten; und Pseudonyme statt Firmen- und Personennamen, auch in Interviewprotokollen, bevor sie eingecheckt werden. Risiken und Besprechungen laufen über Formulare in der Aufgabenverwaltung, und ein eigener Abschnitt der Startseite richtet sich an Sprachmodelle, die mit dem Repository arbeiten: Die Startseite ist die Karte, der Ordner mit Projektplan und Rollenmatrix gilt immer in der aktuellen Fassung, frühere Stände zeigt die Versionsgeschichte.
+
+Carlile beschreibt solche Objekte als Grenzobjekte, die Wissen über Abteilungsgrenzen tragen; das Repository ist die Form, die er *repository* nennt, ein gemeinsamer Bestand mit gemeinsamen Bezeichnungen [@carlile2002]. Zwischen Hochschule und Partnerunternehmen erfüllt es diese Funktion wörtlich, und die Regeln zu Beispieldaten und Pseudonymen lösen das Vertraulichkeitsproblem, bevor ein Prototyp entsteht. Neu ist der dritte Leser: Weil alles als Text vorliegt und die Startseite ein Sprachmodell anleitet, kann ein Modell den Projektstand lesen, ohne dass jemand ihn zusammenfasst.
+
+<!-- TODO Roman: Stand des Guided Project bei Drucklegung (Konzeptpräsentation M1?). Ist der Satz zum dritten Leser durch eigene Erfahrung gedeckt (nutzen die Studierenden ein Modell auf dem Repository)? -->
+
 **Ergebnis.** <!-- TODO Roman: SS 2026: entstandene Prototypen (je Partner ein Satz), Rückmeldung der Partner, was in den Betrieb ging; Guided Project: Stand bei Drucklegung -->
 
 **Was wir gelernt haben.** <!-- TODO Roman; Kandidaten: Use Cases der Partner sind breit und müssen auf eine antwortbare Frage verengt werden (Ü2, @sec-d-ue2); Datenzugang entscheidet über den Prototyp mehr als das Modell; mündliche Prüfung passt zu Projektarbeit; Vertraulichkeit früh regeln -->
+:::
 
-## Was die Fälle gemeinsam zeigen {#sec-fallbeispiele-fazit}
+## Was die Beispiele gemeinsam zeigen {#sec-fallbeispiele-fazit}
 
-<!-- TODO (Claude-Entwurf nach Vorliegen der vier Fälle): drei bis fünf Muster über die Fälle hinweg, rückgebunden an Kapitel 3 (Lernmechanismen) und Kapitel 5 (Prüfen); keine neuen Belege, nur Verweise. -->
+<!-- TODO (Claude-Entwurf, sobald Ergebnisse zu den ausgeführten Beispielen vorliegen): drei bis fünf Muster über die Beispiele hinweg, je eines zu den vier Leitfragen, rückgebunden an Kapitel 3 (Lernmechanismen) und Kapitel 5 (Prüfen); keine neuen Belege, nur Verweise. Kandidaten: Abruf vor Rückmeldung als gemeinsamer Bauplan (Fragen-Generator, Quizspiele, Prüfzelle); Prüfung jeder Zahl in Code als Arbeit der Lehrperson (Widgets, Fallstudie, Gruppenprojekt); Name und Struktur eines Werkzeugs auseinanderhalten (Quiz vs. Simulator). -->
 
 ::: {.callout-tip title="Kernaussagen"}
 1. <!-- TODO -->
 2. <!-- TODO -->
 3. <!-- TODO -->
+4. <!-- TODO -->
 :::
 
-<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
+<!-- Entwurf (Claude, 29.10.2026, an die neue Gliederung angepasst); Freigabe durch Roman -->
 ::: {.callout-note title="Lernfragen"}
 **Wiederholen**
 
-1. Welche vier Felder hat die Fallschablone dieses Kapitels?
+1. Welche drei Wissensformen unterscheidet @carlile2004, und warum ist ihre Übertragung auf das Lernen nur beim Projektlernen mit Praxispartnern mehr als eine Analogie?
 2. Was zeigte der Vergleichsfall der University of Maryland über Nutzung und Wirkung eines Tutors, der aus den eigenen Kursmaterialien antwortet?
-3. Welche drei Kennzahlen erheben wir für den BWL-Tutor in Fall 1?
+3. Welche drei Kennzahlen erheben wir für den BWL-Tutor in @sec-fall-tutor-bwl?
 
 **Anwenden**
 
-4. Welcher der vier Fälle liegt Ihrem eigenen Modul am nächsten, und welche der genannten Engpässe (Material, Zugänge, Partner, Prüfungsform) würde bei Ihnen zuerst auftreten?
-5. Skizzieren Sie für ein eigenes Modul die vier Felder der Fallschablone, bevor Sie ein Werkzeug auswählen: Was ist die Ausgangslage, was soll am Semesterende vorliegen, woran erkennen Sie Erfolg, und was müsste schiefgehen, damit Sie es wiederholen würden?
+4. Welches Beispiel liegt Ihrem eigenen Modul am nächsten? Bestimmen Sie Wissensform und Lerntechnik, bevor Sie ein Werkzeug auswählen, und nennen Sie den Engpass (Material, Zugänge, Partner, Prüfungsform), der bei Ihnen zuerst aufträte.
+5. Formulieren Sie für ein eigenes Vorhaben Prinzip, Empfehlung und Prüfkriterium nach der Schablone dieses Kapitels. Besteht Ihre Empfehlung den Austauschtest?
 
 **Beurteilen**
 
-6. Der Tutor an der Hochschule Rhein-Waal war sokratisch gebaut und wurde trotzdem als Antwortmaschine genutzt. Was folgt daraus für den Tutor in Fall 1?
-<!-- TODO (Claude): Lernfragen zu den Fällen 2–4 ergänzen, sobald Romans Rohmaterial vorliegt -->
+6. Der Tutor an der Hochschule Rhein-Waal war sokratisch gebaut und wurde trotzdem als Antwortmaschine genutzt. Was folgt daraus für den BWL-Tutor?
 
-Lösungshinweise: @sec-loesungshinweise.
+Lösungshinweise, auch zu den Lernfragen in den Beispielen: @sec-loesungshinweise.
 :::
