@@ -19,10 +19,9 @@ Gemeinsame Datenquelle beider Seiten: `interactions/models/epoch-kosten.js`.
 - Die Tutor-Sätze stehen jetzt nach dem Kosten-Raster (@fig-ki-kosten), mit Tagesrechnung: 150 × 2 × 98 = 29.400 Fragen, rund 8.800 US-$ (o3, Jan. 2025) → rund 12 US-$ (Juli 2026); je Person 59 $ bzw. 8 ct. Danach HTML-Hinweis, iframe (950 px) und Druckabbildung @fig-tutor-kosten.
 - Rechner in den Stufenfarben des Rasters: `--st1 … --st7` (hell/dunkel) übernommen, `farben()` wie in ki-entwicklung.html (o3 = `--text-primary`). Alle Balken voll gefärbt, aktuelle Stufe über Band und fette Beschriftung; Großzahl in Textfarbe mit Farbfeld (Türkis/Gelb/Rosa wären als Schrift unter 3:1); Farbfelder auch in der Datentabelle.
 - Druckzwilling `images/druck/tutor-kosten-qr.png` neu erzeugt; alle übrigen Druckbilder bitgleich.
-- Hinweis: Im Druck (lineare Achse) sind die Balken ab Feb. 2026 nur Haarlinien, ihre Farben also kaum erkennbar.
+- Entscheidung (Roman, 30.10.): Druckbild bleibt auf linearer Achse. Dass die Balken ab Feb. 2026 nur Haarlinien sind, ist die Botschaft („fast null“).
 
 ## Offen
-1. Druckbild Tutor-Rechner: lineare Achse lassen (Botschaft „fast null“) oder log-Achse (Farben aller Stufen sichtbar)?
-2. Bei 380 px Breite ist der Rechner rund 1.200 px hoch, das iframe 950 px (scrollt auf dem Handy).
-3. Gemini 2.5 Pro zweimal (März/Juni 2025) in der Epoch-Quelle klären; Lizenz `droodman/inference-cost`.
-4. Lokale Kopie: `git fetch origin` und `git reset --hard origin/revision-2026-druck`.
+1. Bei 380 px Breite ist der Rechner rund 1.200 px hoch, das iframe 950 px (scrollt auf dem Handy).
+2. Gemini 2.5 Pro zweimal (März/Juni 2025) in der Epoch-Quelle klären; Lizenz `droodman/inference-cost`.
+3. Lokale Kopie: `git fetch origin` und `git reset --hard origin/revision-2026-druck`.
