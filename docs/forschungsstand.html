@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -34,18 +54,19 @@ ul.task-list li input[type="checkbox"] {
 <link href="./modelluebersicht.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-57678fe1f44aceca486148dc9bf095e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-78ef6373a0ee70d2bc793fa36f3dba26.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-57678fe1f44aceca486148dc9bf095e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4622c99584d0b91f3844d5069d85751c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -250,6 +271,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
     </a>
@@ -325,6 +348,10 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -369,6 +396,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-fallbeispiele.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fallbeispiele aus der Lehre</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
@@ -381,7 +414,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kapitel06-appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Überblick didaktischer Prompts</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Gezielte Einschränkungen in didaktischen Prompts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -404,6 +437,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./kapitel10-appendix05-loesungshinweise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Lösungshinweise zu den Lernfragen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./transparenz.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transparenzhinweis zum Gesamtwerk</span></a>
   </div>
@@ -412,6 +457,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literaturverzeichnis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./anhang-d-material.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Online-Material zu Anhang D</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -445,7 +496,19 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#wie-sie-diese-seite-lesen" id="toc-wie-sie-diese-seite-lesen" class="nav-link active" data-scroll-target="#wie-sie-diese-seite-lesen">Wie Sie diese Seite lesen</a></li>
+  <li><a href="#kapitel-3-lernwirkung-und-kognitive-auslagerung" id="toc-kapitel-3-lernwirkung-und-kognitive-auslagerung" class="nav-link" data-scroll-target="#kapitel-3-lernwirkung-und-kognitive-auslagerung">Kapitel 3: Lernwirkung und kognitive Auslagerung</a>
+  <ul>
+  <li><a href="#frage-1-lernen-studierende-mit-ki-tutoren-mehr-als-mit-herkömmlicher-hilfe" id="toc-frage-1-lernen-studierende-mit-ki-tutoren-mehr-als-mit-herkömmlicher-hilfe" class="nav-link" data-scroll-target="#frage-1-lernen-studierende-mit-ki-tutoren-mehr-als-mit-herkömmlicher-hilfe">Frage 1: Lernen Studierende mit KI-Tutoren mehr als mit herkömmlicher Hilfe?</a></li>
+  <li><a href="#frage-2-wann-senkt-ki-hilfe-das-lernen-obwohl-die-aufgabe-schneller-gelöst-wird" id="toc-frage-2-wann-senkt-ki-hilfe-das-lernen-obwohl-die-aufgabe-schneller-gelöst-wird" class="nav-link" data-scroll-target="#frage-2-wann-senkt-ki-hilfe-das-lernen-obwohl-die-aufgabe-schneller-gelöst-wird">Frage 2: Wann senkt KI-Hilfe das Lernen, obwohl die Aufgabe schneller gelöst wird?</a></li>
+  <li><a href="#frage-3-welche-gestaltungsmerkmale-schützen-vor-auslagerung" id="toc-frage-3-welche-gestaltungsmerkmale-schützen-vor-auslagerung" class="nav-link" data-scroll-target="#frage-3-welche-gestaltungsmerkmale-schützen-vor-auslagerung">Frage 3: Welche Gestaltungsmerkmale schützen vor Auslagerung?</a></li>
+  <li><a href="#frage-4-trägt-die-einbettung-oder-das-werkzeug" id="toc-frage-4-trägt-die-einbettung-oder-das-werkzeug" class="nav-link" data-scroll-target="#frage-4-trägt-die-einbettung-oder-das-werkzeug">Frage 4: Trägt die Einbettung oder das Werkzeug?</a></li>
+  </ul></li>
+  <li><a href="#kapitel-4-tutoren-gestalten-und-betreiben" id="toc-kapitel-4-tutoren-gestalten-und-betreiben" class="nav-link" data-scroll-target="#kapitel-4-tutoren-gestalten-und-betreiben">Kapitel 4: Tutoren gestalten und betreiben</a></li>
+  <li><a href="#kapitel-5-richtlinien-rechtsrahmen-hochschulen-in-deutschland" id="toc-kapitel-5-richtlinien-rechtsrahmen-hochschulen-in-deutschland" class="nav-link" data-scroll-target="#kapitel-5-richtlinien-rechtsrahmen-hochschulen-in-deutschland">Kapitel 5: Richtlinien, Rechtsrahmen, Hochschulen in Deutschland</a></li>
+  <li><a href="#anbieter-herstellerangaben" id="toc-anbieter-herstellerangaben" class="nav-link" data-scroll-target="#anbieter-herstellerangaben">Anbieter (Herstellerangaben)</a></li>
+  <li><a href="#offene-prüfungen" id="toc-offene-prüfungen" class="nav-link" data-scroll-target="#offene-prüfungen">Offene Prüfungen</a></li>
   <li><a href="#änderungshistorie" id="toc-änderungshistorie" class="nav-link" data-scroll-target="#änderungshistorie">Änderungshistorie</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/forschungsstand.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/forschungsstand.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
     </div>
@@ -479,18 +542,769 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Stand dieser Seite: November 2026
+<span class="screen-reader-only">Hinweis</span>Stand dieser Seite: November 2026
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Letzte Prüfung: November 2026 (Drucklegung). Nächste planmäßige Aktualisierung: nach dem Radar-Scan zum Sommersemester 2027.</p>
+<p>Letzte Prüfung: 17. Oktober 2026 (Evidenz-Screening der Neuerscheinungen Juli bis Oktober 2026 zu KI-Tutoren; Druckstand November 2026). Nächste planmäßige Aktualisierung: nach dem Radar-Scan zum Sommersemester 2027.</p>
 </div>
 </div>
-<!-- TODO (Strang E, Woche 3): Tabelle der B-Quellen je Gestaltungsfrage aus notes/evidenz-screening-radar-2026-10.md übernehmen:
-Gestaltungsfrage | Studie | Design | Kernbefund | Status (im Buch / nur online) -->
 <section id="wie-sie-diese-seite-lesen" class="level2">
 <h2 class="anchored" data-anchor-id="wie-sie-diese-seite-lesen">Wie Sie diese Seite lesen</h2>
-<p>Die Gestaltungsfragen sind dieselben wie im Buch; die Nummern folgen der Liste in den Kapitelkästen. Zu jeder Studie steht in einem Satz, was sie gefunden hat, und in einem zweiten, wie sie es gefunden hat (Design, Stichprobe, Kontext), damit die Belegkraft eingeschätzt werden kann. Herstellerdaten (Anthropic, OpenAI, Microsoft) sind als solche gekennzeichnet.</p>
+<p>Die Gestaltungsfragen sind dieselben wie im Buch; die Nummern folgen der Liste in den Kapitelkästen. Zu jeder Studie steht in einem Satz, was sie gefunden hat, und, wo es die Belegkraft betrifft, wie sie es gefunden hat (Design, Stichprobe, Kontext). Die Spalte „Status” sagt, ob die Studie im gedruckten Buch den Fließtext trägt (Buch), nur im Kapitelkasten steht (Kasten) oder ausschließlich hier geführt wird (online). Herstellerdaten (Anthropic, OpenAI, Google, Khan Academy) sind als solche gekennzeichnet. Preprints und Working Papers sind nicht begutachtet und als Hinweise zu lesen.</p>
+</section>
+<section id="kapitel-3-lernwirkung-und-kognitive-auslagerung" class="level2">
+<h2 class="anchored" data-anchor-id="kapitel-3-lernwirkung-und-kognitive-auslagerung">Kapitel 3: Lernwirkung und kognitive Auslagerung</h2>
+<section id="frage-1-lernen-studierende-mit-ki-tutoren-mehr-als-mit-herkömmlicher-hilfe" class="level3">
+<h3 class="anchored" data-anchor-id="frage-1-lernen-studierende-mit-ki-tutoren-mehr-als-mit-herkömmlicher-hilfe">Frage 1: Lernen Studierende mit KI-Tutoren mehr als mit herkömmlicher Hilfe?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Studie</th>
+<th style="text-align: left;">Design und Kontext</th>
+<th style="text-align: left;">Kernbefund</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="kestin2025">Kestin et al. (<a href="references.html#ref-kestin2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">RCT, Physik-Einführung, Harvard</td>
+<td style="text-align: left;">Tutor mit Musterlösungen und Portionierung schlägt die aktive Präsenzübung bei geringerer Lernzeit</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="liu2026courseintegrated">Liu et al. (<a href="references.html#ref-liu2026courseintegrated" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">RCT, 2.379 Studierende, 30 Lehrende, Maryland, Tutor über LMS-Material</td>
+<td style="text-align: left;">−0,37 SD Note, −0,90 SD Kursbeteiligung; 15 % Nutzung, 74 % Antwortsuche; Erstakademiker −0,50 SD</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="oreopoulos2026productive">Oreopoulos, Liut, et al. (<a href="references.html#ref-oreopoulos2026productive" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">präregistrierter 2×2×2-RCT, 6.997 Schüler, verzögerter Test</td>
+<td style="text-align: left;">Tutor nur im Mastery-Ablauf wirksam; nach Fehler +8,5 pp im nächsten Versuch</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lawson2026">Lawson et al. (<a href="references.html#ref-lawson2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Methodenkritik</td>
+<td style="text-align: left;">ChatGPT-Kontroll-Vergleiche in <span class="citation" data-cites="deng2025">Deng et al. (<a href="references.html#ref-deng2025" role="doc-biblioref">2025</a>)</span> und in der zurückgezogenen Meta-Analyse von Wang und Fan sind durch Methode, Übungszeit und Dauer konfundiert</td>
+<td style="text-align: left;">Buch (Vorbehalt)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="fischer2025">Fischer et al. (<a href="references.html#ref-fischer2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">RCT, 334 Studierende, Deutschland, Prüfung mit Anreiz</td>
+<td style="text-align: left;">+0,23 SD; freier Zugang schlägt die Restriktion „erst lesen” um 0,21 SD</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="deng2025">Deng et al. (<a href="references.html#ref-deng2025" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="wu2024a">R. Wu &amp; Yu (<a href="references.html#ref-wu2024a" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Meta-Analysen 2022–2024</td>
+<td style="text-align: left;">positive Effekte auf Leistung und Motivation, kurze Interventionen, Vorbehalt Lawson</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="ren2026">Ren et al. (<a href="references.html#ref-ren2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Meta-Analyse, 47 RCTs</td>
+<td style="text-align: left;">g = 0,68 Leistung; Dosis-Plateau bei etwa 23 Stunden; Moderation durch menschliche Begleitung</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="jing2026">Jing et al. (<a href="references.html#ref-jing2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Meta-Analyse Hochschule</td>
+<td style="text-align: left;">g = 0,46</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="wuouyang2026">M. Wu &amp; Ouyang (<a href="references.html#ref-wuouyang2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Bayes-Meta-Analyse Programmieren</td>
+<td style="text-align: left;">trennt KI-gestützte von unbegleiteter Leistung</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="learnlm2025">LearnLM Team et al. (<a href="references.html#ref-learnlm2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Feldexperiment, 165 Schüler, fünf britische Schulen, menschliche Freigabe jeder Nachricht</td>
+<td style="text-align: left;">66 statt 61 % gelöste neue Aufgaben; Herstellerangabe</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="yang2026speak">S. Yang et al. (<a href="references.html#ref-yang2026speak" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">präregistriertes Feldexperiment, 86 Online-MBA</td>
+<td style="text-align: left;">+6,63 Punkte; Sprache = Text bei 2,8-fachen Kosten</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="harrison2026medly">Harrison et al. (<a href="references.html#ref-harrison2026medly" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Mikro-RCTs, Sekundarstufe, Praktiker-geführt</td>
+<td style="text-align: left;">g = 0,33</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="northcutt2026studentbench">Northcutt et al. (<a href="references.html#ref-northcutt2026studentbench" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">2.383 Erwachsene, GRE-Vorbereitung, Industrieautoren</td>
+<td style="text-align: left;">KI-Tutoring = menschliches Tutoring bei kurzfristigem Testprep</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="chakraborty2026">Chakraborty (<a href="references.html#ref-chakraborty2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">vier Experimente in einem Programmierkurs</td>
+<td style="text-align: left;">Tutor-Rolle hebt Motivation, nicht die Klausur; Löser-Rolle hebt die Aufgabe, nicht den Transfer</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="kuo2026">Kuo &amp; Zhuo (<a href="references.html#ref-kuo2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Quasi-Experiment, Programmierkurs, Taiwan</td>
+<td style="text-align: left;">Tutor-Bot plus Tutee-Bot schlägt Antwort-Bot</td>
+<td style="text-align: left;">Kasten, Anhang D</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="hanliu2026">Han &amp; Liu (<a href="references.html#ref-hanliu2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Meta-Analyse Motivation</td>
+<td style="text-align: left;">SMD 0,48</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="chung2026personalized">Chung et al. (<a href="references.html#ref-chung2026personalized" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">RL-gestützte Aufgabensequenzierung</td>
+<td style="text-align: left;">+0,15 SD; SSRN-Fassung März 2026 abgleichen</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lee2026socraticmind">J. Lee et al. (<a href="references.html#ref-lee2026socraticmind" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Feldstudie, Georgia Tech</td>
+<td style="text-align: left;">formatives Assessment-Werkzeug, Befunde zu höherem Denken</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="narine2026aitutor">Narine &amp; Diaz (<a href="references.html#ref-narine2026aitutor" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Feldstudie</td>
+<td style="text-align: left;">Deckeneffekt diskutiert</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="openai2026studymode">OpenAI (<a href="references.html#ref-openai2026studymode" role="doc-biblioref">2026a</a>)</span></td>
+<td style="text-align: left;">Herstellerstudie, mehr als 300 Studierende</td>
+<td style="text-align: left;">Gewinn in Mikroökonomie, keiner in Neurowissenschaft</td>
+<td style="text-align: left;">Kasten (Herstellerangabe)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="ghahramani2026sierraleone">Ghahramani (<a href="references.html#ref-ghahramani2026sierraleone" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Feldstudie Sierra Leone, Herstellerangabe</td>
+<td style="text-align: left;">+0,258 SD; 76 % Rückfragen, 2 % Lösungen</td>
+<td style="text-align: left;">Kasten (Herstellerangabe)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="frage-2-wann-senkt-ki-hilfe-das-lernen-obwohl-die-aufgabe-schneller-gelöst-wird" class="level3">
+<h3 class="anchored" data-anchor-id="frage-2-wann-senkt-ki-hilfe-das-lernen-obwohl-die-aufgabe-schneller-gelöst-wird">Frage 2: Wann senkt KI-Hilfe das Lernen, obwohl die Aufgabe schneller gelöst wird?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Studie</th>
+<th style="text-align: left;">Design und Kontext</th>
+<th style="text-align: left;">Kernbefund</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="bastani2025">Bastani et al. (<a href="references.html#ref-bastani2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">RCT, ca. 1.000 Oberstufenschüler, Türkei</td>
+<td style="text-align: left;">ungebremst +48 % Übung, −17 % Prüfung; mit Leitplanken +127 % Übung, kein Schaden</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="rismanchian2026">Rismanchian et al. (<a href="references.html#ref-rismanchian2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Paneldaten, 3,2 Mio. Interaktionen, Lernplattform</td>
+<td style="text-align: left;">−27 % Lernzeit bei kopierbaren Aufgaben (Studierende), −31 % Oberstufe; unter Aufsicht kein Effekt</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="bergh2026cognition">Bergh et al. (<a href="references.html#ref-bergh2026cognition" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Laborexperiment, 59 CS-Studierende</td>
+<td style="text-align: left;">89 vs.&nbsp;69 % Aufgabe, 39 vs.&nbsp;52 % Behalten nach 48 h, geringere Eigenzuschreibung</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="nakamura2026">Nakamura (<a href="references.html#ref-nakamura2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Theorie</td>
+<td style="text-align: left;">Augmentation, wenn Nebenoperationen abgegeben werden; Erosion, wenn lernzielkonstitutive Operationen umgangen werden</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="mittal2026">Mittal et al. (<a href="references.html#ref-mittal2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">RCT, acht Tage Recherche</td>
+<td style="text-align: left;">Chatbot statt Websuche senkt Lernen, am stärksten kritisches Denken</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="kosmyna2025">Kosmyna et al. (<a href="references.html#ref-kosmyna2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">EEG, 54 Teilnehmende, Preprint</td>
+<td style="text-align: left;">geringere neuronale Aktivierung beim Essayschreiben; 18 Personen in der entscheidenden Sitzung</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="contractor2026learning">Contractor &amp; Reyes (<a href="references.html#ref-contractor2026learning" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">präregistrierter RCT, Essay, Test nach einer Woche</td>
+<td style="text-align: left;">+0,27 SD sofort; Erhalt nur bei augmentierender Nutzung</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="autor2026expertise">Autor et al. (<a href="references.html#ref-autor2026expertise" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">NBER, 133 Patentanwälte, drei Monate</td>
+<td style="text-align: left;">Qualität steigt für alle; unbegleitete Fähigkeit nach 90 Tagen nur bei Erfahrenen</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="sungu2026harmteaching">Sungu et al. (<a href="references.html#ref-sungu2026harmteaching" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">SSRN, Lehrenden-Tool</td>
+<td style="text-align: left;">senkt Motivation der Lehrenden um 0,11 SD</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="siyan2026conversational">Siyan et al. (<a href="references.html#ref-siyan2026conversational" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Log-Analyse</td>
+<td style="text-align: left;">Gesprächsverhalten sagt unbegleitete Leistung voraus</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="yi2026behavior">Yi et al. (<a href="references.html#ref-yi2026behavior" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Log-Analyse</td>
+<td style="text-align: left;">Lernverhalten erklärt herkunftsbedingten Vorteil bei KI-Hilfe</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="chen2026informal">Z. Chen et al. (<a href="references.html#ref-chen2026informal" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">128.569 Gespräche</td>
+<td style="text-align: left;">informelles Lernen entsteht in Alltagsinteraktion</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="dickey2026solving">Dickey et al. (<a href="references.html#ref-dickey2026solving" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experiment</td>
+<td style="text-align: left;">„Bewerten statt Lösen” ohne Effekt</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="chenjia2026">F. Chen et al. (<a href="references.html#ref-chenjia2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Längsschnitt</td>
+<td style="text-align: left;">Motivation bricht nach Wegfall der KI ein</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="barshay2026eroding">Barshay (<a href="references.html#ref-barshay2026eroding" role="doc-biblioref">2026a</a>)</span></td>
+<td style="text-align: left;">Journalismus (Hechinger Report)</td>
+<td style="text-align: left;">Überblick zur Erosionsdebatte</td>
+<td style="text-align: left;">online</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="frage-3-welche-gestaltungsmerkmale-schützen-vor-auslagerung" class="level3">
+<h3 class="anchored" data-anchor-id="frage-3-welche-gestaltungsmerkmale-schützen-vor-auslagerung">Frage 3: Welche Gestaltungsmerkmale schützen vor Auslagerung?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Studie</th>
+<th style="text-align: left;">Design und Kontext</th>
+<th style="text-align: left;">Kernbefund</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="maier2026deskilling">Maier et al. (<a href="references.html#ref-maier2026deskilling" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">präregistriertes Online-Experiment, N = 704, LMU</td>
+<td style="text-align: left;">metakognitive Rückmeldung halbiert Auslagerung (OR 0,47), hebt unbegleiteten Test (OR 1,51); Belohnung wirkungslos</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="ates2026">Ates (<a href="references.html#ref-ates2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Multisite-Cluster-RCT, 1.176 Erstsemester, 48 Sektionen, vier Hochschulen</td>
+<td style="text-align: left;">direktes Feedback sofort besser; reflektierend/hybrid beim verzögerten Transfer besser</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="barth2026steering">Barth et al. (<a href="references.html#ref-barth2026steering" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">präregistriertes Crossover, N = 1.059, ETH</td>
+<td style="text-align: left;">kein Effekt von SRL-/ICAP-System-Prompts auf vier konfirmatorische Maße</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="xu2026">Xu et al. (<a href="references.html#ref-xu2026" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="tao2026justification">Tao et al. (<a href="references.html#ref-tao2026justification" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experimente</td>
+<td style="text-align: left;">eigene Antwort vor der KI-Antwort; Begründungspflicht senkt Übernahme fehlerhafter Vorschläge um 24 pp</td>
+<td style="text-align: left;">Buch, Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="hou2026">Xiaoyu Hou et al. (<a href="references.html#ref-hou2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Drei-Gruppen-Experiment, Bauingenieurwesen</td>
+<td style="text-align: left;">Gewinne nur mit Prompting-Gerüst bei offenen Aufgaben</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="yang2026visar">Y. Yang et al. (<a href="references.html#ref-yang2026visar" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">zwei Semester, Schreibwerkzeug</td>
+<td style="text-align: left;">Planungs- und Prüfschritte erhalten statt abnehmen</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="ross2026">Ross et al. (<a href="references.html#ref-ross2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">drei präregistrierte Studien</td>
+<td style="text-align: left;">Fehlvorstellungen nur mit korrigierender Rolle auf Vorwissensniveau</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="akgun2026">Akgun &amp; Toker (<a href="references.html#ref-akgun2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experiment, sieben Wochen</td>
+<td style="text-align: left;">strukturierte Abruf-Übung schlägt freies KI-Lernen beim Behalten</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="chen2026transfer">S. Chen et al. (<a href="references.html#ref-chen2026transfer" role="doc-biblioref">2027</a>)</span></td>
+<td style="text-align: left;">16-Wochen-Cluster-RCT, 108 Studierende</td>
+<td style="text-align: left;">gleiche Überarbeitung, Transfer nur mit Peer-Schicht um das KI-Feedback</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="brender2026reflective">Brender et al. (<a href="references.html#ref-brender2026reflective" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Zwei-Phasen-Feldstudie, EPFL</td>
+<td style="text-align: left;">sokratisch Geführte prompten nach Wegfall der Leitplanken verständnisorientierter</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="guan2026">Guan et al. (<a href="references.html#ref-guan2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Längsschnitt-RCT, 356 Lehramt</td>
+<td style="text-align: left;">KI- vs.&nbsp;Expertenfeedback</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="su2026engage">Su et al. (<a href="references.html#ref-su2026engage" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experiment, Engage-to-Unlock</td>
+<td style="text-align: left;">produktive Reibung vor der Freigabe der KI-Antwort</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="zabelina2026socratic">Zabelina (<a href="references.html#ref-zabelina2026socratic" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">präregistrierte Feldstudie</td>
+<td style="text-align: left;">strukturierte sokratische Hausaufgaben</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="bereznikova2026">Bereznikova et al. (<a href="references.html#ref-bereznikova2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experiment</td>
+<td style="text-align: left;">sokratischer Dialog und kritisches Denken</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="huangli2026">Huang &amp; Li (<a href="references.html#ref-huangli2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Grundschule</td>
+<td style="text-align: left;">artefaktgebundene sokratische Hinweise, g = 0,52</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="jin2026">Jin et al. (<a href="references.html#ref-jin2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experiment</td>
+<td style="text-align: left;">proaktiver vs.&nbsp;reaktiver Tutor</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="khosravi2026">Khosravi et al. (<a href="references.html#ref-khosravi2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Rahmenwerk</td>
+<td style="text-align: left;">Maßstab „unabhängig nach Wegfall der Hilfe”</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="wulu2026">Y. Wu &amp; Lu (<a href="references.html#ref-wulu2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Befragung</td>
+<td style="text-align: left;">Verlass auf KI senkt wahrgenommene Agency</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="fuetterer2026">Fütterer et al. (<a href="references.html#ref-fuetterer2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Kommentar, Tübingen</td>
+<td style="text-align: left;">Einordnung der Erosionsdebatte</td>
+<td style="text-align: left;">online</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="frage-4-trägt-die-einbettung-oder-das-werkzeug" class="level3">
+<h3 class="anchored" data-anchor-id="frage-4-trägt-die-einbettung-oder-das-werkzeug">Frage 4: Trägt die Einbettung oder das Werkzeug?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Studie</th>
+<th style="text-align: left;">Design und Kontext</th>
+<th style="text-align: left;">Kernbefund</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="oreopoulos2026">Oreopoulos, Keyes-Krysakowski, et al. (<a href="references.html#ref-oreopoulos2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">RCT, 83 indische Internatsschulen</td>
+<td style="text-align: left;">Gewinne nur mit betreuten Lernzeiten</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="oreopoulos2026khanmigo">Oreopoulos &amp; Low (<a href="references.html#ref-oreopoulos2026khanmigo" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Cluster-RCT, 18 Schulen, zwei Jahre</td>
+<td style="text-align: left;">0,06–0,08 SD/Jahr, nicht besser als ohne KI; Nutzung an einem Drittel der Tage, 17 % der Fehler-Sitzungen</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="melanou2026">Melanou et al. (<a href="references.html#ref-melanou2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Quasi-Experiment, N = 87, Wirtschaftsinformatik, Deutschland, ein Semester</td>
+<td style="text-align: left;">kein Zusatzgewinn, keine Erosion; Rahmung entscheidet</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="gallegos2026">Gallegos (<a href="references.html#ref-gallegos2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">zwei RCTs, Ökonometrie, Chile</td>
+<td style="text-align: left;">Ermutigung wirkungslos; Anleitung zur tutoriellen Nutzung +0,21 SD, +12 pp Bestehen</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="robinson2026">Robinson et al. (<a href="references.html#ref-robinson2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">EdWorkingPaper</td>
+<td style="text-align: left;">menschliche Begleitung hebt Nutzung auf 71–80 %, nicht die Leistung</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="stumpf2026">Stumpf et al. (<a href="references.html#ref-stumpf2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">bidt, 84 Lehrveranstaltungen, SoSe 2025</td>
+<td style="text-align: left;">kein Unterschied im wahrgenommenen Lernerfolg</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="tobler2026">Tobler &amp; Köhler (<a href="references.html#ref-tobler2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">407 Studierende, ETH</td>
+<td style="text-align: left;">Gestaltung und Nutzung, kein Lernmaß</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="turano2026monolith">Turano et al. (<a href="references.html#ref-turano2026monolith" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Synthese, Stanford</td>
+<td style="text-align: left;">Taxonomie nach Beziehungsintensität; reine KI-Tutoren: 40–47 % nutzen nie</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="korchak2026">Korchak et al. (<a href="references.html#ref-korchak2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">JRTE</td>
+<td style="text-align: left;">Nutzungsmuster</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="isazadominguez2026">Isaza Dominguez et al. (<a href="references.html#ref-isazadominguez2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Ingenieurstudium</td>
+<td style="text-align: left;">Prompting und Leistung</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="galindo2026">Galindo-Domínguez et al. (<a href="references.html#ref-galindo2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">CHB</td>
+<td style="text-align: left;">Nutzung und Lernen</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="berger2026">Berger et al. (<a href="references.html#ref-berger2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">PNAS</td>
+<td style="text-align: left;">Mensch-KI-Synergie</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="changli2026">Chang &amp; Li (<a href="references.html#ref-changli2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">60.000 Nachrichten</td>
+<td style="text-align: left;">Nutzungsmuster im Tutor</td>
+<td style="text-align: left;">online</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="kapitel-4-tutoren-gestalten-und-betreiben" class="level2">
+<h2 class="anchored" data-anchor-id="kapitel-4-tutoren-gestalten-und-betreiben">Kapitel 4: Tutoren gestalten und betreiben</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Studie</th>
+<th style="text-align: left;">Design und Kontext</th>
+<th style="text-align: left;">Kernbefund</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="khan2026firstchapter">Khan (<a href="references.html#ref-khan2026firstchapter" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Herstellerkommentar</td>
+<td style="text-align: left;">Nullbefund eingeräumt; Tutor in der Aufgabe, keine Antwort vor Versuch, Eingreifen nach Fehler</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="ahtisham2026impasses">Ahtisham et al. (<a href="references.html#ref-ahtisham2026impasses" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">20.462 Tutor-Turns</td>
+<td style="text-align: left;">in Sackgassen hilft Benennen des Fehlers mehr als weitere Rückfragen</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="hou2026comet">Xinmeng Hou et al. (<a href="references.html#ref-hou2026comet" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experiment</td>
+<td style="text-align: left;">kontingentes Eskalieren und Ausblenden schlägt starre Varianten</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="tani2026">Tani et al. (<a href="references.html#ref-tani2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Fallstudie, RAG-Assistent im OM-Planspiel, Finnland</td>
+<td style="text-align: left;">61 % Adoption, 90–95 % Korrektheit, kein Nutzung-Note-Zusammenhang</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="gerber2026">Gerber et al. (<a href="references.html#ref-gerber2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Pre-Post, 62 Studierende, HS Rhein-Waal, lokaler RAG-Tutor</td>
+<td style="text-align: left;">Fragebereitschaft δ = 0,43, Neugier δ = −0,57</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="pisan2026withhold">Pisan (<a href="references.html#ref-pisan2026withhold" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Architektur</td>
+<td style="text-align: left;">Supervisor-Instanz prüft Tutorantworten vor dem Versand</td>
+<td style="text-align: left;">Anhang D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="eastwood2026guardrails">Eastwood et al. (<a href="references.html#ref-eastwood2026guardrails" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Experiment, 132 Studierende</td>
+<td style="text-align: left;">strikte Leitplanken kosten Engagement; Ausweichen zum freien LLM</td>
+<td style="text-align: left;">Anhang D</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="clindeffarges2026socrates">Clin Deffarges et al. (<a href="references.html#ref-clindeffarges2026socrates" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Hirnsensorik, 50 Erwachsene</td>
+<td style="text-align: left;">sokratische Variante verliert kurzfristig, kein verzögerter Test</td>
+<td style="text-align: left;">Anhang D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="zhuyang2026">Zhu et al. (<a href="references.html#ref-zhuyang2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Vergleich von Tutorrollen</td>
+<td style="text-align: left;">bevorzugte Rolle ist nicht die lernwirksamste</td>
+<td style="text-align: left;">Anhang D</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lee2026llm">S. Lee et al. (<a href="references.html#ref-lee2026llm" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="teo2026ai">Teo et al. (<a href="references.html#ref-teo2026ai" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="perczel2025">Perczel et al. (<a href="references.html#ref-perczel2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Klassifikation, Benchmark, Tutoring-Daten</td>
+<td style="text-align: left;">Modelle helfen zu früh und zu viel; Prompt allein behebt es nicht</td>
+<td style="text-align: left;">Anhang D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="dominguez2026learner">Domínguez Figaredo &amp; Fernández De la Cruz (<a href="references.html#ref-dominguez2026learner" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Simulation</td>
+<td style="text-align: left;">Optimieren einer pädagogischen Metrik verschlechtert den Tutor</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="adak2026teach">Adak et al. (<a href="references.html#ref-adak2026teach" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Synthese</td>
+<td style="text-align: left;">prozessorientierte Sicht auf die Tutoring-Schleife</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="udeshi2026khanmigo">Udeshi et al. (<a href="references.html#ref-udeshi2026khanmigo" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Herstellerbericht</td>
+<td style="text-align: left;">Qualitätsmethoden für K-12-Tutoring</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="shapiro2026coursechat">Shapiro &amp; Lindemann (<a href="references.html#ref-shapiro2026coursechat" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Fallstudie, lokaler Campus-Tutor</td>
+<td style="text-align: left;">Antwortgeschwindigkeit als Nutzungsschwelle</td>
+<td style="text-align: left;">Anhang D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="ziegler2026ragtutor">Ziegler (<a href="references.html#ref-ziegler2026ragtutor" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Blog HU Berlin</td>
+<td style="text-align: left;">RAGflow-Tutor im Betrieb</td>
+<td style="text-align: left;">online</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="kapitel-5-richtlinien-rechtsrahmen-hochschulen-in-deutschland" class="level2">
+<h2 class="anchored" data-anchor-id="kapitel-5-richtlinien-rechtsrahmen-hochschulen-in-deutschland">Kapitel 5: Richtlinien, Rechtsrahmen, Hochschulen in Deutschland</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quelle</th>
+<th style="text-align: left;">Art</th>
+<th style="text-align: left;">Kernaussage</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="wissenschaftsrat2026">Wissenschaftsrat (<a href="references.html#ref-wissenschaftsrat2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Empfehlung</td>
+<td style="text-align: left;">Evidenz „(noch) nicht belastbar”; Hochschulen als Betreiber nach KI-VO</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="eu2026omnibus">Europäisches Parlament und Rat (<a href="references.html#ref-eu2026omnibus" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="kicampus2026omnibus">KI-Campus (<a href="references.html#ref-kicampus2026omnibus" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Rechtsakt, Erläuterung</td>
+<td style="text-align: left;">Artikel 4 bleibt, kein garantiertes Kompetenzniveau</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="baresel2026">Baresel et al. (<a href="references.html#ref-baresel2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Rechtshandreichung</td>
+<td style="text-align: left;">Szenario eigener RAG-Tutor; Prompt und Quellenanbindung keine Modifikation; 15-%-Schranke</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="mit2026aicommittee">Massachusetts Institute of Technology, Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training (<a href="references.html#ref-mit2026aicommittee" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Institutionsbericht</td>
+<td style="text-align: left;">acht Prinzipien, mündliche Prüfung, keine Detektoren, modellagnostische Plattform</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="horstmann2026check">Horstmann et al. (<a href="references.html#ref-horstmann2026check" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Befragung, 28.584 Studierende</td>
+<td style="text-align: left;">81 % wöchentlich, 50 % als Tutor/Lernpartner</td>
+<td style="text-align: left;">Buch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="budde2026">Budde et al. (<a href="references.html#ref-budde2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Leitungsbefragung, n = 120</td>
+<td style="text-align: left;">53 % Lernassistenten in Umsetzung, 13 im Regelbetrieb</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="brandenburger2026">Brandenburger et al. (<a href="references.html#ref-brandenburger2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Befragung Lehrender</td>
+<td style="text-align: left;">zwei Drittel geben Material frei, Bedingungen Urheberrecht und kein Training</td>
+<td style="text-align: left;">Kasten, Anhang D</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="glomski2026">Glomski et al. (<a href="references.html#ref-glomski2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Physik, Deutschland</td>
+<td style="text-align: left;">Tutor, der alles verrät, wird so genutzt</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="zhlbayreuth2026kitutorien">Universität Bayreuth, Zentrum für Hochschullehre (<a href="references.html#ref-zhlbayreuth2026kitutorien" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Projektseite</td>
+<td style="text-align: left;">„KI-Tutorien” meint menschliche Tutorinnen und Tutoren</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="muenzer2026autonomie">Münzer et al. (<a href="references.html#ref-muenzer2026autonomie" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">HFD-Diskussionspapier</td>
+<td style="text-align: left;">Autonomie und KI in der Lehre</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="paassen2026misstrauen">Paaßen &amp; Scharlau (<a href="references.html#ref-paassen2026misstrauen" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">HFD-Blog</td>
+<td style="text-align: left;">Misstrauen gegenüber agentischen Ketten</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="hinzmann2026">Hinzmann &amp; Özcelik (<a href="references.html#ref-hinzmann2026" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="buck2026">Buck et al. (<a href="references.html#ref-buck2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Tagungsband</td>
+<td style="text-align: left;">Bereitstellung garantiert keine Nutzung</td>
+<td style="text-align: left;">online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="kimmelmann2026tobot">Kimmelmann et al. (<a href="references.html#ref-kimmelmann2026tobot" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Buchkapitel</td>
+<td style="text-align: left;">Potenziale und Grenzen KI-gestützter Lernbegleiter; Buch-DOI</td>
+<td style="text-align: left;">online</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="anbieter-herstellerangaben" class="level2">
+<h2 class="anchored" data-anchor-id="anbieter-herstellerangaben">Anbieter (Herstellerangaben)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quelle</th>
+<th style="text-align: left;">Inhalt</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="openai2026plugins">OpenAI (<a href="references.html#ref-openai2026plugins" role="doc-biblioref">2026c</a>)</span>; <span class="citation" data-cites="devani2026learninglab">Devani &amp; Leiva (<a href="references.html#ref-devani2026learninglab" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="openai2026teens">OpenAI (<a href="references.html#ref-openai2026teens" role="doc-biblioref">2026b</a>)</span>; <span class="citation" data-cites="openai2026teensupdate">OpenAI (<a href="references.html#ref-openai2026teensupdate" role="doc-biblioref">2026d</a>)</span></td>
+<td style="text-align: left;">quellengebundener Tutor in ChatGPT Edu; Learning Lab; Angebote für Jugendliche</td>
+<td style="text-align: left;">Kasten / online</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="google2026classroom">Google Workspace Updates (<a href="references.html#ref-google2026classroom" role="doc-biblioref">2026a</a>)</span>; <span class="citation" data-cites="google2026skills">Google Workspace Updates (<a href="references.html#ref-google2026skills" role="doc-biblioref">2026b</a>)</span></td>
+<td style="text-align: left;">Gemini im Classroom; Abkündigung der Gems im Bildungsbereich frühestens 01.06.2027</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="anthropic2026teachers">Anthropic (<a href="references.html#ref-anthropic2026teachers" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Claude for Teachers</td>
+<td style="text-align: left;">Kasten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="khan2026firstchapter">Khan (<a href="references.html#ref-khan2026firstchapter" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="khanacademy2026diagrams">Khan Academy (<a href="references.html#ref-khanacademy2026diagrams" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="barshay2026khanmigo">Barshay (<a href="references.html#ref-barshay2026khanmigo" role="doc-biblioref">2026b</a>)</span></td>
+<td style="text-align: left;">Khanmigo-Umbau; Pressebericht</td>
+<td style="text-align: left;">Kasten / online</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="palmer2026nonexistent">Palmer (<a href="references.html#ref-palmer2026nonexistent" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="ler2026homeworkhelper">Ler (<a href="references.html#ref-ler2026homeworkhelper" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Presseberichte zu ChatGPT-Edu-Lizenzen und Hausaufgabenhilfen</td>
+<td style="text-align: left;">online</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="offene-prüfungen" class="level2">
+<h2 class="anchored" data-anchor-id="offene-prüfungen">Offene Prüfungen</h2>
+<p>Vor der nächsten Aktualisierung zu prüfen: die Stichprobengröße bei <span class="citation" data-cites="kuo2026">Kuo &amp; Zhuo (<a href="references.html#ref-kuo2026" role="doc-biblioref">2026</a>)</span> und die Effektstärken bei <span class="citation" data-cites="gerber2026">Gerber et al. (<a href="references.html#ref-gerber2026" role="doc-biblioref">2026</a>)</span> aus den Volltexten; <span class="citation" data-cites="chung2026personalized">Chung et al. (<a href="references.html#ref-chung2026personalized" role="doc-biblioref">2026</a>)</span> gegen eine mögliche SSRN-Fassung vom März 2026; die in einem Schweizer Meta-Review zitierte „Wu et al.&nbsp;2026, g = 0,67” identifizieren oder verwerfen; das Erscheinungsdatum von <span class="citation" data-cites="kimmelmann2026tobot">Kimmelmann et al. (<a href="references.html#ref-kimmelmann2026tobot" role="doc-biblioref">2026</a>)</span>.</p>
 </section>
 <section id="änderungshistorie" class="level2">
 <h2 class="anchored" data-anchor-id="änderungshistorie">Änderungshistorie</h2>
@@ -507,8 +1321,12 @@ Gestaltungsfrage | Studie | Design | Kernbefund | Status (im Buch / nur online) 
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">17. Oktober 2026</td>
+<td style="text-align: left;">Seite befüllt mit dem Evidenz-Screening der Neuerscheinungen Juli bis Oktober 2026 zu KI-Tutoren (vier parallele Recherchen; alle DOIs und URLs am 17.10.2026 geprüft).</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">November 2026</td>
-<td style="text-align: left;">Seite angelegt; Stand identisch mit den Kapitelkästen der Druckausgabe.</td>
+<td style="text-align: left;">Druckstand; Seite identisch mit den Kapitelkästen der Druckausgabe.</td>
 </tr>
 </tbody>
 </table>
@@ -532,6 +1350,350 @@ Gestaltungsfrage | Studie | Design | Kernbefund | Status (im Buch / nur online) 
 </ul>
 </div>
 
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-adak2026teach" class="csl-entry" role="listitem">
+Adak, S., Hazra, R., Mukherjee, K., Bose, D., &amp; Banerjee, S. (2026). <em>Do <span>LLM</span> Tutors Actually Teach? A Process-Centered Synthesis of the Tutoring Loop</em>. <a href="https://doi.org/10.48550/arXiv.2610.15692">https://doi.org/10.48550/arXiv.2610.15692</a>.
+</div>
+<div id="ref-ahtisham2026impasses" class="csl-entry" role="listitem">
+Ahtisham, B., Vanacore, K., Napoli, A., Arens, J., Ionova, K., Cohn, C., Salehi, S., &amp; Kizilcec, R. (2026). <em>Examining variation in how guided AI tutors resolve student impasses</em>. <a href="https://doi.org/10.48550/arXiv.2609.38346">https://doi.org/10.48550/arXiv.2609.38346</a>.
+</div>
+<div id="ref-akgun2026" class="csl-entry" role="listitem">
+Akgun, M., &amp; Toker, S. (2026). Do gains from generative AI-enabled adaptive pretesting persist? Evidence from a retention study. <a href="https://doi.org/10.48550/arXiv.2606.22328">https://doi.org/10.48550/arXiv.2606.22328</a>.
+</div>
+<div id="ref-anthropic2026teachers" class="csl-entry" role="listitem">
+Anthropic (2026, Juli). <em>Introducing Claude for Teachers</em>. <a href="https://www.anthropic.com/news/claude-for-teachers">https://www.anthropic.com/news/claude-for-teachers</a>.
+</div>
+<div id="ref-ates2026" class="csl-entry" role="listitem">
+Ates, H. (2026). Human-centered GenAI feedback design in higher education: A multisite experiment on direct, reflective, and hybrid approaches to scientific argumentation. <em>International Journal of Educational Technology in Higher Education</em>, <em>23</em>(38). <a href="https://doi.org/10.1186/s41239-026-00614-9">https://doi.org/10.1186/s41239-026-00614-9</a>.
+</div>
+<div id="ref-autor2026expertise" class="csl-entry" role="listitem">
+Autor, D., Rodchenko, T., Martin, J., Iscenko, Z., Strand, S., Pearl, D., &amp; Ferere, M. (2026). <em>Does AI assistance enhance or erode expertise? Evidence from a three-month field experiment in patent drafting</em> (NBER Working Paper; Nr. 35720). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35720">https://doi.org/10.3386/w35720</a>.
+</div>
+<div id="ref-baresel2026" class="csl-entry" role="listitem">
+Baresel, K., Fiegenbaum, L., Horn, J., Knorr, D., Lutter-Schwarz, L., Nys, J. de, &amp; Röben, M. (2026). <em>KI in der Hochschullehre einsetzen: Rechtliche Vorgaben in Szenarien erklärt</em> (Arbeitspapier; Nr. 95). Hochschulforum Digitalisierung. <a href="https://doi.org/10.5281/zenodo.22975655">https://doi.org/10.5281/zenodo.22975655</a>.
+</div>
+<div id="ref-barshay2026eroding" class="csl-entry" role="listitem">
+Barshay, J. (2026a, Juli). <em>Faster solutions, lower test scores: How <span>AI</span> is eroding math skills</em>. <a href="https://hechingerreport.org/proof-points-ai-eroding-math-skills/">https://hechingerreport.org/proof-points-ai-eroding-math-skills/</a>.
+</div>
+<div id="ref-barshay2026khanmigo" class="csl-entry" role="listitem">
+Barshay, J. (2026b, September). <em>Students didn’t get answers from <span>Khanmigo</span>. They didn’t want its questions, either</em>. <a href="https://hechingerreport.org/proof-points-khanmigo-math-ai-tutor/">https://hechingerreport.org/proof-points-khanmigo-math-ai-tutor/</a>.
+</div>
+<div id="ref-barth2026steering" class="csl-entry" role="listitem">
+Barth, M., Thorgeirsson, S., Etemadi, K., Leinonen, J., Cotrini, C., &amp; Su, Z. (2026). Steering AI tutors through system prompts: A crossover study on self-regulated learning and cognitive engagement scaffolds in CS1. <a href="https://doi.org/10.1145/3765964.3811656">https://doi.org/10.1145/3765964.3811656</a>.
+</div>
+<div id="ref-bastani2025" class="csl-entry" role="listitem">
+Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>Proceedings of the National Academy of Sciences</em>, <em>122</em>(26), e2422633122. <a href="https://doi.org/10.1073/pnas.2422633122">https://doi.org/10.1073/pnas.2422633122</a>.
+</div>
+<div id="ref-bereznikova2026" class="csl-entry" role="listitem">
+Bereznikova, A., Theophilou, E., &amp; Hernández-Leo, D. (2026). The influence of <span>Socratic</span> dialogue within <span>GenAI</span> on critical thinking and technology perception. <em>Educational Technology Research and Development</em>. <a href="https://doi.org/10.1007/s11423-026-10693-0">https://doi.org/10.1007/s11423-026-10693-0</a>.
+</div>
+<div id="ref-berger2026" class="csl-entry" role="listitem">
+Berger, J., Burton, J. W., Hertwig, R., Kosch, T., Kurvers, R. H. J. M., Kurzenberger, B., Lazik, C., Onnasch, L., Rieger, T., Thoma, A. I., Wulff, D. U., &amp; Herzog, S. M. (2026). Human learning is an understudied but promising lever for boosting human–<span>AI</span> synergy. <em>Proceedings of the National Academy of Sciences</em>, <em>123</em>(39), e2536100123. <a href="https://doi.org/10.1073/pnas.2536100123">https://doi.org/10.1073/pnas.2536100123</a>.
+</div>
+<div id="ref-bergh2026cognition" class="csl-entry" role="listitem">
+Bergh, C., Tag, B., Vassar, A., &amp; Renzella, J. (2026). <em>Your programming students’ cognition with ChatGPT: Higher performance, lower retention, and reduced ownership</em>. <a href="https://doi.org/10.48550/arXiv.2609.21194">https://doi.org/10.48550/arXiv.2609.21194</a>.
+</div>
+<div id="ref-brandenburger2026" class="csl-entry" role="listitem">
+Brandenburger, J., Mergan, H., Lorenz, A., &amp; Janneck, M. (2026). Digitale Souveränität bei KI-gestützter Lehrmaterialverarbeitung an Hochschulen. <em>Zeitschrift für Hochschulentwicklung</em>, <em>21</em>(3), 133–153. <a href="https://doi.org/10.21240/zfhe/21-3/07">https://doi.org/10.21240/zfhe/21-3/07</a>.
+</div>
+<div id="ref-brender2026reflective" class="csl-entry" role="listitem">
+Brender, J., El-Hamamsy, L., Uittenhove, K., Perez, A., Jermann, P., Mondada, F., &amp; Bumbacher, E. (2026). <em>Reflective dialogue or prompt refinement? Effects of tutor scaffolding on students’ independent LLM use for programming</em>. <a href="https://doi.org/10.48550/arXiv.2607.03303">https://doi.org/10.48550/arXiv.2607.03303</a>.
+</div>
+<div id="ref-buck2026" class="csl-entry" role="listitem">
+Buck, I., Christ, N., Kaib, A., &amp; Ulzheimer, L. (2026). Implementierung, Nutzung und Herausforderungen eines hochschuleigenen KI-Interfaces. In J. Leschke, R. Queckenberg, &amp; M. Persike (Hrsg.), <em>Learning Analytics, Artificial Intelligence und Data Mining in der Hochschulbildung</em>: (S. 49–55). transcript. <a href="https://doi.org/10.14361/9783839458761-049">https://doi.org/10.14361/9783839458761-049</a>.
+</div>
+<div id="ref-budde2026" class="csl-entry" role="listitem">
+Budde, J., Sommer, T., &amp; Lüthi, R. (2026). <em><a href="https://hochschulforumdigitalisierung.de/publikationen/blickpunkt-personalisiertes-lernen/">Personalisiertes Lernen im KI-Zeitalter</a></em> (Blickpunkt / HFD-Fokusmonitor 2026). Hochschulforum Digitalisierung.
+</div>
+<div id="ref-chakraborty2026" class="csl-entry" role="listitem">
+Chakraborty, P. (2026). Effect of using generative artificial intelligence in different roles in a course on computer programming. <em>Computer Applications in Engineering Education</em>, <em>34</em>(4), e70223. <a href="https://doi.org/10.1002/cae.70223">https://doi.org/10.1002/cae.70223</a>.
+</div>
+<div id="ref-changli2026" class="csl-entry" role="listitem">
+Chang, C.-K., &amp; Li, K.-H. (2026). Chat as learning: Student–<span>AI</span> conversations as discipline-associated cognitive engagement patterns. <em>Computers and Education: Artificial Intelligence</em>, <em>11</em>, 100644. <a href="https://doi.org/10.1016/j.caeai.2026.100644">https://doi.org/10.1016/j.caeai.2026.100644</a>.
+</div>
+<div id="ref-chenjia2026" class="csl-entry" role="listitem">
+Chen, F., Jia, W., Xiong, B., &amp; Chen, G. (2026). When the scaffold is withdrawn: Motivational trajectories and differences in <span>AI</span>-supported inquiry learning. <em>Learning and Individual Differences</em>, <em>132</em>, 102994. <a href="https://doi.org/10.1016/j.lindif.2026.102994">https://doi.org/10.1016/j.lindif.2026.102994</a>.
+</div>
+<div id="ref-chen2026transfer" class="csl-entry" role="listitem">
+Chen, S., Borchers, C., &amp; Schunn, C. D. (2027). From revision to learning transfer: Self- and socially shared-regulated pathways in AI-assisted feedback. <em>Learning and Instruction</em>, <em>107</em>, 102489. <a href="https://doi.org/10.1016/j.learninstruc.2026.102489">https://doi.org/10.1016/j.learninstruc.2026.102489</a>.
+</div>
+<div id="ref-chen2026informal" class="csl-entry" role="listitem">
+Chen, Z., Li, H., Xiao, Z., Qu, H., &amp; Xie, X. (2026). <em>Informal learning emerges in everyday human-LLM interaction</em>. <a href="https://doi.org/10.48550/arXiv.2607.17643">https://doi.org/10.48550/arXiv.2607.17643</a>.
+</div>
+<div id="ref-chung2026personalized" class="csl-entry" role="listitem">
+Chung, A. T.-H., Zhang, B., Kung, L.-C., Bastani, H., &amp; Bastani, O. (2026). <em>Effective Personalized <span>AI</span> Tutors via <span>LLM</span>-Guided Reinforcement Learning</em>. <a href="https://doi.org/10.48550/arXiv.2608.16907">https://doi.org/10.48550/arXiv.2608.16907</a>.
+</div>
+<div id="ref-clindeffarges2026socrates" class="csl-entry" role="listitem">
+Clin Deffarges, A., Kosmyna, N., &amp; Maes, P. (2026). <em>Socrates went nuclear: Comparing interaction strategies for AI systems in a learning context using brain sensing</em>. <a href="https://doi.org/10.48550/arXiv.2609.00584">https://doi.org/10.48550/arXiv.2609.00584</a>.
+</div>
+<div id="ref-contractor2026learning" class="csl-entry" role="listitem">
+Contractor, Z., &amp; Reyes, G. (2026). <em><a href="https://docs.iza.org/dp18792.pdf">Experimental evidence on the learning impact of generative AI</a></em> (IZA Discussion Paper; Nr. 18792). IZA Institute of Labor Economics.
+</div>
+<div id="ref-deng2025" class="csl-entry" role="listitem">
+Deng, R., Jiang, M., Yu, X., Lu, Y., &amp; Liu, S. (2025). Does ChatGPT enhance student learning? A systematic review and meta-analysis of experimental studies. <em>Computers &amp; Education</em>, <em>227</em>, 105224. <a href="https://doi.org/10.1016/j.compedu.2024.105224">https://doi.org/10.1016/j.compedu.2024.105224</a>.
+</div>
+<div id="ref-devani2026learninglab" class="csl-entry" role="listitem">
+Devani, J., &amp; Leiva, B. (2026, September). <em>Strengthening the evidence base for AI in education research: Launching the Learning Lab</em>. <a href="https://edunewsletter.openai.com/p/learning-lab-launch">https://edunewsletter.openai.com/p/learning-lab-launch</a>.
+</div>
+<div id="ref-dickey2026solving" class="csl-entry" role="listitem">
+Dickey, E., Mertzanidis, M., &amp; Psomas, A. (2026). <em>Is Solving Better Than Evaluating <span>GenAI</span> Solutions?</em> <a href="https://doi.org/10.48550/arXiv.2607.27586">https://doi.org/10.48550/arXiv.2607.27586</a>.
+</div>
+<div id="ref-dominguez2026learner" class="csl-entry" role="listitem">
+Domínguez Figaredo, D., &amp; Fernández De la Cruz, R. (2026). <em>The Learner Who Does Not Learn: When Optimizing a Pedagogical Metric Degrades <span>LLM</span> Tutoring</em>. <a href="https://doi.org/10.48550/arXiv.2610.12125">https://doi.org/10.48550/arXiv.2610.12125</a>.
+</div>
+<div id="ref-eastwood2026guardrails" class="csl-entry" role="listitem">
+Eastwood, M., Narne, H., Hilby, J., Denny, P., Aggarwal, A., &amp; Kapoor, A. (2026). <em>Guardrails or roadblocks? Effects of pedagogical style and context awareness in AI teaching assistants for programming</em>. <a href="https://doi.org/10.48550/arXiv.2609.29995">https://doi.org/10.48550/arXiv.2609.29995</a>.
+</div>
+<div id="ref-eu2026omnibus" class="csl-entry" role="listitem">
+Europäisches Parlament und Rat (2026). <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=OJ:L_202601744">Verordnung (EU) 2026/1744 des Europäischen Parlaments und des Rates vom 8. Juli 2026 zur Änderung der Verordnungen (EU) 2024/1689, (EU) 2018/1139 und (EU) 2023/1230 im Hinblick auf die Vereinfachung der Umsetzung harmonisierter Vorschriften für künstliche Intelligenz (Digital-Omnibus-Verordnung zur KI)</a>.
+</div>
+<div id="ref-fischer2025" class="csl-entry" role="listitem">
+Fischer, M., Rau, H. A., &amp; Rilke, R. M. (2025). <em><a href="https://www.iza.org/publications/dp18338">AI tutoring enhances student learning without crowding out reading effort</a></em> (IZA Discussion Paper; Nr. 18338). Institute of Labor Economics (IZA).
+</div>
+<div id="ref-fuetterer2026" class="csl-entry" role="listitem">
+Fütterer, T., Gerjets, P., Steinhäuser, R., Fabian, A., Udvardi-Lakos, N., Greene, J. A., Bernacki, M. L., Brod, G., &amp; Trautwein, U. (2026). Why using <span>AI</span> as a learning coach can improve education. <em>Nature Human Behaviour</em>. <a href="https://doi.org/10.1038/s41562-026-02524-2">https://doi.org/10.1038/s41562-026-02524-2</a>.
+</div>
+<div id="ref-galindo2026" class="csl-entry" role="listitem">
+Galindo-Domínguez, H., Delgado, N., Sainz-de-la-Maza, M., &amp; Etxabe, J.-M. (2026). Self-regulation and overreliance on artificial intelligence: Unpacking a paradox through a mixed-methods study in higher education. <em>Computers in Human Behavior</em>, <em>181</em>, 108985. <a href="https://doi.org/10.1016/j.chb.2026.108985">https://doi.org/10.1016/j.chb.2026.108985</a>.
+</div>
+<div id="ref-gallegos2026" class="csl-entry" role="listitem">
+Gallegos, S. (2026). <em><a href="https://www.iza.org/publications/dp18513">Guidance over adoption: Experimental evidence on AI-assisted learning</a></em> (IZA Discussion Paper; Nr. 18513). Institute of Labor Economics (IZA).
+</div>
+<div id="ref-gerber2026" class="csl-entry" role="listitem">
+Gerber, A., Lorenz, L., &amp; Pfeiffer, U. (2026). KI-Tutoren in der Lehre: rechtlich sicher, didaktisch wertvoll, technisch innovativ. In J. Leschke, R. Queckenberg, &amp; M. Persike (Hrsg.), <em>Learning analytics, artificial intelligence und data mining in der hochschulbildung</em>: (S. 57–64). transcript. <a href="https://doi.org/10.14361/9783839458761-057">https://doi.org/10.14361/9783839458761-057</a>.
+</div>
+<div id="ref-ghahramani2026sierraleone" class="csl-entry" role="listitem">
+Ghahramani, Z. (2026, Juni). <em>Gemini’s guided learning: Results from a randomized controlled trial in Sierra Leone</em>. <a href="https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/">https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/</a>.
+</div>
+<div id="ref-glomski2026" class="csl-entry" role="listitem">
+Glomski, E., Yilmaz, C., Dau, H., &amp; Kubsch, M. (2026). ChatGPT as a tutor?—between supporting students and giving away all the answers. <em>American Journal of Physics</em>, <em>94</em>(9), 793–794. <a href="https://doi.org/10.1119/5.0311016">https://doi.org/10.1119/5.0311016</a>.
+</div>
+<div id="ref-google2026classroom" class="csl-entry" role="listitem">
+Google Workspace Updates (2026a, August). <em>Gemini in Google Classroom is expanding to users of all ages, with contextualized Gemini starter prompts for students</em>. <a href="https://workspaceupdates.googleblog.com/2026/08/gemini-in-google-classroom-is-expanding-to-users-of-all-ages-with-contextualized-Gemini-starter-prompts-for-students.html">https://workspaceupdates.googleblog.com/2026/08/gemini-in-google-classroom-is-expanding-to-users-of-all-ages-with-contextualized-Gemini-starter-prompts-for-students.html</a>.
+</div>
+<div id="ref-google2026skills" class="csl-entry" role="listitem">
+Google Workspace Updates (2026b, September). <em>Introducing skills in the Gemini app and Workspace, plus what’s next for Gems</em>. <a href="https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html">https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html</a>.
+</div>
+<div id="ref-guan2026" class="csl-entry" role="listitem">
+Guan, T., Wider, W., Wen, X., &amp; Song, Q. (2026). Technological compensation or pedagogical awakening? A longitudinal RCT of AI and expert feedback in pre-service physical education. <em>Educational Technology Research and Development</em>. <a href="https://doi.org/10.1007/s11423-026-10724-w">https://doi.org/10.1007/s11423-026-10724-w</a>.
+</div>
+<div id="ref-hanliu2026" class="csl-entry" role="listitem">
+Han, X., &amp; Liu, M. (2026). Do large language models stimulate student motivation? A meta-analysis of experimental studies. <em>Educational Technology Research and Development</em>. <a href="https://doi.org/10.1007/s11423-026-10687-y">https://doi.org/10.1007/s11423-026-10687-y</a>.
+</div>
+<div id="ref-harrison2026medly" class="csl-entry" role="listitem">
+Harrison, W., Khowaja, R., Dobson, E., Uwimpuhwe, G., &amp; Higgins, S. (2026). <em>Evaluating AI tutoring at the speed of innovation: Practitioner-led micro-randomised trials of an AI tutoring platform in GCSE science</em>. <a href="https://doi.org/10.48550/arXiv.2609.14789">https://doi.org/10.48550/arXiv.2609.14789</a>.
+</div>
+<div id="ref-hinzmann2026" class="csl-entry" role="listitem">
+Hinzmann, A., &amp; Özcelik, F. (2026). Die KI-Experimentierumgebung an der FernUniversität in Hagen: Erste Erfahrungen aus der Lehre mit generativer KI. In J. Leschke, R. Queckenberg, &amp; M. Persike (Hrsg.), <em>Learning Analytics, Artificial Intelligence und Data Mining in der Hochschulbildung</em>: (S. 41–48). transcript. <a href="https://doi.org/10.14361/9783839458761-041">https://doi.org/10.14361/9783839458761-041</a>.
+</div>
+<div id="ref-horstmann2026check" class="csl-entry" role="listitem">
+Horstmann, N., Hüsch, M., &amp; Breiter, A. (2026). <em>Künstliche Intelligenz im Studium – Die Sicht von Studierenden im Wintersemester 2025/26</em>. CHECK, CHE Centrum für Hochschulentwicklung. <a href="https://hochschuldaten.che.de/kuenstliche-intelligenz-im-studium-die-sicht-von-studierenden-im-wintersemester-2025-26/">https://hochschuldaten.che.de/kuenstliche-intelligenz-im-studium-die-sicht-von-studierenden-im-wintersemester-2025-26/</a>.
+</div>
+<div id="ref-hou2026comet" class="csl-entry" role="listitem">
+Hou, Xinmeng, Weng, Y., Yeh, C. H., Lee, D. L., Zheng, L., Li, F., Wang, W., &amp; Liu, Y. (2026). <em>Adaptive scaffolding needs contingency: An AI tutor that escalates and fades on what the learner does</em>. <a href="https://doi.org/10.48550/arXiv.2609.22993">https://doi.org/10.48550/arXiv.2609.22993</a>.
+</div>
+<div id="ref-hou2026" class="csl-entry" role="listitem">
+Hou, Xiaoyu, Xiao, B., Liu, H., &amp; Mueller, S. (2026). The role of instructional guidance in generative AI-assisted learning: Empirical evidence from construction engineering education. <a href="https://doi.org/10.48550/arXiv.2606.05509">https://doi.org/10.48550/arXiv.2606.05509</a>.
+</div>
+<div id="ref-huangli2026" class="csl-entry" role="listitem">
+Huang, Y.-C., &amp; Li, C.-H. (2026). Socratic, artifact-gated generative <span>AI</span> scaffolding in a <span>6E</span> inquiry unit: A clustered quasi-experiment in elementary students’ computational thinking. <em>Journal of Educational Computing Research</em>. <a href="https://doi.org/10.1177/07356331261494821">https://doi.org/10.1177/07356331261494821</a>.
+</div>
+<div id="ref-isazadominguez2026" class="csl-entry" role="listitem">
+Isaza Dominguez, L. G., Robles-Gómez, A., &amp; Pastor-Vargas, R. (2026). An empirical study of <span>ChatGPT</span> use in engineering education: Prompting and performance. <em>The Internet and Higher Education</em>, <em>71</em>, 101105. <a href="https://doi.org/10.1016/j.iheduc.2026.101105">https://doi.org/10.1016/j.iheduc.2026.101105</a>.
+</div>
+<div id="ref-jin2026" class="csl-entry" role="listitem">
+Jin, Y., Yang, K., Martinez-Maldonado, R., Gašević, D., &amp; Yan, L. (2026). The agency gap in <span>AI</span>-supported writing: How reactive and proactive agent designs shape multimodal reasoning. <em>Computers and Education: Artificial Intelligence</em>, <em>11</em>, 100655. <a href="https://doi.org/10.1016/j.caeai.2026.100655">https://doi.org/10.1016/j.caeai.2026.100655</a>.
+</div>
+<div id="ref-jing2026" class="csl-entry" role="listitem">
+Jing, Y., Wang, J., Wang, P., &amp; Xu, J. (2026). The impact of generative artificial intelligence on learning outcomes in higher education: A meta-analysis. <em>Journal of Computer Assisted Learning</em>, <em>42</em>(5), e70329. <a href="https://doi.org/10.1002/jcal.70329">https://doi.org/10.1002/jcal.70329</a>.
+</div>
+<div id="ref-kestin2025" class="csl-entry" role="listitem">
+Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting. <em>Scientific Reports</em>, <em>15</em>(1), 17458. <a href="https://doi.org/10.1038/s41598-025-97652-6">https://doi.org/10.1038/s41598-025-97652-6</a>.
+</div>
+<div id="ref-khanacademy2026diagrams" class="csl-entry" role="listitem">
+Khan Academy (2026, August). <em>New <span>AI</span> tools bring interactive diagrams and targeted practice thanks to <span>Khan Academy</span>’s partnership with <span>Google.org</span></em>. <a href="https://blog.khanacademy.org/new-ai-tools-bring-interactive-diagrams-and-targeted-practice-thanks-to-khan-academys-partnership-with-google-org/">https://blog.khanacademy.org/new-ai-tools-bring-interactive-diagrams-and-targeted-practice-thanks-to-khan-academys-partnership-with-google-org/</a>.
+</div>
+<div id="ref-khan2026firstchapter" class="csl-entry" role="listitem">
+Khan, S. (2026, Juli). <em>Khanmigo’s first chapter changed how I think about AI: A note from Sal Khan</em>. <a href="https://blog.khanacademy.org/khanmigos-first-chapter-changed-how-i-think-about-ai-a-note-from-sal-khan/">https://blog.khanacademy.org/khanmigos-first-chapter-changed-how-i-think-about-ai-a-note-from-sal-khan/</a>.
+</div>
+<div id="ref-khosravi2026" class="csl-entry" role="listitem">
+Khosravi, H., Gašević, D., Sadiq, S., Yan, L., Lodge, J. M., Tangen, J. M., Denny, P., DiCerbo, K., Buckingham Shum, S., &amp; Baker, R. S. (2026). Building AI companions that prioritise learning over performance. <em>Computers and Education: Artificial Intelligence</em>, <em>11</em>, 100680. <a href="https://doi.org/10.1016/j.caeai.2026.100680">https://doi.org/10.1016/j.caeai.2026.100680</a>.
+</div>
+<div id="ref-kicampus2026omnibus" class="csl-entry" role="listitem">
+KI-Campus (2026). <em>EU AI Act: KI-Omnibus justiert Artikel 4 neu – KI-Kompetenz bleibt Pflicht</em>. KI-Campus Blog. <a href="https://ki-campus.org/blog/eu-ai-act-ki-omnibus-justiert-artikel-4-neu-ki-kompetenz-bleibt-pflicht">https://ki-campus.org/blog/eu-ai-act-ki-omnibus-justiert-artikel-4-neu-ki-kompetenz-bleibt-pflicht</a>.
+</div>
+<div id="ref-kimmelmann2026tobot" class="csl-entry" role="listitem">
+Kimmelmann, N., Probst, S., &amp; Riehle, D. (2026). „To Bot or Not to Bot?“ Potenziale und Grenzen KI-gestützter Lernbegleiter in der Hochschullehre. In U. Dittler &amp; C. Kreidl (Hrsg.), <em>Hochschulentwicklung der Zukunft</em>: (S. 63–85). Schäffer-Poeschel. <a href="https://doi.org/10.34156/9783791068305">https://doi.org/10.34156/9783791068305</a>.
+</div>
+<div id="ref-korchak2026" class="csl-entry" role="listitem">
+Korchak, A., Hughes, C., &amp; Costley, J. (2026). Generative <span>AI</span> and the balance of effort in group tasks: Appropriate, over-, and under-scaffolding. <em>Journal of Research on Technology in Education</em>. <a href="https://doi.org/10.1080/15391523.2026.2724351">https://doi.org/10.1080/15391523.2026.2724351</a>.
+</div>
+<div id="ref-kosmyna2025" class="csl-entry" role="listitem">
+Kosmyna, N., Hauptmann, E., Yuan, Y. T., Situ, J., Liao, X.-H., Beresnitzky, A. V., Braunstein, I., &amp; Maes, P. (2025). Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task. <a href="https://doi.org/10.48550/arXiv.2506.08872">https://doi.org/10.48550/arXiv.2506.08872</a>.
+</div>
+<div id="ref-kuo2026" class="csl-entry" role="listitem">
+Kuo, Y.-C., &amp; Zhuo, M.-J. (2026). The impact of flipped classrooms integrated with differentiated chatbots on programming learning. <em>Educational Technology Research and Development</em>. <a href="https://doi.org/10.1007/s11423-026-10669-0">https://doi.org/10.1007/s11423-026-10669-0</a>.
+</div>
+<div id="ref-lawson2026" class="csl-entry" role="listitem">
+Lawson, A. P., Martella, A. M., Weidlich, J., Mulders, M., &amp; Buchner, J. (2026). Color me confounded: A critical analysis of media comparisons on ChatGPT in education. <em>Computers &amp; Education</em>, <em>254</em>, 105701. <a href="https://doi.org/10.1016/j.compedu.2026.105701">https://doi.org/10.1016/j.compedu.2026.105701</a>.
+</div>
+<div id="ref-learnlm2025" class="csl-entry" role="listitem">
+LearnLM Team, Eedi, Wang, A., Rysbek, A., &amp; Huber, A. (2025). AI tutoring can safely and effectively support students: An exploratory RCT in UK classrooms. <a href="https://doi.org/10.48550/arXiv.2512.23633">https://doi.org/10.48550/arXiv.2512.23633</a>.
+</div>
+<div id="ref-lee2026socraticmind" class="csl-entry" role="listitem">
+Lee, J., Hung, J.-T., Yilmaz Soylu, M., Popescu, D., Cui, C. Z., Grigoryan, G., Joyner, D. A., &amp; Harmon, S. W. (2026). Socratic <span>Mind</span>: Impact of a novel <span>GenAI</span>-powered formative assessment tool on student learning and higher-order thinking. <em>Technology, Knowledge and Learning</em>. <a href="https://doi.org/10.1007/s10758-026-10007-6">https://doi.org/10.1007/s10758-026-10007-6</a>.
+</div>
+<div id="ref-lee2026llm" class="csl-entry" role="listitem">
+Lee, S., Baek, J., Park, J., &amp; Shin, D. (2026). <em>LLM pedagogical behavior in AI tutoring interactions</em>. <a href="https://doi.org/10.48550/arXiv.2608.22993">https://doi.org/10.48550/arXiv.2608.22993</a>.
+</div>
+<div id="ref-ler2026homeworkhelper" class="csl-entry" role="listitem">
+Ler, L. (2026, August). <em>Homework helper or <span>AI</span> tutor? The difference determines what students learn</em>. <a href="https://edtechinsiders.substack.com/p/homework-helper-or-ai-tutor-the-difference">https://edtechinsiders.substack.com/p/homework-helper-or-ai-tutor-the-difference</a>.
+</div>
+<div id="ref-liu2026courseintegrated" class="csl-entry" role="listitem">
+Liu, J., Sweet, T., Chen, M. H., Engelberg, J., Masters, M. C., Clark, M., Persaud, A., Lancaster, A., Hollingsworth, J. K., &amp; Rice, J. K. (2026). <em>The effects of course-integrated AI tutoring on student performance and engagement: A randomized university trial</em> (EdWorkingPaper; Nr. 26-1598). Annenberg Institute at Brown University. <a href="https://doi.org/10.26300/y3f8-vh05">https://doi.org/10.26300/y3f8-vh05</a>.
+</div>
+<div id="ref-maier2026deskilling" class="csl-entry" role="listitem">
+Maier, S., Schwabe, K., Schneider, M., &amp; Feuerriegel, S. (2026). <em>Designing against deskilling: Metacognitive feedback reduces cognitive offloading to LLM assistants</em>. <a href="https://doi.org/10.48550/arXiv.2609.20143">https://doi.org/10.48550/arXiv.2609.20143</a>.
+</div>
+<div id="ref-mit2026aicommittee" class="csl-entry" role="listitem">
+Massachusetts Institute of Technology, Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training (2026, August). <em>Report of MIT’s Ad Hoc Committee on AI use in teaching, learning, and research training</em>. <a href="https://aiandeducation.mit.edu/">https://aiandeducation.mit.edu/</a>.
+</div>
+<div id="ref-melanou2026" class="csl-entry" role="listitem">
+Melanou, C., Beege, M., &amp; Kimmig, M. (2026). Generative AI and learning dynamics in higher education: A longitudinal empirical study. <em>Journal of Computer Assisted Learning</em>, <em>42</em>(5), e70322. <a href="https://doi.org/10.1002/jcal.70322">https://doi.org/10.1002/jcal.70322</a>.
+</div>
+<div id="ref-mittal2026" class="csl-entry" role="listitem">
+Mittal, S., Blodgett, S. L., &amp; Liao, Q. V. (2026). Learning by chatting? Investigating the impact of generative AI on information seeking and learning. <a href="https://doi.org/10.48550/arXiv.2606.11669">https://doi.org/10.48550/arXiv.2606.11669</a>.
+</div>
+<div id="ref-muenzer2026autonomie" class="csl-entry" role="listitem">
+Münzer, S., Go, S., &amp; Paaßen, B. (2026). <em>Gefährdet generative KI die digitale Autonomie im Studium?</em> (Diskussionspapier; Nr. 41). Hochschulforum Digitalisierung. <a href="https://doi.org/10.5281/zenodo.21414756">https://doi.org/10.5281/zenodo.21414756</a>.
+</div>
+<div id="ref-nakamura2026" class="csl-entry" role="listitem">
+Nakamura, D. (2026). Augmentation or erosion? Regulating cognitive offloading in generative AI-supported STEM learning. <em>Educational Psychology Review</em>, <em>38</em>(124). <a href="https://doi.org/10.1007/s10648-026-10224-6">https://doi.org/10.1007/s10648-026-10224-6</a>.
+</div>
+<div id="ref-narine2026aitutor" class="csl-entry" role="listitem">
+Narine, L. K., &amp; Diaz, J. M. (2026). <span>AI</span> tutor, online course, or both? A randomized experimental pilot study for evaluation capacity building. <em>Education Sciences</em>, <em>16</em>(10), 1700. <a href="https://doi.org/10.3390/educsci16101700">https://doi.org/10.3390/educsci16101700</a>.
+</div>
+<div id="ref-northcutt2026studentbench" class="csl-entry" role="listitem">
+Northcutt, C., Hasmani, I., Feng, K., Khangi, T., Plesner, A., &amp; Mueller, J. (2026). <em>StudentBench: AI and human tutoring yield equivalent GRE learning gains</em>. <a href="https://doi.org/10.48550/arXiv.2609.28470">https://doi.org/10.48550/arXiv.2609.28470</a>.
+</div>
+<div id="ref-openai2026studymode" class="csl-entry" role="listitem">
+OpenAI (2026a, März). <em>Understanding AI and learning outcomes</em>. <a href="https://openai.com/index/understanding-ai-and-learning-outcomes/">https://openai.com/index/understanding-ai-and-learning-outcomes/</a>.
+</div>
+<div id="ref-openai2026teens" class="csl-entry" role="listitem">
+OpenAI (2026b, August). <em>Introducing <span>ChatGPT</span> for <span>Teens</span>: Built for learning, backed by protections</em>. <a href="https://openai.com/index/chatgpt-for-teens/">https://openai.com/index/chatgpt-for-teens/</a>.
+</div>
+<div id="ref-openai2026plugins" class="csl-entry" role="listitem">
+OpenAI (2026c, August). <em>New ways to learn and teach with ChatGPT Work and Codex</em>. <a href="https://openai.com/index/learn-teach-chatgpt-work-codex/">https://openai.com/index/learn-teach-chatgpt-work-codex/</a>.
+</div>
+<div id="ref-openai2026teensupdate" class="csl-entry" role="listitem">
+OpenAI (2026d, Oktober). <em>Helping teens learn, plan, and shape the future of <span>AI</span></em>. <a href="https://openai.com/index/teens-learn-and-plan/">https://openai.com/index/teens-learn-and-plan/</a>.
+</div>
+<div id="ref-oreopoulos2026" class="csl-entry" role="listitem">
+Oreopoulos, P., Keyes-Krysakowski, O., &amp; Agarwal, D. (2026). <em>How In-School Supervised Ed-Tech Support Produces Massive Learning Gains: A Khan Academy Field Experiment in India</em> (NBER Working Paper; Nr. 34683). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w34683">https://doi.org/10.3386/w34683</a>.
+</div>
+<div id="ref-oreopoulos2026productive" class="csl-entry" role="listitem">
+Oreopoulos, P., Liut, M., Sungu, A., &amp; Low, N. (2026). <em>Making AI tutoring productive: Evidence from a mastery-based math practice experiment</em> (NBER Working Paper; Nr. 35621). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35621">https://doi.org/10.3386/w35621</a>.
+</div>
+<div id="ref-oreopoulos2026khanmigo" class="csl-entry" role="listitem">
+Oreopoulos, P., &amp; Low, N. (2026). <em>One click away: AI tutoring with Khanmigo in a two-year school experiment</em> (NBER Working Paper; Nr. 35620). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35620">https://doi.org/10.3386/w35620</a>.
+</div>
+<div id="ref-paassen2026misstrauen" class="csl-entry" role="listitem">
+Paaßen, B., &amp; Scharlau, I. (2026). <em>Gesundes Misstrauen gegenüber agentischen KI-Systemen in der Hochschullehre – Ein Diskussionsbeitrag</em>. Blog des Hochschulforums Digitalisierung. <a href="https://hochschulforumdigitalisierung.de/misstrauen-agentische-ki/">https://hochschulforumdigitalisierung.de/misstrauen-agentische-ki/</a>.
+</div>
+<div id="ref-palmer2026nonexistent" class="csl-entry" role="listitem">
+Palmer, K. (2026, September). <em>The <span>„nonexistent“</span> research on <span>AI</span>’s benefits for education</em>. <a href="https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/09/14/nonexistent-research-ais-benefits-education">https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/09/14/nonexistent-research-ais-benefits-education</a>.
+</div>
+<div id="ref-perczel2025" class="csl-entry" role="listitem">
+Perczel, J., Chow, J., &amp; Demszky, D. (2025). TeachLM: Post-training LLMs for education using authentic learning data. <a href="https://doi.org/10.48550/arXiv.2510.05087">https://doi.org/10.48550/arXiv.2510.05087</a>.
+</div>
+<div id="ref-pisan2026withhold" class="csl-entry" role="listitem">
+Pisan, Y. (2026). <em>Teaching a large language model tutor to withhold the answer: A supervisor architecture and an evidence-driven method for tuning socratic behavior</em>. <a href="https://doi.org/10.48550/arXiv.2608.12292">https://doi.org/10.48550/arXiv.2608.12292</a>.
+</div>
+<div id="ref-ren2026" class="csl-entry" role="listitem">
+Ren, X., Li, X., Gao, L., Wei, Q., Liu, H., &amp; Yu, X. (2026). Effects of AI interventions across cognitive, social-emotional, and academic outcomes: A meta-analysis of randomized controlled trials with nonlinear dose–response evidence. <em>Educational Psychology Review</em>, <em>38</em>(128). <a href="https://doi.org/10.1007/s10648-026-10217-5">https://doi.org/10.1007/s10648-026-10217-5</a>.
+</div>
+<div id="ref-rismanchian2026" class="csl-entry" role="listitem">
+Rismanchian, S., Uzun, H., Matayoshi, J., Cosyn, E., &amp; Kurd-Misto, E. (2026). Faster completion, less learning: Generative AI reduced study time on math problems and the knowledge they build. <a href="https://doi.org/10.48550/arXiv.2605.21629">https://doi.org/10.48550/arXiv.2605.21629</a>.
+</div>
+<div id="ref-robinson2026" class="csl-entry" role="listitem">
+Robinson, C. D., Gormley, D., Trindade Ribeiro, A., &amp; Loeb, S. (2026). <em>The role of human support in student engagement with AI tutoring platforms</em> (EdWorkingPaper; Nr. 26-1451). Annenberg Institute at Brown University. <a href="https://doi.org/10.26300/pz7p-p388">https://doi.org/10.26300/pz7p-p388</a>.
+</div>
+<div id="ref-ross2026" class="csl-entry" role="listitem">
+Ross, J., So, E., &amp; Lo, A. W. (2026). Breaking Bad Financial Habits: How LLM Conversations Correct Financial Misconceptions. <a href="https://doi.org/10.48550/arXiv.2604.27022">https://doi.org/10.48550/arXiv.2604.27022</a>.
+</div>
+<div id="ref-shapiro2026coursechat" class="csl-entry" role="listitem">
+Shapiro, S., &amp; Lindemann, J. (2026). <em>On-premises multi-course RAG tutoring for business education: Hardware-software trade-offs in a campus AI tutor</em>. <a href="https://doi.org/10.48550/arXiv.2610.02510">https://doi.org/10.48550/arXiv.2610.02510</a>.
+</div>
+<div id="ref-siyan2026conversational" class="csl-entry" role="listitem">
+Siyan, L., Bianchi, F., Zou, J., &amp; Zhou, K. (2026). <em>Human-<span>AI</span> Conversational Behaviors Predict Unassisted Task Performance</em>. <a href="https://doi.org/10.48550/arXiv.2610.09547">https://doi.org/10.48550/arXiv.2610.09547</a>.
+</div>
+<div id="ref-stumpf2026" class="csl-entry" role="listitem">
+Stumpf, C., Schlude, A., Löwel, V., &amp; Stürz, R. A. (2026). <em><a href="https://publikationen.badw.de/de/050809137">Ein KI-Tutor geht in die Lehre: Empirische Ergebnisse zum Einsatz von OneTutor im Sommersemester 2025</a></em>. Bayerisches Forschungsinstitut für Digitale Transformation (bidt).
+</div>
+<div id="ref-su2026engage" class="csl-entry" role="listitem">
+Su, X., Rimell, L., Li, J., Rannen-Triki, A., Paquet, U., Hendricks, L. A., Qadri, R., Ippolito, D., &amp; Mirowski, P. (2026). <em>Who Thinks First? Designing Productive Friction with Engage-to-Unlock <span>GenAI</span></em>. <a href="https://doi.org/10.48550/arXiv.2610.01518">https://doi.org/10.48550/arXiv.2610.01518</a>.
+</div>
+<div id="ref-sungu2026harmteaching" class="csl-entry" role="listitem">
+Sungu, A., Lira, B., &amp; Duckworth, A. L. (2026). <em>Generative AI can harm teaching</em>. SSRN Working Paper 7007339. <a href="https://papers.ssrn.com/abstract=7007339">https://papers.ssrn.com/abstract=7007339</a>.
+</div>
+<div id="ref-tani2026" class="csl-entry" role="listitem">
+Tani, T., Joseph, M., Metso, L., &amp; Tynninen, L. (2026). RAG ’n’ Roll industrial management game: Building and testing a large language model assistant for operations education. <em>Computer Applications in Engineering Education</em>, <em>34</em>(5), e70263. <a href="https://doi.org/10.1002/cae.70263">https://doi.org/10.1002/cae.70263</a>.
+</div>
+<div id="ref-tao2026justification" class="csl-entry" role="listitem">
+Tao, Y., Meyer, J., &amp; Kizilcec, R. F. (2026). <em>Think before you accept: Can written justification reduce uncritical uptake of AI writing suggestions?</em> <a href="https://doi.org/10.48550/arXiv.2609.23936">https://doi.org/10.48550/arXiv.2609.23936</a>.
+</div>
+<div id="ref-teo2026ai" class="csl-entry" role="listitem">
+Teo, V., Jain, R., Gerstenberg, T., &amp; Kleiman-Weiner, M. (2026). <em>AI assistants overassist</em>. <a href="https://doi.org/10.48550/arXiv.2607.21306">https://doi.org/10.48550/arXiv.2607.21306</a>.
+</div>
+<div id="ref-tobler2026" class="csl-entry" role="listitem">
+Tobler, S., &amp; Köhler, K. (2026). A lecture-specific AI-based tutor for higher education: Pedagogical design and empirical evaluation. <em>Education Sciences</em>, <em>16</em>(5), 812. <a href="https://doi.org/10.3390/educsci16050812">https://doi.org/10.3390/educsci16050812</a>.
+</div>
+<div id="ref-turano2026monolith" class="csl-entry" role="listitem">
+Turano, C., Pihl, V., Agnew, C., Ziegler, L., &amp; Loeb, S. (2026, August). <em>AI tutoring is not a monolith: What we actually know</em>. <a href="https://nssa.stanford.edu/briefs/ai-tutoring-not-monolith">https://nssa.stanford.edu/briefs/ai-tutoring-not-monolith</a>.
+</div>
+<div id="ref-udeshi2026khanmigo" class="csl-entry" role="listitem">
+Udeshi, T., Khazenzon, A., Khan, K., Breen, N., Corwin, R. J., DiGiano, C., Weatherholtz, K., &amp; Zaluski, M. (2026). <em>Methodologies for Improving the Quality of <span>AI</span> Tutoring in <span>K-12</span> Education</em>. <a href="https://doi.org/10.48550/arXiv.2608.11259">https://doi.org/10.48550/arXiv.2608.11259</a>.
+</div>
+<div id="ref-zhlbayreuth2026kitutorien" class="csl-entry" role="listitem">
+Universität Bayreuth, Zentrum für Hochschullehre (2026). <em>KI-Tutorien Bayern</em>. Projektseite. <a href="https://www.zhl.uni-bayreuth.de/de/projekte/kitutorium/index.html">https://www.zhl.uni-bayreuth.de/de/projekte/kitutorium/index.html</a>.
+</div>
+<div id="ref-wissenschaftsrat2026" class="csl-entry" role="listitem">
+Wissenschaftsrat (2026). <em>Intellektuelle Souveränität: Empfehlungen für die Hochschulbildung in Zeiten von generativer KI</em> (Nr. Drs. 3319-26). Wissenschaftsrat. <a href="https://doi.org/10.57674/1evx-t906">https://doi.org/10.57674/1evx-t906</a>.
+</div>
+<div id="ref-wuouyang2026" class="csl-entry" role="listitem">
+Wu, M., &amp; Ouyang, F. (2026). How generative AI influences learning outcomes in programming education: A three-level Bayesian meta-analysis. <em>Educational Psychology Review</em>, <em>38</em>(117). <a href="https://doi.org/10.1007/s10648-026-10211-x">https://doi.org/10.1007/s10648-026-10211-x</a>.
+</div>
+<div id="ref-wu2024a" class="csl-entry" role="listitem">
+Wu, R., &amp; Yu, Z. (2024). Do AI chatbots improve students learning outcomes? Evidence from a meta-analysis. <em>British Journal of Educational Technology</em>, <em>55</em>(1), 10–33. <a href="https://doi.org/10.1111/bjet.13334">https://doi.org/10.1111/bjet.13334</a>.
+</div>
+<div id="ref-wulu2026" class="csl-entry" role="listitem">
+Wu, Y., &amp; Lu, X. (2026). A helping hand or a dominant partner? Individual perceptions of <span>GenAI</span> reliance and human agency in collaborative learning. <em>British Journal of Educational Technology</em>. <a href="https://doi.org/10.1111/bjet.70090">https://doi.org/10.1111/bjet.70090</a>.
+</div>
+<div id="ref-xu2026" class="csl-entry" role="listitem">
+Xu, K., Shen, Y., Yan, L., &amp; Ren, Y. (2026). Cognitive agency surrender: Defending epistemic sovereignty via scaffolded AI friction. <a href="https://doi.org/10.48550/arXiv.2603.21735">https://doi.org/10.48550/arXiv.2603.21735</a>.
+</div>
+<div id="ref-yang2026speak" class="csl-entry" role="listitem">
+Yang, S., Van Alstyne, M., &amp; Dellarocas, C. (2026). <em>When AI tutors speak: Evidence from a randomized field experiment</em>. <a href="https://doi.org/10.48550/arXiv.2609.23958">https://doi.org/10.48550/arXiv.2609.23958</a>.
+</div>
+<div id="ref-yang2026visar" class="csl-entry" role="listitem">
+Yang, Y., Zhang, Z., Tang, N., Wang, X., Ambrose, A., Myers, N., Clauss, P., &amp; Li, T. J.-J. (2026). Lessons from real-world deployment of a cognition-preserving writing tool: Students actively engage with critical thinking and planning affordances. <a href="https://doi.org/10.48550/arXiv.2603.15777">https://doi.org/10.48550/arXiv.2603.15777</a>.
+</div>
+<div id="ref-yi2026behavior" class="csl-entry" role="listitem">
+Yi, J., Xie, Y., He, J., Ye, R., Huang, J., Zhu, B., Rintel, S., Xie, Y., Xie, X., &amp; Wu, F. (2026). <em>Learning Behavior Accounts for Background-Related Advantage in <span>AI</span>-Assisted Education</em>. <a href="https://doi.org/10.48550/arXiv.2607.10101">https://doi.org/10.48550/arXiv.2607.10101</a>.
+</div>
+<div id="ref-zabelina2026socratic" class="csl-entry" role="listitem">
+Zabelina, M. (2026). <em>Structured <span>AI</span> Socratic Homework in Higher Education: Implementation, Student Experience, and Evidence from a Pre-Registered Field Study</em>. EdArXiv. <a href="https://doi.org/10.35542/osf.io/c3ysd_v1">https://doi.org/10.35542/osf.io/c3ysd_v1</a>.
+</div>
+<div id="ref-zhuyang2026" class="csl-entry" role="listitem">
+Zhu, W., Yang, Y., &amp; Yang, Y. (2026). Preferred scaffolding does not lead to better learning performance: Empirical evidence from AI-supported mathematical modelling. <em>Computers and Education: Artificial Intelligence</em>, <em>11</em>, 100669. <a href="https://doi.org/10.1016/j.caeai.2026.100669">https://doi.org/10.1016/j.caeai.2026.100669</a>.
+</div>
+<div id="ref-ziegler2026ragtutor" class="csl-entry" role="listitem">
+Ziegler, M. (2026). <em>RAG-basierter Chatbot: KI-Tutor für die Diagnostikvorlesung</em>. CMS-Blog, Humboldt-Universität zu Berlin. <a href="https://blogs.hu-berlin.de/cms/2026/08/24/rag-basierter-chatbot-ki-tutor-fuer-die-diagnostikvorlesung/">https://blogs.hu-berlin.de/cms/2026/08/24/rag-basierter-chatbot-ki-tutor-fuer-die-diagnostikvorlesung/</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -599,13 +1761,14 @@ Gestaltungsfrage | Studie | Design | Kernbefund | Status (im Buch / nur online) 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
