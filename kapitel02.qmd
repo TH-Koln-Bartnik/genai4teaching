@@ -128,7 +128,7 @@ So erkennt GPT in einem Satz wie „Die Bank steht unter einem Baum“ anhand de
 Der Fachartikel von 2017, der das Verfahren vorstellte und die KI-Welle seit 2022 mit auslöste, trägt den knackigen Titel "Attention is all you need" [@vaswani2017]; er wurde bis 2026 mehr als 200.000-fach zitiert.
 
 **Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?** Moderne LLMs können ganze Bücher schnell aufsaugen und dann zusammenfassen (z. B. Claude, ChatGPT oder Gemini).
-Das **Kontext-Fenster** eines LLM beschreibt die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu verstehen.
+Berücksichtigen kann das Modell nur, was in seinem **Kontextfenster** steht: dem Text, den es in diesem Augenblick vor sich hat, also Prompt, bisheriger Gesprächsverlauf, hochgeladene Dateien und die Ergebnisse seiner Werkzeuge (das Wort kommt vom lateinischen *contexere*, zusammenweben; der Kontext ist das Gewebe, in dem ein Satz erst Sinn ergibt).
 
 Ein **Agent** ist in der KI-Forschung allgemein etwas, das seine Umwelt wahrnimmt (durch Sensoren) und auf sie einwirkt (durch Aktoren) [@russell2021, S.54].
 Seine *Architektur* sind bildlich gesprochen Augen und Hände, also was er wahrnehmen und tun kann (für GenAI-Agenten etwa: Hat er Web-Anbindung, kann er programmieren?); sein *Programm* ist das Regelbuch, nach dem er reagiert [@russell2021, S.65ff.].
@@ -172,7 +172,7 @@ Oder vielleicht das Sprachmodell mit Tools (Agenten)?
 Prüfen Sie Ihr Verständnis: Welche der links gezeigten Antworten passen zu welchem der rechts gezeigten Muster?
 Nutzt das Sprachmodell nur sein "Standard-Wissen" (LLM only), oder werden "Werkzeuge" wie Internet-Nutzung erlaubt?
 
-Mit den agentischen Werkzeugen kommt in der Praxis eine vierte Entscheidungsfrage hinzu [@mollick2025e]: **Hat mein Agent ein Harness?** Ohne Harness bleibt „Agent“ oft ein Etikett; mit Harness kann das Modell tatsächlich recherchieren, rechnen, Dateien erzeugen und Zwischenschritte nachvollziehbar machen. Für Lehraufgaben bewährt sich daher ein Workflow, der erst eigenes Material als Kontext nutzt (RAG/Notebook-Ansatz), dann für belastbare Quellen ein Research-Harness (z. B. „Deep Research“) einsetzt und die Ergebnisse als Artefakte exportiert (Quiz, Aufgabenblatt, Folien) – bevor Sie didaktisch zuspitzen.
+Mit den agentischen Werkzeugen kommt eine vierte Frage hinzu [@mollick2025e]: Hat der Agent ein **Harness**, also einen Werkzeugkasten, mit dem er tatsächlich im Netz suchen, rechnen und Dateien erzeugen kann (s. @sec-agenten-praxis)?
 
 ::: {.callout-tip title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?"}
 ::: {.content-visible when-format="html"}
@@ -250,7 +250,7 @@ Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellen
 ### Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt {#sec-agenten-gedaechtnis}
 
 Ein Sprachmodell erinnert sich nicht.
-Alles, was es bei einer Antwort berücksichtigt, steht in seinem **Kontextfenster**: dem Text, den es in diesem Augenblick vor sich hat, also Prompt, bisheriger Gesprächsverlauf, hochgeladene Dateien und die Ergebnisse seiner Werkzeuge (das Wort kommt vom lateinischen *contexere*, zusammenweben; der Kontext ist das Gewebe, in dem ein Satz erst Sinn ergibt).
+Alles, was es bei einer Antwort berücksichtigt, steht in seinem Kontextfenster (@sec-gpt-bedeutung).
 Das Kontextfenster ist ein Schreibtisch, kein Archiv.
 Was auf dem Tisch liegt, sieht das Modell vollständig; was nicht darauf liegt, existiert für die Antwort nicht; und am Ende der Sitzung wird der Tisch abgeräumt.
 Solange wir eine einzelne Frage stellen, stört das nicht.
@@ -569,10 +569,7 @@ Im interaktiven Durchspiel lassen sich Fall, Arbeitsweise und Ebene (Dialog, Den
 Eine spätere Studie des weitgehend selben Teams mit 776 Praktikern bei Procter & Gamble zeigt, dass Individuen mit LLM Unterstützung deutlich produktiver Probleme lösen oder neue Ideen generieren konnten.
 Das Sprachmodell scheint einen deutlichen Mehrwert als „**Cybernetic Teammate**“ zu bringen und Einzelne teils auf das Leistungsniveau von ganzen Teams zu bringen [@dellacqua2025].
 
-Wenn man **ältere oder weniger starke (offene) Modelle nutzt, fährt man mit dem Fahrrad auf der Autobahn**.
-Vergleiche zeigen von Modellgeneration zu Modellgeneration starke Performanzunterschiede; schon der Sprung von der ersten ChatGPT-Generation zur nächsten war erheblich.
-Auch die offenen Modelle sind teils deutlich weniger „schlau“ als die Flaggschiffe!
-Hier muss man insofern aufpassen, dass die einfache Verfügbarkeit älterer oder kleinerer Modelle über institutionelle Zugänge nicht zu einem falschen Bild führt.
+Wer **ältere oder kleinere offene Modelle nutzt, fährt dagegen mit dem Fahrrad auf der Autobahn**; warum das über institutionelle Zugänge leicht passiert, steht in @sec-model-choice.
 
 ## Wo und wie spreche ich mit der KI? {#sec-access}
 
