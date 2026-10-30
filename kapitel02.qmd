@@ -1,6 +1,5 @@
 # Grundbegriffe {#sec-grundbegriffe}
 
-<!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
 ::: {.callout-note title="Lernziele"}
 Nach diesem Kapitel können Sie …
 
@@ -12,7 +11,6 @@ Nach diesem Kapitel können Sie …
 - die Größenordnung des Energieverbrauchs einer Anfrage einordnen und die wichtigsten Argumente der Debatte wiedergeben.
 :::
 
-<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
 ::: {.callout-note title="Leitfragen"}
 *Versuchen Sie eine Antwort, bevor Sie weiterlesen; die Kernaussagen am Kapitelende greifen die Fragen in derselben Reihenfolge auf.*
 
@@ -213,8 +211,6 @@ Mit den agentischen Werkzeugen kommt in der Praxis eine vierte Entscheidungsfrag
 
 ### Agenten in der Praxis: Harness, Skills, Werkzeuganschluss und eigene Quellen {#sec-agenten-praxis}
 
-<!-- Entwurf (Claude, 17.10.2026), Woche 3, Arbeitspaket 2.2; Gestaltungsfrage: Wann lohnt es sich, einer KI einen Auftrag statt einer Frage zu geben, und an welchen Stellen muss ein Mensch eingreifen? Belege nach Redaktionsregel: lewis2020, parasuraman2000, johnston2026the (Evidenz zu Letzterem steht ausführlich in Anhang D.1). Freigabe Roman. -->
-
 Die drei Muster aus dem vorigen Abschnitt beschreiben, *was* die KI zur Verfügung hat: ihr Trainingswissen, zusätzlich eigene Texte oder zusätzlich Werkzeuge.
 Im Alltag der Lehre stellt sich die Frage anders: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden?
 Dafür braucht man vier Begriffe, die in den Produktbeschreibungen durcheinandergehen.
@@ -225,9 +221,6 @@ Das **Harness** ist der Werkzeugkasten, den der Agent dabei trägt (das Wort kom
 Ohne Harness bleibt „Agent“ ein Etikett auf einem Chatbot.
 Ein **Skill** ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird.
 Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.
-
-<!-- Interaktion „Skill-Karte“ (Konzept 7 der Agenten-Animationen, 29.10.2026). Lehrmodell, keine Messung.
-     Datei: interactions/skill-karte.html · Druckzwilling: Playwright-Aufnahme von #druck -> images/druck/skill-karte-qr.png (QR-Code rechts unten) -->
 
 Was ein Skill im Alltag leistet, lässt sich in Minuten ausdrücken. Eine Lehrende lässt vier Wochen lang Feedback auf die Berichte von sechs Projektteams schreiben. In der einen Reihe erklärt sie der KI den Zusammenhang jede Woche neu, in der anderen schreibt sie ihn einmal auf eine Skill-Karte und trägt jede gelernte Regel dort nach.
 
@@ -259,10 +252,6 @@ Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, 
 Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet.
 Bei einer Literaturrecherche sind das drei Stellen: der Quellenkorb, den der Agent durchsuchen darf, der Rechercheplan, bevor er loslegt, und die Stichprobe von Aussagen, die wir gegen das Original halten.
 Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte, und bei einem Tutor, den Studierende ein Semester lang ohne uns benutzen, ist sie am längsten.
-
-<!-- Interaktion „Agenten-Engpass“ (Konzept 6 der Agenten-Animationen, Fassung Swimlanes vom 29.10.2026).
-     Eine vereinfachte Neufassung (Leitkugel) ist im Konzept-Chat vorgeschlagen und wartet auf drei Entscheidungen.
-     Datei: interactions/agenten-engpass.html · Druckzwilling: #druck -> images/druck/agenten-engpass-qr.png (QR-Code rechts unten) -->
 
 Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen. Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Die Nutzungsdaten zeigen, wie verschieden weit Organisationen auf diesem Weg sind: Bei den Organisationskunden des Coding-Agenten arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst arbeiten nur 10,7 % mit einem einzigen Arbeitsstrang, und 28,6 % steuern fünf oder mehr Agenten gleichzeitig [@johnston2026the]. Das folgende Modell zeigt einen Vormittag von 120 Minuten: Ein Auftrag kostet den Menschen zwei Minuten, der Agent arbeitet zwanzig, das Prüfen kostet vier.
 
@@ -432,7 +421,6 @@ Nur so erhält man ein Gefühl dafür, was technisch möglich ist und wie „sic
 ::: {.callout-note title="Stand bei Drucklegung, November 2026"}
 Die folgende Übersicht hält fest, welche Modelle und Zugänge bei Drucklegung die im Text beschriebenen Klassen füllten. Sie ist ein historischer Schnappschuss: Die Namen ändern sich, die Klassen bleiben.
 
-<!-- TODO (Roman, Modellkasten): OpenAI-Zeile am 18.10. nach KI:connect-Changelog v1.27.0 (01.10.2026) auf GPT-5.6/GPT-6 gehoben; welche Variante das Flaggschiff ist, bitte prüfen. Google/Anthropic/Meta/DeepSeek/Mistral weiterhin Stand 02/2026 (offener Punkt 5 im Zeitmarker-Protokoll). -->
 | Anbieter | Modellklasse(n) | Typischer Zugang (Chat, API, institutionell) | Hinweis für die Lehre |
 |:----------------|:-----------------------|:-------------------------------|:-------------------------|
 | OpenAI | Flaggschiff aus der Familie GPT-5.6/GPT-6 (Reasoning; Varianten Sol, Terra, Luna bzw. Astra, Sol, Luna); Mini-Varianten; Codex-Variante für Programmierung | Chat-Interface ChatGPT (kostenfrei mit Einschränkungen; Abonnement im Bereich von ca. 20 € monatlich); API; institutionell über Academic Cloud, THKI-Lab und Microsoft 365 Copilot | Sprachmodus und Deep Research in der Bezahlversion; eigene „GPTs“ lassen sich als Tutoren teilen |
@@ -463,7 +451,6 @@ Die lebende Modellübersicht finden Sie online unter <https://th-koln-bartnik.gi
 
 Quelle: @vellum2025, Stand August 2025.
 
-<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
 :::: {.callout-note title="Anwendungsbeispiel: Der Kurs-Bot steht bereit, aber kaum jemand lernt mit ihm"}
 **Problem ohne KI.** Zwischen den Veranstaltungen bleiben Fragen zum Material liegen, und Lehrende erfahren kaum, woran ihre Studierenden hängen.
 
@@ -510,10 +497,6 @@ Ein anschauliches Maß dafür ist der **Zeithorizont**: die Dauer, die Fachleute
 Er stieg von rund 4 Minuten bei GPT-4 (März 2023) auf rund 17 Stunden bei einer frühen Fassung von Claude Mythos Preview (April 2026) und verdoppelte sich seit 2023 etwa alle 129 Tage, also gut alle vier Monate [@metr2026].
 Den letzten Wert ordnet METR selbst als unsicher ein, weil die Testaufgaben über 16 Stunden nicht mehr für eine verlässliche Messung reichen; die Fähigkeiten sind ihrem Maßstab entwachsen.
 
-<!-- Interaktion „Zeithorizont“ (Mollick-Paket, 29.10.2026). Daten aus der Ursprungsquelle: METR Time Horizon 1.1,
-     benchmark_results_1_1.yaml (Stand 8.5.2026), nachgerechnet; CSV in data/metr-time-horizon-1-1.csv.
-     Ersetzt die frühere Abbildung images/script02-05.svg (Sekundärquelle lovely2025). -->
-
 ::: {.content-visible when-format="html"}
 <iframe src="interactions/ki-entwicklung.html?zeige=zeithorizont" width="100%" height="840px" frameborder="0" title="Diagramm: Zeithorizont der KI-Modelle 2019 bis 2026 nach METR"></iframe>
 :::
@@ -547,9 +530,6 @@ Durch diese Eigenschaft ermöglicht KI eine schnelle und kosteneffiziente Skalie
 
 Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
 Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 [@emberson2026].
-
-<!-- Interaktion „Kosten“ (Mollick-Paket, 29.10.2026). Daten aus der Ursprungsquelle: Epoch AI, Emberson & Roodman (2026), Abb. 2,
-     Repo droodman/inference-cost (output/slides/Figure 2.csv); CSV in data/epoch-gpqa-kosten-75.csv. Lizenz des Repos noch prüfen. -->
 
 ::: {.content-visible when-format="html"}
 Im interaktiven Diagramm steht ein Kästchen für eine Frage zum o3-Preis vom Januar 2025. Zuerst ist eine eigene Schätzung gefragt, wie viele Fragen dieselben 30 Cent im Juli 2026 kaufen. Danach deckt jeder Klick auf „Weiter“ die nächste Preisstufe auf: Der Zeitstrahl rückt vor, und das Raster füllt sich, bis auf der letzten Stufe die Schätzung aufgelöst wird. Der Umschalter „Treppe“ zeigt dieselben Stufen auf logarithmischer Achse.
@@ -701,7 +681,7 @@ Der Vorteil hier ist, dass die Ergebnisse schon nach wenigen Sekunden vorliegen.
 
 ![Empfehlung: Das KI-Modell wie eine junge Hilfskraft behandeln - nach und nach anlernen, klar anweisen](images/script02-prompting-empfehlung-behandeln-wie-hilfskraft.png){#fig-prompten-iterieren fig-align="center"}
 
-Quelle: Erstellt mit Gemini 3 Pro, basierend auf @mollick2024d. <!-- TODO Roman: Version prüfen (Bildgenerierung) -->
+Quelle: Erstellt mit Gemini 3 Pro, basierend auf @mollick2024d.
 
 **Was empfehlen Prompt-Profis im Detail?** Die drei führenden KI-Labore haben 2025 ausführliche Leitfäden veröffentlicht, wie wir mit ihren jeweiligen Modellfamilien reden sollen [@kotha2025; @google2025; @anthropic2025c].
 Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.
@@ -762,7 +742,6 @@ Hier müssen wir also teils bewusst Hürden einführen, die die Studierenden zum
 Wie das geht, sehen wir in den nächsten zwei Hauptkapiteln.
 Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellungen mit GenAI Tools finden Sie im Appendix (s. @sec-prompts).
 
-<!-- Anwendungsbeispiel (Claude-Entwurf, 20.10.2026) nach notes/schablone-leitfragen-lernfragen.md und notes/lehrpraxis-kandidaten-2026-10-20.md; Freigabe durch Roman -->
 :::: {.callout-note title="Anwendungsbeispiel: Ein Prompt, der in der Vorführung funktioniert, scheitert im Gespräch"}
 **Problem ohne KI.** Die Regeln des aktiven Zuhörens nach Carl Rogers lassen sich in einer Sitzung erklären, aber kaum üben, weil es dafür Gesprächspartner und Rückmeldung braucht.
 
@@ -798,7 +777,6 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 ![Exkurs „Ressourcenverbrauch der Modelle", Online-Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/energie.html> aufrufen.](images/qr/qr-energie.png){#fig-qr-energie width="32%" fig-align="center"}
 :::
 
-<!-- Entwurf (Claude, 17.10.2026) nach notes/schablone-lernziele-kernaussagen.md; Freigabe und Anpassung durch Roman -->
 ::: {.callout-tip title="Kernaussagen"}
 1. Ein Sprachmodell sagt das nächste Wort voraus. Aus Tokens, Embeddings und Attention entsteht Text, der plausibel klingt, aber keine eingebaute Wahrheitsprüfung hat.
 2. Kontext entscheidet über Nutzen: Ein Modell allein antwortet aus dem Trainingswissen, mit RAG bekommt es ein Bücherregal, als Agent einen Werkzeugkoffer. Für die Lehre ist meist das Setup mit eigenem Material der richtige Einstieg.
@@ -808,7 +786,6 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 6. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.
 :::
 
-<!-- Entwurf (Claude, 19.10.2026) nach notes/schablone-leitfragen-lernfragen.md; Freigabe durch Roman -->
 ::: {.callout-note title="Lernfragen"}
 **Wiederholen**
 
