@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wie schnell sich KI entwickelt: Zeithorizont und Kosten</title>
+<title>Wie sich KI entwickelt: Zeithorizont, Kosten und Arbeitsweisen</title>
 <style>
 .viz-root{color-scheme:light;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--wash:rgba(11,11,11,0.035)}
 @media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--wash:rgba(255,255,255,0.04)}}
@@ -34,8 +34,29 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .stufe.akt .pct{fill:var(--text-primary);font-size:13px;font-weight:700}.stufe.akt .dt{fill:var(--text-secondary)}
 .stufe.neu{animation:auf .5s ease-out}@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.stufe.neu{animation:none}}
+/* Diagramm 3: Arbeitsweisen */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--text-secondary);margin:0 0 6px}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+.gwrap{overflow-x:auto}
+.grid3{display:grid;grid-template-columns:112px repeat(6,minmax(66px,1fr));gap:3px;font-size:.78rem;min-width:540px}
+.grid3 .hd{color:var(--text-secondary);font-weight:600;padding:2px 4px;font-size:.74rem}
+.grid3 .rowlab{padding:6px 6px;font-weight:650;cursor:pointer;border-radius:6px;display:flex;align-items:center}
+.grid3 .rowlab[aria-selected="true"]{background:var(--wash);outline:2px solid var(--text-primary)}
+.grid3 .zeile{display:contents}
+.grid3 .zeile.spaeter>*{opacity:.18}
+.cell{border-radius:4px;padding:6px 5px;color:#fff;font-weight:600;min-height:34px;display:flex;align-items:center;position:relative;cursor:pointer}
+.cell.M{background:var(--series-1)}.cell.K{background:var(--series-2)}.cell.MK{background:var(--series-3)}
+.cell small{font-weight:500;opacity:.9;margin-left:4px;font-size:.68rem}
+.ask{position:absolute;top:2px;right:3px;background:#fff;color:#0b0b0b;border-radius:999px;font-size:9.5px;line-height:1.35;padding:0 5px;font-weight:700;border:1px solid rgba(11,11,11,.45)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips span{color:var(--text-secondary)}
+.chip{font:inherit;font-size:.78rem;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:999px;padding:3px 10px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
+@media (forced-colors:active){.cell{border:1px solid CanvasText}}
+.druck .grid3{min-width:0}
+@media (max-width:599px){:root:not(.druck) .grid3{min-width:0;grid-template-columns:86px repeat(6,1fr);font-size:.7rem}:root:not(.druck) .cell{font-size:0;min-height:30px}:root:not(.druck) .cell .ask{font-size:9px;padding:0 3px}.grid3 .hd{font-size:.64rem;hyphens:auto;overflow-wrap:anywhere}}
 footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
-/* Auswahl über ?zeige=zeithorizont|kosten; Druckansicht über #druck */
+/* Auswahl über ?zeige=zeithorizont|kosten|arbeitsweisen; Druckansicht über #druck */
 .aus{display:none !important}
 .druck .controls,.druck .now,.druck details,.druck .calc,.druck footer,.druck h2,.druck .sub,.druck .src{display:none !important}
 .druck .viz-root{background:#fff;padding:4px}.druck section.card{border:0;padding:4px;margin:0}
@@ -81,17 +102,36 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
 <details><summary>Datentabelle</summary><table id="t2"><thead><tr><th>Modell</th><th>Datum</th><th class="num">Genauigkeit</th><th class="num">Kosten/Frage</th></tr></thead><tbody></tbody></table></details>
 </section>
 
+<section class="card" id="k-arbeitsweisen">
+<h2>Mit jeder Arbeitsweise gibt der Mensch mehr Schritte an die KI ab</h2>
+<p class="sub">Wer übernimmt welchen Arbeitsschritt? Konzeptschema, keine Messdaten. Zeile anklicken</p>
+<div class="controls">
+ <button id="play3" class="playbtn" aria-label="Arbeitsweisen nacheinander zeigen">▶ Abspielen</button>
+ <input type="range" id="tsel3" min="0" max="4" step="1" value="3" aria-label="Arbeitsweise">
+</div>
+<div id="c3">
+<div class="legend"><span><i class="sw" style="background:var(--series-1)"></i>Mensch</span><span><i class="sw" style="background:var(--series-3)"></i>gemeinsam</span><span><i class="sw" style="background:var(--series-2)"></i>KI</span><span><b class="ask" style="position:static">fragt</b> KI holt einen Menschen hinzu</span></div>
+<div class="gwrap"><div class="grid3" id="g3" role="table" aria-label="Arbeitsweisen und Arbeitsschritte"></div></div>
+</div>
+<div class="now" id="now3" aria-live="polite"></div>
+<div class="controls chips" id="tw" role="group" aria-label="Anlässe, bei denen der Agent in der Dämmerfabrik einen Menschen hinzuholt" style="margin-top:8px"><span>Dämmerfabrik, Anlässe für eine Rückfrage:</span></div>
+<p class="src">Begriffe: Centaur und Cyborg nach Dell'Acqua et al. (2023) und Mollick (2024); Beschwörer nach Mollick, „30 months on the exponential“ (2026); dunkle Fabrik und Dämmerfabrik nach Mollick, „Agency and agents“ (2026). Zuordnung der Schritte: eigene Lesart.</p>
+</section>
+
 <footer>
 <p>Emberson, L., &amp; Roodman, D. (2026, 22. September). <em>The plunging price of thought</em>. Epoch AI. https://epoch.ai/publications/the-plunging-price-of-thought · Daten: https://github.com/droodman/inference-cost</p>
 <p>METR. (2026). <em>Time horizon of frontier AI models</em> (Time Horizon 1.1, Stand 8. Mai 2026). https://metr.org/time-horizons/ · Daten: https://metr.org/assets/benchmark_results_1_1.yaml</p>
+<p>Dell'Acqua, F., McFowland, E., III, Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., &amp; Lakhani, K. R. (2023). <em>Navigating the jagged technological frontier</em> (Harvard Business School Working Paper No. 24-013). https://doi.org/10.2139/ssrn.4573321</p>
+<p>Mollick, E. (2024). <em>Co-Intelligence: Living and working with AI</em>. Portfolio.</p>
+<p>Mollick, E. (2026, 31. August). Agency and agents. <em>One Useful Thing</em>. https://www.oneusefulthing.org/p/agency-and-agents</p>
+<p>Mollick, E. (2026, 20. Oktober). 30 months on the exponential (in charts). <em>One Useful Thing</em>. https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts</p>
 <p>Datenstand: METR 8. Mai 2026; Epoch AI Juli 2026. Die Daten liegen als CSV im Ordner <code>data/</code> des Buch-Repositorys.</p>
 </footer>
 </main></div>
 <script>
 // Auswahl und Druckansicht vor dem Zeichnen setzen, damit die Diagramme die richtige Breite messen
 (function(){const z=new URLSearchParams(location.search).get('zeige');
-  if(z==='zeithorizont')document.getElementById('k-kosten').classList.add('aus');
-  if(z==='kosten')document.getElementById('k-zeithorizont').classList.add('aus');
+  if(z)['zeithorizont','kosten','arbeitsweisen'].forEach(k=>{if(k!==z)document.getElementById('k-'+k).classList.add('aus');});
   if(location.hash==='#druck')document.documentElement.classList.add('druck');})();
 const METR=[{"n": "GPT-2", "d": "2019-02-14", "s": true, "v": 0.05, "lo": 0.01, "hi": 0.14}, {"n": "GPT-3 (davinci-002)", "d": "2020-05-28", "s": true, "v": 0.14, "lo": 0.09, "hi": 0.22}, {"n": "GPT-3.5", "d": "2022-03-15", "s": true, "v": 0.6, "lo": 0.26, "hi": 1.12}, {"n": "GPT-4", "d": "2023-03-14", "s": true, "v": 3.99, "lo": 1.93, "hi": 8.0}, {"n": "GPT-4 (Nov 2023)", "d": "2023-11-06", "s": true, "v": 4.04, "lo": 1.87, "hi": 8.44}, {"n": "Claude 3 Opus", "d": "2024-03-04", "s": false, "v": 3.95, "lo": 1.71, "hi": 8.76}, {"n": "GPT-4 Turbo", "d": "2024-04-09", "s": false, "v": 3.73, "lo": 1.98, "hi": 6.74}, {"n": "GPT-4o", "d": "2024-05-13", "s": true, "v": 6.99, "lo": 4.0, "hi": 12.91}, {"n": "Claude 3.5 Sonnet", "d": "2024-06-20", "s": true, "v": 11.4, "lo": 5.49, "hi": 22.38}, {"n": "o1-preview", "d": "2024-09-12", "s": true, "v": 20.33, "lo": 11.72, "hi": 33.38}, {"n": "Claude 3.5 Sonnet (neu)", "d": "2024-10-22", "s": true, "v": 20.52, "lo": 10.14, "hi": 40.82}, {"n": "o1", "d": "2024-12-05", "s": true, "v": 38.83, "lo": 21.16, "hi": 64.95}, {"n": "Claude 3.7 Sonnet", "d": "2025-02-24", "s": true, "v": 60.39, "lo": 33.01, "hi": 104.23}, {"n": "o3", "d": "2025-04-16", "s": true, "v": 119.73, "lo": 74.62, "hi": 190.94}, {"n": "Claude Opus 4", "d": "2025-05-22", "s": false, "v": 100.37, "lo": 59.99, "hi": 163.45}, {"n": "Claude Opus 4.1", "d": "2025-08-05", "s": false, "v": 100.47, "lo": 59.27, "hi": 159.45}, {"n": "GPT-5", "d": "2025-08-07", "s": true, "v": 203.01, "lo": 112.64, "hi": 405.55}, {"n": "Gemini 3 Pro", "d": "2025-11-18", "s": true, "v": 224.33, "lo": 139.57, "hi": 379.24}, {"n": "GPT-5.1-Codex-Max", "d": "2025-11-19", "s": false, "v": 223.71, "lo": 134.31, "hi": 396.21}, {"n": "Claude Opus 4.5", "d": "2025-11-24", "s": true, "v": 292.99, "lo": 161.72, "hi": 623.7}, {"n": "GPT-5.2", "d": "2025-12-11", "s": true, "v": 352.25, "lo": 198.07, "hi": 815.18}, {"n": "Claude Opus 4.6", "d": "2026-02-05", "s": true, "v": 718.81, "lo": 316.69, "hi": 3633.79}, {"n": "GPT-5.3-Codex", "d": "2026-02-05", "s": false, "v": 349.53, "lo": 194.91, "hi": 816.35}, {"n": "Gemini 3.1 Pro", "d": "2026-02-19", "s": false, "v": 384.15, "lo": 233.5, "hi": 694.75}, {"n": "GPT-5.4", "d": "2026-03-05", "s": false, "v": 341.74, "lo": 186.58, "hi": 768.78}, {"n": "Claude Mythos Preview (früh)", "d": "2026-04-07", "s": true, "v": 1044.78, "lo": 508.88, "hi": 3304.26}];
 const EPOCH=[{"n": "o3 (high)", "d": "2025-01-31", "c": 29.8906, "a": 75.8}, {"n": "Gemini 2.5 Pro (Jun 2025)", "d": "2025-03-25", "c": 8.9116, "a": 80.4}, {"n": "Gemini 2.5 Pro (Jun 2025)", "d": "2025-06-05", "c": 1.2932, "a": 77.8}, {"n": "DeepSeek-V3.2", "d": "2025-12-01", "c": 0.8821, "a": 77.7}, {"n": "Qwen3.5 397B-A17B", "d": "2026-02-13", "c": 0.7102, "a": 79.8}, {"n": "Qwen 3.5 Flash (hosted 35B-A3B)", "d": "2026-02-25", "c": 0.2181, "a": 76.2}, {"n": "MiniMax-M3", "d": "2026-06-01", "c": 0.1213, "a": 75.1}, {"n": "GPT-5.6 Luna (low)", "d": "2026-07-09", "c": 0.0412, "a": 75.3}];
@@ -245,11 +285,64 @@ function draw2(){
     (sel2?`<span class="ex">Kosten um ${Math.round(cur.fall*100)} % gefallen · ${fFak(cur.faktor)}-mal billiger als o3</span>`:`<span class="ex">Ausgangspunkt: erstes Modell mit 75 % richtigen Antworten</span>`);
 }
 
-function all(){draw1();draw2();}
+/* ---- Diagramm 3: Arbeitsweisen nach Mollick (Konzeptschema, eigene Zuordnung der Schritte) ---- */
+const SCHRITTE=['Ziel setzen','Planen','Ausführen','Entscheiden','Prüfen','Freigeben'];
+const WEISEN=[
+ {k:'cen',n:'Centaur',c:[['M'],['M'],['MK'],['M'],['M'],['M']],
+  e:'Mensch und KI teilen die Aufgabe in getrennte Teile. Jede Entscheidung bleibt beim Menschen.'},
+ {k:'cyb',n:'Cyborg',c:[['M'],['MK'],['MK'],['MK'],['MK'],['M']],
+  e:'Mensch und KI arbeiten so verwoben, dass sich die Beiträge nicht mehr trennen lassen.'},
+ {k:'bes',n:'Beschwörer',c:[['M'],['K'],['K'],['K'],['M'],['M']],
+  e:'Der Mensch beauftragt Agenten und bewertet, was zurückkommt. Den Weg dorthin begleitet er nicht mehr.'},
+ {k:'dae',n:'Dämmerfabrik',c:null,e:''},
+ {k:'dun',n:'Dunkle Fabrik',c:[['M'],['K'],['K'],['K'],['K'],['K']],
+  e:'Menschen legen nur fest, was entstehen soll. Ausführen und Prüfen übernehmen Maschinen, was nur gelingt, wo eine Maschine prüfen kann, ob das Ergebnis stimmt.'}];
+// Anlässe der Dämmerfabrik und der Schritt, an dem sie greifen (eigene Zuordnung)
+const ANL=[{k:'var',l:'Ideenvielfalt',st:1,w:'die Ideen zu gleichförmig werden'},{k:'exp',l:'Expertise',st:2,w:'Fachwissen fehlt'},{k:'int',l:'Interessante Entscheidung',st:3,w:'eine Entscheidung interessant ist'},{k:'fre',l:'Freigabe',st:5,w:'eine Freigabe nötig ist'}];
+const an={var:true,exp:true,int:true,fre:true};
+const LAB3={M:'Mensch',K:'KI',MK:'gemeinsam'};
+let sel3=3, bis3=WEISEN.length-1, timer3=null;
+const ts3=document.getElementById('tsel3'), pb3=document.getElementById('play3'), twb=document.getElementById('tw');
+ANL.forEach(a=>{const b=document.createElement('button');b.className='chip';b.dataset.k=a.k;b.textContent=a.l;
+  b.onclick=()=>{an[a.k]=!an[a.k];sel3=3;bis3=Math.max(bis3,3);ts3.value=3;draw3();};twb.appendChild(b);});
+function waehle(i){sel3=i;bis3=Math.max(bis3,i);ts3.value=i;draw3();}
+ts3.addEventListener('input',()=>{stop3();sel3=bis3=+ts3.value;draw3();});
+function stop3(){if(timer3){clearInterval(timer3);timer3=null;pb3.textContent='▶ Abspielen';}}
+pb3.onclick=()=>{if(timer3){stop3();return;}sel3=bis3=0;ts3.value=0;pb3.textContent='❚❚ Pause';draw3();
+  timer3=setInterval(()=>{sel3=bis3=sel3+1;ts3.value=sel3;draw3();if(sel3>=WEISEN.length-1)stop3();},1800);};
+const schmal=()=>!druck&&innerWidth<600;
+function daeZellen(){return SCHRITTE.map((s,i)=>{const f=ANL.filter(a=>an[a.k]&&a.st===i).map(a=>a.l);
+  return i===0?['M',null,[]]:['K',null,f];});}
+function draw3(){const g=document.getElementById('g3');g.innerHTML='';
+  twb.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',an[b.dataset.k]));
+  const kopf=document.createElement('div');kopf.className='zeile';kopf.setAttribute('role','row');g.appendChild(kopf);
+  ['',...SCHRITTE].forEach(t=>{const d=document.createElement('div');d.className='hd';d.setAttribute('role','columnheader');d.textContent=t;kopf.appendChild(d);});
+  WEISEN.forEach((w,j)=>{const z=document.createElement('div');z.className='zeile'+(!druck&&j>bis3?' spaeter':'');z.setAttribute('role','row');g.appendChild(z);
+    const l=document.createElement('div');l.className='rowlab';l.setAttribute('role','rowheader');l.tabIndex=0;l.textContent=w.n;
+    l.setAttribute('aria-selected',!druck&&j===sel3);l.onclick=()=>{stop3();waehle(j);};
+    l.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stop3();waehle(j);}};z.appendChild(l);
+    const zellen=w.c?w.c.map(x=>[x[0],x[1]||null,[]]):daeZellen();
+    zellen.forEach((x,i)=>{const d=document.createElement('div');d.className='cell '+x[0];d.setAttribute('role','cell');
+      d.textContent=LAB3[x[0]];if(x[1]){const sm=document.createElement('small');sm.textContent=x[1];d.appendChild(sm);}
+      let aria=SCHRITTE[i]+': '+LAB3[x[0]];
+      if(x[2].length){const a=document.createElement('span');a.className='ask';a.textContent=schmal()?'?':'fragt';d.appendChild(a);
+        d.title='KI holt einen Menschen hinzu bei '+x[2].join(', ');aria+=', holt Menschen hinzu bei '+x[2].join(', ');}
+      d.setAttribute('aria-label',aria);d.onclick=()=>{stop3();waehle(j);};z.appendChild(d);});});
+  // Anzeige unter dem Raster
+  const w=WEISEN[sel3];let ex=w.e;
+  if(w.k==='dae'){const aktiv=ANL.filter(a=>an[a.k]);
+    ex='Agenten erledigen die Arbeit. Ein vermittelnder Agent holt Menschen hinzu'+(aktiv.length?', wenn '+aktiv.map(a=>a.w).join(', ').replace(/, ([^,]*)$/,' oder $1')+'.':', aber kein Anlass ist eingeschaltet. Damit wird die Dämmerfabrik zur dunklen Fabrik.');
+    if(aktiv.length&&!an.int)ex+=' Ohne interessante Entscheidungen bleiben dem Menschen nur Freigaben und Ausnahmen. So wächst kein Urteilsvermögen nach, und später fehlen die Fachleute, die prüfen können.';}
+  document.getElementById('now3').innerHTML='<span class="m"></span><span class="ex"></span>';
+  document.querySelector('#now3 .m').textContent=w.n;document.querySelector('#now3 .ex').textContent=ex;
+  document.querySelector('#now3 .ex').style.borderRadius='10px';
+}
+
+function all(){draw1();draw2();draw3();}
 all();calc();
 let to;addEventListener('resize',()=>{clearTimeout(to);to=setTimeout(all,120);});
 if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
-window.__ki={METR,EPOCH,slope};
+window.__ki={METR,EPOCH,slope,WEISEN,ANL,an,draw3};
 })();
 </script>
 </body></html>
