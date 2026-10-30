@@ -281,6 +281,78 @@ Fünf Agenten liefern gut dreimal so viele geprüfte Ergebnisse wie einer, aber 
 Die praktische Umsetzung dieser vier Begriffe steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows.
 Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellenanbindung selbst aufbauen, zeigt @sec-fall-unternehmen.
 
+### Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt {#sec-agenten-gedaechtnis}
+
+Ein Sprachmodell erinnert sich nicht.
+Alles, was es bei einer Antwort berücksichtigt, steht in seinem **Kontextfenster**: dem Text, den es in diesem Augenblick vor sich hat, also Prompt, bisheriger Gesprächsverlauf, hochgeladene Dateien und die Ergebnisse seiner Werkzeuge (das Wort kommt vom lateinischen *contexere*, zusammenweben; der Kontext ist das Gewebe, in dem ein Satz erst Sinn ergibt).
+Das Kontextfenster ist ein Schreibtisch, kein Archiv.
+Was auf dem Tisch liegt, sieht das Modell vollständig; was nicht darauf liegt, existiert für die Antwort nicht; und am Ende der Sitzung wird der Tisch abgeräumt.
+Solange wir eine einzelne Frage stellen, stört das nicht.
+Ein Agent aber, der ein Semester lang Feedback schreibt, oder ein Tutor, der wissen soll, woran eine Studentin letzte Woche gescheitert ist, braucht neben dem Schreibtisch ein Archiv und eine Regel, was wann vom Archiv auf den Tisch kommt.
+Alles auf einmal hinzulegen ist keine Lösung: Ein voller Tisch kostet bei jeder Antwort Rechenzeit und Geld, weil das Modell ihn für jedes neue Wort wieder vollständig einbezieht (@sec-definitionen).
+
+Für diese Regel haben sich in den Werkzeugen der Anbieter vier Stufen herausgebildet, die die folgende Abbildung nebeneinanderstellt.
+Auf der ersten Stufe liest der Agent zu Beginn jeder Sitzung eine Anleitungsdatei mit Befehlen, Stilregeln und Arbeitsabläufen.
+Das trägt, bis die Datei so lang wird, dass sie den Tisch füllt.
+Auf der zweiten Stufe bekommt der Agent Werkzeuge, mit denen er selbst entscheidet, wann er eine Erinnerung notiert, nachliest oder ändert, mitten in der laufenden Arbeit.
+Die dritte Stufe kennen wir schon als Skill-Karte aus @sec-agenten-praxis: Zu Beginn liegen nur Name und Kurzbeschreibung jeder Anleitung auf dem Tisch, die volle Anleitung holt der Agent erst, wenn die Aufgabe sie verlangt [@zhang2025skills].
+Auf der vierten Stufe wird das Gedächtnis zu einem gewöhnlichen Ordner mit Textdateien, den der Agent mit denselben Werkzeugen durchsucht und pflegt wie jedes andere Verzeichnis.
+Der rote Faden durch alle vier Stufen: immer weniger vorab auf den Tisch, immer gezielter bei Bedarf aus dem Archiv.
+Die vierte Stufe hat einen Nebeneffekt, der für die Lehre wichtiger ist als für die Technik: Ein Ordner mit Textdateien lässt sich von Menschen öffnen, lesen und korrigieren.
+
+::: {.content-visible when-format="html"}
+<iframe src="interactions/agenten-gedaechtnis.html" width="100%" height="620px" frameborder="0" title="Animation: Vier Stufen des Agenten-Gedächtnisses, von der Anleitungsdatei bis zum durchsuchbaren Ordner"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Vom Spickzettel zum prüfbaren Archiv. Die vier Stufen unterscheiden sich darin, was wann ins Kontextfenster gelangt: bei der Anleitungsdatei alles von Anfang an, bei Memory-Werkzeugen nach Ermessen des Agenten, bei Skills erst der Überblick und dann die Details, beim Dateisystem nur das gezielt Gesuchte (schematische Darstellung). Die animierte Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-gedaechtnis.html> aufrufen.](images/druck/agenten-gedaechtnis-qr.png){#fig-agenten-gedaechtnis width="100%" fig-pos="htbp"}
+:::
+
+Ein Gedächtnis ist etwas anderes als RAG, auch wenn beide auf ein Archiv zugreifen.
+Bei RAG liest das Modell in Dokumenten, die wir ausgewählt haben, und verändert sie nicht.
+Ins Gedächtnis schreibt der Agent selbst, und was er heute notiert, bestimmt, was er morgen für wahr hält.
+Damit stellen sich dieselben Fragen wie bei jedem gemeinsam bearbeiteten Dokument.
+Anthropic beantwortet sie in der Dokumentation seiner Gedächtnisspeicher mit drei Regeln [@anthropic2026memorystores].
+Erstens greift eine Änderung nur, wenn die Datei noch denselben Fingerabdruck trägt wie beim letzten Lesen; ein solcher Fingerabdruck (*Hash*) ist eine kurze Zeichenfolge, die sich ändert, sobald sich in der Datei ein einziges Zeichen ändert.
+Hat inzwischen eine andere Sitzung geschrieben, wird die Änderung abgewiesen, statt die fremde stillschweigend zu überschreiben.
+Zweitens erzeugt jede Änderung eine unveränderliche Version, die der schreibenden Sitzung zugeordnet ist; wer einen alten Stand zurückhaben will, schreibt dessen Inhalt erneut.
+Drittens lässt sich ein Speicher nur zum Lesen einbinden, sodass ein Agent die Hausregeln kennt, aber nicht ändern kann.
+Wer je eine Abschlussarbeit mit Versionsverlauf betreut hat, kennt alle drei Regeln, nur ohne diese Namen.
+
+Wann der Agent ins Gedächtnis schreibt, ist die zweite Gestaltungsfrage.
+Auf Stufe 2 geschieht es *in-band*, mitten in der Sitzung, so wie man ein Laborbuch während des Versuchs führt.
+Seit Mai 2026 bietet Anthropic als Forschungsvorschau zusätzlich einen Lauf *out-of-band* an, der „Dreaming“ heißt [@anthropic2026dreaming]: Ein eigener Durchgang liest einen bestehenden Speicher und bis zu 100 frühere Sitzungen und legt eine überarbeitete Fassung als neuen Speicher ab; der alte bleibt unverändert [@anthropic2026dreams].
+Ob der neue Stand den alten ersetzt, entscheidet, wer den Agenten betreibt.
+Die Unterscheidung ist älter als die Technik.
+Donald Schön beschrieb in seiner Studie über Berufspraktiker zwei Formen des Nachdenkens: *reflection-in-action*, das Umsteuern mitten im Handeln, und *reflection-on-action*, den Blick zurück, wenn die Arbeit ruht [@schon1983].
+Das Wort Reflexion kommt vom lateinischen *reflectere*, zurückbeugen.
+Ein Agent, der in-band notiert, reflektiert im Handeln; ein Dream-Lauf reflektiert über das Handeln.
+Für die Lehre ist die Parallele mehr als ein Bild: Lerntagebuch und Nachbesprechung eines Praktikums sind genau diese beiden Formen, und wir wissen aus dem eigenen Unterricht, dass die zweite ohne die erste wenig Stoff hat.
+
+Die Technik verschiebt die Verantwortung, sie nimmt sie nicht ab.
+Fachleute, die ein Bericht über Dreaming zu Wort kommen lässt, nennen drei Schwächen [@bridgwater2026dream].
+Ein Fehler, der einmal im Gedächtnis steht, wirkt in allen folgenden Sitzungen fort, statt wie im Chat mit dem Gespräch zu verschwinden.
+Die menschliche Prüfung der vorgeschlagenen Änderungen wird leicht zum Abnicken.
+Und eine Versionsgeschichte zeigt, *wer* etwas geändert hat, nicht, *ob* es stimmt.
+Hier kehrt der Haltepunkt aus dem vorigen Abschnitt wieder: Die Durchsicht des Gedächtnisses ist eine Station, an der der Mensch das Steuer behält [@parasuraman2000], und für sie gilt dieselbe Rechnung wie für die Agenten-Ergebnisse im Modell des Agenten-Engpasses.
+Wer mehr Änderungen erzeugen lässt, als er lesen kann, hat kein geprüftes Gedächtnis, sondern ein ungeprüftes mit Freigabestempel.
+
+::: {.callout-note title="Anwendungsbeispiel: Eine Arbeitsnotiz trägt einen Fehler in die nächste Sitzung"}
+Die Überarbeitung dieses Buches entstand in vielen Sitzungen mit einem KI-Assistenten.
+Am Ende jeder Sitzung hält eine Arbeitsnotiz fest, was entschieden ist, was offen bleibt und welche Quellen geprüft sind; die nächste Sitzung beginnt mit dieser Notiz, ein Gedächtnis der vierten Stufe von Hand.
+Die Zusammenfassung einer Sitzung schrieb drei der oben beschriebenen Mechanismen einem Fachartikel zu, und die folgende Sitzung übernahm diese Zuordnung zunächst.
+Erst der Abgleich mit dem Original zeigte, dass der Artikel die Mechanismen nur erwähnt; beschrieben sind sie in der Dokumentation des Herstellers.
+Korrigiert wurde deshalb nicht nur die Abbildung, die den Mechanismus zeigt, sondern die Arbeitsnotiz selbst, mit einem eigenen Abschnitt „Quellenkorrektur“.
+Ohne diesen Schritt wäre der Fehler in der nächsten Sitzung zurückgekehrt, mit der Autorität eines schon geprüften Stands.
+:::
+
+::: {.callout-tip title="Empfehlung für die Lehre"}
+Wenn Studierende über ein Semester mit einem Agenten an einem Projekt arbeiten, lassen Sie das Team ein gemeinsames Projektgedächtnis führen: eine Textdatei mit Entscheidungen, offenen Fragen und geprüften Quellen, jeder Eintrag mit Datum und Namen.
+Der Agent liest sie zu Beginn jeder Sitzung und schlägt Ergänzungen vor; eingetragen wird erst, was ein Teammitglied gelesen hat.
+Zu jedem Meilenstein geht das Team die Datei gemeinsam durch, wie ein Dream-Lauf von Hand: Was ist überholt, was doppelt, was falsch?
+Prüfkriterium: Kann ein neues Teammitglied allein aus der Datei sagen, was entschieden ist und warum?
+:::
+
 Das beendet unsere kurze Begriffsbestimmung.
 Ein etwas breiteres Glossar für Anwender finden Sie etwa bei der populärwissenschaftlichen Zeitschrift CIO (Chief Intelligence Officer): <https://www.cio.de/article/3700849/die-wichtigsten-begriffe-im-genai-umfeld.html>.
 
@@ -613,7 +685,7 @@ Wie bei einem Bauprojekt, muss man sich bei vagen Anweisungen nicht wundern, wen
 (5) Agenten erfordern neue Verhaltensweisen.
     Da die Zeitspanne des autonomen Handelns immer breiter wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern.
     Zweitens gewinnt die Frage an Bedeutung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen.
-    OpenAI nennt dies in seinem Leitfaden „Eagerness-Kalibrierung“ [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das 'Gedächtnis' des Agenten-Bots nachdenken. Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen („Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...“) [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
+    OpenAI nennt dies in seinem Leitfaden „Eagerness-Kalibrierung“ [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das 'Gedächtnis' des Agenten-Bots nachdenken (@sec-agenten-gedaechtnis). Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen („Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...“) [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
 
 (6) Bots help bots: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen.
     So können wir mit dem Tool das Tool bedienen.
@@ -712,6 +784,7 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 
 6. Welche Aufgabe in Ihrem Fach liegt vermutlich außerhalb der Jagged Frontier? Wie würden Sie das prüfen, bevor Sie Studierende damit arbeiten lassen?
 7. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Bedarf der Infrastruktur wächst stark. Welche Folgerung ziehen Sie daraus für Ihre eigene Nutzung, und welche Entscheidung liegt nicht bei Ihnen?
+8. Ein Agent soll Ihre Sprechstundenanfragen ein Semester lang vorsortieren und sich dabei merken, welche Fragen schon beantwortet sind. Welche Stufe des Gedächtnisses wählen Sie, und an welcher Stelle prüfen Sie, was er sich gemerkt hat?
 
 Lösungshinweise: @sec-loesungshinweise.
 :::

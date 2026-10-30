@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vier Stufen des Agenten-Gedächtnisses</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&amp;display=swap">
+<style>
+html,body{margin:0;background:#FFFFFF}
+#rahmen{position:relative;width:100%;overflow:hidden}
+#tafel{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0}
+#nochmal{font:14px 'IBM Plex Sans',system-ui,sans-serif;margin:8px 0 0 0;min-height:44px;padding:0 16px;border:1px solid #DCDCE2;border-radius:8px;background:#FFFFFF;color:#1E1E24;cursor:pointer}
+.druck #nochmal{display:none}
+.anim .in{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.anim .s0{animation-delay:0s}
+.anim .s1{animation-delay:.3s}
+.anim .s2{animation-delay:1.5s}
+.anim .s3{animation-delay:2.7s}
+.anim .s4{animation-delay:3.9s}
+.anim .s5{animation-delay:4.8s}
+.anim .arr{animation:wipe .6s ease-out both}
+.anim .a1{animation-delay:1.2s}
+.anim .a2{animation-delay:2.4s}
+.anim .a3{animation-delay:3.6s}
+.fx{transform-box:fill-box}
+.anim .ln,.anim .pop{animation:cyc 10s infinite both}
+.anim .gauge{transform-origin:50% 100%;animation:fill 10s infinite both}
+.anim .warn{transform-origin:50% 50%;animation:warn 10s infinite both}
+.anim .grow{transform-origin:0 50%;animation:growx 10s infinite both}
+.anim .growy{transform-origin:50% 0;animation:growy 10s infinite both}
+.anim .scan{animation:scan 10s infinite both}
+.anim .hit{animation:hit 10s infinite both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes wipe{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes cyc{0%{opacity:0}4%{opacity:1}88%{opacity:1}96%,100%{opacity:0}}
+@keyframes fill{0%{transform:scaleY(.04)}60%{transform:scaleY(1)}94%{transform:scaleY(1)}100%{transform:scaleY(.04)}}
+@keyframes warn{0%,58%{opacity:0;transform:scale(.5)}64%{opacity:1;transform:scale(1.2)}70%,90%{opacity:1;transform:scale(1)}96%,100%{opacity:0;transform:scale(1)}}
+@keyframes growx{0%{transform:scaleX(0);opacity:1}6%,90%{transform:scaleX(1);opacity:1}96%,100%{transform:scaleX(1);opacity:0}}
+@keyframes growy{0%{transform:scaleY(0);opacity:0}6%,90%{transform:scaleY(1);opacity:1}96%,100%{transform:scaleY(1);opacity:0}}
+@keyframes scan{0%{transform:translateY(-104px)}40%,90%{transform:translateY(0)}100%{transform:translateY(-104px)}}
+@keyframes hit{0%,40%{opacity:0}46%,90%{opacity:1}96%,100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.anim *{animation:none !important}}
+</style>
+</head>
+<body>
+<div id="rahmen">
+<div id="tafel" class="anim" style="width: 1600px; height: 900px; overflow: hidden; background: #FFFFFF; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1E1E24">
+
+<div class="in s1" style="position: absolute; left: 64px; top: 208px; width: 320px; height: 560px; box-sizing: border-box; background: #F5F5F7; border: 1px solid #DCDCE2; border-radius: 14px"></div>
+<div class="in s2" style="position: absolute; left: 448px; top: 208px; width: 320px; height: 560px; box-sizing: border-box; background: #F5F5F7; border: 1px solid #DCDCE2; border-radius: 14px"></div>
+<div class="in s3" style="position: absolute; left: 832px; top: 208px; width: 320px; height: 560px; box-sizing: border-box; background: #F5F5F7; border: 1px solid #DCDCE2; border-radius: 14px"></div>
+<div class="in s4" style="position: absolute; left: 1216px; top: 208px; width: 320px; height: 560px; box-sizing: border-box; background: #F5F5F7; border: 1px solid #DCDCE2; border-radius: 14px"></div>
+
+<svg aria-hidden="true" class="arr a1" width="63" height="8" viewBox="0 0 63 8" preserveAspectRatio="none" style="position: absolute; left: 384px; top: 484px; width: 63px; height: 8px; overflow: visible; fill: none; stroke: #8A8A94; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="pfeil1" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#8A8A94" stroke="none"></path></marker></defs><path d="M 0 4 L 59 4" marker-end="url(#pfeil1)"></path></svg>
+<svg aria-hidden="true" class="arr a2" width="63" height="8" viewBox="0 0 63 8" preserveAspectRatio="none" style="position: absolute; left: 768px; top: 484px; width: 63px; height: 8px; overflow: visible; fill: none; stroke: #8A8A94; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="pfeil2" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#8A8A94" stroke="none"></path></marker></defs><path d="M 0 4 L 59 4" marker-end="url(#pfeil2)"></path></svg>
+<svg aria-hidden="true" class="arr a3" width="63" height="8" viewBox="0 0 63 8" preserveAspectRatio="none" style="position: absolute; left: 1152px; top: 484px; width: 63px; height: 8px; overflow: visible; fill: none; stroke: #8A8A94; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="pfeil3" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#8A8A94" stroke="none"></path></marker></defs><path d="M 0 4 L 59 4" marker-end="url(#pfeil3)"></path></svg>
+
+<h1 class="in s0" style="position: absolute; left: 64px; top: 48px; width: 1472px; margin: 0; font-size: 36px; line-height: 44px; font-weight: 600; color: #1E1E24">Das Gedächtnis von KI-Agenten ist vom Spickzettel zum prüfbaren Archiv gewachsen</h1>
+<div class="in s0" style="position: absolute; left: 64px; top: 104px; width: 1472px; font-size: 19px; line-height: 28px; color: #55555C">Roter Faden: Was gelangt wann ins Kontextfenster, das Arbeitsgedächtnis des Modells? Immer weniger vorab, immer gezielter bei Bedarf.</div>
+
+<div class="in s1" style="position: absolute; left: 88px; top: 230px; font-size: 13px; line-height: 16px; letter-spacing: 0.12em; font-weight: 600; color: #B5004F">STUFE 1</div>
+<div class="in s1" style="position: absolute; left: 88px; top: 252px; width: 272px; font-size: 25px; line-height: 30px; font-weight: 600">CLAUDE.md</div>
+<div class="in s1" style="position: absolute; left: 88px; top: 318px; width: 272px; font-size: 15px; line-height: 22px; font-weight: 600; color: #B5004F"><span style="font-weight: 400; color: #55555C">Kontext:</span> alles, von Anfang an</div>
+<svg class="in s1" width="272" height="180" viewBox="0 0 272 180" role="img" aria-label="Eine immer länger werdende Textdatei füllt das Kontextfenster bis zum Überlauf" style="position: absolute; left: 88px; top: 352px; width: 272px; height: 180px; overflow: visible">
+<rect x="0" y="0" width="272" height="180" rx="10" fill="#FFFFFF" stroke="#E4E4EA"></rect>
+<rect x="24" y="14" width="124" height="150" rx="4" fill="#FAFAFB" stroke="#8A8A94"></rect>
+<text x="34" y="31" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600" fill="#1E1E24">CLAUDE.md</text>
+<rect class="ln" style="animation-delay: 0.9s" x="34" y="40" width="96" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 1.2s" x="34" y="50" width="80" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 1.5s" x="34" y="60" width="100" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 1.8s" x="34" y="70" width="66" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 2.1s" x="34" y="80" width="90" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 2.4s" x="34" y="90" width="84" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 2.7s" x="34" y="100" width="58" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 3.0s" x="34" y="110" width="98" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 3.3s" x="34" y="120" width="76" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 3.6s" x="34" y="130" width="92" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 3.9s" x="34" y="140" width="70" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 4.2s" x="34" y="150" width="88" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="ln" style="animation-delay: 4.5s" x="34" y="168" width="94" height="3" rx="1.5" fill="#B5004F"></rect>
+<rect class="ln" style="animation-delay: 4.8s" x="34" y="176" width="72" height="3" rx="1.5" fill="#B5004F"></rect>
+<rect x="180" y="14" width="32" height="126" rx="5" fill="none" stroke="#8A8A94"></rect>
+<rect class="gauge fx" style="animation-delay: 0.9s" x="184" y="18" width="24" height="118" rx="3" fill="#B5004F"></rect>
+<text x="196" y="156" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">Kontext-</text>
+<text x="196" y="168" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">fenster</text>
+<g class="warn fx" style="animation-delay: 0.9s">
+<circle cx="238" cy="30" r="11" fill="#B5004F"></circle>
+<text x="238" y="34.5" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">!</text>
+</g>
+</svg>
+<div class="in s1" style="position: absolute; left: 88px; top: 550px; width: 272px; font-size: 15px; line-height: 22px">Eine einfache Textdatei, die Claude zu Beginn jeder Sitzung liest: Befehle, Stilregeln, Arbeitsabläufe. Das trägt, bis die Datei zu lang wird.</div>
+<div class="in s1" style="position: absolute; left: 88px; top: 690px; width: 272px; font-size: 14px; line-height: 20px; color: #55555C"><b style="color: #1E1E24">Analogie:</b> Wie ein Modulhandbuch, das man zu Semesterbeginn komplett auswendig lernen soll.</div>
+
+<div class="in s2" style="position: absolute; left: 472px; top: 230px; font-size: 13px; line-height: 16px; letter-spacing: 0.12em; font-weight: 600; color: #B5004F">STUFE 2</div>
+<div class="in s2" style="position: absolute; left: 472px; top: 252px; width: 272px; font-size: 25px; line-height: 30px; font-weight: 600">Memory-Werkzeuge</div>
+<div class="in s2" style="position: absolute; left: 472px; top: 318px; width: 272px; font-size: 15px; line-height: 22px; font-weight: 600; color: #B5004F"><span style="font-weight: 400; color: #55555C">Kontext:</span> nach Ermessen des Agenten</div>
+<svg class="in s2" width="272" height="180" viewBox="0 0 272 180" role="img" aria-label="Während der laufenden Sitzung schreibt der Agent eine Notiz ins Gedächtnis und liest später daraus" style="position: absolute; left: 472px; top: 352px; width: 272px; height: 180px; overflow: visible">
+<rect x="0" y="0" width="272" height="180" rx="10" fill="#FFFFFF" stroke="#E4E4EA"></rect>
+<text x="16" y="22" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">Laufende Sitzung</text>
+<line x1="16" y1="44" x2="256" y2="44" stroke="#8A8A94" stroke-width="2"></line>
+<rect class="pop" style="animation-delay: 1.9s" x="20" y="36" width="36" height="16" rx="4" fill="#5E5E66"></rect>
+<rect class="pop" style="animation-delay: 2.3s" x="68" y="36" width="36" height="16" rx="4" fill="#D5D5DC"></rect>
+<rect class="pop" style="animation-delay: 2.7s" x="116" y="36" width="36" height="16" rx="4" fill="#5E5E66"></rect>
+<rect class="pop" style="animation-delay: 3.1s" x="164" y="36" width="36" height="16" rx="4" fill="#D5D5DC"></rect>
+<rect class="pop" style="animation-delay: 3.5s" x="212" y="36" width="36" height="16" rx="4" fill="#5E5E66"></rect>
+<g class="pop" style="animation-delay: 2.9s">
+<line x1="134" y1="56" x2="134" y2="90" stroke="#B5004F" stroke-width="2" stroke-dasharray="4 3"></line>
+<polygon points="129,90 139,90 134,98" fill="#B5004F"></polygon>
+<text x="126" y="80" text-anchor="end" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">schreibt</text>
+</g>
+<rect x="40" y="100" width="192" height="66" rx="4" fill="#FAFAFB" stroke="#8A8A94"></rect>
+<text x="50" y="117" font-family="IBM Plex Sans, sans-serif" font-size="10" font-weight="600" fill="#1E1E24">Gedächtnis</text>
+<rect x="50" y="127" width="140" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect x="50" y="139" width="110" height="3" rx="1.5" fill="#8A8A94"></rect>
+<rect class="grow fx" style="animation-delay: 3.2s" x="50" y="151" width="124" height="3" rx="1.5" fill="#B5004F"></rect>
+<g class="pop" style="animation-delay: 3.9s">
+<line x1="182" y1="98" x2="182" y2="62" stroke="#1E1E24" stroke-width="2" stroke-dasharray="4 3"></line>
+<polygon points="177,62 187,62 182,54" fill="#1E1E24"></polygon>
+<text x="190" y="80" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">liest</text>
+</g>
+</svg>
+<div class="in s2" style="position: absolute; left: 472px; top: 550px; width: 272px; font-size: 15px; line-height: 22px">Der Agent entscheidet selbst, wann er Erinnerungen liest, schreibt oder ändert. Das geschieht „in-band“, mitten in der laufenden Sitzung.</div>
+<div class="in s2" style="position: absolute; left: 472px; top: 690px; width: 272px; font-size: 14px; line-height: 20px; color: #55555C"><b style="color: #1E1E24">Analogie:</b> Wie ein Laborbuch, das man während des Versuchs nebenher führt.</div>
+
+<div class="in s3" style="position: absolute; left: 856px; top: 230px; font-size: 13px; line-height: 16px; letter-spacing: 0.12em; font-weight: 600; color: #B5004F">STUFE 3</div>
+<div class="in s3" style="position: absolute; left: 856px; top: 252px; width: 272px; font-size: 25px; line-height: 30px; font-weight: 600">Skills</div>
+<div class="in s3" style="position: absolute; left: 856px; top: 318px; width: 272px; font-size: 15px; line-height: 22px; font-weight: 600; color: #B5004F"><span style="font-weight: 400; color: #55555C">Kontext:</span> Überblick, Details später</div>
+<svg class="in s3" width="272" height="180" viewBox="0 0 272 180" role="img" aria-label="Progressive Disclosure: Aus einer Liste von Skill-Namen wird nur der benötigte Skill geöffnet, erst die Anleitung, dann bei Bedarf der Anhang" style="position: absolute; left: 856px; top: 352px; width: 272px; height: 180px; overflow: visible">
+<rect x="0" y="0" width="272" height="180" rx="10" fill="#FFFFFF" stroke="#E4E4EA"></rect>
+<text x="16" y="20" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">① Beim Start sichtbar: Name + Beschreibung</text>
+<rect x="16" y="28" width="240" height="18" rx="4" fill="#F4F4F6" stroke="#D5D5DC"></rect>
+<text x="24" y="40.5" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#1E1E24">pdf — PDFs lesen und erstellen</text>
+<rect x="16" y="50" width="240" height="18" rx="4" fill="#F4F4F6" stroke="#D5D5DC"></rect>
+<text x="24" y="62.5" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#1E1E24">xlsx — Tabellen bearbeiten</text>
+<rect x="16" y="72" width="240" height="18" rx="4" fill="#F4F4F6" stroke="#D5D5DC"></rect>
+<text x="24" y="84.5" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#1E1E24">fallstudie — Teaching Cases</text>
+<rect x="16" y="94" width="240" height="18" rx="4" fill="#F4F4F6" stroke="#D5D5DC"></rect>
+<text x="24" y="106.5" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#1E1E24">tutor — sokratisch üben</text>
+<rect class="pop" style="animation-delay: 3.4s" x="16" y="72" width="240" height="18" rx="4" fill="none" stroke="#B5004F" stroke-width="2"></rect>
+<polyline class="pop" style="animation-delay: 3.6s" points="28,90 28,132 44,132" fill="none" stroke="#8A8A94" stroke-width="1.5"></polyline>
+<g class="growy fx" style="animation-delay: 3.7s">
+<rect x="44" y="120" width="212" height="24" rx="4" fill="#FFFFFF" stroke="#B5004F" stroke-width="1.5"></rect>
+<text x="54" y="136" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#1E1E24">② SKILL.md: volle Anleitung</text>
+</g>
+<polyline class="pop" style="animation-delay: 4.2s" points="56,144 56,163 68,163" fill="none" stroke="#8A8A94" stroke-width="1.5"></polyline>
+<g class="growy fx" style="animation-delay: 4.3s">
+<rect x="68" y="152" width="188" height="22" rx="4" fill="#FFFFFF" stroke="#8A8A94" stroke-dasharray="4 3"></rect>
+<text x="78" y="167" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#1E1E24">③ Anhang, Skripte bei Bedarf</text>
+</g>
+</svg>
+<div class="in s3" style="position: absolute; left: 856px; top: 550px; width: 272px; font-size: 15px; line-height: 22px">Progressive Disclosure: Zu Beginn sieht der Agent nur Name und Kurzbeschreibung jedes Skills. Die volle Anleitung lädt er erst, wenn die Aufgabe sie verlangt.</div>
+<div class="in s3" style="position: absolute; left: 856px; top: 690px; width: 272px; font-size: 14px; line-height: 20px; color: #55555C"><b style="color: #1E1E24">Analogie:</b> Wie ein gutes Handbuch: erst Inhaltsverzeichnis, dann Kapitel, zuletzt Anhang.</div>
+
+<div class="in s4" style="position: absolute; left: 1240px; top: 230px; font-size: 13px; line-height: 16px; letter-spacing: 0.12em; font-weight: 600; color: #B5004F">STUFE 4</div>
+<div class="in s4" style="position: absolute; left: 1240px; top: 252px; width: 272px; font-size: 25px; line-height: 30px; font-weight: 600">Dateisystem als Gedächtnis</div>
+<div class="in s4" style="position: absolute; left: 1240px; top: 318px; width: 272px; font-size: 15px; line-height: 22px; font-weight: 600; color: #B5004F"><span style="font-weight: 400; color: #55555C">Kontext:</span> gezielt gesucht</div>
+<svg class="in s4" width="272" height="180" viewBox="0 0 272 180" role="img" aria-label="Ein Ordner mit Markdown-Dateien wird durchsucht; die passende Datei wird gefunden, und Menschen können den Inhalt mitlesen" style="position: absolute; left: 1240px; top: 352px; width: 272px; height: 180px; overflow: visible">
+<rect x="0" y="0" width="272" height="180" rx="10" fill="#FFFFFF" stroke="#E4E4EA"></rect>
+<rect class="hit" style="animation-delay: 4.3s" x="12" y="119" width="134" height="15" rx="3" fill="#B5004F" fill-opacity="0.16"></rect>
+<text x="16" y="22" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#1E1E24">memory/</text>
+<text x="16" y="40" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#1E1E24">├─ profile.md</text>
+<text x="16" y="58" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#1E1E24">├─ preferences.md</text>
+<text x="16" y="76" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#1E1E24">├─ topics/</text>
+<text x="16" y="94" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#1E1E24">│  └─ lehre.md</text>
+<text x="16" y="112" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#1E1E24">├─ areas/</text>
+<text x="16" y="130" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#1E1E24">│  └─ lehrbuch.md</text>
+<text x="16" y="148" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#1E1E24">└─ people/</text>
+<text x="16" y="170" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#5E5E66">$ grep -r "Lehrbuch" memory/</text>
+<g class="scan fx" style="animation-delay: 4.3s">
+<circle cx="164" cy="124" r="8" fill="none" stroke="#1E1E24" stroke-width="2"></circle>
+<line x1="170" y1="130" x2="177" y2="137" stroke="#1E1E24" stroke-width="2.5" stroke-linecap="round"></line>
+</g>
+<path d="M 208 40 Q 228 24 248 40 Q 228 56 208 40 Z" fill="none" stroke="#1E1E24" stroke-width="1.8"></path>
+<circle cx="228" cy="40" r="5" fill="#B5004F"></circle>
+<text x="228" y="68" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">Menschen</text>
+<text x="228" y="80" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#5E5E66">können prüfen</text>
+</svg>
+<div class="in s4" style="position: absolute; left: 1240px; top: 550px; width: 272px; font-size: 15px; line-height: 22px">Eine Ordnerstruktur aus Markdown-Dateien, die der Agent mit Standardwerkzeugen durchsucht und pflegt. Menschen können den Speicher öffnen, lesen und prüfen.</div>
+<div class="in s4" style="position: absolute; left: 1240px; top: 690px; width: 272px; font-size: 14px; line-height: 20px; color: #55555C"><b style="color: #1E1E24">Analogie:</b> Wie ein Zettelkasten: einzelne Notizen, durchsuchbar, von Hand nachprüfbar.</div>
+
+<div class="in s5" style="position: absolute; left: 64px; top: 800px; width: 1472px; font-size: 12px; line-height: 18px; color: #55555C">Quellen: Bridgwater, A. (2026, 12. August). Anthropic gave agents the ability to dream. Then developers woke up. The New Stack. https://thenewstack.io/anthropic-agent-memory-dreaming/<br>Zhang, B., Lazuka, K., &amp; Murag, M. (2025). Equipping agents for the real world with Agent Skills. Anthropic. https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills · Schematische Darstellung, gestaltet mit Claude.</div>
+</div>
+</div>
+<button id="nochmal" type="button">Animation noch einmal abspielen</button>
+<script>
+(function(){
+  var druck = location.hash === '#druck';
+  var tafel = document.getElementById('tafel'), rahmen = document.getElementById('rahmen');
+  if (druck) { tafel.className = 'still'; document.body.className = 'druck'; }
+  function passen(){
+    var s = druck ? 1 : Math.min(1, rahmen.clientWidth / 1600);
+    if (druck) { rahmen.style.width = '1600px'; }
+    tafel.style.transform = 'scale(' + s + ')';
+    rahmen.style.height = (900 * s) + 'px';
+  }
+  window.addEventListener('resize', passen); passen();
+  document.getElementById('nochmal').addEventListener('click', function(){
+    tafel.className = ''; void tafel.offsetWidth; tafel.className = 'anim';
+  });
+})();
+</script>
+</body>
+</html>
