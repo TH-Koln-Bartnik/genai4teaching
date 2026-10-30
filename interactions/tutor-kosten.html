@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Was ein Tutor-Bot im Semester kostet</title>
 <style>
-.viz-root{color-scheme:light;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-2:#eb6834;--wash:rgba(11,11,11,0.035)}
-@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-2:#d95926;--wash:rgba(255,255,255,0.04)}}
+.viz-root{color-scheme:light;--st1:#2a78d6;--st2:#eb6834;--st3:#1baf7a;--st4:#eda100;--st5:#e87ba4;--st6:#008300;--st7:#6250d6;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-2:#eb6834;--wash:rgba(11,11,11,0.035)}
+@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--st1:#3987e5;--st2:#d95926;--st3:#199e70;--st4:#c98500;--st5:#d55181;--st6:#008300;--st7:#9085e9;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-2:#d95926;--wash:rgba(255,255,255,0.04)}}
 *{box-sizing:border-box}body{margin:0}
 .viz-root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--plane);color:var(--text-primary);padding:16px 12px 24px;line-height:1.45}
 main{max-width:920px;margin:0 auto}
@@ -30,7 +30,8 @@ input[type=range]{width:200px}
 .wrap{display:grid;grid-template-columns:minmax(190px,250px) 1fr;gap:12px 22px;align-items:start}
 @media (max-width:599px){.wrap{grid-template-columns:1fr}}
 .info .k{color:var(--text-secondary);font-size:.85rem}
-.info .big{font-size:2.6rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--series-2)}
+.info .big{font-size:2.6rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--text-primary);display:flex;align-items:baseline;gap:8px}.info .sw-big{display:inline-block;width:.42em;height:.42em;border-radius:4px;align-self:center;flex:none}
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:3px;vertical-align:-.05em;margin-right:5px}
 .info .s{color:var(--text-secondary);font-size:.85rem;margin-top:4px;font-variant-numeric:tabular-nums}
 .info .pp{margin-top:12px;padding-top:8px;border-top:1px solid var(--grid);font-size:.85rem}
 .info .pp b{font-size:1.15rem;font-variant-numeric:tabular-nums}
@@ -94,6 +95,8 @@ const css=v=>getComputedStyle(document.querySelector('.viz-root')).getPropertyVa
 const druck=document.documentElement.classList.contains('druck');
 const E=window.EPOCH_GPQA75.map(r=>({...r,t:new Date(r.d+'T00:00:00')}));
 E.forEach((r,i)=>{r.fall=i?1-r.c/E[i-1].c:null;});
+// Farbe je Stufe wie im Kosten-Raster (ki-entwicklung.html): o3 dunkel, danach --st1 … --st7 in fester Reihenfolge
+function farben(){return[css('--text-primary'),...[1,2,3,4,5,6,7].map(i=>css('--st'+i))];}
 const kurz=n=>n.replace(/ \(.*\)$/,'');
 const fD=d=>d.toLocaleDateString('de-DE',{month:'short',year:'numeric'});
 const fUSD=v=>v.toLocaleString('de-DE',v<100?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})+' US-$';
@@ -121,7 +124,7 @@ function draw(){
   document.getElementById('sum').textContent=`= ${nTag.toLocaleString('de-DE')} Fragen pro Tag · ${n.toLocaleString('de-DE')} Fragen im Semester`;
   document.getElementById('s-lin').setAttribute('aria-pressed',skala==='lin');document.getElementById('s-log').setAttribute('aria-pressed',skala==='log');
   const cur=E[sel];
-  document.getElementById('info').innerHTML=`<div class="k">Kosten pro Semester, ${fD(cur.t)}</div><div class="big">${fUSD(kosten(sel))}</div>
+  document.getElementById('info').innerHTML=`<div class="k">Kosten pro Semester, ${fD(cur.t)}</div><div class="big"><i class="sw-big" style="background:${farben()[sel]}"></i>${fUSD(kosten(sel))}</div>
     <div class="s">${kurz(cur.n)} · ${cur.c.toLocaleString('de-DE',{maximumSignificantDigits:3})} ct je Frage</div>
     <div class="pp">je Person und Semester: <b>${fUSD(jePerson(sel))}</b></div>`;
   // Diagramm
@@ -134,7 +137,7 @@ function draw(){
   else{const lo=Math.pow(10,Math.floor(Math.log10(Math.max(kosten(E.length-1),1e-6)))),hi=Math.pow(10,Math.ceil(Math.log10(vmax)));
     ys=v=>m.t+ih-(Math.log10(Math.max(v,lo))-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo))*ih;ticks=[];for(let v=lo;v<=hi*1.001;v*=10)ticks.push(v);}
   ticks.forEach(v=>{const y=ys(v);el('line',{x1:m.l,x2:m.l+iw,y1:y,y2:y,stroke:css('--grid')},svg);el('text',{x:m.l-6,y:y+4,'text-anchor':'end',class:'tick'},svg).textContent=fUSDk(v);});
-  const bw=iw/E.length, y0=skala==='lin'?ys(0):m.t+ih;
+  const F=farben(), bw=iw/E.length, y0=skala==='lin'?ys(0):m.t+ih;
   E.forEach((r,i)=>{const x=m.l+i*bw;
     el('text',{x:x+bw/2,y:H-18,'text-anchor':'middle',class:'tick'},svg).textContent=r.t.toLocaleDateString('de-DE',{month:'short'}).replace('.','');
     if(i===0||E[i-1].t.getFullYear()!==r.t.getFullYear())el('text',{x:x+bw/2,y:H-5,'text-anchor':'middle',class:'tick'},svg).textContent=r.t.getFullYear();
@@ -142,7 +145,7 @@ function draw(){
     const v=kosten(i),y=ys(v),akt=!druck&&i===sel;
     // aktuelle Stufe: helles Band über die ganze Spalte, damit sie auch bei winzigem Balken sichtbar bleibt
     if(akt)el('rect',{x:x+bw*0.06,y:m.t,width:bw*0.88,height:ih,rx:6,fill:css('--wash'),stroke:css('--border')},svg);
-    const b=el('rect',{x:x+bw*0.18,y:Math.min(y,y0-1.5),width:bw*0.64,height:Math.max(1.5,y0-y),rx:3,fill:css('--series-2'),'fill-opacity':akt||druck?1:.4,class:'bar'+(akt&&i!==last?' neu':'')},svg);
+    const b=el('rect',{x:x+bw*0.18,y:Math.min(y,y0-1.5),width:bw*0.64,height:Math.max(1.5,y0-y),rx:3,fill:F[i],class:'bar'+(akt&&i!==last?' neu':'')},svg);
     const t=el('text',{x:x+bw/2,y:Math.min(y,y0-1)-6,'text-anchor':'middle',class:'val'+(akt?' akt':'')},svg);
     t.textContent=narrow&&!akt&&i!==0?'':fUSDk(v);});
   el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css('--axis')},svg);
@@ -154,7 +157,7 @@ function draw(){
   if(sel===E.length-1)txt+=`<span class="ex">Die Frage verschiebt sich von „Können wir uns das leisten?“ zu „Wer prüft, was der Tutor sagt?“</span>`;
   document.getElementById('now').innerHTML=txt;
   document.getElementById('zur').disabled=sel===0;document.getElementById('vor').disabled=sel>=E.length-1;
-  document.querySelector('#tab tbody').innerHTML=E.map((r,i)=>`<tr><td>${fD(r.t)}</td><td>${kurz(r.n)}</td><td class="num">${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})}</td><td class="num">${fUSD(kosten(i))}</td><td class="num">${fUSD(jePerson(i))}</td></tr>`).join('');
+  document.querySelector('#tab tbody').innerHTML=E.map((r,i)=>`<tr><td><i class="sw" style="background:${farben()[i]}"></i>${fD(r.t)}</td><td>${kurz(r.n)}</td><td class="num">${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})}</td><td class="num">${fUSD(kosten(i))}</td><td class="num">${fUSD(jePerson(i))}</td></tr>`).join('');
 }
 function niceStep(x){const p=Math.pow(10,Math.floor(Math.log10(x))),f=x/p;return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p;}
 draw();
