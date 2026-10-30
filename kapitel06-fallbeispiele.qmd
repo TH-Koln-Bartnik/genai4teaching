@@ -28,7 +28,7 @@ Unter jeder Überschrift steht ein Steckbrief mit vier Angaben: die Wissensform;
 |---|---|---|---|---|
 | Fragen-Generator | syntaktisch | testgestützt, verteilt (hoch) | Tutor | Lehrende |
 | Lernsongs | syntaktisch | verteilt (hoch); Lösungsbeispiele | Copilot | Lehrende |
-| Quizspiele | syntaktisch | testgestützt (hoch) | Copilot | Lehrende |
+| Quizspiele | syntaktisch | testgestützt (hoch) | Copilot | Lehrende, Studierende |
 | Interaktive Widgets | semantisch | angeleitetes Entdecken, Konkretheitsabbau | Copilot | Lehrende |
 | Tutoring | semantisch | testgestützt (hoch) bzw. Ausarbeitung (mittel) | Tutor | Lehrende, Studierende |
 | Fallstudien generieren | pragmatisch | Ausarbeitung (mittel), Vorhersage | Copilot | Lehrende |
@@ -108,7 +108,7 @@ In der Typologie des Regelwerks ist das Video ein Verfahrenslied, keiner der dre
 
 ### Quizspiele: Abruf mit Rückmeldung, und wann ein Quiz kein Simulator ist {#sec-bsp-quizspiele}
 
-*Wissensform:* syntaktisch · *Lerntechnik:* testgestützt (hoch) · *Rolle:* Copilot (@sec-coding) · *Gestaltet von:* Lehrende
+*Wissensform:* syntaktisch · *Lerntechnik:* testgestützt (hoch) · *Rolle:* Copilot (@sec-coding) · *Gestaltet von:* Lehrende, Studierende
 
 ::: {.callout-note title="Prinzip"}
 Ein Zuordnungs- oder Auswahlspiel ist eine Abrufübung mit sofortiger Rückmeldung und wirkt über denselben Mechanismus wie ein Übungstest [@adesope2017]. Die Spielform selbst ist kein zusätzlicher Wirkfaktor, auf den man sich verlassen kann: Serious Games schnitten in einer Metaanalyse beim Lernen und Behalten besser ab als herkömmlicher Unterricht, motivierten aber nicht stärker [@wouters2013].
@@ -122,6 +122,8 @@ Bauen Sie Quizspiele für Begriffe, Zuordnungen und Erkennungsaufgaben, und nenn
 Das Zuordnungsspiel zu den Grundbegriffen generativer KI in @sec-grundbegriffe paart Begriffe mit Definitionen. Die Stufe *Fortgeschritten* ergänzt Begriffe zu Agenten und eine Diagnoserunde mit typischen Problemen im Umgang mit Sprachmodellen. Das Spiel ist eine einzelne HTML-Datei und läuft ohne Anmeldung im Browser; es wird im Skript, im Workshop „KI zum Lernen“ und im Workshop zu interaktiven Skripten eingesetzt.
 
 Lehrreich ist der Vergleich mit einem frühen eigenen Versuch aus dem Jahr 2025. *Einsatzbereit! Strategic Procurement Simulator* versetzt Studierende in die Rolle der Beschaffung in Krisen: Eine Flut verlangt sofort Pumpen, ein Erdbeben erzeugt viele dringende Bedarfe zugleich, und für jede Lage stehen vier Strategien zur Wahl, Sicherheitsbestand, leistungsbasierte Verträge, Lebenszykluskostenrechnung und Dual Sourcing. Das Programm wählt zufällig eine von vier Lagen und erklärt nach der Wahl, welche Strategie die beste gewesen wäre. Der Name verspricht eine Simulation, die Struktur ist ein Auswahlquiz mit Rückmeldung: Es gibt keinen Zustand, keine Folgekosten und keine nächste Runde, die von der vorigen abhängt. Die Musterlösung blendet zudem genau den Zielkonflikt aus, um den es in der Beschaffung geht, denn im Erdbeben konkurrieren Sicherheitsbestand und Dual Sourcing, und die Antwort hängt an Lagerkosten und Lieferzeiten, die das Spiel nicht kennt. Als Erkennungsübung zu vier Begriffen taugt es; Entscheidungen trainiert erst ein Modell, in dem Entscheidungen Folgen haben (@sec-bsp-simulationen-studierende).
+
+Ein Gegenstück aus Studierendenhand zeigt, wo die Grenze genau verläuft. Ein Team im Modul WAGP (@sec-fall-job-buddy) baute im Sommersemester 2025 ein „BWL-Memory“: Ein Sprachmodell erzeugt aus eingefügten Vorlesungstexten Paare aus Begriff und Definition, die auf einem Spielfeld einander zuzuordnen sind, und jede falsche Zuordnung landet in einer Fehlerliste, die beim nächsten Spiel in den Auftrag an das Modell eingeht. Ein Fehler verändert also die nächste Runde, aber nicht ihre Lage, sondern den Lernstoff. Das Spiel ist ein adaptives Abrufquiz und als solches gut gedacht, weil es die schwachen Begriffe öfter abfragt [@dunlosky2013]. Der Code zeigt zwei Lücken, die bei selbst gebauten Quizspielen naheliegen. Die erzeugten Paare gehen ungeprüft aufs Spielfeld, und ein Begriff verlässt die Fehlerliste nur, wenn ihn jemand von Hand löscht; nach den Testläufen stand „Volkswirtschaft“ neunmal darin. Die Karten liegen zudem offen, der Name verspricht also wie beim Beschaffungs-„Simulator“ einen anderen Mechanismus. Acht Testpersonen fanden das Spiel übersichtlich und motivierend; ob sie damit mehr behielten, wurde nicht gemessen.
 :::
 
 **Lernfrage.** Wie müsste man den Beschaffungs-„Simulator“ verändern, damit aus dem Quiz eine Entscheidungsübung wird? Nennen Sie die kleinste Änderung, die das Prüfkriterium der Empfehlung erfüllt.
