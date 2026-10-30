@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mehr Agenten machen den Menschen zum Engpass</title>
+<style>
+  :root { --ink:#1f2937; --muted:#6b7280; --line:#9ca3af; --slot:#e5e7eb; --run:#d1d5db; --bg:#ffffff; --accent:#b45309; }
+  body { margin:0; padding:24px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+  .pa { max-width:1000px; margin:0 auto; }
+  .pa-header { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:8px 16px; margin-bottom:4px; }
+  .pa-title { font-size:clamp(15px, 1.8vw, 21px); font-weight:600; margin:0; line-height:1.25; }
+  .pa-sub { font-size:12px; color:var(--muted); margin:2px 0 10px; }
+  .pa-controls { display:flex; gap:6px; flex-wrap:wrap; margin-left:auto; }
+  .pa-controls button, .pa-controls select, .pa-params select { font:500 13px system-ui, sans-serif; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:6px 10px; min-height:34px; cursor:pointer; }
+  .pa-controls button:hover { border-color:var(--ink); }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+  .pa-params { display:flex; flex-wrap:wrap; gap:8px 28px; align-items:center; font-size:13px; margin:6px 0 4px; }
+  .pa-params label { display:flex; align-items:center; gap:8px; }
+  .pa-params output { font-weight:600; font-variant-numeric:tabular-nums; min-width:3.5em; }
+  input[type=range] { accent-color: var(--ink); width:140px; }
+  svg { display:block; width:100%; height:auto; }
+  .lane-bg { fill:#f9fafb; }
+  .lane-label { font-size:12px; fill:var(--ink); text-anchor:end; }
+  .panel-title { font-size:13px; font-weight:600; fill:var(--ink); }
+  .panel-kpi { font-size:12px; fill:var(--muted); font-variant-numeric:tabular-nums; }
+  .panel-kpi tspan.v { fill:var(--ink); font-weight:600; }
+  .brief { fill:var(--ink); }
+  .review { fill:url(#hatch); stroke:var(--ink); stroke-width:1; }
+  .run { fill:var(--run); stroke:var(--line); stroke-width:1; }
+  .card { fill:var(--bg); stroke:var(--accent); stroke-width:1.5; }
+  .tick { stroke:var(--line); stroke-width:1; }
+  .grid { stroke:var(--slot); stroke-width:1; }
+  .tick-label { font-size:10px; fill:var(--muted); text-anchor:middle; font-variant-numeric:tabular-nums; }
+  .playhead { stroke:var(--accent); stroke-width:1.5; }
+  .clock { font-size:14px; font-weight:600; fill:var(--ink); font-variant-numeric:tabular-nums; }
+  .note-box { fill:var(--bg); stroke:var(--accent); stroke-width:1; }
+  .note-text { font-size:12px; fill:var(--ink); }
+  .note-line { stroke:var(--accent); stroke-width:1; fill:none; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 22px; font-size:12px; color:var(--ink); margin-top:6px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .legend svg { width:22px; height:12px; display:inline-block; }
+  .foot { font-size:11px; color:var(--muted); margin-top:8px; line-height:1.45; }
+  /* Druckansicht (#druck): Stand nach 120 min, ohne Bedienelemente und Fußzeilen */
+  .druck .pa-header, .druck .pa-sub, .druck .pa-params, .druck .foot { display:none !important; }
+  .druck body, html.druck body { padding:8px; }
+</style>
+</head>
+<body>
+
+<script>
+// ============================================================================
+//  1. ANNAHMEN — nur diesen Block muss man ändern.
+//     Ein Mensch vergibt Aufgaben an Agenten ("Auftrag geben") und prüft deren
+//     Ergebnisse ("Prüfen"). Beides kostet seine Zeit; der Agentenlauf nicht.
+//     Oben läuft immer 1 Agent (Arbeitsweise wie im Chat), unten N Agenten.
+// ============================================================================
+const MODEL = {
+  lang: "de",
+  title: "Mehr Agenten machen den Menschen zum Engpass",
+  unit: "min",
+  horizon: 120,          // ein Vormittag
+  brief: 2,              // Auftrag geben: Minuten Menschenzeit je Aufgabe
+  run: 20,               // Agentenlauf: Minuten je Aufgabe (der Mensch ist dabei frei)
+  review: 4,             // Prüfen: Minuten Menschenzeit je Ergebnis (Schieberegler)
+  agents: 5,             // Zahl paralleler Agenten unten (Schieberegler, 1–6)
+  policy: "review",      // "review" = Prüfen zuerst, "brief" = Neu vergeben zuerst
+  minPerSecond: 10,      // bei 1× vergehen 10 min pro Sekunde
+};
+</script>
+
+<div class="pa">
+  <div class="pa-header">
+    <h1 class="pa-title" id="pa-title"></h1>
+    <div class="pa-controls">
+      <button id="pa-play">Start</button>
+      <button id="pa-step">Schritt</button>
+      <button id="pa-reset">Zurück</button>
+      <select id="pa-speed" aria-label="Tempo" title="Tempo">
+        <option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option>
+      </select>
+    </div>
+  </div>
+  <div class="pa-sub" id="pa-sub"></div>
+  <div class="pa-params">
+    <label for="in-agents">Agenten unten <input type="range" id="in-agents" min="1" max="6" step="1"><output id="out-agents"></output></label>
+    <label for="in-review">Prüfzeit je Ergebnis <input type="range" id="in-review" min="1" max="10" step="1"><output id="out-review"></output></label>
+    <label for="in-policy">Regel des Menschen
+      <select id="in-policy"><option value="review">Prüfen zuerst</option><option value="brief">Neu vergeben zuerst</option></select>
+    </label>
+  </div>
+  <div id="pa-canvas"></div>
+  <div class="legend">
+    <span><svg viewBox="0 0 22 12"><rect x="1" y="1" width="20" height="10" fill="#1f2937"/></svg>Mensch gibt Auftrag</span>
+    <span><svg viewBox="0 0 22 12"><defs><pattern id="hatch-l" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#fff"/><line x1="0" y1="0" x2="0" y2="5" stroke="#1f2937" stroke-width="2"/></pattern></defs><rect x="1" y="1" width="20" height="10" fill="url(#hatch-l)" stroke="#1f2937"/></svg>Mensch prüft Ergebnis</span>
+    <span><svg viewBox="0 0 22 12"><rect x="1" y="1" width="20" height="10" fill="#d1d5db" stroke="#9ca3af"/></svg>Agent arbeitet</span>
+    <span><svg viewBox="0 0 22 12"><rect x="6" y="1" width="10" height="10" fill="#fff" stroke="#b45309" stroke-width="1.5"/></svg>Ergebnis wartet auf Prüfung</span>
+    <span>Leere Fläche = wartet</span>
+  </div>
+  <div class="foot" id="pa-hint">Leertaste = Start/Pause · → = nächstes Ereignis · R = zurück · bei 1× vergehen 10 min pro Sekunde</div>
+  <div class="foot">Zur Einordnung: Bei Organisationskunden arbeiten 67,4 % ohne parallele Agenten; bei OpenAI arbeiten nur 10,7 % mit einem einzigen Thread, 28,6 % mit fünf oder mehr Agenten gleichzeitig (Johnston, D., Holtz, D., Richmond, A. M., Ong, C., Tambe, P., &amp; Chatterji, A. (2026). <i>The shift to agentic AI: Evidence from Codex</i>. arXiv. https://doi.org/10.48550/arXiv.2606.26959). Die Dauern im Modell sind Annahmen zur Veranschaulichung, keine Messwerte.</div>
+</div>
+
+<script>
+// ============================================================================
+//  2. ENGINE — (a) Fahrplan: einmal deterministisch berechnet;
+//              (b) Zeichnung: für jeden Zeitpunkt t nachgeschlagen.
+// ============================================================================
+(function () {
+  const M = MODEL;
+  const T = M.horizon;
+  const fmt = x => (Math.abs(x - Math.round(x)) < 1e-9 ? String(Math.round(x)) : x.toFixed(1).replace(".", ","));
+  const pct = x => Math.round(100 * x) + " %";
+
+  // ---- (a) schedule: one human, N agents, fixed rule -------------------------
+  // The human is a single server. At each free moment he picks, by the rule:
+  //   "review": oldest finished result first, otherwise brief a free agent;
+  //   "brief" : brief a free agent first, otherwise review the oldest result.
+  // Agents are free again as soon as their run ends. Ties: lowest index first.
+  function schedule(N, review, policy) {
+    const human = [], runs = [], results = [];
+    const free = Array(N).fill(0);
+    let H = 0, next = 0, guard = 0;
+    const LIMIT = T + M.run + 10 * M.review;
+    while (H < LIMIT && guard++ < 2000) {
+      const ready = results.filter(r => r.rs === null && r.ready <= H + 1e-9).sort((x, y) => x.ready - y.ready || x.task - y.task);
+      const idle = free.map((f, j) => (f <= H + 1e-9 ? j : -1)).filter(j => j >= 0);
+      let act = null;
+      if (policy === "review") act = ready.length ? "review" : idle.length ? "brief" : null;
+      else act = idle.length ? "brief" : ready.length ? "review" : null;
+      if (act === "review") {
+        const r = ready[0]; r.rs = H; r.re = H + review;
+        human.push({ type: "review", s: H, e: H + review, task: r.task }); H += review;
+      } else if (act === "brief") {
+        const j = idle[0], id = next++, s = H + M.brief;
+        human.push({ type: "brief", s: H, e: s, task: id });
+        runs.push({ agent: j, s, e: s + M.run, task: id });
+        results.push({ task: id, agent: j, ready: s + M.run, rs: null, re: null });
+        free[j] = s + M.run; H = s;
+      } else {
+        const cand = results.filter(r => r.rs === null).map(r => r.ready).concat(free).filter(x => x > H + 1e-9);
+        if (!cand.length) break;
+        H = Math.min(...cand);
+      }
+    }
+    return { N, human, runs, results };
+  }
+
+  // ---- measures at time t ----------------------------------------------------
+  const overlap = (s, e, t) => Math.max(0, Math.min(e, t) - s);
+  function measures(S, t) {
+    const tt = Math.max(t, 1e-9);
+    return {
+      reviewed: S.results.filter(r => r.re !== null && r.re <= t + 1e-9).length,
+      humanBusy: S.human.reduce((a, h) => a + overlap(h.s, h.e, t), 0) / tt,
+      agentBusy: S.runs.reduce((a, r) => a + overlap(r.s, r.e, t), 0) / (S.N * tt),
+      waiting: S.results.filter(r => r.ready <= t + 1e-9 && (r.rs === null || r.rs > t + 1e-9)).length,
+    };
+  }
+
+  // ---- (b) drawing: layout ---------------------------------------------------
+  const W = 960, X0 = 150, X1 = 880, LANE = 18, GAP = 5, MAXN = 6;
+  const x = m => X0 + (Math.min(m, T) / T) * (X1 - X0);
+  const P1 = { titleY: 70, laneY: 82 };                       // scene 1: human + 1 agent
+  const P2 = { titleY: 150, laneY: 162 };                     // scene 2: human + up to 6 agents
+  const AXIS_Y = P2.laneY + (MAXN + 1) * (LANE + GAP) + 6;
+  const NOTE_Y = AXIS_Y + 48;
+  const H = NOTE_Y + 34;
+
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); parent.appendChild(e); return e; };
+  const txt = (parent, xx, y, s, cls, attrs = {}) => { const e = el("text", { x: xx, y, class: cls, ...attrs }, parent); e.textContent = s; return e; };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": M.title }, document.getElementById("pa-canvas"));
+  const defs = el("defs", {}, svg);
+  const pat = el("pattern", { id: "hatch", width: 5, height: 5, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, defs);
+  el("rect", { width: 5, height: 5, fill: "#ffffff" }, pat);
+  el("line", { x1: 0, y1: 0, x2: 0, y2: 5, stroke: "#1f2937", "stroke-width": 2 }, pat);
+
+  // grid and axis
+  for (let m = 0; m <= T; m += 15) {
+    el("line", { x1: x(m), y1: P1.laneY - 4, x2: x(m), y2: AXIS_Y, class: "grid" }, svg);
+    el("line", { x1: x(m), y1: AXIS_Y, x2: x(m), y2: AXIS_Y + 5, class: "tick" }, svg);
+    txt(svg, x(m), AXIS_Y + 17, `${m}`, "tick-label");
+  }
+  el("line", { x1: X0, y1: AXIS_Y, x2: X1, y2: AXIS_Y, class: "tick" }, svg);
+  txt(svg, X1 + 22, AXIS_Y + 17, "min", "tick-label", { "text-anchor": "start" });
+  const clock = txt(svg, 24, 34, "", "clock");
+
+  function buildPanel(P, title) {
+    const g = el("g", {}, svg);
+    const titleEl = txt(g, 24, P.titleY, title, "panel-title");
+    const kpi = el("text", { x: X1, y: P.titleY, class: "panel-kpi", "text-anchor": "end" }, g);
+    const lanes = el("g", {}, g), bars = el("g", {}, g), cards = el("g", {}, g);
+    return { P, g, titleEl, kpi, lanes, bars, cards };
+  }
+  const panels = [buildPanel(P1, ""), buildPanel(P2, "")];
+  const playhead = el("line", { y1: P1.laneY - 8, y2: AXIS_Y, class: "playhead" }, svg);
+  const noteG = el("g", { visibility: "hidden" }, svg);
+  const noteBox = el("rect", { height: 22, rx: 2, class: "note-box" }, noteG);
+  const noteTxt = txt(noteG, 0, 0, "", "note-text");
+  const noteLine = el("path", { class: "note-line" }, noteG);
+
+  const laneY = (P, i) => P.laneY + i * (LANE + GAP);         // i = 0 human, 1..N agents
+
+  // ---- state built from parameters ---------------------------------------------
+  let S1, S2, EVENTS, NOTES;
+  function rebuild() {
+    S1 = schedule(1, M.review, M.policy);
+    S2 = schedule(M.agents, M.review, M.policy);
+    panels[0].S = S1; panels[1].S = S2;
+    panels[0].titleEl.textContent = "1 Agent — Arbeitsweise wie im Chat";
+    panels[1].titleEl.textContent = `${M.agents} Agent${M.agents > 1 ? "en" : ""} parallel`;
+    panels.forEach(pn => {
+      pn.lanes.replaceChildren(); pn.bars.replaceChildren();
+      for (let i = 0; i <= pn.S.N; i++) {
+        const y = laneY(pn.P, i);
+        el("rect", { x: X0, y, width: X1 - X0, height: LANE, class: "lane-bg" }, pn.lanes);
+        txt(pn.lanes, X0 - 10, y + LANE - 5, i === 0 ? "Mensch" : `Agent ${i}`, "lane-label", i === 0 ? { "font-weight": 600 } : {});
+      }
+      // every bar is created once; render() only changes its width
+      pn.items = [];
+      pn.S.human.forEach(h => pn.items.push({ s: h.s, e: h.e, y: laneY(pn.P, 0), r: el("rect", { y: laneY(pn.P, 0) + 1, height: LANE - 2, class: h.type }, pn.bars) }));
+      pn.S.runs.forEach(r => pn.items.push({ s: r.s, e: r.e, y: laneY(pn.P, r.agent + 1), r: el("rect", { y: laneY(pn.P, r.agent + 1) + 2, height: LANE - 4, class: "run" }, pn.bars) }));
+    });
+    const all = [S1, S2].flatMap(S => S.human.flatMap(h => [h.s, h.e]).concat(S.runs.flatMap(r => [r.s, r.e])));
+    EVENTS = [...new Set(all.filter(v => v > 0 && v < T).concat([T]))].sort((a, b) => a - b);
+
+    // teaching moments: first time two results wait in scene 2, then the end balance
+    NOTES = [];
+    const cands = [...new Set(S2.results.map(r => r.ready))].sort((a, b) => a - b);
+    for (const tau of cands) {
+      if (tau >= T) break;
+      if (measures(S2, tau).waiting >= 2) { NOTES.push({ t: tau, until: tau + 20, panel: 1, text: "Zwei Ergebnisse warten auf Prüfung — der Mensch ist jetzt der Engpass" }); break; }
+    }
+    const m1 = measures(S1, T), m2 = measures(S2, T);
+    NOTES.push({ t: T, until: Infinity, panel: 1, text: `Nach ${T} min: 1 Agent → ${m1.reviewed} geprüfte Ergebnisse, ${M.agents} Agenten → ${m2.reviewed}; der Mensch ist zu ${pct(m2.humanBusy)} statt ${pct(m1.humanBusy)} ausgelastet` });
+  }
+
+  // ---- (b) drawing: update for time t ----------------------------------------
+  function render(t) {
+    clock.textContent = `t = ${fmt(t)} min`;
+    playhead.setAttribute("x1", x(t)); playhead.setAttribute("x2", x(t));
+    panels.forEach(pn => {
+      pn.items.forEach(it => {
+        const w = x(Math.min(it.e, t)) - x(it.s);
+        if (it.s >= t - 1e-9 || it.s >= T) it.r.setAttribute("visibility", "hidden");
+        else { it.r.setAttribute("visibility", "visible"); it.r.setAttribute("x", x(it.s)); it.r.setAttribute("width", Math.max(0.5, w)); }
+      });
+      const m = measures(pn.S, t);
+      pn.kpi.innerHTML = "";
+      [["Geprüft", String(m.reviewed)], ["Mensch ausgelastet", t > 0 ? pct(m.humanBusy) : "–"], [pn.S.N > 1 ? "Agenten ausgelastet" : "Agent ausgelastet", t > 0 ? pct(m.agentBusy) : "–"], ["Prüfstapel", String(m.waiting)]].forEach(([k, v], i) => {
+        const a = el("tspan", {}, pn.kpi); a.textContent = (i ? "   ·   " : "") + k + " ";
+        const b = el("tspan", { class: "v" }, pn.kpi); b.textContent = v;
+      });
+      pn.cards.replaceChildren();
+      const y = laneY(pn.P, 0);
+      const x0c = x(t) + 5, room = Math.max(1, Math.floor((W - 34 - x0c) / 11));
+      const shown = Math.min(m.waiting, m.waiting > room ? room - 1 : room);
+      for (let i = 0; i < shown; i++) el("rect", { x: x0c + i * 11, y: y + 4, width: 9, height: LANE - 8, class: "card" }, pn.cards);
+      if (m.waiting > shown) txt(pn.cards, x0c + shown * 11 + 2, y + LANE - 5, `+${m.waiting - shown}`, "panel-kpi", { fill: "#b45309", "font-weight": 600 });
+    });
+    const note = NOTES.filter(nn => nn.t <= t + 1e-9 && t < nn.until).pop();
+    if (!note) noteG.setAttribute("visibility", "hidden");
+    else {
+      noteG.setAttribute("visibility", "visible");
+      noteTxt.textContent = note.text;
+      const tw = noteTxt.getComputedTextLength() + 16;
+      const tx = x(note.t);
+      const bx = Math.max(12, Math.min(W - tw - 12, tx - tw / 2));
+      noteBox.setAttribute("x", bx); noteBox.setAttribute("y", NOTE_Y - 15); noteBox.setAttribute("width", tw);
+      noteTxt.setAttribute("x", bx + 8); noteTxt.setAttribute("y", NOTE_Y);
+      noteLine.setAttribute("d", `M${tx},${NOTE_Y - 15} L${tx},${AXIS_Y}`);
+    }
+  }
+
+  // ---- controls ------------------------------------------------------------------
+  let t = 0, playing = false, speed = 1, last = null;
+  const $ = id => document.getElementById(id);
+  const btnPlay = $("pa-play"), btnStep = $("pa-step"), btnReset = $("pa-reset"), selSpeed = $("pa-speed");
+  const inA = $("in-agents"), inR = $("in-review"), inP = $("in-policy");
+  $("pa-title").textContent = M.title; document.title = M.title;
+  const sub = () => { $("pa-sub").textContent = `Annahmen: ein Mensch, ein Vormittag (${T} min); Auftrag geben ${M.brief} min, Agentenlauf ${M.run} min, Prüfen ${M.review} min je Aufgabe.`; };
+  inA.value = M.agents; inR.value = M.review; inP.value = M.policy;
+  const syncOut = () => { $("out-agents").textContent = M.agents; $("out-review").textContent = M.review + " min"; sub(); };
+  const onParam = () => { M.agents = +inA.value; M.review = +inR.value; M.policy = inP.value; syncOut(); rebuild(); render(t); };
+  inA.oninput = onParam; inR.oninput = onParam; inP.onchange = onParam;
+
+  const setPlaying = p => { playing = p; last = null; btnPlay.textContent = playing ? "Pause" : "Start"; };
+  const seek = v => { t = Math.max(0, Math.min(T, v)); render(t); };
+  btnPlay.onclick = () => { if (t >= T) seek(0); setPlaying(!playing); };
+  btnStep.onclick = () => { setPlaying(false); seek(EVENTS.find(e => e > t + 1e-6) ?? T); };
+  btnReset.onclick = () => { setPlaying(false); seek(0); };
+  selSpeed.onchange = () => { speed = +selSpeed.value; };
+  document.addEventListener("keydown", e => {
+    if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT") return;
+    if (e.key === " ") { e.preventDefault(); btnPlay.onclick(); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); btnStep.onclick(); }
+    else if (e.key === "r" || e.key === "R") btnReset.onclick();
+  });
+  (function frame(now) {
+    if (playing) {
+      if (last !== null) t = Math.min(T, t + ((now - last) / 1000) * speed * M.minPerSecond);
+      last = now; render(t);
+      if (t >= T) setPlaying(false);
+    }
+    requestAnimationFrame(frame);
+  })(performance.now());
+
+  syncOut(); rebuild(); render(0);
+  // Druckansicht: #druck zeigt den Stand nach dem ganzen Vormittag ohne Bedienelemente
+  if (location.hash === "#druck") { document.documentElement.classList.add("druck"); seek(T); }
+  window.PA = { seek, schedule, measures, get S1() { return S1; }, get S2() { return S2; }, get NOTES() { return NOTES; }, T };   // for testing
+})();
+</script>
+</body>
+</html>

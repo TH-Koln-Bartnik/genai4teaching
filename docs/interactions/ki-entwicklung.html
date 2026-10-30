@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wie sich KI entwickelt: Zeithorizont, Kosten und Arbeitsweisen</title>
+<style>
+.viz-root{color-scheme:light;--st1:#2a78d6;--st2:#eb6834;--st3:#1baf7a;--st4:#eda100;--st5:#e87ba4;--st6:#008300;--st7:#6250d6;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--wash:rgba(11,11,11,0.035)}
+@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--st1:#3987e5;--st2:#d95926;--st3:#199e70;--st4:#c98500;--st5:#d55181;--st6:#008300;--st7:#9085e9;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--wash:rgba(255,255,255,0.04)}}
+*{box-sizing:border-box}body{margin:0}
+.viz-root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--plane);color:var(--text-primary);padding:16px 12px 24px;line-height:1.45}
+main{max-width:920px;margin:0 auto}
+section.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:18px 20px 14px;margin:0 0 20px}
+h2{font-size:1.1rem;margin:0 0 2px}
+.sub{color:var(--text-secondary);font-size:.88rem;margin:0 0 10px}
+.src{color:var(--muted);font-size:.75rem;margin:8px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 8px;font-size:.85rem}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:.8rem;border:0;background:transparent;color:var(--text-secondary);padding:4px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
+.chart{position:relative}
+svg text{font-family:inherit}
+.tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.lab{fill:var(--text-primary);font-size:12px;font-weight:600}
+.exl{font-size:11.5px}.mlab{fill:var(--text-secondary);font-size:11px}
+.lab2{fill:var(--text-secondary);font-size:11px}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:6px 9px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;display:none;z-index:2}
+.tip b{display:block}.tip span{color:var(--text-secondary)}
+details{margin-top:6px;font-size:.8rem}summary{cursor:pointer;color:var(--muted)}
+table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;padding:3px 6px;border-bottom:1px solid var(--grid)}td.num{text-align:right;font-variant-numeric:tabular-nums}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:8px}.stat{border:1px solid var(--border);border-radius:10px;padding:8px 12px}.stat .k{font-size:.75rem;color:var(--text-secondary)}.stat .v{font-size:1.3rem;font-weight:650;font-variant-numeric:tabular-nums}input[type=number]{width:70px;font:inherit;padding:2px 6px;background:var(--surface-1);color:var(--text-primary);border:1px solid var(--border);border-radius:6px}.controls label{display:flex;gap:6px;align-items:center;color:var(--text-secondary)}input[type=range]{width:200px}
+.playbtn{font:inherit;font-size:.8rem;border:1px solid var(--border);background:var(--text-primary);color:var(--surface-1);border-radius:8px;padding:4px 12px;cursor:pointer}.now{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-top:6px;font-size:.9rem;min-height:1.6em}.now .d{color:var(--muted);font-variant-numeric:tabular-nums}.now .m{font-weight:650}.now .ex{background:var(--wash);border:1px solid var(--border);border-radius:999px;padding:1px 10px}
+.stufe .pct{fill:var(--text-secondary);font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums}.stufe .dt{fill:var(--muted);font-size:10.5px}
+.stufe.akt .pct{fill:var(--text-primary);font-size:13px;font-weight:700}.stufe.akt .dt{fill:var(--text-secondary)}
+.stufe.neu{animation:auf .5s ease-out}@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.stufe.neu{animation:none}}
+/* Diagramm 2, Raster: was 30 Cent kaufen */
+.schaetz{border:2px solid var(--series-2);background:color-mix(in srgb,var(--series-2) 9%,var(--surface-1));border-radius:10px;padding:10px 14px;margin:0 0 12px;font-size:.88rem}
+.schaetz .badge{display:inline-block;background:var(--series-2);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.02em;text-transform:uppercase;border-radius:999px;padding:1px 9px;margin-right:8px}
+.schaetz p{margin:6px 0}.schaetz .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.schaetz input[type=number]{width:110px;font-size:1rem;padding:4px 8px;border:2px solid var(--series-2);animation:puls 1.6s ease-in-out infinite}
+.schaetz input[type=number]:focus{animation:none}
+.schaetz .hint{color:var(--text-secondary);font-size:.8rem}
+.schaetz.ruhig{border:1px solid var(--border);background:var(--wash);padding:6px 14px}
+.schaetz.ende{border-color:var(--text-primary);background:var(--wash)}
+@keyframes puls{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--series-2) 30%,transparent)}}
+/* Zeitstrahl der Preisstufen */
+.zeit{margin:2px 0 4px}.zeit svg{display:block;overflow:visible}
+.zeit .z-n{fill:var(--text-primary);font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.zeit .z-d{fill:var(--muted);font-size:10.5px}.zeit .z-m{fill:var(--text-secondary);font-size:10.5px}
+.zeit .akt .z-d,.zeit .akt .z-m{fill:var(--text-primary);font-weight:650}
+.zeit .z-k{fill:var(--muted);font-size:11px;font-weight:600}
+.zeit .klick{cursor:pointer}.zeit .klick:focus{outline:none}.zeit .klick:focus-visible circle.z-dot{stroke:var(--series-1);stroke-width:3}
+.zeit .ring{transform-box:fill-box;transform-origin:center;animation:ring 1.4s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.85}to{transform:scale(2.3);opacity:0}}
+/* Bedienzeile mit Klick-Zeiger */
+.rnav{margin:6px 0 10px;gap:8px 10px}.rnav #r-pos{color:var(--muted);font-size:.8rem}
+.weiter{font:inherit;font-size:.92rem;font-weight:700;border:0;background:var(--series-2);color:#fff;border-radius:9px;padding:7px 16px;cursor:pointer;animation:puls 1.4s ease-in-out infinite}
+.weiter:disabled{background:var(--axis);color:var(--surface-1);cursor:not-allowed;animation:none}
+.zeiger{display:inline-flex;align-items:center;gap:4px;color:var(--series-2);font-weight:700;font-size:.85rem;animation:stups 1.4s ease-in-out infinite}
+.zeiger::before{content:"";border:7px solid transparent;border-right:9px solid var(--series-2);border-left:0}
+@keyframes stups{50%{transform:translateX(-5px)}}
+.chip.ziel{border:2px solid var(--series-2);color:var(--text-primary);font-weight:650;animation:puls 1.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.weiter,.zeiger,.chip.ziel,.zeit .ring,.schaetz input[type=number]{animation:none}}
+.viz-root [hidden]{display:none !important}
+.warum{margin-top:14px;border:1px solid var(--border);border-radius:10px;padding:8px 12px;background:var(--wash);font-size:.82rem;line-height:1.4}
+.warum .t{font-weight:650;margin:0 0 4px}.warum ul{margin:0;padding-left:1.1em}.warum li{margin:4px 0}
+.gesamt{font-weight:650}
+/* schmal: „Weiter“ mit Zeiger in die erste Zeile, Zurück und Von vorn darunter */
+@media (max-width:599px){.rnav .weiter{order:-2}.rnav .zeiger{order:-1}}
+.playbtn:disabled{opacity:.35;cursor:not-allowed}
+.rwrap{display:grid;grid-template-columns:minmax(200px,290px) 1fr;gap:12px 22px;align-items:start}
+@media (max-width:599px){.rwrap{grid-template-columns:1fr}}
+.rinfo .k{color:var(--text-secondary);font-size:.85rem}
+.rinfo .big{font-size:3rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--text-primary);display:flex;align-items:baseline;gap:8px}.rinfo .sw-big{display:inline-block;width:.42em;height:.42em;border-radius:4px;align-self:center}
+.rinfo .big small{font-size:1rem;font-weight:500;color:var(--text-secondary);margin-left:6px}
+.rinfo .s{color:var(--text-secondary);font-size:.85rem;margin-top:4px}
+.rinfo .o3{margin-top:14px;padding-top:8px;border-top:1px solid var(--grid);font-size:.8rem;color:var(--text-secondary)}
+.rgrid .legend{margin-top:6px}
+#c2r .k.rein{animation:rein .35s ease-out backwards}@keyframes rein{from{opacity:0;transform:scale(.3)}}
+#c2r .k{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:reduce){#c2r .k.rein{animation:none}}
+#druck2r{display:none}
+.druck #druck2r{display:block;margin-top:14px}
+.druck #ansicht-raster,.druck .seg{display:none !important}
+.druck #ansicht-treppe{display:block !important}
+.dr-titel{font-size:13px;font-weight:600;margin:0 0 6px 50px}#druck2r .dr-leg{margin:0 0 8px 50px;font-size:12px;color:var(--text-secondary)}
+.dr-reihe{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-left:50px}
+.dr-reihe .h{font-size:12px;font-weight:650}.dr-reihe .h span{font-weight:400;color:var(--text-secondary)}
+/* Diagramm 3: Arbeitsweisen */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--text-secondary);margin:0 0 6px}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+.gwrap{overflow-x:auto}
+.grid3{display:grid;grid-template-columns:150px repeat(6,minmax(66px,1fr));gap:3px;font-size:.78rem;min-width:580px}
+.grid3 .hd{color:var(--text-secondary);font-weight:600;padding:2px 4px;font-size:.74rem}
+.grid3 .rowlab{padding:4px 6px;font-weight:650;cursor:pointer;border-radius:6px;display:flex;flex-direction:column;justify-content:center;line-height:1.2}
+.grid3 .rowlab small{font-weight:400;font-size:.68rem;color:var(--text-secondary);margin-top:1px}
+.grid3 .rowlab[aria-selected="true"]{background:var(--wash);outline:2px solid var(--text-primary)}
+.grid3 .zeile{display:contents}
+.grid3 .zeile.spaeter>*{opacity:.18}
+.cell{border-radius:4px;padding:6px 5px;color:#fff;font-weight:600;min-height:34px;display:flex;align-items:center;position:relative;cursor:pointer}
+.cell.M{background:var(--series-1)}.cell.K{background:var(--series-2)}.cell.MK{background:var(--series-3)}
+.cell small{font-weight:500;opacity:.9;margin-left:4px;font-size:.68rem}
+.ask{position:absolute;top:2px;right:3px;background:#fff;color:#0b0b0b;border-radius:999px;font-size:9.5px;line-height:1.35;padding:0 5px;font-weight:700;border:1px solid rgba(11,11,11,.45)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips span{color:var(--text-secondary)}
+.chip{font:inherit;font-size:.78rem;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:999px;padding:3px 10px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
+@media (forced-colors:active){.cell{border:1px solid CanvasText}}
+.druck .grid3{min-width:0}
+@media (max-width:599px){:root:not(.druck) .grid3{min-width:0;grid-template-columns:104px repeat(6,1fr);font-size:.7rem}:root:not(.druck) .cell{font-size:0;min-height:30px}:root:not(.druck) .cell .ask{font-size:9px;padding:0 3px}.grid3 .hd{font-size:.64rem;hyphens:auto;overflow-wrap:anywhere}}
+footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
+/* Auswahl über ?zeige=zeithorizont|kosten|arbeitsweisen; Druckansicht über #druck */
+.aus{display:none !important}
+.druck .controls,.druck .now,.druck details,.druck footer,.druck h2,.druck .sub,.druck .src{display:none !important}
+.druck .viz-root{background:#fff;padding:4px}.druck section.card{border:0;padding:4px;margin:0}
+</style>
+</head>
+<body>
+<div class="viz-root"><main>
+
+<section class="card" id="k-zeithorizont">
+<h2>KI-Agenten bewältigen immer längere Aufgaben</h2>
+<p class="sub">Aufgabendauer für Menschen, die ein Modell in der Hälfte der Fälle löst</p>
+<div class="controls">
+ <button id="play" class="playbtn" aria-label="Zeitlich aufbauen">▶ Abspielen</button>
+ <input type="range" id="tidx" min="0" max="25" step="1" value="25" aria-label="Zeitpunkt">
+ <div class="seg" role="group" aria-label="Achse"><button id="s-log" aria-pressed="true">log</button><button id="s-lin" aria-pressed="false">linear</button></div>
+</div>
+<div class="chart" id="c1"><div class="tip" id="tip1"></div></div>
+<div class="now" id="now1" aria-live="polite"></div>
+<p class="src">Daten: METR (2026), Time Horizon 1.1, 50-%-Horizont mit 95-%-Intervall; Trend ab 2023: Verdopplung alle 129 Tage. Beispiele links: eigene Zuordnung.</p>
+<details><summary>Datentabelle</summary><table id="t1"><thead><tr><th>Modell</th><th>Veröffentlicht</th><th class="num">Horizont</th><th class="num">95-%-Intervall</th></tr></thead><tbody></tbody></table></details>
+</section>
+
+<section class="card" id="k-kosten">
+<h2>Expertenwissen wird 725-mal billiger</h2>
+<p class="sub">Niedrigste Kosten pro Frage für 75 % richtige Antworten im GPQA Diamond (Naturwissenschaft auf Promotionsniveau)</p>
+<div class="controls">
+ <div class="seg" role="group" aria-label="Darstellung"><button id="v-raster" aria-pressed="true">Raster: was 30 Cent kaufen</button><button id="v-treppe" aria-pressed="false">Treppe: Preis je Frage</button></div>
+</div>
+<div id="ansicht-raster">
+ <div class="schaetz" id="schaetz" role="group" aria-labelledby="schaetz-t"></div>
+ <div class="zeit" id="zeit" role="group" aria-label="Zeitstrahl der Preisstufen seit o3"></div>
+ <div class="controls rnav"><button id="r-zur" class="chip">◀ Zurück</button><button id="r-vor" class="weiter">Weiter ▶</button><span class="zeiger" id="zeiger" aria-hidden="true">hier klicken</span><button id="r-neu" class="chip">Von vorn</button><span id="r-pos"></span></div>
+ <div class="rwrap"><div><div class="rinfo" id="rinfo" aria-live="polite"></div>
+ <div class="warum" id="warum" hidden><p class="t">Warum fiel der Preis im letzten Schritt so stark? Vermutungen nach Epoch AI</p><ul>
+  <li><b>Kleineres Modell:</b> GPT-5.6 Luna ist die günstigste Variante ihrer Modellfamilie. Reasoning holt aus kleineren, je Token billigeren Modellen dieselbe Leistung.</li>
+  <li><b>Weniger Nachdenken:</b> Luna lief mit niedrigem Denkaufwand („low“), braucht also weniger Denk-Token je Frage.</li>
+  <li><b>Wettbewerb:</b> Wer ein Leistungsniveau zuerst erreicht, kann kurz einen Aufpreis verlangen; dann holen Konkurrenten auf und drücken den Preis.</li>
+ </ul></div></div><div class="rgrid"><div id="c2r"></div></div></div>
+ <div class="now" id="now2r" aria-live="polite"></div>
+</div>
+<div id="ansicht-treppe" hidden>
+ <div class="controls">
+  <button id="play2" class="playbtn" aria-label="Preisstufen nacheinander zeigen">▶ Abspielen</button>
+  <input type="range" id="tsel" min="0" max="7" step="1" value="7" aria-label="Preisstufe">
+ </div>
+ <div id="k2bild"><div class="chart" id="c2"><div class="tip" id="tip2"></div></div><div id="druck2r"></div></div>
+ <div class="now" id="now2" aria-live="polite"></div>
+</div>
+<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Rasterdarstellung nach einer Idee von Mollick (2026), eigene Umsetzung. Ein Kästchen = eine Frage zum Preis von o3 im Januar 2025 (29,9 ct); das Raster fasst 725 Kästchen. Jede Preisstufe hat eine eigene Farbe, dieselbe wie ihr Punkt im Zeitstrahl.</p>
+<details><summary>Datentabelle</summary><table id="t2"><thead><tr><th>Modell</th><th>Datum</th><th class="num">Genauigkeit</th><th class="num">Kosten/Frage</th></tr></thead><tbody></tbody></table></details>
+</section>
+
+<section class="card" id="k-arbeitsweisen">
+<h2>Mit jeder Arbeitsweise gibt der Mensch mehr Schritte an die KI ab</h2>
+<p class="sub">Wer übernimmt welchen Arbeitsschritt? Konzeptschema, keine Messdaten. Zeile anklicken</p>
+<div class="controls">
+ <button id="play3" class="playbtn" aria-label="Arbeitsweisen nacheinander zeigen">▶ Abspielen</button>
+ <input type="range" id="tsel3" min="0" max="4" step="1" value="3" aria-label="Arbeitsweise">
+</div>
+<div id="c3">
+<div class="legend"><span><i class="sw" style="background:var(--series-1)"></i>Mensch</span><span><i class="sw" style="background:var(--series-3)"></i>gemeinsam</span><span><i class="sw" style="background:var(--series-2)"></i>KI</span><span><b class="ask" style="position:static">fragt</b> KI holt einen Menschen hinzu</span></div>
+<div class="gwrap"><div class="grid3" id="g3" role="table" aria-label="Arbeitsweisen und Arbeitsschritte"></div></div>
+</div>
+<div class="now" id="now3" aria-live="polite"></div>
+<div class="controls chips" id="tw" role="group" aria-label="Anlässe, bei denen der Agent in der Dämmerfabrik einen Menschen hinzuholt" style="margin-top:8px"><span>Dämmerfabrik, Anlässe für eine Rückfrage:</span></div>
+<p class="src">Begriffe: Centaur und Cyborg nach Dell'Acqua et al. (2023) und Mollick (2024); Beschwörer nach Mollick, „30 months on the exponential“ (2026); dunkle Fabrik und Dämmerfabrik nach Mollick, „Agency and agents“ (2026). Zuordnung der Schritte: eigene Lesart.</p>
+</section>
+
+<footer>
+<p>Emberson, L., &amp; Roodman, D. (2026, 22. September). <em>The plunging price of thought</em>. Epoch AI. https://epoch.ai/publications/the-plunging-price-of-thought · Daten: https://github.com/droodman/inference-cost</p>
+<p>METR. (2026). <em>Time horizon of frontier AI models</em> (Time Horizon 1.1, Stand 8. Mai 2026). https://metr.org/time-horizons/ · Daten: https://metr.org/assets/benchmark_results_1_1.yaml</p>
+<p>Dell'Acqua, F., McFowland, E., III, Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., &amp; Lakhani, K. R. (2023). <em>Navigating the jagged technological frontier</em> (Harvard Business School Working Paper No. 24-013). https://doi.org/10.2139/ssrn.4573321</p>
+<p>Mollick, E. (2024). <em>Co-Intelligence: Living and working with AI</em>. Portfolio.</p>
+<p>Mollick, E. (2026, 31. August). Agency and agents. <em>One Useful Thing</em>. https://www.oneusefulthing.org/p/agency-and-agents</p>
+<p>Mollick, E. (2026, 20. Oktober). 30 months on the exponential (in charts). <em>One Useful Thing</em>. https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts</p>
+<p>Datenstand: METR 8. Mai 2026; Epoch AI Juli 2026. Die Daten liegen als CSV im Ordner <code>data/</code> des Buch-Repositorys.</p>
+</footer>
+</main></div>
+<script src="models/epoch-kosten.js"></script>
+<script>
+// Auswahl und Druckansicht vor dem Zeichnen setzen, damit die Diagramme die richtige Breite messen
+(function(){const z=new URLSearchParams(location.search).get('zeige');
+  if(z)['zeithorizont','kosten','arbeitsweisen'].forEach(k=>{if(k!==z)document.getElementById('k-'+k).classList.add('aus');});
+  if(location.hash==='#druck')document.documentElement.classList.add('druck');})();
+const METR=[{"n": "GPT-2", "d": "2019-02-14", "s": true, "v": 0.05, "lo": 0.01, "hi": 0.14}, {"n": "GPT-3 (davinci-002)", "d": "2020-05-28", "s": true, "v": 0.14, "lo": 0.09, "hi": 0.22}, {"n": "GPT-3.5", "d": "2022-03-15", "s": true, "v": 0.6, "lo": 0.26, "hi": 1.12}, {"n": "GPT-4", "d": "2023-03-14", "s": true, "v": 3.99, "lo": 1.93, "hi": 8.0}, {"n": "GPT-4 (Nov 2023)", "d": "2023-11-06", "s": true, "v": 4.04, "lo": 1.87, "hi": 8.44}, {"n": "Claude 3 Opus", "d": "2024-03-04", "s": false, "v": 3.95, "lo": 1.71, "hi": 8.76}, {"n": "GPT-4 Turbo", "d": "2024-04-09", "s": false, "v": 3.73, "lo": 1.98, "hi": 6.74}, {"n": "GPT-4o", "d": "2024-05-13", "s": true, "v": 6.99, "lo": 4.0, "hi": 12.91}, {"n": "Claude 3.5 Sonnet", "d": "2024-06-20", "s": true, "v": 11.4, "lo": 5.49, "hi": 22.38}, {"n": "o1-preview", "d": "2024-09-12", "s": true, "v": 20.33, "lo": 11.72, "hi": 33.38}, {"n": "Claude 3.5 Sonnet (neu)", "d": "2024-10-22", "s": true, "v": 20.52, "lo": 10.14, "hi": 40.82}, {"n": "o1", "d": "2024-12-05", "s": true, "v": 38.83, "lo": 21.16, "hi": 64.95}, {"n": "Claude 3.7 Sonnet", "d": "2025-02-24", "s": true, "v": 60.39, "lo": 33.01, "hi": 104.23}, {"n": "o3", "d": "2025-04-16", "s": true, "v": 119.73, "lo": 74.62, "hi": 190.94}, {"n": "Claude Opus 4", "d": "2025-05-22", "s": false, "v": 100.37, "lo": 59.99, "hi": 163.45}, {"n": "Claude Opus 4.1", "d": "2025-08-05", "s": false, "v": 100.47, "lo": 59.27, "hi": 159.45}, {"n": "GPT-5", "d": "2025-08-07", "s": true, "v": 203.01, "lo": 112.64, "hi": 405.55}, {"n": "Gemini 3 Pro", "d": "2025-11-18", "s": true, "v": 224.33, "lo": 139.57, "hi": 379.24}, {"n": "GPT-5.1-Codex-Max", "d": "2025-11-19", "s": false, "v": 223.71, "lo": 134.31, "hi": 396.21}, {"n": "Claude Opus 4.5", "d": "2025-11-24", "s": true, "v": 292.99, "lo": 161.72, "hi": 623.7}, {"n": "GPT-5.2", "d": "2025-12-11", "s": true, "v": 352.25, "lo": 198.07, "hi": 815.18}, {"n": "Claude Opus 4.6", "d": "2026-02-05", "s": true, "v": 718.81, "lo": 316.69, "hi": 3633.79}, {"n": "GPT-5.3-Codex", "d": "2026-02-05", "s": false, "v": 349.53, "lo": 194.91, "hi": 816.35}, {"n": "Gemini 3.1 Pro", "d": "2026-02-19", "s": false, "v": 384.15, "lo": 233.5, "hi": 694.75}, {"n": "GPT-5.4", "d": "2026-03-05", "s": false, "v": 341.74, "lo": 186.58, "hi": 768.78}, {"n": "Claude Mythos Preview (früh)", "d": "2026-04-07", "s": true, "v": 1044.78, "lo": 508.88, "hi": 3304.26}];
+const EPOCH=window.EPOCH_GPQA75;
+
+(function(){
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+const css=v=>getComputedStyle(document.querySelector('.viz-root')).getPropertyValue(v).trim();
+const DAY=864e5, D=s=>new Date(s+'T00:00:00');
+const fD=d=>d.toLocaleDateString('de-DE',{month:'short',year:'numeric'});
+const fMin=m=>m<1?Math.round(m*60)+' s':m<60?m.toLocaleString('de-DE',{maximumFractionDigits:m<10?1:0})+' min':(m/60).toLocaleString('de-DE',{maximumFractionDigits:1})+' h';
+function tipAt(tip,svg,W,H,x,y,html){const r=svg.getBoundingClientRect();tip.innerHTML=html;tip.style.display='block';
+  const tx=x*r.width/W, ty=y*r.height/H; tip.style.left=Math.max(0,Math.min(tx+10,r.width-tip.offsetWidth-4))+'px'; tip.style.top=Math.max(0,ty-tip.offsetHeight-8)+'px';}
+
+/* ---- Diagramm 1: METR ---- */
+let scale='log';
+const M=METR.map(r=>({...r,t:D(r.d)}));
+// Trend: OLS auf log2(Horizont) der jeweils besten Modelle ab 2023 bis 16 h (= METRs Verfahren, ergibt 128,7 Tage)
+const S=M.filter(r=>r.s&&r.d>='2023-01-01'&&r.v<=960);
+const xs0=S.map(r=>(r.t-D('2023-01-01'))/DAY), ys0=S.map(r=>Math.log2(r.v));
+const mx=xs0.reduce((a,b)=>a+b)/xs0.length,my=ys0.reduce((a,b)=>a+b)/ys0.length;
+const slope=xs0.reduce((s,x,i)=>s+(x-mx)*(ys0[i]-my),0)/xs0.reduce((s,x)=>s+(x-mx)**2,0), icpt=my-slope*mx;
+const trend=t=>Math.pow(2,icpt+slope*(t-D('2023-01-01'))/DAY);
+// Beispiele aus dem Lehralltag an METRs Achsenmarken (4 s, 36 s, 6 min, 1 h, 4 h, 16 h)
+const EX=[[4/60,'4 s','Faktenfrage beantworten'],[36/60,'36 s','Kurze E-Mail an Studierende'],[6,'6 min','Feedback zu einer Übungsabgabe'],[60,'1 h','Übungsblatt mit Lösungen'],[240,'4 h','Vorlesungseinheit mit Folien'],[960,'16 h','Fallstudie mit Teaching Note']];
+const LABELED=['GPT-2','GPT-3 (davinci-002)','GPT-3.5','GPT-4','GPT-4o','o1','o3','GPT-5','Claude Opus 4.6','Claude Mythos Preview (früh)'];
+const short=n=>n.replace(' (davinci-002)','').replace(' (früh)','').replace('Claude Mythos Preview','Mythos Preview');
+let idx=M.length-1, timer=null;
+const tI=document.getElementById('tidx'); tI.max=M.length-1; tI.value=idx;
+tI.addEventListener('input',()=>{stop();idx=+tI.value;draw1();});
+const pb=document.getElementById('play');
+function stop(){if(timer){clearInterval(timer);timer=null;pb.textContent='▶ Abspielen';}}
+pb.onclick=()=>{if(timer){stop();return;}if(idx>=M.length-1)idx=0;pb.textContent='❚❚ Pause';
+  timer=setInterval(()=>{idx++;tI.value=idx;draw1();if(idx>=M.length-1)stop();},650);draw1();};
+document.getElementById('s-log').onclick=()=>{scale='log';draw1();};
+document.getElementById('s-lin').onclick=()=>{scale='lin';draw1();};
+document.querySelector('#t1 tbody').innerHTML=M.map(r=>`<tr><td>${r.n}</td><td>${r.d}</td><td class="num">${fMin(r.v)}</td><td class="num">${fMin(r.lo)} – ${fMin(r.hi)}</td></tr>`).join('');
+function draw1(){
+  const box=document.getElementById('c1');box.querySelectorAll('svg').forEach(s=>s.remove());
+  document.getElementById('s-log').setAttribute('aria-pressed',scale==='log');document.getElementById('s-lin').setAttribute('aria-pressed',scale==='lin');
+  const narrow=(box.clientWidth||880)<600;
+  const W=box.clientWidth||880,H=Math.max(300,Math.min(420,W*0.5)),m={l:44,r:narrow?14:96,t:10,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':'METR-Zeithorizonte 2019 bis 2026: von 3 Sekunden (GPT-2) bis 17 Stunden (Claude Mythos Preview)'});box.prepend(svg);
+  const X0=D('2019-01-01'),X1=D('2026-07-01'),xs=t=>m.l+(t-X0)/(X1-X0)*iw;
+  const LMIN=Math.log10(2/60),LMAX=Math.log10(40*60),LINMAX=20*60;
+  const ys=scale==='log'?v=>m.t+ih-(Math.log10(v)-LMIN)/(LMAX-LMIN)*ih:v=>m.t+ih-Math.min(v,LINMAX)/LINMAX*ih;
+  const cp=el('clipPath',{id:'cp1'},el('defs',{},svg));el('rect',{x:m.l,y:m.t,width:iw,height:ih},cp);
+  // schraffierte Zone über 16 h
+  const pat=el('pattern',{id:'hatch',width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},svg.querySelector('defs'));
+  el('line',{x1:0,y1:0,x2:0,y2:6,stroke:css('--axis'),'stroke-width':1.2},pat);
+  const y16=ys(960);el('rect',{x:m.l,y:m.t,width:iw,height:Math.max(0,y16-m.t),fill:'url(#hatch)',opacity:.8},svg);
+  el('text',{x:m.l+iw/2,y:m.t+Math.max(12,(y16-m.t)/2+4),'text-anchor':'middle',class:'lab2'},svg).textContent='über 16 h nicht mehr verlässlich messbar';
+  // Achsenmarken mit Lehrbeispielen
+  const ticks=scale==='log'?EX:[[0,'0',''],[240,'4 h','Vorlesungseinheit mit Folien'],[480,'8 h',''],[960,'16 h','Fallstudie mit Teaching Note']];
+  const best=Math.max(...M.slice(0,idx+1).filter(r=>r.s).map(r=>r.v));
+  ticks.forEach(([v,l,ex])=>{const y=ys(v);el('line',{x1:m.l,x2:m.l+iw,y1:y,y2:y,stroke:css('--grid')},svg);
+    el('text',{x:m.l-6,y:y+4,'text-anchor':'end',class:'tick'},svg).textContent=l;
+    if(ex&&!narrow){const reached=best>=v;const t=el('text',{x:m.l+6,y:y-4,class:'exl'},svg);t.textContent=ex;t.setAttribute('fill',reached?css('--text-primary'):css('--muted'));t.setAttribute('font-weight',reached?'600':'400');}});
+  for(let yr=2019;yr<=2026;yr+=narrow?2:1){el('text',{x:xs(D(yr+'-01-01')),y:H-8,'text-anchor':'middle',class:'tick'},svg).textContent=yr;}
+  el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css('--axis')},svg);
+  const g=el('g',{'clip-path':'url(#cp1)'},svg);
+  const shown=M.slice(0,idx+1), cur=M[idx];
+  // Trend bis zum aktuellen Zeitpunkt
+  const t0=D('2023-03-14'),t1=new Date(Math.min(+cur.t,+D('2026-04-07')));
+  if(cur.t>=t0){let dp='';for(let t=+t0;t<=+t1;t+=14*DAY)dp+=(dp?'L':'M')+xs(new Date(t)).toFixed(1)+','+ys(trend(new Date(t))).toFixed(1);
+    el('path',{d:dp,fill:'none',stroke:css('--series-1'),'stroke-width':1.5,'stroke-dasharray':'5 4',opacity:.6},g);}
+  const tip=document.getElementById('tip1');
+  shown.forEach(r=>{el('line',{x1:xs(r.t),x2:xs(r.t),y1:ys(r.lo),y2:ys(r.hi),stroke:css('--muted'),'stroke-width':1,opacity:.45},g);});
+  shown.slice().sort((a,b)=>a.s-b.s).forEach(r=>{const x=xs(r.t),y=ys(r.v),over=r.v>960;
+    el('circle',{cx:x,cy:y,r:r===cur?7:(r.s?5:4),fill:over?css('--muted'):css('--series-1'),'fill-opacity':r.s?1:.3,stroke:r===cur?css('--text-primary'):css('--surface-1'),'stroke-width':r===cur?2:1.5},g);
+    const h=el('circle',{cx:x,cy:y,r:11,fill:'transparent',tabindex:0},svg);
+    const show=()=>tipAt(tip,svg,W,H,x,y,`<b>${r.n}</b><span>${fD(r.t)} · ${fMin(r.v)} (${fMin(r.lo)}–${fMin(r.hi)})</span>`);
+    h.addEventListener('pointerenter',show);h.addEventListener('focus',show);h.addEventListener('pointerleave',()=>tip.style.display='none');h.addEventListener('blur',()=>tip.style.display='none');
+    if(LABELED.includes(r.n)&&(!narrow||['GPT-2','GPT-4','Claude Mythos Preview (früh)'].includes(r.n))){
+      const right=(x<m.l+40)||(!narrow&&x>m.l+iw*0.8); el('text',{x:right?x+9:x-9,y:y+4,'text-anchor':right?'start':'end',class:'mlab'},svg).textContent=short(r.n);}});
+  // Anzeige
+  const ex=[...EX].reverse().find(e=>best>=e[0]);
+  document.getElementById('now1').innerHTML=`<span class="d">${fD(cur.t)}</span><span class="m">${short(cur.n)}: ${fMin(cur.v)}</span>`+
+    (ex?`<span class="ex">reicht für: ${ex[2]}${best>960?' (jenseits der Messgrenze)':''}</span>`:`<span class="ex">reicht noch für keine der Beispielaufgaben</span>`);
+}
+
+/* ---- Diagramm 2: Epoch ---- */
+const E=EPOCH.map(r=>({...r,t:D(r.d)}));
+// Preisstufen: Rückgang gegenüber dem bis dahin günstigsten Modell und Faktor seit o3
+E.forEach((r,i)=>{r.fall=i?1-r.c/E[i-1].c:null;r.faktor=E[0].c/r.c;});
+const kurz=n=>n.replace(/ \(.*\)$/,'');
+const fPct=x=>'−'+Math.round(x*100)+'\u00a0%';
+const fCtGross=c=>c.toLocaleString('de-DE',{maximumSignificantDigits:c<1?2:3});
+const fCt=c=>c.toLocaleString('de-DE',c<0.1?{maximumSignificantDigits:2}:c<1?{maximumFractionDigits:2}:{maximumSignificantDigits:3})+' ct';
+// Faktor ab 10 abgerundet, damit die Endstufe wie in der Überschrift 725 zeigt (29,8906 / 0,0412 = 725,5)
+const fFak=f=>f<10?f.toLocaleString('de-DE',{maximumFractionDigits:1}):Math.floor(f).toLocaleString('de-DE');
+const druck=document.documentElement.classList.contains('druck');
+document.querySelector('#t2 tbody').innerHTML=E.map(r=>`<tr><td>${r.n}</td><td>${r.d}</td><td class="num">${r.a.toLocaleString('de-DE')} %</td><td class="num">${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})} ct</td></tr>`).join('');
+document.querySelector('#t2 thead tr').insertAdjacentHTML('beforeend','<th class="num">Rückgang zur Vorstufe</th>');
+document.querySelectorAll('#t2 tbody tr').forEach((tr,i)=>tr.insertAdjacentHTML('beforeend',`<td class="num">${i?fPct(E[i].fall):'–'}</td>`));
+let sel2=E.length-1, last2=-1, timer2=null;
+let ansicht2='raster', rSel=0, rBis=0;
+const ts=document.getElementById('tsel');
+ts.max=E.length-1;ts.value=sel2;
+const pb2=document.getElementById('play2');
+function stop2(){if(timer2){clearInterval(timer2);timer2=null;pb2.textContent='▶ Abspielen';}}
+function setSel(i){sel2=i;ts.value=i;draw2();}
+ts.addEventListener('input',()=>{stop2();setSel(+ts.value);});
+pb2.onclick=()=>{if(timer2){stop2();return;}if(sel2>=E.length-1){last2=-1;setSel(0);}pb2.textContent='❚❚ Pause';
+  timer2=setInterval(()=>{setSel(sel2+1);if(sel2>=E.length-1)stop2();},1600);};
+function draw2(){
+  const box=document.getElementById('c2');box.querySelectorAll('svg').forEach(s=>s.remove());
+  const W=box.clientWidth||880,narrow=W<600,H=Math.max(260,Math.min(340,W*0.4)),m={l:50,r:14,t:30,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':'Kosten je GPQA-Frage bei 75 % Genauigkeit in sieben Preisstufen: von 29,9 Cent (o3, Januar 2025) auf 0,04 Cent (GPT-5.6 Luna, Juli 2026); die größten Sprünge im März 2025 (−70 %), Juni 2025 (−85 %) und Februar 2026 (−69 %)'});box.prepend(svg);
+  const X0=D('2025-01-01'),X1=D('2026-09-01'),xs=t=>m.l+(t-X0)/(X1-X0)*iw;
+  const LMIN=-2,LMAX=Math.log10(50),ys=v=>m.t+ih-(Math.log10(v)-LMIN)/(LMAX-LMIN)*ih;
+  [[0.01,'0,01 ct'],[0.1,'0,1 ct'],[1,'1 ct'],[10,'10 ct']].forEach(([v,l])=>{const y=ys(v);el('line',{x1:m.l,x2:m.l+iw,y1:y,y2:y,stroke:css('--grid')},svg);el('text',{x:m.l-6,y:y+4,'text-anchor':'end',class:'tick'},svg).textContent=l;});
+  [['2025-01-01','2025'],['2025-07-01','Jul'],['2026-01-01','2026'],['2026-07-01','Jul']].forEach(([d,l])=>el('text',{x:xs(D(d)),y:H-8,'text-anchor':'middle',class:'tick'},svg).textContent=l);
+  el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css('--axis')},svg);
+  const shown=E.slice(0,sel2+1), cur=E[sel2], akt=druck?-1:sel2;
+  // Stufenlinie bis zur gewählten Stufe; nach der letzten Stufe bis Anfang Aug. 2026
+  // beim schrittweisen Aufbau nur ein kurzes Stück weiterführen, damit die Linie den nächsten Sprung nicht verrät
+  const ende=sel2<E.length-1?new Date(+cur.t+20*DAY):D('2026-08-03');
+  let p='';shown.forEach((r,i)=>{const x=xs(r.t),y=ys(r.c);p+=(i?`H${x.toFixed(1)}V${y.toFixed(1)}`:`M${x.toFixed(1)},${y.toFixed(1)}`);});
+  p+=`H${xs(ende).toFixed(1)}`;
+  el('path',{d:p,fill:'none',stroke:css('--series-2'),'stroke-width':2},svg);
+  // Hervorhebung: Sprung der aktuellen Stufe
+  if(akt>0){const x=xs(cur.t);el('line',{x1:x,x2:x,y1:ys(E[akt-1].c),y2:ys(cur.c),stroke:css('--text-primary'),'stroke-width':3.5,'stroke-linecap':'round'},svg);}
+  // Beschriftung jeder Stufe links neben dem Sprung: Rückgang und Monat
+  // Folgt die nächste Stufe dicht (Feb. 2026: zwei Stufen in zwölf Tagen), steht die Beschriftung über der Vorstufe
+  // Auf schmalen Bildschirmen nur die aktuelle Stufe, sonst überlappen die Beschriftungen
+  shown.forEach((r,i)=>{if(!i||(narrow&&i!==akt))return;const x=xs(r.t),y0=ys(E[i-1].c),y1=ys(r.c);
+    const eng=i<E.length-1&&xs(E[i+1].t)-x<40;
+    const y=eng&&!narrow?y0-18:Math.max((y0+y1)/2+4,y0+15);
+    const g=el('g',{class:'stufe'+(i===akt?' akt':'')+(i===akt&&i!==last2?' neu':'')},svg);
+    el('text',{x:x-9,y,'text-anchor':'end',class:'pct'},g).textContent=fPct(r.fall);
+    if(!narrow)el('text',{x:x-9,y:y+12,'text-anchor':'end',class:'dt'},g).textContent=fD(r.t);});
+  last2=akt;
+  const tip=document.getElementById('tip2');
+  shown.forEach((r,i)=>{const x=xs(r.t),y=ys(r.c);el('circle',{cx:x,cy:y,r:4.5,fill:css('--series-2'),stroke:css('--surface-1'),'stroke-width':1.5},svg);
+    const h=el('circle',{cx:x,cy:y,r:11,fill:'transparent',tabindex:0},svg);
+    const show=()=>tipAt(tip,svg,W,H,x,y,`<b>${r.n}</b><span>${fD(r.t)} · ${fCt(r.c)} · ${r.a.toLocaleString('de-DE')} % richtig${i?' · '+fPct(r.fall):''}</span>`);
+    h.addEventListener('pointerenter',show);h.addEventListener('focus',show);h.addEventListener('pointerleave',()=>tip.style.display='none');h.addEventListener('blur',()=>tip.style.display='none');});
+  if(!druck)el('circle',{cx:xs(cur.t),cy:ys(cur.c),r:7,fill:'none',stroke:css('--text-primary'),'stroke-width':2},svg);
+  // Anfangs- und Endwert
+  const a=E[0],b=E[E.length-1];
+  el('text',{x:xs(a.t)-4,y:ys(a.c)-10,class:'lab'},svg).textContent='o3: 29,9 ct';
+  if(sel2===E.length-1)el('text',{x:xs(b.t),y:ys(b.c)+20,'text-anchor':'middle',class:'lab'},svg).textContent=narrow?'0,04 ct':'GPT-5.6 Luna: 0,04 ct';
+  // Anzeige unter dem Diagramm
+  document.getElementById('now2').innerHTML=`<span class="d">${fD(cur.t)}</span><span class="m">${kurz(cur.n)}: ${fCt(cur.c)} je Frage</span>`+
+    (sel2?`<span class="ex">Kosten um ${Math.round(cur.fall*100)} % gefallen · ${fFak(cur.faktor)}-mal billiger als o3</span>`:`<span class="ex">Ausgangspunkt: erstes Modell mit 75 % richtigen Antworten</span>`)+(sel2===E.length-1?`<span class="gesamt">${gesamtSatz()}</span>`:'');
+}
+
+/* ---- Diagramm 2, Raster: was 30 Cent kaufen (Darstellungsidee nach Mollick, 2026) ----
+   1 Kästchen = 1 Frage zum o3-Preis vom Januar 2025. Raster 29 × 25 = 725 Kästchen.
+   Je Stufe kaufen 29,89 ct E[0].c/E[s].c Fragen; Bruchteile füllen das nächste Kästchen anteilig.
+   Vor jeder neuen Stufe müssen Lesende eine Schätzung eingeben (Vorhersage vor dem Aufdecken). */
+const SP=29, ZE=25, NMAX=SP*ZE;
+const NQ=E.map(r=>Math.min(E[0].c/r.c,NMAX));
+const VOLL=NQ.map(n=>Math.floor(n+1e-9));
+// Anzeige: unter 10 mit einer Nachkommastelle, sonst abgerundet (Endstufe 725,5 → 725 wie in der Überschrift)
+const fN=n=>n<10?n.toLocaleString('de-DE',{maximumFractionDigits:1}):Math.floor(n).toLocaleString('de-DE');
+const hex2=h=>{h=h.replace('#','');if(h.length===3)h=[...h].map(c=>c+c).join('');return[0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
+const mix=(a,b,w)=>{const A=hex2(a),B=hex2(b);return'rgb('+A.map((v,i)=>Math.round(v*w+B[i]*(1-w))).join(',')+')';};
+// Farbe je Stufe, fest und unabhängig von der gezeigten Stufe (Farbe folgt der Stufe, nicht dem Rang):
+// o3 dunkel, danach sieben kategoriale Farben in fester Reihenfolge (Palette der dataviz-Vorlage,
+// geprüft auf Farbfehlsichtigkeit hell und dunkel). So zeigt die Fläche jeder Farbe, wie viel ein Schritt ausmachte.
+function farben(){return[css('--text-primary'),...[1,2,3,4,5,6,7].map(i=>css('--st'+i))];}
+// Kästchen k ist voll ab der ersten Stufe t mit VOLL[t] > k; anteilig in Stufe s, wenn k === VOLL[s]
+function zeichneRaster(box,W,s,o={}){
+  const cell=W/SP,gap=Math.max(1,cell*0.18),r=Math.min(3,cell*0.18),H=cell*ZE,F=farben(s);
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':`Raster aus ${NMAX} Kästchen; ${fN(NQ[s])} gefüllt: so viele Fragen kaufen 30 Cent im ${fD(E[s].t)}`},box);
+  const leer=css('--grid'),neuAb=o.anim!=null?VOLL[o.anim]:Infinity,nNeu=Math.max(1,Math.ceil(NQ[s])-(o.anim!=null?VOLL[o.anim]:0));
+  for(let k=0;k<NMAX;k++){const x=(k%SP)*cell,y=Math.floor(k/SP)*cell,w=cell-gap;
+    const fuell=Math.max(0,Math.min(1,NQ[s]-k));
+    el('rect',{x,y,width:w,height:w,rx:r,fill:leer,opacity:.55},svg);
+    if(fuell<=0)continue;
+    let t=0;while(t<s&&VOLL[t]<=k)t++;
+    if(fuell<1)t=s;
+    const a={x,y,width:w*fuell,height:w,rx:fuell<1?Math.min(r,w*fuell/2):r,fill:F[t],class:'k'};
+    if(k>=neuAb&&!o.druck){a.class='k rein';a.style=`animation-delay:${Math.round((k-neuAb)/nNeu*1100)}ms`;}
+    el('rect',a,svg);
+    if(k===0)el('rect',{x:-1,y:-1,width:w+2,height:w+2,rx:r+1,fill:'none',stroke:css('--text-primary'),'stroke-width':1.5},svg);}
+  return svg;}
+// Ablauf: (1) eine Schätzung für Juli 2026, (2) Stufe für Stufe mit „Weiter“, (3) Auflösung auf der letzten Stufe.
+// rBis = letzte aufgedeckte Stufe, rSel = gezeigte Stufe, tipp = Schätzung (null = noch offen)
+const schaetzBox=document.getElementById('schaetz'), LETZT=E.length-1;
+let tipp=null;
+const MON=['Jan.','Feb.','März','Apr.','Mai','Juni','Juli','Aug.','Sep.','Okt.','Nov.','Dez.'];
+const fMon=d=>MON[d.getMonth()]+' '+d.getFullYear();
+const fMonK=d=>(d.getMonth()+1)+'/'+String(d.getFullYear()).slice(2);
+// kurze Modellnamen für den Zeitstrahl
+const zName=n=>kurz(n).replace(' 397B-A17B',' 397B').replace('GPT-5.6 Luna','GPT-5.6 Luna');
+function abweichung(g,n){const q=g/n,z=x=>x.toLocaleString('de-DE',{maximumFractionDigits:1})+'-mal';return q>=0.8&&q<=1.25?'Sie haben fast getroffen':q<1?z(n/g)+' so viele wie geschätzt':'Ihre Schätzung lag '+z(q)+' zu hoch';}
+let schaetzStand='';
+function schaetzUI(){
+  // nur bei geändertem Zustand neu aufbauen, sonst verliert ein Fensterwechsel (z. B. Bildschirmtastatur) die Eingabe
+  const st=(tipp==null?'offen':'t')+'|'+(rBis>=LETZT&&rSel===LETZT);if(st===schaetzStand)return;schaetzStand=st;
+  schaetzBox.classList.remove('ruhig','ende');
+  if(tipp==null){
+    schaetzBox.innerHTML=`<p id="schaetz-t"><span class="badge">Ihre Schätzung zuerst</span>Im Januar 2025 kostete eine Frage auf Promotionsniveau mit o3 rund 30 Cent (ein Kästchen). <b>Wie viele solcher Fragen kaufen dieselben 30 Cent im Juli 2026?</b></p>
+     <div class="row"><input type="number" id="tipp" min="1" step="any" inputmode="decimal" aria-label="Ihre Schätzung: Anzahl Fragen für 30 Cent im Juli 2026" placeholder="Anzahl">
+     <button class="playbtn" id="abgeben" disabled>Schätzung abgeben</button>
+     <span class="hint">Danach klicken Sie sich Stufe für Stufe durch die Preise seit o3.</span></div>`;
+    const inp=document.getElementById('tipp'),btn=document.getElementById('abgeben');
+    const ok=()=>+inp.value>0;
+    inp.addEventListener('input',()=>{btn.disabled=!ok();});
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&ok()){e.preventDefault();abgeben(+inp.value);}});
+    btn.onclick=()=>{if(ok())abgeben(+inp.value);};
+    return;}
+  if(rBis>=LETZT&&rSel===LETZT){
+    const n=NQ[LETZT];
+    schaetzBox.classList.add('ende');
+    schaetzBox.innerHTML=`<p id="schaetz-t"><b>Ihre Schätzung: ${tipp.toLocaleString('de-DE')} ${tipp===1?'Frage':'Fragen'}.</b> Im Juli 2026 kaufen 30 Cent ${fN(n)} Fragen, ${abweichung(tipp,n)}.
+     Auf der <button class="chip ziel" id="zur-treppe">Treppe</button> sehen Sie dieselben Stufen auf logarithmischer Achse: Dort sind die Sprünge ähnlich groß, auch der letzte.</p>`;
+    document.getElementById('zur-treppe').onclick=()=>setAnsicht('treppe');return;}
+  schaetzBox.classList.add('ruhig');
+  schaetzBox.innerHTML=`<p id="schaetz-t">Ihre Schätzung für Juli 2026: <b>${tipp.toLocaleString('de-DE')} ${tipp===1?'Frage':'Fragen'}</b>. Die Auflösung kommt auf der letzten Stufe.</p>`;
+}
+// Fokus erst nach dem Tastendruck auf „Weiter“ setzen, sonst löst dieselbe Enter-Taste gleich die erste Stufe aus
+function abgeben(g){tipp=g;drawR();setTimeout(()=>rVor.focus({preventScroll:true}),250);}
+function weiter(){if(tipp==null)return;
+  if(rSel<rBis){rSel++;drawR();return;}
+  if(rBis<LETZT){const vorher=rBis;rBis++;rSel=rBis;drawR(vorher);}}
+function springe(i){if(tipp==null)return;if(i<=rBis){rSel=i;drawR();}else if(i===rBis+1)weiter();}
+const rZur=document.getElementById('r-zur'),rVor=document.getElementById('r-vor'),zeiger=document.getElementById('zeiger');
+rZur.onclick=()=>{if(rSel>0){rSel--;drawR();}};
+rVor.onclick=weiter;
+document.getElementById('r-neu').onclick=()=>{rSel=rBis=0;tipp=null;schaetzStand='';drawR();const f=document.getElementById('tipp');if(f)f.focus({preventScroll:true});};
+// Zeitstrahl: acht Stufen in gleichen Abständen; aufgedeckte Stufen in der Farbe ihrer Kästchen,
+// die nächste Stufe pulsiert und ist anklickbar, spätere bleiben leere Kreise ohne Zahl
+function drawZeit(){
+  const box=document.getElementById('zeit');box.innerHTML='';
+  const W=box.clientWidth||880,narrow=W<600,H=narrow?66:80,m={l:narrow?16:40,r:narrow?16:40},y=24,dx=(W-m.l-m.r)/LETZT;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H},box);
+  const F=farben(Math.max(rSel,1)),X=i=>m.l+i*dx;
+  // Linie: bis zur gezeigten Stufe kräftig, danach gestrichelt
+  el('line',{x1:X(0),x2:X(LETZT),y1:y,y2:y,stroke:css('--grid'),'stroke-width':2,'stroke-dasharray':'4 4'},svg);
+  if(rSel>0)el('line',{x1:X(0),x2:X(rSel),y1:y,y2:y,stroke:css('--text-secondary'),'stroke-width':3},svg);
+  const naechste=tipp!=null&&rSel===rBis&&rBis<LETZT?rBis+1:-1;
+  E.forEach((r,i)=>{
+    const auf=i<=rSel, akt=i===rSel, x=X(i);
+    const g=el('g',{class:(akt?'akt':'')+(tipp!=null&&(i<=rBis||i===naechste)?' klick':'')},svg);
+    if(tipp!=null&&(i<=rBis||i===naechste)){g.setAttribute('tabindex',0);g.setAttribute('role','button');
+      g.setAttribute('aria-label',i===naechste?`Nächste Preisstufe aufdecken: ${fMon(r.t)}`:`Preisstufe ${fMon(r.t)} zeigen`);
+      g.addEventListener('click',()=>springe(i));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();springe(i);}});}
+    if(i===naechste)el('circle',{cx:x,cy:y,r:8,fill:'none',stroke:css('--series-2'),'stroke-width':2.5,class:'ring'},g);
+    el('circle',{cx:x,cy:y,r:16,fill:'transparent'},g);   // größere Klickfläche
+    el('circle',{cx:x,cy:y,r:akt?9:7,fill:auf?F[i]:css('--surface-1'),stroke:akt?css('--text-primary'):auf?F[i]:i===naechste?css('--series-2'):css('--axis'),'stroke-width':akt?2.5:i===naechste?2:1.5,class:'z-dot'},g);
+    // über dem Punkt: so viele Fragen kaufen 30 Cent (nur aufgedeckt), an der nächsten Stufe ein Fragezeichen
+    if(auf&&(!narrow||akt||i===0))el('text',{x,y:y-14,'text-anchor':'middle',class:'z-n'},g).textContent=fN(NQ[i]);
+    else if(i===naechste)el('text',{x,y:y-14,'text-anchor':'middle',class:'z-k'},g).textContent='?';
+    // unter dem Punkt: Monat; Modellname nur aufgedeckt (schmal: nur die aktuelle Stufe)
+    el('text',{x,y:y+26,'text-anchor':'middle',class:'z-d'},g).textContent=narrow?fMonK(r.t):fMon(r.t);
+    if(auf&&(!narrow||akt)){const t=el('text',{x:narrow?Math.max(40,Math.min(W-40,x)):x,y:y+40,'text-anchor':'middle',class:'z-m'},g);t.textContent=zName(r.n);}
+  });
+}
+// Gesamtrückgang von o3 (Jan. 2025) bis zur letzten Stufe, aus den Daten berechnet: 17 Monate, −99,9 %
+function gesamtSatz(){const a=E[0],b=E[LETZT],mon=Math.round((b.t-a.t)/(30.44*DAY));
+  const pct=(1-b.c/a.c)*100;
+  return `Insgesamt fiel der Preis in ${mon} Monaten um ${pct.toLocaleString('de-DE',{maximumFractionDigits:1})} %, von ${fCt(a.c)} auf ${fCt(b.c)} je Frage.`;}
+function drawR(anim){
+  const box=document.getElementById('c2r');box.innerHTML='';
+  const W=Math.min(box.clientWidth||480,480);
+  zeichneRaster(box,W,rSel,{anim});
+  drawZeit();
+  const s=rSel,cur=E[s];
+  document.getElementById('rinfo').innerHTML=`<div class="k">Preis je Frage, ${fMon(cur.t)}</div><div class="big"><i class="sw-big" style="background:${farben()[s]}"></i>${fCtGross(cur.c)}<small>ct</small></div>
+    <div class="s">${kurz(cur.n)}${s?' · '+fPct(cur.fall)+' zur Vorstufe':''}</div>
+    <div class="s">30 Cent kaufen ${fN(NQ[s])} ${NQ[s]<1.5?'Frage':'Fragen'}</div>`;
+  let txt;
+  if(!s)txt=tipp==null?'':`<span class="ex">Ausgangspunkt: o3 ist das erste Modell mit 75 % richtigen Antworten</span>`;
+  else{const neu=VOLL[s]-VOLL[s-1];
+    txt=`<span class="m">+${neu.toLocaleString('de-DE')} Kästchen</span><span class="ex">Preis ${fPct(cur.fall)} zur Vorstufe</span>`;
+    if(s===LETZT){const vorher=VOLL[s-1],maxF=Math.max(...E.slice(1,s).map(r=>r.fall)),wo=E.slice(1,s).find(r=>r.fall===maxF);
+      txt+=`<span class="ex" style="border-radius:10px">Der letzte Schritt brachte ${neu} Kästchen, mehr als alle früheren zusammen (${vorher}). Der Preis fiel dabei um ${Math.round(cur.fall*100)} %, weniger als im ${fMon(wo.t)} (${fPct(maxF)}). Als fiele der Preis eines Neuwagens von 50.000 auf 69.</span><span class="gesamt">${gesamtSatz()}</span>`;}}
+  document.getElementById('now2r').innerHTML=txt;
+  // Erläuterung zum letzten Sprung, nur auf der letzten Stufe (Vermutungen nach Emberson & Roodman, 2026)
+  document.getElementById('warum').hidden=!(s===LETZT);
+  // Bedienung: vor der Schätzung gesperrt; danach zeigt der Zeiger auf „Weiter“
+  const kannWeiter=tipp!=null&&(rSel<rBis||rBis<LETZT);
+  rZur.disabled=tipp==null||rSel===0;
+  rVor.disabled=!kannWeiter;rVor.hidden=tipp!=null&&!kannWeiter;
+  rVor.textContent=kannWeiter?`Weiter: ${fMon(E[rSel+1].t)} ▶`:'Weiter ▶';
+  zeiger.hidden=!kannWeiter;
+  document.getElementById('r-pos').textContent=tipp==null?'erst schätzen, dann geht es los':`Preisstufe ${rSel+1} von ${E.length}`;
+  schaetzUI();
+}
+function setAnsicht(a){ansicht2=a;stop2();
+  document.getElementById('v-raster').setAttribute('aria-pressed',a==='raster');document.getElementById('v-treppe').setAttribute('aria-pressed',a==='treppe');
+  document.getElementById('ansicht-raster').hidden=a!=='raster';document.getElementById('ansicht-treppe').hidden=a!=='treppe';
+  if(a==='raster')drawR();else draw2();}
+document.getElementById('v-raster').onclick=()=>setAnsicht('raster');
+document.getElementById('v-treppe').onclick=()=>setAnsicht('treppe');
+// Druckfassung: vier kleine Raster unter der Treppe (Jan. 2025, Juni 2025, Feb. 2026, Juli 2026)
+function drawDruckR(){if(!druck)return;const box=document.getElementById('druck2r');box.innerHTML='';
+  const t=document.createElement('div');t.className='dr-titel';t.textContent='Was 30 Cent kaufen: ein Kästchen = eine Frage zum o3-Preis vom Januar 2025 (Raster mit 725 Kästchen)';box.appendChild(t);
+  // Farbschlüssel: in der Druckfassung fehlt der Zeitstrahl, der online die Farben erklärt
+  const lg=document.createElement('div');lg.className='legend dr-leg';const Fd=farben();
+  lg.innerHTML=E.map((r,k)=>`<span><i class="sw" style="background:${Fd[k]}"></i>${fMon(r.t)}${k?' ('+fPct(r.fall)+')':' (o3)'}</span>`).join('');box.appendChild(lg);
+  const reihe=document.createElement('div');reihe.className='dr-reihe';box.appendChild(reihe);
+  const W=(Math.min(box.clientWidth||880,880)-50-3*18)/4;
+  [0,2,5,7].forEach(s=>{const p=document.createElement('div');reihe.appendChild(p);
+    const h=document.createElement('div');h.className='h';h.innerHTML=`${fD(E[s].t)}: ${fN(NQ[s])} ${NQ[s]<1.5?'Frage':'Fragen'}<br><span>${kurz(E[s].n)}, ${fCt(E[s].c)} je Frage</span>`;p.appendChild(h);
+    zeichneRaster(p,W,s,{druck:true});});}
+
+/* ---- Diagramm 3: Arbeitsweisen nach Mollick (Konzeptschema, eigene Zuordnung der Schritte) ---- */
+const SCHRITTE=['Ziel setzen','Planen','Ausführen','Entscheiden','Prüfen','Freigeben'];
+const WEISEN=[
+ {k:'cen',n:'Centaur',t:'Arbeit aufgeteilt',c:[['M'],['M'],['MK'],['M'],['M'],['M']],
+  e:'Mensch und KI teilen die Aufgabe in getrennte Teile. Jede Entscheidung bleibt beim Menschen.'},
+ {k:'cyb',n:'Cyborg',t:'Arbeit verwoben',c:[['M'],['MK'],['MK'],['MK'],['MK'],['M']],
+  e:'Mensch und KI arbeiten so verwoben, dass sich die Beiträge nicht mehr trennen lassen.'},
+ {k:'bes',n:'Beschwörer',t:'Agenten beauftragen',c:[['M'],['K'],['K'],['K'],['M'],['M']],
+  e:'Der Mensch beauftragt Agenten und bewertet, was zurückkommt. Den Weg dorthin begleitet er nicht mehr.'},
+ {k:'dae',n:'Dämmerfabrik',t:'KI fragt bei Bedarf',c:null,e:''},
+ {k:'dun',n:'Dunkle Fabrik',t:'Mensch setzt nur das Ziel',c:[['M'],['K'],['K'],['K'],['K'],['K']],
+  e:'Menschen legen nur fest, was entstehen soll. Ausführen und Prüfen übernehmen Maschinen, was nur gelingt, wo eine Maschine prüfen kann, ob das Ergebnis stimmt.'}];
+// Anlässe der Dämmerfabrik und der Schritt, an dem sie greifen (eigene Zuordnung)
+const ANL=[{k:'var',l:'Ideenvielfalt',st:1,w:'die Ideen zu gleichförmig werden'},{k:'exp',l:'Expertise',st:2,w:'Fachwissen fehlt'},{k:'int',l:'Interessante Entscheidung',st:3,w:'eine Entscheidung interessant ist'},{k:'fre',l:'Freigabe',st:5,w:'eine Freigabe nötig ist'}];
+const an={var:true,exp:true,int:true,fre:true};
+const LAB3={M:'Mensch',K:'KI',MK:'gemeinsam'};
+let sel3=3, bis3=WEISEN.length-1, timer3=null;
+const ts3=document.getElementById('tsel3'), pb3=document.getElementById('play3'), twb=document.getElementById('tw');
+ANL.forEach(a=>{const b=document.createElement('button');b.className='chip';b.dataset.k=a.k;b.textContent=a.l;
+  b.onclick=()=>{an[a.k]=!an[a.k];sel3=3;bis3=Math.max(bis3,3);ts3.value=3;draw3();};twb.appendChild(b);});
+function waehle(i){sel3=i;bis3=Math.max(bis3,i);ts3.value=i;draw3();}
+ts3.addEventListener('input',()=>{stop3();sel3=bis3=+ts3.value;draw3();});
+function stop3(){if(timer3){clearInterval(timer3);timer3=null;pb3.textContent='▶ Abspielen';}}
+pb3.onclick=()=>{if(timer3){stop3();return;}sel3=bis3=0;ts3.value=0;pb3.textContent='❚❚ Pause';draw3();
+  timer3=setInterval(()=>{sel3=bis3=sel3+1;ts3.value=sel3;draw3();if(sel3>=WEISEN.length-1)stop3();},1800);};
+const schmal=()=>!druck&&innerWidth<600;
+function daeZellen(){return SCHRITTE.map((s,i)=>{const f=ANL.filter(a=>an[a.k]&&a.st===i).map(a=>a.l);
+  return i===0?['M',null,[]]:['K',null,f];});}
+function draw3(){const g=document.getElementById('g3');g.innerHTML='';
+  twb.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',an[b.dataset.k]));
+  const kopf=document.createElement('div');kopf.className='zeile';kopf.setAttribute('role','row');g.appendChild(kopf);
+  ['',...SCHRITTE].forEach(t=>{const d=document.createElement('div');d.className='hd';d.setAttribute('role','columnheader');d.textContent=t;kopf.appendChild(d);});
+  WEISEN.forEach((w,j)=>{const z=document.createElement('div');z.className='zeile'+(!druck&&j>bis3?' spaeter':'');z.setAttribute('role','row');g.appendChild(z);
+    const l=document.createElement('div');l.className='rowlab';l.setAttribute('role','rowheader');l.tabIndex=0;l.textContent=w.n;const tt=document.createElement('small');tt.textContent=w.t;l.appendChild(tt);
+    l.setAttribute('aria-selected',!druck&&j===sel3);l.onclick=()=>{stop3();waehle(j);};
+    l.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stop3();waehle(j);}};z.appendChild(l);
+    const zellen=w.c?w.c.map(x=>[x[0],x[1]||null,[]]):daeZellen();
+    zellen.forEach((x,i)=>{const d=document.createElement('div');d.className='cell '+x[0];d.setAttribute('role','cell');
+      d.textContent=LAB3[x[0]];if(x[1]){const sm=document.createElement('small');sm.textContent=x[1];d.appendChild(sm);}
+      let aria=SCHRITTE[i]+': '+LAB3[x[0]];
+      if(x[2].length){const a=document.createElement('span');a.className='ask';a.textContent=schmal()?'?':'fragt';d.appendChild(a);
+        d.title='KI holt einen Menschen hinzu bei '+x[2].join(', ');aria+=', holt Menschen hinzu bei '+x[2].join(', ');}
+      d.setAttribute('aria-label',aria);d.onclick=()=>{stop3();waehle(j);};z.appendChild(d);});});
+  // Anzeige unter dem Raster
+  const w=WEISEN[sel3];let ex=w.e;
+  if(w.k==='dae'){const aktiv=ANL.filter(a=>an[a.k]);
+    ex='Agenten erledigen die Arbeit. Ein vermittelnder Agent holt Menschen hinzu'+(aktiv.length?', wenn '+aktiv.map(a=>a.w).join(', ').replace(/, ([^,]*)$/,' oder $1')+'.':', aber kein Anlass ist eingeschaltet. Damit wird die Dämmerfabrik zur dunklen Fabrik.');
+    if(aktiv.length&&!an.int)ex+=' Ohne interessante Entscheidungen bleiben dem Menschen nur Freigaben und Ausnahmen. So wächst kein Urteilsvermögen nach, und später fehlen die Fachleute, die prüfen können.';}
+  document.getElementById('now3').innerHTML='<span class="m"></span><span class="ex"></span>';
+  document.querySelector('#now3 .m').textContent=w.n;document.querySelector('#now3 .ex').textContent=ex;
+  document.querySelector('#now3 .ex').style.borderRadius='10px';
+}
+
+function all(){draw1();if(ansicht2==='raster')drawR();else draw2();drawDruckR();draw3();}
+// Ansicht wählen: ?ansicht=treppe öffnet die Treppe; die Druckansicht zeigt Treppe und vier kleine Raster
+if(druck||new URLSearchParams(location.search).get('ansicht')==='treppe')setAnsicht('treppe');
+all();
+let to,breite=innerWidth;addEventListener('resize',()=>{if(innerWidth===breite)return;breite=innerWidth;clearTimeout(to);to=setTimeout(all,120);});
+if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
+window.__ki={METR,EPOCH,slope,WEISEN,ANL,an,draw3,NQ,VOLL};
+})();
+</script>
+</body></html>

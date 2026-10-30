@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Fallbeispiele aus der Lehre – Generative KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./kapitel06-appendix01-prompt-ueberblick.html" rel="next">
+<link href="./kapitel05.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4622c99584d0b91f3844d5069d85751c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ko-fi.com/romanbartnik"> 
+<span class="menu-text">Ko-fi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://buymeacoffee.com/roman.bartnik.th"> 
+<span class="menu-text">Buy me a coffee</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel06-fallbeispiele.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fallbeispiele aus der Lehre</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vorwort.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien der Nutzung von GenAI: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-fallbeispiele.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fallbeispiele aus der Lehre</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Gezielte Einschränkungen in didaktischen Prompts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel08-appendix03-rollenspiele-simulationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Umsetzung: Rollenspiele und Simulationen mit generativer KI in der Lehre</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel10-appendix05-loesungshinweise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Lösungshinweise zu den Lernfragen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transparenz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transparenzhinweis zum Gesamtwerk</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literaturverzeichnis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./anhang-d-material.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Online-Material zu Anhang D</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelluebersicht.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modellübersicht (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forschungsstand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forschungsstand (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./energie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Ressourcenverbrauch der Modelle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#sec-bsp-syntaktisch" id="toc-sec-bsp-syntaktisch" class="nav-link active" data-scroll-target="#sec-bsp-syntaktisch"><span class="header-section-number">6.1</span> Wissen übertragen: Begriffe, Formeln, Reihenfolgen</a>
+  <ul>
+  <li><a href="#sec-bsp-fragen-generator" id="toc-sec-bsp-fragen-generator" class="nav-link" data-scroll-target="#sec-bsp-fragen-generator"><span class="header-section-number">6.1.1</span> Fragen-Generator: Abrufübung mit dem eigenen Material</a></li>
+  <li><a href="#sec-bsp-lernsong-forecast" id="toc-sec-bsp-lernsong-forecast" class="nav-link" data-scroll-target="#sec-bsp-lernsong-forecast"><span class="header-section-number">6.1.2</span> Lernsongs: ein Verfahrenslied mit Rechenpausen</a></li>
+  <li><a href="#sec-bsp-quizspiele" id="toc-sec-bsp-quizspiele" class="nav-link" data-scroll-target="#sec-bsp-quizspiele"><span class="header-section-number">6.1.3</span> Quizspiele: Abruf mit Rückmeldung, und wann ein Quiz kein Simulator ist</a></li>
+  </ul></li>
+  <li><a href="#sec-bsp-semantisch" id="toc-sec-bsp-semantisch" class="nav-link" data-scroll-target="#sec-bsp-semantisch"><span class="header-section-number">6.2</span> Wissen übersetzen: Bedeutungen erschließen</a>
+  <ul>
+  <li><a href="#sec-bsp-widgets" id="toc-sec-bsp-widgets" class="nav-link" data-scroll-target="#sec-bsp-widgets"><span class="header-section-number">6.2.1</span> Interaktive Widgets: vom Studentenleben zur Fabrik</a></li>
+  <li><a href="#sec-fall-tutor-bwl" id="toc-sec-fall-tutor-bwl" class="nav-link" data-scroll-target="#sec-fall-tutor-bwl"><span class="header-section-number">6.2.2</span> Tutoring: Übungstutor und sokratischer Tutor</a></li>
+  </ul></li>
+  <li><a href="#sec-bsp-pragmatisch" id="toc-sec-bsp-pragmatisch" class="nav-link" data-scroll-target="#sec-bsp-pragmatisch"><span class="header-section-number">6.3</span> Wissen umformen: anwenden gegen Interessen und Folgen</a>
+  <ul>
+  <li><a href="#sec-bsp-fallstudie" id="toc-sec-bsp-fallstudie" class="nav-link" data-scroll-target="#sec-bsp-fallstudie"><span class="header-section-number">6.3.1</span> Fallstudien generieren: Backhaus Kaya</a></li>
+  <li><a href="#sec-bsp-simulationen-lehrende" id="toc-sec-bsp-simulationen-lehrende" class="nav-link" data-scroll-target="#sec-bsp-simulationen-lehrende"><span class="header-section-number">6.3.2</span> Simulationen durch Lehrende: Prozess und Verhandlung</a></li>
+  <li><a href="#sec-bsp-simulationen-studierende" id="toc-sec-bsp-simulationen-studierende" class="nav-link" data-scroll-target="#sec-bsp-simulationen-studierende"><span class="header-section-number">6.3.3</span> Simulationen und Planspiele selbst bauen: Gruppenprojekt mit Prüfzelle</a></li>
+  <li><a href="#sec-fall-job-buddy" id="toc-sec-fall-job-buddy" class="nav-link" data-scroll-target="#sec-fall-job-buddy"><span class="header-section-number">6.3.4</span> Karriereberater: Erstsemester bauen KI-Werkzeuge für andere</a></li>
+  <li><a href="#sec-fall-unternehmen" id="toc-sec-fall-unternehmen" class="nav-link" data-scroll-target="#sec-fall-unternehmen"><span class="header-section-number">6.3.5</span> Projektlernen mit Praxispartnern: RAG und Einkaufs-Workflows</a></li>
+  </ul></li>
+  <li><a href="#sec-fallbeispiele-fazit" id="toc-sec-fallbeispiele-fazit" class="nav-link" data-scroll-target="#sec-fallbeispiele-fazit"><span class="header-section-number">6.4</span> Was die Beispiele gemeinsam zeigen</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel06-fallbeispiele.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel06-fallbeispiele.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-fallbeispiele" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fallbeispiele aus der Lehre</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="Lernziele">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Lernziele
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nach diesem Kapitel können Sie …</p>
+<ul>
+<li>an Beispielen aus der eigenen Lehre nachvollziehen, wie aus einem belegten Lernprinzip eine Empfehlung und daraus eine Umsetzung mit generativer KI wird;</li>
+<li>ein eigenes Vorhaben einer der drei Wissensformen zuordnen und daraus ableiten, welche Lerntechnik es tragen muss und welche Rolle aus <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a> die KI dabei spielt;</li>
+<li>einschätzen, welche Vorbereitung (Material, Zugänge, Partner, Prüfungsform) ein Praxisprojekt mit generativer KI braucht und wo typische Engpässe liegen;</li>
+<li>die Prüfkriterien der Beispiele auf eigene Werkzeuge übertragen.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Leitfragen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Leitfragen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Versuchen Sie eine Antwort, bevor Sie weiterlesen; die Kernaussagen am Kapitelende greifen die Fragen in derselben Reihenfolge auf.</em></p>
+<ol type="1">
+<li>Warum sollte man Lehrbeispiele mit KI nach dem Lernziel ordnen und nicht nach dem Werkzeug?</li>
+<li>Woran erkennt man, ob ein Werkzeug den Abruf aus dem Gedächtnis fördert oder ihn den Studierenden abnimmt?</li>
+<li>Was muss die Lehrperson selbst prüfen, wenn ein Sprachmodell Geschichte, Widget oder Simulationscode schreibt?</li>
+<li>Wo liegen bei Praxisprojekten mit Unternehmen die typischen Engpässe: bei Material, Zugängen, Partnern oder Prüfungsform?</li>
+</ol>
+</div>
+</div>
+<p>Die Kapitel 2 bis 5 behandeln Werkzeuge, Lernmechanismen, Rollen und Umsetzungsregeln je für sich. Dieses Kapitel zeigt, wie sie in Modulen des Bachelors Wirtschaftsingenieurwesen und in Workshops der TH Köln zusammenkommen, und ordnet die Beispiele nach dem, was Studierende lernen sollen, nicht nach dem Werkzeug. Jedes Beispiel beginnt mit einem Prinzip, das die Lernforschung belegt, leitet daraus eine Empfehlung ab, die ohne Produktnamen auskommt, und zeigt erst dann die Umsetzung mit dem Stand bei Drucklegung. Eine Empfehlung ist gut formuliert, wenn sie den Austauschtest besteht: Sie stimmt noch, nachdem man das Werkzeug gegen ein anderes getauscht hat. Werkzeuge altern schneller als Prinzipien, und wer das Prinzip kennt, baut die Umsetzung mit dem Werkzeug des nächsten Jahres nach.</p>
+<p>Die Ordnung folgt drei Stufen, die <span class="citation" data-cites="carlile2004">Carlile (<a href="references.html#ref-carlile2004" role="doc-biblioref">2004</a>)</span> für Wissen an den Grenzen zwischen Abteilungen beschreibt. Übertragen lässt sich Wissen, wo beide Seiten dieselben Begriffe teilen (syntaktisch); übersetzt werden muss es, wo dieselben Wörter Verschiedenes bedeuten (semantisch); umgeformt wird es, wo Interessen und Folgen auf dem Spiel stehen und Wissen gegen sie angewendet werden muss (pragmatisch). Carlile beschreibt Organisationen, und die Grenze zwischen Studierenden und Fach ist eine Analogie, die wir zum Ordnen nutzen, kein Befund über das Lernen. Wörtlich gilt sie erst beim Projektlernen mit Praxispartnern (<a href="#sec-fall-unternehmen" class="quarto-xref"><span>Kapitel 6.3.5</span></a>), wo Wissen tatsächlich eine Organisationsgrenze überquert.</p>
+<p>Unter jeder Überschrift steht ein Steckbrief mit vier Angaben: die Wissensform; die Lerntechnik nach <span class="citation" data-cites="dunlosky2013">Dunlosky et al. (<a href="references.html#ref-dunlosky2013" role="doc-biblioref">2013</a>)</span> mit ihrer Evidenzstärke, hoch für verteiltes und testgestütztes Lernen, mittel für gemischtes Üben und fragebasierte Ausarbeitung, oder das tragende Prinzip, wenn keine der Techniken passt; die Rolle der KI aus <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a>; und wer das Werkzeug gestaltet hat. Bauen Studierende es selbst, liegt das Lernziel meist eine Stufe höher, weil sie Wissen für ein Publikum übersetzen. <a href="#tbl-bsp-uebersicht" class="quarto-xref">Tabelle&nbsp;<span>6.1</span></a> fasst die Steckbriefe zusammen.</p>
+<div id="tbl-bsp-uebersicht" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[24,17,30,12,17]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bsp-uebersicht-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;6.1: Die Beispiele dieses Kapitels nach Wissensform, Lerntechnik, Rolle der KI und Gestaltung
+</figcaption>
+<div aria-describedby="tbl-bsp-uebersicht-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 17%">
+<col style="width: 30%">
+<col style="width: 12%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Beispiel</th>
+<th>Wissensform</th>
+<th>Lerntechnik (Evidenz) bzw. tragendes Prinzip</th>
+<th>Rolle</th>
+<th>Gestaltet von</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fragen-Generator</td>
+<td>syntaktisch</td>
+<td>testgestützt, verteilt (hoch)</td>
+<td>Tutor</td>
+<td>Lehrende</td>
+</tr>
+<tr class="even">
+<td>Lernsongs</td>
+<td>syntaktisch</td>
+<td>verteilt (hoch); Lösungsbeispiele</td>
+<td>Copilot</td>
+<td>Lehrende</td>
+</tr>
+<tr class="odd">
+<td>Quizspiele</td>
+<td>syntaktisch</td>
+<td>testgestützt (hoch)</td>
+<td>Copilot</td>
+<td>Lehrende</td>
+</tr>
+<tr class="even">
+<td>Interaktive Widgets</td>
+<td>semantisch</td>
+<td>angeleitetes Entdecken, Konkretheitsabbau</td>
+<td>Copilot</td>
+<td>Lehrende</td>
+</tr>
+<tr class="odd">
+<td>Tutoring</td>
+<td>semantisch</td>
+<td>testgestützt (hoch) bzw. Ausarbeitung (mittel)</td>
+<td>Tutor</td>
+<td>Lehrende, Studierende</td>
+</tr>
+<tr class="even">
+<td>Fallstudien generieren</td>
+<td>pragmatisch</td>
+<td>Ausarbeitung (mittel), Vorhersage</td>
+<td>Copilot</td>
+<td>Lehrende</td>
+</tr>
+<tr class="odd">
+<td>Simulationen durch Lehrende</td>
+<td>pragmatisch</td>
+<td>Erfahrung mit Debriefing</td>
+<td>Simulator</td>
+<td>Lehrende</td>
+</tr>
+<tr class="even">
+<td>Simulationen und Planspiele selbst bauen</td>
+<td>pragmatisch</td>
+<td>simulationsbasiertes Lernen; Projektlernen</td>
+<td>Simulator</td>
+<td>Studierende</td>
+</tr>
+<tr class="odd">
+<td>Karriereberater</td>
+<td>pragmatisch</td>
+<td>Projektlernen, Test mit Nutzenden</td>
+<td>Tutor, Simulator</td>
+<td>Studierende</td>
+</tr>
+<tr class="even">
+<td>Projektlernen mit Praxispartnern</td>
+<td>pragmatisch</td>
+<td>Projektlernen</td>
+<td>Copilot, Hiwi</td>
+<td>Studierende</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="sec-bsp-syntaktisch" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-bsp-syntaktisch"><span class="header-section-number">6.1</span> Wissen übertragen: Begriffe, Formeln, Reihenfolgen</h2>
+<section id="sec-bsp-fragen-generator" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="sec-bsp-fragen-generator"><span class="header-section-number">6.1.1</span> Fragen-Generator: Abrufübung mit dem eigenen Material</h3>
+<p><em>Wissensform:</em> syntaktisch · <em>Lerntechnik:</em> testgestützt (hoch), verteilt (hoch) · <em>Rolle:</em> Tutor (<a href="kapitel04.html#sec-tutor" class="quarto-xref"><span>Kapitel 4.3</span></a>) · <em>Gestaltet von:</em> Lehrende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wer Gelerntes aus dem Gedächtnis abruft, behält es länger als wer es noch einmal liest. Nach fünf Minuten liegt das Wiederlesen noch vorn, nach zwei Tagen und nach einer Woche der Abruf <span class="citation" data-cites="roediger2006">(<a href="references.html#ref-roediger2006" role="doc-biblioref">Roediger &amp; Karpicke, 2006</a>)</span>, und eine Metaanalyse über alle Vergleichsbedingungen bestätigt ihn: Übungstests schlagen das Wiederlesen und jede andere geprüfte Alternative, wobei Merkmale des Tests wie die Rückmeldung die Größe des Effekts mitbestimmen <span class="citation" data-cites="adesope2017">(<a href="references.html#ref-adesope2017" role="doc-biblioref">Adesope et al., 2017</a>)</span>. Verteilt man die Abrufrunden über Tage, wächst der Gewinn weiter <span class="citation" data-cites="cepeda2006">(<a href="references.html#ref-cepeda2006" role="doc-biblioref">Cepeda et al., 2006</a>)</span>; beide Techniken stehen bei <span class="citation" data-cites="dunlosky2013">Dunlosky et al. (<a href="references.html#ref-dunlosky2013" role="doc-biblioref">2013</a>)</span> in der höchsten Nützlichkeitsstufe.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn Sie Studierenden ein Sprachmodell zum Wiederholen empfehlen, geben Sie ihnen einen Prompt mit, der das Modell auf Ihr Material festlegt, eine eigene Antwort vor jeder Rückmeldung verlangt und die Aufgabenform Ihrer Prüfung nachbildet. Prüfkriterium: Stellt das System eine Frage und wartet, bevor es etwas erklärt?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Im englischsprachigen Modul <em>Sustainable Supply Chain Management</em> (SSCM) liegt auf jeder Wochenseite der Kerninhalt der Woche als reine Textdatei: das Problem des Kapitels, ein Satz der Woche, die Formeln, die gerechneten Beispiele aus Studentenleben, Fabrik und Lieferkette mit ihren Zahlen, typische Fehler und Übungsaufgaben ohne Lösung. Ein Anhang des Online-Skripts stellt dazu den Prompt <em>Quiz me</em> bereit (<a href="https://th-koln-bartnik.github.io/sscm-2026-student/appendix/quiz-me.html" class="uri">https://th-koln-bartnik.github.io/sscm-2026-student/appendix/quiz-me.html</a>). Studierende kopieren ihn in einen beliebigen Chat und hängen den Kerninhalt einer Woche an.</p>
+<p>Der Prompt legt fünf Dinge fest. Er beschränkt das Modell auf das eingefügte Material und das Lehrbuchkapitel, das es nennt, und verbietet erfundene Zahlen. Er gibt eine Reihenfolge vor: zuerst das Problem in Worten, dann die Formel in Worten, dann eine Rechnung mit den Zahlen eines Beispiels, in der ein Wert geändert ist, zuletzt eine Übungsaufgabe. Nach jeder Antwort sagt das Modell, ob sie stimmt, zeigt die Rechnung in höchstens vier Zeilen und benennt den typischen Fehler, falls einer vorliegt; die Lösung nennt es nie vor dem eigenen Versuch, auf Nachfrage zuerst nur einen Hinweis. Er bildet die Prüfung nach, die auf Papier stattfindet und Rechenaufgaben mit geänderten Werten neben Begriffsfragen stellt, und schließt jede Sitzung mit drei Aufgaben im Prüfungsformat und zwei Zeilen dazu, was noch einmal zu lesen ist. Und er verlangt Ehrlichkeit: Steht etwas nicht im Material, verweist das Modell auf den Kapitelabschnitt, statt zu raten. Ein zweiter, kurzer Prompt dreht die Richtung um und baut aus jedem typischen Fehler eine fehlerhafte Rechnung, die Studierende finden und korrigieren.</p>
+<p>Zwei Gestaltungsentscheidungen tragen den Lerneffekt. Die Arbeitsanweisung lautet, jede Antwort zuerst auf Papier zu schreiben und erst dann einzutippen; der Abruf findet also statt, bevor das Modell eingreift. Und weil jedes gerechnete Beispiel im Kerninhalt sein Ergebnis mitführt, können Studierende jede Zahl des Modells gegen eine Zahl der Lehrperson halten. Die Seite schließt mit dem Satz, was der Prompt nicht ersetzt: das Kapitel.</p>
+<p>Die zweite Umsetzung stammt aus einem 30-minütigen Workshop für Studierende aller Semester am Campus Gummersbach. Ein Prompt macht das Modell zum Klausur-Lernplaner: Es sortiert eine Themenliste nach inhaltlicher Abhängigkeit, verteilt sie rückwärts auf die zehn Tage vor der Klausur, hält den letzten Tag frei von neuem Stoff und gibt für jeden Tag eine Kontrollfrage aus, die abends ohne Hilfe lösbar sein muss. Die Kontrollfrage ist testgestützt. Verteilt ist der Plan dagegen kaum, denn jedes Thema kommt an einem Tag vor und kehrt erst am Wiederholungstag zurück. Eine Zeile im Prompt behebt das: Jedes Thema zwei und fünf Tage nach dem ersten Lerntag in einer Abrufrunde von zehn Minuten wieder aufnehmen.</p>
+</div>
+</div>
+<p>Ob ein Sprachmodell als Fragesteller mehr leistet als Karteikarten, ist nicht untersucht. Die Evidenz gilt dem Abruf, nicht dem, der abfragt; der Gewinn des Modells liegt in der Variation der Zahlen und in der Rückmeldung zum typischen Fehler, und beide lassen sich mit einem Satz Karteikarten nur mühsam herstellen.</p>
+<p><strong>Lernfrage.</strong> Ein Student lässt sich vom Modell die Lösung zeigen und tippt sie ab, bevor er selbst gerechnet hat. Welche Zeile des Prompts verletzt er, und warum verliert er damit genau den Effekt, für den der Prompt gebaut ist?</p>
+</section>
+<section id="sec-bsp-lernsong-forecast" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="sec-bsp-lernsong-forecast"><span class="header-section-number">6.1.2</span> Lernsongs: ein Verfahrenslied mit Rechenpausen</h3>
+<p><em>Wissensform:</em> syntaktisch, mit semantischem Rand · <em>Lerntechnik:</em> verteilt (hoch); Rechenteil getragen von Lösungsbeispielen · <em>Rolle:</em> Copilot (<a href="kapitel04.html#sec-copilot" class="quarto-xref"><span>Kapitel 4.2</span></a>) · <em>Gestaltet von:</em> Lehrende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Musik stärkt das wörtliche Behalten von Wortlaut und Reihenfolge: In einer systematischen Übersicht fanden 28 von 37 Studien einen Vorteil musikalischer Merkhilfen, neun keinen <span class="citation" data-cites="derksdijkman2024">(<a href="references.html#ref-derksdijkman2024" role="doc-biblioref">Derks-Dijkman et al., 2024</a>)</span>. Der Vorteil braucht Wiederholung, und zwar verteilte; Studierende, die ein Lied über Tage verteilt übten, behielten es drei Wochen später besser als nach massiertem Üben <span class="citation" data-cites="katz2021">(<a href="references.html#ref-katz2021" role="doc-biblioref">Katz et al., 2021</a>)</span>. Für das Anwenden und Rechnen gibt es keinen Beleg, dass ein Song hilft. Diesen Teil tragen ausgearbeitete Lösungsbeispiele, die in einer Metaanalyse zur Mathematik einen mittleren Effekt erreichen <span class="citation" data-cites="barbieri2023">(<a href="references.html#ref-barbieri2023" role="doc-biblioref">Barbieri et al., 2023</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Setzen Sie einen Song für das ein, was wörtlich sitzen soll: die Namen und die Reihenfolge der Verfahren, eine Formel im Wortlaut. Lassen Sie das Rechnen von Lösungsbeispielen tragen, die der Song an markierten Stellen anhält, und planen Sie mindestens zwei Durchgänge mit einigen Tagen Abstand ein. Prüfkriterium: Lässt sich jede Strophe einer Zeile im Skript zuordnen, und steht im Einsatzplan ein zweiter Termin?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Every Forecast Is Wrong · How Many Cups Tomorrow?</em> ist ein animiertes Musikvideo von 5:15 Minuten für die fünfte Woche des SSCM-Moduls, in der es um Prognoseverfahren geht. Ein Café auf dem Campus zählt drei Wochen lang seine verkauften Kaffeebecher, und der Song führt an diesen Zahlen durch fünf Verfahren: die naive Prognose, den gleitenden Dreitagesdurchschnitt, die exponentielle Glättung, den Wochentagsindex und den Wochentagsindex mit Trend. Die Refrains vergleichen die Verfahren über zwei Fehlermaße, die mittlere absolute Abweichung (MAD) und die mittlere absolute prozentuale Abweichung (MAPE). Drei Instrumentalteile zeigen je eine durchgerechnete Prognose; die Anweisung auf der Wochenseite lautet, dort anzuhalten und mitzurechnen, bevor die nächste Zeile erscheint. Der Liedtext läuft als Untertitel mit.</p>
+<p>Arbeitsteilung und Prüfung stehen in der Bildunterschrift: Text, Beispieldaten und Animationscode schrieb Claude, die Musik erzeugte Suno, Café und Zahlen sind erfunden, geprüft hat die Lehrperson. Das Beispiel ist bewusst neu. Es teilt keine Zahlen mit der Fallstudie der Woche, dem Prognose-Widget oder der folgenden Klausur, sodass der Song einen zweiten Kontext für dieselben Verfahren liefert, ohne Prüfungsaufgaben vorwegzunehmen.</p>
+<p>Der Einsatzplan folgt dem Prinzip. Der Song steht am Ende eines Selbstlerntags, nach Kapitellektüre, Widget und Fallstudie, also erst dann, wenn die Verfahren hergeleitet und verstanden sind. Die Aufgabenliste für die Woche danach nennt einen zweiten Durchgang mit Halt an den drei Rechenbeispielen.</p>
+<p>In der Typologie des Regelwerks ist das Video ein Verfahrenslied, keiner der drei ausgewählten Typen. Es zeigt deshalb gut, wo die Arbeitsteilung zwischen Musik und Didaktik verläuft: Der Song sichert die Reihenfolge der fünf Verfahren und ihre Namen, die Rechenpausen sind Lösungsbeispiele in einem anderen Gewand.</p>
+</div>
+</div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Every Forecast Is Wrong · How Many Cups Tomorrow?"><source src="https://th-koln-bartnik.github.io/sscm-2026-student/videos/week05_every_forecast_is_wrong.mp4"></video></div>
+<p><em>Video (5:15, englisch; Liedtext als Untertitel auf der <a href="https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week05.html#revise-with-a-song-5-min">Wochenseite</a>): fünf Prognoseverfahren an den verkauften Kaffeebechern eines erfundenen Campus-Cafés. Text, Beispieldaten und Animationscode: Claude; Musik: Suno; geprüft von der Lehrperson.</em></p>
+<p><strong>Lernfrage.</strong> Eine Kollegin will den Song in der Vorlesung einmal abspielen, bevor sie die exponentielle Glättung einführt. Was spricht nach dem Prinzip gegen diesen Zeitpunkt, und was gegen das einmalige Abspielen?</p>
+</section>
+<section id="sec-bsp-quizspiele" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="sec-bsp-quizspiele"><span class="header-section-number">6.1.3</span> Quizspiele: Abruf mit Rückmeldung, und wann ein Quiz kein Simulator ist</h3>
+<p><em>Wissensform:</em> syntaktisch · <em>Lerntechnik:</em> testgestützt (hoch) · <em>Rolle:</em> Copilot (<a href="kapitel04.html#sec-coding" class="quarto-xref"><span>Kapitel 4.2.2</span></a>) · <em>Gestaltet von:</em> Lehrende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ein Zuordnungs- oder Auswahlspiel ist eine Abrufübung mit sofortiger Rückmeldung und wirkt über denselben Mechanismus wie ein Übungstest <span class="citation" data-cites="adesope2017">(<a href="references.html#ref-adesope2017" role="doc-biblioref">Adesope et al., 2017</a>)</span>. Die Spielform selbst ist kein zusätzlicher Wirkfaktor, auf den man sich verlassen kann: Serious Games schnitten in einer Metaanalyse beim Lernen und Behalten besser ab als herkömmlicher Unterricht, motivierten aber nicht stärker <span class="citation" data-cites="wouters2013">(<a href="references.html#ref-wouters2013" role="doc-biblioref">Wouters et al., 2013</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bauen Sie Quizspiele für Begriffe, Zuordnungen und Erkennungsaufgaben, und nennen Sie sie so. Wenn die Lernenden Entscheidungen unter Zielkonflikten üben sollen, braucht das Spiel einen Zustand, der sich durch ihre Entscheidungen verändert; eine Auswahl mit einer richtigen Antwort leistet das nicht. Prüfkriterium: Ändert eine Entscheidung etwas an der nächsten Runde?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Zuordnungsspiel zu den Grundbegriffen generativer KI in <a href="kapitel02.html" class="quarto-xref"><span>Kapitel 2</span></a> paart Begriffe mit Definitionen. Die Stufe <em>Fortgeschritten</em> ergänzt Begriffe zu Agenten und eine Diagnoserunde mit typischen Problemen im Umgang mit Sprachmodellen. Das Spiel ist eine einzelne HTML-Datei und läuft ohne Anmeldung im Browser; es wird im Skript, im Workshop „KI zum Lernen“ und im Workshop zu interaktiven Skripten eingesetzt.</p>
+<p>Lehrreich ist der Vergleich mit einem frühen eigenen Versuch aus dem Jahr 2025. <em>Einsatzbereit! Strategic Procurement Simulator</em> versetzt Studierende in die Rolle der Beschaffung in Krisen: Eine Flut verlangt sofort Pumpen, ein Erdbeben erzeugt viele dringende Bedarfe zugleich, und für jede Lage stehen vier Strategien zur Wahl, Sicherheitsbestand, leistungsbasierte Verträge, Lebenszykluskostenrechnung und Dual Sourcing. Das Programm wählt zufällig eine von vier Lagen und erklärt nach der Wahl, welche Strategie die beste gewesen wäre. Der Name verspricht eine Simulation, die Struktur ist ein Auswahlquiz mit Rückmeldung: Es gibt keinen Zustand, keine Folgekosten und keine nächste Runde, die von der vorigen abhängt. Die Musterlösung blendet zudem genau den Zielkonflikt aus, um den es in der Beschaffung geht, denn im Erdbeben konkurrieren Sicherheitsbestand und Dual Sourcing, und die Antwort hängt an Lagerkosten und Lieferzeiten, die das Spiel nicht kennt. Als Erkennungsübung zu vier Begriffen taugt es; Entscheidungen trainiert erst ein Modell, in dem Entscheidungen Folgen haben (<a href="#sec-bsp-simulationen-studierende" class="quarto-xref"><span>Kapitel 6.3.3</span></a>).</p>
+</div>
+</div>
+<p><strong>Lernfrage.</strong> Wie müsste man den Beschaffungs-„Simulator“ verändern, damit aus dem Quiz eine Entscheidungsübung wird? Nennen Sie die kleinste Änderung, die das Prüfkriterium der Empfehlung erfüllt.</p>
+</section>
+</section>
+<section id="sec-bsp-semantisch" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-bsp-semantisch"><span class="header-section-number">6.2</span> Wissen übersetzen: Bedeutungen erschließen</h2>
+<section id="sec-bsp-widgets" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-bsp-widgets"><span class="header-section-number">6.2.1</span> Interaktive Widgets: vom Studentenleben zur Fabrik</h3>
+<p><em>Wissensform:</em> semantisch · <em>Lerntechnik:</em> keine der drei; tragend sind angeleitetes Entdecken und Konkretheitsabbau (<em>concreteness fading</em>) · <em>Rolle:</em> Copilot (<a href="kapitel04.html#sec-coding" class="quarto-xref"><span>Kapitel 4.2.2</span></a>) · <em>Gestaltet von:</em> Lehrende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Selbst entdecken lässt Lernende nur dann besser lernen als direkte Instruktion, wenn das Entdecken angeleitet ist: durch Arbeitsaufträge, Rückmeldung, Beispiele oder die Aufforderung, das Gesehene zu erklären; ungeleitetes Entdecken schneidet schlechter ab <span class="citation" data-cites="alfieri2011">(<a href="references.html#ref-alfieri2011" role="doc-biblioref">Alfieri et al., 2011</a>)</span>. Eine zweite Regel betrifft die Reihenfolge der Darstellungen. Wer eine abstrakte Idee zuerst an einem vertrauten, konkreten Fall erlebt und die konkreten Züge dann schrittweise abbaut, überträgt sie besser als wer nur das Konkrete oder nur das Abstrakte sieht <span class="citation" data-cites="fyfe2014">(<a href="references.html#ref-fyfe2014" role="doc-biblioref">Fyfe et al., 2014</a>)</span>. Fachfremde Zierelemente lenken ab <span class="citation" data-cites="mayer2014">(<a href="references.html#ref-mayer2014" role="doc-biblioref">Mayer &amp; Fiorella, 2014</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Geben Sie jedem Widget drei bis fünf Arbeitsaufträge mit, von denen mindestens einer eine Vorhersage oder einen Beweis verlangt, und zeigen Sie die Formel neben dem Ergebnis, das sie erzeugt. Führen Sie dieselbe Idee zuerst in einem Alltagskontext der Studierenden ein und erst danach im Fachkontext. Prüfkriterium: Würde ein Student ohne die Arbeitsaufträge wissen, was er ausprobieren soll?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jede Sitzung des SSCM-Moduls folgt derselben Reihenfolge in fünf Schritten. Ein Problem aus dem Kapitel steht am Anfang, bevor ein Fachbegriff fällt. Dann tragen Partyvorbereitung oder Umzugstag die Idee zum ersten Mal, danach folgt die Formel in Worten mit kurzen Übungen in HTML-Widgets, dann dieselbe Idee in der Produktion mit den Beispielen des Lehrbuchs, zuletzt zwischen Unternehmen in der Lieferkette. Die Reihenfolge ist Konkretheitsabbau im Sinne von <span class="citation" data-cites="fyfe2014">Fyfe et al. (<a href="references.html#ref-fyfe2014" role="doc-biblioref">2014</a>)</span>, auf eine ganze Sitzung gestreckt.</p>
+<p>Bis zur fünften Woche entstanden sechs Widgets, jedes eine einzelne HTML-Datei, die auf dem Smartphone läuft und keine Anmeldung braucht. Das Linien-Widget zur Kapazität zeigt zwei Produktionslinien zur Wahl: die Pizzalinie einer Party und die Brötchenlinie der Bäckerei aus der Fallstudie (<a href="#sec-bsp-fallstudie" class="quarto-xref"><span>Kapitel 6.3.1</span></a>). Studierende ändern Arbeitsschritte, Personal, Nachfrage und Losgröße und sehen sofort Linienkapazität, Engpasszeit und Durchlaufzeit. Drei Aufträge leiten das Ausprobieren: 24 Pizzen in unter zwei Stunden mit nur einer zusätzlichen Person oder einem zusätzlichen Ofen schaffen, den Belag-Schritt zum Engpass machen, und die Änderung finden, die am Ausstoß pro Stunde nichts ändert, und das beweisen. Das Prognose-Widget hat vier Reiter mit je einem Werkzeug, und jede Prognose entsteht nur aus den Tagen davor, so wie im Betrieb. Neben den Widgets stehen Colab-Notebooks, in denen Studierende eine Rechnung zuerst von Hand lösen und dann als kleines Modell nachbauen, das Was-wäre-wenn-Fragen in Sekunden beantwortet; das Notebook der zweiten Woche endet mit einem Dashboard, das sie in vier Schritten selbst bauen.</p>
+<p>Widgets, Notebooks und Datensätze entstanden mit Claude als Copilot nach Vorgaben der Lehrperson. Eine Regel der Arbeitsanweisung lautet, jede Zahl in Python zu rechnen, nie im Kopf des Modells. Fallstudie, Linienmodell im Notebook, Widget und die Übungsdaten zur Datenbereinigung teilen sich einen einzigen Zahlensatz, sodass ein Ergebnis aus dem Widget in der Fallstudie wieder auftaucht. Wie solche Widgets als geprüftes Modell mit Druckabbildung entstehen, zeigt <a href="kapitel04.html#sec-widget-littles-law" class="quarto-xref"><span>Kapitel 4.2.2.1</span></a>.</p>
+</div>
+</div>
+<iframe src="https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html" width="100%" height="1150px" frameborder="0" title="Linien-Widget: Engpass finden">
+</iframe>
+<p><em>Linien-Widget aus Woche 2 des SSCM-Moduls (englisch), auch <a href="https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html">einzeln aufrufbar</a>. Die Schaltflächen oben wechseln zwischen Pizzalinie und Brötchenlinie der Bäckerei Kaya.</em></p>
+<p>Ob die Widgets mehr bewirken als dieselben Aufgaben auf Papier, ist für dieses Modul nicht gemessen. Belegt ist die Wirkung der Bauprinzipien, Anleitung und Reihenfolge; das Widget macht sie für jede Woche praktikabel.</p>
+<p><strong>Lernfrage.</strong> Das Linien-Widget fragt, welche Änderung am Ausstoß pro Stunde nichts ändert. Warum ist dieser Auftrag didaktisch wertvoller als „Finden Sie den Engpass“?</p>
+</section>
+<section id="sec-fall-tutor-bwl" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-fall-tutor-bwl"><span class="header-section-number">6.2.2</span> Tutoring: Übungstutor und sokratischer Tutor</h3>
+<p><em>Wissensform:</em> semantisch · <em>Lerntechnik:</em> testgestützt (hoch) beim Übungstutor, fragebasierte Ausarbeitung (mittel) beim sokratischen Tutor · <em>Rolle:</em> Tutor (<a href="kapitel04.html#sec-tutor" class="quarto-xref"><span>Kapitel 4.3</span></a>) · <em>Gestaltet von:</em> Lehrende; Studierende bei studentisch gebauten Tutoren</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ein KI-Tutor wirkt über das, was er die Lernenden tun lässt, nicht über das, was er weiß. Wer selbst erklärt, Fragen beantwortet und Fehler korrigiert, lernt mehr als wer Erklärungen nur aufnimmt <span class="citation" data-cites="chi2014">(<a href="references.html#ref-chi2014" role="doc-biblioref">Chi &amp; Wylie, 2014</a>)</span>. Ein Tutor, der Musterlösungen der Lehrenden kennt und Schritt für Schritt anleitet, statt zu lösen, übertraf in einem randomisierten Vergleich im Physikunterricht eine Präsenzstunde mit aktivem Lernen <span class="citation" data-cites="kestin2025">(<a href="references.html#ref-kestin2025" role="doc-biblioref">Kestin et al., 2025</a>)</span>. Ohne solche Leitplanken kehrt sich die Wirkung um: Schülerinnen und Schüler, die mit einem ungeschützten Chat übten, schnitten in der Prüfung ohne KI schlechter ab als die Kontrollgruppe <span class="citation" data-cites="bastani2025">(<a href="references.html#ref-bastani2025" role="doc-biblioref">Bastani et al., 2025</a>)</span>, und ein Kurstutor, der als Antwortmaschine konfiguriert war, senkte die Abschlussnoten um 0,37 Standardabweichungen <span class="citation" data-cites="liu2026courseintegrated">(<a href="references.html#ref-liu2026courseintegrated" role="doc-biblioref">Liu et al., 2026</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn Sie einen Tutor über Ihre Materialien betreiben, lassen Sie ihn vor jeder Erklärung einen eigenen Versuch verlangen und geben Sie ihm Musterlösungen als Grundlage seiner Hinweise, nicht als Antwort. Messen Sie den Erfolg an einer Prüfung ohne KI, nicht an der Nutzung. Prüfkriterium: Eine Studentin bittet dreimal um die Lösung. Bekommt sie sie?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Ausgangslage.</strong> Das Modul „Grundlagen der BWL“ versammelt im ersten Semester mehrere hundert Studierende mit sehr unterschiedlichem Vorwissen; die Sprechstunde erreicht einen Bruchteil, die häufigsten Fragen wiederholen sich.</p>
+<p><strong>Umsetzung.</strong> Seit dem Wintersemester 2025/26 erproben wir einen Tutor-Bot als Web-Anwendung, der aus den Modulmaterialien antwortet (vgl. <a href="kapitel04.html#sec-tutor-betrieb" class="quarto-xref"><span>Kapitel 4.3.3</span></a>).</p>
+</div>
+</div>
+<p><strong>Vergleichsfälle.</strong> Zwei veröffentlichte Fälle mit derselben Architektur, ein Tutor über die eigenen Kursmaterialien, geben die Messlatte vor, an der wir unseren Tutor beurteilen. An der University of Maryland erhielten per Los 2.379 Studierende in den Kursen von 30 Lehrenden Zugang zu einem solchen Tutor; nur 15 Prozent nutzten ihn, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Abschlussnote der Berechtigten lag 0,37 Standardabweichungen unter der Kontrollgruppe, weil der Tutor im Standardmodus der Lehrenden als Antwortmaschine konfiguriert war und das eigene Arbeiten am Material ersetzte <span class="citation" data-cites="liu2026courseintegrated">(<a href="references.html#ref-liu2026courseintegrated" role="doc-biblioref">Liu et al., 2026</a>)</span>. An der Hochschule Rhein-Waal lief ein sokratisch gebauter Tutor mit eigenen Quellen auf einem lokal betriebenen offenen Modell; nach einem Semester mit 62 Studierenden war die Bereitschaft, Fragen zu stellen, gestiegen, die Neugier auf das Warum aber gesunken, weil die Studierenden ihn trotz des sokratischen Designs als Antwortmaschine nutzten, sobald er es zuließ <span class="citation" data-cites="gerber2026">(<a href="references.html#ref-gerber2026" role="doc-biblioref">Gerber et al., 2026</a>)</span>. Für den BWL-Tutor ergeben sich daraus drei Kennzahlen, die wir erheben: der Anteil der Berechtigten, die den Tutor überhaupt nutzen; der Anteil der Anfragen, die eine fertige Antwort verlangen, gegenüber denen, die Rückmeldung auf eigene Arbeit suchen; und ob das Standardverhalten des Tutors bei einer offensichtlichen Prüfungsfrage auf das Material verweist oder löst (Testplan in <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-ue6" class="quarto-xref"><span>Kapitel D.7.5</span></a>).</p>
+<p><strong>Lernfrage.</strong> Der Tutor in Maryland war technisch einwandfrei und schadete trotzdem. Welche Einstellung war dafür verantwortlich, und mit welchem Testlauf vor dem Semester hätte man das erkannt?</p>
+</section>
+</section>
+<section id="sec-bsp-pragmatisch" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-bsp-pragmatisch"><span class="header-section-number">6.3</span> Wissen umformen: anwenden gegen Interessen und Folgen</h2>
+<section id="sec-bsp-fallstudie" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="sec-bsp-fallstudie"><span class="header-section-number">6.3.1</span> Fallstudien generieren: Backhaus Kaya</h3>
+<p><em>Wissensform:</em> pragmatisch, mit semantischem Übergang · <em>Lerntechnik:</em> fragebasierte Ausarbeitung (mittel), Vorhersage vor dem Lernen · <em>Rolle:</em> Copilot (<a href="kapitel04.html#sec-copilot" class="quarto-xref"><span>Kapitel 4.2</span></a>) · <em>Gestaltet von:</em> Lehrende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Geschichten werden besser verstanden und erinnert als Sachtexte; eine Metaanalyse über mehr als 75 Stichproben mit über 33.000 Teilnehmenden fand den Vorteil robust <span class="citation" data-cites="mar2021">(<a href="references.html#ref-mar2021" role="doc-biblioref">Mar et al., 2021</a>)</span>. <span class="citation" data-cites="willingham2021">Willingham (<a href="references.html#ref-willingham2021" role="doc-biblioref">2021</a>)</span> nennt die Merkmale, die eine Geschichte zum Lernanlass machen: eine Figur mit einem Ziel, ein Konflikt, Komplikationen und kausal verbundene Ereignisse. Wer vor dem Lernen eine Vermutung abgibt, auch eine falsche, lernt die richtige Antwort danach oft besser <span class="citation" data-cites="pan2023prequestion">(<a href="references.html#ref-pan2023prequestion" role="doc-biblioref">Pan &amp; Carpenter, 2023</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lassen Sie das Sprachmodell die Geschichte schreiben, aber legen Sie die Zahlen vorher fest und lassen Sie jede Zahl in Code nachrechnen. Bauen Sie die typische Fehlvorstellung als Figur in die Handlung ein und bitten Sie die Studierenden um eine Vermutung, bevor sie rechnen. Prüfkriterium: Stimmen Fall, Lösungsschlüssel und Teaching Note in jeder Zahl überein?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Backhaus Kaya ist eine erfundene Handwerksbäckerei in Gummersbach und begleitet das SSCM-Modul über mehrere Wochen. Der erste Teil beginnt um 2:40 Uhr nachts am Ofen. Aylin Kaya, 34, führt die Bäckerei, die ihr Vater gegründet hat; über dem Ofen hängt sein Satz <em>Never promise bread you cannot bake</em>. Die Einkäuferin einer regionalen Supermarktkette legt einen Vertrag auf den Tisch: 1.800 zusätzliche Brötchen pro Tag, sechs Tage die Woche, 0,32 Euro das Stück, Laufzeit ein Jahr, Antwort bis Montag. Gebacken wird in einem Fenster von vier Stunden vor Sonnenaufgang, und heute verlassen schon 1.500 Brötchen pro Nacht die Backstube. Der Backmeister hat sofort eine Lösung: einen dritten Mitarbeiter zum Formen, denn das sei die härteste Arbeit.</p>
+<p>Diese Figur trägt die Fehlvorstellung, um die es geht. Die Fragen Q1 bis Q6 führen von der Kapazität jedes Schritts über Auslastung und Effizienz des Ofens zu drei Optionen mit Deckungsbeitrag und CO₂-Bilanz. Der Engpass ist der Etagenofen mit 720 Brötchen pro Stunde; ein dritter Former hebt das Formen auf 1.260 Brötchen pro Stunde und ändert am Ausstoß der Linie nichts. Die Empfehlung, die jedes Team in drei Sätzen formuliert, muss ein Risiko nennen: Die längere Nacht bringt im ersten Jahr den kleineren Gewinn ohne Leasingbindung, hat aber keinen Puffer.</p>
+<p>Zum Fall gehören eine Teaching Note mit Lernzielen, Zeitplan für 35 Minuten, Lösungsschlüssel und Tafelbild, ein Teaser-Video von fünf Sekunden und ein Satz Rohdaten aus dem Ofenprotokoll, an denen die Studierenden am Nachmittag Datenbereinigung üben. Fall, Colab-Linienmodell, Linien-Widget und Ofenprotokoll teilen sich einen Zahlensatz aus einer gemeinsamen Spezifikation. Claude entwarf und prüfte Geschichte und Teaching Note; die Arbeitsanweisung verlangte, jede Zahl in Python zu rechnen, und jedes Dokument trägt einen Transparenzhinweis.</p>
+<p>Der vierte Teil in der Prognosewoche beginnt mit einem Vorhersagekasten. Die Bäckerei liefert jede Nacht 1.800 Brötchen, immer gleich auf drei Filialen verteilt, und 6 Prozent kommen unverkauft zurück; drei Fragen bitten um eine Vermutung, die Studierende mit Datum notieren und am Ende des Tages mit ihrem Ergebnis vergleichen. Die Rechnungen aus dem Fall sind Stoff des zweiten Tests, die Geschichte ist also kein Schmuck, sondern Prüfungsgegenstand.</p>
+</div>
+</div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Teaser zur Fallstudie Backhaus Kaya"><source src="https://th-koln-bartnik.github.io/sscm-2026-student/videos/week02_kaya_teaser.mp4"></video></div>
+<p><em>Teaser zur Fallstudie (5 s, ohne Ton): Aylin Kaya nachts in der Backstube. KI-generiertes Video (LTX-2.5); Bäckerei und Figuren sind erfunden. Ablauf der Fallsitzung auf der <a href="https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week02.html#thursday">Wochenseite</a> des SSCM-Moduls.</em></p>
+<p>Ein Sprachmodell schreibt eine solche Geschichte in Minuten. Die Arbeit der Lehrperson verschiebt sich auf zwei Stellen, die das Modell nicht übernimmt: die Wahl der Fehlvorstellung, die der Fall widerlegen soll, und die Prüfung, ob jede Zahl in Fall, Schlüssel und Widget dieselbe ist. Der Prompt <em>Fallstudie gemeinsam erstellen</em> (<a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-fallstudie-erstellen" class="quarto-xref"><span>Kapitel B.4.1</span></a>) gibt dafür das Gerüst.</p>
+<p><strong>Lernfrage.</strong> Warum schlägt der Backmeister ausgerechnet einen dritten Former vor, und was ginge didaktisch verloren, wenn der Fall den Engpass gleich im ersten Absatz nennen würde?</p>
+</section>
+<section id="sec-bsp-simulationen-lehrende" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-bsp-simulationen-lehrende"><span class="header-section-number">6.3.2</span> Simulationen durch Lehrende: Prozess und Verhandlung</h3>
+<p><em>Wissensform:</em> pragmatisch, mit semantischem Übergang · <em>Lerntechnik:</em> keine der drei; tragend sind Erfahrung und Debriefing · <em>Rolle:</em> Simulator (<a href="kapitel04.html#sec-simulator" class="quarto-xref"><span>Kapitel 4.4</span></a>), beim Bau Copilot (<a href="kapitel04.html#sec-coding" class="quarto-xref"><span>Kapitel 4.2.2</span></a>) · <em>Gestaltet von:</em> Lehrende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Simulationen fördern komplexe Fähigkeiten in der Hochschule stark, und Gerüste wie Beispiele oder Reflexionsphasen verstärken die Wirkung <span class="citation" data-cites="chernikova2020">(<a href="references.html#ref-chernikova2020" role="doc-biblioref">Chernikova et al., 2020</a>)</span>. Mit computergestützten Simulationsspielen lernten Teilnehmende in einer Metaanalyse mehr als mit Vergleichsmethoden, vor allem dann, wenn das Spiel andere Instruktion ergänzte, statt sie zu ersetzen, und beliebig oft zugänglich war <span class="citation" data-cites="sitzmann2011metaanalytic">(<a href="references.html#ref-sitzmann2011metaanalytic" role="doc-biblioref">Sitzmann, 2011</a>)</span>. Gelernt wird im Nachgespräch: Debriefings, in denen Lernende ihr Handeln systematisch auswerten, verbesserten die Leistung über 46 Stichproben um rund 25 Prozent (d = 0,67), in Simulationen wie im Ernstfall <span class="citation" data-cites="tannenbaum2013debriefs">(<a href="references.html#ref-tannenbaum2013debriefs" role="doc-biblioref">Tannenbaum &amp; Cerasoli, 2013</a>)</span>. Für Lieferketten gilt das besonders. Im Beer Game sanken die Bestellschwankungen erst, als die Beteiligten nach eigener Erfahrung gemeinsam eine Strategie entwickeln durften; Training allein verbesserte das Verständnis, nicht die Kette <span class="citation" data-cites="wukatok2006learning">(<a href="references.html#ref-wukatok2006learning" role="doc-biblioref">Wu &amp; Katok, 2006</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn Sie eine Simulation einsetzen, lassen Sie vor jedem Lauf eine Vorhersage notieren und führen Sie das Debriefing selbst, an den Daten dieses Laufs. Ein Sprachmodell kann die Simulation bauen oder das Gegenüber spielen; das Nachgespräch über die eigenen Entscheidungen bleibt bei Ihnen. Prüfkriterium: Steht im Ablaufplan nach dem Lauf eine Phase, in der die Lernenden ihre Vorhersage mit dem Ergebnis vergleichen und den Unterschied begründen?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Planung Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Planung Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Bullwhip-Widget aus <a href="kapitel04.html#sec-widget-bullwhip" class="quarto-xref"><span>Kapitel 4.2.2.2</span></a> simuliert eine Lieferkette mit vier Stufen vom Händler bis zur Fabrik. Jede Stufe prognostiziert mit einem gleitenden Mittelwert und bestellt nach einer festen Regel; Regler stellen Lieferzeit und Prognosefenster ein, ein Schalter entscheidet, ob alle Stufen die Kassendaten des Händlers sehen. Bevor das Widget Ergebnisse zeigt, verlangt es eine Vorhersage, welche Stufe am stärksten schwankt. Drei Szenarien setzen die Regler auf typische Lagen. Das Modell entstand mit Claude als Copilot; zehn automatische Tests rechnen einen Nachfragesprung von Hand nach und prüfen den Händler gegen die Formel von <span class="citation" data-cites="chen2000quantifying">F. Chen et al. (<a href="references.html#ref-chen2000quantifying" role="doc-biblioref">2000</a>)</span>.</p>
+<p>Zwei Befunde des Modells lohnen einen Satz im Unterricht. Ohne geteilte Daten schwankt die Fabrik doppelt so stark, wie die Formel als Untergrenze angibt, weil die Bestellungen der unteren Stufen nicht mehr unabhängig voneinander sind. Und wer Rücksendungen an den Lieferanten verbietet, senkt die Schwankung der Fabrik im zweiten Szenario auf ein Drittel; die Annahme der Formel, dass Bestellungen auch negativ sein dürfen, ist bei langen Lieferzeiten nicht harmlos.</p>
+<p>Das Widget zeigt die Mechanik, nicht das Verhalten. Seine Stufen bestellen nach einer Regel, und keine vergisst die Ware unterwegs. Diesen Teil übernimmt das Beer Game, das die Studierenden vorher selbst spielen. Für das SSCM-Modul ist eine Sequenz in vier Schritten geplant: das Beer Game in der Übung; das Debriefing an den Bestellkurven jeder Stufe, mit der Frage, wer die offenen Bestellungen mitgezählt hat; das Widget, an dem die Teams die Ursachen einzeln an- und abschalten; zuletzt eine Ballade, die die Wirkungskette nachzeichnet und deren Liedtext Anhang B als Beispiel der Prompt-Vorlage für Lernsongs abdruckt (<a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang B</span></a>). Die Reihenfolge folgt dem Prinzip zweifach: Das Widget ergänzt Spiel und Erklärung, statt sie zu ersetzen, und die Teams formulieren nach der Erfahrung gemeinsam eine Bestellstrategie, die sie am Widget prüfen.</p>
+<p>Die zweite Form ist die Verhandlung mit einem simulierten Gegenüber. Der Prompt <em>Verhandlungssimulation</em> in Anhang B lässt ein Sprachmodell einen Lieferanten spielen, mit Rolle, Interessen und Verhaltensregeln, die die Lehrperson festlegt. Zwei Vorkehrungen aus <a href="kapitel04.html#sec-simulator" class="quarto-xref"><span>Kapitel 4.4</span></a> gelten hier. Ein simuliertes Gegenüber trifft durchschnittliches Verhalten besser als das eines bestimmten Menschen, und die Studierenden erfahren das vor dem Gespräch. Das Debriefing führt die Lehrperson: Sie bespricht am Gesprächsprotokoll, wo ein Zugeständnis zu früh kam und welches Argument das Gegenüber bewegt hat. Im Modul Supply Management setzen wir die Verhandlung im Dezember 2026 zum ersten Mal ein; bis dahin ist sie eine Option, keine erprobte Praxis.</p>
+</div>
+</div>
+<p><strong>Lernfrage.</strong> Im Widget sinkt die Schwankung der Fabrik, wenn alle Stufen die Kassendaten sehen, verschwindet aber nicht. Welche Ursache des Bullwhip-Effekts kann das Widget grundsätzlich nicht zeigen, und welcher Schritt der Sequenz muss sie deshalb übernehmen?</p>
+</section>
+<section id="sec-bsp-simulationen-studierende" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="sec-bsp-simulationen-studierende"><span class="header-section-number">6.3.3</span> Simulationen und Planspiele selbst bauen: Gruppenprojekt mit Prüfzelle</h3>
+<p><em>Wissensform:</em> pragmatisch · <em>Lerntechnik:</em> keine der drei; tragend sind simulationsbasiertes Lernen mit Gerüst und Projektlernen · <em>Rolle:</em> Simulator (<a href="kapitel04.html#sec-simulator" class="quarto-xref"><span>Kapitel 4.4</span></a>) · <em>Gestaltet von:</em> Studierende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Simulationen gehören zu den wirksamsten Mitteln, komplexe Fähigkeiten in der Hochschule zu fördern; eine Metaanalyse über 145 Studien fand einen großen Gesamteffekt (g = 0,85), und Gerüste verstärkten ihn: Lernende mit wenig Vorwissen profitierten von Beispielen, Lernende mit viel Vorwissen von Reflexionsphasen <span class="citation" data-cites="chernikova2020">(<a href="references.html#ref-chernikova2020" role="doc-biblioref">Chernikova et al., 2020</a>)</span>. Projektlernen hat gegenüber lehrerzentriertem Unterricht einen mittleren bis großen Effekt auf die Leistung (d = 0,71) <span class="citation" data-cites="chenyang2019">(<a href="references.html#ref-chenyang2019" role="doc-biblioref">C.-H. Chen &amp; Yang, 2019</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn Studierende mit KI-Hilfe ein Modell bauen, prüfen Sie zwei Dinge getrennt: ob das Modell richtig zählt, automatisch und gegen Regeln, die jedes richtige Modell erfüllt, und ob die Studierenden es verstehen, mündlich und mit einer Vorhersage vor jeder Änderung. Erlauben Sie KI für alle Arbeitsschritte, aber nicht als Quelle für Zahlen. Prüfkriterium: Könnte eine Gruppe mit einem fehlerhaften Modell oder ohne eigenes Verständnis bestehen?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Im SSCM-Gruppenprojekt wählen Teams aus vier bis fünf Studierenden ein reales Produkt, dessen Herstellung vier bis sechs Stationen hat, mit einem wichtigen Zukaufteil und zwei Bezugsquellen dafür. Sie bauen einen Datensatz im Format eines vorgegebenen Beispiels und simulieren in Colab ein Jahr Produktion in drei Szenarien: Normalbetrieb, eine Störung nach einem realen Vorbild und die Störung mit einer Gegenmaßnahme, je zehnmal mit verschiedenen Zufallszahlen. Eine Ergebnistafel vergleicht Stück pro Woche, Kosten pro Stück, Kilogramm CO₂-Äquivalent pro Stück und Stillstandsstunden. Aus den Ergebnissen entstehen eine Animation und ein Poster, das zwei begutachtete Fachartikel als Quellen für die verwendeten Konzepte nutzt.</p>
+<p>Erlaubt ist KI für jeden Arbeitsschritt, von der Datensuche über den Code bis zum Posterentwurf. Drei Regeln halten die Arbeit bei den Studierenden. Eine KI-Antwort ist keine Quelle; eine Zahl, die ein Modell vorschlägt, kommt erst in die Quellentabelle, wenn das Team sie auf eine öffentliche Angabe zurückführt oder mit eigener Rechnung schätzt. Jede Codezeile muss erklärt werden können. Und eine halbe Seite KI-Notiz hält fest, was an die KI ging, wie die Ausgabe geprüft wurde und welcher KI-Fehler gefunden wurde.</p>
+<p>Zwei Prüfinstrumente trennen Richtigkeit und Verständnis. Eine unveränderliche Prüfzelle im Notebook testet fünf Regeln, die jedes korrekte Modell erfüllt, unabhängig vom Produkt: vollständiges Datenformat, keine Station über 100 Prozent ausgelastet, Little’s Law innerhalb von zehn Prozent, keine Teile aus dem Nichts, kein Verlust im Normaljahr. Die Projektseite begründet das mit einem Satz, der für jede KI-gestützte Modellierung gilt: Eine Simulation druckt immer Zahlen, auch wenn sie falsch zählt, und Code mit KI-Hilfe läuft glatt und sieht überzeugend aus, ob er stimmt oder nicht. Die Prüfzelle wirkt wie eine Probebilanz in der Buchhaltung, die einen Fehler anzeigt, bevor jemand weiß, wo er steckt. Über das Verständnis entscheidet die Postersession. Jedes Mitglied beantwortet zwei Fragen allein, zu einer Zahl, zum Modell oder zu einem Fachartikel; dann ändert der Prüfer eine Zahl im Datensatz, und die Gruppe sagt vor dem neuen Lauf voraus, in welche Richtung sich jede Kennzahl bewegt und warum. Eine falsche Vorhersage mit tragfähiger Begründung kostet wenig, eine richtige ohne Begründung bringt wenig.</p>
+<p>Im Sinne von <span class="citation" data-cites="carlile2004">Carlile (<a href="references.html#ref-carlile2004" role="doc-biblioref">2004</a>)</span> ist das Projekt pragmatisch: Die Studierenden wenden ihr Wissen gegen eine Störung und deren Folgen an, und die Gegenmaßnahme kostet Geld, Zeit oder CO₂. In der Sprache des 4D-Modells <span class="citation" data-cites="dakan2025">(<a href="references.html#ref-dakan2025" role="doc-biblioref">Dakan &amp; Feller, 2025</a>)</span> übernimmt die Prüfzelle einen Teil der Urteilsprüfung (<em>Discernment</em>), die Postersession prüft die Verantwortung (<em>Diligence</em>).</p>
+</div>
+</div>
+<p><strong>Lernfrage.</strong> Die Prüfzelle prüft nicht, ob die gewählte Gegenmaßnahme gut ist. Warum ist das eine Stärke des Verfahrens und keine Lücke?</p>
+</section>
+<section id="sec-fall-job-buddy" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="sec-fall-job-buddy"><span class="header-section-number">6.3.4</span> Karriereberater: Erstsemester bauen KI-Werkzeuge für andere</h3>
+<p><em>Wissensform:</em> pragmatisch · <em>Lerntechnik:</em> keine der drei; tragend sind Projektlernen und die Rückmeldung durch Nutzende · <em>Rolle:</em> Tutor (<a href="kapitel04.html#sec-tutor" class="quarto-xref"><span>Kapitel 4.3</span></a>), der Interviewtrainer als Simulator (<a href="kapitel04.html#sec-simulator" class="quarto-xref"><span>Kapitel 4.4</span></a>) · <em>Gestaltet von:</em> Studierende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Projektlernen hat gegenüber lehrerzentriertem Unterricht einen mittleren bis großen Effekt auf die Leistung <span class="citation" data-cites="chenyang2019">(<a href="references.html#ref-chenyang2019" role="doc-biblioref">C.-H. Chen &amp; Yang, 2019</a>)</span>. Wenn Studierende ein Werkzeug für andere bauen, wird ihr Wissen pragmatisch im Sinne von <span class="citation" data-cites="carlile2004">Carlile (<a href="references.html#ref-carlile2004" role="doc-biblioref">2004</a>)</span>: Es muss sich gegen die Interessen und den Alltag einer Zielgruppe bewähren, die das Team erst kennenlernen muss. Rückmeldung wirkt umso stärker, je mehr Information sie enthält <span class="citation" data-cites="wisniewski2020">(<a href="references.html#ref-wisniewski2020" role="doc-biblioref">Wisniewski et al., 2020</a>)</span>. Für ein Team, das baut, ist der Test mit Nutzenden die Rückmeldung mit dem meisten Gehalt, denn er zeigt, wo und warum eine Person mit dem Werkzeug scheitert.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn Studierende ein KI-Werkzeug für eine Zielgruppe bauen, bewerten Sie drei Säulen getrennt: eine Bedarfsanalyse mit Interviews, einen lauffähigen Prototyp und einen Test mit Nutzenden. Verlangen Sie, dass das Sprachmodell nur Daten erklärt, die aus einer benannten Quelle stammen. Prüfkriterium: Kann das Team einen Befund aus dem Nutzertest nennen, der den Prototyp verändert hat?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Im Modul <em>Wissenschaftliches Arbeiten und Grundlagen der Projektarbeit</em> (WAGP) im ersten Semester der Ingenieurstudiengänge bauen Teams seit dem Wintersemester 2024/25 in jedem Semester einen Prototyp mit generativer KI zu einem gemeinsamen Thema: Fachtutoren, Lernspiele, Karriere- und Jobberater, zuletzt KI-Assistenten für Berufsfelder mit Praxisbezug. Der Projektbericht zum vierten Meilenstein enthält eine Bedarfsanalyse mit meist fünf oder sechs Interviews, den Prototyp mit Code und eine Evaluation. Eine Auswertung aller 56 Berichte aus vier Semestern nach diesen drei Säulen ergab 18 starke, 31 solide und 7 schwache Projekte. Den soliden fehlt fast immer dieselbe Säule, der Test mit Nutzenden, und am häufigsten den technisch ehrgeizigen Karriere-Bots des Wintersemesters 2025/26: Von 18 Teams erfüllten fünf alle drei Säulen.</p>
+<p>Die Karriereberater zeigen drei Bauweisen. Die erste macht das Modulhandbuch zur Wissensbasis. Ein Team durchsucht es mit TF-IDF, einem klassischen Suchverfahren, das ein Wort umso höher gewichtet, je seltener es im Gesamtbestand vorkommt, und gibt die Treffer einem Sprachmodell mit, das daraus antwortet; das Team nannte das „RAG ohne Vektordatenbank“. Ein anderes legt Modulhandbuch und Stellenanzeigen nebeneinander, damit Studierende einschätzen können, welche Anforderungen ihr Studium abdeckt. Die zweite Bauweise beschränkt das Modell auf geprüfte Daten. Mehrere Teams ließen Suche und Zuordnung ohne KI laufen, über die Jobsuche-Schnittstelle der Bundesagentur für Arbeit oder ein regelbasiertes Matching auf Moduldaten, und das Sprachmodell nur sortieren und begründen; ein Team verzichtete ausdrücklich auf Gehälter, die das Modell schätzen würde. Die dritte Bauweise ist der Interviewtrainer, ein Simulator. Ein Team leitete den System-Prompt seines Bewerbungstrainers aus der Feedbackforschung und dem Konzept erwünschter Erschwernisse (<em>desirable difficulties</em>) ab, ein anderes nutzt die Fragenkataloge regionaler Firmen.</p>
+<p>Der lehrreichste Befund kam aus einem Test mit sechs Personen: Sie wollten Orientierung, nicht mehr Information. Der Satz verschiebt die Aufgabe eines Karriereberaters vom Antworten zum Ordnen, und keine Bedarfsanalyse hatte ihn vorher geliefert. Im folgenden Semester übertrug ein Team das Muster auf einen Beruf außerhalb der Hochschule und baute einen Job-Buddy für Pflegekräfte, den es nach sechs Interviews mit vier Pflegekräften testete. Die Auswertung zeigt auch, was in einer ersten Projektarbeit mit KI schiefgeht: In zwei Abgaben stand der API-Schlüssel, mit dem das Programm beim Modellanbieter abgerechnet wird, im Klartext im Code, in einer weiteren lagen Passwörter offen. Ein solcher Schlüssel ist wie eine Kreditkarte; wer ihn findet, bezahlt auf fremde Rechnung.</p>
+</div>
+</div>
+<p>Was die Projekte nicht zeigen, ist ein Nutzen für die Ratsuchenden über die Testsitzungen hinaus; sie sind Prototypen von Erstsemestern. Das Lernziel liegt bei den Bauenden: Bedarf erheben, ein Werkzeug bauen und an Menschen prüfen, die es brauchen.</p>
+<p><strong>Lernfrage.</strong> Ein Karriere-Bot beantwortet die Frage nach dem Einstiegsgehalt im Wirtschaftsingenieurwesen mit einer konkreten Zahl. Gegen welche Bauweise aus den Projekten verstößt er, und wie sollte er stattdessen antworten?</p>
+</section>
+<section id="sec-fall-unternehmen" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="sec-fall-unternehmen"><span class="header-section-number">6.3.5</span> Projektlernen mit Praxispartnern: RAG und Einkaufs-Workflows</h3>
+<p><em>Wissensform:</em> pragmatisch · <em>Lerntechnik:</em> keine der drei; tragend ist Projektlernen · <em>Rolle:</em> Copilot (<a href="kapitel04.html#sec-copilot" class="quarto-xref"><span>Kapitel 4.2</span></a>), Hiwi (<a href="kapitel04.html#sec-hiwi" class="quarto-xref"><span>Kapitel 4.1</span></a>) · <em>Gestaltet von:</em> Studierende</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Prinzip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Projektlernen hat gegenüber lehrerzentriertem Unterricht einen mittleren bis großen Effekt auf die Leistung <span class="citation" data-cites="chenyang2019">(<a href="references.html#ref-chenyang2019" role="doc-biblioref">C.-H. Chen &amp; Yang, 2019</a>)</span>. Über eine Organisationsgrenze gilt dabei Carliles Stufenfolge wörtlich: Ein gemeinsames Vokabular genügt erst, wenn die Bedeutungen geklärt sind, und Wissen wird erst umgeformt, wenn beide Seiten Interessen und Folgen auf den Tisch legen <span class="citation" data-cites="carlile2004">(<a href="references.html#ref-carlile2004" role="doc-biblioref">Carlile, 2004</a>)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Empfehlung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn Studierende für einen Praxispartner bauen, verengen Sie den Anwendungsfall vor dem Start auf eine Frage, die sich mit erfundenen Beispieldaten beantworten lässt, und regeln Sie die Vertraulichkeit vor dem ersten Interview. Prüfen Sie mündlich am Prototyp. Prüfkriterium: Kann das Team ohne Zugang zu Partnerdaten einen Prototyp zeigen, den der Partner an einem echten Fall beurteilen kann?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wichtig</span>Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Ausgangslage.</strong> Im Sommersemester 2026 lief erstmals das Wahlpflichtmodul „GenAI im Einsatz“, in dem Studierende für reale Anwendungsfälle aus dem Einkauf von Partnerorganisationen KI-gestützte Werkzeuge entwerfen: ein Automobilzulieferer (Konzern), ein kirchlicher Sozialträger mit eigener Einkaufsabteilung und der Einkauf der eigenen Hochschule hatten vorab beschrieben, wo sie sich Unterstützung vorstellen, von der Gestaltung von Rahmenverträgen über Lieferantenrecherche und Preisbenchmarks bis zu automatisierten Berichten aus Finanz- und Lieferantendaten. Ein Einkaufsleiter formulierte das Kernproblem als Informations- und Kompetenzasymmetrie zwischen Bedarfsträger und Einkauf: Wer einen Laborkühlschrank für 3.000 Euro bestellt, sieht ein Standardgerät; der Einkauf sieht Lieferkonditionen, Energieklasse und Folgekosten, und beide reden aneinander vorbei. Im Wintersemester 2026/27 folgt ein Guided Project mit fünf Masterstudierenden, die für einen internationalen Hersteller von Antriebstechnik den Angebotsanfrage-Zyklus (Request for Quotation) mit generativer KI unterstützen sollen.</p>
+<p><strong>Umsetzung.</strong> Das Wahlpflichtmodul (4 ECTS, 40 Stunden Präsenz) arbeitet in drei Schritten: Studierende wählen einen Use Case und klären ihn mit dem Partner, bauen einen Prototyp mit den Werkzeugen aus Anhang D (eigene Quellen, Agenten, Workflow-Automatisierung; <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-quellen" class="quarto-xref"><span>Kapitel D.3</span></a>, <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-workflows" class="quarto-xref"><span>Kapitel D.6</span></a>) und stellen ihn dem Partner vor. Geprüft wird zu 70 Prozent mündlich, zu 30 Prozent im Antwortwahlverfahren, also prozessnah im Sinne von <a href="kapitel05.html#sec-pruefen" class="quarto-xref"><span>Kapitel 5.4</span></a>. Das Guided Project ist in drei Phasen über 16 Wochen angelegt: Benchmarking (Literatur und Praxis zu GenAI im Einkauf), Konzeptentwicklung mit Experteninterviews und Prozessmodellierung des Ist- und Soll-Prozesses, Prototyp mit Testplan und Testfällen. Da die Studierenden keinen Systemzugang beim Partner haben, arbeiten sie mit Interviews und anonymisierten Beispieldaten.</p>
+<p>Das Guided Project organisiert sich in einem einzigen Git-Repository, das zugleich Projektakte und Arbeitsplatz ist. Fünf Regeln stehen am Anfang der Startseite: kein Projektmaterial außerhalb des Repositorys; nur Text, also Markdown, CSV und Code, Diagramme in Mermaid, Prozessmodelle als BPMN-Export; Termine nur als Meilensteine in der Projektverwaltung, nie in Dokumenten; ausschließlich erfundene Beispieldaten, keine echten Anfragen, Preise oder Lieferantendaten; und Pseudonyme statt Firmen- und Personennamen, auch in Interviewprotokollen, bevor sie eingecheckt werden. Risiken und Besprechungen laufen über Formulare in der Aufgabenverwaltung, und ein eigener Abschnitt der Startseite richtet sich an Sprachmodelle, die mit dem Repository arbeiten: Die Startseite ist die Karte, der Ordner mit Projektplan und Rollenmatrix gilt immer in der aktuellen Fassung, frühere Stände zeigt die Versionsgeschichte.</p>
+<p>Carlile beschreibt solche Objekte als Grenzobjekte, die Wissen über Abteilungsgrenzen tragen; das Repository ist die Form, die er <em>repository</em> nennt, ein gemeinsamer Bestand mit gemeinsamen Bezeichnungen <span class="citation" data-cites="carlile2002">(<a href="references.html#ref-carlile2002" role="doc-biblioref">Carlile, 2002</a>)</span>. Zwischen Hochschule und Partnerunternehmen erfüllt es diese Funktion wörtlich, und die Regeln zu Beispieldaten und Pseudonymen lösen das Vertraulichkeitsproblem, bevor ein Prototyp entsteht. Neu ist der dritte Leser: Weil alles als Text vorliegt und die Startseite ein Sprachmodell anleitet, kann ein Modell den Projektstand lesen, ohne dass jemand ihn zusammenfasst.</p>
+</div>
+</div>
+<p><strong>Lernfrage.</strong> Warum gilt Carliles Stufenfolge beim Projekt mit Praxispartnern wörtlich, während sie im übrigen Kapitel nur eine Analogie ist?</p>
+</section>
+</section>
+<section id="sec-fallbeispiele-fazit" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-fallbeispiele-fazit"><span class="header-section-number">6.4</span> Was die Beispiele gemeinsam zeigen</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Kernaussagen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Kernaussagen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Jedes Beispiel beginnt mit einem Prinzip der Lernforschung; das Werkzeug ist austauschbar, das Prinzip nicht. Wer ein Beispiel übernimmt, übernimmt das Prüfkriterium der Empfehlung, nicht das Produkt.</li>
+<li>Je höher die Wissensform, desto weniger trägt das Werkzeug allein. Für syntaktisches Wissen genügt Abruf mit Rückmeldung (<a href="#sec-bsp-fragen-generator" class="quarto-xref"><span>Kapitel 6.1.1</span></a>); semantisches braucht angeleitetes Entdecken mit Erklärungsauftrag (<a href="#sec-bsp-widgets" class="quarto-xref"><span>Kapitel 6.2.1</span></a>); pragmatisches braucht eigenes Handeln und ein Nachgespräch, das die Lehrperson führt (<a href="#sec-bsp-simulationen-lehrende" class="quarto-xref"><span>Kapitel 6.3.2</span></a>).</li>
+<li>Die Arbeit der Lehrperson verschiebt sich vom Herstellen zum Prüfen. Ein Sprachmodell schreibt Fallstudie, Song und Widget in Minuten; Qualität entsteht dort, wo jede Zahl in Code nachgerechnet, jede Zeile gegen das Regelwerk geprüft und jedes Modell durch Tests geschickt wird.</li>
+<li>Leitplanken entscheiden über die Wirkung eines Tutors. Derselbe Tutor schadet, wenn er Lösungen herausgibt, und hilft, wenn er Musterlösungen als Grundlage nutzt und einen eigenen Versuch verlangt (<a href="#sec-fall-tutor-bwl" class="quarto-xref"><span>Kapitel 6.2.2</span></a>).</li>
+<li>Wenn Studierende bauen, fehlt am häufigsten der Test mit Nutzenden. Er gehört getrennt bewertet, weil er die reichste Rückmeldung liefert (<a href="#sec-fall-job-buddy" class="quarto-xref"><span>Kapitel 6.3.4</span></a>).</li>
+<li>Belegt sind die Bauprinzipien, nicht die Umsetzungen. Für keines der Beispiele liegt bisher ein Wirkungsnachweis im eigenen Kurs vor; offene Ergebnisse sind als solche gekennzeichnet.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Lernfragen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Lernfragen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Wiederholen</strong></p>
+<ol type="1">
+<li>Welche drei Wissensformen unterscheidet <span class="citation" data-cites="carlile2004">Carlile (<a href="references.html#ref-carlile2004" role="doc-biblioref">2004</a>)</span>, und warum ist ihre Übertragung auf das Lernen nur beim Projektlernen mit Praxispartnern mehr als eine Analogie?</li>
+<li>Was zeigte der Vergleichsfall der University of Maryland über Nutzung und Wirkung eines Tutors, der aus den eigenen Kursmaterialien antwortet?</li>
+<li>Welche drei Kennzahlen erheben wir für den BWL-Tutor in <a href="#sec-fall-tutor-bwl" class="quarto-xref"><span>Kapitel 6.2.2</span></a>?</li>
+</ol>
+<p><strong>Anwenden</strong></p>
+<ol start="4" type="1">
+<li>Welches Beispiel liegt Ihrem eigenen Modul am nächsten? Bestimmen Sie Wissensform und Lerntechnik, bevor Sie ein Werkzeug auswählen, und nennen Sie den Engpass (Material, Zugänge, Partner, Prüfungsform), der bei Ihnen zuerst aufträte.</li>
+<li>Formulieren Sie für ein eigenes Vorhaben Prinzip, Empfehlung und Prüfkriterium nach der Schablone dieses Kapitels. Besteht Ihre Empfehlung den Austauschtest?</li>
+</ol>
+<p><strong>Beurteilen</strong></p>
+<ol start="6" type="1">
+<li>Der Tutor an der Hochschule Rhein-Waal war sokratisch gebaut und wurde trotzdem als Antwortmaschine genutzt. Was folgt daraus für den BWL-Tutor?</li>
+</ol>
+<p>Lösungshinweise, auch zu den Lernfragen in den Beispielen: <a href="kapitel10-appendix05-loesungshinweise.html" class="quarto-xref"><span>Anhang E</span></a>.</p>
+</div>
+</div>
+
+
+<div class="support-this-section">
+<h3 class="support-this-heading anchored">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<ul class="support-this-links">
+  <li class="support-this-item">
+    <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Buy Me a Coffee</span>:       <span class="support-this-username">roman.bartnik.th</span>
+    </a>
+  </li>
+  <li class="support-this-item">
+    <a href="https://ko-fi.com/romanbartnik" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Ko-fi</span>:       <span class="support-this-username">romanbartnik</span>
+    </a>
+  </li>
+</ul>
+</div>
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-adesope2017" class="csl-entry" role="listitem">
+Adesope, O. O., Trevisan, D. A., &amp; Sundararajan, N. (2017). Rethinking the use of tests: A meta-analysis of practice testing. <em>Review of Educational Research</em>, <em>87</em>(3), 659–701. <a href="https://doi.org/10.3102/0034654316689306">https://doi.org/10.3102/0034654316689306</a>.
+</div>
+<div id="ref-alfieri2011" class="csl-entry" role="listitem">
+Alfieri, L., Brooks, P. J., Aldrich, N. J., &amp; Tenenbaum, H. R. (2011). Does discovery-based instruction enhance learning? <em>Journal of Educational Psychology</em>, <em>103</em>(1), 1–18. <a href="https://doi.org/10.1037/a0021017">https://doi.org/10.1037/a0021017</a>.
+</div>
+<div id="ref-barbieri2023" class="csl-entry" role="listitem">
+Barbieri, C. A., Miller-Cotto, D., Clerjuste, S. N., &amp; Chawla, K. (2023). A meta-analysis of the worked examples effect on mathematics performance. <em>Educational Psychology Review</em>, <em>35</em>(1), 11. <a href="https://doi.org/10.1007/s10648-023-09745-1">https://doi.org/10.1007/s10648-023-09745-1</a>.
+</div>
+<div id="ref-bastani2025" class="csl-entry" role="listitem">
+Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>Proceedings of the National Academy of Sciences</em>, <em>122</em>(26), e2422633122. <a href="https://doi.org/10.1073/pnas.2422633122">https://doi.org/10.1073/pnas.2422633122</a>.
+</div>
+<div id="ref-carlile2002" class="csl-entry" role="listitem">
+Carlile, P. R. (2002). A pragmatic view of knowledge and boundaries: Boundary objects in new product development. <em>Organization Science</em>, <em>13</em>(4), 442–455. <a href="https://doi.org/10.1287/orsc.13.4.442.2953">https://doi.org/10.1287/orsc.13.4.442.2953</a>.
+</div>
+<div id="ref-carlile2004" class="csl-entry" role="listitem">
+Carlile, P. R. (2004). Transferring, translating, and transforming: An integrative framework for managing knowledge across boundaries. <em>Organization Science</em>, <em>15</em>(5), 555–568. <a href="https://doi.org/10.1287/orsc.1040.0094">https://doi.org/10.1287/orsc.1040.0094</a>.
+</div>
+<div id="ref-cepeda2006" class="csl-entry" role="listitem">
+Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., &amp; Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. <em>Psychological Bulletin</em>, <em>132</em>(3), 354–380. <a href="https://doi.org/10.1037/0033-2909.132.3.354">https://doi.org/10.1037/0033-2909.132.3.354</a>.
+</div>
+<div id="ref-chenyang2019" class="csl-entry" role="listitem">
+Chen, C.-H., &amp; Yang, Y.-C. (2019). Revisiting the effects of project-based learning on students’ academic achievement: A meta-analysis investigating moderators. <em>Educational Research Review</em>, <em>26</em>, 71–81. <a href="https://doi.org/10.1016/j.edurev.2018.11.001">https://doi.org/10.1016/j.edurev.2018.11.001</a>.
+</div>
+<div id="ref-chen2000quantifying" class="csl-entry" role="listitem">
+Chen, F., Drezner, Z., Ryan, J. K., &amp; Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain: The impact of forecasting, lead times, and information. <em>Management Science</em>, <em>46</em>(3), 436–443. <a href="https://doi.org/10.1287/mnsc.46.3.436.12069">https://doi.org/10.1287/mnsc.46.3.436.12069</a>.
+</div>
+<div id="ref-chernikova2020" class="csl-entry" role="listitem">
+Chernikova, O., Heitzmann, N., Stadler, M., Holzberger, D., Seidel, T., &amp; Fischer, F. (2020). Simulation-based learning in higher education: A meta-analysis. <em>Review of Educational Research</em>, <em>90</em>(4), 499–541. <a href="https://doi.org/10.3102/0034654320933544">https://doi.org/10.3102/0034654320933544</a>.
+</div>
+<div id="ref-chi2014" class="csl-entry" role="listitem">
+Chi, M. T. H., &amp; Wylie, R. (2014). The ICAP framework: Linking cognitive engagement to active learning outcomes. <em>Educational Psychologist</em>, <em>49</em>(4), 219–243. <a href="https://doi.org/10.1080/00461520.2014.965823">https://doi.org/10.1080/00461520.2014.965823</a>.
+</div>
+<div id="ref-dakan2025" class="csl-entry" role="listitem">
+Dakan, R., &amp; Feller, J. (2025). Framework for AI fluency (Version 1.5). <em>Ringling College of Art and Design LibGuides</em>. <a href="https://ringling.libguides.com/ai/framework">https://ringling.libguides.com/ai/framework</a>.
+</div>
+<div id="ref-derksdijkman2024" class="csl-entry" role="listitem">
+Derks-Dijkman, M. W., Schaefer, R. S., &amp; Kessels, R. P. C. (2024). Musical mnemonics in cognitively unimpaired individuals and individuals with Alzheimer’s dementia: A systematic review. <em>Neuropsychology Review</em>, <em>34</em>(2), 455–477. <a href="https://doi.org/10.1007/s11065-023-09585-4">https://doi.org/10.1007/s11065-023-09585-4</a>.
+</div>
+<div id="ref-dunlosky2013" class="csl-entry" role="listitem">
+Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T. (2013). Improving Students’ Learning With Effective Learning Techniques: Promising Directions From Cognitive and Educational Psychology. <em>Psychological science in the public interest : a journal of the American Psychological Society</em>, <em>14</em>(1), 4–58. <a href="https://doi.org/10.1177/1529100612453266">https://doi.org/10.1177/1529100612453266</a>.
+</div>
+<div id="ref-fyfe2014" class="csl-entry" role="listitem">
+Fyfe, E. R., McNeil, N. M., Son, J. Y., &amp; Goldstone, R. L. (2014). Concreteness fading in mathematics and science instruction: A systematic review. <em>Educational Psychology Review</em>, <em>26</em>(1), 9–25. <a href="https://doi.org/10.1007/s10648-014-9249-3">https://doi.org/10.1007/s10648-014-9249-3</a>.
+</div>
+<div id="ref-gerber2026" class="csl-entry" role="listitem">
+Gerber, A., Lorenz, L., &amp; Pfeiffer, U. (2026). KI-Tutoren in der Lehre: rechtlich sicher, didaktisch wertvoll, technisch innovativ. In J. Leschke, R. Queckenberg, &amp; M. Persike (Hrsg.), <em>Learning analytics, artificial intelligence und data mining in der hochschulbildung</em>: (S. 57–64). transcript. <a href="https://doi.org/10.14361/9783839458761-057">https://doi.org/10.14361/9783839458761-057</a>.
+</div>
+<div id="ref-katz2021" class="csl-entry" role="listitem">
+Katz, J. J., Ando, M., &amp; Wiseheart, M. (2021). Optimizing song retention through the spacing effect. <em>Cognitive Research: Principles and Implications</em>, <em>6</em>(1), 79. <a href="https://doi.org/10.1186/s41235-021-00345-7">https://doi.org/10.1186/s41235-021-00345-7</a>.
+</div>
+<div id="ref-kestin2025" class="csl-entry" role="listitem">
+Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting. <em>Scientific Reports</em>, <em>15</em>(1), 17458. <a href="https://doi.org/10.1038/s41598-025-97652-6">https://doi.org/10.1038/s41598-025-97652-6</a>.
+</div>
+<div id="ref-liu2026courseintegrated" class="csl-entry" role="listitem">
+Liu, J., Sweet, T., Chen, M. H., Engelberg, J., Masters, M. C., Clark, M., Persaud, A., Lancaster, A., Hollingsworth, J. K., &amp; Rice, J. K. (2026). <em>The effects of course-integrated AI tutoring on student performance and engagement: A randomized university trial</em> (EdWorkingPaper; Nr. 26-1598). Annenberg Institute at Brown University. <a href="https://doi.org/10.26300/y3f8-vh05">https://doi.org/10.26300/y3f8-vh05</a>.
+</div>
+<div id="ref-mar2021" class="csl-entry" role="listitem">
+Mar, R. A., Li, J., Nguyen, A. T. P., &amp; Ta, C. P. (2021). Memory and comprehension of narrative versus expository texts: A meta-analysis. <em>Psychonomic Bulletin &amp; Review</em>, <em>28</em>(3), 732–749. <a href="https://doi.org/10.3758/s13423-020-01853-1">https://doi.org/10.3758/s13423-020-01853-1</a>.
+</div>
+<div id="ref-mayer2014" class="csl-entry" role="listitem">
+Mayer, R. E., &amp; Fiorella, L. (2014). Principles for Reducing Extraneous Processing in Multimedia Learning: Coherence, Signaling, Redundancy, Spatial Contiguity, and Temporal Contiguity Principles. In R. E. Mayer (Hrsg.), <em>The Cambridge handbook of multimedia learning</em>: (S. 279–315). Cambridge University Press. <a href="https://doi.org/10.1017/cbo9781139547369.015">https://doi.org/10.1017/cbo9781139547369.015</a>.
+</div>
+<div id="ref-pan2023prequestion" class="csl-entry" role="listitem">
+Pan, S. C., &amp; Carpenter, S. K. (2023). Prequestioning and pretesting effects: A review of empirical research, theoretical perspectives, and implications for educational practice. <em>Educational Psychology Review</em>, <em>35</em>(4), 97. <a href="https://doi.org/10.1007/s10648-023-09814-5">https://doi.org/10.1007/s10648-023-09814-5</a>.
+</div>
+<div id="ref-roediger2006" class="csl-entry" role="listitem">
+Roediger, H. L., &amp; Karpicke, J. D. (2006). Test-enhanced learning: taking memory tests improves long-term retention. <em>Psychological science</em>, <em>17</em>(3), 249–255. <a href="https://doi.org/10.1111/j.1467-9280.2006.01693.x">https://doi.org/10.1111/j.1467-9280.2006.01693.x</a>.
+</div>
+<div id="ref-sitzmann2011metaanalytic" class="csl-entry" role="listitem">
+Sitzmann, T. (2011). A meta-analytic examination of the instructional effectiveness of computer-based simulation games. <em>Personnel Psychology</em>, <em>64</em>(2), 489–528. <a href="https://doi.org/10.1111/j.1744-6570.2011.01190.x">https://doi.org/10.1111/j.1744-6570.2011.01190.x</a>.
+</div>
+<div id="ref-tannenbaum2013debriefs" class="csl-entry" role="listitem">
+Tannenbaum, S. I., &amp; Cerasoli, C. P. (2013). Do team and individual debriefs enhance performance? A meta-analysis. <em>Human Factors</em>, <em>55</em>(1), 231–245. <a href="https://doi.org/10.1177/0018720812448394">https://doi.org/10.1177/0018720812448394</a>.
+</div>
+<div id="ref-willingham2021" class="csl-entry" role="listitem">
+Willingham, D. T. (2021). <em>Why don’t students like school?: A cognitive scientist answers questions about how the mind works and what it means for the classroom</em>. Jossey-Bass.
+</div>
+<div id="ref-wisniewski2020" class="csl-entry" role="listitem">
+Wisniewski, B., Zierer, K., &amp; Hattie, J. (2020). The power of feedback revisited: A meta-analysis of educational feedback research. <em>Frontiers in Psychology</em>, <em>10</em>, 3087. <a href="https://doi.org/10.3389/fpsyg.2019.03087">https://doi.org/10.3389/fpsyg.2019.03087</a>.
+</div>
+<div id="ref-wouters2013" class="csl-entry" role="listitem">
+Wouters, P., van Nimwegen, C., van Oostendorp, H., &amp; van der Spek, E. D. (2013). A meta-analysis of the cognitive and motivational effects of serious games. <em>Journal of Educational Psychology</em>, <em>105</em>(2), 249–265. <a href="https://doi.org/10.1037/a0031311">https://doi.org/10.1037/a0031311</a>.
+</div>
+<div id="ref-wukatok2006learning" class="csl-entry" role="listitem">
+Wu, D. Y., &amp; Katok, E. (2006). Learning, communication, and the bullwhip effect. <em>Journal of Operations Management</em>, <em>24</em>(6), 839–850. <a href="https://doi.org/10.1016/j.jom.2005.08.006">https://doi.org/10.1016/j.jom.2005.08.006</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./kapitel05.html" class="pagination-link" aria-label="Empfehlungen zur Umsetzung">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./kapitel06-appendix01-prompt-ueberblick.html" class="pagination-link" aria-label="Gezielte Einschränkungen in didaktischen Prompts">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Gezielte Einschränkungen in didaktischen Prompts</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, Roman (2026). Generative KI als Hilfe zum Lehren und Lernen. Lizenz: CC BY-SA 4.0. Online: https://th-koln-bartnik.github.io/genai4teaching/</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel06-fallbeispiele.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel06-fallbeispiele.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>videojs(video_shortcode_videojs_video2);</script>
+
+
+
+
+</body></html>
