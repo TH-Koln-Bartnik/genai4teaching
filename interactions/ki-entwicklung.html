@@ -88,7 +88,7 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
 /* Auswahl über ?zeige=zeithorizont|kosten|arbeitsweisen; Druckansicht über #druck */
 .aus{display:none !important}
-.druck .controls,.druck .now,.druck details,.druck .calc,.druck footer,.druck h2,.druck .sub,.druck .src{display:none !important}
+.druck .controls,.druck .now,.druck details,.druck footer,.druck h2,.druck .sub,.druck .src{display:none !important}
 .druck .viz-root{background:#fff;padding:4px}.druck section.card{border:0;padding:4px;margin:0}
 </style>
 </head>
@@ -130,17 +130,7 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
  <div id="k2bild"><div class="chart" id="c2"><div class="tip" id="tip2"></div></div><div id="druck2r"></div></div>
  <div class="now" id="now2" aria-live="polite"></div>
 </div>
-<div class="controls" style="margin-top:10px">
- <label>Studierende <input type="number" id="n1" value="150" min="1"></label>
- <label>Fragen/Woche <input type="number" id="n2" value="20" min="0"></label>
- <label>Wochen <input type="number" id="n3" value="14" min="1"></label>
-</div>
-<div class="calc" aria-live="polite">
- <div class="stat"><div class="k">Fragen im Semester</div><div class="v" id="q">–</div></div>
- <div class="stat"><div class="k">mit o3, Jan. 2025</div><div class="v" id="c-then">–</div></div>
- <div class="stat"><div class="k" id="c-now-k">gewählter Zeitpunkt</div><div class="v" id="c-now">–</div></div>
-</div>
-<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Rasterdarstellung nach einer Idee von Mollick (2026), eigene Umsetzung. Nur Größenordnung: Tutor-Chats sind länger als eine GPQA-Frage.</p>
+<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Rasterdarstellung nach einer Idee von Mollick (2026), eigene Umsetzung.</p>
 <details><summary>Datentabelle</summary><table id="t2"><thead><tr><th>Modell</th><th>Datum</th><th class="num">Genauigkeit</th><th class="num">Kosten/Frage</th></tr></thead><tbody></tbody></table></details>
 </section>
 
@@ -170,13 +160,14 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
 <p>Datenstand: METR 8. Mai 2026; Epoch AI Juli 2026. Die Daten liegen als CSV im Ordner <code>data/</code> des Buch-Repositorys.</p>
 </footer>
 </main></div>
+<script src="models/epoch-kosten.js"></script>
 <script>
 // Auswahl und Druckansicht vor dem Zeichnen setzen, damit die Diagramme die richtige Breite messen
 (function(){const z=new URLSearchParams(location.search).get('zeige');
   if(z)['zeithorizont','kosten','arbeitsweisen'].forEach(k=>{if(k!==z)document.getElementById('k-'+k).classList.add('aus');});
   if(location.hash==='#druck')document.documentElement.classList.add('druck');})();
 const METR=[{"n": "GPT-2", "d": "2019-02-14", "s": true, "v": 0.05, "lo": 0.01, "hi": 0.14}, {"n": "GPT-3 (davinci-002)", "d": "2020-05-28", "s": true, "v": 0.14, "lo": 0.09, "hi": 0.22}, {"n": "GPT-3.5", "d": "2022-03-15", "s": true, "v": 0.6, "lo": 0.26, "hi": 1.12}, {"n": "GPT-4", "d": "2023-03-14", "s": true, "v": 3.99, "lo": 1.93, "hi": 8.0}, {"n": "GPT-4 (Nov 2023)", "d": "2023-11-06", "s": true, "v": 4.04, "lo": 1.87, "hi": 8.44}, {"n": "Claude 3 Opus", "d": "2024-03-04", "s": false, "v": 3.95, "lo": 1.71, "hi": 8.76}, {"n": "GPT-4 Turbo", "d": "2024-04-09", "s": false, "v": 3.73, "lo": 1.98, "hi": 6.74}, {"n": "GPT-4o", "d": "2024-05-13", "s": true, "v": 6.99, "lo": 4.0, "hi": 12.91}, {"n": "Claude 3.5 Sonnet", "d": "2024-06-20", "s": true, "v": 11.4, "lo": 5.49, "hi": 22.38}, {"n": "o1-preview", "d": "2024-09-12", "s": true, "v": 20.33, "lo": 11.72, "hi": 33.38}, {"n": "Claude 3.5 Sonnet (neu)", "d": "2024-10-22", "s": true, "v": 20.52, "lo": 10.14, "hi": 40.82}, {"n": "o1", "d": "2024-12-05", "s": true, "v": 38.83, "lo": 21.16, "hi": 64.95}, {"n": "Claude 3.7 Sonnet", "d": "2025-02-24", "s": true, "v": 60.39, "lo": 33.01, "hi": 104.23}, {"n": "o3", "d": "2025-04-16", "s": true, "v": 119.73, "lo": 74.62, "hi": 190.94}, {"n": "Claude Opus 4", "d": "2025-05-22", "s": false, "v": 100.37, "lo": 59.99, "hi": 163.45}, {"n": "Claude Opus 4.1", "d": "2025-08-05", "s": false, "v": 100.47, "lo": 59.27, "hi": 159.45}, {"n": "GPT-5", "d": "2025-08-07", "s": true, "v": 203.01, "lo": 112.64, "hi": 405.55}, {"n": "Gemini 3 Pro", "d": "2025-11-18", "s": true, "v": 224.33, "lo": 139.57, "hi": 379.24}, {"n": "GPT-5.1-Codex-Max", "d": "2025-11-19", "s": false, "v": 223.71, "lo": 134.31, "hi": 396.21}, {"n": "Claude Opus 4.5", "d": "2025-11-24", "s": true, "v": 292.99, "lo": 161.72, "hi": 623.7}, {"n": "GPT-5.2", "d": "2025-12-11", "s": true, "v": 352.25, "lo": 198.07, "hi": 815.18}, {"n": "Claude Opus 4.6", "d": "2026-02-05", "s": true, "v": 718.81, "lo": 316.69, "hi": 3633.79}, {"n": "GPT-5.3-Codex", "d": "2026-02-05", "s": false, "v": 349.53, "lo": 194.91, "hi": 816.35}, {"n": "Gemini 3.1 Pro", "d": "2026-02-19", "s": false, "v": 384.15, "lo": 233.5, "hi": 694.75}, {"n": "GPT-5.4", "d": "2026-03-05", "s": false, "v": 341.74, "lo": 186.58, "hi": 768.78}, {"n": "Claude Mythos Preview (früh)", "d": "2026-04-07", "s": true, "v": 1044.78, "lo": 508.88, "hi": 3304.26}];
-const EPOCH=[{"n": "o3 (high)", "d": "2025-01-31", "c": 29.8906, "a": 75.8}, {"n": "Gemini 2.5 Pro (Jun 2025)", "d": "2025-03-25", "c": 8.9116, "a": 80.4}, {"n": "Gemini 2.5 Pro (Jun 2025)", "d": "2025-06-05", "c": 1.2932, "a": 77.8}, {"n": "DeepSeek-V3.2", "d": "2025-12-01", "c": 0.8821, "a": 77.7}, {"n": "Qwen3.5 397B-A17B", "d": "2026-02-13", "c": 0.7102, "a": 79.8}, {"n": "Qwen 3.5 Flash (hosted 35B-A3B)", "d": "2026-02-25", "c": 0.2181, "a": 76.2}, {"n": "MiniMax-M3", "d": "2026-06-01", "c": 0.1213, "a": 75.1}, {"n": "GPT-5.6 Luna (low)", "d": "2026-07-09", "c": 0.0412, "a": 75.3}];
+const EPOCH=window.EPOCH_GPQA75;
 
 (function(){
 const NS="http://www.w3.org/2000/svg";
@@ -269,19 +260,12 @@ document.querySelector('#t2 tbody').innerHTML=E.map(r=>`<tr><td>${r.n}</td><td>$
 document.querySelector('#t2 thead tr').insertAdjacentHTML('beforeend','<th class="num">Rückgang zur Vorstufe</th>');
 document.querySelectorAll('#t2 tbody tr').forEach((tr,i)=>tr.insertAdjacentHTML('beforeend',`<td class="num">${i?fPct(E[i].fall):'–'}</td>`));
 let sel2=E.length-1, last2=-1, timer2=null;
-const fUSD=v=>v.toLocaleString('de-DE',v<100?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})+' US-$';
 let ansicht2='raster', rSel=0, rBis=0;
-function calc(){const n=(+n1.value||0)*(+n2.value||0)*(+n3.value||0),cur=E[ansicht2==='raster'?rSel:sel2];
-  document.getElementById('q').textContent=n.toLocaleString('de-DE');
-  document.getElementById('c-then').textContent=fUSD(n*E[0].c/100);
-  document.getElementById('c-now').textContent=fUSD(n*cur.c/100);
-  document.getElementById('c-now-k').textContent=kurz(cur.n)+', '+fD(cur.t);}
-const n1=document.getElementById('n1'),n2=document.getElementById('n2'),n3=document.getElementById('n3'),ts=document.getElementById('tsel');
+const ts=document.getElementById('tsel');
 ts.max=E.length-1;ts.value=sel2;
-[n1,n2,n3].forEach(i=>i.addEventListener('input',calc));
 const pb2=document.getElementById('play2');
 function stop2(){if(timer2){clearInterval(timer2);timer2=null;pb2.textContent='▶ Abspielen';}}
-function setSel(i){sel2=i;ts.value=i;calc();draw2();}
+function setSel(i){sel2=i;ts.value=i;draw2();}
 ts.addEventListener('input',()=>{stop2();setSel(+ts.value);});
 pb2.onclick=()=>{if(timer2){stop2();return;}if(sel2>=E.length-1){last2=-1;setSel(0);}pb2.textContent='❚❚ Pause';
   timer2=setInterval(()=>{setSel(sel2+1);if(sel2>=E.length-1)stop2();},1600);};
@@ -380,14 +364,14 @@ function schaetzUI(){
   inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&ok())aufdecken(+inp.value);});
   btn.onclick=()=>{if(ok())aufdecken(+inp.value);};
 }
-function aufdecken(g){const vorher=rBis;tipps[rBis+1]=g;rBis++;rSel=rBis;tippTabelle();drawR(vorher);calc();
+function aufdecken(g){const vorher=rBis;tipps[rBis+1]=g;rBis++;rSel=rBis;tippTabelle();drawR(vorher);
   const f=document.getElementById('tipp');if(f)f.focus();}
 function tippTabelle(){document.querySelector('#t2s tbody').innerHTML=Object.keys(tipps).map(Number).sort((a,b)=>a-b).map(s=>`<tr><td>${fD(E[s].t)}</td><td class="num">${tipps[s].toLocaleString('de-DE')}</td><td class="num">${fN(NQ[s])}</td><td>${abweichung(tipps[s],NQ[s],true)}</td></tr>`).join('');
   if(rBis>=E.length-1)document.getElementById('d-tipps').open=true;}
 const rZur=document.getElementById('r-zur'),rVor=document.getElementById('r-vor');
-rZur.onclick=()=>{if(rSel>0){rSel--;drawR();calc();}};
-rVor.onclick=()=>{if(rSel<rBis){rSel++;drawR();calc();}};
-document.getElementById('r-neu').onclick=()=>{rSel=rBis=0;for(const k in tipps)delete tipps[k];tippTabelle();document.getElementById('d-tipps').open=false;drawR();calc();};
+rZur.onclick=()=>{if(rSel>0){rSel--;drawR();}};
+rVor.onclick=()=>{if(rSel<rBis){rSel++;drawR();}};
+document.getElementById('r-neu').onclick=()=>{rSel=rBis=0;for(const k in tipps)delete tipps[k];tippTabelle();document.getElementById('d-tipps').open=false;drawR();};
 function drawR(anim){
   const box=document.getElementById('c2r');box.innerHTML='';
   const W=Math.min(box.clientWidth||480,480);
@@ -413,7 +397,7 @@ function drawR(anim){
 function setAnsicht(a){ansicht2=a;stop2();
   document.getElementById('v-raster').setAttribute('aria-pressed',a==='raster');document.getElementById('v-treppe').setAttribute('aria-pressed',a==='treppe');
   document.getElementById('ansicht-raster').hidden=a!=='raster';document.getElementById('ansicht-treppe').hidden=a!=='treppe';
-  if(a==='raster')drawR();else draw2();calc();}
+  if(a==='raster')drawR();else draw2();}
 document.getElementById('v-raster').onclick=()=>setAnsicht('raster');
 document.getElementById('v-treppe').onclick=()=>setAnsicht('treppe');
 // Druckfassung: vier kleine Raster unter der Treppe (Jan. 2025, Juni 2025, Feb. 2026, Juli 2026)
@@ -481,7 +465,7 @@ function draw3(){const g=document.getElementById('g3');g.innerHTML='';
 function all(){draw1();if(ansicht2==='raster')drawR();else draw2();drawDruckR();draw3();}
 // Ansicht wählen: ?ansicht=treppe öffnet die Treppe; die Druckansicht zeigt Treppe und vier kleine Raster
 if(druck||new URLSearchParams(location.search).get('ansicht')==='treppe')setAnsicht('treppe');
-all();calc();
+all();
 let to,breite=innerWidth;addEventListener('resize',()=>{if(innerWidth===breite)return;breite=innerWidth;clearTimeout(to);to=setTimeout(all,120);});
 if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
 window.__ki={METR,EPOCH,slope,WEISEN,ANL,an,draw3,NQ,VOLL};

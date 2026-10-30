@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was ein Tutor-Bot im Semester kostet</title>
+<style>
+.viz-root{color-scheme:light;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-2:#eb6834;--wash:rgba(11,11,11,0.035)}
+@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-2:#d95926;--wash:rgba(255,255,255,0.04)}}
+*{box-sizing:border-box}body{margin:0}
+.viz-root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--plane);color:var(--text-primary);padding:16px 12px 24px;line-height:1.45}
+main{max-width:920px;margin:0 auto}
+section.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:18px 20px 14px;margin:0 0 20px}
+h2{font-size:1.1rem;margin:0 0 2px}
+.sub{color:var(--text-secondary);font-size:.88rem;margin:0 0 10px}
+.src{color:var(--muted);font-size:.75rem;margin:8px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 8px;font-size:.85rem}
+.controls label{display:flex;gap:6px;align-items:center;color:var(--text-secondary)}
+input[type=number]{width:74px;font:inherit;padding:2px 6px;background:var(--surface-1);color:var(--text-primary);border:1px solid var(--border);border-radius:6px}
+input[type=range]{width:200px}
+.annahme{background:var(--wash);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:0 0 12px}
+.annahme .t{font-weight:650;font-size:.85rem;margin:0 0 6px}
+.annahme .sum{font-size:.85rem;color:var(--text-secondary);margin-top:4px;font-variant-numeric:tabular-nums}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:.8rem;border:0;background:transparent;color:var(--text-secondary);padding:4px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
+.playbtn{font:inherit;font-size:.8rem;border:1px solid var(--border);background:var(--text-primary);color:var(--surface-1);border-radius:8px;padding:4px 12px;cursor:pointer}
+.chip{font:inherit;font-size:.78rem;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:999px;padding:3px 10px;cursor:pointer}
+.chip:disabled{opacity:.35;cursor:not-allowed}
+.wrap{display:grid;grid-template-columns:minmax(190px,250px) 1fr;gap:12px 22px;align-items:start}
+@media (max-width:599px){.wrap{grid-template-columns:1fr}}
+.info .k{color:var(--text-secondary);font-size:.85rem}
+.info .big{font-size:2.6rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--series-2)}
+.info .s{color:var(--text-secondary);font-size:.85rem;margin-top:4px;font-variant-numeric:tabular-nums}
+.info .pp{margin-top:12px;padding-top:8px;border-top:1px solid var(--grid);font-size:.85rem}
+.info .pp b{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.chart{position:relative}
+svg text{font-family:inherit}
+.tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.val{fill:var(--text-secondary);font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.val.akt{fill:var(--text-primary);font-size:13px;font-weight:700}
+.bar.neu{animation:auf .5s ease-out;transform-box:fill-box;transform-origin:bottom}@keyframes auf{from{transform:scaleY(0)}}
+@media (prefers-reduced-motion:reduce){.bar.neu{animation:none}}
+.now{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-top:6px;font-size:.9rem;min-height:1.6em}.now .m{font-weight:650}.now .ex{background:var(--wash);border:1px solid var(--border);border-radius:10px;padding:1px 10px}
+details{margin-top:6px;font-size:.8rem}summary{cursor:pointer;color:var(--muted)}
+table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;padding:3px 6px;border-bottom:1px solid var(--grid)}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
+/* Druckansicht über #druck: nur das Diagramm mit allen Stufen und der Annahme im Bild */
+.druck .controls,.druck .now,.druck details,.druck footer,.druck h2,.druck .sub,.druck .src,.druck .annahme,.druck .info{display:none !important}
+.druck .wrap{display:block}
+.druck .viz-root{background:#fff;padding:4px}.druck section.card{border:0;padding:4px;margin:0}
+</style>
+</head>
+<body>
+<div class="viz-root"><main>
+<section class="card" id="k-tutor">
+<h2>Was ein Tutor-Bot im Semester kostet</h2>
+<p class="sub">Semesterkosten eines Tutor-Bots, wenn jede Frage so viel kostet wie eine Frage des GPQA Diamond mit dem jeweils günstigsten Modell, das 75 % richtig beantwortet</p>
+<div class="annahme" role="group" aria-labelledby="ann-t">
+ <p class="t" id="ann-t">Ihr Kurs</p>
+ <div class="controls" style="margin:0">
+  <label>Studierende <input type="number" id="n-stud" value="150" min="1" step="1"></label>
+  <label>Fragen an den Tutor-Bot pro Person und Tag <input type="number" id="n-tag" value="2" min="0" step="0.5"></label>
+  <label>Tage im Semester <input type="number" id="n-tage" value="98" min="1" step="1"></label>
+ </div>
+ <div class="sum" id="sum" aria-live="polite"></div>
+</div>
+<div class="controls">
+ <button id="play" class="playbtn" aria-label="Preisstufen nacheinander zeigen">▶ Abspielen</button>
+ <button id="zur" class="chip">◀ Zurück</button><button id="vor" class="chip">Weiter ▶</button>
+ <input type="range" id="tsel" min="0" max="7" step="1" value="0" aria-label="Preisstufe">
+ <div class="seg" role="group" aria-label="Achse"><button id="s-lin" aria-pressed="true">linear</button><button id="s-log" aria-pressed="false">log</button></div>
+</div>
+<div class="wrap">
+ <div class="info" id="info" aria-live="polite"></div>
+ <div class="chart" id="c"></div>
+</div>
+<div class="now" id="now" aria-live="polite"></div>
+<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise in US-Dollar. Nur Größenordnung: Ein Gespräch mit einem Tutor-Bot ist meist länger als eine Testfrage und kann ein Mehrfaches kosten; die Rückgänge zwischen den Stufen gelten trotzdem.</p>
+<details><summary>Datentabelle</summary><table id="tab"><thead><tr><th>Preisstufe</th><th>Modell</th><th class="num">Cent je Frage</th><th class="num">Semester</th><th class="num">je Person</th></tr></thead><tbody></tbody></table></details>
+</section>
+<footer>
+<p>Emberson, L., &amp; Roodman, D. (2026, 22. September). <em>The plunging price of thought</em>. Epoch AI. https://epoch.ai/publications/the-plunging-price-of-thought · Daten: https://github.com/droodman/inference-cost</p>
+<p>Datenstand: Epoch AI Juli 2026. Die Daten liegen als CSV im Ordner <code>data/</code> des Buch-Repositorys.</p>
+</footer>
+</main></div>
+<script src="models/epoch-kosten.js"></script>
+<script>
+if(location.hash==='#druck')document.documentElement.classList.add('druck');
+(function(){
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+const css=v=>getComputedStyle(document.querySelector('.viz-root')).getPropertyValue(v).trim();
+const druck=document.documentElement.classList.contains('druck');
+const E=window.EPOCH_GPQA75.map(r=>({...r,t:new Date(r.d+'T00:00:00')}));
+E.forEach((r,i)=>{r.fall=i?1-r.c/E[i-1].c:null;});
+const kurz=n=>n.replace(/ \(.*\)$/,'');
+const fD=d=>d.toLocaleDateString('de-DE',{month:'short',year:'numeric'});
+const fUSD=v=>v.toLocaleString('de-DE',v<100?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})+' US-$';
+const fUSDk=v=>v>=1000?(v/1000).toLocaleString('de-DE',{maximumFractionDigits:1})+' Tsd. $':v.toLocaleString('de-DE',{maximumFractionDigits:v<10?2:0})+' $';
+const fPct=x=>'−'+Math.round(x*100)+' %';
+const inS=document.getElementById('n-stud'),inT=document.getElementById('n-tag'),inD=document.getElementById('n-tage');
+let sel=druck?E.length-1:0, last=-1, timer=null, skala='lin';
+function fragen(){return Math.max(0,+inS.value||0)*Math.max(0,+inT.value||0)*Math.max(0,+inD.value||0);}
+const kosten=i=>fragen()*E[i].c/100;            // US-$ je Semester
+const jePerson=i=>(+inS.value>0?kosten(i)/+inS.value:0);
+const ts=document.getElementById('tsel'),pb=document.getElementById('play');
+ts.max=E.length-1;ts.value=sel;
+function stop(){if(timer){clearInterval(timer);timer=null;pb.textContent='▶ Abspielen';}}
+function setSel(i){sel=Math.max(0,Math.min(E.length-1,i));ts.value=sel;draw();}
+ts.addEventListener('input',()=>{stop();setSel(+ts.value);});
+document.getElementById('zur').onclick=()=>{stop();setSel(sel-1);};
+document.getElementById('vor').onclick=()=>{stop();setSel(sel+1);};
+pb.onclick=()=>{if(timer){stop();return;}if(sel>=E.length-1){last=-1;setSel(0);}pb.textContent='❚❚ Pause';
+  timer=setInterval(()=>{setSel(sel+1);if(sel>=E.length-1)stop();},1600);};
+document.getElementById('s-lin').onclick=()=>{skala='lin';draw();};
+document.getElementById('s-log').onclick=()=>{skala='log';draw();};
+[inS,inT,inD].forEach(i=>i.addEventListener('input',()=>{last=sel;draw();}));
+function draw(){
+  const n=fragen(), nTag=Math.max(0,+inS.value||0)*Math.max(0,+inT.value||0);
+  document.getElementById('sum').textContent=`= ${nTag.toLocaleString('de-DE')} Fragen pro Tag · ${n.toLocaleString('de-DE')} Fragen im Semester`;
+  document.getElementById('s-lin').setAttribute('aria-pressed',skala==='lin');document.getElementById('s-log').setAttribute('aria-pressed',skala==='log');
+  const cur=E[sel];
+  document.getElementById('info').innerHTML=`<div class="k">Kosten pro Semester, ${fD(cur.t)}</div><div class="big">${fUSD(kosten(sel))}</div>
+    <div class="s">${kurz(cur.n)} · ${cur.c.toLocaleString('de-DE',{maximumSignificantDigits:3})} ct je Frage</div>
+    <div class="pp">je Person und Semester: <b>${fUSD(jePerson(sel))}</b></div>`;
+  // Diagramm
+  const box=document.getElementById('c');box.innerHTML='';
+  const W=box.clientWidth||620,narrow=W<500,H=druck?300:Math.max(240,Math.min(320,W*0.55)),m={l:58,r:8,t:druck?34:22,b:34},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':`Semesterkosten eines Tutor-Bots in acht Preisstufen: von ${fUSD(kosten(0))} (o3, Januar 2025) auf ${fUSD(kosten(E.length-1))} (GPT-5.6 Luna, Juli 2026) bei ${n.toLocaleString('de-DE')} Fragen`},box);
+  const vmax=Math.max(kosten(0),1e-9);
+  let ys,ticks;
+  if(skala==='lin'){const step=niceStep(vmax/4);ys=v=>m.t+ih-Math.min(v,vmax*1.05)/(vmax*1.05)*ih;ticks=[];for(let v=0;v<=vmax*1.05;v+=step)ticks.push(v);}
+  else{const lo=Math.pow(10,Math.floor(Math.log10(Math.max(kosten(E.length-1),1e-6)))),hi=Math.pow(10,Math.ceil(Math.log10(vmax)));
+    ys=v=>m.t+ih-(Math.log10(Math.max(v,lo))-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo))*ih;ticks=[];for(let v=lo;v<=hi*1.001;v*=10)ticks.push(v);}
+  ticks.forEach(v=>{const y=ys(v);el('line',{x1:m.l,x2:m.l+iw,y1:y,y2:y,stroke:css('--grid')},svg);el('text',{x:m.l-6,y:y+4,'text-anchor':'end',class:'tick'},svg).textContent=fUSDk(v);});
+  const bw=iw/E.length, y0=skala==='lin'?ys(0):m.t+ih;
+  E.forEach((r,i)=>{const x=m.l+i*bw;
+    el('text',{x:x+bw/2,y:H-18,'text-anchor':'middle',class:'tick'},svg).textContent=r.t.toLocaleDateString('de-DE',{month:'short'}).replace('.','');
+    if(i===0||E[i-1].t.getFullYear()!==r.t.getFullYear())el('text',{x:x+bw/2,y:H-5,'text-anchor':'middle',class:'tick'},svg).textContent=r.t.getFullYear();
+    if(i>sel)return;
+    const v=kosten(i),y=ys(v),akt=!druck&&i===sel;
+    // aktuelle Stufe: helles Band über die ganze Spalte, damit sie auch bei winzigem Balken sichtbar bleibt
+    if(akt)el('rect',{x:x+bw*0.06,y:m.t,width:bw*0.88,height:ih,rx:6,fill:css('--wash'),stroke:css('--border')},svg);
+    const b=el('rect',{x:x+bw*0.18,y:Math.min(y,y0-1.5),width:bw*0.64,height:Math.max(1.5,y0-y),rx:3,fill:css('--series-2'),'fill-opacity':akt||druck?1:.4,class:'bar'+(akt&&i!==last?' neu':'')},svg);
+    const t=el('text',{x:x+bw/2,y:Math.min(y,y0-1)-6,'text-anchor':'middle',class:'val'+(akt?' akt':'')},svg);
+    t.textContent=narrow&&!akt&&i!==0?'':fUSDk(v);});
+  el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css('--axis')},svg);
+  if(druck)el('text',{x:m.l,y:14,class:'val'},svg).textContent=`Annahme: ${(+inS.value).toLocaleString('de-DE')} Studierende × ${(+inT.value).toLocaleString('de-DE')} Fragen pro Tag × ${(+inD.value).toLocaleString('de-DE')} Tage = ${n.toLocaleString('de-DE')} Fragen im Semester; Kosten je Frage nach Epoch AI`;
+  last=sel;
+  // Anzeige unter dem Diagramm
+  let txt=sel?`<span class="m">${fPct(cur.fall)} zur Vorstufe</span><span class="ex">${Math.floor(kosten(0)/kosten(sel)).toLocaleString('de-DE')}-mal billiger als mit o3 im Januar 2025</span>`
+             :`<span class="ex">Ausgangspunkt: o3 ist im Januar 2025 das erste Modell mit 75 % richtigen Antworten</span>`;
+  if(sel===E.length-1)txt+=`<span class="ex">Die Frage verschiebt sich von „Können wir uns das leisten?“ zu „Wer prüft, was der Tutor sagt?“</span>`;
+  document.getElementById('now').innerHTML=txt;
+  document.getElementById('zur').disabled=sel===0;document.getElementById('vor').disabled=sel>=E.length-1;
+  document.querySelector('#tab tbody').innerHTML=E.map((r,i)=>`<tr><td>${fD(r.t)}</td><td>${kurz(r.n)}</td><td class="num">${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})}</td><td class="num">${fUSD(kosten(i))}</td><td class="num">${fUSD(jePerson(i))}</td></tr>`).join('');
+}
+function niceStep(x){const p=Math.pow(10,Math.floor(Math.log10(x))),f=x/p;return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p;}
+draw();
+let to,breite=innerWidth;addEventListener('resize',()=>{if(innerWidth===breite)return;breite=innerWidth;clearTimeout(to);to=setTimeout(()=>{last=sel;draw();},120);});
+if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{last=sel;draw();});
+window.__tutor={E,kosten,fragen};
+})();
+</script>
+</body></html>
