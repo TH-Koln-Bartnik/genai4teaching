@@ -17,7 +17,7 @@ const BASE='https://th-koln-bartnik.github.io/genai4teaching/interactions/';
   await shot('ki-entwicklung.html?zeige=kosten#druck','#k2bild','ki-kosten.png',920); // Treppe und vier kleine Raster
   await shot('ki-entwicklung.html?zeige=arbeitsweisen#druck','#c3','ki-arbeitsweisen.png',920);
   await shot('ki-arbeitsweisen-durchspiel.html#druck','#druckblatt','ki-durchspiel.png',1000);
-  await shot('tutor-kosten.html#druck','#c','tutor-kosten.png',920); // noch nicht im Buch eingebaut
+  await shot('tutor-kosten.html#druck','#c','tutor-kosten.png',920); // Kapitel 2.4, @fig-tutor-kosten
   // Daten als CSV
   const p=await b.newPage(); await p.goto(R+'ki-entwicklung.html'); const d=await p.evaluate(()=>window.__ki);
   fs.mkdirSync(REPO+'data',{recursive:true});

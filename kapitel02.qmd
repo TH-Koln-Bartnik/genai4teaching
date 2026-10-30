@@ -547,8 +547,6 @@ Durch diese Eigenschaft ermöglicht KI eine schnelle und kosteneffiziente Skalie
 
 Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
 Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 [@emberson2026].
-Ein Tutor, der 150 Studierenden ein Semester lang je 20 Fragen pro Woche beantwortet, kostete auf dieser Rechengrundlage anfangs rund 12.500 US-Dollar und im Juli 2026 rund 17 US-Dollar.
-Das ist nur eine Größenordnung, denn ein Tutorgespräch ist länger als eine Testfrage, aber sie verschiebt die Frage von „Können wir uns das leisten?“ zu „Wer prüft, was der Tutor sagt?“.
 
 <!-- Interaktion „Kosten“ (Mollick-Paket, 29.10.2026). Daten aus der Ursprungsquelle: Epoch AI, Emberson & Roodman (2026), Abb. 2,
      Repo droodman/inference-cost (output/slides/Figure 2.csv); CSV in data/epoch-gpqa-kosten-75.csv. Lizenz des Repos noch prüfen. -->
@@ -562,6 +560,24 @@ Im interaktiven Diagramm steht ein Kästchen für eine Frage zum o3-Preis vom Ja
 ::: {.content-visible unless-format="html"}
 ![Expertenwissen wird 725-mal billiger: niedrigste Kosten je Frage (API-Preise, logarithmische Achse), mit denen ein Modell 75 % des GPQA Diamond richtig beantwortet, Januar 2025 bis Juli 2026. An jeder Stufe steht, um wie viel die Kosten gegenüber dem bis dahin günstigsten Modell fielen; die größten Sprünge lagen im Juni 2025 (−85 %) und im März 2025 (−70 %). Unten dieselben Stufen als Raster: Ein Kästchen ist eine Frage zum o3-Preis vom Januar 2025, gefüllt ist, was 30 Cent zum jeweiligen Zeitpunkt kaufen. Jede Preisstufe hat eine eigene Farbe, so dass die Fläche zeigt, wie viel ein Schritt ausmachte. Der letzte Sprung (−66 %) bringt mit 479 Kästchen mehr als alle früheren zusammen, obwohl der Preis prozentual weniger fiel als im Juni 2025; so sieht gleichmäßiger exponentieller Preisverfall auf linearer Skala aus. Rasterdarstellung nach einer Idee von @mollick2026charts. Daten: Emberson & Roodman (2026), Epoch AI. Interaktive Fassung, in der sich das Raster Stufe für Stufe füllt: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-entwicklung.html?zeige=kosten> aufrufen.](images/druck/ki-kosten-qr.png){#fig-ki-kosten width="100%" fig-pos="htbp"}
 :::
+
+Was das für die Lehre bedeutet, zeigt ein Tutor-Bot, dem 150 Studierende an den 98 Tagen eines Semesters je zwei Fragen pro Tag stellen, zusammen 29.400 Fragen.
+Auf der Rechengrundlage von Epoch AI kostete dieses Semester anfangs rund 8.800 US-Dollar und im Juli 2026 rund 12 US-Dollar, je Person also 59 US-Dollar und 8 Cent.
+Das ist nur eine Größenordnung, denn ein Tutorgespräch ist länger als eine Testfrage, aber sie verschiebt die Frage von „Können wir uns das leisten?“ zu „Wer prüft, was der Tutor sagt?“.
+
+<!-- Interaktion „Tutor-Bot-Kosten“ (30.10.2026): gleiche Datenquelle wie das Kosten-Raster (interactions/models/epoch-kosten.js),
+     Balken in denselben Stufenfarben (--st1 … --st7). -->
+
+::: {.content-visible when-format="html"}
+Im Rechner lassen sich die eigenen Kurszahlen eintragen. „Abspielen“ oder „Weiter“ zeigt die Semesterkosten Stufe für Stufe, in denselben Farben wie im Raster; der Umschalter „log“ macht auch die kleinen Beträge der letzten Stufen sichtbar.
+
+<iframe src="interactions/tutor-kosten.html" width="100%" height="950px" frameborder="0" title="Rechner: Semesterkosten eines Tutor-Bots nach Preisstufen 2025 bis 2026"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Was ein Tutor-Bot im Semester kostet: 150 Studierende stellen je 2 Fragen pro Tag an 98 Tagen (29.400 Fragen); jede Frage kostet so viel wie eine GPQA-Diamond-Frage mit dem günstigsten Modell, das 75 % richtig beantwortet. Von rund 8.800 US-$ (o3, Januar 2025) auf rund 12 US-$ (GPT-5.6 Luna, Juli 2026). Die Balken tragen dieselben Stufenfarben wie das Raster in @fig-ki-kosten. Nur Größenordnung: Tutorgespräche sind länger als Testfragen. Daten: @emberson2026. Interaktive Fassung mit eigenen Kurszahlen: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/tutor-kosten.html> aufrufen.](images/druck/tutor-kosten-qr.png){#fig-tutor-kosten width="100%" fig-pos="htbp"}
+:::
+
 Dieses exponentielle Wachstum unterscheidet KI grundlegend von bisherigen technologischen Entwicklungen, bei denen Verbesserungen oft linear verliefen.
 
 Die großen Anbieter haben in kurzer Folge **vier Funktionsklassen** eingeführt, die den Einsatz von KI in der Hochschullehre deutlich erweitern: Integrierte **Bildgenerierung** erlaubt fotorealistische Visualisierungen, was z. B. in der technischen Bildung oder bei Designprojekten didaktisch genutzt werden kann.
