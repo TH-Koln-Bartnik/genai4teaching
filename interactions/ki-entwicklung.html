@@ -63,6 +63,9 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .chip.ziel{border:2px solid var(--series-2);color:var(--text-primary);font-weight:650;animation:puls 1.4s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.weiter,.zeiger,.chip.ziel,.zeit .ring,.schaetz input[type=number]{animation:none}}
 .viz-root [hidden]{display:none !important}
+.warum{margin-top:14px;border:1px solid var(--border);border-radius:10px;padding:8px 12px;background:var(--wash);font-size:.82rem;line-height:1.4}
+.warum .t{font-weight:650;margin:0 0 4px}.warum ul{margin:0;padding-left:1.1em}.warum li{margin:4px 0}
+.gesamt{font-weight:650}
 /* schmal: „Weiter“ mit Zeiger in die erste Zeile, Zurück und Von vorn darunter */
 @media (max-width:599px){.rnav .weiter{order:-2}.rnav .zeiger{order:-1}}
 .playbtn:disabled{opacity:.35;cursor:not-allowed}
@@ -140,7 +143,12 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
  <div class="schaetz" id="schaetz" role="group" aria-labelledby="schaetz-t"></div>
  <div class="zeit" id="zeit" role="group" aria-label="Zeitstrahl der Preisstufen seit o3"></div>
  <div class="controls rnav"><button id="r-zur" class="chip">◀ Zurück</button><button id="r-vor" class="weiter">Weiter ▶</button><span class="zeiger" id="zeiger" aria-hidden="true">hier klicken</span><button id="r-neu" class="chip">Von vorn</button><span id="r-pos"></span></div>
- <div class="rwrap"><div class="rinfo" id="rinfo" aria-live="polite"></div><div class="rgrid"><div id="c2r"></div></div></div>
+ <div class="rwrap"><div><div class="rinfo" id="rinfo" aria-live="polite"></div>
+ <div class="warum" id="warum" hidden><p class="t">Warum fiel der Preis im letzten Schritt so stark? Vermutungen nach Epoch AI</p><ul>
+  <li><b>Kleineres Modell:</b> GPT-5.6 Luna ist die günstigste Variante ihrer Modellfamilie. Reasoning holt aus kleineren, je Token billigeren Modellen dieselbe Leistung.</li>
+  <li><b>Weniger Nachdenken:</b> Luna lief mit niedrigem Denkaufwand („low“), braucht also weniger Denk-Token je Frage.</li>
+  <li><b>Wettbewerb:</b> Wer ein Leistungsniveau zuerst erreicht, kann kurz einen Aufpreis verlangen; dann holen Konkurrenten auf und drücken den Preis.</li>
+ </ul></div></div><div class="rgrid"><div id="c2r"></div></div></div>
  <div class="now" id="now2r" aria-live="polite"></div>
 </div>
 <div id="ansicht-treppe" hidden>
@@ -331,7 +339,7 @@ function draw2(){
   if(sel2===E.length-1)el('text',{x:xs(b.t),y:ys(b.c)+20,'text-anchor':'middle',class:'lab'},svg).textContent=narrow?'0,04 ct':'GPT-5.6 Luna: 0,04 ct';
   // Anzeige unter dem Diagramm
   document.getElementById('now2').innerHTML=`<span class="d">${fD(cur.t)}</span><span class="m">${kurz(cur.n)}: ${fCt(cur.c)} je Frage</span>`+
-    (sel2?`<span class="ex">Kosten um ${Math.round(cur.fall*100)} % gefallen · ${fFak(cur.faktor)}-mal billiger als o3</span>`:`<span class="ex">Ausgangspunkt: erstes Modell mit 75 % richtigen Antworten</span>`);
+    (sel2?`<span class="ex">Kosten um ${Math.round(cur.fall*100)} % gefallen · ${fFak(cur.faktor)}-mal billiger als o3</span>`:`<span class="ex">Ausgangspunkt: erstes Modell mit 75 % richtigen Antworten</span>`)+(sel2===E.length-1?`<span class="gesamt">${gesamtSatz()}</span>`:'');
 }
 
 /* ---- Diagramm 2, Raster: was 30 Cent kaufen (Darstellungsidee nach Mollick, 2026) ----
@@ -438,6 +446,10 @@ function drawZeit(){
     if(auf&&(!narrow||akt)){const t=el('text',{x:narrow?Math.max(40,Math.min(W-40,x)):x,y:y+40,'text-anchor':'middle',class:'z-m'},g);t.textContent=zName(r.n);}
   });
 }
+// Gesamtrückgang von o3 (Jan. 2025) bis zur letzten Stufe, aus den Daten berechnet: 17 Monate, −99,9 %
+function gesamtSatz(){const a=E[0],b=E[LETZT],mon=Math.round((b.t-a.t)/(30.44*DAY));
+  const pct=(1-b.c/a.c)*100;
+  return `Insgesamt fiel der Preis in ${mon} Monaten um ${pct.toLocaleString('de-DE',{maximumFractionDigits:1})} %, von ${fCt(a.c)} auf ${fCt(b.c)} je Frage.`;}
 function drawR(anim){
   const box=document.getElementById('c2r');box.innerHTML='';
   const W=Math.min(box.clientWidth||480,480);
@@ -452,8 +464,10 @@ function drawR(anim){
   else{const neu=VOLL[s]-VOLL[s-1];
     txt=`<span class="m">+${neu.toLocaleString('de-DE')} Kästchen</span><span class="ex">Preis ${fPct(cur.fall)} zur Vorstufe</span>`;
     if(s===LETZT){const vorher=VOLL[s-1],maxF=Math.max(...E.slice(1,s).map(r=>r.fall)),wo=E.slice(1,s).find(r=>r.fall===maxF);
-      txt+=`<span class="ex" style="border-radius:10px">Der letzte Schritt brachte ${neu} Kästchen, mehr als alle früheren zusammen (${vorher}). Der Preis fiel dabei um ${Math.round(cur.fall*100)} %, weniger als im ${fMon(wo.t)} (${fPct(maxF)}). Als fiele der Preis eines Neuwagens von 50.000 auf 69.</span>`;}}
+      txt+=`<span class="ex" style="border-radius:10px">Der letzte Schritt brachte ${neu} Kästchen, mehr als alle früheren zusammen (${vorher}). Der Preis fiel dabei um ${Math.round(cur.fall*100)} %, weniger als im ${fMon(wo.t)} (${fPct(maxF)}). Als fiele der Preis eines Neuwagens von 50.000 auf 69.</span><span class="gesamt">${gesamtSatz()}</span>`;}}
   document.getElementById('now2r').innerHTML=txt;
+  // Erläuterung zum letzten Sprung, nur auf der letzten Stufe (Vermutungen nach Emberson & Roodman, 2026)
+  document.getElementById('warum').hidden=!(s===LETZT);
   // Bedienung: vor der Schätzung gesperrt; danach zeigt der Zeiger auf „Weiter“
   const kannWeiter=tipp!=null&&(rSel<rBis||rBis<LETZT);
   rZur.disabled=tipp==null||rSel===0;
