@@ -16,12 +16,13 @@ const BASE='https://th-koln-bartnik.github.io/genai4teaching/interactions/';
   await shot('ki-entwicklung.html?zeige=zeithorizont#druck','#c1','ki-zeithorizont.png',920);
   await shot('ki-entwicklung.html?zeige=kosten#druck','#k2bild','ki-kosten.png',920); // Treppe und vier kleine Raster
   await shot('ki-entwicklung.html?zeige=arbeitsweisen#druck','#c3','ki-arbeitsweisen.png',920);
+  await shot('ki-arbeitsweisen-durchspiel.html#druck','#druckblatt','ki-durchspiel.png',1000);
   // Daten als CSV
   const p=await b.newPage(); await p.goto(R+'ki-entwicklung.html'); const d=await p.evaluate(()=>window.__ki);
   fs.mkdirSync(REPO+'data',{recursive:true});
   fs.writeFileSync(REPO+'data/metr-time-horizon-1-1.csv','modell,veroeffentlicht,spitzenmodell,horizont_min,ki95_unten_min,ki95_oben_min\n'+d.METR.map(r=>[JSON.stringify(r.n),r.d,r.s,r.v,r.lo,r.hi].join(',')).join('\n')+'\n');
   fs.writeFileSync(REPO+'data/epoch-gpqa-kosten-75.csv','modell,datum,genauigkeit_prozent,kosten_cent_je_frage\n'+d.EPOCH.map(r=>[JSON.stringify(r.n),r.d,r.a,r.c].join(',')).join('\n')+'\n');
   await b.close();
-  for (const [f,u] of [['skill-karte','skill-karte.html'],['agenten-engpass','agenten-engpass.html'],['ki-zeithorizont','ki-entwicklung.html?zeige=zeithorizont'],['ki-kosten','ki-entwicklung.html?zeige=kosten'],['ki-arbeitsweisen','ki-entwicklung.html?zeige=arbeitsweisen']])
+  for (const [f,u] of [['skill-karte','skill-karte.html'],['agenten-engpass','agenten-engpass.html'],['ki-zeithorizont','ki-entwicklung.html?zeige=zeithorizont'],['ki-kosten','ki-entwicklung.html?zeige=kosten'],['ki-arbeitsweisen','ki-entwicklung.html?zeige=arbeitsweisen'],['ki-durchspiel','ki-arbeitsweisen-durchspiel.html']])
     await QR.toFile(REPO+'images/qr/qr-'+f+'.png', BASE+u, { errorCorrectionLevel: "M", margin: 2, width: 600, color: { dark: "#000000", light: "#ffffff" } });
 })();

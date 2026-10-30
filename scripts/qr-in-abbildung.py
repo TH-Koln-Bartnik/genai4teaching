@@ -3,7 +3,7 @@ Eingabe: images/druck/<name>.png und images/qr/qr-<name>.png; Ausgabe: images/dr
 from pathlib import Path
 from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
-for f in ["skill-karte", "agenten-engpass", "ki-zeithorizont", "ki-kosten", "ki-arbeitsweisen", "agenten-gedaechtnis"]:
+for f in ["skill-karte", "agenten-engpass", "ki-zeithorizont", "ki-kosten", "ki-arbeitsweisen", "agenten-gedaechtnis", "ki-durchspiel"]:
     src = ROOT / f"images/druck/{f}.png"
     if not src.exists():
         continue

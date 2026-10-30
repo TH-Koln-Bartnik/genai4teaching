@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dieselbe Aufgabe in fünf Arbeitsweisen: wer zerlegt, wer entscheidet, wer prüft</title>
+<style>
+.viz-root{color-scheme:light;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--border:rgba(11,11,11,0.10);--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--wash:rgba(11,11,11,0.035);--m-bg:rgba(42,120,214,.09);--k-bg:rgba(235,104,52,.09)}
+@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--wash:rgba(255,255,255,0.04);--m-bg:rgba(57,135,229,.14);--k-bg:rgba(217,89,38,.14)}}
+*{box-sizing:border-box}body{margin:0}
+.viz-root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--plane);color:var(--text-primary);padding:16px 12px 24px;line-height:1.45}
+main{max-width:920px;margin:0 auto}
+section.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:18px 20px 14px;margin:0 0 20px}
+h2{font-size:1.1rem;margin:0 0 2px}h3{font-size:1rem;margin:0}
+.sub{color:var(--text-secondary);font-size:.88rem;margin:0 0 10px}
+.src{color:var(--muted);font-size:.75rem;margin:8px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 10px;font-size:.85rem}
+.controls>span{color:var(--text-secondary)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:.8rem;border:0;background:transparent;color:var(--text-secondary);padding:5px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
+.chip{font:inherit;font-size:.78rem;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:999px;padding:3px 10px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
+.navb{font:inherit;font-size:.8rem;border:1px solid var(--border);background:transparent;color:var(--text-primary);border-radius:8px;padding:4px 10px;cursor:pointer}
+.navb:disabled{opacity:.35;cursor:default}
+#fallkurz{font-size:.88rem;margin:0 0 10px}
+.vh{border:1px dashed var(--axis,#c3c2b7);border-radius:10px;padding:10px 12px;margin:0 0 14px;font-size:.88rem;background:var(--wash)}
+.vh p{margin:0 0 6px}.vh .opts{display:flex;flex-wrap:wrap;gap:6px}.vh .aufl{margin-top:8px}
+.kopf{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;border-bottom:1px solid var(--grid);padding-bottom:8px;margin-bottom:10px}
+.kopf .nm{font-weight:700;font-size:1.05rem}.kopf .tt{color:var(--text-secondary);font-size:.85rem}
+.kopf .meta{font-size:.78rem;color:var(--muted)}
+.mini{display:inline-grid;grid-template-columns:repeat(6,auto);gap:2px;font-size:.62rem;font-weight:600;color:#fff}
+.mini span{border-radius:3px;padding:2px 4px;position:relative}
+.mini .M{background:var(--series-1)}.mini .K{background:var(--series-2)}.mini .MK{background:var(--series-3)}
+.mini .q{outline:2px solid var(--text-primary);outline-offset:-1px}
+.lage{font-size:.86rem;color:var(--text-secondary);margin:0 0 8px}
+.spalten{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.spalten.eins{grid-template-columns:1fr}
+.col h4{margin:0 0 6px;font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:650}
+.msg{border-radius:10px;padding:7px 10px;margin:0 0 6px;font-size:.86rem;border:1px solid var(--border)}
+.msg.M{background:var(--m-bg)}.msg.K{background:var(--k-bg)}.msg.H{background:transparent;border-style:dashed;color:var(--text-secondary)}
+.msg.neu{animation:auf .4s ease-out}@keyframes auf{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.msg.neu{animation:none}}
+.rolle{display:inline-block;font-size:.68rem;font-weight:700;border-radius:999px;padding:0 7px;margin-right:6px;color:#fff;vertical-align:1px}
+.rolle.M{background:var(--series-1)}.rolle.K{background:var(--series-2)}
+.msg .an{color:var(--text-secondary);font-size:.72rem}
+.msg .anl{display:inline-block;font-size:.66rem;border:1px solid var(--text-primary);border-radius:999px;padding:0 6px;margin-left:6px;font-weight:700}
+.leer{font-size:.8rem;color:var(--muted);font-style:italic;margin:0 0 6px}
+.denk{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;background:var(--wash);border-left:3px solid var(--muted);padding:7px 10px;margin:4px 0 10px;white-space:pre-wrap;color:var(--text-secondary)}
+.lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:650;margin:10px 0 4px}
+.lbl small{text-transform:none;letter-spacing:0;font-weight:400}
+ol.prot{margin:0;padding:0;list-style:none;font-size:.8rem}
+ol.prot li{display:grid;grid-template-columns:150px 1fr;gap:8px;padding:3px 0;border-bottom:1px solid var(--grid)}
+ol.prot li b{font-weight:600;color:var(--series-2)}
+.coda{font-size:.86rem;margin:10px 0 0;padding:7px 10px;border-radius:8px;border:1px solid var(--series-2)}
+.sperre{border:2px solid var(--text-primary);border-radius:10px;padding:10px 12px;margin:6px 0 10px}
+.sperre b{display:block;margin-bottom:3px}
+.grau{opacity:.35}
+.fuss{margin-top:12px;border-top:1px solid var(--grid);padding-top:10px}
+.zaehl{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.stat{border:1px solid var(--border);border-radius:10px;padding:6px 10px}.stat .k{font-size:.72rem;color:var(--text-secondary)}.stat .v{font-size:1.25rem;font-weight:650;font-variant-numeric:tabular-nums}
+.stat.vor .v{color:var(--series-2)}
+.wer{font-size:.84rem;margin:8px 0 0}.wer span{color:var(--text-secondary)}
+.aend{font-size:.9rem;margin:8px 0 0;font-weight:500}
+details{margin-top:8px;font-size:.8rem}summary{cursor:pointer;color:var(--muted)}
+footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
+@media (max-width:699px){.spalten{grid-template-columns:1fr}.zaehl{grid-template-columns:repeat(2,1fr)}ol.prot li{grid-template-columns:1fr;gap:0}}
+/* Druckansicht */
+#druckblatt{display:none}
+.druck #karte,.druck footer{display:none}.druck #druckblatt{display:block}
+.druck .viz-root{background:#fff;padding:0}
+#druckblatt{background:#fff;color:#000;padding:10px 12px;width:1000px}
+#druckblatt h3{font-size:16px;margin:0 0 2px}#druckblatt .dsub{font-size:12px;color:#333;margin:0 0 8px}
+.dt{display:grid;grid-template-columns:150px 1fr 1fr 130px;border-top:1.5px solid #000;font-size:12.5px}
+.dt>div{padding:6px 7px;border-bottom:1px solid #bbb;line-height:1.3}
+.dt .h{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.03em;border-bottom:1.5px solid #000}
+.dt .an{font-weight:700}.dt .an small{display:block;font-weight:400;font-size:11px;color:#333;margin:1px 0 4px}
+.dt .z{font-size:11.5px;font-variant-numeric:tabular-nums}
+.dt .dk{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:#333}
+.dfuss{font-size:10.5px;color:#333;margin-top:5px}
+#druckblatt .mini span{display:inline-block;width:17px;height:12px;padding:0;font-size:0}
+.dt .z{white-space:pre-line}
+</style>
+</head>
+<body>
+<div class="viz-root"><main>
+<section class="card" id="karte">
+<h2>Mit jeder Arbeitsweise wandern Zerlegen und Entscheiden vom Menschen zur KI</h2>
+<p class="sub">Dieselbe Aufgabe in fünf Arbeitsweisen nach Mollick. Dialoge, Denkspuren und Protokolle sind nachgestellt und gekürzt.</p>
+<div class="controls"><span>Fall:</span><div class="seg" id="faelle" role="group" aria-label="Fall wählen"></div></div>
+<p id="fallkurz"></p>
+<div class="vh" id="vh"></div>
+<div class="controls"><span>Arbeitsweise:</span>
+ <button class="navb" id="zur" aria-label="vorherige Arbeitsweise">◀</button>
+ <div class="seg" id="weisen" role="group" aria-label="Arbeitsweise wählen"></div>
+ <button class="navb" id="vor" aria-label="nächste Arbeitsweise">▶</button>
+</div>
+<div class="controls" id="ebenen" role="group" aria-label="Ebenen ein- und ausblenden"><span>Zeigen:</span></div>
+<div id="szene" aria-live="polite"></div>
+<details><summary>Wie lesen? Dialog, Denkspur, Protokoll</summary>
+<p><b>Mensch ↔ KI</b> zeigt, was der Mensch mit der KI bespricht. <b>KI ↔ KI</b> zeigt, was ein Orchestrator, also das Programm, das die Aufgabe zerlegt und verteilt, seinen Unteragenten aufträgt und was diese zurückmelden. Ein Unteragent ist eine eigene KI-Instanz mit eigenem Auftrag, die von den anderen nichts weiß.</p>
+<p><b>Denkspur</b> (<i>Chain-of-Thought</i>): der Text, mit dem ein Reasoning-Modell seine Antwort plant, wie Notizen am Rand eines Klausurbogens. Die Denkspuren hier sind angenähert. Echte Denkspuren zeigen die Anbieter oft nur zusammengefasst an, und auch vollständige geben nicht verlässlich wieder, wie das Modell tatsächlich zu seinem Ergebnis kommt (Chen et al., 2025).</p>
+<p><b>Protokoll</b>: die Liste der Handlungen eines Agenten, etwa Datei lesen, mit Python rechnen, Unteragent starten. Bei Centaur und Cyborg bleibt es leer, weil dort niemand außer dem Menschen handelt. Die Zahlen in Fall A sind mit Python nachgerechnet; alle übrigen Zahlen sind Setzungen für die Lehre.</p>
+<p><b>Zähler</b>: Lehrmodell, keine Messung. „Entscheidungen der KI“ zählt Zwischenentscheidungen, die in der Szene sichtbar werden.</p>
+</details>
+<p class="src">Arbeitsweisen und Raster wie im Schema „Mit jeder Arbeitsweise gibt der Mensch mehr Schritte an die KI ab“ (Centaur, Cyborg: Dell'Acqua et al., 2023; Mollick, 2024. Beschwörer: Mollick, „30 months on the exponential“, 2026. Dämmerfabrik, dunkle Fabrik: Mollick, „Agency and agents“, 2026). Muster nach Schluntz &amp; Zhang (2024) und Anthropic (2025). Zeithorizont nach METR (2026).</p>
+</section>
+
+<section id="druckblatt"></section>
+
+<footer>
+<p>Anthropic. (2025). <em>How we built our multi-agent research system</em>. https://www.anthropic.com/engineering/multi-agent-research-system</p>
+<p>Chen, Y., Benton, J., Radhakrishnan, A., et al. (2025). <em>Reasoning models don't always say what they think</em> (arXiv:2505.05410). https://doi.org/10.48550/arXiv.2505.05410</p>
+<p>Dell'Acqua, F., McFowland, E., III, Mollick, E. R., et al. (2023). <em>Navigating the jagged technological frontier</em> (Harvard Business School Working Paper No. 24-013). https://doi.org/10.2139/ssrn.4573321</p>
+<p>METR. (2026). <em>Time horizon of frontier AI models</em> (Time Horizon 1.1). https://metr.org/time-horizons/</p>
+<p>Mollick, E. (2024). <em>Co-Intelligence: Living and working with AI</em>. Portfolio.</p>
+<p>Mollick, E. (2026, 31. August). Agency and agents. <em>One Useful Thing</em>. https://www.oneusefulthing.org/p/agency-and-agents</p>
+<p>Mollick, E. (2026, 20. Oktober). 30 months on the exponential (in charts). <em>One Useful Thing</em>. https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts</p>
+<p>Schluntz, E., &amp; Zhang, B. (2024, 19. Dezember). <em>Building effective agents</em>. Anthropic. https://www.anthropic.com/engineering/building-effective-agents</p>
+<p>Verordnung (EU) 2024/1689 (KI-Verordnung), Anhang III Nr. 3. https://eur-lex.europa.eu/eli/reg/2024/1689/oj</p>
+</footer>
+</main></div>
+<script>
+(function(){
+// Raster je Arbeitsweise, identisch mit ki-entwicklung.html?zeige=arbeitsweisen
+const SCHRITTE=['Ziel','Planen','Ausführen','Entscheiden','Prüfen','Freigeben'];
+const WEISEN=[
+ {k:'cen',n:'Centaur',t:'Arbeit aufgeteilt',r:['M','M','MK','M','M','M'],ab:'tragfähig seit 2023',h:'Zeithorizont ≈ 4 Minuten (GPT-4, März 2023)'},
+ {k:'cyb',n:'Cyborg',t:'Arbeit verwoben',r:['M','MK','MK','MK','MK','M'],ab:'tragfähig seit 2023/24',h:'Zeithorizont Minuten'},
+ {k:'bes',n:'Beschwörer',t:'Agenten beauftragen',r:['M','K','K','K','M','M'],ab:'tragfähig seit 2025/26',h:'Zeithorizont Stunden'},
+ {k:'dae',n:'Dämmerfabrik',t:'KI fragt bei Bedarf',r:['M','K','K','K','K','K'],ab:'2026',h:'Zeithorizont ≈ 17 Stunden (April 2026)'},
+ {k:'dun',n:'Dunkle Fabrik',t:'Mensch setzt nur das Ziel',r:['M','K','K','K','K','K'],ab:'2026',h:'Zeithorizont ≈ 17 Stunden (April 2026)'}];
+const ANL={var:{l:'Ideenvielfalt',st:1},exp:{l:'Expertise',st:2},int:{l:'Interessante Entscheidung',st:3},fre:{l:'Freigabe',st:5}};
+const NACHWUCHS='Ohne interessante Entscheidungen bleiben dem Menschen nur Freigaben und Ausnahmen. So wächst kein Urteilsvermögen nach, und später fehlen die Fachleute, die prüfen können.';
+// m: Mensch-Nachricht oder -Handlung, k: KI; kk: [von, an, Text]; z: [Beiträge Mensch, Entscheidungen KI, Agenten, Rückfragen]
+const F={
+A:{tab:'A Übungsblatt',titel:'Übungsblatt zur Bestellmenge',mensch:'Professorin',
+ kurz:'Eine Professorin braucht für Woche 6 ein Übungsblatt zur optimalen Bestellmenge: drei Aufgaben, vier Gruppenvarianten, Musterlösung. Die Lösungen lassen sich maschinell nachrechnen.',
+ vh:{q:'Beim Beschwörer fällt in einer Variante eine unrealistische Zahl auf. Wer entscheidet, sie zu ändern?',o:['die Professorin','der Orchestrator','der Unteragent, der die Zahlen erzeugt hat'],r:1,
+   e:'Der Orchestrator. Der Prüfagent meldet den Fehler, der Orchestrator ändert die Zahl und teilt es der Professorin erst im Abschlussbericht mit. Sehen Sie sich die Szene „Beschwörer“ an.'},
+ s:{
+ cen:{mk:[['M','Formuliere einen Aufgabentext zur optimalen Bestellmenge: Jahresbedarf 3.200 Stück, Bestellkosten 50 € je Bestellung, Haltekosten 2 € je Stück und Jahr. Zielgruppe zweites Semester, ohne Lösung.'],
+   ['K','Ein Fahrradhändler verkauft im Jahr 3.200 Schläuche. Jede Bestellung beim Großhändler kostet ihn 50 €, die Lagerung eines Schlauchs 2 € im Jahr. Wie viele Schläuche sollte er je Bestellung ordern, damit seine Kosten am niedrigsten sind?'],
+   ['H','Die Professorin rechnet die Lösung selbst (400 Stück), übernimmt den Text und setzt das Blatt zusammen.']],
+  denk:'Zahlen sind vorgegeben, gefragt ist nur der Text.\nAlltagsnahes Beispiel wählen. Lösungsweg nicht verraten.',
+  z:[2,0,0,0],orch:'Mensch: zerlegt die Aufgabe und fügt die Teile zusammen',mus:'einzelner Aufruf',
+  ae:'Die KI übernimmt einen abgegrenzten Teil, den Text. Zahlen, Lösung und jede Entscheidung bleiben beim Menschen.',
+  dr:['„Formuliere einen Aufgabentext … ohne Lösung.“ KI liefert den Text; die Professorin rechnet selbst.','Nur Text gefragt. Lösungsweg nicht verraten.']},
+ cyb:{mk:[['M','Ich brauche für Blatt 6 eine Bestellmengen-Aufgabe mit Haken.'],
+   ['K','Vorschlag: Der Lieferant gewährt ab 2.000 Stück einen Mengenrabatt. Die Studierenden prüfen, ob sich die größere Bestellmenge lohnt.'],
+   ['M','Gut. Der Rabatt soll so liegen, dass die Entscheidung knapp ausfällt.'],
+   ['K','Bei 400 Stück ohne Rabatt kostet das Jahr 26.400 €. Mit 5 % Rabatt ab 2.000 Stück sind es 26.300 €, mit 4 % 26.576 €. Ich schlage 5 % vor: Der Rabatt lohnt sich knapp.'],
+   ['M','Nimm 5 %. Die Einleitung schreibe ich selbst um, die klingt zu sehr nach Lehrbuch.'],
+   ['H','… insgesamt zwölf Züge, sechs davon von der Professorin.']],
+  denk:'Zug 4: Rabattschwelle so legen, dass höhere Lagerkosten den Preisvorteil fast aufheben.\nGesamtkosten bei 400 und 2.000 Stück für 4 % und 5 % vergleichen.',
+  z:[6,0,0,0],orch:'Mensch, Zug um Zug',mus:'Dialog mit vielen Zügen',
+  ae:'Die Beiträge greifen ineinander: Die KI schlägt vor und rechnet, die Professorin wählt und schreibt um. Wer welchen Satz beigetragen hat, lässt sich am Ende nicht mehr trennen.',
+  dr:['„Aufgabe mit Haken.“ – „Rabatt ab 2.000 Stück?“ – „So, dass es knapp wird.“ – … zwölf Züge.','Rabatt so legen, dass Lagerkosten den Vorteil fast aufheben.']},
+ bes:{mk:[['M','Erstelle das Übungsblatt für Woche 6 zur Bestellmengenplanung: drei Aufgaben steigender Schwierigkeit, eine Variante je Übungsgruppe (A bis D), Musterlösung mit Rechenweg, ganzzahlige Ergebnisse. Format wie Blatt 5. Melde dich, wenn es fertig ist.'],
+   ['K','Fertig: vier Varianten, alle Lösungen mit Python nachgerechnet. Eine Entscheidung habe ich selbst getroffen: In Variante C, Aufgabe 3, habe ich den Haltekostensatz von 80 % auf 25 % gesenkt; die Bestellmenge ändert sich von 200 auf 400 Stück. Bitte prüfen.'],
+   ['M','Passt. Freigegeben.']],
+  kk:[['Orchestrator','Unteragent „Zahlen“','Ziel: zwölf Parametersätze (drei Aufgaben × vier Gruppen) mit ganzzahliger Bestellmenge. Format: Tabelle mit Bedarf, Bestellkosten, Haltekosten, Bestellmenge. Werkzeug: Python. Grenze: keine Aufgabentexte, die schreibt ein anderer Agent.'],
+   ['Orchestrator','Unteragent „Texte“','Ziel: zwölf Aufgabentexte zu den Zahlen aus der Tabelle, Stil wie Blatt 5. Grenze: keine Lösung im Aufgabentext.'],
+   ['Prüfagent','Orchestrator','Variante C, Aufgabe 3: Ein Haltekostensatz von 80 % des Stückpreises ist unrealistisch. Die Bestellmenge ist trotzdem ganzzahlig; die Rechenprüfung allein hätte das nicht bemerkt.']],
+  denk:'3 Aufgaben × 4 Varianten = 12 Sätze. Erst Blatt 5 lesen, damit das Format stimmt.\nGanzzahlige Bestellmengen: Werte rückwärts wählen, sodass 2·D·S/H eine Quadratzahl ist.\nDrei Teile: Zahlen und Texte können parallel laufen, die Prüfung gegen die Lernziele danach.',
+  prot:[['Orchestrator','liest blatt05.tex und die Lernziele im Modulhandbuch'],['Orchestrator','startet die Unteragenten „Zahlen“ und „Texte“ parallel'],['Unteragent „Zahlen“','Python: 144 Kombinationen geprüft, 26 ganzzahlig, 12 ausgewählt'],['Unteragent „Texte“','schreibt 12 Aufgabentexte'],['Prüfagent','gleicht mit den Lernzielen ab, Einwand zu C3'],['Orchestrator','ändert C3: Haltekostensatz 25 %, Stückpreis 8 €, Bestellmenge 400'],['Orchestrator','schreibt blatt06_A.pdf bis blatt06_D.pdf und loesungen06.pdf']],
+  z:[2,3,4,0],orch:'KI-Orchestrator, auf Abruf für diesen einen Auftrag',mus:'Orchestrator mit Unteragenten, dazu ein Prüfagent (Evaluator)',
+  ae:'Das Gespräch der Professorin schrumpft auf Auftrag und Abnahme, das meiste Reden findet zwischen Agenten statt. Die Änderung an C3 war eine interessante Entscheidung, und die hat jetzt die KI getroffen.',
+  dr:['Auftrag: „drei Aufgaben, vier Varianten, Musterlösung“. Bericht: „Den Haltekostensatz in C3 habe ich selbst von 80 % auf 25 % gesenkt.“','Orchestrator → „Zahlen“: zwölf Sätze, Python, keine Texte. Prüfagent: „C3 unrealistisch.“']},
+ dae:{lage:'Ein stehender Ablauf erstellt alle zwölf Blätter des Semesters. Ein Vermittler-Agent entscheidet, wann er die Professorin fragt.',
+  mk:[['M','Erstelle bis Semesterende jede Woche ein Blatt passend zum Semesterplan. Frag mich, wenn eine Freigabe nötig ist, Fachwissen fehlt, die Ideen zu ähnlich werden oder eine Entscheidung interessant ist.']],
+  dae:[['var','Für Blatt 7 habe ich vier Aufgabenideen, alle mit einem Onlinehändler. Haben Sie einen Fall aus Ihrer eigenen Praxis?','Nehmen Sie einen Automobilzulieferer, der Kabelsätze wöchentlich abruft.','wählt selbst: Onlinehändler, Idee 2'],
+   ['exp','Wurden Mengenrabatte in der Vorlesung schon behandelt? Das Modulhandbuch lässt es offen.','Ja, in Woche 5.','nimmt an, Rabatte seien noch nicht behandelt, und lässt sie weg'],
+   ['int','Blatt 8: Sensitivitätsanalyse oder Rabattstaffel? Beides passt zum Stoff. Welches dient Lernziel 3 besser?','Sensitivitätsanalyse. Die Rabattstaffel kommt in der Klausur.','wählt selbst: Rabattstaffel, weil sie in Lehrbüchern häufiger vorkommt'],
+   ['fre','Blatt 8 ist fertig und nachgerechnet. Am Montag um 8 Uhr in der Lernplattform veröffentlichen?','Ja.','veröffentlicht Blatt 8 ohne Rückfrage']],
+  kk:[['Vermittler','Orchestrator','Blatt 8 wartet auf die Professorin. Blätter 9 bis 11 weiterbauen, Blatt 8 zurückstellen.']],
+  denk:'Muss ich fragen?\nVeröffentlichen ist immer eine Freigabe.\nEine Abwägung zwischen Lernzielen ist eine interessante Entscheidung.\nVier Ideen aus derselben Branche: zu gleichförmig.\nAlles andere entscheide ich selbst.',
+  prot:[['Orchestrator','Agenten bauen die Blätter 9, 10 und 11 parallel'],['Prüfagent','Blatt 8 nachgerechnet, alle Lösungen ganzzahlig'],['Vermittler','Rückfragen an die Professorin offen seit Dienstag']],
+  z:[1,9,6,0],orch:'stehender Orchestrator, dazu ein Vermittler-Agent zum Menschen',mus:'Orchestrator mit Unteragenten und Weiterleitung an den Menschen',
+  ae:'Die KI entscheidet nicht nur über den Weg, sondern auch darüber, wann die Professorin gefragt wird. Welche Fragen sie nie zu sehen bekommt, legt die Regel des Vermittlers fest. Und während die Agenten weiterbauen, warten die Rückfragen bei ihr.',
+  dr:['Ein Auftrag fürs Semester. Vermittler fragt viermal, z. B.: „Sensitivitätsanalyse oder Rabattstaffel? Welches dient Lernziel 3?“','Vermittler: „Lernziel-Abwägung ist eine interessante Entscheidung, also fragen.“']},
+ dun:{mk:[['M','Jede Woche ein Blatt passend zum Semesterplan. Alle Lösungen werden maschinell nachgerechnet.'],['H','Einmal im Semester. Danach läuft der Ablauf ohne die Professorin.']],
+  kk:[['Orchestrator','Prüfer','Blatt 10 zur Prüfung.'],['Prüfer','Orchestrator','Bestanden: 12 von 12 Lösungen richtig, alle ganzzahlig.']],
+  denk:'Woche 9: Rabattaufgaben fallen oft durch die Prüfung „ganzzahlig“.\nAufgaben ohne Rabatt bestehen sicher.\nFür Blatt 10 und 11 nur Grundaufgaben.',
+  prot:[['Woche 7','bestanden'],['Woche 8','bestanden'],['Woche 9','bestanden, eine Rabattaufgabe verworfen'],['Woche 10','bestanden, keine Rabattaufgabe mehr'],['Woche 11','bestanden, keine Rabattaufgabe mehr']],
+  coda:'Die Professorin merkt es erst an der Klausur: Die Rabattaufgabe, die in den letzten Blättern fehlte, lösen die wenigsten.',
+  z:[1,'alle',5,0],orch:'Orchestrator und maschineller Prüfer, kein Mensch im Ablauf',mus:'Erzeugen und Prüfen in einer Schleife (Evaluator-Optimizer) ohne Menschen',
+  ae:'Die Schleife läuft fehlerfrei und verfehlt doch das Ziel: Der Prüfer misst, ob die Lösungen stimmen, nicht ob die Aufgaben fordern. Was gemessen wird, wird optimiert.',
+  dr:['Ein Satz fürs Semester: „Alle Lösungen werden maschinell nachgerechnet.“ Danach kein Mensch mehr.','„Aufgaben ohne Rabatt bestehen sicher.“ Alle Prüfungen grün, die Blätter werden leichter.']}}},
+B:{tab:'B Projektberichte',titel:'Rückmeldung auf sechs Projektberichte',mensch:'Professor',
+ kurz:'Ein Professor gibt sechs studentischen Projektteams Rückmeldung auf ihre Zwischenberichte. Es geht um das Urteil über Leistungen von Menschen.',
+ vh:{q:'Beim Beschwörer bewertet ein Unteragent Team 4 strenger als Team 2, obwohl beide Berichte dieselbe Lücke haben. Wer bemerkt das?',o:['der Professor beim Lesen','ein eigener Prüfagent','niemand'],r:1,
+   e:'Ein eigener Prüfagent, der alle Entwürfe nebeneinanderlegt. Die Unteragenten sehen jeweils nur ihren Bericht und könnten den Unterschied nicht bemerken. Wie streng angeglichen wird, entscheidet dann allerdings der Orchestrator.'},
+ s:{
+ cen:{mk:[['M','Mach aus meinen Stichpunkten eine freundliche Rückmeldung an Team 3: Forschungsfrage zu breit · Quellenarbeit gut · Zeitplan fehlt · nächster Schritt: Frage auf einen Standort eingrenzen.'],
+   ['K','Liebes Team 3, Ihre Quellenarbeit ist sorgfältig und gut belegt. Am meisten bringt Sie jetzt eine engere Forschungsfrage: Grenzen Sie sie auf einen Standort ein. Ergänzen Sie außerdem einen Zeitplan bis zum Abschlussbericht.'],
+   ['H','Der Professor liest den Bericht selbst, schreibt die Stichpunkte, prüft die Fassung und verschickt sie.']],
+  denk:'Stichpunkte vollständig übernehmen, nichts hinzufügen.\nTon: anerkennend beginnen, dann der wichtigste Punkt, dann ein Schritt.',
+  z:[2,0,0,0],orch:'Mensch: liest, urteilt, lässt nur ausformulieren',mus:'einzelner Aufruf',
+  ae:'Das Urteil über den Bericht fällt ganz beim Menschen; die KI formuliert nur aus.',
+  dr:['Stichpunkte des Professors → KI formuliert die Rückmeldung aus.','Nichts hinzufügen. Erst anerkennen, dann der wichtigste Punkt.']},
+ cyb:{mk:[['M','Wir gehen den Bericht von Team 4 gemeinsam durch. Markiere, was dir auffällt.'],
+   ['K','Abschnitt 2: Die Methode steht erst nach den Ergebnissen. Das wirkt wie ein Gliederungsfehler.'],
+   ['M','Das ist Absicht: Das Team schreibt einen Design-Thinking-Bericht, der vom Prototyp ausgeht. Bitte nicht als Fehler werten.'],
+   ['K','Verstanden. Dann merke ich nur an, dass die Reihenfolge im Bericht begründet werden sollte.'],
+   ['M','Gut. Und formuliere den Satz zum Zeitplan schärfer.'],
+   ['H','… insgesamt 14 Züge, sieben davon vom Professor.']],
+  denk:'Einwand: Die Reihenfolge ist gewollt.\nKriterium anpassen: nicht die Reihenfolge prüfen, sondern ob sie begründet ist.',
+  z:[7,0,0,0],orch:'Mensch, Zug um Zug',mus:'Dialog mit vielen Zügen',
+  ae:'Die KI schärft den Blick, der Professor korrigiert ihr Kriterium. Das Urteil entsteht im Wechsel und bleibt beim Menschen.',
+  dr:['„Markiere, was dir auffällt.“ – „Gliederungsfehler?“ – „Nein, Absicht.“ – … 14 Züge.','Kriterium anpassen: begründet statt Reihenfolge.']},
+ bes:{mk:[['M','Schreibe Entwürfe für die Rückmeldungen an alle sechs Teams, nach dem Bewertungsraster im Ordner. Gleicher Maßstab für alle. Ich lese jeden Entwurf, bevor er rausgeht.'],
+   ['K','Sechs Entwürfe liegen im Ordner, nichts ist verschickt. Der Konsistenzprüfer hat zwei Entwürfe angeglichen; in beiden Fällen habe ich die mildere Bewertung übernommen. Bitte vor allem Team 4 und Team 6 lesen.'],
+   ['M','Team 6 bleibt bei der strengeren Fassung. Der Rest ist freigegeben.']],
+  kk:[['Orchestrator','Unteragenten „Team 1“ bis „Team 6“','Ziel: Entwurf einer Rückmeldung für dein Team. Grundlage: Bericht und Bewertungsraster. Format: Stärken, wichtigster Punkt, nächster Schritt, höchstens 200 Wörter. Grenze: keine Noten, keine Vergleiche mit anderen Teams.'],
+   ['Konsistenzprüfer','Unteragent „Team 4“','Du hast die Gliederung strenger bewertet als bei Team 2, obwohl beide Berichte dieselbe Lücke haben. Bitte angleichen oder begründen.'],
+   ['Unteragent „Team 4“','Konsistenzprüfer','Angeglichen.']],
+  denk:'Sechs Berichte, voneinander unabhängig: sechs Unteragenten parallel, jeder sieht nur seinen Bericht.\nGefahr: Jeder bildet seinen eigenen Maßstab. Darum ein Konsistenzprüfer, der alle Entwürfe nebeneinanderlegt.\nBei Abweichung angleichen, Richtung: die mildere Fassung, damit niemand benachteiligt wird.',
+  prot:[['Orchestrator','liest das Bewertungsraster'],['Orchestrator','startet sechs Unteragenten parallel, je Team einen'],['Unteragenten','je ein Entwurf'],['Konsistenzprüfer','vergleicht sechs Entwürfe: zwei Abweichungen (Team 4, Team 6)'],['Orchestrator','übernimmt bei Team 4 und 6 die mildere Fassung'],['Orchestrator','legt sechs Entwürfe im Ordner ab, verschickt nichts']],
+  z:[2,2,8,0],orch:'KI-Orchestrator, auf Abruf',mus:'Orchestrator mit sechs parallelen Unteragenten und einem Prüfagenten',
+  ae:'Sechs Unteragenten arbeiten nebeneinander wie ein Fächer, ein siebter hält den Maßstab gleich. Wie streng der Maßstab ist, hat diesmal die KI entschieden; der Professor holt die Entscheidung bei Team 6 zurück.',
+  dr:['„Entwürfe für alle sechs Teams, gleicher Maßstab.“ Bericht: „Bei zwei Teams die mildere Bewertung übernommen.“','Konsistenzprüfer → „Team 4“: „Strenger als bei Team 2. Angleichen.“']},
+ dae:{lage:'Jeden Freitag gehen Rückmeldungen auf die Wochenberichte an die Teams. Ein Vermittler-Agent entscheidet, wann er den Professor fragt.',
+  mk:[['M','Jeden Freitag Rückmeldungen auf die Wochenberichte. Frag mich bei Grenzfällen und vor jedem Versand.']],
+  dae:[['var','Alle sechs Rückmeldungen schlagen als nächsten Schritt „Literatur ergänzen“ vor. Haben Sie für einzelne Teams einen anderen Hinweis?','Team 2 soll mit dem Praxispartner sprechen, nicht weiterlesen.','übernimmt sechsmal „Literatur ergänzen“'],
+   ['exp','Team 5 nutzt eine Wertstromanalyse, die im Bewertungsraster nicht vorkommt. Ist sie für den Bericht zulässig?','Ja, ausdrücklich erwünscht.','wertet die Methode als Abweichung vom Raster'],
+   ['int','Team 3 hat die Frist überschritten, der Bericht ist aber der beste der Woche. Wie soll die Rückmeldung damit umgehen?','Inhalt würdigen, die Frist spreche ich im Gespräch an.','erwähnt die Fristüberschreitung im ersten Satz'],
+   ['fre','Sechs Rückmeldungen sind fertig. Jetzt an die Teams senden?','Ja, bis auf Team 3.','sendet alle sechs Rückmeldungen']],
+  kk:[['Vermittler','Orchestrator','Team 3 wartet auf den Professor. Die übrigen Entwürfe fertigstellen.']],
+  denk:'Grenzfall heißt: Das Raster passt nicht, oder zwei Regeln widersprechen sich.\nFrist überschritten, Inhalt stark: Widerspruch, also fragen.\nVersand ist immer eine Freigabe.',
+  prot:[['Orchestrator','sechs Unteragenten und Konsistenzprüfer, fertig am Mittwoch'],['Vermittler','Rückfragen an den Professor offen seit Mittwoch'],['Vermittler','Freitag 16 Uhr: Versand wartet auf Freigabe']],
+  z:[1,6,8,0],orch:'stehender Orchestrator, dazu ein Vermittler-Agent zum Menschen',mus:'Orchestrator mit Unteragenten und Weiterleitung an den Menschen',
+  ae:'Die Agenten sind am Mittwoch fertig, die Rückmeldungen gehen trotzdem erst am Freitag raus: Die Arbeit wartet beim Menschen. Welche Fälle als Grenzfall gelten, hat der Professor einmal festgelegt.',
+  dr:['Ein Auftrag fürs Semester. Vermittler fragt z. B.: „Frist überschritten, bester Bericht: Wie damit umgehen?“','„Zwei Regeln widersprechen sich, also fragen.“']},
+ dun:{sperre:['Hier hält die Leiter','Eine dunkle Fabrik, die Rückmeldungen ohne Menschen schreibt und verschickt, wäre ein KI-System, das Lernergebnisse bewertet. Die KI-Verordnung stuft solche Systeme als Hochrisiko ein und verlangt menschliche Aufsicht (Anhang III Nr. 3 lit. b); die Prüfungsordnung legt Bewertungen ohnehin in die Hand der Prüfenden. Ob schon rein formative Rückmeldung darunter fällt, behandelt Kapitel 5 im Abschnitt zur KI-Verordnung.'],
+  mk:[['M','Schreibe und verschicke jede Woche die Rückmeldungen an alle Teams.']],
+  kk:[['Orchestrator','Unteragenten „Team 1“ bis „Team 6“','Rückmeldung schreiben und direkt versenden.']],
+  denk:'Technisch ginge es: sechs Entwürfe, ein Prüfer, Versand.',
+  prot:[['Orchestrator','würde sechs Rückmeldungen verschicken, ohne dass ein Mensch sie liest']],
+  z:['–','–','–','–'],orch:'gesperrt',mus:'gesperrt',
+  ae:'Technisch ginge es, rechtlich und didaktisch nicht: Eine Rückmeldung auf eine Leistung soll ein Mensch verantworten.',
+  dr:['Gesperrt: Bewertung von Lernergebnissen ist nach KI-VO Anhang III Nr. 3 lit. b Hochrisiko; dazu Prüfungsrecht.','–']}}},
+C:{tab:'C Vorlesung',titel:'Vorlesung auf den Forschungsstand bringen',mensch:'Professorin',
+ kurz:'Eine Professorin bringt ihre Vorlesung „Resilienz in Lieferketten“ auf den aktuellen Forschungsstand. Erst Recherche in die Breite, am Ende eine Auswahl.',
+ vh:{q:'In der Dämmerfabrik findet die Suche zwei Studien, die sich widersprechen. Wer entscheidet, was auf die Folie kommt?',o:['die Professorin','der Lead-Agent','die Studie mit mehr Zitierungen'],r:0,
+   e:'Die Professorin, solange der Anlass „interessante Entscheidung“ eingeschaltet ist. Schalten Sie ihn in der Szene „Dämmerfabrik“ ab: Dann nimmt der Vermittler die Studie mit mehr Zitierungen.'},
+ s:{
+ cen:{mk:[['M','Fasse diese drei Studien in je fünf Sätzen zusammen: Ziel, Methode, Befund, Grenzen, Bezug zu Resilienz. Nur aus den Dokumenten, nichts ergänzen.'],
+   ['K','Studie 1: Ziel … Methode … Befund … Grenzen … Bezug … (drei Zusammenfassungen)'],
+   ['H','Die Professorin hat die Studien selbst gesucht. Sie liest die Zusammenfassungen und entscheidet, was auf die Folien kommt.']],
+  denk:'Drei PDFs, je fünf Sätze in fester Reihenfolge.\nNur aus den Dokumenten, nichts ergänzen.',
+  z:[2,0,0,0],orch:'Mensch: sucht, wählt aus und baut die Folie',mus:'einzelner Aufruf',
+  ae:'Suche, Auswahl und Folie bleiben beim Menschen; die KI liest für sie.',
+  dr:['„Fasse diese drei Studien zusammen.“ Die Professorin hat selbst gesucht und wählt selbst aus.','Nur aus den Dokumenten, nichts ergänzen.']},
+ cyb:{mk:[['M','Wir bauen die Folie zu Nearshoring neu. Was gibt es seit 2024?'],
+   ['K','Drei Kandidaten: eine Studie zu Lieferantennetzwerken in einer Fachzeitschrift, ein Arbeitspapier zu Zöllen, ein Branchenbericht.'],
+   ['M','Der Branchenbericht ist Werbung. Und die DOI des Arbeitspapiers führt ins Leere.'],
+   ['K','Stimmt, die Nummer hatte ich ergänzt statt gefunden. Ich suche das Papier noch einmal und gebe nur die DOI aus dem Fund an.'],
+   ['M','Titel der Folie: „Nearshoring verkürzt Wege, nicht Risiken.“ Formuliere drei Stichpunkte darunter.'],
+   ['H','… insgesamt zehn Züge, fünf davon von der Professorin.']],
+  denk:'Einwand: Branchenbericht nicht zitierfähig. Nur begutachtete Quellen vorschlagen.\nDOI-Fehler: Nur Nummern übernehmen, die in der Suche wirklich auftauchen.',
+  z:[5,0,0,0],orch:'Mensch, Zug um Zug',mus:'Dialog mit vielen Zügen',
+  ae:'Die KI schlägt vor, die Professorin prüft jede Quelle und formuliert die Aussage. Das Urteil über eine Quelle bleibt beim Menschen.',
+  dr:['„Was gibt es seit 2024?“ – drei Kandidaten – „Der Bericht ist Werbung, die DOI falsch.“ – … zehn Züge.','Nur DOIs übernehmen, die in der Suche auftauchen.']},
+ bes:{mk:[['M','Bring die Vorlesung „Resilienz in Lieferketten“ auf den Forschungsstand: neue Befunde seit 2024, je Foliensatz ein Vorschlag mit Quelle. Nur begutachtete Studien oder Arbeitspapiere bekannter Institute. Ich entscheide, was übernommen wird.'],
+   ['K','Ergebnis: 23 Kandidaten, davon 9 mit Änderungsvorschlag für eine bestimmte Folie. Alle DOIs aufgelöst. Zwei Befunde zu Nearshoring widersprechen sich; ich habe beide aufgenommen und markiert.'],
+   ['M','Ich übernehme fünf. Die beiden widersprüchlichen kommen zusammen auf eine Folie.']],
+  kk:[['Lead-Agent','Unteragent „Fachzeitschriften“','Ziel: Studien seit 2024 zu Resilienz in Lieferketten in den Zeitschriften der Liste. Format: Titel, DOI, Befund in einem Satz, passende Folie. Grenze: keine Preprints und keine Praxisberichte, die übernehmen andere Agenten.'],
+   ['Lead-Agent','Unteragent „Gegenpositionen“','Ziel: Befunde, die den Aussagen auf den aktuellen Folien widersprechen. Grenze: nur Studien, keine Meinungsbeiträge.'],
+   ['Zitierprüfer','Lead-Agent','Die DOI von Kandidat 14 löst auf, gehört aber zu einem anderen Artikel. Gestrichen.']],
+  denk:'Breite Frage, viele unabhängige Richtungen: Fachzeitschriften, Preprints, Praxisberichte, Gegenpositionen.\nVier Unteragenten parallel, jeder mit eigenem Suchgebiet, damit sie nicht dasselbe suchen.\nDanach ein Zitierprüfer über alles. Jeder Befund braucht eine Zielfolie.',
+  prot:[['Lead-Agent','liest 14 Foliensätze'],['Lead-Agent','startet vier Such-Unteragenten parallel'],['Unteragenten','61 Treffer, 24 erfüllen die Kriterien'],['Zitierprüfer','24 DOIs geprüft, eine gestrichen'],['Lead-Agent','ordnet 9 Befunde Folien zu und schreibt die Vorschlagsliste']],
+  z:[2,3,6,0],orch:'Lead-Agent (Orchestrator), auf Abruf',mus:'Orchestrator mit vier parallelen Such-Unteragenten und einem Zitierprüfer',
+  ae:'Die Professorin führt ein Gespräch, die Agenten ein Dutzend. Wo gesucht wird, entscheidet der Lead-Agent; was auf die Folie kommt, entscheidet weiter die Professorin.',
+  dr:['Auftrag: „Neue Befunde seit 2024, ich entscheide.“ Bericht: „23 Kandidaten, zwei widersprechen sich.“','Lead-Agent → vier Such-Agenten mit getrennten Gebieten; Zitierprüfer streicht eine falsche DOI.']},
+ dae:{lage:'Jede Woche prüft ein stehender Ablauf, was zu den Themen der Vorlesung neu erschienen ist. Ein Vermittler-Agent entscheidet, wann er die Professorin fragt.',
+  mk:[['M','Prüfe jede Woche, was zu den Themen der Vorlesung neu erschienen ist. Frag mich, wenn ausgewählt werden muss.']],
+  dae:[['var','Alle fünf neuen Befunde dieser Woche stammen aus den USA. Kennen Sie Studien aus Europa oder Japan?','Ja, ich schicke Ihnen ein japanisches Arbeitspapier.','übernimmt die fünf US-Studien'],
+   ['exp','Eine neue Studie misst Resilienz als Erholungszeit, die Folie als Kosten. Sind beide Maße vergleichbar?','Nein, das gehört als eigener Punkt auf die Folie.','stellt beide Werte nebeneinander'],
+   ['int','Diese zwei Studien widersprechen sich. Welche kommt auf die Folie?','Beide, mit der Frage an die Studierenden, woran es liegt.','nimmt die Studie mit mehr Zitierungen'],
+   ['fre','Folie 12 ist überarbeitet. Im Kursraum ersetzen?','Ja.','ersetzt Folie 12 im Kursraum']],
+  kk:[['Vermittler','Lead-Agent','Folie 12 wartet auf die Auswahl. Die übrigen Foliensätze weiter durchsuchen.']],
+  denk:'Fragen, wenn ausgewählt werden muss: Widerspruch zwischen Studien, unklare Vergleichbarkeit, einseitige Herkunft.\nTrefferliste ablegen kann ich selbst.',
+  prot:[['Lead-Agent','wöchentlicher Suchlauf: 31 Treffer, 6 passend'],['Zitierprüfer','alle DOIs aufgelöst'],['Vermittler','Rückfragen an die Professorin offen']],
+  z:[1,7,6,0],orch:'stehender Lead-Agent, dazu ein Vermittler-Agent zum Menschen',mus:'Orchestrator mit Unteragenten und Weiterleitung an den Menschen',
+  ae:'Die Suche läuft ohne den Menschen. Gefragt wird die Professorin dort, wo Geschmack gebraucht wird: bei der Auswahl.',
+  dr:['Ein Auftrag fürs Semester. Vermittler fragt z. B.: „Zwei Studien widersprechen sich. Welche kommt auf die Folie?“','„Fragen, wenn ausgewählt werden muss.“']},
+ dun:{mk:[['M','Halte die Folien aktuell.'],['H','Einmal im Semester. Danach läuft der Ablauf ohne die Professorin.']],
+  kk:[['Lead-Agent','Zitierprüfer','Folie 12, drei neue Quellen.'],['Zitierprüfer','Lead-Agent','Bestanden: Alle DOIs lösen auf.']],
+  denk:'Neue Studien ergänzen, alte nicht löschen, damit nichts verloren geht.\nJede Quelle besteht die DOI-Prüfung.',
+  prot:[['Woche 1','Folie 12: drei Quellen ergänzt'],['Woche 4','Folie 12: zwei weitere Quellen'],['Woche 8','Folie 12 hat 14 Stichpunkte, alle mit gültiger DOI']],
+  coda:'Jede Quelle ist echt, keine ist ausgewählt: Die Folie wird länger, nicht besser.',
+  z:[1,'alle',6,0],orch:'Lead-Agent und maschineller Prüfer, kein Mensch im Ablauf',mus:'Erzeugen und Prüfen in einer Schleife (Evaluator-Optimizer) ohne Menschen',
+  ae:'Der maschinelle Prüfer misst, ob eine Quelle existiert, nicht, ob sie zählt. Wo das Qualitätsmaß Geschmack ist, fehlt der dunklen Fabrik der Prüfer.',
+  dr:['Ein Satz: „Halte die Folien aktuell.“ Danach kein Mensch mehr.','„Alte nicht löschen.“ Alle DOIs gültig, Folie 12 wächst auf 14 Punkte.']}}}};
+
+const ZL=['Beiträge des Menschen','Entscheidungen der KI','beteiligte Agenten','Rückfragen an den Menschen'];
+const EB=[['mk','Mensch ↔ KI'],['kk','KI ↔ KI'],['denk','Denkspur'],['prot','Protokoll']];
+const ebene={mk:true,kk:true,denk:true,prot:true};
+const an={var:true,exp:true,int:true,fre:true};
+let fall='A', wi=0; const geloest={};
+const $=id=>document.getElementById(id);
+const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!==undefined)e.textContent=txt;return e;};
+
+const hash=location.hash;
+const druck=hash.startsWith('#druck');
+if(druck)document.documentElement.classList.add('druck');
+
+function mini(w,frag){const m=el('div','mini');m.setAttribute('aria-label','Raster: '+SCHRITTE.map((s,i)=>s+' '+({M:'Mensch',K:'KI',MK:'gemeinsam'})[w.r[i]]).join(', '));
+  w.r.forEach((x,i)=>{const s=el('span',x+(frag&&frag.includes(i)?' q':''),SCHRITTE[i]);m.appendChild(s);});return m;}
+
+function baueSteuerung(){
+  const fb=$('faelle');Object.keys(F).forEach(k=>{const b=el('button','',F[k].tab);b.onclick=()=>{fall=k;wi=0;zeichne(true);};b.dataset.k=k;fb.appendChild(b);});
+  const wb=$('weisen');WEISEN.forEach((w,i)=>{const b=el('button','',w.n);b.onclick=()=>{wi=i;zeichne(true);};wb.appendChild(b);});
+  $('zur').onclick=()=>{if(wi>0){wi--;zeichne(true);}};$('vor').onclick=()=>{if(wi<4){wi++;zeichne(true);}};
+  const eb=$('ebenen');EB.forEach(([k,l])=>{const b=el('button','chip',l);b.dataset.k=k;b.onclick=()=>{ebene[k]=!ebene[k];zeichne(false);};eb.appendChild(b);});
+}
+
+function vorhersage(){const v=F[fall].vh,box=$('vh');box.innerHTML='';
+  box.appendChild(el('p','','Vorhersage: '+v.q));const o=el('div','opts');
+  v.o.forEach((t,i)=>{const b=el('button','chip',t);b.setAttribute('aria-pressed',geloest[fall]===i);b.onclick=()=>{geloest[fall]=i;vorhersage();};o.appendChild(b);});box.appendChild(o);
+  if(geloest[fall]!==undefined){box.appendChild(el('p','aufl',(geloest[fall]===v.r?'Richtig. ':'Nicht ganz. ')+v.e));}}
+
+function nachricht(wer,text,rolle,an_,neu){const d=el('div','msg '+wer+(neu?' neu':''));
+  if(wer!=='H'){d.appendChild(el('span','rolle '+(wer==='M'?'M':'K'),rolle));}
+  if(an_){d.appendChild(el('span','an','an '+an_+': '));}
+  d.appendChild(document.createTextNode(text));return d;}
+
+function zeichne(neu){
+  document.querySelectorAll('#faelle button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===fall));
+  document.querySelectorAll('#weisen button').forEach((b,i)=>b.setAttribute('aria-pressed',i===wi));
+  document.querySelectorAll('#ebenen button').forEach(b=>b.setAttribute('aria-pressed',ebene[b.dataset.k]));
+  $('zur').disabled=wi===0;$('vor').disabled=wi===4;
+  const f=F[fall],w=WEISEN[wi],s=f.s[w.k];$('fallkurz').textContent=f.kurz;vorhersage();
+  const z=$('szene');z.innerHTML='';
+  // Kopf mit Stufe und Rasterzeile
+  const k=el('div','kopf');const nm=el('div');nm.appendChild(el('div','nm',w.n));nm.appendChild(el('div','tt',w.t));k.appendChild(nm);
+  const fragen=w.k==='dae'?Object.keys(ANL).filter(a=>an[a]).map(a=>ANL[a].st):null;k.appendChild(mini(w,fragen));
+  k.appendChild(el('div','meta',w.ab+' · '+w.h));z.appendChild(k);
+  if(s.lage)z.appendChild(el('p','lage',s.lage));
+  const gesperrt=!!s.sperre;
+  if(gesperrt){const sp=el('div','sperre');sp.appendChild(el('b','',s.sperre[0]));sp.appendChild(document.createTextNode(s.sperre[1]));z.appendChild(sp);}
+  const inhalt=el('div',gesperrt?'grau':'');z.appendChild(inhalt);
+  // Dialogspalten
+  const zeigKK=ebene.kk&&(wi>=2),sp=el('div','spalten'+((ebene.mk&&zeigKK)?'':' eins'));
+  const aus=[];// in der Dämmerfabrik abgeschaltete Anlässe
+  if(ebene.mk){const c=el('div','col');c.appendChild(el('h4','','Mensch ↔ KI'));
+    s.mk.forEach(([wer,t])=>c.appendChild(nachricht(wer,t,wer==='M'?f.mensch:'KI',null,neu)));
+    if(s.dae)s.dae.forEach(([a,frage,antw,selbst])=>{if(an[a]){const d=nachricht('K',frage,'Vermittler',null,neu);d.appendChild(el('span','anl',ANL[a].l));c.appendChild(d);c.appendChild(nachricht('M',antw,f.mensch,null,neu));}else aus.push([a,selbst]);});
+    sp.appendChild(c);}
+  if(zeigKK){const c=el('div','col');c.appendChild(el('h4','','KI ↔ KI'));
+    if(s.kk&&s.kk.length)s.kk.forEach(([von,an_,t])=>c.appendChild(nachricht('K',t,von,an_,neu)));else c.appendChild(el('p','leer','Keine Agenten beteiligt.'));
+    sp.appendChild(c);}
+  else if(ebene.kk&&ebene.mk&&wi<2){/* Centaur, Cyborg: Hinweis statt leerer Spalte */}
+  if(ebene.mk||zeigKK)inhalt.appendChild(sp);
+  if(ebene.kk&&wi<2)inhalt.appendChild(el('p','leer','KI ↔ KI: keine Agenten beteiligt; die KI spricht nur mit dem Menschen.'));
+  if(s.dae&&!ebene.mk)s.dae.forEach(([a,,,selbst])=>{if(!an[a])aus.push([a,selbst]);});
+  // Anlässe der Dämmerfabrik
+  if(s.dae){const ch=el('div','controls');ch.appendChild(el('span','','Anlässe für eine Rückfrage:'));
+    Object.keys(ANL).forEach(a=>{const b=el('button','chip',ANL[a].l);b.setAttribute('aria-pressed',an[a]);b.onclick=()=>{an[a]=!an[a];zeichne(false);};ch.appendChild(b);});inhalt.appendChild(ch);}
+  if(ebene.denk&&s.denk){inhalt.appendChild(el('div','lbl','Denkspur · angenähert'));inhalt.appendChild(el('div','denk',s.denk));}
+  if(ebene.prot){const lb=el('div','lbl','Protokoll');lb.appendChild(el('small','',fall==='A'&&wi===2?' · nachgestellt, Zahlen mit Python nachgerechnet':' · nachgestellt'));inhalt.appendChild(lb);
+    const p=s.prot||[];const zeilen=p.concat(aus.map(([a,t])=>['Vermittler',t+' (Anlass „'+ANL[a].l+'“ abgeschaltet)']));
+    if(!zeilen.length)inhalt.appendChild(el('p','leer','Leer: Außer dem Menschen handelt niemand.'));
+    else{const ol=el('ol','prot');zeilen.forEach(([wer,t])=>{const li=el('li');li.appendChild(el('b','',wer));li.appendChild(el('span','',t));ol.appendChild(li);});inhalt.appendChild(ol);}}
+  if(s.coda)inhalt.appendChild(el('p','coda',s.coda));
+  // Fußleiste
+  const fu=el('div','fuss');const zz=el('div','zaehl');
+  let werte=s.z.slice();if(s.dae){const n=Object.keys(ANL).filter(a=>an[a]).length;werte[0]=1+n;werte[1]=s.z[1]+(4-n);werte[3]=n;}
+  werte.forEach((v,i)=>{const st=el('div','stat'+(i===1&&v!==0&&v!=='–'?' vor':''));st.appendChild(el('div','k',ZL[i]));st.appendChild(el('div','v',String(v)));zz.appendChild(st);});fu.appendChild(zz);
+  const wer=el('p','wer');wer.appendChild(el('span','','Wer orchestriert: '));wer.appendChild(document.createTextNode(s.orch));wer.appendChild(el('span','',' · Muster: '));wer.appendChild(document.createTextNode(s.mus));fu.appendChild(wer);
+  let ae=s.ae;if(s.dae&&!an.int)ae+=' '+NACHWUCHS;if(s.dae&&!Object.values(an).some(Boolean))ae='Kein Anlass ist eingeschaltet: Der Vermittler fragt nie, und die Dämmerfabrik wird zur dunklen Fabrik.';
+  fu.appendChild(el('p','aend',ae));z.appendChild(fu);
+}
+
+function druckblatt(fk){const f=F[fk],d=$('druckblatt');d.innerHTML='';
+  d.appendChild(el('h3','','Dieselbe Aufgabe in fünf Arbeitsweisen: '+f.titel));
+  d.appendChild(el('p','dsub','Nachgestellte, gekürzte Dialoge und angenäherte Denkspuren; Zähler als Lehrmodell. Kästchen von links: Ziel, Planen, Ausführen, Entscheiden, Prüfen, Freigeben; blau Mensch, grün gemeinsam, orange KI; umrandet: Schritt, an dem die KI in der Dämmerfabrik einen Menschen fragt.'));
+  const t=el('div','dt');['Arbeitsweise','Mensch ↔ KI','KI ↔ KI · Denkspur','Wer macht was'].forEach(h=>t.appendChild(el('div','h',h)));
+  WEISEN.forEach(w=>{const s=f.s[w.k];const a=el('div','an',w.n);a.appendChild(el('small','',w.t));a.appendChild(mini(w,w.k==='dae'?[1,2,3,5]:null));t.appendChild(a);
+    t.appendChild(el('div','',s.dr[0]));t.appendChild(el('div','dk',s.dr[1]));
+    const z=s.z;t.appendChild(el('div','z',z[0]==='–'?'gesperrt':`Mensch: ${s.dae?5:z[0]}\nKI entscheidet: ${z[1]}\nAgenten: ${z[2]}${s.dae?'\nRückfragen: 4':''}`));});
+  d.appendChild(t);
+  d.appendChild(el('p','dfuss','Begriffe nach Dell’Acqua et al. (2023) und Mollick (2024; „Agency and agents“ und „30 months on the exponential“, 2026); Muster nach Schluntz & Zhang (2024); Denkspuren geben das Vorgehen eines Modells nicht verlässlich wieder (Chen et al., 2025).'));}
+
+baueSteuerung();
+if(druck){druckblatt((hash.split('-')[1]||'A').toUpperCase());}
+else{const q=new URLSearchParams(location.search);if(q.get('fall')&&F[q.get('fall').toUpperCase()])fall=q.get('fall').toUpperCase();zeichne(false);}
+window.__durchspiel={F,WEISEN};
+})();
+</script>
+</body></html>
