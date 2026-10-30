@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wie sich KI entwickelt: Zeithorizont, Kosten und Arbeitsweisen</title>
 <style>
-.viz-root{color-scheme:light;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--wash:rgba(11,11,11,0.035)}
-@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--wash:rgba(255,255,255,0.04)}}
+.viz-root{color-scheme:light;--st1:#2a78d6;--st2:#eb6834;--st3:#1baf7a;--st4:#eda100;--st5:#e87ba4;--st6:#008300;--st7:#6250d6;--plane:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--wash:rgba(11,11,11,0.035)}
+@media (prefers-color-scheme: dark){:root:where(:not([data-theme="light"]):not(.druck)) .viz-root{color-scheme:dark;--st1:#3987e5;--st2:#d95926;--st3:#199e70;--st4:#c98500;--st5:#d55181;--st6:#008300;--st7:#9085e9;--plane:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--wash:rgba(255,255,255,0.04)}}
 *{box-sizing:border-box}body{margin:0}
 .viz-root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--plane);color:var(--text-primary);padding:16px 12px 24px;line-height:1.45}
 main{max-width:920px;margin:0 auto}
@@ -69,7 +69,7 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .rwrap{display:grid;grid-template-columns:minmax(200px,290px) 1fr;gap:12px 22px;align-items:start}
 @media (max-width:599px){.rwrap{grid-template-columns:1fr}}
 .rinfo .k{color:var(--text-secondary);font-size:.85rem}
-.rinfo .big{font-size:3rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--series-2)}
+.rinfo .big{font-size:3rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--text-primary);display:flex;align-items:baseline;gap:8px}.rinfo .sw-big{display:inline-block;width:.42em;height:.42em;border-radius:4px;align-self:center}
 .rinfo .big small{font-size:1rem;font-weight:500;color:var(--text-secondary);margin-left:6px}
 .rinfo .s{color:var(--text-secondary);font-size:.85rem;margin-top:4px}
 .rinfo .o3{margin-top:14px;padding-top:8px;border-top:1px solid var(--grid);font-size:.8rem;color:var(--text-secondary)}
@@ -81,7 +81,7 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .druck #druck2r{display:block;margin-top:14px}
 .druck #ansicht-raster,.druck .seg{display:none !important}
 .druck #ansicht-treppe{display:block !important}
-.dr-titel{font-size:13px;font-weight:600;margin:0 0 6px 50px}
+.dr-titel{font-size:13px;font-weight:600;margin:0 0 6px 50px}#druck2r .dr-leg{margin:0 0 8px 50px;font-size:12px;color:var(--text-secondary)}
 .dr-reihe{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-left:50px}
 .dr-reihe .h{font-size:12px;font-weight:650}.dr-reihe .h span{font-weight:400;color:var(--text-secondary)}
 /* Diagramm 3: Arbeitsweisen */
@@ -151,7 +151,7 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
  <div id="k2bild"><div class="chart" id="c2"><div class="tip" id="tip2"></div></div><div id="druck2r"></div></div>
  <div class="now" id="now2" aria-live="polite"></div>
 </div>
-<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Rasterdarstellung nach einer Idee von Mollick (2026), eigene Umsetzung.</p>
+<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Rasterdarstellung nach einer Idee von Mollick (2026), eigene Umsetzung. Ein Kästchen = eine Frage zum Preis von o3 im Januar 2025 (29,9 ct); das Raster fasst 725 Kästchen. Jede Preisstufe hat eine eigene Farbe, dieselbe wie ihr Punkt im Zeitstrahl.</p>
 <details><summary>Datentabelle</summary><table id="t2"><thead><tr><th>Modell</th><th>Datum</th><th class="num">Genauigkeit</th><th class="num">Kosten/Frage</th></tr></thead><tbody></tbody></table></details>
 </section>
 
@@ -273,7 +273,8 @@ const E=EPOCH.map(r=>({...r,t:D(r.d)}));
 E.forEach((r,i)=>{r.fall=i?1-r.c/E[i-1].c:null;r.faktor=E[0].c/r.c;});
 const kurz=n=>n.replace(/ \(.*\)$/,'');
 const fPct=x=>'−'+Math.round(x*100)+'\u00a0%';
-const fCt=c=>c.toLocaleString('de-DE',c<1?{maximumFractionDigits:2}:{maximumSignificantDigits:3})+' ct';
+const fCtGross=c=>c.toLocaleString('de-DE',{maximumSignificantDigits:c<1?2:3});
+const fCt=c=>c.toLocaleString('de-DE',c<0.1?{maximumSignificantDigits:2}:c<1?{maximumFractionDigits:2}:{maximumSignificantDigits:3})+' ct';
 // Faktor ab 10 abgerundet, damit die Endstufe wie in der Überschrift 725 zeigt (29,8906 / 0,0412 = 725,5)
 const fFak=f=>f<10?f.toLocaleString('de-DE',{maximumFractionDigits:1}):Math.floor(f).toLocaleString('de-DE');
 const druck=document.documentElement.classList.contains('druck');
@@ -344,8 +345,10 @@ const VOLL=NQ.map(n=>Math.floor(n+1e-9));
 const fN=n=>n<10?n.toLocaleString('de-DE',{maximumFractionDigits:1}):Math.floor(n).toLocaleString('de-DE');
 const hex2=h=>{h=h.replace('#','');if(h.length===3)h=[...h].map(c=>c+c).join('');return[0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
 const mix=(a,b,w)=>{const A=hex2(a),B=hex2(b);return'rgb('+A.map((v,i)=>Math.round(v*w+B[i]*(1-w))).join(',')+')';};
-// Farbe je Stufe: o3 dunkel, frühere Stufen helle Töne (älter = heller), die gezeigte Stufe voll
-function farben(s){const f=[css('--text-primary')];for(let t=1;t<=s;t++)f.push(t===s?css('--series-2'):mix(css('--series-2'),css('--plane'),0.36+0.36*(t-1)/Math.max(1,s-2)));return f;}
+// Farbe je Stufe, fest und unabhängig von der gezeigten Stufe (Farbe folgt der Stufe, nicht dem Rang):
+// o3 dunkel, danach sieben kategoriale Farben in fester Reihenfolge (Palette der dataviz-Vorlage,
+// geprüft auf Farbfehlsichtigkeit hell und dunkel). So zeigt die Fläche jeder Farbe, wie viel ein Schritt ausmachte.
+function farben(){return[css('--text-primary'),...[1,2,3,4,5,6,7].map(i=>css('--st'+i))];}
 // Kästchen k ist voll ab der ersten Stufe t mit VOLL[t] > k; anteilig in Stufe s, wenn k === VOLL[s]
 function zeichneRaster(box,W,s,o={}){
   const cell=W/SP,gap=Math.max(1,cell*0.18),r=Math.min(3,cell*0.18),H=cell*ZE,F=farben(s);
@@ -416,7 +419,7 @@ function drawZeit(){
   const F=farben(Math.max(rSel,1)),X=i=>m.l+i*dx;
   // Linie: bis zur gezeigten Stufe kräftig, danach gestrichelt
   el('line',{x1:X(0),x2:X(LETZT),y1:y,y2:y,stroke:css('--grid'),'stroke-width':2,'stroke-dasharray':'4 4'},svg);
-  if(rSel>0)el('line',{x1:X(0),x2:X(rSel),y1:y,y2:y,stroke:css('--series-2'),'stroke-width':3},svg);
+  if(rSel>0)el('line',{x1:X(0),x2:X(rSel),y1:y,y2:y,stroke:css('--text-secondary'),'stroke-width':3},svg);
   const naechste=tipp!=null&&rSel===rBis&&rBis<LETZT?rBis+1:-1;
   E.forEach((r,i)=>{
     const auf=i<=rSel, akt=i===rSel, x=X(i);
@@ -441,9 +444,9 @@ function drawR(anim){
   zeichneRaster(box,W,rSel,{anim});
   drawZeit();
   const s=rSel,cur=E[s];
-  document.getElementById('rinfo').innerHTML=`<div class="k">30 Cent kaufen im ${fMon(cur.t)}</div><div class="big">${fN(NQ[s])}<small>${NQ[s]<1.5?'Frage':'Fragen'}</small></div>
-    <div class="s">${kurz(cur.n)} · ${fCt(cur.c)} je Frage${s?' · '+fPct(cur.fall)+' zur Vorstufe':''}</div>
-    <div class="o3">Ein Kästchen = eine Frage zum Preis von o3 im Januar 2025 (29,9 ct). Das Raster fasst ${NMAX} Kästchen; die Farben entsprechen den Punkten im Zeitstrahl.</div>`;
+  document.getElementById('rinfo').innerHTML=`<div class="k">Preis je Frage, ${fMon(cur.t)}</div><div class="big"><i class="sw-big" style="background:${farben()[s]}"></i>${fCtGross(cur.c)}<small>ct</small></div>
+    <div class="s">${kurz(cur.n)}${s?' · '+fPct(cur.fall)+' zur Vorstufe':''}</div>
+    <div class="s">30 Cent kaufen ${fN(NQ[s])} ${NQ[s]<1.5?'Frage':'Fragen'}</div>`;
   let txt;
   if(!s)txt=tipp==null?'':`<span class="ex">Ausgangspunkt: o3 ist das erste Modell mit 75 % richtigen Antworten</span>`;
   else{const neu=VOLL[s]-VOLL[s-1];
@@ -469,6 +472,9 @@ document.getElementById('v-treppe').onclick=()=>setAnsicht('treppe');
 // Druckfassung: vier kleine Raster unter der Treppe (Jan. 2025, Juni 2025, Feb. 2026, Juli 2026)
 function drawDruckR(){if(!druck)return;const box=document.getElementById('druck2r');box.innerHTML='';
   const t=document.createElement('div');t.className='dr-titel';t.textContent='Was 30 Cent kaufen: ein Kästchen = eine Frage zum o3-Preis vom Januar 2025 (Raster mit 725 Kästchen)';box.appendChild(t);
+  // Farbschlüssel: in der Druckfassung fehlt der Zeitstrahl, der online die Farben erklärt
+  const lg=document.createElement('div');lg.className='legend dr-leg';const Fd=farben();
+  lg.innerHTML=E.map((r,k)=>`<span><i class="sw" style="background:${Fd[k]}"></i>${fMon(r.t)}${k?' ('+fPct(r.fall)+')':' (o3)'}</span>`).join('');box.appendChild(lg);
   const reihe=document.createElement('div');reihe.className='dr-reihe';box.appendChild(reihe);
   const W=(Math.min(box.clientWidth||880,880)-50-3*18)/4;
   [0,2,5,7].forEach(s=>{const p=document.createElement('div');reihe.appendChild(p);
