@@ -180,4 +180,4 @@ Für Entscheidung E1 (scm-viz-Farbrollen): Das Bundle selbst bringt im Standbild
 
 ## Bilder
 
-Je Ziel und Schritt ein Farb- und ein Graustufenbild der Bühne sowie eine Übersicht `uebersicht.png` (Farbe links, Grau rechts), abgelegt in Tresorit unter `1-Research/06-Lehrbuch-Publikation-Logos/Projektnotizen-Claude/aufmerksamkeit-animationen/messung-2026-10-30/<Nr.>/`. Neu erzeugen: `npm run pruefe:aufmerksamkeit -- --md reviews/aufmerksamkeit-messung-2026-11.md --bilder <ordner> --wurzel <Arbeitskopie mit gerendertem docs/kapitel04.html>`.
+Abgelegt in Tresorit unter `1-Research/06-Lehrbuch-Publikation-Logos/Projektnotizen-Claude/aufmerksamkeit-animationen/messung-2026-10-30/`: je Ziel eine Übersicht `uebersicht-<Nr.>.png` (je Schritt Farbe links, Graustufen rechts) und die Einzelbilder je Schritt in `einzelbilder-gruppe-A.zip` und `einzelbilder-gruppen-B-C.zip`. Neu erzeugen: `npm run pruefe:aufmerksamkeit -- --md reviews/aufmerksamkeit-messung-2026-11.md --bilder <ordner> --wurzel <Arbeitskopie mit gerendertem docs/kapitel04.html>`.
