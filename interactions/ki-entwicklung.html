@@ -38,10 +38,33 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .schaetz{border:2px solid var(--series-2);background:color-mix(in srgb,var(--series-2) 9%,var(--surface-1));border-radius:10px;padding:10px 14px;margin:0 0 12px;font-size:.88rem}
 .schaetz .badge{display:inline-block;background:var(--series-2);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.02em;text-transform:uppercase;border-radius:999px;padding:1px 9px;margin-right:8px}
 .schaetz p{margin:6px 0}.schaetz .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.schaetz input[type=number]{width:110px;font-size:1rem;padding:4px 8px;border:2px solid var(--series-2);animation:puls 1.6s ease-in-out 3}
+.schaetz input[type=number]{width:110px;font-size:1rem;padding:4px 8px;border:2px solid var(--series-2);animation:puls 1.6s ease-in-out infinite}
+.schaetz input[type=number]:focus{animation:none}
 .schaetz .hint{color:var(--text-secondary);font-size:.8rem}
-.schaetz.fertig{border-color:var(--text-primary);background:var(--wash)}
-@keyframes puls{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--series-2) 30%,transparent)}}
+.schaetz.ruhig{border:1px solid var(--border);background:var(--wash);padding:6px 14px}
+.schaetz.ende{border-color:var(--text-primary);background:var(--wash)}
+@keyframes puls{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--series-2) 30%,transparent)}}
+/* Zeitstrahl der Preisstufen */
+.zeit{margin:2px 0 4px}.zeit svg{display:block;overflow:visible}
+.zeit .z-n{fill:var(--text-primary);font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.zeit .z-d{fill:var(--muted);font-size:10.5px}.zeit .z-m{fill:var(--text-secondary);font-size:10.5px}
+.zeit .akt .z-d,.zeit .akt .z-m{fill:var(--text-primary);font-weight:650}
+.zeit .z-k{fill:var(--muted);font-size:11px;font-weight:600}
+.zeit .klick{cursor:pointer}.zeit .klick:focus{outline:none}.zeit .klick:focus-visible circle.z-dot{stroke:var(--series-1);stroke-width:3}
+.zeit .ring{transform-box:fill-box;transform-origin:center;animation:ring 1.4s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.85}to{transform:scale(2.3);opacity:0}}
+/* Bedienzeile mit Klick-Zeiger */
+.rnav{margin:6px 0 10px;gap:8px 10px}.rnav #r-pos{color:var(--muted);font-size:.8rem}
+.weiter{font:inherit;font-size:.92rem;font-weight:700;border:0;background:var(--series-2);color:#fff;border-radius:9px;padding:7px 16px;cursor:pointer;animation:puls 1.4s ease-in-out infinite}
+.weiter:disabled{background:var(--axis);color:var(--surface-1);cursor:not-allowed;animation:none}
+.zeiger{display:inline-flex;align-items:center;gap:4px;color:var(--series-2);font-weight:700;font-size:.85rem;animation:stups 1.4s ease-in-out infinite}
+.zeiger::before{content:"";border:7px solid transparent;border-right:9px solid var(--series-2);border-left:0}
+@keyframes stups{50%{transform:translateX(-5px)}}
+.chip.ziel{border:2px solid var(--series-2);color:var(--text-primary);font-weight:650;animation:puls 1.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.weiter,.zeiger,.chip.ziel,.zeit .ring,.schaetz input[type=number]{animation:none}}
+.viz-root [hidden]{display:none !important}
+/* schmal: „Weiter“ mit Zeiger in die erste Zeile, Zurück und Von vorn darunter */
+@media (max-width:599px){.rnav .weiter{order:-2}.rnav .zeiger{order:-1}}
 .playbtn:disabled{opacity:.35;cursor:not-allowed}
 .rwrap{display:grid;grid-template-columns:minmax(200px,290px) 1fr;gap:12px 22px;align-items:start}
 @media (max-width:599px){.rwrap{grid-template-columns:1fr}}
@@ -51,11 +74,9 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .rinfo .s{color:var(--text-secondary);font-size:.85rem;margin-top:4px}
 .rinfo .o3{margin-top:14px;padding-top:8px;border-top:1px solid var(--grid);font-size:.8rem;color:var(--text-secondary)}
 .rgrid .legend{margin-top:6px}
-#d-tipps{margin-top:12px}#t2s{font-size:.74rem}#t2s td:first-child{white-space:nowrap}#t2s th,#t2s td{padding:2px 4px}
 #c2r .k.rein{animation:rein .35s ease-out backwards}@keyframes rein{from{opacity:0;transform:scale(.3)}}
 #c2r .k{transform-box:fill-box;transform-origin:center}
-@media (prefers-reduced-motion:reduce){#c2r .k.rein,.schaetz input[type=number]{animation:none}}
-.rnav{margin-top:8px}.rnav span{color:var(--muted);font-size:.8rem}
+@media (prefers-reduced-motion:reduce){#c2r .k.rein{animation:none}}
 #druck2r{display:none}
 .druck #druck2r{display:block;margin-top:14px}
 .druck #ansicht-raster,.druck .seg{display:none !important}
@@ -117,10 +138,10 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
 </div>
 <div id="ansicht-raster">
  <div class="schaetz" id="schaetz" role="group" aria-labelledby="schaetz-t"></div>
- <div class="rwrap"><div class="rlinks"><div class="rinfo" id="rinfo" aria-live="polite"></div>
-  <details id="d-tipps"><summary>Ihre Schätzungen</summary><table id="t2s"><thead><tr><th>Stufe</th><th class="num">geschätzt</th><th class="num">tatsächlich</th><th>Abweichung</th></tr></thead><tbody></tbody></table></details></div><div class="rgrid"><div id="c2r"></div><div class="legend" id="rleg"></div></div></div>
+ <div class="zeit" id="zeit" role="group" aria-label="Zeitstrahl der Preisstufen seit o3"></div>
+ <div class="controls rnav"><button id="r-zur" class="chip">◀ Zurück</button><button id="r-vor" class="weiter">Weiter ▶</button><span class="zeiger" id="zeiger" aria-hidden="true">hier klicken</span><button id="r-neu" class="chip">Von vorn</button><span id="r-pos"></span></div>
+ <div class="rwrap"><div class="rinfo" id="rinfo" aria-live="polite"></div><div class="rgrid"><div id="c2r"></div></div></div>
  <div class="now" id="now2r" aria-live="polite"></div>
- <div class="controls rnav"><button id="r-zur" class="chip">◀ Zurück</button><button id="r-vor" class="chip">Weiter ▶</button><button id="r-neu" class="chip">Von vorn</button><span id="r-pos"></span></div>
 </div>
 <div id="ansicht-treppe" hidden>
  <div class="controls">
@@ -341,57 +362,102 @@ function zeichneRaster(box,W,s,o={}){
     el('rect',a,svg);
     if(k===0)el('rect',{x:-1,y:-1,width:w+2,height:w+2,rx:r+1,fill:'none',stroke:css('--text-primary'),'stroke-width':1.5},svg);}
   return svg;}
-const schaetzBox=document.getElementById('schaetz'), tipps={};
-function monateZwischen(a,b){return Math.round((b-a)/(30.44*DAY));}
-function abweichung(g,n,kurz){const q=g/n,z=x=>x.toLocaleString('de-DE',{maximumFractionDigits:1})+(kurz?'×':'-mal');return q>=0.8&&q<=1.25?'fast getroffen':q<1?z(n/g)+' zu niedrig':z(q)+' zu hoch';}
+// Ablauf: (1) eine Schätzung für Juli 2026, (2) Stufe für Stufe mit „Weiter“, (3) Auflösung auf der letzten Stufe.
+// rBis = letzte aufgedeckte Stufe, rSel = gezeigte Stufe, tipp = Schätzung (null = noch offen)
+const schaetzBox=document.getElementById('schaetz'), LETZT=E.length-1;
+let tipp=null;
+const MON=['Jan.','Feb.','März','Apr.','Mai','Juni','Juli','Aug.','Sep.','Okt.','Nov.','Dez.'];
+const fMon=d=>MON[d.getMonth()]+' '+d.getFullYear();
+const fMonK=d=>(d.getMonth()+1)+'/'+String(d.getFullYear()).slice(2);
+// kurze Modellnamen für den Zeitstrahl
+const zName=n=>kurz(n).replace(' 397B-A17B',' 397B').replace('GPT-5.6 Luna','GPT-5.6 Luna');
+function abweichung(g,n){const q=g/n,z=x=>x.toLocaleString('de-DE',{maximumFractionDigits:1})+'-mal';return q>=0.8&&q<=1.25?'Sie haben fast getroffen':q<1?z(n/g)+' so viele wie geschätzt':'Ihre Schätzung lag '+z(q)+' zu hoch';}
 let schaetzStand='';
 function schaetzUI(){
-  // nur bei geänderter Stufe neu aufbauen, sonst verliert ein Fensterwechsel (z. B. Bildschirmtastatur) die Eingabe
-  const st=rSel+'|'+rBis;if(st===schaetzStand)return;schaetzStand=st;
-  const fertig=rBis>=E.length-1;
-  schaetzBox.classList.toggle('fertig',fertig);
-  if(rSel<rBis){schaetzBox.innerHTML=`<p>Diese Stufe haben Sie schon aufgedeckt. Mit „Weiter ▶“ blättern Sie bis zur Stufe ${rBis+1}; danach ist wieder Ihre Schätzung gefragt.</p>`;return;}
-  if(fertig){schaetzBox.innerHTML=`<p><b>Alle acht Preisstufen aufgedeckt.</b> Ihre Schätzungen stehen in der Tabelle. Wechseln Sie zur <button class="chip" id="zur-treppe">Treppe</button> und vergleichen Sie: Auf der logarithmischen Achse sind die Sprünge ähnlich groß, auch der letzte.</p>`;
+  // nur bei geändertem Zustand neu aufbauen, sonst verliert ein Fensterwechsel (z. B. Bildschirmtastatur) die Eingabe
+  const st=(tipp==null?'offen':'t')+'|'+(rBis>=LETZT&&rSel===LETZT);if(st===schaetzStand)return;schaetzStand=st;
+  schaetzBox.classList.remove('ruhig','ende');
+  if(tipp==null){
+    schaetzBox.innerHTML=`<p id="schaetz-t"><span class="badge">Ihre Schätzung zuerst</span>Im Januar 2025 kostete eine Frage auf Promotionsniveau mit o3 rund 30 Cent (ein Kästchen). <b>Wie viele solcher Fragen kaufen dieselben 30 Cent im Juli 2026?</b></p>
+     <div class="row"><input type="number" id="tipp" min="1" step="any" inputmode="decimal" aria-label="Ihre Schätzung: Anzahl Fragen für 30 Cent im Juli 2026" placeholder="Anzahl">
+     <button class="playbtn" id="abgeben" disabled>Schätzung abgeben</button>
+     <span class="hint">Danach klicken Sie sich Stufe für Stufe durch die Preise seit o3.</span></div>`;
+    const inp=document.getElementById('tipp'),btn=document.getElementById('abgeben');
+    const ok=()=>+inp.value>0;
+    inp.addEventListener('input',()=>{btn.disabled=!ok();});
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&ok()){e.preventDefault();abgeben(+inp.value);}});
+    btn.onclick=()=>{if(ok())abgeben(+inp.value);};
+    return;}
+  if(rBis>=LETZT&&rSel===LETZT){
+    const n=NQ[LETZT];
+    schaetzBox.classList.add('ende');
+    schaetzBox.innerHTML=`<p id="schaetz-t"><b>Ihre Schätzung: ${tipp.toLocaleString('de-DE')} ${tipp===1?'Frage':'Fragen'}.</b> Im Juli 2026 kaufen 30 Cent ${fN(n)} Fragen, ${abweichung(tipp,n)}.
+     Auf der <button class="chip ziel" id="zur-treppe">Treppe</button> sehen Sie dieselben Stufen auf logarithmischer Achse: Dort sind die Sprünge ähnlich groß, auch der letzte.</p>`;
     document.getElementById('zur-treppe').onclick=()=>setAnsicht('treppe');return;}
-  const n=rBis+1, m=monateZwischen(E[rBis].t,E[n].t);
-  schaetzBox.innerHTML=`<p id="schaetz-t"><span class="badge">Ihre Schätzung ist gefragt</span><b>${fD(E[n].t)}</b>, ${m<1?'zwölf Tage':m===1?'einen Monat':m+' Monate'} später: Der Preis fällt erneut. Wie viele Fragen kaufen die 30 Cent jetzt?</p>
-   <div class="row"><input type="number" id="tipp" min="1" step="any" inputmode="decimal" aria-label="Ihre Schätzung: Anzahl Fragen für 30 Cent" placeholder="Anzahl">
-   <button class="playbtn" id="aufdecken" disabled>Aufdecken</button>
-   <span class="hint">bisher: ${fN(NQ[rBis])} ${NQ[rBis]<1.5?'Frage':'Fragen'} · erst nach Ihrer Eingabe geht es weiter</span></div>`;
-  const inp=document.getElementById('tipp'),btn=document.getElementById('aufdecken');
-  const ok=()=>+inp.value>0;
-  inp.addEventListener('input',()=>{btn.disabled=!ok();});
-  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&ok())aufdecken(+inp.value);});
-  btn.onclick=()=>{if(ok())aufdecken(+inp.value);};
+  schaetzBox.classList.add('ruhig');
+  schaetzBox.innerHTML=`<p id="schaetz-t">Ihre Schätzung für Juli 2026: <b>${tipp.toLocaleString('de-DE')} ${tipp===1?'Frage':'Fragen'}</b>. Die Auflösung kommt auf der letzten Stufe.</p>`;
 }
-function aufdecken(g){const vorher=rBis;tipps[rBis+1]=g;rBis++;rSel=rBis;tippTabelle();drawR(vorher);
-  const f=document.getElementById('tipp');if(f)f.focus();}
-function tippTabelle(){document.querySelector('#t2s tbody').innerHTML=Object.keys(tipps).map(Number).sort((a,b)=>a-b).map(s=>`<tr><td>${fD(E[s].t)}</td><td class="num">${tipps[s].toLocaleString('de-DE')}</td><td class="num">${fN(NQ[s])}</td><td>${abweichung(tipps[s],NQ[s],true)}</td></tr>`).join('');
-  if(rBis>=E.length-1)document.getElementById('d-tipps').open=true;}
-const rZur=document.getElementById('r-zur'),rVor=document.getElementById('r-vor');
+// Fokus erst nach dem Tastendruck auf „Weiter“ setzen, sonst löst dieselbe Enter-Taste gleich die erste Stufe aus
+function abgeben(g){tipp=g;drawR();setTimeout(()=>rVor.focus({preventScroll:true}),250);}
+function weiter(){if(tipp==null)return;
+  if(rSel<rBis){rSel++;drawR();return;}
+  if(rBis<LETZT){const vorher=rBis;rBis++;rSel=rBis;drawR(vorher);}}
+function springe(i){if(tipp==null)return;if(i<=rBis){rSel=i;drawR();}else if(i===rBis+1)weiter();}
+const rZur=document.getElementById('r-zur'),rVor=document.getElementById('r-vor'),zeiger=document.getElementById('zeiger');
 rZur.onclick=()=>{if(rSel>0){rSel--;drawR();}};
-rVor.onclick=()=>{if(rSel<rBis){rSel++;drawR();}};
-document.getElementById('r-neu').onclick=()=>{rSel=rBis=0;for(const k in tipps)delete tipps[k];tippTabelle();document.getElementById('d-tipps').open=false;drawR();};
+rVor.onclick=weiter;
+document.getElementById('r-neu').onclick=()=>{rSel=rBis=0;tipp=null;schaetzStand='';drawR();const f=document.getElementById('tipp');if(f)f.focus({preventScroll:true});};
+// Zeitstrahl: acht Stufen in gleichen Abständen; aufgedeckte Stufen in der Farbe ihrer Kästchen,
+// die nächste Stufe pulsiert und ist anklickbar, spätere bleiben leere Kreise ohne Zahl
+function drawZeit(){
+  const box=document.getElementById('zeit');box.innerHTML='';
+  const W=box.clientWidth||880,narrow=W<600,H=narrow?66:80,m={l:narrow?16:40,r:narrow?16:40},y=24,dx=(W-m.l-m.r)/LETZT;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H},box);
+  const F=farben(Math.max(rSel,1)),X=i=>m.l+i*dx;
+  // Linie: bis zur gezeigten Stufe kräftig, danach gestrichelt
+  el('line',{x1:X(0),x2:X(LETZT),y1:y,y2:y,stroke:css('--grid'),'stroke-width':2,'stroke-dasharray':'4 4'},svg);
+  if(rSel>0)el('line',{x1:X(0),x2:X(rSel),y1:y,y2:y,stroke:css('--series-2'),'stroke-width':3},svg);
+  const naechste=tipp!=null&&rSel===rBis&&rBis<LETZT?rBis+1:-1;
+  E.forEach((r,i)=>{
+    const auf=i<=rSel, akt=i===rSel, x=X(i);
+    const g=el('g',{class:(akt?'akt':'')+(tipp!=null&&(i<=rBis||i===naechste)?' klick':'')},svg);
+    if(tipp!=null&&(i<=rBis||i===naechste)){g.setAttribute('tabindex',0);g.setAttribute('role','button');
+      g.setAttribute('aria-label',i===naechste?`Nächste Preisstufe aufdecken: ${fMon(r.t)}`:`Preisstufe ${fMon(r.t)} zeigen`);
+      g.addEventListener('click',()=>springe(i));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();springe(i);}});}
+    if(i===naechste)el('circle',{cx:x,cy:y,r:8,fill:'none',stroke:css('--series-2'),'stroke-width':2.5,class:'ring'},g);
+    el('circle',{cx:x,cy:y,r:16,fill:'transparent'},g);   // größere Klickfläche
+    el('circle',{cx:x,cy:y,r:akt?9:7,fill:auf?F[i]:css('--surface-1'),stroke:akt?css('--text-primary'):auf?F[i]:i===naechste?css('--series-2'):css('--axis'),'stroke-width':akt?2.5:i===naechste?2:1.5,class:'z-dot'},g);
+    // über dem Punkt: so viele Fragen kaufen 30 Cent (nur aufgedeckt), an der nächsten Stufe ein Fragezeichen
+    if(auf&&(!narrow||akt||i===0))el('text',{x,y:y-14,'text-anchor':'middle',class:'z-n'},g).textContent=fN(NQ[i]);
+    else if(i===naechste)el('text',{x,y:y-14,'text-anchor':'middle',class:'z-k'},g).textContent='?';
+    // unter dem Punkt: Monat; Modellname nur aufgedeckt (schmal: nur die aktuelle Stufe)
+    el('text',{x,y:y+26,'text-anchor':'middle',class:'z-d'},g).textContent=narrow?fMonK(r.t):fMon(r.t);
+    if(auf&&(!narrow||akt)){const t=el('text',{x:narrow?Math.max(40,Math.min(W-40,x)):x,y:y+40,'text-anchor':'middle',class:'z-m'},g);t.textContent=zName(r.n);}
+  });
+}
 function drawR(anim){
   const box=document.getElementById('c2r');box.innerHTML='';
   const W=Math.min(box.clientWidth||480,480);
   zeichneRaster(box,W,rSel,{anim});
+  drawZeit();
   const s=rSel,cur=E[s];
-  document.getElementById('rinfo').innerHTML=`<div class="k">30 Cent kaufen im ${fD(cur.t)}</div><div class="big">${fN(NQ[s])}<small>${NQ[s]<1.5?'Frage':'Fragen'}</small></div>
+  document.getElementById('rinfo').innerHTML=`<div class="k">30 Cent kaufen im ${fMon(cur.t)}</div><div class="big">${fN(NQ[s])}<small>${NQ[s]<1.5?'Frage':'Fragen'}</small></div>
     <div class="s">${kurz(cur.n)} · ${fCt(cur.c)} je Frage${s?' · '+fPct(cur.fall)+' zur Vorstufe':''}</div>
-    <div class="o3">Ein Kästchen = eine Frage zum Preis von o3 im Januar 2025 (29,9 ct). Das Raster fasst ${NMAX} Kästchen.</div>`;
-  const F=farben(Math.max(s,1));
-  document.getElementById('rleg').innerHTML=`<span><i class="sw" style="background:${F[0]};outline:1.5px solid ${F[0]};outline-offset:1px"></i>o3, Jan. 2025</span>`+(s>1?`<span><i class="sw" style="background:${F[1]}"></i><i class="sw" style="background:${F[s-1]}"></i>frühere Stufen</span>`:'')+(s?`<span><i class="sw" style="background:${F[s]}"></i>neu in dieser Stufe</span>`:'');
+    <div class="o3">Ein Kästchen = eine Frage zum Preis von o3 im Januar 2025 (29,9 ct). Das Raster fasst ${NMAX} Kästchen; die Farben entsprechen den Punkten im Zeitstrahl.</div>`;
   let txt;
-  if(!s)txt=`<span class="ex">Ausgangspunkt: das erste Modell mit 75 % richtigen Antworten kostet 29,9 ct je Frage</span>`;
+  if(!s)txt=tipp==null?'':`<span class="ex">Ausgangspunkt: o3 ist das erste Modell mit 75 % richtigen Antworten</span>`;
   else{const neu=VOLL[s]-VOLL[s-1];
-    txt=`<span class="m">+${neu.toLocaleString('de-DE')} ${neu===1?'Kästchen':'Kästchen'}</span><span class="ex">Preis ${fPct(cur.fall)} zur Vorstufe${tipps[s]!=null?' · Ihre Schätzung '+tipps[s].toLocaleString('de-DE')+': '+abweichung(tipps[s],NQ[s]):''}</span>`;
-    if(s===E.length-1){const vorher=VOLL[s-1],maxF=Math.max(...E.slice(1,s).map(r=>r.fall)),wo=E.slice(1,s).find(r=>r.fall===maxF);
-      txt+=`<span class="ex" style="border-radius:10px">Der letzte Schritt brachte ${neu} Kästchen, mehr als alle früheren zusammen (${vorher}). Der Preis fiel dabei um ${Math.round(cur.fall*100)} %, weniger als im ${fD(wo.t)} (${fPct(maxF)}). Als fiele der Preis eines Neuwagens von 50.000 auf 69.</span>`;}}
+    txt=`<span class="m">+${neu.toLocaleString('de-DE')} Kästchen</span><span class="ex">Preis ${fPct(cur.fall)} zur Vorstufe</span>`;
+    if(s===LETZT){const vorher=VOLL[s-1],maxF=Math.max(...E.slice(1,s).map(r=>r.fall)),wo=E.slice(1,s).find(r=>r.fall===maxF);
+      txt+=`<span class="ex" style="border-radius:10px">Der letzte Schritt brachte ${neu} Kästchen, mehr als alle früheren zusammen (${vorher}). Der Preis fiel dabei um ${Math.round(cur.fall*100)} %, weniger als im ${fMon(wo.t)} (${fPct(maxF)}). Als fiele der Preis eines Neuwagens von 50.000 auf 69.</span>`;}}
   document.getElementById('now2r').innerHTML=txt;
-  rZur.disabled=rSel===0;rVor.disabled=rSel>=rBis;
-  rVor.style.display=rSel<rBis?'':'none';
-  document.getElementById('r-pos').textContent=`Preisstufe ${rSel+1} von ${E.length}`;
+  // Bedienung: vor der Schätzung gesperrt; danach zeigt der Zeiger auf „Weiter“
+  const kannWeiter=tipp!=null&&(rSel<rBis||rBis<LETZT);
+  rZur.disabled=tipp==null||rSel===0;
+  rVor.disabled=!kannWeiter;rVor.hidden=tipp!=null&&!kannWeiter;
+  rVor.textContent=kannWeiter?`Weiter: ${fMon(E[rSel+1].t)} ▶`:'Weiter ▶';
+  zeiger.hidden=!kannWeiter;
+  document.getElementById('r-pos').textContent=tipp==null?'erst schätzen, dann geht es los':`Preisstufe ${rSel+1} von ${E.length}`;
   schaetzUI();
 }
 function setAnsicht(a){ansicht2=a;stop2();
