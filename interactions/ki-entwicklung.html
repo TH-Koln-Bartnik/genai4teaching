@@ -38,9 +38,10 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--text-secondary);margin:0 0 6px}
 .sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
 .gwrap{overflow-x:auto}
-.grid3{display:grid;grid-template-columns:112px repeat(6,minmax(66px,1fr));gap:3px;font-size:.78rem;min-width:540px}
+.grid3{display:grid;grid-template-columns:150px repeat(6,minmax(66px,1fr));gap:3px;font-size:.78rem;min-width:580px}
 .grid3 .hd{color:var(--text-secondary);font-weight:600;padding:2px 4px;font-size:.74rem}
-.grid3 .rowlab{padding:6px 6px;font-weight:650;cursor:pointer;border-radius:6px;display:flex;align-items:center}
+.grid3 .rowlab{padding:4px 6px;font-weight:650;cursor:pointer;border-radius:6px;display:flex;flex-direction:column;justify-content:center;line-height:1.2}
+.grid3 .rowlab small{font-weight:400;font-size:.68rem;color:var(--text-secondary);margin-top:1px}
 .grid3 .rowlab[aria-selected="true"]{background:var(--wash);outline:2px solid var(--text-primary)}
 .grid3 .zeile{display:contents}
 .grid3 .zeile.spaeter>*{opacity:.18}
@@ -54,7 +55,7 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .chip[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1)}
 @media (forced-colors:active){.cell{border:1px solid CanvasText}}
 .druck .grid3{min-width:0}
-@media (max-width:599px){:root:not(.druck) .grid3{min-width:0;grid-template-columns:86px repeat(6,1fr);font-size:.7rem}:root:not(.druck) .cell{font-size:0;min-height:30px}:root:not(.druck) .cell .ask{font-size:9px;padding:0 3px}.grid3 .hd{font-size:.64rem;hyphens:auto;overflow-wrap:anywhere}}
+@media (max-width:599px){:root:not(.druck) .grid3{min-width:0;grid-template-columns:104px repeat(6,1fr);font-size:.7rem}:root:not(.druck) .cell{font-size:0;min-height:30px}:root:not(.druck) .cell .ask{font-size:9px;padding:0 3px}.grid3 .hd{font-size:.64rem;hyphens:auto;overflow-wrap:anywhere}}
 footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
 /* Auswahl über ?zeige=zeithorizont|kosten|arbeitsweisen; Druckansicht über #druck */
 .aus{display:none !important}
@@ -288,14 +289,14 @@ function draw2(){
 /* ---- Diagramm 3: Arbeitsweisen nach Mollick (Konzeptschema, eigene Zuordnung der Schritte) ---- */
 const SCHRITTE=['Ziel setzen','Planen','Ausführen','Entscheiden','Prüfen','Freigeben'];
 const WEISEN=[
- {k:'cen',n:'Centaur',c:[['M'],['M'],['MK'],['M'],['M'],['M']],
+ {k:'cen',n:'Centaur',t:'Arbeit aufgeteilt',c:[['M'],['M'],['MK'],['M'],['M'],['M']],
   e:'Mensch und KI teilen die Aufgabe in getrennte Teile. Jede Entscheidung bleibt beim Menschen.'},
- {k:'cyb',n:'Cyborg',c:[['M'],['MK'],['MK'],['MK'],['MK'],['M']],
+ {k:'cyb',n:'Cyborg',t:'Arbeit verwoben',c:[['M'],['MK'],['MK'],['MK'],['MK'],['M']],
   e:'Mensch und KI arbeiten so verwoben, dass sich die Beiträge nicht mehr trennen lassen.'},
- {k:'bes',n:'Beschwörer',c:[['M'],['K'],['K'],['K'],['M'],['M']],
+ {k:'bes',n:'Beschwörer',t:'Agenten beauftragen',c:[['M'],['K'],['K'],['K'],['M'],['M']],
   e:'Der Mensch beauftragt Agenten und bewertet, was zurückkommt. Den Weg dorthin begleitet er nicht mehr.'},
- {k:'dae',n:'Dämmerfabrik',c:null,e:''},
- {k:'dun',n:'Dunkle Fabrik',c:[['M'],['K'],['K'],['K'],['K'],['K']],
+ {k:'dae',n:'Dämmerfabrik',t:'KI fragt bei Bedarf',c:null,e:''},
+ {k:'dun',n:'Dunkle Fabrik',t:'Mensch setzt nur das Ziel',c:[['M'],['K'],['K'],['K'],['K'],['K']],
   e:'Menschen legen nur fest, was entstehen soll. Ausführen und Prüfen übernehmen Maschinen, was nur gelingt, wo eine Maschine prüfen kann, ob das Ergebnis stimmt.'}];
 // Anlässe der Dämmerfabrik und der Schritt, an dem sie greifen (eigene Zuordnung)
 const ANL=[{k:'var',l:'Ideenvielfalt',st:1,w:'die Ideen zu gleichförmig werden'},{k:'exp',l:'Expertise',st:2,w:'Fachwissen fehlt'},{k:'int',l:'Interessante Entscheidung',st:3,w:'eine Entscheidung interessant ist'},{k:'fre',l:'Freigabe',st:5,w:'eine Freigabe nötig ist'}];
@@ -318,7 +319,7 @@ function draw3(){const g=document.getElementById('g3');g.innerHTML='';
   const kopf=document.createElement('div');kopf.className='zeile';kopf.setAttribute('role','row');g.appendChild(kopf);
   ['',...SCHRITTE].forEach(t=>{const d=document.createElement('div');d.className='hd';d.setAttribute('role','columnheader');d.textContent=t;kopf.appendChild(d);});
   WEISEN.forEach((w,j)=>{const z=document.createElement('div');z.className='zeile'+(!druck&&j>bis3?' spaeter':'');z.setAttribute('role','row');g.appendChild(z);
-    const l=document.createElement('div');l.className='rowlab';l.setAttribute('role','rowheader');l.tabIndex=0;l.textContent=w.n;
+    const l=document.createElement('div');l.className='rowlab';l.setAttribute('role','rowheader');l.tabIndex=0;l.textContent=w.n;const tt=document.createElement('small');tt.textContent=w.t;l.appendChild(tt);
     l.setAttribute('aria-selected',!druck&&j===sel3);l.onclick=()=>{stop3();waehle(j);};
     l.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stop3();waehle(j);}};z.appendChild(l);
     const zellen=w.c?w.c.map(x=>[x[0],x[1]||null,[]]):daeZellen();
