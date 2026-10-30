@@ -1,6 +1,6 @@
 # Messlauf Aufmerksamkeitsbudget: Animationen im Lehrbuch
 
-Stand: 30.10.2026, 11:21:47 · Werkzeug: `scripts/pruefe-aufmerksamkeit.cjs` über `scripts/pruefe-aufmerksamkeit-alle.cjs` · Ziele: `scripts/aufmerksamkeit-ziele.json` · Budget je Schritt: ≤ 1 Farbton außer Grau, ≤ 8 neue Wörter, ≤ 40 sichtbare Wörter bis zum vorletzten Schritt, genau 1 neue Gruppe.
+Stand: 30.10.2026, 11:23:37 · Repository-Stand `ac6bb54` (Branch `revision-2026-druck`), Kapitel 4 dafür mit Quarto 1.10.19 in einer Arbeitskopie gerendert · Werkzeug: `scripts/pruefe-aufmerksamkeit.cjs` über `scripts/pruefe-aufmerksamkeit-alle.cjs` · Ziele: `scripts/aufmerksamkeit-ziele.json` · Budget je Schritt: ≤ 1 Farbton außer Grau, ≤ 8 neue Wörter, ≤ 40 sichtbare Wörter bis zum vorletzten Schritt, genau 1 neue Gruppe.
 
 Die Zahlen sind Messwerte, kein Urteil. Das Urteil (BESTANDEN oder ÄNDERN je Regel) fällt in Phase 2 mit der Reviewer-Karte. Für Gruppe B gelten die Kurzregeln aus `prozessanimation-lehre`, für Gruppe C nur F4, F5 und T1. „Wörter neu“ und „Gruppen neu“ misst das Skript nur bei Seiten mit `data-ab`; der Bestand hat keine, daher fehlen diese Spalten. Farbton-Klassen sind 30°-Sektoren des Farbkreises (0 = Rot, 30 = Orange, 60 = Gelb, 120 = Grün, 150 = Grüntürkis, 180 = Cyan, 210 = Blau, 270 = Violett).
 
@@ -13,7 +13,7 @@ Die Zahlen sind Messwerte, kein Urteil. Das Urteil (BESTANDEN oder ÄNDERN je Re
 | A3 | `interactions/ki-arbeitsweisen-durchspiel.html` | A | 3 Fälle × 5 Arbeitsweisen, Adapter über die Knöpfe | 15 | 3 | 30, 150, 210 | 335 | 504 | 326 | 15 von 15 |
 | A4 | `interactions/agenten-engpass.html` | A | Zeitachse; Schritte = Knopf „Schritt“ (nächstes Ereignis) bis t = 120 min | 44 | 2 | 30, 210 | 52 | 67 | 75 | 44 von 44 |
 | A5-zeit | `interactions/ki-entwicklung.html?zeige=zeithorizont` | A | Diagramm Zeithorizont, Standbild | 1 (Standbild) | 1 | 210 | 116 | 116 | 116 | 1 von 1 |
-| A5-kosten | `interactions/ki-entwicklung.html?zeige=kosten` | A | Kosten-Raster; Schritt 1 = Schätzfrage, danach je „Weiter“ eine Preisstufe (Probeschätzung 100) | 9 | 6 | 30, 120, 150, 210, 240, 330 | 160 | 161 | 216 | 9 von 9 |
+| A5-kosten | `interactions/ki-entwicklung.html?zeige=kosten` | A | Kosten-Raster; Schritt 1 = Schätzfrage, danach je „Weiter“ eine Preisstufe (Probeschätzung 100) | 9 | 6 | 30, 120, 150, 210, 240, 330 | 160 | 161 | 299 | 9 von 9 |
 | A5-weisen | `interactions/ki-entwicklung.html?zeige=arbeitsweisen` | A | Schema Arbeitsweisen, Standbild | 1 (Standbild) | 3 | 30, 150, 210 | 168 | 168 | 168 | 1 von 1 |
 | B1-anim | `interactions/littles-law-animation.html` | B | scm-viz-Bundle, Standbild | 1 (Standbild) | 2 | 180, 210 | 67 | 67 | 67 | 1 von 1 |
 | B1-ojs | `docs/kapitel04.html` | B | OJS-Widget _ojs/littles-law.qmd im gerenderten Kapitel; Schritt 1 Startbild, Schritt 2 nach Vorhersage „Nein, deutlich daneben“ | 2 | 2 | 0, 150 | 77 | 77 | 186 | 2 von 2 |
@@ -24,7 +24,7 @@ Die Zahlen sind Messwerte, kein Urteil. Das Urteil (BESTANDEN oder ÄNDERN je Re
 | C2 | `interactions/llm-agent-patterns-matching.html` | C | Zuordnungsübung | 1 (Standbild) | 1 | 240 | 73 | 73 | 73 | 1 von 1 |
 | C3 | `interactions/llm-game-standalone.html` | C | Spiel (React/Tailwind aus CDN) | 1 (Standbild) | 5 | 0, 30, 150, 210, 270 | 125 | 125 | 125 | 1 von 1 |
 | C4 | `interactions/llm-rag-agent-game.html` | C | Spiel | 1 (Standbild) | 2 | 210, 240 | 61 | 61 | 61 | 1 von 1 |
-| C5 | `interactions/tutor-kosten.html` | C | Rechner __tutor, noch nicht eingebunden | 1 (Standbild) | 1 | 30 | 182 | 182 | 182 | 1 von 1 |
+| C5 | `interactions/tutor-kosten.html` | C | Rechner __tutor, noch nicht eingebunden | 1 (Standbild) | 0 | – | 182 | 182 | 182 | 1 von 1 |
 
 ## Einzelwerte je Schritt
 
@@ -138,7 +138,7 @@ Bühne `#k-kosten` · Kosten-Raster; Schritt 1 = Schätzfrage, danach je „Weit
 | 6 | 156 | 3 | 30 150 210 | ÄNDERN: 3 Farbtöne, 156 sichtbare Wörter |
 | 7 | 161 | 4 | 30 150 210 330 | ÄNDERN: 4 Farbtöne, 161 sichtbare Wörter |
 | 8 | 161 | 5 | 30 120 150 210 330 | ÄNDERN: 5 Farbtöne, 161 sichtbare Wörter |
-| 9 | 216 | 6 | 30 120 150 210 240 330 | ÄNDERN: 6 Farbtöne |
+| 9 | 299 | 6 | 30 120 150 210 240 330 | ÄNDERN: 6 Farbtöne |
 
 ### B1-ojs: `docs/kapitel04.html`
 
@@ -168,3 +168,16 @@ Bühne `#galerie` · Galerie, je Beitrag ein Bild (Adapter über die Punkte)
 | 2 | 76 | 2 | 0 330 | ÄNDERN: 2 Farbtöne, 76 sichtbare Wörter |
 | 3 | 139 | 4 | 0 180 210 330 | ÄNDERN: 4 Farbtöne |
 
+## Messgrenzen
+
+Native Formularelemente (Schieberegler, Optionsfelder, Häkchen) zeichnet der Browser in seiner eigenen Akzentfarbe; das Skript sieht diese Farbe nicht, sie fehlt also in den Farbtonzahlen von A5, B1-ojs, B2 und B4. Standbilder zählen allen sichtbaren Text der Bühne, auch Einleitung, Quellen und Datentabellen-Überschrift; bei A5 und C liegt die Wortzahl deshalb über dem, was ein Leser als „Animation“ wahrnimmt. A2 ist zeitgesteuert und wird im Endzustand gemessen; wie viel Text während des Ablaufs gleichzeitig steht, zeigt die Messung nicht. B3 bettet `line-widget.html` als eigene Seite ein; deren Text zählt unter B4, nicht unter B3. Bei A5-kosten gibt der Adapter eine Probeschätzung von 100 ab, damit „Weiter“ freigeht.
+
+## Auffälligkeiten für Phase 2
+
+Kein Ziel bleibt im Budget; das ist erwartbar, weil der Bestand vor dem Regelblock entstand. Die Verstöße fallen in drei Muster. Erstens Text: Alle zwölf Ziele der Gruppen A und B zeigen schon im ersten Schritt mehr als 40 Wörter, A3 mit 335, B4 mit 297 und A2 mit 294 am meisten; A1 und A4 starten mit 52 am nächsten am Budget, A1 wächst danach Schritt für Schritt auf 258. Zweitens Kategorienfarben: A1 (4 Töne), A3 und A5-weisen (je 3: Mensch, gemeinsam, KI) und A5-kosten (bis 6, eine Farbe je Preisstufe) codieren Kategorien über Farbe (F4). Im Graustufenbild von A5-kosten sind die Preisstufen im Raster nicht mehr zu unterscheiden (F1). Drittens Bewegung: A4 ist mit 2 Tönen und 52 bis 75 Wörtern das sparsamste Ziel der Gruppe A, hat aber 44 Ereignisschritte; das Urteil hängt hier an den Bewegungsregeln „nur eine Sache bewegt sich“ und „Klick statt Zeitleiste“, nicht an der Farbe.
+
+Für Entscheidung E1 (scm-viz-Farbrollen): Das Bundle selbst bringt im Standbild von B1-anim zwei Töne (Cyan, Blau), in B3 bringt die Galerie-Oberfläche selbst schon beim ersten Beitrag Rot und Magenta mit. Die OJS-Widgets in Kapitel 4 sind sparsamer: B2 zeigt nach der Vorhersage genau einen Ton (Rot für die Bestellungen), B1-ojs zwei (Rot, Grüntürkis). Gruppe C liegt mit 0 bis 7 Tönen weit auseinander; C1 (7 Töne) ist die im Plan begründete Ausnahme, C3 (5 Töne, Spiel aus CDN-Bibliotheken) wäre der einzige weitere Kandidat für eine Prüfung nach E2 (b).
+
+## Bilder
+
+Je Ziel und Schritt ein Farb- und ein Graustufenbild der Bühne sowie eine Übersicht `uebersicht.png` (Farbe links, Grau rechts), abgelegt in Tresorit unter `1-Research/06-Lehrbuch-Publikation-Logos/Projektnotizen-Claude/aufmerksamkeit-animationen/messung-2026-10-30/<Nr.>/`. Neu erzeugen: `npm run pruefe:aufmerksamkeit -- --md reviews/aufmerksamkeit-messung-2026-11.md --bilder <ordner> --wurzel <Arbeitskopie mit gerendertem docs/kapitel04.html>`.
