@@ -260,23 +260,22 @@ Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen P
 Bei einer Literaturrecherche sind das drei Stellen: der Quellenkorb, den der Agent durchsuchen darf, der Rechercheplan, bevor er loslegt, und die Stichprobe von Aussagen, die wir gegen das Original halten.
 Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte, und bei einem Tutor, den Studierende ein Semester lang ohne uns benutzen, ist sie am längsten.
 
-<!-- Interaktion „Agenten-Engpass“ (Konzept 6 der Agenten-Animationen, Fassung Swimlanes vom 29.10.2026).
-     Eine vereinfachte Neufassung (Leitkugel) ist im Konzept-Chat vorgeschlagen und wartet auf drei Entscheidungen.
-     Datei: interactions/agenten-engpass.html · Druckzwilling: #druck -> images/druck/agenten-engpass-qr.png (QR-Code rechts unten) -->
+<!-- Interaktion „Agenten-Engpass“ (Konzept 6 der Agenten-Animationen, Kugel-Fassung vom 30.10.2026; ersetzt die Swimlane-Fassung vom 29.10.). Lehrmodell, keine Messung.
+     Datei: interactions/agenten-engpass.html · Druckzwilling: #druck (Bilanz, Standbild t = 22 min) -> images/druck/agenten-engpass-qr.png (QR-Code rechts unten), erzeugt mit scripts/druck-agenten-animationen.cjs -->
 
-Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen. Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Die Nutzungsdaten zeigen, wie verschieden weit Organisationen auf diesem Weg sind: Bei den Organisationskunden des Coding-Agenten arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst arbeiten nur 10,7 % mit einem einzigen Arbeitsstrang, und 28,6 % steuern fünf oder mehr Agenten gleichzeitig [@johnston2026the]. Das folgende Modell zeigt einen Vormittag von 120 Minuten: Ein Auftrag kostet den Menschen zwei Minuten, der Agent arbeitet zwanzig, das Prüfen kostet vier.
+Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen. Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Die Nutzungsdaten zeigen, wie verschieden weit Organisationen auf diesem Weg sind: Bei den Organisationskunden des Coding-Agenten arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst arbeiten nur 10,7 % mit einem einzigen Arbeitsstrang, und 28,6 % steuern fünf oder mehr Agenten gleichzeitig [@johnston2026the]. Das folgende Modell verfolgt eine einzelne Aufgabe, die Kugel A. Der Mensch gibt den Auftrag, ein Agent recherchiert und fasst zusammen, der Mensch entscheidet, wie es weitergeht, ein Agent rechnet und prüft, und am Ende gibt der Mensch das Ergebnis frei. Einmal läuft Kugel A allein, einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.
 
 ::: {.content-visible when-format="html"}
-Spielen Sie die Szene ab und verändern Sie dann die Zahl der Agenten und die Prüfzeit.
+Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.
 
-<iframe src="interactions/agenten-engpass.html" width="100%" height="760px" frameborder="0" title="Animation: Ein Mensch, ein Agent oder fünf Agenten an einem Vormittag"></iframe>
+<iframe src="interactions/agenten-engpass.html" width="100%" height="1160px" frameborder="0" title="Animation: Acht Aufgaben, viele Agenten, ein Mensch – wo Kugel A wartet"></iframe>
 :::
 
 ::: {.content-visible unless-format="html"}
-![Mehr Agenten machen den Menschen zum Engpass. Oben arbeitet ein Mensch mit einem Agenten wie im Chat, unten mit fünf Agenten parallel. Schwarz: Auftrag geben, schraffiert: Ergebnis prüfen, grau: Agent arbeitet. Nach 120 Minuten stehen 13 statt 4 geprüfte Ergebnisse, der Mensch ist aber zu 70 statt 22 % ausgelastet (Dauern angenommen, keine Messwerte). Die interaktive Fassung mit Schiebereglern: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-engpass.html> aufrufen.](images/druck/agenten-engpass-qr.png){#fig-agenten-engpass width="100%" fig-pos="htbp"}
+![Mehr Agenten machen den Menschen zum Engpass. Der Mensch gibt Aufgaben ab, Agenten recherchieren, fassen zusammen, rechnen und prüfen, und zweimal kommt jede Aufgabe zum Entscheiden zurück. Das Standbild zeigt Minute 22 von acht gleichzeitig abgegebenen Aufgaben: Kugel A liegt in der Ablage „Zu entscheiden“, während die Agenten kaum zu tun haben. Der Laufzettel darunter: Allein ist Kugel A nach 24 Minuten fertig, als achte von acht nach 43,5 Minuten, davon 19,5 Minuten Warten auf den Menschen (Lehrmodell, keine Messung). Die interaktive Fassung mit Vorhersage und dem Schalter „Der Mensch entscheidet doppelt so schnell“: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-engpass.html> aufrufen.](images/druck/agenten-engpass-qr.png){#fig-agenten-engpass width="100%" fig-pos="htbp"}
 :::
 
-Fünf Agenten liefern gut dreimal so viele geprüfte Ergebnisse wie einer, aber ab Minute 28 warten fertige Ergebnisse auf den Menschen, und die Agenten stehen die Hälfte der Zeit still. Das ist die Logik jeder Warteschlange: Der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station, und hier ist das die prüfende Person. Wer die Prüfzeit im Modell von vier auf acht Minuten erhöht, sieht den Stapel schneller wachsen als den Ertrag. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen können. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
+Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Bei den Agenten bildet sich keine Schlange, weil jede Aufgabe ihren eigenen bekommt; vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet. Das ist die Logik jeder Warteschlange: Der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station, und hier ist das der Mensch. Ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig und wartet nur noch sieben. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
 
 Die praktische Umsetzung dieser vier Begriffe steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows.
 Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellenanbindung selbst aufbauen, zeigt @sec-fall-unternehmen.
@@ -318,6 +317,33 @@ Hat inzwischen eine andere Sitzung geschrieben, wird die Änderung abgewiesen, s
 Zweitens erzeugt jede Änderung eine unveränderliche Version, die der schreibenden Sitzung zugeordnet ist; wer einen alten Stand zurückhaben will, schreibt dessen Inhalt erneut.
 Drittens lässt sich ein Speicher nur zum Lesen einbinden, sodass ein Agent die Hausregeln kennt, aber nicht ändern kann.
 Wer je eine Abschlussarbeit mit Versionsverlauf betreut hat, kennt alle drei Regeln, nur ohne diese Namen.
+
+<!-- Interaktion „Agenten-Protokoll“ (Konzept 8 der Agenten-Animationen, 30.10.2026; Konzept 9 „Schreddern vs. Archiv“ ist Schritt 6). Lehrmodell, keine Messung.
+     Datei: interactions/agenten-protokoll.html · Druckzwilling: #druck (Bilanz) -> images/druck/agenten-protokoll-qr.png (QR-Code rechts unten), erzeugt mit scripts/druck-agenten-animationen.cjs -->
+
+Wo das Gedächtnis liegt, entscheidet auch, was ein Ausfall kostet.
+@martin2026managedagents beschreiben einen Agenten als drei Teile: das Gehirn, also das Sprachmodell mit der Steuerschleife, die es aufruft und seine Werkzeugaufrufe weiterleitet; die Hände, einen abgeschotteten Werkraum (*Sandbox*), in dem die Werkzeuge laufen; und die Sitzung, ein Protokoll, an das nur angehängt wird.
+Liegen alle drei auf einem Rechner, wird dieser Rechner zum Haustier, das man pflegen muss und nicht verlieren darf, denn mit ihm verschwindet das Protokoll.
+Getrennt werden Gehirn und Hände austauschbar.
+Fällt der Werkraum aus, erfährt die Steuerschleife das als gewöhnliche Fehlermeldung eines Werkzeugs, und das Modell fordert einen neuen an.
+Fällt die Steuerschleife aus, wird ein Ersatz mit der Nummer der Sitzung geweckt, liest das Protokoll und macht beim letzten Eintrag weiter.
+Die Restaurantküche kennt das Prinzip als Bonschiene: Geht ein Koch, liest die Ablösung die Bons und kocht weiter.
+Die folgende Animation spielt das am Wochenfeedback für sechs Projektteams durch, dem Fall, der auch das Anwendungsbeispiel am Ende dieses Abschnitts trägt; mitten in der fünften Rückmeldung fällt die Technik aus.
+
+::: {.content-visible when-format="html"}
+Sagen Sie zuerst voraus, wie viele der vier fertigen Rückmeldungen der Agent nach dem Ausfall neu schreiben muss, und klicken Sie sich dann durch die drei Ausfälle.
+
+<iframe src="interactions/agenten-protokoll.html" width="100%" height="1200px" frameborder="0" title="Animation: Gehirn, Hände und Protokoll eines Agenten – was bei einem Ausfall erhalten bleibt"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Das Protokoll überlebt die Maschine. Oben die getrennten Teile eines Agenten: Gehirn (Sprachmodell und Steuerschleife), Hände (abgeschotteter Werkraum) und darunter das Protokoll der Sitzung mit sechs fertigen Rückmeldungen. Unten drei Arbeitsstreifen für einen Ausfall mitten in der fünften Rückmeldung: Liegt alles in einer Kiste, geht das Protokoll mit der Maschine verloren, und der Agent schreibt vier Rückmeldungen doppelt; fallen bei getrennten Teilen die Hände oder das Gehirn aus, macht er nach kurzem Neustart oder Nachlesen bei Team 5 weiter (Lehrmodell, keine Messung; die Bonschiene ist eine Analogie dieses Buches). Die interaktive Fassung mit Vorhersage und dem Schritt „Zurückblättern“: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-protokoll.html> aufrufen.](images/druck/agenten-protokoll-qr.png){#fig-agenten-protokoll width="100%" fig-pos="htbp"}
+:::
+
+Der letzte Schritt der Animation führt zum Schreibtisch vom Anfang dieses Abschnitts zurück.
+Liegt das vollständige Protokoll außerhalb des Kontextfensters, muss der Agent dort nicht vorsorglich zusammenfassen, verdichten oder abschneiden, um Platz zu schaffen; jedes dieser Verfahren verwirft Einzelheiten unwiderruflich, und niemand weiß vorher, welche später gebraucht wird.
+Er holt stattdessen genau den Abschnitt auf den Tisch, den er gerade braucht, auch einen frühen, um nachzusehen, was zu einem Ereignis geführt hat [@martin2026managedagents].
+Kleiner Schreibtisch, vollständiges Archiv: Das ist die vierte Stufe von oben, angewandt auf den Verlauf einer einzelnen Sitzung.
 
 Wann der Agent ins Gedächtnis schreibt, ist die zweite Gestaltungsfrage.
 Auf Stufe 2 geschieht es *in-band*, mitten in der Sitzung, so wie man ein Laborbuch während des Versuchs führt.

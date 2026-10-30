@@ -222,7 +222,7 @@
     zeilen.forEach(function (z, i) {
       var zy = y + 38 + i * 13;
       if (z[0] === "geist") {
-        el("rect", { x: x + 10, y: zy - 7, width: BREITE - 18, height: 11, rx: 2, "class": "geist" }, g);
+        el("rect", { x: x + 10, y: zy - 10, width: BREITE - 18, height: 14, rx: 2, "class": "geist" }, g);
         el("text", { x: x + 15, y: zy + 1, "class": "t-s t-korrektur", text: z[1] }, g);
       } else zeile(x + 12, zy, z[0], z[1], g);
     });
