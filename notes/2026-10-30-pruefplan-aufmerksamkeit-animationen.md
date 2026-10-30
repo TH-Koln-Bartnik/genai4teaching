@@ -1,6 +1,6 @@
 # Prüf-Plan: Bestehende Animationen im Lehrbuch gegen die Aufmerksamkeitsregeln
 
-Stand: 30.10.2026, 12:30 (Phase 0 und 1 erledigt) · Repository `genai4teaching`, Branch `revision-2026-druck`, gemessen am Commit `ac6bb54` · Maßstab: Regelblock F1–F7, T1–T7, A1–A5 aus dem Skill `lehranimation-schritte` (Kurzform in `prozessanimation-lehre`) · Werkzeug: `scripts/pruefe-aufmerksamkeit.cjs`, Sammellauf `npm run pruefe:aufmerksamkeit` · Herleitung: `claude/ARBEITSNOTIZ-aufmerksamkeit-animationen-2026-10-30.md` · Messwerte: `reviews/aufmerksamkeit-messung-2026-11.md`
+Stand: 30.10.2026, 17:00 (Phase 0, 1 und 2 erledigt) · Repository `genai4teaching`, Branch `revision-2026-druck`, gemessen am Commit `ac6bb54` · Maßstab: Regelblock F1–F7, T1–T7, A1–A5 aus dem Skill `lehranimation-schritte` (Kurzform in `prozessanimation-lehre`) · Werkzeug: `scripts/pruefe-aufmerksamkeit.cjs`, Sammellauf `npm run pruefe:aufmerksamkeit` · Herleitung: `claude/ARBEITSNOTIZ-aufmerksamkeit-animationen-2026-10-30.md` · Messwerte: `reviews/aufmerksamkeit-messung-2026-11.md` · Urteil: `reviews/aufmerksamkeit-urteil-2026-10-30.md`
 
 ## Bestand
 
@@ -43,7 +43,7 @@ Dreizehn Seiten in `interactions/` und zwei OJS-Widgets in `_ojs/`. Die Gruppen 
 
 **Phase 1, Messlauf: erledigt 30.10.** Alle 17 Ziele gemessen, 219 Bilder. Tabelle: `reviews/aufmerksamkeit-messung-2026-11.md`. Bilder: Tresorit `…/aufmerksamkeit-animationen/messung-2026-10-30/` (je Ziel `uebersicht-<Nr.>.png`, Einzelbilder in zwei ZIP-Archiven).
 
-**Phase 2, Urteil.** Die Reviewer-Karte des Skills wird je Datei angewandt: BESTANDEN oder ÄNDERN je Regel, ein Umbauvorschlag in drei Sätzen, der Aufwand als S, M oder L. Roman entscheidet je Datei zwischen „umbauen“, „kleine Korrektur“ und „begründete Ausnahme“. Grundlage sind die Übersichtsbilder und die Tabelle; der Messlauf muss dafür nicht wiederholt werden.
+**Phase 2, Urteil: erledigt 30.10.** Ergebnis in `reviews/aufmerksamkeit-urteil-2026-10-30.md`. Die Reviewer-Karte des Skills wird je Datei angewandt: BESTANDEN oder ÄNDERN je Regel, ein Umbauvorschlag in drei Sätzen, der Aufwand als S, M oder L. Roman entscheidet je Datei zwischen „umbauen“, „kleine Korrektur“ und „begründete Ausnahme“. Grundlage sind die Übersichtsbilder und die Tabelle; der Messlauf muss dafür nicht wiederholt werden.
 
 **Phase 3, Umbau: eine Animation je Sitzung.** Jede Sitzung startet frisch und liest nur diesen Plan und die Arbeitsnotiz. Reihenfolge:
 
@@ -75,3 +75,8 @@ Jeder Umbau durchläuft dieselben Schritte:
 ## Sitzungsstand 30.10.2026, 12:30
 
 Phase 0 und 1 erledigt. Repository `genai4teaching` mit Schreibrecht eingebunden, Tresorit-Ordner `06-Lehrbuch-Publikation-Logos` freigegeben. Kapitel 4 wurde für B1-ojs und B2 mit Quarto 1.10.19 in einer Arbeitskopie gerendert, weil `docs/kapitel04.html` im Repository vom 20.10. stammt und die OJS-Widgets noch nicht enthält; `docs/` im Repository blieb unverändert. Während des Laufs hat eine parallele Sitzung `ki-entwicklung.html` und `tutor-kosten.html` geändert (`ac6bb54`); der Lauf wurde am neuen Stand wiederholt. Hauptbefunde: Kein Ziel bleibt im Budget. Alle zwölf Ziele der Gruppen A und B starten mit mehr als 40 Wörtern; A1, A3, A5-weisen und A5-kosten codieren Kategorien über Farbe, beim Kosten-Raster verschwimmen die Preisstufen in Graustufen. Nächster Schritt: Phase 2 (Urteil je Datei) in frischer Sitzung, Eingaben nur dieser Plan, die Messtabelle und die Übersichtsbilder.
+
+## Sitzungsstand 30.10.2026, 17:00
+
+Phase 2 erledigt: Reviewer-Karte auf alle 17 Ziele angewandt, Ergebnis in `reviews/aufmerksamkeit-urteil-2026-10-30.md` (Übersicht, Regelmatrix Gruppe A, Kurzregeln B, F4/F5/T1 für C, Empfehlungen zu E2–E4). Kurzfassung: A1 und A5-kosten umbauen (L, M), A2 umbauen (M), A3 kleine Korrektur plus begründete Textausnahme (M), A4, A5-zeit, A5-weisen kleine Korrekturen (je S), B1-ojs und B2 nur Anmerkungen kürzen und grünen Kasten neutralisieren, B4 ist englisch und muss übersetzt werden, C1, C2, C4, C5 freigeben (C2/C4 optional ✓/✗ ergänzen). T7 (`?hoersaal`) fehlt in allen Gruppe-A-Seiten. Neue Befunde: C3 `llm-game-standalone.html` wurde nach dem Messlauf über den Merge mit `main` geändert und muss neu gemessen werden; es lädt React und Tailwind aus dem Netz. A4 passt als Prozessanimation besser zu Gruppe B. Beim Kosten-Raster verrät das leere 725er-Raster vor der Schätzung die Größenordnung der Lösung. Entscheidungen E2–E4 und die Wahl je Datei liegen bei Roman. Nächster Schritt: Phase 3 mit A1 als Kalibrierfall in frischer Sitzung; danach eine Sammelsitzung für die kleinen Korrekturen.
+
