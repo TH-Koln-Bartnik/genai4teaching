@@ -1,0 +1,216 @@
+{
+  "_hinweis": "Prüfziele für scripts/pruefe-aufmerksamkeit-alle.cjs (Prüf-Plan Aufmerksamkeit, 30.10.2026). Gruppe A: volle Regeln F1–F7, T1–T7, A1–A5. Gruppe B: Kurzregeln aus prozessanimation-lehre. Gruppe C: nur F4, F5, T1; Farbe darf Lerninhalt sein. 'seite' ist relativ zur Wurzel des Servers (Standard: Repository). Ziele mit 'gerendert': true brauchen ein frisch gerendertes docs/kapitel04.html (quarto render kapitel04.qmd --to html), am besten in einer Arbeitskopie, die mit --wurzel übergeben wird. 'args' sind die Optionen von scripts/pruefe-aufmerksamkeit.cjs.",
+  "ziele": [
+    {
+      "nr": "A1",
+      "gruppe": "A",
+      "kapitel": "2",
+      "seite": "interactions/skill-karte.html",
+      "art": "16 Schritte, __p7.gehe",
+      "args": [
+        "--api",
+        "__p7",
+        "--letzter",
+        "15",
+        "--buehne",
+        "#buehne"
+      ]
+    },
+    {
+      "nr": "A2",
+      "gruppe": "A",
+      "kapitel": "2",
+      "seite": "interactions/agenten-gedaechtnis.html",
+      "art": "zeitgesteuerte Infografik, Standbild",
+      "args": [
+        "--buehne",
+        "body"
+      ]
+    },
+    {
+      "nr": "A3",
+      "gruppe": "A",
+      "kapitel": "2",
+      "seite": "interactions/ki-arbeitsweisen-durchspiel.html",
+      "art": "3 Fälle × 5 Arbeitsweisen, Adapter über die Knöpfe",
+      "args": [
+        "--buehne",
+        "#karte",
+        "--adapter",
+        "window.ANIM={gehe:n=>{document.querySelectorAll('#faelle button')[Math.floor(n/5)].click();document.querySelectorAll('#weisen button')[n%5].click()},letzter:14}"
+      ]
+    },
+    {
+      "nr": "A4",
+      "gruppe": "A",
+      "kapitel": "2",
+      "seite": "interactions/agenten-engpass.html",
+      "art": "Zeitachse; Schritte = Knopf „Schritt“ (nächstes Ereignis) bis t = 120 min",
+      "args": [
+        "--buehne",
+        "#pa-canvas svg",
+        "--adapter",
+        "(()=>{const r=document.getElementById('pa-reset'),s=document.getElementById('pa-step'),c=()=>document.getElementById('pa-canvas').textContent;r.click();let k=0;while(!c().includes('t = '+PA.T+' min')&&k<300){s.click();k++}r.click();window.ANIM={gehe:n=>{r.click();for(let i=0;i<n;i++)s.click()},letzter:k}})()"
+      ]
+    },
+    {
+      "nr": "A5-zeit",
+      "gruppe": "A",
+      "kapitel": "2",
+      "seite": "interactions/ki-entwicklung.html?zeige=zeithorizont",
+      "art": "Diagramm Zeithorizont, Standbild",
+      "args": [
+        "--buehne",
+        "#k-zeithorizont"
+      ]
+    },
+    {
+      "nr": "A5-kosten",
+      "gruppe": "A",
+      "kapitel": "2",
+      "seite": "interactions/ki-entwicklung.html?zeige=kosten",
+      "art": "Kosten-Raster; Schritt 1 = Schätzfrage, danach je „Weiter“ eine Preisstufe (Probeschätzung 100)",
+      "args": [
+        "--buehne",
+        "#k-kosten",
+        "--adapter",
+        "(()=>{const $=i=>document.getElementById(i),v=$('r-vor');const tipp=()=>{const f=$('tipp');if(!f)return;f.value='100';f.dispatchEvent(new Event('input',{bubbles:true}));$('abgeben').click()};$('r-neu').click();tipp();let k=0;while(!v.disabled&&!v.hidden&&k<50){v.click();k++}window.ANIM={gehe:n=>{$('r-neu').click();if(n>0){tipp();for(let i=1;i<n;i++)v.click()}},letzter:k+1}})()"
+      ]
+    },
+    {
+      "nr": "A5-weisen",
+      "gruppe": "A",
+      "kapitel": "2",
+      "seite": "interactions/ki-entwicklung.html?zeige=arbeitsweisen",
+      "art": "Schema Arbeitsweisen, Standbild",
+      "args": [
+        "--buehne",
+        "#k-arbeitsweisen"
+      ]
+    },
+    {
+      "nr": "B1-anim",
+      "gruppe": "B",
+      "kapitel": "4",
+      "seite": "interactions/littles-law-animation.html",
+      "art": "scm-viz-Bundle, Standbild",
+      "args": [
+        "--buehne",
+        "body"
+      ]
+    },
+    {
+      "nr": "B1-ojs",
+      "gruppe": "B",
+      "kapitel": "4",
+      "seite": "docs/kapitel04.html",
+      "gerendert": true,
+      "art": "OJS-Widget _ojs/littles-law.qmd im gerenderten Kapitel; Schritt 1 Startbild, Schritt 2 nach Vorhersage „Nein, deutlich daneben“",
+      "args": [
+        "--buehne",
+        ".ll-widget:not(.bw-widget)",
+        "--warte",
+        "4000",
+        "--adapter",
+        "(()=>{const w=document.querySelector('.ll-widget:not(.bw-widget)');const f=[...w.querySelectorAll('form')].find(f=>/^\\s*Vorhersage/.test(f.textContent));window.ANIM={gehe:n=>{if(n===1){f.querySelectorAll('input[type=radio]')[1].click();return new Promise(r=>setTimeout(r,2500))}},letzter:1}})()"
+      ]
+    },
+    {
+      "nr": "B2",
+      "gruppe": "B",
+      "kapitel": "4",
+      "seite": "docs/kapitel04.html",
+      "gerendert": true,
+      "art": "OJS-Widget _ojs/bullwhip.qmd im gerenderten Kapitel; Schritt 1 Startbild, Schritt 2 nach Vorhersage „etwa zwei- bis dreimal so stark“",
+      "args": [
+        "--buehne",
+        ".bw-widget",
+        "--warte",
+        "4000",
+        "--adapter",
+        "(()=>{const w=document.querySelector('.bw-widget');const f=[...w.querySelectorAll('form')].find(f=>/^\\s*Vorhersage/.test(f.textContent));window.ANIM={gehe:n=>{if(n===1){f.querySelectorAll('input[type=radio]')[1].click();return new Promise(r=>setTimeout(r,2500))}},letzter:1}})()"
+      ]
+    },
+    {
+      "nr": "B3",
+      "gruppe": "B",
+      "kapitel": "1",
+      "seite": "interactions/galerie-animationen.html",
+      "art": "Galerie, je Beitrag ein Bild (Adapter über die Punkte)",
+      "args": [
+        "--buehne",
+        "#galerie",
+        "--adapter",
+        "(()=>{const d=()=>document.querySelectorAll('#dots button');window.ANIM={gehe:n=>d()[n].click(),letzter:d().length-1}})()"
+      ]
+    },
+    {
+      "nr": "B4",
+      "gruppe": "B",
+      "kapitel": "1",
+      "seite": "interactions/line-widget.html",
+      "art": "Widget (über B3), Standbild",
+      "args": [
+        "--buehne",
+        "body"
+      ]
+    },
+    {
+      "nr": "C1",
+      "gruppe": "C",
+      "kapitel": "2",
+      "seite": "interactions/tokenizer-explorer.html",
+      "art": "Werkzeug; Farbe trennt Tokens (Lerninhalt)",
+      "args": [
+        "--buehne",
+        "body"
+      ]
+    },
+    {
+      "nr": "C2",
+      "gruppe": "C",
+      "kapitel": "2",
+      "seite": "interactions/llm-agent-patterns-matching.html",
+      "art": "Zuordnungsübung",
+      "args": [
+        "--buehne",
+        "body"
+      ]
+    },
+    {
+      "nr": "C3",
+      "gruppe": "C",
+      "kapitel": "2",
+      "seite": "interactions/llm-game-standalone.html",
+      "art": "Spiel (React/Tailwind aus CDN)",
+      "args": [
+        "--buehne",
+        "body",
+        "--warte",
+        "2500"
+      ]
+    },
+    {
+      "nr": "C4",
+      "gruppe": "C",
+      "kapitel": "2",
+      "seite": "interactions/llm-rag-agent-game.html",
+      "art": "Spiel",
+      "args": [
+        "--buehne",
+        "body"
+      ]
+    },
+    {
+      "nr": "C5",
+      "gruppe": "C",
+      "kapitel": "–",
+      "seite": "interactions/tutor-kosten.html",
+      "art": "Rechner __tutor, noch nicht eingebunden",
+      "args": [
+        "--buehne",
+        "body"
+      ]
+    }
+  ]
+}
