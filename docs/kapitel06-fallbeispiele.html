@@ -68,8 +68,6 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap-dark-4622c99584d0b91f3844d5069d85751c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
-<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -779,8 +777,11 @@ Tabelle&nbsp;6.1: Die Beispiele dieses Kapitels nach Wissensform, Lerntechnik, R
 <p>In der Typologie des Regelwerks ist das Video ein Verfahrenslied, keiner der drei ausgewählten Typen. Es zeigt deshalb gut, wo die Arbeitsteilung zwischen Musik und Didaktik verläuft: Der Song sichert die Reihenfolge der fünf Verfahren und ihre Namen, die Rechenpausen sind Lösungsbeispiele in einem anderen Gewand.</p>
 </div>
 </div>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Every Forecast Is Wrong · How Many Cups Tomorrow?"><source src="https://th-koln-bartnik.github.io/sscm-2026-student/videos/week05_every_forecast_is_wrong.mp4"></video></div>
-<p><em>Video (5:15, englisch; Liedtext als Untertitel auf der <a href="https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week05.html#revise-with-a-song-5-min">Wochenseite</a>): fünf Prognoseverfahren an den verkauften Kaffeebechern eines erfundenen Campus-Cafés. Text, Beispieldaten und Animationscode: Claude; Musik: Suno; geprüft von der Lehrperson.</em></p>
+<video controls="" playsinline="" preload="metadata" style="width:100%;height:auto" poster="interactions/media/lernsong-forecast-poster.webp" title="Every Forecast Is Wrong · How Many Cups Tomorrow?">
+  <source src="interactions/media/lernsong-forecast.mp4" type="video/mp4">
+  <track kind="subtitles" srclang="en" label="English (lyrics)" src="interactions/media/lernsong-forecast.vtt" default="">
+</video>
+<p><em>Video (5:15, englisch, Liedtext als Untertitel; auch <a href="interactions/lernsong-forecast.html">einzeln aufrufbar</a>): fünf Prognoseverfahren an den verkauften Kaffeebechern eines erfundenen Campus-Cafés. Text, Beispieldaten und Animationscode: Claude; Musik: Suno; geprüft von der Lehrperson.</em></p>
 <p><strong>Lernfrage.</strong> Eine Kollegin will den Song in der Vorlesung einmal abspielen, bevor sie die exponentielle Glättung einführt. Was spricht nach dem Prinzip gegen diesen Zeitpunkt, und was gegen das einmalige Abspielen?</p>
 </section>
 <section id="sec-bsp-quizspiele" class="level3" data-number="6.1.3">
@@ -875,9 +876,9 @@ Tabelle&nbsp;6.1: Die Beispiele dieses Kapitels nach Wissensform, Lerntechnik, R
 <p>Widgets, Notebooks und Datensätze entstanden mit Claude als Copilot nach Vorgaben der Lehrperson. Eine Regel der Arbeitsanweisung lautet, jede Zahl in Python zu rechnen, nie im Kopf des Modells. Fallstudie, Linienmodell im Notebook, Widget und die Übungsdaten zur Datenbereinigung teilen sich einen einzigen Zahlensatz, sodass ein Ergebnis aus dem Widget in der Fallstudie wieder auftaucht. Wie solche Widgets als geprüftes Modell mit Druckabbildung entstehen, zeigt <a href="kapitel04.html#sec-widget-littles-law" class="quarto-xref"><span>Kapitel 4.2.2.1</span></a>.</p>
 </div>
 </div>
-<iframe src="https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html" width="100%" height="1150px" frameborder="0" title="Linien-Widget: Engpass finden">
+<iframe src="interactions/line-widget.html" width="100%" height="1150px" frameborder="0" title="Linien-Widget: Engpass finden">
 </iframe>
-<p><em>Linien-Widget aus Woche 2 des SSCM-Moduls (englisch), auch <a href="https://th-koln-bartnik.github.io/sscm-2026-student/widgets/02_line_widget.html">einzeln aufrufbar</a>. Die Schaltflächen oben wechseln zwischen Pizzalinie und Brötchenlinie der Bäckerei Kaya.</em></p>
+<p><em>Linien-Widget aus Woche 2 des SSCM-Moduls (englisch), auch <a href="interactions/line-widget.html">einzeln aufrufbar</a>. Die Schaltflächen oben wechseln zwischen Pizzalinie und Brötchenlinie der Bäckerei Kaya.</em></p>
 <p>Ob die Widgets mehr bewirken als dieselben Aufgaben auf Papier, ist für dieses Modul nicht gemessen. Belegt ist die Wirkung der Bauprinzipien, Anleitung und Reihenfolge; das Widget macht sie für jede Woche praktikabel.</p>
 <p><strong>Lernfrage.</strong> Das Linien-Widget fragt, welche Änderung am Ausstoß pro Stunde nichts ändert. Warum ist dieser Auftrag didaktisch wertvoller als „Finden Sie den Engpass“?</p>
 </section>
@@ -975,8 +976,10 @@ Tabelle&nbsp;6.1: Die Beispiele dieses Kapitels nach Wissensform, Lerntechnik, R
 <p>Der vierte Teil in der Prognosewoche beginnt mit einem Vorhersagekasten. Die Bäckerei liefert jede Nacht 1.800 Brötchen, immer gleich auf drei Filialen verteilt, und 6 Prozent kommen unverkauft zurück; drei Fragen bitten um eine Vermutung, die Studierende mit Datum notieren und am Ende des Tages mit ihrem Ergebnis vergleichen. Die Rechnungen aus dem Fall sind Stoff des zweiten Tests, die Geschichte ist also kein Schmuck, sondern Prüfungsgegenstand.</p>
 </div>
 </div>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Teaser zur Fallstudie Backhaus Kaya"><source src="https://th-koln-bartnik.github.io/sscm-2026-student/videos/week02_kaya_teaser.mp4"></video></div>
-<p><em>Teaser zur Fallstudie (5 s, ohne Ton): Aylin Kaya nachts in der Backstube. KI-generiertes Video (LTX-2.5); Bäckerei und Figuren sind erfunden. Ablauf der Fallsitzung auf der <a href="https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week02.html#thursday">Wochenseite</a> des SSCM-Moduls.</em></p>
+<video controls="" playsinline="" preload="metadata" style="width:100%;height:auto" poster="interactions/media/kaya-teaser-poster.webp" title="Teaser zur Fallstudie Backhaus Kaya">
+  <source src="interactions/media/kaya-teaser.mp4" type="video/mp4">
+</video>
+<p><em>Teaser zur Fallstudie (5 s, ohne Ton): Aylin Kaya nachts in der Backstube. KI-generiertes Video (LTX-2.5); Bäckerei und Figuren sind erfunden. Ablauf der Fallsitzung auf der <a href="https://th-koln-bartnik.github.io/sscm-2026-student/weeks/week02.html#thursday">Wochenseite</a> des SSCM-Moduls (Stand Wintersemester 2026/27).</em></p>
 <p>Ein Sprachmodell schreibt eine solche Geschichte in Minuten. Die Arbeit der Lehrperson verschiebt sich auf zwei Stellen, die das Modell nicht übernimmt: die Wahl der Fehlvorstellung, die der Fall widerlegen soll, und die Prüfung, ob jede Zahl in Fall, Schlüssel und Widget dieselbe ist. Der Prompt <em>Fallstudie gemeinsam erstellen</em> (<a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-fallstudie-erstellen" class="quarto-xref"><span>Kapitel B.4.1</span></a>) gibt dafür das Gerüst.</p>
 <p><strong>Lernfrage.</strong> Warum schlägt der Backmeister ausgerechnet einen dritten Former vor, und was ginge didaktisch verloren, wenn der Fall den Engpass gleich im ersten Absatz nennen würde?</p>
 </section>
@@ -1773,8 +1776,6 @@ Wu, D. Y., &amp; Katok, E. (2006). Learning, communication, and the bullwhip eff
     </div>
   </div>
 </footer>
-<script>videojs(video_shortcode_videojs_video1);</script>
-<script>videojs(video_shortcode_videojs_video2);</script>
 
 
 
