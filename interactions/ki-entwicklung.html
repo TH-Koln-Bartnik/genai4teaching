@@ -30,6 +30,10 @@ details{margin-top:6px;font-size:.8rem}summary{cursor:pointer;color:var(--muted)
 table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;padding:3px 6px;border-bottom:1px solid var(--grid)}td.num{text-align:right;font-variant-numeric:tabular-nums}
 .calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:8px}.stat{border:1px solid var(--border);border-radius:10px;padding:8px 12px}.stat .k{font-size:.75rem;color:var(--text-secondary)}.stat .v{font-size:1.3rem;font-weight:650;font-variant-numeric:tabular-nums}input[type=number]{width:70px;font:inherit;padding:2px 6px;background:var(--surface-1);color:var(--text-primary);border:1px solid var(--border);border-radius:6px}.controls label{display:flex;gap:6px;align-items:center;color:var(--text-secondary)}input[type=range]{width:200px}
 .playbtn{font:inherit;font-size:.8rem;border:1px solid var(--border);background:var(--text-primary);color:var(--surface-1);border-radius:8px;padding:4px 12px;cursor:pointer}.now{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-top:6px;font-size:.9rem;min-height:1.6em}.now .d{color:var(--muted);font-variant-numeric:tabular-nums}.now .m{font-weight:650}.now .ex{background:var(--wash);border:1px solid var(--border);border-radius:999px;padding:1px 10px}
+.stufe .pct{fill:var(--text-secondary);font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums}.stufe .dt{fill:var(--muted);font-size:10.5px}
+.stufe.akt .pct{fill:var(--text-primary);font-size:13px;font-weight:700}.stufe.akt .dt{fill:var(--text-secondary)}
+.stufe.neu{animation:auf .5s ease-out}@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.stufe.neu{animation:none}}
 footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:1.5em;text-indent:-1.5em}
 /* Auswahl über ?zeige=zeithorizont|kosten; Druckansicht über #druck */
 .aus{display:none !important}
@@ -57,12 +61,16 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
 <section class="card" id="k-kosten">
 <h2>Expertenwissen wird 725-mal billiger</h2>
 <p class="sub">Niedrigste Kosten pro Frage für 75 % richtige Antworten im GPQA Diamond (Naturwissenschaft auf Promotionsniveau)</p>
+<div class="controls">
+ <button id="play2" class="playbtn" aria-label="Preisstufen nacheinander zeigen">▶ Abspielen</button>
+ <input type="range" id="tsel" min="0" max="7" step="1" value="7" aria-label="Preisstufe">
+</div>
 <div class="chart" id="c2"><div class="tip" id="tip2"></div></div>
-<div class="controls" style="margin-top:6px">
+<div class="now" id="now2" aria-live="polite"></div>
+<div class="controls" style="margin-top:10px">
  <label>Studierende <input type="number" id="n1" value="150" min="1"></label>
  <label>Fragen/Woche <input type="number" id="n2" value="20" min="0"></label>
  <label>Wochen <input type="number" id="n3" value="14" min="1"></label>
- <label>Zeitpunkt <input type="range" id="tsel" min="0" max="7" step="1" value="7"> <strong id="tsv"></strong></label>
 </div>
 <div class="calc" aria-live="polite">
  <div class="stat"><div class="k">Fragen im Semester</div><div class="v" id="q">–</div></div>
@@ -167,42 +175,74 @@ function draw1(){
 
 /* ---- Diagramm 2: Epoch ---- */
 const E=EPOCH.map(r=>({...r,t:D(r.d)}));
+// Preisstufen: Rückgang gegenüber dem bis dahin günstigsten Modell und Faktor seit o3
+E.forEach((r,i)=>{r.fall=i?1-r.c/E[i-1].c:null;r.faktor=E[0].c/r.c;});
+const kurz=n=>n.replace(/ \(.*\)$/,'');
+const fPct=x=>'−'+Math.round(x*100)+' %';
+const fCt=c=>c.toLocaleString('de-DE',c<1?{maximumFractionDigits:2}:{maximumSignificantDigits:3})+' ct';
+// Faktor ab 10 abgerundet, damit die Endstufe wie in der Überschrift 725 zeigt (29,8906 / 0,0412 = 725,5)
+const fFak=f=>f<10?f.toLocaleString('de-DE',{maximumFractionDigits:1}):Math.floor(f).toLocaleString('de-DE');
+const druck=document.documentElement.classList.contains('druck');
 document.querySelector('#t2 tbody').innerHTML=E.map(r=>`<tr><td>${r.n}</td><td>${r.d}</td><td class="num">${r.a.toLocaleString('de-DE')} %</td><td class="num">${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})} ct</td></tr>`).join('');
-let sel2=E.length-1;
+document.querySelector('#t2 thead tr').insertAdjacentHTML('beforeend','<th class="num">Rückgang zur Vorstufe</th>');
+document.querySelectorAll('#t2 tbody tr').forEach((tr,i)=>tr.insertAdjacentHTML('beforeend',`<td class="num">${i?fPct(E[i].fall):'–'}</td>`));
+let sel2=E.length-1, last2=-1, timer2=null;
 const fUSD=v=>v.toLocaleString('de-DE',v<100?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})+' US-$';
 function calc(){const n=(+n1.value||0)*(+n2.value||0)*(+n3.value||0),cur=E[sel2];
   document.getElementById('q').textContent=n.toLocaleString('de-DE');
   document.getElementById('c-then').textContent=fUSD(n*E[0].c/100);
   document.getElementById('c-now').textContent=fUSD(n*cur.c/100);
-  document.getElementById('c-now-k').textContent=cur.n.replace(/ \(.*\)$/,'')+', '+fD(cur.t);
-  document.getElementById('tsv').textContent=fD(cur.t);}
+  document.getElementById('c-now-k').textContent=kurz(cur.n)+', '+fD(cur.t);}
 const n1=document.getElementById('n1'),n2=document.getElementById('n2'),n3=document.getElementById('n3'),ts=document.getElementById('tsel');
 ts.max=E.length-1;ts.value=sel2;
 [n1,n2,n3].forEach(i=>i.addEventListener('input',calc));
-ts.addEventListener('input',()=>{sel2=+ts.value;calc();draw2();});
+const pb2=document.getElementById('play2');
+function stop2(){if(timer2){clearInterval(timer2);timer2=null;pb2.textContent='▶ Abspielen';}}
+function setSel(i){sel2=i;ts.value=i;calc();draw2();}
+ts.addEventListener('input',()=>{stop2();setSel(+ts.value);});
+pb2.onclick=()=>{if(timer2){stop2();return;}if(sel2>=E.length-1){last2=-1;setSel(0);}pb2.textContent='❚❚ Pause';
+  timer2=setInterval(()=>{setSel(sel2+1);if(sel2>=E.length-1)stop2();},1600);};
 function draw2(){
   const box=document.getElementById('c2');box.querySelectorAll('svg').forEach(s=>s.remove());
-  const W=box.clientWidth||880,H=Math.max(240,Math.min(320,W*0.38)),m={l:50,r:14,t:16,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
-  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':'Kosten je GPQA-Frage bei 75 % Genauigkeit: von 29,9 Cent (o3, Januar 2025) auf 0,04 Cent (GPT-5.6 Luna, Juli 2026)'});box.prepend(svg);
+  const W=box.clientWidth||880,narrow=W<600,H=Math.max(260,Math.min(340,W*0.4)),m={l:50,r:14,t:30,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':'Kosten je GPQA-Frage bei 75 % Genauigkeit in sieben Preisstufen: von 29,9 Cent (o3, Januar 2025) auf 0,04 Cent (GPT-5.6 Luna, Juli 2026); die größten Sprünge im März 2025 (−70 %), Juni 2025 (−85 %) und Februar 2026 (−69 %)'});box.prepend(svg);
   const X0=D('2025-01-01'),X1=D('2026-09-01'),xs=t=>m.l+(t-X0)/(X1-X0)*iw;
   const LMIN=-2,LMAX=Math.log10(50),ys=v=>m.t+ih-(Math.log10(v)-LMIN)/(LMAX-LMIN)*ih;
   [[0.01,'0,01 ct'],[0.1,'0,1 ct'],[1,'1 ct'],[10,'10 ct']].forEach(([v,l])=>{const y=ys(v);el('line',{x1:m.l,x2:m.l+iw,y1:y,y2:y,stroke:css('--grid')},svg);el('text',{x:m.l-6,y:y+4,'text-anchor':'end',class:'tick'},svg).textContent=l;});
   [['2025-01-01','2025'],['2025-07-01','Jul'],['2026-01-01','2026'],['2026-07-01','Jul']].forEach(([d,l])=>el('text',{x:xs(D(d)),y:H-8,'text-anchor':'middle',class:'tick'},svg).textContent=l);
   el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css('--axis')},svg);
-  let p='';E.forEach((r,i)=>{const x=xs(r.t),y=ys(r.c);p+=(i?`H${x.toFixed(1)}V${y.toFixed(1)}`:`M${x.toFixed(1)},${y.toFixed(1)}`);});
-  p+=`H${xs(D('2026-08-03')).toFixed(1)}`;
+  const shown=E.slice(0,sel2+1), cur=E[sel2], akt=druck?-1:sel2;
+  // Stufenlinie bis zur gewählten Stufe; nach der letzten Stufe bis Anfang Aug. 2026
+  // beim schrittweisen Aufbau nur ein kurzes Stück weiterführen, damit die Linie den nächsten Sprung nicht verrät
+  const ende=sel2<E.length-1?new Date(+cur.t+20*DAY):D('2026-08-03');
+  let p='';shown.forEach((r,i)=>{const x=xs(r.t),y=ys(r.c);p+=(i?`H${x.toFixed(1)}V${y.toFixed(1)}`:`M${x.toFixed(1)},${y.toFixed(1)}`);});
+  p+=`H${xs(ende).toFixed(1)}`;
   el('path',{d:p,fill:'none',stroke:css('--series-2'),'stroke-width':2},svg);
+  // Hervorhebung: Sprung der aktuellen Stufe
+  if(akt>0){const x=xs(cur.t);el('line',{x1:x,x2:x,y1:ys(E[akt-1].c),y2:ys(cur.c),stroke:css('--text-primary'),'stroke-width':3.5,'stroke-linecap':'round'},svg);}
+  // Beschriftung jeder Stufe links neben dem Sprung: Rückgang und Monat
+  // Folgt die nächste Stufe dicht (Feb. 2026: zwei Stufen in zwölf Tagen), steht die Beschriftung über der Vorstufe
+  // Auf schmalen Bildschirmen nur die aktuelle Stufe, sonst überlappen die Beschriftungen
+  shown.forEach((r,i)=>{if(!i||(narrow&&i!==akt))return;const x=xs(r.t),y0=ys(E[i-1].c),y1=ys(r.c);
+    const eng=i<E.length-1&&xs(E[i+1].t)-x<40;
+    const y=eng&&!narrow?y0-18:Math.max((y0+y1)/2+4,y0+15);
+    const g=el('g',{class:'stufe'+(i===akt?' akt':'')+(i===akt&&i!==last2?' neu':'')},svg);
+    el('text',{x:x-9,y,'text-anchor':'end',class:'pct'},g).textContent=fPct(r.fall);
+    if(!narrow)el('text',{x:x-9,y:y+12,'text-anchor':'end',class:'dt'},g).textContent=fD(r.t);});
+  last2=akt;
   const tip=document.getElementById('tip2');
-  E.forEach(r=>{const x=xs(r.t),y=ys(r.c);el('circle',{cx:x,cy:y,r:4.5,fill:css('--series-2'),stroke:css('--surface-1'),'stroke-width':1.5},svg);
+  shown.forEach((r,i)=>{const x=xs(r.t),y=ys(r.c);el('circle',{cx:x,cy:y,r:4.5,fill:css('--series-2'),stroke:css('--surface-1'),'stroke-width':1.5},svg);
     const h=el('circle',{cx:x,cy:y,r:11,fill:'transparent',tabindex:0},svg);
-    const show=()=>tipAt(tip,svg,W,H,x,y,`<b>${r.n}</b><span>${fD(r.t)} · ${r.c.toLocaleString('de-DE',{maximumSignificantDigits:3})} ct · ${r.a.toLocaleString('de-DE')} %</span>`);
+    const show=()=>tipAt(tip,svg,W,H,x,y,`<b>${r.n}</b><span>${fD(r.t)} · ${fCt(r.c)} · ${r.a.toLocaleString('de-DE')} % richtig${i?' · '+fPct(r.fall):''}</span>`);
     h.addEventListener('pointerenter',show);h.addEventListener('focus',show);h.addEventListener('pointerleave',()=>tip.style.display='none');h.addEventListener('blur',()=>tip.style.display='none');});
-  const cur=E[sel2],xm=xs(cur.t),ym=ys(cur.c);
-  el('line',{x1:xm,x2:xm,y1:m.t,y2:m.t+ih,stroke:css('--text-secondary'),'stroke-width':1,'stroke-dasharray':'3 3'},svg);
-  el('circle',{cx:xm,cy:ym,r:7,fill:'none',stroke:css('--text-primary'),'stroke-width':2},svg);
+  if(!druck)el('circle',{cx:xs(cur.t),cy:ys(cur.c),r:7,fill:'none',stroke:css('--text-primary'),'stroke-width':2},svg);
+  // Anfangs- und Endwert
   const a=E[0],b=E[E.length-1];
-  el('text',{x:xs(a.t)+4,y:ys(a.c)+20,class:'lab'},svg).textContent='o3: 29,9 ct';
-  el('text',{x:xs(b.t)-6,y:ys(b.c)-10,'text-anchor':'end',class:'lab'},svg).textContent='GPT-5.6 Luna: 0,04 ct';
+  el('text',{x:xs(a.t)-4,y:ys(a.c)-10,class:'lab'},svg).textContent='o3: 29,9 ct';
+  if(sel2===E.length-1)el('text',{x:xs(b.t),y:ys(b.c)+20,'text-anchor':'middle',class:'lab'},svg).textContent=narrow?'0,04 ct':'GPT-5.6 Luna: 0,04 ct';
+  // Anzeige unter dem Diagramm
+  document.getElementById('now2').innerHTML=`<span class="d">${fD(cur.t)}</span><span class="m">${kurz(cur.n)}: ${fCt(cur.c)} je Frage</span>`+
+    (sel2?`<span class="ex">Kosten um ${Math.round(cur.fall*100)} % gefallen · ${fFak(cur.faktor)}-mal billiger als o3</span>`:`<span class="ex">Ausgangspunkt: erstes Modell mit 75 % richtigen Antworten</span>`);
 }
 
 function all(){draw1();draw2();}
