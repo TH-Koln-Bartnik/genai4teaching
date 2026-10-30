@@ -5,6 +5,7 @@ Nach diesem Kapitel können Sie …
 
 - in Laiensprache erklären, wie ein Sprachmodell Text in Tokens zerlegt, als Zahlen verarbeitet und Wort für Wort neuen Text erzeugt;
 - die drei Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Muster auswählen;
+- erklären, was sich seit 2022 um das Sprachmodell herum geändert hat, und Modell, Harness und Agent voneinander abgrenzen;
 - beschreiben, warum Sprachmodelle halluzinieren und welche Folgen das für den Einsatz in der Lehre hat;
 - die Jagged Frontier erklären und daraus ableiten, warum Sprachmodelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich gut abschneiden;
 - die Bausteine eines guten Prompts (Rolle, Aufgabe, Format, Beispiele) anwenden und belegen, welche verbreiteten Prompt-Tricks nichts bringen;
@@ -132,7 +133,7 @@ Das **Kontext-Fenster** eines LLM beschreibt die Menge an vorherigem Text, die d
 
 Ein **Agent** ist in der KI-Forschung allgemein etwas, das seine Umwelt wahrnimmt (durch Sensoren) und auf sie einwirkt (durch Aktoren) [@russell2021, S.54].
 Seine *Architektur* sind bildlich gesprochen Augen und Hände, also was er wahrnehmen und tun kann (für GenAI-Agenten etwa: Hat er Web-Anbindung, kann er programmieren?); sein *Programm* ist das Regelbuch, nach dem er reagiert [@russell2021, S.65ff.].
-Mit solchen Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten [@mollick2024a]; was einen Agenten in der heutigen Praxis ausmacht, zeigt @sec-agenten-praxis.
+Mit solchen Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten [@mollick2024a]; was einen Agenten in der heutigen Praxis ausmacht, zeigt @sec-harness.
 
 Schlau sein allein reicht nicht: Ein Sprachmodell muss zwar einerseits 'intelligent' genug sein, um eine gestellte Aufgabe zu lösen.
 Aber auch der schlauste helfende Geist kann uns nur helfen, wenn er auch versteht, was wir eigentlich wollen und brauchen - er muss den **Kontext unserer Aufgabe kennen**.
@@ -172,7 +173,7 @@ Oder vielleicht das Sprachmodell mit Tools (Agenten)?
 Prüfen Sie Ihr Verständnis: Welche der links gezeigten Antworten passen zu welchem der rechts gezeigten Muster?
 Nutzt das Sprachmodell nur sein "Standard-Wissen" (LLM only), oder werden "Werkzeuge" wie Internet-Nutzung erlaubt?
 
-Mit den agentischen Werkzeugen kommt in der Praxis eine vierte Entscheidungsfrage hinzu [@mollick2025e]: **Hat mein Agent ein Harness?** Ohne Harness bleibt „Agent“ oft ein Etikett; mit Harness kann das Modell tatsächlich recherchieren, rechnen, Dateien erzeugen und Zwischenschritte nachvollziehbar machen. Für Lehraufgaben bewährt sich daher ein Workflow, der erst eigenes Material als Kontext nutzt (RAG/Notebook-Ansatz), dann für belastbare Quellen ein Research-Harness (z. B. „Deep Research“) einsetzt und die Ergebnisse als Artefakte exportiert (Quiz, Aufgabenblatt, Folien) – bevor Sie didaktisch zuspitzen.
+In der Praxis kommt eine vierte Entscheidungsfrage hinzu [@mollick2025e]: **Was steckt um das Modell herum?** Welche Werkzeuge, welches Gedächtnis und wie viel Handlungsspielraum ein Angebot dem Modell gibt, entscheidet darüber, ob es tatsächlich recherchieren, rechnen und Dateien erzeugen kann; der nächste Abschnitt führt dafür den Begriff Harness ein (@sec-harness). Für Lehraufgaben bewährt sich ein Workflow, der erst eigenes Material als Kontext nutzt (RAG/Notebook-Ansatz), dann für belastbare Quellen einen Research-Harness (z. B. „Deep Research“) einsetzt und die Ergebnisse als Artefakte exportiert (Quiz, Aufgabenblatt, Folien) – bevor Sie didaktisch zuspitzen.
 
 ::: {.callout-tip title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?"}
 ::: {.content-visible when-format="html"}
@@ -186,16 +187,103 @@ Mit den agentischen Werkzeugen kommt in der Praxis eine vierte Entscheidungsfrag
 :::
 :::
 
-### Agenten in der Praxis: Harness, Skills, Werkzeuganschluss und eigene Quellen {#sec-agenten-praxis}
+### Was sich seit 2022 geändert hat: Modell, Harness und Agent {#sec-harness}
 
-Die drei Muster aus dem vorigen Abschnitt beschreiben, *was* die KI zur Verfügung hat: ihr Trainingswissen, zusätzlich eigene Texte oder zusätzlich Werkzeuge.
-Im Alltag der Lehre stellt sich die Frage anders: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden?
-Dafür braucht man vier Begriffe, die in den Produktbeschreibungen durcheinandergehen.
+Wer 2022 mit ChatGPT gearbeitet hat und 2026 einem Agenten einen Rechercheauftrag gibt, erlebt zwei verschiedene Werkzeuge.
+Am Prinzip des Sprachmodells hat sich dabei wenig geändert: Es bekommt Text und setzt ihn wahrscheinlich fort.
+Gewachsen ist vor allem die Schicht um das Modell herum.
+Sie hat zwei Dinge hinzugewonnen, Werkzeuge und Gedächtnis, und aus beiden folgt ein drittes: Das Modell darf mehr Arbeitsschritte selbst wählen.
+Für diese Schicht setzt sich der Name **Harness** durch, für das, was beim Arbeiten aus Modell und Harness entsteht, der Name **Agent**.
+Die folgende Animation baut den Weg in acht Schritten auf.
 
-Ein **Agent** ist ein Sprachmodell, das einen Auftrag in Schritte zerlegt, diese Schritte mit Werkzeugen abarbeitet und erst am Ende zurückmeldet.
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
+
+<iframe src="interactions/harness-schichten.html" width="100%" height="820px" frameborder="0" title="Animation: Wie Werkzeuge, Gedächtnis und Autonomie als Harness um das Modell gewachsen sind"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Gewachsen ist vor allem die Schicht um das Modell. Werkzeuge und Gedächtnis kommen hinzu, daraus folgt eine Arbeitsschleife, über deren Schritte das Modell selbst entscheidet; alle drei sitzen im Harness, dessen Freigaben und Haltepunkte den Handlungsspielraum des Modells regeln. Den inneren Harness liefert der Hersteller, den äußeren bauen die Nutzenden (schematische Darstellung). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/harness-schichten.html> aufrufen.](images/druck/harness-schichten-qr.png){#fig-harness-schichten width="100%" fig-pos="htbp"}
+:::
+
+**Ausgangspunkt: das Modell allein.**
+Um 2022 war das Chatfenster die ganze Schnittstelle.
+Wir tippten eine Frage, das Modell lieferte Text, und alles Weitere taten wir selbst: Zahlen nachrechnen, Quellen suchen, das Ergebnis in eine Datei kopieren, die Antwort prüfen und die nächste Frage stellen.
+Das Modell konnte nichts nachschlagen und nichts ausführen, und es vergaß das Gespräch, sobald das Fenster geschlossen war.
+Im Bild des Fuhrwerks war es ein Pferd ohne Geschirr: viel Kraft, an nichts angespannt.
+
+**Erster Ermöglicher: Werkzeuge.**
+Die erste Erweiterung ist unscheinbar.
+Statt einer Antwort schreibt das Modell eine strukturierte Bitte, etwa „rechne 17 × 23“ oder „suche nach Little's Law“; ein gewöhnliches Programm führt sie aus und legt das Ergebnis zurück in den Text, den das Modell weiterschreibt.
+Dass Sprachmodelle selbst lernen können, wann sich ein solcher Aufruf lohnt, zeigten @schick2023toolformer an Taschenrechner, Suchmaschine und Kalender.
+Ende 2024 kam ein gemeinsamer Stecker hinzu, das Model Context Protocol (MCP), über das sich beliebige Dienste nach demselben Muster anschließen lassen [@anthropic2024mcp]; es spielt für Agenten die Rolle, die USB für Drucker und Kameras spielt.
+Ein **Werkzeug** ist also ein Programm, das das Modell anfordern, aber nicht selbst ausführen kann.
+Wie Werkzeuganschluss und Skills in der Lehre aussehen, vertieft @sec-agenten-praxis.
+
+**Zweiter Ermöglicher: Gedächtnis.**
+Die zweite Erweiterung betrifft, was das Modell beim Antworten vor sich hat.
+RAG legt ihm passende Stellen aus eigenen Dokumenten vor [@lewis2020], die Kontextfenster sind von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei oder ein Notizordner trägt Regeln und Zwischenstände von einer Sitzung in die nächste.
+Was davon wann auf den Schreibtisch des Modells kommt, ist eine eigene Gestaltungsfrage; ihr widmet sich @sec-agenten-gedaechtnis.
+
+**Die Folge: Autonomie im Vorgehen.**
+Mit Werkzeugen und Gedächtnis wird aus einem Durchgang eine Schleife.
+Das Modell plant einen Schritt, ruft ein Werkzeug auf, liest das Ergebnis und plant den nächsten, so lange, bis die Aufgabe erledigt scheint; @yao2023react haben dieses Wechselspiel aus Denken und Handeln unter dem Namen ReAct beschrieben.
+@schluntz2024agents ziehen daraus die Grenze, die für dieses Buch gilt: In einem Workflow folgen Modell und Werkzeuge vorgegebenen Pfaden, ein **Agent** steuert seinen Ablauf und seine Werkzeugnutzung selbst.
+Das Wort kommt vom lateinischen *agere*, handeln, in Gang bringen.
+Wie weit diese Selbststeuerung inzwischen reicht, misst METR als Zeithorizont: Die Aufgaben, die Modelle in der Hälfte der Fälle allein lösen, sind von Minuten auf Stunden gewachsen [@kwa2025; s. @sec-capabilities].
+
+„Autonom“ verlangt hier eine Einschränkung.
+Das griechische *autónomos* heißt, sich selbst das Gesetz (*nómos*) geben, und das tut ein Agent nicht: Das Ziel setzt der Mensch, das Modell wählt den Weg.
+Wir sprechen deshalb von **Autonomie im Vorgehen** und nennen solche Systeme **teilautonom**.
+Die Normung des automatisierten Fahrens ist aus ähnlichen Gründen vorsichtig und spricht von Stufen der Automatisierung statt von autonomen Fahrzeugen [@sae2021j3016].
+Ein Lehrbuch hat einen zweiten Grund zur Vorsicht.
+Die Pädagogik meint mit Autonomie die der Lernenden, ihre Fähigkeit, das eigene Lernen zu steuern [@holec1981], und die Motivationsforschung zählt das Erleben von Autonomie zu den Grundbedürfnissen, die Lernen tragen [@deci2000].
+In diesem Buch heißt es deshalb stets „Autonomie des Modells“ oder „Autonomie der Lernenden“.
+Die Unterscheidung ist mehr als Pedanterie: Jeden Schritt, den ein Agent selbst wählt, muss keine Studentin mehr wählen.
+Wer Agenten in der Lehre einsetzt, entscheidet mit, wer die Autonomie bekommt.
+
+**Der Name für das Gewachsene: Harness.**
+Werkzeuge, Gedächtnis und Schleife sind keine Eigenschaften des Modells, sondern Programme um es herum.
+Anthropic definiert den **Harness** als das System, das ein Modell als Agent handeln lässt: Er nimmt Eingaben entgegen, ruft Werkzeuge auf und gibt Ergebnisse zurück [@grace2026evals].
+Das englische *harness* ist das Geschirr eines Zugpferds, und seit dem 17. Jahrhundert heißt *to harness* im übertragenen Sinn, eine Kraft nutzbar machen.
+Das Bild trägt weit.
+Das Modell ist das Pferd, der Harness das Geschirr, der Agent das Gespann in Fahrt, und der Mensch sitzt auf dem Bock.
+Dasselbe Pferd zieht mit anderem Geschirr einen Pflug oder eine Kutsche, und dasselbe Modell wird mit anderem Harness zum Lerntutor oder zum Karriereberater.
+
+Der Harness ist zugleich der Regler der Autonomie.
+Welche Werkzeuge er anbietet, ob ein Werkzeug nur lesen oder auch schreiben darf, wo der Ablauf anhält und auf eine Freigabe wartet: All das legt fest, wie viel **Handlungsspielraum** das Modell bekommt.
+Dieser Spielraum wird eingeräumt, begrenzt und verstellt, und zwar im Harness, nicht im Modell.
+Was sich seit 2022 geändert hat, ist vor allem dieser Spielraum: mehr Werkzeuge, mehr Gedächtnis und damit mehr Schritte, über die das Modell selbst entscheidet (@tbl-harness-wandel).
+Wer den Harness pflegt, betreibt *Harness Engineering*; @hashimoto2026adoption, der den Begriff geprägt hat, versteht darunter, aus jedem Fehler eines Agenten eine dauerhafte Verbesserung seiner Umgebung zu machen, damit der Fehler nicht wiederkehrt.
+
+| Richtung | um 2022 | 2026 | Begriff | vertieft in |
+|:---|:---|:---|:---|:---|
+| Werkzeuge (Ermöglicher) | keine; der Mensch rechnet, sucht und kopiert | Websuche, Code ausführen, Dateien lesen und schreiben, angeschlossene Dienste | Werkzeug, Werkzeuganschluss (MCP) | @sec-agenten-praxis |
+| Gedächtnis (Ermöglicher) | das laufende Gespräch, wenige Seiten | eigene Quellen (RAG), ganze Bücher im Kontext, Anleitungsdatei und Notizen über Sitzungen hinweg | Kontext, Gedächtnis | @sec-agenten-gedaechtnis |
+| Autonomie im Vorgehen (Folge) | ein Durchgang: Frage, Antwort | Schleife über viele Schritte, Minuten bis Stunden ohne Rückfrage | Agent, teilautonom | @sec-capabilities |
+
+: Was sich seit 2022 geändert hat: zwei Ermöglicher und eine Folge, alle in der Schicht um das Modell (eigene Zusammenstellung). {#tbl-harness-wandel tbl-colwidths="[17,20,31,18,14]"}
+
+Die Grenze zwischen Modell und Harness wandert allerdings.
+Die Labore trainieren ihre Modelle inzwischen gezielt auf Werkzeuggebrauch und lange Aufgaben, und was gestern ein Programm um das Modell herum leisten musste, kann das Modell morgen selbst; Logan Kilpatrick von Google DeepMind fasst das in die Formel, das Modell fresse den Harness [@sequoia2026kilpatrick].
+Die Begriffe verlieren dadurch nicht ihren Wert, denn sie beschreiben Aufgaben, die erledigt werden müssen, gleich wer sie erledigt: Jemand muss Werkzeuge anschließen, Kontext auswählen und Haltepunkte setzen.
+
+**Was das für Lehrende heißt.**
+Den größten Teil des Harness liefert der Hersteller, mit dem Chatfenster, dem Rechercheagenten oder dem Programmieragenten.
+@bockeler2026harness nennt das den inneren Harness und stellt ihm den äußeren gegenüber, den die Nutzenden selbst bauen: Anleitungsdateien, Skills, eigene Wissensbasen und Prüfregeln.
+Am äußeren Harness gestalten Lehrende und Studierende.
+Die Projekte in @sec-fallbeispiele sind fast alle von dieser Art: Ein Übungstutor (@sec-fall-tutor-bwl), ein Karriereberater (@sec-fall-job-buddy) und eine Quellenanbindung mit Praxispartnern (@sec-fall-unternehmen) laufen auf denselben großen Modellen und unterscheiden sich in Anleitung, Quellen und Grenzen.
+Mit dem Handlungsspielraum des Modells ändert sich auch unsere Rolle.
+Wir stellen nicht mehr jede Frage einzeln, sondern setzen das Ziel, legen fest, wo der Agent anhält, und prüfen, was zurückkommt.
+OpenAI hat dafür den Leitsatz „Humans steer. Agents execute.“ ausgegeben [@lopopolo2026harness]: Der Mensch lenkt, der Agent führt aus.
+Wo die Haltepunkte in der Praxis liegen, zeigt der folgende Abschnitt.
+
+### Agenten in der Praxis: Skills, Werkzeuganschluss und eigene Quellen {#sec-agenten-praxis}
+
+Im Alltag der Lehre stellt sich die Frage nach dem Harness praktisch: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden?
 Der Unterschied zum Chat ist die Strecke, die die KI allein zurücklegt: Im Chat sehen wir jede Antwort nach Sekunden, ein Recherche-Agent arbeitet Minuten, ein automatisierter Ablauf Stunden.
-Das **Harness** ist der Werkzeugkasten, den der Agent dabei trägt (das Wort kommt über das Altfranzösische *harneis*, Ausrüstung, Rüstzeug): Websuche, ein Rechner in Form einer Programmiersprache, Zugriff auf einen Ordner, die Fähigkeit, Dateien zu erzeugen.
-Ohne Harness bleibt „Agent“ ein Etikett auf einem Chatbot.
+Drei Bausteine des äußeren Harness kommen dabei besonders oft vor: Skills, der Werkzeuganschluss und eigene Quellen.
+
 Ein **Skill** ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird.
 Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.
 
@@ -244,7 +332,7 @@ Spielen Sie die Szene ab und verändern Sie dann die Zahl der Agenten und die Pr
 
 Fünf Agenten liefern gut dreimal so viele geprüfte Ergebnisse wie einer, aber ab Minute 28 warten fertige Ergebnisse auf den Menschen, und die Agenten stehen die Hälfte der Zeit still. Das ist die Logik jeder Warteschlange: Der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station, und hier ist das die prüfende Person. Wer die Prüfzeit im Modell von vier auf acht Minuten erhöht, sieht den Stapel schneller wachsen als den Ertrag. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen können. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
 
-Die praktische Umsetzung dieser vier Begriffe steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows.
+Die praktische Umsetzung dieser Bausteine steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows.
 Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellenanbindung selbst aufbauen, zeigt @sec-fall-unternehmen.
 
 ### Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt {#sec-agenten-gedaechtnis}
@@ -688,7 +776,7 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 
 ::: {.callout-tip title="Kernaussagen"}
 1. Ein Sprachmodell sagt das nächste Wort voraus. Aus Tokens, Embeddings und Attention entsteht Text, der plausibel klingt, aber keine eingebaute Wahrheitsprüfung hat.
-2. Kontext entscheidet über Nutzen: Ein Modell allein antwortet aus dem Trainingswissen, mit RAG bekommt es ein Bücherregal, als Agent einen Werkzeugkoffer. Für die Lehre ist meist das Setup mit eigenem Material der richtige Einstieg.
+2. Kontext entscheidet über Nutzen: Ein Modell allein antwortet aus dem Trainingswissen, mit RAG bekommt es ein Bücherregal, als Agent einen Werkzeugkoffer. Für die Lehre ist meist das Setup mit eigenem Material der richtige Einstieg. Werkzeuge und Gedächtnis sitzen im Harness um das Modell, und der Harness legt fest, wie viel Handlungsspielraum das Modell bekommt.
 3. Halluzinationen sind kein Betriebsunfall, sondern folgen aus der Funktionsweise. Gegenmittel sind Eingrenzung des Inputs, Musterlösungen und systematische Prüfung.
 4. Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne.
 5. Gute Prompts sind präzise, strukturiert, mit Beispielen und iterativ. Höflichkeit, Drohungen und Trinkgeld ändern nichts; wer das Modell wie eine junge Hilfskraft anleitet, kommt weiter.
@@ -712,6 +800,7 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 6. Welche Aufgabe in Ihrem Fach liegt vermutlich außerhalb der Jagged Frontier? Wie würden Sie das prüfen, bevor Sie Studierende damit arbeiten lassen?
 7. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Bedarf der Infrastruktur wächst stark. Welche Folgerung ziehen Sie daraus für Ihre eigene Nutzung, und welche Entscheidung liegt nicht bei Ihnen?
 8. Ein Agent soll Ihre Sprechstundenanfragen ein Semester lang vorsortieren und sich dabei merken, welche Fragen schon beantwortet sind. Welche Stufe des Gedächtnisses wählen Sie, und an welcher Stelle prüfen Sie, was er sich gemerkt hat?
+9. Ein Studierendenteam baut auf einem großen Sprachmodell einen Lerntutor für Ihr Fach. Welche Teile davon gehören zum äußeren Harness, und an welchen zwei Stellen würden Sie den Handlungsspielraum des Modells begrenzen? Wessen Autonomie wächst dabei, wessen schrumpft?
 
 Lösungshinweise: @sec-loesungshinweise.
 :::

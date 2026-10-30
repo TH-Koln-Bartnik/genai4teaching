@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seit 2022 ist vor allem die Schicht um das Modell gewachsen</title>
+<style>
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; margin:0 4px 4px 0; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p { max-width:75ch; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+
+  /* SVG: drei Zustände je Element (Regel F6) */
+  svg text { font-size:16px; }
+  svg text.u { font-size:14px; }
+  svg text.b { font-weight:650; }
+  .f { fill:var(--c, var(--tinte)); }
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; }
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* Druckansicht (#druck) und Hörsaalmodus (?hoersaal) */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher, .druck h1 { display:none !important; }
+  .druck .kontext { --c:var(--grau); }   /* im Druck dunkler, damit Graustufen lesbar bleiben */
+  .druck .neu { --c:var(--tinte); }      /* Druck in reinen Graustufen: belegt keine Farbseite */
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Seit 2022 ist vor allem die Schicht um das Modell gewachsen</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Wer wählt 2026 den nächsten Arbeitsschritt?</p>
+    <button data-tipp="0">der Mensch, jedes Mal</button>
+    <button data-tipp="1">das Modell, im Rahmen des Harness</button>
+    <button data-tipp="2">das Modell, ganz allein</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 900 440" role="img"
+       aria-label="Ein Sprachmodell in der Mitte; nacheinander kommen Werkzeuge, Gedächtnis und eine Arbeitsschleife hinzu, die ein Ring namens Harness umschließt. Freigaben auf dem Ring regeln den Handlungsspielraum; ein äußerer Ring steht für den Teil, den Lehrende selbst bauen.">
+    <defs>
+      <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+      </marker>
+    </defs>
+
+    <!-- Schritt 1: Mensch und Modell, Frage hin, Text zurück -->
+    <g data-ab="0">
+      <rect class="s" x="30" y="178" width="170" height="74" rx="8" style="fill:var(--grund)"/>
+      <text class="f b" x="115" y="210" text-anchor="middle">Mensch</text>
+      <circle class="s" cx="560" cy="215" r="48" style="fill:var(--grund);stroke-width:2.5"/>
+      <text class="f b" x="560" y="221" text-anchor="middle">Modell</text>
+    </g>
+    <g data-ab="0" data-bis="6">
+      <text class="f u" x="115" y="234" text-anchor="middle">fragt</text>
+    </g>
+    <g data-ab="0" data-grau-ab="3">
+      <line class="s" x1="204" y1="204" x2="508" y2="204" marker-end="url(#pfeil)"/>
+      <text class="f u" x="250" y="196" text-anchor="middle">Frage</text>
+      <line class="s" x1="508" y1="228" x2="204" y2="228" marker-end="url(#pfeil)"/>
+      <text class="f u" x="250" y="248" text-anchor="middle">Text</text>
+    </g>
+
+    <!-- Schritt 2: Werkzeuge -->
+    <g data-ab="1" data-grau-ab="4">
+      <line class="s" x1="610" y1="215" x2="655" y2="215" marker-end="url(#pfeil)"/>
+      <text class="f b" x="663" y="211">Werkzeuge</text>
+      <text class="f u" x="663" y="231">suchen · rechnen</text>
+    </g>
+
+    <!-- Schritt 3: Gedächtnis -->
+    <g data-ab="2" data-grau-ab="4">
+      <line class="s" x1="560" y1="265" x2="560" y2="305" marker-end="url(#pfeil)"/>
+      <text class="f b" x="560" y="328" text-anchor="middle">Gedächtnis</text>
+      <text class="f u" x="560" y="347" text-anchor="middle">Quellen · Notizen</text>
+    </g>
+
+    <!-- Schritt 4: Schleife (Autonomie im Vorgehen) -->
+    <g data-ab="3" data-grau-ab="4">
+      <path class="s" d="M 528 178 A 44 44 0 1 1 592 178" marker-end="url(#pfeil)"/>
+      <text class="f b" x="560" y="58" text-anchor="middle">Autonomie</text>
+      <text class="f u" x="560" y="78" text-anchor="middle">planen · handeln · prüfen</text>
+    </g>
+
+    <!-- Schritt 5: Harness als Ring -->
+    <g data-ab="4">
+      <ellipse class="s" cx="560" cy="215" rx="235" ry="182" style="stroke-width:3"/>
+      <text class="f b" x="890" y="34" text-anchor="end">Harness</text>
+    </g>
+
+    <!-- Schritt 6: Freigaben und Haltepunkte als Schranken -->
+    <g data-ab="5">
+      <rect class="f" x="629" y="202" width="6" height="26"/>
+      <rect class="f" x="547" y="282" width="26" height="6"/>
+      <rect class="f" x="557" y="93" width="6" height="22"/>
+      <text class="f u" x="890" y="402" text-anchor="end">Freigaben · Haltepunkte</text>
+    </g>
+
+    <!-- Schritt 7: innerer und äußerer Harness -->
+    <g data-ab="6">
+      <ellipse class="s" cx="560" cy="215" rx="262" ry="206" style="stroke-dasharray:7 6"/>
+      <text class="f u" x="890" y="54" text-anchor="end">innerer · Hersteller</text>
+      <text class="f u" x="345" y="404" text-anchor="end">äußerer Harness: Anleitung, Skills, Quellen</text>
+    </g>
+
+    <!-- Schritt 8: neue Rolle des Menschen -->
+    <g data-ab="7">
+      <text class="f u" x="115" y="234" text-anchor="middle">setzt Ziel · prüft</text>
+    </g>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <section class="nachher" id="nachher">
+    <details><summary>Was das Bild zeigt und was nicht</summary>
+      <p>Schematische Darstellung, keine Messung. Das Prinzip des Modells bleibt im ganzen Bild dasselbe: Es setzt einen Text wahrscheinlich fort. Die Modelle sind seit 2022 auch selbst besser geworden, und ein Teil dessen, was heute im Harness steckt, wird künftig ins Modell hineintrainiert. Das Bild zeigt deshalb eine Arbeitsteilung von heute, keine feste Grenze.</p></details>
+    <details><summary>Analogie: Pferd, Geschirr, Gespann, Kutscher</summary>
+      <p>Das Modell ist das Pferd: Es hat die Kraft. Der Harness ist das Geschirr (engl. <em>harness</em>), das diese Kraft an einen Wagen bindet und lenkbar macht; dasselbe Pferd zieht mit anderem Geschirr einen Pflug oder eine Kutsche. Der Agent ist das Gespann in Fahrt. Der Mensch sitzt auf dem Bock: Er bestimmt das Ziel, nicht jeden Huftritt.</p></details>
+    <details><summary>Quellen</summary>
+      <p class="klein">Böckeler, B. (2026, 2. April). <em>Harness engineering for coding agent users</em>. martinfowler.com. https://martinfowler.com/articles/harness-engineering.html</p>
+      <p class="klein">Grace, M., Hadfield, J., Olivares, R., &amp; De Jonghe, J. (2026, 9. Januar). <em>Demystifying evals for AI agents</em>. Anthropic Engineering. https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents</p>
+      <p class="klein">Schluntz, E., &amp; Zhang, B. (2024, 19. Dezember). <em>Building effective agents</em>. Anthropic Engineering. https://www.anthropic.com/engineering/building-effective-agents</p>
+      <p class="klein">Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., &amp; Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. <em>International Conference on Learning Representations (ICLR 2023)</em>. https://doi.org/10.48550/arXiv.2210.03629</p>
+    </details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var SCHRITTE = [
+    "Um 2022: Der Mensch fragt, das *Modell* antwortet mit Text; alles Weitere erledigt der Mensch.",
+    "Erste Erweiterung: Das Modell bittet um ein *Werkzeug*, ein Programm führt es aus und meldet zurück.",
+    "Zweite Erweiterung: Ein *Gedächtnis* legt eigene Quellen und Notizen auf den Schreibtisch des Modells.",
+    "Beides zusammen erlaubt *Autonomie* im Vorgehen: Das Modell wählt den nächsten Schritt selbst, viele Male.",
+    "Werkzeuge, Gedächtnis und Schleife stecken in derselben Schicht um das Modell, dem *Harness*.",
+    "*Freigaben und Haltepunkte* im Harness regeln, wie viel Handlungsspielraum das Modell bekommt.",
+    "Den inneren Harness liefert der Hersteller; den *äußeren Harness* bauen Lehrende und Studierende selbst.",
+    "Der *Mensch* fragt nicht mehr jeden Schritt einzeln; er setzt das Ziel und prüft das Ergebnis."
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: ["der Mensch, jedes Mal", "das Modell, im Rahmen des Harness", "das Modell, ganz allein"] };
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };
+})();
+</script>
+</body>
+</html>
