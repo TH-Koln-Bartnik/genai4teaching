@@ -123,46 +123,24 @@ Beim 'Bau' solcher Sprachmodelle bewerten menschliche Expertinnen und Experten d
 Dabei erzeugt das LLM zunächst verschiedene Textversionen, die von menschlichen Bewertern beurteilt werden.Durch diesen Prozess „lernt“ das LLM, Texte zu bevorzugen, die nicht nur sprachlich richtig, sondern für Menschen besonders verständlich und nützlich sind.
 Das macht es möglich, dass GPT später aus wenigen Stichworten neue Texte generieren kann – also kreativ Sprache produziert, ohne bloß zu kopieren (generativ).
 
-*'Transformer'*: Das Herzstück des GPT ist der sogenannte **Transformer** – ein Rechenmodell, das durch ein spezielles Aufmerksamkeitsverfahren (**Attention**) erkennt, welche Wörter im Zusammenhang wichtig sind.
-Dadurch kann GPT die Bedeutung von Wörtern im Kontext richtig einschätzen.
-Im Transformer bedeutet **„Attention“**: Jedes Wort (genauer: jedes Token) entscheidet dynamisch, auf welche anderen Tokens es beim Verstehen oder Generieren am stärksten „hören“ sollte.
-Technisch ist das eine gewichtete Mischung von Informationen: Das Modell bildet eine Art Relevanzscore zwischen einem „aktuellen Interesse“ und möglichen „Informationsquellen“ und erstellt daraus Gewichte, die sich zu 1 aufsummieren.
-Die Ausgabe ist dann eine gewichtete Summe der Informationsinhalte.
-Das ist wie bei einer Literaturrecherche: Eine Fragestellung (Query) wird mit Titeln/Abstracts als „Hinweis-Schilder“ (Keys) abgeglichen; die eigentlichen Inhalte (Values) aus den passenden Quellen fließen dann stärker in das Gesamtverständnis ein.
-Beispielsweise erkennt GPT so in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint.
-Der zentrale Fachartikel von 2017, ein zentraler Auslöser der KI-Welle seit 2022, hatte den knackigen Titel "Attention is all you need" [@vaswani2017] – der Artikel wurde bis 2026 mehr als 200.000-fach zitiert.
+*'Transformer'*: Das Herzstück des GPT ist der sogenannte **Transformer**, ein Rechenmodell mit einem Aufmerksamkeitsverfahren (**Attention**): Für jedes Wort (genauer: jedes Token) gewichtet es, welche anderen Wörter im Text für seine Bedeutung am wichtigsten sind, ähnlich wie man bei einer Literaturrecherche die passenden Quellen stärker in das eigene Verständnis einfließen lässt.
+So erkennt GPT in einem Satz wie „Die Bank steht unter einem Baum“ anhand des Kontextes, ob „Bank“ ein Möbelstück oder eine Institution meint.
+Der Fachartikel von 2017, der das Verfahren vorstellte und die KI-Welle seit 2022 mit auslöste, trägt den knackigen Titel "Attention is all you need" [@vaswani2017]; er wurde bis 2026 mehr als 200.000-fach zitiert.
 
 **Was behält das Sprachmodell von unserer Unterhaltung? Wie viel Text kann ich – auch als PDF – hochladen?** Moderne LLMs können ganze Bücher schnell aufsaugen und dann zusammenfassen (z. B. Claude, ChatGPT oder Gemini).
 Das **Kontext-Fenster** eines LLM beschreibt die Menge an vorherigem Text, die das Modell bei der Verarbeitung neuer Informationen berücksichtigt, um den Kontext und die Zusammenhänge zu verstehen.
 
-Ein **Agent** im Kontext von Automation und künstlicher Intelligenz meint zunächst allgemein etwas, das seine Umwelt wahrnimmt (durch Sensoren) und auf sie einwirkt (durch Aktoren) [@russell2021, S.54].
-Agenten bestehen aus einer Architektur, die bestimmt, was möglich ist und einem Programm, das vorgibt, wie der Agent handeln soll [@russell2021, S.65ff.].
-Ersteres meint bildlich gesprochen die Augen und Hände des Agenten: Die *Agenten-Architektur* beschreibt den spezifischen Setup von Sensoren und Aktoren, die bestimmen, was für den Agenten wahrnehmbar und handelbar ist.
-Für GenAI Agenten fragt das etwa: Hat er Web-Anbindung?
-Kann er programmieren?
-Das *Agenten-Programm* ist das Regelbuch: es bestimmt, wie der Agent reagiert.
-Von einfachen Wenn-Dann-Regeln bis hin zu komplexen Weltmodellen (z. B. Physik-Modelle, die die Schwerkraft berücksichtigen oder Kosten-Gewinn Rechnungen für eine Wirtschaftssimulation).
-
-GPT-basierte Agenten können Text analysieren, generieren und verschiedene Aufgaben automatisieren, indem sie vorab definierte Muster und Regeln befolgen.
-Durch die Erstellung solcher Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten [@mollick2024a].
+Ein **Agent** ist in der KI-Forschung allgemein etwas, das seine Umwelt wahrnimmt (durch Sensoren) und auf sie einwirkt (durch Aktoren) [@russell2021, S.54].
+Seine *Architektur* sind bildlich gesprochen Augen und Hände, also was er wahrnehmen und tun kann (für GenAI-Agenten etwa: Hat er Web-Anbindung, kann er programmieren?); sein *Programm* ist das Regelbuch, nach dem er reagiert [@russell2021, S.65ff.].
+Mit solchen Agenten können Lehrende interaktive und personalisierte Lerninhalte einfacher gestalten [@mollick2024a]; was einen Agenten in der heutigen Praxis ausmacht, zeigt @sec-agenten-praxis.
 
 Schlau sein allein reicht nicht: Ein Sprachmodell muss zwar einerseits 'intelligent' genug sein, um eine gestellte Aufgabe zu lösen.
 Aber auch der schlauste helfende Geist kann uns nur helfen, wenn er auch versteht, was wir eigentlich wollen und brauchen - er muss den **Kontext unserer Aufgabe kennen**.
 
-Einen solchen Kontext können wir der KI auf zwei Arten bereitstellen: Bildlich gesprochen geben wir ihr ein paar **Bücher oder einen Werkzeugkoffer.** Präziser ausgedrückt geht es um die Methoden **"RAG" und "Agenten"** [@huyen2025, Kapitel 6]:
-
-```         
-"Two dominating patterns for context construction are RAG, 
-or retrieval-augmented generation, and agents. 
-The RAG pattern allows the model to retrieve relevant information
-from external data sources. 
-The agentic pattern allows the model to use tools
-such as web search and news APIs to gather information."
-```
-
-**RAG (Retrieval-Augmented Generation)** beschreibt insofern die Möglichkeit, zusätzliche Daten wie Fachtexte, Statistiken oder Gesetzesbücher in Kombination mit einem KI Modell zu verwenden [@huyen2025, Kapitel 6].
-Die KI ist das Gehirn, die zusätzliche Wissensdatenbank quasi das Bücherregal, das zu Rate gezogen werden kann.Je nach Kontextfenster stehen dort mehr oder weniger Bücher.Insofern umschreibt RAG ein KI-Modell, das die Fähigkeiten von Textgenerierungsmodellen (wie GPT) mit einer Wissensdatenbank kombiniert.
-So wird etwa der Prompt-Agent (s. u.) mit einer Reihe von Fachtexten „gefüttert“, in denen Best Practices des Prompting erklärt werden.
+Einen solchen Kontext können wir der KI auf zwei Arten bereitstellen: Bildlich gesprochen geben wir ihr ein paar **Bücher oder einen Werkzeugkoffer.** Präziser ausgedrückt sind das die beiden vorherrschenden Muster **RAG und Agenten** [@huyen2025, Kapitel 6].
+Bei **RAG (Retrieval-Augmented Generation)** holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
+Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche.
+Wie beides in der Lehre eingesetzt und geprüft wird, zeigt @sec-agenten-praxis.
 
 Einige Unterschiede zwischen einem einfachen Sprachmodell (LLM) und dem Setup mit Zusatzmaterial (RAG) und erlaubter Werkzeugnutzung (Tool Use, Agenten) sehen wir an der folgenden Interaktion.
 Wählen Sie hier jeweils die passende Antwort (die Übung ist nicht schwer - überlegen Sie sich zusätzlich ein Beispiel dafür aus Ihrem Berufsalltag!).
@@ -184,7 +162,6 @@ Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen
 In der Lehre kann RAG verwendet werden, um den Studierenden Fachtexte oder besonders aktuelle Informationen zur Verfügung zu stellen.
 Beispielsweise könnten Studierende in einem Geschichtsseminar eine KI befragen, die externe Quellen durchforstet, um aktuelle Erkenntnisse zu historischen Ereignissen zu präsentieren [@huffman2024].
 Unternehmen nutzen diese Technik, um etwa riesige Gebrauchsanweisungen mit KI durchsuchbar zu machen [@brynjolfsson2025], oder Chatbots zu trainieren, die typische, repetitive Kundenanfragen beantworten [@handa2025].
-Insofern ermöglicht RAG eine dynamische und zeitgemäße Wissensvermittlung, die nicht auf das festgelegte Wissen des KI-Modells beschränkt ist.
 
 ### Was nutzen - LLM, RAG oder Agent? {#sec-patterns-usage}
 
@@ -398,7 +375,7 @@ Bei weniger bekannten Namen gibt das Modell an, die Antwort nicht zu kennen [@li
 
 ## Welches Modell wählen? {#sec-model-choice}
 
-**Was für Sprachmodelle gibt es?** Der Markt ist überschaubarer, als die Flut an Produktnamen vermuten lässt. Eine Handvoll großer KI-Labore bietet jeweils eine Modellfamilie an, die sich in wenige Klassen sortieren lässt (s. @fig-leaderboard): Das **Flaggschiff-Modell** ist die jeweils stärkste Variante für anspruchsvolle Aufgaben. Daneben gibt es günstigere **Mini-Varianten**, die weniger Rechenaufwand benötigen und für einfache Routineaufgaben ausreichen. Die Flaggschiffe sind **Reasoning-Modelle**: Sie durchlaufen vor der Antwort intern mehrere Denkschritte und können so auch komplexe Fragestellungen bearbeiten (s. @sec-capabilities). Schließlich gibt es **offene Modelle**, deren Gewichte frei verfügbar sind, so dass man sie kostenfrei nutzen oder auf eigener Hardware betreiben kann; darunter eines der wenigen europäischen Modelle und die chinesische Konkurrenz [@mollick2025; sowie @vellum2025]. Offene Modelle sind in der Regel etwas schwächer als die Flaggschiffe der großen Labore (s. @sec-capabilities).
+**Was für Sprachmodelle gibt es?** Der Markt ist überschaubarer, als die Flut an Produktnamen vermuten lässt. Eine Handvoll großer KI-Labore bietet jeweils eine Modellfamilie an, die sich in wenige Klassen sortieren lässt (s. @tbl-modellstand): Das **Flaggschiff-Modell** ist die jeweils stärkste Variante für anspruchsvolle Aufgaben. Daneben gibt es günstigere **Mini-Varianten**, die weniger Rechenaufwand benötigen und für einfache Routineaufgaben ausreichen. Die Flaggschiffe sind **Reasoning-Modelle**: Sie durchlaufen vor der Antwort intern mehrere Denkschritte und können so auch komplexe Fragestellungen bearbeiten (s. @sec-capabilities). Schließlich gibt es **offene Modelle**, deren Gewichte frei verfügbar sind, so dass man sie kostenfrei nutzen oder auf eigener Hardware betreiben kann; darunter eines der wenigen europäischen Modelle und die chinesische Konkurrenz [@mollick2025; sowie @vellum2025]. Offene Modelle sind in der Regel etwas schwächer als die Flaggschiffe der großen Labore (s. @sec-capabilities).
 
 Wer einen Blick auf den nächsten Entwicklungsschritt werfen will, dem sei empfohlen, für einen Monat die **agentische Arbeitsumgebung** eines der großen Anbieter zu abonnieren (die teurere Abonnement-Stufe, s. den Kasten unten). Hier lassen sich sehr komplexe Workflows delegieren und z.B. 10 Excel-Dateien für komplexe Fallstudien mit den dazugehörigen Anweisungen, Visualisierungen und Präsentationen in einem Rutsch erstellen [@rogers2026].
 
@@ -410,8 +387,7 @@ Hochschulen bieten teils einen eigenen KI-Zugang an, die TH Köln etwa einen beg
 Für Lehrende an Hochschulen in Nordrhein-Westfalen ist **KI:connect.nrw** der Zugang der ersten Wahl (https://chat.kiconnect.nrw/). Das Land hat den Dienst an der RWTH Aachen aufbauen lassen und stellt ihn allen 36 staatlichen Hochschulen bereit; die Anmeldung läuft über den Hochschul-Login, die Nutzung ist für Studium, Lehre und Forschung vorgesehen und für die Nutzenden kostenfrei [@mkw2025kiconnect]. Hinter der Chat-Oberfläche stehen die Flaggschiff-Modelle der großen Anbieter in ihrer jeweils aktuellen Generation (welche das bei Drucklegung waren, steht im Kasten unten), dazu Bild- und Einbettungsmodelle sowie offene Modelle, die seit Mai 2026 auf landeseigenen Rechnern in Aachen und Köln laufen, so dass die Daten das Hochschulnetz nicht verlassen [@rwthitc2026changes; @kiconnect2026inferenz]. Zwei Eigenschaften machen den Dienst für die Vorhaben dieses Buches besonders brauchbar. Erstens lässt sich das Modell je Chat wechseln, so dass man dieselbe Aufgabe mit einem Flaggschiff, einer Mini-Variante und einem offenen Modell vergleichen kann; das ist genau die Übung, die den Unterschied zwischen den Modellklassen erfahrbar macht. Zweitens bietet KI:connect einen **API-Zugang**. Eine API (*Application Programming Interface*) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen: Wer einen eigenen Tutor baut, ein Skript Quizfragen erzeugen lässt oder ein Werkzeug wie VS Code an das Modell anschließt, braucht keinen Chat, sondern einen Schlüssel, mit dem die eigene Anwendung Anfragen schickt. Diese Schlüssel erzeugen Nutzende selbst im Menü „API-Schlüsselverwaltung“; sie laufen über die Lizenz der Hochschule, unterliegen denselben Kontingenten wie die Chat-Oberfläche, und die Schnittstelle ist mit dem Format von OpenAI kompatibel, sodass die meisten Anleitungen und Bibliotheken ohne Anpassung funktionieren [@persike2025apikeys; @rwthitc2026changes]. Ob und für welche Gruppen eine Hochschule die Schlüssel freischaltet, entscheidet sie selbst; wer das Menü nicht sieht, fragt bei der eigenen IT nach. Was sich damit bauen lässt, zeigen @sec-d-quellen (eigene Quellen anbinden) und @sec-d-tutoren (Tutoren bauen und prüfen).
 Bei allen institutionellen Zugängen gilt: Prüfen Sie vor dem Einsatz in der Lehre, welche Modellgeneration dahinter steckt. Ist es eine ältere Generation oder eine Mini-Variante, bekommt man ein ganz falsches Bild von den Fähigkeiten der Modelle und kann auch nicht sinnvoll in der praktischen Nutzung von KI ausbilden.
 
-Weiterhin können Lehrende über die Hochschullizenz Microsoft 365 Copilot herunterladen und dann einen KI-Chat als Desktop-Anwendung nutzen, eine Anwendung, unter deren Haube wiederum Modelle von OpenAI stecken (hier einloggen und einfach herunterladen: https://www.office.com/).
-Hier kann man Chats speichern und komplexere Anweisungen als „Agenten“ entwerfen und teilen.
+Über die Hochschullizenz lässt sich außerdem Microsoft 365 Copilot als Desktop-Anwendung mit Modellen von OpenAI nutzen, in der man Chats speichern und Anweisungen als „Agenten“ teilen kann (https://www.office.com/).
 
 Diese kostenfreien Lösungen sind seit ihrer Einführung stark ausgebaut worden und sehr nützlich.
 Sie stellen allerdings i. d. R. nicht den jeweils neuesten Stand der Performanz der KI-Modelle dar.
@@ -446,10 +422,6 @@ Die lebende Modellübersicht finden Sie online unter <https://th-koln-bartnik.gi
 ![Lebende Modellübersicht, semesterweise aktualisiert: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/modelluebersicht.html> aufrufen.](images/qr/qr-modelluebersicht.png){#fig-qr-modelluebersicht width="32%" fig-align="center"}
 :::
 :::
-
-![Je nach Ziel ein anderer Platz in der Bestenliste](images/script02-10.svg){#fig-leaderboard}
-
-Quelle: @vellum2025, Stand August 2025.
 
 :::: {.callout-note title="Anwendungsbeispiel: Der Kurs-Bot steht bereit, aber kaum jemand lernt mit ihm"}
 **Problem ohne KI.** Zwischen den Veranstaltungen bleiben Fragen zum Material liegen, und Lehrende erfahren kaum, woran ihre Studierenden hängen.
@@ -506,27 +478,12 @@ Den letzten Wert ordnet METR selbst als unsicher ein, weil die Testaufgaben übe
 :::
 Auch die Bewertung von Forschungsarbeiten im Rahmen des Peer-Reviews wird zunehmend teil-automatisiert, etwa durch die automatische Prüfung von Quellen oder Code und Teilbewertungen durch Dienste wie Veracity oder Paper Wizard [@lovely2025; @naddaf2025].
 
-**Ist das ein Mensch, oder ein Bot?** Eine Studie von 2025 zeigt, dass Sprachmodelle uns bei dieser Frage **erfolgreich täuschen können** und so den Turing Test bestehen, da sie in einer sozialen Interaktion Menschen erfolgreich imitieren können [@jones2025].
-In einem randomisierten Drei-Parteien-Turing-Test mit über 1.000 Spielen wurde ein mit speziellen Eingabe-Anweisungen (Persona-Prompt) versehenes Flaggschiff-Modell der damaligen Generation (GPT-4.5) von den Respondenten zu 73 % für den Menschen gehalten, häufiger als echte Menschen in der Vergleichsgruppe.
-Weniger komplexe Modelle (wie Llama 3.1) schritten schlechter ab.
-Die Autoren diskutieren daraus resultierende Risiken von sozialer Manipulation oder Arbeitsplatzsubstitution, sowie die Notwendigkeit robusterer menschlicher Erkennungsstrategien.
+**Ist das ein Mensch, oder ein Bot?** Sprachmodelle bestehen den Turing-Test: In einem randomisierten Drei-Parteien-Test mit über 1.000 Spielen hielten die Befragten ein Flaggschiff-Modell mit Persona-Prompt in 73 % der Fälle für den Menschen, häufiger als die echten Menschen der Vergleichsgruppe [@jones2025].
 
 Auch durch diesen Fähigkeitsschub ist der **Einsatz von Sprachmodellen in Support-Funktionen wie Call Centern stark gestiegen**, empirische Studien belegen hier einen starken Produktivitätszuwachs [@brynjolfsson2025].
 
-Die Gründe für die Produktivitätssteigerung von KI-Modellen lassen sich durch **Scaling Laws** (Training Scaling Law, Inference Scaling Law, [@mollick2025]) beschreiben: KI-Modelle werden einerseits exponentiell besser, je mehr Daten, Rechenleistung und Parameter genutzt werden und andererseits, wenn sie mehr Zeit zum „nachdenken“ erhalten.
-(Für eine schöne visuelle Beschreibung, s. @grootendorst2025)
-
-Der erste Zusammenhang (**Training Scaling Law**) besagt, dass größere KI-Modelle mit mehr Parametern und Trainingsdaten systematisch leistungsfähiger werden.
-Allerdings sind solche Ertragszuwächse mit hohen Kosten verbunden: Eine 10-fache Steigerung an Rechenaufwand führt etwa zu einer Erhöhung der Leistungsmetriken um einen festen Betrag, was abnehmende Grenzerträge andeutet.
-
-Neben dem positiven Effekt der Modellgröße wurde ab 2024 ein zweiter Scaling-Effekt (**Inference Scaling Law**) auf der Anwenderseite deutlich: LLMs liefern bessere Lösungen, wenn man ihnen mehr „**Denkzeit**“ gibt.
-OpenAI fand heraus, dass ein Modell mit längerer Schritt-für-Schritt-Reasoning-Phase merklich bessere Ergebnisse erzielt, analog zu einem Menschen, dem man mehr Zeit für eine schwierige Aufgabe gibt.
-Dieser Inference Scaling Law führte zur Entwicklung von **Reasonern** – KI-Systemen, die bei Bedarf intern zusätzliche Rechenschritte durchführen, um schwierige Probleme genauer zu lösen [@gottweis2025; @openai2024; @schwarcz2025].
-
-Zusammengenommen bedeuten diese Skalierungsgesetze, dass KI-Systeme **durch höheren Ressourceneinsatz (beim Training und bei der Nutzung) immer leistungsfähiger** und vielseitiger werden, wenn auch zu steigenden Kosten.
-Ökonomisch relevant ist hier vor allem, dass die **Grenzkosten der KI-Nutzung sehr niedrig** bleiben, sobald ein großes Modell einmal trainiert ist: Ist das Modell erstellt, kann es millionenfach eingesetzt werden, was **Skaleneffekte in der Verbreitung** ermöglicht.
-Somit schafft das Scaling Law die Grundlage dafür, dass **hochleistungsfähige KI als allgemein verfügbares Gut** in Wirtschaft und Bildung eingesetzt werden kann.
-Durch diese Eigenschaft ermöglicht KI eine schnelle und kosteneffiziente Skalierung personalisierter und adaptiver Lernangebote [@mollick2025].
+Den Fähigkeitszuwachs beschreiben zwei **Scaling Laws** [@mollick2025; anschaulich bei @grootendorst2025]: Modelle werden besser, je mehr Daten, Rechenleistung und Parameter ins Training fließen (**Training Scaling Law**), und sie liefern bessere Lösungen, je mehr „**Denkzeit**“ sie vor der Antwort für zusätzliche interne Rechenschritte erhalten (**Inference Scaling Law**), so wie ein Mensch, dem man mehr Zeit für eine schwierige Aufgabe gibt; auf diesem zweiten Gesetz beruhen die Reasoning-Modelle [@openai2024; @gottweis2025; @schwarcz2025].
+Ist ein Modell einmal trainiert, bleiben die **Grenzkosten der Nutzung sehr niedrig**, und personalisierte Lernangebote lassen sich kostengünstig skalieren [@mollick2025].
 
 Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
 Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 [@emberson2026].
@@ -560,11 +517,7 @@ Im Rechner lassen sich die eigenen Kurszahlen eintragen. „Abspielen“ oder �
 
 Dieses exponentielle Wachstum unterscheidet KI grundlegend von bisherigen technologischen Entwicklungen, bei denen Verbesserungen oft linear verliefen.
 
-Die großen Anbieter haben in kurzer Folge **vier Funktionsklassen** eingeführt, die den Einsatz von KI in der Hochschullehre deutlich erweitern: Integrierte **Bildgenerierung** erlaubt fotorealistische Visualisierungen, was z. B. in der technischen Bildung oder bei Designprojekten didaktisch genutzt werden kann.
-**Audio-Modelle** ermöglichen eine präzise Steuerung von Sprachstil und Tonfall – hilfreich etwa für simulierte Rollenspiele, interaktive Lernbegleiter oder barrierefreie Lerninhalte.
-**Research-Harnesses** („Deep Research“) erlauben KI-gestützte Rechercheprozesse, die Studierende bei komplexen Projektarbeiten oder der Literatursichtung unterstützen.
-Und kostengünstigere **Mini-Varianten der Reasoning-Modelle** erleichtern den Zugang zu leistungsfähigen KI-Anwendungen auch in Bildungseinrichtungen.
-Den Anfang machte OpenAI im ersten Quartal 2025; vergleichbare Funktionen gehören seither zum Standardumfang der großen Chat-Interfaces (s. die Beispiele in @sec-einleitung).
+Zum Standardumfang der großen Chat-Interfaces gehören inzwischen vier **Funktionsklassen**, die den Einsatz in der Lehre erweitern: **Bildgenerierung** für Visualisierungen, **Audio-Modelle** mit steuerbarem Tonfall für Rollenspiele und barrierefreie Inhalte, **Research-Harnesses** („Deep Research“) für Literatursichtung und Projektarbeiten sowie günstige **Mini-Varianten der Reasoning-Modelle** (s. die Beispiele in @sec-einleitung).
 
 Es lassen sich nach dieser Studie **zwei Kooperationsmodelle zwischen Mensch und LLM** unterscheiden, um die Technologiegrenze optimal auszunutzen [@dellacqua2023]: Der **Centaur-Ansatz** teilt die Aufgabe, indem der Mensch der KI die Teilprobleme überlässt, die innerhalb der Frontier liegen, und sich selbst auf den Rest konzentriert.
 Der **Cyborg-Ansatz** integriert die KI tiefer, indem der Mensch kontinuierlich mit der KI interagiert und Feedback-Schleifen nutzt.
@@ -578,7 +531,7 @@ Sie trägt nur dort, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt, 
 Dazwischen liegt Mollicks **Dämmerfabrik** (*twilight factory*): Agenten arbeiten, aber ein vermittelnder Agent holt Menschen hinzu, wenn eine Freigabe nötig ist, Fachwissen fehlt, die Ideen zu gleichförmig werden oder eine Entscheidung interessant ist [@mollick2026agents].
 Für die Lehre wiegt der letzte Anlass am schwersten.
 Wer nur Freigaben und Ausnahmen bearbeitet, übt nie das Urteilen, das eine gute Freigabe voraussetzt, und die Fachleute, die künftig prüfen sollen, wachsen nicht nach [@mollick2026agents].
-@fig-ki-arbeitsweisen ordnet die fünf Arbeitsweisen den Schritten einer Aufgabe zu.
+Das folgende Schema ordnet die fünf Arbeitsweisen den Schritten einer Aufgabe zu.
 
 ::: {.content-visible when-format="html"}
 Im interaktiven Schema lassen sich die Anlässe der Dämmerfabrik einzeln abschalten.
@@ -625,23 +578,9 @@ Hier muss man insofern aufpassen, dass die einfache Verfügbarkeit älterer oder
 
 ### Wo sprechen? Verschiedene Zugänge zu Sprachmodellen {#sec-access-modes}
 
-**Wo** sprechen wir mit dem Sprachmodell?
-Welche Zugänge zur KI gibt es?
-Es gibt **grob gesagt drei Ansätze**:
-
-1.  Die einfache Eingabe in das Chat-Interface des jeweiligen Anbieters ist am leichtesten umzusetzen.
-    Um verschiedene Modelle zu nutzen, muss man sich aber neu einloggen und evtl.
-    ein weiteres Abonnement bezahlen.
-    Die meisten Modelle erlauben aber auch recht umfangreiche kostenlose Nutzung, was meist zum Kennenlernen ausreicht.
-    Für Hochschulen werden zentral nach und nach verschiedene Dienste mit solchen Oberflächen aufgesetzt, die meist aber aus Gründen des Datenschutzes einige Funktionen abklemmen (z. B. meist die direkte Sprachinteraktion und das Speichern von Benutzerprofilen).
-
-2.  Nutzung einer Bedienoberfläche wie Witsy oder Typingmind, die Prompts speichert und Agenten erstellen lässt, die mit verschiedenen Modellen funktionieren [@schwarze2025].
-    Hier muss man einmalig das System aufsetzen (Witsy) und für den höheren Komfort teils eine Lizenz kaufen (TypingMind, ca. 40 \$ für Hochschulangehörige), dafür kann man dann einfacher Modelle wechseln und über einen sogenannten API Key nur die tatsächliche Nutzung abrechnen (was sich bei einfacher Nutzung auf ein paar Cent beläuft, siehe die oben gezeigte Übersicht der Preise pro Millionen Token).
-
-3.  Wenn man sich nicht vor etwas Code scheut, kann man auch einfach selbst programmieren (mit KI-Unterstützung in Tools wie Google Colab) und kleine Sprachagenten aufsetzen.
-    (Evtl. dann in Verbindung mit **Replit** für die Online-Bereitstellung und Diensten wie **Voiceflow** für die Oberfläche.) Auch hierfür braucht man eigentlich nur API Keys zur Identifizierung.
-    Fragen Sie das Sprachmodell, wie das geht und lassen sich den Code schreiben, es ist überraschend einfach!
-    Es gibt bei Youtube auch eine Vielzahl von kurzen Erläuterungen.
+Es gibt **drei Zugänge**: Am einfachsten ist das Chat-Interface des Anbieters, das für jedes weitere Modell ein eigenes Login und oft ein eigenes Abonnement verlangt und in den Hochschulversionen aus Datenschutzgründen meist Funktionen wie Sprachmodus und Benutzerprofile abklemmt.
+Bedienoberflächen wie Witsy oder TypingMind speichern Prompts, lassen Agenten für verschiedene Modelle erstellen und rechnen über einen API-Schlüssel (s. @sec-model-choice) nur die tatsächliche Nutzung ab, bei einfacher Nutzung wenige Cent (zur Größenordnung s. die Kostendaten in @sec-capabilities) [@schwarze2025].
+Wer etwas Code nicht scheut, lässt sich von der KI kleine Sprachagenten programmieren, etwa in Google Colab, und stellt sie mit Diensten wie **Replit** oder **Voiceflow** online bereit; auch dafür genügt ein API-Schlüssel.
 
 ### Wie sprechen? Prompt-Befehle {#sec-how-to-speak}
 
@@ -675,52 +614,22 @@ Vor detaillierten Tipps hilft ein Bild [@mollick2024d]: Behandeln Sie das Sprach
 Sie wird am Anfang nicht alles richtig machen, sondern muss klar angeleitet werden, so dass die Ergebnisse nach und nach besser werden.
 Junge Mitarbeiter sind keine Taschenrechner, die sofort perfekt und immer gleich funktionieren.
 GenAI Chatbots auch nicht.
-Iterieren und erläutern Sie.
-Das Ergebnis nähert sich dann Schritt für Schritt dem Wunschbild an.
-Der Vorteil hier ist, dass die Ergebnisse schon nach wenigen Sekunden vorliegen.
+Iterieren und erläutern Sie: Das Ergebnis nähert sich Schritt für Schritt dem Wunschbild an, und jede Runde dauert nur Sekunden.
 
-![Empfehlung: Das KI-Modell wie eine junge Hilfskraft behandeln - nach und nach anlernen, klar anweisen](images/script02-prompting-empfehlung-behandeln-wie-hilfskraft.png){#fig-prompten-iterieren fig-align="center"}
+**Was empfehlen Prompt-Profis im Detail?** Die drei führenden KI-Labore haben 2025 ausführliche Leitfäden veröffentlicht, wie wir mit ihren Modellfamilien reden sollen [@kotha2025; @google2025; @anthropic2025c].
+Die Empfehlungen ähneln sich und beginnen bei der banalsten: **genau sagen, was man eigentlich will**; wer vage Bauanweisungen gibt, darf sich nicht wundern, wenn das Haus anders aussieht als gewünscht.
+@tbl-lab-empfehlungen fasst sie zusammen.
 
-Quelle: Erstellt mit Gemini 3 Pro, basierend auf @mollick2024d.
+| Nr. | Empfehlung | Was das heißt |
+|:--|:-------------------|:------------------------------------------------|
+| 1 | Aufgabe präzise beschreiben | Klare Anweisungen ohne innere Widersprüche oder vage Formulierungen; wer die Aufgabe nicht erklärt hat, sollte nicht auf den Hiwi schimpfen. |
+| 2 | Beispiele geben | Beispiele vermitteln den breiteren Kontext. Positive Formulierungen („gib mir …“) wirken besser als Verbote („vermeide …“) [@google2025]; zu viele Beispiele engen den Suchraum ein. |
+| 3 | Text strukturieren | Abschnitte mit Tags wie \[Hinweis\] oder \<Hinweis\> markieren; welche Klammern, ist gleich, solange sie einheitlich sind. |
+| 4 | Iterativ arbeiten | Der Lösungsweg entsteht im Wechsel mit dem Modell; anders als beim Taschenrechner liegt der Mehrwert in der Interaktion. |
+| 5 | Agenten anders steuern | Festlegen, wie viel Eigenständigkeit der Agent haben soll („Eagerness-Kalibrierung“) [@kotha2025], und Zwischenstände strukturiert sowie in kurzen nummerierten Notizen festhalten lassen [@anthropic2025c]; mehr in @sec-agenten-praxis und @sec-agenten-gedaechtnis. |
+| 6 | Das Modell beim Prompten helfen lassen | Eingebaute Prompt-Optimierer nutzen oder bei Fehlern den Prompt mit gewünschtem und tatsächlichem Verhalten vorlegen und um minimale Änderungen bitten [@kotha2025]; ein Beispiel-Bot steht im Kasten in @sec-prompt-components. |
 
-**Was empfehlen Prompt-Profis im Detail?** Die drei führenden KI-Labore haben 2025 ausführliche Leitfäden veröffentlicht, wie wir mit ihren jeweiligen Modellfamilien reden sollen [@kotha2025; @google2025; @anthropic2025c].
-Die Empfehlungen sind recht ähnlich und es lohnt sich, sie hier kurz zu referieren.
-
-Die drei führenden Anbieter betonen die Bedeutung von **Präzision der Anweisungen** - wenig überraschend, aber im Detail nicht einfach zu bewerkstelligen: Vorab die vielleicht wichtigste, wenn auch banale Empfehlung: Es hilft, **genau zu sagen, was man eigentlich will**.
-Wie bei einem Bauprojekt, muss man sich bei vagen Anweisungen nicht wundern, wenn das Haus nachher anders aussieht als gewünscht.
-
-(1) Aufgaben präzise beschreiben: Man sollte nicht auf den Hiwi schimpfen, wenn man sich nicht die Zeit genommen hat, zu sagen, was eigentlich die Aufgabe ist!
-    Die immer schlaueren Bots brauchen klare Anweisungen ohne innere Ungereimtheiten oder vage Formulierungen.
-
-(2) Beispiele helfen der KI, nicht nur Einzelwünsche sondern den breiteren Kontext zu berücksichtigen - genau wie man das von einem guten Butler gerne hätte.
-    Positiv-Beispiele sind dabei besser als Negativbeispiele („gib mir...“/„bemühe dich um...“ ist besser als „gib mir nicht“ / „vermeide...“) [@google2025].
-    Man sollte nicht zu viele Beispiele geben, sonst kann es passieren, dass sich das LLM zu stark an diesen orientiert und den Suchraum einengt.
-
-(3) Ordnung macht hier Meisterschaft: durch klare Strukturierung des Textflusses durch <Hinweis-Schilder> sogenannte \[Tags\].
-    Ob solche 'Post-it-Notizen' für die Bots in eckigen Klammern oder mit größer/kleiner Zeichen als <Hinweise> markiert sind, ist dabei nicht wichtig, es muss nur einheitlich sein.
-
-(4) Zunehmend wird bei einer interaktiven Form der Zusammenarbeit mit dem Sprachmodell der Weg zum Ziel.
-    Prompten wird hier zum iterativen Prozess, in dem die Interaktion den eigentlichen Mehrwert bietet, da nach und nach mit dem Sprachmodell ein Lösungsweg erarbeitet wird.
-    Dies verlangt eine deutlich andere Herangehensweise als Werkzeuge wie Taschenrechner, von denen wir erwarten, dass sie sofort eine Lösung ausspucken.
-
-(5) Agenten erfordern neue Verhaltensweisen.
-    Da die Zeitspanne des autonomen Handelns immer breiter wird, in denen Sprachmodelle selbstständig suchen, bewerten und zusammenfassen können, müssen wir sie auch anders steuern.
-    Zweitens gewinnt die Frage an Bedeutung, wieviel Eigenständigkeit wir uns von dem Bot denn wünschen.
-    OpenAI nennt dies in seinem Leitfaden „Eagerness-Kalibrierung“ [@kotha2025]. Bei solchen mehrstufigen, längeren Prozessen müssen wir auch über das 'Gedächtnis' des Agenten-Bots nachdenken (@sec-agenten-gedaechtnis). Im Detail wird hier etwa empfohlen, den Agenten seine Zwischenergebnisse ('states') in hoch strukturierter Form ablegen zu lassen (im JSON-Format etwa, das sozusagen markierte Schubladen für die Daten bereitstellt) und kurze nummerierte Zwischennotizen im Fließtext zu erfragen („Im letzten Schritt habe ich folgende Updates an dem Text vorgenommen...“) [@anthropic2025c]. Wir sehen, dass hier die Empfehlungen schon stärker in Richtung der Führung von Mitarbeitern gehen, eine Konsequenz der wachsenden Selbstständigkeit dieser 'cybernetic teammates' [@dellacqua2025].
-
-(6) Bots help bots: Die Sprachmodelle können uns dabei helfen, mit ihnen zu sprechen.
-    So können wir mit dem Tool das Tool bedienen.
-    Das kann man schon mit einfachen Prompts tun (s. den folgenden Einschub-Kasten), oder mit eingebauten Tools der Sprachmodelle, wie dem Prompt-Optimierer von OpenAI [@kotha2025] oder mit einem eigenen Prompt, der das Sprachmodell anweist, eine Anweisung in ein bestimmtes Muster zu packen.
-
-**Unzufrieden mit dem Ergebnis?** Was, wenn der 'Lieferant' Sprachmodell mal nicht wie gewünscht liefert?
-@kotha2025 empfiehlt: Gleich reklamieren (s. der folgende Kasten)!
-
-::: {.callout-tip title="Meta-Prompts: Den Bot den Prompt verbessern lassen"}
-**Probleme mit dem Prompt?** OpenAI [@kotha2025] schlägt vor, man soll mit einer klaren Problembeschreibung wie folgt prompten:
-
-Hier ist ein Prompt: \[PROMPT EINFÜGEN\] Das gewünschte Verhalten dieses Prompts ist, dass der Agent \[GEWÜNSCHTES VERHALTEN BESCHREIBEN\] ausführt, stattdessen führt er jedoch \[UNERWÜNSCHTES VERHALTEN BESCHREIBEN\] aus.
-Wie würdest Du die Eingabeaufforderung möglichst unverändert lassen und dennoch minimale Änderungen/Ergänzungen vornehmen, um den Agenten dazu zu bewegen, diese Mängel konsequenter zu beheben?
-:::
+: Prompt-Empfehlungen der großen KI-Labore. Quellen: @kotha2025, @google2025, @anthropic2025c. {#tbl-lab-empfehlungen}
 
 ### Es könnt' alles so einfach sein! Es bringt nichts, Bots zu bedrohen oder zu bestechen. {#sec-prompting-myths}
 
