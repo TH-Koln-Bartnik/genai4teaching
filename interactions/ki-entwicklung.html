@@ -34,6 +34,35 @@ table{border-collapse:collapse;width:100%;margin-top:6px}th,td{text-align:left;p
 .stufe.akt .pct{fill:var(--text-primary);font-size:13px;font-weight:700}.stufe.akt .dt{fill:var(--text-secondary)}
 .stufe.neu{animation:auf .5s ease-out}@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.stufe.neu{animation:none}}
+/* Diagramm 2, Raster: was 30 Cent kaufen */
+.schaetz{border:2px solid var(--series-2);background:color-mix(in srgb,var(--series-2) 9%,var(--surface-1));border-radius:10px;padding:10px 14px;margin:0 0 12px;font-size:.88rem}
+.schaetz .badge{display:inline-block;background:var(--series-2);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.02em;text-transform:uppercase;border-radius:999px;padding:1px 9px;margin-right:8px}
+.schaetz p{margin:6px 0}.schaetz .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.schaetz input[type=number]{width:110px;font-size:1rem;padding:4px 8px;border:2px solid var(--series-2);animation:puls 1.6s ease-in-out 3}
+.schaetz .hint{color:var(--text-secondary);font-size:.8rem}
+.schaetz.fertig{border-color:var(--text-primary);background:var(--wash)}
+@keyframes puls{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--series-2) 30%,transparent)}}
+.playbtn:disabled{opacity:.35;cursor:not-allowed}
+.rwrap{display:grid;grid-template-columns:minmax(200px,290px) 1fr;gap:12px 22px;align-items:start}
+@media (max-width:599px){.rwrap{grid-template-columns:1fr}}
+.rinfo .k{color:var(--text-secondary);font-size:.85rem}
+.rinfo .big{font-size:3rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--series-2)}
+.rinfo .big small{font-size:1rem;font-weight:500;color:var(--text-secondary);margin-left:6px}
+.rinfo .s{color:var(--text-secondary);font-size:.85rem;margin-top:4px}
+.rinfo .o3{margin-top:14px;padding-top:8px;border-top:1px solid var(--grid);font-size:.8rem;color:var(--text-secondary)}
+.rgrid .legend{margin-top:6px}
+#d-tipps{margin-top:12px}#t2s{font-size:.74rem}#t2s td:first-child{white-space:nowrap}#t2s th,#t2s td{padding:2px 4px}
+#c2r .k.rein{animation:rein .35s ease-out backwards}@keyframes rein{from{opacity:0;transform:scale(.3)}}
+#c2r .k{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:reduce){#c2r .k.rein,.schaetz input[type=number]{animation:none}}
+.rnav{margin-top:8px}.rnav span{color:var(--muted);font-size:.8rem}
+#druck2r{display:none}
+.druck #druck2r{display:block;margin-top:14px}
+.druck #ansicht-raster,.druck .seg{display:none !important}
+.druck #ansicht-treppe{display:block !important}
+.dr-titel{font-size:13px;font-weight:600;margin:0 0 6px 50px}
+.dr-reihe{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-left:50px}
+.dr-reihe .h{font-size:12px;font-weight:650}.dr-reihe .h span{font-weight:400;color:var(--text-secondary)}
 /* Diagramm 3: Arbeitsweisen */
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--text-secondary);margin:0 0 6px}
 .sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
@@ -84,11 +113,23 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
 <h2>Expertenwissen wird 725-mal billiger</h2>
 <p class="sub">Niedrigste Kosten pro Frage für 75 % richtige Antworten im GPQA Diamond (Naturwissenschaft auf Promotionsniveau)</p>
 <div class="controls">
- <button id="play2" class="playbtn" aria-label="Preisstufen nacheinander zeigen">▶ Abspielen</button>
- <input type="range" id="tsel" min="0" max="7" step="1" value="7" aria-label="Preisstufe">
+ <div class="seg" role="group" aria-label="Darstellung"><button id="v-raster" aria-pressed="true">Raster: was 30 Cent kaufen</button><button id="v-treppe" aria-pressed="false">Treppe: Preis je Frage</button></div>
 </div>
-<div class="chart" id="c2"><div class="tip" id="tip2"></div></div>
-<div class="now" id="now2" aria-live="polite"></div>
+<div id="ansicht-raster">
+ <div class="schaetz" id="schaetz" role="group" aria-labelledby="schaetz-t"></div>
+ <div class="rwrap"><div class="rlinks"><div class="rinfo" id="rinfo" aria-live="polite"></div>
+  <details id="d-tipps"><summary>Ihre Schätzungen</summary><table id="t2s"><thead><tr><th>Stufe</th><th class="num">geschätzt</th><th class="num">tatsächlich</th><th>Abweichung</th></tr></thead><tbody></tbody></table></details></div><div class="rgrid"><div id="c2r"></div><div class="legend" id="rleg"></div></div></div>
+ <div class="now" id="now2r" aria-live="polite"></div>
+ <div class="controls rnav"><button id="r-zur" class="chip">◀ Zurück</button><button id="r-vor" class="chip">Weiter ▶</button><button id="r-neu" class="chip">Von vorn</button><span id="r-pos"></span></div>
+</div>
+<div id="ansicht-treppe" hidden>
+ <div class="controls">
+  <button id="play2" class="playbtn" aria-label="Preisstufen nacheinander zeigen">▶ Abspielen</button>
+  <input type="range" id="tsel" min="0" max="7" step="1" value="7" aria-label="Preisstufe">
+ </div>
+ <div id="k2bild"><div class="chart" id="c2"><div class="tip" id="tip2"></div></div><div id="druck2r"></div></div>
+ <div class="now" id="now2" aria-live="polite"></div>
+</div>
 <div class="controls" style="margin-top:10px">
  <label>Studierende <input type="number" id="n1" value="150" min="1"></label>
  <label>Fragen/Woche <input type="number" id="n2" value="20" min="0"></label>
@@ -99,7 +140,7 @@ footer{font-size:.72rem;color:var(--muted)}footer p{margin:0 0 3px;padding-left:
  <div class="stat"><div class="k">mit o3, Jan. 2025</div><div class="v" id="c-then">–</div></div>
  <div class="stat"><div class="k" id="c-now-k">gewählter Zeitpunkt</div><div class="v" id="c-now">–</div></div>
 </div>
-<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Nur Größenordnung: Tutor-Chats sind länger als eine GPQA-Frage.</p>
+<p class="src">Daten: Epoch AI (Emberson &amp; Roodman, 2026), Abb. 2; API-Preise. Rasterdarstellung nach einer Idee von Mollick (2026), eigene Umsetzung. Nur Größenordnung: Tutor-Chats sind länger als eine GPQA-Frage.</p>
 <details><summary>Datentabelle</summary><table id="t2"><thead><tr><th>Modell</th><th>Datum</th><th class="num">Genauigkeit</th><th class="num">Kosten/Frage</th></tr></thead><tbody></tbody></table></details>
 </section>
 
@@ -219,7 +260,7 @@ const E=EPOCH.map(r=>({...r,t:D(r.d)}));
 // Preisstufen: Rückgang gegenüber dem bis dahin günstigsten Modell und Faktor seit o3
 E.forEach((r,i)=>{r.fall=i?1-r.c/E[i-1].c:null;r.faktor=E[0].c/r.c;});
 const kurz=n=>n.replace(/ \(.*\)$/,'');
-const fPct=x=>'−'+Math.round(x*100)+' %';
+const fPct=x=>'−'+Math.round(x*100)+'\u00a0%';
 const fCt=c=>c.toLocaleString('de-DE',c<1?{maximumFractionDigits:2}:{maximumSignificantDigits:3})+' ct';
 // Faktor ab 10 abgerundet, damit die Endstufe wie in der Überschrift 725 zeigt (29,8906 / 0,0412 = 725,5)
 const fFak=f=>f<10?f.toLocaleString('de-DE',{maximumFractionDigits:1}):Math.floor(f).toLocaleString('de-DE');
@@ -229,7 +270,8 @@ document.querySelector('#t2 thead tr').insertAdjacentHTML('beforeend','<th class
 document.querySelectorAll('#t2 tbody tr').forEach((tr,i)=>tr.insertAdjacentHTML('beforeend',`<td class="num">${i?fPct(E[i].fall):'–'}</td>`));
 let sel2=E.length-1, last2=-1, timer2=null;
 const fUSD=v=>v.toLocaleString('de-DE',v<100?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})+' US-$';
-function calc(){const n=(+n1.value||0)*(+n2.value||0)*(+n3.value||0),cur=E[sel2];
+let ansicht2='raster', rSel=0, rBis=0;
+function calc(){const n=(+n1.value||0)*(+n2.value||0)*(+n3.value||0),cur=E[ansicht2==='raster'?rSel:sel2];
   document.getElementById('q').textContent=n.toLocaleString('de-DE');
   document.getElementById('c-then').textContent=fUSD(n*E[0].c/100);
   document.getElementById('c-now').textContent=fUSD(n*cur.c/100);
@@ -286,6 +328,103 @@ function draw2(){
     (sel2?`<span class="ex">Kosten um ${Math.round(cur.fall*100)} % gefallen · ${fFak(cur.faktor)}-mal billiger als o3</span>`:`<span class="ex">Ausgangspunkt: erstes Modell mit 75 % richtigen Antworten</span>`);
 }
 
+/* ---- Diagramm 2, Raster: was 30 Cent kaufen (Darstellungsidee nach Mollick, 2026) ----
+   1 Kästchen = 1 Frage zum o3-Preis vom Januar 2025. Raster 29 × 25 = 725 Kästchen.
+   Je Stufe kaufen 29,89 ct E[0].c/E[s].c Fragen; Bruchteile füllen das nächste Kästchen anteilig.
+   Vor jeder neuen Stufe müssen Lesende eine Schätzung eingeben (Vorhersage vor dem Aufdecken). */
+const SP=29, ZE=25, NMAX=SP*ZE;
+const NQ=E.map(r=>Math.min(E[0].c/r.c,NMAX));
+const VOLL=NQ.map(n=>Math.floor(n+1e-9));
+// Anzeige: unter 10 mit einer Nachkommastelle, sonst abgerundet (Endstufe 725,5 → 725 wie in der Überschrift)
+const fN=n=>n<10?n.toLocaleString('de-DE',{maximumFractionDigits:1}):Math.floor(n).toLocaleString('de-DE');
+const hex2=h=>{h=h.replace('#','');if(h.length===3)h=[...h].map(c=>c+c).join('');return[0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
+const mix=(a,b,w)=>{const A=hex2(a),B=hex2(b);return'rgb('+A.map((v,i)=>Math.round(v*w+B[i]*(1-w))).join(',')+')';};
+// Farbe je Stufe: o3 dunkel, frühere Stufen helle Töne (älter = heller), die gezeigte Stufe voll
+function farben(s){const f=[css('--text-primary')];for(let t=1;t<=s;t++)f.push(t===s?css('--series-2'):mix(css('--series-2'),css('--plane'),0.36+0.36*(t-1)/Math.max(1,s-2)));return f;}
+// Kästchen k ist voll ab der ersten Stufe t mit VOLL[t] > k; anteilig in Stufe s, wenn k === VOLL[s]
+function zeichneRaster(box,W,s,o={}){
+  const cell=W/SP,gap=Math.max(1,cell*0.18),r=Math.min(3,cell*0.18),H=cell*ZE,F=farben(s);
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:'img','aria-label':`Raster aus ${NMAX} Kästchen; ${fN(NQ[s])} gefüllt: so viele Fragen kaufen 30 Cent im ${fD(E[s].t)}`},box);
+  const leer=css('--grid'),neuAb=o.anim!=null?VOLL[o.anim]:Infinity,nNeu=Math.max(1,Math.ceil(NQ[s])-(o.anim!=null?VOLL[o.anim]:0));
+  for(let k=0;k<NMAX;k++){const x=(k%SP)*cell,y=Math.floor(k/SP)*cell,w=cell-gap;
+    const fuell=Math.max(0,Math.min(1,NQ[s]-k));
+    el('rect',{x,y,width:w,height:w,rx:r,fill:leer,opacity:.55},svg);
+    if(fuell<=0)continue;
+    let t=0;while(t<s&&VOLL[t]<=k)t++;
+    if(fuell<1)t=s;
+    const a={x,y,width:w*fuell,height:w,rx:fuell<1?Math.min(r,w*fuell/2):r,fill:F[t],class:'k'};
+    if(k>=neuAb&&!o.druck){a.class='k rein';a.style=`animation-delay:${Math.round((k-neuAb)/nNeu*1100)}ms`;}
+    el('rect',a,svg);
+    if(k===0)el('rect',{x:-1,y:-1,width:w+2,height:w+2,rx:r+1,fill:'none',stroke:css('--text-primary'),'stroke-width':1.5},svg);}
+  return svg;}
+const schaetzBox=document.getElementById('schaetz'), tipps={};
+function monateZwischen(a,b){return Math.round((b-a)/(30.44*DAY));}
+function abweichung(g,n,kurz){const q=g/n,z=x=>x.toLocaleString('de-DE',{maximumFractionDigits:1})+(kurz?'×':'-mal');return q>=0.8&&q<=1.25?'fast getroffen':q<1?z(n/g)+' zu niedrig':z(q)+' zu hoch';}
+let schaetzStand='';
+function schaetzUI(){
+  // nur bei geänderter Stufe neu aufbauen, sonst verliert ein Fensterwechsel (z. B. Bildschirmtastatur) die Eingabe
+  const st=rSel+'|'+rBis;if(st===schaetzStand)return;schaetzStand=st;
+  const fertig=rBis>=E.length-1;
+  schaetzBox.classList.toggle('fertig',fertig);
+  if(rSel<rBis){schaetzBox.innerHTML=`<p>Diese Stufe haben Sie schon aufgedeckt. Mit „Weiter ▶“ blättern Sie bis zur Stufe ${rBis+1}; danach ist wieder Ihre Schätzung gefragt.</p>`;return;}
+  if(fertig){schaetzBox.innerHTML=`<p><b>Alle acht Preisstufen aufgedeckt.</b> Ihre Schätzungen stehen in der Tabelle. Wechseln Sie zur <button class="chip" id="zur-treppe">Treppe</button> und vergleichen Sie: Auf der logarithmischen Achse sind die Sprünge ähnlich groß, auch der letzte.</p>`;
+    document.getElementById('zur-treppe').onclick=()=>setAnsicht('treppe');return;}
+  const n=rBis+1, m=monateZwischen(E[rBis].t,E[n].t);
+  schaetzBox.innerHTML=`<p id="schaetz-t"><span class="badge">Ihre Schätzung ist gefragt</span><b>${fD(E[n].t)}</b>, ${m<1?'zwölf Tage':m===1?'einen Monat':m+' Monate'} später: Der Preis fällt erneut. Wie viele Fragen kaufen die 30 Cent jetzt?</p>
+   <div class="row"><input type="number" id="tipp" min="1" step="any" inputmode="decimal" aria-label="Ihre Schätzung: Anzahl Fragen für 30 Cent" placeholder="Anzahl">
+   <button class="playbtn" id="aufdecken" disabled>Aufdecken</button>
+   <span class="hint">bisher: ${fN(NQ[rBis])} ${NQ[rBis]<1.5?'Frage':'Fragen'} · erst nach Ihrer Eingabe geht es weiter</span></div>`;
+  const inp=document.getElementById('tipp'),btn=document.getElementById('aufdecken');
+  const ok=()=>+inp.value>0;
+  inp.addEventListener('input',()=>{btn.disabled=!ok();});
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&ok())aufdecken(+inp.value);});
+  btn.onclick=()=>{if(ok())aufdecken(+inp.value);};
+}
+function aufdecken(g){const vorher=rBis;tipps[rBis+1]=g;rBis++;rSel=rBis;tippTabelle();drawR(vorher);calc();
+  const f=document.getElementById('tipp');if(f)f.focus();}
+function tippTabelle(){document.querySelector('#t2s tbody').innerHTML=Object.keys(tipps).map(Number).sort((a,b)=>a-b).map(s=>`<tr><td>${fD(E[s].t)}</td><td class="num">${tipps[s].toLocaleString('de-DE')}</td><td class="num">${fN(NQ[s])}</td><td>${abweichung(tipps[s],NQ[s],true)}</td></tr>`).join('');
+  if(rBis>=E.length-1)document.getElementById('d-tipps').open=true;}
+const rZur=document.getElementById('r-zur'),rVor=document.getElementById('r-vor');
+rZur.onclick=()=>{if(rSel>0){rSel--;drawR();calc();}};
+rVor.onclick=()=>{if(rSel<rBis){rSel++;drawR();calc();}};
+document.getElementById('r-neu').onclick=()=>{rSel=rBis=0;for(const k in tipps)delete tipps[k];tippTabelle();document.getElementById('d-tipps').open=false;drawR();calc();};
+function drawR(anim){
+  const box=document.getElementById('c2r');box.innerHTML='';
+  const W=Math.min(box.clientWidth||480,480);
+  zeichneRaster(box,W,rSel,{anim});
+  const s=rSel,cur=E[s];
+  document.getElementById('rinfo').innerHTML=`<div class="k">30 Cent kaufen im ${fD(cur.t)}</div><div class="big">${fN(NQ[s])}<small>${NQ[s]<1.5?'Frage':'Fragen'}</small></div>
+    <div class="s">${kurz(cur.n)} · ${fCt(cur.c)} je Frage${s?' · '+fPct(cur.fall)+' zur Vorstufe':''}</div>
+    <div class="o3">Ein Kästchen = eine Frage zum Preis von o3 im Januar 2025 (29,9 ct). Das Raster fasst ${NMAX} Kästchen.</div>`;
+  const F=farben(Math.max(s,1));
+  document.getElementById('rleg').innerHTML=`<span><i class="sw" style="background:${F[0]};outline:1.5px solid ${F[0]};outline-offset:1px"></i>o3, Jan. 2025</span>`+(s>1?`<span><i class="sw" style="background:${F[1]}"></i><i class="sw" style="background:${F[s-1]}"></i>frühere Stufen</span>`:'')+(s?`<span><i class="sw" style="background:${F[s]}"></i>neu in dieser Stufe</span>`:'');
+  let txt;
+  if(!s)txt=`<span class="ex">Ausgangspunkt: das erste Modell mit 75 % richtigen Antworten kostet 29,9 ct je Frage</span>`;
+  else{const neu=VOLL[s]-VOLL[s-1];
+    txt=`<span class="m">+${neu.toLocaleString('de-DE')} ${neu===1?'Kästchen':'Kästchen'}</span><span class="ex">Preis ${fPct(cur.fall)} zur Vorstufe${tipps[s]!=null?' · Ihre Schätzung '+tipps[s].toLocaleString('de-DE')+': '+abweichung(tipps[s],NQ[s]):''}</span>`;
+    if(s===E.length-1){const vorher=VOLL[s-1],maxF=Math.max(...E.slice(1,s).map(r=>r.fall)),wo=E.slice(1,s).find(r=>r.fall===maxF);
+      txt+=`<span class="ex" style="border-radius:10px">Der letzte Schritt brachte ${neu} Kästchen, mehr als alle früheren zusammen (${vorher}). Der Preis fiel dabei um ${Math.round(cur.fall*100)} %, weniger als im ${fD(wo.t)} (${fPct(maxF)}). Als fiele der Preis eines Neuwagens von 50.000 auf 69.</span>`;}}
+  document.getElementById('now2r').innerHTML=txt;
+  rZur.disabled=rSel===0;rVor.disabled=rSel>=rBis;
+  rVor.style.display=rSel<rBis?'':'none';
+  document.getElementById('r-pos').textContent=`Preisstufe ${rSel+1} von ${E.length}`;
+  schaetzUI();
+}
+function setAnsicht(a){ansicht2=a;stop2();
+  document.getElementById('v-raster').setAttribute('aria-pressed',a==='raster');document.getElementById('v-treppe').setAttribute('aria-pressed',a==='treppe');
+  document.getElementById('ansicht-raster').hidden=a!=='raster';document.getElementById('ansicht-treppe').hidden=a!=='treppe';
+  if(a==='raster')drawR();else draw2();calc();}
+document.getElementById('v-raster').onclick=()=>setAnsicht('raster');
+document.getElementById('v-treppe').onclick=()=>setAnsicht('treppe');
+// Druckfassung: vier kleine Raster unter der Treppe (Jan. 2025, Juni 2025, Feb. 2026, Juli 2026)
+function drawDruckR(){if(!druck)return;const box=document.getElementById('druck2r');box.innerHTML='';
+  const t=document.createElement('div');t.className='dr-titel';t.textContent='Was 30 Cent kaufen: ein Kästchen = eine Frage zum o3-Preis vom Januar 2025 (Raster mit 725 Kästchen)';box.appendChild(t);
+  const reihe=document.createElement('div');reihe.className='dr-reihe';box.appendChild(reihe);
+  const W=(Math.min(box.clientWidth||880,880)-50-3*18)/4;
+  [0,2,5,7].forEach(s=>{const p=document.createElement('div');reihe.appendChild(p);
+    const h=document.createElement('div');h.className='h';h.innerHTML=`${fD(E[s].t)}: ${fN(NQ[s])} ${NQ[s]<1.5?'Frage':'Fragen'}<br><span>${kurz(E[s].n)}, ${fCt(E[s].c)} je Frage</span>`;p.appendChild(h);
+    zeichneRaster(p,W,s,{druck:true});});}
+
 /* ---- Diagramm 3: Arbeitsweisen nach Mollick (Konzeptschema, eigene Zuordnung der Schritte) ---- */
 const SCHRITTE=['Ziel setzen','Planen','Ausführen','Entscheiden','Prüfen','Freigeben'];
 const WEISEN=[
@@ -339,11 +478,13 @@ function draw3(){const g=document.getElementById('g3');g.innerHTML='';
   document.querySelector('#now3 .ex').style.borderRadius='10px';
 }
 
-function all(){draw1();draw2();draw3();}
+function all(){draw1();if(ansicht2==='raster')drawR();else draw2();drawDruckR();draw3();}
+// Ansicht wählen: ?ansicht=treppe öffnet die Treppe; die Druckansicht zeigt Treppe und vier kleine Raster
+if(druck||new URLSearchParams(location.search).get('ansicht')==='treppe')setAnsicht('treppe');
 all();calc();
-let to;addEventListener('resize',()=>{clearTimeout(to);to=setTimeout(all,120);});
+let to,breite=innerWidth;addEventListener('resize',()=>{if(innerWidth===breite)return;breite=innerWidth;clearTimeout(to);to=setTimeout(all,120);});
 if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
-window.__ki={METR,EPOCH,slope,WEISEN,ANL,an,draw3};
+window.__ki={METR,EPOCH,slope,WEISEN,ANL,an,draw3,NQ,VOLL};
 })();
 </script>
 </body></html>

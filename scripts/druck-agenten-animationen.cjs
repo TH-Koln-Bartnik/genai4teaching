@@ -14,7 +14,7 @@ const BASE='https://th-koln-bartnik.github.io/genai4teaching/interactions/';
   await shot('skill-karte.html#druck','svg#buehne','skill-karte.png',1000);
   await shot('agenten-engpass.html#druck','.pa','agenten-engpass.png',1000);
   await shot('ki-entwicklung.html?zeige=zeithorizont#druck','#c1','ki-zeithorizont.png',920);
-  await shot('ki-entwicklung.html?zeige=kosten#druck','#c2','ki-kosten.png',920);
+  await shot('ki-entwicklung.html?zeige=kosten#druck','#k2bild','ki-kosten.png',920); // Treppe und vier kleine Raster
   await shot('ki-entwicklung.html?zeige=arbeitsweisen#druck','#c3','ki-arbeitsweisen.png',920);
   // Daten als CSV
   const p=await b.newPage(); await p.goto(R+'ki-entwicklung.html'); const d=await p.evaluate(()=>window.__ki);
