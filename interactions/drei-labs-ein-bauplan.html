@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drei Labore, ein Bauplan: Modell, Werkzeuge und eine Schleife darum</title>
+<style>
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; margin:0 4px 4px 0; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p { max-width:75ch; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+  table.begriffe { border-collapse:collapse; font-size:14px; margin:6px 0 8px; }
+  table.begriffe th, table.begriffe td { border-bottom:1px solid var(--hell); padding:4px 10px 4px 0; text-align:left; vertical-align:top; }
+
+  /* SVG: drei Zustände je Element (Regel F6) */
+  svg text { font-size:16px; }
+  svg text.u { font-size:14px; }
+  svg text.b { font-weight:650; }
+  .f { fill:var(--c, var(--tinte)); }
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; }
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* Druckansicht (#druck) und Hörsaalmodus (?hoersaal) */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher, .druck h1 { display:none !important; }
+  .druck .kontext { --c:var(--grau); }   /* im Druck dunkler, damit Graustufen lesbar bleiben */
+  .druck .neu { --c:var(--tinte); }      /* Druck in reinen Graustufen */
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Drei Labore, ein Bauplan: Modell, Werkzeuge und eine Schleife darum</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Google sagt „Orchestrierungsschicht“, OpenAI und Anthropic sagen „Harness“. Meinen sie dasselbe?</p>
+    <button data-tipp="0">im Kern dasselbe Bauteil</button>
+    <button data-tipp="1">drei verschiedene Dinge</button>
+    <button data-tipp="2">nur der Name ist neu, die Sache gab es 2022 nicht</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 900 460" role="img"
+       aria-label="In der Mitte ein Sprachmodell, rechts Werkzeuge, darum eine Schleife. Google nennt die Schleife Orchestrierungsschicht, OpenAI nennt sie Harness. Jede Runde endet bei den Nutzenden. Anthropic fasst Modell und Harness zum Gehirn zusammen, die Werkzeuge in einer Sandbox zu den Händen, und eine Session protokolliert jeden Schritt. Eine Notiz am Harness: Er enthält Annahmen darüber, was das Modell nicht kann.">
+    <defs>
+      <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+      </marker>
+    </defs>
+
+    <!-- Schritt 1: Modell in der Mitte -->
+    <g data-ab="0" data-grau-ab="3">
+      <rect class="s" x="300" y="192" width="120" height="56" rx="8" style="fill:var(--grund);stroke-width:2.5"/>
+      <text class="f b" x="360" y="226" text-anchor="middle">Modell</text>
+    </g>
+
+    <!-- Schritt 2: Werkzeuge rechts (verschwindet, wenn sie in Schritt 8 zu den Händen werden) -->
+    <g data-ab="1" data-grau-ab="3" data-bis="6">
+      <line class="s" x1="424" y1="220" x2="638" y2="220" marker-start="url(#pfeil)" marker-end="url(#pfeil)"/>
+      <text class="f b" x="648" y="214">Werkzeuge</text>
+      <text class="f u" x="648" y="234">Suche, Code, Dateien</text>
+    </g>
+
+    <!-- Schritt 3: Schleife um das Modell, bis an die Werkzeuge -->
+    <g data-ab="2" data-grau-ab="3">
+      <path class="s" d="M 400 141.05 A 185 80 0 1 0 460 141.05" marker-end="url(#pfeil)" style="stroke-width:2.5"/>
+      <text class="f u" x="430" y="128" text-anchor="middle">planen · handeln · beobachten</text>
+    </g>
+
+    <!-- Schritt 4: Google-Etikett an der Schleife -->
+    <g data-ab="3" data-grau-ab="4">
+      <line class="s" x1="480" y1="298" x2="480" y2="324" style="stroke-width:1.5"/>
+      <text class="f" x="470" y="342">Google 2024: Orchestrierungsschicht</text>
+    </g>
+
+    <!-- Schritt 5: OpenAI-Etikett darunter -->
+    <g data-ab="4" data-grau-ab="6">
+      <text class="f" x="470" y="366">OpenAI 2026: „agent (or harness)“</text>
+    </g>
+
+    <!-- Schritt 6: Nutzende links, Runde endet -->
+    <g data-ab="5">
+      <rect class="s" x="10" y="194" width="112" height="52" rx="8" style="fill:var(--grund)"/>
+      <text class="f b" x="66" y="226" text-anchor="middle">Nutzende</text>
+      <line class="s" x1="243" y1="220" x2="128" y2="220" marker-end="url(#pfeil)"/>
+      <text class="f u" x="177" y="208" text-anchor="middle">Runde endet</text>
+    </g>
+
+    <!-- Schritt 7: Klammer um Modell und Schleife = Gehirn -->
+    <g data-ab="6">
+      <rect class="s" x="232" y="100" width="394" height="212" rx="14" style="stroke-dasharray:7 6"/>
+      <text class="f b" x="232" y="88">Anthropic 2026: Gehirn</text>
+    </g>
+
+    <!-- Schritt 8: Werkzeuge werden zu den Händen in der Sandbox -->
+    <g data-ab="7">
+      <line class="s" x1="424" y1="220" x2="634" y2="220" marker-start="url(#pfeil)" marker-end="url(#pfeil)"/>
+      <rect class="s" x="640" y="188" width="190" height="64" rx="8" style="fill:var(--grund)"/>
+      <text class="f b" x="735" y="215" text-anchor="middle">Hände</text>
+      <text class="f u" x="735" y="238" text-anchor="middle">Sandbox · Werkzeuge</text>
+    </g>
+
+    <!-- Schritt 9: Session als Protokollstreifen unten -->
+    <g data-ab="8">
+      <line class="s" x1="300" y1="279" x2="300" y2="394" style="stroke-width:1.5;stroke-dasharray:4 4"/>
+      <rect class="s" x="232" y="396" width="598" height="24" rx="4"/>
+      <path class="s" d="M268 396 v24 M304 396 v24 M340 396 v24 M376 396 v24 M412 396 v24 M448 396 v24 M484 396 v24 M520 396 v24 M556 396 v24 M592 396 v24" style="stroke-width:1"/>
+      <text class="f u" x="232" y="444">Session · Protokoll jedes Schritts</text>
+    </g>
+
+    <!-- Schritt 10: Notiz am Harness -->
+    <g data-ab="9">
+      <line class="s" x1="640" y1="86" x2="566" y2="160" style="stroke-width:1.5"/>
+      <path class="s" d="M640 30 H870 V72 L856 86 H640 Z M856 86 V72 H870" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f b" x="652" y="52">Annahmen:</text>
+      <text class="f u" x="652" y="74">Was kann das Modell nicht?</text>
+    </g>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <section class="nachher" id="nachher">
+    <details><summary>Begriffe der drei Labore und dieses Buchs</summary>
+      <table class="begriffe">
+        <tr><th></th><th>Google (2024)</th><th>OpenAI (2026)</th><th>Anthropic (2026)</th><th>dieses Buch</th></tr>
+        <tr><td>Kern</td><td>model</td><td>model</td><td>Claude</td><td>Modell</td></tr>
+        <tr><td>Schleife</td><td>orchestration layer</td><td>agent loop; „agent (or ‚harness‘)“</td><td>harness</td><td>Harness</td></tr>
+        <tr><td>Ausführung</td><td>tools</td><td>tools</td><td>hands: sandboxes und tools</td><td>Werkzeuge</td></tr>
+        <tr><td>Verlauf</td><td>–</td><td>–</td><td>session: append-only log</td><td>Protokoll</td></tr>
+      </table>
+      <p>Die Orchestrierungsschicht bei Google und der Harness bei OpenAI und Anthropic bezeichnen dasselbe Bauteil: die Schleife, die das Modell aufruft und seine Werkzeugaufrufe ausführen lässt. Anthropic fasst Modell und Harness zum „Gehirn“ (brain) zusammen und trennt es von den „Händen“ (hands), damit sich beide unabhängig austauschen lassen. Google nennt das Zusammenspiel von Modell, Werkzeugen und Orchestrierungsschicht eine kognitive Architektur (cognitive architecture).</p></details>
+    <details><summary>Bezug zum Gespann</summary>
+      <p>Im Bild des Gespanns aus dem vorigen Abschnitt ist das Modell das Pferd und der Harness das Geschirr, das dessen Kraft an den Wagen bindet und lenkbar macht.</p></details>
+    <details><summary>Bildunterschrift</summary>
+      <p>Eigene Darstellung nach Wiesinger et al. (2024), Bolin (2026) und Martin et al. (2026). Schematische Darstellung; sie zeigt die gemeinsame Bauweise, nicht die Software eines bestimmten Labors.</p></details>
+    <details><summary>Quellen</summary>
+      <p class="klein">Bolin, M. (2026, 23. Januar). <em>Unrolling the Codex agent loop</em>. OpenAI. https://openai.com/index/unrolling-the-codex-agent-loop/</p>
+      <p class="klein">Martin, L., Cemaj, G., &amp; Cohen, M. (2026, 8. April). <em>Scaling Managed Agents: Decoupling the brain from the hands</em>. Anthropic Engineering. https://www.anthropic.com/engineering/managed-agents</p>
+      <p class="klein">Wiesinger, J., Marlow, P., &amp; Vuskovic, V. (2024, September). <em>Agents</em> [Whitepaper]. Google. https://www.kaggle.com/whitepaper-agents</p></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // ================= HIER ANPASSEN: ein Eintrag je Schritt =================
+  var SCHRITTE = [
+    "In der Mitte steht das *Modell*: Text hinein, wahrscheinliche Fortsetzung heraus. Treffen Sie oben Ihre Vorhersage.",
+    "*Werkzeuge* lassen das Modell suchen, rechnen und Dateien ändern.",
+    "Eine *Schleife* ruft das Modell wieder auf, bis das Ziel erreicht ist.",
+    "Google nennt diese Schleife *Orchestrierungsschicht*; mit Modell und Werkzeugen bildet sie die Architektur des Agenten.",
+    "OpenAI nennt dieselbe Schleife bei Codex ausdrücklich *Harness*.",
+    "Jede Runde endet mit einer Antwort; dann entscheidet wieder der *Mensch*.",
+    "Anthropic fasst Modell und Harness zum *Gehirn* zusammen.",
+    "Die *Hände* führen Werkzeuge in einer abgeschotteten Sandbox aus.",
+    "Die *Session* protokolliert jeden Schritt außerhalb des Kontextfensters.",
+    "Harnesses enthalten *Annahmen* über Modellschwächen; bessere Modelle machen manche überflüssig."
+  ];
+  var VORHERSAGE = { richtig: 0, optionen: ["im Kern dasselbe Bauteil", "drei verschiedene Dinge", "nur der Name ist neu, die Sache gab es 2022 nicht"] };
+  // =========================================================================
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  // #druck: vollständiges Bild ohne Steuerung (A5); ?hoersaal: Unterschrift aus (T7)
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };  // für das Prüfskript
+})();
+</script>
+</body>
+</html>
