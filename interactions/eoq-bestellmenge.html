@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die optimale Bestellmenge gleicht zwei gegenläufige Kosten aus</title>
+<style>
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+
+  svg text { font-size:20px; }
+  .f { fill:var(--c, var(--tinte)); }
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2.5; fill:none; stroke-linecap:round; }
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }
+  .leit    { --c:var(--akzent) !important; }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher { display:none !important; }
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Die optimale Bestellmenge gleicht zwei gegenläufige Kosten aus</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Bei welcher Bestellmenge sind die Gesamtkosten am niedrigsten?</p>
+    <button data-tipp="0">bei sehr kleinen Mengen</button>
+    <button data-tipp="1">wo Lager- und Bestellkosten gleich hoch sind</button>
+    <button data-tipp="2">bei sehr großen Mengen</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 900 330" role="img" aria-label="Kostenkurven über der Bestellmenge: Lagerkosten steigen, Bestellkosten sinken, die Gesamtkosten haben ihr Minimum bei rund 245 Stück, wo beide Kostenarten gleich hoch sind">
+    <g data-ab="5">
+      <rect class="f" x="341.5" y="30" width="125.7" height="260" style="fill-opacity:.13"/>
+      <text class="f" x="404.4" y="22" text-anchor="middle">±20 % Menge: höchstens 2,5 % Mehrkosten</text>
+    </g>
+
+    <g data-ab="0">
+      <line class="s" x1="90" y1="290" x2="860" y2="290" style="stroke-width:1.5"/>
+      <line class="s" x1="90" y1="290" x2="90" y2="30" style="stroke-width:1.5"/>
+      <text class="f" x="860" y="318" text-anchor="end">Bestellmenge Q</text>
+      <text class="f" x="98" y="48">Kosten pro Jahr</text>
+    </g>
+
+    <g data-ab="1" data-grau-ab="3">
+      <path class="s" d="M90.0,290.0 L96.4,289.0 L102.8,288.0 L109.2,287.0 L115.7,286.0 L122.1,285.0 L128.5,284.0 L134.9,283.0 L141.3,282.0 L147.8,281.0 L154.2,280.0 L160.6,279.0 L167.0,278.0 L173.4,277.0 L179.8,276.0 L186.2,275.0 L192.7,274.0 L199.1,273.0 L205.5,272.0 L211.9,271.0 L218.3,270.0 L224.8,269.0 L231.2,268.0 L237.6,267.0 L244.0,266.0 L250.4,265.0 L256.8,264.0 L263.2,263.0 L269.7,262.0 L276.1,261.0 L282.5,260.0 L288.9,259.0 L295.3,258.0 L301.8,257.0 L308.2,256.0 L314.6,255.0 L321.0,254.0 L327.4,253.0 L333.8,252.0 L340.2,251.0 L346.7,250.0 L353.1,249.0 L359.5,248.0 L365.9,247.0 L372.3,246.0 L378.8,245.0 L385.2,244.0 L391.6,243.0 L398.0,242.0 L404.4,241.0 L410.8,240.0 L417.2,239.0 L423.7,238.0 L430.1,237.0 L436.5,236.0 L442.9,235.0 L449.3,234.0 L455.8,233.0 L462.2,232.0 L468.6,231.0 L475.0,230.0 L481.4,229.0 L487.8,228.0 L494.2,227.0 L500.7,226.0 L507.1,225.0 L513.5,224.0 L519.9,223.0 L526.3,222.0 L532.8,221.0 L539.2,220.0 L545.6,219.0 L552.0,218.0 L558.4,217.0 L564.8,216.0 L571.2,215.0 L577.7,214.0 L584.1,213.0 L590.5,212.0 L596.9,211.0 L603.3,210.0 L609.8,209.0 L616.2,208.0 L622.6,207.0 L629.0,206.0 L635.4,205.0 L641.8,204.0 L648.2,203.0 L654.7,202.0 L661.1,201.0 L667.5,200.0 L673.9,199.0 L680.3,198.0 L686.8,197.0 L693.2,196.0 L699.6,195.0 L706.0,194.0 L712.4,193.0 L718.8,192.0 L725.2,191.0 L731.7,190.0 L738.1,189.0 L744.5,188.0 L750.9,187.0 L757.3,186.0 L763.8,185.0 L770.2,184.0 L776.6,183.0 L783.0,182.0 L789.4,181.0 L795.8,180.0 L802.2,179.0 L808.7,178.0 L815.1,177.0 L821.5,176.0 L827.9,175.0 L834.3,174.0 L840.8,173.0 L847.2,172.0 L853.6,171.0 L860.0,170.0" style="stroke-dasharray:10 7"/>
+      <text class="f" x="858" y="226" text-anchor="end">Lagerkosten steigen mit Q</text>
+    </g>
+
+    <g data-ab="2" data-grau-ab="3">
+      <path class="s" d="M169.6,96.5 L175.3,109.5 L181.1,120.9 L186.8,131.0 L192.6,139.9 L198.3,147.8 L204.1,155.0 L209.8,161.5 L215.6,167.4 L221.3,172.8 L227.1,177.7 L232.9,182.2 L238.6,186.4 L244.4,190.2 L250.1,193.8 L255.9,197.2 L261.6,200.3 L267.4,203.2 L273.1,205.9 L278.9,208.5 L284.6,210.9 L290.4,213.2 L296.1,215.3 L301.9,217.3 L307.7,219.2 L313.4,221.1 L319.2,222.8 L324.9,224.4 L330.7,226.0 L336.4,227.5 L342.2,228.9 L347.9,230.3 L353.7,231.6 L359.4,232.8 L365.2,234.0 L370.9,235.2 L376.7,236.3 L382.5,237.3 L388.2,238.4 L394.0,239.3 L399.7,240.3 L405.5,241.2 L411.2,242.1 L417.0,242.9 L422.7,243.7 L428.5,244.5 L434.2,245.3 L440.0,246.0 L445.7,246.7 L451.5,247.4 L457.2,248.1 L463.0,248.7 L468.8,249.3 L474.5,249.9 L480.3,250.5 L486.0,251.1 L491.8,251.7 L497.5,252.2 L503.3,252.7 L509.0,253.2 L514.8,253.7 L520.5,254.2 L526.3,254.7 L532.0,255.2 L537.8,255.6 L543.6,256.0 L549.3,256.5 L555.1,256.9 L560.8,257.3 L566.6,257.7 L572.3,258.1 L578.1,258.4 L583.8,258.8 L589.6,259.2 L595.3,259.5 L601.1,259.9 L606.8,260.2 L612.6,260.5 L618.3,260.9 L624.1,261.2 L629.9,261.5 L635.6,261.8 L641.4,262.1 L647.1,262.4 L652.9,262.6 L658.6,262.9 L664.4,263.2 L670.1,263.5 L675.9,263.7 L681.6,264.0 L687.4,264.2 L693.1,264.5 L698.9,264.7 L704.7,264.9 L710.4,265.2 L716.2,265.4 L721.9,265.6 L727.7,265.8 L733.4,266.1 L739.2,266.3 L744.9,266.5 L750.7,266.7 L756.4,266.9 L762.2,267.1 L767.9,267.3 L773.7,267.5 L779.4,267.7 L785.2,267.8 L791.0,268.0 L796.7,268.2 L802.5,268.4 L808.2,268.6 L814.0,268.7 L819.7,268.9 L825.5,269.1 L831.2,269.2 L837.0,269.4 L842.7,269.5 L848.5,269.7 L854.2,269.8 L860.0,270.0" style="stroke-dasharray:1 6"/>
+      <text class="f" x="100" y="236">Bestellkosten</text>
+      <text class="f" x="100" y="258">sinken mit Q</text>
+    </g>
+
+    <g data-ab="3">
+      <path class="s" d="M169.6,84.1 L175.3,96.2 L181.1,106.7 L186.8,115.9 L192.6,123.9 L198.3,131.0 L204.1,137.2 L209.8,142.8 L215.6,147.8 L221.3,152.3 L227.1,156.3 L232.9,159.9 L238.6,163.2 L244.4,166.2 L250.1,168.9 L255.9,171.3 L261.6,173.5 L267.4,175.5 L273.1,177.4 L278.9,179.0 L284.6,180.5 L290.4,181.9 L296.1,183.2 L301.9,184.3 L307.7,185.3 L313.4,186.3 L319.2,187.1 L324.9,187.8 L330.7,188.5 L336.4,189.1 L342.2,189.6 L347.9,190.1 L353.7,190.5 L359.4,190.9 L365.2,191.2 L370.9,191.4 L376.7,191.6 L382.5,191.8 L388.2,191.9 L394.0,192.0 L399.7,192.0 L405.5,192.0 L411.2,192.0 L417.0,191.9 L422.7,191.9 L428.5,191.8 L434.2,191.6 L440.0,191.5 L445.7,191.3 L451.5,191.1 L457.2,190.8 L463.0,190.6 L468.8,190.3 L474.5,190.0 L480.3,189.7 L486.0,189.4 L491.8,189.1 L497.5,188.7 L503.3,188.3 L509.0,187.9 L514.8,187.5 L520.5,187.1 L526.3,186.7 L532.0,186.3 L537.8,185.8 L543.6,185.4 L549.3,184.9 L555.1,184.4 L560.8,183.9 L566.6,183.4 L572.3,182.9 L578.1,182.4 L583.8,181.9 L589.6,181.3 L595.3,180.8 L601.1,180.2 L606.8,179.7 L612.6,179.1 L618.3,178.5 L624.1,177.9 L629.9,177.3 L635.6,176.7 L641.4,176.1 L647.1,175.5 L652.9,174.9 L658.6,174.3 L664.4,173.7 L670.1,173.0 L675.9,172.4 L681.6,171.8 L687.4,171.1 L693.1,170.5 L698.9,169.8 L704.7,169.2 L710.4,168.5 L716.2,167.8 L721.9,167.1 L727.7,166.5 L733.4,165.8 L739.2,165.1 L744.9,164.4 L750.7,163.7 L756.4,163.0 L762.2,162.3 L767.9,161.6 L773.7,160.9 L779.4,160.2 L785.2,159.5 L791.0,158.8 L796.7,158.1 L802.5,157.4 L808.2,156.6 L814.0,155.9 L819.7,155.2 L825.5,154.4 L831.2,153.7 L837.0,153.0 L842.7,152.2 L848.5,151.5 L854.2,150.7 L860.0,150.0" style="stroke-width:3.5"/>
+      <text class="f" x="858" y="136" text-anchor="end">Gesamtkosten</text>
+    </g>
+
+    <g data-ab="4">
+      <line class="s" x1="404.4" y1="290" x2="404.4" y2="192.0" style="stroke-dasharray:4 5;stroke-width:2"/>
+      <circle class="f" cx="404.4" cy="241.0" r="6"/>
+      <circle class="f" cx="404.4" cy="192.0" r="7"/>
+      <text class="f" x="404.4" y="318" text-anchor="middle">Q* ≈ 245 Stück</text>
+    </g>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <section class="nachher" id="nachher">
+    <details><summary>Modellannahmen</summary>
+      <p>Lehrmodell, keine Messung: Jahresbedarf 1.200 Stück, 50 € je Bestellung, Lagerkosten 2 € je Stück und Jahr, gleichmäßiger Verbrauch, keine Fehlmengen, keine Mengenrabatte. Die Lagerkosten betragen H·Q/2, die Bestellkosten D·S/Q; das Minimum liegt bei Q* = √(2·D·S/H) ≈ 245 Stück. Bei 196 oder 294 Stück (±20 %) steigen die Gesamtkosten um 2,5 % bzw. 1,7 %, bei halber oder doppelter Menge um 25 %.</p></details>
+    <details><summary>Quelle</summary>
+      <p class="klein">Harris, F. W. (1990). How many parts to make at once. <em>Operations Research, 38</em>(6), 947–950. https://doi.org/10.1287/opre.38.6.947 (Nachdruck des Originals von 1913)</p></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var SCHRITTE = [
+    "Jede Bestellung kostet einen festen Betrag, jedes gelagerte Stück kostet laufend; treffen Sie oben Ihre Vorhersage.",
+    "Wer viel auf einmal bestellt, hat im Mittel mehr auf Lager: Die *Lagerkosten* steigen gleichmäßig.",
+    "Wer viel auf einmal bestellt, bestellt seltener: Die *Bestellkosten* sinken, erst steil, dann flach.",
+    "Die *Gesamtkosten* sind die Summe beider Kurven; sie fallen zuerst und steigen dann wieder.",
+    "Das *Minimum* liegt dort, wo Lager- und Bestellkosten gleich hoch sind: bei rund 245 Stück.",
+    "Das Minimum ist *flach*: Wer 20 Prozent daneben liegt, zahlt höchstens 2,5 Prozent mehr."
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: ["bei sehr kleinen Mengen", "wo Lager- und Bestellkosten gleich hoch sind", "bei sehr großen Mengen"] };
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };
+})();
+</script>
+</body>
+</html>
