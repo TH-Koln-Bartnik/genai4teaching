@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galerie: Was 2026 mit generativer KI möglich ist</title>
+<link rel="stylesheet" href="scm-viz/scm-viz.css">
+<style>
+  /* Graustufen plus genau eine Akzentfarbe (TH-Rot): "das, worum es gerade geht" */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#5f5f66; --linie:#d0d0d5; --akzent:#c81e0f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#0d1117; --tinte:#e6edf3; --grau:#9aa4af; --linie:#30363d; --akzent:#ff6b5b; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--grund); color: var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .g { max-width: 1040px; margin: 0 auto; padding: 10px 12px 14px; }
+
+  .g-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+    border-bottom: 2px solid var(--tinte); padding-bottom: 8px; margin-bottom: 10px; }
+  .g-count { font-variant-numeric: tabular-nums; color: var(--grau); font-size: 13px; white-space: nowrap; }
+  .g-title { margin: 0; font-size: clamp(16px, 2vw, 20px); font-weight: 650; line-height: 1.3; }
+  .g-title small { display: block; font-weight: 400; color: var(--grau); font-size: 12.5px; margin-top: 2px; }
+  .g-nav { display: flex; gap: 6px; }
+  .g-nav button { width: 40px; height: 40px; border: 1px solid var(--grau); border-radius: 50%;
+    background: var(--grund); color: var(--tinte); font-size: 20px; line-height: 1; cursor: pointer; }
+  .g-nav button:hover { border-color: var(--tinte); }
+  .g-nav button:focus-visible, .g-dots button:focus-visible, .g-teach a:focus-visible { outline: 2px solid var(--akzent); outline-offset: 2px; }
+
+  .g-stage { min-height: 200px; }
+  .g-stage .scm-viz { background: transparent; }
+  /* Bibliotheksfarben auf das Farbbudget der Galerie setzen: Graustufen, Akzent = TH-Rot */
+  .g-stage .scm-viz, .g-stage #host { --viz-accent: var(--akzent); --viz-error: var(--akzent);
+    --viz-information: var(--grau); --viz-financial: var(--grau);
+    --viz-ink: var(--tinte); --viz-material: var(--tinte); --viz-muted: var(--grau);
+    --viz-line: var(--linie); --viz-slot: #e4e4e4; --viz-hatch: #f3f3f3; --viz-bg: var(--grund); }
+  .g-error { padding: 24px; border: 1px dashed var(--linie); color: var(--grau); border-radius: 6px; }
+  .g-video { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; background: #000; border-radius: 6px; }
+  .g-frame { display: block; width: 100%; border: 1px solid var(--linie); border-radius: 6px; background: var(--grund); }
+
+  .g-teach { display: grid; grid-template-columns: 1fr auto; gap: 4px 18px; align-items: start; margin-top: 10px;
+    padding-top: 8px; border-top: 1px solid var(--linie); font-size: 15px; line-height: 1.5; }
+  .g-teach p { margin: 0; }
+  .g-teach .lehre { color: var(--grau); }
+  .g-teach a { color: var(--akzent); font-weight: 600; text-decoration: none; white-space: nowrap; grid-row: 1; grid-column: 2; }
+  .g-teach a:hover { text-decoration: underline; }
+  .g-teach details { grid-column: 1 / -1; font-size: 12.5px; color: var(--grau); margin-top: 4px; }
+  .g-teach summary { cursor: pointer; }
+
+  .g-dots { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+  .g-dots button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 1px solid var(--grau); background: var(--grund); cursor: pointer; }
+  .g-dots button[aria-current="true"] { background: var(--akzent); border-color: var(--akzent); }
+
+  @media (max-width: 600px) {
+    .g-head { grid-template-columns: 1fr auto; }
+    .g-count { grid-column: 1 / -1; }
+    .g-teach { grid-template-columns: 1fr; }
+    .g-teach a { grid-row: auto; grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+<div class="g" id="galerie" role="region" aria-roledescription="Galerie" aria-label="Was 2026 mit generativer KI möglich ist">
+  <div class="g-head">
+    <div class="g-count" id="count"></div>
+    <h2 class="g-title" id="title"></h2>
+    <div class="g-nav">
+      <button type="button" id="prev" aria-label="Vorheriger Beitrag">&#8249;</button>
+      <button type="button" id="next" aria-label="Nächster Beitrag">&#8250;</button>
+    </div>
+  </div>
+  <div class="g-stage" id="stage" aria-live="polite"></div>
+  <div class="g-teach" id="teach"></div>
+  <div class="g-dots" id="dots"></div>
+</div>
+
+<script src="scm-viz/scm-viz.js"></script>
+<script>
+(function () {
+  /* Vier Beiträge, je einer aus einem Kapitel des Buches. Typen: "page" (eingebettete Seite),
+     "video" (MP4 mit Untertiteln), "viz" (Animation aus scm-viz.js). "slug" ist der Deep-Link (#slug).
+     "hoehe" ist die Rückfallhöhe des Rahmens [breit, schmal]; gemessen wird, wenn möglich, die echte Seitenhöhe.
+     "link" führt aus der Galerie (im Kapitel per iframe eingebettet) zur Stelle im Buch. */
+  var SLIDES = [
+    {
+      type: "page", slug: "kosten", src: "ki-entwicklung.html?zeige=kosten", hoehe: [1150, 1750],
+      kicker: "Kapitel 2 · Kosten",
+      title: "Expertenwissen wird in 17 Monaten 725-mal billiger",
+      about: "Erst schätzen, dann aufdecken: Wie viele Fachfragen kaufen 30 Cent?",
+      lehre: "Ein Semester Tutor-Bot für 150 Studierende kostet nun rund 12 US-Dollar.",
+      link: "../kapitel02.html#sec-capabilities",
+      cite: "Emberson, L. (2026, 22. September). The plunging price of thought. Epoch AI. https://epoch.ai/publications/the-plunging-price-of-thought · Darstellung und Rechenbeispiel: R. Bartnik 2026."
+    },
+    {
+      type: "page", slug: "chatbot-agent", src: "chatbot-zu-agent.html", hoehe: [1050, 1100],
+      kicker: "Kapitel 2 · Agenten",
+      title: "Agenten wählen ihren nächsten Arbeitsschritt selbst",
+      about: "Dreizehn Klicks vom Chatbot bis zur Schleife aus Denken und Handeln.",
+      lehre: "Lehrende delegieren dann Aufgaben und prüfen Ergebnisse, statt Prompts zu feilen.",
+      link: "../kapitel02.html#sec-patterns-usage",
+      cite: "Bildfolge nach Grootendorst, M. (2025). A visual guide to LLM agents. https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents · Skala nach Roucher, A. u. a. (2024). Introducing smolagents. https://huggingface.co/blog/smolagents · Schleife nach Yao, S. u. a. (2023). ReAct. https://arxiv.org/abs/2210.03629"
+    },
+    {
+      type: "video", slug: "lernsong", src: "media/lernsong-forecast.mp4",
+      poster: "media/lernsong-forecast-poster.webp", vtt: "media/lernsong-forecast.vtt",
+      kicker: "Kapitel 6 · Lernsong",
+      title: "Ein Lernsong macht fünf Prognoseverfahren singbar",
+      about: "Fünf Verfahren an den Kaffeebechern eines erfundenen Campus-Cafés.",
+      lehre: "Der Song sichert Namen und Reihenfolge; das Rechnen tragen Lösungsbeispiele.",
+      link: "../kapitel06-fallbeispiele.html#sec-bsp-lernsong-forecast",
+      cite: "Every Forecast Is Wrong · How Many Cups Tomorrow? (5:15, englisch, Liedtext als Untertitel). Text, Beispieldaten und Animationscode: Claude; Musik: Suno; geprüft von R. Bartnik 2026."
+    },
+    {
+      type: "viz", slug: "engpass", viz: "bottleneck-queue", scenario: "bottleneck",
+      kicker: "Kapitel 4 · Prozessanimation",
+      title: "Vor dem langsamsten Schritt staut sich die Arbeit",
+      about: "Vier Szenarien zeigen: Mehr Kapazität hilft nur am Engpass.",
+      lehre: "Ein Sprachmodell hat sie programmiert; geprüft wird, ob sie wirklich rechnet.",
+      link: "../kapitel04.html#sec-widget-pruefen",
+      cite: "Goldratt, E. M., & Cox, J. (2014). The goal (4th ed.). North River Press. · Little, J. D. C. (1961). A proof for the queuing formula: L = λW. Operations Research, 9(3), 383–387. https://doi.org/10.1287/opre.9.3.383 · Lehrmodell, keine realen Simulationsergebnisse."
+    }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var handle = null, idx = 0, beobachter = null;
+  var schmal = function () { return window.innerWidth < 600; };
+
+  /* Höhe an die einbettende Seite melden (Kapitel 1 passt den iframe an), damit kein Scrollbalken entsteht. */
+  /* Inhaltshöhe statt scrollHeight: scrollHeight ist nie kleiner als der Rahmen, der Rahmen schrumpfte sonst nie. */
+  function inhalt(d) {
+    var b = d.body, cs = d.defaultView.getComputedStyle(b);
+    return Math.ceil(b.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom));
+  }
+  function melde() {
+    try { parent.postMessage({ typ: "galerie-hoehe", id: "galerie-kapitel01", h: inhalt(document) }, "*"); } catch (e) {}
+  }
+  if (window.ResizeObserver) new ResizeObserver(melde).observe(document.body);
+
+  function rahmenHoehe(f, s) {
+    f.style.height = s.hoehe[schmal() ? 1 : 0] + "px";
+    f.addEventListener("load", function () {
+      try {                                   /* gleiche Herkunft: echte Höhe der eingebetteten Seite übernehmen */
+        var d = f.contentDocument, passe = function () { var h = inhalt(d); if (h > 150) f.style.height = (h + 2) + "px"; };
+        passe();
+        if (window.ResizeObserver) { beobachter = new ResizeObserver(passe); beobachter.observe(d.body); }
+      } catch (e) { /* andere Herkunft (z. B. file://): Rückfallhöhe bleibt */ }
+    });
+  }
+
+  function mountStage(s) {
+    if (handle) { try { handle.destroy(); } catch (e) {} handle = null; }
+    if (beobachter) { beobachter.disconnect(); beobachter = null; }
+    var stage = $("stage"); stage.innerHTML = "";
+    if (s.type === "video") {
+      var v = document.createElement("video");
+      v.className = "g-video"; v.controls = true; v.playsInline = true; v.preload = "metadata";
+      v.poster = s.poster; v.setAttribute("aria-label", s.title);
+      var q = document.createElement("source"); q.src = s.src; q.type = "video/mp4"; v.appendChild(q);
+      var t = document.createElement("track"); t.kind = "subtitles"; t.srclang = "en"; t.label = "English (lyrics)"; t.src = s.vtt; t.default = true; v.appendChild(t);
+      stage.appendChild(v);
+    } else if (s.type === "page") {
+      var f = document.createElement("iframe");
+      f.className = "g-frame"; f.src = s.src; f.title = s.title;
+      f.setAttribute("allow", "fullscreen");
+      rahmenHoehe(f, s);
+      stage.appendChild(f);
+    } else {
+      var host = document.createElement("div"); host.id = "host"; stage.appendChild(host);
+      try {
+        handle = SCMViz.mount(host, { viz: s.viz, scenario: s.scenario, lang: "de", title: "hide" });
+      } catch (e) {
+        host.className = "g-error";
+        host.textContent = "Diese Animation konnte nicht geladen werden: " + e.message;
+      }
+    }
+  }
+
+  function show(i) {
+    idx = (i + SLIDES.length) % SLIDES.length;
+    var s = SLIDES[idx];
+    $("count").textContent = (idx + 1) + " / " + SLIDES.length;
+    $("count").setAttribute("aria-label", "Beitrag " + (idx + 1) + " von " + SLIDES.length);
+    $("title").textContent = s.title;
+    var small = document.createElement("small"); small.textContent = s.kicker; $("title").appendChild(small);
+
+    mountStage(s);
+
+    var t = $("teach"); t.textContent = "";
+    var p = document.createElement("p"); p.textContent = s.about; t.appendChild(p);
+    var a = document.createElement("a"); a.href = s.link; a.target = "_top"; a.textContent = "Im Kapitel ansehen →"; t.appendChild(a);
+    var l = document.createElement("p"); l.className = "lehre"; l.textContent = s.lehre; t.appendChild(l);
+    var d = document.createElement("details"), su = document.createElement("summary");
+    su.textContent = "Quelle"; d.appendChild(su);
+    var c = document.createElement("p"); c.textContent = s.cite; d.appendChild(c); t.appendChild(d);
+
+    var dots = $("dots"); dots.textContent = "";
+    SLIDES.forEach(function (sl, k) {
+      var b = document.createElement("button"); b.type = "button";
+      b.setAttribute("aria-label", "Beitrag " + (k + 1) + ": " + sl.title);
+      b.setAttribute("aria-current", String(k === idx));
+      b.addEventListener("click", function () { show(k); });
+      dots.appendChild(b);
+    });
+    try { history.replaceState(null, "", "#" + s.slug); } catch (e) {}
+    melde();
+  }
+
+  $("prev").addEventListener("click", function () { show(idx - 1); });
+  $("next").addEventListener("click", function () { show(idx + 1); });
+  document.addEventListener("keydown", function (e) {
+    if (e.target && /input|select|textarea|video/i.test(e.target.tagName)) return;
+    if (e.key === "ArrowLeft") show(idx - 1);
+    if (e.key === "ArrowRight") show(idx + 1);
+  });
+
+  var start = 0, hash = String(location.hash || "").replace(/^#/, "");
+  SLIDES.forEach(function (s, k) { if (s.slug === hash) start = k; });
+  show(start);
+  window.ANIM = { gehe: show, letzter: SLIDES.length - 1 };   /* für das Prüfskript */
+})();
+</script>
+</body>
+</html>
