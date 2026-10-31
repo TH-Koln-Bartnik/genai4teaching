@@ -35,7 +35,7 @@ Vier Beiträge mit Aussagetitel, zwei Sätzen, Link „Im Kapitel ansehen“ und
 - Deep-Research- und Skills-Satz (Schwarcz, Liang, Skills) als ein Satz in 1.2 erhalten; Plan nannte sie nicht ausdrücklich.
 - K7: HEPI 2026 geprüft (Stephenson & Armstrong, HEPI Report 199, 12.03.2026; Savanta, Dez. 2025, n = 1.054; 95 %, 94 %, 12 % vs. 3 %); Zitat „I'm not using my brain at all“ als Brücke zu 1.4. Neuer Eintrag `stephenson2026hepi`.
 - K10: Anhang B `sec-prompt-ai-sandwich` hat einen Einleitungsabsatz (Problem, Lösungsansatz, „Ergebnisse nicht berichtet“, Lee 2025). K11: Saarbrücken-Kasten in Kap. 4 hinter dem Pedersen-Kasten, mit einem Überleitungssatz.
-- Lernziel 3 auf das Expertise-Argument zugeschnitten, Lernziel 2 gekürzt. Lernfragen und Lösungshinweise unverändert gültig (Lernfrage 6 trägt Kernaussage 3).
+- Lernziele und MC-Kasten: `main`-Fassung (s. oben). Deren Lernziel 3 nennt nur Studierende, nicht Lehrende und Fähigkeitsüberhang; bei Bedarf ergänzen. Lernfragen und Lösungshinweise unverändert gültig (Lernfrage 6 trägt Kernaussage 3).
 - In Kap. 1 nicht mehr zitiert und nirgends sonst: `alammara`, `freeman2025`, `ma2025`, `marangunic2015b`, `monib2025`, `openai2025b`, `willemain1994`, `willemain1995`, `willison2025a`. Stehen weiter in `references.json` (erscheinen nicht im Verzeichnis); bei Bedarf entfernen.
 - Bilddateien der gestrichenen Abbildungen bleiben in `images/`; `docs/images/` hat sie beim Render entfernt.
 
@@ -43,6 +43,6 @@ Vier Beiträge mit Aussagetitel, zwei Sätzen, Link „Im Kapitel ansehen“ und
 `quarto render --to html` (Quarto 1.8.25): Zitier- und Querverweiswarnungen **0**; `?@`/`???` in den geänderten Seiten 0. Übrig: 36 × „OJS block count mismatch“, alle aus `kapitel04.qmd` (Little's-Law-Widget) und auf `main` identisch, also Altbestand. Download-PDF/EPUB in `docs/` nach dem Render aus Git zurückgeholt (unverändert, enthalten die Kürzung noch nicht).
 
 ## Offen
-1. Roman: Diff ansehen, dann Merge nach `main`. Vorher gegen den Kap.-2-Branch rebasen (Plan-Abhängigkeit).
+1. Roman: Diff ansehen (<https://github.com/TH-Koln-Bartnik/genai4teaching/compare/main...kapitel01-kuerzung>; nur Quelltext: Dateien `kapitel01.qmd`, `kapitel04.qmd`, `kapitel07-appendix02-prompt-sammlung.qmd`, `interactions/galerie-kapitel01.html`), dann Merge nach `main`. Vorher gegen den Kap.-2-Branch rebasen (Plan-Abhängigkeit).
 2. Druck-PDF neu rendern (Reihenfolge laut README), sobald gemergt.
 3. Optional: ungenutzte Einträge aus `references.json` entfernen; Updates U1, U3–U8 aus `kapitel01-argumente-und-optionen` (nicht Teil dieses Plans).
