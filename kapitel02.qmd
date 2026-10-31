@@ -3,23 +3,74 @@
 ::: {.callout-note title="Lernziele"}
 Nach diesem Kapitel können Sie …
 
-- in Laiensprache erklären, wie ein Sprachmodell Text in Tokens zerlegt, als Zahlen verarbeitet und Wort für Wort neuen Text erzeugt;
-- die drei Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Muster auswählen;
-- erklären, was sich seit 2022 um das Sprachmodell herum geändert hat, und Modell, Harness und Agent voneinander abgrenzen;
-- beschreiben, warum Sprachmodelle halluzinieren und welche Folgen das für den Einsatz in der Lehre hat;
-- die Jagged Frontier erklären und daraus ableiten, warum Sprachmodelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich gut abschneiden;
-- die Bausteine eines guten Prompts (Rolle, Aufgabe, Format, Beispiele) anwenden und belegen, welche verbreiteten Prompt-Tricks nichts bringen;
-- die Größenordnung des Energieverbrauchs einer Anfrage einordnen und die wichtigsten Argumente der Debatte wiedergeben.
+- in Laiensprache erklären, wie ein Sprachmodell Text erzeugt, warum es dabei halluziniert und was daraus für die Lehre folgt;
+- die Nutzungsmuster LLM, RAG und Agent unterscheiden, Modell und Harness abgrenzen und für eine Lehraufgabe das passende Setup wählen;
+- mit der Jagged Frontier begründen, warum Modelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich abschneiden;
+- einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen und verbreitete Prompt-Tricks als wirkungslos erkennen.
 :::
 
-::: {.callout-note title="Leitfragen"}
-*Versuchen Sie eine Antwort, bevor Sie weiterlesen; die Kernaussagen am Kapitelende greifen die Fragen in derselben Reihenfolge auf.*
+::: {.callout-note .mc-block title="Einstiegsfragen"}
+*Probleme aus dem Lehralltag, zu denen dieses Kapitel Lösungen anbietet. Wählen Sie eine Antwort, bevor Sie weiterlesen: Wer vorher rät, behält die Auflösung besser. Die Kernaussagen am Kapitelende greifen die Probleme in derselben Reihenfolge auf.*
 
-1. Warum erfinden Sprachmodelle gelegentlich Quellen, und lässt sich das ganz abstellen?
-2. Was unterscheidet ein reines Sprachmodell, ein Modell mit eigenem Material (RAG) und einen Agenten?
-3. Warum löst ein Modell eine schwierige Aufgabe und scheitert an einer ähnlich schwierigen?
-4. Bringt es etwas, ein Modell höflich zu bitten, ihm zu drohen oder ein Trinkgeld anzubieten?
-5. Ist der Energieverbrauch einer einzelnen Anfrage ein guter Grund, auf KI in der Lehre zu verzichten?
+::: mc-frage
+Ein Chatbot nennt einer Studentin eine Quelle mit Autor, Jahr und Titel. Die Quelle existiert nicht. Woran liegt das?
+
+- An einem Programmierfehler, den das nächste Update behebt.
+- Daran, dass das Modell auf überzeugende Antworten trainiert wurde, um zu täuschen.
+- [Daran, dass das Modell das wahrscheinlichste nächste Wort erzeugt, ohne Wahrheitsprüfung.]{.richtig}
+
+::: mc-rueckmeldung
+Halluzinationen folgen aus der Funktionsweise und lassen sich nicht ganz abstellen, nur eindämmen: durch eingegrenzten Input, Musterlösungen und systematische Prüfung (@sec-hallucinations).
+:::
+:::
+
+::: mc-frage
+Ein Chatbot soll Fragen zu Ihrem Skript beantworten, und zwar nur aus Ihrem Skript. Welches Setup passt?
+
+- [Ein Modell, das vor jeder Antwort passende Stellen aus dem Skript abruft (RAG).]{.richtig}
+- Ein reines Sprachmodell mit der Anweisung „Antworte nur aus dem Skript“.
+- Ein Agent, der selbstständig im Internet nach dem Skript sucht.
+
+::: mc-rueckmeldung
+Mit RAG bekommt das Modell ein Bücherregal; für die Lehre ist das meist der richtige Einstieg. RAG macht das Modell kundiger, nicht selbstständiger. Ein Agent bekäme einen Werkzeugkoffer und Handlungsspielraum, den diese Aufgabe nicht braucht (@sec-patterns-usage).
+:::
+:::
+
+::: mc-frage
+Ein Modell löst eine anspruchsvolle Statistikaufgabe tadellos und verzählt sich bei den Buchstaben eines Wortes. Wie erklärt sich das?
+
+- Das Modell war bei der zweiten Anfrage überlastet.
+- [Seine Fähigkeiten folgen nicht unserer Vorstellung von schwer und leicht.]{.richtig}
+- Einfache Aufgaben brauchen einen ausführlicheren Prompt.
+
+::: mc-rueckmeldung
+Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze, die Jagged Frontier. Wer sie nicht kennt, arbeitet mit KI schlechter als ohne (@sec-capabilities).
+:::
+:::
+
+::: mc-frage
+Ein Kollege beginnt jeden Prompt mit „Du bist ein Weltklasse-Experte, ich gebe dir 200 Dollar Trinkgeld“. Die Ergebnisse bleiben mittelmäßig. Was hilft stattdessen?
+
+- Ein höheres Trinkgeld oder eine Drohung mit Konsequenzen.
+- Derselbe Prompt auf Englisch und mit Großbuchstaben.
+- [Aufgabe, Format und Beispiele so präzise wie für eine neue Hilfskraft.]{.richtig}
+
+::: mc-rueckmeldung
+Höflichkeit, Drohungen und Trinkgeld ändern nichts. Wer das Modell wie eine junge Hilfskraft anleitet, präzise, strukturiert und mit Beispielen, kommt weiter (@sec-prompting-myths).
+:::
+:::
+
+::: mc-frage
+Studierende fragen, ob sie aus Klimagründen auf KI verzichten sollten. Welche Einordnung trifft zu?
+
+- [Eine Anfrage verbraucht wenig, der Gesamtbedarf der Rechenzentren wächst stark.]{.richtig}
+- Eine Anfrage verbraucht so viel Strom wie eine Waschmaschinenladung.
+- KI fällt im Energiebedarf der Rechenzentren kaum ins Gewicht.
+
+::: mc-rueckmeldung
+Beides stimmt zugleich: Eine Textanfrage liegt bei Bruchteilen einer Wattstunde, aber der Bedarf der Infrastruktur wächst schneller als die Effizienz. Die Steuerung ist eine politische Aufgabe (@sec-energy).
+:::
+:::
 :::
 
 ## Definition einiger Grundbegriffe {#sec-definitionen}
