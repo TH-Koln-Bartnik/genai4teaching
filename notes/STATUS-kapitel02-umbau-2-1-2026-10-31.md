@@ -44,3 +44,9 @@ Wortzahl Fließtext 2.1 (ohne Bildunterschriften, Tabellen, URLs): 5.217 → 4.5
 4. Altdateien `interactions/tokenizer-explorer.html`, `images/qr/qr-tokenizer-explorer.png`, `images/qr/qr-lernspiel-agent-patterns.png` liegen noch im Repo (nicht verlinkt bzw. nur online-Link); löschen, wenn gewünscht.
 5. `anthropic2026dreams` wird in Kap. 2 nicht mehr zitiert (steht weiter in `references.json`).
 6. Lösungshinweise Kap. 2 sind unverändert gültig (keine Lernfrage verweist auf gestrichene Inhalte).
+
+## Nachtrag: Merge nach `main` (31.10.2026, ca. 17:05, Auftrag Roman)
+`kapitel02-umbau-2-1` in `main` gemergt (Merge-Commit `888219d`, auf Stand `d81443f` mit gemergtem Kapitel 1). Konflikt nur in `references.json`: Stand `main` (Kap.-1-Bereinigung, neun Einträge entfernt) plus die acht neuen Einträge; 439 Einträge, keine doppelten Schlüssel.
+`docs/` neu gerendert (Quarto 1.8.25): HTML und EPUB, Download-PDF unverändert (Druckvorlage). HTML: 0 Zitier-/Querverweiswarnungen, `?@`/`???` in Kap. 1 und 2: 0. Commit `da81d86`, gepusht; GitHub Pages zeigt den neuen Stand nach dem nächsten Deploy.
+Löschbar (nur im GitHub-Webinterface): `kapitel02-umbau-2-1`, `kapitel02-frontier-animationen`.
+Offen Nr. 1 erledigt; Nr. 2 (P8, Modellwahl 2.3 rebasen) ist der Startauftrag der nächsten Sitzung, jetzt direkt auf `main`.
