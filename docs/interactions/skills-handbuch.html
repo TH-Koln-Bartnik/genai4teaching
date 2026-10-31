@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ein Skill lädt sein Wissen erst, wenn es gebraucht wird</title>
+<style>
+  /* ---- Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) ---- */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p { max-width:75ch; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+
+  /* ---- SVG: drei Zustände je Element (Regel F6) ---- */
+  svg text { font-size:15px; }
+  svg text.u { font-size:14px; }
+  svg text.b { font-weight:650; }
+  .f { fill:var(--c, var(--tinte)); }                    /* Text und Flächen */
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; } /* Rahmen, Linien */
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }                         /* Grau statt Transparenz: nichts scheint durch */
+  .leit    { --c:var(--akzent) !important; }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* ---- Druckansicht (#druck) und Hörsaalmodus (?hoersaal) ---- */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher, .druck h1 { display:none !important; }
+  .druck .kontext { --c:var(--grau); }   /* im Druck dunkler, damit Graustufen lesbar bleiben */
+  .druck .neu { --c:var(--tinte); }      /* Druckbild ganz in Tinte (A5) */
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Ein Skill lädt sein Wissen erst, wenn es gebraucht wird</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Ein Agent hat 50 Skills installiert. Was davon liegt beim Start im Kontextfenster?</p>
+    <button data-tipp="0">alle 50 vollständig</button>
+    <button data-tipp="1">nur Name und Kurzbeschreibung je Skill</button>
+    <button data-tipp="2">gar nichts</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 900 440" role="img"
+       aria-label="Links ein hoher Rahmen für das Kontextfenster, rechts drei Skill-Ordner: Folien, Lernspiel, Tabelle. Beim Start wandert aus jedem Ordner nur eine Zeile mit Name und Kurzbeschreibung ins Fenster. Eine Anfrage nach einer Excel-Tabelle passt zum Skill Tabelle; nur aus diesem Ordner wandern dann die Anleitung SKILL.md und später eine Zusatzdatei ins Fenster, die Zeilen der anderen Skills werden grau. Etiketten vergleichen die drei Stufen mit Inhaltsverzeichnis, Kapitel und Anhang eines Handbuchs.">
+    <defs>
+      <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+      </marker>
+    </defs>
+
+    <!-- Schritt 1: hoher Rahmen links = Kontextfenster -->
+    <g data-ab="0">
+      <rect class="s" x="160" y="50" width="370" height="380" rx="10" style="stroke-width:2.5"/>
+      <text class="f b" x="345" y="36" text-anchor="middle">Kontextfenster</text>
+    </g>
+
+    <!-- Schritt 2: drei Skill-Ordner rechts (Anleitung + Zusatzdatei als Seiten ohne Text) -->
+    <g data-ab="1">
+      <text class="f b" x="757" y="36" text-anchor="middle">Skills</text>
+      <!-- Folien -->
+      <path class="s" d="M634,68 L642,56 L700,56 L708,68"/>
+      <rect class="s" x="630" y="68" width="255" height="84" rx="6" style="fill:var(--grund)"/>
+      <text class="f b" x="646" y="98">Folien</text>
+      <line class="s" x1="646" y1="114" x2="760" y2="114" style="stroke-width:4;stroke-linecap:round"/>
+      <rect class="s" x="790" y="80" width="38" height="54" rx="2" style="stroke-width:1.5"/>
+      <path class="s" d="M797,92 H821 M797,101 H821 M797,110 H816 M797,119 H821" style="stroke-width:1.5"/>
+      <rect class="s" x="842" y="96" width="30" height="38" rx="2" style="stroke-width:1.5"/>
+      <path class="s" d="M848,108 H866 M848,117 H862" style="stroke-width:1.5"/>
+      <!-- Lernspiel -->
+      <path class="s" d="M634,180 L642,168 L700,168 L708,180"/>
+      <rect class="s" x="630" y="180" width="255" height="84" rx="6" style="fill:var(--grund)"/>
+      <text class="f b" x="646" y="210">Lernspiel</text>
+      <line class="s" x1="646" y1="226" x2="760" y2="226" style="stroke-width:4;stroke-linecap:round"/>
+      <rect class="s" x="790" y="192" width="38" height="54" rx="2" style="stroke-width:1.5"/>
+      <path class="s" d="M797,204 H821 M797,213 H821 M797,222 H816 M797,231 H821" style="stroke-width:1.5"/>
+      <rect class="s" x="842" y="208" width="30" height="38" rx="2" style="stroke-width:1.5"/>
+      <path class="s" d="M848,220 H866 M848,229 H862" style="stroke-width:1.5"/>
+      <!-- Tabelle -->
+      <path class="s" d="M634,292 L642,280 L700,280 L708,292"/>
+      <rect class="s" x="630" y="292" width="255" height="84" rx="6" style="fill:var(--grund)"/>
+      <text class="f b" x="646" y="322">Tabelle</text>
+      <line class="s" x1="646" y1="338" x2="760" y2="338" style="stroke-width:4;stroke-linecap:round"/>
+      <rect class="s" x="790" y="304" width="38" height="54" rx="2" style="stroke-width:1.5"/>
+      <path class="s" d="M797,316 H821 M797,325 H821 M797,334 H816 M797,343 H821" style="stroke-width:1.5"/>
+      <rect class="s" x="842" y="320" width="30" height="38" rx="2" style="stroke-width:1.5"/>
+      <path class="s" d="M848,332 H866 M848,341 H862" style="stroke-width:1.5"/>
+    </g>
+
+    <!-- Schritt 3: Stufe 1, je eine Zeile pro Ordner im Fenster, Pfeile vom Ordner ins Fenster -->
+    <g data-ab="2">
+      <text class="f b" x="178" y="82">Stufe 1: Name + Kurzbeschreibung</text>
+      <rect class="s" x="176" y="94" width="338" height="24" rx="4" style="fill:var(--grund)"/>
+      <text class="f u" x="188" y="111">Folien</text>
+      <line class="s" x1="290" y1="106" x2="470" y2="106" style="stroke-width:4;stroke-linecap:round"/>
+      <rect class="s" x="176" y="124" width="338" height="24" rx="4" style="fill:var(--grund)"/>
+      <text class="f u" x="188" y="141">Lernspiel</text>
+      <line class="s" x1="290" y1="136" x2="470" y2="136" style="stroke-width:4;stroke-linecap:round"/>
+      <rect class="s" x="176" y="154" width="338" height="24" rx="4" style="fill:var(--grund)"/>
+      <text class="f u" x="188" y="171">Tabelle</text>
+      <line class="s" x1="290" y1="166" x2="470" y2="166" style="stroke-width:4;stroke-linecap:round"/>
+      <line class="s" x1="626" y1="106" x2="519" y2="106" marker-end="url(#pfeil)"/>
+      <line class="s" x1="626" y1="218" x2="519" y2="136" marker-end="url(#pfeil)"/>
+      <line class="s" x1="626" y1="330" x2="519" y2="166" marker-end="url(#pfeil)"/>
+    </g>
+
+    <!-- Schritt 4: Anfrage-Sprechblase, passt zur Zeile Tabelle -->
+    <g data-ab="3">
+      <path class="s" d="M300,200 H504 Q514,200 514,210 V224 Q514,234 504,234 H334 L304,248 L316,234 H300 Q290,234 290,224 V210 Q290,200 300,200 Z" style="fill:var(--grund)"/>
+      <text class="f" x="402" y="222" text-anchor="middle">„Bitte eine Excel-Tabelle“</text>
+      <line class="s" x1="402" y1="198" x2="402" y2="182" marker-end="url(#pfeil)"/>
+      <text class="f b" x="492" y="172" text-anchor="middle">✓</text>
+    </g>
+
+    <!-- Schritt 5: Stufe 2, Anleitung SKILL.md wandert aus dem Ordner Tabelle ins Fenster -->
+    <g data-ab="4">
+      <rect class="s" x="176" y="252" width="338" height="100" rx="6" style="fill:var(--grund)"/>
+      <text class="f b" x="190" y="276">Stufe 2: Anleitung (SKILL.md)</text>
+      <path class="s" d="M190,298 H490 M190,314 H450 M190,330 H470" style="stroke-width:2.5"/>
+      <line class="s" x1="626" y1="352" x2="519" y2="303" marker-end="url(#pfeil)"/>
+    </g>
+    <!-- ab Schritt 5 grau: Zeilen der nicht ausgelösten Skills (deckt die Zeilen aus Schritt 3 ab, nichts scheint durch) -->
+    <g data-ab="4" data-grau-ab="4">
+      <rect class="s" x="176" y="94" width="338" height="24" rx="4" style="fill:var(--grund);stroke-width:3"/>
+      <text class="f u" x="188" y="111">Folien</text>
+      <line class="s" x1="290" y1="106" x2="470" y2="106" style="stroke-width:4;stroke-linecap:round"/>
+      <rect class="s" x="176" y="124" width="338" height="24" rx="4" style="fill:var(--grund);stroke-width:3"/>
+      <text class="f u" x="188" y="141">Lernspiel</text>
+      <line class="s" x1="290" y1="136" x2="470" y2="136" style="stroke-width:4;stroke-linecap:round"/>
+      <line class="s" x1="626" y1="106" x2="519" y2="106" marker-end="url(#pfeil)" style="stroke-width:3"/>
+      <line class="s" x1="626" y1="218" x2="519" y2="136" marker-end="url(#pfeil)" style="stroke-width:3"/>
+    </g>
+
+    <!-- Schritt 6: Stufe 3, Zusatzdatei nur bei Bedarf -->
+    <g data-ab="5">
+      <rect class="s" x="176" y="366" width="274" height="40" rx="6" style="fill:var(--grund)"/>
+      <text class="f u b" x="190" y="391">Stufe 3: Zusatzdatei bei Bedarf</text>
+      <line class="s" x1="626" y1="368" x2="455" y2="386" marker-end="url(#pfeil)"/>
+    </g>
+
+    <!-- Schritt 7: Etiketten neben den Stufen = Handbuch -->
+    <g data-ab="6">
+      <text class="f b" x="146" y="74" text-anchor="end">Handbuch</text>
+      <path class="s" d="M156,94 H151 V178 H156 M156,252 H151 V352 H156 M156,366 H151 V406 H156" style="stroke-width:1.5"/>
+      <text class="f u" x="146" y="141" text-anchor="end">Inhaltsverzeichnis</text>
+      <text class="f u" x="146" y="307" text-anchor="end">Kapitel</text>
+      <text class="f u" x="146" y="391" text-anchor="end">Anhang</text>
+    </g>
+  </svg>
+
+  <!-- T3: ein Satz je Schritt, ≤ 20 Wörter, ersetzt den vorigen. *Wort* = Schlüsselwort im Akzent (F7). -->
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <!-- T6: Hintergrund erst nach dem letzten Schritt, eingeklappt. -->
+  <section class="nachher" id="nachher">
+    <details><summary>Begriffe</summary>
+      <p><strong>Skill:</strong> ein Ordner mit einer Anleitung für eine wiederkehrende Aufgabe, bei Bedarf ergänzt um Skripte, Vorlagen und Beispielmaterial.</p>
+      <p><strong>SKILL.md:</strong> die Pflichtdatei jedes Skills; sie beginnt mit Name und Kurzbeschreibung und enthält danach die eigentliche Anleitung als einfachen Text.</p>
+      <p><strong>Metadaten:</strong> die Angaben über den Skill, also Name und Kurzbeschreibung, an denen der Agent erkennt, wann der Skill zur Aufgabe passt.</p>
+      <p><strong>Kontextfenster:</strong> alles, was das Modell in diesem Augenblick vor sich hat; was nicht darin steht, existiert für die Antwort nicht.</p>
+      <p>Größenordnungen laut Anthropic-Dokumentation: Name und Kurzbeschreibung belegen etwa 100 Tokens je Skill, die Anleitung auf Stufe 2 bleibt unter 5.000 Tokens, und Zusatzdateien kosten nichts, solange der Agent sie nicht liest (Anthropic, o. J.). Für 50 installierte Skills liegen beim Start also rund 5.000 Tokens auf dem Tisch.</p></details>
+    <details><summary>Ein offener Standard</summary>
+      <p>Anthropic hat Agent Skills am 18. Dezember 2025 als offenen Standard veröffentlicht, damit derselbe Skill-Ordner in verschiedenen Werkzeugen funktioniert (Zhang et al., 2025). Die Übersicht des Standards führt auch Werkzeuge anderer Anbieter auf, die das Format unterstützen, darunter ChatGPT und Codex von OpenAI, Gemini CLI von Google und GitHub Copilot (Agent Skills, o. J.).</p></details>
+    <details><summary>Unterschied zu RAG</summary>
+      <p>RAG holt Wissen per Suche in eigenen Quellen, ein Skill holt Arbeitsanweisungen per Beschreibung.</p></details>
+    <details><summary>Quellen</summary>
+      <p class="klein">Eigene Darstellung nach Zhang et al. (2025) und Anthropic (o. J.); schematisch, keine Messung.</p>
+      <p class="klein">Agent Skills. (o. J.). <em>Agent Skills: Overview</em> und <em>Client showcase</em>. Abgerufen am 31. Oktober 2026, von https://agentskills.io</p>
+      <p class="klein">Anthropic. (o. J.). <em>Agent Skills</em> [Dokumentation]. Claude Platform Docs. Abgerufen am 31. Oktober 2026, von https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview</p>
+      <p class="klein">Zhang, B., Lazuka, K., &amp; Murag, M. (2025, 16. Oktober; Nachtrag vom 18. Dezember 2025). <em>Equipping agents for the real world with Agent Skills</em>. Anthropic. https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</p></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // ================= HIER ANPASSEN: ein Eintrag je Schritt =================
+  var SCHRITTE = [
+    "Das *Kontextfenster* ist der Schreibtisch des Modells; der Platz darauf ist knapp.",
+    "Rechts liegen installierte *Skills*: Ordner mit Anleitung, Skripten und Material.",
+    "Beim Start liest der Agent nur *Name und Kurzbeschreibung* jedes Skills.",
+    "Eine *Anfrage* passt zur Kurzbeschreibung eines Skills.",
+    "Erst jetzt lädt der Agent die *Anleitung* dieses einen Skills.",
+    "Weitere *Dateien* holt er nur, wenn die Anleitung darauf verweist.",
+    "Wie ein *Handbuch*: Inhaltsverzeichnis, Kapitel, Anhang, gelesen nur bei Bedarf."
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: ["alle 50 vollständig", "nur Name und Kurzbeschreibung je Skill", "gar nichts"] };
+  // =========================================================================
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  // #druck: vollständiges Bild ohne Steuerung (A5); ?hoersaal: Unterschrift aus (T7)
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };  // für das Prüfskript
+})();
+</script>
+</body>
+</html>

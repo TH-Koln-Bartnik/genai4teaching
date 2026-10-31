@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wie selbstständig eine KI arbeitet, entscheiden die Menschen, die sie einsetzen</title>
+<style>
+  /* ---- Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) ---- */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; margin:0 4px 4px 0; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p, details ul { max-width:75ch; }
+  details li { margin-bottom:4px; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+
+  /* ---- SVG: drei Zustände je Element (Regel F6) ---- */
+  svg text { font-size:16px; }
+  svg text.u { font-size:14px; }
+  svg text.b { font-weight:650; }
+  .f { fill:var(--c, var(--tinte)); }                    /* Text und Flächen */
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; } /* Rahmen, Linien */
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }                         /* Grau statt Transparenz: nichts scheint durch */
+  .leit    { --c:var(--akzent) !important; }
+  /* Beispiel einer Stufe: neu im Akzent, ab dem Folgeschritt grau; der Stufenname bleibt in Tinte */
+  [data-ab].bekannt .bsp, [data-ab].kontext .bsp { --c:var(--grau); }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* ---- Druckansicht (#druck) und Hörsaalmodus (?hoersaal) ---- */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher { display:none !important; }
+  .druck .neu { --c:var(--tinte); }      /* Druckbild ganz in Graustufen (A5) */
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Wie selbstständig eine KI arbeitet, entscheiden die Menschen, die sie einsetzen</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Wer legt fest, wie selbstständig eine KI im Kurs arbeitet?</p>
+    <button data-tipp="0">das Modell selbst</button>
+    <button data-tipp="1">die Lehrenden und Lernenden, die sie einsetzen</button>
+    <button data-tipp="2">allein der Hersteller</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 960 460" role="img"
+       aria-label="Eine Treppe mit sechs Autonomiestufen nach Morris et al. (2024) über einer Achse von „Mensch steuert“ nach „KI steuert“: Stufe 0 keine KI, Stufe 1 Werkzeug, Stufe 2 Berater, Stufe 3 Kollaborator, Stufe 4 Experte, Stufe 5 Agent, jeweils mit einem Beispiel aus der Hochschule. Eine Klammer über der Treppe sagt: Die Fähigkeit des Modells ermöglicht die Stufen, den Einsatz wählen Menschen.">
+
+    <!-- Schritt 1: Achse mit Pfeil -->
+    <g data-ab="0">
+      <line class="s" x1="170" y1="420" x2="928" y2="420"/>
+      <polygon class="f" points="940,420 926,413 926,427"/>
+      <text class="f u" x="170" y="446" text-anchor="start">Mensch steuert</text>
+      <text class="f u" x="940" y="446" text-anchor="end">KI steuert</text>
+    </g>
+
+    <!-- Schritt 2: Stufe 0 -->
+    <g data-ab="1">
+      <rect class="s" x="170" y="380" width="124" height="20" style="fill:var(--grund)"/>
+      <text class="f b" x="286" y="350" text-anchor="end">Stufe 0 · Keine KI</text>
+      <text class="f u bsp" x="286" y="370" text-anchor="end">Handkorrektur der Klausur</text>
+    </g>
+
+    <!-- Schritt 3: Stufe 1 -->
+    <g data-ab="2">
+      <rect class="s" x="298" y="328" width="124" height="72" style="fill:var(--grund)"/>
+      <text class="f b" x="414" y="298" text-anchor="end">Stufe 1 · Werkzeug</text>
+      <text class="f u bsp" x="414" y="318" text-anchor="end">Rechtschreibprüfung</text>
+    </g>
+
+    <!-- Schritt 4: Stufe 2 -->
+    <g data-ab="3">
+      <rect class="s" x="426" y="276" width="124" height="124" style="fill:var(--grund)"/>
+      <text class="f b" x="542" y="246" text-anchor="end">Stufe 2 · Berater</text>
+      <text class="f u bsp" x="542" y="266" text-anchor="end">schlägt Feedback vor</text>
+    </g>
+
+    <!-- Schritt 5: Stufe 3 -->
+    <g data-ab="4">
+      <rect class="s" x="554" y="224" width="124" height="176" style="fill:var(--grund)"/>
+      <text class="f b" x="670" y="194" text-anchor="end">Stufe 3 · Kollaborator</text>
+      <text class="f u bsp" x="670" y="214" text-anchor="end">Fallstudie gemeinsam entwickeln</text>
+    </g>
+
+    <!-- Schritt 6: Stufe 4 -->
+    <g data-ab="5">
+      <rect class="s" x="682" y="172" width="124" height="228" style="fill:var(--grund)"/>
+      <text class="f b" x="798" y="142" text-anchor="end">Stufe 4 · Experte</text>
+      <text class="f u bsp" x="798" y="162" text-anchor="end">KI führt, Mensch korrigiert</text>
+    </g>
+
+    <!-- Schritt 7: Stufe 5 -->
+    <g data-ab="6">
+      <rect class="s" x="810" y="120" width="124" height="280" style="fill:var(--grund)"/>
+      <text class="f b" x="926" y="90" text-anchor="end">Stufe 5 · Agent</text>
+      <text class="f u bsp" x="926" y="110" text-anchor="end">erledigt Aufgabe allein</text>
+    </g>
+
+    <!-- Schritt 8: Klammer über der Treppe -->
+    <g data-ab="7">
+      <path class="s" d="M170,54 V40 H934 V54"/>
+      <text class="f b" x="552" y="28" text-anchor="middle">Fähigkeit ermöglicht · Einsatz wählt</text>
+    </g>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <section class="nachher" id="nachher">
+    <details><summary>Die sechs Autonomiestufen nach Morris et al. (2024)</summary>
+      <ul>
+        <li><strong>Stufe 0, keine KI:</strong> Der Mensch erledigt alles selbst.</li>
+        <li><strong>Stufe 1, KI als Werkzeug</strong> (<em>tool</em>): Der Mensch steuert die Aufgabe vollständig und lässt die KI Routine-Teilaufgaben automatisieren.</li>
+        <li><strong>Stufe 2, KI als Berater</strong> (<em>consultant</em>): Die KI übernimmt eine gewichtige Rolle, aber nur, wenn ein Mensch sie aufruft.</li>
+        <li><strong>Stufe 3, KI als Kollaborator</strong> (<em>collaborator</em>): Mensch und KI arbeiten gleichberechtigt zusammen und stimmen Ziele und Aufgaben im Wechselspiel ab.</li>
+        <li><strong>Stufe 4, KI als Experte</strong> (<em>expert</em>): Die KI führt die Interaktion; der Mensch gibt Richtung und Rückmeldung oder übernimmt Teilaufgaben.</li>
+        <li><strong>Stufe 5, KI als Agent</strong> (<em>agent</em>): Die KI arbeitet vollständig autonom. Ihr Beispiel dafür, autonome persönliche Assistenten, galt den Autoren noch als nicht erreicht.</li>
+      </ul>
+      <p>„Agent“ meint hier volle Autonomie. Die teilautonomen Agenten dieses Kapitels, denen der Mensch das Ziel setzt, gehören deshalb nicht auf Stufe 5. Die Achse im Bild vereinfacht: Morris et al. beschreiben die Stufen als Arten der Zusammenarbeit von Mensch und KI, nicht als Anteil abgegebener Kontrolle wie ältere Stufenmodelle der Automatisierung (Parasuraman et al., 2000).</p></details>
+    <details><summary>Analogie: Stufen des automatisierten Fahrens</summary>
+      <p>Die Autoren vergleichen ihre Stufen selbst mit den Stufen der Fahrautomatisierung (SAE International, 2021): Wie diese die Diskussion über selbstfahrende Autos geordnet haben, sollen Stufen die Diskussion über KI ordnen. Sie ziehen daraus ein Beispiel, das die Lehre direkt betrifft: Auch wenn vollautomatisierte Fahrzeuge verfügbar sind, gibt es Gründe für ein Auto ohne Automatisierung, etwa in der Fahrschule, aus Freude am Fahren, in der Führerscheinprüfung oder wenn Sensoren versagen. Ebenso betonen sie die Stufe „keine KI“ für Bildung und Prüfungen. Der Exkurs zur Autonomie in Abschnitt 2.1.1 greift den Vergleich mit dem automatisierten Fahren auf und stellt ihm die Autonomie der Lernenden gegenüber (Holec, 1981).</p></details>
+    <details><summary>Woher die Beispiele stammen</summary>
+      <p>Die Hochschulbeispiele im Bild sind Lehrbeispiele dieses Buchs, nicht aus dem Paper. Nur die Rechtschreibprüfung auf Stufe 1 lehnt sich an ein Beispiel der Autoren an (Überarbeiten eines Textes mit einem Grammatikprogramm). Morris et al. nennen sonst etwa das Skizzieren mit Bleistift (Stufe 0), das Zusammenfassen von Dokumenten mit einem Sprachmodell (Stufe 2), Schachtraining mit einer Schach-KI (Stufe 3) und wissenschaftliche Entdeckungen wie die Vorhersage von Proteinfaltungen (Stufe 4).</p></details>
+    <details><summary>Fähigkeit schaltet frei, Menschen wählen</summary>
+      <p>Nach Morris et al. „schalten“ fähigere Modelle höhere Autonomiestufen frei, legen sie aber nicht fest. Welche Form der Zusammenarbeit gilt, handeln die Gestalter eines Systems und seine Nutzenden aus, im Kurs also Lehrende und Lernende, und wägen dabei unter anderem die Sicherheit ab. Die passende Stufe muss nicht die höchste sein, die das Modell erlaubt; niedrigere Stufen können für bestimmte Aufgaben auch bei sehr fähigen Modellen die bessere Wahl sein. Jede Stufe bringt eigene Risiken mit, etwa Verlernen durch zu starke Abhängigkeit auf Stufe 1 oder zu großes Vertrauen auf Stufe 2.</p></details>
+    <details><summary>Bildunterschrift und Quellen</summary>
+      <p>Eigene Darstellung nach Morris et al. (2024, Tabelle 2); Stufenbezeichnungen übersetzt, Beispiele aus der Hochschullehre ergänzt.</p>
+      <p class="klein">Holec, H. (1981). <em>Autonomy and foreign language learning</em>. Pergamon.</p>
+      <p class="klein">Morris, M. R., Sohl-Dickstein, J., Fiedel, N., Warkentin, T., Dafoe, A., Faust, A., Farabet, C., &amp; Legg, S. (2024). Position: Levels of AGI for operationalizing progress on the path to AGI. In R. Salakhutdinov, Z. Kolter, K. Heller, A. Weller, N. Oliver, J. Scarlett, &amp; F. Berkenkamp (Hrsg.), <em>Proceedings of the 41st International Conference on Machine Learning</em> (Bd. 235, S. 36308–36321). PMLR. https://proceedings.mlr.press/v235/morris24b.html (Preprint: https://arxiv.org/abs/2311.02462)</p>
+      <p class="klein">Parasuraman, R., Sheridan, T. B., &amp; Wickens, C. D. (2000). A model for types and levels of human interaction with automation. <em>IEEE Transactions on Systems, Man, and Cybernetics – Part A: Systems and Humans, 30</em>(3), 286–297. https://doi.org/10.1109/3468.844354</p>
+      <p class="klein">SAE International. (2021). <em>Taxonomy and definitions for terms related to driving automation systems for on-road motor vehicles</em> (Standard J3016_202104). https://doi.org/10.4271/J3016_202104</p></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // ================= HIER ANPASSEN: ein Eintrag je Schritt =================
+  var SCHRITTE = [
+    "Von links nach rechts gibt der *Mensch* Steuerung ab.",
+    "Stufe 0: *keine KI*, alles macht der Mensch.",
+    "Stufe 1: KI als *Werkzeug*; der Mensch steuert ganz, die KI erledigt Routine-Teilaufgaben.",
+    "Stufe 2: KI als *Berater* mit gewichtiger Rolle, aber nur, wenn der Mensch sie ruft.",
+    "Stufe 3: KI als *Kollaborator* auf Augenhöhe; Ziele und Aufgaben werden gemeinsam abgestimmt.",
+    "Stufe 4: KI als *Experte*; sie führt, der Mensch gibt Richtung und Rückmeldung.",
+    "Stufe 5: KI als *Agent*, vollständig selbstständig.",
+    "Die Fähigkeit des Modells *ermöglicht* Stufen; welche genutzt wird, entscheiden Menschen."
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: ["das Modell selbst", "die Lehrenden und Lernenden, die sie einsetzen", "allein der Hersteller"] };
+  // =========================================================================
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  // #druck: vollständiges Bild ohne Steuerung (A5); ?hoersaal: Unterschrift aus (T7)
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };  // für das Prüfskript
+})();
+</script>
+</body>
+</html>
