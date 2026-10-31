@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Das Protokoll überlebt die Maschine</title>
+<style>
+  :root {
+    --bg: #ffffff; --ink: #1b1b1b; --muted: #5d5d5d; --line: #c9c9c9; --panel: #f6f5f2;
+    --agent: #c8ccd2; --akzent: #c2610c; --box: #ffffff; --karte: #fbfaf7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) {
+      --bg: #151515; --ink: #f0f0f0; --muted: #b3b3b3; --line: #4a4a4a; --panel: #1f1f1f;
+      --agent: #4f555c; --akzent: #f0903a; --box: #151515; --karte: #1d1d1d;
+    }
+  }
+  html, body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; }
+  main { max-width: 980px; margin: 0 auto; padding: 20px 16px 40px; }
+  .kicker { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  h1 { font-size: 24px; line-height: 1.25; margin: 4px 0 6px; font-weight: 650; }
+  .lead { margin: 0 0 14px; color: var(--muted); max-width: 72ch; }
+  .predict { background: var(--panel); border-radius: 8px; padding: 12px 14px; margin: 0 0 12px; }
+  .predict p { margin: 0 0 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  button, select { font: inherit; font-size: 14px; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
+    border-radius: 6px; padding: 5px 11px; cursor: pointer; }
+  button:hover { border-color: var(--ink); }
+  button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  button:disabled { opacity: .4; cursor: default; }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--akzent); outline-offset: 1px; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }
+  .controls .stand { margin-left: auto; color: var(--muted); font-size: 14px; }
+  .abspiel { display: inline-flex; gap: 8px; }
+  .abspiel.aus { visibility: hidden; }
+  svg { width: 100%; height: auto; display: block; }
+  .stage { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .wisch { display: none; font-size: 13px; color: var(--muted); margin: 0 0 4px; }
+  @media (max-width: 760px) { .stage svg { min-width: 760px; } .wisch { display: block; } }
+  .druck .stage svg { min-width: 0; }
+  .caption { min-height: 3em; margin: 6px 0 10px; max-width: 75ch; font-size: 16px; }
+  .toggles { display: none; margin: 4px 0 12px; }
+  .toggles.on { display: block; }
+  .toggles label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+  section.erklaerung { display: none; border-top: 1px solid var(--line); margin-top: 10px; padding-top: 8px; }
+  section.erklaerung.on { display: block; }
+  section.erklaerung summary { font-size: 16px; font-weight: 650; cursor: pointer; margin: 10px 0 4px; }
+  section.erklaerung p { margin: 0 0 8px; max-width: 75ch; }
+  .quellen { font-size: 13px; color: var(--muted); }
+  .quellen p { padding-left: 1.6em; text-indent: -1.6em; margin: 0 0 4px; }
+  .hinweis { font-size: 13px; color: var(--muted); }
+  /* SVG */
+  text { fill: var(--ink); }
+  .t-muted { fill: var(--muted); }
+  .t-s { font-size: 11px; } .t-m { font-size: 13px; } .t-l { font-size: 15px; font-weight: 650; }
+  .b { font-weight: 650; }
+  .teil { fill: var(--box); stroke: var(--ink); stroke-width: 2; }
+  .teil.tot { fill: url(#schraffur); fill-opacity: .35; stroke: var(--akzent); stroke-dasharray: 6 4; }
+  .teil.neu { stroke: var(--ink); stroke-width: 3; }
+  .kiste { fill: none; stroke: var(--ink); stroke-width: 3; }
+  .kiste.tot { stroke: var(--akzent); stroke-dasharray: 8 5; }
+  .bahn { stroke: var(--line); stroke-width: 1.5; fill: none; }
+  .bahn.an { stroke: var(--ink); }
+  .pfeil { fill: var(--line); }
+  .schiene { stroke: var(--ink); stroke-width: 3; }
+  .haken { stroke: var(--ink); stroke-width: 1.5; }
+  .karte { fill: var(--karte); stroke: var(--ink); stroke-width: 1.5; }
+  .karte.lesen { stroke: var(--akzent); stroke-width: 3; }
+  .karte.leit { fill: var(--akzent); stroke: var(--akzent); }
+  .karte.kurz { fill: url(#grau); stroke: var(--muted); stroke-dasharray: 4 3; }
+  .karte.leer { fill: none; stroke: var(--muted); stroke-dasharray: 3 3; }
+  .leit-text { fill: #ffffff; font-weight: 700; }
+  .tisch { fill: none; stroke: var(--muted); stroke-dasharray: 4 3; }
+  .marke { fill: var(--ink); }
+  .marke.leit { fill: var(--akzent); }
+  .z-ok { fill: var(--ink); }
+  .z-ok-text { fill: var(--bg); font-size: 10px; font-weight: 700; text-anchor: middle; }
+  .z-verlust { fill: url(#schraffur); stroke: var(--akzent); stroke-width: 1; }
+  .z-verlust-text { fill: var(--ink); font-size: 10px; font-weight: 700; text-anchor: middle; }
+  .z-grau { fill: var(--agent); }
+  .z-grau-text { fill: var(--ink); font-size: 9px; text-anchor: middle; }
+  .z-rahmen { fill: none; stroke: var(--line); }
+  .aus { display: none; }
+  /* Legende */
+  .legende { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 13px; margin: 0 0 12px; }
+  .legende span { display: inline-flex; align-items: center; gap: 6px; }
+  .legende svg { width: 22px; height: 12px; display: inline-block; }
+  .legende.aus { display: none; }
+  /* Druckansicht */
+  .druck .predict, .druck .controls, .druck .caption, .druck .toggles, .druck section.erklaerung,
+  .druck .lead, .druck .hinweis-web, .druck .kicker, .druck h1 { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Agentische KI · Protokoll</p>
+  <h1>Weil das Protokoll außerhalb der Maschine liegt, arbeitet ein Agent nach einem Absturz einfach weiter</h1>
+  <p class="lead">Ein KI-Agent schreibt Rückmeldungen für sechs Projektteams. Jede fertige Rückmeldung hängt er als Zettel an eine Schiene, wie die Bons in einer Restaurantküche. Achten Sie auf die Schiene, wenn die Technik ausfällt.</p>
+
+  <div class="predict" id="predict">
+    <p><strong>Ihre Vorhersage zuerst:</strong> Mitten in der Rückmeldung für Team 5 fällt die Technik aus. Wie viele der vier schon fertigen Rückmeldungen muss der Agent neu schreiben?</p>
+    <div class="chips" role="group" aria-label="Vorhersage">
+      <button data-p="alle">alle vier</button><button data-p="eine">eine</button><button data-p="keine">keine</button>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="zurueck" aria-label="Schritt zurück">◀ Zurück</button>
+    <button id="weiter" aria-label="Schritt weiter">Weiter ▶</button>
+    <span class="abspiel" id="abspiel">
+      <button id="play">❚❚ Pause</button>
+      <button id="nochmal">↺ Szene neu</button>
+      <select id="tempo" aria-label="Tempo" title="Tempo"><option value="1">1×</option><option value="2">2×</option><option value="4">4×</option></select>
+    </span>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <p class="wisch hinweis-web">Abbildung seitlich verschieben ← →</p>
+  <div class="stage">
+    <svg id="buehne" viewBox="0 0 960 500" role="img" aria-labelledby="svgtitel">
+      <title id="svgtitel">Gehirn, Hände und Protokoll eines KI-Agenten; bei einem Ausfall bleibt das getrennt gespeicherte Protokoll erhalten</title>
+      <defs>
+        <pattern id="schraffur" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="var(--bg)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--akzent)" stroke-width="2.5"/>
+        </pattern>
+        <pattern id="grau" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="var(--bg)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--line)" stroke-width="2.5"/>
+        </pattern>
+        <marker id="spitze" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="pfeil"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+
+  <p class="caption" id="caption" aria-live="polite"></p>
+
+  <div class="toggles" id="toggles">
+    <label><input type="checkbox" id="kuerzen"> Ohne Archiv: Ältere Einträge werden zusammengefasst, um Platz zu sparen</label>
+  </div>
+
+  <section class="erklaerung" id="erklaerung">
+    <details open><summary>Warum die Trennung hilft</summary>
+    <p>Das <em>Gehirn</em> ist das Sprachmodell zusammen mit seiner Steuerschleife, einem kleinen Programm, das das Modell immer wieder aufruft und dessen Werkzeugwünsche weiterreicht. Die <em>Hände</em> sind ein abgeschotteter Werkraum (<em>Sandbox</em>), in dem der Agent Dateien liest, schreibt und Programme ausführt. Das <em>Protokoll</em> der Sitzung ist ein Tagebuch, in das nur neue Einträge angehängt werden; nichts wird überschrieben.</p>
+    <p>Liegen alle drei auf einem Rechner, wird dieser Rechner zum Haustier, das man pflegen muss und nicht verlieren darf: Fällt er aus, ist auch das Tagebuch weg. Getrennt werden Gehirn und Hände austauschbar. Fällt der Werkraum aus, erfährt das Gehirn das als gewöhnliche Fehlermeldung und fordert einen neuen an. Fällt das Gehirn aus, wird ein Ersatz mit der Nummer der Sitzung geweckt, liest das Protokoll und macht beim letzten Eintrag weiter (Martin et al., 2026). In der Küche ist das die Bonschiene: Geht ein Koch, liest die Ablösung die Bons und kocht weiter.</p></details>
+    <details><summary>Was das Protokoll außerdem leistet</summary>
+    <p>Das Kontextfenster, also der Text, den das Modell auf einmal sehen kann, ist ein kleiner Schreibtisch. Übliche Verfahren schaffen dort Platz, indem sie ältere Einträge zusammenfassen, in Gedächtnisdateien verdichten oder abschneiden. Das lässt sich nicht rückgängig machen, und niemand weiß vorher, welche Einzelheit später gebraucht wird. Liegt das vollständige Protokoll außerhalb des Schreibtischs, holt der Agent genau den Abschnitt zurück, den er braucht, auch einen frühen, um nachzusehen, was zu einem Ereignis geführt hat (Martin et al., 2026). Wie diese Idee mit den übrigen Formen des Agenten-Gedächtnisses zusammenhängt, zeigt der Abschnitt zum Gedächtnis von Agenten.</p></details>
+    <details><summary>Zum Weiterdenken</summary>
+    <p>Wo hängt in Ihrer Lehre die „Bonschiene“? Wenn ein Projektteam mitten im Semester ein Mitglied verliert oder Sie eine Vertretung brauchen: Kann jemand anhand eines Protokolls weitermachen, oder steckt der Stand nur in Köpfen und Chatverläufen?</p></details>
+    <details><summary>Modellhinweis und Quelle</summary>
+    <p class="hinweis">Lehrmodell, keine Messung: Jede Rückmeldung dauert einen Arbeitsschritt; der Ausfall trifft die Mitte des fünften Schritts; Neustart, Fehlermeldung und Lesen des Protokolls sind als kurze Zeiten angenommen. Dass der unterbrochene Schritt wiederholt wird, ist eine Vereinfachung. Die Bezeichnungen Gehirn, Hände und Sitzung folgen Martin et al. (2026); Bonschiene und Schreibtisch sind Analogien dieses Buches.</p>
+    <div class="quellen">
+      <p>Martin, L., Cemaj, G., &amp; Cohen, M. (2026, 8. April). <em>Scaling managed agents: Decoupling the brain from the hands</em>. Anthropic. https://www.anthropic.com/research/managed-agents</p>
+    </div></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("buehne");
+  var SEK_JE_SCHRITT = 1.2;      // Sekunden je Arbeitsschritt bei 1×
+  var AUSFALL = 4.5;
+
+  // ---------- Lehrmodell (identisch mit dem Python-Gegencheck) ----------
+  function plane(art) {
+    var s = [], t = 0, k;
+    for (k = 1; k <= 4; k++) { s.push({ typ: "arbeit", team: k, a: t, b: t + 1 }); t++; }
+    s.push({ typ: "arbeit", team: 5, a: 4, b: AUSFALL, abgebrochen: true });
+    if (art === "kiste") {
+      s.push({ typ: "neustart", a: 4.5, b: 5 }); t = 5;
+      for (k = 1; k <= 4; k++) { s.push({ typ: "arbeit", team: k, a: t, b: t + 1, doppelt: true }); t++; }
+    } else if (art === "haende") {
+      s.push({ typ: "fehler", a: 4.5, b: 5 }); t = 5;
+    } else {
+      s.push({ typ: "wecken", a: 4.5, b: 4.8 }); s.push({ typ: "lesen", a: 4.8, b: 5.4 }); t = 5.4;
+    }
+    for (k = 5; k <= 6; k++) { s.push({ typ: "arbeit", team: k, a: t, b: t + 1 }); t++; }
+    var doppelt = s.filter(function (x) { return x.doppelt; }).length;
+    var verlust = s.filter(function (x) { return x.doppelt || x.abgebrochen; }).reduce(function (a, x) { return a + x.b - x.a; }, 0);
+    return { art: art, s: s, ende: Math.round(t * 100) / 100, doppelt: doppelt, verlust: verlust };
+  }
+  var KISTE = plane("kiste"), HAENDE = plane("haende"), GEHIRN = plane("gehirn");
+  var NAME = { kiste: "alles in einer Kiste", haende: "Hände fallen aus", gehirn: "Gehirn fällt aus" };
+
+  // ---------- Zeichnen: Hilfen ----------
+  function el(tag, a, p) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in a) { if (k === "text") e.textContent = a[k]; else e.setAttribute(k, a[k]); }
+    (p || svg).appendChild(e); return e;
+  }
+  function fmt(x) { return String(Math.round(x * 10) / 10).replace(".", ","); }
+
+  // ---------- Geometrie ----------
+  var G = { x: 160, y: 60, w: 230, h: 150 }, H = { x: 570, y: 60, w: 230, h: 150 };
+  var PG = { x: 275, y: 160 }, PH = { x: 685, y: 160 };
+  var SCH_Y = 262;
+  function slot(i) { return { x: 222 + i * 95, y: 292 }; }       // Mitte der Karte i (0..5)
+
+  // Kiste (nur gekoppelt)
+  var kiste = el("rect", { x: 138, y: 22, width: 684, height: 334, rx: 12, "class": "kiste" });
+  var kisteText = el("text", { x: 152, y: 44, "class": "t-m b", text: "Ein Rechner, der nie ausfallen darf" });
+
+  // Bahnen
+  var bAuftrag = el("line", { x1: G.x + G.w, y1: 112, x2: H.x - 2, y2: 112, "class": "bahn", "marker-end": "url(#spitze)" });
+  el("text", { x: 480, y: 104, "class": "t-s t-muted", "text-anchor": "middle", text: "Werkzeugaufruf" });
+  var bErgebnis = el("line", { x1: H.x, y1: 138, x2: G.x + G.w + 2, y2: 138, "class": "bahn", "marker-end": "url(#spitze)" });
+  el("text", { x: 480, y: 154, "class": "t-s t-muted", "text-anchor": "middle", text: "Ergebnis / Fehler" });
+  var bEintragen = el("line", { x1: 230, y1: G.y + G.h, x2: 230, y2: SCH_Y - 4, "class": "bahn", "marker-end": "url(#spitze)" });
+  el("text", { x: 222, y: 238, "class": "t-s t-muted", "text-anchor": "end", text: "eintragen" });
+  var bLesen = el("line", { x1: 340, y1: SCH_Y - 4, x2: 340, y2: G.y + G.h + 2, "class": "bahn", "marker-end": "url(#spitze)" });
+  el("text", { x: 348, y: 238, "class": "t-s t-muted", text: "lesen" });
+
+  // Gehirn und Hände
+  var gRect = el("rect", { x: G.x, y: G.y, width: G.w, height: G.h, rx: 10, "class": "teil" });
+  var gName = el("text", { x: G.x + 16, y: G.y + 26, "class": "t-l", text: "Gehirn" });
+  el("text", { x: G.x + 16, y: G.y + 44, "class": "t-s t-muted", text: "Sprachmodell + Steuerschleife" });
+  var gAkt = el("text", { x: G.x + 16, y: G.y + G.h - 14, "class": "t-m t-muted", text: "" });
+  var hRect = el("rect", { x: H.x, y: H.y, width: H.w, height: H.h, rx: 10, "class": "teil" });
+  var hName = el("text", { x: H.x + 16, y: H.y + 26, "class": "t-l", text: "Hände" });
+  el("text", { x: H.x + 16, y: H.y + 44, "class": "t-s t-muted", text: "abgeschotteter Werkraum (Sandbox)" });
+  var hAkt = el("text", { x: H.x + 16, y: H.y + H.h - 14, "class": "t-m t-muted", text: "" });
+
+  // Schreibtisch (nur im letzten Schritt)
+  var tisch = el("g", { "class": "aus" });
+  el("rect", { x: G.x + 12, y: G.y + 56, width: G.w - 24, height: 62, rx: 6, "class": "tisch" }, tisch);
+  el("text", { x: G.x + 20, y: G.y + 70, "class": "t-s t-muted", text: "Schreibtisch (Kontextfenster)" }, tisch);
+  var tischKarten = el("g", {}, tisch);
+
+  // Protokoll mit Schiene
+  var pTitel = el("text", { x: 802, y: SCH_Y + 68, "class": "t-m b", "text-anchor": "end", text: "Protokoll der Sitzung" });
+  el("text", { x: 802, y: SCH_Y + 82, "class": "t-s t-muted", "text-anchor": "end", text: "wie die Bonschiene in der Küche" });
+  el("line", { x1: 170, y1: SCH_Y, x2: 800, y2: SCH_Y, "class": "schiene" });
+  var kartenGruppe = el("g", {});
+  var marke = el("circle", { r: 7, "class": "marke" });
+
+  // Arbeitsstreifen
+  var ST_X = 200, ST_PX = 44, ST_Y = 392;
+  var streifenTitel = el("text", { x: 22, y: ST_Y - 12, "class": "t-m b", text: "Arbeitsstreifen: Was der Agent bis zur sechsten Rückmeldung tut" });
+  var streifen = el("g", {});
+  var legende = el("g", {});
+  [["z-ok", "Rückmeldung geschrieben"], ["z-verlust", "verloren oder doppelt"], ["z-grau", "Neustart, Protokoll lesen"]].forEach(function (l, i) {
+    var x0 = ST_X + i * 210;
+    el("rect", { x: x0, y: 484, width: 22, height: 12, "class": l[0] }, legende);
+    el("text", { x: x0 + 28, y: 494, "class": "t-s", text: l[1] }, legende);
+  });
+
+  // ---------- Zustand zur Zeit t ----------
+  function segBei(P, t) {
+    for (var i = 0; i < P.s.length; i++) if (t < P.s[i].b) return P.s[i];
+    return null;
+  }
+  function kartenBei(P, t) {
+    // Fertige Rückmeldungen auf der Schiene; in der Kiste verschwinden sie mit dem Ausfall
+    var k = [];
+    P.s.forEach(function (x) {
+      if (x.typ !== "arbeit" || x.abgebrochen || x.b > t + 1e-9) return;
+      if (P.art === "kiste" && x.b <= AUSFALL && t >= AUSFALL) return;
+      k.push(x.team);
+    });
+    return k;
+  }
+  function weg(pk, u) {
+    var L = [], ges = 0, i;
+    for (i = 1; i < pk.length; i++) { var d = Math.hypot(pk[i].x - pk[i - 1].x, pk[i].y - pk[i - 1].y); L.push(d); ges += d; }
+    var z = Math.max(0, Math.min(1, u)) * ges;
+    for (i = 0; i < L.length; i++) {
+      if (z <= L[i] || i === L.length - 1) { var v = L[i] ? Math.min(1, z / L[i]) : 1; return { x: pk[i].x + (pk[i + 1].x - pk[i].x) * v, y: pk[i].y + (pk[i + 1].y - pk[i].y) * v }; }
+      z -= L[i];
+    }
+    return pk[pk.length - 1];
+  }
+  function markePos(x, t) {
+    var u = t - x.a;
+    var hin = [PG, { x: G.x + G.w, y: 112 }, { x: H.x, y: 112 }, PH];
+    var rueck = [PH, { x: H.x, y: 138 }, { x: G.x + G.w, y: 138 }, PG];
+    var ein = [PG, { x: 230, y: G.y + G.h }, { x: 230, y: SCH_Y - 10 }, slot(x.team - 1)];
+    if (u < 0.25) return weg(hin, u / 0.25);
+    if (u < 0.6) return PH;
+    if (u < 0.8) return weg(rueck, (u - 0.6) / 0.2);
+    return weg(ein, (u - 0.8) / 0.2);
+  }
+
+  function zeichneKarten(liste, opt) {
+    kartenGruppe.replaceChildren();
+    opt = opt || {};
+    if (opt.kurz) {
+      var a = slot(0), b = slot(3);
+      el("line", { x1: a.x - 40, y1: SCH_Y, x2: a.x - 40, y2: SCH_Y + 8, "class": "haken" }, kartenGruppe);
+      el("rect", { x: a.x - 40, y: SCH_Y + 8, width: b.x - a.x + 80, height: 44, rx: 3, "class": "karte kurz" }, kartenGruppe);
+      el("text", { x: (a.x + b.x) / 2, y: SCH_Y + 28, "class": "t-m b", "text-anchor": "middle", text: "Kurzfassung Team 1–4" }, kartenGruppe);
+      el("text", { x: (a.x + b.x) / 2, y: SCH_Y + 43, "class": "t-s t-muted", "text-anchor": "middle", text: "„alle vier ordentlich, kleinere Mängel“" }, kartenGruppe);
+    }
+    liste.forEach(function (n) {
+      if (opt.kurz && n <= 4) return;
+      var p = slot(n - 1), kl = "karte";
+      if (opt.lesen && opt.lesen(n)) kl += " lesen";
+      if (opt.leit === n) kl += " leit";
+      el("line", { x1: p.x, y1: SCH_Y, x2: p.x, y2: SCH_Y + 8, "class": "haken" }, kartenGruppe);
+      el("rect", { x: p.x - 40, y: SCH_Y + 8, width: 80, height: 44, rx: 3, "class": kl }, kartenGruppe);
+      el("text", { x: p.x, y: SCH_Y + 28, "class": "t-m b" + (opt.leit === n ? " leit-text" : ""), "text-anchor": "middle", text: "Team " + n }, kartenGruppe);
+      el("text", { x: p.x, y: SCH_Y + 43, "class": "t-s" + (opt.leit === n ? " leit-text" : " t-muted"), "text-anchor": "middle", text: "fertig ✓" }, kartenGruppe);
+    });
+  }
+
+  function zeichneStreifen(zeilen) {
+    streifen.replaceChildren();
+    zeilen.forEach(function (z, i) {
+      var y = ST_Y + i * 28, P = z.P;
+      el("text", { x: ST_X - 10, y: y + 12, "class": "t-s", "text-anchor": "end", text: NAME[P.art] }, streifen);
+      el("rect", { x: ST_X, y: y, width: 11 * ST_PX, height: 16, "class": "z-rahmen" }, streifen);
+      P.s.forEach(function (x) {
+        if (x.a >= z.t) return;
+        var bis = Math.min(x.b, z.t), w = Math.max(0.5, (bis - x.a) * ST_PX - 1), x0 = ST_X + x.a * ST_PX + 0.5;
+        var verlust = x.doppelt || x.abgebrochen, typ = x.typ === "arbeit" ? (verlust ? "verlust" : "ok") : "grau";
+        el("rect", { x: x0, y: y + 1, width: w, height: 14, "class": "z-" + typ }, streifen);
+        if (bis - x.a > 0.45) {
+          var t = x.typ === "arbeit" ? (x.abgebrochen ? "✕" : String(x.team)) : { neustart: "neu", fehler: "neu", wecken: "", lesen: "lesen" }[x.typ];
+          if (t) el("text", { x: x0 + w / 2, y: y + 11.5, "class": "z-" + typ + "-text", text: t }, streifen);
+        }
+      });
+      if (z.t >= P.ende) {
+        var s = P.doppelt ? P.doppelt + " Rückmeldungen doppelt" : "keine doppelt";
+        el("text", { x: ST_X + 11 * ST_PX + 10, y: y + 12, "class": "t-s b", text: s }, streifen);
+      }
+    });
+  }
+
+  function bildBei(P, t) {
+    var x = segBei(P, t), gekoppelt = P.art === "kiste";
+    kiste.setAttribute("class", "kiste" + (gekoppelt ? "" : " aus") + (gekoppelt && t >= AUSFALL && t < 5 ? " tot" : ""));
+    kisteText.setAttribute("class", "t-m b" + (gekoppelt ? "" : " aus"));
+    kisteText.textContent = gekoppelt && t >= 5 ? "Ein neuer Rechner, leer" : gekoppelt && t >= AUSFALL ? "Ausfall: alles weg" : "Ein Rechner, der nie ausfallen darf";
+    // Teile
+    var gTot = (P.art === "gehirn" && t >= AUSFALL && t < 4.8) || (gekoppelt && t >= AUSFALL && t < 5);
+    var hTot = (P.art === "haende" && t >= AUSFALL && t < 4.75) || (gekoppelt && t >= AUSFALL && t < 5);
+    var gNeu = P.art === "gehirn" && t >= 4.8, hNeu = P.art === "haende" && t >= 4.75;
+    gRect.setAttribute("class", "teil" + (gTot ? " tot" : gNeu ? " neu" : ""));
+    hRect.setAttribute("class", "teil" + (hTot ? " tot" : hNeu ? " neu" : ""));
+    gName.textContent = gNeu ? "Gehirn (Ersatz)" : "Gehirn";
+    hName.textContent = hNeu ? "Hände (neuer Werkraum)" : "Hände";
+    // Tätigkeiten
+    var ga = "", ha = "bereit";
+    if (x && x.typ === "arbeit") {
+      var u = t - x.a;
+      ga = u < 0.25 ? "schickt Auftrag Team " + x.team : u < 0.6 ? "wartet auf das Ergebnis" : u < 0.8 ? "prüft das Ergebnis" : "trägt Team " + x.team + " ein";
+      if (u >= 0.25 && u < 0.6) ha = "schreibt Rückmeldung Team " + x.team;
+    } else if (x && x.typ === "fehler") {
+      ga = t < 4.75 ? "erhält eine Fehlermeldung" : "fordert neuen Werkraum an";
+    } else if (x && x.typ === "wecken") { ga = "geweckt mit der Sitzungsnummer"; }
+    else if (x && x.typ === "lesen") { ga = "liest das Protokoll"; }
+    if (gTot) ga = "ausgefallen";
+    if (hTot) ha = "ausgefallen";
+    if (!x) { ga = "fertig"; ha = "bereit"; }
+    gAkt.textContent = ga; hAkt.textContent = ha;
+    // Bahnen aktiv
+    var u2 = x && x.typ === "arbeit" ? t - x.a : -1;
+    bAuftrag.setAttribute("class", "bahn" + (u2 >= 0 && u2 < 0.25 ? " an" : ""));
+    bErgebnis.setAttribute("class", "bahn" + ((u2 >= 0.6 && u2 < 0.8) || (x && x.typ === "fehler" && t < 4.75) ? " an" : ""));
+    bEintragen.setAttribute("class", "bahn" + (u2 >= 0.8 ? " an" : ""));
+    bLesen.setAttribute("class", "bahn" + (x && x.typ === "lesen" ? " an" : ""));
+    // Karten
+    var leseFn = null;
+    if (x && x.typ === "lesen") { var w = (t - x.a) / (x.b - x.a) * 4; leseFn = function (n) { return n <= Math.floor(w) + 1; }; }
+    zeichneKarten(kartenBei(P, t), { lesen: leseFn });
+    // Marke
+    var zeige = x && x.typ === "arbeit" && !(x.abgebrochen && t >= x.b);
+    if (x && x.abgebrochen && (gTot || hTot)) zeige = false;
+    marke.setAttribute("class", "marke" + (x && x.team === 5 ? " leit" : "") + (zeige ? "" : " aus"));
+    if (zeige) { var p = markePos(x, t); marke.setAttribute("cx", p.x); marke.setAttribute("cy", p.y); }
+  }
+
+  // ---------- Letzter Schritt: zurückblättern ----------
+  function bildBlaettern(u, kurz) {
+    kiste.setAttribute("class", "kiste aus"); kisteText.setAttribute("class", "aus");
+    gRect.setAttribute("class", "teil"); hRect.setAttribute("class", "teil");
+    gName.textContent = "Gehirn"; hName.textContent = "Hände";
+    gAkt.textContent = "arbeitet an Team 6"; hAkt.textContent = "bereit";
+    [bAuftrag, bErgebnis, bEintragen].forEach(function (b) { b.setAttribute("class", "bahn"); });
+    bLesen.setAttribute("class", "bahn" + (u > 0.2 ? " an" : ""));
+    marke.setAttribute("class", "marke aus");
+    zeichneKarten([1, 2, 3, 4, 5], { kurz: kurz, lesen: function (n) { return !kurz && n === 2 && u > 0.2; } });
+    // Schreibtisch: drei Plätze, die letzten beiden Einträge liegen schon dort
+    tischKarten.replaceChildren();
+    var pl = [0, 1, 2].map(function (i) { return { x: G.x + 50 + i * 72, y: G.y + 98 }; });
+    function mini(p, txt, kl) {
+      el("rect", { x: p.x - 30, y: p.y - 14, width: 60, height: 26, rx: 3, "class": "karte " + (kl || "") }, tischKarten);
+      el("text", { x: p.x, y: p.y + 3, "class": "t-s b" + (kl === "leit" ? " leit-text" : ""), "text-anchor": "middle", text: txt }, tischKarten);
+    }
+    mini(pl[0], "Team 4"); mini(pl[1], "Team 5");
+    var start = slot(1), z = pl[2];
+    if (!kurz) {
+      var v = Math.max(0, Math.min(1, (u - 0.25) / 0.5)), p = { x: start.x + (z.x - start.x) * v, y: (SCH_Y + 30) + (z.y - SCH_Y - 30) * v };
+      if (u > 0.25) mini(p, "Team 2", "leit");
+      else el("rect", { x: z.x - 30, y: z.y - 14, width: 60, height: 26, rx: 3, "class": "karte leer" }, tischKarten);
+    } else {
+      el("rect", { x: z.x - 30, y: z.y - 14, width: 60, height: 26, rx: 3, "class": "karte leer" }, tischKarten);
+      el("text", { x: z.x, y: z.y + 4, "class": "t-m b", "text-anchor": "middle", text: u > 0.3 ? "?" : "" }, tischKarten);
+    }
+  }
+
+  // ---------- Bildunterschriften ----------
+  function textSzene(P, t) {
+    var x = segBei(P, t);
+    if (!x) {
+      if (P.art === "kiste") return "Fertig nach " + fmt(P.ende) + " Arbeitsschritten. Vier Rückmeldungen hat der Agent zweimal geschrieben.";
+      return "Fertig nach " + fmt(P.ende) + " Arbeitsschritten. Verloren ist nur der angefangene Schritt für Team 5.";
+    }
+    if (t < 4) return P.art === "kiste" ? "Gehirn, Hände und Protokoll stecken in einem Rechner. Jede fertige Rückmeldung kommt als Zettel an die Schiene."
+      : P.art === "haende" ? "Jetzt sind die drei Teile getrennt. Das Gehirn schickt Aufträge, die Hände führen sie aus, das Protokoll liegt für sich."
+      : "Gleicher Ablauf, gleiche Trennung. Diesmal trifft der Ausfall das Gehirn.";
+    if (t < AUSFALL) return "Die Rückmeldung für Team 5 ist in Arbeit …";
+    if (P.art === "kiste") {
+      if (t < 5) return "Der Rechner fällt aus. Mit ihm ist auch die Schiene weg.";
+      return "Ein neuer Rechner weiß von nichts. Der Agent beginnt wieder bei Team 1.";
+    }
+    if (P.art === "haende") {
+      if (t < 4.75) return "Der Werkraum fällt aus. Für das Gehirn ist das eine gewöhnliche Fehlermeldung.";
+      if (t < 5) return "Das Gehirn fordert einen neuen Werkraum an, statt den alten zu reparieren.";
+      return "Die Schiene ist unberührt. Der Agent macht mit Team 5 weiter.";
+    }
+    if (t < 4.8) return "Das Gehirn fällt aus. Ein Ersatz wird geweckt; mitgegeben wird ihm nur die Nummer der Sitzung.";
+    if (t < 5.4) return "Der Ersatz liest die Schiene: Team 1 bis 4 sind erledigt.";
+    return "Er macht bei Team 5 weiter, wie eine Köchin, die nach dem Schichtwechsel die Bons liest.";
+  }
+
+  // ---------- Schritte ----------
+  var LETZTER = 5, schritt = 0, tipp = null;
+  var P = KISTE, t = 0, laeuft = false, letzte = null, tempo = 1;
+  var cbKurz = document.getElementById("kuerzen");
+  var TIPP = { alle: "„alle vier“", eine: "„eine“", keine: "„keine“" };
+  function szene() { return schritt <= 1 ? KISTE : schritt === 2 ? HAENDE : GEHIRN; }
+  function animiert() { return schritt >= 1 && schritt <= 3 || schritt === 5; }
+  function dauer() { return schritt === 5 ? 1.2 : P.ende; }
+
+  function zeilen() {
+    if (schritt === 1) return [{ P: KISTE, t: t }];
+    if (schritt === 2) return [{ P: KISTE, t: 99 }, { P: HAENDE, t: t }];
+    if (schritt === 3) return [{ P: KISTE, t: 99 }, { P: HAENDE, t: 99 }, { P: GEHIRN, t: t }];
+    if (schritt === 4) return [{ P: KISTE, t: 99 }, { P: HAENDE, t: 99 }, { P: GEHIRN, t: 99 }];
+    return [];
+  }
+  function text() {
+    if (schritt === 0) return "Der Agent besteht aus drei Teilen: Gehirn, Hände und Protokoll. Treffen Sie oben Ihre Vorhersage und klicken Sie dann auf „Weiter“.";
+    if (schritt === 4) {
+      var s = "Es kommt darauf an, wo das Protokoll liegt. Steckt es mit allem anderen in einem Rechner, schreibt der Agent alle vier Rückmeldungen neu. Liegt es für sich, schreibt er keine neu, gleich ob Hände oder Gehirn ausfallen.";
+      if (tipp === "alle") s += " Ihre Vorhersage „alle vier“ stimmt für die eine Kiste.";
+      else if (tipp === "keine") s += " Ihre Vorhersage „keine“ stimmt für die getrennten Teile.";
+      else if (tipp === "eine") s += " Sie hatten „eine“ vorhergesagt: Verloren geht bei getrennten Teilen nur die halbe, angefangene Rückmeldung.";
+      return s;
+    }
+    if (schritt === 5) {
+      if (cbKurz.checked) return t < 0.3 ? "Gleiche Frage, aber ohne Archiv: Um Platz zu sparen, wurden die Einträge zu Team 1 bis 4 zusammengefasst."
+        : "Was genau bei Team 2 stand, weiß jetzt niemand mehr. Und niemand konnte beim Kürzen wissen, dass gerade diese Einzelheit noch gebraucht wird.";
+      return t < 0.25 ? "Für Team 6 will der Agent prüfen, ob er so streng urteilt wie bei Team 2. Auf dem Schreibtisch liegen nur die letzten Einträge."
+        : "Er holt den Eintrag zu Team 2 aus dem Protokoll zurück. Der Schreibtisch bleibt klein, das Archiv daneben ist vollständig.";
+    }
+    return textSzene(P, t);
+  }
+
+  function darstellen() {
+    var blaettern = schritt === 5;
+    tisch.setAttribute("class", blaettern ? "" : "aus");
+    streifenTitel.setAttribute("class", "t-m b" + (blaettern || schritt === 0 ? " aus" : ""));
+    if (blaettern) bildBlaettern(t, cbKurz.checked);
+    else if (schritt === 0) bildBei(HAENDE, 0.1);
+    else bildBei(P, t);
+    if (schritt === 0) { gAkt.textContent = ""; hAkt.textContent = ""; marke.setAttribute("class", "marke aus"); }
+    zeichneStreifen(zeilen());
+    legende.setAttribute("class", blaettern || schritt === 0 ? "aus" : "");
+    if (schritt === 4) { gName.textContent = "Gehirn"; gRect.setAttribute("class", "teil"); gAkt.textContent = ""; hAkt.textContent = ""; }
+    document.getElementById("caption").textContent = text();
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("abspiel").classList.toggle("aus", !animiert());
+    document.getElementById("play").textContent = laeuft ? "❚❚ Pause" : "▶ Abspielen";
+    document.getElementById("toggles").classList.toggle("on", blaettern);
+    document.getElementById("erklaerung").classList.toggle("on", schritt >= 4);
+  }
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function gehe(n) {
+    schritt = Math.max(0, Math.min(LETZTER, n));
+    P = szene();
+    t = schritt === 4 ? GEHIRN.ende : 0;
+    laeuft = animiert() && !still; letzte = null;
+    if (animiert() && still) t = dauer();
+    darstellen();
+  }
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.getElementById("nochmal").onclick = function () { t = 0; laeuft = true; letzte = null; darstellen(); };
+  document.getElementById("play").onclick = function () {
+    if (t >= dauer()) t = 0;
+    laeuft = !laeuft; letzte = null; darstellen();
+  };
+  document.getElementById("tempo").onchange = function (e) { tempo = +e.target.value; };
+  cbKurz.onchange = function () { gehe(schritt); };
+  document.querySelectorAll("[data-p]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = b.dataset.p;
+      document.querySelectorAll("[data-p]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT") return;
+    if (e.key === "ArrowRight") gehe(schritt + 1);
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+    if (e.key === " " && animiert()) { e.preventDefault(); document.getElementById("play").onclick(); }
+  });
+  (function bild(jetzt) {
+    if (laeuft) {
+      var tempoSzene = schritt === 5 ? 0.45 : 1;
+      if (letzte !== null) t = Math.min(dauer(), t + (jetzt - letzte) / 1000 / SEK_JE_SCHRITT * tempo * tempoSzene);
+      letzte = jetzt; darstellen();
+      if (t >= dauer()) { laeuft = false; darstellen(); }
+    }
+    requestAnimationFrame(bild);
+  })(performance.now());
+
+  // Druckansicht: #druck zeigt die Bilanz (getrennte Teile, drei Arbeitsstreifen) ohne Steuerung
+  function hash() {
+    var druck = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", druck);
+    if (druck) gehe(4);
+  }
+  window.addEventListener("hashchange", hash);
+  gehe(0); hash();
+  window.__p8 = { gehe: gehe, KISTE: KISTE, HAENDE: HAENDE, GEHIRN: GEHIRN,
+    setT: function (x) { laeuft = false; t = x; darstellen(); }, kurz: function (v) { cbKurz.checked = v; gehe(schritt); } };
+})();
+</script>
+</body>
+</html>
