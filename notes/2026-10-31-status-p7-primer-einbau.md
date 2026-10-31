@@ -28,10 +28,9 @@ Grundlage: `claude/PLAN-primer-lehrende-2026-10-30.md` (Abschnitt 8, P7), Status
 
 ## Offen für Roman
 
-1. **Seitenumfang:** 20 statt der geplanten rund 10 Seiten. Kürzungsoptionen siehe Freigabefrage.
-2. **Freigabe** der Primer C (neu) und D (anonymisierte F6-Befunde) sowie des Gesamtanhangs.
-3. Vor dem Druck am Original lesen: Calvert (2001) und Lehmann & Seufert (2018) (nur online zitiert), Wouters et al. (2013), Sitzmann (2011), Keiser & Arthur (2021), Chen et al. (2020).
-4. Whisper-Lauf an einer echten Suno-Aufnahme steht aus (Primer C nennt ihn nicht als erledigt).
+1. Seitenumfang und Freigabe: entschieden (oben); Kürzung folgt.
+2. Vor dem Druck am Original lesen: Calvert (2001) und Lehmann & Seufert (2018) (nur online zitiert), Wouters et al. (2013), Sitzmann (2011), Keiser & Arthur (2021), Chen et al. (2020).
+3. Whisper-Lauf an einer echten Suno-Aufnahme steht aus (Primer C nennt ihn nicht als erledigt).
 
 ## Nebenbefunde
 
