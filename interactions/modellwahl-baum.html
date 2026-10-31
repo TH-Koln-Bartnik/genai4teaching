@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welches Modell, welche Stufe? Ein Entscheidungsbaum für Lehrende</title>
+<style>
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2); Druck (#druck) in reinen Graustufen */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --flaeche:#f3f3f3; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --flaeche:#202020; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:1000px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .frage { margin:10px 0 4px; font-size:17px; }
+  .frage strong { font-weight:650; }
+  .knoepfe { display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 8px; }
+  button { font:inherit; font-size:15px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:6px 11px; cursor:pointer; text-align:left; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:12px 0 6px; }
+  .steuerung button { font-size:14px; padding:4px 10px; }
+  .aus { display:none !important; }
+  #ergebnis { border-left:4px solid var(--akzent); background:var(--flaeche); padding:10px 14px; margin:10px 0; max-width:75ch; }
+  #ergebnis p { margin:4px 0; }
+  #ergebnis .kopf { font-size:18px; font-weight:650; }
+  svg { width:100%; height:auto; display:block; margin-top:8px; }
+  svg text { font-size:15px; fill:var(--c, var(--tinte)); }
+  svg text.b, svg tspan.b { font-weight:650; }
+  #baumrahmen { overflow-x:auto; }
+  @media (max-width:640px) { #baumrahmen { display:none; } .alles #baumrahmen { display:block; } .alles #buehne { min-width:760px; } }
+  svg text.g { font-size:17px; }
+  svg .kasten { fill:var(--grund); stroke:var(--c, var(--tinte)); stroke-width:1.5; }
+  svg .weiche { fill:var(--flaeche); stroke:var(--c, var(--tinte)); stroke-width:1.5; }
+  svg .linie { stroke:var(--c, var(--tinte)); stroke-width:1.8; fill:none; }
+  svg .spitze { fill:var(--c, var(--tinte)); }
+  .x { opacity:0; visibility:hidden; transition:opacity .4s ease, visibility .4s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu { --c:var(--akzent); }
+  .kontext { --c:var(--zurueck); }
+  .klein { font-size:13px; color:var(--grau); }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:10px; }
+  details p { max-width:75ch; }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+  .druck h1, .druck #dialog, .druck .steuerung, .druck #ergebnis, .druck details { display:none !important; }
+  .druck .neu, .druck .kontext { --c:var(--tinte); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Welches Modell, welche Stufe? Ein Entscheidungsbaum für Lehrende</h1>
+
+  <div id="dialog">
+    <div id="f1">
+      <p class="frage"><strong>1.</strong> Enthält die Aufgabe personenbezogene Daten, Prüfungsleistungen oder unveröffentlichte Forschung?</p>
+      <div class="knoepfe"><button data-f1="ja" aria-pressed="false">Ja</button><button data-f1="nein" aria-pressed="false">Nein</button></div>
+    </div>
+    <div id="f2" class="aus">
+      <p class="frage"><strong>2.</strong> Ich will …</p>
+      <div class="knoepfe" id="aufgaben"></div>
+    </div>
+    <div id="f3" class="aus">
+      <p class="frage"><strong>3.</strong> Wie oft?</p>
+      <div class="knoepfe">
+        <button data-f3="0" aria-pressed="false">gelegentlich</button>
+        <button data-f3="1" aria-pressed="false">wöchentlich</button>
+        <button data-f3="2" aria-pressed="false">täglich</button>
+      </div>
+    </div>
+    <div id="ergebnis" class="aus" aria-live="polite"></div>
+  </div>
+
+  <div class="steuerung">
+    <button id="neu">↺ Neu beginnen</button>
+    <button id="alles">Ganzen Baum zeigen</button>
+  </div>
+
+  <div id="baumrahmen">
+  <svg id="buehne" viewBox="0 0 1000 720" role="img" aria-labelledby="svgtitel">
+    <title id="svgtitel">Entscheidungsbaum: erst Daten und Risiko, dann die Aufgabe, dann die Häufigkeit</title>
+    <defs>
+      <marker id="pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="spitze" d="M0,0 L10,5 L0,10 z"/></marker>
+    </defs>
+    <!-- Weiche 1 -->
+    <g id="w1" class="x an" data-ab="0">
+      <rect class="weiche" x="10" y="270" width="215" height="132" rx="10"/>
+      <text class="b" x="24" y="298">Personenbezogene Daten,</text>
+      <text class="b" x="24" y="320">Prüfungsleistungen oder</text>
+      <text class="b" x="24" y="342">unveröffentlichte</text>
+      <text class="b" x="24" y="364">Forschung?</text>
+    </g>
+    <!-- ja-Zweig -->
+    <g id="zweig-ja" class="x" data-ab="1">
+      <path class="linie" d="M117,270 L117,62 L262,62" marker-end="url(#pf)"/>
+      <text x="126" y="200">ja</text>
+      <rect class="kasten" x="268" y="18" width="722" height="90" rx="10"/>
+      <text class="b g" x="284" y="46">Hochschulzugang statt persönlichem Abo</text>
+      <text x="284" y="72">offene Modelle auf Servern der Hochschule oder des Landes (z. B. KI:connect.nrw)</text>
+      <text x="284" y="94">oder ein kleines offenes Modell auf dem eigenen Rechner</text>
+    </g>
+    <!-- nein-Zweig und Weiche 2 -->
+    <g id="zweig-nein" class="x" data-ab="1">
+      <path class="linie" d="M225,336 L262,336" marker-end="url(#pf)"/>
+      <text x="230" y="326">nein</text>
+      <rect class="weiche" x="268" y="306" width="120" height="60" rx="10"/>
+      <text class="b g" x="282" y="342">Ich will …</text>
+    </g>
+    <g id="zeilen"></g>
+    <!-- Fuß: Häufigkeit und Prüfregel -->
+    <g id="fuss" class="x" data-ab="3">
+      <line x1="10" y1="636" x2="990" y2="636" stroke="var(--hell)" stroke-width="1.5"/>
+      <text x="10" y="664"><tspan class="b">Häufigkeit:</tspan> Wer täglich damit arbeitet, geht höchstens eine Stufe höher.</text>
+      <text x="10" y="692"><tspan class="b">Prüfregel:</tspan> Muss das Ergebnis stimmen und kann ich es nicht selbst prüfen? Dann das größte Modell,</text>
+      <text x="10" y="714">die höchste Denkstufe und eine Prüfung durch einen Menschen.</text>
+    </g>
+  </svg>
+  </div>
+
+  <details>
+    <summary>Wie der Baum entstanden ist</summary>
+    <p>Die Reihenfolge der Fragen folgt Leitfäden, die zuerst nach Risiko und Daten fragen und erst dann nach der Aufgabe. Die Stufen beschreiben, was ein Abo kauft: ab rund 20 € im Monat die Spitzenmodelle der großen Anbieter, für rund 100 € vor allem fünfmal so viel Nutzung für lange Agentenläufe, kaum ein klügeres Modell (Mollick, 2026; Preisseiten von OpenAI, Anthropic und Google, Stand 31.10.2026). Die Blätter sind Empfehlungen dieses Buches, keine Messwerte.</p>
+    <p class="klein">Stufen: 0 € = kostenlos · 20 € = Gelegenheitsnutzung · 100 € = professionelle Nutzung (je Monat, gerundet). Für Tutoren, die viele Studierende nutzen, rechnet der <a href="tutor-kosten.html" target="_top">Tutor-Kosten-Rechner</a>.</p>
+  </details>
+</main>
+<script>
+(function () {
+  // Blätter: Aufgabe (zweizeilig), Modellklasse, Stufe nach Häufigkeit [gelegentlich, wöchentlich, täglich], Hinweis
+  var B = [
+    { a: ["eine Frage klären oder", "einen Text überarbeiten"], k: "kleines Frontier-Modell", m: "", s: [0, 0, 20], z: "0 € · täglich: 20 €",
+      h: "Für Alltagsfragen reicht die kostenlose Stufe; wer täglich damit arbeitet, stößt an ihre Grenzen." },
+    { a: ["ein Bild oder eine", "Grafik erstellen"], k: "Frontier-Modell", m: "mit Bildgenerator", s: [0, 20, 20], z: "0 € · Serien: 20 €",
+      h: "Diagramme und Schaubilder gelingen genauer, wenn das Modell sie als Code zeichnet statt als Bild." },
+    { a: ["eine Lerneinheit, Folien", "oder Aufgaben erstellen"], k: "großes Frontier-Modell", m: "hohe Denkstufe", s: [20, 20, 100], z: "20 € · täglich: 100 €",
+      h: "Hier lohnt das Spitzenmodell mit hoher Denkstufe; die kostenlosen Modelle liefern spürbar schwächere Entwürfe." },
+    { a: ["regelmäßig recherchieren", "(z. B. Literaturscan)"], k: "großes Frontier-Modell", m: "mit Recherche-Agent", s: [20, 100, 100], z: "20 € · wöchentlich geplant: 100 €",
+      h: "Ein Recherche-Agent arbeitet Minuten bis Stunden; geplante, wiederkehrende Läufe verbrauchen das Kontingent schnell." },
+    { a: ["ein Werkzeug bauen", "(Simulation, Lernspiel)"], k: "großes Frontier-Modell", m: "im Agenten-Modus", s: [20, 100, 100], z: "20 € zur Probe · laufend: 100 €",
+      h: "Für einen ersten Prototyp reicht die 20-€-Stufe; laufende Entwicklung mit langen Agentenläufen braucht mehr Kontingent." },
+    { a: ["einen Tutor für", "Studierende betreiben"], k: "kein persönliches Abo", m: "", s: null, z: "API oder Hochschulzugang",
+      h: "Ein persönliches Abo deckt den Betrieb für viele Studierende nicht ab: Der Tutor läuft über eine Schnittstelle (API) mit Abrechnung nach Verbrauch oder über den Zugang der Hochschule." }
+  ];
+  var STUFE = { 0: "0 € (kostenlos)", 20: "rund 20 € im Monat (Gelegenheitsnutzung)", 100: "rund 100 € im Monat (professionelle Nutzung)" };
+  var NS = "http://www.w3.org/2000/svg", zeilen = document.getElementById("zeilen");
+  function el(tag, attr, txt) { var e = document.createElementNS(NS, tag); for (var k in attr) e.setAttribute(k, attr[k]); if (txt) e.textContent = txt; return e; }
+  B.forEach(function (b, i) {
+    var y = 140 + i * 82, g = el("g", { id: "z" + i, "class": "x", "data-ab": "1" });
+    g.appendChild(el("path", { "class": "linie", d: "M388,336 C420,336 420," + (y + 22) + " 452," + (y + 22), "marker-end": "url(#pf)" }));
+    g.appendChild(el("rect", { "class": "kasten", x: 458, y: y - 4, width: 242, height: 54, rx: 8 }));
+    g.appendChild(el("text", { x: 470, y: y + 18 }, b.a[0]));
+    g.appendChild(el("text", { x: 470, y: y + 39 }, b.a[1]));
+    var r = el("g", { id: "r" + i, "class": "x", "data-ab": "2" });
+    r.appendChild(el("path", { "class": "linie", d: "M700," + (y + 22) + " L722," + (y + 22), "marker-end": "url(#pf)" }));
+    r.appendChild(el("text", { "class": "b", x: 730, y: y + (b.m ? 10 : 18) }, b.k));
+    if (b.m) r.appendChild(el("text", { x: 730, y: y + 29 }, b.m));
+    r.appendChild(el("text", { x: 730, y: y + (b.m ? 48 : 39) }, b.z));
+    zeilen.appendChild(g); zeilen.appendChild(r);
+    var k = document.createElement("button"); k.textContent = "… " + b.a.join(" "); k.dataset.f2 = i; k.setAttribute("aria-pressed", "false");
+    document.getElementById("aufgaben").appendChild(k);
+  });
+
+  var z = { f1: null, f2: null, f3: null }, alle = false;
+  function setze(sel, wert) { document.querySelectorAll(sel).forEach(function (e) { e.classList.toggle("an", wert(e)); }); }
+  function rolle(id, r) { var e = document.getElementById(id); e.classList.remove("neu", "kontext"); if (r) e.classList.add(r); }
+  function darstellen() {
+    var druck = document.documentElement.classList.contains("druck"), voll = alle || druck;
+    document.getElementById("f2").classList.toggle("aus", z.f1 !== "nein");
+    var mitHaeufigkeit = z.f2 !== null && B[z.f2].s !== null;
+    document.getElementById("f3").classList.toggle("aus", !mitHaeufigkeit);
+    document.querySelectorAll("[data-f1]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.f1 === z.f1); });
+    document.querySelectorAll("[data-f2]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.f2 === z.f2)); });
+    document.querySelectorAll("[data-f3]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.f3 === z.f3)); });
+    // Sichtbarkeit im Baum
+    document.getElementById("zweig-ja").classList.toggle("an", voll || z.f1 === "ja");
+    document.getElementById("zweig-nein").classList.toggle("an", voll || z.f1 === "nein");
+    B.forEach(function (b, i) {
+      document.getElementById("z" + i).classList.toggle("an", voll || z.f1 === "nein");
+      document.getElementById("r" + i).classList.toggle("an", voll || z.f2 === i);
+      rolle("z" + i, voll && z.f2 === null ? null : (z.f2 === i ? "neu" : "kontext"));
+      rolle("r" + i, z.f2 === i ? "neu" : (voll ? "kontext" : null));
+    });
+    var fertig = z.f1 === "ja" || (z.f2 !== null && (B[z.f2].s === null || z.f3 !== null));
+    document.getElementById("fuss").classList.toggle("an", voll || fertig);
+    rolle("zweig-ja", z.f1 === "ja" ? "neu" : (z.f1 === "nein" && voll ? "kontext" : null));
+    rolle("zweig-nein", z.f1 === "nein" ? "neu" : (z.f1 === "ja" && voll ? "kontext" : null));
+    if (druck) { ["zweig-ja", "zweig-nein"].forEach(function (id) { rolle(id, null); }); B.forEach(function (b, i) { rolle("z" + i, null); rolle("r" + i, null); }); }
+    // Ergebnis
+    var erg = document.getElementById("ergebnis");
+    erg.classList.toggle("aus", !fertig);
+    if (z.f1 === "ja") {
+      erg.innerHTML = '<p class="kopf">Hochschulzugang statt persönlichem Abo</p><p>Für solche Daten ist ein privates Konto bei einem Anbieter der falsche Ort. Erste Wahl sind offene Modelle auf Servern der Hochschule oder des Landes, in NRW über KI:connect.nrw; bei den kommerziellen Modellen dort kann die Verarbeitung auch in den USA stattfinden. Für kleine Aufgaben geht ein offenes Modell auf dem eigenen Rechner. Vorher die Regeln der eigenen Hochschule prüfen.</p>';
+    } else if (fertig) {
+      var b = B[z.f2];
+      erg.innerHTML = '<p class="kopf">' + b.k + (b.m ? " " + b.m : "") + (b.s ? " · " + STUFE[b.s[z.f3]] : "") + '</p><p>' + b.h + '</p>' +
+        (b.s ? '' : '<p>Was das bei 100 oder 1.000 Studierenden kostet, zeigt der <a href="tutor-kosten.html" target="_top">Tutor-Kosten-Rechner</a>.</p>');
+    }
+  }
+  document.querySelectorAll("[data-f1]").forEach(function (b) { b.onclick = function () { z.f1 = b.dataset.f1; z.f2 = null; z.f3 = null; darstellen(); }; });
+  document.getElementById("aufgaben").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-f2]"); if (!b) return; z.f2 = +b.dataset.f2; z.f3 = null; darstellen(); });
+  document.querySelectorAll("[data-f3]").forEach(function (b) { b.onclick = function () { z.f3 = +b.dataset.f3; darstellen(); }; });
+  document.getElementById("neu").onclick = function () { z = { f1: null, f2: null, f3: null }; alle = false; document.documentElement.classList.remove("alles"); document.getElementById("alles").textContent = "Ganzen Baum zeigen"; darstellen(); };
+  document.getElementById("alles").onclick = function () { alle = !alle; document.documentElement.classList.toggle("alles", alle); this.textContent = alle ? "Nur meinen Weg zeigen" : "Ganzen Baum zeigen"; darstellen(); };
+
+  // Steuerobjekt für scripts/pruefe-aufmerksamkeit.cjs: Beispielweg nein → Lerneinheit → wöchentlich
+  var WEG = [{ f1: null, f2: null, f3: null }, { f1: "nein", f2: null, f3: null }, { f1: "nein", f2: 2, f3: null }, { f1: "nein", f2: 2, f3: 1 }];
+  window.ANIM = { gehe: function (n) { z = Object.assign({}, WEG[Math.max(0, Math.min(3, n))]); alle = false; darstellen(); }, letzter: 3 };
+
+  function modus() { document.documentElement.classList.toggle("druck", location.hash === "#druck"); darstellen(); }
+  window.addEventListener("hashchange", modus); modus();
+})();
+</script>
+</body>
+</html>
