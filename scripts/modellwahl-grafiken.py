@@ -60,7 +60,7 @@ def stufen():
     e.append(f'<rect x="120" y="{y0}" width="220" height="44" rx="6" fill="{FLAECHE}" stroke="{HELL}"/>')
     e.append(text(230, y0 + 28, "kleinere Modelle", 17))
     e.append(f'<rect x="420" y="{y0}" width="520" height="44" rx="6" fill="{FLAECHE}" stroke="{TINTE}" stroke-width="1.5"/>')
-    e.append(text(680, y0 + 28, "dieselben Spitzenmodelle, hohe Denkstufe", 17, 650))
+    e.append(text(680, y0 + 28, "im Kern dieselben Spitzenmodelle, hohe Denkstufe", 17, 650))
     e.append(text(90, y0 + 28, "Modell", 15, 400, GRAU, "end"))
     return svg(W, H, e, "Was ein Abo kauft: drei Stufen, vor allem mehr Kontingent")
 

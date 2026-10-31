@@ -30,7 +30,7 @@
   svg text { font-size:15px; fill:var(--c, var(--tinte)); }
   svg text.b, svg tspan.b { font-weight:650; }
   #baumrahmen { overflow-x:auto; }
-  @media (max-width:640px) { #baumrahmen { display:none; } .alles #baumrahmen { display:block; } .alles #buehne { min-width:760px; } }
+  @media (max-width:480px) { #baumrahmen { display:none; } .alles #baumrahmen { display:block; } .alles #buehne { min-width:760px; } }
   svg text.g { font-size:17px; }
   svg .kasten { fill:var(--grund); stroke:var(--c, var(--tinte)); stroke-width:1.5; }
   svg .weiche { fill:var(--flaeche); stroke:var(--c, var(--tinte)); stroke-width:1.5; }
@@ -120,7 +120,7 @@
 
   <details>
     <summary>Wie der Baum entstanden ist</summary>
-    <p>Die Reihenfolge der Fragen folgt Leitfäden, die zuerst nach Risiko und Daten fragen und erst dann nach der Aufgabe. Die Stufen beschreiben, was ein Abo kauft: ab rund 20 € im Monat die Spitzenmodelle der großen Anbieter, für rund 100 € vor allem fünfmal so viel Nutzung für lange Agentenläufe, kaum ein klügeres Modell (Mollick, 2026; Preisseiten von OpenAI, Anthropic und Google, Stand 31.10.2026). Die Blätter sind Empfehlungen dieses Buches, keine Messwerte.</p>
+    <p>Die Reihenfolge der Fragen folgt Leitfäden, die zuerst nach Risiko und Daten fragen und erst dann nach der Aufgabe. Die Stufen beschreiben, was ein Abo kauft: ab rund 20 € im Monat die Spitzenmodelle der großen Anbieter, für rund 100 € vor allem fünfmal so viel Nutzung für lange Agentenläufe (Preisseiten von OpenAI, Anthropic und Google, Stand 31.10.2026). Für den Einstieg empfiehlt auch Mollick (2026) die 20-$-Stufe. Dass bei kommerziellen Modellen über KI:connect.nrw Daten auch in den USA verarbeitet werden können, steht auf der Infoseite der HHU Düsseldorf (2026). Die Blätter sind Empfehlungen dieses Buches, keine Messwerte.</p>
     <p class="klein">Stufen: 0 € = kostenlos · 20 € = Gelegenheitsnutzung · 100 € = professionelle Nutzung (je Monat, gerundet). Für Tutoren, die viele Studierende nutzen, rechnet der <a href="tutor-kosten.html" target="_top">Tutor-Kosten-Rechner</a>.</p>
   </details>
 </main>
@@ -141,7 +141,7 @@
     { a: ["einen Tutor für", "Studierende betreiben"], k: "kein persönliches Abo", m: "", s: null, z: "API oder Hochschulzugang",
       h: "Ein persönliches Abo deckt den Betrieb für viele Studierende nicht ab: Der Tutor läuft über eine Schnittstelle (API) mit Abrechnung nach Verbrauch oder über den Zugang der Hochschule." }
   ];
-  var STUFE = { 0: "0 € (kostenlos)", 20: "rund 20 € im Monat (Gelegenheitsnutzung)", 100: "rund 100 € im Monat (professionelle Nutzung)" };
+  var STUFE = { 0: "0\u00a0€ (kostenlos)", 20: "rund 20\u00a0€ im Monat (Gelegenheitsnutzung)", 100: "rund 100\u00a0€ im Monat (professionelle Nutzung)" };
   var NS = "http://www.w3.org/2000/svg", zeilen = document.getElementById("zeilen");
   function el(tag, attr, txt) { var e = document.createElementNS(NS, tag); for (var k in attr) e.setAttribute(k, attr[k]); if (txt) e.textContent = txt; return e; }
   B.forEach(function (b, i) {
