@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vor der Antwort entsteht im Modell ein Zwischenschritt, der nie im Text steht</title>
+<style>
+  /* ---- Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) ---- */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; margin:0 4px 4px 0; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p, details li { max-width:75ch; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+
+  /* ---- SVG: drei Zustände je Element (Regel F6) ---- */
+  svg text { font-size:16px; }
+  svg text.u { font-size:14px; }
+  svg text.b { font-weight:650; }
+  .f { fill:var(--c, var(--tinte)); }                    /* Text und Flächen */
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; } /* Rahmen, Linien */
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }                         /* Grau statt Transparenz: nichts scheint durch */
+  .leit    { --c:var(--akzent) !important; }               /* optional: ein Leitobjekt, dann ist es der einzige Akzent */
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* ---- Druckansicht (#druck) und Hörsaalmodus (?hoersaal) ---- */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher { display:none !important; }
+  .druck .kontext { --c:var(--grau); }   /* im Druck dunkler, damit Graustufen lesbar bleiben */
+  .druck .neu { --c:var(--tinte); }      /* Druck in reinen Graustufen */
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Vor der Antwort entsteht im Modell ein Zwischenschritt, der nie im Text steht</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Eingabe: „Fact: the capital of the state containing Dallas is“. Wie kommt das Modell auf „Austin“?</p>
+    <button data-tipp="0">auswendig gelernt als ein Fakt</button>
+    <button data-tipp="1">über „Texas“ als inneren Zwischenschritt</button>
+    <button data-tipp="2">es rät</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 960 380" role="img"
+       aria-label="Links die Eingabe ‚the capital of the state containing Dallas is‘. Im Modell springen Merkmale für Dallas, Bundesstaat und Hauptstadt an. Aus Dallas wird intern Texas, aus Hauptstadt die Absicht, eine Hauptstadt zu nennen. Beides zusammen ergibt ‚Austin sagen‘, rechts erscheint das Token Austin. Ersetzen Forschende Texas durch California, gibt das Modell Sacramento aus.">
+    <defs>
+      <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+      </marker>
+    </defs>
+
+    <!-- Schritt 1: Eingabezeile (gekürzt um „Fact:“, damit höchstens 8 Wörter) -->
+    <g data-ab="0">
+      <rect class="s" x="14" y="160" width="200" height="104" rx="10" style="fill:var(--grund)"/>
+      <text class="f" x="114" y="194" text-anchor="middle">… the capital of</text>
+      <text class="f" x="114" y="218" text-anchor="middle">the state containing</text>
+      <text class="f b" x="114" y="242" text-anchor="middle">Dallas is</text>
+    </g>
+
+    <!-- Schritt 2: Modellrahmen und drei Merkmalsknoten -->
+    <g data-ab="1" data-grau-ab="5">
+      <rect class="s" x="240" y="62" width="552" height="306" rx="18" style="stroke-dasharray:7 6;stroke-width:1.5"/>
+      <text class="f u" x="258" y="88">im Modell</text>
+      <line class="s" x1="216" y1="196" x2="264" y2="134" marker-end="url(#pfeil)" style="stroke-width:1.5"/>
+      <line class="s" x1="216" y1="212" x2="264" y2="212" marker-end="url(#pfeil)" style="stroke-width:1.5"/>
+      <line class="s" x1="216" y1="228" x2="264" y2="290" marker-end="url(#pfeil)" style="stroke-width:1.5"/>
+      <rect class="s" x="268" y="104" width="130" height="40" rx="10" style="fill:var(--grund)"/>
+      <text class="f" x="333" y="129" text-anchor="middle">Dallas</text>
+      <rect class="s" x="268" y="192" width="130" height="40" rx="10" style="fill:var(--grund)"/>
+      <text class="f" x="333" y="217" text-anchor="middle">Bundesstaat</text>
+      <rect class="s" x="268" y="280" width="130" height="40" rx="10" style="fill:var(--grund)"/>
+      <text class="f" x="333" y="305" text-anchor="middle">Hauptstadt</text>
+    </g>
+
+    <!-- Schritt 3: Texas als innerer Zwischenschritt -->
+    <g data-ab="2">
+      <line class="s" x1="400" y1="124" x2="452" y2="124" marker-end="url(#pfeil)"/>
+      <line class="s" x1="400" y1="206" x2="454" y2="140" marker-end="url(#pfeil)" style="stroke-width:1.5;stroke-dasharray:4 4"/>
+      <rect class="s" x="456" y="104" width="130" height="40" rx="10" style="fill:var(--grund);stroke-width:2.5"/>
+      <text class="f b" x="521" y="129" text-anchor="middle">Texas</text>
+    </g>
+
+    <!-- Schritt 4: Absicht, eine Hauptstadt zu nennen -->
+    <g data-ab="3">
+      <line class="s" x1="400" y1="300" x2="432" y2="300" marker-end="url(#pfeil)"/>
+      <rect class="s" x="436" y="280" width="200" height="40" rx="10" style="fill:var(--grund)"/>
+      <text class="f" x="536" y="305" text-anchor="middle">eine Hauptstadt nennen</text>
+    </g>
+
+    <!-- Schritt 5: Austin sagen, gespeist aus beiden Wegen -->
+    <g data-ab="4">
+      <line class="s" x1="588" y1="132" x2="658" y2="196" marker-end="url(#pfeil)"/>
+      <line class="s" x1="638" y1="290" x2="658" y2="228" marker-end="url(#pfeil)"/>
+      <rect class="s" x="660" y="192" width="122" height="40" rx="10" style="fill:var(--grund)"/>
+      <text class="f" x="721" y="217" text-anchor="middle">Austin sagen</text>
+    </g>
+
+    <!-- Schritt 6: Ausgabe-Token -->
+    <g data-ab="5">
+      <line class="s" x1="784" y1="212" x2="824" y2="212" marker-end="url(#pfeil)"/>
+      <rect class="s" x="828" y="190" width="116" height="44" rx="10" style="fill:var(--grund);stroke-width:2.5"/>
+      <text class="f b" x="886" y="218" text-anchor="middle">Austin</text>
+    </g>
+
+    <!-- Schritt 7: Eingriff Texas → California, Ausgabe Sacramento -->
+    <g data-ab="6">
+      <rect class="s" x="426" y="10" width="190" height="38" rx="10" style="fill:var(--grund)"/>
+      <text class="f" x="521" y="35" text-anchor="middle">Eingriff: California</text>
+      <line class="s" x1="521" y1="50" x2="521" y2="100" marker-end="url(#pfeil)"/>
+      <line class="s" x1="488" y1="124" x2="554" y2="124" style="stroke-width:2.5"/>
+      <line class="s" x1="854" y1="212" x2="918" y2="212" style="stroke-width:2.5"/>
+      <line class="s" x1="886" y1="236" x2="886" y2="282" marker-end="url(#pfeil)"/>
+      <rect class="s" x="818" y="286" width="136" height="44" rx="10" style="fill:var(--grund);stroke-width:2.5"/>
+      <text class="f b" x="886" y="314" text-anchor="middle">Sacramento</text>
+    </g>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <section class="nachher" id="nachher">
+    <details><summary>Was hier vereinfacht ist</summary>
+      <p><strong>Auflösung der Vorhersage:</strong> Der Weg über „Texas“ ist nachweisbar. Daneben fanden die Forschenden eine direkte Abkürzung von „Dallas“ zu „Austin sagen“. Beide Wege bestehen nebeneinander; „auswendig gelernt“ trifft also einen Teil, erklärt aber nicht alles.</p>
+      <ul>
+        <li><strong>Merkmale statt Neuronen.</strong> Die Kästen sind Merkmale (<em>features</em>): Muster, die die Forschenden mit einem vereinfachten Ersatzmodell sichtbar gemacht, zu Gruppen zusammengefasst und von Hand benannt haben. Einzelne Neuronen zeigt das Bild nicht.</li>
+        <li><strong>Graph stark verkleinert.</strong> Der Originalgraph enthält weit mehr Merkmale und Verbindungen; die Autoren betonen selbst, dass er die tatsächlichen Abläufe stark vereinfacht. „Bundesstaat“ trägt nur wenig zu „Texas“ bei, daher der gestrichelte Pfeil. „Texas“ und „eine Hauptstadt nennen“ stärken „Austin“ auch direkt, nicht nur über „Austin sagen“.</li>
+        <li><strong>Der Eingriff.</strong> Die Forschenden dämpften die Texas-Merkmale und setzten Kalifornien-Merkmale ein, die sie an derselben Frage mit „Oakland“ statt „Dallas“ gefunden hatten. Das Modell antwortete daraufhin „Sacramento“.</li>
+        <li><strong>Geltungsbereich.</strong> Der Befund gilt für Claude 3.5 Haiku und diese Aufgabe, nicht automatisch für jedes Modell und jede Frage.</li>
+      </ul></details>
+    <details><summary>Zweites Beispiel: Das Modell plant den Reim vor der Zeile</summary>
+      <p>Aufgabe: ein Reimpaar. Erste Zeile „He saw a carrot and had to grab it,“. Noch bevor das Modell die zweite Zeile beginnt, springen Merkmale für passende Reimwörter wie „rabbit“ und „habit“ an. Die Zeile wird dann so gebaut, dass sie auf „rabbit“ endet: „His hunger was like a starving rabbit“. Unterdrücken oder ersetzen die Forschenden diese Planungsmerkmale, ändert sich das letzte Wort. Solche Merkmale fanden sie in etwa der Hälfte der untersuchten Gedichte.</p></details>
+    <details><summary>Warum das für Lehrende wichtig ist</summary>
+      <p>Der Satz „Ein Sprachmodell sagt nur das nächste Token vorher“ beschreibt die Ausgabe, nicht die Rechnung dahinter: Auf dem Weg zu diesem einen Token entstehen Zwischenschritte wie „Texas“, die nirgends im Text stehen.</p></details>
+    <details><summary>Quellen</summary>
+      <p class="klein">Eigene Darstellung nach Lindsey et al. (2025) und Anthropic (2025); stark vereinfacht, kein Nachbau der Originalgraphen.</p>
+      <p class="klein">Anthropic. (2025, 27. März). <em>Tracing the thoughts of a large language model</em>. https://www.anthropic.com/research/tracing-thoughts-language-model</p>
+      <p class="klein">Lindsey, J., Gurnee, W., Ameisen, E., Chen, B., Pearce, A., Turner, N. L., Citro, C., Abrahams, D., Carter, S., Hosmer, B., Marcus, J., Sklar, M., Templeton, A., Bricken, T., McDougall, C., Cunningham, H., Henighan, T., Jermyn, A., Jones, A., … Batson, J. (2025). On the biology of a large language model. <em>Transformer Circuits Thread</em>. https://transformer-circuits.pub/2025/attribution-graphs/biology.html</p></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // ================= HIER ANPASSEN: ein Eintrag je Schritt =================
+  var SCHRITTE = [
+    "Eingabe: die Hauptstadt des Bundesstaats, in dem *Dallas* liegt. Treffen Sie oben Ihre Vorhersage.",
+    "Im Modell springen Merkmale für *Dallas*, Hauptstadt und Bundesstaat an.",
+    "Aus Dallas wird intern *Texas*, obwohl das Wort nirgends im Text steht.",
+    "Zugleich entsteht die Absicht, *eine Hauptstadt* zu nennen.",
+    "Texas und Hauptstadt zusammen ergeben *Austin*.",
+    "Erst jetzt erscheint das nächste Token: *Austin*.",
+    "Ersetzen Forschende intern Texas durch Kalifornien, antwortet das Modell *Sacramento*."
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: ["auswendig gelernt als ein Fakt", "über „Texas“ als inneren Zwischenschritt", "es rät"] };
+  // =========================================================================
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  // #druck: vollständiges Bild ohne Steuerung (A5); ?hoersaal: Unterschrift aus (T7)
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };  // für das Prüfskript
+})();
+</script>
+</body>
+</html>
