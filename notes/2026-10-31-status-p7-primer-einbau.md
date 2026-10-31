@@ -1,6 +1,16 @@
 # Status P7: Einbau der Praxis-Primer (31.10.2026, 17:00)
 
-Grundlage: `claude/PLAN-primer-lehrende-2026-10-30.md` (Abschnitt 8, P7), Status P1/P2, P4, P6. Branch `primer-lehrende` (von `main` `03f3bbf`). Status: **eingebaut und gerendert, wartet auf Romans Freigabe; Merge nach `main` danach.**
+Grundlage: `claude/PLAN-primer-lehrende-2026-10-30.md` (Abschnitt 8, P7), Status P1/P2, P4, P6. Branch `primer-lehrende` (von `main` `03f3bbf`). Status: **freigegeben und nach `main` gemergt (31.10.2026, 17:50; `2578206` + Render `3ee5c0f`).** `docs/` neu gerendert in der README-Reihenfolge; das Download-PDF ist die Druckvorlage.
+
+## Entscheidungen Roman (31.10.2026)
+
+1. **Freigabe** von Anhang E einschließlich Primer C (neu) und Primer D (anonymisierte F6-Befunde).
+2. **Umfang:** Arbeitsablauf und Prüfliste je Primer nur online, im Druck ein Verweissatz (Ziel: rund 15 statt 20 Seiten). Prinzip, Weiche-Tabellen, Empfehlungen, Umsetzung und Lücke bleiben gedruckt.
+3. **Kürzung in frischer Sitzung.**
+
+## Startauftrag nächste Sitzung (Kürzung Anhang E)
+
+> Lies `notes/2026-10-31-status-p7-primer-einbau.md` im Repository `genai4teaching` (Branch `main`). Setze in `anhang-primer.qmd` für die Primer A–D die Blöcke „Arbeitsablauf mit KI“ und „Prüfliste“ in `::: {.content-visible when-format="html"}` und ergänze im Druck je einen Satz, dass Ablauf und Prüfliste in der Vollfassung online stehen (QR-Code der Primer-Abbildung). Die QR-Abbildung steht in allen vier Primern erst nach der Prüfliste; der Verweissatz nennt sie deshalb mit `@fig-…`. Danach Druck-PDF rendern (`quarto render --profile print --to pdf --output-dir /tmp/print`), Seitenzahl von Anhang E messen, Tabellenumbrüche E.1–E.3 prüfen (ggf. `tbl-pos` oder Kürzung), dann `quarto render` nach README, Download-PDF ersetzen, Statusnotiz fortschreiben, Merge nach `main`. Tresorit-Ordner `0_GenAI` per Multiple Choice freigeben lassen.
 
 ## Erledigt
 
