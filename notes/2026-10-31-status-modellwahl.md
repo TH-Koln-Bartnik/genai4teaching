@@ -47,3 +47,10 @@ Repo `TH-Koln-Bartnik/genai4teaching`. Branch `kapitel02-modellwahl` (Commit `5e
 4. `rogers2026`, `vellum2025` ggf. aus `references.json` entfernen.
 5. Tabelle in @sec-harness für 390 px umbrechen (andere Sitzung).
 6. Branch `kapitel02-modellwahl` auf GitHub löschen.
+
+## Nachtrag 17:55: Freigabe und Doppelbau
+- **Roman (Multiple Choice):** alle sieben Abweichungen vom Plan **übernommen**; offene Punkte in neuer Sitzung.
+- **Achtung Doppelbau:** Die Sitzung „P8 + Modellwahl“ (`claude/kapitel02-p8-modellwahl/STATUS-p8-modellwahl-2026-10-31.md`, Branch `kapitel02-p8-modellwahl`, Basis `8df09da`) hat um 17:00 ebenfalls mit Modellwahl 2.3 begonnen. Die Modellwahl ist seit `5ed2c6c` in `main`. Diese Sitzung soll **Teil 2 nicht weiterbauen**, sondern nur P8 (Commit `5ae7e9e`) auf `origin/main` neu aufsetzen (`git rebase origin/main`) und mergen. Ein Konflikt kann in `kapitel02.qmd` (2.1.4) und `references.json` entstehen, nicht in 2.3, solange Teil 2 nicht committet ist.
+
+## Startauftrag für die nächste Sitzung (offene Punkte)
+„Lies `claude/modellwahl/STATUS-modellwahl-2026-10-31.md`. Kläre per Multiple Choice: Setup-Absatz und Daumenregel-Bild in 2.3 behalten oder streichen; `rogers2026`/`vellum2025` entfernen. Render das Druck-PDF (Profil print) und prüfe die drei Modellwahl-Abbildungen und die Fußnote. Arbeite auf eigenem Branch von `main`.“
