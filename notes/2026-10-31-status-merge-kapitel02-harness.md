@@ -29,5 +29,6 @@ Hinweis: WebFetch (direkter Seitenabruf) blieb ohne Freigabe; geprüft wurde üb
 
 ## Offen
 1. Druck-PDF rendern (Umbruch Tabelle 2.1, Graustufen-Druckbild `harness-schichten-qr.png`, Seitenzahl seit 29.10. nicht gemessen); danach Druckvorlage nach `docs/downloads-genai4teaching.pdf` kopieren (Reihenfolge laut README).
-2. Statusnotizen nach Tresorit `Projektnotizen-Claude` spiegeln (Gerät in dieser Sitzung nicht freigegeben).
-3. Roman: Online-Fassung von 2.1.3 einmal auf GitHub Pages ansehen.
+2. Tresorit: Die drei Statusnotizen (diese, `status-harness-kapitel02-2026-10-30.md`, `primer/STATUS-primer-p1-p2-2026-10-31.md`) sind am 31.10. nach `Projektnotizen-Claude/` gespiegelt. Abgleich per Dateiname zeigt 41 weitere Projektnotizen, die in Tresorit fehlen (u. a. `primer/*`, `mollick-2026/*` vom 30.10., `harness-animationen/*`, `agentic-animationen/konzept6-kugel` und `konzept7-*`, `lernsongs/konzept-lernsong-baukasten`, `k4-wirkungsketten-*`); dafür eine eigene Sitzung nach `claude/AUFTRAG-tresorit-sync-2026-10-30.md`.
+3. Branches `kapitel02-harness`, `p1-bereinigung`, `p1-merge-bereit` im GitHub-Webinterface löschen (aus der Cloud-Sitzung gesperrt).
+4. Roman: Online-Fassung von 2.1.3 einmal auf GitHub Pages ansehen.
