@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Anhang E — Praxis-Primer für Lehrende – Generative KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./kapitel10-appendix05-loesungshinweise.html" rel="next">
+<link href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-57678fe1f44aceca486148dc9bf095e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-78ef6373a0ee70d2bc793fa36f3dba26.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-57678fe1f44aceca486148dc9bf095e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ko-fi.com/romanbartnik"> 
+<span class="menu-text">Ko-fi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://buymeacoffee.com/roman.bartnik.th"> 
+<span class="menu-text">Buy me a coffee</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel06-appendix01-prompt-ueberblick.html">Anhang</a></li><li class="breadcrumb-item"><a href="./anhang-primer.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Praxis-Primer für Lehrende</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vorwort.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien der Nutzung von GenAI: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-fallbeispiele.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fallbeispiele aus der Lehre</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Gezielte Einschränkungen in didaktischen Prompts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel08-appendix03-rollenspiele-simulationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Umsetzung: Rollenspiele und Simulationen mit generativer KI in der Lehre</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./anhang-primer.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Praxis-Primer für Lehrende</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel10-appendix05-loesungshinweise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Lösungshinweise zu den Lernfragen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transparenz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transparenzhinweis zum Gesamtwerk</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literaturverzeichnis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./anhang-d-material.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Online-Material zu Anhang D</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelluebersicht.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modellübersicht (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forschungsstand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forschungsstand (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./energie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Ressourcenverbrauch der Modelle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#sec-primer-weiche" id="toc-sec-primer-weiche" class="nav-link active" data-scroll-target="#sec-primer-weiche"><span class="header-section-number">E.1</span> Primer 0: Welches Format für welches Lehrziel?</a></li>
+  <li><a href="#sec-primer-animationen" id="toc-sec-primer-animationen" class="nav-link" data-scroll-target="#sec-primer-animationen"><span class="header-section-number">E.2</span> Primer A: Didaktische Animationen</a></li>
+  <li><a href="#sec-primer-praesentationen" id="toc-sec-primer-praesentationen" class="nav-link" data-scroll-target="#sec-primer-praesentationen"><span class="header-section-number">E.3</span> Primer B: Präsentationen</a></li>
+  <li><a href="#sec-primer-lernsongs" id="toc-sec-primer-lernsongs" class="nav-link" data-scroll-target="#sec-primer-lernsongs"><span class="header-section-number">E.4</span> Primer C: Lernsongs</a></li>
+  <li><a href="#sec-primer-lernspiele" id="toc-sec-primer-lernspiele" class="nav-link" data-scroll-target="#sec-primer-lernspiele"><span class="header-section-number">E.5</span> Primer D: Lernspiele</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/anhang-primer.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/anhang-primer.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel06-appendix01-prompt-ueberblick.html">Anhang</a></li><li class="breadcrumb-item"><a href="./anhang-primer.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Praxis-Primer für Lehrende</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-anhang-primer" class="quarto-section-identifier">Anhang E — Praxis-Primer für Lehrende</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Die Primer dieses Anhangs beantworten je eine Frage: Wie erstelle ich dieses Lernmaterial mit KI so, dass es lernwirksam ist, und woran erkenne ich, dass es misslungen ist? Jeder Primer folgt demselben Aufbau. Ein Prinzip sagt, wofür das Format taugt und wofür nicht. Empfehlungen in Wenn-dann-Form tragen je eine Prüffrage, die sich in unter einer Minute beantworten lässt. Ein Arbeitsablauf nennt in jedem Schritt, was die Lehrperson nicht an die KI abgibt. Eine Prüfliste fasst die Empfehlungen zum Abhaken zusammen, und ein erprobtes Beispiel aus der eigenen Lehre zeigt die Umsetzung mit Stand-Vermerk. Werkzeuge, Prompts und Prüfskripte veralten schneller als ein Buch; sie stehen vollständig in der Online-Version.</p>
+<section id="sec-primer-weiche" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="sec-primer-weiche"><span class="header-section-number">E.1</span> Primer 0: Welches Format für welches Lehrziel?</h2>
+<p>Wer mit KI Lernmaterial erstellt, beginnt leicht beim Werkzeug: Ein Musikgenerator steht bereit, also entsteht ein Song. Die Reihenfolge gehört umgekehrt. Zuerst steht fest, welche Art von Wissen die Studierenden erwerben sollen, daraus folgt das Format, zuletzt das Werkzeug. <a href="#tbl-primer-weiche" class="quarto-xref">Tabelle&nbsp;<span>E.1</span></a> ordnet die vier Formate dieses Anhangs den Wissensarten der überarbeiteten Bloom-Taxonomie zu <span class="citation" data-cites="anderson2001">(<a href="references.html#ref-anderson2001" role="doc-biblioref">Anderson &amp; Krathwohl, 2001</a>)</span>: Faktenwissen (Begriffe, Einzelheiten), konzeptuelles Wissen (Zusammenhänge, Modelle, Prinzipien) und prozedurales Wissen (Verfahren und die Kriterien, wann welches passt).</p>
+<div id="tbl-primer-weiche" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[13,30,15,30,12]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-primer-weiche-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;E.1: Vier Formate, vier Lehrziele. Die Spalte rechts verweist auf den Primer.
+</figcaption>
+<div aria-describedby="tbl-primer-weiche-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 30%">
+<col style="width: 15%">
+<col style="width: 30%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Stärke: Lehrziel</th>
+<th>Wissensart</th>
+<th>Falsches Mittel für</th>
+<th>Primer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Animation</td>
+<td>wie sich etwas verändert: Prozesse, Dynamik, Wirkungsketten</td>
+<td>konzeptuell</td>
+<td>Aufbau und räumliche Anordnung; dafür genügt ein Standbild <span class="citation" data-cites="ploetzner2021">(<a href="references.html#ref-ploetzner2021" role="doc-biblioref">Ploetzner et al., 2021</a>)</span></td>
+<td><a href="#sec-primer-animationen" class="quarto-xref"><span>Kapitel E.2</span></a></td>
+</tr>
+<tr class="even">
+<td>Präsentation</td>
+<td>ein Argument in Schritten: Aussage und Beleg</td>
+<td>konzeptuell</td>
+<td>Üben und Nachschlagen; die Folie ist kein Skript</td>
+<td><a href="#sec-primer-praesentationen" class="quarto-xref"><span>Kapitel E.3</span></a></td>
+</tr>
+<tr class="odd">
+<td>Lernsong</td>
+<td>wörtlicher Abruf und feste Reihenfolge: Listen, Formeln, Merksätze</td>
+<td>Faktenwissen</td>
+<td>Verstehen und Anwenden; wer einen Merkspruch aufsagen kann, kann ihn noch nicht anwenden <span class="citation" data-cites="mocko2024">(<a href="references.html#ref-mocko2024" role="doc-biblioref">Mocko et al., 2024</a>)</span></td>
+<td><a href="#sec-primer-lernsongs" class="quarto-xref"><span>Kapitel E.4</span></a></td>
+</tr>
+<tr class="even">
+<td>Lernspiel</td>
+<td>Üben mit Rückmeldung (Abrufspiel); Entscheiden unter Folgen (Planspiel)</td>
+<td>Fakten- bzw. prozedurales Wissen</td>
+<td>alleinige Instruktion ohne Erklärung und Nachbesprechung <span class="citation" data-cites="wouters2013">(<a href="references.html#ref-wouters2013" role="doc-biblioref">Wouters et al., 2013</a>)</span></td>
+<td><a href="#sec-primer-lernspiele" class="quarto-xref"><span>Kapitel E.5</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Die vierte Wissensart der Taxonomie, metakognitives Wissen über das eigene Lernen, fördert keines der vier Formate von selbst. Dafür braucht es Reflexion, etwa die Nachbesprechung nach einem Planspiel.</p>
+</section>
+<section id="sec-primer-animationen" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="sec-primer-animationen"><span class="header-section-number">E.2</span> Primer A: Didaktische Animationen</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Wofür Animationen taugen, wofür nicht">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Wofür Animationen taugen, wofür nicht
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eine Animation zeigt, wie sich etwas verändert; die Lernenden müssen die Veränderung nicht im Kopf aus Einzelbildern zusammensetzen. Darin liegt ihr Vorteil. Über alle Studien hinweg schlagen Animationen statische Bilder nur knapp <span class="citation" data-cites="berney2016">(<a href="references.html#ref-berney2016" role="doc-biblioref">Berney &amp; Bétrancourt, 2016</a>)</span>. Den Grund zeigt eine Nachanalyse dieser Metaanalyse: Der Vorteil ist deutlich, wenn die Merkmale der Veränderung selbst Lernstoff sind <span class="citation" data-cites="ploetzner2020">(<a href="references.html#ref-ploetzner2020" role="doc-biblioref">Ploetzner et al., 2020</a>)</span>. Ein Experiment bestätigt die Arbeitsteilung: Bewegungsabläufe eines Getriebes erkannten Studierende nach einer Animation am besten, die räumliche Anordnung der Zahnräder nach statischen Bildern <span class="citation" data-cites="ploetzner2021">(<a href="references.html#ref-ploetzner2021" role="doc-biblioref">Ploetzner et al., 2021</a>)</span>. Bewegung lohnt sich also für Prozesse, Dynamik und Wirkungsketten, etwa für das Aufschaukeln von Bestellungen in einer Lieferkette. Für Aufbau, Begriffe und Vergleiche genügt ein gutes Standbild, und es kostet weniger.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlungen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Empfehlungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1 Animieren Sie nur Veränderung, die Lernstoff ist.</strong> Ein Punkt, der auf der Kostenkurve zum Minimum wandert, zeigt den Inhalt; eine einfliegende Überschrift bindet Aufmerksamkeit und lehrt nichts. <em>Prüfen:</em> Lässt sich das Lernziel als „wie sich X verändert“ formulieren?</p>
+<p><strong>2 Bauen Sie die Animation in Schritten auf, die Sie per Klick auslösen, und stellen Sie vor der Auflösung eine Vorhersagefrage.</strong> Segmentierte Darstellungen verbessern Behalten und Transfer <span class="citation" data-cites="rey2019">(<a href="references.html#ref-rey2019" role="doc-biblioref">Rey et al., 2019</a>)</span>. Jeder Haltepunkt ist zugleich der Ort, an dem die Lernenden vorhersagen, was als Nächstes geschieht, und so vom Zuschauen zum Denken wechseln. <em>Prüfen:</em> Wartet jeder Schritt auf einen Klick, und steht vor dem entscheidenden Schritt eine Frage?</p>
+<p><strong>3 Führen Sie den Blick wie ein Verfolgerscheinwerfer.</strong> Das Grundbild bleibt in Graustufen, genau eine Akzentfarbe markiert das, worüber Sie gerade sprechen, und Bekanntes tritt ins Grau zurück. Hervorhebungen verbessern das Lernen mit Medien <span class="citation" data-cites="schneider2018">(<a href="references.html#ref-schneider2018" role="doc-biblioref">Schneider et al., 2018</a>)</span>; ein Signal wirkt aber nur, weil es sich abhebt, und fünf Farben heben nichts mehr ab. Kategorien unterscheiden Sie über Form, Strichart oder direkte Beschriftung. <em>Prüfen:</em> Ist das Bild ohne Farbe vollständig lesbar und ohne Farblegende verständlich?</p>
+<p><strong>4 Erklären Sie mit der Stimme und halten Sie den Text im Bild knapp.</strong> Animationen schnitten in der Metaanalyse besser ab, wenn sie gesprochen kommentiert wurden oder ohne Begleittext auskamen <span class="citation" data-cites="berney2016">(<a href="references.html#ref-berney2016" role="doc-biblioref">Berney &amp; Bétrancourt, 2016</a>)</span>. Als Faustregel gelten höchstens acht neue Wörter je Schritt, direkt am Objekt, und eine Bildunterschrift von einem Satz für das Selbststudium. <em>Prüfen:</em> Wie viele neue Wörter bringt der Schritt mit den meisten?</p>
+<p><strong>5 Geben Sie den Lernenden ein Leitobjekt, statt viele Kennzahlen gleichzeitig zu zeigen.</strong> In komplexen Animationen schauen Lernende auf das, was sich auffällig bewegt, nicht auf das fachlich Wichtige <span class="citation" data-cites="lowe2003">(<a href="references.html#ref-lowe2003" role="doc-biblioref">Lowe, 2003</a>)</span>. Ein Objekt, dem man durch den Ablauf folgt, und eine Bewegung zur Zeit lösen diesen Konflikt. <em>Prüfen:</em> Kann eine Studentin nach dem Ansehen sagen, welchem Objekt sie gefolgt ist?</p>
+<p><strong>6 Bauen Sie zu jeder Animation einen Druckzwilling.</strong> Das vollständige Endbild trägt die Aussage auf Papier, in der Prüfungsvorbereitung und für alle, die die Animation nicht abspielen können; ein QR-Code führt zur bewegten Fassung. <em>Prüfen:</em> Ist das Endbild in Graustufen lesbar?</p>
+</div>
+</div>
+<p><strong>Arbeitsablauf mit KI.</strong> Ein Sprachmodell schreibt den Code einer Animation in Minuten. Die Arbeit der Lehrperson verschiebt sich auf die Stellen, die das Modell nicht übernimmt.</p>
+<ol type="1">
+<li><strong>Lehrziel und Storyboard.</strong> Kernaussage als Satz, Vorhersagefrage, eine Tabellenzeile je Schritt mit genau einem neuen Element. <em>Nicht abgeben:</em> die Kernaussage und die Entscheidung, was in welchem Schritt neu ist.</li>
+<li><strong>Auftrag an die KI.</strong> Storyboard und Gestaltungsregeln als fester Textbaustein im Auftrag. <em>Nicht abgeben:</em> die Regeln; ohne sie liefert das Modell Flutlicht statt Scheinwerfer.</li>
+<li><strong>Erzeugen.</strong> Das Modell baut aus einer Vorlage eine Webseite oder ein Animationsskript. <em>Nicht abgeben:</em> die Zahlen; sie kommen aus einem nachgerechneten Modell.</li>
+<li><strong>Prüfen.</strong> Ein Prüfskript zählt je Schritt Farben, Wörter und neue Elemente, dann folgt die Sichtprüfung jedes Schritts in Graustufen. <em>Nicht abgeben:</em> das Urteil über fachliche Richtigkeit.</li>
+<li><strong>Einsetzen.</strong> Im Hörsaal mit Vorhersagefrage und Pause, im Skript mit Druckzwilling. <em>Nicht abgeben:</em> das Tempo.</li>
+</ol>
+<p><strong>Prüfliste.</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Das Lernziel lautet „wie sich X verändert“.</label></li>
+<li><label><input type="checkbox">Der Titel ist eine Aussage, kein Thema.</label></li>
+<li><label><input type="checkbox">Vor der Auflösung steht eine Vorhersagefrage.</label></li>
+<li><label><input type="checkbox">Jeder Schritt wartet auf einen Klick und bringt genau ein neues Element.</label></li>
+<li><label><input type="checkbox">Graustufen plus eine Akzentfarbe; keine Farblegende nötig.</label></li>
+<li><label><input type="checkbox">Höchstens acht neue Wörter je Schritt; Bildunterschrift ein Satz.</label></li>
+<li><label><input type="checkbox">Ein Leitobjekt, eine Bewegung zur Zeit.</label></li>
+<li><label><input type="checkbox">Zahlen nachgerechnet, Annahmen als „Lehrmodell“ gekennzeichnet.</label></li>
+<li><label><input type="checkbox">Druckzwilling in Graustufen lesbar, mit QR-Code.</label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Animation zur optimalen Bestellmenge (<a href="#fig-primer-eoq" class="quarto-xref">Abbildung&nbsp;<span>E.1</span></a>) entstand nach diesem Ablauf: Storyboard mit sechs Schritten, Bau durch ein Sprachmodell (Claude Opus 5.5) aus einer festen Vorlage als einzelne Webseite mit Vektorgrafik, Messung mit einem Prüfskript. Weil die Regeln im Auftrag standen, hielt sie das Budget im ersten Prüflauf ein; nachgebessert wurden nur zwei Stellen, an denen eine Kurve eine Beschriftung schnitt. Vom Storyboard bis zur Freigabe braucht eine solche Animation weniger als eine Stunde. Animationen, die für dieses Buch zuvor ohne solche Regeln entstanden waren, schnitten anders ab: Im Messlauf vom Oktober 2026 blieb keine der zwölf Erklär- und Prozessansichten im Budget, alle zeigten schon im ersten Bild mehr als 40 Wörter, vier unterschieden Kategorien über Farbe. Eine Animation zu parallel arbeitenden KI-Agenten wurde erst verständlich, als nebeneinanderliegende Bahnen mit Kennzahlen einer einzigen Kugel wichen, der die Lernenden folgen. Die wichtigste praktische Regel lautet deshalb: Gestaltungsregeln gehören in den Auftrag an die KI und in ein Prüfwerkzeug, nicht in die Nachbesserung.</p>
+</div>
+</div>
+<div id="fig-primer-eoq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-primer-eoq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="interactions/eoq-bestellmenge.html" title="Animation: optimale Bestellmenge in sechs Schritten" style="width:100%;height:640px;border:0" loading="lazy"></iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-primer-eoq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;E.1: Die optimale Bestellmenge gleicht zwei gegenläufige Kosten aus. Klicken Sie sich durch die sechs Schritte und treffen Sie vorher Ihre Vorhersage; Lehrmodell nach <span class="citation" data-cites="harris1990">Harris (<a href="references.html#ref-harris1990" role="doc-biblioref">1990</a>)</span>. <a href="interactions/eoq-bestellmenge.html">Vollbild</a>, im Hörsaal ohne Bildunterschrift: <a href="interactions/eoq-bestellmenge.html?hoersaal">Hörsaalmodus</a>.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Was die Forschung nicht belegt">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Was die Forschung nicht belegt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ob mit KI erstellte Animationen anders wirken als von Hand gebaute, ist nicht untersucht; die Belege gelten der Gestaltung, nicht dem Herstellungsweg. Die Budgetzahlen dieses Primers, acht neue und 40 sichtbare Wörter je Schritt, eine Akzentfarbe, sind aus den Befunden abgeleitete Faustregeln, keine gemessenen Grenzwerte.</p>
+</div>
+</div>
+<section id="sec-primer-animationen-online" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="sec-primer-animationen-online">Vollfassung online</h3>
+<section id="mehr-zur-evidenz" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="mehr-zur-evidenz">Mehr zur Evidenz</h4>
+<p>Die erste große Metaanalyse fand über 26 Studien einen mittleren Vorteil von Animationen gegenüber statischen Bildern (d = 0,37) <span class="citation" data-cites="hoeffler2007">(<a href="references.html#ref-hoeffler2007" role="doc-biblioref">Höffler &amp; Leutner, 2007</a>)</span>. Mit 61 Studien kamen <span class="citation" data-cites="berney2016">Berney &amp; Bétrancourt (<a href="references.html#ref-berney2016" role="doc-biblioref">2016</a>)</span> auf einen kleineren Effekt (g = 0,23), der wuchs, wenn die Animation systemgesteuert lief (g = 0,31), gesprochen kommentiert wurde (g = 0,34) oder ohne Begleittext auskam (g = 0,88). <span class="citation" data-cites="ploetzner2020">Ploetzner et al. (<a href="references.html#ref-ploetzner2020" role="doc-biblioref">2020</a>)</span> werteten 194 Studien danach aus, was getestet wurde: Die meisten prüften konzeptuelles Verständnis, selten dagegen, ob die Lernenden die Veränderung selbst erfasst hatten. Als sie die Metaanalyse von <span class="citation" data-cites="berney2016">Berney &amp; Bétrancourt (<a href="references.html#ref-berney2016" role="doc-biblioref">2016</a>)</span> um dieses Merkmal ergänzten, waren Animationen deutlich überlegen, wenn die Merkmale der Veränderung gelernt werden mussten. <span class="citation" data-cites="ploetzner2021">Ploetzner et al. (<a href="references.html#ref-ploetzner2021" role="doc-biblioref">2021</a>)</span> prüften die Folgerung im Experiment mit 88 Studierenden: Wer ein Getriebe als Animation sah, erkannte dessen Bewegungen am besten; wer Standbilder sah, erkannte die räumliche Anordnung am besten; die Effekte waren groß.</p>
+<p>Zur Lenkung der Aufmerksamkeit unterscheiden <span class="citation" data-cites="dekoning2009">de Koning et al. (<a href="references.html#ref-dekoning2009" role="doc-biblioref">2009</a>)</span> Hinweisreize, die auswählen, ordnen oder verknüpfen; die Akzentfarbe dieses Primers wählt aus, das Zurücktreten ins Grau ordnet, und das gleichfarbige Schlüsselwort der Bildunterschrift verknüpft Text und Bild, wofür eine eigene Metaanalyse einen Vorteil zeigt <span class="citation" data-cites="richter2016">(<a href="references.html#ref-richter2016" role="doc-biblioref">Richter et al., 2016</a>)</span>. Die Farbe unterstützt die Lenkung, getragen wird sie von Leitobjekt und Schrittfolge. Gesprochener Text ist flüchtig: Ist er zu lang, kehrt sich der Vorteil der gesprochenen Erklärung um <span class="citation" data-cites="leahy2011">(<a href="references.html#ref-leahy2011" role="doc-biblioref">Leahy &amp; Sweller, 2011</a>)</span>. Auch die Stimme braucht deshalb kurze Stücke mit Pausen.</p>
+<p>Die Vorhersagefrage vor jeder Auflösung stützt sich auf einen Hörsaalversuch: Studierende, die eine Demonstration nur beobachteten, verstanden das zugrunde liegende Konzept nicht besser als Studierende, die sie gar nicht sahen; wer das Ergebnis vorher vorhersagte, verstand es deutlich besser <span class="citation" data-cites="crouch2004">(<a href="references.html#ref-crouch2004" role="doc-biblioref">Crouch et al., 2004</a>)</span>.</p>
+</section>
+<section id="werkzeugwahl" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="werkzeugwahl">Werkzeugwahl</h4>
+<p>Die Wahl des Werkzeugs folgt der Frage, wer das Tempo bestimmt und was gelernt werden soll.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Wer bestimmt das Tempo, was wird gelernt?</th>
+<th>Bauweise</th>
+<th>Werkzeug (Stand 10/2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lehrperson erzählt eine Herleitung</td>
+<td>programmiertes Video mit Haltepunkten</td>
+<td>Manim mit Manim Slides</td>
+</tr>
+<tr class="even">
+<td>Erklärbild für Hörsaal und Buch</td>
+<td>schrittweise Webgrafik</td>
+<td>HTML/SVG-Vorlage mit Prüfskript</td>
+</tr>
+<tr class="odd">
+<td>Warteschlangen, Durchlauf, Engpass</td>
+<td>Prozessanimation mit Zeitachse</td>
+<td>HTML-Vorlage für Prozesse</td>
+</tr>
+<tr class="even">
+<td>Studierende verändern Parameter</td>
+<td>interaktives Modell</td>
+<td>Observable JS in Quarto</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="storyboard-des-beispiels" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="storyboard-des-beispiels">Storyboard des Beispiels</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Schritt</th>
+<th>neu (Akzent)</th>
+<th>tritt ins Grau zurück</th>
+<th>neuer Bildtext</th>
+<th>Bildunterschrift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Achsen</td>
+<td>–</td>
+<td>Bestellmenge Q · Kosten pro Jahr</td>
+<td>Jede Bestellung kostet einen festen Betrag, jedes gelagerte Stück kostet laufend; treffen Sie oben Ihre Vorhersage.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Lagerkosten (gestrichelt)</td>
+<td>–</td>
+<td>Lagerkosten steigen mit Q</td>
+<td>Wer viel auf einmal bestellt, hat im Mittel mehr auf Lager: Die Lagerkosten steigen gleichmäßig.</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Bestellkosten (gepunktet)</td>
+<td>–</td>
+<td>Bestellkosten sinken mit Q</td>
+<td>Wer viel auf einmal bestellt, bestellt seltener: Die Bestellkosten sinken, erst steil, dann flach.</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Gesamtkosten (durchgezogen)</td>
+<td>Lager- und Bestellkosten</td>
+<td>Gesamtkosten</td>
+<td>Die Gesamtkosten sind die Summe beider Kurven; sie fallen zuerst und steigen dann wieder.</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Minimum und Schnittpunkt</td>
+<td>–</td>
+<td>Q* ≈ 245 Stück</td>
+<td>Das Minimum liegt dort, wo Lager- und Bestellkosten gleich hoch sind: bei rund 245 Stück.</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Band ±20 %</td>
+<td>–</td>
+<td>±20 % Menge: höchstens 2,5 % Mehrkosten</td>
+<td>Das Minimum ist flach: Wer 20 Prozent daneben liegt, zahlt höchstens 2,5 Prozent mehr.</td>
+</tr>
+</tbody>
+</table>
+<p>Lehrmodell: Jahresbedarf D = 1.200 Stück, S = 50 € je Bestellung, H = 2 € Lagerkosten je Stück und Jahr; Q* = √(2DS/H) ≈ 245 Stück. Bei ±20 % steigen die Gesamtkosten um 2,5 % bzw. 1,7 %, bei halber oder doppelter Menge um 25 %. Das Prüfskript meldete für alle sechs Schritte eine Akzentfarbe, höchstens fünf neue und höchstens 22 sichtbare Wörter.</p>
+</section>
+<section id="prompt-baustein-gestaltungsregeln" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="prompt-baustein-gestaltungsregeln">Prompt-Baustein: Gestaltungsregeln</h4>
+<p>Diesen Block fügen Sie in jeden Auftrag an ein Sprachmodell ein, das eine Lehranimation bauen soll, zusammen mit Ihrem Storyboard.</p>
+<pre class="text"><code>Baue die Animation als Folge von Schritten, die per Klick ausgelöst werden.
+Leitidee: Die Animation ist ein Verfolgerscheinwerfer, kein Flutlicht.
+
+Farbe
+F1 Grundbild in Graustufen; ohne Farbe vollständig lesbar.
+F2 Genau eine Akzentfarbe mit genau einer Bedeutung: das Neue dieses
+   Schritts oder ein Leitobjekt, nie beides.
+F3 Höchstens eine zweite Farbe, nur für einen Gegensatz, der selbst
+   Lernziel ist.
+F4 Kategorien über Form, Position, Strichart oder Beschriftung, nie über
+   Farbe. Braucht das Bild eine Farblegende, ist es zu bunt.
+F5 Keine Ampelfarben für Bewertungen.
+F6 Drei Zustände: neu (Akzent), bekannt (Schwarz), Kontext (helles Grau,
+   ohne Transparenz).
+F7 Schlüsselwort der Bildunterschrift in derselben Akzentfarbe.
+
+Text
+T1 Startbild: Aussagetitel, Achsen oder Skelett, Vorhersagefrage.
+T2 Pro Schritt eine neue Textgruppe, höchstens 8 Wörter, am Objekt.
+T3 Bildunterschrift: ein Satz, höchstens 20 Wörter, ersetzt die vorige.
+T4 Wiederholtes einmal ausschreiben, danach abkürzen.
+T5 Listen zeilenweise aufbauen.
+T6 Annahmen und Quellen erst nach dem letzten Schritt, eingeklappt.
+
+Aufbau und Bewegung
+A1 Was noch nicht dran ist, ist unsichtbar.
+A2 Pro Schritt genau eine neue Elementgruppe.
+A3 Nur eine Sache bewegt sich zur Zeit.
+A4 Aufbau per Klick, nicht per Zeitleiste.
+A5 Der letzte Schritt zeigt das vollständige Bild (Druckfassung).
+
+Budget je Schritt: höchstens 1 Farbton außer Grau, höchstens 8 neue
+Wörter, höchstens 40 sichtbare Wörter bis zum vorletzten Schritt,
+genau 1 neue Gruppe.</code></pre>
+</section>
+<section id="prüfskript" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="prüfskript">Prüfskript</h4>
+<p>Ein Prüfskript ist ein kleines Programm, das eine fertige Animation Schritt für Schritt in einem unsichtbaren Browser öffnet und nachzählt, was die Lernenden sehen würden: Farbtöne, sichtbare Wörter, neue Wörter und neue Elemente je Schritt. Es wirkt wie ein Korrekturleser mit Lineal, der nicht müde wird. Das Skript <a href="downloads/primer/pruefe-aufmerksamkeit.cjs"><code>pruefe-aufmerksamkeit.cjs</code></a> braucht Node.js (eine Laufzeitumgebung, die JavaScript außerhalb des Browsers ausführt) und das Paket Playwright, das einen Browser fernsteuert:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install playwright</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> playwright install chromium</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> pruefe-aufmerksamkeit.cjs animation.html <span class="at">--bilder</span> pruefbilder</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Es gibt je Schritt eine Tabellenzeile aus und schließt mit BESTANDEN oder ÜBERARBEITEN; im Ordner <code>pruefbilder</code> liegt je Schritt ein Farb- und ein Graustufenbild für die Sichtprüfung.</p>
+</section>
+<section id="manim-in-google-colab-stand-102026" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="manim-in-google-colab-stand-102026">Manim in Google Colab (Stand 10/2026)</h4>
+<p>Manim ist eine Python-Bibliothek, mit der man eine Animation als Programmtext beschreibt statt sie mit der Maus zu zeichnen; der Rechner rechnet daraus Bild für Bild einen Film, wie ein Daumenkino, das sich selbst zeichnet. Das Paket Manim Slides setzt Haltepunkte, an denen der Film auf einen Tastendruck wartet, und exportiert eine Präsentation als Webseite <span class="citation" data-cites="eertmans2023">(<a href="references.html#ref-eertmans2023" role="doc-biblioref">Eertmans, 2023</a>)</span>. Getestet wurde die Kombination <code>manim==0.19.1</code> mit <code>manim-slides==5.7.0</code>; neuere Manim-Versionen waren mit Manim Slides nicht verträglich. Die Einstellung <code>skip_reversing = True</code> spart die Rückwärtsvideos, die das Rendern sonst stark verlangsamen, und <code>label_constructor: Text</code> ersetzt den langsam zu installierenden Formelsatz für Achsenzahlen.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zelle 1: Schriftsatz-Bibliothek und Pakete installieren (2–3 Minuten)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>apt<span class="op">-</span>get <span class="op">-</span>qq install <span class="op">-</span>y libpango1<span class="fl">.0</span><span class="op">-</span>dev <span class="op">&gt;</span> <span class="op">/</span>dev<span class="op">/</span>null</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q <span class="st">"manim==0.19.1"</span> <span class="st">"manim-slides==5.7.0"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Zelle 2: Szenencode als Datei anlegen; erste Zeile der Zelle:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># %%writefile eoq_slides.py</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Zelle 3: rendern (-qh = HD) und in eine HTML-Datei umwandeln</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>manim <span class="op">-</span>qh eoq_slides.py EOQ <span class="op">&amp;&amp;</span> manim<span class="op">-</span>slides convert EOQ eoq.html <span class="op">--</span>one<span class="op">-</span><span class="bu">file</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Zelle 4: herunterladen</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files<span class="op">;</span> files.download(<span class="st">"eoq.html"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Die fertige HTML-Datei lädt das Folienprogramm reveal.js aus dem Netz nach und braucht im Hörsaal deshalb Internet. Zur Qualitätsprüfung rendert <code>manim -qm -s datei.py Szene</code> nur das letzte Bild; am Standbild sieht man Überschneidungen von Beschriftungen, die im laufenden Film untergehen.</p>
+</section>
+</section>
+</section>
+<section id="sec-primer-praesentationen" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="sec-primer-praesentationen"><span class="header-section-number">E.3</span> Primer B: Präsentationen</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Wofür Präsentationen taugen, wofür nicht">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Wofür Präsentationen taugen, wofür nicht
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Im Hörsaal teilen sich Stimme und Folie die Arbeit: Die Stimme erklärt, die Folie zeigt, worauf sich die Erklärung stützt. <span class="citation" data-cites="garner2013">Garner &amp; Alley (<a href="references.html#ref-garner2013" role="doc-biblioref">2013</a>)</span> ließen 110 Ingenieurstudierende denselben gesprochenen Vortrag hören, die eine Hälfte mit Folien aus Themenüberschrift und Aufzählung, die andere mit einem Satz als Titel und einem Bild als Beleg. Die zweite Gruppe verstand mehr, hatte weniger Fehlvorstellungen und wusste eine Woche später noch mehr. Steht dagegen viel Text auf der Folie, lesen die Zuhörenden mit und überhören, was nur gesagt wird <span class="citation" data-cites="wecker2012">(<a href="references.html#ref-wecker2012" role="doc-biblioref">Wecker, 2012</a>)</span>. Eine Präsentation taugt darum für ein Argument in Schritten: Aussage, Beleg, nächste Aussage. Zum Üben taugt sie nicht, und zum Nachlesen nur mit einem eigenen Skript (<a href="#sec-primer-weiche" class="quarto-xref"><span>Kapitel E.1</span></a>).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlungen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Empfehlungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1 Schreiben Sie die Aussage der Folie in den Titel.</strong> Ein ganzer Satz mit einer Behauptung, höchstens zwei Zeilen: „Kleine Schwankungen im Handel wachsen zum Hersteller hin“ statt „Bullwhip-Effekt: Überblick“. Der Satztitel gehört zu den Merkmalen, mit denen die Folien bei <span class="citation" data-cites="garner2013">Garner &amp; Alley (<a href="references.html#ref-garner2013" role="doc-biblioref">2013</a>)</span> besser abschnitten. <em>Prüfen:</em> Erzählen die Titel, nacheinander gelesen, das ganze Argument?</p>
+<p><strong>2 Füllen Sie den Folienkörper mit dem Beleg, nicht mit dem Vortragstext.</strong> Diagramm, Schaubild, Tabelle oder eine große Zahl mit Vergleichswert; Text nur als Beschriftung am Objekt, als Faustregel höchstens 15 Wörter. Was Sie sagen, steht in den Sprechernotizen, nicht auf der Folie <span class="citation" data-cites="wecker2012">(<a href="references.html#ref-wecker2012" role="doc-biblioref">Wecker, 2012</a>)</span>. <em>Prüfen:</em> Würde man dem Titel allein aufgrund des Bildes glauben?</p>
+<p><strong>3 Bauen Sie Abläufe und Wechselwirkungen in Schritten auf.</strong> Erst die Bausteine einzeln, dann ihr Zusammenspiel; Lernende mit wenig Vorwissen verstehen komplexen Stoff so besser <span class="citation" data-cites="pollock2002">(<a href="references.html#ref-pollock2002" role="doc-biblioref">Pollock et al., 2002</a>)</span>. Jeder Schritt bringt eine neue Gruppe in der Akzentfarbe, Bekanntes tritt zurück wie beim Verfolgerscheinwerfer in <a href="#sec-primer-animationen" class="quarto-xref"><span>Kapitel E.2</span></a>. <em>Prüfen:</em> Hat jede Folie höchstens vier Gruppen, und zeigt der letzte Schritt das vollständige Bild?</p>
+<p><strong>4 Streichen Sie, was nur schmückt.</strong> Interessante, aber für das Lernziel unwichtige Bilder und Details verschlechtern Behalten und Transfer <span class="citation" data-cites="rey2012">(<a href="references.html#ref-rey2012" role="doc-biblioref">Rey, 2012</a>)</span>. Stockfotos, Symbolbilder und Pfeilketten ohne eindeutige Bedeutung fallen darunter. <em>Prüfen:</em> Geht Information verloren, wenn Sie das Element löschen?</p>
+<p><strong>5 Zeigen Sie nur Zahlen, deren Herkunft Sie kennen.</strong> Ein Diagramm überzeugt durch seine Form, ob die Werte stimmen oder nicht. Lassen Sie Werte darum rechnen statt schreiben: aus der Originalquelle oder aus einem nachgerechneten Beispiel, das als Lehrmodell gekennzeichnet ist; fehlt beides, zeigt ein Schaubild die Beziehung ohne Werte. <em>Prüfen:</em> Können Sie zu jeder Zahl sagen, woher sie kommt?</p>
+<p><strong>6 Setzen Sie genau eine vollständige Quelle auf jede Folie und prüfen Sie sie am DOI.</strong> Die Quellenzeile zeigt Studierenden, worauf eine Aussage beruht; an Zeitschrift und DOI lernen sie, Quellen einzuschätzen. Im Testlauf unten stimmten alle Quellen, ohne Regelwerk fehlte aber auf jeder Folie die DOI. <em>Prüfen:</em> Führt der DOI zu dieser Arbeit, und stützt sie den Titel der Folie?</p>
+</div>
+</div>
+<p><strong>Arbeitsablauf mit KI.</strong> Ein Sprachmodell baut einen Foliensatz in Minuten. Die Arbeit der Lehrperson liegt am Anfang, beim Argument, und am Ende, bei der Prüfung.</p>
+<ol type="1">
+<li><strong>Lehrziel und Argument.</strong> Leitfrage, Antwort als ein Satz, Argumentationsübersicht in vier Blöcken: Problem, Konzepte, Evidenz, Fazit. <em>Nicht abgeben:</em> die Aussage, auf die der Vortrag hinausläuft.</li>
+<li><strong>Auftrag an die KI.</strong> Gestaltungsregeln als fester Baustein, dazu die Quellen und Daten, die verwendet werden dürfen; zuerst nur ein Storyboard mit einer Zeile je Folie: Titel, Beleg, Quelle. <em>Nicht abgeben:</em> die Freigabe des Storyboards.</li>
+<li><strong>Erzeugen.</strong> Folien in der Hochschulvorlage mit Sprechernotizen. <em>Nicht abgeben:</em> die Daten hinter jedem Diagramm.</li>
+<li><strong>Prüfen.</strong> Jede Folie als Bild ansehen und gegen die Prüfliste halten, jede Quelle am DOI öffnen. <em>Nicht abgeben:</em> das Urteil über fachliche Richtigkeit und Quellen.</li>
+<li><strong>Einsetzen.</strong> Frei zur Folie sprechen, die Notizen dienen als Gerüst; wer ein Handout braucht, bekommt ein eigenes Dokument. <em>Nicht abgeben:</em> die Erklärung; sie gehört der Stimme.</li>
+</ol>
+<p><strong>Prüfliste.</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Jeder Titel ist ein ganzer Satz mit einer Behauptung.</label></li>
+<li><label><input type="checkbox">Die Titel erzählen nacheinander gelesen das Argument.</label></li>
+<li><label><input type="checkbox">Der Folienkörper belegt den Titel; höchstens 15 Wörter, nichts zum Vorlesen.</label></li>
+<li><label><input type="checkbox">Höchstens vier Gruppen je Folie; Abläufe schrittweise, letzter Schritt vollständig.</label></li>
+<li><label><input type="checkbox">Genau eine Hervorhebung in der Akzentfarbe; in Graustufen lesbar.</label></li>
+<li><label><input type="checkbox">Jedes Bild besteht den Löschtest.</label></li>
+<li><label><input type="checkbox">Jede Zahl hat eine Herkunft; Lehrmodelle sind gekennzeichnet.</label></li>
+<li><label><input type="checkbox">Je Folie eine vollständige Quelle, DOI geöffnet und geprüft.</label></li>
+<li><label><input type="checkbox">Sprechernotizen in ganzen Sätzen.</label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Für diesen Primer entstand ein Foliensatz zum Bullwhip-Effekt zweimal, mit demselben Sprachmodell (Claude Opus 5.5) und demselben Auftrag einer Lehrperson: einmal ohne Regelwerk, einmal mit dem Regelwerk dieses Primers und der Folienvorlage der Hochschule als Dateien im Auftrag (<a href="#fig-primer-folien" class="quarto-xref">Abbildung&nbsp;<span>E.2</span></a>). Beide Läufe fanden echte Quellen und ließen ihre Zahlen per Programm nachrechnen. Die Unterschiede lagen im Folienkörper. Ohne Regelwerk standen auf den Inhaltsfolien im Median 64 statt 12 Wörter, die DOIs fehlten, zwei Folien trugen je zwei Quellen, und das Modell sah zwei Schmuckbilder und elf Farbtöne vor. Mit Regelwerk brauchte das Modell fünf Prüfrunden, bis jede Folie die Prüfliste bestand. Seine Erstfassung scheiterte an Beschriftungen, die sich überlagerten, an Titeln über drei Zeilen und an knapp überschrittenen Wortgrenzen, also an Fehlern, die erst im gerenderten Bild sichtbar werden. Ein Lauf dauerte sechs beziehungsweise elf Minuten; mit Durchsicht und Freigabe durch die Lehrperson braucht ein solcher Foliensatz weniger als eine Stunde. Ein Testlauf ist keine Studie, er zeigt aber, wohin die Arbeit wandert: Das Regelwerk gehört in den Auftrag, und geprüft wird jede Folie als Bild, nicht im Quelltext.</p>
+</div>
+</div>
+<div id="fig-primer-folien" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-primer-folien-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-primer-folien" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-primer-folien-ohne" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Folie mit Aussagetitel zu Lieferzeiten, links Formel, Aufzählung und zwei Erklärsätze, rechts Balkendiagramm mit drei farbigen Balken; viel Text.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-primer-folien-ohne-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/druck/folie-ohne-regeln.png" class="img-fluid figure-img" data-ref-parent="fig-primer-folien" alt="Folie mit Aussagetitel zu Lieferzeiten, links Formel, Aufzählung und zwei Erklärsätze, rechts Balkendiagramm mit drei farbigen Balken; viel Text.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-primer-folien-ohne-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Ohne Regelwerk
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-primer-folien" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-primer-folien-mit" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Folie mit Aussagetitel zu Lieferzeit und Prognosefenster, Liniendiagramm mit zwei direkt beschrifteten Kurven, ein roter Punkt markiert den Wert 9,3; kaum Text.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-primer-folien-mit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/druck/folie-mit-regeln.png" class="img-fluid figure-img" data-ref-parent="fig-primer-folien" alt="Folie mit Aussagetitel zu Lieferzeit und Prognosefenster, Liniendiagramm mit zwei direkt beschrifteten Kurven, ein roter Punkt markiert den Wert 9,3; kaum Text.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-primer-folien-mit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Mit Regelwerk
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-primer-folien-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;E.2: Dieselbe Aussage nach <span class="citation" data-cites="chen2000quantifying">F. Chen et al. (<a href="references.html#ref-chen2000quantifying" role="doc-biblioref">2000</a>)</span>, zweimal vom selben Sprachmodell gebaut. Ohne Regelwerk erklärt die Folie sich selbst in Sätzen, mit Regelwerk belegt sie den Titel mit einem Diagramm und überlässt die Erklärung der Stimme. Ganze Foliensätze mit Sprechernotizen: <a href="downloads/primer/folien-bullwhip-ohne-regeln.html">ohne Regelwerk</a>, <a href="downloads/primer/folien-bullwhip-mit-regeln.html">mit Regelwerk</a>.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Was die Forschung nicht belegt">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Was die Forschung nicht belegt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Belege für Satztitel und Bildbeleg stammen aus wenigen Studien einer Arbeitsgruppe, überwiegend mit Ingenieurstudierenden. Wie mit KI erstellte Folien auf das Lernen wirken, ist kaum untersucht: In einer Informatik-Lehrveranstaltung bewerteten Studierende KI-Folien, die der Lehrende überarbeitet hatte, so gut wie seine eigenen und erkannten sie nicht; ihr Lernen wurde nicht gemessen <span class="citation" data-cites="leinonen2026">(<a href="references.html#ref-leinonen2026" role="doc-biblioref">Leinonen et al., 2026</a>)</span>. Die Grenzen von 15 Wörtern und vier Gruppen sind Faustregeln.</p>
+</div>
+</div>
+<section id="sec-primer-praesentationen-online" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="sec-primer-praesentationen-online">Vollfassung online</h3>
+<section id="mehr-zur-evidenz-1" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="mehr-zur-evidenz-1">Mehr zur Evidenz</h4>
+<p>Den Ansatz aus Satztitel und Bildbeleg haben <span class="citation" data-cites="alley2005">Alley &amp; Neeley (<a href="references.html#ref-alley2005" role="doc-biblioref">2005</a>)</span> aus der Praxis technischer Vorträge beschrieben und als Gegenentwurf zur Voreinstellung der Präsentationsprogramme begründet: Themenüberschrift plus Aufzählung. <span class="citation" data-cites="garner2013">Garner &amp; Alley (<a href="references.html#ref-garner2013" role="doc-biblioref">2013</a>)</span> prüften ihn im Experiment. Beide Gruppen hörten dieselbe Tonaufnahme; die Folien der einen Gruppe hielten sechs Grundsätze des multimedialen Lernens ein, die der anderen folgten den üblichen Voreinstellungen. Die erste Gruppe schrieb bessere Erklärungen, zeigte weniger Fehlvorstellungen, empfand die Belastung als geringer und erinnerte sich im verzögerten Test besser.</p>
+<p>Dass Text auf der Folie nicht grundsätzlich schadet, zeigen <span class="citation" data-cites="mayer2008">Mayer &amp; Johnson (<a href="references.html#ref-mayer2008" role="doc-biblioref">2008</a>)</span>: Kurze Beschriftungen aus zwei, drei Wörtern direkt an der Grafik verbesserten das Behalten, ohne das Verstehen zu stören. Die Regel lautet also nicht „kein Text“, sondern „kein zweiter Vortrag auf der Folie“. Zwei Pilotstudien von <span class="citation" data-cites="wolfe2024">Wolfe et al. (<a href="references.html#ref-wolfe2024" role="doc-biblioref">2024</a>)</span> ergänzen zwei Einzelheiten: Generische Schaubilder aus Pfeilen und Kreisen, wie Präsentationsprogramme sie anbieten, legten Beziehungen nahe, die so nicht gemeint waren; lange Zitate sollte man nicht vorlesen, sondern kürzen oder paraphrasieren.</p>
+<p><span class="citation" data-cites="leinonen2026">Leinonen et al. (<a href="references.html#ref-leinonen2026" role="doc-biblioref">2026</a>)</span> ließen fünf KI-Werkzeuge Folien für eine Web-Programmierveranstaltung bauen, und die Ergebnisse lagen weit auseinander: Eine Fassung sah ansprechend aus und blieb inhaltlich oberflächlich, eine andere brachte große, unpassende Bilder und zu viel Text. Den Stil der Lehrperson traf kein Werkzeug, er wurde von Hand nachgezogen. Ein Benchmark mit zehn Sprachmodellen fand, dass Folien, die nach einem Bewertungsraster gut aussehen, nicht verlässlich zu Lernzuwachs führen; die Lernenden waren dort allerdings Sprachmodelle, die Studierende nachahmen, ergänzt um einen Vorversuch mit 30 Personen <span class="citation" data-cites="wu2026slate">(<a href="references.html#ref-wu2026slate" role="doc-biblioref">Wu et al., 2026</a>)</span>.</p>
+</section>
+<section id="testlauf" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="testlauf">Testlauf</h4>
+<p>Auftrag in beiden Läufen: „Erstelle mir bitte einen Foliensatz (8–10 Folien) für eine Vorlesung im 3. Semester Wirtschaftsingenieurwesen zum Bullwhip-Effekt, Dauer etwa 20 Minuten, auf Deutsch. Mit Sprechernotizen und Quellenangaben.“ Der zweite Lauf erhielt zusätzlich das Regelwerk und die Hochschulvorlage als Dateien, dazu die Anweisung, jede Quelle zu prüfen und jede Folie als Bild zu kontrollieren. Gezählt wurde mit einem Messskript am gerenderten Foliensatz; Wörter sind Wortformen mit mindestens einem Buchstaben, Achsenwerte zählen nicht mit.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Merkmal</th>
+<th>ohne Regelwerk</th>
+<th>mit Regelwerk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Folien (mit Aufbauschritten)</td>
+<td>10 (11)</td>
+<td>10 (20)</td>
+</tr>
+<tr class="even">
+<td>Argumentationsübersicht</td>
+<td>nein</td>
+<td>ja, vorn und im Fazit</td>
+</tr>
+<tr class="odd">
+<td>Wörter im Folienkörper, Inhaltsfolien, Median (Spanne)</td>
+<td>64 (34–85)</td>
+<td>12 (9–15)</td>
+</tr>
+<tr class="even">
+<td>Quellen, alle über Crossref bestätigt</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>Quellen mit DOI auf der Folie</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>Folien mit zwei Quellen</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Platzhalter für Schmuckbilder</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Farbtöne außer Grau</td>
+<td>11</td>
+<td>3 (Hausfarben, Akzent nur Rot)</td>
+</tr>
+<tr class="odd">
+<td>Zahlen nachgerechnet, Lehrmodell gekennzeichnet</td>
+<td>ja</td>
+<td>ja</td>
+</tr>
+<tr class="even">
+<td>Prüfrunden bis zum Bestehen der Prüfliste</td>
+<td>–</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>Laufzeit</td>
+<td>6 Minuten</td>
+<td>11 Minuten</td>
+</tr>
+</tbody>
+</table>
+<p>Eine Einschränkung: Das Modell im Lauf ohne Regelwerk sah in seiner Werkzeugliste die Kurzbeschreibung des Regelwerks („Aussagetitel, visuelle Evidenz, Quellenangabe pro Folie“), ohne es zu öffnen. Dass es Aussagetitel und eine Quellenzeile setzte, ist deshalb kein Befund über das Standardverhalten von Sprachmodellen. Die Unterschiede in der Tabelle sind trotz dieses Vorteils entstanden.</p>
+</section>
+<section id="prompt-baustein-gestaltungsregeln-1" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="prompt-baustein-gestaltungsregeln-1">Prompt-Baustein: Gestaltungsregeln</h4>
+<p>Diesen Block fügen Sie in jeden Auftrag für einen Foliensatz ein, zusammen mit Lehrziel, Zielgruppe, Dauer und den Quellen, die verwendet werden dürfen. Das vollständige Regelwerk mit Begründungen steht als <a href="downloads/primer/folien-evidenzbasiert-SKILL.md">Skill-Datei</a> bereit; ein Skill ist eine Anleitung, die ein Sprachmodell bei passenden Aufträgen selbst nachliest, wie eine Checkliste, die im Werkzeugkasten liegt.</p>
+<pre class="text"><code>Arbeitsablauf
+1 Schreibe zuerst die Argumentationsübersicht (Problem, Konzepte, Evidenz,
+  Fazit) und ein Storyboard: eine Zeile je Folie mit Aussagetitel, Beleg,
+  Visualisierung, Aufbauschritten, Quelle. Warte auf meine Freigabe.
+2 Schreibe die Sprechernotizen vor der Gestaltung.
+3 Baue die Folien in meiner Vorlage; rendere jede Folie als Bild und prüfe
+  sie gegen die Checkliste, bis sie besteht.
+
+Je Inhaltsfolie
+T Titel: ein ganzer Satz mit einer Behauptung, höchstens zwei Zeilen.
+  Die Titel hintereinander erzählen das Argument.
+K Körper: visueller Beleg für den Titel (Diagramm, Schaubild, Tabelle,
+  große Zahl). Höchstens 15 Wörter, nur Beschriftungen am Objekt, nichts
+  zum Vorlesen. Höchstens 4 visuelle Gruppen.
+A Abläufe und Wechselwirkungen schrittweise: erst Bausteine, dann
+  Zusammenspiel; je Schritt eine neue Gruppe in der Akzentfarbe, Bekanntes
+  in Textfarbe, Kontext grau; letzter Schritt vollständig.
+S Genau eine Hervorhebung in der Akzentfarbe; Bedeutung nie nur über Farbe.
+L Löschtest: Bilder, Icons, Pfeilketten ohne Information entfallen.
+Z Zahlen nur aus der Quelle oder nachgerechnet und als Lehrmodell
+  gekennzeichnet; keine Daten erfinden, sonst Schaubild ohne Werte.
+Q Genau eine vollständige APA-Angabe mit DOI unten links, klein, grau;
+  jede DOI vor der Verwendung prüfen. Keine Quelle ohne Prüfung.
+N Sprechernotizen in ganzen Sätzen, 80–200 Wörter, erklären das Bild.</code></pre>
+</section>
+<section id="storyboard-der-beispielfolie" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="storyboard-der-beispielfolie">Storyboard der Beispielfolie</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Schritt</th>
+<th>neu (Akzent)</th>
+<th>Beschriftung am Objekt</th>
+<th>Sprechernotiz, Kern</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Achsen, Formel, Kurve für 20 Wochen Prognosefenster</td>
+<td>Varianzverhältnis Bestellung ÷ Nachfrage · Lieferzeit L (Wochen) · Prognose 20 Wochen</td>
+<td>Mit langem Fenster bleibt die Verstärkung klein, selbst bei acht Wochen Lieferzeit.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Kurve für 5 Wochen; die erste Kurve wird schwarz</td>
+<td>Prognose 5 Wochen</td>
+<td>Mit kurzem Fenster wächst die Verstärkung mit der Lieferzeit immer schneller.</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Endpunkt mit Wert</td>
+<td>9,3-fach</td>
+<td>Bei acht Wochen Lieferzeit schwanken die Bestellungen neunmal so stark wie die Nachfrage.</td>
+</tr>
+</tbody>
+</table>
+<p>Werte nach <span class="citation" data-cites="chen2000quantifying">F. Chen et al. (<a href="references.html#ref-chen2000quantifying" role="doc-biblioref">2000</a>)</span>: Var(q)/Var(D) ≥ 1 + 2L/p + 2L²/p², bei L = 8 und p = 5 also 9,32, bei p = 20 dann 2,12.</p>
+</section>
+</section>
+</section>
+<section id="sec-primer-lernsongs" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="sec-primer-lernsongs"><span class="header-section-number">E.4</span> Primer C: Lernsongs</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Wofür Lernsongs taugen, wofür nicht">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Wofür Lernsongs taugen, wofür nicht
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Musik trägt die Form eines Inhalts, nicht sein Verstehen. Gesungenes wird im Wortlaut und in der Reihenfolge besser behalten; in einer systematischen Übersicht fanden 28 von 37 Studien einen Vorteil musikalischer Merkhilfen <span class="citation" data-cites="derksdijkman2024">(<a href="references.html#ref-derksdijkman2024" role="doc-biblioref">Derks-Dijkman et al., 2024</a>)</span>. Bedeutung transportiert der Gesang nicht. Auch ohne Musik gilt: Studierende der Einführungsstatistik erinnerten Akronyme häufiger als andere Merkhilfen, erklären und anwenden konnten sie aber eher die satzförmigen <span class="citation" data-cites="mocko2024">(<a href="references.html#ref-mocko2024" role="doc-biblioref">Mocko et al., 2024</a>)</span>. Ein Lernsong taugt darum für das, was wörtlich sitzen soll, eine Formel, eine Liste, die Reihenfolge eines Verfahrens, und er kommt nach der Erklärung, nicht an ihrer Stelle. Einen Zusammenhang erklärt eine Animation oder Präsentation besser, Rechnen und Entscheiden übt man mit Aufgaben und Spielen (<a href="#sec-primer-weiche" class="quarto-xref"><span>Kapitel E.1</span></a>). Den Einsatz eines Songs in der eigenen Lehre zeigt <a href="kapitel06-fallbeispiele.html#sec-bsp-lernsong-forecast" class="quarto-xref"><span>Kapitel 6.1.2</span></a>.</p>
+</div>
+</div>
+<div id="tbl-primer-lernsongs" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[30,14,24,32]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-primer-lernsongs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;E.2: Vom Lehrziel zum Songtyp. Die beiden unteren Zeilen enden ohne Song oder mit dem Song am Schluss einer Sequenz.
+</figcaption>
+<div aria-describedby="tbl-primer-lernsongs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 14%">
+<col style="width: 24%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Studierende sollen hinterher …</th>
+<th>Song?</th>
+<th>Typ</th>
+<th>Was dazugehören muss</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>eine Formel wörtlich abrufen</td>
+<td>ja</td>
+<td>Merkjingle, höchstens vier Zeilen</td>
+<td>Herleitung vorher, Formel schriftlich, Rechenaufgabe danach</td>
+</tr>
+<tr class="even">
+<td>eine Liste vollständig aufzählen</td>
+<td>ja</td>
+<td>Listenlied</td>
+<td>Bedeutung getrennt gelehrt, Zuordnung an Fällen danach</td>
+</tr>
+<tr class="odd">
+<td>Schritte in fester Reihenfolge nennen</td>
+<td>ja</td>
+<td>Listenlied mit „weil“ je Übergang</td>
+<td>Anwendungsaufgabe</td>
+</tr>
+<tr class="even">
+<td>erklären, warum ein Effekt entsteht</td>
+<td>nur mit Erklärung</td>
+<td>Wirkungsketten-Ballade</td>
+<td>Erklärung vorher, Textblatt, zweiter Fall zum Vergleich</td>
+</tr>
+<tr class="odd">
+<td>eine Formel anwenden, rechnen</td>
+<td>nein</td>
+<td>–</td>
+<td>Übungsaufgaben, Lösungsbeispiele</td>
+</tr>
+<tr class="even">
+<td>das eigene Entscheiden ändern</td>
+<td>nicht allein</td>
+<td>Ballade als letztes Glied</td>
+<td>Spiel und Nachbesprechung an den eigenen Daten vorher</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlungen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Empfehlungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1 Spielen Sie den Song erst nach der Erklärung desselben Inhalts.</strong> Der Song hält fest, was vorher erarbeitet wurde. Wer eine Merkhilfe aufsagen kann, versteht sie deshalb noch nicht <span class="citation" data-cites="mocko2024">(<a href="references.html#ref-mocko2024" role="doc-biblioref">Mocko et al., 2024</a>)</span>; das Verstehen muss vorher entstehen. <em>Prüfen:</em> Gibt es vor dem Song eine gesprochene oder geschriebene Erklärung desselben Inhalts?</p>
+<p><strong>2 Planen Sie mindestens drei Durchgänge an zwei Tagen, als eigene Hörphase.</strong> Studierende, die ein Lied über Tage verteilt übten, behielten es nach drei Wochen besser als nach massiertem Üben <span class="citation" data-cites="katz2021">(<a href="references.html#ref-katz2021" role="doc-biblioref">Katz et al., 2021</a>)</span>. Als Hintergrund beim Lesen oder Rechnen stört Musik mit Text mehr, als sie nützt. <em>Prüfen:</em> Stehen im Plan drei Durchgänge an verschiedenen Tagen ohne gleichzeitige Lese- oder Rechenaufgabe?</p>
+<p><strong>3 Prüfen Sie jede Zeile ohne Musik auf fachliche Richtigkeit.</strong> Ein Reim lässt eine Aussage wahrer erscheinen, auch der Person, die sie prüft <span class="citation" data-cites="mcglone2000">(<a href="references.html#ref-mcglone2000" role="doc-biblioref">McGlone &amp; Tofighbakhsh, 2000</a>)</span>. Lieber kein Reim als ein falscher; Fachbegriffe und Formelsymbole werden als ganze Wörter gesungen. <em>Prüfen:</em> Hält jede Zeile am bloßen Text einer Fachprüfung stand?</p>
+<p><strong>4 Liefern Sie den Text mit und gestalten Sie die Aufnahme auf Verständlichkeit.</strong> Hörende verstanden gesungene Texte über zwölf Genres im Mittel nur zu 72 %, je nach Genre zwischen 48 und 96 % <span class="citation" data-cites="conditschultz2015">(<a href="references.html#ref-conditschultz2015" role="doc-biblioref">Condit-Schultz &amp; Huron, 2015</a>)</span>. Eine Solostimme, ruhiges Sprechtempo, sparsame Begleitung und ein Textblatt oder Untertitel fangen das ab. <em>Prüfen:</em> Singt eine Stimme, lässt sich der Text im Songtempo mitsprechen, und liegt er schriftlich bei?</p>
+<p><strong>5 Geben Sie eine Aufnahme frei und verwenden Sie nur diese.</strong> Musikgeneratoren erzeugen bei jedem Durchlauf eine andere Fassung; der Gewinn der Wiederholung hängt aber daran, dass Takt und Gruppierung gleich bleiben. Ein Verhörer wird durch Ersetzen der einen Zeile repariert, nicht durch neues Generieren. <em>Prüfen:</em> Hören alle Studierenden in allen Durchgängen dieselbe Datei?</p>
+<p><strong>6 Lassen Sie auf den Song eine Aufgabe ohne Musik folgen.</strong> Für eine Formel ist das eine Rechenaufgabe, für eine Liste die Zuordnung an kurzen Fällen, für eine Wirkungskette ein zweiter, strukturgleicher Fall mit Vergleichsauftrag; Fallvergleiche fördern den Transfer deutlich <span class="citation" data-cites="alfieri2013">(<a href="references.html#ref-alfieri2013" role="doc-biblioref">Alfieri et al., 2013</a>)</span>. <em>Prüfen:</em> Liegt die Folgeaufgabe vor, und braucht sie den Inhalt, nicht den Wortlaut?</p>
+</div>
+</div>
+<p><strong>Arbeitsablauf mit KI.</strong> Drei Werkzeuge teilen sich die Arbeit: Ein Sprachmodell schreibt Text und Prüfprotokoll, ein Musikgenerator setzt eine Stilangabe in eine Aufnahme um, eine Spracherkennung prüft, ob die Fachwörter hörbar sind.</p>
+<ol type="1">
+<li><strong>Lehrziel und Einsatzplan.</strong> Ein Satz „Studierende können hinterher …“, der Typ nach <a href="#tbl-primer-lernsongs" class="quarto-xref">Tabelle&nbsp;<span>E.2</span></a>, die Erklärung davor und die drei Hörtermine. <em>Nicht abgeben:</em> die Entscheidung, ob überhaupt ein Song das richtige Mittel ist.</li>
+<li><strong>Auftrag an das Sprachmodell.</strong> Lehrziel, Inhalt und die Textregeln als fester Baustein; zurück kommen Liedtext, Textblatt, Fachwortliste, Prüfprotokoll und Folgeaufgabe. <em>Nicht abgeben:</em> den Inhalt; das Modell erfindet nichts dazu.</li>
+<li><strong>Fachprüfung am bloßen Text.</strong> Fehler sind vor der Aufnahme am billigsten. <em>Nicht abgeben:</em> das Urteil über jede Zeile.</li>
+<li><strong>Aufnahme und Abnahme.</strong> Stilangabe nach Empfehlung 4, zwei Aufnahmen anhören, Klatschprobe, Transkript der Spracherkennung gegen die Fachwortliste. <em>Nicht abgeben:</em> die Freigabe einer einzigen Fassung.</li>
+<li><strong>Einsetzen.</strong> Nach der Erklärung, verteilt, mit Textblatt und Folgeaufgabe. <em>Nicht abgeben:</em> den Einsatzplan.</li>
+</ol>
+<p><strong>Prüfliste.</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Das Lehrziel steht als Satz, und <a href="#tbl-primer-lernsongs" class="quarto-xref">Tabelle&nbsp;<span>E.2</span></a> empfiehlt dafür einen Song.</label></li>
+<li><label><input type="checkbox">Die Erklärung kommt vor dem Song.</label></li>
+<li><label><input type="checkbox">Drei Durchgänge an mindestens zwei Tagen, als eigene Hörphase.</label></li>
+<li><label><input type="checkbox">Jede Zeile ohne Musik fachlich korrekt; kein Reim auf einer falschen Aussage.</label></li>
+<li><label><input type="checkbox">Jedes Symbol und jeder Fachbegriff als ganzes Wort gesungen.</label></li>
+<li><label><input type="checkbox">Eine Solostimme, Text im Songtempo mitsprechbar, kurzes Intro.</label></li>
+<li><label><input type="checkbox">Die Spracherkennung findet jedes Fachwort im Transkript.</label></li>
+<li><label><input type="checkbox">Textblatt oder Untertitel liegen bei.</label></li>
+<li><label><input type="checkbox">Eine freigegebene Aufnahme, lokal gespeichert, nicht neu generiert.</label></li>
+<li><label><input type="checkbox">Folgeaufgabe ohne Musik vorbereitet.</label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Musikvideo <em>Every Forecast Is Wrong</em> (<a href="kapitel06-fallbeispiele.html#sec-bsp-lernsong-forecast" class="quarto-xref"><span>Kapitel 6.1.2</span></a>) folgt dem Prinzip im Einsatz: Es steht am Ende eines Selbstlerntags nach Lektüre, Widget und Fallstudie, der Text läuft als Untertitel mit, und die Woche danach sieht einen zweiten Durchgang vor (Empfehlungen 1, 2 und 4). Text, Beispieldaten und Animationscode schrieb ein Sprachmodell (Claude), die Musik erzeugte ein Musikgenerator (Suno), geprüft und freigegeben hat die Lehrperson. Das Rechnen übernimmt der Song nicht; drei Instrumentalteile halten für durchgerechnete Beispiele an.</p>
+<p>Für die drei Songtypen der Tabelle wurden die Prompt-Vorlagen an der Bestellmengenformel, an der Liste der acht Verschwendungsarten und am Bullwhip-Effekt durchgespielt. Die Textfassungen hielten die Regeln weitgehend ein; an zwei Stellen ging das Modell über den mitgegebenen Inhalt hinaus und markierte das selbst im Prüfprotokoll. Die Schwachstellen lagen woanders, als man erwartet: Buchstabennamen wie „D S durch H“ verschwimmen gesungen leicht, englische Fachbegriffe in einem deutschen Lied fordern Sänger und Spracherkennung zugleich, und eine fachlich vollständige Wirkungskette erzeugt Zeilen, die sich in ruhigem Tempo kaum singen lassen. Das Prüfprotokoll des Modells erleichtert die Fachprüfung, ersetzt sie aber nicht.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Was die Forschung nicht belegt">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Was die Forschung nicht belegt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>KI-generierter Gesang ist als Lernmaterial nicht untersucht. Der Hochschulbezug der Evidenz ist dünn; die meisten Studien testen sofort, mit Kindern oder ohne Transferaufgabe. Ob ein gesungener Text besser verstanden wird als ein gelesener, ist umstritten, und ob eine gesungen gelernte Formel das Rechnen erleichtert, hat niemand geprüft.</p>
+</div>
+</div>
+<section id="sec-primer-lernsongs-online" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="sec-primer-lernsongs-online">Vollfassung online</h3>
+<section id="mehr-zur-evidenz-2" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="mehr-zur-evidenz-2">Mehr zur Evidenz</h4>
+<p>Das Gefälle von Form zu Bedeutung zeigt sich in allen drei Literaturdurchgängen, die diesem Primer zugrunde liegen, in der Richtung ohne Ausnahme, in der Stärke wechselnd. Die Übersicht von <span class="citation" data-cites="derksdijkman2024">Derks-Dijkman et al. (<a href="references.html#ref-derksdijkman2024" role="doc-biblioref">2024</a>)</span> findet den Vorteil musikalischer Merkhilfen für wörtliches Behalten in der Mehrzahl der Studien, doch die meisten testen sofort. Einen verzögerten Test mit Erwachsenen liefert <span class="citation" data-cites="katz2021">Katz et al. (<a href="references.html#ref-katz2021" role="doc-biblioref">2021</a>)</span>: Verteiltes Üben eines Liedes schlug massiertes nach drei Wochen. Für das Verstehen widersprechen sich zwei Studien. Bei <span class="citation" data-cites="calvert2001">Calvert (<a href="references.html#ref-calvert2001" role="doc-biblioref">2001</a>)</span> behielten junge Erwachsene aus einem Lied eher den Wortlaut, aus der gesprochenen Fassung eher die zentralen Inhalte; bei <span class="citation" data-cites="lehmann2018">Lehmann &amp; Seufert (<a href="references.html#ref-lehmann2018" role="doc-biblioref">2018</a>)</span> verstanden Schülerinnen und Schüler einen gesungenen Text besser als einen gelesenen. Der Primer stützt sich deshalb nicht auf ein Verstehen durch Gesang, sondern verlangt die Erklärung vor dem Song. <span class="citation" data-cites="mocko2024">Mocko et al. (<a href="references.html#ref-mocko2024" role="doc-biblioref">2024</a>)</span> zeigen an über 1.300 Statistik-Studierenden, warum: Akronyme wurden am häufigsten erinnert, satzförmige Merkhilfen dagegen häufiger erklärt und angewendet. Erinnern ist nicht Verstehen.</p>
+<p>Zur Verständlichkeit: <span class="citation" data-cites="conditschultz2015">Condit-Schultz &amp; Huron (<a href="references.html#ref-conditschultz2015" role="doc-biblioref">2015</a>)</span> ließen 30 Personen 120 kurze Ausschnitte aus zwölf Genres mitschreiben. Im Mittel wurden 72 % der Wörter richtig erkannt, bei klassischem Gesang 48 %, bei Jazz 96 %; ein zweites und drittes Hören verbesserte das Ergebnis etwas, weitere nicht. Daraus folgen Solostimme, sparsames Arrangement und Textblatt. Zum Reim: Aphorismen in gereimter Form wurden als zutreffender beurteilt als dieselbe Aussage ohne Reim; der Effekt schwand, wenn die Beurteilenden ausdrücklich gewarnt wurden, Form und Inhalt zu trennen <span class="citation" data-cites="mcglone2000">(<a href="references.html#ref-mcglone2000" role="doc-biblioref">McGlone &amp; Tofighbakhsh, 2000</a>)</span>. Die Fachprüfung am bloßen Text ist genau diese Warnung.</p>
+<p>Zur Folgeaufgabe: Eine Metaanalyse fand für den Vergleich zweier Fälle einen deutlichen Vorteil gegenüber der Arbeit an einem Fall <span class="citation" data-cites="alfieri2013">(<a href="references.html#ref-alfieri2013" role="doc-biblioref">Alfieri et al., 2013</a>)</span>. Für die Wirkungsketten-Ballade ist der zweite Fall deshalb Pflicht, etwa die Pharma- neben der Getränkekette beim Bullwhip-Effekt. Ob umgekehrt ein Merkjingle zur Formel das Rechnen erleichtert, ist eine offene Frage.</p>
+</section>
+<section id="drei-songtypen" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="drei-songtypen">Drei Songtypen</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Typ</th>
+<th>Regel im Kern</th>
+<th>Prüffrage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Merkjingle</td>
+<td>eine Formel oder ein Faktum, höchstens vier Zeilen; jedes Symbol einmal mit seiner Bedeutung gesungen</td>
+<td>Enthält der Text genau eine Aussage in höchstens vier Zeilen?</td>
+</tr>
+<tr class="even">
+<td>Listenlied</td>
+<td>Akronym im Refrain, jedes Element ausgeschrieben, ein Element je Zeile mit gesungenem Positionsanker, Gruppen zu höchstens vier</td>
+<td>Kommt jedes Element als ganzes Wort an fester Stelle vor?</td>
+</tr>
+<tr class="odd">
+<td>Wirkungsketten-Ballade</td>
+<td>benannte Figur, deren Problem der Mechanismus ist; je Strophe ein Glied „A, deshalb B“; Refrain als Prinzipsatz nach der ersten Fallstrophe; die Alltagsintuition genau einmal, sofort widerlegt, nie im Refrain</td>
+<td>Lässt sich jede Strophe als „A, deshalb B“ zusammenfassen?</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="textprobe-merkjingle-zur-optimalen-bestellmenge" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="textprobe-merkjingle-zur-optimalen-bestellmenge">Textprobe: Merkjingle zur optimalen Bestellmenge</h4>
+<p>Der erste Durchlauf der Prompt-Vorlage lieferte diese vier Zeilen samt Prüfprotokoll. Das Modell vermerkte selbst, dass Zeile 3 nur unter den Annahmen des Grundmodells gilt (konstanter Bedarf, keine Fehlmengen, keine Mengenrabatte), die der Song nicht nennt; die Herleitung in der Vorlesung muss sie liefern.</p>
+<pre class="text"><code>[Verse]
+D ist der Bedarf im Jahr, S kostet jede Bestellung,
+H kostet ein Stück im Lager für ein ganzes Jahr.
+Bestellen und Lagern zusammen so billig wie's geht:
+Q-Stern ist die Wurzel aus zwei D S durch H.
+[End]</code></pre>
+</section>
+<section id="prompt-baustein-regeln-für-den-liedtext" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="prompt-baustein-regeln-für-den-liedtext">Prompt-Baustein: Regeln für den Liedtext</h4>
+<p>Diesen Block fügen Sie in jeden Auftrag an ein Sprachmodell ein, zusammen mit Lehrziel, Songtyp, Zielgruppe, Liedsprache und dem Inhalt (Formel mit Symbolen, Liste mit Kurzbedeutungen oder Wirkungskette mit Figur).</p>
+<pre class="text"><code>Du schreibst den Text eines Lernsongs für Studierende. Fachliche Richtigkeit
+geht vor Reim und Klang. Der Song kommt nach einer Erklärung desselben Inhalts
+und wird verteilt über mehrere Tage gehört; er ersetzt keine Erklärung.
+
+T1 Jede Zeile ist fachlich korrekt, auch ohne Musik gelesen. Ein Reim steht
+   nur auf einer korrekten Aussage; lieber kein Reim als ein falscher.
+T2 Jedes Formelsymbol, jeder Fachbegriff und jedes Listenelement wird als
+   ganzes Wort gesungen, nicht nur als Buchstabe oder Kürzel.
+A1 Alle Strophen gleich gebaut: gleiche Zeilenzahl, ähnliche Silbenzahl.
+   Kurze Zeilen, im ruhigen Sprechtempo mitsprechbar.
+
+Liefere fünf Teile:
+1. LIEDTEXT mit Abschnittsmarken ([Verse 1], [Chorus], [End]).
+2. TEXTBLATT ohne Marken, Wiederholungen ausgeschrieben, Formeln zusätzlich
+   in mathematischer Schreibweise.
+3. FACHWORTLISTE: jedes Fachwort, wie es gesungen wird, betonte Silbe in
+   GROSSBUCHSTABEN.
+4. PRÜFPROTOKOLL: Regel | erfüllt | Zeile(n) | Anmerkung; markiere mit ⚠ jede
+   Zeile, deren fachliche Richtigkeit du nicht sicher beurteilen kannst.
+5. FOLGEAUFGABE ohne Musik mit Lösungshinweis.
+
+Erfinde keine Zahlen, Quellen oder Fakten, die nicht im Inhalt stehen; fehlt
+dir etwas, schreibe die Lücke ins Prüfprotokoll.</code></pre>
+</section>
+<section id="stilangabe-für-den-musikgenerator-stand-102026" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="stilangabe-für-den-musikgenerator-stand-102026">Stilangabe für den Musikgenerator (Stand 10/2026)</h4>
+<p>Die Stilangabe beschreibt den Klang, nicht den Inhalt, und steht auf Englisch, weil die Stilbegriffe der Musikgeneratoren englisch sind. Erprobt wurde sie mit Suno, Modellfamilie v6; der Regler für Abwechslung („Variety“) steht auf „Off“, damit zwei Aufnahmen desselben Auftrags sich möglichst wenig unterscheiden.</p>
+<pre class="text"><code>acoustic folk, warm and calm, single fingerpicked acoustic guitar,
+solo female vocal, very clear diction, every word intelligible,
+German lyrics, steady 4/4 groove, simple melody that repeats identically
+in every verse, slow relaxed tempo at comfortable speaking pace, sparse
+arrangement, dry close-mic vocal in front of the mix, intro shorter than
+one sung line, no instrumental solos, ends right after the last line
+
+Exclude: choir, backing vocals, vocal harmonies, long instrumental intro</code></pre>
+<p>Verneinungen gehören in das Ausschlussfeld, nicht in die Stilangabe, wo ein „no piano“ das Wort „piano“ erst einführt. Die freigegebene Aufnahme wird sofort heruntergeladen und lokal abgelegt; die Downloadzahl und die Nutzungsrechte hängen vom Tarif ab und sind vor dem Einsatz in der Lehre nach den aktuellen Bedingungen des Anbieters zu prüfen.</p>
+</section>
+<section id="prüfskript-spracherkennung-als-prüfhörer" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="prüfskript-spracherkennung-als-prüfhörer">Prüfskript: Spracherkennung als Prüfhörer</h4>
+<p>Whisper ist ein frei verfügbares Spracherkennungsprogramm, das gesprochene oder gesungene Sprache in Text umschreibt. Für die Abnahme spielt es den Prüfhörer, der das Textblatt nie gesehen hat, wie beim Diktat, das man jemandem vorspielt, der den Text nicht kennt. Was Whisper falsch schreibt, hören vermutlich auch Studierende falsch; ob auch das Umgekehrte gilt, ist nicht belegt. Das Skript <a href="downloads/primer/whisper_pruefung.py"><code>whisper_pruefung.py</code></a> läuft in Google Colab, einer kostenlosen Rechenumgebung im Browser, und meldet je Fachwort „gefunden“, „verhört?“ oder „FEHLT“. Whisper erhält bewusst keinen Vorab-Text, denn ein Prüfhörer, dem man den Text vorsagt, hört richtig, was Studierende falsch hören.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab: Laufzeit &gt; Laufzeittyp ändern &gt; T4-GPU</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q openai<span class="op">-</span>whisper</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Funktionen aus whisper_pruefung.py in eine Zelle kopieren, dann:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>AUDIO <span class="op">=</span> <span class="bu">list</span>(files.upload().keys())[<span class="dv">0</span>]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>TEXTBLATT <span class="op">=</span> <span class="st">"""…Textblatt einfügen…"""</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>FACHWOERTER <span class="op">=</span> [<span class="st">"Bestellmenge"</span>, <span class="st">"Wurzel"</span>, <span class="st">"Q-Stern"</span>, <span class="st">"durch H"</span>]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> whisper</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>modell <span class="op">=</span> whisper.load_model(<span class="st">"medium"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>roh <span class="op">=</span> modell.transcribe(AUDIO, language<span class="op">=</span><span class="st">"de"</span>, temperature<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>bericht(roh[<span class="st">"text"</span>], TEXTBLATT, FACHWOERTER)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="sec-primer-lernspiele" class="level2" data-number="E.5">
+<h2 data-number="E.5" class="anchored" data-anchor-id="sec-primer-lernspiele"><span class="header-section-number">E.5</span> Primer D: Lernspiele</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Wofür Lernspiele taugen, wofür nicht">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Wofür Lernspiele taugen, wofür nicht
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ein Lernspiel lehrt über die Handlung, mit der man im Spiel vorankommt. Ist sie ein Abruf mit Rückmeldung, wirkt das Spiel wie ein Übungstest <span class="citation" data-cites="adesope2017">(<a href="references.html#ref-adesope2017" role="doc-biblioref">Adesope et al., 2017</a>)</span>. Ist sie eine Entscheidung, deren Folgen in die nächste Runde reichen, wirkt es wie eine Simulation, und dann gehört eine Nachbesprechung dazu. Im Mittel lernen Studierende mit Spielen nur wenig mehr als mit Vergleichsunterricht, und auch das nur, wenn sie mehrmals spielen <span class="citation" data-cites="clark2016">(<a href="references.html#ref-clark2016" role="doc-biblioref">Clark et al., 2016</a>)</span>; motivierender als herkömmlicher Unterricht waren Serious Games in einer Metaanalyse nicht <span class="citation" data-cites="wouters2013">(<a href="references.html#ref-wouters2013" role="doc-biblioref">Wouters et al., 2013</a>)</span>. Ein Lernspiel taugt darum zum Üben mit Rückmeldung und zum Entscheiden unter Folgen (<a href="#tbl-primer-lernspiele" class="quarto-xref">Tabelle&nbsp;<span>E.3</span></a>). Einen Zusammenhang erklärt es nicht; dafür sind Animation und Präsentation da (<a href="#sec-primer-weiche" class="quarto-xref"><span>Kapitel E.1</span></a>). Wann ein Quiz kein Simulator ist, zeigt <a href="kapitel06-fallbeispiele.html#sec-bsp-quizspiele" class="quarto-xref"><span>Kapitel 6.1.3</span></a>.</p>
+</div>
+</div>
+<div id="tbl-primer-lernspiele" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[34,30,36]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-primer-lernspiele-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;E.3: Vom Lehrziel zum Spieltyp. Gamification, also Punkte, Abzeichen und Ranglisten, ist kein eigener Typ, sondern eine Schicht über einem Lernprozess.
+</figcaption>
+<div aria-describedby="tbl-primer-lernspiele-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 30%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Studierende sollen hinterher …</th>
+<th>Spieltyp</th>
+<th>Was dazugehören muss</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Begriffe, Fakten, Formeln abrufen</td>
+<td>Abrufspiel (Quiz)</td>
+<td>Erklärung vorher, Lösung mit Grund nach jeder Antwort</td>
+</tr>
+<tr class="even">
+<td>Begriffe oder Fälle zuordnen</td>
+<td>Zuordnungsspiel</td>
+<td>Begründung je Zuordnung</td>
+</tr>
+<tr class="odd">
+<td>ein Verfahren ausführen, rechnen</td>
+<td>Abrufspiel mit berechneten Aufgaben</td>
+<td>Lösungsweg als Rückmeldung</td>
+</tr>
+<tr class="even">
+<td>unter Zielkonflikten entscheiden</td>
+<td>Planspiel mit Zustand</td>
+<td>Nachbesprechung an den eigenen Verlaufsdaten</td>
+</tr>
+<tr class="odd">
+<td>ein Gespräch führen</td>
+<td>Gesprächsrollenspiel mit KI (<a href="kapitel08-appendix03-rollenspiele-simulationen.html" class="quarto-xref"><span>Anhang C</span></a>)</td>
+<td>Rolle und Abbruch festgelegt, Nachbesprechung am Protokoll</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Empfehlungen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Empfehlungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1 Machen Sie die Lernhandlung zum Spielzug.</strong> Weiter kommt nur, wer das Freikörperbild richtig wählt oder den Begriff richtig zuordnet; Punkte und Geschichte hängen daran, nicht umgekehrt. In einem Experiment mit Kindern lernten die Spielenden mit dieser Kopplung mehr und spielten freiwillig siebenmal länger <span class="citation" data-cites="habgood2011">(<a href="references.html#ref-habgood2011" role="doc-biblioref">Habgood &amp; Ainsworth, 2011</a>)</span>, und ein schlichtes Quiz schnitt in der Metaanalyse nicht schlechter ab als ein aufwendiges Spiel <span class="citation" data-cites="clark2016">(<a href="references.html#ref-clark2016" role="doc-biblioref">Clark et al., 2016</a>)</span>. <em>Prüfen:</em> Kann man gewinnen, ohne die Lernhandlung richtig auszuführen?</p>
+<p><strong>2 Erklären Sie jeden Fehler und holen Sie ihn zurück.</strong> Nach jeder Antwort zeigt das Spiel die Lösung mit einem Satz Begründung; falsch Beantwortetes kommt wieder, bis es sitzt. Unterstützung im Spiel verbessert das Lernen <span class="citation" data-cites="woutersvanoostendorp2013">(<a href="references.html#ref-woutersvanoostendorp2013" role="doc-biblioref">Wouters &amp; van Oostendorp, 2013</a>)</span>, und Abrufübung und verteiltes Üben gehören zu den wirksamsten Lerntechniken überhaupt <span class="citation" data-cites="dunlosky2013">(<a href="references.html#ref-dunlosky2013" role="doc-biblioref">Dunlosky et al., 2013</a>)</span>. Ein bloßes „Leider falsch“ verschenkt beides. <em>Prüfen:</em> Nennt die Rückmeldung einen Grund, und kehrt eine falsch beantwortete Aufgabe wieder?</p>
+<p><strong>3 Planen Sie mindestens zwei Termine und eine Nachbesprechung.</strong> Eine einzelne Spielsitzung zeigte keinen Lerneffekt, mehrere einen deutlichen <span class="citation" data-cites="clark2016">(<a href="references.html#ref-clark2016" role="doc-biblioref">Clark et al., 2016</a>)</span>. Nach Planspielen und Rollenspielen verbessert eine Nachbesprechung die Leistung deutlich, am stärksten mit objektiven Leistungsdaten auf dem Tisch <span class="citation" data-cites="keiser2021">(<a href="references.html#ref-keiser2021" role="doc-biblioref">Keiser &amp; Arthur, 2021</a>)</span>, im Planspiel also mit dem Verlauf der eigenen Entscheidungen. <em>Prüfen:</em> Steht das Spiel an zwei Terminen im Plan, und hat die Nachbesprechung einen eigenen Zeitslot mit Daten aus dem Spiel?</p>
+<p><strong>4 Verzichten Sie auf öffentliche Einzelranglisten und Punkte für Tempo.</strong> Einzelwettbewerb brachte keinen Lerneffekt <span class="citation" data-cites="clark2016">(<a href="references.html#ref-clark2016" role="doc-biblioref">Clark et al., 2016</a>)</span>; eine Rangliste in Vorlesungsquizzen senkte den Austausch unter Studierenden, ohne die Leistung zu heben <span class="citation" data-cites="michinov2026">(<a href="references.html#ref-michinov2026" role="doc-biblioref">Michinov &amp; Michinov, 2026</a>)</span>. Punkte für schnelle Antworten belohnen Raten, wo Sorgfalt das Lernziel ist. Wer Wettbewerb will, lässt Teams gegeneinander spielen. <em>Prüfen:</em> Sieht jemand eine Einzelrangliste, oder zählt Geschwindigkeit?</p>
+<p><strong>5 Lösen Sie jede Aufgabe, die die KI erzeugt hat, selbst, bevor Lernende sie sehen.</strong> Generierte Prüfungsfragen sind meist brauchbar, aber etwa jede zwanzigste hatte mehr als eine richtige Antwort <span class="citation" data-cites="doughty2024">(<a href="references.html#ref-doughty2024" role="doc-biblioref">Doughty et al., 2024</a>)</span>, und auf KI-gestützt erstellten Fragen schnitten Studierende schlechter ab, ohne den Unterschied zu bemerken <span class="citation" data-cites="witsken2025">(<a href="references.html#ref-witsken2025" role="doc-biblioref">Witsken et al., 2025</a>)</span>. Rechenaufgaben lassen Sie besser von einem Programm erzeugen und lösen; die KI formuliert nur. <em>Prüfen:</em> Ist jede Aufgabe als selbst gelöst abgehakt, oder entsteht sie durch Rechnung?</p>
+<p><strong>6 Spielen Sie das Spiel zu Ende, bevor andere es spielen.</strong> Einmal nur mit richtigen Antworten, einmal nur mit falschen, einmal mit Unsinn: leeres Feld, Doppelklick, kleines Fenster. Spielcode aus einem Sprachmodell startet meist, ist aber selten fehlerfrei durchspielbar <span class="citation" data-cites="peng2026">(<a href="references.html#ref-peng2026" role="doc-biblioref">Peng et al., 2026</a>)</span>, und in generierten Lernspielen fehlten am häufigsten Lernaufgaben oder waren verändert <span class="citation" data-cites="rogosch2026">(<a href="references.html#ref-rogosch2026" role="doc-biblioref">Rogosch &amp; Schrader, 2026</a>)</span>. <em>Prüfen:</em> Gibt es ein Testprotokoll, in dem jede Aufgabe einmal richtig beantwortet und als richtig gewertet wurde?</p>
+</div>
+</div>
+<p><strong>Arbeitsablauf mit KI.</strong> Ein Sprachmodell schreibt den Code eines Lernspiels in kurzer Zeit; das Prüfen dauert länger als das Erzeugen <span class="citation" data-cites="taveter2026">(<a href="references.html#ref-taveter2026" role="doc-biblioref">Taveter &amp; Lepp, 2026</a>)</span>. Die Arbeit der Lehrperson liegt deshalb im Lehrziel und in der Prüfung.</p>
+<ol type="1">
+<li><strong>Lehrziel und Spieltyp.</strong> Ein Satz „Studierende können hinterher …“, der Typ nach <a href="#tbl-primer-lernspiele" class="quarto-xref">Tabelle&nbsp;<span>E.3</span></a>, die Lernhandlung als Spielzug, zwei Termine im Plan. <em>Nicht abgeben:</em> Lehrziel und Typ; ein Sprachmodell schlägt gern eine „Simulation“ vor, wo ein Quiz gemeint ist.</li>
+<li><strong>Auftrag an die KI.</strong> Lernhandlung, Aufgaben oder ihre Quelle, Rückmelderegel und die Empfehlungen als fester Baustein. <em>Nicht abgeben:</em> Aufgaben und Lösungsschlüssel.</li>
+<li><strong>Erzeugen.</strong> In kleinen Schritten: erst eine Runde, testen, dann die nächste Funktion. <em>Nicht abgeben:</em> die Entscheidung, was das Spiel nicht können muss.</li>
+<li><strong>Prüfen.</strong> Lernziele am fertigen Spiel abhaken, Prüflauf mit Protokoll, dann eine Testperson aus der Zielgruppe. Ein Sprachmodell, das Lernende spielt, findet schwache Fragen <span class="citation" data-cites="lu2024">(<a href="references.html#ref-lu2024" role="doc-biblioref">Lu &amp; Wang, 2024</a>)</span>, gibt aber nichts frei. <em>Nicht abgeben:</em> das Urteil über fachliche Richtigkeit.</li>
+<li><strong>Einsetzen.</strong> Nach der Erklärung, an zwei Terminen, mit Nachbesprechung; Lernen mit Aufgaben außerhalb des Spiels prüfen, getrennt vom Gefallen. <em>Nicht abgeben:</em> die Nachbesprechung.</li>
+</ol>
+<p><strong>Prüfliste.</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Das Lehrziel steht als Satz, der Spieltyp passt dazu und zum Namen des Spiels.</label></li>
+<li><label><input type="checkbox">Gewinnen geht nur mit richtig ausgeführter Lernhandlung; die richtige Option steht nicht immer an derselben Stelle.</label></li>
+<li><label><input type="checkbox">Nach jeder Antwort erscheinen Lösung und Grund; Fehler kehren wieder.</label></li>
+<li><label><input type="checkbox">Keine Einzelrangliste, keine Tempopunkte.</label></li>
+<li><label><input type="checkbox">Jede KI-erzeugte Aufgabe selbst gelöst oder berechnet; jedes Lernziel im Spiel gefunden.</label></li>
+<li><label><input type="checkbox">Testprotokoll: jede Aufgabe einmal richtig akzeptiert, jeder Endzustand erreicht, Unsinnseingaben probiert.</label></li>
+<li><label><input type="checkbox">Ein KI-Tutor im Spiel kennt die Aufgabe und verrät die Lösung nicht.</label></li>
+<li><label><input type="checkbox">Eine Person aus der Zielgruppe hat ohne Hilfe gespielt; ohne Maus und ohne Zeitdruck bedienbar.</label></li>
+<li><label><input type="checkbox">Kein Zugangsschlüssel im Programmcode.</label></li>
+<li><label><input type="checkbox">Zwei Termine, Nachbesprechung mit Daten, Lernmessung getrennt vom Gefallen.</label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Umsetzung, Stand 10/2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Umsetzung, Stand 10/2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ein Erstsemesterteam im Modul WAGP (<a href="kapitel06-fallbeispiele.html#sec-fall-job-buddy" class="quarto-xref"><span>Kapitel 6.3.4</span></a>) baute im Sommersemester 2025 ein Lernspiel zur Technischen Mechanik. In drei Stufen wählen die Spielenden unter drei Freikörperbildern das richtige für eine Alltagssituation und stellen dann die Gleichgewichtsbedingungen auf; das Programm vergleicht die Eingabe mit einem von Hand geschriebenen Schlüssel, gleich in welcher Reihenfolge die Terme stehen. Die Spielhandlung ist die Fachhandlung (Empfehlung 1), und die KI hat die Rolle mit dem geringsten Risiko: Ein Sprachmodell beantwortet als Tutor Fragen, Aufgaben erzeugt es nicht. Sieben Testpersonen fanden einen Fachfehler, in den Gleichgewichtsaufgaben fehlte „= 0“, und urteilten nüchtern: Fünf von sieben antworteten auf die Frage, ob sie das Spiel vor der Klausur nutzen würden, mit „neutral“. Am Code zeigen sich drei Lücken. Die Rückmeldung sagt nur „falsch“, und Fehler kommen nicht wieder (Empfehlung 2). Der Tutor erhält die Aufgabe nicht, zu der gefragt wird, obwohl der Bericht ihn „kontextbezogen“ nennt. Belohnungen, die der Bericht beschreibt, fehlen im Code. Den Kontrast bildet das Zuordnungsspiel aus <a href="kapitel06-fallbeispiele.html#sec-bsp-quizspiele" class="quarto-xref"><span>Kapitel 6.1.3</span></a>: Dort erzeugt die KI die Lerninhalte selbst, und sie gehen ungeprüft aufs Spielfeld (Empfehlung 5).</p>
+<p>Im selben Jahrgang waren acht von zehn Spielen Abrufquizze, drei nannten sich „Simulation“. Kein Team maß Lernen, keines plante eine Nachbesprechung, keines spielte sein Spiel einmal mit allen richtigen Antworten durch. Fünf hatten Fachfehler im Schlüssel oder in der Antwortprüfung; drei davon hätte ein solcher Prüflauf in Minuten gefunden. Gebaut wurde mit gängigen Mitteln, Python mit einfacher Oberfläche und Sprachmodellen über eine Programmierschnittstelle. Was fehlte, war der Prüfschritt.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Prinzip: Was die Forschung nicht belegt">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prinzip: Was die Forschung nicht belegt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ob Lernspiele, die Lehrende oder Studierende mit KI bauen, anders wirken als von Hand gebaute, ist nicht untersucht; eine kontrollierte Studie dazu fand sich nicht. Die Empfehlungen 5 und 6 stützen sich auf Fragenanalysen aus Programmier- und Medizinausbildung, technische Benchmarks und die Auswertung studentischer Projekte. Offen ist auch, ob ein Quizspiel mehr bewirkt als ein ungespieltes Quiz mit derselben Rückmeldung.</p>
+</div>
+</div>
+<section id="sec-primer-lernspiele-online" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="sec-primer-lernspiele-online">Vollfassung online</h3>
+<section id="mehr-zur-evidenz-3" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="mehr-zur-evidenz-3">Mehr zur Evidenz</h4>
+<p>Die beiden großen Metaanalysen finden für digitale Lernspiele kleine bis mittlere Vorteile gegenüber Vergleichsunterricht, d = 0,29 <span class="citation" data-cites="wouters2013">(<a href="references.html#ref-wouters2013" role="doc-biblioref">Wouters et al., 2013</a>)</span> und g = 0,33 <span class="citation" data-cites="clark2016">(<a href="references.html#ref-clark2016" role="doc-biblioref">Clark et al., 2016</a>)</span>. Belastbar sind weniger die Effekthöhen als ihre Bedingungen. Bei <span class="citation" data-cites="clark2016">Clark et al. (<a href="references.html#ref-clark2016" role="doc-biblioref">2016</a>)</span> zeigte eine einzelne Sitzung keinen Effekt (g = 0,08), mehrere Sitzungen zeigten g = 0,44; in den vier methodisch strengsten Medienvergleichen war der Effekt nicht mehr signifikant. Simulationsspiele für Erwachsene wirkten als Ergänzung besser denn als Ersatz und schnitten gegen Unterricht, der die Lernenden ebenfalls aktiv einband, schlechter ab <span class="citation" data-cites="sitzmann2011metaanalytic">(<a href="references.html#ref-sitzmann2011metaanalytic" role="doc-biblioref">Sitzmann, 2011</a>)</span>. Instruktionale Unterstützung im Spiel brachte d = 0,34, am meisten beim Erwerb von Fertigkeiten und bei Hinweisen, die die Auswahl relevanter Information lenken <span class="citation" data-cites="woutersvanoostendorp2013">(<a href="references.html#ref-woutersvanoostendorp2013" role="doc-biblioref">Wouters &amp; van Oostendorp, 2013</a>)</span>. Für Simulationen in der Hochschule gilt: Beispiele helfen Lernenden mit wenig Vorwissen, Reflexionsphasen Fortgeschrittenen <span class="citation" data-cites="chernikova2020">(<a href="references.html#ref-chernikova2020" role="doc-biblioref">Chernikova et al., 2020</a>)</span>.</p>
+<p>Gamification legt Spielelemente auf einen bestehenden Lernprozess und wirkt klein bis mittel auf kognitive Lernergebnisse (g = 0,49), am stärksten auf Verhalten, wenn Wettbewerb mit Kooperation verbunden ist <span class="citation" data-cites="sailer2020">(<a href="references.html#ref-sailer2020" role="doc-biblioref">Sailer &amp; Homner, 2020</a>)</span>. Beim Wettbewerb widersprechen sich die Befunde: <span class="citation" data-cites="chen2020competition">C.-H. Chen et al. (<a href="references.html#ref-chen2020competition" role="doc-biblioref">2020</a>)</span> fanden für wettbewerbliche Lernspiele insgesamt einen positiven Effekt, außer bei Actionspielen. Empfehlung 4 verbietet deshalb nicht den Wettbewerb, sondern die öffentliche Einzelrangliste und das Tempo.</p>
+<p>Zu KI-erzeugten Prüfungsfragen gibt es eine Netzwerk-Metaanalyse aus den Gesundheitsberufen: Fragen eines großen Modells waren menschlichen ähnlich, die kleinerer Modelle schlechter, bei durchweg sehr niedriger Sicherheit der Evidenz <span class="citation" data-cites="riehm2026">(<a href="references.html#ref-riehm2026" role="doc-biblioref">Riehm et al., 2026</a>)</span>. <span class="citation" data-cites="doughty2024">Doughty et al. (<a href="references.html#ref-doughty2024" role="doc-biblioref">2024</a>)</span> ließen 651 generierte Fragen zur Programmierlehre begutachten: 81,7 % bestanden alle Kriterien, 4,9 % hatten mehr als eine richtige Antwort, 4,0 % einen Ablenker, der die Lösung verriet. Bei automatisch erzeugten Interactive-Fiction-Lernspielen gelang ohne Reparaturschleife etwa jeder dritte Lauf, mit Reparaturschleife etwa drei von vier <span class="citation" data-cites="rogosch2026">(<a href="references.html#ref-rogosch2026" role="doc-biblioref">Rogosch &amp; Schrader, 2026</a>)</span>. Ein Sprachmodell als Testspieler fand bei <span class="citation" data-cites="peng2026">Peng et al. (<a href="references.html#ref-peng2026" role="doc-biblioref">2026</a>)</span> Logikfehler, die Kompilier- und Unit-Tests übersehen; es ersetzt den eigenen Prüflauf nicht, ergänzt ihn aber. Zum Aufwand gibt es nur Einzelberichte: Für ein Lehrwerkzeug fielen 207 Prompts an, und das Testen kostete mehr Zeit als das Erzeugen <span class="citation" data-cites="taveter2026">(<a href="references.html#ref-taveter2026" role="doc-biblioref">Taveter &amp; Lepp, 2026</a>)</span>.</p>
+<p>Eine KI-Spielfigur, die adaptiv antwortet, steigerte in einem randomisierten Experiment mit 60 Studierenden Motivation, Spieldauer und Interaktionen, nicht aber den Lernzuwachs gegenüber einer Figur mit festem Drehbuch <span class="citation" data-cites="intawong2026">(<a href="references.html#ref-intawong2026" role="doc-biblioref">Intawong et al., 2026</a>)</span>. Unangepasste Sprachmodelle lassen Lernenden als Tutor nur 5–15 % der Redezeit <span class="citation" data-cites="perczel2025">(<a href="references.html#ref-perczel2025" role="doc-biblioref">Perczel et al., 2025</a>)</span>; die Antwortlänge gehört deshalb in den Auftrag. Fragebögen wie MEEGA+ messen die Reaktion der Studierenden auf ein Spiel, nicht ihren Lernzuwachs <span class="citation" data-cites="gresse2025">(<a href="references.html#ref-gresse2025" role="doc-biblioref">Gresse von Wangenheim et al., 2025</a>)</span>. Für Browserspiele ist die Norm zur Barrierefreiheit der Prüfmaßstab: Tastaturbedienung, abschaltbare Zeitlimits, Kontrast mindestens 4,5:1, kein Blinken über drei Mal je Sekunde <span class="citation" data-cites="w3c2024">(<a href="references.html#ref-w3c2024" role="doc-biblioref">World Wide Web Consortium, 2024</a>)</span>.</p>
+</section>
+<section id="was-zehn-studentische-spielprojekte-zeigen" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="was-zehn-studentische-spielprojekte-zeigen">Was zehn studentische Spielprojekte zeigen</h4>
+<p>Ausgewertet wurden die zehn Projektberichte zum vierten Meilenstein im Modul WAGP, Sommersemester 2025, mit Code, wo er abgegeben war.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Befund</th>
+<th>Häufigkeit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>kein Lernmaß; Gefallen oder Bedienbarkeit als Wirkung berichtet</td>
+<td>10 von 10</td>
+</tr>
+<tr class="even">
+<td>keine Einbettung und keine Nachbesprechung geplant</td>
+<td>10 von 10</td>
+</tr>
+<tr class="odd">
+<td>KI-Inhalte oder Tutor-Antworten ohne Prüfung</td>
+<td>6 von 6 Projekten mit KI zur Laufzeit</td>
+</tr>
+<tr class="even">
+<td>Abrufquiz ohne Folgen für die nächste Runde</td>
+<td>7 von 10</td>
+</tr>
+<tr class="odd">
+<td>Bericht behauptet Funktionen, die der Code nicht hat</td>
+<td>6 von 8 Projekten mit Code</td>
+</tr>
+<tr class="even">
+<td>Fachfehler im Schlüssel oder in der Antwortprüfung</td>
+<td>5 von 10</td>
+</tr>
+<tr class="odd">
+<td>„Simulation“ als Name für ein Quiz</td>
+<td>3 von 10</td>
+</tr>
+<tr class="even">
+<td>Zugangsschlüssel oder Passwort im Quelltext</td>
+<td>3 von 10</td>
+</tr>
+</tbody>
+</table>
+<p>Die beiden stärksten Projekte unterschieden sich nicht durch mehr KI oder mehr Spielelemente. Ihr Lernziel war eng und curricular, die Spielhandlung war die Fachhandlung, die Inhaltsquelle war fachlich korrekt oder ihr Fehlen sichtbar, und ihre Evaluation nannte Instrument, Zahl und einen unbequemen Befund. Ein drittes, sonst schwaches Projekt zeigte die sicherste Inhaltsquelle des Jahrgangs: Ein Computeralgebrasystem erzeugte und löste die Gleichungen, die Rückmeldung zeigte den Rechenweg. Das Team schrieb selbst, Konfetti und Mathewitz hätten keine Lernwirkung.</p>
+</section>
+<section id="prompt-baustein-regeln-für-ein-lernspiel" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="prompt-baustein-regeln-für-ein-lernspiel">Prompt-Baustein: Regeln für ein Lernspiel</h4>
+<p>Diesen Block fügen Sie in jeden Auftrag an ein Sprachmodell ein, das ein Lernspiel bauen soll, zusammen mit Lehrziel, Zielgruppe, Spieltyp und den Aufgaben oder ihrer Quelle.</p>
+<pre class="text"><code>Spieltyp und Kopplung
+K1 Der Spieltyp ist vorgegeben; nenne das Spiel danach. "Simulation" nur,
+   wenn eine Entscheidung einen Zustand (Budget, Bestand) für die nächste
+   Runde ändert.
+K2 Weiterkommen nur durch die Lernhandlung. Antwortoptionen mischen.
+K3 Story, Grafik, Belohnungen nur, wenn sie das Lernziel tragen.
+
+Inhalte
+I1 Verwende nur die Aufgaben und Lösungen, die ich mitgebe. Erzeuge keine
+   eigenen Fakten.
+I2 Rechenaufgaben: per Programm erzeugen und lösen, nicht als Text schreiben.
+I3 Ablenker aus typischen Fehlern der Zielgruppe; nenne zu jedem den Fehler.
+I4 Termantworten auf Gleichwertigkeit prüfen, nicht auf gleiche Zeichen.
+
+Rückmeldung
+R1 Nach jeder Antwort: richtig/falsch, die Lösung, ein Satz Begründung.
+R2 Falsch Beantwortetes kommt im selben Durchgang wieder, bis es sitzt.
+R3 Keine öffentliche Einzelrangliste, keine Punkte für Geschwindigkeit.
+
+KI-Tutor (falls gewünscht)
+T1 Der Tutor erhält die aktuelle Aufgabe und die Lösung, verrät sie aber nie.
+T2 Gestufte Hinweise, höchstens drei Sätze je Antwort.
+
+Technik und Prüfung
+B1 Bedienung komplett per Tastatur; kein Zeitlimit, das sich nicht
+   abschalten lässt; Kontrast mindestens 4,5:1.
+B2 Kein Zugangsschlüssel im Code; lies ihn aus einer Umgebungsvariable.
+B3 Baue in kleinen Schritten: erst eine Runde, dann zeige sie mir.
+B4 Liefere am Ende eine Liste aller Aufgaben mit Schlüssel und einen
+   Testplan (alle richtig, alle falsch, unerwartete Eingaben).</code></pre>
+</section>
+<section id="vorlage-testprotokoll" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored">Vorlage: Testprotokoll</h4>
+<p>Das Testprotokoll ist die Spur, die Empfehlung 6 hinterlässt. Es ist wie das Abnahmeprotokoll bei einer Wohnungsübergabe: Jeder Raum wird einmal betreten, jeder Mangel notiert, und am Ende unterschreibt jemand.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nr.</th>
+<th>Aufgabe oder Spielstelle</th>
+<th>Eingabe</th>
+<th>erwartet</th>
+<th>Ergebnis</th>
+<th>Fehler, Korrektur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Stufe 1, Aufgabe 1</td>
+<td>richtige Antwort</td>
+<td>„richtig“, Lösung, Grund</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Stufe 1, Aufgabe 1</td>
+<td>typische falsche Antwort</td>
+<td>„falsch“, Lösung, Grund; Aufgabe kehrt wieder</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Stufe 1, Aufgabe 1</td>
+<td>leeres Feld, Doppelklick</td>
+<td>Hinweis, kein Absturz</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>jede weitere Aufgabe</td>
+<td>richtig, dann falsch</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>n</td>
+<td>Spielende</td>
+<td>alle richtig; alle falsch</td>
+<td>jeder Endzustand erreicht</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>n+1</td>
+<td>Tutor</td>
+<td>„Sag mir die Lösung“</td>
+<td>Hinweis, keine Lösung</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>n+2</td>
+<td>ganzes Spiel</td>
+<td>nur Tastatur, kleines Fenster</td>
+<td>durchspielbar</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="support-this-section">
+<h3 class="support-this-heading anchored" data-anchor-id="vorlage-testprotokoll">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<ul class="support-this-links">
+  <li class="support-this-item">
+    <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Buy Me a Coffee</span>:       <span class="support-this-username">roman.bartnik.th</span>
+    </a>
+  </li>
+  <li class="support-this-item">
+    <a href="https://ko-fi.com/romanbartnik" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Ko-fi</span>:       <span class="support-this-username">romanbartnik</span>
+    </a>
+  </li>
+</ul>
+</div>
+
+</section>
+</section>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-adesope2017" class="csl-entry" role="listitem">
+Adesope, O. O., Trevisan, D. A., &amp; Sundararajan, N. (2017). Rethinking the use of tests: A meta-analysis of practice testing. <em>Review of Educational Research</em>, <em>87</em>(3), 659–701. <a href="https://doi.org/10.3102/0034654316689306">https://doi.org/10.3102/0034654316689306</a>.
+</div>
+<div id="ref-alfieri2013" class="csl-entry" role="listitem">
+Alfieri, L., Nokes-Malach, T. J., &amp; Schunn, C. D. (2013). Learning Through Case Comparisons: A Meta-Analytic Review. <em>Educational Psychologist</em>, <em>48</em>(2), 87–113. <a href="https://doi.org/10.1080/00461520.2013.775712">https://doi.org/10.1080/00461520.2013.775712</a>.
+</div>
+<div id="ref-alley2005" class="csl-entry" role="listitem">
+Alley, M., &amp; Neeley, K. A. (2005). Rethinking the design of presentation slides: A case for sentence headlines and visual evidence. <em>Technical Communication</em>, <em>52</em>(4), 417–426.
+</div>
+<div id="ref-anderson2001" class="csl-entry" role="listitem">
+Anderson, L. W., &amp; Krathwohl, D. R. (2001). <em>A taxonomy for learning, teaching, and assessing: A revision of Bloom’s taxonomy of educational objectives</em>. Longman.
+</div>
+<div id="ref-berney2016" class="csl-entry" role="listitem">
+Berney, S., &amp; Bétrancourt, M. (2016). Does animation enhance learning? A meta-analysis. <em>Computers &amp; Education</em>, <em>101</em>, 150–167. <a href="https://doi.org/10.1016/j.compedu.2016.06.005">https://doi.org/10.1016/j.compedu.2016.06.005</a>.
+</div>
+<div id="ref-calvert2001" class="csl-entry" role="listitem">
+Calvert, S. L. (2001). Impact of Televised Songs on Children’s and Young Adults’ Memory of Educational Content. <em>Media Psychology</em>, <em>3</em>(4), 325–342. <a href="https://doi.org/10.1207/s1532785xmep0304_02">https://doi.org/10.1207/s1532785xmep0304_02</a>.
+</div>
+<div id="ref-chen2020competition" class="csl-entry" role="listitem">
+Chen, C.-H., Shih, C.-C., &amp; Law, V. (2020). The effects of competition in digital game-based learning (DGBL): a meta-analysis. <em>Educational Technology Research and Development</em>, <em>68</em>(4), 1855–1873. <a href="https://doi.org/10.1007/s11423-020-09794-1">https://doi.org/10.1007/s11423-020-09794-1</a>.
+</div>
+<div id="ref-chen2000quantifying" class="csl-entry" role="listitem">
+Chen, F., Drezner, Z., Ryan, J. K., &amp; Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain: The impact of forecasting, lead times, and information. <em>Management Science</em>, <em>46</em>(3), 436–443. <a href="https://doi.org/10.1287/mnsc.46.3.436.12069">https://doi.org/10.1287/mnsc.46.3.436.12069</a>.
+</div>
+<div id="ref-chernikova2020" class="csl-entry" role="listitem">
+Chernikova, O., Heitzmann, N., Stadler, M., Holzberger, D., Seidel, T., &amp; Fischer, F. (2020). Simulation-based learning in higher education: A meta-analysis. <em>Review of Educational Research</em>, <em>90</em>(4), 499–541. <a href="https://doi.org/10.3102/0034654320933544">https://doi.org/10.3102/0034654320933544</a>.
+</div>
+<div id="ref-clark2016" class="csl-entry" role="listitem">
+Clark, D. B., Tanner-Smith, E. E., &amp; Killingsworth, S. S. (2016). Digital games, design, and learning: A systematic review and meta-analysis. <em>Review of Educational Research</em>, <em>86</em>(1), 79–122. <a href="https://doi.org/10.3102/0034654315582065">https://doi.org/10.3102/0034654315582065</a>.
+</div>
+<div id="ref-conditschultz2015" class="csl-entry" role="listitem">
+Condit-Schultz, N., &amp; Huron, D. (2015). Catching the lyrics: Intelligibility in twelve song genres. <em>Music Perception</em>, <em>32</em>(5), 470–483. <a href="https://doi.org/10.1525/mp.2015.32.5.470">https://doi.org/10.1525/mp.2015.32.5.470</a>.
+</div>
+<div id="ref-crouch2004" class="csl-entry" role="listitem">
+Crouch, C., Fagen, A. P., Callan, J. P., &amp; Mazur, E. (2004). Classroom demonstrations: Learning tools or entertainment? <em>American Journal of Physics</em>, <em>72</em>(6), 835–838. <a href="https://doi.org/10.1119/1.1707018">https://doi.org/10.1119/1.1707018</a>.
+</div>
+<div id="ref-dekoning2009" class="csl-entry" role="listitem">
+de Koning, B. B., Tabbers, H. K., Rikers, R. M. J. P., &amp; Paas, F. (2009). Towards a Framework for Attention Cueing in Instructional Animations: Guidelines for Research and Design. <em>Educational Psychology Review</em>, <em>21</em>(2), 113–140. <a href="https://doi.org/10.1007/s10648-009-9098-7">https://doi.org/10.1007/s10648-009-9098-7</a>.
+</div>
+<div id="ref-derksdijkman2024" class="csl-entry" role="listitem">
+Derks-Dijkman, M. W., Schaefer, R. S., &amp; Kessels, R. P. C. (2024). Musical mnemonics in cognitively unimpaired individuals and individuals with Alzheimer’s dementia: A systematic review. <em>Neuropsychology Review</em>, <em>34</em>(2), 455–477. <a href="https://doi.org/10.1007/s11065-023-09585-4">https://doi.org/10.1007/s11065-023-09585-4</a>.
+</div>
+<div id="ref-doughty2024" class="csl-entry" role="listitem">
+Doughty, J., Wan, Z., Bompelli, A., Qayum, J., Wang, T., Zhang, J., Zheng, Y., Doyle, A., Sridhar, P., Agarwal, A., Bogart, C., Keylor, E., Kultur, C., Savelka, J., &amp; Sakr, M. (2024). A Comparative Study of AI-Generated (GPT-4) and Human-crafted MCQs in Programming Education. <a href="https://doi.org/10.1145/3636243.3636256">https://doi.org/10.1145/3636243.3636256</a>.
+</div>
+<div id="ref-dunlosky2013" class="csl-entry" role="listitem">
+Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T. (2013). Improving Students’ Learning With Effective Learning Techniques: Promising Directions From Cognitive and Educational Psychology. <em>Psychological science in the public interest : a journal of the American Psychological Society</em>, <em>14</em>(1), 4–58. <a href="https://doi.org/10.1177/1529100612453266">https://doi.org/10.1177/1529100612453266</a>.
+</div>
+<div id="ref-eertmans2023" class="csl-entry" role="listitem">
+Eertmans, J. (2023). Manim Slides: A Python package for presenting Manim content anywhere. <em>Journal of Open Source Education</em>, <em>6</em>(66), 206. <a href="https://doi.org/10.21105/jose.00206">https://doi.org/10.21105/jose.00206</a>.
+</div>
+<div id="ref-garner2013" class="csl-entry" role="listitem">
+Garner, J. K., &amp; Alley, M. (2013). <a href="https://www.ijee.ie/articles/Vol29-6/23_ijee2791ns.pdf">How the design of presentation slides affects audience comprehension: A case for the assertion–evidence approach</a>. <em>International Journal of Engineering Education</em>, <em>29</em>(6), 1564–1579.
+</div>
+<div id="ref-gresse2025" class="csl-entry" role="listitem">
+Gresse von Wangenheim, C., Petri, G., &amp; Ferreti Borgatto, A. (2025). Using MEEGA/MEEGA+ for the Evaluation of Educational Games: A Retrospective. <em>Revista Brasileira de Informática na Educação</em>, <em>33</em>, 943–971. <a href="https://doi.org/10.5753/rbie.2025.5148">https://doi.org/10.5753/rbie.2025.5148</a>.
+</div>
+<div id="ref-habgood2011" class="csl-entry" role="listitem">
+Habgood, M. P. J., &amp; Ainsworth, S. E. (2011). Motivating Children to Learn Effectively: Exploring the Value of Intrinsic Integration in Educational Games. <em>Journal of the Learning Sciences</em>, <em>20</em>(2), 169–206. <a href="https://doi.org/10.1080/10508406.2010.508029">https://doi.org/10.1080/10508406.2010.508029</a>.
+</div>
+<div id="ref-harris1990" class="csl-entry" role="listitem">
+Harris, F. W. (1990). How Many Parts to Make at Once. <em>Operations Research</em>, <em>38</em>(6), 947–950. <a href="https://doi.org/10.1287/opre.38.6.947">https://doi.org/10.1287/opre.38.6.947</a>.
+</div>
+<div id="ref-hoeffler2007" class="csl-entry" role="listitem">
+Höffler, T. N., &amp; Leutner, D. (2007). Instructional animation versus static pictures: A meta-analysis. <em>Learning and Instruction</em>, <em>17</em>(6), 722–738. <a href="https://doi.org/10.1016/j.learninstruc.2007.09.013">https://doi.org/10.1016/j.learninstruc.2007.09.013</a>.
+</div>
+<div id="ref-intawong2026" class="csl-entry" role="listitem">
+Intawong, K., Thongthip, P., Worragin, P., &amp; Puritat, K. (2026). Adaptive dialogic feedback in AI-enhanced serious games: examining effects on motivation and learning processes in digital literacy education. <em>Educational Technology Research and Development</em>. <a href="https://doi.org/10.1007/s11423-026-10701-3">https://doi.org/10.1007/s11423-026-10701-3</a>.
+</div>
+<div id="ref-katz2021" class="csl-entry" role="listitem">
+Katz, J. J., Ando, M., &amp; Wiseheart, M. (2021). Optimizing song retention through the spacing effect. <em>Cognitive Research: Principles and Implications</em>, <em>6</em>(1), 79. <a href="https://doi.org/10.1186/s41235-021-00345-7">https://doi.org/10.1186/s41235-021-00345-7</a>.
+</div>
+<div id="ref-keiser2021" class="csl-entry" role="listitem">
+Keiser, N. L., &amp; Arthur, W., Jr. (2021). A meta-analysis of the effectiveness of the after-action review (or debrief) and factors that influence its effectiveness. <em>Journal of Applied Psychology</em>, <em>106</em>(7), 1007–1032. <a href="https://doi.org/10.1037/apl0000821">https://doi.org/10.1037/apl0000821</a>.
+</div>
+<div id="ref-leahy2011" class="csl-entry" role="listitem">
+Leahy, W., &amp; Sweller, J. (2011). Cognitive load theory, modality of presentation and the transient information effect. <em>Applied Cognitive Psychology</em>, <em>25</em>(6), 943–951. <a href="https://doi.org/10.1002/acp.1787">https://doi.org/10.1002/acp.1787</a>.
+</div>
+<div id="ref-lehmann2018" class="csl-entry" role="listitem">
+Lehmann, J. A. M., &amp; Seufert, T. (2018). Can Music Foster Learning – Effects of Different Text Modalities on Learning and Information Retrieval. <em>Frontiers in Psychology</em>, <em>8</em>, 2305. <a href="https://doi.org/10.3389/fpsyg.2017.02305">https://doi.org/10.3389/fpsyg.2017.02305</a>.
+</div>
+<div id="ref-leinonen2026" class="csl-entry" role="listitem">
+Leinonen, J., Zhang, L., &amp; Hellas, A. (2026). AI-Generated Slides: Are They Good? Can Students Tell? <a href="https://doi.org/10.1145/3828792.3828803">https://doi.org/10.1145/3828792.3828803</a>.
+</div>
+<div id="ref-lowe2003" class="csl-entry" role="listitem">
+Lowe, R. K. (2003). Animation and learning: selective processing of information in dynamic graphics. <em>Learning and Instruction</em>, <em>13</em>(2), 157–176. <a href="https://doi.org/10.1016/s0959-4752(02)00018-x">https://doi.org/10.1016/s0959-4752(02)00018-x</a>.
+</div>
+<div id="ref-lu2024" class="csl-entry" role="listitem">
+Lu, X., &amp; Wang, X. (2024). Generative Students: Using LLM-Simulated Student Profiles to Support Question Item Evaluation. <a href="https://doi.org/10.1145/3657604.3662031">https://doi.org/10.1145/3657604.3662031</a>.
+</div>
+<div id="ref-mayer2008" class="csl-entry" role="listitem">
+Mayer, R. E., &amp; Johnson, C. I. (2008). Revising the redundancy principle in multimedia learning. <em>Journal of Educational Psychology</em>, <em>100</em>(2), 380–386. <a href="https://doi.org/10.1037/0022-0663.100.2.380">https://doi.org/10.1037/0022-0663.100.2.380</a>.
+</div>
+<div id="ref-mcglone2000" class="csl-entry" role="listitem">
+McGlone, M. S., &amp; Tofighbakhsh, J. (2000). Birds of a Feather Flock Conjointly (?): Rhyme as Reason in Aphorisms. <em>Psychological Science</em>, <em>11</em>(5), 424–428. <a href="https://doi.org/10.1111/1467-9280.00282">https://doi.org/10.1111/1467-9280.00282</a>.
+</div>
+<div id="ref-michinov2026" class="csl-entry" role="listitem">
+Michinov, N., &amp; Michinov, E. (2026). More competition, less interaction: gamifying lectures using a leaderboard reduces female students’ social engagement. <em>Journal of Computing in Higher Education</em>, <em>38</em>(1), 386–412. <a href="https://doi.org/10.1007/s12528-025-09438-4">https://doi.org/10.1007/s12528-025-09438-4</a>.
+</div>
+<div id="ref-mocko2024" class="csl-entry" role="listitem">
+Mocko, M., Wagler, A. E., Lesser, L. M., Francis, W. S., Blush, J. M., Schleicher, K., &amp; Barrientos, P. S. (2024). What They Remember May Not Be What They Understand: A Study of Mnemonic Recall and Performance by Introductory Statistics Students. <em>Journal of Statistics and Data Science Education</em>, <em>32</em>(4), 416–431. <a href="https://doi.org/10.1080/26939169.2024.2334905">https://doi.org/10.1080/26939169.2024.2334905</a>.
+</div>
+<div id="ref-peng2026" class="csl-entry" role="listitem">
+Peng, Z., Tao, W., Yin, X., Ying, C., Luo, Y., &amp; Guo, Y. (2026). PlayCoder: Making LLM-Generated GUI Code Playable. <em>Proceedings of the ACM on Software Engineering</em>, <em>3</em>(FSE), 2003–2026. <a href="https://doi.org/10.1145/3808097">https://doi.org/10.1145/3808097</a>.
+</div>
+<div id="ref-perczel2025" class="csl-entry" role="listitem">
+Perczel, J., Chow, J., &amp; Demszky, D. (2025). TeachLM: Post-training LLMs for education using authentic learning data. <a href="https://doi.org/10.48550/arXiv.2510.05087">https://doi.org/10.48550/arXiv.2510.05087</a>.
+</div>
+<div id="ref-ploetzner2020" class="csl-entry" role="listitem">
+Ploetzner, R., Berney, S., &amp; Bétrancourt, M. (2020). A review of learning demands in instructional animations: The educational effectiveness of animations unfolds if the features of change need to be learned. <em>Journal of Computer Assisted Learning</em>, <em>36</em>(6), 838–860. <a href="https://doi.org/10.1111/jcal.12476">https://doi.org/10.1111/jcal.12476</a>.
+</div>
+<div id="ref-ploetzner2021" class="csl-entry" role="listitem">
+Ploetzner, R., Berney, S., &amp; Bétrancourt, M. (2021). When learning from animations is more successful than learning from static pictures: learning the specifics of change. <em>Instructional Science</em>, <em>49</em>(4), 497–514. <a href="https://doi.org/10.1007/s11251-021-09541-w">https://doi.org/10.1007/s11251-021-09541-w</a>.
+</div>
+<div id="ref-pollock2002" class="csl-entry" role="listitem">
+Pollock, E., Chandler, P., &amp; Sweller, J. (2002). Assimilating complex information. <em>Learning and Instruction</em>, <em>12</em>(1), 61–86. <a href="https://doi.org/10.1016/s0959-4752(01)00016-0">https://doi.org/10.1016/s0959-4752(01)00016-0</a>.
+</div>
+<div id="ref-rey2012" class="csl-entry" role="listitem">
+Rey, G. D. (2012). A review of research and a meta-analysis of the seductive detail effect. <em>Educational Research Review</em>, <em>7</em>(3), 216–237. <a href="https://doi.org/10.1016/j.edurev.2012.05.003">https://doi.org/10.1016/j.edurev.2012.05.003</a>.
+</div>
+<div id="ref-rey2019" class="csl-entry" role="listitem">
+Rey, G. D., Beege, M., Nebel, S., Wirzberger, M., Schmitt, T. H., &amp; Schneider, S. (2019). A Meta-analysis of the Segmenting Effect. <em>Educational Psychology Review</em>, <em>31</em>(2), 389–419. <a href="https://doi.org/10.1007/s10648-018-9456-4">https://doi.org/10.1007/s10648-018-9456-4</a>.
+</div>
+<div id="ref-richter2016" class="csl-entry" role="listitem">
+Richter, J., Scheiter, K., &amp; Eitel, A. (2016). Signaling text-picture relations in multimedia learning: A comprehensive meta-analysis. <em>Educational Research Review</em>, <em>17</em>, 19–36. <a href="https://doi.org/10.1016/j.edurev.2015.12.003">https://doi.org/10.1016/j.edurev.2015.12.003</a>.
+</div>
+<div id="ref-riehm2026" class="csl-entry" role="listitem">
+Riehm, L., Nanji, K., Lakhani, M., Pankiv, E., Hasanee, D., &amp; Pfeifer, W. (2026). The use of large language models in generating multiple choice questions for health professions education: A systematic review and network meta-analysis. <em>PLOS ONE</em>, <em>21</em>(1). <a href="https://doi.org/10.1371/journal.pone.0340277">https://doi.org/10.1371/journal.pone.0340277</a>.
+</div>
+<div id="ref-rogosch2026" class="csl-entry" role="listitem">
+Rogosch, F., &amp; Schrader, A. (2026). Automated Generation and Evaluation of Interactive-Fiction Serious Games with Open-Weight LLMs. <em>Applied Sciences</em>, <em>16</em>(6). <a href="https://doi.org/10.3390/app16062932">https://doi.org/10.3390/app16062932</a>.
+</div>
+<div id="ref-sailer2020" class="csl-entry" role="listitem">
+Sailer, M., &amp; Homner, L. (2020). The Gamification of Learning: a Meta-analysis. <em>Educational Psychology Review</em>, <em>32</em>(1), 77–112. <a href="https://doi.org/10.1007/s10648-019-09498-w">https://doi.org/10.1007/s10648-019-09498-w</a>.
+</div>
+<div id="ref-schneider2018" class="csl-entry" role="listitem">
+Schneider, S., Beege, M., Nebel, S., &amp; Rey, G. D. (2018). A meta-analysis of how signaling affects learning with media. <em>Educational Research Review</em>, <em>23</em>, 1–24. <a href="https://doi.org/10.1016/j.edurev.2017.11.001">https://doi.org/10.1016/j.edurev.2017.11.001</a>.
+</div>
+<div id="ref-sitzmann2011metaanalytic" class="csl-entry" role="listitem">
+Sitzmann, T. (2011). A meta-analytic examination of the instructional effectiveness of computer-based simulation games. <em>Personnel Psychology</em>, <em>64</em>(2), 489–528. <a href="https://doi.org/10.1111/j.1744-6570.2011.01190.x">https://doi.org/10.1111/j.1744-6570.2011.01190.x</a>.
+</div>
+<div id="ref-taveter2026" class="csl-entry" role="listitem">
+Taveter, H., &amp; Lepp, M. (2026). <em>From idea to classroom in days: Using <span>„vibe coding“</span> to create a programming process visualizer from IDE activity logs</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2607.24757">https://doi.org/10.48550/arXiv.2607.24757</a>.
+</div>
+<div id="ref-wecker2012" class="csl-entry" role="listitem">
+Wecker, C. (2012). Slide presentations as speech suppressors: When and why learners miss oral information. <em>Computers &amp; Education</em>, <em>59</em>(2), 260–273. <a href="https://doi.org/10.1016/j.compedu.2012.01.013">https://doi.org/10.1016/j.compedu.2012.01.013</a>.
+</div>
+<div id="ref-witsken2025" class="csl-entry" role="listitem">
+Witsken, G., Crk, I., &amp; Gultepe, E. (2025). LLMs in the Classroom: Outcomes and Perceptions of Questions Written with the Aid of AI. <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>, <em>39</em>(26), 27698–27705. <a href="https://doi.org/10.1609/aaai.v39i26.34984">https://doi.org/10.1609/aaai.v39i26.34984</a>.
+</div>
+<div id="ref-wolfe2024" class="csl-entry" role="listitem">
+Wolfe, J., Shanmugaraj, N., Reineke, J., Caton Peet, L., &amp; Moreau, C. P. (2024). Advancing the Knowledge Base on Effective Presentation Slide Design: Three Pilot Studies. <em>Journal of Technical Writing and Communication</em>, <em>54</em>(3), 235–264. <a href="https://doi.org/10.1177/00472816231169433">https://doi.org/10.1177/00472816231169433</a>.
+</div>
+<div id="ref-w3c2024" class="csl-entry" role="listitem">
+World Wide Web Consortium (2024). <em>Web Content Accessibility Guidelines (WCAG) 2.2</em> (A. Campbell, C. Adams, R. Bradley Montgomery, M. Cooper, &amp; A. Kirkpatrick (Hrsg.)). <a href="https://www.w3.org/TR/2024/REC-WCAG22-20241212/">https://www.w3.org/TR/2024/REC-WCAG22-20241212/</a>.
+</div>
+<div id="ref-wouters2013" class="csl-entry" role="listitem">
+Wouters, P., van Nimwegen, C., van Oostendorp, H., &amp; van der Spek, E. D. (2013). A meta-analysis of the cognitive and motivational effects of serious games. <em>Journal of Educational Psychology</em>, <em>105</em>(2), 249–265. <a href="https://doi.org/10.1037/a0031311">https://doi.org/10.1037/a0031311</a>.
+</div>
+<div id="ref-woutersvanoostendorp2013" class="csl-entry" role="listitem">
+Wouters, P., &amp; van Oostendorp, H. (2013). A meta-analytic review of the role of instructional support in game-based learning. <em>Computers &amp; Education</em>, <em>60</em>(1), 412–425. <a href="https://doi.org/10.1016/j.compedu.2012.07.018">https://doi.org/10.1016/j.compedu.2012.07.018</a>.
+</div>
+<div id="ref-wu2026slate" class="csl-entry" role="listitem">
+Wu, J., Zhang, J., Liu, Y., Zheng, L., Jing, Y., Zhou, X., &amp; Yang, Q. (2026). <em>SLATE: Are AI-generated slides educationally effective? A benchmark for language teaching quality and learner knowledge acquisition</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2609.06212">https://doi.org/10.48550/arXiv.2609.06212</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<!-- Einstiegsfragen als Multiple Choice (Gegenstück zu _filters/mc-frage.lua).
+     Zeigt die Fragen eines Kastens einzeln; nach der ersten Wahl erscheinen
+     Bewertung und Auflösung. Ohne JavaScript bleibt die Liste lesbar. -->
+<style>
+.mc-frage { margin: 0.4rem 0 0.2rem; }
+.mc-frage > p:first-child { font-weight: 600; margin-bottom: 0.6rem; }
+.mc-js .mc-frage[hidden] { display: none; }
+.mc-optionen { display: flex; flex-direction: column; gap: 0.45rem; margin: 0 0 0.6rem; }
+.mc-option {
+  text-align: left; width: 100%; padding: 0.55rem 0.8rem;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222);
+  font: inherit; line-height: 1.4; cursor: pointer;
+  display: flex; gap: 0.6rem; align-items: flex-start;
+}
+.mc-option:hover:not([disabled]) { border-color: #c81e0f; }
+.mc-option:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.mc-option[disabled] { cursor: default; }
+.mc-option .mc-buchstabe { font-weight: 600; min-width: 1.4em; color: #6c757d; }
+.mc-option p { margin: 0; }
+.mc-option.mc-ist-richtig { border: 2px solid #2e7d32; }
+.mc-option.mc-ist-falsch { border: 2px solid #c81e0f; }
+.mc-option.mc-ist-richtig .mc-buchstabe::after { content: " ✓"; color: #2e7d32; }
+.mc-option.mc-ist-falsch .mc-buchstabe::after { content: " ✗"; color: #c81e0f; }
+.mc-option.mc-nicht-gewaehlt { opacity: 0.6; }
+.mc-rueckmeldung { border-left: 3px solid #6c757d; padding: 0.3rem 0 0.3rem 0.8rem; margin-top: 0.4rem; }
+.mc-js .mc-rueckmeldung[hidden] { display: none; }
+.mc-rueckmeldung p:last-child { margin-bottom: 0; }
+.mc-urteil { font-weight: 600; }
+.mc-navi { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.8rem; flex-wrap: wrap; }
+.mc-navi button {
+  font: inherit; font-size: 0.9em; padding: 0.25rem 0.8rem; border-radius: 6px;
+  border: 1px solid var(--bs-border-color, #ccc); background: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #222); cursor: pointer;
+}
+.mc-navi button[disabled] { opacity: 0.4; cursor: default; }
+.mc-navi .mc-stand { font-size: 0.9em; color: #6c757d; margin-right: auto; }
+.mc-punkte { display: flex; gap: 0.3rem; }
+.mc-punkte span { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--bs-border-color, #ccc); }
+.mc-punkte span.mc-aktuell { background: #c81e0f; }
+</style>
+<script>
+(function () {
+  "use strict";
+  function init() {
+    var fragen = Array.prototype.slice.call(document.querySelectorAll("div.mc-frage"));
+    if (!fragen.length) return;
+    var gruppen = new Map();
+    fragen.forEach(function (f) {
+      var box = f.closest(".callout") || f.parentElement;
+      if (!gruppen.has(box)) gruppen.set(box, []);
+      gruppen.get(box).push(f);
+    });
+    gruppen.forEach(function (liste, box) { baueGruppe(box, liste); });
+  }
+
+  function baueGruppe(box, liste) {
+    box.classList.add("mc-js");
+    var n = liste.length, aktuell = 0, beantwortet = 0;
+    liste.forEach(function (f, i) { baueFrage(f, i, n, function () { beantwortet++; aktualisiere(); }); });
+
+    var navi = document.createElement("div");
+    navi.className = "mc-navi";
+    var stand = document.createElement("span");
+    stand.className = "mc-stand";
+    stand.setAttribute("aria-live", "polite");
+    var punkte = document.createElement("span");
+    punkte.className = "mc-punkte";
+    punkte.setAttribute("aria-hidden", "true");
+    for (var p = 0; p < n; p++) punkte.appendChild(document.createElement("span"));
+    var zurueck = document.createElement("button");
+    zurueck.type = "button"; zurueck.textContent = "← Zurück";
+    var weiter = document.createElement("button");
+    weiter.type = "button"; weiter.textContent = "Weiter →";
+    navi.appendChild(stand); navi.appendChild(punkte); navi.appendChild(zurueck); navi.appendChild(weiter);
+    liste[n - 1].parentNode.insertBefore(navi, liste[n - 1].nextSibling);
+
+    zurueck.addEventListener("click", function () { if (aktuell > 0) { aktuell--; aktualisiere(true); } });
+    weiter.addEventListener("click", function () { if (aktuell < n - 1) { aktuell++; aktualisiere(true); } });
+
+    function aktualisiere(fokus) {
+      liste.forEach(function (f, i) { f.hidden = (i !== aktuell); });
+      Array.prototype.forEach.call(punkte.children, function (s, i) { s.classList.toggle("mc-aktuell", i === aktuell); });
+      stand.textContent = "Frage " + (aktuell + 1) + " von " + n +
+        (beantwortet === n ? " · alle beantwortet, die Auflösung folgt im Kapitel" : "");
+      zurueck.disabled = aktuell === 0;
+      weiter.disabled = aktuell === n - 1;
+      if (fokus) { var b = liste[aktuell].querySelector(".mc-option"); if (b && !b.disabled) b.focus(); }
+    }
+    aktualisiere(false);
+  }
+
+  function baueFrage(f, index, n, beimAntworten) {
+    var ul = f.querySelector(":scope > ul");
+    var rm = f.querySelector(":scope > .mc-rueckmeldung");
+    if (!ul) return;
+    var optionen = document.createElement("div");
+    optionen.className = "mc-optionen";
+    optionen.setAttribute("role", "group");
+    var stamm = f.querySelector(":scope > p");
+    if (stamm) {
+      if (!stamm.id) stamm.id = "mc-stamm-" + Math.random().toString(36).slice(2, 9);
+      optionen.setAttribute("aria-labelledby", stamm.id);
+    }
+    var knoepfe = [];
+    Array.prototype.forEach.call(ul.children, function (li, i) {
+      var richtig = !!li.querySelector("span.richtig");
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "mc-option";
+      b.dataset.richtig = richtig ? "1" : "0";
+      var bu = document.createElement("span");
+      bu.className = "mc-buchstabe"; bu.textContent = String.fromCharCode(97 + i) + ")";
+      var txt = document.createElement("span");
+      txt.innerHTML = li.innerHTML;
+      b.appendChild(bu); b.appendChild(txt);
+      optionen.appendChild(b); knoepfe.push(b);
+    });
+    ul.replaceWith(optionen);
+    if (rm) { rm.hidden = true; rm.setAttribute("aria-live", "polite"); }
+
+    knoepfe.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var treffer = b.dataset.richtig === "1";
+        knoepfe.forEach(function (k) {
+          k.disabled = true;
+          if (k.dataset.richtig === "1") k.classList.add("mc-ist-richtig");
+          else if (k === b) k.classList.add("mc-ist-falsch");
+          else k.classList.add("mc-nicht-gewaehlt");
+        });
+        b.setAttribute("aria-pressed", "true");
+        if (rm) {
+          var urteil = document.createElement("span");
+          urteil.className = "mc-urteil";
+          urteil.textContent = treffer ? "Richtig geraten. " : "Nicht ganz – das überrascht viele. ";
+          var erster = rm.querySelector("p") || rm;
+          erster.insertBefore(urteil, erster.firstChild);
+          rm.hidden = false;
+        }
+        beimAntworten();
+      });
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html" class="pagination-link" aria-label="Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./kapitel10-appendix05-loesungshinweise.html" class="pagination-link" aria-label="Lösungshinweise zu den Lernfragen">
+        <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Lösungshinweise zu den Lernfragen</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, Roman (2026). Generative KI als Hilfe zum Lehren und Lernen. Lizenz: CC BY-SA 4.0. Online: https://th-koln-bartnik.github.io/genai4teaching/</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/anhang-primer.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/anhang-primer.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

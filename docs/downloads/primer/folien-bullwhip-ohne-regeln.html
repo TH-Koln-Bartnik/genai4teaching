@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Der Bullwhip-Effekt – Vorlesung Supply Management</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px 0;background:#cfd4da;font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;color:#1f2933}
+.folie{width:1280px;height:720px;overflow:hidden;position:relative;background:#fff;margin:0 auto 20px;padding:52px 72px 0}
+.folie::after{content:attr(data-nr);position:absolute;right:28px;bottom:22px;font-size:14px;color:#9ca3af}
+.folie::before{content:"";position:absolute;left:0;top:0;width:10px;height:100%;background:#1d4e89}
+.titel{font-size:33px;line-height:1.22;margin:0 0 26px;font-weight:650;color:#12263a;max-width:1120px}
+.koerper{font-size:23px;line-height:1.4}
+.quelle{position:absolute;left:72px;right:80px;bottom:18px;font-size:14px;line-height:1.35;color:#6b7280;margin:0;border-top:1px solid #e5e7eb;padding-top:8px}
+.notizen{display:none}
+.akzent{color:#d9480f;font-weight:650}
+.blau{color:#1d4e89;font-weight:650}
+.klein{font-size:18px;color:#4b5563}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.karte{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px 22px}
+.karte h3{margin:0 0 6px;font-size:23px;color:#12263a}
+.karte p{margin:0;font-size:19px;line-height:1.38;color:#374151}
+.karte .bsp{margin-top:8px;font-size:17px;color:#6b7280}
+ul{margin:0;padding-left:26px} li{margin-bottom:10px}
+.formel{font-size:30px;text-align:center;padding:22px;border:2px solid #1d4e89;border-radius:12px;background:#f3f7fc;color:#12263a}
+.bild{background:#eef1f4;border:2px dashed #9ca3af;color:#6b7280;display:flex;align-items:center;justify-content:center;text-align:center;font-size:18px;padding:12px}
+table{border-collapse:collapse;width:100%;font-size:19px}
+th{text-align:left;background:#12263a;color:#fff;padding:10px 14px;font-weight:600}
+td{padding:9px 14px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+td:first-child{font-weight:600;color:#12263a;width:24%}
+.titelfolie{background:#12263a;color:#fff}
+.titelfolie::before{background:#d9480f}
+.titelfolie::after{color:#64748b}
+.titelfolie .titel{color:#fff;font-size:54px;margin-top:120px}
+</style>
+</head>
+<body>
+<section class="folie titelfolie" data-nr="1">
+  <h2 class="titel">Der Bullwhip-Effekt</h2>
+  <div class="koerper">
+
+<p style="font-size:28px;color:#cbd5e1;max-width:760px;margin:0 0 40px">Warum kleine Schwankungen am Regal große Schwankungen beim Lieferanten auslösen</p>
+<p style="font-size:20px;color:#94a3b8">Supply Management · Wirtschaftsingenieurwesen, 3. Semester · ca. 20 Minuten</p>
+<div class="bild" style="position:absolute;right:72px;top:150px;width:340px;height:400px;background:#1e3550;border-color:#475569;color:#94a3b8">[Bild: Lkw-Kolonne vor einem Distributionszentrum oder Hochregallager mit stark unterschiedlich gefüllten Fächern]</div>
+
+  </div>
+  <aside class="notizen"><b>(ca. 1 Min.)</b> Einstieg mit einer Frage an den Hörsaal: „Wer hat im Frühjahr 2020 erlebt, dass Toilettenpapier ausverkauft war – obwohl niemand plötzlich mehr Toilettenpapier verbraucht hat?“ Kurz zwei, drei Antworten sammeln.<br><br>
+Überleitung: Genau dieses Muster – die Bestellungen schwanken viel stärker als der tatsächliche Verbrauch – ist Thema der nächsten 20 Minuten. Fahrplan: Phänomen, Messung, Simulation (Beer Game), Ursachen, Quantifizierung, Empirie, Gegenmaßnahmen, kurze Rechenübung.<br><br>
+Hinweis für Sie: Das Toilettenpapier-Beispiel nur als anschauliche Alltagsfrage nutzen, ohne Zahlen – dazu wird hier keine Studie zitiert.</aside>
+</section>
+<section class="folie " data-nr="2">
+  <h2 class="titel">Bestellungen schwanken stärker als die Nachfrage – und umso stärker, je weiter oben in der Lieferkette</h2>
+  <div class="koerper">
+
+<svg viewBox="0 0 1140 300" width="1140" height="300" xmlns="http://www.w3.org/2000/svg" font-family="inherit">
+<rect x="20" y="40" width="230" height="200" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="135.0" y="70" text-anchor="middle" font-size="20" font-weight="600" fill="#1f2933">Endkunde</text>
+<line x1="35" x2="235" y1="160" y2="160" stroke="#e5e7eb"/>
+<polyline points="35.0,160.0 38.3,158.3 41.7,156.7 45.0,155.3 48.3,154.1 51.7,153.1 55.0,152.4 58.3,152.0 61.7,152.0 65.0,152.4 68.3,153.1 71.7,154.1 75.0,155.3 78.3,156.7 81.7,158.3 85.0,160.0 88.3,161.7 91.7,163.3 95.0,164.7 98.3,165.9 101.7,166.9 105.0,167.6 108.3,168.0 111.7,168.0 115.0,167.6 118.3,166.9 121.7,165.9 125.0,164.7 128.3,163.3 131.7,161.7 135.0,160.0 138.3,158.3 141.7,156.7 145.0,155.3 148.3,154.1 151.7,153.1 155.0,152.4 158.3,152.0 161.7,152.0 165.0,152.4 168.3,153.1 171.7,154.1 175.0,155.3 178.3,156.7 181.7,158.3 185.0,160.0 188.3,161.7 191.7,163.3 195.0,164.7 198.3,165.9 201.7,166.9 205.0,167.6 208.3,168.0 211.7,168.0 215.0,167.6 218.3,166.9 221.7,165.9 225.0,164.7 228.3,163.3 231.7,161.7 235.0,160.0" fill="none" stroke="#111827" stroke-width="3"/>
+<path d="M254 160 l30 0" stroke="#94a3b8" stroke-width="2"/><path d="M284 154 l8 6 l-8 6 z" fill="#94a3b8"/>
+<rect x="290" y="40" width="230" height="200" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="405.0" y="70" text-anchor="middle" font-size="20" font-weight="600" fill="#1f2933">Einzelhandel</text>
+<line x1="305" x2="505" y1="160" y2="160" stroke="#e5e7eb"/>
+<polyline points="305.0,160.0 308.3,156.3 311.7,152.7 315.0,149.4 318.3,146.6 321.7,144.4 325.0,142.9 328.3,142.1 331.7,142.1 335.0,142.9 338.3,144.4 341.7,146.6 345.0,149.4 348.3,152.7 351.7,156.3 355.0,160.0 358.3,163.7 361.7,167.3 365.0,170.6 368.3,173.4 371.7,175.6 375.0,177.1 378.3,177.9 381.7,177.9 385.0,177.1 388.3,175.6 391.7,173.4 395.0,170.6 398.3,167.3 401.7,163.7 405.0,160.0 408.3,156.3 411.7,152.7 415.0,149.4 418.3,146.6 421.7,144.4 425.0,142.9 428.3,142.1 431.7,142.1 435.0,142.9 438.3,144.4 441.7,146.6 445.0,149.4 448.3,152.7 451.7,156.3 455.0,160.0 458.3,163.7 461.7,167.3 465.0,170.6 468.3,173.4 471.7,175.6 475.0,177.1 478.3,177.9 481.7,177.9 485.0,177.1 488.3,175.6 491.7,173.4 495.0,170.6 498.3,167.3 501.7,163.7 505.0,160.0" fill="none" stroke="#5f88bb" stroke-width="3"/>
+<path d="M524 160 l30 0" stroke="#94a3b8" stroke-width="2"/><path d="M554 154 l8 6 l-8 6 z" fill="#94a3b8"/>
+<rect x="560" y="40" width="230" height="200" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="675.0" y="70" text-anchor="middle" font-size="20" font-weight="600" fill="#1f2933">Großhandel</text>
+<line x1="575" x2="775" y1="160" y2="160" stroke="#e5e7eb"/>
+<polyline points="575.0,160.0 578.3,153.3 581.7,147.0 585.0,141.2 588.3,136.2 591.7,132.3 595.0,129.6 598.3,128.2 601.7,128.2 605.0,129.6 608.3,132.3 611.7,136.2 615.0,141.2 618.3,147.0 621.7,153.3 625.0,160.0 628.3,166.7 631.7,173.0 635.0,178.8 638.3,183.8 641.7,187.7 645.0,190.4 648.3,191.8 651.7,191.8 655.0,190.4 658.3,187.7 661.7,183.8 665.0,178.8 668.3,173.0 671.7,166.7 675.0,160.0 678.3,153.3 681.7,147.0 685.0,141.2 688.3,136.2 691.7,132.3 695.0,129.6 698.3,128.2 701.7,128.2 705.0,129.6 708.3,132.3 711.7,136.2 715.0,141.2 718.3,147.0 721.7,153.3 725.0,160.0 728.3,166.7 731.7,173.0 735.0,178.8 738.3,183.8 741.7,187.7 745.0,190.4 748.3,191.8 751.7,191.8 755.0,190.4 758.3,187.7 761.7,183.8 765.0,178.8 768.3,173.0 771.7,166.7 775.0,160.0" fill="none" stroke="#1d4e89" stroke-width="3"/>
+<path d="M794 160 l30 0" stroke="#94a3b8" stroke-width="2"/><path d="M824 154 l8 6 l-8 6 z" fill="#94a3b8"/>
+<rect x="830" y="40" width="230" height="200" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="945.0" y="70" text-anchor="middle" font-size="20" font-weight="600" fill="#1f2933">Hersteller</text>
+<line x1="845" x2="1045" y1="160" y2="160" stroke="#e5e7eb"/>
+<polyline points="845.0,160.0 848.3,148.6 851.7,137.6 855.0,127.7 858.3,119.1 861.7,112.4 865.0,107.7 868.3,105.3 871.7,105.3 875.0,107.7 878.3,112.4 881.7,119.1 885.0,127.7 888.3,137.6 891.7,148.6 895.0,160.0 898.3,171.4 901.7,182.4 905.0,192.3 908.3,200.9 911.7,207.6 915.0,212.3 918.3,214.7 921.7,214.7 925.0,212.3 928.3,207.6 931.7,200.9 935.0,192.3 938.3,182.4 941.7,171.4 945.0,160.0 948.3,148.6 951.7,137.6 955.0,127.7 958.3,119.1 961.7,112.4 965.0,107.7 968.3,105.3 971.7,105.3 975.0,107.7 978.3,112.4 981.7,119.1 985.0,127.7 988.3,137.6 991.7,148.6 995.0,160.0 998.3,171.4 1001.7,182.4 1005.0,192.3 1008.3,200.9 1011.7,207.6 1015.0,212.3 1018.3,214.7 1021.7,214.7 1025.0,212.3 1028.3,207.6 1031.7,200.9 1035.0,192.3 1038.3,182.4 1041.7,171.4 1045.0,160.0" fill="none" stroke="#d9480f" stroke-width="3"/>
+<text x="570" y="275" text-anchor="middle" font-size="18" fill="#6b7280">← Materialfluss&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Bestellungen (Informationsfluss) →</text>
+</svg>
+<ul class="klein" style="margin-top:8px;font-size:20px">
+<li><b>Procter &amp; Gamble (Windeln):</b> Endverbrauch relativ stabil, die Bestellungen der Distributoren schwanken deutlich stärker.</li>
+<li><b>Hewlett-Packard (Drucker):</b> Bestellungen der Händler schwanken stärker als die Kundennachfrage, die Bestellungen an die Chip-Sparte noch stärker.</li>
+</ul>
+
+  </div>
+  <p class="quelle">Quelle: Lee, H. L., Padmanabhan, V. &amp; Whang, S. (1997). Information distortion in a supply chain: The bullwhip effect. <i>Management Science, 43</i>(4), 546–558. Grafik schematisch (eigene Darstellung).</p>
+  <aside class="notizen"><b>(ca. 2 Min.)</b> Die Grafik zeigt eine schematische Lieferkette. Rechts fließen Bestellungen nach oben, links fließt das Material zurück zum Kunden. Die Kurven sind <i>schematisch</i>, keine Messwerte – sie zeigen das Prinzip: Die Schwankung wächst von Stufe zu Stufe wie bei einer Peitsche, bei der eine kleine Handbewegung am Griff eine große Bewegung an der Spitze erzeugt.<br><br>
+Die beiden Beispiele stammen aus dem Grundlagenartikel von Lee, Padmanabhan und Whang (1997). P&amp;G stellte fest, dass Windeln – ein Produkt mit sehr gleichmäßigem Verbrauch – dennoch stark schwankende Distributorenbestellungen hatten. Bei HP schwankten die Bestellungen der Händler stärker als die Kundennachfrage und die Bestellungen an die interne Halbleitersparte noch einmal stärker.<br><br>
+Historischer Hinweis: Das Phänomen hat Jay Forrester schon 1958 mit Simulationsmodellen beschrieben („Industrial Dynamics“), daher auch der Name „Forrester-Effekt“. Den Begriff „Bullwhip“ hat die P&amp;G-Logistik geprägt und Lee et al. haben ihn bekannt gemacht.</aside>
+</section>
+<section class="folie " data-nr="3">
+  <h2 class="titel">Gemessen wird der Effekt als Verhältnis zweier Varianzen: Ist es größer als 1, verstärkt die Stufe die Schwankung</h2>
+  <div class="koerper">
+
+<div class="formel">Bullwhip-Maß einer Stufe&#160;&#160;=&#160;&#160;<span class="blau">Var(Bestellungen an den Lieferanten)</span> &#160;/&#160; <span class="blau">Var(Nachfrage an die Stufe)</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px">
+ <div class="karte" style="border-top:6px solid #d9480f"><h3>&gt; 1 · Verstärkung</h3><p>Die Stufe gibt mehr Schwankung weiter, als sie selbst erhält. Das ist der Bullwhip-Effekt.</p></div>
+ <div class="karte" style="border-top:6px solid #94a3b8"><h3>= 1 · Weitergabe</h3><p>Die Stufe reicht die Nachfrage unverändert weiter, etwa bei „Bestelle, was verkauft wurde“.</p></div>
+ <div class="karte" style="border-top:6px solid #1d4e89"><h3>&lt; 1 · Glättung</h3><p>Die Stufe puffert über Lagerbestand und gibt gleichmäßigere Bestellungen weiter.</p></div>
+</div>
+<p class="klein" style="margin-top:34px">Empirisch wird oft der Materialzufluss (Produktion bzw. Einkauf) mit dem Absatz einer Branche verglichen.</p>
+
+  </div>
+  <p class="quelle">Quellen: Chen, F., Drezner, Z., Ryan, J. K. &amp; Simchi-Levi, D. (2000), <i>Management Science, 46</i>(3), 436–443; Cachon, G. P., Randall, T. &amp; Schmidt, G. M. (2007), <i>Manufacturing &amp; Service Operations Management, 9</i>(4), 457–479.</p>
+  <aside class="notizen"><b>(ca. 2 Min.)</b> Damit wir nicht nur von einem „Gefühl“ sprechen: Der Effekt lässt sich messen. Das übliche Maß ist das Verhältnis der Varianz der Bestellungen, die eine Stufe an ihren Lieferanten schickt, zur Varianz der Nachfrage, die bei ihr ankommt.<br><br>
+Wichtig ist die Interpretation der drei Fälle. Fall 3 – Glättung – ist kein Rechenfehler: Unternehmen mit hohen Rüst- oder Kapazitätsanpassungskosten produzieren bewusst gleichmäßig und nutzen ihr Lager als Puffer. Darauf kommen wir bei der Empirie zurück.<br><br>
+Cachon, Randall und Schmidt (2007) definieren für ihre Branchenstudie: Eine Branche zeigt den Bullwhip-Effekt, wenn die Varianz ihres Materialzuflusses größer ist als die Varianz ihres Absatzes. Chen et al. (2000) arbeiten in ihrem Modell mit genau diesem Varianzverhältnis.<br><br>
+Verständnisfrage an den Hörsaal: „Kann eine Stufe ein Maß unter 1 haben und trotzdem schlecht wirtschaften?“ (Ja – Glättung kostet Lagerbestand.)</aside>
+</section>
+<section class="folie " data-nr="4" data-aufbau="1/2">
+  <h2 class="titel">Im Beer Game reicht ein einziger Nachfragesprung von 4 auf 8 Kisten, um die Kette ins Schwingen zu bringen</h2>
+  <div class="koerper">
+<svg viewBox="0 0 1100 460" width="1000" height="418" xmlns="http://www.w3.org/2000/svg" font-family="inherit">
+<line x1="70" x2="1010" y1="380.0" y2="380.0" stroke="#e5e7eb"/>
+<text x="58" y="386.0" text-anchor="end" font-size="16" fill="#6b7280">0</text>
+<line x1="70" x2="1010" y1="290.0" y2="290.0" stroke="#e5e7eb"/>
+<text x="58" y="296.0" text-anchor="end" font-size="16" fill="#6b7280">10</text>
+<line x1="70" x2="1010" y1="200.0" y2="200.0" stroke="#e5e7eb"/>
+<text x="58" y="206.0" text-anchor="end" font-size="16" fill="#6b7280">20</text>
+<line x1="70" x2="1010" y1="110.0" y2="110.0" stroke="#e5e7eb"/>
+<text x="58" y="116.0" text-anchor="end" font-size="16" fill="#6b7280">30</text>
+<line x1="70" x2="1010" y1="20.0" y2="20.0" stroke="#e5e7eb"/>
+<text x="58" y="26.0" text-anchor="end" font-size="16" fill="#6b7280">40</text>
+<text x="70.0" y="406" text-anchor="middle" font-size="16" fill="#6b7280">0</text>
+<text x="204.3" y="406" text-anchor="middle" font-size="16" fill="#6b7280">5</text>
+<text x="338.6" y="406" text-anchor="middle" font-size="16" fill="#6b7280">10</text>
+<text x="472.9" y="406" text-anchor="middle" font-size="16" fill="#6b7280">15</text>
+<text x="607.1" y="406" text-anchor="middle" font-size="16" fill="#6b7280">20</text>
+<text x="741.4" y="406" text-anchor="middle" font-size="16" fill="#6b7280">25</text>
+<text x="875.7" y="406" text-anchor="middle" font-size="16" fill="#6b7280">30</text>
+<text x="1010.0" y="406" text-anchor="middle" font-size="16" fill="#6b7280">35</text>
+<text x="540.0" y="430" text-anchor="middle" font-size="16" fill="#6b7280">Woche</text>
+<text x="18" y="200.0" text-anchor="middle" font-size="16" fill="#6b7280" transform="rotate(-90 18 200.0)">Bestellmenge (Kisten/Woche)</text>
+<polyline points="70.0,344.0 96.9,344.0 123.7,344.0 150.6,344.0 177.4,308.0 204.3,308.0 231.1,308.0 258.0,308.0 284.9,308.0 311.7,308.0 338.6,308.0 365.4,308.0 392.3,308.0 419.1,308.0 446.0,308.0 472.9,308.0 499.7,308.0 526.6,308.0 553.4,308.0 580.3,308.0 607.1,308.0 634.0,308.0 660.9,308.0 687.7,308.0 714.6,308.0 741.4,308.0 768.3,308.0 795.1,308.0 822.0,308.0 848.9,308.0 875.7,308.0 902.6,308.0 929.4,308.0 956.3,308.0 983.1,308.0 1010.0,308.0" fill="none" stroke="#111827" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="1018.0" y="314.0" font-size="17" fill="#111827" font-weight="600">Kunde</text>
+<polyline points="70.0,344.0 96.9,344.0 123.7,344.0 150.6,344.0 177.4,320.6 204.3,302.6 231.1,289.1 258.0,284.6 284.9,284.6 311.7,285.5 338.6,281.9 365.4,283.7 392.3,289.1 419.1,284.6 446.0,285.5 472.9,293.6 499.7,289.1 526.6,288.2 553.4,295.4 580.3,313.4 607.1,340.4 634.0,350.3 660.9,345.8 687.7,335.9 714.6,324.2 741.4,314.3 768.3,308.0 795.1,305.3 822.0,303.5 848.9,304.4 875.7,305.3 902.6,306.2 929.4,307.1 956.3,308.0 983.1,308.0 1010.0,308.0" fill="none" stroke="#9fb6d3" stroke-width="3"/>
+<text x="346.6" y="273.9" font-size="17" fill="#9fb6d3" font-weight="600">Einzelhandel (11)</text>
+</svg>
+  </div>
+  <p class="quelle">Eigene Simulation (illustrativ): vier Stufen, Liefer- plus Informationsverzug 3 Wochen, Entscheidungsregel nach Sterman, J. D. (1989). Modeling managerial behavior: Misperceptions of feedback in a dynamic decision making experiment. <i>Management Science, 35</i>(3), 321–339; Parameter frei gewählt.</p>
+  <aside class="notizen"><b>(Aufbau 1/2, ca. 1 Min.)</b> Das Beer Game wurde am MIT entwickelt und ist eines der bekanntesten Planspiele der Logistik. Vier Stufen – Einzelhandel, Großhandel, Verteiler, Fabrik – bestellen jeweils nur bei ihrer Nachbarstufe. Jede Stufe sieht nur ihre eigenen Zahlen.<br><br>
+Die Kundennachfrage (gestrichelt) ist bewusst langweilig: 4 Kisten pro Woche, ab Woche 4 dauerhaft 8 Kisten. Mehr passiert beim Kunden nicht.<br><br>
+Schon der Einzelhandel reagiert über: Er bestellt in der Spitze fast 11 Kisten, weil sein Lager leerläuft und die Lieferungen erst verzögert ankommen. Frage an den Hörsaal: „Was erwarten Sie für die Fabrik?“</aside>
+</section>
+<section class="folie " data-nr="4" data-aufbau="2/2">
+  <h2 class="titel">Im Beer Game reicht ein einziger Nachfragesprung von 4 auf 8 Kisten, um die Kette ins Schwingen zu bringen</h2>
+  <div class="koerper">
+<svg viewBox="0 0 1100 460" width="1000" height="418" xmlns="http://www.w3.org/2000/svg" font-family="inherit">
+<line x1="70" x2="1010" y1="380.0" y2="380.0" stroke="#e5e7eb"/>
+<text x="58" y="386.0" text-anchor="end" font-size="16" fill="#6b7280">0</text>
+<line x1="70" x2="1010" y1="290.0" y2="290.0" stroke="#e5e7eb"/>
+<text x="58" y="296.0" text-anchor="end" font-size="16" fill="#6b7280">10</text>
+<line x1="70" x2="1010" y1="200.0" y2="200.0" stroke="#e5e7eb"/>
+<text x="58" y="206.0" text-anchor="end" font-size="16" fill="#6b7280">20</text>
+<line x1="70" x2="1010" y1="110.0" y2="110.0" stroke="#e5e7eb"/>
+<text x="58" y="116.0" text-anchor="end" font-size="16" fill="#6b7280">30</text>
+<line x1="70" x2="1010" y1="20.0" y2="20.0" stroke="#e5e7eb"/>
+<text x="58" y="26.0" text-anchor="end" font-size="16" fill="#6b7280">40</text>
+<text x="70.0" y="406" text-anchor="middle" font-size="16" fill="#6b7280">0</text>
+<text x="204.3" y="406" text-anchor="middle" font-size="16" fill="#6b7280">5</text>
+<text x="338.6" y="406" text-anchor="middle" font-size="16" fill="#6b7280">10</text>
+<text x="472.9" y="406" text-anchor="middle" font-size="16" fill="#6b7280">15</text>
+<text x="607.1" y="406" text-anchor="middle" font-size="16" fill="#6b7280">20</text>
+<text x="741.4" y="406" text-anchor="middle" font-size="16" fill="#6b7280">25</text>
+<text x="875.7" y="406" text-anchor="middle" font-size="16" fill="#6b7280">30</text>
+<text x="1010.0" y="406" text-anchor="middle" font-size="16" fill="#6b7280">35</text>
+<text x="540.0" y="430" text-anchor="middle" font-size="16" fill="#6b7280">Woche</text>
+<text x="18" y="200.0" text-anchor="middle" font-size="16" fill="#6b7280" transform="rotate(-90 18 200.0)">Bestellmenge (Kisten/Woche)</text>
+<polyline points="70.0,344.0 96.9,344.0 123.7,344.0 150.6,344.0 177.4,308.0 204.3,308.0 231.1,308.0 258.0,308.0 284.9,308.0 311.7,308.0 338.6,308.0 365.4,308.0 392.3,308.0 419.1,308.0 446.0,308.0 472.9,308.0 499.7,308.0 526.6,308.0 553.4,308.0 580.3,308.0 607.1,308.0 634.0,308.0 660.9,308.0 687.7,308.0 714.6,308.0 741.4,308.0 768.3,308.0 795.1,308.0 822.0,308.0 848.9,308.0 875.7,308.0 902.6,308.0 929.4,308.0 956.3,308.0 983.1,308.0 1010.0,308.0" fill="none" stroke="#111827" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="1018.0" y="314.0" font-size="17" fill="#111827" font-weight="600">Kunde</text>
+<polyline points="70.0,344.0 96.9,344.0 123.7,344.0 150.6,344.0 177.4,320.6 204.3,302.6 231.1,289.1 258.0,284.6 284.9,284.6 311.7,285.5 338.6,281.9 365.4,283.7 392.3,289.1 419.1,284.6 446.0,285.5 472.9,293.6 499.7,289.1 526.6,288.2 553.4,295.4 580.3,313.4 607.1,340.4 634.0,350.3 660.9,345.8 687.7,335.9 714.6,324.2 741.4,314.3 768.3,308.0 795.1,305.3 822.0,303.5 848.9,304.4 875.7,305.3 902.6,306.2 929.4,307.1 956.3,308.0 983.1,308.0 1010.0,308.0" fill="none" stroke="#9fb6d3" stroke-width="3"/>
+<text x="346.6" y="273.9" font-size="17" fill="#9fb6d3" font-weight="600">Einzelhandel (11)</text>
+<polyline points="70.0,344.0 96.9,344.0 123.7,344.0 150.6,344.0 177.4,344.0 204.3,328.7 231.1,305.3 258.0,279.2 284.9,259.4 311.7,249.5 338.6,246.8 365.4,234.2 392.3,230.6 419.1,237.8 446.0,229.7 472.9,227.0 499.7,238.7 526.6,254.9 553.4,281.0 580.3,318.8 607.1,371.9 634.0,380.0 660.9,380.0 687.7,380.0 714.6,380.0 741.4,380.0 768.3,380.0 795.1,352.1 822.0,326.9 848.9,305.3 875.7,291.8 902.6,287.3 929.4,288.2 956.3,292.7 983.1,299.0 1010.0,304.4" fill="none" stroke="#5f88bb" stroke-width="3"/>
+<text x="480.9" y="219.0" font-size="17" fill="#5f88bb" font-weight="600">Großhandel (17)</text>
+<polyline points="70.0,344.0 96.9,344.0 123.7,344.0 150.6,344.0 177.4,344.0 204.3,344.0 231.1,334.1 258.0,311.6 284.9,277.4 311.7,240.5 338.6,211.7 365.4,195.5 392.3,164.0 419.1,140.6 446.0,135.2 472.9,137.0 499.7,150.5 526.6,180.2 553.4,227.0 580.3,290.9 607.1,373.7 634.0,380.0 660.9,380.0 687.7,380.0 714.6,380.0 741.4,380.0 768.3,380.0 795.1,380.0 822.0,380.0 848.9,380.0 875.7,380.0 902.6,380.0 929.4,380.0 956.3,360.2 983.1,331.4 1010.0,309.8" fill="none" stroke="#1d4e89" stroke-width="3"/>
+<text x="454.0" y="127.2" font-size="17" fill="#1d4e89" font-weight="600">Verteiler (27)</text>
+<polyline points="70.0,344.0 96.9,344.0 123.7,344.0 150.6,344.0 177.4,344.0 204.3,344.0 231.1,344.0 258.0,337.7 284.9,317.9 311.7,281.0 338.6,230.6 365.4,177.5 392.3,135.2 419.1,93.8 446.0,62.3 472.9,47.0 499.7,49.7 526.6,71.3 553.4,116.3 580.3,184.7 607.1,277.4 634.0,380.0 660.9,380.0 687.7,380.0 714.6,380.0 741.4,380.0 768.3,380.0 795.1,380.0 822.0,380.0 848.9,380.0 875.7,380.0 902.6,380.0 929.4,380.0 956.3,380.0 983.1,380.0 1010.0,380.0" fill="none" stroke="#d9480f" stroke-width="4"/>
+<text x="480.9" y="39.0" font-size="17" fill="#d9480f" font-weight="600">Fabrik (37)</text>
+<rect x="660.9" y="38.0" width="400" height="70" rx="6" fill="#fff4ec" stroke="#d9480f"/>
+<text x="674.9" y="67.0" font-size="17" fill="#7c2d12">Fabrik: Spitze 37 Kisten (4,6 × Kunde),</text>
+<text x="674.9" y="92.0" font-size="17" fill="#7c2d12">danach bis Simulationsende keine Bestellung</text>
+</svg>
+<p class="klein" style="margin:-6px 0 0 70px;font-size:18px"><span class="akzent">Verhaltensursache:</span> Spielende übersehen, was schon bestellt und unterwegs ist (Supply Line) – und bestellen es ein zweites Mal.</p>
+  </div>
+  <p class="quelle">Eigene Simulation (illustrativ): vier Stufen, Liefer- plus Informationsverzug 3 Wochen, Entscheidungsregel nach Sterman, J. D. (1989). Modeling managerial behavior: Misperceptions of feedback in a dynamic decision making experiment. <i>Management Science, 35</i>(3), 321–339; Parameter frei gewählt.</p>
+  <aside class="notizen"><b>(Aufbau 2/2, ca. 2 Min.)</b> Jetzt alle vier Stufen. Die Spitzen wachsen von Stufe zu Stufe: rund 11, 17, 27 und 37 Kisten. Danach kippt das System: Die Lager sind voll, die oberen Stufen bestellen über viele Wochen gar nichts. Aus einer einzigen dauerhaften Nachfrageerhöhung wird ein Zyklus aus Mangel und Überbestand.<br><br>
+Wichtig für die Interpretation: Das ist <b>meine eigene, kleine Simulation</b> zur Veranschaulichung, keine Messung aus einem Spiel mit Studierenden. Die Entscheidungsregel folgt dem Modell von Sterman (1989): Man bestellt die erwartete Nachfrage plus eine Korrektur für die Lücke zum Ziellager, berücksichtigt die bereits bestellte, aber noch nicht gelieferte Ware (Supply Line) aber nur zum Teil. Die Parameter habe ich so gewählt, dass das typische Muster sichtbar wird.<br><br>
+Kernbefund von Sterman: In seinen Experimenten mit Spielenden wurde die Supply Line systematisch untergewichtet. Menschen bestellen also nach, was längst unterwegs ist. Das ist eine <b>Verhaltensursache</b>. Die nächste Folie zeigt: Selbst wenn alle perfekt rational handeln, gibt es zusätzlich strukturelle Ursachen.<br><br>
+Tipp: Wenn Zeit bleibt, das Beer Game in einer Übung selbst spielen lassen.</aside>
+</section>
+<section class="folie " data-nr="5">
+  <h2 class="titel">Auch rational handelnde Unternehmen erzeugen den Effekt – Lee et al. unterscheiden vier strukturelle Ursachen</h2>
+  <div class="koerper">
+
+<div class="zwei" style="gap:24px 30px">
+ <div class="karte"><h3>1 · Nachfrageprognose</h3><p>Jede Stufe prognostiziert aus den <i>Bestellungen</i> ihres Kunden und passt Sicherheits- und Zielbestände an – Schwankungen werden als Trend gelesen und verstärkt weitergegeben.</p><p class="bsp">Lange Lieferzeit → größere Anpassung</p></div>
+ <div class="karte"><h3>2 · Losbildung</h3><p>Bestellungen werden gebündelt (volle Lkw, Bestellzyklen, Mindestmengen). Der Lieferant sieht statt stetiger Nachfrage einzelne große Spitzen.</p><p class="bsp">Monatliche Sammelbestellung statt täglicher Abrufe</p></div>
+ <div class="karte"><h3>3 · Preisschwankungen</h3><p>Rabattaktionen und Mengenrabatte führen zu Vorkäufen. Danach wird lange nichts bestellt – die Bestellung entkoppelt sich vom Verbrauch.</p><p class="bsp">Aktionspreis im Großhandel → Lager auffüllen</p></div>
+ <div class="karte"><h3>4 · Rationierung (Knappheitsspiel)</h3><p>Bei Knappheit teilt der Lieferant anteilig zu. Kunden bestellen deshalb mehr, als sie brauchen, und stornieren später.</p><p class="bsp">Engpassbauteile, Phantombestellungen</p></div>
+</div>
+
+  </div>
+  <p class="quelle">Quelle: Lee, H. L., Padmanabhan, V. &amp; Whang, S. (1997). Information distortion in a supply chain: The bullwhip effect. <i>Management Science, 43</i>(4), 546–558.</p>
+  <aside class="notizen"><b>(ca. 2,5 Min.)</b> Die zentrale Botschaft von Lee, Padmanabhan und Whang (1997): Der Bullwhip-Effekt ist nicht nur ein Problem irrationaler Disponenten. Er entsteht auch dann, wenn jede Stufe für sich vernünftig optimiert. Die Autoren nennen vier Ursachen – im Original: demand signal processing, order batching, price variations und rationing game.<br><br>
+Zu 1: Ein Händler sieht eine höhere Bestellung, hält sie für einen Trend und erhöht Prognose <i>und</i> Sicherheitsbestand – er bestellt also mehr als die Mehrnachfrage. Je länger die Lieferzeit, desto stärker diese Anpassung.<br>
+Zu 2: Fixe Bestellkosten und volle Lkw sind wirtschaftlich sinnvoll (Stichwort Losgrößenformel aus dem 2. Semester), erzeugen beim Lieferanten aber Spitzen.<br>
+Zu 3: Promotions im Handel: Es wird gekauft, wenn es billig ist, nicht wenn verbraucht wird.<br>
+Zu 4: Wenn ich weiß, dass ich nur 50 % meiner Bestellung bekomme, bestelle ich das Doppelte. Bezug zur Praxis: Diskutieren Sie mit den Studierenden, ob sie das in der Automobilindustrie bei Engpassbauteilen kennen – ohne konkrete Zahlen vorzugeben.<br><br>
+Überleitung: Ursache 1 lässt sich besonders gut quantifizieren – das machen wir jetzt.</aside>
+</section>
+<section class="folie " data-nr="6">
+  <h2 class="titel">Lange Lieferzeiten verstärken den Effekt; geteilte Kundendaten dämpfen ihn, beseitigen ihn aber nicht</h2>
+  <div class="koerper">
+
+<div style="display:grid;grid-template-columns:560px 1fr;gap:40px;align-items:start">
+<div>
+<div class="formel" style="font-size:27px;padding:18px">Var(q) / Var(D) &#160;≥&#160; 1 + 2L/p + 2L²/p²</div>
+<ul class="klein" style="margin-top:22px;font-size:19px">
+<li><b>L</b> = Lieferzeit (Perioden)</li>
+<li><b>p</b> = Anzahl Perioden im gleitenden Durchschnitt der Prognose</li>
+<li>Annahmen: Bestellgrenzen-Politik (order-up-to), unabhängige Nachfrage, gleitender Durchschnitt</li>
+</ul>
+<p class="klein" style="font-size:19px;margin-top:14px"><b>Zentral:</b> alle Stufen kennen die Endkundennachfrage → Zuwachs etwa additiv über die Stufen.<br><b>Dezentral:</b> jede Stufe prognostiziert aus Bestellungen → Zuwachs multipliziert sich.</p>
+</div>
+<div><svg viewBox="0 0 560 380" width="560" height="380" xmlns="http://www.w3.org/2000/svg" font-family="inherit">
+<line x1="60" x2="540" y1="330.0" y2="330.0" stroke="#e5e7eb"/><text x="50" y="335.0" text-anchor="end" font-size="15" fill="#6b7280">0</text>
+<line x1="60" x2="540" y1="264.1" y2="264.1" stroke="#e5e7eb"/><text x="50" y="269.1" text-anchor="end" font-size="15" fill="#6b7280">5</text>
+<line x1="60" x2="540" y1="198.2" y2="198.2" stroke="#e5e7eb"/><text x="50" y="203.2" text-anchor="end" font-size="15" fill="#6b7280">10</text>
+<line x1="60" x2="540" y1="132.3" y2="132.3" stroke="#e5e7eb"/><text x="50" y="137.3" text-anchor="end" font-size="15" fill="#6b7280">15</text>
+<line x1="60" x2="540" y1="66.4" y2="66.4" stroke="#e5e7eb"/><text x="50" y="71.4" text-anchor="end" font-size="15" fill="#6b7280">20</text>
+<rect x="90" y="302.1" width="110" height="27.9" fill="#5f88bb"/>
+<text x="145" y="292.1" text-anchor="middle" font-size="20" font-weight="700" fill="#5f88bb">≥ 2,1</text>
+<text x="145" y="354" text-anchor="middle" font-size="15" font-weight="600" fill="#1f2933">1 Stufe</text>
+<text x="145" y="374" text-anchor="middle" font-size="13" fill="#6b7280">L = 2, p = 5</text>
+<rect x="245" y="207.1" width="110" height="122.9" fill="#1d4e89"/>
+<text x="300" y="197.1" text-anchor="middle" font-size="20" font-weight="700" fill="#1d4e89">9,3</text>
+<text x="300" y="354" text-anchor="middle" font-size="15" font-weight="600" fill="#1f2933">4 Stufen, zentral</text>
+<text x="300" y="374" text-anchor="middle" font-size="13" fill="#6b7280">Endkundendaten geteilt</text>
+<rect x="400" y="63.7" width="110" height="266.3" fill="#d9480f"/>
+<text x="455" y="53.7" text-anchor="middle" font-size="20" font-weight="700" fill="#d9480f">≥ 20,2</text>
+<text x="455" y="354" text-anchor="middle" font-size="15" font-weight="600" fill="#1f2933">4 Stufen, dezentral</text>
+<text x="455" y="374" text-anchor="middle" font-size="13" fill="#6b7280">Prognose je Stufe</text>
+<text x="18" y="185" text-anchor="middle" font-size="15" fill="#6b7280" transform="rotate(-90 18 185)">Var(Bestellung) / Var(Nachfrage)</text>
+</svg><p class="klein" style="font-size:15px;margin:2px 0 0 20px">Rechenbeispiel: L = 2 je Stufe, p = 5; zentral mit Gesamtlieferzeit 8.</p></div>
+</div>
+
+  </div>
+  <p class="quelle">Quelle: Chen, F., Drezner, Z., Ryan, J. K. &amp; Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain: The impact of forecasting, lead times, and information. <i>Management Science, 46</i>(3), 436–443. Rechenbeispiel: eigene Berechnung.</p>
+  <aside class="notizen"><b>(ca. 2,5 Min.)</b> Chen, Drezner, Ryan und Simchi-Levi (2000) haben die Ursache „Prognose plus Lieferzeit“ formal untersucht. Für eine Stufe, die mit gleitendem Durchschnitt über p Perioden prognostiziert und nach einer Bestellgrenzen-Politik bestellt, gilt bei unabhängiger Nachfrage die untere Schranke auf der Folie.<br><br>
+Zwei Lesarten: Je länger die Lieferzeit L, desto größer der Effekt. Je mehr Perioden p in die Prognose eingehen – also je träger die Prognose –, desto kleiner der Effekt.<br><br>
+Rechenbeispiel (rechts): L = 2, p = 5 ergibt 1 + 0,8 + 0,32 = 2,12. Bei vier Stufen ohne geteilte Daten multipliziert sich das: 2,12 hoch 4 ≈ 20,2. Kennen alle Stufen die Endkundennachfrage, rechnet man mit der Gesamtlieferzeit von 8 Perioden: 1 + 3,2 + 5,12 = 9,32. Informationsteilung halbiert hier also etwa den Effekt – aber das Verhältnis bleibt deutlich über 1. Das ist die Kernaussage des Artikels: Zentrale Nachfrageinformation reduziert den Effekt, beseitigt ihn aber nicht.<br><br>
+Hinweis: Die Zahlen sind ein Rechenbeispiel mit frei gewählten Parametern, keine empirischen Werte. Die dezentrale Formel ist im Artikel eine untere Schranke (≥).</aside>
+</section>
+<section class="folie " data-nr="7">
+  <h2 class="titel">In Branchendaten ist der Effekt weniger allgegenwärtig als im Lehrbuch – viele Hersteller glätten sogar</h2>
+  <div class="koerper">
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+ <div class="karte" style="border-top:6px solid #d9480f"><h3>Großhandel</h3><p>Zeigt in den US-Branchendaten den Bullwhip-Effekt: Zuflüsse schwanken stärker als der Absatz.</p></div>
+ <div class="karte" style="border-top:6px solid #94a3b8"><h3>Einzelhandel &amp; Industrie</h3><p>Die meisten Branchen zeigen <b>keinen</b> Bullwhip-Effekt. Die Nachfrage der Industrie ist nicht wesentlich volatiler als die des Handels.</p></div>
+ <div class="karte" style="border-top:6px solid #1d4e89"><h3>Saisonalität</h3><p>Stark saisonale Branchen glätten eher, wenig saisonale Branchen verstärken eher.</p></div>
+</div>
+<div style="margin-top:38px;padding:20px 26px;background:#fff4ec;border-left:6px solid #d9480f;border-radius:6px;font-size:22px">
+<b>Gegenkraft Produktionsglättung:</b> Wer teure Kapazitätsanpassungen vermeiden will, puffert Schwankungen im Lager. Ob der Effekt auftritt, hängt also von Kostenstruktur, Saisonalität und Datenebene ab.
+</div>
+
+  </div>
+  <p class="quelle">Quelle: Cachon, G. P., Randall, T. &amp; Schmidt, G. M. (2007). In search of the bullwhip effect. <i>Manufacturing &amp; Service Operations Management, 9</i>(4), 457–479.</p>
+  <aside class="notizen"><b>(ca. 2 Min.)</b> Eine wichtige wissenschaftliche Einordnung: Das Beer Game und die Fallbeispiele zeigen, dass der Effekt <i>auftreten kann</i>. Wie verbreitet er ist, ist eine empirische Frage.<br><br>
+Cachon, Randall und Schmidt (2007) haben US-Daten auf Branchenebene ausgewertet. Ergebnis: Großhandelsbranchen zeigen den Effekt, die meisten Einzelhandels- und Industriebranchen dagegen nicht. Außerdem ist die Nachfrage, die Industriebranchen sehen, nicht wesentlich volatiler als die des Handels. Eine Erklärung ist die Saisonalität: Stark saisonale Branchen glätten tendenziell, wenig saisonale verstärken tendenziell.<br><br>
+Für die Diskussion: Branchenaggregate können den Effekt auf Produkt- oder Unternehmensebene verdecken, weil sich Schwankungen einzelner Artikel ausgleichen. Die Botschaft an die Studierenden ist deshalb nicht „Den Bullwhip gibt es nicht“, sondern: „Prüfen Sie im konkreten Fall mit Daten, ob und wo er auftritt.“<br><br>
+Bezug zu Folie 3: Ein Maß unter 1 ist genau diese Produktionsglättung.</aside>
+</section>
+<section class="folie " data-nr="8">
+  <h2 class="titel">Jede Ursache hat einen eigenen Hebel – am wirksamsten ist meist, Information zu teilen und Lieferzeiten zu verkürzen</h2>
+  <div class="koerper">
+
+<table>
+<tr><th>Ursache</th><th>Gegenmaßnahme</th><th>Beispiele</th></tr>
+<tr><td>Nachfrageprognose</td><td>Endkundendaten teilen, Lieferzeiten verkürzen</td><td>Kassendaten (POS) entlang der Kette nutzen, EDI, Vendor Managed Inventory (VMI)</td></tr>
+<tr><td>Losbildung</td><td>Bestellkosten senken, kleinere Lose</td><td>Elektronische Bestellung, Rabatte für gemischte Lkw-Ladungen, Logistikdienstleister bündeln kleine Mengen</td></tr>
+<tr><td>Preisschwankungen</td><td>Preise stabilisieren</td><td>Dauerniedrigpreis statt Aktionspreis (EDLP), Kosten von Vorkäufen per Prozesskostenrechnung sichtbar machen</td></tr>
+<tr><td>Rationierung</td><td>Zuteilungsregeln ändern</td><td>Zuteilung nach bisherigem Absatz statt nach aktueller Bestellung, Absatz-, Kapazitäts- und Bestandsdaten offenlegen</td></tr>
+<tr><td>Verhalten (Supply Line)</td><td>Transparenz über Bestellungen „unterwegs“</td><td>Disposition mit Anzeige offener Bestellungen, Schulung mit dem Beer Game (eigene Ergänzung)</td></tr>
+</table>
+
+  </div>
+  <p class="quelle">Quellen: Lee, H. L., Padmanabhan, V. &amp; Whang, S. (1997). The bullwhip effect in supply chains. <i>Sloan Management Review, 38</i>(3), 93–102; Sterman, J. D. (1989), <i>Management Science, 35</i>(3), 321–339.</p>
+  <aside class="notizen"><b>(ca. 2,5 Min.)</b> Die Tabelle ordnet jeder Ursache den passenden Hebel zu. Die ersten vier Zeilen folgen den Gegenmaßnahmen aus dem praxisorientierten Begleitartikel von Lee, Padmanabhan und Whang in der Sloan Management Review (1997); die letzte Zeile ist meine Ergänzung zur Verhaltensursache aus dem Beer Game (Sterman 1989).<br><br>
+Hervorheben: Bei der Prognose sind die beiden Hebel genau die Variablen aus der Formel von Chen et al. – Informationsteilung und kürzere Lieferzeit L.<br><br>
+Bei VMI übernimmt der Lieferant die Disposition im Lager des Kunden auf Basis der Abverkaufsdaten; damit entfällt eine Prognosestufe. EDLP („every day low price“) nimmt dem Handel den Anreiz zu Vorkäufen. Die Prozesskostenrechnung hilft, die Zusatzkosten von Preisaktionen und Vorkäufen sichtbar zu machen – ein Argument für stabile Preise. Bei Knappheit nach bisherigem Absatz zuzuteilen, nimmt den Anreiz, aufgeblähte Bestellungen abzugeben.<br><br>
+Kritische Frage an den Hörsaal: „Warum setzen nicht alle Unternehmen diese Maßnahmen um?“ Mögliche Antworten: Datenschutz und Misstrauen beim Teilen von Daten, Investitionen in IT, Aktionen sind ein Marketinginstrument, Machtverhältnisse in der Kette.</aside>
+</section>
+<section class="folie " data-nr="9">
+  <h2 class="titel">Rechnen Sie selbst: Welcher Hebel senkt das Bullwhip-Maß stärker – kürzere Lieferzeit oder längeres Prognosefenster?</h2>
+  <div class="koerper">
+
+<div class="zwei">
+<div>
+<div class="formel" style="font-size:26px;padding:16px">Var(q) / Var(D) &#160;≥&#160; 1 + 2L/p + 2L²/p²</div>
+<p style="margin-top:26px"><b>Ausgangslage:</b> Lieferzeit L = 2 Wochen, Prognose über p = 4 Wochen</p>
+<ol style="padding-left:28px;margin:10px 0 0">
+<li>Berechnen Sie das Maß für die Ausgangslage.</li>
+<li>Variante A: Lieferzeit auf L = 1 halbieren.</li>
+<li>Variante B: Prognosefenster auf p = 8 verdoppeln.</li>
+<li>Welche Variante würden Sie im Einkauf verhandeln – und was kostet sie?</li>
+</ol>
+</div>
+<div class="karte" style="align-self:start">
+<h3>Arbeitsform</h3>
+<p>2 Minuten zu zweit rechnen, dann Ergebnisse im Plenum vergleichen.</p>
+<p class="bsp" style="margin-top:14px">Hilfsmittel: Taschenrechner. Annahmen wie auf Folie 6.</p>
+<div class="bild" style="height:200px;margin-top:20px">[Icon: zwei Personen am Tisch mit Taschenrechner]</div>
+</div>
+</div>
+
+  </div>
+  <p class="quelle">Formel: Chen, F., Drezner, Z., Ryan, J. K. &amp; Simchi-Levi, D. (2000), <i>Management Science, 46</i>(3), 436–443.</p>
+  <aside class="notizen"><b>(ca. 2,5 Min. inkl. Rechnen)</b> Lösungen (nicht auf der Folie):<br>
+1. Ausgangslage L = 2, p = 4: 1 + 4/4 + 8/16 = 1 + 1 + 0,5 = <b>2,5</b>.<br>
+2. Variante A, L = 1, p = 4: 1 + 2/4 + 2/16 = 1 + 0,5 + 0,125 = <b>1,625</b>.<br>
+3. Variante B, L = 2, p = 8: 1 + 4/8 + 8/64 = 1 + 0,5 + 0,125 = <b>1,625</b>.<br>
+Beide Varianten wirken hier gleich, weil es nur auf das Verhältnis L/p ankommt.<br><br>
+4. Diskussion: Ein längeres Prognosefenster ist „kostenlos“, macht die Prognose aber träge – echte Trends werden spät erkannt (Lieferfähigkeit sinkt). Eine kürzere Lieferzeit muss man beim Lieferanten verhandeln oder bezahlen (z. B. näherer Standort, Expressfracht, Konsignationslager), senkt aber zusätzlich den Sicherheitsbestand. Für Einkäufer ist das ein Argument, Lieferzeit als Kriterium in die Lieferantenbewertung aufzunehmen.<br><br>
+Falls die Zeit knapp ist: nur Aufgabe 1 und 2 rechnen lassen.</aside>
+</section>
+<section class="folie " data-nr="10">
+  <h2 class="titel">Fazit: Der Bullwhip-Effekt entsteht aus Verzögerung und fehlender Information – beides lässt sich gestalten</h2>
+  <div class="koerper">
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+<ul style="font-size:21px">
+<li>Bestellungen schwanken oft stärker als die Nachfrage, mit wachsender Amplitude stromaufwärts.</li>
+<li>Ursachen: Prognose, Losbildung, Preisaktionen, Rationierung – plus übersehene Supply Line.</li>
+<li>Lieferzeit und Informationsteilung sind die stärksten Hebel; ganz verschwinden wird der Effekt nicht.</li>
+<li>Ob er auftritt, ist eine empirische Frage: Viele Hersteller glätten.</li>
+</ul>
+<div style="font-size:15px;line-height:1.45;color:#374151">
+<p style="font-weight:650;color:#12263a;font-size:18px;margin:0 0 8px">Literatur</p>
+<p style="margin:0 0 7px">Cachon, G. P., Randall, T. &amp; Schmidt, G. M. (2007). In search of the bullwhip effect. <i>Manufacturing &amp; Service Operations Management, 9</i>(4), 457–479. https://doi.org/10.1287/msom.1060.0149</p>
+<p style="margin:0 0 7px">Chen, F., Drezner, Z., Ryan, J. K. &amp; Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain: The impact of forecasting, lead times, and information. <i>Management Science, 46</i>(3), 436–443. https://doi.org/10.1287/mnsc.46.3.436.12069</p>
+<p style="margin:0 0 7px">Forrester, J. W. (1958). Industrial dynamics: A major breakthrough for decision makers. <i>Harvard Business Review, 36</i>(4), 37–66.</p>
+<p style="margin:0 0 7px">Lee, H. L., Padmanabhan, V. &amp; Whang, S. (1997a). The bullwhip effect in supply chains. <i>Sloan Management Review, 38</i>(3), 93–102.</p>
+<p style="margin:0 0 7px">Lee, H. L., Padmanabhan, V. &amp; Whang, S. (1997b). Information distortion in a supply chain: The bullwhip effect. <i>Management Science, 43</i>(4), 546–558. https://doi.org/10.1287/mnsc.43.4.546</p>
+<p style="margin:0">Sterman, J. D. (1989). Modeling managerial behavior: Misperceptions of feedback in a dynamic decision making experiment. <i>Management Science, 35</i>(3), 321–339. https://doi.org/10.1287/mnsc.35.3.321</p>
+</div>
+</div>
+
+  </div>
+  <aside class="notizen"><b>(ca. 1 Min.)</b> Vier Kernaussagen zum Mitnehmen – idealerweise von den Studierenden selbst formulieren lassen, bevor die Liste eingeblendet wird.<br><br>
+Ausblick: In der nächsten Einheit (oder Übung) spielen wir das Beer Game selbst und messen das Bullwhip-Maß mit unseren eigenen Bestelldaten. Zur Vertiefung empfehle ich als Einstieg Lee et al. (1997) – gut lesbar und mit vielen Praxisbeispielen.<br><br>
+Die Literaturliste enthält alle in den Folien zitierten Quellen; Forrester (1958) ist in den Notizen zu Folie 2 als historischer Ursprung genannt.</aside>
+</section>
+
+<!-- PROTOKOLL: Ich habe zehn Folien (Folie 4 mit zwei Aufbauschritten) entlang des Bogens Phänomen – Messung – Simulation – Ursachen – Quantifizierung – Empirie – Gegenmaßnahmen – Übung – Fazit gebaut, mit Aussagetiteln, Inline-SVG-Grafiken und Sprechernotizen mit Zeitangaben für insgesamt ca. 20 Minuten. Die Beer-Game-Kurven stammen aus einer eigenen kleinen Python-Simulation nach Stermans (1989) Anker-und-Anpassungs-Regel mit frei gewählten Parametern und sind auf Folie und in den Notizen als illustrativ gekennzeichnet; die Balken auf Folie 6 und die Übungslösungen sind eigene Rechnungen mit der Formel von Chen et al. (2000). Die bibliografischen Angaben und Kernaussagen von Lee et al. (1997), Chen et al. (2000), Sterman (1989) und Cachon et al. (2007) habe ich per Websuche gegen IDEAS/RePEc, INFORMS- und IAOR-Einträge sowie den Volltext bzw. die Abstracts geprüft (u. a. die vier Ursachen, die P&G- und HP-Beispiele, die Formel 1 + 2L/p + 2L²/p² und das Ergebnis, dass Großhandel, aber meist nicht Einzelhandel und Industrie, den Effekt zeigt). Forrester (1958) habe ich nur über Sekundärnachweise bestätigt, nicht im Original eingesehen; die Gegenmaßnahmen auf Folie 8 habe ich gegen eine Zusammenfassung des Sloan-Management-Review-Artikels (Lee et al. 1997) abgeglichen, nicht gegen dessen Volltext, und die Verhaltenszeile als eigene Ergänzung gekennzeichnet. -->
+</body>
+</html>
