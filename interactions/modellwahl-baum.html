@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welches Modell für welche Aufgabe?</title>
+<style>
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --flaeche:#f4f4f4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --flaeche:#202020; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:760px; margin:0 auto; padding:18px 16px 28px; }
+  h1 { font-size:22px; line-height:1.25; margin:0 0 6px; font-weight:650; }
+  .lead { margin:0 0 14px; color:var(--grau); font-size:15px; }
+  .pfad { list-style:none; padding:0; margin:0 0 12px; display:flex; flex-wrap:wrap; gap:6px; font-size:13px; }
+  .pfad li { border:1px solid var(--hell); border-radius:999px; padding:2px 10px; color:var(--grau); }
+  .frage { border:1px solid var(--zurueck); border-radius:10px; padding:14px 16px; margin:0 0 12px; }
+  .nr { font-size:13px; color:var(--grau); text-transform:uppercase; letter-spacing:.04em; margin:0 0 4px; }
+  .frage h2 { font-size:18px; margin:0 0 10px; line-height:1.3; font-weight:650; }
+  .wahl { display:grid; gap:8px; }
+  .wahl.zwei { grid-template-columns:1fr 1fr; }
+  button { font:inherit; font-size:15px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:8px; padding:9px 12px; cursor:pointer; text-align:left; }
+  button:hover, button:focus-visible { border-color:var(--tinte); outline:none; box-shadow:0 0 0 2px var(--hell); }
+  .klein { font-size:13px; color:var(--grau); }
+  .ergebnis { border:2px solid var(--tinte); border-radius:10px; padding:14px 16px; margin:0 0 12px; background:var(--flaeche); }
+  .ergebnis .klasse { font-size:19px; font-weight:650; margin:0 0 2px; }
+  .ergebnis .stufe { font-size:17px; margin:0 0 10px; }
+  .ergebnis .stufe b { color:var(--akzent); }
+  .ergebnis p { margin:0 0 8px; }
+  .pruef { border-left:4px solid var(--akzent); padding:8px 12px; margin:12px 0; background:var(--flaeche); font-size:15px; }
+  .steuer { display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 0; }
+  .steuer button { font-size:14px; padding:6px 12px; }
+  a { color:inherit; }
+  [hidden] { display:none !important; }
+  @media (max-width:480px) { .wahl.zwei { grid-template-columns:1fr; } h1 { font-size:20px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Welches Modell für welche Aufgabe?</h1>
+  <p class="lead">Drei Fragen: Daten, Aufgabe, Häufigkeit. Das Ergebnis nennt eine Modellklasse und eine Preisstufe, keine Produkte.</p>
+
+  <ol class="pfad" id="pfad" aria-label="Ihre bisherigen Antworten"></ol>
+
+  <section class="frage" id="f1">
+    <p class="nr">Frage 1 von 3 · Daten</p>
+    <h2>Enthält die Aufgabe personenbezogene Daten, Prüfungsleistungen oder unveröffentlichte Forschung?</h2>
+    <div class="wahl zwei">
+      <button data-f1="ja">Ja</button>
+      <button data-f1="nein">Nein</button>
+    </div>
+  </section>
+
+  <section class="frage" id="f2" hidden>
+    <p class="nr">Frage 2 von 3 · Aufgabe</p>
+    <h2>Ich will …</h2>
+    <div class="wahl" id="aufgaben"></div>
+  </section>
+
+  <section class="frage" id="f3" hidden>
+    <p class="nr">Frage 3 von 3 · Häufigkeit</p>
+    <h2>Wie oft fällt die Aufgabe an?</h2>
+    <div class="wahl">
+      <button data-f3="0">gelegentlich</button>
+      <button data-f3="0">wöchentlich</button>
+      <button data-f3="1">täglich, auch mit langen Agentenläufen</button>
+    </div>
+    <p class="klein">Tägliche Arbeit hebt die Stufe um eine, nie um mehr.</p>
+  </section>
+
+  <section class="ergebnis" id="erg" hidden aria-live="polite">
+    <p class="klasse" id="erg-klasse"></p>
+    <p class="stufe" id="erg-stufe"></p>
+    <p id="erg-text"></p>
+    <p class="klein" id="erg-hinweis"></p>
+  </section>
+
+  <div class="pruef"><b>Prüfregel:</b> Muss das Ergebnis stimmen und können Sie es nicht selbst prüfen? Dann das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.</div>
+
+  <div class="steuer">
+    <button id="zurueck" hidden>Einen Schritt zurück</button>
+    <button id="neu" hidden>Neu beginnen</button>
+  </div>
+  <p class="klein">Welche Produkte die Klassen gerade füllen und was die Stufen kosten: <a href="../modelluebersicht.html" target="_top">Modellübersicht</a>. Eigene Darstellung nach Mollick (2026) und den Preisseiten der Anbieter, Stand Oktober 2026.</p>
+</main>
+
+<script>
+(() => {
+  const STUFEN = ['kostenlos (0 €)', 'rund 20 € im Monat', 'rund 100 € im Monat'];
+  const AUFGABEN = [
+    { t:'… eine Frage klären oder einen Text überarbeiten', k:'Kleines Frontier-Modell', s:0,
+      x:'Für kurze, risikoarme Aufgaben genügt das Modell, das der Gratiszugang automatisch wählt.',
+      h:'Wer täglich viel schreibt, stößt an die Grenzen des Gratiszugangs; dann lohnt die 20-€-Stufe.' },
+    { t:'… ein Bild oder eine Grafik erstellen', k:'Frontier-Modell mit Bildgenerator', s:0,
+      x:'Einzelne Bilder gelingen schon im Gratiszugang der Anbieter mit eigenem Bildgenerator.',
+      h:'Diagramme, Achsen und Beschriftungen gelingen besser, wenn das Modell sie als Code zeichnet. Bildserien brauchen die 20-€-Stufe.' },
+    { t:'… eine Lerneinheit, Folien oder Aufgaben erstellen', k:'Großes Frontier-Modell, hohe Denkstufe', s:1,
+      x:'Material, das Studierende sehen, gehört an das große Modell mit mindestens hoher Denkstufe; so empfiehlt es auch Mollick (2026) für alles, worauf es ankommt.',
+      h:'Die Denkstufe lässt sich im Chat einstellen; für Material, das Studierende sehen, nie die niedrigste wählen.' },
+    { t:'… regelmäßig recherchieren, etwa einen wöchentlichen Literaturscan', k:'Großes Frontier-Modell mit Recherche-Agent', s:1,
+      x:'Der Recherche-Agent durchsucht viele Quellen und schreibt einen Bericht; die 20-€-Stufen erlauben auch geplante, wiederkehrende Aufträge.',
+      h:'Jede Quelle selbst öffnen, bevor Sie sie zitieren.' },
+    { t:'… ein Werkzeug bauen: Simulation, Lernspiel, Animation', k:'Großes Frontier-Modell im Agentenmodus', s:1,
+      x:'Ein Agent schreibt, testet und überarbeitet den Code selbst; für einen ersten Prototyp reicht die 20-€-Stufe.',
+      h:'Laufende Entwicklung über Wochen verbraucht das Kontingent schnell; dafür ist die 100-€-Stufe gedacht.' },
+    { t:'… einen Tutor für Studierende betreiben', k:'Kein persönliches Abo', s:null,
+      x:'Ein Tutor für viele Studierende läuft über die API mit Abrechnung nach Verbrauch oder über den API-Zugang der Hochschule, nicht über das Abo einer Person.',
+      h:'Was ein Tutor im Semester kostet, zeigt der Tutor-Kosten-Rechner in Kapitel 2.' }
+  ];
+
+  const $ = id => document.getElementById(id);
+  const auf = $('aufgaben');
+  AUFGABEN.forEach((a, i) => {
+    const b = document.createElement('button'); b.textContent = a.t; b.dataset.f2 = i; auf.appendChild(b);
+  });
+
+  let zustand = { f1:null, f2:null, f3:null };
+  const verlauf = [];
+
+  function zeige() {
+    const { f1, f2, f3 } = zustand;
+    $('f1').hidden = f1 !== null;
+    $('f2').hidden = !(f1 === 'nein' && f2 === null);
+    const a = f2 !== null ? AUFGABEN[f2] : null;
+    $('f3').hidden = !(a && a.s !== null && f3 === null);
+    const fertig = f1 === 'ja' || (a && (a.s === null || f3 !== null));
+    $('erg').hidden = !fertig;
+    $('zurueck').hidden = verlauf.length === 0;
+    $('neu').hidden = verlauf.length === 0;
+
+    const pfad = $('pfad'); pfad.innerHTML = '';
+    const add = t => { const li = document.createElement('li'); li.textContent = t; pfad.appendChild(li); };
+    if (f1) add(f1 === 'ja' ? 'sensible Daten' : 'keine sensiblen Daten');
+    if (a) add(a.t.replace(/^… /, ''));
+    if (f3 !== null) add(f3 === 1 ? 'täglich' : 'gelegentlich oder wöchentlich');
+
+    if (!fertig) return;
+    if (f1 === 'ja') {
+      $('erg-klasse').textContent = 'Hochschulzugang oder kleines offenes Modell auf dem eigenen Rechner';
+      $('erg-stufe').innerHTML = 'Stufe: <b>kostenlos für Lehrende</b>';
+      $('erg-text').textContent = 'Landesplattformen und Hochschuldienste verarbeiten Daten unter Verträgen der Hochschule und betreiben offene Modelle auf eigenen Rechnern; ein kleines offenes Modell läuft auch auf einem Arbeitsplatzrechner mit Grafikkarte. Die Daten bleiben im Hochschulnetz oder im Haus.';
+      $('erg-hinweis').textContent = 'Vorher klären, was die Hochschule für Prüfungsleistungen erlaubt, und nachsehen, welche Modellgeneration hinter dem Zugang steht.';
+      return;
+    }
+    $('erg-klasse').textContent = a.k;
+    if (a.s === null) {
+      $('erg-stufe').innerHTML = 'Stufe: <b>API nach Verbrauch oder Hochschulzugang</b>';
+    } else {
+      const s = Math.min(a.s + f3, 2);
+      $('erg-stufe').innerHTML = 'Stufe: <b>' + STUFEN[s] + '</b>';
+    }
+    $('erg-text').textContent = a.x + (a.s !== null && f3 === 1 && a.s < 2
+      ? ' Bei täglicher Nutzung reicht das Kontingent der niedrigeren Stufe meist nicht; deshalb eine Stufe höher.' : '');
+    $('erg-hinweis').textContent = a.h;
+  }
+
+  document.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.f1) { verlauf.push({ ...zustand }); zustand.f1 = b.dataset.f1; }
+    else if (b.dataset.f2 !== undefined) { verlauf.push({ ...zustand }); zustand.f2 = +b.dataset.f2; }
+    else if (b.dataset.f3 !== undefined) { verlauf.push({ ...zustand }); zustand.f3 = +b.dataset.f3; }
+    else if (b.id === 'zurueck') { zustand = verlauf.pop(); }
+    else if (b.id === 'neu') { zustand = { f1:null, f2:null, f3:null }; verlauf.length = 0; }
+    else return;
+    zeige();
+    const ziel = document.querySelector('.frage:not([hidden]) button, #erg:not([hidden])');
+    if (ziel && ziel.focus) ziel.focus({ preventScroll:true });
+  });
+  zeige();
+})();
+</script>
+</body>
+</html>

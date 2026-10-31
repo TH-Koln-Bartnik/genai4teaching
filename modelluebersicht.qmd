@@ -1,30 +1,38 @@
 # Modellübersicht (lebende Seite) {.unnumbered #sec-modelluebersicht}
 
-Diese Seite ist das Gegenstück zum datierten Kasten in @sec-model-choice. Das gedruckte Buch hält den Stand bei Drucklegung fest; diese Seite wird semesterweise fortgeschrieben, damit die Zuordnung von Namen zu Modellklassen aktuell bleibt. Die Klassen selbst (Flaggschiff- und Mini-Varianten, Reasoning-Modelle, offene Modelle, institutionelle Zugänge) sind in Kapitel 2 erklärt und ändern sich deutlich langsamer als die Namen.
+Diese Seite ist das Gegenstück zum datierten Kasten in @sec-model-choice. Das gedruckte Buch hält den Stand bei Drucklegung fest; diese Seite wird semesterweise fortgeschrieben, damit die Zuordnung von Produkten zu Modellklassen und Preisstufen aktuell bleibt. Die Klassen selbst (großes und kleines Frontier-Modell, großes und kleines offenes Modell) und die drei Stufen (kostenlos, rund 20 €, rund 100 € im Monat) sind in Kapitel 2 erklärt und ändern sich deutlich langsamer als Namen und Preise.
 
 ::: {.callout-note title="Stand dieser Seite: November 2026"}
-Letzte Prüfung der Einträge: November 2026 (Drucklegung). Nächste planmäßige Aktualisierung: zum Sommersemester 2027.
+Letzte Prüfung der Einträge: 31. Oktober 2026 (Drucklegung). Nächste planmäßige Aktualisierung: zum Sommersemester 2027.
 :::
 
-| Anbieter | Modellklasse(n) | Typischer Zugang (Chat, API, institutionell) | Hinweis für die Lehre |
-|:---------|:----------------|:---------------------------------------------|:----------------------|
-| OpenAI | Flaggschiff aus der Familie GPT-5.6/GPT-6 (Reasoning; Varianten Sol, Terra, Luna bzw. Astra, Sol, Luna); Mini-Varianten; Codex-Variante für Programmierung | Chat-Interface ChatGPT (kostenfrei mit Einschränkungen; Abonnement im Bereich von ca. 20 € monatlich); API; institutionell über Academic Cloud, THKI-Lab und Microsoft 365 Copilot | Sprachmodus und Deep Research in der Bezahlversion; eigene „GPTs" lassen sich als Tutoren teilen |
-| Google | Flaggschiff Gemini 3 Pro bzw. 3.1 Pro (Reasoning, „Deep Think"); Mini-Varianten | Chat-Interface Gemini; API; NotebookLM; in Google Workspace und Google Colab integriert | Sehr große Kontextfenster (bis zu 1 Mio. Token) für ganze Skripte; NotebookLM erzeugt Podcasts und Folien aus eigenen Quellen |
-| Anthropic | Flaggschiff Claude Opus 4.6; mittlere Variante Claude Sonnet 4.6 | Chat-Interface Claude; API; agentische Arbeitsumgebungen Claude Cowork und Claude Code (Abonnement-Stufe im Bereich von ca. 90 € monatlich) | Artifacts für interaktive Lernspiele; Skills für komplexe Dokumente; Delegation ganzer Workflows |
-| Meta | Offenes Modell Llama 4 | Gewichte frei verfügbar; über Hoster und Hochschuldienste wie Academic Cloud (Auswahl wechselt) | Kostenfrei, aber in der Regel schwächer als die Flaggschiffe |
-| DeepSeek | Offene Modelle (V3.2, R1 als Reasoning-Variante) | Gewichte frei verfügbar; über Hoster und Hochschuldienste | Chinesische Konkurrenz; interessant für den Vergleich kultureller Perspektiven im Output |
-| Mistral | Offene und kommerzielle Modelle (Mistral 3, Medium 3.1) | Chat-Interface und API des Anbieters; Gewichte teils frei verfügbar | Europäischer Anbieter |
-| KI:connect.nrw (Land NRW, RWTH Aachen) | Flaggschiffe von OpenAI (GPT-5.6 und GPT-6 seit Oktober 2026) und Google; Mistral, Qwen und gpt-oss als offene Modelle auf Landesinfrastruktur; Bild- und Einbettungsmodelle | Chat-Oberfläche mit Hochschul-Login; OpenAI-kompatible API über selbst erzeugte Schlüssel (Freigabe je Hochschule) | Erste Wahl in NRW; Modellwechsel je Chat; API für eigene Tutoren und Werkzeuge |
-| GWDG und Hochschulen | Wechselnde Auswahl offener und kommerzieller Modelle | Academic Cloud (Registrierung mit Hochschuladresse); THKI-Lab | Vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist |
+## Welches Modell für welche Aufgabe?
 
-: Modelle und Zugänge, lebende Fassung. {#tbl-modelluebersicht-online}
+Drei Fragen führen zu Modellklasse und Preisstufe: Daten, Aufgabe, Häufigkeit. Welche Produkte die Klassen gerade füllen, steht in der Tabelle darunter.
+
+<iframe src="interactions/modellwahl-baum.html" width="100%" height="820px" frameborder="0" title="Entscheidungsbaum: Welches Modell für welche Aufgabe?"></iframe>
+
+## Modelle und Preisstufen
+
+| Anbieter | Modellklassen | Stufen (Monatspreis) | Hinweis für die Lehre |
+|:----------------|:-----------------------|:-------------------------|:-------------------------|
+| OpenAI | groß: GPT-6 Astra, GPT-6.1 Sol; klein: GPT-6 Luna, GPT-5.6 Luna (Standard im Gratiszugang) | kostenlos · Go 8 € · Plus 23 € · Pro 103 €, 229 € oder 510 € | Bildgenerator und Sprachmodus; Recherche-Agent und Agentenmodus erweitert ab Plus; eigene „GPTs“ lassen sich als Tutoren teilen |
+| Anthropic | groß: Claude Opus 5.5, darüber Claude Fable 5.1; klein: Claude Sonnet 5.5 und Haiku 5.5 (Gratiszugang) | kostenlos · Pro 20 US-$ · Max 100 US-$ (5×) · Ultra 200 US-$ (10×), jeweils zzgl. MwSt. | Kein Bildgenerator, Grafiken entstehen als Code; Artifacts für Lernspiele; Claude Code und geplante Aufgaben ab Pro; Fable in Pro nur über Nutzungsguthaben |
+| Google | groß: Gemini 4 Argon; klein: Flash- und Flash-Lite-Varianten (Gratiszugang) | kostenlos · AI Plus 4,99 € · AI Pro 21,99 € · AI Ultra 99,99 € (5×) oder 219,99 € (20×) | Bild- und Videogenerator; sehr lange Kontexte für ganze Skripte; Gemini Notebook (früher NotebookLM) für Recherche in eigenen Quellen |
+| Mistral (Vibe, früher Le Chat) | eigene Modelle, teils mit offenen Gewichten | kostenlos · Pro 14,99 US-$ zzgl. MwSt. (Studierende 5,99 US-$) | Europäischer Anbieter; Chat und Programmieragent in einem Produkt |
+| Offene Modelle | Familien gpt-oss (OpenAI), Qwen (Alibaba), DeepSeek, Llama (Meta), Gemma (Google), Mistral | Gewichte frei verfügbar; Kosten nur für Rechner oder Hoster | Kleine Varianten lokal auf einer Grafikkarte, große über Hochschuldienste |
+| KI:connect.nrw (Land NRW, RWTH Aachen) | GPT-5.6 (Sol, Terra, Luna) und GPT-6 (Astra, Sol, Luna) seit 1. Oktober 2026; Mistral, Qwen und gpt-oss als offene Modelle auf Landesinfrastruktur; Bild- und Einbettungsmodelle | kostenlos für Nutzende; Kontingente je Hochschule | Erste Wahl in NRW; Modellwechsel je Chat; OpenAI-kompatible API über selbst erzeugte Schlüssel (Freigabe je Hochschule) |
+| GWDG und Hochschulen | wechselnde Auswahl offener und kommerzieller Modelle | kostenlos für Nutzende | Academic Cloud (Registrierung mit Hochschuladresse), THKI-Lab; vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist |
+
+: Modelle und Preisstufen, lebende Fassung. Preise laut Preisseiten der Anbieter, Stand Oktober 2026, Euro-Beträge einschließlich Mehrwertsteuer. {#tbl-modelluebersicht-online}
 
 ## Wie Sie diese Übersicht lesen
 
-Die Spalte „Modellklasse" ist die wichtigste. Wer im Buch von einem „Reasoning-Modell" oder einer „Mini-Variante" liest, findet hier, welches Produkt des Anbieters diese Klasse gerade füllt. Preise sind Größenordnungen, keine Tarife; die Anbieter ändern Staffeln und Kontingente ohne Vorwarnung. Für Hochschulzugänge (Academic Cloud der GWDG, hochschuleigene Dienste wie das THKI-Lab, Landesangebote wie KI:connect) gilt die Prüfregel aus Kapitel 2: Erst nachsehen, welche Modellgeneration hinter dem Dienst steht, dann entscheiden, ob der Dienst für die geplante Aufgabe taugt.
+Die Spalte „Modellklassen“ ist die wichtigste. Wer im Buch von einem „großen Frontier-Modell“ oder einer „kleinen Variante“ liest, findet hier, welches Produkt des Anbieters diese Klasse gerade füllt. Die Preise zeigen die Stufen; die Anbieter ändern Staffeln und Kontingente ohne Vorwarnung, verbindlich ist die Preisseite beim Abschluss. Für Hochschulzugänge (Academic Cloud der GWDG, hochschuleigene Dienste wie das THKI-Lab, Landesangebote wie KI:connect.nrw) gilt die Prüfregel aus Kapitel 2: Erst nachsehen, welche Modellgeneration hinter dem Dienst steht, dann entscheiden, ob der Dienst für die geplante Aufgabe taugt.
 
 ## Änderungshistorie
 
 | Datum | Änderung |
 |:------|:---------|
 | November 2026 | Seite angelegt; Stand identisch mit dem Druckkasten in Kapitel 2 (@tbl-modellstand). |
+| 31. Oktober 2026 | Entscheidungsbaum eingebunden; Spalte „Stufen (Monatspreis)“ statt „Zugang“; Modellnamen und Preise aktualisiert; offene Modelle in einer Zeile zusammengefasst. |

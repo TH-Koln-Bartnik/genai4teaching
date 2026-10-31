@@ -855,7 +855,7 @@ Tabelle&nbsp;2.2: Was sich seit 2022 geändert hat: zwei Ermöglicher und eine F
 <iframe src="interactions/sitzung-und-gedaechtnis.html" width="100%" height="880px" frameborder="0" title="Animation: Die Sitzung schreibt alles mit, das Gedächtnis behält nur das Verdichtete">
 </iframe>
 <p>Ein Gedächtnis ist etwas anderes als RAG, auch wenn beide auf ein Archiv zugreifen. Bei RAG liest das Modell in Dokumenten, die wir ausgewählt haben, und verändert sie nicht. Ins Gedächtnis schreibt der Agent selbst, und was er heute notiert, bestimmt, was er morgen für wahr hält. Damit stellen sich dieselben Fragen wie bei jedem gemeinsam bearbeiteten Dokument, und die Anbieter beantworten sie mit denselben Mitteln: Eine Änderung wird abgewiesen, wenn inzwischen eine andere Sitzung geschrieben hat, jede Änderung hinterlässt eine Version, und ein Speicher lässt sich nur zum Lesen einbinden, sodass ein Agent die Hausregeln kennt, aber nicht ändern kann <span class="citation" data-cites="anthropic2026memorystores">(<a href="references.html#ref-anthropic2026memorystores" role="doc-biblioref">Anthropic, o. J.</a>)</span>. Wer je eine Abschlussarbeit mit Versionsverlauf betreut hat, kennt alle drei Regeln.</p>
-<p>Wann der Agent ins Gedächtnis schreibt, ist die zweite Gestaltungsfrage. Auf Stufe 2 geschieht es <em>in-band</em>, mitten in der Sitzung, so wie man ein Laborbuch während des Versuchs führt. Seit Mai 2026 gibt es zusätzlich Läufe <em>out-of-band</em>, bei Anthropic „Dreaming“ genannt: Ein eigener Durchgang liest den Speicher und frühere Sitzungen und schlägt eine überarbeitete Fassung vor, über deren Übernahme der Betreiber entscheidet <span class="citation" data-cites="anthropic2026dreaming">(<a href="references.html#ref-anthropic2026dreaming" role="doc-biblioref">Anthropic, 2026</a>)</span>. Die Unterscheidung ist älter als die Technik. Donald Schön beschrieb in seiner Studie über Berufspraktiker zwei Formen des Nachdenkens: <em>reflection-in-action</em>, das Umsteuern mitten im Handeln, und <em>reflection-on-action</em>, den Blick zurück, wenn die Arbeit ruht <span class="citation" data-cites="schon1983">(<a href="references.html#ref-schon1983" role="doc-biblioref">Schön, 1983</a>)</span>. Das Wort Reflexion kommt vom lateinischen <em>reflectere</em>, zurückbeugen. Ein Agent, der in-band notiert, reflektiert im Handeln; ein Dream-Lauf reflektiert über das Handeln. Für die Lehre ist die Parallele mehr als ein Bild: Lerntagebuch und Nachbesprechung eines Praktikums sind genau diese beiden Formen, und wir wissen aus dem eigenen Unterricht, dass die zweite ohne die erste wenig Stoff hat.</p>
+<p>Wann der Agent ins Gedächtnis schreibt, ist die zweite Gestaltungsfrage. Auf Stufe 2 geschieht es <em>in-band</em>, mitten in der Sitzung, so wie man ein Laborbuch während des Versuchs führt. Seit Mai 2026 gibt es zusätzlich Läufe <em>out-of-band</em>, bei Anthropic „Dreaming“ genannt: Ein eigener Durchgang liest den Speicher und frühere Sitzungen und schlägt eine überarbeitete Fassung vor, über deren Übernahme der Betreiber entscheidet <span class="citation" data-cites="anthropic2026dreaming">(<a href="references.html#ref-anthropic2026dreaming" role="doc-biblioref">Anthropic, 2026b</a>)</span>. Die Unterscheidung ist älter als die Technik. Donald Schön beschrieb in seiner Studie über Berufspraktiker zwei Formen des Nachdenkens: <em>reflection-in-action</em>, das Umsteuern mitten im Handeln, und <em>reflection-on-action</em>, den Blick zurück, wenn die Arbeit ruht <span class="citation" data-cites="schon1983">(<a href="references.html#ref-schon1983" role="doc-biblioref">Schön, 1983</a>)</span>. Das Wort Reflexion kommt vom lateinischen <em>reflectere</em>, zurückbeugen. Ein Agent, der in-band notiert, reflektiert im Handeln; ein Dream-Lauf reflektiert über das Handeln. Für die Lehre ist die Parallele mehr als ein Bild: Lerntagebuch und Nachbesprechung eines Praktikums sind genau diese beiden Formen, und wir wissen aus dem eigenen Unterricht, dass die zweite ohne die erste wenig Stoff hat.</p>
 <p>Die Technik verschiebt die Verantwortung, sie nimmt sie nicht ab. Fachleute, die ein Bericht über Dreaming zu Wort kommen lässt, nennen drei Schwächen <span class="citation" data-cites="bridgwater2026dream">(<a href="references.html#ref-bridgwater2026dream" role="doc-biblioref">Bridgwater, 2026</a>)</span>. Ein Fehler, der einmal im Gedächtnis steht, wirkt in allen folgenden Sitzungen fort, statt wie im Chat mit dem Gespräch zu verschwinden. Die menschliche Prüfung der vorgeschlagenen Änderungen wird leicht zum Abnicken. Und eine Versionsgeschichte zeigt, <em>wer</em> etwas geändert hat, nicht, <em>ob</em> es stimmt. Hier kehrt der Haltepunkt aus dem vorigen Abschnitt wieder: Die Durchsicht des Gedächtnisses ist eine Station, an der der Mensch das Steuer behält <span class="citation" data-cites="parasuraman2000">(<a href="references.html#ref-parasuraman2000" role="doc-biblioref">Parasuraman et al., 2000</a>)</span>, und für sie gilt dieselbe Rechnung wie für die Agenten-Ergebnisse im Modell des Agenten-Engpasses. Wer mehr Änderungen erzeugen lässt, als er lesen kann, hat kein geprüftes Gedächtnis, sondern ein ungeprüftes mit Freigabestempel.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Anwendungsbeispiel: Ein falscher Eintrag überlebt das Gespräch">
 <div class="callout-header d-flex align-content-center">
@@ -915,23 +915,44 @@ Abbildung&nbsp;2.1: Visualisierte Gedanken eines Sprachmodells [@lindsey2025]
 </section>
 <section id="sec-model-choice" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="sec-model-choice"><span class="header-section-number">2.3</span> Welches Modell wählen?</h2>
-<p><strong>Was für Sprachmodelle gibt es?</strong> Der Markt ist überschaubarer, als die Flut an Produktnamen vermuten lässt. Eine Handvoll großer KI-Labore bietet jeweils eine Modellfamilie an, die sich in wenige Klassen sortieren lässt (s. <a href="#tbl-modellstand" class="quarto-xref">Tabelle&nbsp;<span>2.3</span></a>): Das <strong>Flaggschiff-Modell</strong> ist die jeweils stärkste Variante für anspruchsvolle Aufgaben. Daneben gibt es günstigere <strong>Mini-Varianten</strong>, die weniger Rechenaufwand benötigen und für einfache Routineaufgaben ausreichen. Die Flaggschiffe sind <strong>Reasoning-Modelle</strong>: Sie durchlaufen vor der Antwort intern mehrere Denkschritte und können so auch komplexe Fragestellungen bearbeiten (s. <a href="#sec-capabilities" class="quarto-xref"><span>Kapitel 2.4</span></a>). Schließlich gibt es <strong>offene Modelle</strong>, deren Gewichte frei verfügbar sind, so dass man sie kostenfrei nutzen oder auf eigener Hardware betreiben kann; darunter eines der wenigen europäischen Modelle und die chinesische Konkurrenz <span class="citation" data-cites="mollick2025 vellum2025">(<a href="references.html#ref-mollick2025" role="doc-biblioref">E. R. Mollick, 2025</a>; sowie <a href="references.html#ref-vellum2025" role="doc-biblioref">Vellum, 2025</a>)</span>. Offene Modelle sind in der Regel etwas schwächer als die Flaggschiffe der großen Labore (s. <a href="#sec-capabilities" class="quarto-xref"><span>Kapitel 2.4</span></a>).</p>
-<p>Wer einen Blick auf den nächsten Entwicklungsschritt werfen will, dem sei empfohlen, für einen Monat die <strong>agentische Arbeitsumgebung</strong> eines der großen Anbieter zu abonnieren (die teurere Abonnement-Stufe, s. den Kasten unten). Hier lassen sich sehr komplexe Workflows delegieren und z.B. 10 Excel-Dateien für komplexe Fallstudien mit den dazugehörigen Anweisungen, Visualisierungen und Präsentationen in einem Rutsch erstellen <span class="citation" data-cites="rogers2026">(<a href="references.html#ref-rogers2026" role="doc-biblioref">Rogers, 2026</a>)</span>.</p>
-<p><strong>Welches Sprachmodell sollte man nutzen?</strong> Die kurze Antwort: <strong>das Flaggschiff eines der großen Labore</strong>, nicht die Mini-Variante. Welches der drei großen Labore man wählt, ist für die meisten Lehraufgaben weniger wichtig als die Frage, ob man überhaupt die stärkste Variante nutzt (s. <a href="#fig-reasoning-models-better" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a>). Für den Einstieg reicht das Chat-Interface des jeweiligen Anbieters; die agentischen Arbeitsumgebungen erweitern das Flaggschiff um Werkzeuge und sind für komplexe Delegationen die erste Wahl <span class="citation" data-cites="mollick2025e">(<a href="references.html#ref-mollick2025e" role="doc-biblioref">E. Mollick, 2026</a>)</span>.</p>
-<p>Seit der agentischen Wende (<a href="kapitel01.html#sec-weiterentwicklung" class="quarto-xref"><span>Kapitel 1.2</span></a>) zählt dabei nicht das Modell allein, sondern das ganze <strong>Setup</strong>: ein starkes Modell, eine praktische Oberfläche und ein Harness mit sinnvollen Werkzeugen (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.1.1</span></a>) <span class="citation" data-cites="mollick2025e">(<a href="references.html#ref-mollick2025e" role="doc-biblioref">E. Mollick, 2026</a>)</span>. Die grobe Regel lautet: Wenn das Ergebnis wichtig ist, nie ein kostenfreies Modell wählen.</p>
+<p><strong>Was für Sprachmodelle gibt es?</strong> Hinter der Flut an Produktnamen stehen wenige Klassen, und zwei Fragen sortieren sie: Wie leistungsfähig ist das Modell, und wer hat die Daten in der Hand (<a href="#fig-modellklassen" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a>)? Jedes große KI-Labor bietet ein <strong>großes Frontier-Modell</strong> an, seine stärkste Variante (oft „Flaggschiff“ genannt), und daneben <strong>kleine Varianten</strong>, die schneller und billiger sind und in den kostenlosen Zugängen den Standard stellen. Die großen Modelle sind <strong>Reasoning-Modelle</strong>: Sie denken vor der Antwort in mehreren Schritten nach, und wie lange, lässt sich als Denkstufe einstellen (s. <a href="#sec-capabilities" class="quarto-xref"><span>Kapitel 2.4</span></a>). <strong>Offene Modelle</strong> legen ihre Gewichte offen; Hochschulen betreiben sie auf eigenen Rechnern, kleine Varianten laufen auf einem Arbeitsplatzrechner, und die Daten bleiben im Haus. Der Abstand zur Frontier ist kurz: Die besten offenen Modelle lagen 2026 im Mittel vier Monate zurück <span class="citation" data-cites="edwards2026openclosed">(<a href="references.html#ref-edwards2026openclosed" role="doc-biblioref">Edwards &amp; Emberson, 2026</a>)</span>, Modelle für eine einzelne Grafikkarte sechs bis zwölf Monate <span class="citation" data-cites="somala2025consumergpu">(<a href="references.html#ref-somala2025consumergpu" role="doc-biblioref">Somala &amp; Emberson, 2025</a>)</span>.</p>
+<div id="fig-modellklassen" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="htbp">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-modellklassen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/druck/modellwahl-klassen.svg" class="img-fluid figure-img" style="width:92.0%" data-fig-pos="htbp">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-modellklassen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;2.2: Vier Modellklassen nach Leistung und Kontrolle über die Daten. Wie groß der Rückstand der offenen Modelle ausfällt, hängt am gewählten Leistungstest; die Werte stammen aus <span class="citation" data-cites="edwards2026openclosed">Edwards &amp; Emberson (<a href="references.html#ref-edwards2026openclosed" role="doc-biblioref">2026</a>)</span> und <span class="citation" data-cites="somala2025consumergpu">Somala &amp; Emberson (<a href="references.html#ref-somala2025consumergpu" role="doc-biblioref">2025</a>)</span>. Hochschulzugänge wie KI:connect.nrw bieten beide Zeilen. Eigene Darstellung.
+</figcaption>
+</figure>
+</div>
+<p><strong>Was kauft ein Abonnement?</strong> Die großen Anbieter haben ihre Preise angeglichen und staffeln sie in drei Stufen: kostenlos, rund 20 € und rund 100 € im Monat.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Der Schritt von 0 auf 20 € öffnet das große Modell mit hoher Denkstufe, den Recherche-Agenten und die Arbeit in Projekten. Der Schritt von 20 auf 100 € kauft kaum ein klügeres Modell, sondern Menge: etwa das Fünffache an Nachrichten und Agentenzeit (<a href="#fig-abo-stufen" class="quarto-xref">Abbildung&nbsp;<span>2.3</span></a>). Die teuren Stufen kaufen vor allem mehr Stunden KI-Arbeit <span class="citation" data-cites="mollick2026guide">(<a href="references.html#ref-mollick2026guide" role="doc-biblioref">E. Mollick, 2026b</a>)</span>. Wer beurteilen will, was die Modelle können, etwa für die eigenen Prüfungen, bezahlt deshalb ein bis zwei Monate lang die 20-€-Stufe; die kostenlosen Zugänge zeigen ein zu schwaches Bild.</p>
+<div id="fig-abo-stufen" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="htbp">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-abo-stufen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/druck/modellwahl-stufen.svg" class="img-fluid figure-img" style="width:92.0%" data-fig-pos="htbp">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-abo-stufen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;2.3: Was ein Abo kauft: Ab rund 20 € im Monat arbeitet das große Modell mit hoher Denkstufe; die 100-€-Stufe bringt dasselbe Modell mit etwa fünfmal so viel Kontingent. Eigene Darstellung nach den Preisseiten von OpenAI, Anthropic und Google, Stand Oktober 2026, und <span class="citation" data-cites="mollick2026guide">E. Mollick (<a href="references.html#ref-mollick2026guide" role="doc-biblioref">2026b</a>)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Seit der agentischen Wende (<a href="kapitel01.html#sec-weiterentwicklung" class="quarto-xref"><span>Kapitel 1.2</span></a>) zählt dabei nicht das Modell allein, sondern das ganze <strong>Setup</strong>: ein starkes Modell, eine praktische Oberfläche und ein Harness mit sinnvollen Werkzeugen (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.1.1</span></a>) <span class="citation" data-cites="mollick2025e">(<a href="references.html#ref-mollick2025e" role="doc-biblioref">E. Mollick, 2026a</a>)</span>.</p>
 <div id="fig-reasoning-models-better" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-reasoning-models-better-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/use-reasoning-models.jpg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reasoning-models-better-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;2.2: Daumenregel: Für wichtige Fragen immer eine stärkere Kombination aus Modell und Setup wählen
+Abbildung&nbsp;2.4: Daumenregel: Für wichtige Fragen immer eine stärkere Kombination aus Modell und Setup wählen
 </figcaption>
 </figure>
 </div>
-<p><strong>Für Lehrende kostenfrei nutzbar</strong> sind mehrere institutionelle Zugänge. Zentral für deutsche Hochschulen ist der Dienst „Chat-AI“ / Academic Cloud der Gesellschaft für wissenschaftliche Datenverarbeitung Göttingen (GWDG) (https://chat-ai.academiccloud.de/), über den neben einer Reihe offener Modelle auch Flaggschiff-Modelle der kommerziellen Anbieter nutzbar sind. Hier kann man sich einfach mit einer Hochschuladresse registrieren und den Dienst nutzen. Hochschulen bieten teils einen eigenen KI-Zugang an, die TH Köln etwa einen begrenzten Zugang zu einem kommerziellen Chat-Modell und einzelnen offenen Modellen über das THKI-Lab (https://ki.th-koeln.de/login.php). Für Lehrende an Hochschulen in Nordrhein-Westfalen ist <strong>KI:connect.nrw</strong> der Zugang der ersten Wahl (https://chat.kiconnect.nrw/). Das Land hat den Dienst an der RWTH Aachen aufbauen lassen und stellt ihn allen 36 staatlichen Hochschulen bereit; die Anmeldung läuft über den Hochschul-Login, die Nutzung ist für Studium, Lehre und Forschung vorgesehen und für die Nutzenden kostenfrei <span class="citation" data-cites="mkw2025kiconnect">(<a href="references.html#ref-mkw2025kiconnect" role="doc-biblioref">Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen, 2025</a>)</span>. Hinter der Chat-Oberfläche stehen die Flaggschiff-Modelle der großen Anbieter in ihrer jeweils aktuellen Generation (welche das bei Drucklegung waren, steht im Kasten unten), dazu Bild- und Einbettungsmodelle sowie offene Modelle, die seit Mai 2026 auf landeseigenen Rechnern in Aachen und Köln laufen, so dass die Daten das Hochschulnetz nicht verlassen <span class="citation" data-cites="rwthitc2026changes kiconnect2026inferenz">(<a href="references.html#ref-rwthitc2026changes" role="doc-biblioref">IT Center der RWTH Aachen, 2026</a>; <a href="references.html#ref-kiconnect2026inferenz" role="doc-biblioref">KI:connect.nrw, 2026</a>)</span>. Zwei Eigenschaften machen den Dienst für die Vorhaben dieses Buches besonders brauchbar. Erstens lässt sich das Modell je Chat wechseln, so dass man dieselbe Aufgabe mit einem Flaggschiff, einer Mini-Variante und einem offenen Modell vergleichen kann; das ist genau die Übung, die den Unterschied zwischen den Modellklassen erfahrbar macht. Zweitens bietet KI:connect einen <strong>API-Zugang</strong>. Eine API (<em>Application Programming Interface</em>) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen: Wer einen eigenen Tutor baut, ein Skript Quizfragen erzeugen lässt oder ein Werkzeug wie VS Code an das Modell anschließt, braucht keinen Chat, sondern einen Schlüssel, mit dem die eigene Anwendung Anfragen schickt. Diese Schlüssel erzeugen Nutzende selbst im Menü „API-Schlüsselverwaltung“; sie laufen über die Lizenz der Hochschule, unterliegen denselben Kontingenten wie die Chat-Oberfläche, und die Schnittstelle ist mit dem Format von OpenAI kompatibel, sodass die meisten Anleitungen und Bibliotheken ohne Anpassung funktionieren <span class="citation" data-cites="persike2025apikeys rwthitc2026changes">(<a href="references.html#ref-rwthitc2026changes" role="doc-biblioref">IT Center der RWTH Aachen, 2026</a>; <a href="references.html#ref-persike2025apikeys" role="doc-biblioref">Persike, 2025</a>)</span>. Ob und für welche Gruppen eine Hochschule die Schlüssel freischaltet, entscheidet sie selbst; wer das Menü nicht sieht, fragt bei der eigenen IT nach. Was sich damit bauen lässt, zeigen <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-quellen" class="quarto-xref"><span>Kapitel D.3</span></a> (eigene Quellen anbinden) und <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a> (Tutoren bauen und prüfen). Bei allen institutionellen Zugängen gilt: Prüfen Sie vor dem Einsatz in der Lehre, welche Modellgeneration dahinter steckt. Ist es eine ältere Generation oder eine Mini-Variante, bekommt man ein ganz falsches Bild von den Fähigkeiten der Modelle und kann auch nicht sinnvoll in der praktischen Nutzung von KI ausbilden.</p>
-<p>Über die Hochschullizenz lässt sich außerdem Microsoft 365 Copilot als Desktop-Anwendung mit Modellen von OpenAI nutzen, in der man Chats speichern und Anweisungen als „Agenten“ teilen kann (https://www.office.com/).</p>
-<p>Diese kostenfreien Lösungen sind seit ihrer Einführung stark ausgebaut worden und sehr nützlich. Sie stellen allerdings i. d.&nbsp;R. nicht den jeweils neuesten Stand der Performanz der KI-Modelle dar. Lehrende sollten daher unbedingt ein bis zwei Monate lang ein Standard-Abonnement bezahlen und auch die stärksten Bezahlmodelle ausprobieren (also das Flaggschiff eines der großen Labore in der Bezahlversion). Nur so erhält man ein Gefühl dafür, was technisch möglich ist und wie „sicher“ die eigenen Prüfungsleistungen sind (z. B. „im Gespräch“ mit der KI über den Sprachmodus, der bei den kostenfreien Zugängen meist abgeklemmt ist).</p>
+<p><strong>Kostenfreie Zugänge über die Hochschule.</strong> Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die GWDG etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über das THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen ist <strong>KI:connect.nrw</strong> der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, Frontier-Modelle über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge <span class="citation" data-cites="mkw2025kiconnect kiconnect2026inferenz persike2025apikeys">(<a href="references.html#ref-kiconnect2026inferenz" role="doc-biblioref">KI:connect.nrw, 2026</a>; <a href="references.html#ref-mkw2025kiconnect" role="doc-biblioref">Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen, 2025</a>; <a href="references.html#ref-persike2025apikeys" role="doc-biblioref">Persike, 2025</a>)</span>. Eine API (<em>Application Programming Interface</em>) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen; was sich damit bauen lässt, zeigen <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-quellen" class="quarto-xref"><span>Kapitel D.3</span></a> und <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a>. Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Eine ältere Generation oder eine kleine Variante vermittelt ein falsches Bild davon, was die Modelle können.</p>
+<p><strong>Welches Modell für welche Aufgabe?</strong> Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel. Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.</p>
+<p>Der folgende Entscheidungsbaum führt Frage für Frage zu Modellklasse und Preisstufe.</p>
+<iframe src="interactions/modellwahl-baum.html" width="100%" height="820px" frameborder="0" title="Entscheidungsbaum: Welches Modell für welche Aufgabe?">
+</iframe>
 <div class="callout callout-style-default callout-note callout-titled" title="Stand bei Drucklegung, November 2026">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -942,76 +963,70 @@ Abbildung&nbsp;2.2: Daumenregel: Für wichtige Fragen immer eine stärkere Kombi
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Die folgende Übersicht hält fest, welche Modelle und Zugänge bei Drucklegung die im Text beschriebenen Klassen füllten. Sie ist ein historischer Schnappschuss: Die Namen ändern sich, die Klassen bleiben.</p>
+<p>Die folgende Übersicht hält fest, welche Modelle bei Drucklegung die Klassen aus <a href="#fig-modellklassen" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a> füllten und was die Stufen aus <a href="#fig-abo-stufen" class="quarto-xref">Abbildung&nbsp;<span>2.3</span></a> kosteten. Sie ist ein historischer Schnappschuss: Namen und Preise ändern sich, Klassen und Stufen bleiben.</p>
 <div id="tbl-modellstand" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-modellstand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;2.3: Modelle und Zugänge bei Drucklegung. Quellen: Text dieses Kapitels, <span class="citation" data-cites="vellum2025">Vellum (<a href="references.html#ref-vellum2025" role="doc-biblioref">2025</a>)</span> und <span class="citation" data-cites="rwthitc2026changes">IT Center der RWTH Aachen (<a href="references.html#ref-rwthitc2026changes" role="doc-biblioref">2026</a>)</span>.
+Tabelle&nbsp;2.3: Modelle und Preisstufen bei Drucklegung. Preise laut Preisseiten der Anbieter, Stand Oktober 2026, Euro-Beträge einschließlich Mehrwertsteuer. Quellen: <span class="citation" data-cites="openai2026pricing">OpenAI (<a href="references.html#ref-openai2026pricing" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="anthropic2026pricing">Anthropic (<a href="references.html#ref-anthropic2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="google2026aiplans">Google (<a href="references.html#ref-google2026aiplans" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="mistral2026pricing">Mistral AI (<a href="references.html#ref-mistral2026pricing" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="rwthitc2026changes">IT Center der RWTH Aachen (<a href="references.html#ref-rwthitc2026changes" role="doc-biblioref">2026</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-modellstand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 24%">
-<col style="width: 32%">
-<col style="width: 26%">
+<col style="width: 18%">
+<col style="width: 25%">
+<col style="width: 27%">
+<col style="width: 27%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Anbieter</th>
-<th style="text-align: left;">Modellklasse(n)</th>
-<th style="text-align: left;">Typischer Zugang (Chat, API, institutionell)</th>
+<th style="text-align: left;">Modellklassen</th>
+<th style="text-align: left;">Stufen (Monatspreis)</th>
 <th style="text-align: left;">Hinweis für die Lehre</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">OpenAI</td>
-<td style="text-align: left;">Flaggschiff aus der Familie GPT-5.6/GPT-6 (Reasoning; Varianten Sol, Terra, Luna bzw. Astra, Sol, Luna); Mini-Varianten; Codex-Variante für Programmierung</td>
-<td style="text-align: left;">Chat-Interface ChatGPT (kostenfrei mit Einschränkungen; Abonnement im Bereich von ca. 20 € monatlich); API; institutionell über Academic Cloud, THKI-Lab und Microsoft 365 Copilot</td>
-<td style="text-align: left;">Sprachmodus und Deep Research in der Bezahlversion; eigene „GPTs“ lassen sich als Tutoren teilen</td>
+<td style="text-align: left;">groß: GPT-6 Astra, GPT-6.1 Sol; klein: GPT-6 Luna, GPT-5.6 Luna (Standard im Gratiszugang)</td>
+<td style="text-align: left;">kostenlos · Go 8 € · Plus 23 € · Pro 103 €, 229 € oder 510 €</td>
+<td style="text-align: left;">Bildgenerator und Sprachmodus; Recherche-Agent und Agentenmodus erweitert ab Plus; eigene „GPTs“ lassen sich als Tutoren teilen</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;">Flaggschiff Gemini 3 Pro bzw. 3.1 Pro (Reasoning, „Deep Think“); Mini-Varianten</td>
-<td style="text-align: left;">Chat-Interface Gemini; API; NotebookLM; in Google Workspace und Google Colab integriert</td>
-<td style="text-align: left;">Sehr große Kontextfenster (bis zu 1 Mio. Token) für ganze Skripte; NotebookLM erzeugt Podcasts und Folien aus eigenen Quellen</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Anthropic</td>
-<td style="text-align: left;">Flaggschiff Claude Opus 4.6; mittlere Variante Claude Sonnet 4.6</td>
-<td style="text-align: left;">Chat-Interface Claude; API; agentische Arbeitsumgebungen Claude Cowork und Claude Code (Abonnement-Stufe im Bereich von ca. 90 € monatlich)</td>
-<td style="text-align: left;">Artifacts für interaktive Lernspiele; Skills für komplexe Dokumente; Delegation ganzer Workflows</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Meta</td>
-<td style="text-align: left;">Offenes Modell Llama 4</td>
-<td style="text-align: left;">Gewichte frei verfügbar; über Hoster und Hochschuldienste wie Academic Cloud (Auswahl wechselt)</td>
-<td style="text-align: left;">Kostenfrei, aber in der Regel schwächer als die Flaggschiffe</td>
+<td style="text-align: left;">groß: Claude Opus 5.5, darüber Claude Fable 5.1; klein: Claude Sonnet 5.5 und Haiku 5.5 (Gratiszugang)</td>
+<td style="text-align: left;">kostenlos · Pro 20 US-$ · Max 100 US-$ (5×) · Ultra 200 US-$ (10×), jeweils zzgl. MwSt.</td>
+<td style="text-align: left;">Kein Bildgenerator, Grafiken entstehen als Code; Artifacts für Lernspiele; Claude Code und geplante Aufgaben ab Pro; Fable in Pro nur über Nutzungsguthaben</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">DeepSeek</td>
-<td style="text-align: left;">Offene Modelle (V3.2, R1 als Reasoning-Variante)</td>
-<td style="text-align: left;">Gewichte frei verfügbar; über Hoster und Hochschuldienste</td>
-<td style="text-align: left;">Chinesische Konkurrenz; interessant für den Vergleich kultureller Perspektiven im Output</td>
+<td style="text-align: left;">Google</td>
+<td style="text-align: left;">groß: Gemini 4 Argon; klein: Flash- und Flash-Lite-Varianten (Gratiszugang)</td>
+<td style="text-align: left;">kostenlos · AI Plus 4,99 € · AI Pro 21,99 € · AI Ultra 99,99 € (5×) oder 219,99 € (20×)</td>
+<td style="text-align: left;">Bild- und Videogenerator; sehr lange Kontexte für ganze Skripte; Gemini Notebook (früher NotebookLM) für Recherche in eigenen Quellen</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Mistral</td>
-<td style="text-align: left;">Offene und kommerzielle Modelle (Mistral 3, Medium 3.1)</td>
-<td style="text-align: left;">Chat-Interface und API des Anbieters; Gewichte teils frei verfügbar</td>
-<td style="text-align: left;">Europäischer Anbieter</td>
+<td style="text-align: left;">Mistral (Vibe, früher Le Chat)</td>
+<td style="text-align: left;">eigene Modelle, teils mit offenen Gewichten</td>
+<td style="text-align: left;">kostenlos · Pro 14,99 US-$ zzgl. MwSt. (Studierende 5,99 US-$)</td>
+<td style="text-align: left;">Europäischer Anbieter; Chat und Programmieragent in einem Produkt</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Offene Modelle</td>
+<td style="text-align: left;">Familien gpt-oss (OpenAI), Qwen (Alibaba), DeepSeek, Llama (Meta), Gemma (Google), Mistral</td>
+<td style="text-align: left;">Gewichte frei verfügbar; Kosten nur für Rechner oder Hoster</td>
+<td style="text-align: left;">Kleine Varianten lokal auf einer Grafikkarte, große über Hochschuldienste</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">KI:connect.nrw (Land NRW, RWTH Aachen)</td>
-<td style="text-align: left;">Flaggschiffe von OpenAI (GPT-5.6 und GPT-6 seit Oktober 2026) und Google; Mistral, Qwen und gpt-oss als offene Modelle auf Landesinfrastruktur; Bild- und Einbettungsmodelle</td>
-<td style="text-align: left;">Chat-Oberfläche mit Hochschul-Login; OpenAI-kompatible API über selbst erzeugte Schlüssel (Freigabe je Hochschule)</td>
-<td style="text-align: left;">Erste Wahl in NRW; Modellwechsel je Chat; API für eigene Tutoren und Werkzeuge</td>
+<td style="text-align: left;">GPT-5.6 (Sol, Terra, Luna) und GPT-6 (Astra, Sol, Luna) seit 1. Oktober 2026; Mistral, Qwen und gpt-oss als offene Modelle auf Landesinfrastruktur; Bild- und Einbettungsmodelle</td>
+<td style="text-align: left;">kostenlos für Nutzende; Kontingente je Hochschule</td>
+<td style="text-align: left;">Erste Wahl in NRW; Modellwechsel je Chat; OpenAI-kompatible API über selbst erzeugte Schlüssel (Freigabe je Hochschule)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">GWDG und Hochschulen</td>
-<td style="text-align: left;">Wechselnde Auswahl offener und kommerzieller Modelle</td>
-<td style="text-align: left;">Academic Cloud (Registrierung mit Hochschuladresse); THKI-Lab</td>
-<td style="text-align: left;">Vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist</td>
+<td style="text-align: left;">wechselnde Auswahl offener und kommerzieller Modelle</td>
+<td style="text-align: left;">kostenlos für Nutzende</td>
+<td style="text-align: left;">Academic Cloud (Registrierung mit Hochschuladresse), THKI-Lab; vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist</td>
 </tr>
 </tbody>
 </table>
@@ -1296,8 +1311,11 @@ Anthropic (2025b). <em><a href="https://platform.claude.com/docs/en/build-with-c
 <div id="ref-anthropic2025tracing" class="csl-entry" role="listitem">
 Anthropic (2025c, März 27). <em>Tracing the thoughts of a large language model</em>. Anthropic. <a href="https://www.anthropic.com/research/tracing-thoughts-language-model">https://www.anthropic.com/research/tracing-thoughts-language-model</a>.
 </div>
+<div id="ref-anthropic2026pricing" class="csl-entry" role="listitem">
+Anthropic (2026a). Plans &amp; pricing. <em>Claude</em>. <a href="https://claude.com/pricing">https://claude.com/pricing</a>.
+</div>
 <div id="ref-anthropic2026dreaming" class="csl-entry" role="listitem">
-Anthropic (2026, Mai 6). New in Claude Managed Agents: Dreaming, outcomes, and multiagent orchestration. <a href="https://claude.com/blog/new-in-claude-managed-agents">https://claude.com/blog/new-in-claude-managed-agents</a>.
+Anthropic (2026b, Mai 6). New in Claude Managed Agents: Dreaming, outcomes, and multiagent orchestration. <a href="https://claude.com/blog/new-in-claude-managed-agents">https://claude.com/blog/new-in-claude-managed-agents</a>.
 </div>
 <div id="ref-ausubel1960" class="csl-entry" role="listitem">
 Ausubel, D. P. (1960). The use of advance organizers in the learning and retention of meaningful verbal material. <em>Journal of Educational Psychology</em>, <em>51</em>(5), 267–272. <a href="https://doi.org/10.1037/h0046669">https://doi.org/10.1037/h0046669</a>.
@@ -1332,6 +1350,9 @@ Dell’Acqua, F., Ayoubi, C., Lifshitz-Assaf, H., Sadun, R., Mollick, E. R., Mol
 <div id="ref-dellacqua2023" class="csl-entry" role="listitem">
 Dell’Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., &amp; Lakhani, K. R. (2023). <em>Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality</em>. <a href="https://doi.org/10.2139/ssrn.4573321">https://doi.org/10.2139/ssrn.4573321</a>.
 </div>
+<div id="ref-edwards2026openclosed" class="csl-entry" role="listitem">
+Edwards, J., &amp; Emberson, L. (2026, Mai 29). Open models lag state-of-the-art closed models by 4 months. <em>Epoch AI</em>. <a href="https://epoch.ai/data-insights/open-closed-eci-gap">https://epoch.ai/data-insights/open-closed-eci-gap</a>.
+</div>
 <div id="ref-elsworth2025" class="csl-entry" role="listitem">
 Elsworth, C., Huang, K., Patterson, D., Schneider, I., Sedivy, R., Goodman, S., Townsend, B., Ranganathan, P., Dean, J., &amp; Vahdat, A. (2025). Measuring the environmental impact of delivering AI at Google Scale. <em>arXiv preprint arXiv:2508.15734</em>.
 </div>
@@ -1346,6 +1367,9 @@ Gallegos, S. (2026). <em><a href="https://www.iza.org/publications/dp18513">Guid
 </div>
 <div id="ref-google2025" class="csl-entry" role="listitem">
 Google (2025). <em><a href="https://ai.google.dev/gemini-api/docs/prompting-strategies?hl=de">Strategien für Prompt-Design</a></em>. Google.
+</div>
+<div id="ref-google2026aiplans" class="csl-entry" role="listitem">
+Google (2026). Google AI Pro und Ultra: Abos im Vergleich. <em>Gemini</em>. <a href="https://gemini.google/de/subscriptions/?hl=de">https://gemini.google/de/subscriptions/?hl=de</a>.
 </div>
 <div id="ref-gottweis2025" class="csl-entry" role="listitem">
 Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2502.18864">https://doi.org/10.48550/arXiv.2502.18864</a>.
@@ -1437,11 +1461,17 @@ Milam, K., &amp; Gulli, A. (2025). <em><a href="https://www.kaggle.com/whitepape
 <div id="ref-mkw2025kiconnect" class="csl-entry" role="listitem">
 Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen (2025, Januar 31). Studieren und Forschen mit Künstlicher Intelligenz: Hochschulen in Nordrhein-Westfalen erhalten zentralen Zugang zu KI-Diensten. <em>Pressemitteilung des Landes Nordrhein-Westfalen</em>. <a href="https://www.land.nrw/pressemitteilung/studieren-und-forschen-mit-kuenstlicher-intelligenz-hochschulen-nordrhein">https://www.land.nrw/pressemitteilung/studieren-und-forschen-mit-kuenstlicher-intelligenz-hochschulen-nordrhein</a>.
 </div>
+<div id="ref-mistral2026pricing" class="csl-entry" role="listitem">
+Mistral AI (2026). <em>Pricing</em>. <a href="https://mistral.ai/pricing/">https://mistral.ai/pricing/</a>.
+</div>
 <div id="ref-mollick2024d" class="csl-entry" role="listitem">
 Mollick, E. (2024). <em>Co-intelligence: living and working with AI</em>. Portfolio/Penguin.
 </div>
 <div id="ref-mollick2025e" class="csl-entry" role="listitem">
-Mollick, E. (2026, Februar 18). A Guide to Which AI to Use in the Agentic Era. <a href="https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9">https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9</a>.
+Mollick, E. (2026a, Februar 18). A Guide to Which AI to Use in the Agentic Era. <a href="https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9">https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9</a>.
+</div>
+<div id="ref-mollick2026guide" class="csl-entry" role="listitem">
+Mollick, E. (2026b, Juli 23). An opinionated guide to which AI to use to do stuff: The Summer 2026 Edition. <a href="https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22">https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22</a>.
 </div>
 <div id="ref-mollick2025" class="csl-entry" role="listitem">
 Mollick, E. R. (2025, Januar 26). A new generation of AIs: Claude 3.7 and Grok 3. <a href="https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37">https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37</a>.
@@ -1464,6 +1494,9 @@ O’Donnell, J., &amp; Crownhart, C. (2025, Mai 20). <a href="https://www.techno
 <div id="ref-openai2024" class="csl-entry" role="listitem">
 OpenAI (2024). <em><a href="https://openai.com/index/learning-to-reason-with-llms/">Learning to reason with LLMs</a></em>.
 </div>
+<div id="ref-openai2026pricing" class="csl-entry" role="listitem">
+OpenAI (2026). <em>ChatGPT pricing</em>. <a href="https://chatgpt.com/pricing/">https://chatgpt.com/pricing/</a>.
+</div>
 <div id="ref-parasuraman2000" class="csl-entry" role="listitem">
 Parasuraman, R., Sheridan, T. B., &amp; Wickens, C. D. (2000). A model for types and levels of human interaction with automation. <em>IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans</em>, <em>30</em>(3), 286–297. <a href="https://doi.org/10.1109/3468.844354">https://doi.org/10.1109/3468.844354</a>.
 </div>
@@ -1475,9 +1508,6 @@ Ritchie, H. (2024, September 19). <em>What’s the impact of artificial intellig
 </div>
 <div id="ref-roediger2012" class="csl-entry" role="listitem">
 Roediger, H. L., &amp; Pyc, M. A. (2012). Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice. <em>Journal of Applied Research in Memory and Cognition</em>, <em>1</em>(4), 242–248. <a href="https://doi.org/10.1016/j.jarmac.2012.09.002">https://doi.org/10.1016/j.jarmac.2012.09.002</a>.
-</div>
-<div id="ref-rogers2026" class="csl-entry" role="listitem">
-Rogers, R. (2026, Januar 15). <a href="https://www.wired.com/story/anthropic-claude-cowork-agent/">Anthropic’s Claude Cowork Is an AI Agent That Actually Works</a>. <em>Wired</em>.
 </div>
 <div id="ref-roucher2024smolagents" class="csl-entry" role="listitem">
 Roucher, A., Noyan, M., &amp; Wolf, T. (2024, Dezember 31). Introducing smolagents, a simple library to build agents. <a href="https://huggingface.co/blog/smolagents">https://huggingface.co/blog/smolagents</a>.
@@ -1506,6 +1536,9 @@ Schwarze, M. (2025, Juli 16). <a href="https://www.faz.net/pro/digitalwirtschaft
 <div id="ref-sequoia2026kilpatrick" class="csl-entry" role="listitem">
 Sequoia Capital (2026). <em>Google DeepMind’s Logan Kilpatrick: Why the model eats the harness</em>. <a href="https://sequoiacap.com/podcast/google-deepminds-logan-kilpatrick-why-the-model-eats-the-harness">https://sequoiacap.com/podcast/google-deepminds-logan-kilpatrick-why-the-model-eats-the-harness</a>.
 </div>
+<div id="ref-somala2025consumergpu" class="csl-entry" role="listitem">
+Somala, V., &amp; Emberson, L. (2025, August 15). Frontier AI performance becomes accessible on consumer hardware within a year. <em>Epoch AI</em>. <a href="https://epoch.ai/data-insights/consumer-gpu-model-gap">https://epoch.ai/data-insights/consumer-gpu-model-gap</a>.
+</div>
 <div id="ref-spear1999" class="csl-entry" role="listitem">
 Spear, S., &amp; Bowen, H. K. (1999). <a href="https://hbr.org/1999/09/decoding-the-dna-of-the-toyota-production-system">Decoding the DNA of the Toyota Production System</a>. <em>Harvard Business Review</em>, <em>77</em>(5), 96–106.
 </div>
@@ -1524,9 +1557,6 @@ Vallverdú, J., Rzepka, R., &amp; Sans Pinillos, A. (2025). Editorial: Prompts: 
 <div id="ref-vaswani2017" class="csl-entry" role="listitem">
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., &amp; Polosukhin, I. (2017). Attention is all you need. <em>Advances in neural information processing systems</em>, <em>30</em>.
 </div>
-<div id="ref-vellum2025" class="csl-entry" role="listitem">
-Vellum (2025, August). <em>LLM Leaderboard</em>. <a href="https://www.vellum.ai/llm-leaderboard">https://www.vellum.ai/llm-leaderboard</a>.
-</div>
 <div id="ref-wiesinger2024agents" class="csl-entry" role="listitem">
 Wiesinger, J., Marlow, P., &amp; Vuskovic, V. (2024). <em><a href="https://www.kaggle.com/whitepaper-agents">Agents</a></em> (Whitepaper). Google.
 </div>
@@ -1540,6 +1570,12 @@ You, J. (2025, Februar 7). How much energy does ChatGPT use? <em>Epoch AI</em>. 
 Zhang, B., Lazuka, K., &amp; Murag, M. (2025, Oktober 16). Equipping agents for the real world with Agent Skills. <em>Anthropic Engineering</em>. <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</a>.
 </div>
 </div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Stand Oktober 2026, Monatspreise einschließlich Mehrwertsteuer. 20-€-Stufe: ChatGPT Plus 23 €, Google AI Pro 21,99 €, Claude Pro 20 US-$ zuzüglich Steuer; 100-€-Stufe: ChatGPT Pro 103 €, Google AI Ultra 99,99 €, Claude Max 100 US-$ zuzüglich Steuer. Darunter liegen Einstiegsstufen für 5 bis 8 € mit kleinerem Kontingent, darüber Stufen um 200 € mit dem Zehn- bis Zwanzigfachen der 20-€-Stufe. Der europäische Anbieter Mistral verlangt für seine Pro-Stufe 14,99 US-$ zuzüglich Steuer. Ohne persönliches Abo geht es über den Hochschulzugang, über die API mit Abrechnung nach Verbrauch (zur Größenordnung s. den Tutor-Kosten-Rechner in <a href="#sec-capabilities" class="quarto-xref"><span>Kapitel 2.4</span></a>) oder mit offenen Modellen auf eigener Hardware. Quellen: <span class="citation" data-cites="openai2026pricing">OpenAI (<a href="references.html#ref-openai2026pricing" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="anthropic2026pricing">Anthropic (<a href="references.html#ref-anthropic2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="google2026aiplans">Google (<a href="references.html#ref-google2026aiplans" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="mistral2026pricing">Mistral AI (<a href="references.html#ref-mistral2026pricing" role="doc-biblioref">2026</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
