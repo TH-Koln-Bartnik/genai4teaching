@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vom Satz zum nächsten Wort: Tokens, Zahlen, Aufmerksamkeit</title>
+<style>
+  /* ---- Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) ---- */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; margin:0 4px 4px 0; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p, details li { max-width:75ch; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+  /* Token-Kästchen in den eingeklappten Abschnitten */
+  .tok { display:inline-block; border:1px solid var(--grau); border-radius:4px; padding:0 5px; margin:0 2px 3px 0;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size:14px; white-space:pre; }
+  .tok small { display:block; text-align:center; color:var(--grau); font-size:11px; line-height:1.2; }
+
+  /* ---- SVG: drei Zustände je Element (Regel F6) ---- */
+  svg text { font-size:16px; }
+  svg text.u { font-size:14px; }
+  svg text.b { font-weight:650; }
+  svg text.gross { font-size:22px; }
+  svg text.tk { font-size:17px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; }
+  svg text.nr { font-size:14px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; }
+  .f { fill:var(--c, var(--tinte)); }                    /* Text und Flächen */
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; } /* Rahmen, Linien */
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }                         /* Grau statt Transparenz: nichts scheint durch */
+  .leit    { --c:var(--akzent) !important; }               /* optional: ein Leitobjekt, dann ist es der einzige Akzent */
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* ---- Druckansicht (#druck) und Hörsaalmodus (?hoersaal) ---- */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher, .druck h1 { display:none !important; }
+  .druck .kontext { --c:var(--grau); }   /* im Druck dunkler, damit Graustufen lesbar bleiben */
+  .druck .neu { --c:var(--tinte); }      /* Druck in reinen Graustufen */
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Vom Satz zum nächsten Wort: Tokens, Zahlen, Aufmerksamkeit</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Wie viele Tokens braucht „Lieferantenbewertung“, wie viele „supplier evaluation“?</p>
+    <button data-tipp="0">beide gleich viele</button>
+    <button data-tipp="1">das deutsche Wort mehr</button>
+    <button data-tipp="2">das englische mehr</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 960 420" role="img"
+       aria-label="Der Satz ‚Die Bank steht unter einem Baum.‘ wird in sieben Tokens zerlegt; jedes Token hat eine feste Nummer. Auf einer schematischen Bedeutungskarte liegt ‚Bank‘ zwischen ‚Geld‘ und ‚Park‘. Über die Aufmerksamkeit blickt das Modell beim Token ‚Baum‘ auf ‚Bank‘ zurück; die Bedeutung rückt Richtung Park. Rechts stehen schematische Wahrscheinlichkeiten für das nächste Token: Sie, Er, Im, Kunden. Das Token ‚Sie‘ wird gezogen, angehängt, und die Schleife beginnt neu.">
+    <defs>
+      <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+      </marker>
+    </defs>
+
+    <!-- Schritt 1: der Satz als Text (verschwindet, wenn die Tokens ihn ersetzen) -->
+    <g data-ab="0" data-bis="0">
+      <text class="f gross" x="130" y="64">Die Bank steht unter einem Baum.</text>
+    </g>
+
+    <!-- Schritt 2: sieben Tokens (echt, o200k_base); ␣ = Leerzeichen, gehört zum folgenden Token -->
+    <g data-ab="1" data-grau-ab="3">
+      <text class="f u" x="20" y="62">7 Tokens</text>
+      <rect class="s" x="130" y="36" width="56" height="40" rx="6" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f tk" x="158" y="62" text-anchor="middle">Die</text>
+      <rect class="s" x="194" y="36" width="76" height="40" rx="6" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f tk" x="232" y="62" text-anchor="middle">␣Bank</text>
+      <rect class="s" x="278" y="36" width="80" height="40" rx="6" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f tk" x="318" y="62" text-anchor="middle">␣steht</text>
+      <rect class="s" x="366" y="36" width="80" height="40" rx="6" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f tk" x="406" y="62" text-anchor="middle">␣unter</text>
+      <rect class="s" x="454" y="36" width="88" height="40" rx="6" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f tk" x="498" y="62" text-anchor="middle">␣einem</text>
+      <rect class="s" x="550" y="36" width="80" height="40" rx="6" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f tk" x="590" y="62" text-anchor="middle">␣Baum</text>
+      <rect class="s" x="638" y="36" width="34" height="40" rx="6" style="fill:var(--grund);stroke-width:1.5"/>
+      <text class="f tk" x="655" y="62" text-anchor="middle">.</text>
+    </g>
+
+    <!-- Schritt 3: Token-Nummern (echt, o200k_base) -->
+    <g data-ab="2" data-grau-ab="3">
+      <text class="f u" x="20" y="102">Nummern</text>
+      <text class="f nr" x="158" y="102" text-anchor="middle">8796</text>
+      <text class="f nr" x="232" y="102" text-anchor="middle">9950</text>
+      <text class="f nr" x="318" y="102" text-anchor="middle">27717</text>
+      <text class="f nr" x="406" y="102" text-anchor="middle">9720</text>
+      <text class="f nr" x="498" y="102" text-anchor="middle">7470</text>
+      <text class="f nr" x="590" y="102" text-anchor="middle">70581</text>
+      <text class="f nr" x="655" y="102" text-anchor="middle">13</text>
+    </g>
+
+    <!-- Schritt 4: Bedeutungskarte (schematisch), ein Punkt je Token -->
+    <g data-ab="3" data-grau-ab="5">
+      <rect class="s" x="20" y="140" width="580" height="270" rx="12" style="stroke-width:1.2"/>
+      <text class="f u" x="34" y="164">Bedeutungskarte (schematisch)</text>
+      <circle class="f" cx="70" cy="300" r="6"/><rect class="s" x="80" y="286" width="18" height="24" rx="4" style="stroke-width:1.2"/><text class="f tk b" x="89" y="304" text-anchor="middle">.</text>
+      <circle class="f" cx="90" cy="375" r="6"/><text class="f" x="100" y="380">Die</text>
+      <circle class="f" cx="150" cy="330" r="6"/><text class="f" x="160" y="335">unter</text>
+      <circle class="f" cx="175" cy="392" r="6"/><text class="f" x="185" y="397">einem</text>
+      <circle class="f" cx="250" cy="352" r="6"/><text class="f" x="260" y="357">steht</text>
+      <circle class="f" cx="530" cy="340" r="6"/><text class="f" x="540" y="345">Baum</text>
+      <circle class="f" cx="300" cy="240" r="7"/><text class="f b" x="292" y="264" text-anchor="end">Bank</text>
+    </g>
+
+    <!-- Schritt 5: zwei Bedeutungsnachbarn (hohle Kreise = kommen im Satz nicht vor) -->
+    <g data-ab="4" data-grau-ab="6">
+      <line class="s" x1="130" y1="226" x2="292" y2="239" style="stroke-width:1.5;stroke-dasharray:5 5"/>
+      <line class="s" x1="308" y1="239" x2="490" y2="226" style="stroke-width:1.5;stroke-dasharray:5 5"/>
+      <circle class="s" cx="120" cy="225" r="9" style="fill:var(--grund)"/>
+      <text class="f b" x="120" y="205" text-anchor="middle">Geld</text>
+      <circle class="s" cx="500" cy="225" r="9" style="fill:var(--grund)"/>
+      <text class="f b" x="500" y="205" text-anchor="middle">Park</text>
+    </g>
+
+    <!-- Schritt 6: Aufmerksamkeit — beim Token „Baum“ blickt das Modell auf „Bank“ zurück -->
+    <g data-ab="5" data-grau-ab="6">
+      <path class="s" d="M522,336 Q380,362 306,250" marker-end="url(#pfeil)" style="stroke-width:2.5"/>
+      <text class="f" x="440" y="388" text-anchor="middle">Aufmerksamkeit</text>
+      <line class="s" x1="308" y1="243" x2="398" y2="258" marker-end="url(#pfeil)" style="stroke-width:2"/>
+      <circle class="f" cx="410" cy="260" r="8"/>
+      <text class="f b" x="418" y="290" text-anchor="middle">Bank im Satz</text>
+    </g>
+
+    <!-- Schritt 7: Wahrscheinlichkeiten für das nächste Token (schematisch, ausgedacht) -->
+    <g data-ab="6">
+      <line class="s" x1="604" y1="270" x2="626" y2="270" marker-end="url(#pfeil)" style="stroke-width:1.5"/>
+      <text class="f u" x="640" y="176">nächstes Token? (schematisch)</text>
+      <text class="f tk" x="640" y="224">␣Sie</text>
+      <rect class="f" x="730" y="208" width="200" height="22"/>
+      <text class="f tk" x="640" y="268">␣Er</text>
+      <rect class="f" x="730" y="252" width="120" height="22"/>
+      <text class="f tk" x="640" y="312">␣Im</text>
+      <rect class="f" x="730" y="296" width="67" height="22"/>
+      <text class="f tk" x="640" y="356">␣Kunden</text>
+      <rect class="f" x="730" y="340" width="5" height="22"/>
+    </g>
+
+    <!-- Schritt 8: ziehen, anhängen, Schleife beginnt neu -->
+    <g data-ab="7">
+      <path class="s" d="M934,206 C956,110 860,56 750,56" marker-end="url(#pfeil)" style="stroke-width:2.5"/>
+      <text class="f" x="898" y="128" text-anchor="end">anhängen, nächste Runde</text>
+      <rect class="s" x="680" y="36" width="64" height="40" rx="6" style="fill:var(--grund);stroke-width:2.5"/>
+      <text class="f tk b" x="712" y="62" text-anchor="middle">␣Sie</text>
+      <text class="f nr" x="712" y="102" text-anchor="middle">4006</text>
+    </g>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <section class="nachher" id="nachher">
+    <details open><summary>Auflösung der Vorhersage</summary>
+      <p>Das deutsche Wort braucht mehr als doppelt so viele Tokens:</p>
+      <p><span class="tok">Lie<small>63417</small></span><span class="tok">fer<small>855</small></span><span class="tok">anten<small>11524</small></span><span class="tok">bew<small>35634</small></span><span class="tok">ertung<small>110795</small></span> = 5 Tokens</p>
+      <p><span class="tok">supplier<small>89723</small></span><span class="tok">␣evaluation<small>21407</small></span> = 2 Tokens</p>
+      <p>Mitten im Satz, mit Leerzeichen davor, sind es 4 Tokens (<span class="tok">␣Liefer</span><span class="tok">anten</span><span class="tok">bew</span><span class="tok">ertung</span>) gegenüber 2. Der Tokenizer hat sein Vokabular aus Texten gelernt, in denen Englisch überwiegt. Häufige englische Wörter sind deshalb oft ein einziges Token, deutsche Komposita zerfallen in Stücke. Mehr Tokens heißt: höhere Kosten pro Text und ein schneller gefülltes Kontextfenster. Die beiden Sätze dieser Animation sind dagegen gleich lang: „Die Bank steht unter einem Baum.“ und „The bank is under a tree.“ brauchen je 7 Tokens.</p></details>
+    <details><summary>Was hier echt ist und was schematisch</summary>
+      <ul>
+        <li><strong>Echt:</strong> Tokens und Token-Nummern. Sie stammen aus dem Tokenizer o200k_base, den die GPT-4o-Familie von OpenAI nutzt. Andere Modelle haben andere Tokenizer und zerlegen denselben Satz anders. Das Zeichen ␣ steht für ein Leerzeichen; es gehört zum folgenden Token.</li>
+        <li><strong>Schematisch:</strong> die Bedeutungskarte. Echte Bedeutungsvektoren (<em>embeddings</em>) haben Hunderte bis Tausende Dimensionen, nicht zwei. Die Karte zeigt nur das Prinzip: Wie auf einem Stadtplan liegen verwandte Wörter in derselben Nachbarschaft.</li>
+        <li><strong>Vereinfacht:</strong> die Aufmerksamkeit. In Modellen der GPT-Art blickt jedes Token nur auf frühere Tokens zurück. Darum zeigt der Pfeil von „Baum“ auf „Bank“: Ab der Stelle „Baum“ trägt die Rechnung die Bedeutung „Bank im Park“ weiter. Der Punkt „Bank im Satz“ steht für diese Verbindung. Echte Modelle rechnen in vielen Schichten mit vielen Aufmerksamkeitsköpfen gleichzeitig.</li>
+        <li><strong>Ausgedacht:</strong> die Wahrscheinlichkeiten. Die Balken (etwa 45 % ␣Sie, 27 % ␣Er, 15 % ␣Im, 1 % ␣Kunden) sind Lehrwerte, keine Messung an einem Modell. Sie zeigen nur, dass nach „Bank im Park“ eine Fortsetzung über Bankkunden unwahrscheinlich wird. Die Kandidaten sind echte Einzeltokens in o200k_base (␣Sie 4006, ␣Er 4225, ␣Im 3133, ␣Kunden 28272).</li>
+      </ul></details>
+    <details><summary>Temperatur und Halluzinationen</summary>
+      <p>Das Modell gibt eine Verteilung aus, kein Wort. Gezogen wird erst danach. Bei einer Temperatur über null gewinnt manchmal ein Token mit kleinerem Balken; das macht Antworten abwechslungsreicher. Jedes Token wird danach angehängt und gilt als gesetzt, auch ein unpassendes. Die folgenden Tokens bauen darauf auf. So kann aus einem plausiblen, aber falschen Token eine flüssige, falsche Aussage werden: eine Halluzination.</p></details>
+    <details><summary>Zum Weiterspielen</summary>
+      <ul>
+        <li><a href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a>: ein echtes GPT-2 läuft im Browser; eigener Text, Aufmerksamkeit und Temperatur lassen sich live verändern (Cho et al., 2025).</li>
+        <li><a href="https://tiktokenizer.vercel.app/">Tiktokenizer</a>: zerlegt eigene Texte mit verschiedenen Tokenizern, auch o200k_base, und zeigt die Token-Nummern.</li>
+      </ul></details>
+    <details><summary>Bildunterschrift</summary>
+      <p>Eigene Darstellung. Tokens und Token-Nummern berechnet mit dem Tokenizer o200k_base (npm-Paket gpt-tokenizer 4.1.0, gegengeprüft mit js-tiktoken 1.0.21). Bedeutungskarte, Aufmerksamkeit und Wahrscheinlichkeiten schematisch, nach dem Prinzip in Vaswani et al. (2017) und Jurafsky und Martin (2026).</p></details>
+    <details><summary>Quellen</summary>
+      <p class="klein">Cho, A., Kim, G. C., Karpekov, A., Helbling, A., Wang, Z. J., Lee, S., Hoover, B., &amp; Chau, D. H. (2025). Transformer Explainer: Interactive learning of text-generative models. <em>Proceedings of the AAAI Conference on Artificial Intelligence, 39</em>(28), 29625–29627. https://doi.org/10.1609/aaai.v39i28.35347</p>
+      <p class="klein">Jurafsky, D., &amp; Martin, J. H. (2026). <em>Speech and language processing: An introduction to natural language processing, computational linguistics, and speech recognition with language models</em> (3. Aufl., Online-Manuskript vom 19. August 2026). https://web.stanford.edu/~jurafsky/slp3/</p>
+      <p class="klein">Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., &amp; Polosukhin, I. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems, 30</em>. https://arxiv.org/abs/1706.03762</p>
+      <p class="klein">Werkzeug: gpt-tokenizer 4.1.0 (npm), Kodierung o200k_base.</p></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // ================= HIER ANPASSEN: ein Eintrag je Schritt =================
+  var SCHRITTE = [
+    "Ein Satz mit einem doppeldeutigen Wort: *Bank*. Treffen Sie oben Ihre Vorhersage.",
+    "Der Tokenizer zerlegt den Satz in sieben *Tokens*; das Leerzeichen gehört zum folgenden Token.",
+    "Jedes Token hat eine feste *Nummer* im Vokabular; nur diese Zahlen erreichen das Modell.",
+    "Jede Nummer wird ein Punkt auf einer *Bedeutungskarte*: wie ein Stadtplan, auf dem Verwandtes benachbart liegt.",
+    "Allein liegt „Bank“ zwischen zwei Nachbarschaften: *Geld und Park*.",
+    "*Aufmerksamkeit*: Beim Token „Baum“ blickt das Modell auf „Bank“ zurück; die Bedeutung rückt Richtung Park.",
+    "Am Satzende berechnet das Modell eine *Wahrscheinlichkeit* für jedes mögliche nächste Token.",
+    "Ein Token wird *gezogen* und angehängt; die Schleife beginnt neu. Mit Temperatur gewinnt nicht immer Platz eins."
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: ["beide gleich viele", "das deutsche Wort mehr", "das englische mehr"] };
+  // =========================================================================
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  // #druck: vollständiges Bild ohne Steuerung (A5); ?hoersaal: Unterschrift aus (T7)
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };  // für das Prüfskript
+})();
+</script>
+</body>
+</html>
