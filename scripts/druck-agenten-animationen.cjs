@@ -12,7 +12,7 @@ const BASE='https://th-koln-bartnik.github.io/genai4teaching/interactions/';
   async function shot(url, sel, out, w){ const p=await b.newPage({viewport:{width:w,height:900},deviceScaleFactor:2.5});
     await p.goto(R+url); await p.waitForTimeout(1200); await p.locator(sel).first().screenshot({path:REPO+'images/druck/'+out}); await p.close(); }
   await shot('skill-karte.html#druck','svg#buehne','skill-karte.png',1000);
-  await shot('agenten-engpass.html#druck','.pa','agenten-engpass.png',1000);
+  await shot('agenten-engpass.html#druck','svg#buehne','agenten-engpass.png',1000); // Kugel-Fassung (30.10.2026): Bilanz bei t = Standbild, beide Laufzettel
   await shot('ki-entwicklung.html?zeige=zeithorizont#druck','#c1','ki-zeithorizont.png',920);
   await shot('ki-entwicklung.html?zeige=kosten#druck','#k2bild','ki-kosten.png',920); // Treppe und vier kleine Raster
   await shot('ki-entwicklung.html?zeige=arbeitsweisen#druck','#c3','ki-arbeitsweisen.png',920);

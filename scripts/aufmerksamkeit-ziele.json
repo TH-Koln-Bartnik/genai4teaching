@@ -45,12 +45,10 @@
       "gruppe": "A",
       "kapitel": "2",
       "seite": "interactions/agenten-engpass.html",
-      "art": "Zeitachse; Schritte = Knopf „Schritt“ (nächstes Ereignis) bis t = 120 min",
+      "art": "Kugel-Fassung (30.10.2026), Schritte über ANIM.gehe",
       "args": [
         "--buehne",
-        "#pa-canvas svg",
-        "--adapter",
-        "(()=>{const r=document.getElementById('pa-reset'),s=document.getElementById('pa-step'),c=()=>document.getElementById('pa-canvas').textContent;r.click();let k=0;while(!c().includes('t = '+PA.T+' min')&&k<300){s.click();k++}r.click();window.ANIM={gehe:n=>{r.click();for(let i=0;i<n;i++)s.click()},letzter:k}})()"
+        "svg#buehne"
       ]
     },
     {
