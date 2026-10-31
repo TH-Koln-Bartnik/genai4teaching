@@ -4,7 +4,7 @@ Grundlage: `claude/status-harness-kapitel02-2026-10-30.md` (Projekt).
 
 ## Repository
 - **Gemergt.** `main` = `revision-2026-druck` = `kapitel02-harness` = `9c96aef`, gepusht. Fast-Forward; vorher `revision-2026-druck` (`de5a721`, Aufmerksamkeitsurteil Phase 2, nur `reviews/`) in den Branch gemergt, konfliktfrei.
-- Branch `kapitel02-harness` kann gelöscht werden.
+- Branches `kapitel02-harness` (`9b614b2`), `p1-bereinigung` (`2edb196`) und `p1-merge-bereit` (`562d7ac`) sind löschbar: `p1-merge-bereit` ist Vorfahr von `main`; `p1-bereinigung` enthält nur ältere Fassungen von Text, der in `main` überarbeitet steht (u. a. die entfernte alte Harness-Definition), keine Quelltext-Kommentare mehr in `main`. Löschen aus der Cloud-Sitzung scheitert am Proxy (HTTP 403 für Branch-Löschung, auch per API); im GitHub-Webinterface unter Branches löschen.
 - `docs/` mit **Quarto 1.8.25** gerendert (dieselbe Version wie die bisherigen `docs/`; 1.10.19 hätte `site_libs` ausgetauscht). Nur `--to html`; Download-PDF/EPUB in `docs/` unverändert vom Stand 29.10. Keine unaufgelösten Verweise, nur die bekannten 36 OJS-Warnungen aus Kap. 4. Sichtprüfung im Browser: Tabelle 2.1 und Animation `harness-schichten.html` laden ohne JS-Fehler.
 - Lokaler Klon in Tresorit bleibt veraltet (Stand `af29ff9`); vor Arbeit dort neu klonen.
 
