@@ -2,7 +2,7 @@
 
 Auftrag Roman (31.10.): Lernziele wirken abschreckend → 3–4 Hauptpunkte je Kapitel. Start-Fragen nicht als Block, sondern als interaktive MC-Fragen, problembezogen formuliert (Problem nennen, für das das Kapitel Lösungsansätze bietet).
 
-## Umgesetzt (Branch `einstiegsfragen-mc`, Commit `9c546de`, gepusht, nicht in `main`)
+## Umgesetzt (Branch `einstiegsfragen-mc`, per Fast-Forward in `main` gemergt und gepusht, Stand `bbcf124`)
 
 - **Lernziele** Kapitel 1–6: 1: 5→3, 2: 7→4, 3: 6→4, 4: 6→4, 5: 6→4, 6: 4→3. Energieverbrauch (Exkurs 2.6) steht nicht mehr in den Lernzielen von Kapitel 2, bleibt aber Einstiegsfrage 5.
 - **Kasten „Leitfragen“ → „Probleme aus der Lehre“** (Name von Roman gewählt, 31.10.; zuerst „Einstiegsfragen“) (`callout-note .mc-block`): je Frage ein Problem aus dem Lehralltag, drei Optionen, eine richtig (`[…]{.richtig}`), Auflösung im Div `.mc-rueckmeldung` mit Abschnittsverweis. Zahl und Reihenfolge wie die alten Leitfragen (4/5/4/5/4/4), damit die Kernaussagen weiter „in derselben Reihenfolge“ passen. Position der richtigen Antwort gemischt (a 6×, b 11×, c 9×).
