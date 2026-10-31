@@ -46,3 +46,12 @@ Vier Beiträge mit Aussagetitel, zwei Sätzen, Link „Im Kapitel ansehen“ und
 1. Roman: Diff ansehen (<https://github.com/TH-Koln-Bartnik/genai4teaching/compare/main...kapitel01-kuerzung>; nur Quelltext: Dateien `kapitel01.qmd`, `kapitel04.qmd`, `kapitel07-appendix02-prompt-sammlung.qmd`, `interactions/galerie-kapitel01.html`), dann Merge nach `main`. Vorher gegen den Kap.-2-Branch rebasen (Plan-Abhängigkeit).
 2. Druck-PDF neu rendern (Reihenfolge laut README), sobald gemergt.
 3. Optional: ungenutzte Einträge aus `references.json` entfernen; Updates U1, U3–U8 aus `kapitel01-argumente-und-optionen` (nicht Teil dieses Plans).
+
+## Merge (31.10.2026, ca. 17:05)
+Entscheidungen Roman nach Durchsicht (Durchsichtsseite: https://claude.ai/artifact/KwtctpDHJDsz9QShPmUfe1): **1a** so übernehmen, **2b** Lernziel 3 um Lehrende ergänzen, **3b** ungenutzte Einträge entfernen.
+- Branch auf `main` @ `b23a4d6` (P7 Primer) neu aufgesetzt; nur `docs/`-Konflikte, durch Neu-Render gelöst. `references.json` ohne Konflikt (440 Einträge, keine Dubletten).
+- Lernziel 3 neu: „die Nutzung durch Studierende und Lehrende einordnen, den Fähigkeitsüberhang erklären und begründen, warum die Auslagerung des Denkens das Lernen stärker gefährdet als das Täuschen.“
+- Neun Einträge entfernt (`alammara`, `freeman2025`, `ma2025`, `marangunic2015b`, `monib2025`, `openai2025b`, `willemain1994`, `willemain1995`, `willison2025a`; 440 → 431). Korrektur zur Notiz oben: Sie *erschienen* im Literaturverzeichnis, weil `references.qmd` `nocite: '@*'` setzt. `openai2025b` und `willison2025a` stehen noch im internen `notes/zeitmarker-protokoll-2026-10.md` (nicht gerendert).
+- `docs/` mit Quarto 1.8.25 neu gerendert (HTML): nur die 36 bekannten OJS-Warnungen. `site_libs` damit wieder auf 1.8.25-Stand; der P7-Render lief mit 1.7.32 und hatte sie zurückgesetzt. **Künftig einheitlich 1.8.25 rendern.**
+- Download-PDF/EPUB unverändert (P7-Stand); enthalten die Kürzung von Kap. 1 noch nicht → beim nächsten Druck-Render (README-Reihenfolge) mitnehmen.
+- Per Fast-Forward nach `main` gepusht. Branch `kapitel01-kuerzung` auf GitHub ist veraltet (Neuaufsetzen nicht per Force-Push übertragen) und löschbar, ebenso `kapitel01-lehrende`.
