@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vom Chatbot zum Agenten</title>
+<style>
+  /* ---- Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) ---- */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+  .nachher td { padding:2px 12px 2px 0; vertical-align:top; }
+
+  /* ---- SVG: drei Zustände je Element (Regel F6) ---- */
+  svg text { font-size:15px; }
+  .f { fill:var(--c, var(--tinte)); }                    /* Text und Flächen */
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; } /* Rahmen, Linien */
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }                         /* Grau statt Transparenz: nichts scheint durch */
+  .leit    { --c:var(--akzent) !important; }               /* optional: ein Leitobjekt, dann ist es der einzige Akzent */
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* ---- Druckansicht (#druck) und Hörsaalmodus (?hoersaal) ---- */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher { display:none !important; }
+  .hoersaal .unterschrift { display:none; }
+  .druck .neu { --c:var(--tinte); }  /* Druckbild ganz in Tinte (A5) */
+</style>
+</head>
+<body>
+<main>
+  <!-- T1: Startbild = Aussagetitel, Skelett, Vorhersagefrage. Kein Einleitungsabsatz. -->
+  <h1>Das Modell bleibt Textfortsetzer – gewachsen ist, wie viel es über den Ablauf entscheidet</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Ein Chatbot holt vor jeder Antwort passende Stellen aus Ihren Skripten. Ist das ein Agent?</p>
+    <button data-tipp="0">ja, er beschafft sich Wissen selbst</button>
+    <button data-tipp="1">nein, er folgt einem festen Ablauf</button>
+    <button data-tipp="2">hängt vom Sprachmodell ab</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <!-- Jedes Element mit data-ab erscheint ab diesem Schritt (A1). Optional:
+       data-grau-ab = ab hier als Kontext zurückgenommen, data-bis = letzter sichtbarer Schritt.
+       data-ab-Elemente nicht ineinander verschachteln. Höchstens 8 Wörter je data-ab-Gruppe (T2). -->
+  <svg id="buehne" viewBox="0 0 960 450" role="img" aria-label="Ein Sprachmodell wird schrittweise um Abruf, Werkzeuge und eine Schleife erweitert; der Harness umschließt alles, der Mensch setzt Ziele und prüft.">
+    <!-- Schritt 9: Harness-Ring -->
+    <g data-ab="8"><rect class="s" x="285" y="18" width="500" height="422" rx="18" style="stroke-width:3;fill:none"/><text class="f" x="300" y="430" text-anchor="start" style="font-weight:650">Harness</text></g>
+    <!-- Schritt 7: Klammer augmented LLM -->
+    <g data-ab="6" data-grau-ab="8"><rect class="s" x="300" y="30" width="470" height="255" rx="12" style="stroke-dasharray:6 5"/><text class="f" x="760" y="52" text-anchor="end">erweitertes Sprachmodell</text></g>
+    <!-- Schritt 1: Skelett -->
+    <g data-ab="0"><circle class="s" cx="60" cy="198" r="13"/><path class="s" d="M60,212 L60,248 M38,226 L82,226 M60,248 L44,276 M60,248 L76,276"/><text class="f" x="60" y="300" text-anchor="middle">Mensch</text><rect class="s" x="340" y="200" width="140" height="56" rx="6" style="fill:var(--grund)"/><text class="f" x="410.0" y="233" text-anchor="middle">Sprachmodell</text></g>
+    <!-- Schritt 2: Chatbot ☆☆☆ -->
+    <g data-ab="1" data-grau-ab="4"><line class="s" x1="95" y1="216" x2="326.0" y2="216.0"/><polygon class="f" points="336.0,216.0 326.0,221.0 326.0,211.0"/><line class="s" x1="338" y1="242" x2="107.0" y2="242.0"/><polygon class="f" points="97.0,242.0 107.0,237.0 107.0,247.0"/><text class="f" x="178" y="205" text-anchor="middle">Frage rein, Text raus</text><text class="f" x="186" y="266" text-anchor="middle" style="font-size:14px">☆☆☆</text></g>
+    <!-- Schritt 3: Lücken -->
+    <g data-ab="2" data-grau-ab="3" data-bis="6"><text class="f" x="332" y="284" text-anchor="end">✗ vergisst</text><text class="f" x="332" y="303" text-anchor="end">✗ verrechnet sich</text></g>
+    <!-- Schritt 4: fester Abruf (RAG) -->
+    <g data-ab="3"><rect class="s" x="310" y="40" width="200" height="40" rx="6" style="fill:var(--grund)"/><text class="f" x="410.0" y="65" text-anchor="middle">Abruf aus eigenen Quellen</text><line class="s" x1="410" y1="80" x2="410.0" y2="188.0"/><polygon class="f" points="410.0,198.0 405.0,188.0 415.0,188.0"/></g>
+    <!-- Schritt 5: Router ★☆☆ auf fester Code-Schiene -->
+    <g data-ab="4" data-grau-ab="7"><line class="s" x1="320" y1="362" x2="650.0" y2="362.0"/><polygon class="f" points="660.0,362.0 650.0,367.0 650.0,357.0"/><line class="s" x1="500" y1="362" x2="650.2" y2="392.0"/><polygon class="f" points="660.0,394.0 649.2,396.9 651.2,387.1"/><polygon class="f" points="500,352 510,362 500,372 490,362"/><line class="s" x1="440" y1="258" x2="496" y2="352" style="stroke-dasharray:3 4"/><text class="f" x="320" y="350" text-anchor="start">fester Ablauf</text><text class="f" x="560" y="418" text-anchor="middle">Modell wählt Abzweig ★☆☆</text></g>
+    <!-- Schritt 6: Werkzeugaufruf ★★☆ -->
+    <g data-ab="5"><rect class="s" x="590" y="200" width="160" height="56" rx="6" style="fill:var(--grund)"/><text class="f" x="670.0" y="224" text-anchor="middle">Werkzeug:</text><text class="f" x="670.0" y="242" text-anchor="middle">Rechner, Suche</text><line class="s" x1="482" y1="218" x2="578.0" y2="218.0"/><polygon class="f" points="588.0,218.0 578.0,223.0 578.0,213.0"/><line class="s" x1="588" y1="240" x2="494.0" y2="240.0"/><polygon class="f" points="484.0,240.0 494.0,235.0 494.0,245.0"/><text class="f" x="670" y="278" text-anchor="middle" style="font-size:14px">★★☆</text></g>
+    <!-- Schritt 8: Schleife Denken–Handeln–Beobachten (ReAct), Umgebung -->
+    <g data-ab="7"><path class="s" d="M450,200 C480,128 600,128 626.1,189.8"/><polygon class="f" points="630,199 621.5,191.7 630.7,187.8"/><path class="s" d="M630,257 C600,330 480,330 453.8,267.2"/><polygon class="f" points="450,258 458.5,265.3 449.2,269.2"/><text class="f" x="540" y="136" text-anchor="middle">Handeln</text><text class="f" x="540" y="116" text-anchor="middle" style="font-size:14px">★★★</text><text class="f" x="540" y="330" text-anchor="middle">Beobachten</text><text class="f" x="372" y="190" text-anchor="middle">Denken</text><rect class="s" x="810" y="200" width="130" height="56" rx="6" style="fill:var(--grund)"/><text class="f" x="875.0" y="233" text-anchor="middle">Umgebung</text><line class="s" x1="752" y1="222" x2="798.0" y2="222.0"/><polygon class="f" points="808.0,222.0 798.0,227.0 798.0,217.0"/><line class="s" x1="808" y1="238" x2="764.0" y2="238.0"/><polygon class="f" points="754.0,238.0 764.0,233.0 764.0,243.0"/></g>
+    <!-- Schritt 10: Agent als Verhalten -->
+    <g data-ab="9"><text class="f" x="668" y="172" text-anchor="start" style="font-weight:650">Agent</text><line class="s" x1="664" y1="168" x2="630" y2="178"/></g>
+    <!-- Schritt 11: Multi-Agent ★★★ -->
+    <g data-ab="10"><line class="s" x1="785" y1="330" x2="838" y2="330" style="stroke-dasharray:6 5"/><line class="s" x1="838" y1="330" x2="838" y2="360" style="stroke-dasharray:6 5"/><line class="s" x1="838" y1="330" x2="914" y2="330" style="stroke-dasharray:6 5"/><line class="s" x1="914" y1="330" x2="914" y2="360" style="stroke-dasharray:6 5"/><ellipse class="s" cx="838" cy="377" rx="28" ry="16"/><rect class="f" x="803" y="370" width="14" height="14" rx="2"/><polygon class="f" points="866,376 861,385 871,385"/><ellipse class="s" cx="914" cy="377" rx="28" ry="16"/><rect class="f" x="879" y="370" width="14" height="14" rx="2"/><polygon class="f" points="942,376 937,385 947,385"/><text class="f" x="868" y="418" text-anchor="middle">startet weitere</text><text class="f" x="868" y="437" text-anchor="middle">Agenten ★★★</text></g>
+    <!-- Schritt 12: Mensch steuert -->
+    <g data-ab="11"><line class="s" x1="96" y1="196" x2="273.4" y2="142.9"/><polygon class="f" points="283.0,140.0 274.9,147.7 272.0,138.1"/><line class="s" x1="283" y1="336" x2="107.4" y2="269.5"/><polygon class="f" points="98.0,266.0 109.1,264.9 105.6,274.2"/><text class="f" x="170" y="150" text-anchor="middle">setzt Ziel</text><text class="f" x="176" y="322" text-anchor="middle">prüft Ergebnis</text></g>
+    <!-- Schritt 13: Legende Spielraum (Endbild) -->
+    <g data-ab="12"><text class="f" x="20" y="352" text-anchor="start" style="font-weight:650">Spielraum</text><text class="f" x="20" y="374" text-anchor="start" style="font-size:14px">☆☆☆ Chatbot</text><text class="f" x="20" y="395" text-anchor="start" style="font-size:14px">★☆☆ Router</text><text class="f" x="20" y="416" text-anchor="start" style="font-size:14px">★★☆ Werkzeug</text><text class="f" x="20" y="437" text-anchor="start" style="font-size:14px">★★★ Schleife</text></g>
+  </svg>
+
+  <!-- T3: ein Satz je Schritt, ≤ 20 Wörter, ersetzt den vorigen. *Wort* = Schlüsselwort im Akzent (F7). -->
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <!-- T6: Hintergrund erst nach dem letzten Schritt, eingeklappt. -->
+  <section class="nachher" id="nachher">
+    <details><summary>Die Stufen des Spielraums</summary>
+      <p>Die Sterne folgen der Skala von Roucher et al. (2024). Sie fragt nur eines: Wie stark bestimmt die Ausgabe des Modells den Programmablauf?</p>
+      <table class="klein" style="border-collapse:collapse">
+        <tr><th style="text-align:left;padding-right:12px">Stufe</th><th style="text-align:left;padding-right:12px">Bezeichnung</th><th style="text-align:left">Was die Modellausgabe bestimmt · Beispiel aus der Lehre</th></tr>
+        <tr><td>☆☆☆</td><td>Simple processor</td><td>nichts am Ablauf · ein Karriereberater aus einem Erstsemesterprojekt: Ein Suchverfahren holt passende Stellen aus dem Modulhandbuch, das Modell formuliert daraus die Antwort (Kapitel 6)</td></tr>
+        <tr><td>★☆☆</td><td>Router</td><td>einen Abzweig · etwa ein Tutor, der eine Frage an einen Erklär- oder einen Übungsmodus weitergibt</td></tr>
+        <tr><td>★★☆</td><td>Tool call</td><td>welches Werkzeug läuft · etwa ein Chat mit Websuche, der selbst entscheidet, ob und wonach er sucht</td></tr>
+        <tr><td>★★★</td><td>Multi-step agent</td><td>ob und wie es weitergeht · etwa ein Programmieragent, der eine Lernspiel-Seite baut, testet und nachbessert</td></tr>
+        <tr><td>★★★</td><td>Multi-agent</td><td>ob weitere Agenten starten · etwa ein Rechercheagent, der Teilfragen an Teilagenten verteilt</td></tr>
+      </table>
+      <p class="klein">Ein Chatbot mit festem Abruf aus eigenen Quellen (RAG) bleibt auf Stufe ☆☆☆: Der Abruf läuft immer, gleich was das Modell schreibt. Mehrere Karriereberater-Teams haben den Spielraum bewusst so klein gehalten: Die Stellensuche lief ohne KI über die Jobsuche-Schnittstelle der Bundesagentur für Arbeit, das Modell durfte die Treffer nur sortieren und begründen (Kapitel 6).</p></details>
+    <details><summary>Woher die Bildfolge stammt</summary>
+      <p>Die Abfolge folgt Grootendorst (2025): Modell allein, seine Lücken, das erweiterte Sprachmodell, die Schleife aus Denken, Handeln und Beobachten (ReAct; Yao et al., 2023), mehrere Agenten. Die Begriffe „augmented LLM“, Workflow und Agent stammen von Schluntz und Zhang (2024): Im Workflow steuern fest programmierte Pfade Modell und Werkzeuge, im Agenten steuert das Modell seinen Ablauf selbst. Den Harness definieren Grace et al. (2026) als das System, das ein Modell als Agent handeln lässt. Klassisch nimmt ein Agent seine Umgebung über Sensoren wahr und wirkt über Aktoren auf sie ein (Russell &amp; Norvig, 2021); hier übernehmen Werkzeuge beide Aufgaben.</p>
+      <p>Die Reihenfolge ist begrifflich, nicht zeitlich: Der Abruf aus eigenen Quellen (RAG) wurde 2020 beschrieben (Lewis et al., 2020), also vor ChatGPT (2022).</p></details>
+    <details><summary>Grenzen der Darstellung</summary>
+      <p>Die Begriffe sind uneinheitlich. Manche Quellen zählen das Modell zum Agenten, andere setzen Agent und Harness gleich. Das Bild folgt der Lesart, nach der der Harness ein Bauteil und „Agent“ eine Arbeitsweise ist. Zudem wandern Teile des Harness ins Modell, weil Modelle inzwischen eigens für Werkzeuge und lange Aufgaben trainiert werden.</p></details>
+    <details><summary>Quellen</summary>
+      <p class="klein">Grace, M., Hadfield, J., Olivares, R., &amp; De Jonghe, J. (2026, 9. Januar). <em>Demystifying evals for AI agents</em>. Anthropic Engineering. https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents</p>
+      <p class="klein">Grootendorst, M. (2025, 17. März). <em>A visual guide to LLM agents</em>. Exploring Language Models. https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents</p>
+      <p class="klein">Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S., &amp; Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. <em>Advances in Neural Information Processing Systems, 33</em>, 9459–9474. https://arxiv.org/abs/2005.11401</p>
+      <p class="klein">Roucher, A., Noyan, M., &amp; Wolf, T. (2024, 31. Dezember). <em>Introducing smolagents, a simple library to build agents</em>. Hugging Face. https://huggingface.co/blog/smolagents</p>
+      <p class="klein">Russell, S., &amp; Norvig, P. (2021). <em>Artificial intelligence: A modern approach</em> (4. Aufl.). Pearson.</p>
+      <p class="klein">Schluntz, E., &amp; Zhang, B. (2024, 19. Dezember). <em>Building effective agents</em>. Anthropic Engineering. https://www.anthropic.com/engineering/building-effective-agents</p>
+      <p class="klein">Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., &amp; Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. <em>International Conference on Learning Representations (ICLR)</em>. https://doi.org/10.48550/arXiv.2210.03629</p></details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // ================= HIER ANPASSEN: ein Eintrag je Schritt =================
+  var SCHRITTE = [
+    "Ein *Sprachmodell* setzt Text fort, ein Wort nach dem anderen. Treffen Sie oben Ihre Vorhersage.",
+    "Im *Chatbot* ändert die Antwort nichts am Ablauf; Kopieren und Prüfen bleibt beim Menschen.",
+    "Allein hat das Modell *Lücken*: Es vergisst frühere Gespräche und rechnet unzuverlässig.",
+    "Ein fester *Abruf* holt vor jeder Antwort Textstellen aus eigenen Quellen; den Ablauf bestimmt weiter der Code.",
+    "Als *Router* wählt das Modell zwischen vorgegebenen Wegen; die Wege selbst schreibt der Code.",
+    "Das Modell schreibt eine *Werkzeugbitte*; ein Programm führt sie aus und meldet das Ergebnis zurück.",
+    "Modell plus Abruf, Werkzeuge und Gedächtnis heißt *erweitertes Sprachmodell* (augmented LLM).",
+    "In der *Schleife* entscheidet das Modell nach jeder Beobachtung, was es als Nächstes tut.",
+    "Die Schicht um das Modell heißt *Harness*: Sie lässt es handeln und legt seinen Spielraum fest.",
+    "*Agent* ist kein Bauteil, sondern das, was entsteht, wenn das Modell den Ablauf selbst steuert.",
+    "Ein Agent kann *weitere Agenten* starten und ihnen Teilaufgaben übergeben.",
+    "Der *Mensch* tippt nicht mehr jeden Schritt; er setzt Ziele und prüft Ergebnisse.",
+    "Vom Chatbot zum Agenten wächst vor allem der *Spielraum* des Modells: wie viel es über den Ablauf entscheidet."
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: ["ja, er beschafft sich Wissen selbst", "nein, er folgt einem festen Ablauf", "hängt vom Sprachmodell ab"] };
+  // =========================================================================
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s < ab || s > bis) return null;
+    if (s >= grau) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage trifft zu: Fester Abruf bleibt ☆☆☆." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt; fester Abruf bleibt ☆☆☆.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  // #druck: vollständiges Bild ohne Steuerung (A5); ?hoersaal: Unterschrift aus (T7)
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    var d = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };  // für das Prüfskript
+})();
+</script>
+</body>
+</html>

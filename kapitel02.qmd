@@ -175,6 +175,24 @@ Nutzt das Sprachmodell nur sein "Standard-Wissen" (LLM only), oder werden "Werkz
 
 In der Praxis kommt eine vierte Entscheidungsfrage hinzu [@mollick2025e]: **Was steckt um das Modell herum?** Welche Werkzeuge, welches Gedächtnis und wie viel Handlungsspielraum ein Angebot dem Modell gibt, entscheidet darüber, ob es tatsächlich recherchieren, rechnen und Dateien erzeugen kann; der nächste Abschnitt führt dafür den Begriff Harness ein (@sec-harness). Für Lehraufgaben bewährt sich ein Workflow, der erst eigenes Material als Kontext nutzt (RAG/Notebook-Ansatz), dann für belastbare Quellen einen Research-Harness (z. B. „Deep Research“) einsetzt und die Ergebnisse als Artefakte exportiert (Quiz, Aufgabenblatt, Folien) – bevor Sie didaktisch zuspitzen.
 
+Die drei Muster liegen auf einer Skala, und an ihr zählt nicht, ob ein System Quellen oder Werkzeuge hat, sondern wer den Ablauf bestimmt.
+In einem **Workflow** folgen Modell und Werkzeuge fest programmierten Pfaden; in einem **Agenten** steuert das Modell seinen Ablauf und seine Werkzeugnutzung selbst [@schluntz2024agents].
+@roucher2024smolagents fassen den Übergang in eine Skala aus drei Sternen, die eine einzige Frage stellt: Wie stark bestimmt die Ausgabe des Modells, was das Programm als Nächstes tut?
+Ein Chatbot, der vor jeder Antwort passende Stellen aus den Skripten holt, bleibt danach auf der untersten Stufe, denn die Suche läuft immer, gleich was das Modell schreibt.
+RAG macht das Modell kundiger, nicht selbstständiger.
+Die folgende Animation baut den Weg vom Chatbot zum Agenten in dreizehn Schritten auf; die Bildfolge stammt von @grootendorst2025agents, die Schleife aus Denken, Handeln und Beobachten von @yao2023react.
+Den Rahmen, der dem Modell seinen Spielraum gibt und begrenzt, behandelt @sec-harness.
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
+
+<iframe src="interactions/chatbot-zu-agent.html" width="100%" height="1050px" frameborder="0" title="Animation: Vom Chatbot zum Agenten, wie der Spielraum des Modells über den Ablauf wächst"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Vom Chatbot zum Agenten wächst vor allem der Spielraum des Modells. Im Chatbot ändert die Antwort nichts am Ablauf (☆☆☆), und ein fester Abruf aus eigenen Quellen ändert daran nichts; als Router wählt das Modell zwischen vorgegebenen Abzweigen (★☆☆), mit Werkzeugen wählt es das Werkzeug (★★☆), in der Schleife aus Denken, Handeln und Beobachten den nächsten Schritt (★★★). Der Harness umschließt alles, der Mensch setzt das Ziel und prüft das Ergebnis (Skala nach @roucher2024smolagents, Bildfolge nach @grootendorst2025agents; schematische Darstellung). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/chatbot-zu-agent.html> aufrufen.](images/druck/chatbot-zu-agent-qr.png){#fig-chatbot-zu-agent width="100%" fig-pos="htbp"}
+:::
+
 ::: {.callout-tip title="Lernspiel: Welche Art des LLM-Setups passt zu den links gezeigten Antworten oder Denkprozessen?"}
 ::: {.content-visible when-format="html"}
 <iframe src="interactions/llm-agent-patterns-matching.html" width="100%" height="700px" frameborder="0">
@@ -229,6 +247,7 @@ Was davon wann auf den Schreibtisch des Modells kommt, ist eine eigene Gestaltun
 Mit Werkzeugen und Gedächtnis wird aus einem Durchgang eine Schleife.
 Das Modell plant einen Schritt, ruft ein Werkzeug auf, liest das Ergebnis und plant den nächsten, so lange, bis die Aufgabe erledigt scheint; @yao2023react haben dieses Wechselspiel aus Denken und Handeln unter dem Namen ReAct beschrieben.
 @schluntz2024agents ziehen daraus die Grenze, die für dieses Buch gilt: In einem Workflow folgen Modell und Werkzeuge vorgegebenen Pfaden, ein **Agent** steuert seinen Ablauf und seine Werkzeugnutzung selbst.
+Die Stufen dazwischen, vom Router bis zur Schleife, zeigt die Animation in @sec-patterns-usage.
 Das Wort kommt vom lateinischen *agere*, handeln, in Gang bringen.
 Wie weit diese Selbststeuerung inzwischen reicht, misst METR als Zeithorizont: Die Aufgaben, die Modelle in der Hälfte der Fälle allein lösen, sind von Minuten auf Stunden gewachsen [@kwa2025; s. @sec-capabilities].
 
