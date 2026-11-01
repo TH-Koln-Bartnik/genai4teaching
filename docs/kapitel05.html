@@ -450,7 +450,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kapitel10-appendix05-loesungshinweise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Lösungshinweise zu den Lernfragen</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Lösungshinweise zu Lernfragen und Übungen</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1734,6 +1734,401 @@ Yusuf, H., Money, A., &amp; Daylamani-Zad, D. (2026). Exploring student anxiety 
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
+})();
+</script>
+<!-- Kasten „Schlüsselbegriffe“ am Kapitelende (Gegenstück zu _filters/schluesselbegriffe.lua).
+     Ein Skript für alle Modi, damit neue Kapitel nur Daten im .qmd brauchen:
+       .sb-begriffe     Begriffsliste: Begriff (Link zur Fundstelle), Musterantwort aufdecken,
+                        Selbsteinstufung gewusst / halb / nicht (Browser-Speicher, Präfix genai4teaching:sb:)
+       .sb-spiel        modus="fall" | "paare" | "stapel" | "luecke" | "reihenfolge"
+       .sb-wiederkehr   2–3 Begriffe früherer Kapitel als Erklärkarten; bevorzugt „nicht“, dann „halb“
+                        gewusste, ohne Einstufungen zufällig (Daten werden aus den Kapitelseiten gelesen)
+     Bedienung nur mit Klicks und Tastatur, kein Ziehen nötig. Ohne JavaScript bleiben
+     Begriffe, Szenen, Herkunft und Begründungen als Text lesbar. -->
+<style>
+.schluesselbegriffe .sb-anleitung { font-style: italic; margin: 0.2rem 0 0.7rem; }
+.sb-begriff, .sb-wk-karte { border-top: 1px solid var(--bs-border-color, #ddd); padding: 0.55rem 0 0.6rem; }
+.sb-begriff:first-of-type { border-top: 0; }
+.sb-begriff > p, .sb-wk-karte > p { margin-bottom: 0.35rem; }
+.sb-name { font-weight: 600; }
+.sb-js .sb-muster[hidden] { display: none; }
+.sb-muster { font-size: 0.95em; margin: 0.25rem 0 0.4rem; padding-left: 0.7rem; border-left: 3px solid var(--bs-border-color, #ddd); }
+.sb-zeile { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.sb-knopf {
+  font: inherit; font-size: 0.85em; line-height: 1.25; padding: 0.3rem 0.55rem;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.sb-knopf:hover:not([disabled]) { border-color: #c81e0f; }
+.sb-knopf:focus-visible, .sb-eingabe:focus-visible, .sb-erklaerung:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.sb-knopf[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.sb-knopf[disabled] { cursor: default; opacity: 0.75; }
+.sb-stufen-label { font-size: 0.85em; color: #6c757d; margin: 0 0.2rem 0 0.4rem; }
+.sb-spiel { margin-top: 1rem; }
+.sb-titel { font-weight: 600; margin: 0.8rem 0 0.2rem; }
+.sb-aufgabe { border-top: 1px solid var(--bs-border-color, #ddd); padding: 0.6rem 0; }
+.sb-aufgabe > p:first-child { margin-bottom: 0.3rem; }
+.sb-herkunft, .sb-herkunft p { font-size: 0.85em; color: #6c757d; margin-bottom: 0.35rem; }
+.sb-js .sb-begruendung { display: none; }
+.sb-js .sb-aufgabe.sb-beantwortet .sb-begruendung { display: block; }
+.sb-begruendung, .sb-begruendung p { font-size: 0.95em; }
+.sb-optionen .sb-knopf { text-align: left; }
+.sb-knopf.sb-richtig { border: 2px solid #2e7d32; font-weight: 600; }
+.sb-knopf.sb-falsch { border: 2px solid #c62828; text-decoration: line-through; }
+.sb-rueckmeldung { font-weight: 600; margin: 0.4rem 0 0.2rem; }
+.sb-rueckmeldung.sb-ok { color: #2e7d32; }
+.sb-rueckmeldung.sb-nein { color: #c62828; }
+.sb-eingabe { font: inherit; padding: 0.25rem 0.4rem; border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px; max-width: 14rem; width: 100%; background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); }
+.sb-erklaerung { font: inherit; font-size: 0.95em; width: 100%; min-height: 3.2rem; padding: 0.3rem 0.4rem; border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px; background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); margin-bottom: 0.35rem; }
+.sb-reihe { padding-left: 1.4rem; margin: 0.3rem 0; }
+.sb-reihe li.sb-richtig::marker { color: #2e7d32; }
+.sb-reihe li.sb-falsch { color: #c62828; }
+.sb-stand { font-size: 0.9em; margin-top: 0.6rem; }
+.sb-wiederkehr { margin-top: 1rem; }
+.sb-wiederkehr:empty { display: none; }
+@media (max-width: 480px) {
+  .sb-optionen { flex-direction: column; align-items: stretch; }
+  .sb-optionen .sb-knopf { width: 100%; }
+}
+</style>
+<script>
+(function () {
+  "use strict";
+  var PRAEFIX = "genai4teaching:sb:";
+  var STUFEN = [["gewusst", "gewusst"], ["halb", "halb"], ["nicht", "nicht gewusst"]];
+  var ANLEITUNG = {
+    fall: "Welcher Begriff passt zu der Szene? Wählen Sie eine Antwort; danach sehen Sie die Begründung.",
+    paare: "Zu welchem der beiden Begriffe passt der Satz?",
+    stapel: "In welchen Stapel gehört die Karte?",
+    luecke: "Tragen Sie den fehlenden Begriff ein und prüfen Sie.",
+    reihenfolge: "Klicken Sie die Schritte in der richtigen Reihenfolge an."
+  };
+  var TITEL = {
+    fall: "Übung: Welcher Begriff passt?", paare: "Übung: Verwechslungspaare", stapel: "Übung: Stapel sortieren",
+    luecke: "Übung: Lückentext", reihenfolge: "Übung: Reihenfolge"
+  };
+
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Einstufung nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function el(tag, klasse, text) {
+    var e = document.createElement(tag);
+    if (klasse) e.className = klasse;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function knopf(text, klasse) {
+    var b = el("button", "sb-knopf" + (klasse ? " " + klasse : ""), text);
+    b.type = "button";
+    return b;
+  }
+  function mische(a) {
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function norm(s) {
+    return (s || "").toLowerCase().replace(/\(.*?\)/g, "")
+      .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+      .replace(/[^a-z0-9]/g, "");
+  }
+  var zaehler = 0;
+  function neueId(p) { zaehler += 1; return "sb-" + p + "-" + zaehler; }
+
+  // ---------- Begriffe: Musterantwort aufdecken und selbst einstufen ----------
+  function stufen(id) {
+    var zeile = el("div", "sb-zeile sb-stufen");
+    zeile.setAttribute("role", "group");
+    zeile.setAttribute("aria-label", "Selbsteinstufung: Wie gut konnten Sie den Begriff erklären?");
+    zeile.appendChild(el("span", "sb-stufen-label", "Erklären konnte ich ihn:"));
+    var knoepfe = STUFEN.map(function (s) {
+      var b = knopf(s[1]);
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () { schreib(id, s[0]); markiere(s[0]); });
+      zeile.appendChild(b);
+      return b;
+    });
+    function markiere(w) { knoepfe.forEach(function (b, i) { b.setAttribute("aria-pressed", STUFEN[i][0] === w ? "true" : "false"); }); }
+    markiere(lies(id));
+    return zeile;
+  }
+
+  function aufdecken(muster) {
+    var mid = neueId("muster");
+    muster.id = mid;
+    muster.hidden = true;
+    var b = knopf("Musterantwort zeigen", "sb-aufdecken");
+    b.setAttribute("aria-expanded", "false");
+    b.setAttribute("aria-controls", mid);
+    b.addEventListener("click", function () {
+      var auf = muster.hidden;
+      muster.hidden = !auf;
+      b.setAttribute("aria-expanded", auf ? "true" : "false");
+      b.textContent = auf ? "Musterantwort verbergen" : "Musterantwort zeigen";
+    });
+    return b;
+  }
+
+  function richteBegriffEin(div) {
+    var id = div.getAttribute("data-begriff");
+    var absaetze = Array.prototype.slice.call(div.children);
+    var kopf = absaetze.shift();
+    if (!kopf) return;
+    var link = el("a", "sb-name");
+    link.href = "#sb-" + id;
+    link.title = "Zur Stelle im Kapitel";
+    while (kopf.firstChild) link.appendChild(kopf.firstChild);
+    kopf.appendChild(link);
+    var muster = el("div", "sb-muster");
+    absaetze.forEach(function (p) { muster.appendChild(p); });
+    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
+    var zeile = el("div", "sb-zeile");
+    zeile.appendChild(aufdecken(muster));
+    zeile.appendChild(stufen(id));
+    div.appendChild(zeile);
+    div.appendChild(muster);
+  }
+
+  function begriffsListe(liste) {
+    var hinweis = el("p", "sb-anleitung",
+      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+      "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    liste.insertBefore(hinweis, liste.firstChild);
+    Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
+  }
+
+  // ---------- Spiele ----------
+  function etiketten() {
+    var m = {};
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+      var k = d.querySelector(".sb-name") || d.firstElementChild;
+      // Auf Knöpfen nur der deutsche Begriff, ohne englischen Fachbegriff in Klammern
+      if (k) m[d.getAttribute("data-begriff")] = k.textContent.replace(/\s*\(.*\)\s*$/, "").trim();
+    });
+    return m;
+  }
+  // Fallback ohne Begriffsliste auf der Seite: Kennung lesbar machen (k1-vier-rollen -> Vier rollen)
+  function etikett(m, x) {
+    if (m[x]) return m[x];
+    var s = String(x).replace(/^k\d+-/, "").replace(/-/g, " ");
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function rueckmelden(aufgabe, ok, loesungText) {
+    var r = aufgabe.querySelector(".sb-rueckmeldung");
+    r.className = "sb-rueckmeldung " + (ok ? "sb-ok" : "sb-nein");
+    r.textContent = ok ? "✓ Richtig." : "✗ Nicht ganz. Passend ist: " + loesungText + ".";
+    aufgabe.classList.add("sb-beantwortet");
+  }
+
+  function vorRueckmeldung(aufgabe, knoten) {
+    var r = el("p", "sb-rueckmeldung");
+    r.setAttribute("aria-live", "polite");
+    var beg = aufgabe.querySelector(".sb-begruendung");
+    aufgabe.insertBefore(knoten, beg || null);
+    aufgabe.insertBefore(r, beg || null);
+  }
+
+  function auswahl(aufgabe, modus, m, spiel, zaehle) {
+    var loesung = aufgabe.getAttribute("data-loesung");
+    var optionen;
+    if (modus === "stapel") {
+      optionen = (spiel.getAttribute("data-koerbe") || "").split("|").map(function (s) { return s.trim(); }).filter(Boolean);
+    } else {
+      optionen = [loesung].concat((aufgabe.getAttribute("data-ablenker") || "").split(/\s+/).filter(Boolean));
+      optionen.sort(function (a, b) { return etikett(m, a).localeCompare(etikett(m, b), "de"); });
+    }
+    var gruppe = el("div", "sb-zeile sb-optionen");
+    gruppe.setAttribute("role", "group");
+    gruppe.setAttribute("aria-label", "Antwort wählen");
+    var knoepfe = optionen.map(function (o) {
+      var b = knopf(etikett(m, o));
+      b.addEventListener("click", function () {
+        var ok = o === loesung;
+        knoepfe.forEach(function (k, i) {
+          k.disabled = true;
+          if (optionen[i] === loesung) k.classList.add("sb-richtig");
+        });
+        if (!ok) b.classList.add("sb-falsch");
+        rueckmelden(aufgabe, ok, etikett(m, loesung));
+        zaehle(ok);
+      });
+      gruppe.appendChild(b);
+      return b;
+    });
+    vorRueckmeldung(aufgabe, gruppe);
+  }
+
+  function luecke(aufgabe, m, zaehle) {
+    var loesung = aufgabe.getAttribute("data-loesung");
+    var erlaubt = [etikett(m, loesung)].concat((aufgabe.getAttribute("data-auch") || "").split("|")).map(norm).filter(Boolean);
+    var platz = aufgabe.querySelector(".sb-luecke");
+    var feld = el("input", "sb-eingabe");
+    feld.type = "text";
+    feld.setAttribute("aria-label", "Fehlenden Begriff eintragen");
+    feld.autocomplete = "off";
+    if (platz) { platz.textContent = ""; platz.appendChild(feld); }
+    var zeile = el("div", "sb-zeile");
+    var b = knopf("Prüfen");
+    zeile.appendChild(b);
+    if (!platz) zeile.insertBefore(feld, b);
+    function pruefe() {
+      if (feld.disabled) return;
+      var ok = erlaubt.indexOf(norm(feld.value)) >= 0;
+      feld.disabled = true; b.disabled = true;
+      rueckmelden(aufgabe, ok, etikett(m, loesung));
+      zaehle(ok);
+    }
+    b.addEventListener("click", pruefe);
+    feld.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); pruefe(); } });
+    vorRueckmeldung(aufgabe, zeile);
+  }
+
+  function reihenfolge(aufgabe, zaehle) {
+    var ol = aufgabe.querySelector("ol");
+    if (!ol) return;
+    var richtig = Array.prototype.map.call(ol.children, function (li) { return li.innerHTML; });
+    var reihe = richtig.map(function (_, i) { return i; });
+    do { mische(reihe); } while (reihe.length > 1 && reihe.every(function (x, i) { return x === i; }));
+    var gewaehlt = [];
+    var vorrat = el("div", "sb-zeile sb-optionen");
+    vorrat.setAttribute("role", "group");
+    vorrat.setAttribute("aria-label", "Schritte zur Auswahl");
+    var antwort = el("ol", "sb-reihe");
+    antwort.setAttribute("aria-label", "Ihre Reihenfolge");
+    var steuer = el("div", "sb-zeile");
+    var zurueck = knopf("Zurücksetzen"), pruef = knopf("Prüfen");
+    pruef.disabled = true;
+    steuer.appendChild(zurueck); steuer.appendChild(pruef);
+    var knoepfe = reihe.map(function (i) {
+      var b = knopf("");
+      b.innerHTML = richtig[i];
+      b.addEventListener("click", function () {
+        gewaehlt.push(i); b.disabled = true;
+        var li = el("li"); li.innerHTML = richtig[i]; antwort.appendChild(li);
+        pruef.disabled = gewaehlt.length < richtig.length;
+      });
+      vorrat.appendChild(b);
+      return b;
+    });
+    zurueck.addEventListener("click", function () {
+      gewaehlt = []; antwort.innerHTML = ""; pruef.disabled = true;
+      knoepfe.forEach(function (k) { k.disabled = false; });
+    });
+    pruef.addEventListener("click", function () {
+      var ok = gewaehlt.every(function (x, i) { return x === i; });
+      Array.prototype.forEach.call(antwort.children, function (li, i) { li.className = gewaehlt[i] === i ? "sb-richtig" : "sb-falsch"; });
+      pruef.disabled = true; zurueck.disabled = true;
+      var r = aufgabe.querySelector(".sb-rueckmeldung");
+      r.className = "sb-rueckmeldung " + (ok ? "sb-ok" : "sb-nein");
+      r.textContent = ok ? "✓ Richtig." : "✗ Nicht ganz. Richtig ist: " + richtig.map(function (h) { var d = el("div"); d.innerHTML = h; return d.textContent.trim(); }).join(" → ") + ".";
+      aufgabe.classList.add("sb-beantwortet");
+      zaehle(ok);
+    });
+    ol.hidden = true;
+    var huelle = el("div");
+    huelle.appendChild(vorrat); huelle.appendChild(antwort); huelle.appendChild(steuer);
+    vorRueckmeldung(aufgabe, huelle);
+  }
+
+  function richteSpielEin(spiel, m) {
+    var modus = spiel.getAttribute("data-modus") || "fall";
+    if (!spiel.__sbVorlage) spiel.__sbVorlage = spiel.innerHTML;
+    var aufgaben = spiel.querySelectorAll(".sb-aufgabe");
+    var n = aufgaben.length, beantwortet = 0, richtig = 0;
+    spiel.insertBefore(el("p", "sb-anleitung", ANLEITUNG[modus] || ANLEITUNG.fall), spiel.firstChild);
+    spiel.insertBefore(el("p", "sb-titel", TITEL[modus] || TITEL.fall), spiel.firstChild);
+    var stand = el("p", "sb-stand");
+    stand.setAttribute("aria-live", "polite");
+    var neu = knopf("Übung neu starten");
+    neu.addEventListener("click", function () {
+      spiel.innerHTML = spiel.__sbVorlage;
+      richteSpielEin(spiel, m);
+      var t = spiel.querySelector(".sb-knopf, .sb-eingabe");
+      if (t) t.focus();
+    });
+    function zaehle(ok) {
+      beantwortet += 1; if (ok) richtig += 1;
+      stand.textContent = richtig + " von " + beantwortet + " richtig" + (beantwortet === n ? " (alle beantwortet)." : ".");
+    }
+    Array.prototype.forEach.call(aufgaben, function (a) {
+      if (modus === "luecke") luecke(a, m, zaehle);
+      else if (modus === "reihenfolge") reihenfolge(a, zaehle);
+      else auswahl(a, modus, m, spiel, zaehle);
+    });
+    var fuss = el("div", "sb-zeile");
+    fuss.appendChild(stand); fuss.appendChild(neu);
+    spiel.appendChild(fuss);
+  }
+
+  // ---------- Wiederkehr: Bonuskarten aus früheren Kapiteln ----------
+  function holeBegriffe(url) {
+    return fetch(url, { credentials: "same-origin" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      return Array.prototype.map.call(doc.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+        var teile = Array.prototype.slice.call(d.children);
+        var kopf = teile.shift();
+        return { id: d.getAttribute("data-begriff"), url: url, kopf: kopf ? kopf.innerHTML : "", muster: teile.map(function (p) { return p.outerHTML; }).join("") };
+      });
+    }).catch(function () { return []; });
+  }
+
+  function waehleKarten(alle, anzahl) {
+    var gruppen = { nicht: [], halb: [], offen: [], gewusst: [] };
+    alle.forEach(function (b) { var w = lies(b.id); (gruppen[w] || gruppen.offen).push(b); });
+    var reihe = mische(gruppen.nicht).concat(mische(gruppen.halb), mische(gruppen.offen), mische(gruppen.gewusst));
+    return reihe.slice(0, anzahl);
+  }
+
+  function richteWiederkehrEin(wk) {
+    var quellen = (wk.getAttribute("data-quellen") || "").split(/\s+/).filter(Boolean);
+    var anzahl = parseInt(wk.getAttribute("data-anzahl") || "3", 10);
+    if (!quellen.length || !window.fetch || !window.DOMParser) { wk.hidden = true; return; }
+    Promise.all(quellen.map(holeBegriffe)).then(function (listen) {
+      var alle = [].concat.apply([], listen);
+      if (!alle.length) { wk.hidden = true; return; }
+      var karten = waehleKarten(alle, anzahl);
+      wk.innerHTML = "";
+      wk.appendChild(el("p", "sb-titel", "Wiederholung aus früheren Kapiteln"));
+      wk.appendChild(el("p", "sb-anleitung", "Erklären Sie die Begriffe in eigenen Worten, bevor Sie die Musterantwort aufdecken. Ausgewählt werden bevorzugt Begriffe, die Sie dort als nicht oder halb gewusst eingestuft haben."));
+      karten.forEach(function (b) {
+        var karte = el("div", "sb-wk-karte");
+        var kopf = el("p");
+        var link = el("a", "sb-name");
+        link.href = b.url + "#sb-" + b.id;
+        link.title = "Zur Stelle im früheren Kapitel";
+        link.innerHTML = b.kopf;
+        kopf.appendChild(link);
+        karte.appendChild(kopf);
+        var feld = el("textarea", "sb-erklaerung");
+        feld.setAttribute("aria-label", "Ihre Erklärung (wird nicht gespeichert)");
+        feld.placeholder = "Ihre Erklärung in eigenen Worten (wird nicht gespeichert)";
+        karte.appendChild(feld);
+        var muster = el("div", "sb-muster");
+        muster.innerHTML = b.muster;
+        var zeile = el("div", "sb-zeile");
+        zeile.appendChild(aufdecken(muster));
+        zeile.appendChild(stufen(b.id));
+        karte.appendChild(zeile);
+        karte.appendChild(muster);
+        wk.appendChild(karte);
+      });
+    });
+  }
+
+  function init() {
+    var boxen = document.querySelectorAll(".sb-begriffe, .sb-spiel, .sb-wiederkehr");
+    if (!boxen.length) return;
+    document.documentElement.classList.add("sb-js");
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-begriffe"), begriffsListe);
+    var m = etiketten();
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-spiel"), function (s) { richteSpielEin(s, m); });
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-wiederkehr"), richteWiederkehrEin);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
 </script>
 <script>
