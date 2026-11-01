@@ -46,4 +46,4 @@ Branch `kapitelauftakt-kap02-03`, Commit `c964471`, gepusht, auf `main` @ `32c73
 ## Startauftrag nächste Sitzung
 Von `main` abzweigen (nach Merge dieses Branches, sonst von `kapitelauftakt-kap02-03`), Branch `kapitelauftakt-kap04-06`. Kap. 4, 5, 6 nach `notes/kapitelauftakt-einschaetzungen.md`; IDs `ez-k4-1` …; Szenen mit neuen Personen/Fächern (bisher: Albers/Technische Mechanik, Kessler/Statistik Psychologie, Brandt/Kostenrechnung). Prüfschritte wie oben.
 
-Ablage geprüft: siehe Fußzeile im Projekt-Dokument.
+Ablage geprüft: Projekt ✓ / Tresorit ✓ (Projektnotizen-Claude) / Repo ✓ (Branch `kapitelauftakt-kap02-03`, `notes/2026-11-01-status-kapitelauftakt-kap02-03.md`, gepusht; nicht gemergt)
