@@ -21,7 +21,9 @@ const kiSlot = (j) => ({
 });
 
 // ---------- Zeitplan (Sekunden) ----------
-const T = { tilesIn: 0.8, v: 5.0, vMove: 6.2, p: 12.5, w: 20.0, end: 29.0, total: 38 };
+// Fassung 01.11.2026 (Feedback „zu schnell“): Bewegungen langsamer, nach jeder Form ein Standbild zum Lesen.
+// Zwischen dem Ende einer Form und dem Beginn der nächsten liegen 5–7 s Ruhe; Schlussbild steht gut 10 s.
+const T = { tilesIn: 1.0, v: 8.0, vMove: 10.4, p: 21.5, w: 33.0, end: 47.0, total: 60 };
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 const tag = { V: "Automatisierung", P: "Augmentierung", W: "neu" };
@@ -53,38 +55,38 @@ const js = `
 const tl = gsap.timeline({ paused: true });
 // Auftakt
 tl.fromTo(".zone", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
-tl.fromTo("#title .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067 }, 0.2);
+tl.fromTo("#title .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, stagger: 0.12 }, 0.2);
 tl.fromTo("#foot", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.6);
-tl.fromTo(".eff-V, .eff-P", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, stagger: 0.07, ease: "expo.out" }, ${T.tilesIn});
+tl.fromTo(".eff-V, .eff-P", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.6, stagger: 0.14, ease: "expo.out" }, ${T.tilesIn});
 tl.set(".eff-W", { opacity: 0 }, 0);
 
 // 1 Automatisierung
-tl.fromTo("#leg-V", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, ${T.v});
-tl.to(".eff-V", { backgroundColor: "#C81E0F", borderColor: "#C81E0F", color: "#ffffff", duration: 0.4, stagger: 0.1 }, ${T.v + 0.2});
-tl.fromTo(".eff-V .tag", { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${T.v + 0.3});
-${V.map((v, j) => `tl.fromTo("#t-${v.id}", { x: 0, y: 0, scale: 1 }, { x: ${(v.to.left - v.from.left).toFixed(1)}, y: ${(v.to.top - v.from.top).toFixed(1)}, scale: ${S_KI}, duration: 1.0, ease: "power2.inOut" }, ${(T.vMove + j * 0.55).toFixed(2)});`).join("\n")}
+tl.fromTo("#leg-V", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4 }, ${T.v});
+tl.to(".eff-V", { backgroundColor: "#C81E0F", borderColor: "#C81E0F", color: "#ffffff", duration: 0.6, stagger: 0.25 }, ${T.v + 0.4});
+tl.fromTo(".eff-V .tag", { opacity: 0 }, { opacity: 1, duration: 0.4 }, ${T.v + 0.6});
+${V.map((v, j) => `tl.fromTo("#t-${v.id}", { x: 0, y: 0, scale: 1 }, { x: ${(v.to.left - v.from.left).toFixed(1)}, y: ${(v.to.top - v.from.top).toFixed(1)}, scale: ${S_KI}, duration: 1.6, ease: "power2.inOut" }, ${(T.vMove + j * 1.2).toFixed(2)});`).join("\n")}
 
 // 2 Augmentierung
-tl.fromTo("#leg-P", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, ${T.p});
-tl.to(".eff-P", { backgroundColor: "#FDEBDD", borderColor: "#EA5A00", duration: 0.4, stagger: 0.08 }, ${T.p + 0.1});
-tl.fromTo(".eff-P .hatch", { opacity: 0 }, { opacity: 1, duration: 0.4 }, ${T.p + 0.1});
-tl.fromTo(".eff-P .tag", { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${T.p + 0.3});
-${P.map((id, j) => `tl.fromTo("#t-${id}", { scale: 1 }, { scale: ${S_P}, duration: 0.8, ease: "power3.out" }, ${(T.p + 1.3 + j * 0.15).toFixed(2)});`).join("\n")}
-${MIX.map((id, j) => `tl.fromTo("#t-${id}", { scale: 1 }, { scale: ${S_MIX}, duration: 0.8, ease: "power3.out" }, ${(T.p + 1.9 + j * 0.15).toFixed(2)});`).join("\n")}
-tl.fromTo(".badge", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.4)" }, ${T.p + 3.0});
+tl.fromTo("#leg-P", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4 }, ${T.p});
+tl.to(".eff-P", { backgroundColor: "#FDEBDD", borderColor: "#EA5A00", duration: 0.6, stagger: 0.15 }, ${T.p + 0.4});
+tl.fromTo(".eff-P .hatch", { opacity: 0 }, { opacity: 1, duration: 0.6 }, ${T.p + 0.4});
+tl.fromTo(".eff-P .tag", { opacity: 0 }, { opacity: 1, duration: 0.4 }, ${T.p + 0.7});
+${P.map((id, j) => `tl.fromTo("#t-${id}", { scale: 1 }, { scale: ${S_P}, duration: 1.2, ease: "power3.out" }, ${(T.p + 2.0 + j * 0.35).toFixed(2)});`).join("\n")}
+${MIX.map((id, j) => `tl.fromTo("#t-${id}", { scale: 1 }, { scale: ${S_MIX}, duration: 1.2, ease: "power3.out" }, ${(T.p + 3.2 + j * 0.35).toFixed(2)});`).join("\n")}
+tl.fromTo(".badge", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, ${T.p + 4.6});
 
 // 3 Neue Aufgaben
-tl.fromTo("#leg-W", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, ${T.w});
+tl.fromTo("#leg-W", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4 }, ${T.w});
 ${d.neu.map((n, k) => {
-  const t = k < 4 ? T.w + 0.4 + k * 0.6 : T.w + 3.2;
-  return `tl.fromTo("#n-${n.id}", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.4)" }, ${t.toFixed(2)});`;
+  const t = k < 4 ? T.w + 0.8 + k * 1.0 : T.w + 5.2;
+  return `tl.fromTo("#n-${n.id}", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.4)" }, ${t.toFixed(2)});`;
 }).join("\n")}
-tl.fromTo("#ext", { opacity: 0 }, { opacity: 1, duration: 0.4 }, ${T.w + 2.9});
-tl.fromTo("#ext-q", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, ${T.w + 3.9});
+tl.fromTo("#ext", { opacity: 0 }, { opacity: 1, duration: 0.6 }, ${T.w + 4.8});
+tl.fromTo("#ext-q", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4 }, ${T.w + 6.6});
 
 // Schluss
-tl.to("#title", { opacity: 0, filter: "blur(6px)", duration: 0.2 }, ${T.end});
-tl.fromTo("#final .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067 }, ${T.end + 0.2});
+tl.to("#title", { opacity: 0, filter: "blur(6px)", duration: 0.4 }, ${T.end});
+tl.fromTo("#final .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, stagger: 0.12 }, ${T.end + 0.5});
 window.__timelines["main"] = tl;
 tl.seek(0);
 `;
@@ -133,7 +135,7 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:var(--grou
 </head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="${T.total}" data-width="1920" data-height="1080">
-  <div id="scene" class="clip" data-start="0" data-duration="${T.total}" data-track-index="0" data-layout-allow-overlap>
+  <div id="scene" class="clip" data-start="0" data-duration="${T.total}" data-track-index="0" data-layout-allow-overlap data-hold="Lesepausen nach jeder Form und am Schluss, gewollt (Feedback 01.11.2026: Video war zu schnell)">
     <div class="zone" style="left:${L.x}px;top:${L.y}px;width:${L.w}px;height:${L.h}px"><span class="zl">Lehrperson</span></div>
     <div class="zone" style="left:${K.x}px;top:${K.y}px;width:${K.w}px;height:${K.h}px"><span class="zl">KI</span></div>
     <div id="ext"></div>
