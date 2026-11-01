@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hörbeispiele: Audio-Modelle mit steuerbarem Tonfall</title>
+<style>
+  /* Farbbudget: Graustufen + eine Akzentfarbe, wie die übrigen Interaktionen in Kap. 2 */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#6b6b6b; --hell:#e4e4e4; --flaeche:#f6f6f6; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#151515; --tinte:#f0f0f0; --grau:#a0a0a0; --hell:#3a3a3a; --flaeche:#1f1f1f; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:980px; margin:0 auto; padding:8px 4px 16px; }
+  section.hb { margin:0 0 22px; }
+  h2 { font-size:18px; line-height:1.3; margin:0 0 8px; font-weight:650; }
+  .raster { display:grid; grid-template-columns: 180px 1fr; gap:14px; align-items:start; }
+  @media (max-width: 480px) { .raster { grid-template-columns: 1fr; } }
+
+  .player { background:var(--flaeche); border:1px solid var(--hell); border-radius:8px; padding:10px; }
+  .knopfzeile { display:flex; align-items:center; gap:10px; }
+  button { font:inherit; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; cursor:pointer; }
+  button:focus-visible { outline:3px solid var(--akzent); outline-offset:2px; }
+  .spiel { width:48px; height:48px; border-radius:50%; flex:none; display:grid; place-items:center;
+    background:var(--tinte); color:var(--grund); border:none; }
+  .spiel svg { width:20px; height:20px; fill:currentColor; }
+  .zeit { font-variant-numeric: tabular-nums; font-size:14px; color:var(--grau); }
+  input[type=range] { width:100%; margin:10px 0 6px; accent-color:var(--akzent); }
+  .tempo { display:flex; gap:6px; font-size:13px; }
+  .tempo button { font-size:13px; padding:2px 8px; }
+  .tempo button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  .kennz { font-size:12.5px; color:var(--grau); margin:10px 0 0; }
+  .kennz a { color:inherit; }
+  .platzhalter { font-size:12.5px; margin:6px 0 0; color:var(--akzent); }
+
+  .transkript { list-style:none; margin:0; padding:0 4px 0 0; max-height:440px; overflow-y:auto; }
+  #t-interview { border-top:1px solid var(--hell); border-bottom:1px solid var(--hell); }
+  .transkript li { margin:0 0 4px; }
+  .zeile { display:block; width:100%; text-align:left; border:none; border-left:3px solid transparent;
+    border-radius:0; background:none; padding:5px 8px; font-size:15px; }
+  .zeile:hover { background:var(--flaeche); }
+  .zeile.aktiv { border-left-color:var(--akzent); background:var(--flaeche); }
+  .zeile.aktiv .was { color:var(--akzent); }
+  .wer { display:block; font-size:12px; font-weight:650; letter-spacing:.02em; color:var(--grau); text-transform:uppercase; }
+  .etikett { font-weight:400; text-transform:none; letter-spacing:0; }
+  .de { display:block; font-size:13.5px; color:var(--grau); }
+  .was[lang="en"] { font-size:16px; }
+  @media (prefers-reduced-motion: reduce) { .transkript { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+<main id="buehne" aria-label="Hörbeispiele mit Transkript"></main>
+
+<!-- Daten werden von scripts/audio-s5-zusammenfuegen.py erzeugt; nicht von Hand ändern. -->
+<script type="application/json" id="hoerdaten">
+[
+ {
+  "id": "vokabeln",
+  "titel": "Hörbeispiel 1: Eine Stimme, drei Tonfälle",
+  "kennzeichnung": "Stimme KI-erzeugt (ElevenLabs v3). Sätze aus einem Vokabeltrainer für Englisch in Klasse 5.",
+  "link": {
+   "text": "Vokabeltrainer öffnen",
+   "href": "https://lively-platypus-49f741.netlify.app/?lang=en"
+  },
+  "sprecher": {
+   "lehr": "Sprecherin"
+  },
+  "src": "media/kap02-audio-vokabeln.mp3",
+  "dauer": 9.06,
+  "platzhalter": true,
+  "zeilen": [
+   {
+    "sprecher": "lehr",
+    "text": "What’s … your favourite subject?",
+    "deutsch": "Was ist dein Lieblingsfach?",
+    "etikett": "Lernmodus: langsam und deutlich",
+    "start": 0.3,
+    "ende": 1.97
+   },
+   {
+    "sprecher": "lehr",
+    "text": "I’m happy because it’s Friday!",
+    "deutsch": "Ich bin froh, weil es Freitag ist.",
+    "etikett": "begeistert",
+    "start": 3.17,
+    "ende": 5.25
+   },
+   {
+    "sprecher": "lehr",
+    "text": "Can you bring … your guitar?",
+    "deutsch": "Kannst du deine Gitarre mitbringen?",
+    "etikett": "geflüstert",
+    "start": 6.45,
+    "ende": 8.53
+   }
+  ]
+ },
+ {
+  "id": "interview",
+  "titel": "Hörbeispiel 2: Simulation eines Vorstellungsgesprächs",
+  "kennzeichnung": "Fiktiver Dialog, Stimmen KI-erzeugt (ElevenLabs v3).",
+  "link": null,
+  "sprecher": {
+   "ki": "KI-Interviewerin",
+   "lea": "Lea"
+  },
+  "src": "media/kap02-audio-interview.mp3",
+  "dauer": 132.23,
+  "platzhalter": true,
+  "zeilen": [
+   {
+    "sprecher": "ki",
+    "text": "Guten Tag. Ich bin eine KI und übernehme heute die Rolle der Personalerin. Sie bewerben sich als Werkstudentin im Einkauf. Erzählen Sie mir zuerst etwas über sich.",
+    "start": 0.3,
+    "ende": 11.55
+   },
+   {
+    "sprecher": "lea",
+    "text": "Äh, ja, also … ich bin Lea, ich studier Wirtschaftsingenieurwesen in Gummersbach, im … äh, im dritten Semester. Und, ähm, ich hab mich beworben, weil … also, weil mich Einkauf interessiert.",
+    "start": 12.35,
+    "ende": 24.02
+   },
+   {
+    "sprecher": "ki",
+    "text": "Was genau interessiert Sie am Einkauf?",
+    "start": 24.72,
+    "ende": 27.22
+   },
+   {
+    "sprecher": "lea",
+    "text": "Also … ähm … dass man, äh, mit vielen verschiedenen – Also, man verhandelt ja mit Lieferanten, und … das find ich spannend. Glaub ich.",
+    "start": 28.42,
+    "ende": 37.17
+   },
+   {
+    "sprecher": "ki",
+    "text": "Sie sagen „glaube ich“. Haben Sie schon einmal etwas verhandelt, im Studium oder privat?",
+    "start": 37.97,
+    "ende": 43.8
+   },
+   {
+    "sprecher": "lea",
+    "text": "Ähm … also, bei meinem Nebenjob im Getränkemarkt, da hab ich – nee, warte. Also, da hab ich mal mit dem Lieferanten telefoniert, weil die Lieferung zu spät war, und, äh … wir haben dann ausgemacht, dass er am Samstag noch mal kommt.",
+    "start": 44.8,
+    "ende": 61.47
+   },
+   {
+    "sprecher": "ki",
+    "text": "Das ist ein gutes Beispiel. Was haben Sie in dem Telefonat konkret gesagt?",
+    "start": 62.17,
+    "ende": 67.58
+   },
+   {
+    "sprecher": "lea",
+    "text": "Also, ich hab gesagt, dass, ähm, dass wir am Wochenende sonst kein Wasser mehr haben, und … dass das für uns, also für den Markt, echt teuer wird. Und dann hat er … ja.",
+    "start": 68.48,
+    "ende": 81.82
+   },
+   {
+    "sprecher": "ki",
+    "text": "Sie haben also mit den Folgen für Ihren Markt argumentiert. Wie ist das Gespräch ausgegangen?",
+    "start": 82.52,
+    "ende": 88.77
+   },
+   {
+    "sprecher": "lea",
+    "text": "Ähm, er kam am Samstag um acht. Und, äh … der Chef war, also, zufrieden.",
+    "start": 89.57,
+    "ende": 95.4
+   },
+   {
+    "sprecher": "ki",
+    "text": "Gut. Eine letzte Frage: Wo sehen Sie bei sich noch Lernbedarf?",
+    "start": 96.2,
+    "ende": 100.78
+   },
+   {
+    "sprecher": "lea",
+    "text": "Hm … also, Excel vielleicht? Ich kann so die Grundlagen, aber Pivot-Tabellen, äh … da müsste ich noch –",
+    "start": 101.98,
+    "ende": 109.07
+   },
+   {
+    "sprecher": "ki",
+    "text": "Danke. Ich verlasse jetzt die Rolle. Rückmeldung: Ihre stärkste Antwort war das Telefonat mit dem Lieferanten, weil Sie Anlass, Argument und Ergebnis genannt haben. Beginnen Sie das nächste Mal mit diesem Beispiel. Die Füllwörter kamen vor allem am Satzanfang. Eine kurze Pause wirkt dort ruhiger.",
+    "etikett": "aus der Rolle: Rückmeldung",
+    "start": 110.07,
+    "ende": 128.82
+   },
+   {
+    "sprecher": "lea",
+    "text": "Okay. Noch mal von vorn?",
+    "start": 129.62,
+    "ende": 131.7
+   }
+  ]
+ }
+]
+</script>
+
+<script>
+(function () {
+  const daten = JSON.parse(document.getElementById('hoerdaten').textContent);
+  const buehne = document.getElementById('buehne');
+  const alleAudios = [];
+  const ICON_PLAY = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3l12 7-12 7z"/></svg>';
+  const ICON_PAUSE = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3h4v14H4zM12 3h4v14h-4z"/></svg>';
+  const mmss = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+  const el = (tag, attrs, text) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) { if (v != null) e.setAttribute(k, v); }
+    if (text != null) e.textContent = text;
+    return e;
+  };
+
+  daten.forEach(b => {
+    const sec = el('section', { class: 'hb', 'aria-labelledby': 'h-' + b.id });
+    sec.appendChild(el('h2', { id: 'h-' + b.id }, b.titel));
+    const raster = el('div', { class: 'raster' });
+
+    // linke Spalte: Wiedergabe
+    const player = el('div', { class: 'player' });
+    const audio = el('audio', { preload: 'metadata', src: b.src });
+    alleAudios.push(audio);
+    const zeile1 = el('div', { class: 'knopfzeile' });
+    const spiel = el('button', { class: 'spiel', type: 'button', 'aria-label': 'Abspielen: ' + b.titel });
+    spiel.innerHTML = ICON_PLAY;
+    const zeit = el('span', { class: 'zeit', 'aria-live': 'off' }, '0:00 / ' + mmss(b.dauer));
+    zeile1.append(spiel, zeit);
+    const regler = el('input', { type: 'range', min: '0', max: String(b.dauer), step: '0.1', value: '0',
+                                 'aria-label': 'Position in ' + b.titel });
+    const tempo = el('div', { class: 'tempo', role: 'group', 'aria-label': 'Tempo' });
+    const tempi = [0.75, 1].map(r => {
+      const t = el('button', { type: 'button', 'aria-pressed': String(r === 1) }, (r === 1 ? '1' : '0,75') + '×');
+      t.addEventListener('click', () => { audio.playbackRate = r; tempi.forEach(x => x.setAttribute('aria-pressed', String(x === t))); });
+      tempo.appendChild(t); return t;
+    });
+    const kennz = el('p', { class: 'kennz' }, b.kennzeichnung + ' ');
+    if (b.link) { const a = el('a', { href: b.link.href, target: '_blank', rel: 'noopener' }, b.link.text); kennz.appendChild(a); }
+    player.append(zeile1, regler, tempo, kennz);
+    if (b.platzhalter) player.appendChild(el('p', { class: 'platzhalter' }, 'Platzhalter-Ton: Die Aufnahmen folgen.'));
+    player.appendChild(audio);
+
+    // rechte Spalte: Transkript
+    const liste = el('ol', { class: 'transkript', id: 't-' + b.id, 'aria-label': 'Transkript: ' + b.titel });
+    const knoepfe = b.zeilen.map((z, i) => {
+      const li = el('li');
+      const k = el('button', { type: 'button', class: 'zeile' });
+      const wer = el('span', { class: 'wer' }, b.sprecher[z.sprecher] || z.sprecher);
+      if (z.etikett) wer.appendChild(el('span', { class: 'etikett' }, ' · ' + z.etikett));
+      const istEn = b.id === 'vokabeln';
+      k.append(wer, el('span', { class: 'was', lang: istEn ? 'en' : 'de' }, z.text));
+      if (z.deutsch) k.appendChild(el('span', { class: 'de' }, z.deutsch));
+      k.setAttribute('aria-label', 'Ab hier abspielen: ' + (b.sprecher[z.sprecher] || '') + ': ' + z.text);
+      k.addEventListener('click', () => { audio.currentTime = z.start; audio.play(); });
+      li.appendChild(k); liste.appendChild(li);
+      return k;
+    });
+    raster.append(player, liste);
+    sec.appendChild(raster);
+    buehne.appendChild(sec);
+
+    // Verhalten
+    let aktiv = -1;
+    const markiere = t => {
+      let i = -1;
+      b.zeilen.forEach((z, j) => { if (t >= z.start - 0.05 && t < z.ende + 0.25) i = j; });
+      if (i === aktiv) return;
+      if (aktiv >= 0) { knoepfe[aktiv].classList.remove('aktiv'); knoepfe[aktiv].removeAttribute('aria-current'); }
+      aktiv = i;
+      if (i >= 0) {
+        const k = knoepfe[i];
+        k.classList.add('aktiv'); k.setAttribute('aria-current', 'true');
+        // nur innerhalb der Liste scrollen, nie die umgebende Buchseite bewegen
+        // Ziel: vorige Zeile ganz sichtbar lassen, damit der Gesprächszusammenhang erhalten bleibt
+        const li = k.parentElement;
+        const top = li.offsetTop - liste.offsetTop;
+        if (top < liste.scrollTop || top + k.offsetHeight > liste.scrollTop + liste.clientHeight) {
+          const vor = li.previousElementSibling;
+          liste.scrollTop = vor ? vor.offsetTop - liste.offsetTop : 0;
+        }
+      }
+    };
+    spiel.addEventListener('click', () => { audio.paused ? audio.play() : audio.pause(); });
+    audio.addEventListener('play', () => {
+      alleAudios.forEach(a => { if (a !== audio) a.pause(); });
+      spiel.innerHTML = ICON_PAUSE; spiel.setAttribute('aria-label', 'Pause: ' + b.titel);
+    });
+    audio.addEventListener('pause', () => { spiel.innerHTML = ICON_PLAY; spiel.setAttribute('aria-label', 'Abspielen: ' + b.titel); });
+    audio.addEventListener('timeupdate', () => {
+      regler.value = audio.currentTime;
+      zeit.textContent = mmss(audio.currentTime) + ' / ' + mmss(b.dauer);
+      markiere(audio.currentTime);
+    });
+    audio.addEventListener('ended', () => { markiere(-1); });
+    regler.addEventListener('input', () => { audio.currentTime = Number(regler.value); markiere(audio.currentTime); });
+  });
+
+  // Inhaltshöhe an die Kapitelseite melden (gleiches Protokoll wie agenten-engpass.html)
+  function melde() {
+    const b = document.body, cs = getComputedStyle(b);
+    const h = Math.ceil(b.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom));
+    try { if (parent !== window) parent.postMessage({ typ: 'rahmen-hoehe', id: 'audio-beispiele-kap02', h: h }, '*'); } catch (e) {}
+  }
+  if (window.ResizeObserver) new ResizeObserver(melde).observe(document.body);
+  window.addEventListener('load', melde);
+})();
+</script>
+</body>
+</html>
