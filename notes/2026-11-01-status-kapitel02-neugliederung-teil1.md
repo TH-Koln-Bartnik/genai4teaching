@@ -49,4 +49,6 @@ Tipp: Die Kürzungen in zwei Paketen per MC freigeben (N1–N19, N20–N38), dam
 ## Ablage
 - Projekt: `claude/feedback-2026-11-01/STATUS-kapitel02-neugliederung-teil1-2026-11-01.md`; Stand-Nachtrag in `PLAN-feedback-sitzungen-2026-11-01.md`.
 - Tresorit: `Projektnotizen-Claude/feedback-2026-11-01/kapitel02-neugliederung/STATUS-kapitel02-neugliederung-teil1-2026-11-01.md`.
-- Repo: Branch `kapitel02-neugliederung` @ `8bd9812` + Notiz `notes/2026-11-01-status-kapitel02-neugliederung-teil1.md` (auf dem Branch; nicht gemergt).
+- Repo: Branch `kapitel02-neugliederung` @ `af7efde` (Buchänderungen bis `8bd9812`, danach Notiz `notes/2026-11-01-status-kapitel02-neugliederung-teil1.md` und Stand-Nachtrag im Feedback-Plan; nicht gemergt).
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht auf Branch kapitel02-neugliederung, gemergt: nein)
