@@ -3,39 +3,39 @@
 Das Glossar erklärt die Kernbegriffe des Buchs in Alltagssprache; die Angabe in Klammern nennt die Stelle, an der ein Begriff eingeführt wird. Viele Fachwörter rund um generative KI sind englische Neubildungen aus lateinischen und griechischen Wurzeln. Wo die Herkunft das Verständnis stützt, nennt eine Herkunftszeile sie: Wer weiß, dass eine *Halluzination* auf das lateinische Wort für gedankenloses Reden zurückgeht, versteht schneller, warum sie kein technischer Defekt ist.
 
 Generative KI (GenAI)
-:   Sammelbegriff für KI-Systeme, die neue Inhalte erzeugen: Texte, Bilder, Ton, Programmcode. Im Buch werden KI, GenAI und Sprachmodell weitgehend gleichbedeutend verwendet, weil die meisten Lehrenden erst seit ChatGPT aktiv mit KI arbeiten (Kap. [-@sec-sprachmodell]).
+:   Sammelbegriff für KI-Systeme, die neue Inhalte erzeugen: Texte, Bilder, Ton, Programmcode. Im Buch werden KI, GenAI und Sprachmodell weitgehend gleichbedeutend verwendet, weil die meisten Lehrenden erst seit ChatGPT aktiv mit KI arbeiten (@sec-sprachmodell).
 
     *Herkunft:* lat. *generare*, „hervorbringen, zeugen“.
 
 Sprachmodell, Large Language Model (LLM)
-:   Ein Rechenmodell, das aus riesigen Textmengen gelernt hat, das jeweils nächste Wort in einer Wortkette vorherzusagen. Aus dieser einfachen Grundoperation entstehen Antworten, Zusammenfassungen und Dialoge; eine eingebaute Prüfung auf Wahrheit gibt es nicht (Kap. [-@sec-sprachmodell]).
+:   Ein Rechenmodell, das aus riesigen Textmengen gelernt hat, das jeweils nächste Wort in einer Wortkette vorherzusagen. Aus dieser einfachen Grundoperation entstehen Antworten, Zusammenfassungen und Dialoge; eine eingebaute Prüfung auf Wahrheit gibt es nicht (@sec-sprachmodell).
 
     *Herkunft:* *Modell* über ital. *modello* zu lat. *modulus*, „kleines Maß“, Verkleinerung von *modus*, „Maß, Art und Weise“.
 
 GPT
-:   Abkürzung für Generative Pre-trained Transformer: ein Sprachmodell, das Texte erzeugt (generative), vorab mit großen Textmengen trainiert wurde (pre-trained) und auf der Transformer-Architektur beruht. Ursprünglich die Modellreihe von OpenAI, heute oft als Gattungsname gebraucht (Kap. [-@sec-gpt-bedeutung]).
+:   Abkürzung für Generative Pre-trained Transformer: ein Sprachmodell, das Texte erzeugt (generative), vorab mit großen Textmengen trainiert wurde (pre-trained) und auf der Transformer-Architektur beruht. Ursprünglich die Modellreihe von OpenAI, heute oft als Gattungsname gebraucht (@sec-gpt-bedeutung).
 
 Token
-:   Der kleinste Baustein, in den ein Sprachmodell Text zerlegt: ein Wort, ein Wortteil oder ein Satzzeichen. Nach Tokens werden Kontextfenster und Preise bemessen; ein Wort sind oft ein bis zwei Tokens (Kap. [-@sec-gpt-bedeutung]).
+:   Der kleinste Baustein, in den ein Sprachmodell Text zerlegt: ein Wort, ein Wortteil oder ein Satzzeichen. Nach Tokens werden Kontextfenster und Preise bemessen; ein Wort sind oft ein bis zwei Tokens (@sec-gpt-bedeutung).
 
 Embedding
-:   Die Umwandlung eines Tokens in eine lange Zahlenreihe (einen Vektor), die seine Bedeutung mathematisch beschreibt. Ähnliche Wörter wie „Hund“ und „Katze“ erhalten ähnliche Zahlenreihen, so dass das Modell mit Bedeutung rechnen kann (Kap. [-@sec-gpt-bedeutung]).
+:   Die Umwandlung eines Tokens in eine lange Zahlenreihe (einen Vektor), die seine Bedeutung mathematisch beschreibt. Ähnliche Wörter wie „Hund“ und „Katze“ erhalten ähnliche Zahlenreihen, so dass das Modell mit Bedeutung rechnen kann (@sec-gpt-bedeutung).
 
 Transformer und Attention
-:   Transformer ist die Rechenarchitektur heutiger Sprachmodelle. Ihr Kernverfahren Attention („Aufmerksamkeit“) lässt jedes Token gewichtet entscheiden, auf welche anderen Tokens im Text es achten soll; so erkennt das Modell, ob „Bank“ ein Möbelstück oder ein Geldinstitut meint (Kap. [-@sec-gpt-bedeutung]).
+:   Transformer ist die Rechenarchitektur heutiger Sprachmodelle. Ihr Kernverfahren Attention („Aufmerksamkeit“) lässt jedes Token gewichtet entscheiden, auf welche anderen Tokens im Text es achten soll; so erkennt das Modell, ob „Bank“ ein Möbelstück oder ein Geldinstitut meint (@sec-gpt-bedeutung).
 
     *Herkunft:* lat. *transformare*, „umformen“; *attendere*, „den Geist auf etwas hinwenden“.
 
 Pretraining und RLHF
-:   Pretraining ist das Vortrainieren des Modells an großen Textmengen ohne konkrete Aufgabe. Danach bewerten Menschen Antwortvarianten, und das Modell lernt, bevorzugt nützliche und verständliche Antworten zu geben: Reinforcement Learning with Human Feedback, bestärkendes Lernen mit menschlicher Rückmeldung (Kap. [-@sec-gpt-bedeutung]).
+:   Pretraining ist das Vortrainieren des Modells an großen Textmengen ohne konkrete Aufgabe. Danach bewerten Menschen Antwortvarianten, und das Modell lernt, bevorzugt nützliche und verständliche Antworten zu geben: Reinforcement Learning with Human Feedback, bestärkendes Lernen mit menschlicher Rückmeldung (@sec-gpt-bedeutung).
 
 Kontextfenster
-:   Die Menge an Text, die ein Sprachmodell gleichzeitig „im Blick“ hat: die bisherige Unterhaltung, hochgeladene Dokumente und die aktuelle Frage. Was nicht ins Fenster passt, kennt das Modell in diesem Moment nicht (Kap. [-@sec-gpt-bedeutung]).
+:   Die Menge an Text, die ein Sprachmodell gleichzeitig „im Blick“ hat: die bisherige Unterhaltung, hochgeladene Dokumente und die aktuelle Frage. Was nicht ins Fenster passt, kennt das Modell in diesem Moment nicht (@sec-gpt-bedeutung).
 
     *Herkunft:* lat. *contexere*, „zusammenweben“; der Kontext ist das Gewebe, in dem ein Wort steht.
 
 Halluzination
-:   Eine sprachlich überzeugende, aber sachlich falsche oder erfundene Antwort, etwa eine Quelle, die es nicht gibt. Keine Störung, sondern eine Folge der Funktionsweise: Das Modell erzeugt Plausibles, nicht Geprüftes. Gegenmittel sind eingegrenztes Material, Musterlösungen und systematische Prüfung (Kap. [-@sec-hallucinations], 4.3).
+:   Eine sprachlich überzeugende, aber sachlich falsche oder erfundene Antwort, etwa eine Quelle, die es nicht gibt. Keine Störung, sondern eine Folge der Funktionsweise: Das Modell erzeugt Plausibles, nicht Geprüftes. Gegenmittel sind eingegrenztes Material, Musterlösungen und systematische Prüfung (@sec-hallucinations; Kap. 4.3).
 
     *Herkunft:* lat. *(h)al(l)ucinari*, „gedankenlos reden, träumen“.
 
@@ -45,22 +45,22 @@ Reasoning-Modell
     *Herkunft:* engl. *reason* über altfrz. *raison* zu lat. *ratio*, „Berechnung, Vernunft“.
 
 Jagged Frontier
-:   „Zerklüftete Technikgrenze“: Sprachmodelle lösen manche Aufgaben auf Expertenniveau und scheitern an anderen, die für Menschen ähnlich schwer sind. Die Grenze verläuft unregelmäßig und ist nur durch Ausprobieren zu finden; wer sie nicht kennt, arbeitet mit KI schlechter als ohne (Kap. [-@sec-capabilities]).
+:   „Zerklüftete Technikgrenze“: Sprachmodelle lösen manche Aufgaben auf Expertenniveau und scheitern an anderen, die für Menschen ähnlich schwer sind. Die Grenze verläuft unregelmäßig und ist nur durch Ausprobieren zu finden; wer sie nicht kennt, arbeitet mit KI schlechter als ohne (@sec-capabilities).
 
     *Herkunft:* engl. *frontier* über altfrz. *frontiere* zu lat. *frons*, „Stirn“: die Linie, an der man einander die Stirn bietet.
 
 Zentaur und Cyborg
-:   Zwei Arbeitsweisen mit KI entlang der Jagged Frontier. Der Zentaur teilt die Arbeit sauber auf: Dieses übernimmt der Mensch, jenes die Maschine. Der Cyborg verwebt beide in jedem Arbeitsschritt, etwa beim Schreiben Satz für Satz (Kap. [-@sec-arbeitsweisen], 4.2.1).
+:   Zwei Arbeitsweisen mit KI entlang der Jagged Frontier. Der Zentaur teilt die Arbeit sauber auf: Dieses übernimmt der Mensch, jenes die Maschine. Der Cyborg verwebt beide in jedem Arbeitsschritt, etwa beim Schreiben Satz für Satz (@sec-arbeitsweisen; Kap. 4.2.1).
 
     *Herkunft:* griech. *kentauros*, Mischwesen aus Mensch und Pferd; *Cyborg* aus *cybernetic organism*, zu griech. *kybernetes*, „Steuermann“.
 
 Prompt
-:   Die Eingabe an ein Sprachmodell: Frage, Anweisung oder Aufgabe, oft mit Material und Beispielen. Wie der Prompt formuliert ist, bestimmt die Qualität der Antwort wesentlich (Kap. [-@sec-how-to-speak]).
+:   Die Eingabe an ein Sprachmodell: Frage, Anweisung oder Aufgabe, oft mit Material und Beispielen. Wie der Prompt formuliert ist, bestimmt die Qualität der Antwort wesentlich (@sec-how-to-speak).
 
     *Herkunft:* lat. *promptus*, „bereit, zur Hand“, zu *promere*, „hervorholen“; engl. *to prompt*, „soufflieren, anstoßen“.
 
 Prompt Engineering
-:   Das Handwerk, Prompts so zu bauen, dass sie zuverlässig gute Antworten liefern: Rolle, Aufgabe, Format und Beispiele klar benennen, strukturieren, iterieren. Was nichts bringt: Drohen, Bestechen, besondere Höflichkeit (Kap. [-@sec-how-to-speak] bis [-@sec-prompting-myths]).
+:   Das Handwerk, Prompts so zu bauen, dass sie zuverlässig gute Antworten liefern: Rolle, Aufgabe, Format und Beispiele klar benennen, strukturieren, iterieren. Was nichts bringt: Drohen, Bestechen, besondere Höflichkeit (@sec-access).
 
     *Herkunft:* *Engineering* über altfrz. *engigneor* zu lat. *ingenium*, „Begabung, Erfindungsgeist“.
 
@@ -70,30 +70,30 @@ System-Prompt
     *Herkunft:* griech. *systema*, „das Zusammengestellte“.
 
 Few-Shot-Beispiele
-:   Dem Modell werden im Prompt einige Beispiele gezeigt, wie die gewünschte Antwort aussehen soll. Wenige gute Beispiele helfen; zu viele engen das Modell ein (Kap. [-@sec-prompt-components]).
+:   Dem Modell werden im Prompt einige Beispiele gezeigt, wie die gewünschte Antwort aussehen soll. Wenige gute Beispiele helfen; zu viele engen das Modell ein (@sec-prompt-components).
 
 Chain of Thought
-:   „Gedankenkette“: Das Modell wird aufgefordert, Schritt für Schritt vorzugehen und seinen Lösungsweg auszuformulieren. Bei älteren Modellen eine wichtige Technik, bei Reasoning-Modellen weitgehend eingebaut (Kap. [-@sec-prompt-components], [-@sec-prompting-myths]).
+:   „Gedankenkette“: Das Modell wird aufgefordert, Schritt für Schritt vorzugehen und seinen Lösungsweg auszuformulieren. Bei älteren Modellen eine wichtige Technik, bei Reasoning-Modellen weitgehend eingebaut (@sec-prompt-components).
 
     *Herkunft:* engl. *chain* über altfrz. *chaeine* zu lat. *catena*, „Kette“.
 
 Temperatur
-:   Ein Regler, der steuert, wie stark das Modell von der wahrscheinlichsten Fortsetzung abweicht. Niedrige Temperatur ergibt vorhersagbare, wiederholbare Antworten, hohe Temperatur abwechslungsreichere, aber auch riskantere (Kap. [-@sec-definitionen], Lernspiel).
+:   Ein Regler, der steuert, wie stark das Modell von der wahrscheinlichsten Fortsetzung abweicht. Niedrige Temperatur ergibt vorhersagbare, wiederholbare Antworten, hohe Temperatur abwechslungsreichere, aber auch riskantere (@sec-definitionen, Lernspiel).
 
     *Herkunft:* lat. *temperare*, „mäßigen, richtig mischen“.
 
 RAG (Retrieval-Augmented Generation)
-:   Das Modell bekommt eigenes Material an die Hand, etwa Skripte, Fachartikel oder Musterlösungen, und holt sich daraus vor der Antwort die passenden Stellen. Bildlich: Die KI ist das Gehirn, das Material ist das Bücherregal. In der Lehre der wichtigste Hebel gegen Halluzinationen (Kap. [-@sec-patterns-usage]).
+:   Das Modell bekommt eigenes Material an die Hand, etwa Skripte, Fachartikel oder Musterlösungen, und holt sich daraus vor der Antwort die passenden Stellen. Bildlich: Die KI ist das Gehirn, das Material ist das Bücherregal. In der Lehre der wichtigste Hebel gegen Halluzinationen (@sec-patterns-usage).
 
     *Herkunft:* *augmented* zu lat. *augere*, „vermehren“, aus dem auch *auctor*, der Urheber, stammt.
 
 Agent
-:   Ein Sprachmodell, das nicht nur antwortet, sondern handelt: Es nutzt Werkzeuge wie Internetsuche, Dateizugriff oder Programmausführung, plant mehrere Schritte und prüft Zwischenergebnisse selbst. Bildlich: der Werkzeugkoffer neben dem Bücherregal (Kap. [-@sec-patterns-usage]).
+:   Ein Sprachmodell, das nicht nur antwortet, sondern handelt: Es nutzt Werkzeuge wie Internetsuche, Dateizugriff oder Programmausführung, plant mehrere Schritte und prüft Zwischenergebnisse selbst. Bildlich: der Werkzeugkoffer neben dem Bücherregal (@sec-patterns-usage).
 
     *Herkunft:* lat. *agere*, „handeln, treiben“.
 
 Harness
-:   Wörtlich „Arbeitsgeschirr“: die Ausstattung, die ein Modell zum Agenten macht, also Werkzeuge, Datenzugriffe und Ablaufregeln. Ohne Harness bleibt „Agent“ ein Etikett (Kap. 1.2, 2.1.3).
+:   Wörtlich „Arbeitsgeschirr“: die Ausstattung, die ein Modell zum Agenten macht, also Werkzeuge, Datenzugriffe und Ablaufregeln. Ohne Harness bleibt „Agent“ ein Etikett (Kap. 1.2; @sec-harness).
 
 Deep Research
 :   Ein Agent für Recherche: Das Modell sucht in mehreren Durchgängen, bewertet Treffer, liest Quellen und schreibt einen Bericht mit Belegen. Nach Aaron Tay eine von vier Klassen von Suchhelfern, unterschieden nach „einmalig oder iterativ“ und „Liste oder Analyse“ (Kap. 1.2, 4.1.2).
@@ -109,7 +109,7 @@ Konnektor (MCP)
     *Herkunft:* lat. *connectere*, „verknüpfen“.
 
 Artifact
-:   Ein vom Sprachmodell erzeugtes, eigenständig nutzbares Produkt, etwa ein kleines Lernspiel als Webseite, eine Grafik oder ein Dokument, das neben dem Chat angezeigt und weitergegeben werden kann. So wurden die interaktiven Elemente dieses Buchs gebaut (Kap. [-@sec-definitionen], 4.2.2).
+:   Ein vom Sprachmodell erzeugtes, eigenständig nutzbares Produkt, etwa ein kleines Lernspiel als Webseite, eine Grafik oder ein Dokument, das neben dem Chat angezeigt und weitergegeben werden kann. So wurden die interaktiven Elemente dieses Buchs gebaut (@sec-definitionen; Kap. 4.2.2).
 
     *Herkunft:* lat. *arte factum*, „mit Kunst gemacht“.
 
@@ -119,7 +119,7 @@ Custom GPT, Projekt
     *Herkunft:* *Projekt* zu lat. *proicere*, „nach vorn werfen“.
 
 Scaling Laws
-:   Erfahrungsregeln, nach denen Modelle mit mehr Trainingsdaten und Rechenleistung verlässlich besser werden (Training Scaling) und bessere Antworten geben, wenn ihnen mehr Rechenzeit beim Antworten gegeben wird (Inference Scaling) (Kap. [-@sec-capabilities]).
+:   Erfahrungsregeln, nach denen Modelle mit mehr Trainingsdaten und Rechenleistung verlässlich besser werden (Training Scaling) und bessere Antworten geben, wenn ihnen mehr Rechenzeit beim Antworten gegeben wird (Inference Scaling) (@sec-capabilities).
 
     *Herkunft:* *scale* zu lat. *scala*, „Treppe, Leiter“: Stufe um Stufe besser.
 
