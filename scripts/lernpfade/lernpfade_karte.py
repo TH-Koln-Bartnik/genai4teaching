@@ -25,7 +25,7 @@ ST = {
 
 LINIEN = {
     1: ["k1", "k2", "k3", "e35", "k4", "k5", "k6"],
-    2: ["k1", "k3", "e35", "k4", "k5", "k6"],
+    2: ["k1", "k2", "k3", "e35", "k4", "k5", "k6"],   # S1b 01.11.2026: hält an 2.1 (vier Kompetenzen)
     3: ["k1", "k2", "e35", "k4", "pri", "k6"],
     4: ["k1", "e35", "k4", "k6", "anh"],
 }
@@ -103,8 +103,8 @@ def svg(fragment=False):
              f'class="lernpfade-karte" role="img" aria-labelledby="lp-titel lp-desc">')
     o.append('<title id="lp-titel">Lernpfade durch das Buch</title>')
     o.append('<desc id="lp-desc">Liniennetz mit vier Lernpfaden. Alle Linien halten an Kapitel 1, '
-             'Abschnitt 3.5, Kapitel 4 und Kapitel 6. Linie 1 hält an allen Hauptkapiteln, Linie 2 lässt '
-             'Kapitel 2 aus, Linie 3 ersetzt Abschnitte 3.1 bis 3.4 und Kapitel 5 durch die Praxis-Primer, '
+             'Abschnitt 3.5, Kapitel 4 und Kapitel 6. Linie 1 hält an allen Hauptkapiteln, Linie 2 liest '
+             'aus Kapitel 2 nur Abschnitt 2.1, Linie 3 ersetzt Abschnitte 3.1 bis 3.4 und Kapitel 5 durch die Praxis-Primer, '
              'Linie 4 geht von der Einleitung direkt zur Evidenz und endet in den Anhängen C und D.</desc>')
     if not fragment:
         o.append('<style>'
