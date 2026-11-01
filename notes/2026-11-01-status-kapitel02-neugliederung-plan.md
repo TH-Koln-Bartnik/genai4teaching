@@ -28,4 +28,9 @@ Variante B: 2.1 Überblick 4D (`#sec-schemas`) → 2.2 Modell, Harness, Agent (`
 - Die Wahl zwischen Sprachmodell, RAG und Agent ist eine Delegationsentscheidung, keine Technikfrage.
 - Fest eingetippte Abschnittsnummern machen jede Neugliederung teuer; automatische Querverweise machen sie fast kostenlos.
 
-Ablage geprüft: siehe letzte Zeile nach Prüfung.
+## Ablage
+- Projekt: `claude/feedback-2026-11-01/PLAN-kapitel02-neugliederung-4d-2026-11-01.md`, diese Statusnotiz, aktualisierter `PLAN-feedback-sitzungen-2026-11-01.md` (Stand-Nachtrag).
+- Tresorit: `Projektnotizen-Claude/feedback-2026-11-01/` (Plan, Feedback-Plan, Statusnotiz) und `…/kapitel02-neugliederung/` (Skripte).
+- Repo `main` (gepusht, `1471de0` + Statusnotiz-Commit): `notes/2026-11-01-plan-kapitel02-neugliederung-4d.md`, `notes/2026-11-01-plan-feedback-sitzungen.md`, `notes/2026-11-01-status-kapitel02-neugliederung-plan.md`, `notes/kapitel02-neugliederung/*.py|json`. Keine Buchdatei geändert.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht auf main; nur Notizen, kein Merge nötig)
