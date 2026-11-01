@@ -21,7 +21,7 @@ Grundlage: `claude/kapitel04-p5/STATUS-kapitel04-p5-2026-11-01.md`, `claude/kapi
 - Siehe Abschnitt „Ergebnis Live-Prüfung“ unten.
 
 ## Offen (übernommen aus P4/P5)
-1. Druck-PDF: neue Abbildung `4d-kreislauf.svg`, zwei Tabellen in 2.6 ungeprüft (TeX fehlt in der Cloud); rund drei Seiten mehr.
+1. Druck-PDF: in der PDF der Kap.-3-Sitzung (398 S.) enthalten; Abbildung 2.24 „4D-Kreislauf“ (S. 71) sichtgeprüft, sauber. Die zwei Tabellen in 2.6 noch nicht sichtgeprüft (Tabellen in Kästen verlieren laut Kap.-3-Notiz buchweit ihre Überschrift; 2.6-Tabellen stehen nicht in Kästen).
 2. Glossar: Delegation, Description, Discernment, Diligence, AI Fluency, Programmier-Agent.
 3. PS2-Pal-Video ↔ Supplement-Regeln (P5 Punkt 2); Kap. 4 „zeitintensive Einrichtung“ (P5 Punkt 3).
 4. Forschungsstand-Seite: Kuric, Ahn, Yang, Balepur, Wu noch nicht in den Tabellen.
