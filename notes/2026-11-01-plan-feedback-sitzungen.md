@@ -160,7 +160,8 @@ Sprachcheck des Buchtexts auf typische KI-Formulierungen mit dem Skill genai-phr
 ## Startauftrag nächste Sitzungen (Entscheidung Roman: zwei parallel)
 - Sitzung A: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S1a ab.“ – **erledigt**
 - Sitzung B: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S2 ab.“ – **erledigt**
-- Als Nächstes: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S1b ab.“
+- „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S1b ab.“ – **erledigt und gemergt** (`2b5ab18`)
+- Als Nächstes: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S6 ab.“ (parallel möglich: Bau S3/S4/S5/S8; deren Einbau in `kapitel02.qmd` nacheinander)
 
 Ablage: Projekt `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` · Tresorit `Projektnotizen-Claude/feedback-2026-11-01/` · Repo `notes/2026-11-01-plan-feedback-sitzungen.md` (beide nachgeholt in S1a).
 
