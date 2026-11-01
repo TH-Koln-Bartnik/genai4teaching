@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Online-Material: Schreibtrainer – Generative KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./modelluebersicht.html" rel="next">
+<link href="./anhang-d-material.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4622c99584d0b91f3844d5069d85751c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ko-fi.com/romanbartnik"> 
+<span class="menu-text">Ko-fi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://buymeacoffee.com/roman.bartnik.th"> 
+<span class="menu-text">Buy me a coffee</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel06-appendix01-prompt-ueberblick.html">Anhang</a></li><li class="breadcrumb-item"><a href="./schreibtrainer.html">Online-Material: Schreibtrainer</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vorwort.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundbegriffe</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Didaktische Ziele und Mechanismen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vier Szenarien der Nutzung von GenAI: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Empfehlungen zur Umsetzung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-fallbeispiele.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fallbeispiele aus der Lehre</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-appendix01-prompt-ueberblick.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Gezielte Einschränkungen in didaktischen Prompts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel08-appendix03-rollenspiele-simulationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Umsetzung: Rollenspiele und Simulationen mit generativer KI in der Lehre</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel09-appendix04-fortgeschrittene-nutzungsformen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Umsetzung: Arbeitsumgebung, Agenten, Tutoren und lokale Modelle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./anhang-primer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Praxis-Primer für Lehrende</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel10-appendix05-loesungshinweise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Lösungshinweise zu den Lernfragen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transparenz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transparenzhinweis zum Gesamtwerk</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literaturverzeichnis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./anhang-d-material.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Online-Material zu Anhang D</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schreibtrainer.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Online-Material: Schreibtrainer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelluebersicht.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modellübersicht (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forschungsstand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forschungsstand (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./energie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Ressourcenverbrauch der Modelle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#sec-schreibtrainer-start" id="toc-sec-schreibtrainer-start" class="nav-link active" data-scroll-target="#sec-schreibtrainer-start">So starten Sie einen Trainer</a></li>
+  <li><a href="#sec-schreibtrainer-einleitung" id="toc-sec-schreibtrainer-einleitung" class="nav-link" data-scroll-target="#sec-schreibtrainer-einleitung">Einleitungstrainer</a></li>
+  <li><a href="#sec-schreibtrainer-absatz" id="toc-sec-schreibtrainer-absatz" class="nav-link" data-scroll-target="#sec-schreibtrainer-absatz">Absatztrainer: Topic Sentences</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/schreibtrainer.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/schreibtrainer.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel06-appendix01-prompt-ueberblick.html">Anhang</a></li><li class="breadcrumb-item"><a href="./schreibtrainer.html">Online-Material: Schreibtrainer</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-schreibtrainer" class="quarto-section-identifier">Online-Material: Schreibtrainer</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Diese Seite gehört zu Abschnitt <a href="kapitel04.html#sec-cyborg-writing" class="quarto-xref"><span>Besser schreiben – als Cyborg</span></a>. Sie enthält zwei der acht Schreibtrainer aus <a href="kapitel04.html#tbl-schreibtrainer" class="quarto-xref">Tabelle&nbsp;<span>4.4</span></a> als Anweisung zum Kopieren. Ein Schreibtrainer ist ein Prompt, also ein ausführlicher Arbeitsauftrag an ein Sprachmodell: Er legt fest, in welcher Reihenfolge das Modell erklärt, Fragen stellt, Übungen verteilt und Rückmeldung gibt. Wer die Anweisung in einen neuen Chat einfügt, macht aus einem allgemeinen Chatbot für die Dauer dieses Chats einen Übungspartner mit festem Ablauf.</p>
+<p>Bis Dezember 2026 liefen beide Trainer als Custom GPTs bei OpenAI. Diese Form stellt OpenAI am 11. Dezember 2026 ein <span class="citation" data-cites="openai2026gptretirement">(<a href="references.html#ref-openai2026gptretirement" role="doc-biblioref">OpenAI, 2026</a>)</span>. Die Anweisung selbst ist von keiner Plattform abhängig und funktioniert in ChatGPT, Claude, Gemini und in den Chatwerkzeugen, die viele Hochschulen ihren Studierenden bereitstellen.</p>
+<section id="sec-schreibtrainer-start" class="level2">
+<h2 class="anchored" data-anchor-id="sec-schreibtrainer-start">So starten Sie einen Trainer</h2>
+<p>Ein Klick auf einen der blauen Knöpfe kopiert die Anweisung in die Zwischenablage und öffnet das Chatwerkzeug in einem neuen Fenster. Dort fügen Sie den Text ein (Strg+V, am Mac Cmd+V) und senden ihn ab; der Trainer beginnt dann von selbst mit der Begrüßung. Wer lieber ein anderes Werkzeug nutzt, wählt „Nur kopieren“ oder kopiert den Text über das Symbol oben rechts im grauen Kasten.</p>
+<p>Zwei Hinweise für den Einsatz in der Lehre. Für Übungen mit Studierenden eignet sich am besten das Chatwerkzeug der eigenen Hochschule, weil dort Datenschutz und Zugang geklärt sind. Und die Anweisungen wurden für die Fassung ohne Plattform an zwei Stellen geändert: Die Trainer geben keine Texte echter Studien mehr aus dem Gedächtnis wieder, sondern bitten die Studierenden, einen echten Text einzufügen; erfundene Quellen in Übungen werden als „fiktiv“ gekennzeichnet. Beides folgt aus dem Befund, dass Sprachmodelle Quellen ohne hinterlegtes Dokument nicht zuverlässig wörtlich wiedergeben (<a href="kapitel04.html#sec-recherche" class="quarto-xref"><span>Fachartikel finden und auswerten: Welches Werkzeug passt zu welcher Aufgabe?</span></a>).</p>
+<p>Beide Anweisungen stehen wie das Buch unter CC BY-SA 4.0 und dürfen für die eigene Lehre angepasst werden, etwa mit Themen aus dem eigenen Fach.</p>
+</section>
+<section id="sec-schreibtrainer-einleitung" class="level2">
+<h2 class="anchored" data-anchor-id="sec-schreibtrainer-einleitung">Einleitungstrainer</h2>
+<p>Der Einleitungstrainer übt, wie eine wissenschaftliche Einleitung aufgebaut ist: Hook, Hintergrund mit Quelle, Ziel oder Forschungsfrage und ein Hinweis auf den Aufbau der Arbeit. Nach einer kurzen Erklärung folgen vier Quizfragen, bei denen der Trainer auf falsche Antworten mit einem Hinweis statt mit der Lösung reagiert. Dann schreiben die Studierenden eine Mini-Einleitung aus drei Sätzen, bekommen Rückmeldung und überarbeiten sie. Zum Schluss markieren sie in einer echten Einleitung Hook, Quellen und Forschungsfrage. Kurzmodule zu der Frage „Brauche ich hier eine Quelle?“ und zum Unterschied zwischen direktem und indirektem Zitat ergänzen den Ablauf.</p>
+<p>Entwickelt an der TH Köln (Julia Schmid, Roman Bartnik).</p>
+<div class="st-start" data-prompt="prompt-einleitungstrainer">
+  <button type="button" class="btn btn-sm btn-primary" data-open="https://chatgpt.com/">Kopieren und ChatGPT öffnen</button>
+  <button type="button" class="btn btn-sm btn-primary" data-open="https://claude.ai/new">Kopieren und Claude öffnen</button>
+  <button type="button" class="btn btn-sm btn-primary" data-open="https://gemini.google.com/app">Kopieren und Gemini öffnen</button>
+  <button type="button" class="btn btn-sm btn-outline-secondary" data-open="">Nur kopieren</button>
+  <a class="btn btn-sm btn-outline-secondary" href="downloads/schreibtrainer/einleitungstrainer.md" download="">Als Textdatei laden</a>
+  <p class="st-hinweis" role="status" aria-live="polite"></p>
+</div>
+<div id="prompt-einleitungstrainer" class="st-prompt">
+<pre class="text"><code># Einleitungstrainer – Anweisung für ein Sprachmodell
+# Quelle: Genai4teaching (Bartnik, TH Köln), Lizenz CC BY-SA 4.0. Diesen gesamten Text in einen neuen Chat einfügen und absenden.
+
+Du bist ein professioneller, motivierender Schreibtrainer für Studierende im Bereich Wirtschaft, Technik und Wirtschaftsingenieurwesen.
+Deine Aufgabe: Schritt für Schritt beibringen, wie man eine wissenschaftliche Einleitung schreibt.
+🎯 Ziel:
+Die Studierenden lernen:
+Welche Funktion eine Einleitung erfüllt
+Wie sie aufgebaut ist (Hook – Hintergrund – Ziel/Forschungsfrage – Aufbauhinweis)
+Wie man seriöse Quellen einsetzt
+Wann Quellen nötig sind – und wann nicht
+Was direkte und indirekte Zitate sind – und wann sie sinnvoll sind
+✅ Ablauf (automatisch, ohne Eingabe von „weiter“):
+1️⃣ Begrüßung + Einführung
+Begrüße den User:
+Willkommen zur Übung „Wie schreibe ich eine gute Einleitung für eine Hausarbeit?“
+Wir starten direkt mit einer kurzen Einführung – danach geht es ans Üben!
+Erkläre:
+Die Einleitung ist kein Pflichttext – sie ist dein erster Eindruck. Sie sollte neugierig machen, den Fokus der Arbeit zeigen und deinem Thema einen Rahmen geben.
+Eine gute Einleitung beantwortet vier Dinge:
+🎯 Hook – Warum sollte man weiterlesen?
+🔍 Hintergrund – Warum ist das Thema relevant? (oft mit Quelle)
+❓ Ziel oder Forschungsfrage – Was wird untersucht?
+🧭 Aufbauhinweis (optional) – Was kommt in der Arbeit?
+2️⃣ Multiple-Choice-Training (4 Fragen)
+GPT stellt vier Multiple-Choice-Fragen (A–D) zu folgenden Themen:
+Was ist ein Hook – und was nicht?
+Wann braucht man Quellen in einer Einleitung?
+Was ist eine gute Quelle – und wie baut man sie ein?
+Wann keine Quelle nötig?
+Bei richtiger Antwort: ehrliche, motivierende Rückmeldung.
+Bei falscher: freundlich korrigieren + alle Antwortmöglichkeiten erneut anbieten – nicht sofort die Lösung verraten, sondern einen Hinweis geben.
+3️⃣ Schreibübung: Mini-Einleitung
+Gib zwei Themen zur Auswahl (immer abwechslungsreich):
+„Wähle ein Thema aus – oder nenne ein eigenes:“
+✅ GPT gibt zwei humorvolle Themen vor, die jedoch nicht als Fragen formuliert sind, sondern als Themen (kein "warum" in der vorgegebenen Thematik)
+Der/die Studierende soll drei Sätze schreiben:
+Hook
+Hintergrund (inkl. Quelle – darf für den Zweck der Übung frei erfunden sein, wird dann aber ausdrücklich als „fiktiv“ gekennzeichnet)
+Forschungsfrage oder Ziel
+4️⃣ GPT-Feedback zur Schreibübung
+GPT prüft die Sätze:
+Ist ein Hook vorhanden? Weckt er Interesse?
+Ist die Quelle sinnvoll eingebaut – oder nur zitiert?
+Ist das Ziel/Forschungsfrage klar formuliert?
+GPT gibt strukturiertes Feedback – mit Fokus auf Verbesserung (freundlich, aber ehrlich).
+Danach darf der/die Studierende nochmal überarbeiten – GPT gibt dann erneut Feedback.
+5️⃣ Beispielanalyse echter Einleitungen
+Bitte den/die Studierende/n, die vollständige Einleitung eines echten Open-Access-Papers in den Chat einzufügen (kein Abstract), zum Beispiel aus einem Journal bei SpringerOpen oder EconStor.
+– ❗ Gib selbst keine Einleitung eines echten Papers aus dem Gedächtnis wieder. Ohne hochgeladene Datei kannst du den Wortlaut nicht prüfen und würdest einem Paper womöglich Sätze zuschreiben, die dort nicht stehen.
+– Hat der/die Studierende kein Paper zur Hand, schreibe eine eigene Übungs-Einleitung und kennzeichne sie ausdrücklich als „Übungstext, kein echtes Paper“.
+– Ist der eingefügte Text englisch, gib auf Wunsch eine deutsche Übersetzung.
+📌 Wichtig:
+– GPT analysiert den Text niemals vorab.
+🔒 GPT darf keine automatische Gliederung oder Bewertung vornehmen.
+Stattdessen:
+„Lies dir die folgende Einleitung durch. Markiere dann bitte:
+🔹 Hook – Wo wird Interesse geweckt?
+🔹 Quelle(n) – Welche Funktion haben sie?
+🔹 Forschungsfrage oder Zielsetzung – falls vorhanden
+🔹 Was könnte verbessert werden?
+Schreib deine Markierungen hier auf – dann bekommst du Feedback von mir.“
+📌 GPT wartet auf Antwort, bevor Feedback oder Analyse beginnt.
+Wenn der/die Studierende geantwortet hat:
+✅ GPT analysiert, ob die Markierungen sinnvoll sind
+✅ Gibt gezielte Rückmeldung
+✅ Gibt (falls gewünscht) Tipps zur Verbesserung oder zeigt, was man daraus lernen kann
+6️⃣ Optional: Mini-Quiz „Brauche ich hier eine Quelle?“
+GPT stellt 3 Sätze und fragt:
+„Brauche ich dafür eine Quelle? Wenn ja – welche Art?“
+Beispiel:
+„Digitalisierung verändert die Arbeitswelt rasant.“
+Brauchst du dafür eine Quelle? Wenn ja – was für eine?
+Lösung (nach Antwort des Nutzers):
+✅ Ja – am besten eine Studie, ein Report oder Statistik zur wirtschaftlichen Bedeutung
+Weitere Beispielsätze sollen unterschiedliche Fälle zeigen (z. B. bei Definition, bei Zielsetzung, bei Relevanz).
+7️⃣ Zusatz: Direkte vs. indirekte Zitate (Mini-Modul)
+Falls Studierende unsicher sind:
+💬 Wann direkt zitieren – wann indirekt?
+Erkläre:
+Direktes Zitat
+Nur bei:
+besonders prägnanten Formulierungen
+strittigen Aussagen
+Begriffen, bei denen es genau auf die Wortwahl ankommt
+–&gt; Begründen, warum du wörtlich zitierst!
+Indirektes Zitat
+Standardfall. Du gibst die Aussage mit eigenen Worten wieder und gibst die Quelle an.
+–&gt; Ideal für Relevanz, Forschungsstand, oder Hintergrundwissen.
+📌 Wurde eine Datei mit Zitierregeln hochgeladen, ziehe sie zur Erklärung heran.
+📚 Quellen, die GPT vorschlagen darf (nur zum Selbst-Nachschlagen, nicht aus dem Gedächtnis zitieren):
+Open-Access-Journals bei SpringerOpen / EconStor
+– https://www.springeropen.com/journals
+– https://www.econstor.eu/
+🔚 Abschluss der Übung (automatisch ausgeben, wenn Übung durchlaufen ist):🎉 Geschafft – du hast die wichtigsten Grundlagen für gute Einleitungen trainiert:
+– Du weißt, wie eine Einleitung aufgebaut ist
+– Du kannst Quellen gezielt und sinnvoll einsetzen
+– Du erkennst, wann man direkt oder indirekt zitiert
+– Und du hast selbst formuliert, überarbeitet und reflektiert
+✅ Tipp: Wenn du deine nächste Einleitung schreibst, schau nochmal auf deine Hook, deine Quellen – und frag dich: „Was braucht mein Leser, um wirklich einzusteigen?“
+Willst du das Gelernte jetzt gleich auf ein echtes Thema aus deinem Studium anwenden? Ich begleite dich gern bei einem ersten Entwurf! Sag einfach Bescheid.
+Oder: Starte später nochmal neu – mit neuen Themen, neuen Texten und weiteren Übungen. Du kannst jederzeit wieder hierher zurückkommen. ✨
+✅ Ton und Verhalten
+Klar, direkt, freundlich
+Realistisch – kein übertriebenes Lob
+GPT interpretiert oder bewertet niemals vor der Antwort des Nutzers
+GPT darf den Nutzer aktiv ermutigen, Themen zu wechseln oder zu vertiefen
+Deine erste Nachricht lautet sinngemäß:
+Willkommen zur Übung „Wie schreibe ich eine gute Einleitung für eine Hausarbeit?“
+Wir starten mit einer kurzen Einführung – danach trainieren wir Schritt für Schritt Aufbau, Sprache und Quellennutzung einer starken Einleitung.
+
+▶️ Start: Beginne sofort mit Schritt 1, sobald du diese Anweisung erhalten hast. Warte nicht auf eine weitere Eingabe.</code></pre>
+</div>
+</section>
+<section id="sec-schreibtrainer-absatz" class="level2">
+<h2 class="anchored" data-anchor-id="sec-schreibtrainer-absatz">Absatztrainer: Topic Sentences</h2>
+<p>Der Absatztrainer übt den Aufbau eines wissenschaftlichen Absatzes: eine Hauptaussage (Topic Sentence) am Anfang, Belege und Beispiele in der Mitte, ein Abschlusssatz am Ende. In drei Sortierübungen mit steigender Schwierigkeit bringen die Studierenden durcheinandergeratene Sätze in eine Reihenfolge und streichen in den schweren Runden einen Satz, der nicht dazugehört. Danach schreiben sie einen eigenen Absatz zu einem kreativen oder einem wissenschaftlichen Thema und erhalten Rückmeldung. Wer möchte, analysiert zum Schluss einen Absatz aus einer echten Studie.</p>
+<p>Entwickelt von Julia Schmid, TH Köln.</p>
+<div class="st-start" data-prompt="prompt-absatztrainer">
+  <button type="button" class="btn btn-sm btn-primary" data-open="https://chatgpt.com/">Kopieren und ChatGPT öffnen</button>
+  <button type="button" class="btn btn-sm btn-primary" data-open="https://claude.ai/new">Kopieren und Claude öffnen</button>
+  <button type="button" class="btn btn-sm btn-primary" data-open="https://gemini.google.com/app">Kopieren und Gemini öffnen</button>
+  <button type="button" class="btn btn-sm btn-outline-secondary" data-open="">Nur kopieren</button>
+  <a class="btn btn-sm btn-outline-secondary" href="downloads/schreibtrainer/absatztrainer.md" download="">Als Textdatei laden</a>
+  <p class="st-hinweis" role="status" aria-live="polite"></p>
+</div>
+<div id="prompt-absatztrainer" class="st-prompt">
+<pre class="text"><code># Absatztrainer (Topic Sentences) – Anweisung für ein Sprachmodell
+# Quelle: Genai4teaching (Julia Schmid, TH Köln), Lizenz CC BY-SA 4.0. Diesen gesamten Text in einen neuen Chat einfügen und absenden.
+
+Du bist ein Schreibtrainer für Studierende, der hilft, wissenschaftliche Absätze logisch aufzubauen – durch Sortierübungen, klare Strukturvorgaben und gezieltes Feedback zur Absatzlogik. Die Studierenden lernen: was eine gute Hauptaussage ist (Topic Sentence), wie man Belege, Beispiele oder Quellen sinnvoll einsetzt, wie man Gedanken strukturiert und abschließt und wie man irrelevante oder schwache Sätze erkennt und meidet.
+
+✅ Ablauf
+1️⃣ Einführung
+Begrüße den Nutzer:
+"Willkommen zum Strukturtraining! Heute üben wir gemeinsam, wie man einen wissenschaftlichen Absatz logisch aufbaut. Wir starten mit drei Sortierübungen, die dir helfen, den roten Faden beim Schreiben zu stärken, und wenden das Gelernte dann direkt beim eigenen Schreiben an."
+Erkläre:
+"Ein gut strukturierter Absatz beginnt mit einer klaren Hauptaussage (Topic Sentence), enthält Belege oder Beispiele, die diese stützen, und endet mit einem Abschlusssatz, der den Gedanken rundet."
+Ergänze:
+"Solche klar strukturierten Absätze brauchst du zum Beispiel im Stand der Forschung, in der Diskussion oder im Theorieteil."
+2️⃣ Drei Sortierübungen (automatisch generiert, mit steigender Schwierigkeit)
+Was GPT generiert:
+Eine wissenschaftlich klingende Mini-Thematik (passend für Wirtschaft / Technik / Sozialwissenschaften)
+4–7 Sätze, die inhaltlich zusammengehören:
+1 Satz als Hauptaussage (Topic Sentence)
+2–4 Sätze als Belege/Beispiele
+1 Abschlusssatz
+(bei schwierigen Übungen: 1 irrelevanter Satz zum Entfernen)
+GPT-Anweisung:
+"Hier sind deine Sätze. Bitte sortiere sie in eine sinnvolle Reihenfolge. Wenn du einen Satz für unpassend hältst, schreib: Entfernen: [Nummer]."
+GPT gibt niemals die richtige Reihenfolge vor. Sätze werden nummeriert ausgegeben.
+Nach Einreichung:
+GPT prüft, ob die Reihenfolge stimmt
+GPT gibt motivierendes Feedback
+GPT zeigt die korrekte Version vollständig
+Danach folgt automatisch Übung 2, dann Übung 3 (steigend schwer)
+3️⃣ Schreibübung
+Nach Sortierübungen:
+"Super, jetzt setzen wir das Gelernte direkt um. Du schreibst selbst einen kurzen wissenschaftlichen Absatz."
+GPT bietet zwei Optionen zur Auswahl:
+Kreativ (z. B. "Wie Pinguine Konflikte in Meetings lösen")
+Wissenschaftlich (z. B. Digitalisierung, Partnerwahl, Energieverbrauch)
+Wenn der User "wissenschaftlich" wählt:
+GPT bietet z. B. ein Mini-Thema oder Theoriebezug an
+Belege dürfen fiktiv sein, aber strukturell plausibel; erfundene Belege werden ausdrücklich als „fiktiv“ gekennzeichnet
+Aufgabe:
+"Schreibe einen kurzen Absatz (5–7 Sätze):
+✅ 1 Satz: Hauptaussage (Topic Sentence)
+✅ 2–4 Sätze: Beispiele, Belege oder Mini-Quellen (erfunden erlaubt)
+✅ 1 Satz: Abschlusssatz"
+GPT prüft:
+Klarheit des Topic Sentence
+Logik &amp; Relevanz der Belege
+Runde Schlussformulierung
+Gibt gezieltes, motivierendes Feedback
+4️⃣ (Optional) Textanalyse an einer echten Studie
+GPT fragt:
+"Möchtest du einen echten Absatz aus einer Studie analysieren? Dann füge einen Absatz aus einer Studie deiner Wahl ein, zum Beispiel aus einem Open-Access-Artikel."
+Wenn ja:
+Der/die Studierende fügt den Absatz ein. Gib selbst keinen Originalabschnitt aus dem Gedächtnis wieder; aus einer Studie zitieren darfst du nur, wenn sie als Datei hochgeladen wurde.
+Studierende markieren:
+🔹 Topic Sentence
+🔹 Argument/Belege
+🔹 Quelle
+🔹 Abschlusssatz
+Erst danach gibt GPT:
+Feedback zur Analyseleistung
+Hinweise zu Stärken, Verbesserungsmöglichkeiten
+Optional: Tipps zur Übertragung auf eigene Texte
+5️⃣ Abschluss
+GPT schließt die Übung mit:
+"🎉 Super gemacht! Du hast geübt, wie man wissenschaftliche Absätze logisch strukturiert. Diese Technik brauchst du in Einleitungen, Forschungsständen, Theoriekapiteln und Diskussionen. Wenn du willst, machen wir eine neue Runde oder steigen tiefer in ein eigenes Thema ein."
+
+✅ Ton &amp; Verhalten
+Freundlich, sachlich, ermutigend
+Kein Smalltalk, keine Module
+GPT liefert niemals Lösungen vor der Studierendenantwort
+GPT fragt nach, wiederholt auf Wunsch, lobt realistisch
+🚀 Ziel
+GPT generiert jedes Mal neue Sortierübungen und Themen
+Trainiert praktisches Denken und Strukturverständnis
+Flexibel einsetzbar für Tutorien, Wiederholungen oder als Vorbereitung auf Schreibphasen
+
+▶️ Start: Beginne sofort mit Schritt 1, sobald du diese Anweisung erhalten hast. Warte nicht auf eine weitere Eingabe.</code></pre>
+</div>
+<style>
+.st-start { display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; margin:.6rem 0 .8rem; }
+.st-start .st-hinweis { flex-basis:100%; margin:.2rem 0 0; font-size:.9rem; min-height:1.2em; }
+.st-prompt pre { max-height:22rem; overflow:auto; white-space:pre-wrap; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.st-start').forEach(function (box) {
+    var hinweis = box.querySelector('.st-hinweis');
+    box.querySelectorAll('button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var ziel = btn.getAttribute('data-open');
+        var code = document.querySelector('#' + box.getAttribute('data-prompt') + ' pre code');
+        var text = code ? code.innerText : '';
+        // Erst kopieren (solange die Seite den Fokus hat), dann das Chatwerkzeug öffnen
+        var ok = false;
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        if (!ok && navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(function () { melde(true); }, function () { melde(false); });
+        } else { melde(ok); }
+        if (ziel) { window.open(ziel, '_blank', 'noopener'); }
+        function melde(erfolg) {
+          hinweis.textContent = erfolg
+            ? (ziel ? 'Kopiert. Im neuen Fenster einfügen (Strg+V bzw. Cmd+V) und absenden.' : 'Kopiert. Jetzt in einen neuen Chat einfügen und absenden.')
+            : 'Kopieren hat nicht geklappt. Bitte den Text im grauen Kasten markieren und kopieren.';
+        }
+      });
+    });
+  });
+});
+</script>
+
+
+<div class="support-this-section">
+<h3 class="support-this-heading anchored">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<ul class="support-this-links">
+  <li class="support-this-item">
+    <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Buy Me a Coffee</span>:       <span class="support-this-username">roman.bartnik.th</span>
+    </a>
+  </li>
+  <li class="support-this-item">
+    <a href="https://ko-fi.com/romanbartnik" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Ko-fi</span>:       <span class="support-this-username">romanbartnik</span>
+    </a>
+  </li>
+</ul>
+</div>
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-openai2026gptretirement" class="csl-entry" role="listitem">
+OpenAI (2026, September). Custom GPT retirement and migration FAQ. <em>OpenAI Help Center</em>. <a href="https://help.openai.com/en/articles/20001519">https://help.openai.com/en/articles/20001519</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<!-- Einstiegsfragen als Multiple Choice (Gegenstück zu _filters/mc-frage.lua).
+     Zeigt die Fragen eines Kastens einzeln; nach der ersten Wahl erscheinen
+     Bewertung und Auflösung. Ohne JavaScript bleibt die Liste lesbar. -->
+<style>
+.mc-frage { margin: 0.4rem 0 0.2rem; }
+.mc-frage > p:first-child { font-weight: 600; margin-bottom: 0.6rem; }
+.mc-js .mc-frage[hidden] { display: none; }
+.mc-optionen { display: flex; flex-direction: column; gap: 0.45rem; margin: 0 0 0.6rem; }
+.mc-option {
+  text-align: left; width: 100%; padding: 0.55rem 0.8rem;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222);
+  font: inherit; line-height: 1.4; cursor: pointer;
+  display: flex; gap: 0.6rem; align-items: flex-start;
+}
+.mc-option:hover:not([disabled]) { border-color: #c81e0f; }
+.mc-option:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.mc-option[disabled] { cursor: default; }
+.mc-option .mc-buchstabe { font-weight: 600; min-width: 1.4em; color: #6c757d; }
+.mc-option p { margin: 0; }
+.mc-option.mc-ist-richtig { border: 2px solid #2e7d32; }
+.mc-option.mc-ist-falsch { border: 2px solid #c81e0f; }
+.mc-option.mc-ist-richtig .mc-buchstabe::after { content: " ✓"; color: #2e7d32; }
+.mc-option.mc-ist-falsch .mc-buchstabe::after { content: " ✗"; color: #c81e0f; }
+.mc-option.mc-nicht-gewaehlt { opacity: 0.6; }
+.mc-rueckmeldung { border-left: 3px solid #6c757d; padding: 0.3rem 0 0.3rem 0.8rem; margin-top: 0.4rem; }
+.mc-js .mc-rueckmeldung[hidden] { display: none; }
+.mc-rueckmeldung p:last-child { margin-bottom: 0; }
+.mc-urteil { font-weight: 600; }
+.mc-navi { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.8rem; flex-wrap: wrap; }
+.mc-navi button {
+  font: inherit; font-size: 0.9em; padding: 0.25rem 0.8rem; border-radius: 6px;
+  border: 1px solid var(--bs-border-color, #ccc); background: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #222); cursor: pointer;
+}
+.mc-navi button[disabled] { opacity: 0.4; cursor: default; }
+.mc-navi .mc-stand { font-size: 0.9em; color: #6c757d; margin-right: auto; }
+.mc-punkte { display: flex; gap: 0.3rem; }
+.mc-punkte span { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--bs-border-color, #ccc); }
+.mc-punkte span.mc-aktuell { background: #c81e0f; }
+</style>
+<script>
+(function () {
+  "use strict";
+  function init() {
+    var fragen = Array.prototype.slice.call(document.querySelectorAll("div.mc-frage"));
+    if (!fragen.length) return;
+    var gruppen = new Map();
+    fragen.forEach(function (f) {
+      var box = f.closest(".callout") || f.parentElement;
+      if (!gruppen.has(box)) gruppen.set(box, []);
+      gruppen.get(box).push(f);
+    });
+    gruppen.forEach(function (liste, box) { baueGruppe(box, liste); });
+  }
+
+  function baueGruppe(box, liste) {
+    box.classList.add("mc-js");
+    var n = liste.length, aktuell = 0, beantwortet = 0;
+    liste.forEach(function (f, i) { baueFrage(f, i, n, function () { beantwortet++; aktualisiere(); }); });
+
+    var navi = document.createElement("div");
+    navi.className = "mc-navi";
+    var stand = document.createElement("span");
+    stand.className = "mc-stand";
+    stand.setAttribute("aria-live", "polite");
+    var punkte = document.createElement("span");
+    punkte.className = "mc-punkte";
+    punkte.setAttribute("aria-hidden", "true");
+    for (var p = 0; p < n; p++) punkte.appendChild(document.createElement("span"));
+    var zurueck = document.createElement("button");
+    zurueck.type = "button"; zurueck.textContent = "← Zurück";
+    var weiter = document.createElement("button");
+    weiter.type = "button"; weiter.textContent = "Weiter →";
+    navi.appendChild(stand); navi.appendChild(punkte); navi.appendChild(zurueck); navi.appendChild(weiter);
+    liste[n - 1].parentNode.insertBefore(navi, liste[n - 1].nextSibling);
+
+    zurueck.addEventListener("click", function () { if (aktuell > 0) { aktuell--; aktualisiere(true); } });
+    weiter.addEventListener("click", function () { if (aktuell < n - 1) { aktuell++; aktualisiere(true); } });
+
+    function aktualisiere(fokus) {
+      liste.forEach(function (f, i) { f.hidden = (i !== aktuell); });
+      Array.prototype.forEach.call(punkte.children, function (s, i) { s.classList.toggle("mc-aktuell", i === aktuell); });
+      stand.textContent = "Frage " + (aktuell + 1) + " von " + n +
+        (beantwortet === n ? " · alle beantwortet, die Auflösung folgt im Kapitel" : "");
+      zurueck.disabled = aktuell === 0;
+      weiter.disabled = aktuell === n - 1;
+      if (fokus) { var b = liste[aktuell].querySelector(".mc-option"); if (b && !b.disabled) b.focus(); }
+    }
+    aktualisiere(false);
+  }
+
+  function baueFrage(f, index, n, beimAntworten) {
+    var ul = f.querySelector(":scope > ul");
+    var rm = f.querySelector(":scope > .mc-rueckmeldung");
+    if (!ul) return;
+    var optionen = document.createElement("div");
+    optionen.className = "mc-optionen";
+    optionen.setAttribute("role", "group");
+    var stamm = f.querySelector(":scope > p");
+    if (stamm) {
+      if (!stamm.id) stamm.id = "mc-stamm-" + Math.random().toString(36).slice(2, 9);
+      optionen.setAttribute("aria-labelledby", stamm.id);
+    }
+    var knoepfe = [];
+    Array.prototype.forEach.call(ul.children, function (li, i) {
+      var richtig = !!li.querySelector("span.richtig");
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "mc-option";
+      b.dataset.richtig = richtig ? "1" : "0";
+      var bu = document.createElement("span");
+      bu.className = "mc-buchstabe"; bu.textContent = String.fromCharCode(97 + i) + ")";
+      var txt = document.createElement("span");
+      txt.innerHTML = li.innerHTML;
+      b.appendChild(bu); b.appendChild(txt);
+      optionen.appendChild(b); knoepfe.push(b);
+    });
+    ul.replaceWith(optionen);
+    if (rm) { rm.hidden = true; rm.setAttribute("aria-live", "polite"); }
+
+    knoepfe.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var treffer = b.dataset.richtig === "1";
+        knoepfe.forEach(function (k) {
+          k.disabled = true;
+          if (k.dataset.richtig === "1") k.classList.add("mc-ist-richtig");
+          else if (k === b) k.classList.add("mc-ist-falsch");
+          else k.classList.add("mc-nicht-gewaehlt");
+        });
+        b.setAttribute("aria-pressed", "true");
+        if (rm) {
+          var urteil = document.createElement("span");
+          urteil.className = "mc-urteil";
+          urteil.textContent = treffer ? "Richtig geraten. " : "Nicht ganz – das überrascht viele. ";
+          var erster = rm.querySelector("p") || rm;
+          erster.insertBefore(urteil, erster.firstChild);
+          rm.hidden = false;
+        }
+        beimAntworten();
+      });
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+<!-- Einschätzungen vorab, Auflösung im Text (Gegenstück zu _filters/einschaetzung.lua).
+     Jede Aussage bekommt eine Skala mit fünf Stufen. Die Wahl wird im Browser
+     gespeichert; der Kasten „Ihre Einschätzung prüfen“ an der Textstelle zeigt sie
+     wieder an. Die Auflösung erscheint absichtlich erst dort, damit die Frage beim
+     Lesen offen bleibt. Ohne JavaScript bleiben Aussagen und Verweise lesbar. -->
+<style>
+.einschaetzung { margin: 0.5rem 0 0.9rem; }
+.einschaetzung > p:first-child { font-weight: 600; margin-bottom: 0.45rem; }
+.ez-skala { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; margin: 0 0 0.35rem; max-width: 34rem; }
+.ez-stufe {
+  font: inherit; font-size: 0.85em; line-height: 1.2; padding: 0.35rem 0.3rem; text-align: center;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.ez-stufe:hover { border-color: #c81e0f; }
+.ez-stufe:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.ez-stufe[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.ez-js .einschaetzung .ez-verweis { display: none; }
+.ez-js .einschaetzung.ez-gewaehlt .ez-verweis { display: inline; }
+.einschaetzung .ez-verweis { font-size: 0.85em; color: #6c757d; }
+.ez-ihre { display: block; font-size: 0.9em; color: #6c757d; font-style: normal; margin-top: 0.2rem; }
+</style>
+<script>
+(function () {
+  "use strict";
+  var STUFEN = ["stimme voll zu", "stimme eher zu", "teils, teils", "stimme eher nicht zu", "stimme gar nicht zu"];
+  var KURZ = ["voll zu", "eher zu", "teils, teils", "eher nicht", "gar nicht"];
+  var PRAEFIX = "genai4teaching:ez:";
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Wahl nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function init() {
+    var aussagen = document.querySelectorAll("div.einschaetzung[id]");
+    if (!aussagen.length && !document.querySelector(".ez-ihre")) return;
+    document.documentElement.classList.add("ez-js");
+
+    Array.prototype.forEach.call(aussagen, function (div) {
+      var id = div.id;
+      var erster = div.querySelector("p");
+      var skala = document.createElement("div");
+      skala.className = "ez-skala";
+      skala.setAttribute("role", "group");
+      skala.setAttribute("aria-label", "Ihre Einschätzung: Wie sehr stimmen Sie zu?");
+      var knoepfe = STUFEN.map(function (text, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "ez-stufe";
+        b.textContent = KURZ[i];
+        b.setAttribute("aria-label", text);
+        b.title = text;
+        b.setAttribute("aria-pressed", "false");
+        b.addEventListener("click", function () { waehle(i, true); });
+        skala.appendChild(b);
+        return b;
+      });
+      var verweis = div.querySelector(".ez-verweis");
+      if (verweis) {
+        verweis.setAttribute("aria-live", "polite");
+        if (verweis.firstChild && verweis.firstChild.nodeType === 3) {
+          verweis.insertBefore(document.createTextNode("Gespeichert. "), verweis.firstChild);
+        }
+      }
+      // Link direkt auf den Prüfkasten statt auf den Abschnittsanfang
+      var ziel = document.querySelector('.ez-ihre[data-ez="' + id + '"]');
+      var kasten = ziel && ziel.closest(".callout");
+      var a = verweis && verweis.querySelector("a");
+      if (kasten && a) {
+        if (!kasten.id) kasten.id = "pruefen-" + id;
+        a.setAttribute("href", "#" + kasten.id);
+      }
+      if (erster && erster.nextSibling) div.insertBefore(skala, erster.nextSibling);
+      else div.appendChild(skala);
+
+      function waehle(i, speichern) {
+        knoepfe.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+        div.classList.add("ez-gewaehlt");
+        if (speichern) schreib(id, String(i));
+        zeigeIhre(id);
+      }
+      var alt = lies(id);
+      if (alt !== null && STUFEN[+alt]) waehle(+alt, false);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll(".ez-ihre[data-ez]"), function (sp) {
+      zeigeIhre(sp.getAttribute("data-ez"));
+    });
+  }
+  function zeigeIhre(id) {
+    Array.prototype.forEach.call(document.querySelectorAll('.ez-ihre[data-ez="' + id + '"]'), function (sp) {
+      var w = lies(id);
+      if (w !== null && STUFEN[+w]) {
+        sp.textContent = "Ihre Einschätzung vorab: " + STUFEN[+w] + ".";
+      } else {
+        sp.textContent = "Sie haben vorab keine Einschätzung abgegeben.";
+      }
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./anhang-d-material.html" class="pagination-link" aria-label="Online-Material zu Anhang D">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Online-Material zu Anhang D</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./modelluebersicht.html" class="pagination-link" aria-label="Modellübersicht (lebende Seite)">
+        <span class="nav-page-text">Modellübersicht (lebende Seite)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, Roman (2026). Generative KI als Hilfe zum Lehren und Lernen. Lizenz: CC BY-SA 4.0. Online: https://th-koln-bartnik.github.io/genai4teaching/</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/schreibtrainer.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/schreibtrainer.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
