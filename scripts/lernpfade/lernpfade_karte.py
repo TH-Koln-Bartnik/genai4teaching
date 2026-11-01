@@ -125,7 +125,9 @@ def svg(fragment=False):
     # Stationen
     for key, (x, y, txt, anc, dx, dy, link, knoten) in ST.items():
         linien = [n for n, f in LINIEN.items() if key in f]
-        o.append(f'<a href="{link}" target="_top" class="station" data-linien="{" ".join(map(str, linien))}">')
+        # Das Widget liegt in interactions/; Kapitel liegen eine Ebene höher.
+        ziel = f"../{link}" if fragment else link
+        o.append(f'<a href="{ziel}" target="_top" class="station" data-linien="{" ".join(map(str, linien))}">')
         if knoten:
             o.append(f'<circle cx="{x}" cy="{y}" r="18" fill="var(--grund)" stroke="var(--akzent)" stroke-width="4"/>')
         else:
