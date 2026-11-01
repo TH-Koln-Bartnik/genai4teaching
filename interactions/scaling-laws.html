@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skalierungsgesetze: Lernen und Nachdenken machen Modelle besser</title>
+<style>
+  /* Farbbudget: Graustufen + eine Akzentfarbe (Regeln F1/F2), wie die übrigen Animationen in Kap. 2 */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:980px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  .vorhersage button { margin:0 6px 6px 0; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 6px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  .hinweis { font-size:13px; color:var(--grau); margin:0 0 12px; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p, details li { max-width:75ch; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+
+  /* SVG: drei Zustände je Element (Regel F6) */
+  svg text { font-size:16px; }
+  .f { fill:var(--c, var(--tinte)); }
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; }
+  .d { stroke-dasharray:7 5; }
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher, .druck .hinweis { display:none !important; }
+  .druck h1 { display:none; }
+  .hoersaal .unterschrift { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Modelle werden auf zwei Wegen verlässlich besser: durch mehr Rechnen beim Lernen und mehr Nachdenken beim Antworten</h1>
+
+  <div class="vorhersage">
+    <p><strong>Vorhersage:</strong> Was passiert mit dem Fehler eines Modells, wenn man den Rechenaufwand fürs Training verzehnfacht?</p>
+    <button data-tipp="0">Er sinkt jedes Mal um etwa denselben Anteil</button>
+    <button data-tipp="1">Ab einer Grenze sinkt er nicht mehr</button>
+    <button data-tipp="2">Er sinkt erst ab einer Schwelle, dann sprunghaft</button>
+  </div>
+
+  <div class="steuerung">
+    <button id="zurueck">◀ Zurück</button>
+    <button id="weiter">Weiter ▶</button>
+    <span class="stand" id="stand" aria-live="polite"></span>
+  </div>
+
+  <!-- Zwei Felder: links Training, rechts Antworten. Breit nebeneinander, schmal (< 600 px) untereinander.
+       data-ab: ab Schritt sichtbar; data-grau-ab/data-grau-bis: in diesen Schritten als Kontext grau. -->
+  <svg id="buehne" viewBox="0 0 980 365" role="img"
+       aria-label="Zwei Diagramme mit logarithmischen Achsen. Links sinkt der Vorhersagefehler mit dem Rechenaufwand im Training auf einer Geraden. Rechts steigt die Trefferquote mit der Denkzeit beim Antworten.">
+    <g id="feldA" transform="translate(0,25)">
+      <g data-ab="0" data-grau-ab="4" data-grau-bis="6">
+        <line class="s" x1="70" y1="270" x2="460" y2="270" style="stroke-width:1.5"/>
+        <line class="s" x1="70" y1="30" x2="70" y2="270" style="stroke-width:1.5"/>
+        <line class="s" x1="90" y1="270" x2="90" y2="276" style="stroke-width:1.5"/>
+        <line class="s" x1="210" y1="270" x2="210" y2="276" style="stroke-width:1.5"/>
+        <line class="s" x1="330" y1="270" x2="330" y2="276" style="stroke-width:1.5"/>
+        <line class="s" x1="450" y1="270" x2="450" y2="276" style="stroke-width:1.5"/>
+        <text class="f" x="90" y="295" text-anchor="middle">×1</text>
+        <text class="f" x="210" y="295" text-anchor="middle">×10</text>
+        <text class="f" x="330" y="295" text-anchor="middle">×100</text>
+        <text class="f" x="450" y="295" text-anchor="middle">×1000</text>
+        <text class="f" x="265" y="325" text-anchor="middle">Rechenaufwand Training</text>
+        <text class="f" x="0" y="0" text-anchor="middle" transform="translate(40,150) rotate(-90)">Vorhersagefehler</text>
+      </g>
+      <g data-ab="1" data-grau-ab="4" data-grau-bis="6">
+        <circle class="f" cx="90" cy="70" r="6"/>
+        <circle class="f" cx="180" cy="112.5" r="6"/>
+        <circle class="f" cx="270" cy="155" r="6"/>
+        <circle class="f" cx="360" cy="197.5" r="6"/>
+        <circle class="f" cx="450" cy="240" r="6"/>
+        <text class="f" x="112" y="56">Modelle wachsender Größe</text>
+      </g>
+      <g data-ab="2" data-grau-ab="4" data-grau-bis="6">
+        <line class="s" x1="80" y1="65.3" x2="460" y2="244.7" style="stroke-width:2.5"/>
+        <text class="f" x="0" y="0" text-anchor="middle" transform="translate(330,165) rotate(25.3)">Skalierungsgesetz</text>
+      </g>
+      <g data-ab="3" data-grau-ab="4" data-grau-bis="6">
+        <rect class="f" x="388" y="160" width="12" height="12"/>
+        <path class="f" d="M394 222 l8 8 l-8 8 l-8 -8 z"/>
+        <text class="f" x="455" y="140" text-anchor="end">Gopher · 280 Mrd.</text>
+        <text class="f" x="378" y="248" text-anchor="end">Chinchilla · 70 Mrd. · 4× Daten</text>
+      </g>
+    </g>
+
+    <g id="feldB" transform="translate(500,25)">
+      <g data-ab="4">
+        <line class="s" x1="70" y1="270" x2="460" y2="270" style="stroke-width:1.5"/>
+        <line class="s" x1="70" y1="30" x2="70" y2="270" style="stroke-width:1.5"/>
+        <line class="s" x1="90" y1="270" x2="90" y2="276" style="stroke-width:1.5"/>
+        <line class="s" x1="210" y1="270" x2="210" y2="276" style="stroke-width:1.5"/>
+        <line class="s" x1="330" y1="270" x2="330" y2="276" style="stroke-width:1.5"/>
+        <line class="s" x1="450" y1="270" x2="450" y2="276" style="stroke-width:1.5"/>
+        <text class="f" x="90" y="295" text-anchor="middle">×1</text>
+        <text class="f" x="210" y="295" text-anchor="middle">×10</text>
+        <text class="f" x="330" y="295" text-anchor="middle">×100</text>
+        <text class="f" x="450" y="295" text-anchor="middle">×1000</text>
+        <text class="f" x="265" y="325" text-anchor="middle">Denkzeit beim Antworten</text>
+        <text class="f" x="0" y="0" text-anchor="middle" transform="translate(40,150) rotate(-90)">Trefferquote</text>
+      </g>
+      <g data-ab="5">
+        <line class="s" x1="80" y1="244.7" x2="460" y2="65.3" style="stroke-width:2.5"/>
+        <text class="f" x="250" y="205">Skalierungsgesetz</text>
+        <circle class="f" cx="360" cy="112.5" r="6"/>
+        <circle class="f" cx="430" cy="79.4" r="6"/>
+        <text class="f" x="455" y="48" text-anchor="end">o1 · AIME 74 % → 83 % (64 Anläufe)</text>
+      </g>
+      <g data-ab="6">
+        <line class="s d" x1="70" y1="150" x2="460" y2="150"/>
+        <circle class="s" cx="280.6" cy="150" r="9"/>
+        <text class="f" x="78" y="141">14× größeres Modell</text>
+      </g>
+    </g>
+
+    <!-- Schritt 8: eine Gruppe mit beiden Etiketten; Lage setzt layout() -->
+    <g data-ab="7" id="hebel">
+      <text class="f" id="hebelA" x="265" y="18" text-anchor="middle" style="font-weight:650">Hebel 1 · einmal bezahlt</text>
+      <text class="f" id="hebelB" x="765" y="18" text-anchor="middle" style="font-weight:650">Hebel 2 · je Antwort</text>
+    </g>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+  <p class="hinweis">Kurven: Lehrmodell, schematisch. Zahlen aus den Quellen unten.</p>
+
+  <section class="nachher" id="nachher">
+    <details><summary>Vergleich mit einer Prüfung</summary>
+      <p>Wer vor einer Prüfung länger lernt, schneidet besser ab; das entspricht dem Training. Wer in der Prüfung mehr Bearbeitungszeit bekommt, löst ebenfalls mehr Aufgaben; das entspricht der Denkzeit beim Antworten. Die Lernzeit ist einmal bezahlt, die Bearbeitungszeit fällt in jeder Prüfung neu an. Mehr Zeit in der Prüfung hilft aber nur, wenn der Stoff im Grundsatz sitzt: Auch bei Snell et al. (2024) ersetzt Denkzeit bei den schwersten Aufgaben kein größeres Modell.</p>
+    </details>
+    <details><summary>Lehrmodell und Annahmen</summary>
+      <ul>
+        <li>Die Kurven sind schematisch und zeigen die Form der Befunde, keine Messwerte. Beide Achsen sind logarithmisch: Gleiche Abstände bedeuten gleiche Vielfache.</li>
+        <li>Links: Der Vorhersagefehler (Kreuzentropie beim nächsten Token) folgt einem Potenzgesetz in Modellgröße, Datenmenge und Rechenaufwand, teils über mehr als sieben Größenordnungen (Kaplan et al., 2020). Auf doppelt-logarithmischer Achse wird daraus eine Gerade. Auf normaler Achse sähe dieselbe Kurve aus, als flache sie ab: Jede weitere Verbesserung kostet ein Vielfaches an Rechenleistung.</li>
+        <li>Gopher (280 Mrd. Parameter) und Chinchilla (70 Mrd. Parameter) hatten dasselbe Rechenbudget; Chinchilla sah etwa viermal so viele Trainingsdaten und schnitt durchweg besser ab. Faustregel daraus: Verdoppelt man die Modellgröße, sollten sich auch die Trainingsdaten verdoppeln (Hoffmann et al., 2022). Die Lage der beiden Punkte ist schematisch.</li>
+        <li>Rechts: Die Leistung von o1 steigt mit mehr Rechenaufwand im Training und mit mehr Denkzeit beim Antworten (OpenAI, 2024). OpenAIs Diagramme nennen keine Zahlen auf der Rechenachse. Beim Mathematikwettbewerb AIME 2024 löste o1 mit einer Antwort je Aufgabe 74 % der Aufgaben, bei einem Mehrheitsentscheid über 64 Antworten 83 % (OpenAI, 2024).</li>
+        <li>Bei gleichem Rechenbudget schlug ein kleineres Modell mit gezielt eingesetzter Denkzeit ein 14-mal größeres Modell, aber nur bei Aufgaben, die das kleine Modell schon teilweise löste; bei den schwersten Aufgaben lohnte das größere Modell mehr (Snell et al., 2024).</li>
+      </ul>
+    </details>
+    <details><summary>Quellen</summary>
+      <p class="klein">Hoffmann, J., Borgeaud, S., Mensch, A., Buchatskaya, E., Cai, T., Rutherford, E., de Las Casas, D., Hendricks, L. A., Welbl, J., Clark, A., Hennigan, T., Noland, E., Millican, K., van den Driessche, G., Damoc, B., Guy, A., Osindero, S., Simonyan, K., Elsen, E., … Sifre, L. (2022). <em>Training compute-optimal large language models</em> (arXiv:2203.15556). arXiv. <a href="https://doi.org/10.48550/arXiv.2203.15556">https://doi.org/10.48550/arXiv.2203.15556</a></p>
+      <p class="klein">Kaplan, J., McCandlish, S., Henighan, T., Brown, T. B., Chess, B., Child, R., Gray, S., Radford, A., Wu, J., &amp; Amodei, D. (2020). <em>Scaling laws for neural language models</em> (arXiv:2001.08361). arXiv. <a href="https://doi.org/10.48550/arXiv.2001.08361">https://doi.org/10.48550/arXiv.2001.08361</a></p>
+      <p class="klein">OpenAI. (2024, 12. September). <em>Learning to reason with LLMs</em>. <a href="https://openai.com/index/learning-to-reason-with-llms/">https://openai.com/index/learning-to-reason-with-llms/</a></p>
+      <p class="klein">Snell, C., Lee, J., Xu, K., &amp; Kumar, A. (2024). <em>Scaling LLM test-time compute optimally can be more effective than scaling model parameters</em> (arXiv:2408.03314). arXiv. <a href="https://doi.org/10.48550/arXiv.2408.03314">https://doi.org/10.48550/arXiv.2408.03314</a></p>
+    </details>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var SCHRITTE = [
+    "Waagrecht steht der Rechenaufwand beim Training; jede Marke ist zehnmal so viel wie die vorige.",
+    "Größere Modelle, mit mehr Daten und Rechenzeit trainiert, machen beim Vorhersagen des nächsten Worts weniger *Fehler*.",
+    "Auf doppelt-logarithmischer Achse liegen die Punkte auf einer *Geraden*: Jede Verzehnfachung senkt den Fehler um denselben Anteil.",
+    "Bei gleichem Aufwand gewinnt das kleinere Modell mit viermal mehr Daten: *Daten und Größe* gehören zusammen.",
+    "Ein fertig trainiertes Modell lässt sich weiter verbessern: mit mehr *Denkzeit* vor der Antwort.",
+    "Mehr Rechenschritte beim Antworten heben die Trefferquote; darauf beruhen die *Reasoning-Modelle*.",
+    "Bei mittelschweren Aufgaben schlägt ein kleines Modell mit Denkzeit ein *14-mal größeres* bei gleichem Rechenbudget.",
+    "Training kostet einmal, *Denkzeit* bei jeder Anfrage: Reasoning-Modelle sind besser, aber je Antwort teurer."
+  ];
+  var VORHERSAGE = { richtig: 0, optionen: ["Er sinkt jedes Mal um etwa denselben Anteil", "Ab einer Grenze sinkt er nicht mehr", "Er sinkt erst ab einer Schwelle, dann sprunghaft"] };
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null, druck = false;
+  var svg = document.getElementById("buehne");
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll("[data-ab]"));
+  elemente.forEach(function (e) { e.classList.add("x"); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grauAb = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    var grauBis = e.dataset.grauBis != null ? +e.dataset.grauBis : Infinity;  // Erweiterung: grau nur bis zu diesem Schritt
+    if (s < ab || s > bis) return null;
+    if (s >= grauAb && s <= grauBis) return "kontext";
+    return s === ab ? "neu" : "bekannt";
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER && tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? " Ihre Vorhersage zum Training trifft zu." :
+        " Sie hatten „" + VORHERSAGE.optionen[tipp] + "“ vorhergesagt; richtig ist: um etwa denselben Anteil.";
+    }
+    var esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return esc.replace(/\*([^*]+)\*/g, '<strong class="akz">$1</strong>');
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle("an", z !== null);
+      e.classList.toggle("neu", z === "neu");
+      e.classList.toggle("bekannt", z === "bekannt");
+      e.classList.toggle("kontext", z === "kontext");
+    });
+    document.getElementById("unterschrift").innerHTML = unterschrift(schritt);
+    document.getElementById("stand").textContent = "Schritt " + (schritt + 1) + " von " + (LETZTER + 1);
+    document.getElementById("zurueck").disabled = schritt === 0;
+    document.getElementById("weiter").disabled = schritt === LETZTER;
+    document.getElementById("nachher").classList.toggle("an", schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  // Breit: Felder nebeneinander; schmal (< 600 px): untereinander, damit die Schrift lesbar bleibt
+  function layout() {
+    var breite = document.querySelector("main").clientWidth;
+    var schmal = !druck && breite < 600;
+    var A = document.getElementById("feldA"), B = document.getElementById("feldB");
+    var hA = document.getElementById("hebelA"), hB = document.getElementById("hebelB");
+    if (schmal) {
+      svg.setAttribute("viewBox", "0 0 480 745");
+      A.setAttribute("transform", "translate(0,25)"); B.setAttribute("transform", "translate(0,410)");
+      hA.setAttribute("x", 265); hA.setAttribute("y", 18); hB.setAttribute("x", 265); hB.setAttribute("y", 403);
+    } else {
+      svg.setAttribute("viewBox", "0 0 980 365");
+      A.setAttribute("transform", "translate(0,25)"); B.setAttribute("transform", "translate(500,25)");
+      hA.setAttribute("x", 265); hA.setAttribute("y", 18); hB.setAttribute("x", 765); hB.setAttribute("y", 18);
+    }
+  }
+
+  document.getElementById("weiter").onclick = function () { gehe(schritt + 1); };
+  document.getElementById("zurueck").onclick = function () { gehe(schritt - 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.target && e.target.tagName === "SUMMARY") return;
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === "ArrowLeft") gehe(schritt - 1);
+  });
+  document.querySelectorAll("[data-tipp]").forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll("[data-tipp]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      darstellen();
+    };
+  });
+
+  if (/[?&]hoersaal\b/.test(location.search)) document.documentElement.classList.add("hoersaal");
+  function hash() {
+    druck = location.hash === "#druck";
+    document.documentElement.classList.toggle("druck", druck);
+    layout();
+    if (druck) { elemente.forEach(function (e) { e.style.transition = "none"; }); gehe(LETZTER); }
+  }
+  window.addEventListener("hashchange", hash);
+  window.addEventListener("resize", layout);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };
+})();
+</script>
+</body>
+</html>
