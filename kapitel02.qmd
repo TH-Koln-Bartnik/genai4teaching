@@ -6,7 +6,8 @@ Nach diesem Kapitel können Sie …
 - Modell, Harness und Agent abgrenzen, die Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Setup wählen;
 - in Laiensprache erklären, wie ein Sprachmodell Text erzeugt, warum es dabei halluziniert und was daraus für die Lehre folgt;
 - mit der Jagged Frontier begründen, warum Modelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich abschneiden;
-- einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen und verbreitete Prompt-Tricks als wirkungslos erkennen.
+- einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen und verbreitete Prompt-Tricks als wirkungslos erkennen;
+- mit dem 4D-Modell klären, was bei einer Aufgabe an die KI geht und wie das Ergebnis beschrieben, geprüft und verantwortet wird.
 :::
 
 ::: {.callout-note .mc-block title="Probleme aus der Lehre"}
@@ -57,6 +58,18 @@ Ein Kollege beginnt jeden Prompt mit „Du bist ein Weltklasse-Experte, ich gebe
 
 ::: mc-rueckmeldung
 Höflichkeit, Drohungen und Trinkgeld ändern nichts. Wer das Modell wie eine junge Hilfskraft anleitet, präzise, strukturiert und mit Beispielen, kommt weiter (@sec-prompting-myths).
+:::
+:::
+
+::: mc-frage
+Eine Kollegin hat einen Prompt-Kurs besucht. Trotzdem übernimmt sie mal Fehler ungeprüft, mal lässt sie die KI Aufgaben erledigen, die ihre Studierenden selbst üben sollten. Was fehlt?
+
+- Ein zweiter Kurs mit fortgeschrittenen Prompt-Techniken.
+- [Ein Schema, das auch Aufgabenverteilung, Prüfung und Verantwortung umfasst.]{.richtig}
+- Ein leistungsfähigeres Modell mit höherer Denkstufe.
+
+::: mc-rueckmeldung
+Prompting ist eine von vier Kompetenzen. Das 4D-Modell ergänzt Delegation, Discernment (Prüfung) und Diligence (Verantwortung) und verbindet die vier zu zwei Schleifen (@sec-schemas).
 :::
 :::
 
@@ -835,6 +848,102 @@ Eine Vielzahl konkreter Beispiele von Prompts und didaktischer Aufgabenstellunge
 :::
 ::::
 
+## Schemas für den systematischen Umgang mit GenAI {#sec-schemas}
+
+Der vorige Abschnitt hat gezeigt, wie ein guter Prompt gebaut ist.
+Prompting deckt aber nur eine von vier Kompetenzen ab: Vor dem Prompt steht die Entscheidung, was überhaupt an die KI geht, nach der Antwort die Prüfung des Ergebnisses und die Verantwortung dafür.
+Ein Schema, das diese Schritte ordnet, macht aus einer Sammlung von Tipps eine Arbeitsweise, und weil es keine Werkzeuge nennt, übersteht es den nächsten Modellwechsel.
+
+### Kompetenzrahmen im Vergleich {#sec-schemas-rahmen}
+
+Artikel 4 der KI-Verordnung verpflichtet Hochschulen, die KI-Systeme bereitstellen, zu Maßnahmen für die KI-Kompetenz ihres Personals, sagt aber nicht, worin diese Kompetenz besteht; der Digital-Omnibus vom Juli 2026 hat die Pflicht entschärft und die Definition nicht nachgeliefert [@eu2024aiact; @eu2026omnibus] (@sec-ki-vo).
+Die Lücke füllen Kompetenzrahmen.
+Einen Überblick über die Forschung zum Begriff *AI Literacy*, ihren Bestandteilen, Lernmethoden und Wirkungen gibt @pinski2024literacy; für die Hochschullehre sind fünf neuere Rahmen besonders brauchbar (@tbl-kompetenzrahmen).
+
+::: {.tabelle-scroll}
+| Rahmen | Zielgruppe | Ordnungsprinzip | Entstehung |
+|---|---|---|---|
+| AI Fluency [@dakan2025] | Hochschule | vier Kompetenzen entlang des Arbeitsprozesses, drei Formen der Zusammenarbeit | Lehrerfahrung zweier Hochschulen |
+| DLHN-Kompetenzrahmen [@feil2026dlhn] | Hochschule einschließlich Verwaltung | vier Bereiche: Technologie sowie Recht und Ethik als Basis, darauf Anwendung und Reflexion; drei Niveaustufen | Recherche und Kriterienkatalog im Verbundprojekt Digitale Lehre Hub Niedersachsen |
+| AI Literacy Heptagon [@hackl2026heptagon] | Hochschule, fachbezogen anpassbar | sieben Dimensionen, vier Niveaustufen nach Bloom | Literaturreview nach PRISMA mit 27 Studien |
+| AILit Framework [@oecd2026ailit] | Schule | vier Domänen (mit KI umgehen, gestalten, steuern, die KI-Entwicklung mitprägen), je Wissen, Fähigkeiten und Haltungen | EU und OECD mit Fachleuten und öffentlicher Konsultation |
+| Kompetenzen nach @gimpel2024competencies | Hochschule, Schwerpunkt Wirtschaftswissenschaften | Basiskompetenzen (AI Literacy, AI Reflection) und vier Felder vertiefter Kompetenzen | Konsortium von vier Hochschulen, Analyse von Curricula, Stellenmarkt und Literatur |
+
+: Fünf Kompetenzrahmen für den Umgang mit KI im Vergleich. Eigene Zusammenstellung nach den genannten Quellen {#tbl-kompetenzrahmen tbl-colwidths="[20,20,32,28]"}
+:::
+
+Die fünf Rahmen ergänzen sich mehr, als dass sie konkurrieren: Sie zielen auf verschiedene Bildungsstufen und ordnen nach verschiedenen Prinzipien, nach Arbeitsschritten, Wissensdimensionen, Handlungsfeldern oder Bereichen.
+Eine Schwäche teilen sie.
+Alle verlangen, dass Lernende KI-Ergebnisse kritisch beurteilen, kaum einer sagt, wie; konkrete Verfahren wie Quellenabgleich oder Faktenprüfung nennen nur AI Fluency und AILit ausdrücklich.
+Die Methoden der Prüfung liefert dieses Buch deshalb an den Stellen nach, an denen sie gebraucht werden, etwa beim Tutor (@sec-tutor-betrieb) und bei KI-gebauten Simulationen (@sec-widget-pruefen).
+
+Dieses Buch arbeitet mit dem Modell *AI Fluency* von Rick Dakan und Joseph Feller, aus vier Gründen.
+Es ordnet nach dem Arbeitsprozess und passt damit zu einem Buch, das nach den Rollen der KI gegliedert ist.
+Es nennt keine Werkzeuge.
+Es führt als einziger der fünf Rahmen die Verantwortung gegenüber Dritten als eigene Kompetenz.
+Und seine vier Begriffe sind einprägsam genug, um das Vokabular eines ganzen Buchs zu tragen.
+Die Fassung der irischen Hochschulbehörde HEA steht wie dieses Buch unter der Lizenz CC BY-SA 4.0; die Übersetzungen der Definitionen folgen ihr.
+
+### Das 4D-Modell {#sec-4d}
+
+AI Fluency ist die Fähigkeit, effektiv, effizient, ethisch und sicher mit KI zu arbeiten [@dakan2025].
+Das Modell zerlegt sie in vier Kompetenzen, die *4 D*, mit je drei Unterkompetenzen (@tbl-4d).
+
+::: {.tabelle-scroll}
+| Kompetenz | Leitfrage | Unterkompetenzen | Herkunft des Wortes |
+|---|---|---|---|
+| **Delegation** | Was übernimmt der Mensch, was die KI? | Ziel- und Aufgabenbewusstsein (*goal and task awareness*), Kenntnis der Werkzeuge (*platform awareness*), Aufgabenverteilung (*task delegation*) | lat. *delegare*, übertragen |
+| **Description** | Wie sage ich der KI klar, was ich will? | Ergebnis beschreiben (*product description*), Zusammenarbeit beschreiben (*process description*), Verhalten festlegen (*performance description*) | lat. *describere*, umreißen, aufzeichnen |
+| **Discernment** | Wie beurteile ich, was die KI liefert? | Ergebnis beurteilen (*product discernment*), Zusammenarbeit beurteilen (*process discernment*), Verhalten beurteilen (*performance discernment*) | lat. *discernere*, unterscheiden, trennen |
+| **Diligence** | Wie setze ich KI verantwortlich und offen ein? | Sorgfalt beim Erzeugen (*creation diligence*), Offenlegung (*transparency diligence*), Prüfung vor der Freigabe (*deployment diligence*) | lat. *diligentia*, Sorgfalt, von *diligere*, hochachten, sorgsam auswählen |
+
+: Die vier Kompetenzen des AI-Fluency-Modells mit ihren Unterkompetenzen. Übersetzung nach @dakan2025, CC BY-SA 4.0 {#tbl-4d tbl-colwidths="[16,24,40,20]"}
+:::
+
+Quer zu den vier Kompetenzen liegen drei Formen der Zusammenarbeit, die das Modell *Modalitäten* nennt.
+In der **Automation** führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der **Augmentation** erledigen Mensch und KI sie gemeinsam und im Wechsel; in der **Agency** konfiguriert der Mensch eine KI, die später selbstständig handelt, oft für andere Nutzerinnen und Nutzer.
+Die ersten beiden Wörter klingen wie zwei Formen des Aufgabenmodells in @sec-hiwi, meinen aber etwas anderes: Dort geht es darum, was mit einer Aufgabe geschieht, hier darum, wie Mensch und KI an ihr zusammenarbeiten.
+Die vier Rollen aus @sec-szenarien lassen sich den Modalitäten zuordnen.
+Der Hiwi arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency, weil die Lehrende dort ein System einrichtet, mit dem später Studierende arbeiten.
+
+Dakan und Feller nennen die vier D ausdrücklich vernetzte Kompetenzen, keine Reihenfolge [@dakan2025].
+In ihrem Kurs für Lehrende verbinden sie die vier aber zu zwei Schleifen [@dakan2025teaching], und aus diesen beiden Schleifen baut dieses Buch einen Kreislauf[ (@fig-4d-kreislauf)]{.content-visible unless-format="html"}[, den die Abbildung unten zum Anklicken zeigt]{.content-visible when-format="html"}.
+Die äußere Schleife zwischen **Delegation und Diligence** ist strategisch und läuft einmal je Vorhaben: Was will ich erreichen, welches System passt, welche Pflichten entstehen daraus, und was muss deshalb beim Menschen bleiben?
+Sie läuft in beide Richtungen, denn eine Pflicht zur Offenlegung oder zur Prüfung verändert, was man sinnvoll abgibt.
+Die innere Schleife zwischen **Description und Discernment** ist operativ und dreht sich innerhalb eines Arbeitsgangs viele Male: beschreiben, erzeugen lassen, prüfen, nachbessern.
+Das Buch liest die vier D damit als Stufen eines Arbeitsablaufs, weil sie sich so für jede Rolle erzählen lassen; es folgt der Lehrpraxis der Autoren, nicht dem Wortlaut ihrer Definition.
+
+::: {.content-visible when-format="html"}
+<iframe src="interactions/4d-kreislauf.html" width="100%" height="760px" frameborder="0" title="Der 4D-Kreislauf: zwei Schleifen, vier Kompetenzen, Engpass je Rolle"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Der 4D-Kreislauf. Die äußere Schleife (Delegation und Diligence) entscheidet einmal je Vorhaben, was die KI übernimmt und welche Pflichten daraus folgen; die innere (Description und Discernment) dreht sich in jedem Arbeitsgang mehrmals. Eigene Darstellung nach @dakan2025 und den beiden Schleifen aus @dakan2025teaching. Die Fassung zum Anklicken mit Unterkompetenzen und dem Engpass je Rolle: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/4d-kreislauf.html> aufrufen.](images/druck/4d-kreislauf.svg){#fig-4d-kreislauf width="100%" fig-pos="htbp"}
+:::
+
+Das Schema beantwortet nicht, wie viel KI eine Aufgabe verträgt.
+Zu viel Einsatz kostet Kompetenz und Qualität, zu wenig kostet Übung mit Werkzeugen, die die Studierenden im Beruf vorfinden; der Kreislauf ist das Werkzeug, für jede Aufgabe die Mitte zwischen beiden zu suchen.
+Was die Forschung über die Kosten des Auslagerns weiß, zeigt @sec-evidenz.
+
+### Wie dieses Buch das Schema benutzt {#sec-4d-nutzung}
+
+Jede der vier Rollen in @sec-szenarien endet mit einem Absatz, der den Kreislauf für diese Rolle durchläuft und die Stufe benennt, an der er am ehesten reißt.
+Die Übungen in @sec-d-modus tragen je eine 4D-Tabelle, und die Prompt-Sammlung in @sec-prompts liefert Material für die Stufe Description.
+Wer das Modell selbst einüben oder mit Studierenden erarbeiten will, findet eine Übung in vier Phasen an einem Berufsprofil in der Online-Fassung von Anhang B.
+
+::: {.callout-tip title="Probieren Sie mal: Delegation an einem Berufsprofil"}
+Wählen Sie einen Beruf, für den Sie ausbilden, und lassen Sie sich von einem Sprachmodell zehn typische Tätigkeiten dieses Berufs auflisten, etwa nach dem Berufsprofil der US-Datenbank O\*NET.
+Ordnen Sie jede Tätigkeit selbst einer der drei Formen aus @tbl-acemoglu zu: Automatisierung, Augmentierung oder neue Aufgabe.
+Lassen Sie das Modell dieselbe Zuordnung vornehmen und vergleichen Sie.
+Wo Sie abweichen, steckt meist eine Annahme über den Beruf, die sich im Gespräch mit Studierenden lohnt.
+
+[Die vollständige Übung mit allen vier Phasen: @sec-ai-fluency-uebung.]{.content-visible when-format="html"}[Die vollständige Übung mit allen vier Phasen steht in der Online-Fassung von Anhang B: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel07-appendix02-prompt-sammlung.html#sec-ai-fluency-uebung> aufrufen.]{.content-visible unless-format="html"}
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ai-fluency-uebung.png){width="18%"}
+:::
+:::
+
 ## Exkurs: Wie steht es mit dem Ressourcenverbrauch der Modelle? {#sec-energy}
 
 Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen den Polen „Weltuntergang durch KI-Energiehunger“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen.
@@ -860,7 +969,8 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 3. Halluzinationen sind kein Betriebsunfall, sondern folgen aus der Funktionsweise. Gegenmittel sind Eingrenzung des Inputs, Musterlösungen und systematische Prüfung.
 4. Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne.
 5. Gute Prompts sind präzise, strukturiert, mit Beispielen und iterativ. Höflichkeit, Drohungen und Trinkgeld ändern nichts; wer das Modell wie eine junge Hilfskraft anleitet, kommt weiter.
-6. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.
+6. Prompting ist eine von vier Kompetenzen. Das 4D-Modell ordnet den Umgang mit KI in Delegation, Description, Discernment und Diligence; die äußere Schleife entscheidet einmal je Vorhaben, was die KI übernimmt und welche Pflichten folgen, die innere dreht sich in jedem Arbeitsgang.
+7. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.
 :::
 
 ::: {.callout-note title="Lernfragen"}
@@ -881,6 +991,7 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 7. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Bedarf der Infrastruktur wächst stark. Welche Folgerung ziehen Sie daraus für Ihre eigene Nutzung, und welche Entscheidung liegt nicht bei Ihnen?
 8. Ein Agent soll Ihre Sprechstundenanfragen ein Semester lang vorsortieren und sich dabei merken, welche Fragen schon beantwortet sind. Welche Stufe des Gedächtnisses wählen Sie, und an welcher Stelle prüfen Sie, was er sich gemerkt hat?
 9. Ein Studierendenteam baut auf einem großen Sprachmodell einen Lerntutor für Ihr Fach. Welche Teile davon gehören zum äußeren Harness, und an welchen zwei Stellen würden Sie den Handlungsspielraum des Modells begrenzen? Wessen Autonomie wächst dabei, wessen schrumpft?
+10. Gehen Sie eine Aufgabe, die Sie demnächst an eine KI geben wollen, durch beide Schleifen des 4D-Kreislaufs. An welcher der vier Stufen würde Ihr Vorhaben am ehesten scheitern, und was legen Sie deshalb vorher fest?
 
 Lösungshinweise: @sec-loesungshinweise.
 :::
