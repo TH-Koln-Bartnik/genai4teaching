@@ -71,3 +71,13 @@ Glossar (S6): Eintrag „Scaling Laws“ existiert (`glossar.qmd` Z. 121); S6 ka
 - Bei gleichem Rechenbudget schlägt ein kleineres Modell mit mehr Trainingsdaten ein größeres mit weniger Daten.
 - Denkzeit beim Antworten ersetzt Modellgröße nur bei Aufgaben, die das Modell schon teilweise beherrscht.
 - Trainingsaufwand ist einmal bezahlt, Denkzeit fällt bei jeder Anfrage neu an und verschiebt die Kosten in die Nutzung.
+
+## Ablage
+- Repo: Branch `scaling-laws` gepusht (Commit `dd76da3` + diese Notiz), Basis `31450ba`; gegen aktuelles `origin/main` `fdb087a` (nur S1a-Notizen) konfliktfrei. **Nicht gemergt** (Merge-Entscheidung per MC am Sitzungsende).
+- Projekt: `claude/feedback-2026-11-01/STATUS-scaling-laws-2026-11-01.md`.
+- Tresorit: `Projektnotizen-Claude/feedback-2026-11-01/scaling-laws/` (Statusnotiz, `scaling-laws.html`, `scaling-laws-qr.png`).
+
+## Startauftrag nächste Sitzung (Einbau, nach S1b)
+„Projekt Logos-Lehrbuch, Repo TH-Koln-Bartnik/genai4teaching. Lies `claude/feedback-2026-11-01/STATUS-scaling-laws-2026-11-01.md` (Abschnitt ‚Für den Einbau‘). Nach S1b: Branch `scaling-laws` auf aktuelles origin/main bringen, in 2.3.1 Absatz ersetzen, iframe 820 px und Druckabbildung `fig-scaling-laws` einfügen, rendern (Quarto 1.8.25, PDF/EPUB in docs/ sichern), Playwright 1200/390 px, Diff per MC, mergen, live prüfen.“ Plan sieht den Einbau gemeinsam mit S4/S5 in einer Sitzung vor.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gemergt: nein)
