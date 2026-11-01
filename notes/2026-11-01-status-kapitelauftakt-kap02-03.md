@@ -9,7 +9,7 @@ Auftrag: `claude/kapitelkopf-position/AUFTRAG-kapitelauftakt-kap02-06-2026-11-01
 
 ## Basis
 Branch `kapitelauftakt-kap02-03`, Commit `c964471`, gepusht, auf `main` @ `32c7333` (nicht `4cadf3a`: `main` war schon weiter, mit 2.6/P4, P5, Tabelle 3.2; `4cadf3a` ist Vorfahr). Kein Konflikt mit `main`. Vergleich: https://github.com/TH-Koln-Bartnik/genai4teaching/compare/main...kapitelauftakt-kap02-03
-**Nicht gemergt** – wartet auf Freigabe Roman.
+**Nachtrag:** Nach Freigabe Roman in `main` gemergt (`3212b9b`), danach `docs/` neu gerendert (`f69042c`, enthält auch die noch ungerenderten Seiten aus `wiss-schreiben-a-d`), gepusht. **Pages-Lauf für `f69042c` erfolgreich – der Hänger ist gelöst; Website live mit P4, P5, Tabelle 3.2, Schreibtrainer und Kap. 2/3 neu.** Branch `kapitelauftakt-kap02-03` kann gelöscht werden.
 
 ## Umgesetzt
 **Kap. 2 (`kapitel02.qmd`)**
@@ -39,11 +39,11 @@ Branch `kapitelauftakt-kap02-03`, Commit `c964471`, gepusht, auf `main` @ `32c73
 - Wortzahl Kopf (Titel bis erster Abschnitt): Kap. 2 635 → 378, Kap. 3 455 → 365. Kapitel gesamt: Kap. 2 14.537 → 14.630, Kap. 3 6.766 → 6.989 (Prüfkästen).
 
 ## Offen
-1. Roman: Diff prüfen → Merge in `main` (Freigabe), danach Pages-Lauf kontrollieren (siehe oben).
+1. ~~Merge, Pages-Lauf~~ erledigt.
 2. Kap. 4–6 nach Schablone in neuer Sitzung (je 4 Aussagen; Kap. 4: 5 MC → 4; Kap. 6 = `kapitel06-fallbeispiele.qmd`, eigene Fälle für die Szene). Danach MC-Technik entfernen, `notes/schablone-leitfragen-lernfragen.md` auf neue Schablone verweisen.
 3. Inhaltlich prüfen: Szenen-Personen (Kessler, Brandt) erfunden und als Komposit gekennzeichnet; Aussage `ez-k3-4` ersetzt die alte MC-Frage zur Einbettung (Einbettung bleibt in Kap. 1, `ez-k1-4`).
 
 ## Startauftrag nächste Sitzung
-Von `main` abzweigen (nach Merge dieses Branches, sonst von `kapitelauftakt-kap02-03`), Branch `kapitelauftakt-kap04-06`. Kap. 4, 5, 6 nach `notes/kapitelauftakt-einschaetzungen.md`; IDs `ez-k4-1` …; Szenen mit neuen Personen/Fächern (bisher: Albers/Technische Mechanik, Kessler/Statistik Psychologie, Brandt/Kostenrechnung). Prüfschritte wie oben.
+Von `main` @ `f69042c` (oder neuer) abzweigen, Branch `kapitelauftakt-kap04-06`. Kap. 4, 5, 6 nach `notes/kapitelauftakt-einschaetzungen.md`; IDs `ez-k4-1` …; Szenen mit neuen Personen/Fächern (bisher: Albers/Technische Mechanik, Kessler/Statistik Psychologie, Brandt/Kostenrechnung). Prüfschritte wie oben.
 
-Ablage geprüft: Projekt ✓ / Tresorit ✓ (Projektnotizen-Claude) / Repo ✓ (Branch `kapitelauftakt-kap02-03`, `notes/2026-11-01-status-kapitelauftakt-kap02-03.md`, gepusht; nicht gemergt)
+Ablage geprüft: Projekt ✓ / Tresorit ✓ (Projektnotizen-Claude) / Repo ✓ (`notes/2026-11-01-status-kapitelauftakt-kap02-03.md`, gemergt in `main` = `f69042c`)
