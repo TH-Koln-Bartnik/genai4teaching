@@ -263,22 +263,54 @@ Studierende schreiben durch die zunehmend mächtigere technische Unterstützung 
 Bedeutet dies das Ende der Hausarbeit?
 Wohl eher einen starken Wandel, denn es wird weiter wichtig sein, die saubere Argumentation zu üben [@friedrich2023; @klein2023].
 
-::: {.callout-tip title="Probieren Sie mal"}
-Hier haben wir einen kleinen **Schreib-Trainer-Bot für Studierende** erstellt, der ihnen dabei helfen soll, eine **Einleitung für die Abschlussarbeit** zu schreiben.
-Dabei werden zunächst Beispiele gezeigt die nach richtig/falsch sortiert werden müssen, dann kommen nach und nach komplexere Fragen: [Link zum Einleitungstrainer](https://chatgpt.com/g/g-68767cb33afc8191b1cfb9da1ed5c15a-bot-1-einleitungstrainer)
+Gerade deshalb lohnt es sich, die einzelnen Schreibschritte gezielt zu üben.
+Für den Kurs zum wissenschaftlichen Arbeiten im Wirtschaftsingenieurwesen der TH Köln haben Julia Schmid und ich acht Schreibtrainer entwickelt, die eine Abschlussarbeit Teil für Teil begleiten (@tbl-schreibtrainer).
+Jeder Trainer ist eine ausführliche Anweisung, ein Prompt, der ein Sprachmodell in einen geduldigen Übungspartner verwandelt.
 
-Hier eine zweite Übung (erstellt von Julia Schmid), zum die strukturiertes **Schreiben mit Einleitungssätzen (Topic-Sentences)** beibringen soll: [Link zum Topic-Sentence-Bot](https://chatgpt.com/g/g-68768c3031c08191b752ef66df258979-topic-sentence-bot).
+| Trainer | Teil der Arbeit | Lernziel | Übungsformat |
+|:--------|:----------------|:---------|:-------------|
+| 1 Einleitung | Einleitung | Hook, Hintergrund mit Quelle und Forschungsfrage verbinden; erkennen, wann eine Quelle nötig ist | Quiz, Mini-Einleitung mit Feedback, Analyse einer echten Einleitung |
+| 2 Forschungsstand | Stand der Forschung | Bestehende Forschung bündeln und die Lücke zeigen | Quiz, Vergleich zweier Forschungsstände, eigener Mini-Forschungsstand |
+| 3 Methoden | Methodenteil | Das Vorgehen begründen statt nur beschreiben | Methodenwahl in sechs Runden, starke und schwache Passagen vergleichen |
+| 4 Literature Review | Strukturierte Literaturübersicht | Literatur auswählen, auswerten und darstellen | Sechs Module mit Quiz und Mini-Fall; Punkte, Medaille, Urkunde |
+| 5 Diskussion | Diskussion | Ergebnisse einordnen statt wiederholen | Sätze dem Forschungsstand oder der Diskussion zuordnen, Bausteine üben |
+| 6 Artikelstruktur | Gesamtaufbau | Die Funktion jedes Abschnitts kennen | Quiz, Zuordnungsübung, eigene Gliederung |
+| 7 Limitationen | Limitationen und Ausblick | Grenzen als begründete Designentscheidung mit Trade-offs darstellen | Vier Szenarien, Quiz zum Ausblick |
+| 8 Absätze | Jeder Absatz | Topic Sentence, Belege und Abschlusssatz verbinden | Drei Sortierübungen, eigener Absatz, Analyse eines echten Absatzes |
+
+: Acht Schreibtrainer entlang der Abschlussarbeit (TH Köln, Wirtschaftsingenieurwesen; Julia Schmid und Roman Bartnik) {#tbl-schreibtrainer tbl-colwidths="[16,18,34,32]"}
+
+Alle acht folgen demselben Muster.
+Der Trainer erklärt kurz, wozu der Textteil dient, stellt Quizfragen und gibt bei falschen Antworten einen Hinweis statt der Lösung.
+Dann schreiben die Studierenden einen kurzen eigenen Text, erhalten Rückmeldung und überarbeiten ihn.
+Zum Schluss untersuchen sie einen echten Text und übertragen das Gelernte auf ihr eigenes Thema.
+Der Trainer für Limitationen zeigt, dass ein Bot auch eine Haltung vermitteln kann: Er übt in vier Szenarien, Limitationen als bewusste Entscheidung mit Preis zu schreiben statt als Pannenbericht.
+Der Trainer für Literature Reviews setzt auf Spielelemente, mit Punkten für richtige Antworten und am Ende einer Medaille und einer Urkunde (zu Lernspielen siehe @sec-primer-lernspiele).
+
+Wie fragil solche Werkzeuge sind, zeigt ihre eigene Geschichte.
+Die Trainer liefen zunächst als Custom GPTs bei OpenAI, und OpenAI stellt diese Form der Chatbots am 11. Dezember 2026 ein [@openai2026gptretirement].
+Was bleibt, ist die Anweisung.
+Sie funktioniert in jedem Chatwerkzeug, auch im Angebot der eigenen Hochschule, und trägt deshalb besser als jeder Link auf eine Plattform.
+
+::: {.callout-tip title="Probieren Sie mal"}
+Zwei der Trainer stehen online zum Ausprobieren bereit: der **Einleitungstrainer** und der **Absatztrainer** für Topic Sentences von Julia Schmid.
+Die Anweisung kopieren, in einen neuen Chat einfügen, absenden – der Trainer beginnt von selbst.
+
+::: {.content-visible when-format="html"}
+Zur Seite mit beiden Anweisungen: [Schreibtrainer zum Kopieren](schreibtrainer.html).
+:::
+
+::: {.content-visible unless-format="html"}
+![Schreibtrainer zum Kopieren: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/schreibtrainer.html> aufrufen.](images/qr/qr-schreibtrainer.png){#fig-qr-schreibtrainer width="32%" fig-align="center"}
+:::
 :::
 
 Wie stark die KI an einem Text mitwirkt, lässt sich auf einer vierstufigen Skala von „zur Inspiration“ bis „inhaltsgestaltend“ beschreiben; Studierende nutzen sie, um ihre KI-Nutzung zu dokumentieren (@tbl-llm-scale).
 
 Ethan und Lilach Mollick schlagen Hausarbeiten vor, die KI nicht zur Automatisierung einsetzen, sondern für interaktivere und individuellere Lernerfahrungen: mit mehr Reflexion, verschiedenen Perspektiven, Kreativität und Kollaboration. Die Lehrenden begleiten und moderieren diese Prozesse [@mollick2023b; @mollick2023a]. Prompts für solche Aufgaben sammelt Anhang B (@sec-prompts).
 
-Letztlich ist die Anpassung der didaktischen Ansätze und technischen Möglichkeiten auf die konkrete Kombination von Lerninhalt und Studierendengruppe entscheidend. Es besteht die **Hoffnung**, dass die neuen Möglichkeiten der **administrativen Entlastung, höheren Niveaus bei Arbeitsaufgaben und schnellerer Individualisierung der Lernunterstützung** in der Summe zu einem höheren Niveau des Lehrens und Lernens führt.
-
-**Voraussetzung** dafür ist sicherlich eine **Anpassung der Lehrstrategie** und die nüchterne und proaktive Beschäftigung mit den unvermeidlichen Risiken und Nebenwirkungen von neuen technischen Möglichkeiten.
-Wie kann kritisches Denken in diesen neuen Recherche- und Schreibprozessen erfolgen [@lee2025]?
-In diesem Fall darf man vermuten, dass die negativen Effekte noch höher wären, wenn wir die Lehre nicht anpassen.
+Entscheidend bleibt, Didaktik und Technik auf die konkrete Kombination aus Lerninhalt und Studierendengruppe abzustimmen.
+Entlastung, anspruchsvollere Aufgaben und schnellere Individualisierung führen nur dann zu besserer Lehre, wenn sich die Lehrstrategie anpasst und Lehrende sich nüchtern mit den Risiken befassen, etwa mit der Frage, wie in diesen Schreibprozessen kritisches Denken entsteht [@lee2025].
 
 Wie der nächste Abschnitt zeigt, findet eine ähnlich intensive Diskussion im Bereich der Informatik statt, wo speziell Programmieraufgaben ganz neu gedacht werden müssen.
 
