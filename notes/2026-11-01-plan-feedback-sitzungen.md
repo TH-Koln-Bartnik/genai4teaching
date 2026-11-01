@@ -18,6 +18,11 @@ Grundlage: Romans Feedbackliste vom 01.11. (iPad), Projektstand laut `claude/mer
 - Nächster Schritt: **S1b Teil 2** (Kürzungen N1–N38, Brücken, Apparat, Lernpfade, Merge). Startauftrag in der Statusnotiz.
 - Achtung: Pro Branch nur eine Sitzung starten (Teil 1 lief versehentlich doppelt).
 
+## Stand (Nachtrag S1b, 01.11., ca. 16:30)
+- **S1b vollständig erledigt und gemergt** (`main` @ `2b5ab18`, live geprüft): Kap. 2 nach 4D neu gegliedert, Druckumfang −24,6 %, 58 → 48 Druckseiten. Siehe `STATUS-kapitel02-neugliederung-s1b-2026-11-01.md`.
+- Der Startauftrag „S1b Teil 2“ (aus `STATUS-kapitel02-neugliederung-teil1-2026-11-01.md`) ist **überholt, nicht starten**.
+- Nächste Schritte: S6 (Fachbegriffe, buchweit), Einbau S3/S4/S5 an den Stellen aus dem Neugliederungsplan, dann S9.
+
 ## Ordnungsprinzip
 
 Drei Gesichtspunkte bestimmen Rang und Reihenfolge. Erstens zählt für die Abgabe am 15.11. nur, was im **Druck** steht: Gliederung, Kürzung, Fachbegriffe und Sprache. Animationen, Spiele, Audio und Escape Room sind nur online und können notfalls nach der Abgabe folgen; im Druck erscheinen sie als Schlussbild mit QR-Code. Zweitens greifen alle Text-Änderungen an Kapitel 2 in dieselbe Datei `kapitel02.qmd`; sie laufen nacheinander, und die Neugliederung kommt zuerst, damit spätere Einbauten an der endgültigen Stelle landen. Neue Animationen sind eigene HTML-Dateien und lassen sich parallel bauen; nur ihr Einbau wartet auf die Neugliederung. Drittens kommt der Sprachcheck zuletzt, weil jede spätere Textänderung neue Artefakte erzeugen kann.
