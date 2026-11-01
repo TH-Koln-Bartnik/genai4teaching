@@ -680,6 +680,108 @@ Roman Bartnik</p>
   else init();
 })();
 </script>
+<!-- Einschätzungen vorab, Auflösung im Text (Gegenstück zu _filters/einschaetzung.lua).
+     Jede Aussage bekommt eine Skala mit fünf Stufen. Die Wahl wird im Browser
+     gespeichert; der Kasten „Ihre Einschätzung prüfen“ an der Textstelle zeigt sie
+     wieder an. Die Auflösung erscheint absichtlich erst dort, damit die Frage beim
+     Lesen offen bleibt. Ohne JavaScript bleiben Aussagen und Verweise lesbar. -->
+<style>
+.einschaetzung { margin: 0.5rem 0 0.9rem; }
+.einschaetzung > p:first-child { font-weight: 600; margin-bottom: 0.45rem; }
+.ez-skala { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; margin: 0 0 0.35rem; max-width: 34rem; }
+.ez-stufe {
+  font: inherit; font-size: 0.85em; line-height: 1.2; padding: 0.35rem 0.3rem; text-align: center;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.ez-stufe:hover { border-color: #c81e0f; }
+.ez-stufe:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.ez-stufe[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.ez-js .einschaetzung .ez-verweis { display: none; }
+.ez-js .einschaetzung.ez-gewaehlt .ez-verweis { display: inline; }
+.einschaetzung .ez-verweis { font-size: 0.85em; color: #6c757d; }
+.ez-ihre { display: block; font-size: 0.9em; color: #6c757d; font-style: normal; margin-top: 0.2rem; }
+</style>
+<script>
+(function () {
+  "use strict";
+  var STUFEN = ["stimme voll zu", "stimme eher zu", "teils, teils", "stimme eher nicht zu", "stimme gar nicht zu"];
+  var KURZ = ["voll zu", "eher zu", "teils, teils", "eher nicht", "gar nicht"];
+  var PRAEFIX = "genai4teaching:ez:";
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Wahl nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function init() {
+    var aussagen = document.querySelectorAll("div.einschaetzung[id]");
+    if (!aussagen.length && !document.querySelector(".ez-ihre")) return;
+    document.documentElement.classList.add("ez-js");
+
+    Array.prototype.forEach.call(aussagen, function (div) {
+      var id = div.id;
+      var erster = div.querySelector("p");
+      var skala = document.createElement("div");
+      skala.className = "ez-skala";
+      skala.setAttribute("role", "group");
+      skala.setAttribute("aria-label", "Ihre Einschätzung: Wie sehr stimmen Sie zu?");
+      var knoepfe = STUFEN.map(function (text, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "ez-stufe";
+        b.textContent = KURZ[i];
+        b.setAttribute("aria-label", text);
+        b.title = text;
+        b.setAttribute("aria-pressed", "false");
+        b.addEventListener("click", function () { waehle(i, true); });
+        skala.appendChild(b);
+        return b;
+      });
+      var verweis = div.querySelector(".ez-verweis");
+      if (verweis) {
+        verweis.setAttribute("aria-live", "polite");
+        if (verweis.firstChild && verweis.firstChild.nodeType === 3) {
+          verweis.insertBefore(document.createTextNode("Gespeichert. "), verweis.firstChild);
+        }
+      }
+      // Link direkt auf den Prüfkasten statt auf den Abschnittsanfang
+      var ziel = document.querySelector('.ez-ihre[data-ez="' + id + '"]');
+      var kasten = ziel && ziel.closest(".callout");
+      var a = verweis && verweis.querySelector("a");
+      if (kasten && a) {
+        if (!kasten.id) kasten.id = "pruefen-" + id;
+        a.setAttribute("href", "#" + kasten.id);
+      }
+      if (erster && erster.nextSibling) div.insertBefore(skala, erster.nextSibling);
+      else div.appendChild(skala);
+
+      function waehle(i, speichern) {
+        knoepfe.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+        div.classList.add("ez-gewaehlt");
+        if (speichern) schreib(id, String(i));
+        zeigeIhre(id);
+      }
+      var alt = lies(id);
+      if (alt !== null && STUFEN[+alt]) waehle(+alt, false);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll(".ez-ihre[data-ez]"), function (sp) {
+      zeigeIhre(sp.getAttribute("data-ez"));
+    });
+  }
+  function zeigeIhre(id) {
+    Array.prototype.forEach.call(document.querySelectorAll('.ez-ihre[data-ez="' + id + '"]'), function (sp) {
+      var w = lies(id);
+      if (w !== null && STUFEN[+w]) {
+        sp.textContent = "Ihre Einschätzung vorab: " + STUFEN[+w] + ".";
+      } else {
+        sp.textContent = "Sie haben vorab keine Einschätzung abgegeben.";
+      }
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

@@ -540,10 +540,10 @@ div.csl-indent {
 <ol type="1">
 <li>Erstens fehlt Lehrenden die Zeit für individuelle Förderung, zweitens sind wirksame Lehrmethoden aufwendig vorzubereiten. Generative KI senkt diesen Aufwand; die didaktische Entscheidung nimmt sie nicht ab.</li>
 <li>Täuschen verfälscht die Messung, Auslagern verhindert das Lernen selbst: Wer die Denkarbeit abgibt, übt genau die Operationen nicht, die das Lernziel ausmachen. Das Konzept sind die erwünschten Schwierigkeiten: Anstrengung beim Abrufen und Üben ist Teil des Lernens, kein Hindernis.</li>
-<li>Das Modell ist das trainierte Sprachmodell, die App die Oberfläche, über die man es nutzt, der Harness der Werkzeugkasten eines Agenten (Websuche, Code, Dateizugriff). Eine gute Antwort zeigt an einem Fachbeispiel, welche Ebene die Ergebnisqualität begrenzt; bei kostenlosen Zugängen sind es meist ein schwächeres oder automatisch gewähltes Modell und ein fehlender Harness.</li>
+<li>Zwei der drei Bedingungen aus <a href="kapitel01.html#sec-was-hilft" class="quarto-xref"><span>Kapitel 1.3</span></a>: Einbettung (feste, betreute Zeiten, in denen der Tutor im Kurs genutzt wird), Anleitung (zeigen und üben, wie man den Tutor tutoriell statt als Lösungsautomat nutzt) und Leitplanken in Aufgabe und Rückmeldung (Hinweise vor Lösungen, eigene Antwort vor der KI-Antwort). Eine gute Antwort übersetzt die gewählten Bedingungen in eine konkrete Sitzung oder Aufgabe des eigenen Kurses.</li>
 <li>Eine gute Antwort trennt die delegierbare Vorbereitung (Aufgabenvarianten, Fallbeschreibungen, Rückmeldungstexte) von dem, was bei Ihnen bleibt: Auswahl, Qualitätsprüfung und die Beziehung zu den Studierenden.</li>
 <li>Gefährdet sind Aufgaben, deren Lernziel genau die Operation ist, die die KI übernimmt, etwa das Formulieren einer Begründung oder der erste eigene Lösungsversuch. Erkennbar wird der Verlust, wenn die Übungsleistung steigt und die Prüfungsleistung ohne KI nicht mitzieht oder wenn Studierende ihre eigene Lösung nicht erklären können (<a href="kapitel03.html#sec-evidenz" class="quarto-xref"><span>Kapitel 3.5</span></a>).</li>
-<li>Eine gute Antwort verbindet Kernaussage 3 mit der Frage, wer Fehler erkennen kann. Wer wenig Vorwissen hat, übernimmt überzeugend formulierte Fehler leichter; Erklärungen und Rückmeldung können Anfängern aber gerade nützen, wenn Leitplanken und Musterlösungen die Fehler eingrenzen. Die Antwort hängt also an der Gestaltung, nicht am Vorwissen allein.</li>
+<li>Ermutigung sagt, dass KI erlaubt oder nützlich ist; Anleitung zeigt, wie man sie zum Lernen nutzt, etwa mit einem Beispiel-Dialog, einer Regel wie „erst eigener Lösungsversuch, dann Hinweis“ und einer Übung in der Sitzung. Eine gute Antwort zitiert eine Stelle aus der eigenen Kursbeschreibung, ordnet sie ein und formuliert die fehlende Anleitung als konkreten Satz oder Arbeitsauftrag.</li>
 </ol>
 </section>
 <section id="kapitel-2-grundbegriffe" class="level2 unnumbered">
@@ -834,6 +834,108 @@ Willingham, D. T. (2021). <em>Why don’t students like school?: A cognitive sci
     });
   }
 
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+<!-- Einschätzungen vorab, Auflösung im Text (Gegenstück zu _filters/einschaetzung.lua).
+     Jede Aussage bekommt eine Skala mit fünf Stufen. Die Wahl wird im Browser
+     gespeichert; der Kasten „Ihre Einschätzung prüfen“ an der Textstelle zeigt sie
+     wieder an. Die Auflösung erscheint absichtlich erst dort, damit die Frage beim
+     Lesen offen bleibt. Ohne JavaScript bleiben Aussagen und Verweise lesbar. -->
+<style>
+.einschaetzung { margin: 0.5rem 0 0.9rem; }
+.einschaetzung > p:first-child { font-weight: 600; margin-bottom: 0.45rem; }
+.ez-skala { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; margin: 0 0 0.35rem; max-width: 34rem; }
+.ez-stufe {
+  font: inherit; font-size: 0.85em; line-height: 1.2; padding: 0.35rem 0.3rem; text-align: center;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.ez-stufe:hover { border-color: #c81e0f; }
+.ez-stufe:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.ez-stufe[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.ez-js .einschaetzung .ez-verweis { display: none; }
+.ez-js .einschaetzung.ez-gewaehlt .ez-verweis { display: inline; }
+.einschaetzung .ez-verweis { font-size: 0.85em; color: #6c757d; }
+.ez-ihre { display: block; font-size: 0.9em; color: #6c757d; font-style: normal; margin-top: 0.2rem; }
+</style>
+<script>
+(function () {
+  "use strict";
+  var STUFEN = ["stimme voll zu", "stimme eher zu", "teils, teils", "stimme eher nicht zu", "stimme gar nicht zu"];
+  var KURZ = ["voll zu", "eher zu", "teils, teils", "eher nicht", "gar nicht"];
+  var PRAEFIX = "genai4teaching:ez:";
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Wahl nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function init() {
+    var aussagen = document.querySelectorAll("div.einschaetzung[id]");
+    if (!aussagen.length && !document.querySelector(".ez-ihre")) return;
+    document.documentElement.classList.add("ez-js");
+
+    Array.prototype.forEach.call(aussagen, function (div) {
+      var id = div.id;
+      var erster = div.querySelector("p");
+      var skala = document.createElement("div");
+      skala.className = "ez-skala";
+      skala.setAttribute("role", "group");
+      skala.setAttribute("aria-label", "Ihre Einschätzung: Wie sehr stimmen Sie zu?");
+      var knoepfe = STUFEN.map(function (text, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "ez-stufe";
+        b.textContent = KURZ[i];
+        b.setAttribute("aria-label", text);
+        b.title = text;
+        b.setAttribute("aria-pressed", "false");
+        b.addEventListener("click", function () { waehle(i, true); });
+        skala.appendChild(b);
+        return b;
+      });
+      var verweis = div.querySelector(".ez-verweis");
+      if (verweis) {
+        verweis.setAttribute("aria-live", "polite");
+        if (verweis.firstChild && verweis.firstChild.nodeType === 3) {
+          verweis.insertBefore(document.createTextNode("Gespeichert. "), verweis.firstChild);
+        }
+      }
+      // Link direkt auf den Prüfkasten statt auf den Abschnittsanfang
+      var ziel = document.querySelector('.ez-ihre[data-ez="' + id + '"]');
+      var kasten = ziel && ziel.closest(".callout");
+      var a = verweis && verweis.querySelector("a");
+      if (kasten && a) {
+        if (!kasten.id) kasten.id = "pruefen-" + id;
+        a.setAttribute("href", "#" + kasten.id);
+      }
+      if (erster && erster.nextSibling) div.insertBefore(skala, erster.nextSibling);
+      else div.appendChild(skala);
+
+      function waehle(i, speichern) {
+        knoepfe.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+        div.classList.add("ez-gewaehlt");
+        if (speichern) schreib(id, String(i));
+        zeigeIhre(id);
+      }
+      var alt = lies(id);
+      if (alt !== null && STUFEN[+alt]) waehle(+alt, false);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll(".ez-ihre[data-ez]"), function (sp) {
+      zeigeIhre(sp.getAttribute("data-ez"));
+    });
+  }
+  function zeigeIhre(id) {
+    Array.prototype.forEach.call(document.querySelectorAll('.ez-ihre[data-ez="' + id + '"]'), function (sp) {
+      var w = lies(id);
+      if (w !== null && STUFEN[+w]) {
+        sp.textContent = "Ihre Einschätzung vorab: " + STUFEN[+w] + ".";
+      } else {
+        sp.textContent = "Sie haben vorab keine Einschätzung abgegeben.";
+      }
+    });
+  }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wählen Sie Ihren Lernpfad</title>
+<style>
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe (TH-Rot) */
+  :root { --grund:#ffffff; --tinte:#111111; --grau:#6b6b73; --l-dunkel:#111111; --l-hell:#8c8c94; --akzent:#c81e0f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#151515; --tinte:#f0f0f0; --grau:#a0a0a8; --l-dunkel:#f0f0f0; --l-hell:#8c8c94; --akzent:#ff6b5a; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:980px; margin:0 auto; padding:16px 14px 28px; }
+  h1 { font-size:22px; line-height:1.25; margin:0 0 6px; font-weight:650; }
+  .hinweis { color:var(--grau); font-size:15px; margin:0 0 14px; }
+  .gruppen { display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; margin-bottom:12px; }
+  @media (max-width:640px) { .gruppen { grid-template-columns:1fr; } }
+  h2 { font-size:16px; margin:0 0 6px; font-weight:650; }
+  .aussage { display:flex; gap:10px; align-items:flex-start; margin:0 0 8px; font-size:15px; }
+  .aussage span { flex:1; }
+  .knoepfe { display:flex; gap:4px; flex-shrink:0; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:3px 10px; cursor:pointer; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); border-color:var(--tinte); }
+  .ergebnis { min-height:3em; margin:4px 0 8px; font-size:16px; max-width:75ch; }
+  .ergebnis b { color:var(--akzent); }
+  svg { width:100%; height:auto; display:block; }
+  svg text { fill:var(--tinte); font-family:inherit; }
+  svg .linie, svg .legende, svg .station { transition:opacity .3s; }
+  svg.gewaehlt .linie:not(.an), svg.gewaehlt .legende:not(.an) { opacity:.12; }
+  svg.gewaehlt .station:not(.an) { opacity:.35; }
+  svg .legende { cursor:pointer; }
+  svg a:hover text { text-decoration:underline; }
+  .karte { overflow-x:auto; margin:0 0 14px; }
+  @media (max-width:480px) { .karte svg { min-width:680px; } }
+  .zuruecksetzen { margin-top:6px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Wählen Sie Ihren Lernpfad</h1>
+  <p class="hinweis">Jede Station führt zum Kapitel. Die sechs Aussagen unter der Karte heben die passende Linie hervor; Sie können eine Linie auch in der Legende wählen.</p>
+  <div class="karte"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" class="lernpfade-karte" role="img" aria-labelledby="lp-titel lp-desc">
+<title id="lp-titel">Lernpfade durch das Buch</title>
+<desc id="lp-desc">Liniennetz mit vier Lernpfaden. Alle Linien halten an Kapitel 1, Abschnitt 3.5, Kapitel 4 und Kapitel 6. Linie 1 hält an allen Hauptkapiteln, Linie 2 lässt Kapitel 2 aus, Linie 3 ersetzt Abschnitte 3.1 bis 3.4 und Kapitel 5 durch die Praxis-Primer, Linie 4 geht von der Einleitung direkt zur Evidenz und endet in den Anhängen C und D.</desc>
+<g class="linie" data-linie="4">
+<path d="M 140.0 280.0 L 420.0 280.0 L 420.0 292.0 L 620.0 292.0 L 620.0 280.0 L 900.0 280.0 L 1040.0 420.0" fill="none" stroke="var(--grund)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 140.0 280.0 L 420.0 280.0 L 420.0 292.0 L 620.0 292.0 L 620.0 280.0 L 900.0 280.0 L 1040.0 420.0" fill="none" stroke="var(--l-hell)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="0.1 9"/>
+</g>
+<g class="linie" data-linie="3">
+<path d="M 142.8 282.8 L 282.8 142.8 L 424.0 284.0 L 624.0 284.0 L 760.0 420.0 L 900.0 280.0" fill="none" stroke="var(--grund)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 142.8 282.8 L 282.8 142.8 L 424.0 284.0 L 624.0 284.0 L 760.0 420.0 L 900.0 280.0" fill="none" stroke="var(--l-hell)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g class="linie" data-linie="2">
+<path d="M 140.0 280.0 L 277.2 417.2 L 418.3 276.0 L 629.7 276.0 L 760.0 145.7 L 897.2 282.8" fill="none" stroke="var(--grund)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 140.0 280.0 L 277.2 417.2 L 418.3 276.0 L 629.7 276.0 L 760.0 145.7 L 897.2 282.8" fill="none" stroke="var(--l-dunkel)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 6"/>
+</g>
+<g class="linie" data-linie="1">
+<path d="M 137.2 277.2 L 280.0 134.3 L 280.0 425.7 L 437.7 268.0 L 626.3 268.0 L 760.0 134.3 L 902.8 277.2" fill="none" stroke="var(--grund)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 137.2 277.2 L 280.0 134.3 L 280.0 425.7 L 437.7 268.0 L 626.3 268.0 L 760.0 134.3 L 902.8 277.2" fill="none" stroke="var(--l-dunkel)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<a href="kapitel01.html#sec-einleitung" target="_top" class="station" data-linien="1 2 3 4">
+<circle cx="140" cy="280" r="18" fill="var(--grund)" stroke="var(--akzent)" stroke-width="4"/>
+<text x="112" y="286" text-anchor="end" font-size="19" font-weight="600">1 Einleitung</text>
+</a>
+<a href="kapitel02.html#sec-grundbegriffe" target="_top" class="station" data-linien="1 3">
+<circle cx="280" cy="140" r="11" fill="var(--grund)" stroke="var(--l-dunkel)" stroke-width="3"/>
+<text x="280" y="114" text-anchor="middle" font-size="19" font-weight="600">2 Grundbegriffe</text>
+</a>
+<a href="kapitel03.html#sec-didaktik" target="_top" class="station" data-linien="1 2">
+<circle cx="280" cy="420" r="11" fill="var(--grund)" stroke="var(--l-dunkel)" stroke-width="3"/>
+<text x="280" y="458" text-anchor="middle" font-size="19" font-weight="600">3.1–3.4 Lernmechanismen</text>
+</a>
+<a href="kapitel03.html#sec-evidenz" target="_top" class="station" data-linien="1 2 3 4">
+<circle cx="420" cy="280" r="18" fill="var(--grund)" stroke="var(--akzent)" stroke-width="4"/>
+<text x="406" y="338" text-anchor="start" font-size="19" font-weight="600">3.5 Evidenz</text>
+</a>
+<a href="kapitel04.html#sec-szenarien" target="_top" class="station" data-linien="1 2 3 4">
+<circle cx="620" cy="280" r="18" fill="var(--grund)" stroke="var(--akzent)" stroke-width="4"/>
+<text x="604" y="250" text-anchor="end" font-size="19" font-weight="600">4 Vier Rollen</text>
+</a>
+<a href="kapitel05.html#sec-umsetzung" target="_top" class="station" data-linien="1 2">
+<circle cx="760" cy="140" r="11" fill="var(--grund)" stroke="var(--l-dunkel)" stroke-width="3"/>
+<text x="760" y="114" text-anchor="middle" font-size="19" font-weight="600">5 Umsetzung</text>
+</a>
+<a href="anhang-primer.html#sec-anhang-primer" target="_top" class="station" data-linien="3">
+<circle cx="760" cy="420" r="11" fill="var(--grund)" stroke="var(--l-dunkel)" stroke-width="3"/>
+<text x="760" y="458" text-anchor="middle" font-size="19" font-weight="600">Praxis-Primer (Anh. E)</text>
+</a>
+<a href="kapitel06-fallbeispiele.html#sec-fallbeispiele" target="_top" class="station" data-linien="1 2 3 4">
+<circle cx="900" cy="280" r="18" fill="var(--grund)" stroke="var(--akzent)" stroke-width="4"/>
+<text x="926" y="268" text-anchor="start" font-size="19" font-weight="600">6 Fallbeispiele</text>
+</a>
+<a href="kapitel08-appendix03-rollenspiele-simulationen.html#sec-rollenspiele" target="_top" class="station" data-linien="4">
+<circle cx="1040" cy="420" r="11" fill="var(--grund)" stroke="var(--l-dunkel)" stroke-width="3"/>
+<text x="1040" y="458" text-anchor="middle" font-size="19" font-weight="600">Anhänge C, D</text>
+</a>
+<g class="legende" data-linie="1">
+<line x1="30" y1="515" x2="74" y2="515" stroke="var(--l-dunkel)" stroke-width="5" stroke-linecap="round"/>
+<text x="86" y="521" font-size="16"><tspan font-weight="700">1</tspan> Neu in KI und Lernforschung</text>
+</g>
+<g class="legende" data-linie="2">
+<line x1="335" y1="515" x2="379" y2="515" stroke="var(--l-dunkel)" stroke-width="5" stroke-linecap="round" stroke-dasharray="11 6"/>
+<text x="391" y="521" font-size="16"><tspan font-weight="700">2</tspan> Erfahren mit KI</text>
+</g>
+<g class="legende" data-linie="3">
+<line x1="565" y1="515" x2="609" y2="515" stroke="var(--l-hell)" stroke-width="5" stroke-linecap="round"/>
+<text x="621" y="521" font-size="16"><tspan font-weight="700">3</tspan> Vertraut mit Lernforschung</text>
+</g>
+<g class="legende" data-linie="4">
+<line x1="860" y1="515" x2="904" y2="515" stroke="var(--l-hell)" stroke-width="5" stroke-linecap="round" stroke-dasharray="0.1 9"/>
+<text x="916" y="521" font-size="16"><tspan font-weight="700">4</tspan> Vertraut mit beidem</text>
+</g>
+<circle cx="52" cy="40" r="11" fill="var(--grund)" stroke="var(--akzent)" stroke-width="4"/>
+<text x="74" y="46" font-size="16">Station auf allen vier Wegen</text>
+</svg></div>
+
+  <p class="hinweis">Zwei oder drei „Ja“ in einer Spalte zählen als Vorwissen.</p>
+  <div class="gruppen">
+    <section>
+      <h2>Erfahrung mit KI</h2>
+      <div class="aussage" data-gruppe="ki"><span>Ich nutze ein Sprachmodell mindestens einmal pro Woche für meine Arbeit.</span></div>
+      <div class="aussage" data-gruppe="ki"><span>Ich habe einen eigenen Assistenten eingerichtet, etwa ein Projekt mit festen Anweisungen und eigenen Dateien.</span></div>
+      <div class="aussage" data-gruppe="ki"><span>Ich habe einer KI eine mehrschrittige Aufgabe übertragen, bei der sie selbst sucht, Dateien liest oder Code ausführt.</span></div>
+    </section>
+    <section>
+      <h2>Kenntnis der Lernforschung</h2>
+      <div class="aussage" data-gruppe="did"><span>Ich kenne zentrale Wirkmechanismen aus der Lernforschung und kann erklären, warum etwa Abrufübungen, verteiltes Üben und Selbsterklären das Behalten stärken.</span></div>
+      <div class="aussage" data-gruppe="did"><span>Ich weiß, wie sich solche Mechanismen in einer Lehrveranstaltung umsetzen lassen, etwa mit kurzen Abfragen zu Beginn, Wiederholung über das Semester oder Aufgaben, in denen Studierende einander erklären.</span></div>
+      <div class="aussage" data-gruppe="did"><span>Ich kenne erprobte Einsatzformen und Befunde zu KI in der Lehre, etwa wann ein KI-Tutor das Lernen stärkt und wann er es durch Auslagerung des Denkens schwächt.</span></div>
+    </section>
+  </div>
+
+  <p class="ergebnis" id="ergebnis" aria-live="polite">Noch keine Linie gewählt. Alle vier Wege halten an den rot umrandeten Stationen.</p>
+
+  <button class="zuruecksetzen" id="zurueck">Zurücksetzen</button>
+</main>
+<script>
+const TEXT = {
+  1: "<b>Linie 1 · Neu in KI und Lernforschung.</b> Lesen Sie der Reihe nach. Kapitel 2 legt die Begriffe, Kapitel 3 die Lernmechanismen, auf die jede spätere Empfehlung zurückgreift.",
+  2: "<b>Linie 2 · Erfahren mit KI.</b> Kapitel 2 dürfen Sie überspringen und bei Bedarf nachschlagen. Kapitel 3 lesen Sie ganz: Dort steht, was Werkzeugwissen nicht ersetzt.",
+  3: "<b>Linie 3 · Vertraut mit Lernforschung.</b> Kapitel 2 holt die technischen Grundlagen nach; aus Kapitel 3 genügt die neue Evidenz in 3.5. Danach führen die Praxis-Primer schneller zum eigenen Material als Kapitel 5.",
+  4: "<b>Linie 4 · Vertraut mit beidem.</b> Von der Einleitung direkt zur Evidenz in 3.5, in Kapitel 4 vor allem Tutor und Simulator, dann die Fallbeispiele und die Anhänge zu Rollenspielen und Agenten."
+};
+const antworten = {};
+const karte = document.querySelector("svg.lernpfade-karte");
+const erg = document.getElementById("ergebnis");
+
+document.querySelectorAll(".aussage").forEach((el, i) => {
+  const box = document.createElement("div"); box.className = "knoepfe";
+  ["Ja", "Nein"].forEach(w => {
+    const b = document.createElement("button"); b.textContent = w; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => {
+      box.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
+      b.setAttribute("aria-pressed", "true");
+      antworten[i] = { gruppe: el.dataset.gruppe, ja: w === "Ja" };
+      auswerten();
+    });
+    box.appendChild(b);
+  });
+  el.appendChild(box);
+});
+
+function zeige(nr) {
+  karte.classList.add("gewaehlt");
+  karte.querySelectorAll(".linie, .legende").forEach(g => g.classList.toggle("an", g.dataset.linie == nr));
+  karte.querySelectorAll(".station").forEach(s => s.classList.toggle("an", s.dataset.linien.split(" ").includes(String(nr))));
+  erg.innerHTML = TEXT[nr];
+}
+
+function auswerten() {
+  const werte = Object.values(antworten);
+  if (werte.length < 6) {
+    erg.textContent = `Noch ${6 - werte.length} Aussage${6 - werte.length === 1 ? "" : "n"} offen.`;
+    return;
+  }
+  const ki = werte.filter(a => a.gruppe === "ki" && a.ja).length >= 2;
+  const did = werte.filter(a => a.gruppe === "did" && a.ja).length >= 2;
+  zeige(ki && did ? 4 : ki ? 2 : did ? 3 : 1);
+}
+
+/* Höhe an die einbettende Seite melden (Empfänger: Skript in kapitel01.qmd) */
+function melde() { try { parent.postMessage({ typ: "galerie-hoehe", id: "lernpfade", h: Math.ceil(document.querySelector("main").getBoundingClientRect().height) + 8 }, "*"); } catch (e) {} }
+window.addEventListener("load", melde); window.addEventListener("resize", melde);
+new MutationObserver(melde).observe(document.getElementById("ergebnis"), { childList: true, subtree: true });
+
+karte.querySelectorAll(".legende").forEach(g => g.addEventListener("click", () => zeige(g.dataset.linie)));
+
+document.getElementById("zurueck").addEventListener("click", () => {
+  for (const k in antworten) delete antworten[k];
+  document.querySelectorAll(".knoepfe button").forEach(b => b.setAttribute("aria-pressed", "false"));
+  karte.classList.remove("gewaehlt");
+  karte.querySelectorAll(".an").forEach(x => x.classList.remove("an"));
+  erg.textContent = "Noch keine Linie gewählt. Alle vier Wege halten an den rot umrandeten Stationen.";
+});
+</script>
+</body>
+</html>

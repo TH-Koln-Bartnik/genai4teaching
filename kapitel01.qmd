@@ -1,76 +1,129 @@
 # Einleitung {#sec-einleitung}
 
-::: {.callout-note title="Lernziele"}
-Nach diesem Kapitel können Sie …
-
-- erklären, bei welchen zwei Lehrproblemen generative KI hilft und warum Modell und Arbeitsumgebung über die Qualität der Ergebnisse entscheiden;
-- an Beispielen einschätzen, was Sprachmodelle in Recherche, Aufgabenerstellung und Forschung leisten und wo Ihr Fachwissen die Ergebnisse prüfen muss;
-- die Nutzung durch Studierende und Lehrende einordnen, den Fähigkeitsüberhang erklären und begründen, warum die Auslagerung des Denkens das Lernen stärker gefährdet als das Täuschen.
+::: kapitel-gliederung
 :::
 
-::: {.callout-note .mc-block title="Probleme aus der Lehre"}
-*Zu jedem dieser Probleme bietet das Kapitel Lösungsansätze. Wählen Sie eine Antwort, bevor Sie weiterlesen: Wer vorher rät, behält die Auflösung besser. Die Kernaussagen am Kapitelende greifen die Probleme in derselben Reihenfolge auf.*
+Montagmorgen, fünfte Semesterwoche. Professorin Katrin Albers hat für ihre 120 Studierenden in Technischer Mechanik wieder keine Übungstests geschafft, obwohl sie weiß, dass häufiges Abfragen wirkt. Ein Kollege schwärmt, sein Chatbot schreibe ihm in Minuten zwanzig Aufgaben samt Lösungsweg; eine Kollegin will ihren Studierenden einfach einen KI-Tutor freischalten. Albers probiert es in der Mittagspause mit der kostenlosen Version, und schon die erste Lösung ist falsch. Am Nachmittag gibt ein Student eine fehlerfreie Hausübung ab und kann in der Sprechstunde keinen Schritt davon erklären. Albers fragt sich, ob die KI ihr die Arbeit abnimmt oder ihren Studierenden das Lernen.
 
-::: mc-frage
-Sie wissen, dass häufige kleine Tests und individuelle Rückmeldung wirken. In einem Kurs mit 120 Studierenden fehlt Ihnen dafür die Zeit. Wo setzt generative KI am ehesten an?
+*Die Szene ist aus Gesprächen in Workshops mit Lehrenden zusammengesetzt.*
 
-- Sie übernimmt die Bewertung der Prüfungen und spart so Korrekturzeit.
-- [Sie senkt den Aufwand, Tests und Rückmeldungen vorzubereiten.]{.richtig}
-- Sie ersetzt einen Teil der Präsenztermine durch Chatbots.
+{{< pagebreak >}}
 
-::: mc-rueckmeldung
-Generative KI wirkt als Kraftverstärker: Der Berg bleibt, aber mit dem E-Bike kommt man weiter. Sie verbilligt vor allem die Vorbereitung wirksamer, aufwendiger Methoden; die Bewertung von Prüfungen bleibt bei Ihnen (@sec-ki-hilfe).
-:::
-:::
+::: {.callout-note .ez-block title="Bevor Sie weiterlesen: Wie sehen Sie das?"}
+*Wie sehr stimmen Sie den vier Aussagen zu? Richtig oder falsch gibt es hier noch nicht: Jede Aussage wird an der Stelle im Kapitel aufgelöst, die sie beantwortet. Wer sich vorher festlegt, liest gezielter.*
 
-::: mc-frage
-Eine Kollegin hat die kostenlose Version eines Chatbots eine Klausuraufgabe lösen lassen. Die Antwort war falsch, und sie folgert, KI tauge für ihr Fach nicht. Was übersieht sie?
+::: {.einschaetzung #ez-k1-1}
+Fast alle Studierenden nutzen KI inzwischen auch für Prüfungsleistungen.
 
-- Dass die Antwort mit einem höflicheren Prompt richtig gewesen wäre.
-- Dass Sprachmodelle nur auf Englisch zuverlässig rechnen.
-- [Dass Modellvariante und Arbeitsumgebung das Ergebnis stark verändern.]{.richtig}
-
-::: mc-rueckmeldung
-Kostenlose oder automatisch gewählte Varianten antworten oft ohne Nachdenkphase und ohne Werkzeuge. Erst starkes Modell, passende Oberfläche und Werkzeugkasten (Harness) zusammen bestimmen, was herauskommt (@sec-weiterentwicklung; ausführlich @sec-harness).
-:::
+[Auflösung in @sec-nutzung]{.ez-verweis}
 :::
 
-::: mc-frage
-Sie überlegen, ob Sie KI im Kurs überhaupt ansprechen müssen, weil Ihre Studierenden „das doch sowieso können“. Was zeigen Befragungen?
+::: {.einschaetzung #ez-k1-2}
+Die größte Gefahr generativer KI für das Lernen besteht darin, dass Studierende in Prüfungen täuschen.
 
-- [Fast alle nutzen KI, auch für Prüfungsleistungen, fühlen sich aber schlecht vorbereitet.]{.richtig}
-- Fast alle nutzen KI routiniert und brauchen keine Anleitung mehr.
-- Nur eine Minderheit nutzt KI, meist zum Übersetzen von Texten.
+[Auflösung in @sec-risiken]{.ez-verweis}
+:::
 
-::: mc-rueckmeldung
-Die Nutzung ist flächendeckend, besonders bei Schreibaufgaben und Prüfungsleistungen; auf den produktiven Umgang fühlen sich viele schlecht vorbereitet. Hochschulen müssen deshalb Prüfungen anpassen und KI-Kompetenz vermitteln (@sec-nutzung).
+::: {.einschaetzung #ez-k1-3}
+Wer mit der kostenlosen Version eines Chatbots in seinem Fach schlechte Ergebnisse erhält, weiß, was KI dort leisten kann.
+
+[Auflösung in @sec-risiken]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k1-4}
+Ein KI-Tutor verbessert das Lernen, sobald die Studierenden Zugang zu ihm erhalten.
+
+[Auflösung in @sec-was-hilft]{.ez-verweis}
 :::
 :::
 
-::: mc-frage
-Ein Student löst mit KI alle Übungsaufgaben fehlerfrei und scheitert in der Klausur ohne KI. Worin liegt das eigentliche Problem?
+::: {.callout-note .lernziele title="Lernziele: Nach diesem Kapitel können Sie …"}
+1. erklären, bei welchen zwei Lehrproblemen generative KI hilft, und einordnen, wie verbreitet sie bei Studierenden und Lehrenden genutzt wird;
+2. begründen, warum die Auslagerung des Denkens das Lernen stärker gefährdet als das Täuschen und warum schwache Zugänge das Urteil über KI verzerren;
+3. die Bedingungen benennen, unter denen KI nach der Forschung seit 2025 das Lernen stützt, und Ihren eigenen Weg durch dieses Buch wählen.
 
-- Er hat in den Übungen ein unerlaubtes Hilfsmittel benutzt.
-- [Er hat das Denken ausgelagert und die geprüften Schritte nie geübt.]{.richtig}
-- Die Klausur prüfte anderen Stoff als die Übungen.
-
-::: mc-rueckmeldung
-Täuschen verfälscht die Messung, Auslagern verhindert das Lernen selbst. Was dabei verloren geht, nennt die Lernforschung erwünschte Schwierigkeiten (@sec-risiken).
-:::
-:::
+*Die Kernaussagen am Kapitelende sind nach diesen drei Zielen geordnet.*
 :::
 
-## KI als Hilfe für die Lehre {#sec-ki-hilfe}
+**Wie kann generative künstliche Intelligenz** (KI) **in der Lehre helfen?** Hoffnung besteht für die zwei Probleme, die Albers' Montag prägen: Studierende haben individuelle Bedürfnisse, Lehrende nur begrenzt Zeit, und gerade wirksame Methoden wie häufige kleine Tests oder individuelles Feedback kosten viel Vorbereitung [@hattie2023, Kap. 13; @brown2014; @dunlosky2013]; ausführlich behandelt das @sec-ziele-genai. Für die Lehre sind große Sprachmodelle (LLM, Large Language Models) vor allem „**generally faster**“ [@mcafee2024]: Übungsaufgaben, Anwendungsbeispiele, Quizfragen und Rollenspiele entstehen mit KI deutlich schneller [@meincke2024; @mollick2023a]. Der Berg ist noch da, aber mit dem E-Bike kommt man weiter. Wie weit, hängt an drei Fragen, die dieses Kapitel der Reihe nach beantwortet: Wie verbreitet ist die Nutzung, was geht dabei schief, und was hilft?
 
-**Wie kann uns generative künstliche Intelligenz** (KI) **in der Lehre helfen**? Hoffnung besteht hier für zwei typische Probleme: Erstens haben Studierende **individuelle Bedürfnisse**, aber wir haben nur **begrenzte Zeit**, auf diese einzugehen. Wie können wir Einzelne möglichst intensiv fördern, ohne vor Arbeit unterzugehen? Zweitens ist der **Aufwand gerade für effektive Lehrmethoden** oft sehr hoch, so etwa für häufige niedrigschwellige Tests oder individuelles Feedback zu Studienarbeiten [s. etwa @hattie2023, Kap. 13; @brown2014]. Wer lehrt, fühlt sich aus Zeit- und Stoffdruck oft gezwungen, Abstriche von idealen Lehrsetups zu machen [@henderson2007; @schmidt2005, S. 104–105]. Gerade Lehrmethoden, die didaktisch sinnvoll, aber mit höherem Aufwand verbunden sind, drohen dabei auf der Strecke zu bleiben [s. etwa @dunlosky2013; @roediger2012].
+## Wie verbreitet ist KI-Nutzung? {#sec-nutzung}
 
-Was mit generativer KI im Herbst 2026 möglich ist, zeigen vier Beispiele aus diesem Buch: der Preisverfall für Expertenwissen, der Weg vom Chatbot zum Agenten, ein Lernsong und eine Prozessanimation, in der sich vor dem Engpass die Arbeit staut [@goldratt2014; @little1961]. Blättern Sie mit den Pfeilen; unter jedem Beitrag führt ein Link zur Stelle im Buch.
+**Für Studierende sind Sprachmodelle zum Standard geworden.** In der britischen Befragung des Higher Education Policy Institute vom Dezember 2025 (n = 1.054 Vollzeitstudierende) nutzten 95 % KI in irgendeiner Form und 94 % auch für Prüfungsleistungen; 12 % übernahmen KI-Text direkt in die Abgabe, 2024 waren es 3 % [@stephenson2026hepi]. Deutsche Daten des CHE bestätigen das Bild: Im Wintersemester 2025/26 nutzten 81 Prozent von 28.584 befragten Studierenden an 202 Hochschulen KI-Werkzeuge mindestens wöchentlich, und jede zweite Person nutzte sie „als Tutor bzw. Lernpartner“, mit großen Fachunterschieden zwischen Wirtschaftsinformatik (72 Prozent) und Jura (19 Prozent) [@horstmann2026check]. Die britischen Befunde zeigen zugleich eine gespaltene Studierendenschaft: Die einen gewinnen Zeit für tieferes Lernen, andere lagern es aus („I'm not using my brain at all“) [@stephenson2026hepi].
+
+**Genutzt wird vor allem auf den oberen Stufen.** Eine Auswertung von einer Million anonymisierter Chats mit Universitätskonto zeigt, dass Studierende die Modelle vor allem zum **Erstellen neuer Inhalte und zum Analysieren komplexer Themen** einsetzen, also auf den höheren Ebenen der Bloomschen Taxonomie (@fig-llm-nutzung-bloom) [@handa2025].
+
+![Schwerpunkte der Nutzung von LLMs (Claude) durch Studierende nach der Bloom'schen Taxonomie [@handa2025].](images/script01-02.svg){#fig-llm-nutzung-bloom}
+
+**Auf den produktiven Umgang fühlen sich Studierende schlecht vorbereitet.** In der CHE-Befragung vom Wintersemester 2024/25 bewerteten sie das Angebot zum Erwerb von KI-Kompetenzen an ihrer Hochschule mit 2,7 von 5 Sternen [@che2025ki]. Hochschulen müssen deshalb Prüfungen anpassen und den Umgang mit den Werkzeugen lehren.
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Fast alle Studierenden nutzen KI inzwischen auch für Prüfungsleistungen.“* []{.ez-ihre data-ez="ez-k1-1"}
+
+**Auflösung: ja.** In der britischen HEPI-Befragung nutzten 94 % KI auch für Prüfungsleistungen. Auf den produktiven Umgang fühlen sich viele aber schlecht vorbereitet: Dass Studierende KI nutzen, heißt nicht, dass sie es gut tun.
+:::
+
+**Bei den Lehrenden ist die Spanne weit.** In einer bundesweiten Befragung von 626 Hochschullehrenden (Dezember 2024 bis Januar 2025) nutzten 12 Prozent KI in der Lehre gar nicht, weitere 33 Prozent selten oder sehr selten und knapp 15 Prozent sehr häufig. Mit Abstand am häufigsten genannt wurde die kostenlose Version von ChatGPT (66 Prozent), die Bezahlversion nur von 23 Prozent [@vongarrel2026]. International ergibt sich dasselbe Muster: Von 1.681 Lehrenden aus 28 Ländern hatten 61 Prozent KI in der Lehre schon eingesetzt, die große Mehrheit aber nur in geringem bis mittlerem Umfang [@dec2025faculty], und ein Review von fünfzehn deutschen Studien findet, dass Lehrende KI seltener und selektiver nutzen als Studierende [@bosse2026].
+
+In Workshops mit Lehrenden fällt zudem auf, wie **unsystematisch** die Nutzung meist ist: Sie findet fast nur im **Chatfenster** statt, man übernimmt, was brauchbar wirkt, und beginnt beim nächsten Mal von vorn, ohne Vorlagen, eigene Quellensammlungen, Projekte oder Agenten. Ethan Mollick nennt diese Lücke den **Fähigkeitsüberhang** (*capability overhang*): den Abstand zwischen dem, was die Modelle können, und dem, was fast alle mit ihnen tun [@mollick2026overhang]. Für die Lehre ist der Überhang Befund und Chance zugleich, denn schon mit den heutigen Modellen wäre viel mehr möglich.
+
+## Was geht schief? {#sec-risiken}
+
+**Die Metapher mit dem E-Bike trägt auch die Nebenwirkung:** Wer nur noch mit Motor fährt, verliert Muskeln. Das zeigt sich zuerst beim Üben. In einem Feldexperiment mit knapp tausend Oberstufenschülern verbesserte ein Tutor im Stil des normalen ChatGPT die Übungsleistung um 48 Prozent; als der Zugang in der Prüfung fehlte, lagen dieselben Schüler 17 Prozent *unter* der Kontrollgruppe, die nie Zugang hatte [@bastani2025]. Die Übungen waren gelöst, gelernt war weniger als ohne Hilfe.
+
+**Die Arbeit verschiebt sich vom Erarbeiten zum Prüfen.** In einer Befragung von 319 Wissensarbeitern sank mit Sprachmodellen der Aufwand für die Recherche selbst, während Koordination, kritische Prüfung der Ergebnisse und ihre Integration in ein Gesamtergebnis mehr Gewicht bekamen [@lee2025]. Anders als die Websuche, bei der man einzelne dornige Zweige erntet, liefert das Sprachmodell **das ganze Aufgabenbündel fertig verschnürt**. Wer per Chatbot statt per Suchmaschine recherchiert, setzt sich entsprechend weniger kritisch mit dem Thema auseinander [@mittal2026, Preprint]. Ein vielgelesener Artikel trägt den Titel „Everybody is cheating their way through college“ [@walsh2025]; der Titel lenkt den Blick auf die Messung, die größere Gefahr liegt beim Lernen selbst.
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Die größte Gefahr generativer KI für das Lernen besteht darin, dass Studierende in Prüfungen täuschen.“* []{.ez-ihre data-ez="ez-k1-2"}
+
+**Auflösung: eher nicht.** Täuschen verfälscht die Messung einer Leistung. Wer dagegen das Denken auslagert, übt die geprüften Schritte nie und lernt sie nicht, wie der Einbruch um 17 Prozent in der Prüfung zeigt. Was dabei verloren geht, nennt die Lernforschung erwünschte Schwierigkeiten (@sec-was-hilft).
+:::
+
+**Hinzu kommt ein Zugangsproblem.** „KI nutzen“ heißt seit Ende 2025 Delegation an Agenten, die Werkzeuge einsetzen, mehrstufig arbeiten und Zwischenergebnisse selbst prüfen [@mollick2025e] (@sec-harness). Kostenlose Tarife und „Auto“-Auswahl liefern dagegen oft schwächere Modellvarianten ohne Reasoning und mit kleinem Werkzeugkasten, und genau diesen Zugang nutzen die meisten Lehrenden: Wer am Modell spart, spart am Ergebnis.
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Wer mit der kostenlosen Version eines Chatbots in seinem Fach schlechte Ergebnisse erhält, weiß, was KI dort leisten kann.“* []{.ez-ihre data-ez="ez-k1-3"}
+
+**Auflösung: nein.** Kostenlose und automatisch gewählte Varianten antworten oft ohne Nachdenkphase und ohne Werkzeuge. Was ein Sprachmodell im eigenen Fach leistet, zeigt erst ein starkes Modell mit passender Oberfläche und Werkzeugkasten (@sec-harness).
+:::
+
+## Was hilft? {#sec-was-hilft}
+
+**So schlimm muss es nicht werden.** Im selben Experiment gab ein zweiter Tutor Hinweise statt Lösungen: Er hob die Übungsleistung um 127 Prozent und ließ in der Prüfung keinen Schaden zurück [@bastani2025]. Lehre kann also erwünschte Schwierigkeiten im Sinne von @bjork2011 erhalten, auch wenn die Studierenden zu Hause starke Modelle nutzen. Die Forschung seit 2025 nennt drei Bedingungen dafür; @sec-evidenz stellt sie ausführlich dar.
+
+**Die Einbettung trägt, nicht das Werkzeug.** In einer randomisierten Studie in 83 indischen Internatsschulen erhielten alle Zugang zur selben Lernplattform; große Lerngewinne entstanden nur dort, wo betreute Lernzeiten mit Aufsichtspersonen eingeplant waren [@oreopoulos2026]. **Anleitung wirkt, Ermutigung nicht:** In einem Ökonometrie-Kurs änderte die Ermutigung zum Tutor nichts, eine Anleitung zur tutoriellen Nutzung hob die Prüfungsleistung um 0,21 Standardabweichungen und die Bestehensquote um zwölf Prozentpunkte [@gallegos2026].
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Ein KI-Tutor verbessert das Lernen, sobald die Studierenden Zugang zu ihm erhalten.“* []{.ez-ihre data-ez="ez-k1-4"}
+
+**Auflösung: nein.** Der Zugang allein bewirkt wenig. Lerngewinne entstehen, wo die Nutzung in betreute Lernzeiten eingebettet und angeleitet wird und wo der Tutor Hinweise statt fertiger Lösungen gibt.
+:::
+
+**Die Leitplanke gehört in Aufgabe und Rückmeldung.** Eine Rückmeldung, die Lernenden zeigt, was das Abschreiben einer KI-Lösung für ihr eigenes Können bedeutet, halbierte in einem Experiment die Auslagerung [@maier2026deskilling]; Feedback, das zuerst zur Reflexion auffordert und die Kritik danach liefert, schnitt beim späteren Transfer ohne KI besser ab als direkte KI-Kritik [@ates2026]. Ein Beispiel aus der Praxis ist das „AI-Sandwich“ von Jon Ippolito, in dem selbst geführte Interviews zum Maßstab für den KI-Text werden (@sec-prompt-ai-sandwich).
+
+Auf der Ebene des Studiengangs kommen vier Hebel hinzu: Prüfungen nach den vier Säulen Mündlichkeit, Prozessorientierung, Kontextualisierung und Kollaboration (@sec-pruefen), Richtlinien im Rahmen der KI-Verordnung (@sec-ki-vo), eine Dokumentation der KI-Nutzung durch die Studierenden (@sec-dokumentation) und die Integration in den ganzen Kurs (@sec-kurs-integration).
+
+## Was Sie im Buch erwartet {#sec-kapiteluebersicht}
+
+**In den Workshops kehren drei Fragen immer wieder.** Seit 2024 haben sie vor allem im Netzwerk hdw nrw Lehrende aus nahezu allen Fächergruppen zusammengeführt. Die erste Frage ist eine Sorge: Entwertet KI Hausarbeiten, deren Ergebnis ein Sprachmodell in Minuten liefert, die **„Homework Apocalypse“** [@mollick2023]? Die zweite ist praktisch: Wie hilft KI bei Recherche, Aufgabenerstellung und Rückmeldung? Die dritte ist Neugier: Was wird möglich, das bisher zu aufwendig war, etwa Simulationen, in denen Studierende verhandeln oder ein Unternehmen steuern [@mollick2024a]? Das Buch beantwortet sie über **vier Rollen der KI** (@sec-szenarien): als **Hiwi**, der Ihnen zuarbeitet (@sec-hiwi), als **Copilot**, mit dem Studierende schreiben und programmieren (@sec-copilot), als **Tutor**, der erklärt und abfragt (@sec-tutor), und als **Simulator**, der ein Gegenüber spielt (@sec-simulator). Mit der Rolle wechselt, wer das Ergebnis prüft.
+
+Darunter liegen die Grundbegriffe (@sec-grundbegriffe) und die Lernmechanismen (@sec-didaktik), darauf bauen die Umsetzung in Prüfung und Kurs (@sec-umsetzung) und die Beispiele aus der eigenen Lehre (@sec-fallbeispiele). Dort bauen Studierende mit Praxispartnern Assistenten, die auf den Dokumenten eines Unternehmens antworten (@sec-fall-unternehmen), und entwickeln Tutoren, Planspiele und Karriereberater für andere Studierende (@sec-fall-tutor-bwl, @sec-bsp-simulationen-studierende, @sec-fall-job-buddy). Die Anhänge sammeln Prompts (@sec-prompts-ueberblick, @sec-prompts), Rollenspiele (@sec-rollenspiele), Arbeitsumgebung und Agenten (@sec-fortgeschrittene-nutzung), Praxis-Primer für Lernmaterial (@sec-anhang-primer) und Lösungshinweise (@sec-loesungshinweise).
+
+::: {.callout-note title="Fünf Fragen, die dieses Buch beantwortet"}
+1. Warum schadet ein Chatbot, der jede Übungsfrage richtig beantwortet, dem Lernen? (@sec-didaktik)
+2. Wann ist die KI Ihr Hiwi, wann der Tutor Ihrer Studierenden, und warum wechselt damit die Verantwortung? (@sec-szenarien)
+3. Was muss beim Menschen bleiben, wenn man eine Aufgabe an einen Agenten delegiert? (@sec-d-modus)
+4. Warum hilft ein Lied beim Merken einer Formel, aber nicht beim Anwenden? (@sec-primer-lernsongs)
+5. Wie echt muss ein simuliertes Gegenüber sein, damit Studierende daran üben? (@sec-simulator, @sec-rollenspiele)
+:::
+
+**Fünf Formate zeigen, was 2026 mit KI entsteht:** eine Prozessanimation, in der sich vor dem Engpass die Arbeit staut [@goldratt2014; @little1961], eine Präsentationsfolie nach Regelwerk, ein Lernsong, ein Lernspiel und ein Rollenspiel. Blättern Sie mit den Pfeilen; unter jedem Beitrag führt ein Link zur Stelle im Buch.
 
 ::: {.content-visible when-format="html"}
 ```{=html}
-<iframe id="galerie-kapitel01" src="interactions/galerie-kapitel01.html" width="100%" height="1380px" frameborder="0" title="Galerie: Was 2026 mit generativer KI möglich ist"></iframe>
+<iframe id="galerie-kapitel01" src="interactions/galerie-kapitel01.html" width="100%" height="1100px" frameborder="0" title="Galerie: Fünf Formate, die 2026 mit generativer KI entstehen"></iframe>
 <script>
-/* Die Galerie meldet ihre Höhe je Beitrag; so entsteht kein Scrollbalken im Rahmen. */
+/* Galerie und Lernpfade melden ihre Höhe; so entsteht kein Scrollbalken im Rahmen. */
 window.addEventListener("message", function (e) {
   var d = e.data; if (!d || d.typ !== "galerie-hoehe") return;
   var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
@@ -80,59 +133,55 @@ window.addEventListener("message", function (e) {
 :::
 
 ::: {.content-visible unless-format="html"}
-![Galerie „Was 2026 möglich ist“ mit vier Beiträgen aus diesem Buch: Kosten-Raster zum Preisverfall für Expertenwissen (@sec-capabilities), Animation vom Chatbot zum Agenten (@sec-patterns-usage), Lernsong zu Prognoseverfahren (@sec-bsp-lernsong-forecast) und Engpass-Animation (@sec-widget-pruefen). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/galerie-kapitel01.html> aufrufen.](images/qr/qr-galerie-kapitel01.png){#fig-qr-galerie width="32%" fig-align="center"}
+![Galerie „Fünf Formate, die 2026 mit KI entstehen“: Engpass-Animation (@sec-widget-pruefen), Präsentationsfolie mit Regelwerk (@sec-primer-praesentationen), Lernsong zu Prognoseverfahren (@sec-bsp-lernsong-forecast), Zuordnungsspiel (@sec-bsp-quizspiele) und KI-Rollenspiel (@sec-role-play). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/galerie-kapitel01.html> aufrufen.](images/qr/qr-galerie-kapitel01.png){#fig-qr-galerie width="32%" fig-align="center"}
 :::
 
-**Dieses Buch verdichtet neben der Forschung auch die Gespräche aus zahlreichen Workshops** mit Lehrenden, die seit 2024 vor allem im Netzwerk hdw nrw an Hochschulen in ganz Nordrhein-Westfalen stattfanden, von den Grundlagen über die Anpassung von Prüfungen bis zu Agenten, KI-Tutoren und lokalen Modellen (@sec-fortgeschrittene-nutzung). Die Gespräche gehen in die Tiefe, weil sie ausschließlich um die Lage der Lehrenden kreisen, und sie haben Breite: Die Teilnehmenden kommen aus nahezu allen Fächergruppen, mit Schwerpunkt in Ingenieur- und Naturwissenschaften, Wirtschaft und Recht, und dieselbe Frage nach der Hausarbeit stellt sich im Maschinenbau anders als in der Sozialen Arbeit.
+<!-- Lernpfade (Claude, 01.11.2026) nach Entscheidung Roman: Option b, U-Bahn-Plan als Buchlandkarte, Selbsttest. Karte und Widget werden aus scripts/lernpfade/ erzeugt. -->
 
-Drei Fragen kehren dabei immer wieder. Die erste ist eine Sorge: Entwertet generative KI Hausarbeiten und Portfolioprüfungen, deren Ergebnis ein Sprachmodell in Minuten liefert? Ethan Mollick hat dafür früh den Begriff **„Homework Apocalypse“** geprägt [@mollick2023]; @sec-risiken und @sec-pruefen nehmen die Frage auf. Die zweite ist praktisch: Wie kann KI die eigene Lehre bei Recherche, Aufgabenerstellung und Rückmeldung unterstützen? Dafür steht die Rolle der **KI als Hiwi** (@sec-hiwi). Die dritte ist Neugier: Was wird möglich, das bisher zu aufwendig war, etwa **Simulationen**, in denen Studierende verhandeln oder ein Unternehmen steuern [@mollick2024a]? Antworten geben die Rolle der KI als Simulator (@sec-simulator) und die Beispiele aus der eigenen Lehre in @sec-fallbeispiele.
+### Wählen Sie Ihren Lernpfad {#sec-lernpfade}
 
-**Für die Lehre** sind die großen Sprachmodelle (LLM = Large Language Models) vor allem eines: „**generally faster**“ [@mcafee2024]. Recherchen, Übungsaufgaben, zusätzliche Anwendungsbeispiele, Quizfragen und Rollenspiele entstehen mit KI-Unterstützung deutlich schneller [@meincke2024; @mollick2023a]. Der Berg ist noch da, aber mit dem E-Bike kommt man weiter.
+Nicht jede Leserin braucht jede Etappe. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also ihrer Befunde zu den Wirkmechanismen des Lernens, der Wege, sie in der Lehre umzusetzen, und der erprobten Formen des KI-Einsatzes. Lehrerfahrung allein bringt diese Kenntnis nicht mit sich: In einer Befragung kannten Hochschullehrende wirksame Lernstrategien besser als ihre Studierenden, teilten mit ihnen aber verbreitete Fehlannahmen [@morehead2016]. Ein Informatiker, der täglich mit Agenten arbeitet, hat oft nie gehört, warum verteiltes Üben länger hält; eine Kollegin, die die Befunde zu Abrufübungen kennt, weiß nicht unbedingt, was einen Agenten von einem Chatbot unterscheidet. Beiden kostet die vollständige Strecke mehr als Zeit, denn Erklärungen, die Neulingen helfen, belasten Erfahrene, die Bekanntes ein zweites Mal verarbeiten müssen [@kalyuga2003].
 
-**Wie ein Laie im Cockpit eines Verkehrsflugzeugs** können Lehrende oft schwer entscheiden, welche der neuen Möglichkeiten der eigenen Lehre nützen; Virtuelle Realität, Blockchain und Roboter wurden schon ins Rampenlicht gestellt und wieder vergessen, und eine Grundskepsis ist daher Selbstschutz [@allen2024; @hattie2023, Kap. 14]. Zugleich stehen Lehrende zwischen ihren Identitäten als Experten, die Kompetenz ausstrahlen, und als Innovatoren, die zur Neugier auf Technik anleiten sollen, die auch ihnen selbst neu ist [@fischer2024].
+@fig-lernpfade zeigt die vier Kombinationen als Liniennetz. Linie 1 ist für Lesende, denen beides neu ist, und hält an jedem Kapitel. Linie 2 ist für KI-Erfahrene: Sie lässt die Grundbegriffe aus und führt durch das ganze dritte Kapitel, denn dort steht, was Werkzeugwissen nicht ersetzt. Linie 3 ist für Lesende, die die Lernforschung kennen: Sie holt die technischen Grundlagen nach, nimmt aus dem dritten Kapitel nur die neue Evidenz mit und führt nach den vier Rollen zu den Praxis-Primern. Linie 4 ist für Lesende, die in beidem zu Hause sind: Sie springt von der Einleitung zur Evidenz, liest im vierten Kapitel vor allem Tutor und Simulator und endet bei Rollenspielen und Agenten in den Anhängen.
 
-## Stand Herbst 2026: Agenten, Kosten, Forschung {#sec-weiterentwicklung}
+Vier Stationen liegen auf allen Linien: diese Einleitung, die Forschung seit 2025 (@sec-evidenz), die vier Rollen und die Fallbeispiele. Sie enthalten, was auch Erfahrene nicht aus anderer Quelle mitbringen. @sec-umsetzung und die Anhänge bleiben jeder Linie als Nachschlagestationen offen. Welche Linie passt, zeigen sechs Aussagen, drei zur Erfahrung mit KI und drei zur Kenntnis der Lernforschung; zwei oder drei Zustimmungen in einer Gruppe zählen als Vorwissen.
 
-"KI nutzen" heißt seit der agentischen Wende Ende 2025, dem **„Agentic Turn“** [@willison2025; @steinberger2025; @mollick2025], nicht mehr nur "chatten mit dem Bot", sondern **Delegation an Agenten** [@mollick2025e]: Man delegiert Aufgaben, die KI nutzt Werkzeuge, arbeitet mehrstufig und prüft Zwischenergebnisse selbst. Möglich machen das Reasoning-Modelle, die schrittweise vorgehen und ihre Antworten prüfen, bevor sie ein Ergebnis anbieten; warum diese zusätzliche „Denkzeit“ hilft, zeigt @sec-capabilities. Wer solche Modelle nutzt, verbringt weniger Zeit mit den ‚Zaubersprüchen‘ einzelner Prompts und mehr mit ‚Mitarbeitergesprächen‘: Anleitung und Kritik der digitalen Agenten.
+::: {.content-visible when-format="html"}
+::: {#fig-lernpfade}
+```{=html}
+<iframe id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
+```
 
-Praktisch unterscheiden wir drei Ebenen: das **Modell** selbst, die **App** als Oberfläche und den **Harness**, den Werkzeugkasten aus Web-Recherche, Dateizugriff oder Rechnen mit Python (@sec-harness). Für die Lehre gilt: **Wenig Kosten heißt oft auch wenig(er) Nutzen** ("No such thing as a free lunch", hört man die Ökonomen murmeln [@friedman1975]). Kostenlose Tarife und „Auto“-Auswahl führen oft zu **schwächeren Modellvarianten** ohne Reasoning und mit kleinem Werkzeugkasten; das wirkt „gut genug“, erhöht aber das Risiko von Fehlern und oberflächlichem Denken. Wer GenAI als Lehrassistenz nutzt, sollte **bewusst eine starke Modellvariante** wählen und Ergebnisse didaktisch gegenprüfen.
+Lernpfade durch das Buch. Nach den sechs Antworten tritt die passende Linie hervor; jede Station führt zum Kapitel. Eigene Darstellung.
+:::
+:::
 
-Die Modelle erledigen zugleich immer längere Aufgaben auf hohem Niveau [@kwa2025], und sie werden billiger: Für Antworten auf naturwissenschaftliche Fragen auf Promotionsniveau fielen die niedrigsten Kosten zwischen Januar 2025 und Juli 2026 um den Faktor 725 [@emberson2026]. Daten und Rechenbeispiel stehen in @sec-capabilities. Breite Recherchen samt Bericht lassen sich inzwischen ganz delegieren („Deep Research“) [@schwarcz2025; @liang2025], und mit **„Skills“**, modularen Ablaufbeschreibungen, erstellen und prüfen Modelle auch komplexe Dokumente [@openai2025a; @anthropic2025a]; Aufbau und Beispiele zeigt @sec-agenten-praxis.
+::: {.content-visible unless-format="html"}
+![Lernpfade durch das Buch. Rot umrandet sind die Stationen, an denen alle Linien halten. Eigene Darstellung.](images/lernpfade/lernpfade-karte.svg){#fig-lernpfade width="100%" fig-pos="htbp"}
 
-**Auch typische Forschungstätigkeiten**, ein zentraler Ausbildungsinhalt der Hochschulen, **übernehmen Sprachmodelle zunehmend auf hohem Niveau** [@korinek2024]. Forschende berichten in Fallstudien, die OpenAI im November 2025 veröffentlicht hat (also keine neutrale Quelle), von großer Zeitersparnis bei Verfahren, die sie bewerten, aber nur langsam selbst erlernen könnten, und zugleich davon, dass auch starke Modelle falsche Ergebnisse überzeugend vertreten [@bubeck2025]. **Den Mehrwert erzeugen erst eigenes Fachwissen *und* Erfahrung im kritischen Umgang mit dem Werkzeug**: Man muss das Terrain kennen *und* lernen, den Sportwagen Sprachmodell zu fahren.
+::: {.callout-note title="Selbsttest: Welche Linie passt?"}
+**Erfahrung mit KI.** (a) Ich nutze ein Sprachmodell mindestens einmal pro Woche für meine Arbeit. (b) Ich habe einen eigenen Assistenten eingerichtet, etwa ein Projekt mit festen Anweisungen und eigenen Dateien. (c) Ich habe einer KI eine mehrschrittige Aufgabe übertragen, bei der sie selbst sucht, Dateien liest oder Code ausführt.
 
-Was das für die eigene Lehre heißt, zeigen die Beispiele in @sec-fallbeispiele. Studierende bauen dort mit Praxispartnern Assistenten, die auf den Dokumenten eines Unternehmens antworten (@sec-fall-unternehmen), und entwickeln Tutoren, Planspiele und Karriereberater für andere Studierende (@sec-fall-tutor-bwl, @sec-bsp-simulationen-studierende, @sec-fall-job-buddy).
+**Kenntnis der Lernforschung.** (d) Ich kenne zentrale Wirkmechanismen aus der Lernforschung und kann erklären, warum etwa Abrufübungen, verteiltes Üben und Selbsterklären das Behalten stärken. (e) Ich weiß, wie sich solche Mechanismen in einer Lehrveranstaltung umsetzen lassen, etwa mit kurzen Abfragen zu Beginn, Wiederholung über das Semester oder Aufgaben, in denen Studierende einander erklären. (f) Ich kenne erprobte Einsatzformen und Befunde zu KI in der Lehre, etwa wann ein KI-Tutor das Lernen stärkt und wann er es durch Auslagerung des Denkens schwächt.
 
-## Wie nutzen Studierende und Lehrende GenAI? {#sec-nutzung}
-
-**Für Studierende sind Sprachmodelle zum Standard geworden.** In der britischen Befragung des Higher Education Policy Institute vom Dezember 2025 (n = 1.054 Vollzeitstudierende) nutzten 95 % KI in irgendeiner Form und 94 % auch für Prüfungsleistungen; 12 % übernahmen KI-Text direkt in die Abgabe, 2024 waren es 3 % [@stephenson2026hepi]. Deutsche Daten des CHE bestätigen das Bild: Im Wintersemester 2025/26 nutzten 81 Prozent von 28.584 befragten Studierenden an 202 Hochschulen KI-Werkzeuge mindestens wöchentlich, und jede zweite Person nutzte sie „als Tutor bzw. Lernpartner“, mit großen Fachunterschieden zwischen Wirtschaftsinformatik (72 Prozent) und Jura (19 Prozent) [@horstmann2026check]. Die britischen Befunde zeigen zugleich eine gespaltene Studierendenschaft: Die einen gewinnen Zeit für tieferes Lernen, andere lagern es aus („I'm not using my brain at all“) [@stephenson2026hepi]; darauf kommt @sec-risiken zurück.
-
-**Wofür genau nutzen Studierende GenAI?** Eine Auswertung von einer Million anonymisierter Chats von Nutzern mit Universitätskonto zeigt, dass Studierende die Modelle vor allem zum **Erstellen neuer Inhalte und zum Analysieren komplexer Themen** einsetzen, also auf den höheren Ebenen der Bloomschen Taxonomie (@fig-llm-nutzung-bloom) [@handa2025].
-
-![Schwerpunkte der Nutzung von LLMs (Claude) durch Studierende nach der Bloom'schen Taxonomie [@handa2025].](images/script01-02.svg){#fig-llm-nutzung-bloom}
-
-**Hochschulen müssen insofern sicherstellen, dass Prüfungsleistungen nicht entwertet werden und Studierende die produktive Nutzung solcher Werkzeuge erlernen.** Studierende dürfen wesentliche kognitive Aufgaben nicht vollständig an GenAI delegieren; Aufgaben und Prüfungen müssen angepasst werden. Zugleich entsteht ein **neuer Bedarf an Kompetenzschulung**, und **deutsche Studierende fühlen sich darauf nicht gut vorbereitet**: In der CHE-Befragung vom Wintersemester 2024/25 bewerteten sie das Angebot zum Erwerb von KI-Kompetenzen mit nur 2,7 von 5 Sternen [@che2025ki]. Auch im Beruf, für den wir ausbilden, steigt mit Sprachmodellen die Produktivität, etwa im Kundensupport, beim Programmieren und in der Beratung [@brynjolfsson2025; @peng2023; @dellacqua2023].
-
-**Und die Lehrenden?** Bei ihnen zeigt sich, wie in den Workshops, eine sehr weite Spanne zwischen intensiver Nutzung und Lehrenden, die mit den Werkzeugen praktisch noch keine Berührung hatten. In einer bundesweiten Befragung von 626 Hochschullehrenden (Dezember 2024 bis Januar 2025) nutzten 12 Prozent KI in der Lehre gar nicht, weitere 33 Prozent sehr selten oder selten und knapp 15 Prozent sehr häufig. Mit Abstand am häufigsten genannt wurde die kostenlose Version von ChatGPT (66 Prozent), die Bezahlversion nur von 23 Prozent, Werkzeuge wie Claude oder NotebookLM von je 2 Prozent [@vongarrel2026], also genau der Zugang, dem nach @sec-weiterentwicklung oft das starke Modell und der Werkzeugkasten fehlen. International ergibt sich dasselbe Muster: Von 1.681 Lehrenden aus 28 Ländern hatten 61 Prozent KI in der Lehre schon eingesetzt, die große Mehrheit aber nur in geringem bis mittlerem Umfang [@dec2025faculty], und ein Review von fünfzehn deutschen Studien findet, dass Lehrende KI seltener und selektiver nutzen als Studierende [@bosse2026].
-
-In den Workshops fällt zudem auf, wie **unsystematisch** die Nutzung meist ist und dass sie fast ausschließlich im **Chatfenster** stattfindet: Man probiert etwas aus, übernimmt, was brauchbar wirkt, und beginnt beim nächsten Mal von vorn, ohne Vorlagen, eigene Quellensammlungen, Projekte oder Agenten. Ethan Mollick nennt diese Lücke den **Fähigkeitsüberhang** (*capability overhang*): den Abstand zwischen dem, was die Modelle können, und dem, was fast alle tatsächlich mit ihnen tun [@mollick2026overhang]. Selbst wo die Werkzeuge bezahlt sind, bleibt er groß: Bei den Organisationskunden eines Coding-Agenten arbeiten 67,4 Prozent ohne parallele Agenten, beim Hersteller selbst steuern 28,6 Prozent fünf oder mehr gleichzeitig [@johnston2026the]; mehr dazu in @sec-agenten-praxis. Für die Lehre ist der Überhang Befund und Chance zugleich: Schon mit den heutigen Modellen wäre viel mehr möglich, als die meisten Lehrenden nutzen, und dort setzen die folgenden Kapitel an.
-
-## Risiken und Nebenwirkungen {#sec-risiken}
-
-Die Metapher mit dem E-Bike trägt allerdings auch, was die **Risiken und Nebenwirkungen** angeht: Ab wann lässt die maschinelle Unterstützung wichtige Muskeln verkümmern? Solche Gefahren bestehen – wie empirische Studien zeigen, erfordern die neuen Workflows der Wissensarbeit durch KI-Unterstützung auch neue Formen der kritischen Auseinandersetzung mit den Inhalten.
-
-**Wird der Umgang mit GenAI nicht geübt, droht ein Rückgang des kritischen Denkens.** Eine Studie von 319 Wissensarbeitern zeigt, dass sich das **Gewicht zwischen den Einzelaufgaben der Wissensarbeit mit LLMs verschiebt**: Der Aufwand für die Recherchen selbst sinkt, es steigt andererseits der Aufwand für Management-ähnliche Aufgaben: Koordination der Einzelaufgaben für Mensch und Maschine, kritische Prüfung der berichteten Ergebnisse und die Integration von Ergebnissen in den Gesamtprozess (etwa zur Erstellung eines Gesamtberichtes, einer Test-Spezifikation oder eines Protokolls) [@lee2025].
-
-Im Gegensatz zur einfachen Faktensuche im Internet werden hier nicht nur ein paar dornige Zweige im Aufgabenbündel mechanisch ‚geerntet‘, sondern **gleich das gesamte Bündel fertig verschnürt bereitgestellt.** Wenn klassische Projektaufgaben auf Knopfdruck entstehen, droht diese Form von Leistung sinnlos zu werden; ein vielgelesener Artikel trägt den Titel **„Everybody is cheating their way through college“** [@walsh2025].
-
-**Aber so schlimm muss es nicht werden.** Lehrformate lassen sich so umgestalten, dass erwünschte Schwierigkeiten nach @bjork2011 erhalten bleiben oder sogar wachsen, auch wenn die meisten Studierenden zu Hause starke Sprachmodelle nutzen; Lehre heißt dann auch, empfohlene Arbeitsweisen mit der neuen Technik zu üben. Ein Beispiel ist das „AI-Sandwich“ von Jon Ippolito, in dem selbst geführte Interviews zum Maßstab für den KI-Text werden (@sec-prompt-ai-sandwich); weitere Wege zeigen die folgenden Kapitel.
+Höchstens eine Zustimmung je Gruppe: Linie 1. Zwei oder mehr nur bei KI: Linie 2. Nur bei Lernforschung: Linie 3. In beiden Gruppen: Linie 4. Online prüft der Selbsttest die Antworten und hebt die Linie hervor: <https://th-koln-bartnik.github.io/genai4teaching/kapitel01.html#sec-lernpfade>.
+:::
+:::
 
 ::: {.callout-tip title="Kernaussagen"}
+**Zu Lernziel 1: Lehrprobleme und Verbreitung**
+
 1. Generative KI ist für die Lehre ein Kraftverstärker: Der Berg bleibt, aber mit dem E-Bike kommt man weiter. Sie senkt vor allem den Aufwand für Methoden, die didaktisch wirksam, aber zeitintensiv sind.
-2. „KI nutzen“ heißt zunehmend, Aufgaben an Agenten zu delegieren. Ergebnisqualität hängt von der Kombination aus starkem Modell, passender Oberfläche und Werkzeugkasten (Harness) ab; wer am Modell spart, spart meist am Ergebnis.
-3. Der Mehrwert entsteht erst durch eigenes Fachwissen und Erfahrung im kritischen Umgang mit dem Werkzeug. Auch starke Modelle vertreten falsche Ergebnisse überzeugend.
-4. Studierende nutzen Sprachmodelle längst flächendeckend, auch für Prüfungsleistungen, fühlen sich aber auf den produktiven Umgang schlecht vorbereitet. Bei Lehrenden reicht die Spanne von intensiver Nutzung bis zu keiner; genutzt wird meist unsystematisch und im Chatfenster. Der Fähigkeitsüberhang ist groß: Schon heute wäre viel mehr möglich.
-5. Die Hauptgefahr ist nicht das Täuschen, sondern die Auslagerung des Denkens. Lehre muss erwünschte Schwierigkeiten erhalten, auch wenn zu Hause starke Modelle verfügbar sind.
+2. Studierende nutzen Sprachmodelle flächendeckend, auch für Prüfungsleistungen, fühlen sich aber auf den produktiven Umgang schlecht vorbereitet. Bei Lehrenden reicht die Spanne von intensiver Nutzung bis zu keiner; genutzt wird meist unsystematisch und im Chatfenster. Der Fähigkeitsüberhang ist groß.
+
+**Zu Lernziel 2: Was schiefgeht**
+
+3. Die Hauptgefahr ist nicht das Täuschen, sondern die Auslagerung des Denkens: Ein Tutor ohne Leitplanken hebt die Übungsleistung und senkt die Prüfungsleistung.
+4. Schwache Zugänge verzerren das Urteil. „KI nutzen“ heißt Delegation an Agenten mit Werkzeugen; wer mit kostenlosen Varianten ohne Reasoning und Werkzeuge arbeitet, hält deren Schwächen für die Grenzen der Technik.
+
+**Zu Lernziel 3: Was hilft**
+
+5. Über die Lernwirkung entscheiden Einbettung, Anleitung und Gestaltung, nicht der Zugang zum Werkzeug: betreute Lernzeiten, angeleitete statt nur ermutigte Nutzung und Leitplanken in Aufgabe und Rückmeldung, die erwünschte Schwierigkeiten erhalten.
 :::
 
 ::: {.callout-note title="Lernfragen"}
@@ -143,26 +192,13 @@ Im Gegensatz zur einfachen Faktensuche im Internet werden hier nicht nur ein paa
 
 **Anwenden**
 
-3. Erklären Sie ohne Nachschlagen den Unterschied zwischen Modell, App und Harness an einem Beispiel aus Ihrem Fach. Welche Ebene fehlt den kostenlosen Zugängen Ihrer Hochschule?
+3. Ihre Hochschule schaltet allen Studierenden einen KI-Tutor frei. Welche zwei Bedingungen aus @sec-was-hilft müssten Sie in Ihrem Kurs schaffen, damit daraus Lernwirkung entsteht, und wie sähe das konkret aus?
 4. Welche Lehrmethode haben Sie in den letzten Semestern aus Zeitgründen nicht umgesetzt, obwohl Sie von ihrer Wirkung überzeugt sind? Welchen Teil des Aufwands könnte ein Sprachmodell übernehmen, und welcher Teil muss bei Ihnen bleiben?
 
 **Beurteilen**
 
 5. Bei welcher Aufgabe in Ihrer Lehrveranstaltung würde ein Studierender durch KI-Nutzung am meisten an Lernwirkung verlieren? Woran würden Sie das erkennen?
-6. Auch starke Modelle vertreten falsche Ergebnisse überzeugend. Profitieren Studierende mit wenig Vorwissen dann mehr oder weniger von KI als Fortgeschrittene? Begründen Sie Ihre Einschätzung.
+6. Ermutigung zur KI-Nutzung änderte in einer Studie nichts, Anleitung hob die Prüfungsleistung. Lesen Sie, was Ihre Kursbeschreibung oder Ihre erste Sitzung zum Thema KI sagt: Ist das Ermutigung oder Anleitung, und was müsste sich ändern?
 
 Lösungshinweise: @sec-loesungshinweise.
 :::
-
-## Kapitelübersicht {#sec-kapiteluebersicht}
-
-| Kapitel | Leitfrage |
-|---|---|
-| 2 Grundbegriffe (@sec-grundbegriffe) | Was sind Sprachmodelle, Token, RAG, Harness und Agenten, was können die Modelle, und welche Empfehlungen für Prompts sind belastbar? |
-| 3 Didaktische Ziele (@sec-didaktik) | Welche Arten von Wissen und welche Lerntechniken unterscheidet die Lernforschung, und welche Wirkmechanismen kann KI nutzen? |
-| 4 Vier Szenarien (@sec-szenarien) | Wie hilft KI als Hiwi, als Copilot beim Schreiben und Programmieren, als Tutor und als Simulator? |
-| 5 Umsetzung (@sec-umsetzung) | Wie passt man Prüfungen und Richtlinien an und baut KI in einen ganzen Kurs ein? |
-| 6 Fallbeispiele (@sec-fallbeispiele) | Was zeigen Beispiele aus der eigenen Lehre, geordnet nach der Art des Wissens, das Studierende erwerben? |
-| Anhänge A–E | Aufbau didaktischer Prompts (@sec-prompts-ueberblick), Prompt-Sammlung (@sec-prompts), Rollenspiele und Simulationen (@sec-rollenspiele), Arbeitsumgebung, Agenten und lokale Modelle (@sec-fortgeschrittene-nutzung), Lösungshinweise (@sec-loesungshinweise) |
-
-: Aufbau des Buches {#tbl-kapiteluebersicht}
