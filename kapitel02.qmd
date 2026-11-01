@@ -1,89 +1,49 @@
 # Grundbegriffe {#sec-grundbegriffe}
 
-::: {.callout-note title="Lernziele"}
-Nach diesem Kapitel können Sie …
-
-- Modell, Harness und Agent abgrenzen, die Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Setup wählen;
-- in Laiensprache erklären, wie ein Sprachmodell Text erzeugt, warum es dabei halluziniert und was daraus für die Lehre folgt;
-- mit der Jagged Frontier begründen, warum Modelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich abschneiden;
-- einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen und verbreitete Prompt-Tricks als wirkungslos erkennen;
-- mit dem 4D-Modell klären, was bei einer Aufgabe an die KI geht und wie das Ergebnis beschrieben, geprüft und verantwortet wird.
+::: kapitel-gliederung
 :::
 
-::: {.callout-note .mc-block title="Probleme aus der Lehre"}
-*Zu jedem dieser Probleme bietet das Kapitel Lösungsansätze. Wählen Sie eine Antwort, bevor Sie weiterlesen: Wer vorher rät, behält die Auflösung besser. Die Kernaussagen am Kapitelende greifen die Probleme in derselben Reihenfolge auf.*
+Dr. Miriam Kessler lehrt Statistik für 300 Studierende der Psychologie und will zum Semesterstart einen Chatbot anbieten, der Fragen zu ihrem Skript beantwortet. Ein Kollege rät zu einem Agenten mit Internetzugang, ein anderer schwört auf seinen Prompt-Anfang: „Du bist ein Weltklasse-Statistiker, ich gebe dir 200 Dollar Trinkgeld.“ Beim Testen löst das Modell eine Regressionsaufgabe tadellos und verzählt sich danach bei den Buchstaben eines Fachbegriffs. Dann zeigt ihr eine Studentin eine Literaturangabe, die der Chatbot ihr genannt hat, mit Autor, Jahr und Titel. Die Bibliothek findet sie nicht, denn es gibt sie nicht. Kessler fragt sich, ob sie ihren Studierenden ein Werkzeug empfehlen kann, dessen Fehler sie nicht vorhersieht.
 
-::: mc-frage
-Ein Chatbot nennt einer Studentin eine Quelle mit Autor, Jahr und Titel. Die Quelle existiert nicht. Woran liegt das?
+*Die Szene ist aus Gesprächen in Workshops mit Lehrenden zusammengesetzt.*
 
-- An einem Programmierfehler, den das nächste Update behebt.
-- Daran, dass das Modell auf überzeugende Antworten trainiert wurde, um zu täuschen.
-- [Daran, dass das Modell das wahrscheinlichste nächste Wort erzeugt, ohne Wahrheitsprüfung.]{.richtig}
+{{< pagebreak >}}
 
-::: mc-rueckmeldung
-Halluzinationen folgen aus der Funktionsweise und lassen sich nicht ganz abstellen, nur eindämmen: durch eingegrenzten Input, Musterlösungen und systematische Prüfung (@sec-hallucinations).
-:::
-:::
+::: {.callout-note .ez-block title="Bevor Sie weiterlesen: Wie sehen Sie das?"}
+*Wie sehr stimmen Sie den vier Aussagen zu? Jede Aussage wird an der Stelle im Kapitel aufgelöst, die sie beantwortet. Wer sich vorher festlegt, liest gezielter.*
 
-::: mc-frage
-Ein Chatbot soll Fragen zu Ihrem Skript beantworten, und zwar nur aus Ihrem Skript. Welches Setup passt?
+::: {.einschaetzung #ez-k2-1}
+Ein Chatbot, der nur aus Ihrem Skript antworten soll, braucht keinen Agenten; es genügt ein Modell, das vor jeder Antwort passende Stellen aus dem Skript abruft.
 
-- [Ein Modell, das vor jeder Antwort passende Stellen aus dem Skript abruft (RAG).]{.richtig}
-- Ein reines Sprachmodell mit der Anweisung „Antworte nur aus dem Skript“.
-- Ein Agent, der selbstständig im Internet nach dem Skript sucht.
-
-::: mc-rueckmeldung
-Mit RAG bekommt das Modell ein Bücherregal; für die Lehre ist das meist der richtige Einstieg. RAG macht das Modell kundiger, nicht selbstständiger. Ein Agent bekäme einen Werkzeugkoffer und Handlungsspielraum, den diese Aufgabe nicht braucht (@sec-patterns-usage).
-:::
+[Auflösung in @sec-patterns-usage]{.ez-verweis}
 :::
 
-::: mc-frage
-Ein Modell löst eine anspruchsvolle Statistikaufgabe tadellos und verzählt sich bei den Buchstaben eines Wortes. Wie erklärt sich das?
+::: {.einschaetzung #ez-k2-2}
+Dass ein Chatbot Quellen erfindet, ist ein Programmfehler, den die nächsten Modellversionen abstellen.
 
-- Das Modell war bei der zweiten Anfrage überlastet.
-- [Seine Fähigkeiten folgen nicht unserer Vorstellung von schwer und leicht.]{.richtig}
-- Einfache Aufgaben brauchen einen ausführlicheren Prompt.
+[Auflösung in @sec-hallucinations]{.ez-verweis}
+:::
 
-::: mc-rueckmeldung
-Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze, die Jagged Frontier. Wer sie nicht kennt, arbeitet mit KI schlechter als ohne (@sec-capabilities).
+::: {.einschaetzung #ez-k2-3}
+Wenn ein Modell die schwierigen Aufgaben Ihres Fachs löst, können Sie sich bei den leichteren erst recht auf es verlassen.
+
+[Auflösung in @sec-capabilities]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k2-4}
+Höflichkeit, Drohungen oder ein versprochenes Trinkgeld verbessern die Antworten eines Sprachmodells nicht zuverlässig.
+
+[Auflösung in @sec-prompting-myths]{.ez-verweis}
 :::
 :::
 
-::: mc-frage
-Ein Kollege beginnt jeden Prompt mit „Du bist ein Weltklasse-Experte, ich gebe dir 200 Dollar Trinkgeld“. Die Ergebnisse bleiben mittelmäßig. Was hilft stattdessen?
+::: {.callout-note .lernziele title="Lernziele: Nach diesem Kapitel können Sie …"}
+1. Modell, Harness und Agent abgrenzen, die Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Setup wählen;
+2. in Laiensprache erklären, wie ein Sprachmodell Text erzeugt, warum es dabei halluziniert und was eine Anfrage an Energie kostet;
+3. mit der Jagged Frontier begründen, warum Modelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich abschneiden;
+4. einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen, verbreitete Prompt-Tricks als wirkungslos erkennen und mit dem 4D-Modell klären, was bei einer Aufgabe an die KI geht und wie das Ergebnis beschrieben, geprüft und verantwortet wird.
 
-- Ein höheres Trinkgeld oder eine Drohung mit Konsequenzen.
-- Derselbe Prompt auf Englisch und mit Großbuchstaben.
-- [Aufgabe, Format und Beispiele so präzise wie für eine neue Hilfskraft.]{.richtig}
-
-::: mc-rueckmeldung
-Höflichkeit, Drohungen und Trinkgeld ändern nichts. Wer das Modell wie eine junge Hilfskraft anleitet, präzise, strukturiert und mit Beispielen, kommt weiter (@sec-prompting-myths).
-:::
-:::
-
-::: mc-frage
-Eine Kollegin hat einen Prompt-Kurs besucht. Trotzdem übernimmt sie mal Fehler ungeprüft, mal lässt sie die KI Aufgaben erledigen, die ihre Studierenden selbst üben sollten. Was fehlt?
-
-- Ein zweiter Kurs mit fortgeschrittenen Prompt-Techniken.
-- [Ein Schema, das auch Aufgabenverteilung, Prüfung und Verantwortung umfasst.]{.richtig}
-- Ein leistungsfähigeres Modell mit höherer Denkstufe.
-
-::: mc-rueckmeldung
-Prompting ist eine von vier Kompetenzen. Das 4D-Modell ergänzt Delegation, Discernment (Prüfung) und Diligence (Verantwortung) und verbindet die vier zu zwei Schleifen (@sec-schemas).
-:::
-:::
-
-::: mc-frage
-Studierende fragen, ob sie aus Klimagründen auf KI verzichten sollten. Welche Einordnung trifft zu?
-
-- [Eine Anfrage verbraucht wenig, der Gesamtbedarf der Rechenzentren wächst stark.]{.richtig}
-- Eine Anfrage verbraucht so viel Strom wie eine Waschmaschinenladung.
-- KI fällt im Energiebedarf der Rechenzentren kaum ins Gewicht.
-
-::: mc-rueckmeldung
-Beides stimmt zugleich: Eine Textanfrage liegt bei Bruchteilen einer Wattstunde, aber der Bedarf der Infrastruktur wächst schneller als die Effizienz. Die Steuerung ist eine politische Aufgabe (@sec-energy).
-:::
-:::
+*Die Kernaussagen am Kapitelende sind nach diesen vier Zielen geordnet.*
 :::
 
 ## Definition einiger Grundbegriffe {#sec-definitionen}
@@ -315,6 +275,13 @@ Die drei Muster liegen auf einer Skala, und an ihr zählt nicht, ob ein System Q
 @roucher2024smolagents fassen den Übergang in eine Skala aus drei Sternen, die eine einzige Frage stellt: Wie stark bestimmt die Ausgabe des Modells, was das Programm als Nächstes tut?
 Ein Chatbot, der vor jeder Antwort passende Stellen aus den Skripten holt, bleibt danach auf der untersten Stufe, denn die Suche läuft immer, gleich was das Modell schreibt.
 RAG macht das Modell kundiger, nicht selbstständiger.
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Ein Chatbot, der nur aus Ihrem Skript antworten soll, braucht keinen Agenten; es genügt ein Modell, das vor jeder Antwort passende Stellen aus dem Skript abruft.“* []{.ez-ihre data-ez="ez-k2-1"}
+
+**Auflösung: ja.** Ein Chatbot zum eigenen Skript ist ein Fall für RAG: Die Suche nach passenden Stellen läuft vor jeder Antwort, und das Modell bekommt ein Bücherregal, aber keinen Spielraum über den Ablauf. Einen Werkzeugkoffer und eigene Entscheidungen über die nächsten Schritte braucht diese Aufgabe nicht; ein Agent mit Internetzugang würde zudem Quellen jenseits des Skripts heranziehen.
+:::
+
 Die folgende Animation baut den Weg vom Chatbot zum Agenten in dreizehn Schritten auf; die Bildfolge stammt von @grootendorst2025agents, die Schleife aus Denken, Handeln und Beobachten von @yao2023react.
 
 ::: {.content-visible when-format="html"}
@@ -543,6 +510,12 @@ In solchen Fällen kann der „Known Entity“-Mechanismus fälschlicherweise de
 Ein Beispiel: Bei der Frage nach einem Fachartikel des bekannten Forschers Karpathy gibt Claude einen erfundenen Titel an, da das Modell zwar den Namen kennt, in diesem Fall aber keine Informationen über den Artikel hat.
 Bei weniger bekannten Namen gibt das Modell an, die Antwort nicht zu kennen [@lindsey2025].
 
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Dass ein Chatbot Quellen erfindet, ist ein Programmfehler, den die nächsten Modellversionen abstellen.“* []{.ez-ihre data-ez="ez-k2-2"}
+
+**Auflösung: nein.** Erfundene Quellen folgen aus der Funktionsweise: Ein Sprachmodell erzeugt das wahrscheinlichste nächste Wort und prüft dabei keine Wahrheit, und erkennt es einen Namen, unterdrückt das die Antwort „weiß ich nicht“, auch wenn ihm das Wissen fehlt. Abstellen lässt sich das nicht, eindämmen schon: mit eigenem Material als Grundlage (@sec-patterns-usage) und systematischer Prüfung der Ergebnisse (@sec-4d).
+:::
+
 ## Welches Modell wählen? {#sec-model-choice}
 
 **Was für Sprachmodelle gibt es?** Hinter der Flut an Produktnamen stehen wenige Klassen, und zwei Fragen sortieren sie: Wie leistungsfähig ist das Modell, und wer hat die Daten in der Hand (@fig-modellklassen)? Jedes große KI-Labor bietet ein **großes Frontier-Modell** an, seine stärkste Variante (oft „Flaggschiff“ genannt), und daneben **kleine Varianten**, die schneller und billiger sind und in den kostenlosen Zugängen den Standard stellen. Die großen Modelle sind **Reasoning-Modelle**: Sie denken vor der Antwort in mehreren Schritten nach, und wie lange, lässt sich als Denkstufe einstellen (s. @sec-capabilities). **Offene Modelle** legen ihre Gewichte offen; Hochschulen betreiben sie auf eigenen Rechnern, kleine Varianten laufen auf einem Arbeitsplatzrechner, und die Daten bleiben im Haus. Der Abstand zur Frontier ist kurz: Die besten offenen Modelle lagen 2026 im Mittel vier Monate zurück [@edwards2026openclosed], Modelle für eine einzelne Grafikkarte sechs bis zwölf Monate [@somala2025consumergpu].
@@ -628,6 +601,12 @@ In einem Experiment mit Consultants wurden 18 verschiedene Beratungsaufgaben ges
 Für die meisten („inside the frontier“) brachte KI enorme Vorteile, doch bei einer gezielt außerhalb der Frontier gewählten Aufgabe schnitt die KI-Gruppe deutlich schlechter ab: Hier waren die Consultants in der Gruppe mit KI 19 Prozentpunkte weniger häufig korrekt als die ohne KI [@dellacqua2023].
 Dieses Ergebnis unterstreicht die **Gefahr, LLMs unkritisch auf Probleme anzuwenden, die ihre jeweiligen Fähigkeiten übersteigen** – die Leistung fällt dann hinter menschliches Niveau zurück.
 Praktisch bedeutet die Jagged Frontier, dass Organisationen und Individuen lernen müssen, die Grenze der KI-Fähigkeiten zu erkennen und entsprechend zu navigieren [@dellacqua2023].
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Wenn ein Modell die schwierigen Aufgaben Ihres Fachs löst, können Sie sich bei den leichteren erst recht auf es verlassen.“* []{.ez-ihre data-ez="ez-k2-3"}
+
+**Auflösung: nein.** Die Fähigkeiten der Modelle folgen nicht unserer Vorstellung von schwer und leicht. Zwei für Menschen ähnlich schwierige Aufgaben können auf verschiedenen Seiten der zerklüfteten Grenze liegen, und bei der Aufgabe jenseits der Grenze lagen die Consultants mit KI 19 Prozentpunkte seltener richtig als ohne. Wo die Grenze im eigenen Fach verläuft, zeigt nur der Test an den eigenen Aufgaben.
+:::
 
 Für folgende Anwendungsfälle sind starke Sprachmodelle gut nutzbar [@handa2025; @korinek2024; @schwarcz2025]:
 
@@ -820,6 +799,12 @@ Prompts funktionieren nicht immer gleich und **so kommt es schnell zu anekdotisc
 
 **Die wenigsten der folgenden Hausrezepte helfen zuverlässig** [@meincke2025; @meincke2025a; @meincke2025b]: Hilft es, höflich zu sein (nein), zu drohen (nein), Geld anzubieten (nein), oder den Hiwi-Bot Schritt für Schritt vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)?
 
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Höflichkeit, Drohungen oder ein versprochenes Trinkgeld verbessern die Antworten eines Sprachmodells nicht zuverlässig.“* []{.ez-ihre data-ez="ez-k2-4"}
+
+**Auflösung: ja.** Die Experimente von Meincke und Kollegen finden für Höflichkeit, Drohungen und Trinkgeld keine verlässliche Wirkung. Was hilft, steht in den Leitfäden der Labore: die Aufgabe so präzise beschreiben wie für eine neue Hilfskraft, mit Format und Beispielen, und iterativ nachsteuern (@sec-lab-recommendations).
+:::
+
 Auch hier sehen wir, dass die **stärkeren neueren Modelle auch etwas andere Bedienung erfordern.** Wie ein neuer Sportwagen kommen **mit den größeren Fähigkeiten auch neue Anfälligkeiten**: Die neuen Modelle können selbst iterativ vorgehen, das muss man ihnen nicht mehr empfehlen.
 Tut man es doch, sinkt teils die Performanz [@meincke2025a], etwa wenn man so verhindert, dass ein starkes Modell eine Frage aus seinem Vorwissen beantwortet und es stattdessen zu mehreren - eigentlich unnötigen - Denkschritten mit entsprechendem Token-Verbrauch zwingt).
 Da sie schlauer sind, werden sie durch unpräzise Anweisungen teils schneller aus der Bahn geworfen.
@@ -964,13 +949,24 @@ Der vollständige Exkurs mit Rechenbeispielen, Quellen und laufend aktualisierte
 :::
 
 ::: {.callout-tip title="Kernaussagen"}
-1. Ein Sprachmodell sagt das nächste Wort voraus. Aus Tokens, Embeddings und Attention entsteht Text, der plausibel klingt, aber keine eingebaute Wahrheitsprüfung hat.
-2. Kontext entscheidet über Nutzen: Ein Modell allein antwortet aus dem Trainingswissen, mit RAG bekommt es ein Bücherregal, als Agent einen Werkzeugkoffer. Für die Lehre ist meist das Setup mit eigenem Material der richtige Einstieg. Werkzeuge und Gedächtnis sitzen im Harness um das Modell, und der Harness legt fest, wie viel Handlungsspielraum das Modell bekommt.
+**Zu Lernziel 1: Setup und Kontext**
+
+1. Kontext entscheidet über Nutzen: Ein Modell allein antwortet aus dem Trainingswissen, mit RAG bekommt es ein Bücherregal, als Agent einen Werkzeugkoffer. Für die Lehre ist meist das Setup mit eigenem Material der richtige Einstieg. Werkzeuge und Gedächtnis sitzen im Harness um das Modell, und der Harness legt fest, wie viel Handlungsspielraum das Modell bekommt.
+
+**Zu Lernziel 2: Funktionsweise, Halluzinationen und Energie**
+
+2. Ein Sprachmodell sagt das nächste Wort voraus. Aus Tokens, Embeddings und Attention entsteht Text, der plausibel klingt, aber keine eingebaute Wahrheitsprüfung hat.
 3. Halluzinationen sind kein Betriebsunfall, sondern folgen aus der Funktionsweise. Gegenmittel sind Eingrenzung des Inputs, Musterlösungen und systematische Prüfung.
-4. Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne.
-5. Gute Prompts sind präzise, strukturiert, mit Beispielen und iterativ. Höflichkeit, Drohungen und Trinkgeld ändern nichts; wer das Modell wie eine junge Hilfskraft anleitet, kommt weiter.
-6. Prompting ist eine von vier Kompetenzen. Das 4D-Modell ordnet den Umgang mit KI in Delegation, Description, Discernment und Diligence; die äußere Schleife entscheidet einmal je Vorhaben, was die KI übernimmt und welche Pflichten folgen, die innere dreht sich in jedem Arbeitsgang.
-7. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.
+4. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.
+
+**Zu Lernziel 3: Jagged Frontier**
+
+5. Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne.
+
+**Zu Lernziel 4: Prompts und 4D-Modell**
+
+6. Gute Prompts sind präzise, strukturiert, mit Beispielen und iterativ. Höflichkeit, Drohungen und Trinkgeld ändern nichts; wer das Modell wie eine junge Hilfskraft anleitet, kommt weiter.
+7. Prompting ist eine von vier Kompetenzen. Das 4D-Modell ordnet den Umgang mit KI in Delegation, Description, Discernment und Diligence; die äußere Schleife entscheidet einmal je Vorhaben, was die KI übernimmt und welche Pflichten folgen, die innere dreht sich in jedem Arbeitsgang.
 :::
 
 ::: {.callout-note title="Lernfragen"}
