@@ -13,6 +13,11 @@ Grundlage: Romans Feedbackliste vom 01.11. (iPad), Projektstand laut `claude/mer
 - **S2 erledigt und gemergt** (`31450ba`), siehe `STATUS-animationen-tempo-eingespielt-2026-11-01.md`.
 - Nächster Schritt: **S1b**.
 
+## Stand (Nachtrag S1b Teil 1, 01.11., ca. 16:15)
+- **S1b Teil 1 erledigt** (Branch `kapitel02-neugliederung`, nicht gemergt): Abschnitte nach 4D verschoben (`697a78a`, parallele Sitzung), Querverweise und Glossar (`3aa5bc4`, `8bd9812`). Siehe `STATUS-kapitel02-neugliederung-teil1-2026-11-01.md`.
+- Nächster Schritt: **S1b Teil 2** (Kürzungen N1–N38, Brücken, Apparat, Lernpfade, Merge). Startauftrag in der Statusnotiz.
+- Achtung: Pro Branch nur eine Sitzung starten (Teil 1 lief versehentlich doppelt).
+
 ## Ordnungsprinzip
 
 Drei Gesichtspunkte bestimmen Rang und Reihenfolge. Erstens zählt für die Abgabe am 15.11. nur, was im **Druck** steht: Gliederung, Kürzung, Fachbegriffe und Sprache. Animationen, Spiele, Audio und Escape Room sind nur online und können notfalls nach der Abgabe folgen; im Druck erscheinen sie als Schlussbild mit QR-Code. Zweitens greifen alle Text-Änderungen an Kapitel 2 in dieselbe Datei `kapitel02.qmd`; sie laufen nacheinander, und die Neugliederung kommt zuerst, damit spätere Einbauten an der endgültigen Stelle landen. Neue Animationen sind eigene HTML-Dateien und lassen sich parallel bauen; nur ihr Einbau wartet auf die Neugliederung. Drittens kommt der Sprachcheck zuletzt, weil jede spätere Textänderung neue Artefakte erzeugen kann.
