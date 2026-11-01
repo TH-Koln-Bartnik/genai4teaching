@@ -86,12 +86,11 @@ Das Buch liest die vier D damit als Stufen eines Arbeitsablaufs; es folgt der Le
 :::
 
 Das Schema beantwortet nicht, wie viel KI eine Aufgabe verträgt.
-Zu viel Einsatz kostet Kompetenz und Qualität, zu wenig kostet Übung mit Werkzeugen, die die Studierenden im Beruf vorfinden; der Kreislauf ist das Werkzeug, für jede Aufgabe die Mitte zwischen beiden zu suchen.
+Zu viel Einsatz kostet Kompetenz und Qualität, zu wenig kostet Übung mit Werkzeugen, die die Studierenden im Beruf vorfinden; die Mitte zwischen beiden muss man für jede Aufgabe neu suchen, und der Kreislauf zeigt, an welcher Stelle die Entscheidung fällt.
 Was die Forschung über die Kosten des Auslagerns weiß, zeigt @sec-evidenz.
 
 ### Wie dieses Kapitel und das Buch das Schema nutzen {#sec-4d-nutzung}
 
-In diesem Kapitel tragen die vier Hauptabschnitte nach den Grundbegriffen je eine der vier Kompetenzen im Titel.
 Im übrigen Buch endet jede der vier Rollen in @sec-szenarien mit einem Absatz, der den Kreislauf für diese Rolle durchläuft und die Stufe benennt, an der er am ehesten reißt; die Übungen in @sec-d-modus tragen je eine 4D-Tabelle, und die Prompt-Sammlung in @sec-prompts liefert Material für die Stufe Description.
 
 ```{=html}
@@ -103,7 +102,7 @@ Artikel 4 der KI-Verordnung verpflichtet Hochschulen, die KI-Systeme bereitstell
 Die Lücke füllen Kompetenzrahmen; einen Überblick über die Forschung zu *AI Literacy* gibt @pinski2024literacy.
 Von fünf neueren Rahmen für die Hochschullehre[ (@tbl-kompetenzrahmen)]{.content-visible when-format="html"}[, die die Online-Fassung vergleicht,]{.content-visible unless-format="html"} arbeitet dieses Buch mit *AI Fluency* von Rick Dakan und Joseph Feller: Es ordnet nach dem Arbeitsprozess, nennt keine Werkzeuge und führt als einziger die Verantwortung gegenüber Dritten als eigene Kompetenz.
 Alle fünf verlangen, dass Lernende KI-Ergebnisse kritisch beurteilen, kaum einer sagt, wie; die Prüfmethoden liefert dieses Buch dort nach, wo sie gebraucht werden (@sec-hallucinations).
-Die Übersetzungen der Definitionen folgen der Fassung der irischen Hochschulbehörde HEA (*Higher Education Authority*), die wie dieses Buch unter der Lizenz CC BY-SA 4.0 steht.
+Die deutschen Definitionen sind eigene Übersetzungen der Fassung, die die irische Hochschulbehörde HEA (*Higher Education Authority*) herausgegeben hat; sie steht wie dieses Buch unter der Lizenz CC BY-SA 4.0.
 
 :::: {.content-visible when-format="html"}
 
@@ -128,7 +127,7 @@ Die Übersetzungen der Definitionen folgen der Fassung der irischen Hochschulbeh
 
 ## Grundbegriffe: Modell, Harness und Agent {#sec-definitionen}
 
-Dieser Abschnitt klärt die drei Begriffe, ohne die keine der vier Fragen zu stellen ist, und zwar nur so tief, wie es für die didaktische Nutzung nötig ist.
+Keine der vier Fragen lässt sich stellen, ohne Modell, Harness und Agent auseinanderzuhalten; für die didaktische Nutzung genügt es, die drei Begriffe ohne Formeln zu klären.
 
 **Welche der Fachbegriffe kennen Sie schon?** Von Prompt bis Token, über Temperatur bis zur Suche in eigenen Dokumenten (RAG): Testen Sie sich selbst mit dem folgenden kleinen Spiel.
 
@@ -188,7 +187,7 @@ Das Bild wirkt hier als *Advance Organizer* im Sinne Ausubels: eine Einführung 
 : Modell, Harness und Agent: zwei Bauteile und eine Betriebsweise (eigene Zusammenstellung). {#tbl-modell-harness-agent tbl-colwidths="[16,28,28,28]"}
 :::
 
-Daraus folgt ein Satz, der viele Missverständnisse erspart: **Jeder Agent braucht einen Harness, aber nicht jeder Harness macht einen Agenten.**
+Daraus folgt: **Jeder Agent braucht einen Harness, aber nicht jeder Harness macht einen Agenten.**
 Ein Chatbot, der vor jeder Antwort fest Stellen aus dem Skript holt, hat einen Harness und bleibt doch ein fest programmierter Ablauf.
 
 **Ausgangspunkt: das Modell allein.**
@@ -212,7 +211,8 @@ Das Wort kommt vom lateinischen *agere*, handeln, in Gang bringen.
 Wie weit diese Selbststeuerung reicht, misst das gemeinnützige Prüfinstitut METR (*Model Evaluation and Threat Research*) als Zeithorizont (*time horizon*) [@kwa2025; s. @sec-capabilities].
 
 „Autonom“ verlangt eine Einschränkung: Das griechische *autónomos* heißt, sich selbst das Gesetz (*nómos*) geben, und das tut ein Agent nicht, denn das Ziel setzt der Mensch.
-Wir nennen solche Systeme deshalb **teilautonom**, wie die Normung des automatisierten Fahrens [@sae2021j3016], und sprechen von **Autonomie im Vorgehen**; „Autonomie der Lernenden“ (*learner autonomy*) meint dagegen die Fähigkeit, das eigene Lernen zu steuern [@holec1981].
+Wir nennen solche Systeme deshalb **teilautonom**; die Norm zum automatisierten Fahren meidet das Wort „autonom“ aus demselben Grund und spricht von Automatisierungsstufen [@sae2021j3016].
+Wir sprechen von **Autonomie im Vorgehen**; „Autonomie der Lernenden“ (*learner autonomy*) meint dagegen die Fähigkeit, das eigene Lernen zu steuern [@holec1981].
 
 Wie viel Autonomie ein Modell bekommt, entscheiden die Menschen, die es einsetzen, nicht das Modell.
 @morris2024 ordnen die Zusammenarbeit von Mensch und KI in sechs Stufen (*Levels of Autonomy*), von „keine KI“ bis zum vollständig selbstständigen Agenten, und betonen, dass für Bildung und Prüfungen auch die unterste Stufe ihren Platz behält.
@@ -232,7 +232,7 @@ Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Stufen.
 **Der Name für das Gewachsene: Harness.**
 Anthropic definiert den **Harness** als das System, das ein Modell als Agent handeln lässt: Er nimmt Eingaben entgegen, ruft Werkzeuge auf und gibt Ergebnisse zurück [@grace2026evals].
 Das englische *harness* ist das Geschirr eines Zugpferds; dasselbe Pferd zieht mit anderem Geschirr einen Pflug oder eine Kutsche, und dasselbe Modell wird mit anderem Harness zum Lerntutor oder zum Karriereberater.
-Google spricht von einer *Orchestrierungsschicht* (*orchestration layer*) [@wiesinger2024agents], OpenAI beim Programmieragenten Codex von Harness [@bolin2026codex], Anthropic vom „Gehirn“ aus Modell und Harness [@martin2026managed]; gemeint ist dasselbe Bauteil.
+Google spricht von einer *Orchestrierungsschicht* (*orchestration layer*) [@wiesinger2024agents], OpenAI beim Programmier-Agenten Codex von Harness [@bolin2026codex], Anthropic vom „Gehirn“ aus Modell und Harness [@martin2026managed]; gemeint ist dasselbe Bauteil.
 
 ::: {.content-visible when-format="html"}
 Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
@@ -262,7 +262,7 @@ Den größten Teil des Harness liefert dabei der Hersteller; den Teil, den die N
 An diesem äußeren Harness gestalten Lehrende und Studierende; ein Übungstutor (@sec-fall-tutor-bwl), ein Karriereberater (@sec-fall-job-buddy) und eine Quellenanbindung mit Praxispartnern (@sec-fall-unternehmen) laufen auf denselben großen Modellen und unterscheiden sich in Anleitung, Quellen und Grenzen.
 Unsere Rolle verschiebt sich dabei: Wir setzen das Ziel, legen fest, wo der Agent anhält, und prüfen, was zurückkommt; OpenAI fasst das in den Leitsatz „Humans steer. Agents execute.“ [@lopopolo2026harness].
 
-### Was die Modelle können – und was nicht {#sec-capabilities}
+### Was die Modelle können und was nicht {#sec-capabilities}
 
 Was Sprachmodelle können, ist sehr uneinheitlich und **verändert sich schnell**.
 Mollick und Kollegen sprechen von einer „**Jagged Technological Frontier**“, einer zerklüfteten Technik-Grenze: Zwei Aufgaben von ähnlicher Schwierigkeit für Menschen können auf verschiedenen Seiten der Grenze liegen; die eine löst die KI auf menschlichem Niveau oder besser, an der anderen scheitert sie [@dellacqua2023].
@@ -275,10 +275,9 @@ In ihrem Experiment mit Consultants brachte KI bei den meisten von 18 Beratungsa
 :::
 
 Zugleich wächst, was sich an die Modelle delegieren lässt.
-
 Ein anschauliches Maß dafür ist der **Zeithorizont**: die Dauer, die Fachleute für eine Aufgabe brauchen, die ein Modell in der Hälfte der Fälle löst [@kwa2025].
 Er stieg von rund 4 Minuten bei GPT-4 (März 2023) auf rund 17 Stunden bei einer frühen Fassung von Claude Mythos Preview (April 2026) und verdoppelte sich seit 2023 etwa alle 129 Tage, also gut alle vier Monate [@metr2026].
-Den letzten Wert ordnet METR selbst als unsicher ein, weil die Testaufgaben über 16 Stunden nicht mehr für eine verlässliche Messung reichen; die Fähigkeiten sind ihrem Maßstab entwachsen.
+Den letzten Wert ordnet METR selbst als unsicher ein, weil die Testaufgaben über 16 Stunden nicht mehr für eine verlässliche Messung reichen.
 
 ::: {.content-visible when-format="html"}
 <iframe loading="lazy" src="interactions/ki-entwicklung.html?zeige=zeithorizont" width="100%" height="1000px" frameborder="0" title="Diagramm: Zeithorizont der KI-Modelle 2019 bis 2026 nach METR"></iframe>
@@ -307,7 +306,8 @@ Trotzdem bleiben die **Grenzkosten der Nutzung sehr niedrig**, und personalisier
 :::
 
 Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
-Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond (*Graduate-Level Google-Proof Q&A*, Fragen, die sich nicht ergoogeln lassen) richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 oder 99,9 % in 17 Monaten [@emberson2026].
+Der GPQA Diamond (*Graduate-Level Google-Proof Q&A*, Fragen, die sich nicht ergoogeln lassen) ist eine Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau.
+Die niedrigsten Kosten, mit denen ein Modell 75 % davon richtig beantwortet, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 oder 99,9 % in 17 Monaten [@emberson2026].
 Als mögliche Gründe nennt Epoch AI, ohne sie einzeln nachzuweisen, kleinere und je Token (Textbaustein) billigere Basismodelle unter den Reasoning-Modellen, weniger Denk-Token je Frage und den Wettbewerb, der den Aufpreis des ersten Modells auf einem Leistungsniveau rasch abschmelzen lässt [@emberson2026].
 
 ::: {.content-visible when-format="html"}
@@ -340,14 +340,14 @@ Zum Standardumfang der großen Chat-Interfaces gehören inzwischen vier **Funkti
 
 ### Welches Setup: LLM, RAG oder Agent? {#sec-patterns-usage}
 
-Schlau sein allein reicht nicht: Auch das klügste Modell hilft nur, wenn es den **Kontext unserer Aufgabe kennt**.
+Auch das klügste Modell hilft nur, wenn es den **Kontext unserer Aufgabe kennt**.
 Diesen Kontext geben wir ihm auf zwei Arten, bildlich gesprochen mit ein paar **Büchern oder einem Werkzeugkoffer** [@huyen2025, Kapitel 6].
 Bei **RAG (Retrieval-Augmented Generation)**, der in @sec-harness eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
 Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche.
 Die Unterschiede zwischen dem reinen Sprachmodell, dem Modell mit Bücherregal und dem Modell mit Werkzeugkoffer übt das folgende Spiel.
 
 ::: {.callout-tip title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?"}
-Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen für LLM, RAG und Agent auswählen und die Fragen beantworten.
+Scrollen Sie nach unten, wählen Sie „Los geht’s!“ und dann nacheinander die Interaktionen für LLM, RAG und Agent, und beantworten Sie die Fragen.
 
 ::: {.content-visible when-format="html"}
 <iframe loading="lazy" src="interactions/llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
@@ -360,9 +360,9 @@ Runter scrollen und "Los gehts!" auswählen, dann nacheinander die Interaktionen
 :::
 :::
 
-In der Lehre kann RAG verwendet werden, um den Studierenden Fachtexte oder besonders aktuelle Informationen zur Verfügung zu stellen.
-Beispielsweise könnten Studierende in einem Geschichtsseminar eine KI befragen, die externe Quellen durchforstet, um aktuelle Erkenntnisse zu historischen Ereignissen zu präsentieren [@huffman2024].
-Unternehmen nutzen diese Technik, um etwa riesige Gebrauchsanweisungen mit KI durchsuchbar zu machen [@brynjolfsson2025], oder Chatbots zu trainieren, die typische, repetitive Kundenanfragen beantworten [@handa2025].
+In der Lehre stellt RAG Fachtexte oder aktuelle Informationen bereit.
+In einem Geschichtskurs etwa beantwortet NotebookLM Fragen allein aus einem historischen Tagebuch und erzeugt daraus Material bis hin zu Podcasts [@huffman2024].
+Wie Studierende mit Unternehmen Assistenten auf Firmendokumenten bauen, zeigt @sec-fall-unternehmen.
 
 Die drei Muster liegen auf einer Skala, und an ihr zählt, wer den Ablauf bestimmt: in einem Workflow das Programm, in einem Agenten das Modell [@roucher2024smolagents].
 Ein Chatbot, der vor jeder Antwort passende Stellen aus den Skripten holt, bleibt auf der untersten Stufe, denn die Suche läuft immer, gleich was das Modell schreibt.
@@ -404,7 +404,7 @@ Seit der agentischen Wende Ende 2025, dem „Agentic Turn“ [@willison2025; @st
 
 [^preisstufen]: Stand Oktober 2026, Monatspreise einschließlich Mehrwertsteuer. 20-€-Stufe: ChatGPT Plus 23 €, Google AI Pro 21,99 €, Claude Pro 20 US-$ zuzüglich Steuer; 100-€-Stufe: ChatGPT Pro 103 €, Google AI Ultra 99,99 €, Claude Max 100 US-$ zuzüglich Steuer; weitere Stufen und Mistral in @tbl-modellstand. Ohne persönliches Abo geht es über den Hochschulzugang, über die API (*Application Programming Interface*, die Programmierschnittstelle des Anbieters) mit Abrechnung nach Verbrauch (s. den Tutor-Kosten-Rechner in @sec-capabilities) oder mit offenen Modellen auf eigener Hardware. Quellen: @openai2026pricing, @anthropic2026pricing, @google2026aiplans, @mistral2026pricing.
 
-**Kostenfreie Zugänge über die Hochschule.** Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die Gesellschaft für wissenschaftliche Datenverarbeitung in Göttingen (GWDG) etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über das THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen (NRW) ist **KI:connect.nrw** der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, Frontier-Modelle über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge [@mkw2025kiconnect; @kiconnect2026inferenz; @persike2025apikeys]. Eine API (*Application Programming Interface*) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen (@sec-d-quellen, @sec-d-tutoren). Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Wer eine ältere Generation oder eine kleine Variante nutzt, fährt mit dem Fahrrad auf der Autobahn und bekommt ein falsches Bild davon, was die Modelle können.
+**Kostenfreie Zugänge über die Hochschule.** Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die Gesellschaft für wissenschaftliche Datenverarbeitung in Göttingen (GWDG) etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über ihre KI-Plattform THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen (NRW) ist **KI:connect.nrw** der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, Frontier-Modelle über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge [@mkw2025kiconnect; @kiconnect2026inferenz; @persike2025apikeys]. Über die API sprechen Programme statt Menschen mit dem Modell (@sec-d-quellen, @sec-d-tutoren). Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Wer eine ältere Generation oder eine kleine Variante nutzt, fährt mit dem Fahrrad auf der Autobahn und bekommt ein falsches Bild davon, was die Modelle können.
 
 **Welches Modell für welche Aufgabe?** Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel. Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.
 
@@ -424,13 +424,13 @@ Die folgende Übersicht hält fest, welche Modelle bei Drucklegung die Klassen a
 ::: {.tabelle-scroll}
 | Anbieter | Modellklassen | Stufen (Monatspreis) | Hinweis für die Lehre |
 |:----------------|:-----------------------|:-------------------------|:-------------------------|
-| OpenAI | groß: GPT-6 Astra, GPT-6.1 Sol; klein: GPT-6 Luna, GPT-5.6 Luna (Standard im Gratiszugang) | kostenlos · Go 8 € · Plus 23 € · Pro 103 €, 229 € oder 510 € | Bildgenerator und Sprachmodus; Recherche-Agent und Agentenmodus erweitert ab Plus; eigene „GPTs“ lassen sich als Tutoren teilen |
+| OpenAI | groß: GPT-6 Astra, GPT-6.1 Sol; klein: GPT-6 Luna, GPT-5.6 Luna (Standard im Gratiszugang) | kostenlos · Go 8 € · Plus 23 € · Pro 103 €, 229 € oder 510 € | Bildgenerator und Sprachmodus; Recherche-Agent und Agentenmodus erweitert ab Plus; eigene „GPTs“ werden am 11.12.2026 abgeschaltet (@sec-d-arbeitsumgebung) |
 | Anthropic | groß: Claude Opus 5.5, darüber Claude Fable 5.1; klein: Claude Sonnet 5.5 und Haiku 5.5 (Gratiszugang) | kostenlos · Pro 20 US-$ · Max 100 US-$ (5×) · Ultra 200 US-$ (10×), jeweils zzgl. MwSt. | Kein Bildgenerator, Grafiken entstehen als Code; Artifacts für Lernspiele; Claude Code und geplante Aufgaben ab Pro; Fable in Pro nur über Nutzungsguthaben |
 | Google | groß: Gemini 4 Argon; klein: Flash- und Flash-Lite-Varianten (Gratiszugang) | kostenlos · AI Plus 4,99 € · AI Pro 21,99 € · AI Ultra 99,99 € (5×) oder 219,99 € (20×) | Bild- und Videogenerator; sehr lange Kontexte für ganze Skripte; Gemini Notebook (früher NotebookLM) für Recherche in eigenen Quellen |
-| Mistral (Vibe, früher Le Chat) | eigene Modelle, teils mit offenen Gewichten | kostenlos · Pro 14,99 US-$ zzgl. MwSt. (Studierende 5,99 US-$) | Europäischer Anbieter; Chat und Programmieragent in einem Produkt |
+| Mistral (Vibe, früher Le Chat) | eigene Modelle, teils mit offenen Gewichten | kostenlos · Pro 14,99 US-$ zzgl. MwSt. (Studierende 5,99 US-$) | Europäischer Anbieter; Chat und Programmier-Agent in einem Produkt |
 | Offene Modelle | Familien gpt-oss (OpenAI), Qwen (Alibaba), DeepSeek, Llama (Meta), Gemma (Google), Mistral | Gewichte frei verfügbar; Kosten nur für Rechner oder Hoster | Kleine Varianten lokal auf einer Grafikkarte, große über Hochschuldienste |
 | KI:connect.nrw (Land NRW, Technische Hochschule RWTH Aachen) | GPT-5.6 (Sol, Terra, Luna) und GPT-6 (Astra, Sol, Luna) seit 1. Oktober 2026; Mistral, Qwen und gpt-oss als offene Modelle auf Landesinfrastruktur; Bild- und Einbettungsmodelle | kostenlos für Nutzende; Kontingente je Hochschule | Erste Wahl in NRW; Modellwechsel je Chat; OpenAI-kompatible API über selbst erzeugte Schlüssel (Freigabe je Hochschule) |
-| GWDG und Hochschulen | wechselnde Auswahl offener und kommerzieller Modelle | kostenlos für Nutzende | Academic Cloud (Registrierung mit Hochschuladresse), THKI-Lab; vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist |
+| GWDG und Hochschulen | wechselnde Auswahl offener und kommerzieller Modelle | kostenlos für Nutzende | Academic Cloud (Registrierung mit Hochschuladresse), THKI-Lab (TH Köln); vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist |
 
 : Modelle und Preisstufen bei Drucklegung. Preise laut Preisseiten der Anbieter, Stand Oktober 2026, Euro-Beträge einschließlich Mehrwertsteuer. Quellen: @openai2026pricing, @anthropic2026pricing, @google2026aiplans, @mistral2026pricing, @rwthitc2026changes. {#tbl-modellstand}
 :::
@@ -483,7 +483,7 @@ Als **Beschwörer** (*conjurer*) ruft er Agenten bei Bedarf herbei, weist ihnen 
 Mollick hält das für die leistungsfähigste Arbeitsweise, die aber neue Risiken bringt, weil niemand mehr genau sieht, wie die KI zu ihren Ergebnissen kommt [@mollick2026charts].
 Am Ende der Reihe steht die **dunkle Fabrik** (*dark factory*): Menschen legen fest, was entstehen soll, Maschinen führen aus und prüfen; das trägt nur dort, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt, etwa bei Software mit automatischen Tests [@mollick2026agents].
 Dazwischen liegt die **Dämmerfabrik** (*twilight factory*): Agenten arbeiten, aber ein vermittelnder Agent holt Menschen hinzu, wenn eine Freigabe nötig ist, Fachwissen fehlt, die Ideen zu gleichförmig werden oder eine Entscheidung interessant ist [@mollick2026agents].
-Für die Lehre wiegt der letzte Anlass am schwersten: Wer nur Freigaben und Ausnahmen bearbeitet, übt nie das Urteilen, das eine gute Freigabe voraussetzt, und die Fachleute, die künftig prüfen sollen, wachsen nicht nach [@mollick2026agents].
+Für die Lehre wiegt eine Folge am schwersten: Wer nur Freigaben und Ausnahmen bearbeitet, übt nie das Urteilen, das eine gute Freigabe voraussetzt, und die Fachleute, die künftig prüfen sollen, wachsen nicht nach [@mollick2026agents].
 Das folgende Schema ordnet die fünf Arbeitsweisen den Schritten einer Aufgabe zu.
 
 ::: {.content-visible when-format="html"}
@@ -531,7 +531,6 @@ Wo Sie abweichen, steckt meist eine Annahme über den Beruf, die sich im Gesprä
 ## Description: Wie sage ich der KI, was ich will? {#sec-access}
 
 Description fragt, wie wir der KI klar sagen, was wir wollen (@tbl-4d): welches Ergebnis, welche Art der Zusammenarbeit und welches Verhalten.
-Die Unterabschnitte führen vom Zugang über die Bausteine eines Prompts bis zu den Prompts für die Lehre.
 
 ### Wo sprechen? Verschiedene Zugänge zu Sprachmodellen {#sec-access-modes}
 
@@ -542,8 +541,8 @@ Wer etwas Code nicht scheut, lässt sich von der KI kleine Sprachagenten program
 ### Wie sprechen? Prompt-Befehle {#sec-how-to-speak}
 
 **Wie** spreche ich mit dem LLM?
-In einem modernen Märchen von N. K. Jemisin erfüllen gefangene Götter ihren Wächtern jeden Wunsch, sind ihnen aber nicht wohlgesonnen: Den Baum, der im Weg liegt, kann man schließlich auch durch einen Vulkanausbruch beseitigen.
-In dieser neuen Midas-Erzählung wird Präzision zentral, und dasselbe raten die wichtigsten Empfehlungen zum Prompting.
+In einem modernen Märchen von N. K. Jemisin erfüllen gefangene Götter ihren Wächtern jeden Wunsch, sind ihnen aber nicht wohlgesonnen [@jemisin2010]: Den Baum, der im Weg liegt, kann man schließlich auch durch einen Vulkanausbruch beseitigen.
+Wer in dieser Midas-Erzählung einen Wunsch äußert, muss ihn so genau fassen, dass keine böswillige Auslegung bleibt; dasselbe raten die Leitfäden zum Prompting.
 
 Ein **Prompt** ist die Eingabe, die an ein Sprachmodell geht, um eine bestimmte Antwort zu erhalten; wie er formuliert ist, entscheidet oft über die Qualität der Antwort.
 Die Kunst, solche Eingaben zu bauen, heißt **Prompt Engineering** [@berryman2025].
@@ -553,21 +552,18 @@ Stärkere Sprachmodelle übernehmen einen Teil dieser Steuerung; in agentischen 
 ### Zentrale Bausteine: Rolle, Aufgabe, Format und Beispiele {#sec-prompt-components}
 
 Wie beschreibe ich genau, was ich will?
-Einfache **Daumenregeln für Prompts** gliedern das in vier Schritte: dem Sprachmodell eine **Rolle** zuzuweisen („Du bist Verhandlungsexpertin“), ein klares **Ziel** zu definieren („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“), es zu bitten, sein **Vorgehen** (den Gedankengang / „chain of thought“) offenzulegen und Schritt-für-Schritt vorzugehen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“) sowie **Beispiele** („few shot“) für eine gewünschte Struktur oder Analyse mitzuliefern („Formatiere die Dateinamen in dieser Form \[Autor\]-\[Jahr\]-\[Kurztitel\]“, oder „Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“).
+Einfache **Daumenregeln für Prompts** nennen vier Bausteine.
+Die **Rolle** sagt dem Modell, aus welcher Sicht es antwortet („Du bist Verhandlungsexpertin“).
+Die **Aufgabe** benennt das Ziel („Du hilfst mir dabei, mich auf Geschäftsverhandlungen vorzubereiten“).
+Das **Format** legt fest, wie das Ergebnis aussieht („Gib mir 5 Handlungsoptionen und nenne jeweils Vor- und Nachteile“ oder „Formatiere die Dateinamen in dieser Form \[Autor\]-\[Jahr\]-\[Kurztitel\]“).
+**Beispiele** („few shot“) zeigen an ein oder zwei fertigen Fällen, welche Struktur oder Analyse gewünscht ist.
 
-Die Chain-of-Thought-Methode lässt das Modell seine Überlegungen Schritt für Schritt zeigen; so können wir besser nachsteuern und das Ergebnis an unsere Ziele anpassen.
-
-::: {.callout-tip title="Strukturierten Prompt einfach erstellen lassen"}
-Wollen Sie sich interaktiv einen ausführlichen, strukturierten Prompt erstellen lassen?
-Hier finden Sie einen Beispiel-Bot, dem man Prompts füttern kann, die er dann in ein kurzes oder detaillierteres Schema packt: <https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format>.
-:::
+Hinzu kommt das **Vorgehen**: Bei der Chain-of-Thought-Methode legt das Modell seinen Gedankengang Schritt für Schritt offen („Erstelle zunächst einen Plan und frag mich nach Feedback. Warte meine Antwort ab und passe den Plan eventuell an. Wenn ich zufrieden bin, beginne mit dem ersten Schritt in deinem Plan.“); so können wir besser nachsteuern und das Ergebnis an unsere Ziele anpassen.
 
 ### Wie Prompten? Was die großen KI-Labore empfehlen {#sec-lab-recommendations}
 
 Vor detaillierten Tipps hilft ein Bild [@mollick2024d]: Behandeln Sie das Sprachmodell wie eine junge Hilfskraft.
-Sie wird am Anfang nicht alles richtig machen, sondern muss klar angeleitet werden, so dass die Ergebnisse nach und nach besser werden.
-Junge Mitarbeiter sind keine Taschenrechner, die sofort perfekt und immer gleich funktionieren.
-GenAI Chatbots auch nicht.
+Sie macht am Anfang Fehler und braucht klare Anleitung; anders als ein Taschenrechner arbeitet sie nicht sofort perfekt und nicht immer gleich, aber mit jeder Runde besser.
 Iterieren und erläutern Sie: Das Ergebnis nähert sich Schritt für Schritt dem Wunschbild an, und jede Runde dauert nur Sekunden.
 
 **Was empfehlen Prompt-Profis im Detail?** Die drei führenden KI-Labore haben 2025 ausführliche Leitfäden veröffentlicht, wie wir mit ihren Modellfamilien reden sollen [@kotha2025; @google2025; @anthropic2025c].
@@ -581,17 +577,15 @@ Die Empfehlungen ähneln sich und beginnen bei der banalsten: **genau sagen, was
 | 3 | Text strukturieren | Abschnitte mit Tags wie \[Hinweis\] oder \<Hinweis\> markieren; welche Klammern, ist gleich, solange sie einheitlich sind. |
 | 4 | Iterativ arbeiten | Der Lösungsweg entsteht im Wechsel mit dem Modell; anders als beim Taschenrechner liegt der Mehrwert in der Interaktion. |
 | 5 | Agenten anders steuern | Festlegen, wie viel Eigenständigkeit der Agent haben soll („Eagerness-Kalibrierung“) [@kotha2025], und Zwischenstände strukturiert sowie in kurzen nummerierten Notizen festhalten lassen [@anthropic2025c]; mehr in @sec-agenten-praxis und @sec-agenten-gedaechtnis. |
-| 6 | Das Modell beim Prompten helfen lassen | Eingebaute Prompt-Optimierer nutzen oder bei Fehlern den Prompt mit gewünschtem und tatsächlichem Verhalten vorlegen und um minimale Änderungen bitten [@kotha2025]; ein Beispiel-Bot steht im Kasten in @sec-prompt-components. |
+| 6 | Das Modell beim Prompten helfen lassen | Eingebaute Prompt-Optimierer nutzen oder bei Fehlern den Prompt mit gewünschtem und tatsächlichem Verhalten vorlegen und um minimale Änderungen bitten [@kotha2025]. |
 
 : Prompt-Empfehlungen der großen KI-Labore. Quellen: @kotha2025, @google2025, @anthropic2025c. {#tbl-lab-empfehlungen}
 
-### Es könnt' alles so einfach sein! Es bringt nichts, Bots zu bedrohen oder zu bestechen. {#sec-prompting-myths}
+### Drohen und Bestechen bringt nichts: Hausrezepte im Test {#sec-prompting-myths}
 
-**Die Bots zu bedrohen, bringt nichts**.
-Empirische Untersuchungen haben mehrere anekdotische Geheimtipps des Promptings systematisch geprüft und meist widerlegt.
-Prompts funktionieren nicht immer gleich und **so kommt es schnell zu anekdotischer Evidenz,** dass eine Formulierung „besser geklappt“ hätte.
+Dieselbe Eingabe liefert nicht immer dieselbe Antwort, und **so entsteht schnell anekdotische Evidenz**, dass eine Formulierung „besser geklappt“ hätte.
 
-**Die wenigsten der folgenden Hausrezepte helfen zuverlässig** [@meincke2025; @meincke2025a; @meincke2025b]: Hilft es, höflich zu sein (nein), zu drohen (nein), Geld anzubieten (nein), oder den Hiwi-Bot Schritt für Schritt vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)?
+Meincke und Kollegen haben solche Hausrezepte systematisch geprüft; **die wenigsten helfen zuverlässig** [@meincke2025; @meincke2025a; @meincke2025b]: Hilft es, höflich zu sein (nein), zu drohen (nein), Geld anzubieten (nein), oder den Hiwi-Bot Schritt für Schritt vorgehen zu lassen (ja, aber das machen die neueren Reasoning-Sprachmodelle auch selbst)?
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
 *„Höflichkeit, Drohungen oder ein versprochenes Trinkgeld verbessern die Antworten eines Sprachmodells nicht zuverlässig.“* []{.ez-ihre data-ez="ez-k2-4"}
@@ -631,7 +625,8 @@ Die Grundlage ist ein nüchterner Befund: Ein Sprachmodell prüft keine Wahrheit
 
 **Können wir das Modell fragen, wie es zu einem Ergebnis gekommen ist?** Eher nicht.
 Eine Studie des KI-Labors Anthropic, die mit neuen Methoden in ein Modell hineinschaut, fand bei einfachen Rechnungen wie der Quadratwurzel von 0,64 klare interne Rechenschritte; bei schwierigeren, etwa dem Kosinus einer großen Zahl, gab das Modell Rechnungen an, für die keine internen Prozesse erkennbar waren [@lindsey2025].
-Es konstruiert dann plausible, aber unbegründete Erklärungen, ein Verhalten, das als „motiviertes Denken“ (*motivated reasoning*) bezeichnet wird.
+Es erfindet dann eine plausible Rechnung, ohne gerechnet zu haben; die Autoren nennen das mit dem Philosophen Harry Frankfurt *bullshitting*.
+Bekommt es einen Hinweis auf das gewünschte Ergebnis, rechnet es rückwärts darauf hin, ein Verhalten, das sie als „motiviertes Denken“ (*motivated reasoning*) bezeichnen.
 Weitere Befunde dieser Studie stellt die Vertiefung vor (@sec-blick-ins-modell).
 
 **Was kann zu Halluzinationen führen?** Die erfundene Literaturangabe aus dem Kapitelauftakt hat einen erkennbaren Mechanismus.
@@ -643,7 +638,7 @@ Wie man Ergebnisse prüft, zeigt dieses Buch dort, wo es gebraucht wird: in der 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
 *„Dass ein Chatbot Quellen erfindet, ist ein Programmfehler, den die nächsten Modellversionen abstellen.“* []{.ez-ihre data-ez="ez-k2-2"}
 
-**Auflösung: nein.** Erfundene Quellen folgen aus der Funktionsweise: Ein Sprachmodell erzeugt das wahrscheinlichste nächste Wort und prüft dabei keine Wahrheit, und erkennt es einen Namen, unterdrückt das die Antwort „weiß ich nicht“, auch wenn ihm das Wissen fehlt. Abstellen lässt sich das nicht, eindämmen schon: mit eigenem Material als Grundlage (@sec-patterns-usage) und systematischer Prüfung der Ergebnisse (@sec-4d).
+**Auflösung: nein.** Erfundene Quellen folgen aus der Funktionsweise: Ein Sprachmodell erzeugt das wahrscheinlichste nächste Wort und prüft dabei keine Wahrheit, und erkennt es einen Namen, unterdrückt das die Antwort „weiß ich nicht“, auch wenn ihm das Wissen fehlt. Abstellen lässt sich das nicht, eindämmen schon: mit eigenem Material als Grundlage (@sec-patterns-usage), Musterlösungen als Vorgabe und systematischer Prüfung der Ergebnisse (@sec-4d).
 :::
 
 ## Diligence: Verantwortung, Offenlegung, Ressourcen {#sec-diligence}
@@ -662,7 +657,7 @@ Welche Pflichten die KI-Verordnung dafür vorsieht, steht in @sec-ki-vo.
 Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen „Weltuntergang“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen.
 Eine einzelne Textanfrage ist billig: Schätzungen von 2025 liegen zwischen 0,3 Wattstunden für ein großes Chat-Modell und 0,03 Wattstunden für kleine Modelle, also etwa so viel wie zehn Sekunden Video-Streaming [@odonnell2025; @you2025; @elsworth2025].
 Teuer sind die komplexen Aufträge: Ein hochwertiges Video von fünf Sekunden kann rund eine Kilowattstunde kosten, so viel wie eine Stunde Mikrowelle, und weil die Nutzerzahlen schneller wachsen als die Effizienz, übersteigt der Energiebedarf der Anfragen inzwischen den des Trainings [@odonnell2025; @spencer2025].
-Rechenzentren und KI machten 2024 nach Schätzungen der Internationalen Energieagentur (IEA) nur drei bis fünf Prozent des globalen Energieverbrauchs aus [@ritchie2024; @spencer2024]; Sorge bereitet die Prognose, nach der sich der Verbrauch der Rechenzentren bis 2030 verdreifachen könnte, oft aus fossilen Quellen [@odonnell2025; @spencer2025].
+Rechenzentren verbrauchten 2024 nach der Internationalen Energieagentur (IEA) rund 1,5 Prozent des weltweiten Stroms [@iea2025energyai]; Sorge bereitet die Prognose, nach der sich ihr Verbrauch bis 2030 mehr als verdoppeln dürfte, oft aus fossilen Quellen [@iea2025energyai; @odonnell2025; @spencer2025].
 Gefordert ist deshalb Transparenz der Anbieter über ihren Energiebedarf, damit Politik und Nutzer die Kosten abschätzen können [@odonnell2025].
 Für die Lehre heißt das: Eine Seminarsitzung mit Chat-Nutzung fällt energetisch nicht ins Gewicht; wer Bilder, Videos oder lange Agentenläufe erzeugen lässt, sollte das wissen und gegenüber den Studierenden benennen.
 
@@ -683,7 +678,7 @@ Er zeigt, wie ein Modell rechnet, was die Forschung in seinem Inneren findet und
 
 ### Tokens, Zahlen, Aufmerksamkeit {#sec-gpt-bedeutung}
 
-Dazu zerlegt das Modell den Text in **Tokens**, kleine Bausteine aus ganzen Wörtern, Wortteilen oder Satzzeichen [@jurafsky2025, Kap. 2].
+Um das nächste Wort vorherzusagen, zerlegt das Modell den Text in **Tokens**, kleine Bausteine aus ganzen Wörtern, Wortteilen oder Satzzeichen [@jurafsky2025, Kap. 2].
 Jedes Token hat eine feste Nummer und wird in einen **Vektor** übersetzt, eine lange Zahlenreihe, die seine Bedeutung als Ort auf einer Art Stadtplan beschreibt; ähnliche Wörter wohnen dort in der Nachbarschaft.
 Diesen Vorgang nennt man **Embedding** (englisch für Einbettung).
 Wie viele Tokens ein Text braucht, hängt von der Sprache ab, und das hat Folgen für Kosten und Länge, wie die Vorhersagefrage der folgenden Animation zeigt.
@@ -740,7 +735,7 @@ Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausrege
 Die Produktion kennt dieses Prinzip als Standardarbeit, bei der jede Tätigkeit nach Inhalt, Reihenfolge, Zeit und Ergebnis festgelegt ist, damit jede Verbesserung auf einem bekannten Stand aufsetzt [@spear1999]; ein Skill ist Standardarbeit für den Agenten.
 Wer einen Skill teilt, lässt ihn vorher von einer zweiten Person lesen, denn er verbreitet seinen Fehler ebenso vollständig wie seine Verbesserungen.
 
-Technisch ist ein Skill ein Ordner mit einer Anleitungsdatei und bei Bedarf weiteren Dateien. Damit fünfzig installierte Skills das Kontextfenster nicht füllen, liest der Agent beim Start nur Name und Kurzbeschreibung jedes Skills; die Anleitung lädt er erst, wenn eine Anfrage zur Beschreibung passt, und Zusatzdateien nur, wenn die Anleitung auf sie verweist [@zhang2025skills]. In den Nutzungsdaten eines verbreiteten Coding-Agenten verwenden 26,6 % der Nutzenden solche Skills [@johnston2026the].
+Technisch ist ein Skill ein Ordner mit einer Anleitungsdatei und bei Bedarf weiteren Dateien. Damit fünfzig installierte Skills das Kontextfenster nicht füllen, liest der Agent beim Start nur Name und Kurzbeschreibung jedes Skills; die Anleitung lädt er erst, wenn eine Anfrage zur Beschreibung passt, und Zusatzdateien nur, wenn die Anleitung auf sie verweist [@zhang2025skills]. In den Nutzungsdaten eines verbreiteten Programmier-Agenten verwenden 26,6 % der Nutzenden solche Skills [@johnston2026the].
 
 ::: {.content-visible when-format="html"}
 Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
@@ -762,7 +757,7 @@ Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, 
 Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet, bei einer Literaturrecherche etwa beim Quellenkorb, beim Rechercheplan und bei der Stichprobe von Aussagen, die wir gegen das Original halten.
 Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte.
 
-Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Coding-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig [@johnston2026the; Belege und Grenzen in @sec-d-modus]. Das folgende Modell verfolgt eine einzelne Aufgabe, Kugel A, durch Auftrag, Recherche, Entscheidung, Rechnung und Freigabe, einmal allein und einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.
+Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Programmier-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig [@johnston2026the; Belege und Grenzen in @sec-d-modus]. Das folgende Modell verfolgt eine einzelne Aufgabe, Kugel A, durch Auftrag, Recherche, Entscheidung, Rechnung und Freigabe, einmal allein und einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.
 
 ::: {.content-visible when-format="html"}
 Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.
@@ -789,7 +784,7 @@ window.addEventListener("message", function (e) {
 
 Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet, denn der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station; ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
 
-Die praktische Umsetzung steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Kontrollpunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows; wie Studierende eine solche Quellenanbindung mit Unternehmen selbst aufbauen, zeigt @sec-fall-unternehmen.
+Die praktische Umsetzung steht in Anhang D: Arbeitsumgebung und Skills in @sec-d-arbeitsumgebung, eigene Quellen in @sec-d-quellen, Agenten für die akademische Suche mit ihren Haltepunkten in @sec-d-agenten, automatisierte Abläufe in @sec-d-workflows; wie Studierende eine solche Quellenanbindung mit Unternehmen selbst aufbauen, zeigt @sec-fall-unternehmen.
 
 ### Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt {#sec-agenten-gedaechtnis}
 
