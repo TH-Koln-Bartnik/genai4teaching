@@ -1,7 +1,7 @@
 """Commit 2 (S1b, 01.11.2026): Kapitel 2 nach Variante B, gekürzt nach Liste N1–N38.
 Baut kapitel02.qmd aus Zeilenblöcken des Stands vor der Neugliederung (fdb087a) und neuem Text.
-L(a, b) = unveränderte Originalzeilen a..b; T(...) = neuer oder gekürzter Text (Nr. der Kürzungsliste im Kommentar)."""
-Aufruf aus dem Repo-Wurzelordner: git show fdb087a:kapitel02.qmd > /tmp/k2-alt.qmd; python3 notes/kapitel02-neugliederung/schritt2.py /tmp/k2-alt.qmd kapitel02.qmd
+L(a, b) = unveränderte Originalzeilen a..b; T(...) = neuer oder gekürzter Text (Nr. der Kürzungsliste im Kommentar).
+Aufruf aus dem Repo-Wurzelordner: git show fdb087a:kapitel02.qmd > /tmp/k2-alt.qmd; python3 notes/kapitel02-neugliederung/schritt2.py /tmp/k2-alt.qmd kapitel02.qmd"""
 import re, sys
 A = open(sys.argv[1], encoding='utf-8').read().split('\n')
 def L(a, b): return '\n'.join(x for x in A[a-1:b] if x is not None)
