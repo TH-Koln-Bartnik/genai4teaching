@@ -37,6 +37,11 @@ Grundlage: Romans Feedbackliste vom 01.11. (iPad), Projektstand laut `claude/mer
 - Nebenfunde mit Volltextprüfung gehen in **S9** (Liste „Offen 1–3“ in der Statusnotiz). Branch `fachbegriffe-erklaeren` muss Roman im GitHub-Browser löschen (Proxy blockiert das Löschen).
 - Nächste Schritte: S9 je Kapitel; S7 jetzt möglich; Bau/Einbau S4/S5/S8.
 
+## Stand (Nachtrag S5 Bau, 01.11., ca. 21:45)
+- **S5 Drehbuch freigegeben, Player gebaut** (Branch `audio-beispiele` @ `be9ad69`, nicht gemergt, `kapitel02.qmd` unverändert): Player mit Transkript `interactions/audio-beispiele-kap02.html` (Platzhalter-Zeitmarken), Manifest `_src/audio/kap02-s5/manifest.json`, Skript `scripts/audio-s5-zusammenfuegen.py`, Einbau-Entwurf `notes/audio-beispiele-s5/einbau-kapitel02-entwurf.md`. Siehe `claude/audio-beispiele-s5/STATUS-audio-beispiele-s5-2026-11-01.md`.
+- Vokabelsätze aus „Words are magic“ (Access 1, eigene Beispielsätze der App); die App ist **kein Studierendenprojekt**, im Buch neutral „ein Vokabeltrainer für Englisch in Klasse 5“.
+- Wartet auf: 17 mp3 von Roman in Tresorit `06-Lehrbuch-Publikation-Logos/Audio-S5/` (ElevenLabs, bezahlter Tarif wegen kommerzieller Lizenz); Einbau nach S9 Kap. 2 oder an anderen Zeilen.
+
 ## Ordnungsprinzip
 
 Drei Gesichtspunkte bestimmen Rang und Reihenfolge. Erstens zählt für die Abgabe am 15.11. nur, was im **Druck** steht: Gliederung, Kürzung, Fachbegriffe und Sprache. Animationen, Spiele, Audio und Escape Room sind nur online und können notfalls nach der Abgabe folgen; im Druck erscheinen sie als Schlussbild mit QR-Code. Zweitens greifen alle Text-Änderungen an Kapitel 2 in dieselbe Datei `kapitel02.qmd`; sie laufen nacheinander, und die Neugliederung kommt zuerst, damit spätere Einbauten an der endgültigen Stelle landen. Neue Animationen sind eigene HTML-Dateien und lassen sich parallel bauen; nur ihr Einbau wartet auf die Neugliederung. Drittens kommt der Sprachcheck zuletzt, weil jede spätere Textänderung neue Artefakte erzeugen kann.
@@ -169,7 +174,7 @@ Sprachcheck des Buchtexts auf typische KI-Formulierungen mit dem Skill genai-phr
 
 ## Offen / zur Entscheidung
 1. S7/S8 vor oder nach dem 15.11. (nach Stand am 07.11. entscheiden).
-2. S5: Quelle der Vokabeltrainer-Sätze, falls die App im Buch nicht auffindbar ist.
+2. ~~S5: Quelle der Vokabeltrainer-Sätze~~ – geklärt 01.11.: „Words are magic“ (Access 1), siehe Nachtrag S5.
 
 ## Startauftrag nächste Sitzungen (Entscheidung Roman: zwei parallel)
 - Sitzung A: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S1a ab.“ – **erledigt**
@@ -178,7 +183,8 @@ Sprachcheck des Buchtexts auf typische KI-Formulierungen mit dem Skill genai-phr
 - Einbau S3 Scaling Laws – **erledigt und gemergt** (`7912531`)
 - „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S6 ab.“ – **Teil 1 erledigt und gemergt** (`31f66d8`)
 - S6 Teil 2 – **erledigt und gemergt** (`fac94da`)
-- Als Nächstes: S9 je Kapitel (Startauftrag in `claude/fachbegriffe/s6/STATUS-fachbegriffe-s6-teil2-2026-11-01.md`); parallel S7, Bau S4/S5/S8.
+- Als Nächstes: S9 je Kapitel (Startauftrag in `claude/fachbegriffe/s6/STATUS-fachbegriffe-s6-teil2-2026-11-01.md`); parallel S7, Bau S4/S8.
+- S5 – **Drehbuch und Player fertig** (Branch `audio-beispiele`); Einbau, sobald die mp3 da sind (Startauftrag in `claude/audio-beispiele-s5/STATUS-audio-beispiele-s5-2026-11-01.md`).
 
 Ablage: Projekt `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` · Tresorit `Projektnotizen-Claude/feedback-2026-11-01/` · Repo `notes/2026-11-01-plan-feedback-sitzungen.md` (beide nachgeholt in S1a).
 
