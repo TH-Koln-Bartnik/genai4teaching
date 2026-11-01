@@ -17,9 +17,13 @@ Originalbegriffe immer in Klammern; Einführung der drei Begriffe auf eine zentr
 automate work / automation (§3.2); labor-augmenting technology (§5.5); new tasks (§5.4); displacement effect (S. 20); task reinstatement (§3.3).
 
 ## Offen
+0. **Website noch nicht aktualisiert (Stand 09:45):** Pages-Deployment für `d933cd7` scheitert, weil das Deployment von `f756f5f` bei GitHub als „in progress“ hängt. Roman: GitHub → Actions → „pages build and deployment“ (`d933cd7`) → „Re-run all jobs“; alternativ veröffentlicht der nächste Push den Stand. Danach prüfen: `kapitel04.html` enthält „Augmentierung“, mp4 hat 2 876 214 Byte.
 1. Making-of-Video (59 s) zeigt historisch die alte Fassung (Protokoll vom 29.10.); bewusst unverändert.
 2. Zitierstil: Buchkapitel erscheinen als „Titel: (vol. 6, 1–114)“ mit „eds.“ – betrifft alle Kapitel-Einträge (bjork1994, sweller2011 …), Ursache apa.csl/Locale; vor Logos-Abgabe prüfen.
 3. Druck-PDF weiterhin nicht gerendert (TeX fehlt in Cloud).
 4. Tabelle 4.1 bei 390 px weiterhin zu breit (bekannter Punkt); neue Spalte 1 ist etwas länger.
 
-Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht, gemergt: ja, `main` = `c5b72ca`)
+## Startauftrag nächste Sitzung
+Zuerst Punkt 0 prüfen (Website live?). Dann nächster Punkt aus `claude/status-branches-2026-11-01.md` → Offene Punkte, oder Zitierstil Buchkapitel (Punkt 2).
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht, gemergt: ja, `main` = `d933cd7`)
