@@ -47,3 +47,5 @@ Eine zweite Sitzung hat parallel „S1b Teil 1“ bearbeitet, auf meinem Commit 
 - Projekt: `claude/feedback-2026-11-01/STATUS-kapitel02-neugliederung-s1b-2026-11-01.md`; Stand-Nachtrag in `PLAN-feedback-sitzungen-2026-11-01.md`.
 - Tresorit: `Projektnotizen-Claude/feedback-2026-11-01/STATUS-kapitel02-neugliederung-s1b-2026-11-01.md`.
 - Repo: `notes/2026-11-01-status-kapitel02-neugliederung-s1b.md` auf `main`.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gemergt: ja, main @ 668a800)
