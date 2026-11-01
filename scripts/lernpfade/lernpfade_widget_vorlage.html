@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wählen Sie Ihren Lernpfad</title>
+<style>
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe (TH-Rot) */
+  :root { --grund:#ffffff; --tinte:#111111; --grau:#6b6b73; --l-dunkel:#111111; --l-hell:#8c8c94; --akzent:#c81e0f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#151515; --tinte:#f0f0f0; --grau:#a0a0a8; --l-dunkel:#f0f0f0; --l-hell:#8c8c94; --akzent:#ff6b5a; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:980px; margin:0 auto; padding:16px 14px 28px; }
+  h1 { font-size:22px; line-height:1.25; margin:0 0 6px; font-weight:650; }
+  .hinweis { color:var(--grau); font-size:15px; margin:0 0 14px; }
+  .gruppen { display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; margin-bottom:12px; }
+  @media (max-width:640px) { .gruppen { grid-template-columns:1fr; } }
+  h2 { font-size:16px; margin:0 0 6px; font-weight:650; }
+  .aussage { display:flex; gap:10px; align-items:flex-start; margin:0 0 8px; font-size:15px; }
+  .aussage span { flex:1; }
+  .knoepfe { display:flex; gap:4px; flex-shrink:0; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:3px 10px; cursor:pointer; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); border-color:var(--tinte); }
+  .ergebnis { min-height:3em; margin:4px 0 8px; font-size:16px; max-width:75ch; }
+  .ergebnis b { color:var(--akzent); }
+  svg { width:100%; height:auto; display:block; }
+  svg text { fill:var(--tinte); font-family:inherit; }
+  svg .linie, svg .legende, svg .station { transition:opacity .3s; }
+  svg.gewaehlt .linie:not(.an), svg.gewaehlt .legende:not(.an) { opacity:.12; }
+  svg.gewaehlt .station:not(.an) { opacity:.35; }
+  svg .legende { cursor:pointer; }
+  svg a:hover text { text-decoration:underline; }
+  .karte { overflow-x:auto; margin:0 0 14px; }
+  @media (max-width:480px) { .karte svg { min-width:680px; } }
+  .zuruecksetzen { margin-top:6px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Wählen Sie Ihren Lernpfad</h1>
+  <p class="hinweis">Jede Station führt zum Kapitel. Die sechs Aussagen unter der Karte heben die passende Linie hervor; Sie können eine Linie auch in der Legende wählen.</p>
+  <div class="karte"><!--KARTE--></div>
+
+  <p class="hinweis">Zwei oder drei „Ja“ in einer Spalte zählen als Vorwissen.</p>
+  <div class="gruppen">
+    <section>
+      <h2>Erfahrung mit KI</h2>
+      <div class="aussage" data-gruppe="ki"><span>Ich nutze ein Sprachmodell mindestens einmal pro Woche für meine Arbeit.</span></div>
+      <div class="aussage" data-gruppe="ki"><span>Ich habe einen eigenen Assistenten eingerichtet, etwa ein Projekt mit festen Anweisungen und eigenen Dateien.</span></div>
+      <div class="aussage" data-gruppe="ki"><span>Ich habe einer KI eine mehrschrittige Aufgabe übertragen, bei der sie selbst sucht, Dateien liest oder Code ausführt.</span></div>
+    </section>
+    <section>
+      <h2>Kenntnis der Lernforschung</h2>
+      <div class="aussage" data-gruppe="did"><span>Ich kenne zentrale Wirkmechanismen aus der Lernforschung und kann erklären, warum etwa Abrufübungen, verteiltes Üben und Selbsterklären das Behalten stärken.</span></div>
+      <div class="aussage" data-gruppe="did"><span>Ich weiß, wie sich solche Mechanismen in einer Lehrveranstaltung umsetzen lassen, etwa mit kurzen Abfragen zu Beginn, Wiederholung über das Semester oder Aufgaben, in denen Studierende einander erklären.</span></div>
+      <div class="aussage" data-gruppe="did"><span>Ich kenne erprobte Einsatzformen und Befunde zu KI in der Lehre, etwa wann ein KI-Tutor das Lernen stärkt und wann er es durch Auslagerung des Denkens schwächt.</span></div>
+    </section>
+  </div>
+
+  <p class="ergebnis" id="ergebnis" aria-live="polite">Noch keine Linie gewählt. Alle vier Wege halten an den rot umrandeten Stationen.</p>
+
+  <button class="zuruecksetzen" id="zurueck">Zurücksetzen</button>
+</main>
+<script>
+const TEXT = {
+  1: "<b>Linie 1 · Neu in KI und Lernforschung.</b> Lesen Sie der Reihe nach. Kapitel 2 legt die Begriffe, Kapitel 3 die Lernmechanismen, auf die jede spätere Empfehlung zurückgreift.",
+  2: "<b>Linie 2 · Erfahren mit KI.</b> Kapitel 2 dürfen Sie überspringen und bei Bedarf nachschlagen. Kapitel 3 lesen Sie ganz: Dort steht, was Werkzeugwissen nicht ersetzt.",
+  3: "<b>Linie 3 · Vertraut mit Lernforschung.</b> Kapitel 2 holt die technischen Grundlagen nach; aus Kapitel 3 genügt die neue Evidenz in 3.5. Danach führen die Praxis-Primer schneller zum eigenen Material als Kapitel 5.",
+  4: "<b>Linie 4 · Vertraut mit beidem.</b> Von der Einleitung direkt zur Evidenz in 3.5, in Kapitel 4 vor allem Tutor und Simulator, dann die Fallbeispiele und die Anhänge zu Rollenspielen und Agenten."
+};
+const antworten = {};
+const karte = document.querySelector("svg.lernpfade-karte");
+const erg = document.getElementById("ergebnis");
+
+document.querySelectorAll(".aussage").forEach((el, i) => {
+  const box = document.createElement("div"); box.className = "knoepfe";
+  ["Ja", "Nein"].forEach(w => {
+    const b = document.createElement("button"); b.textContent = w; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => {
+      box.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
+      b.setAttribute("aria-pressed", "true");
+      antworten[i] = { gruppe: el.dataset.gruppe, ja: w === "Ja" };
+      auswerten();
+    });
+    box.appendChild(b);
+  });
+  el.appendChild(box);
+});
+
+function zeige(nr) {
+  karte.classList.add("gewaehlt");
+  karte.querySelectorAll(".linie, .legende").forEach(g => g.classList.toggle("an", g.dataset.linie == nr));
+  karte.querySelectorAll(".station").forEach(s => s.classList.toggle("an", s.dataset.linien.split(" ").includes(String(nr))));
+  erg.innerHTML = TEXT[nr];
+}
+
+function auswerten() {
+  const werte = Object.values(antworten);
+  if (werte.length < 6) {
+    erg.textContent = `Noch ${6 - werte.length} Aussage${6 - werte.length === 1 ? "" : "n"} offen.`;
+    return;
+  }
+  const ki = werte.filter(a => a.gruppe === "ki" && a.ja).length >= 2;
+  const did = werte.filter(a => a.gruppe === "did" && a.ja).length >= 2;
+  zeige(ki && did ? 4 : ki ? 2 : did ? 3 : 1);
+}
+
+/* Höhe an die einbettende Seite melden (Empfänger: Skript in kapitel01.qmd) */
+function melde() { try { parent.postMessage({ typ: "galerie-hoehe", id: "lernpfade", h: Math.ceil(document.querySelector("main").getBoundingClientRect().height) + 8 }, "*"); } catch (e) {} }
+window.addEventListener("load", melde); window.addEventListener("resize", melde);
+new MutationObserver(melde).observe(document.getElementById("ergebnis"), { childList: true, subtree: true });
+
+karte.querySelectorAll(".legende").forEach(g => g.addEventListener("click", () => zeige(g.dataset.linie)));
+
+document.getElementById("zurueck").addEventListener("click", () => {
+  for (const k in antworten) delete antworten[k];
+  document.querySelectorAll(".knoepfe button").forEach(b => b.setAttribute("aria-pressed", "false"));
+  karte.classList.remove("gewaehlt");
+  karte.querySelectorAll(".an").forEach(x => x.classList.remove("an"));
+  erg.textContent = "Noch keine Linie gewählt. Alle vier Wege halten an den rot umrandeten Stationen.";
+});
+</script>
+</body>
+</html>
