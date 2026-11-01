@@ -61,8 +61,8 @@ book:
     - glossar.qmd
     - transparenz.qmd
 
-  cover-image: images/logos/logo.svg
-  image: images/logos/logo.svg
+  cover-image: images/logos/logo-cover.jpg
+  image: images/logos/logo-cover.jpg
   search: true
   output-file: downloads/genai4teaching
 
@@ -97,6 +97,8 @@ format:
         - darkly
         - include/dark.scss
     css: [include/booktem.css, include/style.css, include/webex.css]
+    include-in-header:
+      - include/schrift-vorladen.html   # Webschrift früh laden, weniger Textsprung
     include-after-body:
       - include/mc-frage.html        # Einstiegsfragen als Multiple Choice (Kap. 2–6)
       - include/einschaetzung.html   # Einschätzungen vorab, Auflösung im Text (Kap. 1)
