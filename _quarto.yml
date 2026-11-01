@@ -60,7 +60,6 @@ book:
     - kapitel10-appendix05-loesungshinweise.qmd
     - glossar.qmd
     - transparenz.qmd
-    - references.qmd
 
   cover-image: images/logos/logo.svg
   image: images/logos/logo.svg
@@ -87,7 +86,6 @@ format:
     toc-depth: 4
     toc-expand: 4
     number-sections: true
-    section-bibliographies: true   # Literaturverzeichnis je Kapitel (nur online)
     code-copy: true
     filters:
       - support-this                # Spendenkasten nur in der Online-Version
@@ -105,6 +103,12 @@ format:
       - include/zitat-popup-touch.html  # Zitat-Popup per Tipp statt Sprung (Tablet)
 
   pdf:
+    # Literaturverzeichnis am Ende jedes Kapitels: Quarto setzt im PDF sonst nur ein
+    # Gesamtverzeichnis; _filters/kapitel-literatur.lua ruft citeproc je Kapitel auf.
+    citeproc: false
+    filters:
+      - quarto
+      - _filters/kapitel-literatur.lua
     # Druckvorlage Logos Verlag: 17 x 24 cm, zweiseitig; Satzspiegel vorläufig,
     # bis die technischen Vorgaben von Logos vorliegen (Mail an Buchholtz, Okt. 2026)
     documentclass: scrbook
@@ -144,6 +148,10 @@ format:
 
   epub:
     toc: true
+    citeproc: false                 # Literaturverzeichnis je Kapitel wie im PDF
+    filters:
+      - quarto
+      - _filters/kapitel-literatur.lua
 
 extensions:
   support-this:
