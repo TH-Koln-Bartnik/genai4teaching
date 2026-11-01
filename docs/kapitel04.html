@@ -580,7 +580,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#sec-copilot" id="toc-sec-copilot" class="nav-link" data-scroll-target="#sec-copilot"><span class="header-section-number">4.2</span> KI als Copilot</a>
   <ul>
-  <li><a href="#sec-cyborg-writing" id="toc-sec-cyborg-writing" class="nav-link" data-scroll-target="#sec-cyborg-writing"><span class="header-section-number">4.2.1</span> Besser schreiben – als Cyborg</a></li>
+  <li><a href="#sec-cyborg-writing" id="toc-sec-cyborg-writing" class="nav-link" data-scroll-target="#sec-cyborg-writing"><span class="header-section-number">4.2.1</span> Besser schreiben – als Cyborg</a>
+  <ul class="collapse">
+  <li><a href="#sec-bots-quellentreue" id="toc-sec-bots-quellentreue" class="nav-link" data-scroll-target="#sec-bots-quellentreue"><span class="header-section-number">4.2.1.1</span> Was unsere eigenen Bots über Quellentreue lehren</a></li>
+  </ul></li>
   <li><a href="#sec-coding" id="toc-sec-coding" class="nav-link" data-scroll-target="#sec-coding"><span class="header-section-number">4.2.2</span> Jeder kann jetzt programmieren</a>
   <ul class="collapse">
   <li><a href="#sec-widget-littles-law" id="toc-sec-widget-littles-law" class="nav-link" data-scroll-target="#sec-widget-littles-law"><span class="header-section-number">4.2.2.1</span> Beispiel: Little’s Law selbst nachrechnen</a></li>
@@ -873,9 +876,95 @@ Abbildung&nbsp;4.3: Einmal fragen oder mehrfach? Nur Ergebnisse oder Analyse? Zw
 </figure>
 </div>
 <p>Hinter dem Wort „iterativ“ verbirgt sich die wichtigere Frage, <em>wie</em> ein Werkzeug iteriert: als fest verdrahteter Ablauf mit ein paar KI-Entscheidungspunkten oder als Agent, der eine Aufgabe flexibel zerlegen kann. Tay beschreibt ein Agency-Spektrum und ordnet die meisten akademischen Deep-Research-Tools am verdrahteten Ende ein: beeindruckend innerhalb ihrer Schablonen, spröde außerhalb <span class="citation" data-cites="tay2025agentic">(<a href="references.html#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>. Sein Stresstest macht das sichtbar: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert hat.“ Eine menschliche Hilfskraft zerlegt das in drei Schritte (ähnliche Arbeiten finden, deren Referenzen extrahieren, die Überlappung abziehen); allgemeine Sprachmodelle mit Werkzeugen führen diese Logik eher aus, während spezialisierte Tools scheitern, weil die Aufgabe nicht in ihren eingebauten Ablauf passt. Für die Lehre folgt daraus die Regel aus <a href="kapitel02.html#sec-agenten-praxis" class="quarto-xref"><span>Kapitel 2.1.4</span></a>: Je freier das Werkzeug arbeitet, desto klarer müssen die Kontrollpunkte sein, an denen wir das Ergebnis prüfen.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Aus der Lehre: Literaturrecherche in vier Phasen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Aus der Lehre: Literaturrecherche in vier Phasen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In unserer Übung zur Literaturrecherche im Wirtschaftsingenieurwesen arbeiten Studierende in vier Phasen: Thema eingrenzen, Quellen auswählen, suchen, auswerten <span class="citation" data-cites="bartnik2025recherche">(<a href="references.html#ref-bartnik2025recherche" role="doc-biblioref">Bartnik &amp; Schmid, 2025</a>)</span>. Die Werkzeugtypen haben darin feste Plätze (<a href="#tbl-werkzeugtyp-phase" class="quarto-xref">Tabelle&nbsp;<span>4.3</span></a>); die Entscheidungen fallen in den ersten beiden Phasen, bevor ein Werkzeug sucht.</p>
+<p>Beim Eingrenzen legen die Studierenden Hauptthema, Kontext, Variablen, Stichwörter, Ausschlussbegriffe und Zeitraum fest. Beim Auswählen bestimmen sie eine Liste anerkannter Zeitschriften, etwa nach dem VHB-Rating, und suchen in Publish or Perish über deren ISSN; die Sortierung „nach Relevanz“ in Google Scholar ist kein Qualitätsranking.</p>
+<p>Erst beim Suchen kommt das Sprachmodell dazu, als Übersetzer: Es schreibt aus den festgelegten Kriterien die Suchsyntax. Das ist Quick Search mit einem Sprachmodell davor, und die Suchstrategie bleibt bei den Studierenden. Gemessen ist das für systematische Reviews in der Medizin: ChatGPT schrieb Boolesche Suchanfragen mit hoher Präzision (wenig Unpassendes unter den Treffern), aber geringerem Recall (relevante Studien fehlen); wiederholte Läufe lieferten verschiedene Anfragen, ein Beispiel-Query im Prompt und mehrere Dialogrunden halfen <span class="citation" data-cites="wang2023boolean">(<a href="references.html#ref-wang2023boolean" role="doc-biblioref">Wang et al., 2023</a>)</span>. Die Nachprüfung fand den Ausschlag bei Modell- und Promptwahl und einen Vorteil durch gut gewählte Schlüsselstudien <span class="citation" data-cites="wang2025boolean">(<a href="references.html#ref-wang2025boolean" role="doc-biblioref">Wang et al., 2025</a>)</span>. Unsere Regel: Syntax lesen, Trefferzahl in einer zweiten Datenbank gegenprüfen, mit zwei bekannten Schlüsselstudien testen, ob die Suche sie findet. Fehlen sie, hat die Syntax eine Lücke, nicht die Forschung.</p>
+<p>Wie wir selbst mit Publish or Perish und ISSN-Filter gesucht haben, zeigt <a href="kapitel08-appendix03-rollenspiele-simulationen.html#sec-rs-methodik" class="quarto-xref"><span>Kapitel C.2</span></a>.</p>
+</div>
+</div>
+<div id="tbl-werkzeugtyp-phase" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-werkzeugtyp-phase-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.3: Werkzeugtypen je Phase der Literaturrecherche. Typen nach <span class="citation" data-cites="tay2025agentic">Tay (<a href="references.html#ref-tay2025agentic" role="doc-biblioref">2025</a>)</span>, ergänzt um drei Typen ohne erzeugten Text (Zitationsnetz, Zitationskontext, API); Produktnamen sind ein Schnappschuss (Stand 2026), die Typen bleiben. Quelle: eigene Zuordnung nach <span class="citation" data-cites="bartnik2025recherche">Bartnik &amp; Schmid (<a href="references.html#ref-bartnik2025recherche" role="doc-biblioref">2025</a>)</span>
+</figcaption>
+<div aria-describedby="tbl-werkzeugtyp-phase-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 48%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Phase</th>
+<th style="text-align: left;">Werkzeugtyp</th>
+<th style="text-align: left;">Beispiele (Stand 2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Thema eingrenzen</td>
+<td style="text-align: left;">Quick RAG: Antwort mit Zitaten zur Orientierung</td>
+<td style="text-align: left;">Consensus, Elicit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quellen auswählen</td>
+<td style="text-align: left;">Quick Search mit Filter nach Zeitschrift oder ISSN</td>
+<td style="text-align: left;">Publish or Perish, Google Scholar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Suchen</td>
+<td style="text-align: left;">Quick Search, Sprachmodell schreibt die Syntax</td>
+<td style="text-align: left;">Google Scholar, Publish or Perish, EBSCO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Suchen</td>
+<td style="text-align: left;">Deep Search: mehrere Suchschleifen, Ergebnis ist eine Liste</td>
+<td style="text-align: left;">Undermind</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Suchen</td>
+<td style="text-align: left;">Zitationsnetz: vom Startartikel zu verwandten Arbeiten</td>
+<td style="text-align: left;">Connected Papers, Research Rabbit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Auswerten</td>
+<td style="text-align: left;">Zusammenfassung und Extraktionstabelle je Artikel</td>
+<td style="text-align: left;">Elicit, Semantic Scholar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Auswerten</td>
+<td style="text-align: left;">Zitationskontext: gestützt oder bestritten?</td>
+<td style="text-align: left;">Scite</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Auswerten</td>
+<td style="text-align: left;">Deep Research: Bericht, höchstes Fehlerrisiko</td>
+<td style="text-align: left;">Deep-Research-Modi der Sprachmodelle</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Auswerten</td>
+<td style="text-align: left;">Datenzugriff per API: eigene Auswertungen mit Code</td>
+<td style="text-align: left;">OpenAlex, Semantic Scholar API</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 <p>Beim Auswerten gefundener Artikel gilt eine ähnliche Staffelung <span class="citation" data-cites="tay2024classifying">(<a href="references.html#ref-tay2024classifying" role="doc-biblioref">Tay, 2024a</a>)</span>. Die Zusammenfassung eines einzelnen Dokuments ist am wenigsten riskant und eignet sich für die schnelle Relevanzprüfung; die sequenzielle Auswertung vieler Dokumente nach denselben Fragen (Design, Stichprobe, Befund) ergibt eine Codier-Tabelle, deren Zellen man stichprobenartig gegen das PDF prüft; die Synthese über mehrere Dokumente zu einer Frage trägt das höchste Fehlerrisiko, weil sich Suchfehler, untreue Zusammenfassung und schwache Gewichtung der Evidenz addieren. Die Kurzform „Antwort mit Zitaten“ ist für wissenschaftliche Arbeit deshalb meist nur ein Teaser: Man braucht den Originaltext für Kontext, Operationalisierung und Geltungsgrenzen, und erzeugter Text kann Quellen etwas zuschreiben, das sie so nicht sagen (fehlende <em>source faithfulness</em>) <span class="citation" data-cites="tay2025agentic">(<a href="references.html#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>. Ein praktisches Problem der spezialisierten Suchwerkzeuge kommt hinzu: Sie kommen nicht hinter die Bezahlschranken der Verlage und arbeiten deshalb mit Abstracts oder Open-Access-Korpora. Akademische Konnektoren zu den großen Sprachmodellen verschieben die Arbeit hier von abstract-basiertem Raten zu passagenbasiertem Prüfen, weil das Modell über eine institutionelle Anmeldung lizenzierte Volltexte durchsuchen und Behauptungen an Fundstellen binden kann, begrenzt auf den Bestand des jeweiligen Anbieters <span class="citation" data-cites="tay2024mcp">(<a href="references.html#ref-tay2024mcp" role="doc-biblioref">Tay, 2024b</a>)</span>. Wie eine Agentenrecherche mit festen Kontrollpunkten in der Praxis abläuft, zeigt <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-agenten" class="quarto-xref"><span>Kapitel D.4</span></a>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Nur online: Ausführliche Übersicht der Formen von KI-Zusammenfassungen nach Tay (2024)">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -884,12 +973,12 @@ Abbildung&nbsp;4.3: Einmal fragen oder mehrfach? Nur Ergebnisse oder Analyse? Zw
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="tbl-paper-analysis-types" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-paper-analysis-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;4.3: Paper mit KI analysieren: Einfach oder sequenziell, ein Artikel oder Synthese mehrerer Artikel? Quelle: <span class="citation" data-cites="tay2024classifying">Tay (<a href="references.html#ref-tay2024classifying" role="doc-biblioref">2024a</a>)</span>
+Tabelle&nbsp;4.4: Paper mit KI analysieren: Einfach oder sequenziell, ein Artikel oder Synthese mehrerer Artikel? Quelle: <span class="citation" data-cites="tay2024classifying">Tay (<a href="references.html#ref-tay2024classifying" role="doc-biblioref">2024a</a>)</span>
 </figcaption>
 <div aria-describedby="tbl-paper-analysis-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -989,11 +1078,11 @@ Tabelle&nbsp;4.3: Paper mit KI analysieren: Einfach oder sequenziell, ein Artike
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="sec-cyborg-writing"><span class="header-section-number">4.2.1</span> Besser schreiben – als Cyborg</h3>
 <p>Wer akademisch schreibt, lässt sich zunehmend von einer Vielzahl an unterstützenden KI-Systemen über die Schultern schauen – oder die Hand führen –, die Vorschläge zur besseren Sprachverwendung machen, wie DeepL, Grammarly, oder ChatGPT <span class="citation" data-cites="ou2024">(<a href="references.html#ref-ou2024" role="doc-biblioref">Ou et al., 2024</a>)</span>. <span class="citation" data-cites="ou2024">Ou et al. (<a href="references.html#ref-ou2024" role="doc-biblioref">2024</a>)</span> sprechen von AI-assisted language tools (AILT), die Studierenden dabei helfen, ihre Sprachfähigkeiten etwa von einer in die andere Sprache zu übertragen und das Sprachniveau ihrer Schreibprodukte generell zu verbessern. In ihrer Studie analysieren sie die Kommentare von 1703 schwedischen Studierenden und stellen komplexe Muster der Nutzung fest: „…students align their own languages, writing skills and thinking with the algorithm-based language processes (e.g., lexical, grammatical, and textual corrections, word choice suggestions, language translation) within AI chatbots, writing assistance, and machine language translation to optimise the outcomes of their academic writing. … students have become ‘spatially extended cyborg[s]’”.</p>
 <p>Studierende schreiben durch die zunehmend mächtigere technische Unterstützung ihre Haus- und Abschlussarbeiten deutlich anders. Bedeutet dies das Ende der Hausarbeit? Wohl eher einen starken Wandel, denn es wird weiter wichtig sein, die saubere Argumentation zu üben <span class="citation" data-cites="friedrich2023 klein2023">(<a href="references.html#ref-friedrich2023" role="doc-biblioref">Friedrich, 2023</a>; <a href="references.html#ref-klein2023" role="doc-biblioref">Klein, 2023</a>)</span>.</p>
-<p>Dafür lassen sich die einzelnen Schreibschritte gezielt trainieren, Teil für Teil. Für den Kurs zum wissenschaftlichen Arbeiten im Wirtschaftsingenieurwesen der TH Köln haben Julia Schmid und ich acht Schreibtrainer entwickelt, die eine Abschlussarbeit vom ersten bis zum letzten Kapitel begleiten (<a href="#tbl-schreibtrainer" class="quarto-xref">Tabelle&nbsp;<span>4.4</span></a>). Jeder Trainer ist eine ausführliche Anweisung, ein Prompt, der ein Sprachmodell in einen geduldigen Übungspartner verwandelt.</p>
+<p>Dafür lassen sich die einzelnen Schreibschritte gezielt trainieren, Teil für Teil. Für den Kurs zum wissenschaftlichen Arbeiten im Wirtschaftsingenieurwesen der TH Köln haben Julia Schmid und ich acht Schreibtrainer entwickelt, die eine Abschlussarbeit vom ersten bis zum letzten Kapitel begleiten (<a href="#tbl-schreibtrainer" class="quarto-xref">Tabelle&nbsp;<span>4.5</span></a>). Jeder Trainer ist eine ausführliche Anweisung, ein Prompt, der ein Sprachmodell in einen geduldigen Übungspartner verwandelt.</p>
 <div id="tbl-schreibtrainer" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[16,18,34,32]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-schreibtrainer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;4.4: Acht Schreibtrainer entlang der Abschlussarbeit (TH Köln, Wirtschaftsingenieurwesen; Julia Schmid und Roman Bartnik)
+Tabelle&nbsp;4.5: Acht Schreibtrainer entlang der Abschlussarbeit (TH Köln, Wirtschaftsingenieurwesen; Julia Schmid und Roman Bartnik)
 </figcaption>
 <div aria-describedby="tbl-schreibtrainer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1084,7 +1173,29 @@ Tabelle&nbsp;4.4: Acht Schreibtrainer entlang der Abschlussarbeit (TH Köln, Wir
 <p>Wie stark die KI an einem Text mitwirkt, lässt sich auf einer vierstufigen Skala von „zur Inspiration“ bis „inhaltsgestaltend“ beschreiben; Studierende nutzen sie, um ihre KI-Nutzung zu dokumentieren (<a href="kapitel05.html#tbl-llm-scale" class="quarto-xref">Tabelle&nbsp;<span>5.3</span></a>).</p>
 <p>Ethan und Lilach Mollick schlagen Hausarbeiten vor, die KI nicht zur Automatisierung einsetzen, sondern für interaktivere und individuellere Lernerfahrungen: mit mehr Reflexion, verschiedenen Perspektiven, Kreativität und Kollaboration. Die Lehrenden begleiten und moderieren diese Prozesse <span class="citation" data-cites="mollick2023b mollick2023a">(<a href="references.html#ref-mollick2023b" role="doc-biblioref">Mollick &amp; Mollick, 2023a</a>, <a href="references.html#ref-mollick2023a" role="doc-biblioref">2023b</a>)</span>. Prompts für solche Aufgaben sammelt Anhang B (<a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang B</span></a>).</p>
 <p>Entscheidend bleibt, Didaktik und Technik auf die konkrete Kombination aus Lerninhalt und Studierendengruppe abzustimmen. Entlastung, anspruchsvollere Aufgaben und schnellere Individualisierung führen nur dann zu besserer Lehre, wenn sich die Lehrstrategie anpasst und Lehrende sich nüchtern mit den Risiken befassen, etwa mit der Frage, wie in diesen Schreibprozessen kritisches Denken entsteht <span class="citation" data-cites="lee2025">(<a href="references.html#ref-lee2025" role="doc-biblioref">H.-P. H. Lee et al., 2025</a>)</span>.</p>
+<section id="sec-bots-quellentreue" class="level4" data-number="4.2.1.1">
+<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="sec-bots-quellentreue"><span class="header-section-number">4.2.1.1</span> Was unsere eigenen Bots über Quellentreue lehren</h4>
+<p>Gegen Tays Befunde aus <a href="#sec-recherche" class="quarto-xref"><span>Kapitel 4.1.2</span></a> gelesen, arbeiteten die ursprünglichen Anweisungen der Schreibtrainer an drei Stellen gegen die Quellentreue <span class="citation" data-cites="bartnik2026schreibtrainer">(<a href="references.html#ref-bartnik2026schreibtrainer" role="doc-biblioref">Bartnik &amp; Schmid, 2026</a>)</span>; wer eigene Trainer baut, trifft dieselben Entscheidungen.</p>
+<p>Erstens sollten Einleitungs- und Forschungsstandtrainer die vollständige Einleitung eines echten Open-Access-Artikels zeigen. Ohne hinterlegte Datei rekonstruiert ein Sprachmodell den Text aus seinen Trainingsdaten und kann einem existierenden Artikel Sätze zuschreiben, die dort nicht stehen: fehlende <em>source faithfulness</em> <span class="citation" data-cites="tay2025agentic">(<a href="references.html#ref-tay2025agentic" role="doc-biblioref">Tay, 2025</a>)</span>. Abhilfe ist der Schritt zum passagenbasierten Arbeiten <span class="citation" data-cites="tay2024mcp">(<a href="references.html#ref-tay2024mcp" role="doc-biblioref">Tay, 2024b</a>)</span>: den Originaltext als Datei hochladen oder die Studierenden den Text selbst einfügen lassen. So arbeiten die kopierbaren Fassungen auf der Schreibtrainer-Seite.</p>
+<p>Zweitens dürfen Quellen in den Schreibübungen erfunden sein. Das trennt den rhetorischen Zug, eine Quelle mit Funktion einzubauen, von der Suche. Ohne sichtbare Markierung „fiktiv“ lernen Studierende aber nebenbei, wie normal ein erfundener Beleg aussieht; die kopierbaren Fassungen verlangen die Markierung deshalb ausdrücklich. Unsere Handreichung für Abschlussarbeiten setzt den Gegenpol: Wer eine Quelle nicht erklären kann, gefährdet das Bestehen (<a href="kapitel05.html#sec-dokumentation" class="quarto-xref"><span>Kapitel 5.6</span></a>).</p>
+<p>Drittens erzeugen Diskussions- und Strukturtrainer Abschnitte im Ton begutachteter Artikel samt Literaturverweisen; als Übungsmaterial taugen sie, wenn der Trainer sie als synthetisch kennzeichnet.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ausprobiert: Prüfen, ob ein Sprachmodell richtig zitiert · 4D: Discernment · für Studierende">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Ausprobiert: Prüfen, ob ein Sprachmodell richtig zitiert · 4D: Discernment · für Studierende
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Ablauf.</strong> Bitten Sie ein Sprachmodell ohne hochgeladene Datei, die Einleitung eines bekannten Open-Access-Artikels aus Ihrem Fach wörtlich wiederzugeben. Suchen Sie das Original in Google Scholar und gleichen Sie drei Sätze ab: einen aus dem ersten Absatz, einen mit Quellenverweis, den mit der Forschungsfrage.</p>
+<p><strong>Worauf achten.</strong> Gibt es den Artikel? Steht jeder der drei Sätze wörtlich, sinngemäß oder gar nicht im Original? Gibt es die Quelle, auf die der zweite Satz verweist, und sagt sie das?</p>
+<p><strong>Was die Übung zeigt.</strong> Tays Stichprobenaudit gegen das PDF im Kleinen <span class="citation" data-cites="tay2024classifying">(<a href="references.html#ref-tay2024classifying" role="doc-biblioref">Tay, 2024a</a>)</span>, die Prüfliste aus <a href="#sec-widget-pruefen" class="quarto-xref"><span>Kapitel 4.2.2.3</span></a> auf Text übertragen: Überzeugend klingt jede Ausgabe; es zählt, ob sie aus der Quelle folgt. Wiederholt man den Abgleich mit dem PDF als hochgeladener Datei, wird der Unterschied selbst zum Lerngegenstand.</p>
+</div>
+</div>
 <p>Wie der nächste Abschnitt zeigt, findet eine ähnlich intensive Diskussion im Bereich der Informatik statt, wo speziell Programmieraufgaben ganz neu gedacht werden müssen.</p>
+</section>
 </section>
 <section id="sec-coding" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="sec-coding"><span class="header-section-number">4.2.2</span> Jeder kann jetzt programmieren</h3>
@@ -1434,7 +1545,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Probieren Sie mal">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1443,7 +1554,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Ein Studienbüro erhält im Mittel 40 Anträge pro Woche, im Stapel liegen 120. Wie lange wartet ein Antrag im Mittel, ohne dass jemand Zeiten misst?</p>
 <p><em>Lösung:</em> W = L / λ = 120 / 40 = 3 Wochen. Die Rechnung gilt, wenn das Büro über die Zeit so viele Anträge abarbeitet, wie eingehen.</p>
@@ -1733,7 +1844,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 <p>Das Modell zeigt die operativen Ursachen, nicht die menschlichen. In den Experimenten von <span class="citation" data-cites="croson2006behavioral">Croson &amp; Donohue (<a href="references.html#ref-croson2006behavioral" role="doc-biblioref">2006</a>)</span> entstand der Bullwhip-Effekt auch dann, als Prognose, Bündelung und Preisaktionen ausgeschaltet waren, weil die Teilnehmenden die bereits bestellte, noch unterwegs befindliche Ware zu wenig berücksichtigten. <span class="citation" data-cites="sterman1989modeling">Sterman (<a href="references.html#ref-sterman1989modeling" role="doc-biblioref">1989</a>)</span> hatte dieses Verhalten im Beer Game als Verankern und Anpassen beschrieben. Wer das Widget allein zeigt, legt deshalb eine Fehlvorstellung nahe: dass bessere Prognoseverfahren das Problem lösten. In der Lehre passt es besser in die Nachbesprechung eines Beer Game, in der Studierende ihre eigenen Bestellkurven neben die Kurven des Modells legen. Simulationsspiele wirken als Ergänzung anderer Lehrformen stärker denn als alleinige Unterweisung <span class="citation" data-cites="sitzmann2011metaanalytic">(<a href="references.html#ref-sitzmann2011metaanalytic" role="doc-biblioref">Sitzmann, 2011</a>)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Probieren Sie mal">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1742,7 +1853,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Ein Händler bestellt bei drei Wochen Lieferzeit und prognostiziert mit dem Mittelwert der letzten sechs Wochen. Um welchen Faktor streuen seine Bestellungen mindestens stärker als die Nachfrage? Und wie viele Wochen muss er bei vier Wochen Lieferzeit mitteln, damit der Faktor unter 1,5 fällt?</p>
 <p><em>Lösung:</em> 1 + 2·3/6 + 2·9/36 = 2,5; die Standardabweichung ist damit gut das 1,6-Fache. Bei L = 4 fällt der Faktor erst ab p = 20 Wochen unter 1,5 (1,48). Ein so langes Fenster reagiert aber träge auf echte Trendwechsel; die Dämpfung hat ihren Preis.</p>
@@ -2041,6 +2152,12 @@ Barra, F. L., Costa, A., Rodella, G., Semeraro, F., &amp; Carenzo, L. (2024). Sh
 <div id="ref-barth2026steering" class="csl-entry" role="listitem">
 Barth, M., Thorgeirsson, S., Etemadi, K., Leinonen, J., Cotrini, C., &amp; Su, Z. (2026). Steering AI tutors through system prompts: A crossover study on self-regulated learning and cognitive engagement scaffolds in CS1. <a href="https://doi.org/10.1145/3765964.3811656">https://doi.org/10.1145/3765964.3811656</a>.
 </div>
+<div id="ref-bartnik2025recherche" class="csl-entry" role="listitem">
+Bartnik, R., &amp; Schmid, J. (2025, Mai). <em>Literaturrecherche mit KI</em>. TH Köln.
+</div>
+<div id="ref-bartnik2026schreibtrainer" class="csl-entry" role="listitem">
+Bartnik, R., &amp; Schmid, J. (2026). <em>Schreibtrainer für wissenschaftliches Arbeiten: Anweisungen für acht Custom GPTs (Bot 1 bis Bot 8)</em>. TH Köln.
+</div>
 <div id="ref-barton2026poster" class="csl-entry" role="listitem">
 Barton, M. (2026). <em>KI-gestütztes Rollenspiel für Kommunikations- und Problemlösekompetenz</em>. Universität Leipzig, Professur Personalwirtschaftslehre. <a href="https://hochschulforumdigitalisierung.de/wp-content/uploads/2025/01/3285-Tag_Der_Lehre_2026_Michael_Barton.pdf">https://hochschulforumdigitalisierung.de/wp-content/uploads/2025/01/3285-Tag_Der_Lehre_2026_Michael_Barton.pdf</a>.
 </div>
@@ -2262,6 +2379,12 @@ Tobor, J., Then Bergh, C., &amp; Lüthi, R. (2026). <em><a href="https://hochsch
 </div>
 <div id="ref-tutton2025" class="csl-entry" role="listitem">
 Tutton, M., &amp; Cohen, D. (2025). Reconceptualizing the Role of the University Language Teacher in Light of Generative AI. <em>Education Sciences</em>, <em>15</em>(1), 56. <a href="https://doi.org/10.3390/educsci15010056">https://doi.org/10.3390/educsci15010056</a>.
+</div>
+<div id="ref-wang2023boolean" class="csl-entry" role="listitem">
+Wang, S., Scells, H., Koopman, B., &amp; Zuccon, G. (2023). Can ChatGPT write a good Boolean query for systematic review literature search? <a href="https://doi.org/10.1145/3539618.3591703">https://doi.org/10.1145/3539618.3591703</a>.
+</div>
+<div id="ref-wang2025boolean" class="csl-entry" role="listitem">
+Wang, S., Scells, H., Koopman, B., &amp; Zuccon, G. (2025). Reassessing large language model Boolean query generation for systematic reviews. <a href="https://doi.org/10.1145/3726302.3730329">https://doi.org/10.1145/3726302.3730329</a>.
 </div>
 <div id="ref-wannemacher2025" class="csl-entry" role="listitem">
 Wannemacher, K., Bosse, E., Lübcke, M., &amp; Kaemena, A. (2025). <em><a href="https://hochschulforumdigitalisierung.de/wp-content/uploads/2025/04/HFD_AP_87_Wie_KI_Studium_und_Lehre_veraendert_final.pdf">Wie KI Studium und Lehre verändert. Anwendungsfelder, Use-Cases und Gelingensbedingungen</a></em> (Arbeitspapier Nr. 87). Hochschulforum Digitalisierung.
