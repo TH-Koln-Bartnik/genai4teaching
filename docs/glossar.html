@@ -1001,6 +1001,29 @@ Rangfolge kognitiven Engagements nach Chi und Wylie: interaktiv wirkt besser als
   else init();
 })();
 </script>
+<script>
+// Zitat-Popups auf Tablet und Smartphone.
+// Quarto zeigt den Voll-Verweis per tippy.js beim Überfahren mit der Maus.
+// Ein Fingertipp löst aber zugleich den Link aus und springt ins
+// Literaturverzeichnis, bevor man das Popup sieht. Bei Touch- oder
+// Stifteingabe öffnet ein Tipp daher nur das Popup; ein Tipp daneben
+// schließt es. Mausbedienung bleibt unverändert.
+(function () {
+  var touch = false;
+  document.addEventListener('pointerdown', function (e) {
+    var isTouch = e.pointerType === 'touch' || e.pointerType === 'pen';
+    if (isTouch === touch) return;
+    touch = isTouch;
+    document.querySelectorAll('a[role="doc-biblioref"]').forEach(function (a) {
+      if (a._tippy) a._tippy.setProps({ trigger: touch ? 'click' : 'mouseenter focus' });
+    });
+  }, true);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[role="doc-biblioref"]');
+    if (a && touch) e.preventDefault();
+  }, true);
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

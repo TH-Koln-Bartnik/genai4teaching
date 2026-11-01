@@ -597,7 +597,7 @@ div.csl-indent {
 <section id="sec-ziele-genai" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sec-ziele-genai"><span class="header-section-number">3.1</span> Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre?</h2>
 <p>Bevor wir uns der konkreten Umsetzung zuwenden, müssen wir uns zunächst fragen, was wir überhaupt bezwecken: Was sind typische Probleme und was sind unsere Ziele für die konkrete Umsetzung in Lehrsituationen?</p>
-<p>Schauen wir uns zunächst ein zentrales Problem der Lernsituation an Hochschulen an <span class="citation" data-cites="freeman2014">Roediger &amp; Pyc (<a href="references.html#ref-roediger2012" role="doc-biblioref">2012</a>)</span>: <strong>Wir wissen, was effektive Formen der Lehre sind, diese werden jedoch häufig nicht angewendet.</strong> Studien deuten darauf hin, dass dies eher an situativen Hindernissen der Lernumgebung liegt als am Willen der Lehrenden <span class="citation" data-cites="henderson2007">(<a href="references.html#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>)</span>.</p>
+<p>Schauen wir uns zunächst ein zentrales Problem der Lernsituation an Hochschulen an <span class="citation" data-cites="freeman2014 roediger2012">(<a href="references.html#ref-freeman2014" role="doc-biblioref">Freeman et al., 2014</a>; <a href="references.html#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>: <strong>Wir wissen, was effektive Formen der Lehre sind, diese werden jedoch häufig nicht angewendet.</strong> Studien deuten darauf hin, dass dies eher an situativen Hindernissen der Lernumgebung liegt als am Willen der Lehrenden <span class="citation" data-cites="henderson2007">(<a href="references.html#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>)</span>.</p>
 <p>Ein Beispiel ist die <strong>Vorlesung</strong>. Es ist gut belegt, dass diese Form des passiven Konsums eine sehr schwache Form der Wissensvermittlung ist. <strong>Man lernt nicht nichts, aber anders würde man mehr lernen.</strong> Empirisch und theoretisch ist sehr gut belegt, dass Studierende Wissen besser behalten, wenn sie dieselbe Zeit für aktives Üben (<em>active learning</em>), Frage-Antwort Interaktionen oder Diskussion in Kleingruppen verwenden <span class="citation" data-cites="freeman2014 hake1998">(<a href="references.html#ref-freeman2014" role="doc-biblioref">Freeman et al., 2014</a>; <a href="references.html#ref-hake1998" role="doc-biblioref">Hake, 1998</a>)</span>.</p>
 <p>Praktisch wird oft mit dem positiven Effekt der reinen Anwesenheit argumentiert (besser als wenn die Studierenden zu Hause Netflix schauen; wer zur Vorlesung kommt hat bessere Noten), aber <strong>diese spezielle Form der Präsenzlehre hat durch mangelnde Interaktion klare Nachteile.</strong> Der Harvard Physiker <span class="citation" data-cites="kestin2025">Kestin et al. (<a href="references.html#ref-kestin2025" role="doc-biblioref">2025</a>)</span> fasst drei zentrale Probleme von Vorlesungen zusammen: Mangelnde Anpassung, mangelndes individuelles Feedback und mangelnde Aktivierung der Lernenden. Genauer <span class="citation" data-cites="kestin2025">(<a href="references.html#ref-kestin2025" role="doc-biblioref">Kestin et al., 2025, S.2–3</a>)</span>: “1. They move too quickly for some students and too slowly for others because the teacher controls the pace of instruction; 2. Students do not receive personalized feedback to their questions as they arise; and 3. They fail to maintain consistent student engagement.”</p>
 <p><strong>Warum werden trotzdem Vorlesungen sehr häufig und aktivere Lehrformen relativ selten eingesetzt</strong> <span class="citation" data-cites="stains2018">(<a href="references.html#ref-stains2018" role="doc-biblioref">Stains et al., 2018</a>)</span>? Studien deuten an, dass es oft nicht am Willen der Lehrenden liegt, sondern dass <strong>situative Hindernisse</strong> eine große Rolle spielen, vor allem Zeitmangel wird sehr häufig in Umfragen genannt <span class="citation" data-cites="shadle2017">(<a href="references.html#ref-shadle2017" role="doc-biblioref">Shadle et al., 2017</a>)</span>, außerdem bremsen Faktoren wie Gruppengröße oder ein ungünstiger Setup der Räume <span class="citation" data-cites="henderson2007">(<a href="references.html#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>)</span>. Auch erfolgt die <strong>Umsetzung oft zu optimistisch und ohne Berücksichtigung von Widerständen und Hindernissen</strong> (z.B. Anreize für Studierende, zu Gruppenübungen auch zu kommen, oder nicht lieber ihr Wochenende in Kleingruppen zu besprechen als die Übungsaufgabe), so dass z.B. mangels notwendiger Anreizsetzung die erhoffte Lernwirkung ausbleibt und schnell Frust bei der Umsetzung entsteht <span class="citation" data-cites="henderson2007">(<a href="references.html#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>)</span>.</p>
@@ -1516,6 +1516,29 @@ Zhang, Y.-F., Li, H., Song, D., Sun, L., Xu, T., &amp; Wen, Q. (2025). <em>From 
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
+})();
+</script>
+<script>
+// Zitat-Popups auf Tablet und Smartphone.
+// Quarto zeigt den Voll-Verweis per tippy.js beim Überfahren mit der Maus.
+// Ein Fingertipp löst aber zugleich den Link aus und springt ins
+// Literaturverzeichnis, bevor man das Popup sieht. Bei Touch- oder
+// Stifteingabe öffnet ein Tipp daher nur das Popup; ein Tipp daneben
+// schließt es. Mausbedienung bleibt unverändert.
+(function () {
+  var touch = false;
+  document.addEventListener('pointerdown', function (e) {
+    var isTouch = e.pointerType === 'touch' || e.pointerType === 'pen';
+    if (isTouch === touch) return;
+    touch = isTouch;
+    document.querySelectorAll('a[role="doc-biblioref"]').forEach(function (a) {
+      if (a._tippy) a._tippy.setProps({ trigger: touch ? 'click' : 'mouseenter focus' });
+    });
+  }, true);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[role="doc-biblioref"]');
+    if (a && touch) e.preventDefault();
+  }, true);
 })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
