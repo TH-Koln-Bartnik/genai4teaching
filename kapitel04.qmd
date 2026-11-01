@@ -181,6 +181,30 @@ Tay beschreibt ein Agency-Spektrum und ordnet die meisten akademischen Deep-Rese
 Sein Stresstest macht das sichtbar: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert hat.“ Eine menschliche Hilfskraft zerlegt das in drei Schritte (ähnliche Arbeiten finden, deren Referenzen extrahieren, die Überlappung abziehen); allgemeine Sprachmodelle mit Werkzeugen führen diese Logik eher aus, während spezialisierte Tools scheitern, weil die Aufgabe nicht in ihren eingebauten Ablauf passt.
 Für die Lehre folgt daraus die Regel aus @sec-agenten-praxis: Je freier das Werkzeug arbeitet, desto klarer müssen die Kontrollpunkte sein, an denen wir das Ergebnis prüfen.
 
+:::: {.callout-note title="Aus der Lehre: Literaturrecherche in vier Phasen"}
+In unserer Übung zur Literaturrecherche im Wirtschaftsingenieurwesen arbeiten Studierende in vier Phasen: Thema eingrenzen, Quellen auswählen, suchen, auswerten [@bartnik2025recherche]. Die Werkzeugtypen haben darin feste Plätze (@tbl-werkzeugtyp-phase); die Entscheidungen fallen in den ersten beiden Phasen, bevor ein Werkzeug sucht.
+
+Beim Eingrenzen legen die Studierenden Hauptthema, Kontext, Variablen, Stichwörter, Ausschlussbegriffe und Zeitraum fest. Beim Auswählen bestimmen sie eine Liste anerkannter Zeitschriften, etwa nach dem VHB-Rating, und suchen in Publish or Perish über deren ISSN; die Sortierung „nach Relevanz“ in Google Scholar ist kein Qualitätsranking.
+
+Erst beim Suchen kommt das Sprachmodell dazu, als Übersetzer: Es schreibt aus den festgelegten Kriterien die Suchsyntax. Das ist Quick Search mit einem Sprachmodell davor, und die Suchstrategie bleibt bei den Studierenden. Gemessen ist das für systematische Reviews in der Medizin: ChatGPT schrieb Boolesche Suchanfragen mit hoher Präzision (wenig Unpassendes unter den Treffern), aber geringerem Recall (relevante Studien fehlen); wiederholte Läufe lieferten verschiedene Anfragen, ein Beispiel-Query im Prompt und mehrere Dialogrunden halfen [@wang2023boolean]. Die Nachprüfung fand den Ausschlag bei Modell- und Promptwahl und einen Vorteil durch gut gewählte Schlüsselstudien [@wang2025boolean]. Unsere Regel: Syntax lesen, Trefferzahl in einer zweiten Datenbank gegenprüfen, mit zwei bekannten Schlüsselstudien testen, ob die Suche sie findet. Fehlen sie, hat die Syntax eine Lücke, nicht die Forschung.
+
+Wie wir selbst mit Publish or Perish und ISSN-Filter gesucht haben, zeigt @sec-rs-methodik.
+::::
+
+| Phase | Werkzeugtyp | Beispiele (Stand 2026) |
+|:-------------|:--------------------------------------|:---------------------------|
+| Thema eingrenzen | Quick RAG: Antwort mit Zitaten zur Orientierung | Consensus, Elicit |
+| Quellen auswählen | Quick Search mit Filter nach Zeitschrift oder ISSN | Publish or Perish, Google Scholar |
+| Suchen | Quick Search, Sprachmodell schreibt die Syntax | Google Scholar, Publish or Perish, EBSCO |
+| Suchen | Deep Search: mehrere Suchschleifen, Ergebnis ist eine Liste | Undermind |
+| Suchen | Zitationsnetz: vom Startartikel zu verwandten Arbeiten | Connected Papers, Research Rabbit |
+| Auswerten | Zusammenfassung und Extraktionstabelle je Artikel | Elicit, Semantic Scholar |
+| Auswerten | Zitationskontext: gestützt oder bestritten? | Scite |
+| Auswerten | Deep Research: Bericht, höchstes Fehlerrisiko | Deep-Research-Modi der Sprachmodelle |
+| Auswerten | Datenzugriff per API: eigene Auswertungen mit Code | OpenAlex, Semantic Scholar API |
+
+: Werkzeugtypen je Phase der Literaturrecherche. Typen nach @tay2025agentic, ergänzt um drei Typen ohne erzeugten Text (Zitationsnetz, Zitationskontext, API); Produktnamen sind ein Schnappschuss (Stand 2026), die Typen bleiben. Quelle: eigene Zuordnung nach @bartnik2025recherche {#tbl-werkzeugtyp-phase}
+
 Beim Auswerten gefundener Artikel gilt eine ähnliche Staffelung [@tay2024classifying].
 Die Zusammenfassung eines einzelnen Dokuments ist am wenigsten riskant und eignet sich für die schnelle Relevanzprüfung; die sequenzielle Auswertung vieler Dokumente nach denselben Fragen (Design, Stichprobe, Befund) ergibt eine Codier-Tabelle, deren Zellen man stichprobenartig gegen das PDF prüft; die Synthese über mehrere Dokumente zu einer Frage trägt das höchste Fehlerrisiko, weil sich Suchfehler, untreue Zusammenfassung und schwache Gewichtung der Evidenz addieren.
 Die Kurzform „Antwort mit Zitaten“ ist für wissenschaftliche Arbeit deshalb meist nur ein Teaser: Man braucht den Originaltext für Kontext, Operationalisierung und Geltungsgrenzen, und erzeugter Text kann Quellen etwas zuschreiben, das sie so nicht sagen (fehlende *source faithfulness*) [@tay2025agentic].
@@ -311,6 +335,24 @@ Ethan und Lilach Mollick schlagen Hausarbeiten vor, die KI nicht zur Automatisie
 
 Entscheidend bleibt, Didaktik und Technik auf die konkrete Kombination aus Lerninhalt und Studierendengruppe abzustimmen.
 Entlastung, anspruchsvollere Aufgaben und schnellere Individualisierung führen nur dann zu besserer Lehre, wenn sich die Lehrstrategie anpasst und Lehrende sich nüchtern mit den Risiken befassen, etwa mit der Frage, wie in diesen Schreibprozessen kritisches Denken entsteht [@lee2025].
+
+#### Was unsere eigenen Bots über Quellentreue lehren {#sec-bots-quellentreue}
+
+Gegen Tays Befunde aus @sec-recherche gelesen, arbeiteten die ursprünglichen Anweisungen der Schreibtrainer an drei Stellen gegen die Quellentreue [@bartnik2026schreibtrainer]; wer eigene Trainer baut, trifft dieselben Entscheidungen.
+
+Erstens sollten Einleitungs- und Forschungsstandtrainer die vollständige Einleitung eines echten Open-Access-Artikels zeigen. Ohne hinterlegte Datei rekonstruiert ein Sprachmodell den Text aus seinen Trainingsdaten und kann einem existierenden Artikel Sätze zuschreiben, die dort nicht stehen: fehlende *source faithfulness* [@tay2025agentic]. Abhilfe ist der Schritt zum passagenbasierten Arbeiten [@tay2024mcp]: den Originaltext als Datei hochladen oder die Studierenden den Text selbst einfügen lassen. So arbeiten die kopierbaren Fassungen auf der Schreibtrainer-Seite.
+
+Zweitens dürfen Quellen in den Schreibübungen erfunden sein. Das trennt den rhetorischen Zug, eine Quelle mit Funktion einzubauen, von der Suche. Ohne sichtbare Markierung „fiktiv“ lernen Studierende aber nebenbei, wie normal ein erfundener Beleg aussieht; die kopierbaren Fassungen verlangen die Markierung deshalb ausdrücklich. Unsere Handreichung für Abschlussarbeiten setzt den Gegenpol: Wer eine Quelle nicht erklären kann, gefährdet das Bestehen (@sec-dokumentation).
+
+Drittens erzeugen Diskussions- und Strukturtrainer Abschnitte im Ton begutachteter Artikel samt Literaturverweisen; als Übungsmaterial taugen sie, wenn der Trainer sie als synthetisch kennzeichnet.
+
+::: {.callout-tip title="Ausprobiert: Prüfen, ob ein Sprachmodell richtig zitiert · 4D: Discernment · für Studierende"}
+**Ablauf.** Bitten Sie ein Sprachmodell ohne hochgeladene Datei, die Einleitung eines bekannten Open-Access-Artikels aus Ihrem Fach wörtlich wiederzugeben. Suchen Sie das Original in Google Scholar und gleichen Sie drei Sätze ab: einen aus dem ersten Absatz, einen mit Quellenverweis, den mit der Forschungsfrage.
+
+**Worauf achten.** Gibt es den Artikel? Steht jeder der drei Sätze wörtlich, sinngemäß oder gar nicht im Original? Gibt es die Quelle, auf die der zweite Satz verweist, und sagt sie das?
+
+**Was die Übung zeigt.** Tays Stichprobenaudit gegen das PDF im Kleinen [@tay2024classifying], die Prüfliste aus @sec-widget-pruefen auf Text übertragen: Überzeugend klingt jede Ausgabe; es zählt, ob sie aus der Quelle folgt. Wiederholt man den Abgleich mit dem PDF als hochgeladener Datei, wird der Unterschied selbst zum Lerngegenstand.
+:::
 
 Wie der nächste Abschnitt zeigt, findet eine ähnlich intensive Diskussion im Bereich der Informatik statt, wo speziell Programmieraufgaben ganz neu gedacht werden müssen.
 
