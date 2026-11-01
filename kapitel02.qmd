@@ -38,7 +38,7 @@ Höflichkeit, Drohungen oder ein versprochenes Trinkgeld verbessern die Antworte
 :::
 
 ::: {.callout-note .lernziele title="Lernziele: Nach diesem Kapitel können Sie …"}
-1. Modell, Harness und Agent abgrenzen, die Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Setup wählen;
+1. Modell, Harness und Agent abgrenzen, die drei Nutzungsmuster reines Sprachmodell (LLM), Sprachmodell mit Suche in eigenen Dokumenten (RAG) und Agent unterscheiden und für eine Lehraufgabe das passende Setup wählen;
 2. in Laiensprache erklären, wie ein Sprachmodell Text erzeugt, warum es dabei halluziniert und was eine Anfrage an Energie kostet;
 3. mit der Jagged Frontier begründen, warum Modelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich abschneiden;
 4. einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen, verbreitete Prompt-Tricks als wirkungslos erkennen und mit dem 4D-Modell klären, was bei einer Aufgabe an die KI geht und wie das Ergebnis beschrieben, geprüft und verantwortet wird.
@@ -51,7 +51,7 @@ Höflichkeit, Drohungen oder ein versprochenes Trinkgeld verbessern die Antworte
 Dieser Abschnitt klärt die Begriffe, mit denen das übrige Buch arbeitet, und zwar nur so tief, wie es für die didaktische Nutzung nötig ist.
 Er beginnt mit dem Gespann aus Modell und Harness, weil sich daran seit 2022 am meisten geändert hat, und schaut erst danach in das Modell hinein.
 
-**Welche der Fachbegriffe kennen Sie schon?** Von Prompt bis Token, über Temperatur und RAG: Testen Sie sich selbst mit dem folgenden kleinen Spiel.
+**Welche der Fachbegriffe kennen Sie schon?** Von Prompt bis Token, über Temperatur bis zur Suche in eigenen Dokumenten (RAG): Testen Sie sich selbst mit dem folgenden kleinen Spiel.
 
 ::: {.callout-tip title="Lernspiel: Welche Grundbegriffe kennen Sie schon?"}
 *Ordnen Sie die Begriffe den korrekten Definitionen zu!* Am Start wählen Sie zwischen *Grundbegriffen* und dem Level *Fortgeschritten* mit Agenten-Begriffen und einer Diagnose-Runde zu typischen Problemen wie *Cognitive Debt*, *Sycophancy* oder *Prompt Injection*.
@@ -119,7 +119,9 @@ Wie Werkzeuganschluss und Skills in der Lehre aussehen, vertieft @sec-agenten-pr
 
 **Zweiter Ermöglicher: Gedächtnis.**
 Die zweite Erweiterung betrifft, was das Modell beim Antworten vor sich hat.
-RAG legt ihm passende Stellen aus eigenen Dokumenten vor [@lewis2020], die Kontextfenster sind von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei oder ein Notizordner trägt Regeln und Zwischenstände von einer Sitzung in die nächste.
+Vor der Antwort kann eine Suche in einer Sammlung eigener Dokumente, etwa Skript, Folien oder Prüfungsordnung, die passenden Stellen heraussuchen und sie dem Modell zusammen mit der Frage vorlegen, so wie eine Bibliothekarin zur Anfrage die richtigen Seiten aufgeschlagen auf den Tisch legt.
+Fachleute nennen das *Retrieval-Augmented Generation*, kurz RAG, auf Deutsch etwa „abrufgestützte Erzeugung“ [@lewis2020].
+Zugleich ist das Kontextfenster, also die Textmenge, die das Modell bei einer Antwort auf einmal überblickt, von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei oder ein Notizordner trägt Regeln und Zwischenstände von einer Sitzung in die nächste.
 Was davon wann auf den Schreibtisch des Modells kommt, ist eine eigene Gestaltungsfrage; ihr widmet sich @sec-agenten-gedaechtnis.
 
 **Die Folge: Autonomie im Vorgehen.**
@@ -128,7 +130,7 @@ Das Modell plant einen Schritt, ruft ein Werkzeug auf, liest das Ergebnis und pl
 @schluntz2024agents ziehen daraus die Grenze, die für dieses Buch gilt: In einem **Workflow** folgen Modell und Werkzeuge vorgegebenen Pfaden, ein **Agent** steuert seinen Ablauf und seine Werkzeugnutzung selbst.
 Die Stufen dazwischen, vom Router bis zur Schleife, zeigt die Animation in @sec-patterns-usage.
 Das Wort kommt vom lateinischen *agere*, handeln, in Gang bringen.
-Wie weit diese Selbststeuerung inzwischen reicht, misst METR als Zeithorizont: Die Aufgaben, die Modelle in der Hälfte der Fälle allein lösen, sind von Minuten auf Stunden gewachsen [@kwa2025; s. @sec-capabilities].
+Wie weit diese Selbststeuerung inzwischen reicht, misst das gemeinnützige Prüfinstitut METR (*Model Evaluation and Threat Research*) als Zeithorizont: Die Aufgaben, die Modelle in der Hälfte der Fälle allein lösen, sind von Minuten auf Stunden gewachsen [@kwa2025; s. @sec-capabilities].
 
 „Autonom“ verlangt eine Einschränkung.
 Das griechische *autónomos* heißt, sich selbst das Gesetz (*nómos*) geben, und das tut ein Agent nicht: Das Ziel setzt der Mensch, das Modell wählt den Weg.
@@ -249,7 +251,7 @@ Wer tiefer einsteigen will, findet im Transformer Explainer ein echtes kleines S
 Schlau sein allein reicht nicht.
 Ein Sprachmodell muss intelligent genug sein, um eine Aufgabe zu lösen, aber auch der schlaueste helfende Geist hilft nur, wenn er den **Kontext unserer Aufgabe kennt**.
 Diesen Kontext können wir der KI auf zwei Arten geben: Bildlich gesprochen bekommt sie ein paar **Bücher oder einen Werkzeugkoffer**, präziser ausgedrückt RAG oder Werkzeuge, die zu den beiden vorherrschenden Mustern gehören [@huyen2025, Kapitel 6].
-Bei **RAG (Retrieval-Augmented Generation)** holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
+Bei **RAG (Retrieval-Augmented Generation)**, der in @sec-harness eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
 Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche.
 Die Unterschiede zwischen dem reinen Sprachmodell, dem Modell mit Bücherregal und dem Modell mit Werkzeugkoffer übt das folgende Spiel; überlegen Sie sich zu jeder Antwort ein Beispiel aus Ihrem Berufsalltag.
 
@@ -526,9 +528,9 @@ Bei weniger bekannten Namen gibt das Modell an, die Antwort nicht zu kennen [@li
 
 Seit der agentischen Wende Ende 2025, dem „Agentic Turn“ [@willison2025; @steinberger2025; @mollick2025], zählt dabei nicht das Modell allein, sondern das ganze **Setup**: ein starkes Modell, eine praktische Oberfläche und ein Harness mit sinnvollen Werkzeugen (@sec-harness) [@mollick2025e].
 
-[^preisstufen]: Stand Oktober 2026, Monatspreise einschließlich Mehrwertsteuer. 20-€-Stufe: ChatGPT Plus 23 €, Google AI Pro 21,99 €, Claude Pro 20 US-$ zuzüglich Steuer; 100-€-Stufe: ChatGPT Pro 103 €, Google AI Ultra 99,99 €, Claude Max 100 US-$ zuzüglich Steuer. Darunter liegen Einstiegsstufen für 5 bis 8 € mit kleinerem Kontingent, darüber Stufen um 200 € mit dem Zehn- bis Zwanzigfachen der 20-€-Stufe. Der europäische Anbieter Mistral verlangt für seine Pro-Stufe 14,99 US-$ zuzüglich Steuer. Ohne persönliches Abo geht es über den Hochschulzugang, über die API mit Abrechnung nach Verbrauch (zur Größenordnung s. den Tutor-Kosten-Rechner in @sec-capabilities) oder mit offenen Modellen auf eigener Hardware. Quellen: @openai2026pricing, @anthropic2026pricing, @google2026aiplans, @mistral2026pricing.
+[^preisstufen]: Stand Oktober 2026, Monatspreise einschließlich Mehrwertsteuer. 20-€-Stufe: ChatGPT Plus 23 €, Google AI Pro 21,99 €, Claude Pro 20 US-$ zuzüglich Steuer; 100-€-Stufe: ChatGPT Pro 103 €, Google AI Ultra 99,99 €, Claude Max 100 US-$ zuzüglich Steuer. Darunter liegen Einstiegsstufen für 5 bis 8 € mit kleinerem Kontingent, darüber Stufen um 200 € mit dem Zehn- bis Zwanzigfachen der 20-€-Stufe. Der europäische Anbieter Mistral verlangt für seine Pro-Stufe 14,99 US-$ zuzüglich Steuer. Ohne persönliches Abo geht es über den Hochschulzugang, über die API, die Programmierschnittstelle, über die eigene Programme das Modell direkt ansprechen, mit Abrechnung nach Verbrauch (zur Größenordnung s. den Tutor-Kosten-Rechner in @sec-capabilities) oder mit offenen Modellen auf eigener Hardware. Quellen: @openai2026pricing, @anthropic2026pricing, @google2026aiplans, @mistral2026pricing.
 
-**Kostenfreie Zugänge über die Hochschule.** Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die GWDG etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über das THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen ist **KI:connect.nrw** der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, Frontier-Modelle über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge [@mkw2025kiconnect; @kiconnect2026inferenz; @persike2025apikeys]. Eine API (*Application Programming Interface*) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen; was sich damit bauen lässt, zeigen @sec-d-quellen und @sec-d-tutoren. Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Eine ältere Generation oder eine kleine Variante vermittelt ein falsches Bild davon, was die Modelle können.
+**Kostenfreie Zugänge über die Hochschule.** Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die Gesellschaft für wissenschaftliche Datenverarbeitung in Göttingen (GWDG) etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über das THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen ist **KI:connect.nrw** der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, Frontier-Modelle über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge [@mkw2025kiconnect; @kiconnect2026inferenz; @persike2025apikeys]. Eine API (*Application Programming Interface*) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen; was sich damit bauen lässt, zeigen @sec-d-quellen und @sec-d-tutoren. Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Eine ältere Generation oder eine kleine Variante vermittelt ein falsches Bild davon, was die Modelle können.
 
 **Welches Modell für welche Aufgabe?** Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel. Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.
 
@@ -586,7 +588,7 @@ Quelle: @tobor2026usecases, S. 36–39.
 :::
 ::::
 
-**Hier kann man vergleichen:** In der LM-Arena kann man verschiedene Modelle ausprobieren und ihre Antwort auf eine bestimmte Frage gegenüberstellen: <https://lmarena.ai/de?mode=side-by-side> (Untermenü: „Arena (side-by-side)“).
+**Hier kann man vergleichen:** In der LM-Arena, einer Vergleichsplattform für Sprachmodelle (*Language Models*, LM), kann man verschiedene Modelle ausprobieren und ihre Antwort auf eine bestimmte Frage gegenüberstellen: <https://lmarena.ai/de?mode=side-by-side> (Untermenü: „Arena (side-by-side)“).
 
 ## Was können die Modelle – und was nicht? {#sec-capabilities}
 
@@ -639,7 +641,7 @@ Den Fähigkeitszuwachs beschreiben zwei **Scaling Laws** [@mollick2025; anschaul
 Ist ein Modell einmal trainiert, bleiben die **Grenzkosten der Nutzung sehr niedrig**, und personalisierte Lernangebote lassen sich kostengünstig skalieren [@mollick2025].
 
 Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
-Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 [@emberson2026].
+Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond (*Graduate-Level Google-Proof Q&A*, also Fragen, die sich nicht ergoogeln lassen) richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 [@emberson2026].
 Der Preis fiel also in 17 Monaten um 99,9 %.
 Den größten Zuwachs brachte der letzte Schritt im Juli 2026: Der Preis fiel dabei nur um 66 %, doch dieselben 30 Cent kauften danach 479 Fragen mehr, mehr als alle früheren Stufen zusammen.
 Für solche Sprünge nennt Epoch AI mögliche Gründe, ohne sie einzeln nachzuweisen: Reasoning-Modelle holen aus kleineren, je Token billigeren Basismodellen dieselbe Leistung; das neue Modell erreichte die Schwelle schon mit niedrigem Denkaufwand, also mit wenigen Denk-Token je Frage; und wer ein Leistungsniveau zuerst erreicht, kann nur kurz einen Aufpreis verlangen, bevor Konkurrenten mit offenen und geschlossenen Modellen aufholen [@emberson2026].
@@ -848,7 +850,7 @@ Einen Überblick über die Forschung zum Begriff *AI Literacy*, ihren Bestandtei
 |---|---|---|---|
 | AI Fluency [@dakan2025] | Hochschule | vier Kompetenzen entlang des Arbeitsprozesses, drei Formen der Zusammenarbeit | Lehrerfahrung zweier Hochschulen |
 | DLHN-Kompetenzrahmen [@feil2026dlhn] | Hochschule einschließlich Verwaltung | vier Bereiche: Technologie sowie Recht und Ethik als Basis, darauf Anwendung und Reflexion; drei Niveaustufen | Recherche und Kriterienkatalog im Verbundprojekt Digitale Lehre Hub Niedersachsen |
-| AI Literacy Heptagon [@hackl2026heptagon] | Hochschule, fachbezogen anpassbar | sieben Dimensionen, vier Niveaustufen nach Bloom | Literaturreview nach PRISMA mit 27 Studien |
+| AI Literacy Heptagon [@hackl2026heptagon] | Hochschule, fachbezogen anpassbar | sieben Dimensionen, vier Niveaustufen nach Bloom | Literaturreview nach PRISMA (Standard für systematische Übersichtsarbeiten) mit 27 Studien |
 | AILit Framework [@oecd2026ailit] | Schule | vier Domänen (mit KI umgehen, gestalten, steuern, die KI-Entwicklung mitprägen), je Wissen, Fähigkeiten und Haltungen | EU und OECD mit Fachleuten und öffentlicher Konsultation |
 | Kompetenzen nach @gimpel2024competencies | Hochschule, Schwerpunkt Wirtschaftswissenschaften | Basiskompetenzen (AI Literacy, AI Reflection) und vier Felder vertiefter Kompetenzen | Konsortium von vier Hochschulen, Analyse von Curricula, Stellenmarkt und Literatur |
 
@@ -932,7 +934,7 @@ Wo Sie abweichen, steckt meist eine Annahme über den Beruf, die sich im Gesprä
 Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen den Polen „Weltuntergang durch KI-Energiehunger“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen.
 Eine einzelne Textanfrage ist billig: Schätzungen von 2025 liegen zwischen 0,3 Wattstunden für ein großes Chat-Modell und 0,03 Wattstunden für kleine Modelle, also etwa so viel wie zehn Sekunden Video-Streaming [@odonnell2025; @you2025; @elsworth2025].
 Teuer sind die komplexen Aufträge: Ein hochwertiges Video von fünf Sekunden kann rund eine Kilowattstunde kosten, so viel wie eine Stunde Mikrowelle, und weil die Nutzerzahlen schneller wachsen als die Effizienz, übersteigt der Energiebedarf der Anfragen inzwischen den des Trainings [@odonnell2025; @spencer2025].
-Rechenzentren und KI machten 2024 nach Schätzungen der IEA nur drei bis fünf Prozent des globalen Energieverbrauchs aus, weit weniger als Gebäude, Industrie und Verkehr [@ritchie2024; @spencer2024]; die Sorge der Analysten gilt der Prognose, nach der sich der Verbrauch der Rechenzentren bis 2030 verdreifachen und KI bis 2028 mehr als zwölf Prozent des US-Strombedarfs beanspruchen könnte, oft aus fossilen Quellen [@odonnell2025; @spencer2025].
+Rechenzentren und KI machten 2024 nach Schätzungen der Internationalen Energieagentur (IEA) nur drei bis fünf Prozent des globalen Energieverbrauchs aus, weit weniger als Gebäude, Industrie und Verkehr [@ritchie2024; @spencer2024]; die Sorge der Analysten gilt der Prognose, nach der sich der Verbrauch der Rechenzentren bis 2030 verdreifachen und KI bis 2028 mehr als zwölf Prozent des US-Strombedarfs beanspruchen könnte, oft aus fossilen Quellen [@odonnell2025; @spencer2025].
 Die Forderung an die Anbieter lautet deshalb Transparenz über ihren Energiebedarf, damit Politik und Nutzer die Kosten abschätzen und steuern können [@odonnell2025].
 Für die Lehre heißt das: Eine Seminarsitzung mit Chat-Nutzung fällt energetisch nicht ins Gewicht; wer Bilder, Videos oder lange Agentenläufe erzeugen lässt, sollte das wissen und gegenüber den Studierenden benennen.
 
