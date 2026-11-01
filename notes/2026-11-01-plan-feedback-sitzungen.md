@@ -28,6 +28,10 @@ Grundlage: Romans Feedbackliste vom 01.11. (iPad), Projektstand laut `claude/mer
 - Lehre für S4/S5/S8: iframe-Höhe in der Buchspalte (599 px) messen, nicht im Vollbild.
 - Nächste Schritte unverändert: S6, Bau/Einbau S4/S5, dann S9.
 
+## Stand (Nachtrag S6 Teil 1, 01.11., ca. 19:15)
+- **S6 Teil 1 erledigt und gemergt** (`main` @ `31f66d8`, live geprüft): RAG-Akronyme aus `fachbegriffe-erklaeren` übernommen (Branch damit überholt); Kap. 1–3 mit englischen Originalbegriffen (an der Quelle belegt), Umschreibungen und Akronymen. Nebenfunde korrigiert: Walsh-Titel, Säuberli (nicht MINT), Böckeler (kein „inner harness“), Kestin-Zitat, DLHN-Titel. Siehe `claude/fachbegriffe/s6/STATUS-fachbegriffe-s6-teil1-2026-11-01.md`.
+- Nächster Schritt: **S6 Teil 2** (Kap. 4–6, Vorwort, Primer, Anhänge, Glossar mit Schwierigkeitsstufen für S7). Parallel möglich: Bau S4/S5/S8, S9 für Kap. 1–3.
+
 ## Ordnungsprinzip
 
 Drei Gesichtspunkte bestimmen Rang und Reihenfolge. Erstens zählt für die Abgabe am 15.11. nur, was im **Druck** steht: Gliederung, Kürzung, Fachbegriffe und Sprache. Animationen, Spiele, Audio und Escape Room sind nur online und können notfalls nach der Abgabe folgen; im Druck erscheinen sie als Schlussbild mit QR-Code. Zweitens greifen alle Text-Änderungen an Kapitel 2 in dieselbe Datei `kapitel02.qmd`; sie laufen nacheinander, und die Neugliederung kommt zuerst, damit spätere Einbauten an der endgültigen Stelle landen. Neue Animationen sind eigene HTML-Dateien und lassen sich parallel bauen; nur ihr Einbau wartet auf die Neugliederung. Drittens kommt der Sprachcheck zuletzt, weil jede spätere Textänderung neue Artefakte erzeugen kann.
@@ -167,7 +171,8 @@ Sprachcheck des Buchtexts auf typische KI-Formulierungen mit dem Skill genai-phr
 - Sitzung B: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S2 ab.“ – **erledigt**
 - „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S1b ab.“ – **erledigt und gemergt** (`2b5ab18`)
 - Einbau S3 Scaling Laws – **erledigt und gemergt** (`7912531`)
-- Als Nächstes: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S6 ab.“ (parallel möglich: Bau S3/S4/S5/S8; deren Einbau in `kapitel02.qmd` nacheinander)
+- „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` und arbeite Abschnitt S6 ab.“ – **Teil 1 erledigt und gemergt** (`31f66d8`)
+- Als Nächstes: „Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` (Abschnitt S6) und `claude/fachbegriffe/s6/STATUS-fachbegriffe-s6-teil1-2026-11-01.md` und arbeite S6 Teil 2 ab.“ (parallel möglich: Bau S4/S5/S8; S9 für Kap. 1–3)
 
 Ablage: Projekt `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` · Tresorit `Projektnotizen-Claude/feedback-2026-11-01/` · Repo `notes/2026-11-01-plan-feedback-sitzungen.md` (beide nachgeholt in S1a).
 
