@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der 4D-Kreislauf</title>
+<style>
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe (Engpass der gewählten Rolle) */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --flaeche:#f4f4f4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --flaeche:#202020; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:760px; margin:0 auto; padding:18px 16px 28px; }
+  h1 { font-size:22px; line-height:1.25; margin:0 0 6px; font-weight:650; }
+  .lead { margin:0 0 12px; color:var(--grau); font-size:15px; }
+  .rollen { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 6px; }
+  button { font:inherit; font-size:15px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:8px; padding:6px 12px; cursor:pointer; }
+  button:hover, button:focus-visible { border-color:var(--tinte); outline:none; box-shadow:0 0 0 2px var(--hell); }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); border-color:var(--tinte); }
+  .modus { font-size:14px; color:var(--grau); margin:0 0 8px; min-height:1.4em; }
+  .modus b { color:var(--akzent); font-weight:650; }
+  svg { width:100%; height:auto; display:block; }
+  svg text { fill:var(--tinte); font-family:inherit; }
+  .ring { fill:none; stroke:var(--zurueck); stroke-width:2; }
+  .pfeil { fill:none; stroke:var(--grau); stroke-width:2; }
+  .spitze { fill:var(--grau); }
+  .knoten rect { fill:var(--grund); stroke:var(--tinte); stroke-width:2; }
+  .knoten { cursor:pointer; }
+  .knoten:focus { outline:none; }
+  .knoten:focus rect, .knoten:hover rect { stroke-width:3; }
+  .knoten.aktiv rect { fill:var(--flaeche); stroke-width:3; }
+  .knoten.engpass rect { stroke:var(--akzent); stroke-width:4; }
+  .knoten .name { font-size:18px; font-weight:650; }
+  .knoten .frage { font-size:13px; fill:var(--grau); }
+  .hinweis { font-size:13px; fill:var(--grau); }
+  .tafel { border:1px solid var(--zurueck); border-radius:10px; padding:12px 16px; margin:10px 0 0; }
+  .tafel h2 { font-size:18px; margin:0 0 2px; font-weight:650; }
+  .tafel .wurzel { font-size:13px; color:var(--grau); margin:0 0 8px; }
+  .tafel ul { margin:0 0 8px; padding-left:20px; }
+  .tafel li { margin:0 0 2px; }
+  .tafel .rolle { border-left:4px solid var(--akzent); padding:6px 10px; background:var(--flaeche); margin:8px 0 0; }
+  .tafel .rolle[hidden] { display:none; }
+  .klein { font-size:13px; color:var(--grau); }
+  a { color:inherit; }
+  @media (max-width:480px) { h1 { font-size:20px; } button { font-size:14px; padding:5px 10px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Der 4D-Kreislauf</h1>
+  <p class="lead">Zwei Schleifen, vier Kompetenzen. Klicken Sie auf eine Stufe. Wählen Sie eine Rolle, um zu sehen, wo ihr Kreislauf am ehesten reißt.</p>
+  <div class="rollen" role="group" aria-label="Rolle der KI wählen">
+    <button data-rolle="" aria-pressed="true">Alle</button>
+    <button data-rolle="hiwi" aria-pressed="false">Hiwi</button>
+    <button data-rolle="copilot" aria-pressed="false">Copilot</button>
+    <button data-rolle="tutor" aria-pressed="false">Tutor</button>
+    <button data-rolle="simulator" aria-pressed="false">Simulator</button>
+  </div>
+  <p class="modus" id="modus" aria-live="polite"></p>
+
+  <svg viewBox="0 0 640 450" role="img" aria-labelledby="svg-titel">
+    <title id="svg-titel">Äußere Schleife: Delegation oben, Diligence unten. Innere Schleife: Description links, Discernment rechts.</title>
+    <defs>
+      <marker id="spitze" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="spitze" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <!-- äußere Schleife -->
+    <path class="pfeil" d="M232,62 C40,110 40,340 232,388" marker-end="url(#spitze)"/>
+    <path class="pfeil" d="M408,388 C600,340 600,110 408,62" marker-end="url(#spitze)"/>
+    <text class="hinweis" x="8" y="112">strategisch:</text>
+    <text class="hinweis" x="8" y="130">einmal je</text>
+    <text class="hinweis" x="8" y="148">Vorhaben</text>
+    <!-- innere Schleife -->
+    <circle class="ring" cx="320" cy="225" r="116"/>
+    <path class="pfeil" d="M245,137 A116,116 0 0 1 395,137" marker-end="url(#spitze)"/>
+    <path class="pfeil" d="M395,313 A116,116 0 0 1 245,313" marker-end="url(#spitze)"/>
+    <text class="hinweis" x="320" y="160" text-anchor="middle">erzeugen lassen</text>
+    <text class="hinweis" x="320" y="298" text-anchor="middle">nachbessern</text>
+    <text class="hinweis" x="320" y="221" text-anchor="middle">operativ:</text>
+    <text class="hinweis" x="320" y="239" text-anchor="middle">viele Runden</text>
+
+    <g class="knoten" data-d="delegation" tabindex="0" role="button" aria-label="Delegation">
+      <rect x="232" y="22" width="176" height="62" rx="10"/>
+      <text class="name" x="320" y="49" text-anchor="middle">Delegation</text>
+      <text class="frage" x="320" y="70" text-anchor="middle">Wer macht was?</text>
+    </g>
+    <g class="knoten" data-d="diligence" tabindex="0" role="button" aria-label="Diligence">
+      <rect x="232" y="366" width="176" height="62" rx="10"/>
+      <text class="name" x="320" y="393" text-anchor="middle">Diligence</text>
+      <text class="frage" x="320" y="414" text-anchor="middle">Wer verantwortet es?</text>
+    </g>
+    <g class="knoten" data-d="description" tabindex="0" role="button" aria-label="Description">
+      <rect x="132" y="194" width="136" height="62" rx="10"/>
+      <text class="name" x="200" y="221" text-anchor="middle">Description</text>
+      <text class="frage" x="200" y="242" text-anchor="middle">Was will ich?</text>
+    </g>
+    <g class="knoten" data-d="discernment" tabindex="0" role="button" aria-label="Discernment">
+      <rect x="372" y="194" width="136" height="62" rx="10"/>
+      <text class="name" x="440" y="221" text-anchor="middle">Discernment</text>
+      <text class="frage" x="440" y="242" text-anchor="middle">Taugt es?</text>
+    </g>
+  </svg>
+
+  <section class="tafel" id="tafel" aria-live="polite">
+    <h2 id="t-name"></h2>
+    <p class="wurzel" id="t-wurzel"></p>
+    <p id="t-frage"></p>
+    <ul id="t-unter"></ul>
+    <p class="rolle" id="t-rolle" hidden></p>
+  </section>
+  <p class="klein" id="zurueck"></p>
+  <p class="klein">Eigene Darstellung nach Dakan &amp; Feller (2025), The AI Fluency Framework, Version 1.1 (CC BY-SA 4.0), und den beiden Schleifen aus dem Kurs „Teaching AI Fluency“ (Dakan, Feller &amp; Anthropic, 2025). Die Zuordnung der Engpässe zu den Rollen ist eine eigene Lesart.</p>
+</main>
+<script>
+(() => {
+  const STUFEN = {
+    delegation: { name:'Delegation', wurzel:'lat. delegare, übertragen',
+      frage:'Was übernimmt der Mensch, was die KI?',
+      unter:[['Ziel- und Aufgabenbewusstsein','goal and task awareness'],['Kenntnis der Werkzeuge','platform awareness'],['Aufgabenverteilung','task delegation']] },
+    description: { name:'Description', wurzel:'lat. describere, umreißen, aufzeichnen',
+      frage:'Wie sage ich der KI klar, was ich will?',
+      unter:[['Ergebnis beschreiben','product description'],['Zusammenarbeit beschreiben','process description'],['Verhalten festlegen','performance description']] },
+    discernment: { name:'Discernment', wurzel:'lat. discernere, unterscheiden, trennen',
+      frage:'Wie beurteile ich, was die KI liefert?',
+      unter:[['Ergebnis beurteilen','product discernment'],['Zusammenarbeit beurteilen','process discernment'],['Verhalten beurteilen','performance discernment']] },
+    diligence: { name:'Diligence', wurzel:'lat. diligentia, Sorgfalt; von diligere, hochachten, sorgsam auswählen',
+      frage:'Wie setze ich KI verantwortlich und offen ein?',
+      unter:[['Sorgfalt beim Erzeugen','creation diligence'],['Offenlegung','transparency diligence'],['Prüfung vor der Freigabe','deployment diligence']] }
+  };
+  const ROLLEN = {
+    hiwi: { name:'Hiwi', modus:'Automation', engpass:['delegation','discernment'], anker:'sec-hiwi', abschnitt:'KI als Hiwi',
+      t:{ delegation:'Welche Aufgaben wandern zur KI, bei welchen hilft sie nur? Tabelle 4.1 ist bereits die Delegationsanalyse.',
+          description:'Extraktion festlegen wie ein Codebuch: klar definierte Variablen statt freier Zusammenfassung.',
+          discernment:'Ergebnis prüfen: Ein zweiter, gleich eingestellter Lauf ist die billigste Prüfregel.',
+          diligence:'Material für Studierende erst nach der Prüfung weitergeben.' } },
+    copilot: { name:'Copilot', modus:'Augmentation', engpass:['description','discernment'], anker:'sec-copilot', abschnitt:'KI als Copilot',
+      t:{ delegation:'Was eigene Arbeit bleibt, entscheidet das Lernziel.',
+          description:'Den Arbeitsweg beschreiben: Fachbegriffe, Änderungen einzeln annehmen, Erklärungen statt fertiger Fassungen.',
+          discernment:'Jede übernommene Änderung begründen und mit dem eigenen Ergebnis abgleichen.',
+          diligence:'Dokumentieren, wie stark die KI mitgewirkt hat.' } },
+    tutor: { name:'Tutor', modus:'Agency', engpass:['description','diligence'], anker:'sec-tutor', abschnitt:'KI als Tutor',
+      t:{ delegation:'Für die Studierenden: Was frage ich den Tutor, was löse ich selbst? Eine Anleitung wirkt, Ermutigung kaum.',
+          description:'Verhalten beschreiben und Musterlösungen mitgeben; die Zurückhaltung zusätzlich durch eine Aufsichtsinstanz sichern.',
+          discernment:'Vor der Freigabe an einem Goldstandard testen.',
+          diligence:'Die Hochschule ist Betreiberin; die Einbettung in den Kurs entscheidet über die Wirkung.' } },
+    simulator: { name:'Simulator', modus:'Agency', engpass:['description','discernment'], anker:'sec-simulator', abschnitt:'KI als Simulator',
+      t:{ delegation:'Welche Übung verträgt ein simuliertes Gegenüber, welche braucht Menschen?',
+          description:'Rolle, Wissensstand und Verhalten der Figur festlegen; Patient, Tutor und Bewertung als getrennte Rollen.',
+          discernment:'Prüfen, ob die Figur mehr als den Durchschnitt spielt.',
+          diligence:'Offen sagen, dass mit einem Durchschnitt geübt wird, und das Debriefing selbst führen.' } }
+  };
+  const $ = id => document.getElementById(id);
+  const knoten = [...document.querySelectorAll('.knoten')];
+  const knoepfe = [...document.querySelectorAll('[data-rolle]')];
+  let rolle = '', stufe = 'delegation';
+  try {
+    const p = new URLSearchParams(location.search).get('rolle');
+    if (p && ROLLEN[p]) rolle = p;
+  } catch (e) {}
+
+  function zeige() {
+    const r = rolle ? ROLLEN[rolle] : null;
+    knoepfe.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.rolle === rolle)));
+    knoten.forEach(k => {
+      k.classList.toggle('aktiv', k.dataset.d === stufe);
+      k.classList.toggle('engpass', !!r && r.engpass.includes(k.dataset.d));
+    });
+    $('modus').innerHTML = r
+      ? `${r.name} · Modalität ${r.modus} · Engpass: <b>${r.engpass.map(d => STUFEN[d].name).join(' und ')}</b>`
+      : 'Hiwi: Automation · Copilot: Augmentation · Tutor und Simulator: Agency';
+    const s = STUFEN[stufe];
+    $('t-name').textContent = s.name;
+    $('t-wurzel').textContent = s.wurzel;
+    $('t-frage').textContent = s.frage;
+    $('t-unter').innerHTML = s.unter.map(([de, en]) => `<li>${de} (<i>${en}</i>)</li>`).join('');
+    const tr = $('t-rolle');
+    if (r) { tr.hidden = false; tr.innerHTML = `<b>${r.name}${r.engpass.includes(stufe) ? ' · Engpass' : ''}:</b> ${r.t[stufe]}`; }
+    else { tr.hidden = true; }
+    $('zurueck').innerHTML = r
+      ? `Zurück zum Buch: <a href="../kapitel04.html#${r.anker}" target="_top">${r.abschnitt}</a>`
+      : 'Zurück zum Buch: <a href="../kapitel02.html#sec-schemas" target="_top">Schemas für den systematischen Umgang mit GenAI</a>';
+  }
+  knoepfe.forEach(b => b.addEventListener('click', () => {
+    rolle = b.dataset.rolle;
+    if (rolle) stufe = ROLLEN[rolle].engpass[0];
+    zeige();
+  }));
+  knoten.forEach(k => {
+    const waehle = () => { stufe = k.dataset.d; zeige(); };
+    k.addEventListener('click', waehle);
+    k.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); waehle(); } });
+  });
+  if (rolle) stufe = ROLLEN[rolle].engpass[0];
+  zeige();
+})();
+</script>
+</body>
+</html>

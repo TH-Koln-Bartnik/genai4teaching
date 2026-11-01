@@ -521,7 +521,13 @@ div.csl-indent {
   <li><a href="#sec-prompting-myths" id="toc-sec-prompting-myths" class="nav-link" data-scroll-target="#sec-prompting-myths"><span class="header-section-number">2.5.5</span> Es könnt’ alles so einfach sein! Es bringt nichts, Bots zu bedrohen oder zu bestechen.</a></li>
   <li><a href="#sec-prompts-teaching" id="toc-sec-prompts-teaching" class="nav-link" data-scroll-target="#sec-prompts-teaching"><span class="header-section-number">2.5.6</span> Was heißt das für Prompts in der Lehre?</a></li>
   </ul></li>
-  <li><a href="#sec-energy" id="toc-sec-energy" class="nav-link" data-scroll-target="#sec-energy"><span class="header-section-number">2.6</span> Exkurs: Wie steht es mit dem Ressourcenverbrauch der Modelle?</a></li>
+  <li><a href="#sec-schemas" id="toc-sec-schemas" class="nav-link" data-scroll-target="#sec-schemas"><span class="header-section-number">2.6</span> Schemas für den systematischen Umgang mit GenAI</a>
+  <ul>
+  <li><a href="#sec-schemas-rahmen" id="toc-sec-schemas-rahmen" class="nav-link" data-scroll-target="#sec-schemas-rahmen"><span class="header-section-number">2.6.1</span> Kompetenzrahmen im Vergleich</a></li>
+  <li><a href="#sec-4d" id="toc-sec-4d" class="nav-link" data-scroll-target="#sec-4d"><span class="header-section-number">2.6.2</span> Das 4D-Modell</a></li>
+  <li><a href="#sec-4d-nutzung" id="toc-sec-4d-nutzung" class="nav-link" data-scroll-target="#sec-4d-nutzung"><span class="header-section-number">2.6.3</span> Wie dieses Buch das Schema benutzt</a></li>
+  </ul></li>
+  <li><a href="#sec-energy" id="toc-sec-energy" class="nav-link" data-scroll-target="#sec-energy"><span class="header-section-number">2.7</span> Exkurs: Wie steht es mit dem Ressourcenverbrauch der Modelle?</a></li>
   <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel02.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel02.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
@@ -564,7 +570,8 @@ div.csl-indent {
 <li>Modell, Harness und Agent abgrenzen, die Nutzungsmuster LLM, RAG und Agent unterscheiden und für eine Lehraufgabe das passende Setup wählen;</li>
 <li>in Laiensprache erklären, wie ein Sprachmodell Text erzeugt, warum es dabei halluziniert und was daraus für die Lehre folgt;</li>
 <li>mit der Jagged Frontier begründen, warum Modelle bei ähnlich schwierigen Aufgaben sehr unterschiedlich abschneiden;</li>
-<li>einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen und verbreitete Prompt-Tricks als wirkungslos erkennen.</li>
+<li>einen Prompt aus Rolle, Aufgabe, Format und Beispielen bauen und verbreitete Prompt-Tricks als wirkungslos erkennen;</li>
+<li>mit dem 4D-Modell klären, was bei einer Aufgabe an die KI geht und wie das Ergebnis beschrieben, geprüft und verantwortet wird.</li>
 </ul>
 </div>
 </div>
@@ -624,6 +631,17 @@ div.csl-indent {
 </div>
 </div>
 <div class="mc-frage">
+<p>Eine Kollegin hat einen Prompt-Kurs besucht. Trotzdem übernimmt sie mal Fehler ungeprüft, mal lässt sie die KI Aufgaben erledigen, die ihre Studierenden selbst üben sollten. Was fehlt?</p>
+<ul>
+<li>Ein zweiter Kurs mit fortgeschrittenen Prompt-Techniken.</li>
+<li><span class="richtig">Ein Schema, das auch Aufgabenverteilung, Prüfung und Verantwortung umfasst.</span></li>
+<li>Ein leistungsfähigeres Modell mit höherer Denkstufe.</li>
+</ul>
+<div class="mc-rueckmeldung">
+<p>Prompting ist eine von vier Kompetenzen. Das 4D-Modell ergänzt Delegation, Discernment (Prüfung) und Diligence (Verantwortung) und verbindet die vier zu zwei Schleifen (<a href="#sec-schemas" class="quarto-xref"><span>Kapitel 2.6</span></a>).</p>
+</div>
+</div>
+<div class="mc-frage">
 <p>Studierende fragen, ob sie aus Klimagründen auf KI verzichten sollten. Welche Einordnung trifft zu?</p>
 <ul>
 <li><span class="richtig">Eine Anfrage verbraucht wenig, der Gesamtbedarf der Rechenzentren wächst stark.</span></li>
@@ -631,7 +649,7 @@ div.csl-indent {
 <li>KI fällt im Energiebedarf der Rechenzentren kaum ins Gewicht.</li>
 </ul>
 <div class="mc-rueckmeldung">
-<p>Beides stimmt zugleich: Eine Textanfrage liegt bei Bruchteilen einer Wattstunde, aber der Bedarf der Infrastruktur wächst schneller als die Effizienz. Die Steuerung ist eine politische Aufgabe (<a href="#sec-energy" class="quarto-xref"><span>Kapitel 2.6</span></a>).</p>
+<p>Beides stimmt zugleich: Eine Textanfrage liegt bei Bruchteilen einer Wattstunde, aber der Bedarf der Infrastruktur wächst schneller als die Effizienz. Die Steuerung ist eine politische Aufgabe (<a href="#sec-energy" class="quarto-xref"><span>Kapitel 2.7</span></a>).</p>
 </div>
 </div>
 </div>
@@ -1215,8 +1233,157 @@ Tabelle&nbsp;2.4: Prompt-Empfehlungen der großen KI-Labore. Quellen: <span clas
 </div>
 </section>
 </section>
-<section id="sec-energy" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="sec-energy"><span class="header-section-number">2.6</span> Exkurs: Wie steht es mit dem Ressourcenverbrauch der Modelle?</h2>
+<section id="sec-schemas" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-schemas"><span class="header-section-number">2.6</span> Schemas für den systematischen Umgang mit GenAI</h2>
+<p>Der vorige Abschnitt hat gezeigt, wie ein guter Prompt gebaut ist. Prompting deckt aber nur eine von vier Kompetenzen ab: Vor dem Prompt steht die Entscheidung, was überhaupt an die KI geht, nach der Antwort die Prüfung des Ergebnisses und die Verantwortung dafür. Ein Schema, das diese Schritte ordnet, macht aus einer Sammlung von Tipps eine Arbeitsweise, und weil es keine Werkzeuge nennt, übersteht es den nächsten Modellwechsel.</p>
+<section id="sec-schemas-rahmen" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="sec-schemas-rahmen"><span class="header-section-number">2.6.1</span> Kompetenzrahmen im Vergleich</h3>
+<p>Artikel 4 der KI-Verordnung verpflichtet Hochschulen, die KI-Systeme bereitstellen, zu Maßnahmen für die KI-Kompetenz ihres Personals, sagt aber nicht, worin diese Kompetenz besteht; der Digital-Omnibus vom Juli 2026 hat die Pflicht entschärft und die Definition nicht nachgeliefert <span class="citation" data-cites="eu2024aiact eu2026omnibus">(<a href="references.html#ref-eu2026omnibus" role="doc-biblioref">Europäisches Parlament und Rat, 2026</a>; <a href="references.html#ref-eu2024aiact" role="doc-biblioref">Europäisches Parlament und Rat der Europäischen Union, 2024</a>)</span> (<a href="kapitel05.html#sec-ki-vo" class="quarto-xref"><span>Kapitel 5.5.2</span></a>). Die Lücke füllen Kompetenzrahmen. Einen Überblick über die Forschung zum Begriff <em>AI Literacy</em>, ihren Bestandteilen, Lernmethoden und Wirkungen gibt <span class="citation" data-cites="pinski2024literacy">Pinski &amp; Benlian (<a href="references.html#ref-pinski2024literacy" role="doc-biblioref">2024</a>)</span>; für die Hochschullehre sind fünf neuere Rahmen besonders brauchbar (<a href="#tbl-kompetenzrahmen" class="quarto-xref">Tabelle&nbsp;<span>2.5</span></a>).</p>
+<div class="tabelle-scroll">
+<div id="tbl-kompetenzrahmen" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[20,20,32,28]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-kompetenzrahmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;2.5: Fünf Kompetenzrahmen für den Umgang mit KI im Vergleich. Eigene Zusammenstellung nach den genannten Quellen
+</figcaption>
+<div aria-describedby="tbl-kompetenzrahmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 32%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rahmen</th>
+<th>Zielgruppe</th>
+<th>Ordnungsprinzip</th>
+<th>Entstehung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI Fluency <span class="citation" data-cites="dakan2025">(<a href="references.html#ref-dakan2025" role="doc-biblioref">Dakan &amp; Feller, 2025</a>)</span></td>
+<td>Hochschule</td>
+<td>vier Kompetenzen entlang des Arbeitsprozesses, drei Formen der Zusammenarbeit</td>
+<td>Lehrerfahrung zweier Hochschulen</td>
+</tr>
+<tr class="even">
+<td>DLHN-Kompetenzrahmen <span class="citation" data-cites="feil2026dlhn">(<a href="references.html#ref-feil2026dlhn" role="doc-biblioref">Feil et al., 2026</a>)</span></td>
+<td>Hochschule einschließlich Verwaltung</td>
+<td>vier Bereiche: Technologie sowie Recht und Ethik als Basis, darauf Anwendung und Reflexion; drei Niveaustufen</td>
+<td>Recherche und Kriterienkatalog im Verbundprojekt Digitale Lehre Hub Niedersachsen</td>
+</tr>
+<tr class="odd">
+<td>AI Literacy Heptagon <span class="citation" data-cites="hackl2026heptagon">(<a href="references.html#ref-hackl2026heptagon" role="doc-biblioref">Hackl et al., 2026</a>)</span></td>
+<td>Hochschule, fachbezogen anpassbar</td>
+<td>sieben Dimensionen, vier Niveaustufen nach Bloom</td>
+<td>Literaturreview nach PRISMA mit 27 Studien</td>
+</tr>
+<tr class="even">
+<td>AILit Framework <span class="citation" data-cites="oecd2026ailit">(<a href="references.html#ref-oecd2026ailit" role="doc-biblioref">OECD &amp; European Union, 2026</a>)</span></td>
+<td>Schule</td>
+<td>vier Domänen (mit KI umgehen, gestalten, steuern, die KI-Entwicklung mitprägen), je Wissen, Fähigkeiten und Haltungen</td>
+<td>EU und OECD mit Fachleuten und öffentlicher Konsultation</td>
+</tr>
+<tr class="odd">
+<td>Kompetenzen nach <span class="citation" data-cites="gimpel2024competencies">Gimpel et al. (<a href="references.html#ref-gimpel2024competencies" role="doc-biblioref">2024</a>)</span></td>
+<td>Hochschule, Schwerpunkt Wirtschaftswissenschaften</td>
+<td>Basiskompetenzen (AI Literacy, AI Reflection) und vier Felder vertiefter Kompetenzen</td>
+<td>Konsortium von vier Hochschulen, Analyse von Curricula, Stellenmarkt und Literatur</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<p>Die fünf Rahmen ergänzen sich mehr, als dass sie konkurrieren: Sie zielen auf verschiedene Bildungsstufen und ordnen nach verschiedenen Prinzipien, nach Arbeitsschritten, Wissensdimensionen, Handlungsfeldern oder Bereichen. Eine Schwäche teilen sie. Alle verlangen, dass Lernende KI-Ergebnisse kritisch beurteilen, kaum einer sagt, wie; konkrete Verfahren wie Quellenabgleich oder Faktenprüfung nennen nur AI Fluency und AILit ausdrücklich. Die Methoden der Prüfung liefert dieses Buch deshalb an den Stellen nach, an denen sie gebraucht werden, etwa beim Tutor (<a href="kapitel04.html#sec-tutor-betrieb" class="quarto-xref"><span>Kapitel 4.3.3</span></a>) und bei KI-gebauten Simulationen (<a href="kapitel04.html#sec-widget-pruefen" class="quarto-xref"><span>Kapitel 4.2.2.3</span></a>).</p>
+<p>Dieses Buch arbeitet mit dem Modell <em>AI Fluency</em> von Rick Dakan und Joseph Feller, aus vier Gründen. Es ordnet nach dem Arbeitsprozess und passt damit zu einem Buch, das nach den Rollen der KI gegliedert ist. Es nennt keine Werkzeuge. Es führt als einziger der fünf Rahmen die Verantwortung gegenüber Dritten als eigene Kompetenz. Und seine vier Begriffe sind einprägsam genug, um das Vokabular eines ganzen Buchs zu tragen. Die Fassung der irischen Hochschulbehörde HEA steht wie dieses Buch unter der Lizenz CC BY-SA 4.0; die Übersetzungen der Definitionen folgen ihr.</p>
+</section>
+<section id="sec-4d" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="sec-4d"><span class="header-section-number">2.6.2</span> Das 4D-Modell</h3>
+<p>AI Fluency ist die Fähigkeit, effektiv, effizient, ethisch und sicher mit KI zu arbeiten <span class="citation" data-cites="dakan2025">(<a href="references.html#ref-dakan2025" role="doc-biblioref">Dakan &amp; Feller, 2025</a>)</span>. Das Modell zerlegt sie in vier Kompetenzen, die <em>4 D</em>, mit je drei Unterkompetenzen (<a href="#tbl-4d" class="quarto-xref">Tabelle&nbsp;<span>2.6</span></a>).</p>
+<div class="tabelle-scroll">
+<div id="tbl-4d" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[16,24,40,20]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-4d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;2.6: Die vier Kompetenzen des AI-Fluency-Modells mit ihren Unterkompetenzen. Übersetzung nach <span class="citation" data-cites="dakan2025">Dakan &amp; Feller (<a href="references.html#ref-dakan2025" role="doc-biblioref">2025</a>)</span>, CC BY-SA 4.0
+</figcaption>
+<div aria-describedby="tbl-4d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 24%">
+<col style="width: 40%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kompetenz</th>
+<th>Leitfrage</th>
+<th>Unterkompetenzen</th>
+<th>Herkunft des Wortes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Delegation</strong></td>
+<td>Was übernimmt der Mensch, was die KI?</td>
+<td>Ziel- und Aufgabenbewusstsein (<em>goal and task awareness</em>), Kenntnis der Werkzeuge (<em>platform awareness</em>), Aufgabenverteilung (<em>task delegation</em>)</td>
+<td>lat. <em>delegare</em>, übertragen</td>
+</tr>
+<tr class="even">
+<td><strong>Description</strong></td>
+<td>Wie sage ich der KI klar, was ich will?</td>
+<td>Ergebnis beschreiben (<em>product description</em>), Zusammenarbeit beschreiben (<em>process description</em>), Verhalten festlegen (<em>performance description</em>)</td>
+<td>lat. <em>describere</em>, umreißen, aufzeichnen</td>
+</tr>
+<tr class="odd">
+<td><strong>Discernment</strong></td>
+<td>Wie beurteile ich, was die KI liefert?</td>
+<td>Ergebnis beurteilen (<em>product discernment</em>), Zusammenarbeit beurteilen (<em>process discernment</em>), Verhalten beurteilen (<em>performance discernment</em>)</td>
+<td>lat. <em>discernere</em>, unterscheiden, trennen</td>
+</tr>
+<tr class="even">
+<td><strong>Diligence</strong></td>
+<td>Wie setze ich KI verantwortlich und offen ein?</td>
+<td>Sorgfalt beim Erzeugen (<em>creation diligence</em>), Offenlegung (<em>transparency diligence</em>), Prüfung vor der Freigabe (<em>deployment diligence</em>)</td>
+<td>lat. <em>diligentia</em>, Sorgfalt, von <em>diligere</em>, hochachten, sorgsam auswählen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<p>Quer zu den vier Kompetenzen liegen drei Formen der Zusammenarbeit, die das Modell <em>Modalitäten</em> nennt. In der <strong>Automation</strong> führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der <strong>Augmentation</strong> erledigen Mensch und KI sie gemeinsam und im Wechsel; in der <strong>Agency</strong> konfiguriert der Mensch eine KI, die später selbstständig handelt, oft für andere Nutzerinnen und Nutzer. Die ersten beiden Wörter klingen wie zwei Formen des Aufgabenmodells in <a href="kapitel04.html#sec-hiwi" class="quarto-xref"><span>Kapitel 4.1</span></a>, meinen aber etwas anderes: Dort geht es darum, was mit einer Aufgabe geschieht, hier darum, wie Mensch und KI an ihr zusammenarbeiten. Die vier Rollen aus <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a> lassen sich den Modalitäten zuordnen. Der Hiwi arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency, weil die Lehrende dort ein System einrichtet, mit dem später Studierende arbeiten.</p>
+<p>Dakan und Feller nennen die vier D ausdrücklich vernetzte Kompetenzen, keine Reihenfolge <span class="citation" data-cites="dakan2025">(<a href="references.html#ref-dakan2025" role="doc-biblioref">Dakan &amp; Feller, 2025</a>)</span>. In ihrem Kurs für Lehrende verbinden sie die vier aber zu zwei Schleifen <span class="citation" data-cites="dakan2025teaching">(<a href="references.html#ref-dakan2025teaching" role="doc-biblioref">Dakan et al., 2025</a>)</span>, und aus diesen beiden Schleifen baut dieses Buch einen Kreislauf<span>, den die Abbildung unten zum Anklicken zeigt</span>. Die äußere Schleife zwischen <strong>Delegation und Diligence</strong> ist strategisch und läuft einmal je Vorhaben: Was will ich erreichen, welches System passt, welche Pflichten entstehen daraus, und was muss deshalb beim Menschen bleiben? Sie läuft in beide Richtungen, denn eine Pflicht zur Offenlegung oder zur Prüfung verändert, was man sinnvoll abgibt. Die innere Schleife zwischen <strong>Description und Discernment</strong> ist operativ und dreht sich innerhalb eines Arbeitsgangs viele Male: beschreiben, erzeugen lassen, prüfen, nachbessern. Das Buch liest die vier D damit als Stufen eines Arbeitsablaufs, weil sie sich so für jede Rolle erzählen lassen; es folgt der Lehrpraxis der Autoren, nicht dem Wortlaut ihrer Definition.</p>
+<iframe src="interactions/4d-kreislauf.html" width="100%" height="760px" frameborder="0" title="Der 4D-Kreislauf: zwei Schleifen, vier Kompetenzen, Engpass je Rolle">
+</iframe>
+<p>Das Schema beantwortet nicht, wie viel KI eine Aufgabe verträgt. Zu viel Einsatz kostet Kompetenz und Qualität, zu wenig kostet Übung mit Werkzeugen, die die Studierenden im Beruf vorfinden; der Kreislauf ist das Werkzeug, für jede Aufgabe die Mitte zwischen beiden zu suchen. Was die Forschung über die Kosten des Auslagerns weiß, zeigt <a href="kapitel03.html#sec-evidenz" class="quarto-xref"><span>Kapitel 3.5</span></a>.</p>
+</section>
+<section id="sec-4d-nutzung" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="sec-4d-nutzung"><span class="header-section-number">2.6.3</span> Wie dieses Buch das Schema benutzt</h3>
+<p>Jede der vier Rollen in <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a> endet mit einem Absatz, der den Kreislauf für diese Rolle durchläuft und die Stufe benennt, an der er am ehesten reißt. Die Übungen in <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-modus" class="quarto-xref"><span>Kapitel D.1</span></a> tragen je eine 4D-Tabelle, und die Prompt-Sammlung in <a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang B</span></a> liefert Material für die Stufe Description. Wer das Modell selbst einüben oder mit Studierenden erarbeiten will, findet eine Übung in vier Phasen an einem Berufsprofil in der Online-Fassung von Anhang B.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Probieren Sie mal: Delegation an einem Berufsprofil">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Probieren Sie mal: Delegation an einem Berufsprofil
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wählen Sie einen Beruf, für den Sie ausbilden, und lassen Sie sich von einem Sprachmodell zehn typische Tätigkeiten dieses Berufs auflisten, etwa nach dem Berufsprofil der US-Datenbank O*NET. Ordnen Sie jede Tätigkeit selbst einer der drei Formen aus <a href="kapitel04.html#tbl-acemoglu" class="quarto-xref">Tabelle&nbsp;<span>4.1</span></a> zu: Automatisierung, Augmentierung oder neue Aufgabe. Lassen Sie das Modell dieselbe Zuordnung vornehmen und vergleichen Sie. Wo Sie abweichen, steckt meist eine Annahme über den Beruf, die sich im Gespräch mit Studierenden lohnt.</p>
+<p><span>Die vollständige Übung mit allen vier Phasen: <a href="kapitel07-appendix02-prompt-sammlung.html#sec-ai-fluency-uebung" class="quarto-xref"><span>Kapitel B.8</span></a>.</span></p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-energy" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-energy"><span class="header-section-number">2.7</span> Exkurs: Wie steht es mit dem Ressourcenverbrauch der Modelle?</h2>
 <p>Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen den Polen „Weltuntergang durch KI-Energiehunger“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen. Eine einzelne Textanfrage ist billig: Schätzungen von 2025 liegen zwischen 0,3 Wattstunden für ein großes Chat-Modell und 0,03 Wattstunden für kleine Modelle, also etwa so viel wie zehn Sekunden Video-Streaming <span class="citation" data-cites="odonnell2025 you2025 elsworth2025">(<a href="references.html#ref-elsworth2025" role="doc-biblioref">Elsworth et al., 2025</a>; <a href="references.html#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="references.html#ref-you2025" role="doc-biblioref">You, 2025</a>)</span>. Teuer sind die komplexen Aufträge: Ein hochwertiges Video von fünf Sekunden kann rund eine Kilowattstunde kosten, so viel wie eine Stunde Mikrowelle, und weil die Nutzerzahlen schneller wachsen als die Effizienz, übersteigt der Energiebedarf der Anfragen inzwischen den des Trainings <span class="citation" data-cites="odonnell2025 spencer2025">(<a href="references.html#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="references.html#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>. Rechenzentren und KI machten 2024 nach Schätzungen der IEA nur drei bis fünf Prozent des globalen Energieverbrauchs aus, weit weniger als Gebäude, Industrie und Verkehr <span class="citation" data-cites="ritchie2024 spencer2024">(<a href="references.html#ref-ritchie2024" role="doc-biblioref">Ritchie, 2024</a>; <a href="references.html#ref-spencer2024" role="doc-biblioref">Spencer &amp; Singh, 2024</a>)</span>; die Sorge der Analysten gilt der Prognose, nach der sich der Verbrauch der Rechenzentren bis 2030 verdreifachen und KI bis 2028 mehr als zwölf Prozent des US-Strombedarfs beanspruchen könnte, oft aus fossilen Quellen <span class="citation" data-cites="odonnell2025 spencer2025">(<a href="references.html#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="references.html#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>. Die Forderung an die Anbieter lautet deshalb Transparenz über ihren Energiebedarf, damit Politik und Nutzer die Kosten abschätzen und steuern können <span class="citation" data-cites="odonnell2025">(<a href="references.html#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>. Für die Lehre heißt das: Eine Seminarsitzung mit Chat-Nutzung fällt energetisch nicht ins Gewicht; wer Bilder, Videos oder lange Agentenläufe erzeugen lässt, sollte das wissen und gegenüber den Studierenden benennen.</p>
 <p>Der vollständige Exkurs mit allen Quellen und Rechenbeispielen steht in der Online-Version: <a href="./energie.html">Ressourcenverbrauch der Modelle</a>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Kernaussagen">
@@ -1235,6 +1402,7 @@ Tabelle&nbsp;2.4: Prompt-Empfehlungen der großen KI-Labore. Quellen: <span clas
 <li>Halluzinationen sind kein Betriebsunfall, sondern folgen aus der Funktionsweise. Gegenmittel sind Eingrenzung des Inputs, Musterlösungen und systematische Prüfung.</li>
 <li>Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne.</li>
 <li>Gute Prompts sind präzise, strukturiert, mit Beispielen und iterativ. Höflichkeit, Drohungen und Trinkgeld ändern nichts; wer das Modell wie eine junge Hilfskraft anleitet, kommt weiter.</li>
+<li>Prompting ist eine von vier Kompetenzen. Das 4D-Modell ordnet den Umgang mit KI in Delegation, Description, Discernment und Diligence; die äußere Schleife entscheidet einmal je Vorhaben, was die KI übernimmt und welche Pflichten folgen, die innere dreht sich in jedem Arbeitsgang.</li>
 <li>Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.</li>
 </ol>
 </div>
@@ -1266,6 +1434,7 @@ Tabelle&nbsp;2.4: Prompt-Empfehlungen der großen KI-Labore. Quellen: <span clas
 <li>Der Energieverbrauch einer einzelnen Anfrage ist gering, der Bedarf der Infrastruktur wächst stark. Welche Folgerung ziehen Sie daraus für Ihre eigene Nutzung, und welche Entscheidung liegt nicht bei Ihnen?</li>
 <li>Ein Agent soll Ihre Sprechstundenanfragen ein Semester lang vorsortieren und sich dabei merken, welche Fragen schon beantwortet sind. Welche Stufe des Gedächtnisses wählen Sie, und an welcher Stelle prüfen Sie, was er sich gemerkt hat?</li>
 <li>Ein Studierendenteam baut auf einem großen Sprachmodell einen Lerntutor für Ihr Fach. Welche Teile davon gehören zum äußeren Harness, und an welchen zwei Stellen würden Sie den Handlungsspielraum des Modells begrenzen? Wessen Autonomie wächst dabei, wessen schrumpft?</li>
+<li>Gehen Sie eine Aufgabe, die Sie demnächst an eine KI geben wollen, durch beide Schleifen des 4D-Kreislaufs. An welcher der vier Stufen würde Ihr Vorhaben am ehesten scheitern, und was legen Sie deshalb vorher fest?</li>
 </ol>
 <p>Lösungshinweise: <a href="kapitel10-appendix05-loesungshinweise.html" class="quarto-xref"><span>Anhang F</span></a>.</p>
 </div>
@@ -1339,6 +1508,12 @@ Chen, Y., Benton, J., Radhakrishnan, A., Uesato, J., Denison, C., Schulman, J., 
 <div id="ref-cho2025" class="csl-entry" role="listitem">
 Cho, A., Kim, G. C., Karpekov, A., Helbling, A., Wang, Z. J., Lee, S., Hoover, B., &amp; Chau, D. H. (2025). Transformer Explainer: Interactive learning of text-generative models. <a href="https://doi.org/10.1609/aaai.v39i28.35347">https://doi.org/10.1609/aaai.v39i28.35347</a>.
 </div>
+<div id="ref-dakan2025" class="csl-entry" role="listitem">
+Dakan, R., &amp; Feller, J. (2025). <em><a href="https://aifluencyframework.org/">The AI Fluency Framework: A descriptive and normative model of human-AI interaction for higher education (Version 1.1)</a></em>. Higher Education Authority.
+</div>
+<div id="ref-dakan2025teaching" class="csl-entry" role="listitem">
+Dakan, R., Feller, J., &amp; Anthropic (2025). Teaching AI Fluency [Onlinekurs; Lektionen „The Delegation-Diligence loop“ und „The Description-Discernment loop“]. <em>Anthropic Academy</em>. <a href="https://anthropic.skilljar.com/teaching-ai-fluency">https://anthropic.skilljar.com/teaching-ai-fluency</a>.
+</div>
 <div id="ref-deci2000" class="csl-entry" role="listitem">
 Deci, E. L., &amp; Ryan, R. M. (2000). The <span>„what“</span> and <span>„why“</span> of goal pursuits: Human needs and the self-determination of behavior. <em>Psychological Inquiry</em>, <em>11</em>(4), 227–268. <a href="https://doi.org/10.1207/S15327965PLI1104_01">https://doi.org/10.1207/S15327965PLI1104_01</a>.
 </div>
@@ -1357,11 +1532,20 @@ Elsworth, C., Huang, K., Patterson, D., Schneider, I., Sedivy, R., Goodman, S., 
 <div id="ref-emberson2026" class="csl-entry" role="listitem">
 Emberson, L., &amp; Roodman, D. (2026, September 22). The plunging price of thought. <em>Epoch AI</em>. <a href="https://epoch.ai/publications/the-plunging-price-of-thought">https://epoch.ai/publications/the-plunging-price-of-thought</a>.
 </div>
+<div id="ref-eu2026omnibus" class="csl-entry" role="listitem">
+Europäisches Parlament und Rat (2026). <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=OJ:L_202601744">Verordnung (EU) 2026/1744 des Europäischen Parlaments und des Rates vom 8. Juli 2026 zur Änderung der Verordnungen (EU) 2024/1689, (EU) 2018/1139 und (EU) 2023/1230 im Hinblick auf die Vereinfachung der Umsetzung harmonisierter Vorschriften für künstliche Intelligenz (Digital-Omnibus-Verordnung zur KI)</a>.
+</div>
 <div id="ref-eu2024aiact" class="csl-entry" role="listitem">
 Europäisches Parlament und Rat der Europäischen Union (2024). <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">Verordnung (EU) 2024/1689 des Europäischen Parlaments und des Rates vom 13. Juni 2024 zur Festlegung harmonisierter Vorschriften für künstliche Intelligenz (Verordnung über künstliche Intelligenz)</a>.
 </div>
+<div id="ref-feil2026dlhn" class="csl-entry" role="listitem">
+Feil, S., Hoffmann, I., &amp; Schroeder, F. (2026). <em><a href="https://hochschuledigital-niedersachsen.de/2026/03/27/ki-kompetenzrahmen-des-dlhn/">KI-Kompetenzrahmen Hochschule: Lernziele für den Einsatz generativer künstlicher Intelligenz in Studium, Lehre und Verwaltung an Hochschulen</a></em>. Digitale Lehre Hub Niedersachsen (DLHN).
+</div>
 <div id="ref-gallegos2026" class="csl-entry" role="listitem">
 Gallegos, S. (2026). <em><a href="https://www.iza.org/publications/dp18513">Guidance over adoption: Experimental evidence on AI-assisted learning</a></em> (IZA Discussion Paper; Nr. 18513). Institute of Labor Economics (IZA).
+</div>
+<div id="ref-gimpel2024competencies" class="csl-entry" role="listitem">
+Gimpel, H., Gutheil, N., Mayer, V., Bandtel, M., Büttgen, M., Decker, S., Eymann, T., Feulner, S., Kaya, M. F., Kufner, M., Kühl, N., Lämmermann, L., Maedche, A., Ruiner, C., Schoop, M., &amp; Urbach, N. (2024). <em>(Generative) AI competencies for future-proof graduates: Inspiration for higher education institutions</em>. University of Hohenheim. <a href="https://doi.org/10.5281/zenodo.10680210">https://doi.org/10.5281/zenodo.10680210</a>.
 </div>
 <div id="ref-google2025" class="csl-entry" role="listitem">
 Google (2025). <em><a href="https://ai.google.dev/gemini-api/docs/prompting-strategies?hl=de">Strategien für Prompt-Design</a></em>. Google.
@@ -1380,6 +1564,9 @@ Grootendorst, M. (2025a, Februar 3). <em>A Visual Guide to Reasoning LLMs</em>. 
 </div>
 <div id="ref-grootendorst2025agents" class="csl-entry" role="listitem">
 Grootendorst, M. (2025b, März 17). A visual guide to LLM agents: Exploring the main components of single- and multi-agents. <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents">https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents</a>.
+</div>
+<div id="ref-hackl2026heptagon" class="csl-entry" role="listitem">
+Hackl, V., Müller, A. E., &amp; Sailer, M. (2026). The AI literacy heptagon: A structured approach to AI literacy in higher education. <em>Computers and Education: Artificial Intelligence</em>, <em>10</em>, 100540. <a href="https://doi.org/10.1016/j.caeai.2026.100540">https://doi.org/10.1016/j.caeai.2026.100540</a>.
 </div>
 <div id="ref-handa2025" class="csl-entry" role="listitem">
 Handa, K., Bent, D., Tamkin, A., McCain, M., Durmus, E., Stern, M., Schiraldi, M., Huang, S., Ritchie, S., Syverud, S., Jagadish, K., Vo, M., Bell, M., &amp; Ganguli, D. (2025). <em><a href="https://www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude">Anthropic Education Report: How university students use Claude</a></em>. Anthropic.
@@ -1489,6 +1676,9 @@ Naddaf, M. (2025). How are researchers using AI? Survey reveals pros and cons fo
 <div id="ref-odonnell2025" class="csl-entry" role="listitem">
 O’Donnell, J., &amp; Crownhart, C. (2025, Mai 20). <a href="https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/">We did the math on AI’s energy footprint. Here’s the story you haven’t heard.</a> <em>MIT Technology Review</em>.
 </div>
+<div id="ref-oecd2026ailit" class="csl-entry" role="listitem">
+OECD, &amp; European Union (2026). <em>Empowering learners for the age of AI: An AI literacy framework for primary and secondary education</em>. OECD Publishing. <a href="https://doi.org/10.1787/65cd27d4-en">https://doi.org/10.1787/65cd27d4-en</a>.
+</div>
 <div id="ref-openai2024" class="csl-entry" role="listitem">
 OpenAI (2024). <em><a href="https://openai.com/index/learning-to-reason-with-llms/">Learning to reason with LLMs</a></em>.
 </div>
@@ -1500,6 +1690,9 @@ Parasuraman, R., Sheridan, T. B., &amp; Wickens, C. D. (2000). A model for types
 </div>
 <div id="ref-persike2025apikeys" class="csl-entry" role="listitem">
 Persike, M. (2025, Dezember 5). Virtuelle API-Keys in KI:connect. <a href="https://kiconnect.pages.rwth-aachen.de/pages/blog/2025/12/05/2025-12-05_virtuelle-api-keys/">https://kiconnect.pages.rwth-aachen.de/pages/blog/2025/12/05/2025-12-05_virtuelle-api-keys/</a>.
+</div>
+<div id="ref-pinski2024literacy" class="csl-entry" role="listitem">
+Pinski, M., &amp; Benlian, A. (2024). AI literacy for users – A comprehensive review and future research directions of learning methods, components, and effects. <em>Computers in Human Behavior: Artificial Humans</em>, <em>2</em>(1), 100062. <a href="https://doi.org/10.1016/j.chbah.2024.100062">https://doi.org/10.1016/j.chbah.2024.100062</a>.
 </div>
 <div id="ref-ritchie2024" class="csl-entry" role="listitem">
 Ritchie, H. (2024, September 19). <em>What’s the impact of artificial intelligence on energy demand?</em> <a href="https://www.sustainabilitybynumbers.com/p/ai-energy-demand">https://www.sustainabilitybynumbers.com/p/ai-energy-demand</a>.
