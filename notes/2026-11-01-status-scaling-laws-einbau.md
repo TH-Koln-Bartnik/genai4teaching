@@ -24,7 +24,7 @@ Sitzung `session_01NiJQCWSZvpXnpAJLkUaGnh`. Gestartet mit dem S1b-Startauftrag; 
 ## Offen
 1. Live-Prüfung (s. o.).
 2. Remote-Branch `scaling-laws` zeigt noch auf den alten Stand `8a01456` (vor dem Rebase; Inhalt ist über main gemergt). Kann auf GitHub gelöscht werden, ebenso `kapitel02-neugliederung`, `kapitel02-neugliederung-sitzung-b`.
-3. Tresorit-Kopie dieser Notiz nachholen (Rechner war am Sitzungsende nicht verbunden).
+3. (erledigt) Tresorit-Kopie nachgeholt.
 4. Glossar „Scaling Laws“ (glossar.qmd Z. 121) → „Skalierungsgesetz (*scaling law*)“ mit Verweis auf die Animation: Aufgabe S6.
 5. Allgemein: Feste iframe-Höhen sind bei 599 px Spaltenbreite für mehrere Animationen knapp; eine automatische Höhenanpassung (postMessage) wäre eine buchweite Verbesserung nach dem 15.11.
 
@@ -39,6 +39,6 @@ Sitzung `session_01NiJQCWSZvpXnpAJLkUaGnh`. Gestartet mit dem S1b-Startauftrag; 
 ## Ablage
 - Projekt: `claude/feedback-2026-11-01/STATUS-scaling-laws-einbau-2026-11-01.md`; Stand-Nachtrag in `PLAN-feedback-sitzungen-2026-11-01.md`.
 - Repo: `notes/2026-11-01-status-scaling-laws-einbau.md` auf main.
-- Tresorit: offen (s. Offen 3).
+- Tresorit: `Projektnotizen-Claude/feedback-2026-11-01/` (Statusnotiz und Feedback-Plan, nachgeholt).
 
-Ablage geprüft: Projekt ✓ / Tresorit ✗ (nachholen) / Repo ✓ (gemergt: ja, main @ 7912531)
+Ablage geprüft: Projekt ✓ / Tresorit ✓ (nachgeholt) / Repo ✓ (gemergt: ja, main @ 7912531)
