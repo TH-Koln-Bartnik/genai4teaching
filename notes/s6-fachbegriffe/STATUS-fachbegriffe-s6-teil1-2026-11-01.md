@@ -23,7 +23,7 @@ Grundlage: `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md`, A
 - Vorschlagslisten mit Belegen (DOI/URL je Begriff): `vorschlag-kap01.md`, `vorschlag-kap02.md`, `vorschlag-kap03.md`.
 - Kandidatenliste buchweit (alle Kapitel, Anhänge, Primer): `kandidaten-alle.csv` (Spalten Kapitel; Zeile; Begriff; englisch/kursiv; Akronym; erklärt/vorhanden; Typ). Zeilennummern Stand vor Teil 1.
 - Skripte: `kandidaten.py` (Liste erzeugen), `anwenden.py` (ALT/NEU-Blöcke anwenden, Ausschluss-IDs, Zusatz-TSV).
-- Orte: Projekt `claude/fachbegriffe/s6/`, Tresorit `Projektnotizen-Claude/fachbegriffe/s6/`, Repo `notes/s6-fachbegriffe/`.
+- Orte: Vorschlagslisten, Kandidatenliste und Skripte in Tresorit `Projektnotizen-Claude/fachbegriffe/s6/` und Repo `notes/s6-fachbegriffe/`; diese Statusnotiz zusätzlich im Projekt `claude/fachbegriffe/s6/`.
 
 ## Offen für Teil 2
 1. Kap. 4, 5, 6, Vorwort, Primer, Anhänge A–D, Lösungshinweise: gleiches Verfahren (je Kapitel ein Prüfauftrag mit Belegpflicht, Freigabe per MC). Kap. 5 Z. 73–75: englische Klammern nicht kursiv (wie in Kap. 3 nachziehen).
