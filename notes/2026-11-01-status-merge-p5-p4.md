@@ -29,10 +29,10 @@ Grundlage: `claude/kapitel04-p5/STATUS-kapitel04-p5-2026-11-01.md`, `claude/kapi
 6. Zitierstil Buchkapitel (apa.csl/Locale), vor Logos-Abgabe.
 7. Branches `kapitel04-p5`, `kapitel02-4d-p4` auf GitHub enthalten die beiden kleinen Korrektur-Commits nicht (nur `main`); können gelöscht werden.
 
-## Ergebnis Live-Prüfung (Stand ca. 10:15)
-Noch nicht live: zwei Neustarts (10:03, 10:10) scheitern weiter an „cancel 4cadf3a first“. Abhilfe von Romans Rechner: `gh api -X POST repos/TH-Koln-Bartnik/genai4teaching/pages/deployments/4cadf3aafbee489c630ca88748d0f4a241a98f13/cancel`, danach in GitHub → Actions den jüngsten „pages build and deployment“-Lauf → „Re-run all jobs“. Prüfen: `kapitel02.html` enthält `sec-schemas`, `interactions/4d-kreislauf.html` liefert 200, `kapitel04.html` enthält `sec-sim-echtheit`.
+## Ergebnis Live-Prüfung (Stand 10:47)
+**Live.** Die Blockade („cancel 4cadf3a first“) hat sich von selbst gelöst; die Pages-Deployments ab ca. 10:35 laufen wieder durch. Geprüft auf https://th-koln-bartnik.github.io/genai4teaching/: `kapitel02.html` enthält `sec-schemas`, `kapitel04.html` enthält `sec-sim-echtheit`, „Belastung dosieren“, „gibt das Schreiben nicht ganz ab“ und die Kreislauf-Links je Rolle, `kapitel07-appendix02-prompt-sammlung.html` enthält `sec-ai-fluency-uebung`, `interactions/4d-kreislauf.html` liefert 200.
 
 ## Startauftrag nächste Sitzung (Entscheidung Roman, MC 01.11.)
-„Lies `claude/merge-p5-p4/STATUS-merge-p5-p4-2026-11-01.md` und `claude/kapitel02-4d-p4/STATUS-p4-4d-2026-11-01.md`. Prüfe zuerst, ob P5/P4 live sind. Lege dann im Glossar die Einträge Delegation, Description, Discernment, Diligence, AI Fluency und Programmier-Agent an (je mit Herkunftszeile, Verweis auf @sec-schemas bzw. @sec-coding), auf einem Branch, Diff per Multiple Choice.“
+„Lies `claude/merge-p5-p4/STATUS-merge-p5-p4-2026-11-01.md` und `claude/kapitel02-4d-p4/STATUS-p4-4d-2026-11-01.md`. Lege im Glossar die Einträge Delegation, Description, Discernment, Diligence, AI Fluency und Programmier-Agent an (je mit Herkunftszeile, Verweis auf @sec-schemas bzw. @sec-coding), auf einem Branch, Diff per Multiple Choice.“
 
 Ablage geprüft: Projekt ✓ / Repo ✓ (`main`) / Tresorit – (kein Ordner verbunden; Repo genügt laut Projektregel)
