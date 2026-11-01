@@ -436,9 +436,9 @@
   function text() {
     if (schritt === 0) return EINLEITUNG;
     if (schritt === 3) {
-      var A = leit(ACHT), s = "Allein ist Kugel A nach " + fmt(leit(ALLEIN).fertig) + " Minuten fertig. Mit sieben anderen braucht sie " + fmt(A.fertig) +
-        " Minuten und wartet davon " + fmt(wartezeit(A)) + " Minuten auf den Menschen – länger, als alle Agenten zusammen an ihr arbeiten (16 Minuten).";
-      if (tipp) s += tipp === "mensch" ? " Ihre Vorhersage „beim Menschen“ trifft das Modell." : " Sie hatten " + TIPP[tipp] + " vorhergesagt; im Modell wartet Kugel A vor allem beim Menschen.";
+      var A = leit(ACHT), s = "Allein ist Kugel A nach " + fmt(leit(ALLEIN).fertig) + " Minuten fertig, mit sieben anderen nach " + fmt(A.fertig) +
+        ". " + fmt(wartezeit(A)) + " Minuten davon wartet sie auf den Menschen; die Agenten arbeiten nur 16 Minuten an ihr.";
+      if (tipp) s += tipp === "mensch" ? " Ihre Vorhersage „beim Menschen“ trifft zu." : " Sie hatten " + TIPP[tipp] + " vorhergesagt.";
       return s;
     }
     if (schritt === 4) {
@@ -523,6 +523,18 @@
   window.__p6 = { gehe: gehe, ALLEIN: ALLEIN, ACHT: ACHT, SCHNELL: SCHNELL, wartezeit: wartezeit, standbild: standbild,
     setT: function (x) { laeuft = false; t = x; darstellen(); } };
 })();
+
+  /* Höhe an die einbettende Seite melden (Kapitel 2 passt den iframe an); Inhaltshöhe statt scrollHeight,
+     weil scrollHeight nie kleiner als der Rahmen ist und der Rahmen sonst nie schrumpft. */
+  (function () {
+    function melde() {
+      var b = document.body, cs = getComputedStyle(b);
+      var h = Math.ceil(b.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom));
+      try { if (parent !== window) parent.postMessage({ typ: "rahmen-hoehe", id: "agenten-engpass", h: h }, "*"); } catch (e) {}
+    }
+    if (window.ResizeObserver) new ResizeObserver(melde).observe(document.body);
+    window.addEventListener("load", melde);
+  })();
 </script>
 </body>
 </html>

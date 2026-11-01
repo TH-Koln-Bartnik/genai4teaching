@@ -527,7 +527,7 @@ div.csl-indent {
 <div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel02.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel02.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -636,7 +636,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<section id="sec-definitionen" class="level2" data-number="2.1">
+<section id="sec-definitionen" class="level2 page-columns page-full" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-definitionen"><span class="header-section-number">2.1</span> Definition einiger Grundbegriffe</h2>
 <p>Dieser Abschnitt klärt die Begriffe, mit denen das übrige Buch arbeitet, und zwar nur so tief, wie es für die didaktische Nutzung nötig ist. Er beginnt mit dem Gespann aus Modell und Harness, weil sich daran seit 2022 am meisten geändert hat, und schaut erst danach in das Modell hinein.</p>
 <p><strong>Welche der Fachbegriffe kennen Sie schon?</strong> Von Prompt bis Token, über Temperatur und RAG: Testen Sie sich selbst mit dem folgenden kleinen Spiel.</p>
@@ -821,7 +821,7 @@ Tabelle&nbsp;2.2: Was sich seit 2022 geändert hat: zwei Ermöglicher und eine F
 </iframe>
 <p><span>Wer die Unterscheidung an Beispielantworten weiter üben will, findet ein zweites Lernspiel online: <a href="https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html" class="uri">https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html</a>.</span></p>
 </section>
-<section id="sec-agenten-praxis" class="level3" data-number="2.1.4">
+<section id="sec-agenten-praxis" class="level3 page-columns page-full" data-number="2.1.4">
 <h3 data-number="2.1.4" class="anchored" data-anchor-id="sec-agenten-praxis"><span class="header-section-number">2.1.4</span> Agenten in der Praxis: Skills, Werkzeuganschluss und eigene Quellen</h3>
 <p>Im Alltag der Lehre stellt sich die Frage nach dem Harness praktisch: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden? Der Unterschied zum Chat ist die Strecke, die die KI allein zurücklegt: Im Chat sehen wir jede Antwort nach Sekunden, ein Recherche-Agent arbeitet Minuten, ein automatisierter Ablauf Stunden. Drei Bausteine des äußeren Harness kommen dabei besonders oft vor: Skills, der Werkzeuganschluss und eigene Quellen.</p>
 <p>Ein <strong>Skill</strong> ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird. Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.</p>
@@ -839,8 +839,16 @@ Tabelle&nbsp;2.2: Was sich seit 2022 geändert hat: zwei Ermöglicher und eine F
 <p>Was ändert sich mit der Delegation für die Lehre? Die Konsequenz ist weniger technisch als organisatorisch. Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält <span class="citation" data-cites="parasuraman2000">(<a href="references.html#ref-parasuraman2000" role="doc-biblioref">Parasuraman et al., 2000</a>)</span>. Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet. Bei einer Literaturrecherche sind das drei Stellen: der Quellenkorb, den der Agent durchsuchen darf, der Rechercheplan, bevor er loslegt, und die Stichprobe von Aussagen, die wir gegen das Original halten. Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte, und bei einem Tutor, den Studierende ein Semester lang ohne uns benutzen, ist sie am längsten.</p>
 <p>Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen. Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Nutzungsdaten eines Coding-Agenten zeigen, wie verschieden weit Organisationen auf diesem Weg sind: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst arbeiten nur 10,7 % mit einem einzigen Arbeitsstrang, und 28,6 % steuern fünf oder mehr Agenten gleichzeitig , <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-modus" class="quarto-xref">Belege und Grenzen in&nbsp;<span>D.1</span></a>. Das folgende Modell verfolgt eine einzelne Aufgabe, die Kugel A. Der Mensch gibt den Auftrag, ein Agent recherchiert und fasst zusammen, der Mensch entscheidet, wie es weitergeht, ein Agent rechnet und prüft, und am Ende gibt der Mensch das Ergebnis frei. Einmal läuft Kugel A allein, einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.</p>
 <p>Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.</p>
-<iframe src="interactions/agenten-engpass.html" width="100%" height="1160px" frameborder="0" title="Animation: Acht Aufgaben, viele Agenten, ein Mensch – wo Kugel A wartet">
-</iframe>
+<div class="column-page">
+<iframe id="agenten-engpass" src="interactions/agenten-engpass.html" width="100%" height="1000px" frameborder="0" title="Animation: Acht Aufgaben, viele Agenten, ein Mensch – wo Kugel A wartet"></iframe>
+<script>
+/* Die Animation meldet ihre Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+</div>
 <p>Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Bei den Agenten bildet sich keine Schlange, weil jede Aufgabe ihren eigenen bekommt; vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet. Das ist die Logik jeder Warteschlange: Der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station, und hier ist das der Mensch. Ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig und wartet nur noch sieben. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little’s-Law-Widget in <a href="kapitel04.html#sec-widget-littles-law" class="quarto-xref"><span>Kapitel 4.2.2.1</span></a>.</p>
 <p>Die praktische Umsetzung dieser Bausteine steht in Anhang D: Arbeitsumgebung und Skills in <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-arbeitsumgebung" class="quarto-xref"><span>Kapitel D.2</span></a>, eigene Quellen in <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-quellen" class="quarto-xref"><span>Kapitel D.3</span></a>, Agenten für die akademische Suche mit ihren Kontrollpunkten in <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-agenten" class="quarto-xref"><span>Kapitel D.4</span></a>, automatisierte Abläufe in <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-workflows" class="quarto-xref"><span>Kapitel D.6</span></a>. Wie ein Projekt mit Unternehmen aussieht, in dem Studierende eine solche Quellenanbindung selbst aufbauen, zeigt <a href="kapitel06-fallbeispiele.html#sec-fall-unternehmen" class="quarto-xref"><span>Kapitel 6.3.5</span></a>.</p>
 </section>
@@ -938,16 +946,6 @@ Abbildung&nbsp;2.3: Was ein Abo kauft: Ab rund 20 € im Monat arbeitet das gro�
 </figure>
 </div>
 <p>Seit der agentischen Wende (<a href="kapitel01.html#sec-weiterentwicklung" class="quarto-xref"><span>Kapitel 1.2</span></a>) zählt dabei nicht das Modell allein, sondern das ganze <strong>Setup</strong>: ein starkes Modell, eine praktische Oberfläche und ein Harness mit sinnvollen Werkzeugen (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.1.1</span></a>) <span class="citation" data-cites="mollick2025e">(<a href="references.html#ref-mollick2025e" role="doc-biblioref">E. Mollick, 2026a</a>)</span>.</p>
-<div id="fig-reasoning-models-better" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-reasoning-models-better-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/use-reasoning-models.jpg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reasoning-models-better-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;2.4: Daumenregel: Für wichtige Fragen immer eine stärkere Kombination aus Modell und Setup wählen
-</figcaption>
-</figure>
-</div>
 <p><strong>Kostenfreie Zugänge über die Hochschule.</strong> Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die GWDG etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über das THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen ist <strong>KI:connect.nrw</strong> der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, Frontier-Modelle über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge <span class="citation" data-cites="mkw2025kiconnect kiconnect2026inferenz persike2025apikeys">(<a href="references.html#ref-kiconnect2026inferenz" role="doc-biblioref">KI:connect.nrw, 2026</a>; <a href="references.html#ref-mkw2025kiconnect" role="doc-biblioref">Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen, 2025</a>; <a href="references.html#ref-persike2025apikeys" role="doc-biblioref">Persike, 2025</a>)</span>. Eine API (<em>Application Programming Interface</em>) ist die Schnittstelle, über die Programme statt Menschen mit dem Modell sprechen; was sich damit bauen lässt, zeigen <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-quellen" class="quarto-xref"><span>Kapitel D.3</span></a> und <a href="kapitel09-appendix04-fortgeschrittene-nutzungsformen.html#sec-d-tutoren" class="quarto-xref"><span>Kapitel D.7</span></a>. Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Eine ältere Generation oder eine kleine Variante vermittelt ein falsches Bild davon, was die Modelle können.</p>
 <p><strong>Welches Modell für welche Aufgabe?</strong> Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel. Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.</p>
 <p>Der folgende Entscheidungsbaum führt Frage für Frage zu Modellklasse und Preisstufe.</p>
