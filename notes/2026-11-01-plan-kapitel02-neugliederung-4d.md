@@ -2,7 +2,7 @@
 
 Grundlage: `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` (Abschnitt S1a), Statusnotizen `merge-p5-p4`, `kapitel02-umbau-2-1`, `kapitel02-4d-p4`, `kapitelauftakt-kap02-03`. Bestandsaufnahme per Skript auf `main` @ `0a48673`; seither hat S2 (`31450ba`) in `kapitel02.qmd` nur zwei iframe-Höhen geändert (Z. 626, 650), alle Zeilennummern unten gelten weiter. Keine Änderung an Buchdateien in dieser Sitzung.
 
-Wortzählung: Fließtext einschließlich Tabellen, Kästen und Druck-Bildunterschriften, ohne iframes, Zitierschlüssel und URLs (Skript `kuerzung.py`, im Tresorit-Ordner dieser Notiz). Nach dieser Zählung hat Kapitel 2 heute **13.560 Wörter**; die Statusnotiz vom 01.11. nennt 14.630 nach einer anderen Zählung. Vorher/nachher in S1b mit demselben Skript messen.
+Wortzählung: Fließtext einschließlich Tabellen, Kästen und Druck-Bildunterschriften, ohne iframes, Zitierschlüssel und URLs (Skript `zaehle_kapitel.py`; Kürzungsbilanz `kuerzung.py`; beide im Repo unter `notes/kapitel02-neugliederung/` und im Tresorit). Nach dieser Zählung hat Kapitel 2 heute **13.560 Wörter**; die Statusnotiz vom 01.11. nennt 14.630 nach einer anderen Zählung. Das zeilenweise Skript `zaehle_kapitel.py` liefert auf `31450ba` **13.522** (Absatz- statt Zeilenzählung, Abweichung 0,3 %); diesen Wert in S1b als Ausgangswert nehmen und nachher mit demselben Skript messen. Ziel: ≤ 10.140.
 
 ## Entscheidungen Roman (Multiple Choice, 01.11., 14:20–15:00)
 
@@ -60,6 +60,7 @@ Die Hauptlinie ohne Vertiefung umfasst danach rund 7.900 Wörter. Abschnitte 2.4
 Die Gliederung ändert sich in zwei Commits, damit Roman den Diff lesen kann: Commit 1 verschiebt Abschnitte ohne Textänderung (Überschriften neu, IDs unverändert, neue IDs gesetzt), Commit 2 kürzt nach der Liste unten und schreibt die Brücken. Neue Überschriften der vier D tragen das englische Wort voran („Delegation: …“), weil `@tbl-4d` und Kap. 4 die vier D englisch führen. Die vier D-Einleitungen zitieren nur `@dakan2025` und belegte Stellen aus dem Bestand. Der Satz „Wie wir im oben gezeigten Beispiel sehen“ (Z. 503) verliert seinen Bezug, weil die Interpretierbarkeits-Beispiele in die Vertiefung gehen; er beginnt neu mit Kesslers erfundener Literaturangabe aus dem Kapitelkopf. Die Einleitung von 2.6 alt („Der vorige Abschnitt hat gezeigt, wie ein guter Prompt gebaut ist“, Z. 836) wird umgeschrieben, weil 2.1 jetzt am Anfang steht.
 
 ## Kürzungsliste
+
 | Nr. | Zeilen (main 0a48673) | Inhalt und Maßnahme | Art | Wörter vorher | nachher | Begründung |
 |---|---|---|---|---:|---:|---|
 | N1 | 842–868 | Kompetenzrahmen-Vergleich 2.6.1 → Kasten „Warum AI Fluency?“, Tabelle nur online (QR) | online | 375 | 150 | Entscheidung Roman (MC): Kasten statt Abschnitt; der Rahmenvergleich ist Hintergrund, nicht Werkzeug |
@@ -72,7 +73,7 @@ Die Gliederung ändert sich in zwei Commits, damit Roman den Diff lesen kann: Co
 | N8 | 186–189 | „Die Grenze wandert“ straffen | straffen | 99 | 50 | Kernaussage (Annahmen im Harness veralten) in zwei Sätzen |
 | N9 | 191–199 | „Was das für Lehrende heißt“ → Einstieg Delegation 2.3 | verschieben+straffen | 137 | 80 | Praktische Folgerung gehört zur Entscheidung, was an die KI geht |
 | N10 | 223–229 | GPT-Begriffe (Vertiefung) straffen | straffen | 182 | 110 | Begriffsherkunft GPT bleibt, Detail zu Pretraining/RLHF kürzer (Glossar) |
-| N11 | 249–254, 274–277 | LLM/RAG/Agent: Bücherregal und Skala straffen (→ 2.3.1) | straffen | 238 | 150 | Bücherregal-Bild bleibt, doppelte Erklärung entfällt |
+| N11 | 249–254, 274–277 | LLM/RAG/Agent: Bücherregal und Skala straffen (→ 2.3.2) | straffen | 238 | 150 | Bücherregal-Bild bleibt, doppelte Erklärung entfällt |
 | N12 | 308–320 | Skill-Karte: Animation, Druckbild, Absatz 38/21 Min. entfernen; ein Satz Standardarbeit bleibt | streichen | 261 | 35 | Entscheidung Roman (MC): erste Skills-Animation raus; Datei bleibt in interactions/ |
 | N13 | 341–373 | Engpass (Kugeln): Text straffen, Animation bleibt (Vertiefung) | straffen | 596 | 420 | Kugel-Animation trägt die Aussage; drei Absätze auf zwei |
 | N14 | 380–395, 427–434 | Gedächtnis: Kontextfenster, vier Stufen, Schreibzeitpunkt straffen | straffen | 511 | 350 | Vier-Stufen-Grafik und Sitzungs-Animation zeigen das Detail |
@@ -102,7 +103,8 @@ Die Gliederung ändert sich in zwei Commits, damit Roman den Diff lesen kann: Co
 | N38 | Bildunterschriften Druck | fig-ki-kosten 173→80, fig-performance 93→60, chatbot-zu-agent 89→55, drei-labs 82→50, harness-schichten 67→45, autonomiestufen 64→45, Durchspiel 61→40 | straffen | 629 | 375 | Druck-Bildunterschriften auf Aussage + Lesehilfe + QR; Details stehen online |
 | | | **Summe Kürzungen** | | | | **−3714** |
 | | | Neuer Text: Brücke 2.1 (60), Einleitungen der vier D-Abschnitte (4 × 40), Hinweis Vertiefung (30), Einleitung Escape Room (50) | | | | **+300** |
-| | | **Netto** | | 13.560 | 10.146 | **−3414 Wörter = −25.2 %** |
+| | | **Netto** | | 13.560 | 10.146 | **−3414 Wörter = −25,2 %** |
+
 Die Zeilenangaben beziehen sich auf `kapitel02.qmd` @ `0a48673`. „Online“ heißt: Inhalt bleibt in `::: {.content-visible when-format="html"}`, im Druck steht ein Satz mit Verweis oder QR.
 
 ## Querverweise auf Kapitel 2 von außen
@@ -177,6 +179,6 @@ Weitere Fundstellen der Skill-Karte, die S1b nachzieht: `scripts/qr-in-abbildung
 
 ## Startauftrag S1b
 
-„Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` (Abschnitte „Entscheidungen“ und S1b) und `claude/feedback-2026-11-01/PLAN-kapitel02-neugliederung-4d-2026-11-01.md`. Kläre per MC Repo-Schreibzugriff und Tresorit. Branch `kapitel02-neugliederung` von aktuellem origin/main (mindestens `31450ba`). Setze den Plan in zwei Commits um: (1) nur verschieben, Überschriften und IDs nach der Gliederungstabelle; (2) Kürzungen N1–N38, Brücken, Lernziele, Kernaussagen, Einschätzungen umsortieren. Danach Querverweis-Tabelle abarbeiten (kapitel04 367, energie.qmd 3, kapitel05 65, glossar.qmd 20 Stellen, 4d-kreislauf.html, lernpfade, autonomiestufen/drei-labs). Wortzahl mit `kuerzung.py`-Zählweise vorher/nachher, Render Quarto 1.8.25 `--to html` ohne neue Warnungen und ohne `?@`, Playwright 1200/390 px, LaTeX-Testrender falls TeX verfügbar. Diff per MC, Merge, docs/ rendern (Download-PDF/EPUB sichern), live prüfen, Skill ergebnisse-sichern.“
+„Lies `claude/feedback-2026-11-01/PLAN-feedback-sitzungen-2026-11-01.md` (Abschnitte „Entscheidungen“ und S1b) und `claude/feedback-2026-11-01/PLAN-kapitel02-neugliederung-4d-2026-11-01.md`. Kläre per MC Repo-Schreibzugriff und Tresorit. Branch `kapitel02-neugliederung` von aktuellem origin/main (mindestens `31450ba`). Setze den Plan in zwei Commits um: (1) nur verschieben, Überschriften und IDs nach der Gliederungstabelle; (2) Kürzungen N1–N38, Brücken, Lernziele, Kernaussagen, Einschätzungen umsortieren. Danach Querverweis-Tabelle abarbeiten (kapitel04 367, energie.qmd 3, kapitel05 65, glossar.qmd 20 Stellen, 4d-kreislauf.html, lernpfade, autonomiestufen/drei-labs). Wortzahl mit `notes/kapitel02-neugliederung/zaehle_kapitel.py` vorher/nachher, Render Quarto 1.8.25 `--to html` ohne neue Warnungen und ohne `?@`, Playwright 1200/390 px, LaTeX-Testrender falls TeX verfügbar. Diff per MC, Merge, docs/ rendern (Download-PDF/EPUB sichern), live prüfen, Skill ergebnisse-sichern.“
 
-Ablage: Projekt `claude/feedback-2026-11-01/PLAN-kapitel02-neugliederung-4d-2026-11-01.md` · Tresorit `Projektnotizen-Claude/feedback-2026-11-01/` (dieser Plan, `kuerzung.py`) · Repo `notes/2026-11-01-plan-kapitel02-neugliederung-4d.md` und `notes/2026-11-01-plan-feedback-sitzungen.md` (nachgeholte Kopie des Feedback-Plans).
+Ablage: Projekt `claude/feedback-2026-11-01/PLAN-kapitel02-neugliederung-4d-2026-11-01.md` · Tresorit `Projektnotizen-Claude/feedback-2026-11-01/` (dieser Plan, Statusnotiz, Skripte) · Repo `notes/2026-11-01-plan-kapitel02-neugliederung-4d.md` und `notes/2026-11-01-plan-feedback-sitzungen.md` (nachgeholte Kopie des Feedback-Plans).
