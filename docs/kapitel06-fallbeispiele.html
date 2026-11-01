@@ -95,6 +95,12 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<!-- Webschrift Lato (Theme flatly) früh anfordern: Das Theme lädt sie per @import erst
+     nach dem Stylesheet; bis dahin steht eine Ersatzschrift, und beim Wechsel springt
+     der Text. Preconnect + direkter Stylesheet-Link verkürzen diese Phase. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
 
 
 <link rel="stylesheet" href="include/booktem.css">
@@ -920,7 +926,7 @@ Tabelle&nbsp;6.1: Die Beispiele dieses Kapitels nach Wissensform, Lerntechnik, R
 <p>Widgets, Notebooks und Datensätze entstanden mit Claude als Copilot nach Vorgaben der Lehrperson. Eine Regel der Arbeitsanweisung lautet, jede Zahl in der Programmiersprache Python zu rechnen, nie im Kopf des Modells. Fallstudie, Linienmodell im Notebook, Widget und die Übungsdaten zur Datenbereinigung teilen sich einen einzigen Zahlensatz, sodass ein Ergebnis aus dem Widget in der Fallstudie wieder auftaucht. Wie solche Widgets als geprüftes Modell mit Druckabbildung entstehen, zeigt <a href="kapitel04.html#sec-widget-littles-law" class="quarto-xref"><span>Kapitel 4.2.2.1</span></a>.</p>
 </div>
 </div>
-<iframe src="interactions/line-widget.html" width="100%" height="1150px" frameborder="0" title="Linien-Widget: Engpass finden">
+<iframe loading="lazy" src="interactions/line-widget.html" width="100%" height="1150px" frameborder="0" title="Linien-Widget: Engpass finden">
 </iframe>
 <p><em>Linien-Widget aus Woche 2 des SSCM-Moduls (englisch), auch <a href="interactions/line-widget.html">einzeln aufrufbar</a>. Die Schaltflächen oben wechseln zwischen Pizzalinie und Brötchenlinie der Bäckerei Kaya.</em></p>
 <p>Ob die Widgets mehr bewirken als dieselben Aufgaben auf Papier, ist für dieses Modul nicht gemessen. Belegt ist die Wirkung der Bauprinzipien, Anleitung und Reihenfolge; das Widget macht sie für jede Woche praktikabel.</p>

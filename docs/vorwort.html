@@ -95,6 +95,12 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<!-- Webschrift Lato (Theme flatly) früh anfordern: Das Theme lädt sie per @import erst
+     nach dem Stylesheet; bis dahin steht eine Ersatzschrift, und beim Wechsel springt
+     der Text. Preconnect + direkter Stylesheet-Link verkürzen diese Phase. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
 
 
 <link rel="stylesheet" href="include/booktem.css">
@@ -537,7 +543,7 @@ div.csl-indent {
 <div id="fig-lernpfade" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lernpfade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<iframe id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
+<iframe loading="lazy" id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
 <script>
 /* Das Lernpfad-Widget meldet seine Höhe; so entsteht kein Scrollbalken im Rahmen. */
 window.addEventListener("message", function (e) {

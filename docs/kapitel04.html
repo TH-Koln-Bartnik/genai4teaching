@@ -130,6 +130,12 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<!-- Webschrift Lato (Theme flatly) früh anfordern: Das Theme lädt sie per @import erst
+     nach dem Stylesheet; bis dahin steht eine Ersatzschrift, und beim Wechsel springt
+     der Text. Preconnect + direkter Stylesheet-Link verkürzen diese Phase. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
@@ -1235,7 +1241,7 @@ Tabelle&nbsp;4.5: Acht Schreibtrainer entlang der Abschlussarbeit (TH Köln, Wir
 <p>Simulationen, an denen Studierende selbst drehen, haben in der Lehre zu Produktion und Logistik eine lange Tradition. <span class="citation" data-cites="dobson2006web">Dobson &amp; Shumsky (<a href="#ref-dobson2006web" role="doc-biblioref">2006</a>)</span> stellten drei Browser-Simulationen vor, eine Warteschlange, Little’s Law in einem einstufigen Prozess und ein Bestellpunktsystem, alle über Schieberegler gesteuert, und erprobten sie in einer Web-Übung mit 74 Studierenden. Das R-Paket <code>bullwhipgame</code> simuliert den Bullwhip-Effekt (Peitscheneffekt) in einer vierstufigen Lieferkette, setzt aber eine eigene R-Installation voraus <span class="citation" data-cites="marchena2018bullwhipgame">(<a href="#ref-marchena2018bullwhipgame" role="doc-biblioref">Marchena, 2018</a>)</span>. Solche Werkzeuge zu bauen, war lange Sache von Spezialisten. Mit einem Sprachmodell als Copilot können Lehrende sie selbst programmieren, und das folgende Widget (interaktives Lernelement) ist auf diesem Weg entstanden.</p>
 <p>Little’s Law sagt: Bestand = Durchsatz × Durchlaufzeit, kurz L = λW <span class="citation" data-cites="little1961">(<a href="#ref-little1961" role="doc-biblioref">Little, 1961</a>)</span>. Wer jeden Monat zehn Flaschen Wein kauft und jede ein Jahr liegen lässt, hat im Mittel 120 Flaschen im Keller, ohne je eine einzelne Flasche zu verfolgen. Das Gesetz ist eine Bilanz, und Bilanzen stimmen nur über den ganzen Zeitraum. Wer den Keller einen Nachmittag lang beobachtet, sieht vielleicht keine einzige Flasche kommen oder gehen.</p>
 <p>Die Animation zeigt zuerst, wie man den Bestand L zählt: Aufträge kommen an, warten, werden bearbeitet und verlassen das System.</p>
-<iframe src="interactions/littles-law-animation.html" width="100%" height="420px" frameborder="0" title="Animation: Little's Law zählen (Ankunft, Warteschlange, Bearbeitung, Abgang)">
+<iframe loading="lazy" src="interactions/littles-law-animation.html" width="100%" height="420px" frameborder="0" title="Animation: Little's Law zählen (Ankunft, Warteschlange, Bearbeitung, Abgang)">
 </iframe>
 <p>Das Widget darunter rechnet dieselbe Station über ein frei wählbares Beobachtungsfenster durch. Es vergleicht den gezählten mittleren Bestand <span class="math inline">\(\bar L\)</span> mit dem, was die Gleichung aus beobachteter Ankunftsrate <span class="math inline">\(\hat\lambda\)</span> und mittlerer Verweilzeit <span class="math inline">\(\hat W\)</span> ergibt. Geben Sie zuerst Ihre Vorhersage ab, spielen Sie dann die drei Szenarien durch und würfeln Sie neu.</p>
 <!-- Little's-Law-Widget (Observable JS). Eingebunden in kapitel04.qmd, Abschnitt

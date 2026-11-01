@@ -95,6 +95,12 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<!-- Webschrift Lato (Theme flatly) früh anfordern: Das Theme lädt sie per @import erst
+     nach dem Stylesheet; bis dahin steht eine Ersatzschrift, und beim Wechsel springt
+     der Text. Preconnect + direkter Stylesheet-Link verkürzen diese Phase. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
 
 
 <link rel="stylesheet" href="include/booktem.css">
@@ -694,7 +700,7 @@ Abbildung&nbsp;1.1: Drei Viertel der Gespräche verlangen Denkleistungen der hö
 </div>
 </div>
 <p><strong>Fünf Formate zeigen, was 2026 mit KI entsteht:</strong> eine Prozessanimation, in der sich vor dem Engpass die Arbeit staut <span class="citation" data-cites="goldratt2014 little1961">(<a href="#ref-goldratt2014" role="doc-biblioref">Goldratt &amp; Cox, 2014</a>; <a href="#ref-little1961" role="doc-biblioref">Little, 1961</a>)</span>, eine Präsentationsfolie nach Regelwerk, ein Lernsong, ein Lernspiel und ein Rollenspiel. Blättern Sie mit den Pfeilen; unter jedem Beitrag führt ein Link zur Stelle im Buch.</p>
-<iframe id="galerie-kapitel01" src="interactions/galerie-kapitel01.html" width="100%" height="1100px" frameborder="0" title="Galerie: Fünf Formate, die 2026 mit generativer KI entstehen"></iframe>
+<iframe loading="lazy" id="galerie-kapitel01" src="interactions/galerie-kapitel01.html" width="100%" height="1100px" frameborder="0" title="Galerie: Fünf Formate, die 2026 mit generativer KI entstehen"></iframe>
 <script>
 /* Die Galerie meldet ihre Höhe; so entsteht kein Scrollbalken im Rahmen. */
 window.addEventListener("message", function (e) {

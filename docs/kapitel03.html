@@ -95,6 +95,12 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<!-- Webschrift Lato (Theme flatly) früh anfordern: Das Theme lädt sie per @import erst
+     nach dem Stylesheet; bis dahin steht eine Ersatzschrift, und beim Wechsel springt
+     der Text. Preconnect + direkter Stylesheet-Link verkürzen diese Phase. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
 
 
 <link rel="stylesheet" href="include/booktem.css">
@@ -710,7 +716,7 @@ Tabelle&nbsp;3.1: Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle
 <div id="fig-spacing" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spacing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/script03-lerntechniken-spacing.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<img src="images/script03-lerntechniken-spacing.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spacing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Abbildung&nbsp;3.1: Illustration Zeitlich verteiltes Lernen – spacing
@@ -722,7 +728,7 @@ Abbildung&nbsp;3.1: Illustration Zeitlich verteiltes Lernen – spacing
 <div id="fig-interleaving" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interleaving-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/script03-lerntechniken-interleaving.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<img src="images/script03-lerntechniken-interleaving.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interleaving-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Abbildung&nbsp;3.2: Illustration Inhaltlich gemischtes Lernen – interleaving
@@ -734,7 +740,7 @@ Abbildung&nbsp;3.2: Illustration Inhaltlich gemischtes Lernen – interleaving
 <div id="fig-testing-effect" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-testing-effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/script03-lerntechniken-testing-effect.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<img src="images/script03-lerntechniken-testing-effect.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-testing-effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Abbildung&nbsp;3.3: Illustration Testgestütztes Lernen – test-enhanced learning
