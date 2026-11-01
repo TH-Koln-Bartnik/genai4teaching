@@ -289,8 +289,21 @@ Den letzten Wert ordnet METR selbst als unsicher ein, weil die Testaufgaben übe
 
 :::
 
-Den Fähigkeitszuwachs beschreiben zwei **Scaling Laws** [@mollick2025; anschaulich bei @grootendorst2025]: Modelle werden besser, je mehr Daten, Rechenleistung und Parameter ins Training fließen (**Training Scaling Law**), und sie liefern bessere Lösungen, je mehr „**Denkzeit**“ sie vor der Antwort für zusätzliche interne Rechenschritte erhalten (**Inference Scaling Law**), so wie ein Mensch, dem man mehr Zeit für eine schwierige Aufgabe gibt; auf diesem zweiten Gesetz beruhen die Reasoning-Modelle [@openai2024; @gottweis2025; @schwarcz2025].
-Ist ein Modell einmal trainiert, bleiben die **Grenzkosten der Nutzung sehr niedrig**, und personalisierte Lernangebote lassen sich kostengünstig skalieren [@mollick2025].
+Warum die Grenze so schnell wandert, beschreiben zwei **Skalierungsgesetze** (*scaling laws*) [@kaplan2020; @hoffmann2022; @openai2024; anschaulich bei @grootendorst2025].
+Erstens werden Modelle verlässlich besser, je mehr Daten, Rechenleistung und Parameter ins Training fließen: Jede Verzehnfachung des Rechenaufwands senkt den Vorhersagefehler um etwa denselben Anteil [@kaplan2020], sofern Daten und Modellgröße im Gleichschritt wachsen [@hoffmann2022].
+Zweitens liefert ein fertig trainiertes Modell bessere Lösungen, wenn es vor der Antwort mehr „**Denkzeit**“ für zusätzliche Rechenschritte erhält [@openai2024; @snell2024]; auf diesem zweiten Gesetz beruhen die Reasoning-Modelle [@gottweis2025; @schwarcz2025].
+Wie bei einer Prüfung ist die Lernzeit einmal bezahlt, die Bearbeitungszeit fällt bei jeder Prüfung neu an; deshalb kosten Reasoning-Modelle je Antwort mehr.
+Trotzdem bleiben die **Grenzkosten der Nutzung sehr niedrig**, und personalisierte Lernangebote lassen sich kostengünstig skalieren [@mollick2025].
+
+::: {.content-visible when-format="html"}
+<iframe src="interactions/scaling-laws.html" width="100%" height="1460px" frameborder="0" title="Animation: Zwei Skalierungsgesetze – Training und Denkzeit beim Antworten"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Zwei Skalierungsgesetze: Links sinkt der Vorhersagefehler mit dem Rechenaufwand im Training auf einer Geraden (beide Achsen logarithmisch); bei gleichem Budget schneidet das kleinere, mit mehr Daten trainierte Chinchilla besser ab als Gopher. Rechts steigt die Trefferquote mit der Denkzeit beim Antworten; bei mittelschweren Aufgaben schlägt ein kleines Modell mit Denkzeit ein 14-mal größeres. Lehrmodell, schematisch; Zahlen nach @kaplan2020, @hoffmann2022, @openai2024 und @snell2024. Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/scaling-laws.html> aufrufen.](images/druck/scaling-laws-qr.png){#fig-scaling-laws width="100%" fig-pos="htbp"}
+
+:::
 
 Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
 Die niedrigsten Kosten, mit denen ein Modell 75 % der Fragen des GPQA Diamond richtig beantwortet, einer Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 oder 99,9 % in 17 Monaten [@emberson2026].
