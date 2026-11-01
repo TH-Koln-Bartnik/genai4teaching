@@ -2,7 +2,7 @@
 
 ## Vorbemerkung zur Struktur der Sammlung {.unnumbered}
 
-Die hier vorgestellten didaktischen Prompts wurden aus verschiedenen internationalen Quellen zusammengetragen, übersetzt und in eine **standardisierte Form** (RTF oder CREATE-Schema, s.o.) überführt.
+Die hier vorgestellten didaktischen Prompts (Eingaben an die KI) wurden aus verschiedenen internationalen Quellen zusammengetragen, übersetzt und in eine **standardisierte Form** (das kurze Schema aus Rolle, Aufgabe und Format, RTF, oder das ausführlichere CREATE-Schema, das zusätzlich Beispiele, Vorgaben und Prüfschritte festlegt; vgl. @sec-prompt-components) überführt.
 
 ::: {.content-visible when-format="html"}
 In der Navigationsleiste rechts können Sie zu den Prompts navigieren, die Sie interessieren.
@@ -10,12 +10,12 @@ Sie können die Prompts **'ausklappen'** lassen und über einen Knopf rechts obe
 :::
 
 ::: {.content-visible unless-format="html"}
-Im Buch stehen neun Prompts und Aufgabenstellungen in voller Länge, je ein bis drei für die Rollen Hiwi, Tutor, Copilot und Simulator (@sec-szenarien). Die übrigen 24 sind am Ende des Anhangs mit ihrer Funktion aufgeführt (@tbl-prompts-online); die vollständige Sammlung mit Kopierfunktion steht in der Online-Version (@fig-qr-prompt-sammlung).
+Im Buch stehen zehn Prompts und Aufgabenstellungen in voller Länge, je zwei oder drei für die Rollen Hiwi, Tutor, Copilot und Simulator (@sec-szenarien). Die übrigen 24 sind am Ende des Anhangs mit ihrer Funktion aufgeführt (@tbl-prompts-online); die vollständige Sammlung mit Kopierfunktion steht in der Online-Version (@fig-qr-prompt-sammlung).
 :::
 
 Neben **Beispielen für die Prompts** sind jeweils auch detaillierte **Aufgabenstellungen** aufgeführt, die zeigen, wie wir die Prompts in eine Lehreinheit integrieren können.
 **Testen Sie die Prompts am Besten gleich** im Sprachmodell Ihrer Wahl, oder lassen Sie den Prompt dort auf eine spezifische Lehreinheit hin anpassen.
-Sie wollen vergleichen, wie die **Prompts mit verschiedenen Modellen funktionieren?** Nutzen Sie dafür die LM-Arena: <https://lmarena.ai/de?mode=side-by-side>.
+Sie wollen vergleichen, wie die **Prompts mit verschiedenen Modellen funktionieren?** Nutzen Sie dafür die LM-Arena (Plattform zum direkten Vergleich von Sprachmodellen): <https://lmarena.ai/de?mode=side-by-side>.
 Viel Spaß dabei!
 
 ## Hiwi: Schnelle Hilfe zur Lehrgestaltung
@@ -57,7 +57,7 @@ Gehe schrittweise vor (Analyse → Struktur → Materialien → Differenzierung)
 
 **Funktion:** Vorlesungen interaktiver machen; Fragen/Checks einbauen; Aktivierungsimpulse generieren.
 
-**Didaktische Elemente:** Retrieval Practice; formative Checks; Aktivierung durch kurze Interaktionen.
+**Didaktische Elemente:** Retrieval Practice (Abrufübungen); formative Checks; Aktivierung durch kurze Interaktionen.
 
 **Quelle:** Angepasst und übersetzt von der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Interactive Lecture Assistant](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Interactive%20Lecture%20Assistant%20GPT.md).
 
@@ -99,7 +99,7 @@ Priorisiere Verständnissicherung gegenüber reiner Unterhaltung
 :::
 
 ::: {.content-visible unless-format="html"}
-Den Strukturierten Prompt Designer, der Prompt-Ideen in das RTF- oder CREATE-Schema überführt, enthält die Online-Sammlung; seine GPT-Version nennt der Kasten in @sec-prompt-components.
+Den Strukturierten Prompt Designer, der Prompt-Ideen in das RTF- oder CREATE-Schema überführt, enthält die Online-Sammlung; seine Fassung als angepasster ChatGPT-Assistent (sogenannter GPT) nennt der Kasten in @sec-prompt-components.
 :::
 
 ::::: {.content-visible when-format="html"}
@@ -110,7 +110,7 @@ Den Strukturierten Prompt Designer, der Prompt-Ideen in das RTF- oder CREATE-Sch
 **Didaktische Elemente:** Scaffolding; Klärungsfragen; prozedurale Anleitung.
 
 **Quelle:** Selbst erstellt, für die Schemata (RTF, CREATE) basierend auf dem Prompt Guide des Project Management Institute (@pmi2024).
-Eine Online-Version (GPT) finden Sie hier: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format
+Eine Online-Version als angepasster ChatGPT-Assistent (GPT) finden Sie hier: https://chatgpt.com/g/g-695a8a7c9c888191a683135100f623d0-prompt-strukturierer-rtf-oder-create-format
 
 ::: {.callout-note collapse="true" title="Strukturierter Prompt Designer"}
 ``` markdown
@@ -226,10 +226,10 @@ POTATO — 1 Blinde Flecken, die Du übersiehst
 Es entsteht ein *angepasster* akademischer Hiwi für den eigenen Lehr- und Forschungsbereich.
 Dieser System-Prompt kann im Sprachmodell hinterlegt werden ("Personalisierung" bei ChatGPT), oder als Textdatei punktuell beigefügt werden.
 
-**Didaktische Elemente**: Scaffolding (Profilkarte + Blueprint als Defaults), Klärungsfragen (genau eine Frage pro Schritt mit a/b/c/Sonstiges), prozedurale Anleitung (Phasenlogik, Checkliste zur Überprüfung, Iterationsschleifen).
+**Didaktische Elemente**: Scaffolding (Lerngerüst: Profilkarte + Blueprint als Defaults), Klärungsfragen (genau eine Frage pro Schritt mit a/b/c/Sonstiges), prozedurale Anleitung (Phasenlogik, Checkliste zur Überprüfung, Iterationsschleifen).
 
 **Quelle**: Selbst erstellt; strukturiert nach dokumentierten Best Practices für System Prompts von OpenAI, Anthropic und Google [@kotha2025; @google2025; @anthropic2025c].
-(acht Prinzipien: Struktur, Spezifität, Motivation, positive Formulierung, Beispiele, Unsicherheit, Reasoning, Iteration).
+(acht Prinzipien: Struktur, Spezifität, Motivation, positive Formulierung, Beispiele, Unsicherheit, Reasoning (schrittweises Nachdenken), Iteration).
 
 ::: {.callout-note collapse="true" title="Hiwi: Allgemeine Anweisungen im System-Prompt"}
 ``` markdown
@@ -381,7 +381,7 @@ Sonstiges (bitte eingeben)
 
 **Funktion**: Erstellt didaktische Quiz-Aufgaben.
 
-**Didaktische Elemente:** Testing Effect; Low Stakes Test; Retrieval Practice
+**Didaktische Elemente:** Testing Effect (Testeffekt); Low Stakes Test (Test ohne Notenfolgen); Retrieval Practice
 
 **Quelle:** Angepasst & übersetzt basierend auf dem Blog von Ethan Mollick, Online: https://www.moreusefulthings.com/instructor-prompts.
 
@@ -444,7 +444,7 @@ Zusätzlich:
 ::::: {.content-visible when-format="html"}
 ### Hiwi: Protokolle für Treffen erstellen {#sec-prompt-protokoll}
 
-**Funktion:** Meeting-Notizen verdichten; Action Items extrahieren; Verantwortlichkeiten zuordnen.
+**Funktion:** Meeting-Notizen verdichten; Action Items (vereinbarte Aufgaben) extrahieren; Verantwortlichkeiten zuordnen.
 Grundlage kann hier ein Transkript aus MS-Teams oder Zoom sein, das in ein strukturiertes Format überführt wird.
 
 **Didaktische Elemente:** Keine
@@ -580,7 +580,7 @@ Der Text soll oberflächlich plausibel klingen, damit die Fehler nicht sofort of
 
 **Funktion:** Didaktische Aufgaben strukturiert entwerfen; Iteration/Refinement unterstützen; kognitive Belastung senken.
 
-**Didaktische Elemente:** Cognitive Load Management; gezielte Leitfragen; Beispiele/Constraints; Iterationsschleifen.
+**Didaktische Elemente:** Cognitive Load Management (Steuerung der kognitiven Belastung); gezielte Leitfragen; Beispiele/Constraints (Vorgaben); Iterationsschleifen.
 
 **Quelle:** Angepasst basierend auf @moreUsefulThingsInstructorPrompts , Online: https://www.moreusefulthings.com/instructor-prompts
 
@@ -692,7 +692,7 @@ Den Allgemeinen Tutor nach Mollick und Mollick enthält die Online-Sammlung; ein
 
 **Funktion:** Konzepte erklären; Lernstand erheben; Verständnis durch Fragen prüfen; Lernen durch Beispiele/Analogien unterstützen.
 
-**Didaktische Elemente:** Scaffolding; Socratic Questioning (einzeln, sequenziell); formative Checks (Verständnis „prüfen statt fragen“); Analogien/Beispiele zur Konzeptklärung.
+**Didaktische Elemente:** Scaffolding; Socratic Questioning (sokratisches Fragen; einzeln, sequenziell); formative Checks (Verständnis „prüfen statt fragen“); Analogien/Beispiele zur Konzeptklärung.
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Online: https://www.moreusefulthings.com/student-exercises .
 
@@ -732,7 +732,7 @@ Erfolg liegt vor, wenn Lernende erklären, vergleichen und anwenden können.
 
 **Funktion**: Konkretes, umsetzbares Feedback zu studentischen Arbeiten geben; nächste Iteration strukturieren; Reflexion über Feedback anstoßen.
 
-**Didaktische Elemente:** Formatives Feedback; Feedback-Implementierung (Planung); metakognitive Rückfragen; „Do not do the work“ (Ownership/Agency).
+**Didaktische Elemente:** Formatives Feedback; Feedback-Implementierung (Planung); metakognitive Rückfragen; „Do not do the work“ (Ownership/Agency, Eigenverantwortung der Lernenden).
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Online: https://www.moreusefulthings.com/student-exercises .
 
@@ -768,7 +768,7 @@ Schritte: (1) Lernniveau & Aufgabe → warten; (2) Rubric/Ziele → warten; (3) 
 
 **Funktion**: Reflexion anleiten; Lernerfahrungen „destillieren“; Distanzierung/Neurahmung fördern; Reflexion in Schreibaufgabe überführen.
 
-**Didaktische Elemente**: Guided Reflection; Self-distancing; metakognitive Strukturierung; „One question at a time“.
+**Didaktische Elemente**: Guided Reflection (angeleitete Reflexion); Self-distancing (Selbstdistanzierung); metakognitive Strukturierung; „One question at a time“.
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Online: https://www.moreusefulthings.com/student-exercises .
 
@@ -1006,9 +1006,9 @@ Reflektieren Sie als ganze Klasse oder in kleinen Gruppen über einige der folge
 ::::: {.content-visible when-format="html"}
 ### Tutor-Aufgabe: Korrigiere einen schlechten Aufsatz {#sec-prompt-aufsatz-korrigieren}
 
-**Funktion:** Kritische Fehleranalyse üben; Verständnis für Halluzinationen und sprachliche Schwächen von KI-Modellen fördern.
+**Funktion:** Kritische Fehleranalyse üben; Verständnis für Halluzinationen (erfundene Angaben der KI) und sprachliche Schwächen von KI-Modellen fördern.
 
-**Didaktische Elemente:** Fehlerorientiertes Lernen (Learning from Errors); Editing; Comparative Analysis; Metakognitive Reflexion.
+**Didaktische Elemente:** Fehlerorientiertes Lernen (*learning from errors*); Editing (Überarbeiten); Comparative Analysis (vergleichende Analyse); Metakognitive Reflexion.
 
 **Quelle:** @newman2025, Online: [AI Pedagogy Project](https://aipedagogy.org/assignment/correct-a-bad-essay/)
 
@@ -1053,7 +1053,7 @@ Fügen Sie einen einseitigen Anhang mit den folgenden Informationen bei:
 
 **Funktion:** Vertiefung von theoretischem Wissen durch konstruktivistische Anwendung (Erstellung statt Konsum); Förderung des Verständnisses komplexer Zusammenhänge durch Szenarienbildung.
 
-**Didaktische Elemente:** Co-Creation; Rollenspiel (AI as Mentor); Perspektivwechsel (Student als Fallautor); Iteratives Design.
+**Didaktische Elemente:** Co-Creation (gemeinsames Erstellen); Rollenspiel (KI als Mentor, *AI as Mentor*); Perspektivwechsel (Student als Fallautor); Iteratives Design.
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Co-create a case study with Copilot.
 Online: https://www.moreusefulthings.com/student-exercises .
@@ -1123,7 +1123,7 @@ Erfolgskriterien: Prozessdisziplin, peer-lösbar, ausreichende Details, keine L�
 
 ### Copilot: Dem Tod ins Auge sehen - Pre-Mortem für Projekte {#sec-prompt-project-premortem}
 
-**Funktion:** Risikoantizipation durch mentale Zeitreise (Inversion); Überwindung von Konformitätsdruck (Groupthink) und Optimismus-Fehlschluss (Optimism Bias) in der Planungsphase
+**Funktion:** Risikoantizipation durch mentale Zeitreise (Inversion); Überwindung von Gruppendenken (*groupthink*) und Optimismus-Fehlschluss (*optimism bias*) in der Planungsphase
 
 **Didaktische Elemente:** Sokratische Gesprächsführung; Prospective Hindsight (Prospektive Rückschau)
 
@@ -1198,9 +1198,9 @@ Interne Schritte (nicht anzeigen):
 ::::: {.content-visible when-format="html"}
 ### Copilot: Ungeliebte Positionen vertreten lassen (Devil’s advocate) {#sec-prompt-devils-advocate}
 
-**Funktion:** Überwindung von Gruppendenken (Groupthink) und Bestätigungsfehlern (Confirmation Bias); Identifikation blinder Flecken und versteckter Annahmen; Erhöhung der Entscheidungsqualität durch erzwungenen Perspektivwechsel.
+**Funktion:** Überwindung von Gruppendenken (*groupthink*) und Bestätigungsfehlern (*confirmation bias*); Identifikation blinder Flecken und versteckter Annahmen; Erhöhung der Entscheidungsqualität durch erzwungenen Perspektivwechsel.
 
-**Didaktische Elemente:** Advocatus Diaboli (Teufelsadvokat); Dialektische Untersuchung (Dialectical Inquiry); Kritisches Denken; Sokratische Gesprächsführung.
+**Didaktische Elemente:** Advocatus Diaboli (Teufelsadvokat); Dialektische Untersuchung (*dialectical inquiry*); Kritisches Denken; Sokratische Gesprächsführung.
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises.
 Devil's Advocate.
@@ -1237,9 +1237,9 @@ Erfolg liegt vor, wenn alle Fragen beantwortet wurden, Annahmen sichtbar sind un
 ::::: {.content-visible when-format="html"}
 ### Copilot: Team-Charter erstellen {#sec-prompt-team-charter}
 
-**Funktion:** Etablierung einer stabilen Arbeitsgrundlage (Contracting); Prävention von Teamkonflikten durch Explizitmachung impliziter Erwartungen; Klärung von Zielen, Rollen und Verhaltensnormen in der Anfangsphase eines Projekts.
+**Funktion:** Etablierung einer stabilen Arbeitsgrundlage (*contracting*); Prävention von Teamkonflikten durch Explizitmachung impliziter Erwartungen; Klärung von Zielen, Rollen und Verhaltensnormen in der Anfangsphase eines Projekts.
 
-**Didaktische Elemente:** Scaffolding durch strukturierte Sequenzierung, sokratisches Coaching / Guided Inquiry, Begrenzung der Cognitive Load durch Interaktionssteuerung (Frage + Wartezeit).
+**Didaktische Elemente:** Scaffolding durch strukturierte Sequenzierung, sokratisches Coaching / Guided Inquiry (angeleitetes Erkunden), Begrenzung der Cognitive Load durch Interaktionssteuerung (Frage + Wartezeit).
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Create a Team Charter.
 More Useful Things.
@@ -1271,9 +1271,9 @@ Dabei gelten folgende Grundprinzipien: Dies ist ein Dialog. Übernimm nicht die 
 ::::: {.content-visible when-format="html"}
 ### Copilot: Team-Reflexion / After Action Review {#sec-prompt-after-action-review}
 
-**Funktion:** Systematische Rückschau zur Leistungssteigerung; Umwandlung impliziter Erfahrung in explizites Wissen; Förderung einer Fehlerkultur ohne Schuldzuweisungen (No-Blame Culture); Schließen der Lernschleife zwischen Projekten.
+**Funktion:** Systematische Rückschau zur Leistungssteigerung; Umwandlung impliziter Erfahrung in explizites Wissen; Förderung einer Fehlerkultur ohne Schuldzuweisungen (*no-blame culture*); Schließen der Lernschleife zwischen Projekten.
 
-**Didaktische Elemente:** After Action Review (AAR); Debriefing; Reflexive Praxis (Reflective Practice); Double-Loop Learning (Hinterfragen zugrundeliegender Annahmen).
+**Didaktische Elemente:** After Action Review (AAR); Debriefing; Reflexive Praxis (*reflective practice*); Double-Loop Learning (Hinterfragen zugrundeliegender Annahmen).
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Team Reflection.
 More Useful Things.
@@ -1405,7 +1405,7 @@ inklusive:
 
 **Funktion:** Eine komplexe Methodik mit Hilfe der KI an einem realen Beispiel ausprobieren.
 
-Die Studierenden zerlegen den ROE in Marge, Kapitalumschlag und Leverage, berechnen Kennzahlen für Coca-Cola und vergleichen ihre Resultate mit einer KI-gestützten Analyse.
+Die Studierenden zerlegen die Eigenkapitalrendite (*return on equity*, ROE) in Marge, Kapitalumschlag und Leverage (Verschuldungsgrad), berechnen Kennzahlen für Coca-Cola und vergleichen ihre Resultate mit einer KI-gestützten Analyse.
 Ziel ist die fachliche Plausibilisierung von Rechenwegen, die Abweichungsanalyse und die Aufbereitung der Ergebnisse als Executive-Memo.
 
 **Quelle:** Übersetzt von @pedersen2025 , Online: https://aipedagogy.org/assignment/dupont-analysis-of-coca-cola/
@@ -1692,7 +1692,7 @@ o   Inwiefern stellt diese Recherche eine Herausforderung für ihre Zukunftsplan
 ::::: {.content-visible when-format="html"}
 ### Simulator: Simulation eines Forschungsinterviews {#sec-prompt-interview-simulator}
 
-**Funktion:** Qualitätssteigerung qualitativer Interviews durch Simulation (Pre-Testing); Sensibilisierung für den Unterschied zwischen stereotypen KI-Antworten und menschlicher Nuance; Training von Aktivem Zuhören und Nachfragetechniken (Probing); Abbau von Hemmschwellen vor der Feldarbeit.
+**Funktion:** Qualitätssteigerung qualitativer Interviews durch Simulation (*pre-testing*); Sensibilisierung für den Unterschied zwischen stereotypen KI-Antworten und menschlicher Nuance; Training von Aktivem Zuhören und Nachfragetechniken (*probing*); Abbau von Hemmschwellen vor der Feldarbeit.
 
 **Didaktische Elemente:** Scaffolding (durch KI-Mentor); Iteratives Design (Entwurf-Test-Überarbeitung); Formatives Feedback (Debriefing)
 
@@ -1796,9 +1796,9 @@ Schritte:
 
 ### Simulator: Verhandlungssimulation {#sec-prompt-verhandlungssimulator}
 
-**Funktion:** Simulation komplexer Verhandlungssituationen in einer risikofreien Umgebung (Sandbox); Anwendung theoretischer Konzepte (BATNA, ZOPA) in der Praxis; Förderung der kommunikativen Kompetenz und strategischen Planung.
+**Funktion:** Simulation komplexer Verhandlungssituationen in einer risikofreien Umgebung (*sandbox*); Anwendung theoretischer Konzepte (beste Alternative ohne Einigung, BATNA; Einigungsbereich, ZOPA) in der Praxis; Förderung der kommunikativen Kompetenz und strategischen Planung.
 
-**Didaktische Elemente:** Scaffolding (durch KI-Mentor); Formatives Feedback (Debriefing); Adaptives Lernen (Szenario-Wahl).
+**Didaktische Elemente:** Scaffolding (durch KI-Mentor); Formatives Feedback (Debriefing: Nachbesprechung); Adaptives Lernen (Szenario-Wahl).
 Situiertes Lernen.
 
 **Quelle:** Angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises.
@@ -1936,7 +1936,7 @@ Solch eine Art von Simulation kann aber auch für andere Methoden oder Techniken
 Für einen ersten Wurf nehmen Sie diesen Prompt als Vorlage und lassen ihn dann durch ein starkes Sprachmodell und evtl.
 mit zusätzlicher Eingabe einer Methodenbeschreibung anpassen.
 
-**Didaktische Elemente:** Scaffolding (durch KI-Mentor); situiertes Lernen; kognitive Umstrukturierung (Reframing); Formatives Feedback (Debriefing)
+**Didaktische Elemente:** Scaffolding (durch KI-Mentor); situiertes Lernen; kognitive Umstrukturierung (*reframing*); Formatives Feedback (Debriefing)
 
 **Quelle:** Leicht angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises.
 Goal Play: Help a character get perspective.
@@ -2130,9 +2130,9 @@ Diese Konzepte sollen implizit im Rollenspiel gefördert und im Feedback reflekt
 
 ### Simulator: Goal Play - Zielsetzung üben {#sec-prompt-goal-setting}
 
-**Funktion:** Training von Methodenkompetenz (Zielsetzung, Priorisierung) in einer risikofreien Simulationsumgebung; Transfer theoretischen Wissens (z. B. SMART-Kriterien) in praktische Beratungssituationen; Förderung der Handlungskompetenz durch Perspektivübernahme (Beraterrolle).
+**Funktion:** Goal Play (Lernende bleiben sie selbst und leiten eine KI-Figur an); Training von Methodenkompetenz (Zielsetzung, Priorisierung) in einer risikofreien Simulationsumgebung; Transfer theoretischen Wissens (z. B. SMART-Kriterien: spezifisch, messbar, attraktiv, realistisch, terminiert) in praktische Beratungssituationen; Förderung der Handlungskompetenz durch Perspektivübernahme (Beraterrolle).
 
-**Didaktische Elemente:** Scaffolding (durch KI-Mentor); Szenariobasiertes Lernen (Storytelling); Lernen durch Lehren (Learning by Teaching); Formatives Feedback (Debriefing)
+**Didaktische Elemente:** Scaffolding (durch KI-Mentor); Szenariobasiertes Lernen (*storytelling*); Lernen durch Lehren (*learning by teaching*); Formatives Feedback (Debriefing)
 
 **Quelle:** Leicht angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises Mollick, E.
 & Mollick, L.
@@ -2301,9 +2301,9 @@ Diese Prinzipien sollen implizit im Rollenspiel angewendet und im Feedback refle
 
 ### Interview mit einer fiktionalen Person {#sec-prompt-interview-fiktionale-person}
 
-**Funktion:** Vertiefung des Literaturverständnisses durch interaktive Auseinandersetzung; Überprüfung von Interpretationshypothesen am Primärtext ("Close Reading"); Förderung der Empathie für literarische Figuren; Validierung von KI-Halluzinationen durch Textbelege.
+**Funktion:** Vertiefung des Literaturverständnisses durch interaktive Auseinandersetzung; Überprüfung von Interpretationshypothesen am Primärtext (*close reading*, genaues Lesen); Förderung der Empathie für literarische Figuren; Validierung von KI-Halluzinationen durch Textbelege.
 
-**Didaktische Elemente:**Forschendes Lernen (Inquiry-Based Learning); Rollenspiel-Simulation (Persona-Prompting); Textanalyse (Close Reading); Perspektivübernahme.
+**Didaktische Elemente:** Forschendes Lernen (*inquiry-based learning*); Rollenspiel-Simulation (*persona prompting*); Textanalyse (*close reading*); Perspektivübernahme.
 
 **Quelle:** Angepasst und übersetzt basierend auf @kentz2025 , Online: [AI Pedagogy Project Harvard](https://aipedagogy.org/assignment/interview-a-fictional-character/)
 
@@ -2474,9 +2474,9 @@ Reflexion anleiten und nächste Schritte vorschlagen.
 
 **Funktion:** Training klinischer Entscheidungsfindung und kommunikativer Kompetenzen in einer risikofreien Umgebung; Anwendung theoretischer Triage-Protokolle in simulierten Echtzeit-Szenarien; Förderung der verbalen Souveränität durch sprachbasierte Interaktion.
 
-**Didaktische Elemente:** Rollenspiel-Simulation (Role-Play); Sprachbasierte Interaktion (Voice UI); Klinisches Urteilsvermögen (Clinical Reasoning); Reflexive Praxis (Self-Assessment & AI-Feedback); Fallbasiertes Lernen.
+**Didaktische Elemente:** Rollenspiel-Simulation (*role-play*); Sprachbasierte Interaktion (*voice user interface*, Voice UI); Klinisches Urteilsvermögen (*clinical reasoning*); Reflexive Praxis (*self-assessment & AI feedback*); Fallbasiertes Lernen.
 
-**Quelle:** Angepasst und übersetzt nach @hobbick2025 , Online: \[AI Pedagogy Project (2025) Simulated Telephone Triage Calls\] (https://aipedagogy.org/assignment/simulated-telephone-triage-calls/)
+**Quelle:** Angepasst und übersetzt nach @hobbick2025 , Online: [AI Pedagogy Project (2025): Simulated Telephone Triage Calls](https://aipedagogy.org/assignment/simulated-telephone-triage-calls/)
 
 ::: {.callout-note collapse="true" title="Simulator: Schwierige Interaktion üben"}
 ``` markdown
@@ -2633,9 +2633,9 @@ Die Simulation regt zur **Reflexion** über die eigene Leistung an und fördert 
 
 ### Simulator-Aufgabe: Simulation in der Veterinärmedizin {#sec-prompt-simulation-veterinärmedizin}
 
-**Funktion:** Simulation eines komplexen klinischen Falls (Equine Kolik); Training des diagnostischen Pfads ("Clinical Reasoning") von der Anamnese bis zur chirurgischen Entscheidung; Förderung der strukturierten Datenerhebung bei Patienten (bzw. Tierbesitzern).
+**Funktion:** Simulation eines komplexen klinischen Falls (Kolik beim Pferd, equine Kolik); Training des diagnostischen Pfads (*clinical reasoning*) von der Anamnese bis zur chirurgischen Entscheidung; Förderung der strukturierten Datenerhebung bei Patienten (bzw. Tierbesitzern).
 
-**Didaktische Elemente:** Problem-Based Learning (PBL); Sequenzielle Informationsfreigabe (Drip-Feeding Information); Eskalations-Szenario (Konservative vs. Chirurgische Therapie); Reflexive Praxis.
+**Didaktische Elemente:** Problem-Based Learning (problembasiertes Lernen, PBL); Sequenzielle Informationsfreigabe (*drip-feeding information*); Eskalations-Szenario (Konservative vs. Chirurgische Therapie); Reflexive Praxis.
 
 **Quelle**: Angepasst und übersetzt nach https://www.cityu.edu.hk/GenAI/cityuhkpl-display.htm , Erstellt von: Dr. ALONSO SOUSA Santiago
 
@@ -2795,10 +2795,10 @@ Aufgrund des Vorliegens von Reflux, abnormaler Ultraschallbefunde und anhaltende
 Die Übung führt durch die vier Kompetenzen des 4D-Modells aus @sec-schemas, jeweils am selben Berufsprofil, so dass Lehrende sie auf ihr Fach übertragen können. Sie eignet sich für eine Fortbildung von Lehrenden ebenso wie für eine Sitzung mit Studierenden höherer Semester.
 
 ::: {.callout-note title="Didaktische Ziele der heutigen Übung"}
-- **Kennenlernen** – GenAI-Literacy-Frameworks als Analyserahmen für den Kompetenzaufbau.
-- **Verstehen** – Aufbau speziell des AI Fluency Frameworks.
+- **Kennenlernen** – GenAI-Literacy-Frameworks (Modelle der KI-Kompetenz) als Analyserahmen für den Kompetenzaufbau.
+- **Verstehen** – Aufbau speziell des AI Fluency Frameworks (etwa: Gewandtheit im Umgang mit KI).
 - **Anwenden** – Modellverständnis praktisch erfahren.
-- **Verstehen** – weitere Ressourcen für Übungen in den vier Teilbereichen kennenlernen (O\*NET, Prompt-Arten, systematische Evaluation …).
+- **Verstehen** – weitere Ressourcen für Übungen in den vier Teilbereichen kennenlernen (US-Berufsdatenbank O\*NET, Prompt-Arten, systematische Evaluation …).
 :::
 
 ### Worum es geht
@@ -2815,11 +2815,11 @@ AI Fluency ist die Fähigkeit, mit KI-Systemen wirksam, effizient, ethisch und s
 : Die vier Kompetenzen des AI Fluency Frameworks {tbl-colwidths="[28,72]"}
 
 ::: {.callout-tip title="Drei Formen im Aufgabenmodell [@acemoglu2025tasks]"}
-**Automatisierung (automation).** Eine Aufgabe wandert vom Menschen zur KI.
+**Automatisierung (*automation*).** Eine Aufgabe wandert vom Menschen zur KI.
 
-**Augmentierung (labor-augmenting technology).** Die Aufgabe bleibt beim Menschen, die KI macht seine Arbeit schneller oder besser.
+**Augmentierung (*labor-augmenting technology*).** Die Aufgabe bleibt beim Menschen, die KI macht seine Arbeit schneller oder besser.
 
-**Neue Aufgaben (new tasks).** Durch die KI entstehen Tätigkeiten, die es vorher nicht gab, etwa die Prüfung von KI-Ergebnissen.
+**Neue Aufgaben (*new tasks*).** Durch die KI entstehen Tätigkeiten, die es vorher nicht gab, etwa die Prüfung von KI-Ergebnissen.
 
 Beispiele aus der Lehre zeigt @tbl-acemoglu.
 :::
@@ -2836,7 +2836,7 @@ Beispiele: Delegation am Profil **Social Worker** ([O\*NET 21-1021.00](https://w
 :::
 
 ::: {.callout-note appearance="simple" title="Stand der Modellnamen: Oktober 2026"}
-Die Übung nennt die Modelle, die im Oktober 2026 in der GWDG Academic Cloud und auf arena.ai verfügbar waren. Ersetzen Sie sie durch ein kleines, ein mittleres und das stärkste Modell Ihres aktuellen Hochschulzugangs; die Aufgabe bleibt dieselbe.
+Die Übung nennt die Modelle, die im Oktober 2026 in der Academic Cloud der Gesellschaft für wissenschaftliche Datenverarbeitung in Göttingen (GWDG) und auf der Vergleichsplattform arena.ai verfügbar waren. Ersetzen Sie sie durch ein kleines, ein mittleres und das stärkste Modell Ihres aktuellen Hochschulzugangs; die Aufgabe bleibt dieselbe.
 :::
 
 ### Phase 1 – Delegation {#sec-af-uebung-delegation}
@@ -2849,7 +2849,7 @@ Die Übung nennt die Modelle, die im Oktober 2026 in der GWDG Academic Cloud und
 
 **Aufgabe (5 Min).** Geben Sie denselben Prompt 3× nacheinander in der GWDG Academic Cloud ein – zuerst mit **Teuken 7B**, dann **Qwen 3 30B**, dann **OpenAI GPT 5.5**. Notieren Sie je drei Stichworte zur Qualität (Tiefe, Konkretheit, Belege).
 
-- Alle drei Modelle laufen in der [GWDG Academic Cloud](https://academiccloud.de){target="_blank"} – so bleibt das Setup (die „Harness“) gleich, und die Unterschiede zeigen die reine Modellstärke.
+- Alle drei Modelle laufen in der [GWDG Academic Cloud](https://academiccloud.de){target="_blank"} – so bleibt das Setup (die „Harness“, der Werkzeugkasten um das Modell) gleich, und die Unterschiede zeigen die reine Modellstärke.
 - Faktenbasis: ein O\*NET-Profil Ihres Fachs. Beispiel zum Einstieg: Social Worker, [21-1021.00](https://www.onetonline.org/link/summary/21-1021.00){target="_blank"}.
 
 ```text
@@ -2872,7 +2872,7 @@ Bezug: O*NET-Profil [O*NET-LINK].
    die wirtschaftliche Lage.
    ```
 
-2. **Deep-Research-Lauf.** Zuerst das starke Modell den Deep-Research-Prompt nach RTF-Schema erzeugen lassen, dann in den Deep-Research-Modus geben (GPT mit Deep Research, Gemini Advanced oder Perplexity Pro im Trial).
+2. **Deep-Research-Lauf.** Zuerst das starke Modell den Deep-Research-Prompt nach RTF-Schema erzeugen lassen, dann in den Deep-Research-Modus (mehrstufige, selbstständige Webrecherche der KI) geben (GPT mit Deep Research, Gemini Advanced oder Perplexity Pro im Trial).
 
    ```text
    Erstellen Sie mir einen detaillierten Prompt nach dem RTF-Schema für eine
@@ -2963,11 +2963,11 @@ CREATE-Format.
 
 **Kompetenzfokus:** Product Discernment, Process Discernment.
 
-**Aufgabe.** Lassen Sie sich per Flipped Interaction ein Testverfahren für die in Phase 2 erstellte GenAI-Unterstützung entwickeln – in vier Bausteinen, die nach dem Prinzip *Defense in Depth* aufeinander aufbauen (keiner allein genügt).
+**Aufgabe.** Lassen Sie sich per Flipped Interaction ein Testverfahren für die in Phase 2 erstellte GenAI-Unterstützung entwickeln – in vier Bausteinen, die nach dem Prinzip *Defense in Depth* (gestaffelte Sicherung) aufeinander aufbauen (keiner allein genügt).
 
 - **Baustein 1 – Bewertungsschemata:** Optionen mit Vor- und Nachteilen.
 - **Baustein 2 – Manuelle Testfälle:** erste Fälle zur manuellen menschlichen Bewertung.
-- **Baustein 3 – Automatische Bewertung:** GenAI bewertet GenAI, z. B. mit RAGAS. RAGAS (Retrieval-Augmented Generation Assessment) ist ein Open-Source-Werkzeug, das ein zweites Sprachmodell als Prüfer einsetzt und die Antwortqualität automatisch in Kennzahlen misst – vor allem Faithfulness (Treue zur Quelle), Answer Relevancy (Antwortrelevanz), Context Precision und Context Recall (Güte des Abrufs) [@es2024].
+- **Baustein 3 – Automatische Bewertung:** GenAI bewertet GenAI, z. B. mit RAGAS. RAGAS (Retrieval-Augmented Generation Assessment, Prüfung von KI mit Dokumentenabruf) ist ein Open-Source-Werkzeug, das ein zweites Sprachmodell als Prüfer einsetzt und die Antwortqualität automatisch in Kennzahlen misst – vor allem Faithfulness (Treue zur Quelle), Answer Relevancy (Antwortrelevanz), Context Precision und Context Recall (Güte des Abrufs) [@es2024].
 - **Baustein 4 – Gold-Standard:** ein Pool fachlich abgesicherter Testfälle für die regelmäßige Bewertung – die einzige Stelle, an der menschliche Fachexpertise eintritt.
 
 ```text
@@ -3056,8 +3056,8 @@ Die folgenden Prompts und Aufgabenstellungen gehören zur Sammlung, sind aber nu
 | Simulator (Aufgabe) | Interview mit einer fiktionalen Person | Studierende interviewen eine von der KI gespielte historische oder fiktive Figur |
 | Simulator (Aufgabe) | Schwierige Interaktionen üben (Beispiel: Telefongespräch von Pflegenden mit Patienten) | Schwierige Gespräche im Rollenspiel üben und reflektieren (Beispiel Pflege) |
 | Simulator (Aufgabe) | Simulation in der Veterinärmedizin | Klinische Fallsimulation mit Anamnese und Entscheidungsfeedback (Beispiel Veterinärmedizin) |
+| Übung (alle Rollen) | AI Fluency am Berufsprofil: eine Übung in vier Phasen | Führt an einem Berufsprofil aus der US-Berufsdatenbank O\*NET durch Delegation, Description, Discernment und Diligence (@sec-schemas) |
 
-| Übung (alle Rollen) | AI Fluency am Berufsprofil: eine Übung in vier Phasen | Führt an einem Berufsprofil aus der Datenbank O\*NET durch Delegation, Description, Discernment und Diligence (@sec-schemas) |
 : Online verfügbare Prompts und Aufgabenstellungen {#tbl-prompts-online}
 
 ![Vollständige Prompt-Sammlung in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel07-appendix02-prompt-sammlung.html> aufrufen.](images/qr/qr-prompt-sammlung.png){#fig-qr-prompt-sammlung width="32%" fig-align="center"}

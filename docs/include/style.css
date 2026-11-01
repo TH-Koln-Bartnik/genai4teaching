@@ -78,3 +78,6 @@ pre > code.sourceCode > span {
 /* Breite Tabellen auf schmalen Bildschirmen: Silbentrennung, notfalls seitlich verschieben (Kapitel 2, 4D-Abschnitt) */
 .tabelle-scroll { overflow-x: auto; }
 .tabelle-scroll table { hyphens: auto; -webkit-hyphens: auto; }
+
+/* Querverweise mit Abschnittstitel (z. B. im Glossar) dürfen auf schmalen Bildschirmen umbrechen; Quarto setzt .quarto-xref auf nowrap */
+.quarto-xref > span { white-space: normal; }
