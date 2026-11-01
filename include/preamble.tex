@@ -15,6 +15,32 @@
 \newcommand{\tabellenschrift}{\small}  % je Tabelle übersteuerbar, z. B. \renewcommand{\tabellenschrift}{\footnotesize} in einer Gruppe
 \AtBeginEnvironment{longtable}{\tabellenschrift\let\raggedright\RaggedRight}  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
 
+% Tabellen in Kästen (Quarto-Callouts = tcolorbox) und Tabellen ohne Überschrift.
+% (1) longtable gibt Fuß und Schlussfuß nur in seiner Ausgaberoutine aus, und die läuft
+%     in einem Kasten nie. Pandoc setzt dort wegen cap-location: bottom die Schlusslinie,
+%     die Überschrift und das Label hinein; im Kasten fehlten alle drei (Befund 01.11.2026:
+%     Tabelle 2.3 und 3.2). Abhilfe: Steht die Tabelle in einer Box (\ifinner), hängt
+%     \endlongtable den Schlussfuß selbst an.
+% (2) longtable zählt jede Tabelle, auch ohne Überschrift; sieben unbeschriftete Tabellen
+%     in Kästen von Anhang D erzeugten die Lücke D.2 -> D.10. Abhilfe: Tabellen ohne
+%     Überschrift geben ihre Nummer zurück. Damit die PDF-Sprungmarken eindeutig bleiben,
+%     enthält \theHtable die laufende longtable-Nummer.
+\makeatletter
+\newif\ifLT@mitueberschrift
+\AtBeginEnvironment{longtable}{\global\LT@mitueberschriftfalse}
+\AtBeginDocument{%
+  \patchcmd{\LT@caption}{\noalign\bgroup}{\noalign\bgroup\global\LT@mitueberschrifttrue}{}%
+    {\PackageWarningNoLine{preamble}{Patch LT@caption fehlgeschlagen}}%
+  \patchcmd{\endlongtable}
+    {\endgraf\penalty -\LT@end@pen}
+    {\ifinner\nobreak\box\ifvoid\LT@lastfoot\LT@foot\else\LT@lastfoot\fi\fi
+     \ifLT@mitueberschrift\else\addtocounter{table}{-1}\fi
+     \endgraf\penalty -\LT@end@pen}
+    {}{\PackageWarningNoLine{preamble}{Patch endlongtable fehlgeschlagen}}%
+  \@ifundefined{theHtable}{}{\renewcommand*{\theHtable}{\arabic{LT@tables}.\theHchapter.\arabic{table}}}%
+}
+\makeatother
+
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{tcolorbox}
