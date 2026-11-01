@@ -1,7 +1,7 @@
 # Status: Kapitel 1 als Forschungsüberblick plus Vorschau (01.11.2026, ca. 10:30)
 
 Plan: `claude/kapitel01-ziele/PLAN-kapitel01-forschungsueberblick-vorschau-2026-11-01.md` (Projekt).
-Branch `kapitel01-forschungsueberblick` (gepusht), Basis `main` @ `d933cd7`. Commits `48f11b4` (Technik aus den Patches), `eebe9af` (Umbau). **Nicht gemergt: Roman prüft den Diff.**
+Branch `kapitel01-forschungsueberblick`, Basis `main` @ `d933cd7`. Commits `48f11b4` (Technik aus den Patches), `eebe9af` (Umbau). **Nach Freigabe Roman (10:50) in `main` gemergt: `4cadf3a`, gepusht; Pages-Lauf erfolgreich, `kapitel01.html` live.** Live-`kapitel04.html` lieferte um 10:57 noch die alte Fassung (vermutlich CDN-Cache; lokal in docs/ korrekt) → in der nächsten Sitzung „Augmentierung“ online prüfen.
 Vergleich: https://github.com/TH-Koln-Bartnik/genai4teaching/compare/main...kapitel01-forschungsueberblick
 
 ## Entscheidungen Roman (01.11., 09:16–09:30, Multiple Choice)
@@ -29,9 +29,9 @@ Die Projekt-Patches `claude/kapitelkopf-position/kapitelkopf-position-kap01.patc
 - Druck-PDF nicht gerendert (kein TeX in der Cloud).
 
 ## Offen
-1. Roman: Diff prüfen → Merge in `main` (origin/main hat seit der Basis nur eine Statusnotiz, kein Konflikt zu erwarten).
+1. ~~Diff prüfen → Merge~~ erledigt (`4cadf3a`). Branch `kapitel01-forschungsueberblick` kann gelöscht werden.
 2. Nach P4 (2.6 4D): Frage 3 im Kasten auf 2.6 umstellen, 2.6 als Station in die Lernpfad-Karte.
-3. Kapitelauftakt Kap. 2–6 (`claude/kapitelkopf-position/AUFTRAG-kapitelauftakt-kap02-06-2026-11-01.md`) braucht Filter und Include aus diesem Branch: erst nach dem Merge starten oder von diesem Branch abzweigen.
+3. Kapitelauftakt Kap. 2–6 (`claude/kapitelkopf-position/AUFTRAG-kapitelauftakt-kap02-06-2026-11-01.md`): Filter und Include liegen jetzt in `main`; nächste Sitzung von `main` @ `4cadf3a` abzweigen. Für 2.6 liegt ein Entwurf vor (`claude/kapitel02-4d-p4/`), danach Frage 3 im Kasten und Lernpfad-Station nachziehen.
 4. Vorwort prüfen, ob der Workshop-Hintergrund (hdw nrw, Fächerbreite) dort ausführlicher stehen soll.
 5. Galerie: Rahmen des Lernspiels zeigt mobil Leerraum unter dem Spiel; Engpass-Animation Wortbudget.
 6. Buchweit: Crossref-Präfix „Kapitel 1.2“ statt „Abschnitt 1.2“; Druck: openright vs. Daft-Doppelseite mit Logos klären.
