@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detektor-Duell: Mensch oder KI?</title>
+<style>
+  :root {
+    --red: #c1002a; --red-soft: #f6dde3; --bg: #ffffff; --panel: #f4f4f4; --line: #d4d4d4;
+    --text: #1a1a1a; --muted: #5f5f5f; --bar: #a6a6a6; --code: #fbfbfa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --red: #ff5c7a; --red-soft: #3b1820; --bg: #141414; --panel: #1f1f1f; --line: #3a3a3a;
+      --text: #f2f2f2; --muted: #b5b5b5; --bar: #7c7c7c; --code: #1a1a1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; }
+  main { max-width: 900px; margin: 0 auto; padding: 18px 14px 32px; }
+  .kicker { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  h1 { font-size: 23px; line-height: 1.25; margin: 4px 0 10px; font-weight: 650; }
+  h2 { font-size: 19px; margin: 18px 0 8px; font-weight: 650; }
+  h2:focus { outline: none; }
+  h3 { font-size: 16px; margin: 14px 0 6px; font-weight: 650; }
+  p { margin: 0 0 10px; max-width: 72ch; }
+  .klein { font-size: 13px; color: var(--muted); }
+  button { font: inherit; font-size: 15px; color: var(--text); background: var(--bg); border: 1px solid var(--line);
+    border-radius: 6px; padding: 8px 14px; cursor: pointer; min-height: 44px; }
+  button:hover:not(:disabled) { border-color: var(--text); }
+  button:disabled { cursor: default; opacity: .55; }
+  button.haupt { background: var(--text); color: var(--bg); border-color: var(--text); }
+  button[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  button:focus-visible, input:focus-visible, a:focus-visible, label:focus-within { outline: 3px solid var(--red); outline-offset: 2px; }
+  kbd { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; }
+  a { color: inherit; }
+  .kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+  ol.phasen { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 12px; font-size: 13px; }
+  ol.phasen li { border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; color: var(--muted); }
+  ol.phasen li[aria-current="step"] { border-color: var(--text); color: var(--text); font-weight: 650; }
+
+  /* Anzeigetafel im Arcade-Stil: Pixelrahmen aus versetzten Schatten, Monospace-Ziffern */
+  .tafel { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 10px 2px 16px;
+    padding: 10px 16px; background: var(--panel); border: 3px solid var(--text);
+    box-shadow: 3px 0 0 var(--text), -3px 0 0 var(--text), 0 3px 0 var(--text), 0 -3px 0 var(--text);
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .08em; }
+  .tafel .seite { text-align: center; font-size: 12px; color: var(--muted); }
+  .tafel .zahl { display: block; font-size: 34px; line-height: 1.1; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+  .tafel .gegen { font-size: 24px; font-weight: 700; }
+  .tafel .zaehler { font-size: 12px; color: var(--muted); }
+
+  .regler { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; max-width: 560px; margin: 8px 0 14px; }
+  .regler label { font-weight: 600; }
+  .regler input[type=range] { grid-column: 1 / 2; width: 100%; accent-color: var(--red); min-height: 32px; }
+  .regler output { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 22px; font-weight: 700; min-width: 4.5ch; text-align: right; }
+
+  .karte { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 0 0 12px; background: var(--bg); }
+  .aufgabe { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+  .auszug { font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.6; margin: 0; max-width: 70ch; overflow-wrap: anywhere; }
+  .wahl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0 4px; }
+  .wahl .etikett { font-size: 14px; color: var(--muted); min-width: 9.5em; }
+  @media (max-width: 520px) { .wahl .etikett { flex-basis: 100%; } }
+  .aufloesung { border-left: 4px solid var(--text); padding: 6px 12px; margin: 10px 0; background: var(--panel); border-radius: 0 6px 6px 0; }
+  .aufloesung p { margin-bottom: 6px; }
+  .marke { display: inline-block; font-size: 12px; font-weight: 700; border: 1px solid currentColor; border-radius: 4px; padding: 0 6px; margin-right: 6px; }
+  .marke.falsch { color: var(--red); }
+  .balken { position: relative; height: 18px; background: var(--bg); border: 1px solid var(--line); border-radius: 3px; max-width: 420px; margin: 4px 0 2px; }
+  .balken > span { position: absolute; left: 0; top: 0; bottom: 0; background: var(--bar); border-radius: 2px 0 0 2px; }
+  .balken.ki > span { background: var(--red); }
+  .balken::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; border-left: 2px dashed var(--text); }
+  ul.gruende { margin: 4px 0 0; padding-left: 20px; font-size: 14px; }
+  .r2-gitter { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .r2-gitter { grid-template-columns: 1fr; } }
+  .r2-gitter .auszug { font-size: 15px; }
+  .haken { display: flex; gap: 8px; align-items: center; margin-top: 10px; font-weight: 600; min-height: 44px; cursor: pointer; }
+  .haken input { width: 22px; height: 22px; accent-color: var(--red); }
+  table { border-collapse: collapse; font-size: 14px; margin: 6px 0 12px; }
+  th, td { border-bottom: 1px solid var(--line); padding: 4px 10px 4px 0; text-align: left; }
+  td.zahl, th.zahl { text-align: right; font-variant-numeric: tabular-nums; }
+  .kasten { border: 1px solid var(--text); border-radius: 8px; padding: 10px 14px; margin: 12px 0; }
+  .prompt { background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 10px; white-space: pre-wrap;
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; overflow-wrap: anywhere; }
+  .zeile { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  [hidden] { display: none !important; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <div class="kopf">
+    <div>
+      <p class="kicker">Kapitel 5 · Selbsttest, etwa 7 Minuten</p>
+      <h1>Detektor-Duell: Mensch oder KI?</h1>
+    </div>
+    <button type="button" id="ton" aria-pressed="false" title="Ton an oder aus">Ton: aus</button>
+  </div>
+  <ol class="phasen" aria-label="Ablauf">
+    <li data-p="0">1 Vorhersage</li><li data-p="1">2 Sie gegen den Detektor</li><li data-p="2">3 Wen trifft der Verdacht?</li>
+    <li data-p="3">4 Bilanz</li><li data-p="4">5 Für Ihr Fach</li>
+  </ol>
+  <div id="ansage" class="sr" aria-live="polite"></div>
+
+  <!-- Phase 1 -->
+  <section id="p0">
+    <h2 tabindex="-1">Ihre Vorhersage</h2>
+    <p>Gleich sehen Sie acht Auszüge aus Erörterungen zu zwei Schulaufgaben, auf Englisch und je etwa 120 Wörter lang. Vier stammen von Schülerinnen und Schülern der Klassen 11 und 12 in den USA, vier von einem aktuellen Sprachmodell, das dieselbe Aufgabe bekam. Ihr Gegner ist ein kleiner, offen gebauter Detektor: Er zählt neun Eigenschaften eines Textes, etwa Satzlängen und Flüchtigkeitsfehler, und rechnet daraus eine Wahrscheinlichkeit.</p>
+    <div class="regler">
+      <label for="v-selbst">Wie viele der 8 Auszüge ordnen Sie richtig zu?</label><span></span>
+      <input type="range" id="v-selbst" min="0" max="8" step="1" value="4" aria-describedby="o-selbst"><output id="o-selbst" for="v-selbst">4 / 8</output>
+      <label for="v-det">Wie viele schafft der Detektor?</label><span></span>
+      <input type="range" id="v-det" min="0" max="8" step="1" value="4" aria-describedby="o-det"><output id="o-det" for="v-det">4 / 8</output>
+    </div>
+    <p class="klein">Ihre Angaben bleiben in diesem Browserfenster; gespeichert wird nur Ihr bester Wert, auf diesem Gerät.<span id="bestwert"></span></p>
+    <button type="button" class="haupt" id="start">Duell starten</button>
+  </section>
+
+  <!-- Phase 2 -->
+  <section id="p1" hidden>
+    <h2 tabindex="-1">Runde 1: Sie gegen den Detektor</h2>
+    <div class="tafel" role="group" aria-label="Spielstand">
+      <div class="seite">Sie<span class="zahl" id="t-sie">0</span></div>
+      <div class="gegen" aria-hidden="true">:</div>
+      <div class="seite">Detektor<span class="zahl" id="t-det">0</span></div>
+      <div class="zaehler" id="t-nr">Auszug 1/8</div>
+    </div>
+    <div class="karte">
+      <p class="aufgabe" id="r1-aufgabe"></p>
+      <p class="auszug" id="r1-text" lang="en"></p>
+      <div class="wahl" role="group" aria-label="Wer hat das geschrieben?">
+        <span class="etikett">Wer hat das geschrieben?</span>
+        <button type="button" data-wahl="Mensch" aria-pressed="false">Mensch <kbd>M</kbd></button>
+        <button type="button" data-wahl="KI" aria-pressed="false">KI <kbd>K</kbd></button>
+      </div>
+      <div class="wahl" role="group" aria-label="Wie sicher sind Sie?">
+        <span class="etikett">Wie sicher?</span>
+        <button type="button" data-sicher="1" aria-pressed="false">1 geraten</button>
+        <button type="button" data-sicher="2" aria-pressed="false">2</button>
+        <button type="button" data-sicher="3" aria-pressed="false">3 sicher</button>
+      </div>
+      <div class="zeile" style="margin-top:10px">
+        <button type="button" class="haupt" id="r1-auf" disabled>Auflösen <kbd>Enter</kbd></button>
+      </div>
+      <div id="r1-erg" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- Phase 3 -->
+  <section id="p2" hidden>
+    <h2 tabindex="-1">Runde 2: Wen trifft der Verdacht?</h2>
+    <p>Alle vier Auszüge stammen von Menschen: zwei aus Prüfungsaufsätzen zum Englischtest TOEFL, geschrieben von Menschen, die Englisch als Fremdsprache lernen, zwei aus Bewerbungsaufsätzen für US-Colleges. Kreuzen Sie an, welche der Detektor für KI-Texte hält.</p>
+    <div class="r2-gitter" id="r2-liste"></div>
+    <button type="button" class="haupt" id="r2-auf">Auflösen</button>
+    <div id="r2-erg" aria-live="polite"></div>
+  </section>
+
+  <!-- Phase 4 -->
+  <section id="p3" hidden>
+    <h2 tabindex="-1">Bilanz</h2>
+    <div class="tafel" role="group" aria-label="Endstand Runde 1">
+      <div class="seite">Sie<span class="zahl" id="b-sie">0</span></div>
+      <div class="gegen" aria-hidden="true">:</div>
+      <div class="seite">Detektor<span class="zahl" id="b-det">0</span></div>
+      <div class="zaehler">Endstand</div>
+    </div>
+    <div id="bilanz"></div>
+    <button type="button" class="haupt" id="weiter-transfer">Weiter: ein Duell für Ihr Fach</button>
+  </section>
+
+  <!-- Phase 5 -->
+  <section id="p4" hidden>
+    <h2 tabindex="-1">Ein eigenes „Mensch oder KI?“ für Ihr Fach</h2>
+    <p>Mit dieser Vorlage baut ein Sprachmodell Ihnen dasselbe Spiel mit Texten aus Ihrem Fach. Nehmen Sie nur Texte, die vor 2022 entstanden sind, anonymisiert und mit Einwilligung der Verfasser; keine Texte aktueller Studierender und keine personenbezogenen Daten.</p>
+    <div class="prompt" id="transfer-prompt">Baue mir ein Spiel „Mensch oder KI?“ in einer einzigen HTML-Datei. Menschliche Texte: [angehängte, anonymisierte Texte von vor 2022, mit Einwilligung]. KI-Texte: erzeuge zu denselben Aufgaben je [n] Texte und kennzeichne sie im Code. Zeige nach jeder Wahl die Herkunft. Speichere keine Antworten.</div>
+    <div class="zeile" style="margin-top:8px">
+      <button type="button" id="kopieren">Vorlage kopieren</button>
+      <span id="kopiert" class="klein" aria-live="polite"></span>
+    </div>
+    <h3>So entstand dieses Spiel</h3>
+    <p class="klein">Bauauftrag an einen KI-Agenten (Claude Opus 5.5): „Lies … AUFTRAG-s4-detektor-duell … und führe den Auftrag aus.“ Der Agent lud zwei offene Datensätze, ließ acht frische Teilagenten 40 Essays schreiben, trainierte den Detektor mit scikit-learn und baute diese Seite. Schwäche: Die „KI-Wörter“ des Detektors sind teils bloße Themenwörter wie <i>June</i> und <i>August</i>; das Verfahren lernt, was in seinen Trainingstexten zufällig zusammenfällt.</p>
+    <button type="button" id="neu">Noch einmal spielen</button>
+  </section>
+</main>
+
+<script type="application/json" id="detektor-daten">{"modell":{"merkmale":["satzlaenge_mittel","satzlaenge_streuung","wortvielfalt","lange_woerter","kommas_je_satz","fluechtigkeit","ich_anteil","kontraktionen","ki_wendungen"],"mittel":[23.307345214413285,8.057111334232413,0.6603141361256545,0.2726493151122879,0.9520881290514801,0.18239509520151648,0.010291228559231293,0.6550915180172739,0.4813325284231147],"streuung":[10.59747400205115,6.0577124341771,0.06233870573712393,0.08585395595564761,0.6909797318787475,0.6501868607374487,0.02394050834939055,1.0234445266420953,0.9161798187401519],"gewichte":[-0.3674275881925401,-0.9204614156726775,0.2726217314930294,2.33837944270828,0.30112363064008496,-1.6397073219664784,1.5131059528201223,-0.29781160406944907,0.7832906578807377],"achsenabschnitt":-1.3234733625067485,"ki_wendungen":["august","flexibility","clear","meant","june","offered","structure","actually","week","first","real","last","almost","problem","lives"],"fluechtig":["alot","arent","beacuse","becuase","beleive","cant","couldnt","definately","didnt","doesnt","dont","ect","im","isnt","ive","recieve","shouldnt","thats","theyre","thier","u","untill","ur","wasnt","wich","wont","wouldnt","youre"],"startwert":20261102},"runde1":[{"herkunft":"Mensch","quelle":"PERSUADE 2.0, Klasse 11","id":"A67D3F549FAD","aufgabe":"Distance learning","aufgabe_de":"Fernunterricht: Sollten Schülerinnen und Schüler von zu Hause aus am Unterricht teilnehmen können?","text":"Imagine you are attending classes at home you wouldn' t take it seriously as you do at school. Kids who are home schooled don't usually focus as much as they would at school. Some kids parents or tutor would give them more advantages that aren't given at school. Such as more breaks, better food options for lunch,linear schedule, and starting and ending time being optional. If students are learning a specific lesson by a video conference they wouldnt benefit the lesson as well as being offline. Students wouldn't benefit from being able to attend classes from home because they would take advantage, start on their own time, and they wouldn't understand the lesson.","woerter":114,"p_ki":0.006216,"beitraege":[0.149341,0.597767,0.173556,-0.975271,-0.051752,-1.752212,-0.650434,-0.830391,-0.411517]},{"herkunft":"Mensch","quelle":"PERSUADE 2.0, Klasse 11","id":"86C3CBD25A60","aufgabe":"Summer projects","aufgabe_de":"Sommerprojekte: Sollten Lehrkräfte oder die Schülerinnen und Schüler selbst die Ferienprojekte gestalten?","text":"Should these summer projects be teacher-designed or student-designed? Teachers should design the project because it will help students be stress free, give students a general idea of the project, and time management ability. Summer is to enjoy and to relax, and a teacher-designed project will allow students to do so. What student would want to stress over the summer because they can't think of a project idea? A teacher-designed project will help students be stress free because students would get a teacher-made rubric which will support them. Students are poured with stress during school, and when summer is time to relax, students should not have to worry about a project idea.","woerter":116,"p_ki":0.131569,"beitraege":[0.137784,0.451135,-0.526162,0.087505,-0.051752,0.459982,-0.650434,-0.060228,-0.411517]},{"herkunft":"Mensch","quelle":"PERSUADE 2.0, Klasse 11","id":"180B47FDF4C2","aufgabe":"Distance learning","aufgabe_de":"Fernunterricht: Sollten Schülerinnen und Schüler von zu Hause aus am Unterricht teilnehmen können?","text":"Students that use the way of the internet to execute their online work, should have the choice to either take online classes or physically be in the classroom. In a way, online classes help the student if they obtain a focusing disability, the course can be slowed down, and the student can take their time while also having the ability to learn. Also, physically being in a class can be very distracting because of other students, video games that may be brought to class, or just the loudness a class can come up to. Online classes give a student and their teacher hands on with teaching, if there is something interrupting the students lesson mentally, teachers can figure out and pin point the main problem easier and faster than in a classroom filled with twenty or more kids.","woerter":138,"p_ki":0.062587,"beitraege":[-0.388063,0.328543,-0.394965,-1.702414,0.56562,0.459982,-0.650434,0.190625,0.208014]},{"herkunft":"KI","quelle":"Claude Opus 5.5, Prompt-Variante b","id":"dl_b_r2_2","aufgabe":"Distance learning","aufgabe_de":"Fernunterricht: Sollten Schülerinnen und Schüler von zu Hause aus am Unterricht teilnehmen können?","text":"Everyone my age remembers the year we did school through a laptop screen. At first it sounded amazing. No alarm at six, no dress code, class in pajamas. But after a couple of months, most of us were bored, behind, and kind of lonely. That experience is why I don't think students would really benefit from being able to attend classes from home. Distance learning might sound convenient, but school is about more than just getting information, and online classes leave out a lot of what actually helps students learn and grow. My first reason is that it is way too easy to get distracted at home. When you're sitting in a classroom, the teacher can see you, and the people around you are working too, so you kind of go along with it.","woerter":134,"p_ki":0.355105,"beitraege":[0.227351,0.070182,0.567147,-2.751113,0.129828,0.459982,0.764553,-0.243688,1.502557]},{"herkunft":"Mensch","quelle":"PERSUADE 2.0, Klasse 11","id":"F62C0023C996","aufgabe":"Summer projects","aufgabe_de":"Sommerprojekte: Sollten Lehrkräfte oder die Schülerinnen und Schüler selbst die Ferienprojekte gestalten?","text":"There are many schools who assign projects over the summer. Assignments can range from a large packet of math to an even larger packet on earth science. These packets are generally designed by teachers, but what if students designed them instead? If students designed these projects, then they would be more interesting than a packet with a hundred problems to be answered. If students design assignments for their peers then they'll be far less boring and more likely to get done. In the classroom, students will listen to their teachers ramble on, and not truly hear a word they say. What these instructors are saying isn't really catching the student's attention, it's boring them.","woerter":114,"p_ki":0.063761,"beitraege":[0.243449,0.687267,0.217288,-0.975271,-0.103632,0.459982,-0.650434,-0.830391,-0.411517]},{"herkunft":"KI","quelle":"Claude Opus 5.5, Prompt-Variante b","id":"sp_b_r2_4","aufgabe":"Summer projects","aufgabe_de":"Sommerprojekte: Sollten Lehrkräfte oder die Schülerinnen und Schüler selbst die Ferienprojekte gestalten?","text":"Summer projects are one of those things that every student complains about, including me. But I understand why schools give them. Three months is a long time to go without using your brain for school stuff, and it's easy to come back in the fall feeling rusty. The real question is who should design these projects. In my opinion, summer projects should be teacher-designed, because teachers know what students need to learn, they can keep the workload reasonable, and they can make sure the projects are actually graded fairly. The biggest reason is that teachers understand the curriculum and students usually don't. When I start a class in September, I have no idea what's going to be on the syllabus.","woerter":121,"p_ki":0.776523,"beitraege":[0.208777,-0.134109,0.479682,-0.898264,0.02088,0.459982,1.96125,-0.530837,1.001629]},{"herkunft":"KI","quelle":"Claude Opus 5.5, Prompt-Variante a","id":"sp_a_r1_4","aufgabe":"Summer projects","aufgabe_de":"Sommerprojekte: Sollten Lehrkräfte oder die Schülerinnen und Schüler selbst die Ferienprojekte gestalten?","text":"Every summer, millions of students set aside their textbooks for nearly three months, and many schools respond by assigning summer projects to keep learning going. The real debate is about who should be in charge of designing that work. Although teachers bring expertise, I believe summer projects should be student-designed. Allowing students to create their own projects builds genuine engagement, develops the self-direction they will need as adults, and respects the fact that learning does not only happen in a classroom. To begin with, students learn best when they care about what they are studying. During the school year, the curriculum is set, and students must study topics whether they find them interesting or not.","woerter":117,"p_ki":0.628208,"beitraege":[0.132005,0.143579,0.523414,0.023286,0.166144,0.459982,-0.11024,0.190625,0.319212]},{"herkunft":"KI","quelle":"Claude Opus 5.5, Prompt-Variante a","id":"dl_a_r1_3","aufgabe":"Distance learning","aufgabe_de":"Fernunterricht: Sollten Schülerinnen und Schüler von zu Hause aus am Unterricht teilnehmen können?","text":"Imagine two high school juniors. One wakes at six, catches a bus at seven, and sits through a day of classes in a building forty minutes from home. The other wakes at seven-thirty, logs into the same classes from a desk in her bedroom, and uses the time she saved to work a part-time job in the afternoon. Both learn the same material from the same teachers. The difference is that the second student had a choice. I believe students benefit from being able to attend classes from home, because it gives them control over how they learn, makes education more accessible, and prepares them for a world in which much of life already happens online.","woerter":118,"p_ki":0.039079,"beitraege":[0.126227,-0.697081,0.129823,-1.655581,0.093512,0.459982,-0.114817,0.190625,-0.411517]}],"runde2":[{"herkunft":"Mensch","quelle":"TOEFL-Aufsatz (Englisch als Fremdsprache), Liang et al. 2023","id":"TOEFL_real_91#18","aufgabe":"TOEFL","aufgabe_de":"Prüfungsaufsatz zum Englischtest TOEFL","text":"in my opinion, it is my family members and friends who influence me most. The information provided by newspaper, TV, radio or other formats of media can just let us know what has happened and only equip us with knowledge, they are incapable of giving me spiritual satisfaction. Speaking of some issues, we need more specific suggestions. Family members and friends can offer us this kind of information and can give us adequate help to meet the issues.","woerter":78,"p_ki":0.155745,"beitraege":[0.132005,-0.203161,0.420251,-0.442299,0.129828,-2.773225,2.590733,0.190625,-0.411517]},{"herkunft":"Mensch","quelle":"TOEFL-Aufsatz (Englisch als Fremdsprache), Liang et al. 2023","id":"TOEFL_real_91#29","aufgabe":"TOEFL","aufgabe_de":"Prüfungsaufsatz zum Englischtest TOEFL","text":"An enjoyable event that took place in my childhood was when I got my first dog--- Little. I was ten and had been pestering my parents for a dog for years. One day I came home from school, my parents said they had a surprise for me and it was waiting for me in my room. I ran up to my room and threw open the door. I found a tiny puppy with a red bow around his neck and sleeping at the foot of my bed. We became good friends forever. And for the rest of his life, he slept on the exact same spot at the end of my bed every night.","woerter":114,"p_ki":0.927386,"beitraege":[0.243449,0.257394,0.042359,-5.036886,-0.290401,0.459982,7.665717,0.190625,0.338442]},{"herkunft":"Mensch","quelle":"US-College-Bewerbungsaufsatz (Muttersprache Englisch), Liang et al. 2023","id":"CollegeEssay_real_70#49","aufgabe":"College","aufgabe_de":"Bewerbungsaufsatz für ein US-College","text":"I learned the definition of cancer at the age of fourteen. I was taking my chapter 7 biology test when I came upon the last question, \"What is cancer?\", to which I answered: \"The abnormal, unrestricted growth of cells.\" After handing in the test, I moved on to chapter 8, oblivious then to how earth-shattering such a disease could be. I learned the meaning of cancer two years later. A girl named Kiersten came into my family by way of my oldest brother who had fallen in love with her. I distinctly recall her hair catching the sea breeze as she walked with us along the Jersey shore, a blonde wave in my surrounding family's sea of brunette.","woerter":117,"p_ki":0.88312,"beitraege":[-0.003212,-0.917293,0.217288,-2.071845,0.108038,0.459982,5.291705,-0.058084,0.319212]},{"herkunft":"Mensch","quelle":"US-College-Bewerbungsaufsatz (Muttersprache Englisch), Liang et al. 2023","id":"CollegeEssay_real_70#45","aufgabe":"College","aufgabe_de":"Bewerbungsaufsatz für ein US-College","text":"\"You're such a hipster.\" It's a phrase heard everyday in school hallways across America, and its usage often operates as a conundrum that obscures teenagers' perceptions of themselves and who they want to be. I, in turn, have struggled immensely with the paradoxical use of this label. Since the onset of my tween years and perhaps even before that, I have constantly carried with me an insistent urge for nonconformity; it has never sat well with me to be like everyone else. Throughout my middle school years, this natural instinct of mine manifested itself in many different ways: jeans tucked into knee-high socks, anything from punk to Harlem renaissance jazz bellowing from my headphones, Palahniuk novels peeking out of my backpack.","woerter":122,"p_ki":0.901837,"beitraege":[-0.249378,-0.349337,0.523414,-0.505267,0.347724,0.459982,4.012064,-0.286407,-0.411517]}],"kennzahlen":{"mensch_persuade":{"n":300,"als_ki":41,"anteil_als_ki":0.137,"richtig":259},"ki_aktuell":{"n":8,"als_ki":5,"anteil_als_ki":0.625,"richtig":5},"ki_alt":{"n":35,"als_ki":27,"anteil_als_ki":0.771,"richtig":27},"toefl_mensch":{"n":91,"als_ki":33,"anteil_als_ki":0.363,"richtig":58},"college_mensch":{"n":70,"als_ki":53,"anteil_als_ki":0.757,"richtig":17},"training":{"mensch":400,"ki_eigene":32,"ki_alt":141},"trefferquote_gesamt":{"n":343,"richtig":291,"anteil":0.848}}}</script>
+
+<script id="detektor-kern">
+/* Merkmale und Wahrscheinlichkeit, gleiche Regeln wie scripts/detektor-trainieren.py */
+var DetektorKern = (function () {
+  var WORT = /[A-Za-z]+(?:'[A-Za-z]+)*/g;
+  function normalisiere(t) {
+    return t.replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, " ").trim();
+  }
+  function woerter(t) { return t.match(WORT) || []; }
+  function saetze(t) { return t.split(/(?<=[.!?])\s+/).filter(function (s) { return /[A-Za-z]/.test(s); }); }
+  function merkmale(text, m) {
+    var t = normalisiere(text), ss = saetze(t), w = woerter(t), n = Math.max(w.length, 1);
+    var lens = ss.map(function (s) { return woerter(s).length; }); if (!lens.length) lens = [n];
+    var mw = lens.reduce(function (a, b) { return a + b; }, 0) / lens.length;
+    var sd = Math.sqrt(lens.reduce(function (a, x) { return a + (x - mw) * (x - mw); }, 0) / lens.length);
+    var erste = w.slice(0, 100).map(function (x) { return x.toLowerCase(); });
+    var vielfalt = new Set(erste).size / Math.max(erste.length, 1);
+    var lang = w.filter(function (x) { return x.replace(/'/g, "").length >= 7; }).length / n;
+    var kommas = (t.match(/,/g) || []).length / Math.max(ss.length, 1);
+    var fl = new Set(m.fluechtig), ich = new Set(["i", "me", "my", "mine", "myself"]), ki = new Set(m.ki_wendungen);
+    var kleinI = w.filter(function (x) { return x === "i"; }).length;
+    var kleinStart = ss.filter(function (s) { return /^[^A-Za-z]*[a-z]/.test(s); }).length;
+    var fehler = w.filter(function (x) { return fl.has(x.toLowerCase()); }).length;
+    return [mw, sd, vielfalt, lang, kommas, 100 * (kleinI + kleinStart + fehler) / n,
+      w.filter(function (x) { return ich.has(x.toLowerCase()); }).length / n,
+      100 * w.filter(function (x) { return x.indexOf("'") >= 0; }).length / n,
+      100 * w.filter(function (x) { return ki.has(x.toLowerCase()); }).length / n];
+  }
+  function beitraege(text, m) {
+    var f = merkmale(text, m);
+    return f.map(function (v, i) { return (v - m.mittel[i]) / m.streuung[i] * m.gewichte[i]; });
+  }
+  function pKI(text, m) {
+    var s = beitraege(text, m).reduce(function (a, b) { return a + b; }, m.achsenabschnitt);
+    return 1 / (1 + Math.exp(-s));
+  }
+  return { normalisiere: normalisiere, merkmale: merkmale, beitraege: beitraege, pKI: pKI };
+})();
+if (typeof module !== "undefined") module.exports = DetektorKern;
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("detektor-daten").textContent);
+  var M = D.modell, R1 = D.runde1, R2 = D.runde2, KZ = D.kennzahlen;
+  var SCHLUESSEL = "genai4teaching:s4:best";
+  var NAMEN = {
+    satzlaenge_mittel: ["Sätze", "länger", "kürzer"],
+    satzlaenge_streuung: ["Wechsel zwischen kurzen und langen Sätzen", "stärker", "schwächer"],
+    wortvielfalt: ["Wortvielfalt", "größer", "kleiner"],
+    lange_woerter: ["lange Wörter (ab 7 Buchstaben)", "mehr", "weniger"],
+    kommas_je_satz: ["Kommas je Satz", "mehr", "weniger"],
+    fluechtigkeit: ["Flüchtigkeitsfehler (kleines i, fehlender Apostroph, Tippfehler)", "mehr", "weniger"],
+    ich_anteil: ["Ich-Form (I, me, my)", "häufiger", "seltener"],
+    kontraktionen: ["Kurzformen wie don't, it's", "mehr", "weniger"],
+    ki_wendungen: ["Wörter, die in den KI-Trainingstexten häufiger vorkamen", "mehr", "weniger"]
+  };
+  var VARIANTE = { a: "nur die Aufgabe", b: "Aufgabe plus Rolle „US-Schüler/in der 11. Klasse, eigene Stimme“" };
+  var st = { phase: 0, i: 0, wahl: null, sicher: null, offen: false, sie: 0, det: 0, antworten: [], vorhersage: [4, 4] };
+  var $ = function (id) { return document.getElementById(id); };
+  var pct = function (x) { return Math.round(x * 100) + " %"; };
+
+  /* Ton: Web Audio, standardmäßig aus */
+  var ton = false, ctx = null;
+  function piep(gut) {
+    if (!ton) return;
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      var o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = "square"; o.frequency.value = gut ? 880 : 220; g.gain.value = 0.05;
+      o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.12);
+    } catch (e) {}
+  }
+  $("ton").addEventListener("click", function () {
+    ton = !ton; this.setAttribute("aria-pressed", String(ton)); this.textContent = "Ton: " + (ton ? "an" : "aus");
+  });
+
+  function bestLesen() { try { var v = localStorage.getItem(SCHLUESSEL); return v === null ? null : +v; } catch (e) { return null; } }
+  function bestSchreiben(v) { try { var b = bestLesen(); if (b === null || v > b) localStorage.setItem(SCHLUESSEL, String(v)); } catch (e) {} }
+  function bestZeigen() { var b = bestLesen(); $("bestwert").textContent = b === null ? "" : " Ihr bester Wert bisher: " + b + " von 8."; }
+
+  /* Höhe an die Kapitelseite melden: Inhaltshöhe des body, nicht die Fensterhöhe (sonst schaukelt sich der Rahmen auf) */
+  function hoehe() {
+    var h = Math.ceil(document.body.getBoundingClientRect().height);
+    try { if (parent !== window) parent.postMessage({ typ: "rahmen-hoehe", id: "detektor-duell", h: h }, "*"); } catch (e) {}
+  }
+  if (window.ResizeObserver) new ResizeObserver(hoehe).observe(document.body);
+  window.addEventListener("load", hoehe);
+
+  function zeige(p) {
+    st.phase = p;
+    for (var k = 0; k < 5; k++) $("p" + k).hidden = k !== p;
+    document.querySelectorAll("ol.phasen li").forEach(function (li) {
+      if (+li.dataset.p === p) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+    });
+    var h = $("p" + p).querySelector("h2"); if (p > 0) h.focus();
+    hoehe();
+  }
+
+  /* Phase 1 */
+  ["selbst", "det"].forEach(function (k, j) {
+    var r = $("v-" + k);
+    r.addEventListener("input", function () { $("o-" + k).textContent = r.value + " / 8"; st.vorhersage[j] = +r.value; });
+  });
+  $("start").addEventListener("click", function () { st.i = 0; st.sie = 0; st.det = 0; st.antworten = []; zeigeAuszug(); zeige(1); });
+
+  /* Phase 2 */
+  var wahlKn = document.querySelectorAll("[data-wahl]"), sichKn = document.querySelectorAll("[data-sicher]");
+  function setzeWahl(w) { if (st.offen) return; st.wahl = w; wahlKn.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.wahl === w)); }); bereit(); }
+  function setzeSicher(s) { if (st.offen) return; st.sicher = s; sichKn.forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.sicher === s)); }); bereit(); }
+  function bereit() { $("r1-auf").disabled = !(st.wahl && st.sicher); }
+  wahlKn.forEach(function (b) { b.addEventListener("click", function () { setzeWahl(b.dataset.wahl); }); });
+  sichKn.forEach(function (b) { b.addEventListener("click", function () { setzeSicher(+b.dataset.sicher); }); });
+
+  function zeigeAuszug() {
+    var e = R1[st.i];
+    st.wahl = null; st.sicher = null; st.offen = false;
+    wahlKn.forEach(function (b) { b.setAttribute("aria-pressed", "false"); b.disabled = false; });
+    sichKn.forEach(function (b) { b.setAttribute("aria-pressed", "false"); b.disabled = false; });
+    $("r1-aufgabe").textContent = "Aufgabe: " + e.aufgabe_de;
+    $("r1-text").textContent = e.text;
+    $("r1-erg").innerHTML = "";
+    $("r1-auf").hidden = false; bereit();
+    $("t-nr").textContent = "Auszug " + (st.i + 1) + "/" + R1.length;
+    $("t-sie").textContent = st.sie; $("t-det").textContent = st.det;
+  }
+
+  function gruende(e, urteilKI) {
+    var b = DetektorKern.beitraege(e.text, M), f = DetektorKern.merkmale(e.text, M);
+    var idx = b.map(function (v, i) { return i; })
+      .filter(function (i) { return urteilKI ? b[i] > 0 : b[i] < 0; })
+      .sort(function (x, y) { return Math.abs(b[y]) - Math.abs(b[x]); }).slice(0, 2);
+    return idx.map(function (i) {
+      var n = NAMEN[M.merkmale[i]], hoch = f[i] > M.mittel[i];
+      return "<li>" + n[0] + ": " + (hoch ? n[1] : n[2]) + " als im Durchschnitt der Trainingstexte – spricht für " + (urteilKI ? "KI" : "Mensch") + "</li>";
+    }).join("");
+  }
+
+  function balken(p) {
+    var ki = p >= 0.5;
+    return '<div class="balken' + (ki ? " ki" : "") + '" role="img" aria-label="Detektor: ' + pct(p) + ' Wahrscheinlichkeit für KI"><span style="width:' + (p * 100).toFixed(1) + '%"></span></div>' +
+      '<p class="klein">Detektor: ' + pct(p) + " für KI → Urteil <b>" + (ki ? "KI" : "Mensch") + "</b> (Schwelle 50 %, gestrichelt)</p>";
+  }
+
+  function aufloesen() {
+    if (st.offen || !st.wahl || !st.sicher) return;
+    st.offen = true;
+    var e = R1[st.i], p = DetektorKern.pKI(e.text, M), detUrteil = p >= 0.5 ? "KI" : "Mensch";
+    var sieRichtig = st.wahl === e.herkunft, detRichtig = detUrteil === e.herkunft;
+    if (sieRichtig) st.sie++; if (detRichtig) st.det++;
+    st.antworten.push({ richtig: sieRichtig, sicher: st.sicher, det: detRichtig });
+    wahlKn.forEach(function (b) { b.disabled = true; }); sichKn.forEach(function (b) { b.disabled = true; });
+    $("r1-auf").hidden = true;
+    var herkunft = e.herkunft === "Mensch"
+      ? "Mensch – Schüleraufsatz aus PERSUADE 2.0 (" + e.quelle.replace("PERSUADE 2.0, ", "") + ")"
+      : "KI – Claude Opus 5.5, Prompt: " + VARIANTE[e.quelle.slice(-1)];
+    var letzte = st.i === R1.length - 1;
+    $("r1-erg").innerHTML = '<div class="aufloesung">' +
+      "<p><b>Herkunft: " + herkunft + "</b></p>" +
+      '<p><span class="marke' + (sieRichtig ? "" : " falsch") + '">' + (sieRichtig ? "✓ Sie: richtig" : "✗ Sie: falsch") + "</span>" +
+      '<span class="marke' + (detRichtig ? "" : " falsch") + '">' + (detRichtig ? "✓ Detektor: richtig" : "✗ Detektor: falsch") + "</span></p>" +
+      balken(p) +
+      '<p class="klein" style="margin-top:6px">Woran der Detektor sich hielt:</p><ul class="gruende">' + gruende(e, detUrteil === "KI") + "</ul></div>" +
+      '<button type="button" class="haupt" id="r1-weiter">' + (letzte ? "Weiter zu Runde 2" : "Nächster Auszug") + " <kbd>N</kbd></button>";
+    $("t-sie").textContent = st.sie; $("t-det").textContent = st.det;
+    $("ansage").textContent = "Spielstand: Sie " + st.sie + ", Detektor " + st.det + ".";
+    piep(sieRichtig);
+    $("r1-weiter").addEventListener("click", weiter);
+    $("r1-weiter").focus();
+    hoehe();
+  }
+  function weiter() {
+    if (!st.offen) return;
+    if (st.i < R1.length - 1) { st.i++; zeigeAuszug(); $("p1").querySelector("h2").focus(); hoehe(); }
+    else { bestSchreiben(st.sie); baueR2(); zeige(2); }
+  }
+  $("r1-auf").addEventListener("click", aufloesen);
+  document.addEventListener("keydown", function (ev) {
+    if (st.phase !== 1 || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    var t = ev.target && ev.target.tagName;
+    if (t === "INPUT" || t === "TEXTAREA") return;
+    var k = ev.key.toLowerCase();
+    if (k === "m") setzeWahl("Mensch");
+    else if (k === "k") setzeWahl("KI");
+    else if (k === "1" || k === "2" || k === "3") setzeSicher(+k);
+    else if (k === "enter" && !st.offen && st.wahl && st.sicher) { ev.preventDefault(); aufloesen(); }
+    else if (k === "n" && st.offen) weiter();
+  });
+
+  /* Phase 3 */
+  function baueR2() {
+    $("r2-erg").innerHTML = ""; $("r2-auf").hidden = false;
+    $("r2-liste").innerHTML = R2.map(function (e, j) {
+      return '<div class="karte"><p class="aufgabe">' + (j + 1) + ". " + e.aufgabe_de + (e.aufgabe === "TOEFL" ? " (Englisch als Fremdsprache)" : " (Muttersprache Englisch)") + "</p>" +
+        '<p class="auszug" lang="en"></p><label class="haken"><input type="checkbox" data-j="' + j + '"> Detektor hält das für KI</label><div class="r2-det"></div></div>';
+    }).join("");
+    $("r2-liste").querySelectorAll(".auszug").forEach(function (p, j) { p.textContent = R2[j].text; });
+  }
+  $("r2-auf").addEventListener("click", function () {
+    var boxen = $("r2-liste").querySelectorAll("input"), richtig = 0;
+    boxen.forEach(function (b) {
+      var e = R2[+b.dataset.j], p = DetektorKern.pKI(e.text, M), ki = p >= 0.5, ok = b.checked === ki;
+      if (ok) richtig++;
+      b.disabled = true;
+      b.closest(".karte").querySelector(".r2-det").innerHTML = balken(p) +
+        '<p><span class="marke' + (ok ? "" : " falsch") + '">' + (ok ? "✓ richtig vorhergesagt" : "✗ falsch vorhergesagt") + "</span></p>";
+    });
+    var t = KZ.toefl_mensch, c = KZ.college_mensch, m = KZ.mensch_persuade;
+    $("r2-auf").hidden = true;
+    $("r2-erg").innerHTML = '<div class="aufloesung">' +
+      "<p><b>Sie haben " + richtig + " von 4 Urteilen des Detektors richtig vorhergesagt.</b> Alle vier Texte stammen von Menschen.</p>" +
+      "<p>Über alle Texte der beiden Sammlungen gerechnet hält dieser Detektor " + t.als_ki + " von " + t.n + " TOEFL-Aufsätzen (" + pct(t.anteil_als_ki) + ") und " + c.als_ki + " von " + c.n + " College-Aufsätzen (" + pct(c.anteil_als_ki) + ") für KI, bei Schüleraufsätzen, die er beim Lernen nicht gesehen hat, " + pct(m.anteil_als_ki) + ". Er verdächtigt also alle, die anders schreiben als die Schülertexte, aus denen er „Mensch“ gelernt hat: geschliffene Bewerbungsaufsätze ebenso wie schlichte Prüfungsaufsätze.</p>" +
+      "<p>Sieben verbreitete Detektoren zeigten 2023 das Muster, das man befürchtet: Sie stuften im Mittel 61 % von 91 TOEFL-Aufsätzen als KI ein, 18 davon einstimmig, und erkannten Aufsätze US-amerikanischer Achtklässler fast immer als menschlich (Liang et al., 2023).</p></div>" +
+      '<button type="button" class="haupt" id="r2-weiter">Weiter zur Bilanz</button>';
+    $("r2-weiter").addEventListener("click", function () { baueBilanz(); zeige(3); });
+    $("r2-weiter").focus();
+    hoehe();
+  });
+
+  /* Phase 4 */
+  function baueBilanz() {
+    $("b-sie").textContent = st.sie; $("b-det").textContent = st.det;
+    var zeilen = [1, 2, 3].map(function (s) {
+      var a = st.antworten.filter(function (x) { return x.sicher === s; }), r = a.filter(function (x) { return x.richtig; }).length;
+      return "<tr><td>" + (s === 1 ? "1 geraten" : s === 3 ? "3 sicher" : "2") + '</td><td class="zahl">' + a.length + '</td><td class="zahl">' + (a.length ? r + " (" + pct(r / a.length) + ")" : "–") + "</td></tr>";
+    }).join("");
+    var m = KZ.mensch_persuade, ka = KZ.ki_aktuell, kl = KZ.ki_alt, g = KZ.trefferquote_gesamt;
+    $("bilanz").innerHTML =
+      "<p>Vorhergesagt hatten Sie " + st.vorhersage[0] + " Treffer für sich und " + st.vorhersage[1] + " für den Detektor; geworden sind es " + st.sie + " und " + st.det + " von 8.</p>" +
+      "<h3>Wie gut passte Ihre Sicherheit?</h3><table><thead><tr><th>Sicherheit</th><th class=\"zahl\">Auszüge</th><th class=\"zahl\">davon richtig</th></tr></thead><tbody>" + zeilen + "</tbody></table>" +
+      "<h3>Der Detektor auf Texten, die er nicht kannte</h3>" +
+      "<p>Auf " + g.n + " zurückgehaltenen Texten lag er " + g.richtig + "-mal richtig (" + pct(g.anteil) + "). Die Zahl schmeichelt: " + m.n + " davon waren Schüleraufsätze, " + kl.n + " ältere KI-Texte (GPT-3) und nur " + ka.n + " aktuelle. Ältere KI-Texte erkannte er zu " + pct(kl.anteil_als_ki) + ", aktuelle in " + ka.als_ki + " von " + ka.n + " Fällen; " + m.als_ki + " von " + m.n + " Schüleraufsätzen (" + pct(m.anteil_als_ki) + ") hielt er fälschlich für KI. Er ist ein Lehrmodell, kein Produkt, und sagt nichts über die Güte kommerzieller Detektoren.</p>" +
+      "<p>Menschen geht es nicht besser. In zwei Experimenten erkannten angehende (N = 89) und erfahrene Lehrkräfte (N = 200) ChatGPT-Texte unter Schüleraufsätzen nicht zuverlässig und waren sich ihres Urteils zu sicher (Fleckenstein et al., 2024). Ein Test von 14 Erkennungswerkzeugen, darunter Turnitin, fand keines genau und zuverlässig; die Werkzeuge hielten KI-Texte eher für menschlich, und überarbeitete oder übersetzte KI-Texte rutschten noch häufiger durch (Weber-Wulff et al., 2023).</p>" +
+      '<div class="kasten"><h3 style="margin-top:0">Was das für Prüfungen heißt</h3><p>Ein Text allein beweist nicht, wer ihn geschrieben hat, weder für ein geübtes Auge noch für einen Detektor. Ein Verdacht, der nur auf einem Detektorwert beruht, trifft vor allem Menschen, die anders schreiben als der Durchschnitt, und beschädigt Vertrauen, das eine Prüfung braucht. Den Nachweis tragen deshalb Gespräch, Arbeitsprozess, Kontext und Zusammenarbeit: die vier Säulen im folgenden Abschnitt.</p></div>' +
+      '<p class="klein">Quellen: Crossley et al. (2024), PERSUADE 2.0, CC BY 4.0; Liang et al. (2023), Daten MIT-Lizenz; Fleckenstein et al. (2024); Weber-Wulff et al. (2023). Vollständige Angaben im Literaturverzeichnis des Buchs.</p>';
+    $("ansage").textContent = "Endstand: Sie " + st.sie + ", Detektor " + st.det + ".";
+  }
+  $("weiter-transfer").addEventListener("click", function () { zeige(4); });
+
+  /* Phase 5 */
+  $("kopieren").addEventListener("click", function () {
+    var t = $("transfer-prompt").textContent;
+    function ok() { $("kopiert").textContent = "Kopiert."; }
+    function nein() { $("kopiert").textContent = "Kopieren nicht möglich – bitte markieren und mit Strg+C kopieren."; }
+    try { navigator.clipboard.writeText(t).then(ok, nein); } catch (e) { nein(); }
+  });
+  $("neu").addEventListener("click", function () { bestZeigen(); zeige(0); $("start").focus(); });
+
+  bestZeigen(); zeige(0);
+})();
+</script>
+</body>
+</html>
