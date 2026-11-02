@@ -1,5 +1,7 @@
 # Schablone: Didaktischer Apparat nach Pearson-Vorbild (Kapitel 1–6)
 
+> **Abgelöst für den Kapitelanfang (02.11.2026):** Leitfragen und die späteren Einstiegsfragen im Multiple-Choice-Format sind durch Einstiegsszene und Einschätzungen ersetzt; maßgeblich ist `notes/kapitelauftakt-einschaetzungen.md`. Lernfragen, Lösungshinweise und Anwendungsbeispiele gelten weiter nach dieser Datei.
+
 Stand: 2026-10-19. Ergänzt `schablone-lernziele-kernaussagen.md`. Vorbild: Heizer, Render & Munson, *Operations Management* (Pearson), Kapitel 5 und Supplement 5.
 
 ## Entscheidungen Roman, 19.10.2026
