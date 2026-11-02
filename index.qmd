@@ -13,6 +13,29 @@ Im November 2026 baue ich das Skript grundlegend um. Abschnitte wandern, werden 
 
 Dieses Buch ist aus einem Skript gewachsen. Als die ersten Kolleginnen und Kollegen mich fragten, wie man die neuen Sprachmodelle (*Large Language Models*) sinnvoll in der Lehre einsetzt, schrieb ich meine Notizen aus dem eigenen Unterricht in Supply Management und Projektmanagement am Campus Gummersbach der TH Köln zusammen. Aus den Notizen machte ich einen Workshop, aus dem Workshop eine Reihe von Kursen, die ich im Netzwerk für hochschuldidaktische Weiterbildung (hdw nrw) an Hochschulen in ganz Nordrhein-Westfalen gebe, und auf jede neue Frage der Teilnehmenden antwortete ich mit einem neuen Abschnitt. An der TH Köln diskutiere ich seit 2026 mit Kolleginnen und Kollegen in der Taskforce GenAI in der Lehre, was in Lehre und Prüfung funktioniert und was nicht.
 
+<!-- Abschnitt „Neue Möglichkeiten durch KI“ mit Galerie der zehn reizvollsten Praxisbeispiele (Claude, 02.11.2026, Auftrag Roman). Reihenfolge der Galerie: ungewöhnlich, interaktiv, schön. Alle Beispiele: praxisbeispiele.qmd (erzeugt von scripts/praxisbeispiele.py, nur online). -->
+
+## Neue Möglichkeiten durch KI – Interaktionen und vieles mehr {#sec-neue-moeglichkeiten .unnumbered}
+
+Vieles, was für eine einzelne Lehrveranstaltung früher zu aufwendig war, baue ich heute mit einem Sprachmodell in wenigen Stunden. In diesem Buch stecken deshalb 35 Beispiele, die Sie ansehen, hören und ausprobieren, statt nur über sie zu lesen: ein Film, der das nächste Token eines Sprachmodells in neun Genres erklärt und vor der Auflösung auf Ihre Vorhersage wartet, ein Lernsong über Prognoseverfahren, ein Duell gegen einen KI-Detektor, Rechner, Widgets und Animationen, in denen sich vor dem Engpass die Arbeit staut. Jedes Beispiel steht an der Stelle im Buch, deren Lernziel es dient, und jedes habe ich auf Zahlen und Quellen geprüft. Die Galerie zeigt die zehn, die am meisten überraschen; alle übrigen sammelt die Seite [Praxisbeispiele im Überblick]{.content-visible unless-format="html"}[[Praxisbeispiele im Überblick](praxisbeispiele.qmd)]{.content-visible when-format="html"}[ (<https://th-koln-bartnik.github.io/genai4teaching/praxisbeispiele.html>)]{.content-visible unless-format="html"}.
+
+::: {.content-visible when-format="html"}
+```{=html}
+<iframe loading="lazy" id="galerie-vorwort" src="interactions/galerie-vorwort.html" width="100%" height="1000px" frameborder="0" title="Galerie: Zehn Praxisbeispiele, die mit generativer KI entstanden sind"></iframe>
+<script>
+/* Die Galerie meldet ihre Höhe; so entsteht kein Scrollbalken im Rahmen. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "galerie-hoehe" || d.id !== "galerie-vorwort") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
+});
+</script>
+```
+:::
+
+::: {.content-visible unless-format="html"}
+![Galerie „Zehn Praxisbeispiele“: Film mit Haltepunkten zum nächsten Token, Lernsong zu Prognoseverfahren, Detektor-Duell, Teaser zur Fallstudie Backhaus Kaya, Spiel „Höher oder tiefer“, Linien-Widget, Arbeitsweisen-Durchspiel, Agenten-Engpass, Tutor-Kosten-Rechner und Making-of eines Erklärvideos. Die Galerie gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/galerie-vorwort.html> aufrufen.](images/qr/qr-galerie-vorwort.png){#fig-qr-galerie-vorwort width="32%" fig-align="center"}
+:::
+
 <!-- Lernpfade (Claude, 01.11.2026; am 01.11. auf Wunsch Roman aus Kapitel 1 ins Vorwort verschoben) nach Entscheidung Roman: Option b, U-Bahn-Plan als Buchlandkarte, Selbsttest. Karte und Widget werden aus scripts/lernpfade/ erzeugt. -->
 
 ## Wählen Sie Ihren Lernpfad {#sec-lernpfade .unnumbered}
@@ -47,6 +70,8 @@ Lernpfade durch das Buch. Nach den sechs Antworten tritt die passende Linie herv
 Höchstens eine Zustimmung je Gruppe: Linie 1. Zwei oder mehr nur bei KI: Linie 2. Nur bei Lernforschung: Linie 3. In beiden Gruppen: Linie 4. Online prüft der Selbsttest die Antworten und hebt die Linie hervor: <https://th-koln-bartnik.github.io/genai4teaching/#sec-lernpfade>.
 :::
 :::
+
+Eine fünfte Linie steht neben dem Selbsttest, weil sie kein Vorwissen voraussetzt. **Linie 5 · Erst schauen** führt nicht durch die Kapitel, sondern an allen 35 Praxisbeispielen entlang, von den Filmen über die Spiele bis zu den Rechnern. Unter jedem Beispiel führt ein Link in das Kapitel, das es erklärt; so kehren Sie dort ins Buch zurück, wo ein Beispiel Sie neugierig gemacht hat. [Die Linie beginnt auf der Seite [Praxisbeispiele im Überblick](praxisbeispiele.qmd).]{.content-visible when-format="html"}[Die Linie beginnt online auf der Seite <https://th-koln-bartnik.github.io/genai4teaching/praxisbeispiele.html>.]{.content-visible unless-format="html"}
 
 <!-- Abschnitt „Wie dieses Buch lehrt“ (Claude, 02.11.2026, Fassung 4: ganzes Vorwort in Ich-Stimme nach Classic Prose neu geschrieben, Fachbegriff fett als Subjekt; Fassung 3: Fachbegriff mit Beispiel im Fließtext, für Erstlesende beschrieben, Advance Organizer ergänzt; Fassung 2: gruppiert nach Lernzielen, je Mechanismus eine kanonische Quelle;
 Grundlage claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md).
@@ -107,6 +132,7 @@ Das Buch besteht aus sechs Kapiteln und zwei Anhängen:
 
 - Erstellung dieser **Online-Version**.
 - Mehrere **interaktive Elemente und Lernspiele** wurden in den ersten Kapiteln hinzugefügt.
+- **Praxisbeispiele auf einen Blick** (November 2026): Im Vorwort zeigt eine [Galerie](#sec-neue-moeglichkeiten) die zehn reizvollsten der 35 Praxisbeispiele; alle zusammen stehen online auf der Seite „Praxisbeispiele im Überblick“, erreichbar auch als Lernpfad „Linie 5 · Erst schauen“.
 - **Galerie mit Lernmedien**: Am Ende des ersten Kapitels zeigen fünf **Beiträge aus der Lehre**, was mit generativer KI entsteht: eine Prozessanimation, eine Präsentationsfolie, ein Lernsong, ein Lernspiel und ein Rollenspiel.
 - Am Anfang von Kapitel 4 ist ein **Tutor-Bot** verlinkt, den wir seit dem Wintersemester 2025/26 erproben.
 - Anhang A sammelt **didaktische Prompts und integrierte Aufgabenstellungen** internationaler Hochschulen.

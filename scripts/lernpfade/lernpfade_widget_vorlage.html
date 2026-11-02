@@ -35,14 +35,25 @@
   svg a:hover text { text-decoration:underline; }
   .karte { overflow-x:auto; margin:0 0 14px; }
   @media (max-width:480px) { .karte svg { min-width:680px; } }
+  .schaulinie { display:flex; gap:14px; align-items:flex-start; border:1px solid var(--grau); border-left:4px solid var(--akzent);
+    border-radius:6px; padding:10px 14px; margin:0 0 16px; font-size:15px; }
+  .schaulinie svg { width:56px; flex-shrink:0; margin-top:6px; }
+  .schaulinie p { margin:0; }
+  .schaulinie a { color:var(--akzent); font-weight:600; text-decoration:none; white-space:nowrap; }
+  .schaulinie a:hover { text-decoration:underline; }
   .zuruecksetzen { margin-top:6px; }
 </style>
 </head>
 <body>
 <main>
   <h1>Wählen Sie Ihren Lernpfad</h1>
-  <p class="hinweis">Jede Station führt zum Kapitel. Die sechs Aussagen unter der Karte heben die passende Linie hervor; Sie können eine Linie auch in der Legende wählen.</p>
+  <p class="hinweis">Jede Station führt zum Kapitel. Die sechs Aussagen unter der Karte heben die passende Linie hervor; Sie können eine Linie auch in der Legende wählen. Wer zuerst sehen will, was mit KI entsteht, nimmt Linie 5 unter der Karte.</p>
   <div class="karte"><!--KARTE--></div>
+
+  <div class="schaulinie">
+    <svg viewBox="0 0 60 14" aria-hidden="true"><line x1="4" y1="7" x2="56" y2="7" stroke="var(--akzent)" stroke-width="5" stroke-linecap="round" stroke-dasharray="0.1 10"/></svg>
+    <p><b>Linie 5 · Erst schauen.</b> Diese Linie führt nicht durch die Kapitel, sondern an allen Praxisbeispielen entlang: Filme, Spiele, Animationen und Rechner auf einer Seite. Von jedem Beispiel führt ein Link in das Kapitel, das es erklärt. <a href="../praxisbeispiele.html" target="_top">Alle Praxisbeispiele ansehen →</a></p>
+  </div>
 
   <p class="hinweis">Zwei oder drei „Ja“ in einer Spalte zählen als Vorwissen.</p>
   <div class="gruppen">
