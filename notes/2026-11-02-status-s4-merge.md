@@ -40,4 +40,4 @@ Startauftrag zu a):
 Lies claude/PROMPTS-naechste-schritte-2026-11-02.md (Gemeinsame Regeln) und claude/prompting-primer/STATUS-p6-stuetzraeder-teilB-2026-11-02.md und führe „Sitzung C“ aus. S5 und S4 sind seit 02.11. in main (ef161eb); Konflikte in references.json sind reine Anhänge am Ende, beide Blöcke behalten.
 ```
 
-Ablage geprüft: siehe Abschlusszeile unten.
+Ablage geprüft: Projekt ✓ (claude/mollick-formate/STATUS-s4-merge-2026-11-02.md) / Tresorit ✓ (Projektnotizen-Claude/mollick-formate/) / Repo ✓ (main fff5634 + Folgecommit, notes/2026-11-02-status-s4-merge.md; S4 gemergt: ja)
