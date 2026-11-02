@@ -11,8 +11,9 @@
 // Ergebnis:
 //   images/druck/littles-law-szenarien.svg, images/druck/bullwhip-szenarien.svg
 //   images/qr/qr-littles-law.png, images/qr/qr-bullwhip.png
+//   images/druck/bibliothek-der-prompts.svg, images/qr/qr-bibliothek-prompts.png (S3, Kap. 4.1)
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { JSDOM } from "jsdom";
 import * as Plot from "@observablehq/plot";
 import QRCode from "qrcode";
@@ -169,7 +170,48 @@ ${inhalt}
   }
 }
 
+// Bibliothek der Prompts (S3): Lösungsabbildung zum Druckkasten „Raten Sie zuerst“.
+// 22 waagerechte Balken (Regale = Berufshauptgruppen), Achse ab 0, Graustufen; das
+// Bildungsregal ist schraffiert, fett beschriftet und mit Pfeil markiert (nicht nur Farbe).
+// Werte unmittelbar aus interactions/data/aei-bibliothek.json (scripts/aei-bibliothek.py).
+function bibliothek() {
+  const D = JSON.parse(readFileSync("interactions/data/aei-bibliothek.json", "utf8"));
+  const R = [...D.regale].sort((a, b) => a.rang - b.rang);
+  const B = 450, ZEILE = 13.2, OBEN = 8, LINKS = 206, RECHTS = 38, UNTEN = 30;
+  const H = OBEN + R.length * ZEILE + UNTEN;
+  const max = 25, w = B - LINKS - RECHTS, x = v => LINKS + (v / max) * w;
+  const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  let z = "";
+  for (const t of [0, 5, 10, 15, 20, 25]) {
+    z += `<line x1="${x(t)}" x2="${x(t)}" y1="${OBEN - 2}" y2="${OBEN + R.length * ZEILE}" stroke="#ccc" stroke-width="0.5"/>`;
+    z += `<text x="${x(t)}" y="${OBEN + R.length * ZEILE + 10}" text-anchor="middle">${t}</text>`;
+  }
+  R.forEach((r, i) => {
+    const y = OBEN + i * ZEILE, eig = r.soc === D.eigenes_regal;
+    const fw = eig ? ` font-weight="bold"` : "";
+    z += `<text x="${LINKS - 5}" y="${y + 9}" text-anchor="end"${fw}>${eig ? "▶ " : ""}${r.rang}. ${esc(r.name)}</text>`;
+    z += `<rect x="${LINKS}" y="${y + 2}" width="${Math.max(0.6, x(r.pct) - LINKS).toFixed(2)}" height="${ZEILE - 4}" fill="${eig ? "url(#schraffur)" : "#9a9a9a"}" stroke="${eig ? "black" : "none"}" stroke-width="0.8"/>`;
+    z += `<text x="${(x(r.pct) + 3).toFixed(2)}" y="${y + 9}"${fw}>${de(r.pct, 2)} %</text>`;
+  });
+  z += `<line x1="${LINKS}" x2="${LINKS}" y1="${OBEN - 2}" y2="${OBEN + R.length * ZEILE}" stroke="black" stroke-width="0.8"/>`;
+  z += `<text x="${LINKS + w / 2}" y="${H - 4}" text-anchor="middle">Anteil der Gespräche, die der Berufshauptgruppe zugeordnet wurden (%)</text>`;
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<!-- Erzeugt von scripts/druck-abbildungen.mjs aus interactions/data/aei-bibliothek.json; nicht von Hand bearbeiten. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="${B}" height="${H}" viewBox="0 0 ${B} ${H}" font-family="${SCHRIFT}" font-size="8.5" fill="black">
+<defs><pattern id="schraffur" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="#d9d9d9"/><line x1="0" y1="0" x2="0" y2="4" stroke="black" stroke-width="1.6"/></pattern></defs>
+<rect width="100%" height="100%" fill="white"/>
+${z}
+</svg>
+`;
+  mkdirSync("images/druck", { recursive: true });
+  writeFileSync("images/druck/bibliothek-der-prompts.svg", svg);
+  const e = R.find(r => r.soc === D.eigenes_regal);
+  console.log(`Bibliothek: ${R.length} Regale, Monat ${D.quelle.monat}; SOC ${e.soc} Rang ${e.rang}, ${e.pct} %`);
+}
+
 littlesLaw();
 bullwhip();
+bibliothek();
 await qr("images/qr/qr-littles-law.png", BASIS + "kapitel04.html#sec-widget-littles-law");
 await qr("images/qr/qr-bullwhip.png", BASIS + "kapitel04.html#sec-widget-bullwhip");
+await qr("images/qr/qr-bibliothek-prompts.png", BASIS + "kapitel04.html#sec-bibliothek-prompts");

@@ -4,13 +4,15 @@
   "description": "Modelltests und Druckabbildungen für die interaktiven Elemente. Der Buch-Build (quarto render) braucht dieses Paket nicht.",
   "type": "module",
   "scripts": {
-    "test": "node --test tests/models.test.mjs",
+    "test": "node --test tests/models.test.mjs tests/bibliothek.test.mjs",
     "druck": "node scripts/druck-abbildungen.mjs",
     "pruefe:aufmerksamkeit": "node scripts/pruefe-aufmerksamkeit-alle.cjs"
   },
   "devDependencies": {
     "@observablehq/plot": "^0.6.17",
+    "esbuild": "^0.28.2",
     "jsdom": "^30.1.3",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "three": "^0.187.0"
   }
 }

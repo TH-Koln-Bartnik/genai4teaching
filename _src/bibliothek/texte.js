@@ -1,0 +1,4 @@
+// Texte für Phase 5 (Transfer) und den Making-of-Satz.
+export const VORLAGE = `Baue mir aus der angehängten Tabelle einen begehbaren 3D-Raum in einer einzigen HTML-Datei mit Three.js: Regale = [Spalte A], Bücher = [Spalte B], Buchbreite = [Kennzahl]. Klick auf ein Buch zeigt [Felder]. Füge eine gleichwertige Listenansicht ohne 3D hinzu. Erfinde keine Werte.`;
+
+export const MAKING_OF = `Gebaut hat sie ein Agent (Claude Opus 5.5) in einer Sitzung von rund 40 Minuten, auf einen Satz hin, der auf eine schriftliche Bauanleitung verwies: „Lies [die Regeln], [die Standards] und [den Auftrag] und führe den Auftrag aus.“ Er zog die Werte per Skript aus Economic Index und O*NET und baute den Raum mit Three.js; 1.483 Berufsnamen und Aufgaben übersetzten fünf Teilagenten. Die Schwäche: Sie übersetzten uneinheitlich, „students“ etwa mal als „Studierende“, mal als „Lernende“. Schreibweisen ließen sich per Skript angleichen, Bedeutungen nicht.`;
