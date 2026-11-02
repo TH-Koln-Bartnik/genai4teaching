@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Höher oder tiefer: Wofür nutzen Menschen KI?</title>
+<!--
+  Leserübung zu Kapitel 1 (Abschnitt #sec-spiel-ki-aufgaben).
+  Laiensicht: Eine einzige Webseite, die ohne Internet läuft. Die Zahlen stehen unten im
+  Block <script id="aei-daten"> und werden dort von scripts/baue-hoeher-tiefer.mjs aus
+  interactions/data/aei-hoeher-tiefer.json eingesetzt; nicht von Hand ändern.
+  Gespeichert wird nur der Bestwert, als kleiner Notizzettel im eigenen Browser
+  (localStorage); nichts geht an einen Server.
+-->
+<style>
+:root {
+  --red: #c1002a; --red-soft: #f6dde3; --bg: #ffffff; --panel: #f4f4f4; --line: #d4d4d4;
+  --text: #1a1a1a; --muted: #5f5f5f; --bar: #a6a6a6; --ok: #1f7a3f; --ok-soft: #e1f2e6;
+  --pix: #1a1a1a;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --red: #ff5c7a; --red-soft: #3b1820; --bg: #141414; --panel: #1f1f1f; --line: #3a3a3a;
+    --text: #f2f2f2; --muted: #b5b5b5; --bar: #7c7c7c; --ok: #6fd18f; --ok-soft: #173322;
+    --pix: #d9d9d9; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --red: #ff5c7a; --red-soft: #3b1820; --bg: #141414; --panel: #1f1f1f; --line: #3a3a3a;
+  --text: #f2f2f2; --muted: #b5b5b5; --bar: #7c7c7c; --ok: #6fd18f; --ok-soft: #173322;
+  --pix: #d9d9d9; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.45; }
+.mono, .zahl { font-family: ui-monospace, "Cascadia Mono", "Consolas", "Courier New", monospace; }
+#app { max-width: 900px; margin: 0 auto; padding: 12px; }
+/* Pixelrahmen: harte Kanten aus zwei Schatten, keine Rundung */
+.pixel { border: 3px solid var(--pix); box-shadow: 4px 4px 0 var(--pix); background: var(--bg); }
+header { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;
+  border-bottom: 3px solid var(--red); padding-bottom: 8px; margin-bottom: 12px; }
+header h1 { font-family: ui-monospace, "Courier New", monospace; font-size: 1.15rem; letter-spacing: .06em;
+  text-transform: uppercase; margin: 0; }
+header h1 span { color: var(--red); }
+.kopf-rechts { display: flex; gap: 8px; align-items: center; }
+.stand { font-family: ui-monospace, "Courier New", monospace; font-size: .95rem; padding: 4px 8px; background: var(--panel); }
+button { font: inherit; color: var(--text); cursor: pointer; min-height: 44px; min-width: 44px; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.knopf { background: var(--panel); border: 3px solid var(--pix); box-shadow: 3px 3px 0 var(--pix); padding: 8px 14px; font-weight: 600; }
+.knopf:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--pix); }
+.knopf[aria-pressed="true"] { background: var(--red); color: #fff; border-color: var(--red); }
+.knopf:disabled { opacity: .45; cursor: not-allowed; }
+.haupt { background: var(--red); color: #fff; border-color: var(--pix); }
+.klein { min-height: 44px; padding: 4px 10px; font-size: .9rem; font-weight: 500; }
+.phase { display: none; }
+.phase.aktiv { display: block; }
+h2 { font-size: 1.15rem; margin: .2rem 0 .6rem; }
+h2:focus { outline: none; }
+.hinweis { color: var(--muted); font-size: .92rem; }
+.reihe { display: flex; gap: 10px; flex-wrap: wrap; }
+.karten { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.karte { text-align: left; padding: 12px; background: var(--bg); border: 3px solid var(--pix); box-shadow: 4px 4px 0 var(--pix);
+  display: flex; flex-direction: column; gap: 6px; min-height: 120px; }
+.karte .marke { font-family: ui-monospace, "Courier New", monospace; font-weight: 700; color: var(--red); }
+.karte .de { font-size: 1.02rem; font-weight: 600; }
+.karte .en { font-size: .8rem; color: var(--muted); font-style: italic; }
+.karte[aria-pressed="true"] { border-color: var(--red); box-shadow: 4px 4px 0 var(--red); background: var(--red-soft); }
+.karte[aria-pressed="true"] .marke::after { content: " ◀ Ihr Tipp"; }
+.karte:disabled { cursor: default; }
+.schritt { margin-top: 10px; padding: 10px 12px; background: var(--panel); }
+.balken-zeile { display: grid; grid-template-columns: 2.2em 1fr 5.2em; gap: 8px; align-items: center; margin: 6px 0; }
+.balken-zeile.breit { grid-template-columns: 7.2em 1fr 4.2em; }
+.balken-zeile.breit .bez { font-family: inherit; font-weight: 600; font-size: .9rem; }
+.balken-zeile .bez { font-family: ui-monospace, "Courier New", monospace; font-weight: 700; }
+.spur { background: var(--bg); border: 2px solid var(--pix); height: 22px; position: relative; }
+.fuell { height: 100%; background: var(--bar); width: 0; transition: width .5s steps(8); }
+.fuell.vorn { background: var(--red); }
+.zahl { text-align: right; font-weight: 700; white-space: nowrap; }
+.urteil { font-weight: 700; }
+.urteil.ok { color: var(--ok); }
+.urteil.falsch { color: var(--red); }
+.modell { border-left: 4px solid var(--pix); padding-left: 8px; margin-top: 6px; }
+.regler { width: 100%; max-width: 420px; height: 44px; accent-color: var(--red); }
+.kasten { padding: 10px 12px; margin: 12px 0; background: var(--panel); border-left: 6px solid var(--red); }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { border-bottom: 1px solid var(--line); padding: 5px 6px; text-align: left; }
+td.zahl, th.zahl { text-align: right; }
+.prompt { white-space: pre-wrap; padding: 10px; background: var(--panel); border: 2px dashed var(--pix); font-size: .93rem; }
+.fortschritt { font-family: ui-monospace, "Courier New", monospace; color: var(--muted); }
+.vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.gross { font-size: 1.6rem; font-weight: 700; }
+.nur-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+a { color: var(--red); }
+@media (max-width: 560px) {
+  .karten, .vergleich { grid-template-columns: 1fr; }
+  .karte { min-height: 0; }
+  header h1 { font-size: 1rem; }
+  .balken-zeile { grid-template-columns: 2em 1fr 4.8em; }
+}
+@media (prefers-reduced-motion: reduce) { .fuell { transition: none; } }
+</style>
+</head>
+<body>
+<main id="app">
+  <header>
+    <h1>Höher <span>oder</span> tiefer</h1>
+    <div class="kopf-rechts">
+      <span class="stand" id="stand" aria-label="Punktestand">Punkte 0</span>
+      <button class="knopf klein" id="ton" aria-pressed="false" type="button">Ton: aus</button>
+    </div>
+  </header>
+
+  <p id="meldung" class="nur-sr" aria-live="polite"></p>
+
+  <!-- Phase 1: Vorhersage -->
+  <section class="phase aktiv" id="p1" aria-labelledby="p1-t">
+    <h2 id="p1-t" tabindex="-1">1 · Ihre Vermutung zuerst</h2>
+    <p class="hinweis">Für diese Vermutung gibt es keine Punkte. Das Spiel merkt sie sich bis zur Bilanz (nur auf dieser Seite, nichts wird gespeichert).</p>
+    <p><strong>Ordnet man Gespräche mit dem KI-Assistenten Claude nach ihrem Zweck: Welcher Zweck ist am häufigsten?</strong></p>
+    <div class="reihe" role="group" aria-label="Häufigster Zweck">
+      <button class="knopf" type="button" data-zweck="Arbeit" aria-pressed="false">Arbeit</button>
+      <button class="knopf" type="button" data-zweck="Privat" aria-pressed="false">Privates</button>
+      <button class="knopf" type="button" data-zweck="Studium" aria-pressed="false">Studium und Kurse</button>
+    </div>
+    <p style="margin-top:16px"><label for="regler"><strong>Welcher Anteil der Gespräche dient Studien- und Kursaufgaben?</strong></label></p>
+    <input class="regler" type="range" id="regler" min="0" max="50" step="1" value="25" aria-valuetext="25 Prozent">
+    <p class="mono">Ihre Schätzung: <span id="regler-wert" class="zahl">25 %</span> <span class="hinweis">(Pfeiltasten ändern in 1-Prozent-Schritten)</span></p>
+    <button class="knopf haupt" id="p1-weiter" type="button" disabled>Weiter zum Spiel</button>
+  </section>
+
+  <!-- Phase 2: Spiel -->
+  <section class="phase" id="p2" aria-labelledby="p2-t">
+    <p class="fortschritt" id="p2-fort"></p>
+    <h2 id="p2-t" tabindex="-1">Welche Aufgabe kommt in Gesprächen mit Claude häufiger vor?</h2>
+    <div class="karten" role="group" aria-label="Zwei Aufgaben">
+      <button class="karte" id="karte-A" type="button" aria-pressed="false"><span class="marke">A</span><span class="de"></span><span class="en" lang="en"></span></button>
+      <button class="karte" id="karte-B" type="button" aria-pressed="false"><span class="marke">B</span><span class="de"></span><span class="en" lang="en"></span></button>
+    </div>
+    <p class="hinweis">Klicken oder Pfeiltaste ← (A) / → (B).</p>
+    <div class="schritt pixel" id="einsatz" hidden>
+      <p><strong>Wie sicher sind Sie?</strong> Setzen Sie 1 bis 3 Punkte. Richtig: plus Einsatz, falsch: minus Einsatz.</p>
+      <div class="reihe" role="group" aria-label="Einsatz">
+        <button class="knopf" type="button" data-einsatz="1">1 · geraten</button>
+        <button class="knopf" type="button" data-einsatz="2">2 · eher sicher</button>
+        <button class="knopf" type="button" data-einsatz="3">3 · sicher</button>
+      </div>
+      <p class="hinweis">Tasten 1, 2 oder 3.</p>
+    </div>
+    <div class="schritt pixel" id="aufloesung" hidden>
+      <p class="urteil" id="urteil"></p>
+      <div id="balken"></div>
+      <p id="erklaerung"></p>
+      <p class="modell" id="modell-zeile"></p>
+      <button class="knopf haupt" id="p2-weiter" type="button">Weiter</button>
+    </div>
+  </section>
+
+  <!-- Phase 3: Wer fragt? -->
+  <section class="phase" id="p3" aria-labelledby="p3-t">
+    <h2 id="p3-t" tabindex="-1">3 · Wer fragt?</h2>
+    <p><strong id="p3-frage"></strong></p>
+    <div class="reihe" role="group" aria-label="Antwort">
+      <button class="knopf" type="button" data-wer="a">(a) Lehrende</button>
+      <button class="knopf" type="button" data-wer="b">(b) Studierende</button>
+      <button class="knopf" type="button" data-wer="c">(c) Das lässt sich aus den Daten nicht sagen</button>
+    </div>
+    <div class="schritt pixel" id="p3-aufl" hidden>
+      <p class="urteil" id="p3-urteil"></p>
+      <p>Die Daten ordnen Gesprächsinhalte Aufgaben zu; wer das Gespräch führte, ob Lehrende, Studierende oder andere, ist nicht erfasst. Eine Bewertungsaufgabe kann ebenso von einer Studentin stammen, die ihren Entwurf vorab prüfen lässt.</p>
+      <button class="knopf haupt" id="p3-weiter" type="button">Zur Bilanz</button>
+    </div>
+  </section>
+
+  <!-- Phase 4: Bilanz -->
+  <section class="phase" id="p4" aria-labelledby="p4-t">
+    <h2 id="p4-t" tabindex="-1">4 · Bilanz</h2>
+    <div class="vergleich">
+      <div class="pixel" style="padding:10px">
+        <p><strong>Häufigster Zweck</strong></p>
+        <div id="b-zweck"></div>
+      </div>
+      <div class="pixel" style="padding:10px">
+        <p><strong>Anteil Studium und Kurse</strong></p>
+        <div id="b-regler"></div>
+      </div>
+    </div>
+    <h3>Ihre Sicherheit und Ihre Treffer</h3>
+    <table id="b-kalib"><thead><tr><th>Einsatz</th><th class="zahl">Tipps</th><th class="zahl">richtig</th></tr></thead><tbody></tbody></table>
+    <p id="b-kalib-satz"></p>
+    <p class="gross mono" id="b-duell"></p>
+    <p class="hinweis" id="b-modell-hinweis"></p>
+    <h3>Kopfzahlen</h3>
+    <table id="b-kopf"><thead><tr><th>Anteil der Gespräche</th><th class="zahl">Welt</th><th class="zahl">Deutschland</th></tr></thead><tbody></tbody></table>
+    <p class="hinweis" id="b-index"></p>
+    <div class="kasten">
+      <p><strong>Was diese Daten zeigen – und was nicht</strong></p>
+      <p>Sie zeigen Gesprächsinhalte, die ein automatisches Verfahren Aufgaben der US-Berufsdatenbank O*NET zugeordnet hat. Wer fragt, ob Lehrende, Studierende oder andere, ist unbekannt. Es ist eine Momentaufnahme eines Monats und eines Anbieters, keine Aussage darüber, welche Berufe KI nutzen oder welche Jobs sie verändert.</p>
+    </div>
+    <p class="hinweis" id="b-quelle"></p>
+    <p class="mono" id="b-best"></p>
+    <div class="reihe">
+      <button class="knopf haupt" id="p4-weiter" type="button">Weiter: eigenes Spiel bauen</button>
+      <button class="knopf" id="p4-neu" type="button">Noch einmal von vorn</button>
+    </div>
+  </section>
+
+  <!-- Phase 5: Transfer -->
+  <section class="phase" id="p5" aria-labelledby="p5-t">
+    <h2 id="p5-t" tabindex="-1">5 · Ein solches Spiel für Ihr Fach</h2>
+    <p>Ersetzen Sie die eckigen Klammern und geben Sie den Prompt einem Sprachmodell, am besten mit der Datentabelle als Anhang.</p>
+    <p class="prompt" id="vorlage"></p>
+    <button class="knopf haupt" id="kopieren" type="button">Prompt kopieren</button>
+    <span id="kopier-meldung" aria-live="polite" class="hinweis"></span>
+    <div class="kasten">
+      <p><strong>So entstand dieses Spiel</strong></p>
+      <p>Bauprompt an einen Agenten (Claude) mit einer schriftlichen Bauanleitung:</p>
+      <p class="prompt" id="bauprompt"></p>
+      <p><strong>Schwäche beim Bau:</strong> <span id="schwaeche"></span></p>
+    </div>
+    <div class="reihe">
+      <button class="knopf" id="p5-zufall" type="button">Weiterspielen (Zufallsmodus)</button>
+      <button class="knopf" id="p5-neu" type="button">Noch einmal von vorn</button>
+    </div>
+  </section>
+
+  <!-- Optional: Zufallsmodus -->
+  <section class="phase" id="p6" aria-labelledby="p6-t">
+    <h2 id="p6-t" tabindex="-1">Zufallsmodus: Top 60 weltweit</h2>
+    <p class="hinweis">Ohne Einsatz und ohne Modell. <span class="mono" id="z-serie"></span></p>
+    <div class="karten" role="group" aria-label="Zwei Aufgaben">
+      <button class="karte" id="z-A" type="button" aria-pressed="false"><span class="marke">A</span><span class="de"></span><span class="en" lang="en"></span></button>
+      <button class="karte" id="z-B" type="button" aria-pressed="false"><span class="marke">B</span><span class="de"></span><span class="en" lang="en"></span></button>
+    </div>
+    <div class="schritt pixel" id="z-aufl" hidden>
+      <p class="urteil" id="z-urteil"></p>
+      <div id="z-balken"></div>
+      <div class="reihe"><button class="knopf haupt" id="z-weiter" type="button">Nächstes Paar</button>
+      <button class="knopf" id="z-ende" type="button">Zurück zur Bilanz</button></div>
+    </div>
+  </section>
+</main>
+
+<script id="aei-daten" type="application/json">{"quelle":{"datensatz":"Anthropic Economic Index, Release 2026-06-26 (Hugging Face Anthropic/EconomicIndex, CC BY)","datei":"release_2026_06_26/data/aei_claude_ai_2026-06-26.csv","monat":"2026-05-01","geo":"GLOBAL","kategorie":"onet, hierarchy_level 0, metric pct","bericht":"https://www.anthropic.com/research/economic-index-june-2026-report","startseite":"https://www.anthropic.com/economic-index","zitation":"Massenkoff et al. (2026). Anthropic Economic Index report: Cadences."},"n_aufgaben":2713,"kopfzahlen":{"GLOBAL":{"use_case_coursework_pct":16.45,"use_case_work_pct":43.36,"use_case_personal_pct":40.2,"collaboration_bucket_augmentation_pct":51.38,"collaboration_bucket_automation_pct":48.62,"usage_per_capita_index":1},"DEU":{"use_case_coursework_pct":13.65,"use_case_work_pct":37.62,"use_case_personal_pct":48.73,"collaboration_bucket_augmentation_pct":54.78,"collaboration_bucket_automation_pct":45.22,"usage_per_capita_index":2.4}},"vorhersage":{"frage_richtig":"Arbeit","werte":{"Arbeit":43.36,"Privat":40.2,"Studium":16.45},"studium_pct":16.45},"modell":{"modell":"Claude Opus 5.5","datum":"2026-11-02"},"kandidaten":[{"id":"L1","typ":"lehre","a":{"id":"5217","name_en":"Teach classes or courses to students.","name_de":"Kurse und Lehrveranstaltungen für Studierende unterrichten","pct":0.23,"rang":79,"lehre":true},"b":{"id":"22389","name_en":"Answer students' questions.","name_de":"Fragen von Studierenden beantworten","pct":1.15,"rang":9,"lehre":true},"richtig":"B","faktor":5,"erklaerung":"Einzelne Fragen beantworten liegt auf Rang 9 von 2713 Aufgaben; ganze Kurse unterrichten landet weit dahinter auf Rang 79.","model_tip":"A","model_confidence":1},{"id":"L2","typ":"lehre","a":{"id":"22406","name_en":"Tutor or assist students individually or in small groups.","name_de":"Studierende einzeln oder in Kleingruppen betreuen (Nachhilfe)","pct":0.2,"rang":96,"lehre":true},"b":{"id":"17031","name_en":"Develop teaching or training materials, such as handouts, study materials, or quizzes.","name_de":"Lehr- und Schulungsmaterial entwickeln, etwa Handouts, Lernmaterial oder Quizze","pct":0.98,"rang":11,"lehre":true},"richtig":"B","faktor":4.9,"erklaerung":"Lehrmaterial entwerfen (Rang 11) kommt fast fünfmal so oft vor wie Einzelnachhilfe (Rang 96), obwohl der KI-Tutor die Debatte prägt.","model_tip":"B","model_confidence":2},{"id":"L3","typ":"lehre","a":{"id":"22444","name_en":"Develop instructional materials, such as lesson plans, handouts, or examinations.","name_de":"Unterrichtsmaterial entwickeln, etwa Stundenentwürfe, Handouts oder Prüfungen","pct":0.61,"rang":29,"lehre":true},"b":{"id":"5663","name_en":"Evaluate and grade students' class work, assignments, and papers.","name_de":"Studentische Arbeiten, Aufgaben und Hausarbeiten bewerten und benoten","pct":0.05,"rang":297,"lehre":true},"richtig":"A","faktor":12.2,"erklaerung":"Unterrichtsmaterial und Prüfungen entwerfen liegt auf Rang 29; Arbeiten bewerten und benoten nur auf Rang 297.","model_tip":"A","model_confidence":2},{"id":"L4","typ":"lehre","a":{"id":"6454","name_en":"Develop curricula and plan course content and methods of instruction.","name_de":"Curricula entwickeln, Kursinhalte und Lehrmethoden planen","pct":0.04,"rang":341,"lehre":true},"b":{"id":"18593","name_en":"Advise students on issues such as course selection, progress toward graduation, and career decisions.","name_de":"Studierende zu Kurswahl, Studienfortschritt und Berufsweg beraten","pct":0.41,"rang":47,"lehre":true},"richtig":"B","faktor":10.25,"erklaerung":"Studien- und Laufbahnberatung (Rang 47) liegt weit vor der Planung von Curricula und Kursinhalten (Rang 341).","model_tip":"A","model_confidence":2},{"id":"L5","typ":"lehre","a":{"id":"6263","name_en":"Prepare students for performances, exams, or assessments.","name_de":"Studierende auf Auftritte, Prüfungen oder Leistungsnachweise vorbereiten","pct":0.2,"rang":96,"lehre":true},"b":{"id":"6446","name_en":"Observe and evaluate students' work to determine progress, provide feedback, and make suggestions for improvement.","name_de":"Arbeiten von Studierenden beobachten, Fortschritt einschätzen und Rückmeldung geben","pct":0.07,"rang":228,"lehre":true},"richtig":"A","faktor":2.86,"erklaerung":"Auf Prüfungen vorbereiten (Rang 96) liegt vor dem Beobachten und Rückmelden von Lernfortschritt (Rang 228).","model_tip":"B","model_confidence":1},{"id":"U1","typ":"ueberraschung","a":{"id":"16221","name_en":"Search electronic sources, such as databases or repositories, or manual sources for information.","name_de":"Informationen in elektronischen oder gedruckten Quellen suchen","pct":4.95,"rang":1,"lehre":false},"b":{"id":"21000","name_en":"Write text, such as stories, articles, editorials, or newsletters.","name_de":"Texte schreiben, etwa Geschichten, Artikel, Kommentare oder Newsletter","pct":0.78,"rang":18,"lehre":false},"richtig":"A","faktor":6.35,"erklaerung":"Informationen in Quellen suchen ist die häufigste Einzelaufgabe im ganzen Datensatz (Rang 1); Texte schreiben folgt auf Rang 18.","model_tip":"B","model_confidence":2},{"id":"U2","typ":"ueberraschung","a":{"id":"16120","name_en":"Write new programs or modify existing programs to meet customer requirements, using current programming languages and technologies.","name_de":"Programme nach Kundenanforderungen neu schreiben oder ändern","pct":1.47,"rang":5,"lehre":false},"b":{"id":"680","name_en":"Recommend and provide advice on a wide variety of products and services.","name_de":"Zu Produkten und Dienstleistungen aller Art beraten und Empfehlungen geben","pct":2.25,"rang":3,"lehre":false},"richtig":"B","faktor":1.53,"erklaerung":"Produkte und Dienstleistungen empfehlen liegt auf Rang 3, Programme schreiben auf Rang 5: Rat im Alltag schlägt Code.","model_tip":"A","model_confidence":3},{"id":"U3","typ":"ueberraschung","a":{"id":"22691","name_en":"Answer questions that patients have about their health and well-being.","name_de":"Fragen von Patientinnen und Patienten zu Gesundheit und Wohlbefinden beantworten","pct":0.81,"rang":17,"lehre":false},"b":{"id":"9328","name_en":"Translate messages simultaneously or consecutively into specified languages, orally or by using hand signs, maintaining message content, context, and style as much as possible.","name_de":"Gesprochene oder geschriebene Botschaften in andere Sprachen übersetzen","pct":0.37,"rang":51,"lehre":false},"richtig":"A","faktor":2.19,"erklaerung":"Fragen zu Gesundheit und Wohlbefinden (Rang 17) kommen gut doppelt so oft vor wie Übersetzen (Rang 51).","model_tip":"B","model_confidence":1},{"id":"U4","typ":"ueberraschung","a":{"id":"21828","name_en":"Create graphs, charts, or other visualizations to convey the results of data analysis using specialized software.","name_de":"Diagramme und Grafiken zu Ergebnissen einer Datenanalyse erstellen","pct":0.36,"rang":52,"lehre":false},"b":{"id":"12980","name_en":"Counsel individuals regarding interpersonal, health, financial, or religious problems.","name_de":"Menschen bei zwischenmenschlichen, gesundheitlichen, finanziellen oder religiösen Problemen beraten","pct":0.73,"rang":24,"lehre":false},"richtig":"B","faktor":2.03,"erklaerung":"Beratung bei persönlichen Problemen liegt auf Rang 24, Diagramme und Grafiken erstellen auf Rang 52.","model_tip":"A","model_confidence":1},{"id":"U5","typ":"ueberraschung","a":{"id":"23994","name_en":"Prepare, edit, or review legal documents, including legislation, briefs, pleadings, appeals, wills, contracts, and real estate closing statements.","name_de":"Juristische Dokumente entwerfen oder prüfen, etwa Verträge, Schriftsätze, Testamente","pct":0.13,"rang":139,"lehre":false},"b":{"id":"1592","name_en":"Encourage clients to express their feelings and discuss what is happening in their lives, helping them to develop insight into themselves or their relationships.","name_de":"Menschen ermutigen, über Gefühle und ihre Lebenslage zu sprechen","pct":0.34,"rang":58,"lehre":false},"richtig":"B","faktor":2.62,"erklaerung":"Gespräche, in denen Menschen über Gefühle und Lebenslage sprechen (Rang 58), sind häufiger als juristische Dokumente (Rang 139).","model_tip":"A","model_confidence":2},{"id":"U6","typ":"ueberraschung","a":{"id":"11055","name_en":"Write narrative, dramatic, lyric, or other types of poetry for publication.","name_de":"Gedichte schreiben, erzählend, dramatisch oder lyrisch, zur Veröffentlichung","pct":0.04,"rang":341,"lehre":false},"b":{"id":"1101","name_en":"Create specialty dishes and develop recipes to be used in dining facilities.","name_de":"Spezialgerichte kreieren und Rezepte für Gastronomiebetriebe entwickeln","pct":0.08,"rang":207,"lehre":false},"richtig":"B","faktor":2,"erklaerung":"Rezepte entwickeln (Rang 207) liegt vor Gedichte schreiben (Rang 341); beide Werte sind klein.","model_tip":"A","model_confidence":2},{"id":"U7","typ":"ueberraschung","a":{"id":"945","name_en":"Develop or implement product-marketing strategies, including advertising campaigns or sales promotions.","name_de":"Produktmarketing planen oder umsetzen, etwa Werbekampagnen oder Verkaufsaktionen","pct":0.18,"rang":106,"lehre":false},"b":{"id":"802","name_en":"Adjust settings for format, page layout, line spacing, and other style requirements.","name_de":"Format, Seitenlayout, Zeilenabstand und andere Stilvorgaben einstellen","pct":0.46,"rang":40,"lehre":false},"richtig":"B","faktor":2.56,"erklaerung":"Formatierung und Seitenlayout (Rang 40) kommen häufiger vor als Marketingstrategien (Rang 106).","model_tip":"A","model_confidence":2},{"id":"U8","typ":"ueberraschung","a":{"id":"9788","name_en":"Compute and analyze data, using statistical formulas and computers or calculators.","name_de":"Daten mit statistischen Formeln und Computern berechnen und auswerten","pct":0.27,"rang":71,"lehre":false},"b":{"id":"1782","name_en":"Develop story or content ideas, considering reader or audience appeal.","name_de":"Ideen für Geschichten und Inhalte mit Blick auf das Publikum entwickeln","pct":0.75,"rang":22,"lehre":false},"richtig":"B","faktor":2.78,"erklaerung":"Ideen für Geschichten und Inhalte (Rang 22) liegen vor statistischer Datenauswertung (Rang 71).","model_tip":"A","model_confidence":1},{"id":"U9","typ":"ueberraschung","a":{"id":"14707","name_en":"Write supporting code for Web applications or Web sites.","name_de":"Programmcode für Webanwendungen oder Websites schreiben","pct":0.51,"rang":35,"lehre":false},"b":{"id":"8114","name_en":"Recommend products to customers, based on customers' needs and interests.","name_de":"Kundschaft Produkte passend zu Bedarf und Interessen empfehlen","pct":1.28,"rang":8,"lehre":false},"richtig":"B","faktor":2.51,"erklaerung":"Produkte nach Bedarf empfehlen (Rang 8) liegt vor Code für Webanwendungen (Rang 35).","model_tip":"A","model_confidence":3},{"id":"U10","typ":"ueberraschung","a":{"id":"14713","name_en":"Respond to user email inquiries, or set up automated systems to send responses.","name_de":"E-Mail-Anfragen von Nutzenden beantworten oder automatische Antworten einrichten","pct":0.08,"rang":207,"lehre":false},"b":{"id":"692","name_en":"Advise customers on use and care of merchandise.","name_de":"Kundschaft zu Gebrauch und Pflege von Waren beraten","pct":0.46,"rang":40,"lehre":false},"richtig":"B","faktor":5.75,"erklaerung":"Ratschläge zu Gebrauch und Pflege von Waren (Rang 40) kommen deutlich häufiger vor als E-Mail-Anfragen beantworten (Rang 207).","model_tip":"A","model_confidence":2}],"spiel":["U1","U2","L2","L1","L3","U3","U5"],"wer_fragt":"L3","top60":[{"id":"16221","name_en":"Search electronic sources, such as databases or repositories, or manual sources for information.","name_de":"Informationen in elektronischen oder gedruckten Quellen suchen","pct":4.95,"rang":1,"lehre":false},{"id":"22411","name_en":"Search standard reference materials, including online sources and the Internet, to answer patrons' reference questions.","name_de":"Nachschlagewerke und Internet durchsuchen, um Auskunftsfragen zu beantworten","pct":3.74,"rang":2,"lehre":false},{"id":"680","name_en":"Recommend and provide advice on a wide variety of products and services.","name_de":"Zu Produkten und Dienstleistungen aller Art beraten und Empfehlungen geben","pct":2.25,"rang":3,"lehre":false},{"id":"1282","name_en":"Answer user inquiries regarding computer software or hardware operation to resolve problems.","name_de":"Fragen zur Bedienung von Software und Hardware beantworten","pct":1.98,"rang":4,"lehre":false},{"id":"16120","name_en":"Write new programs or modify existing programs to meet customer requirements, using current programming languages and technologies.","name_de":"Programme nach Kundenanforderungen neu schreiben oder ändern","pct":1.47,"rang":5,"lehre":false},{"id":"1695","name_en":"Conduct reference searches, using printed materials and in-house and online databases.","name_de":"Recherchen in gedruckten Werken und Datenbanken durchführen","pct":1.38,"rang":6,"lehre":false},{"id":"18933","name_en":"Advise clients or respond to inquiries about financial matters in person or via phone, email, Web site, or Internet chat.","name_de":"Kundschaft in Geldfragen beraten, persönlich, per Telefon, E-Mail oder Chat","pct":1.37,"rang":7,"lehre":false},{"id":"8114","name_en":"Recommend products to customers, based on customers' needs and interests.","name_de":"Kundschaft Produkte passend zu Bedarf und Interessen empfehlen","pct":1.28,"rang":8,"lehre":false},{"id":"22389","name_en":"Answer students' questions.","name_de":"Fragen von Studierenden beantworten","pct":1.15,"rang":9,"lehre":true},{"id":"3968","name_en":"Edit, standardize, or make changes to material prepared by other writers or establishment personnel.","name_de":"Texte anderer Autorinnen und Autoren redigieren, vereinheitlichen oder ändern","pct":1.06,"rang":10,"lehre":false},{"id":"17031","name_en":"Develop teaching or training materials, such as handouts, study materials, or quizzes.","name_de":"Lehr- und Schulungsmaterial entwickeln, etwa Handouts, Lernmaterial oder Quizze","pct":0.98,"rang":11,"lehre":true},{"id":"23972","name_en":"Write or edit copy for clients.","name_de":"Werbe- und Gebrauchstexte für Kundschaft schreiben oder redigieren","pct":0.97,"rang":12,"lehre":false},{"id":"22664","name_en":"Edit or rewrite existing written material as necessary, and submit written material for approval by supervisor, editor, or publisher.","name_de":"Vorhandene Texte überarbeiten und zur Freigabe einreichen","pct":0.94,"rang":13,"lehre":false},{"id":"20950","name_en":"Troubleshoot program and system malfunctions to restore normal functioning.","name_de":"Programm- und Systemstörungen beheben","pct":0.93,"rang":14,"lehre":false},{"id":"14642","name_en":"Identify, analyze, and document problems with program function, output, online screen, or content.","name_de":"Fehler in Programmfunktion, Ausgabe oder Bildschirminhalt finden und dokumentieren","pct":0.91,"rang":15,"lehre":false},{"id":"2408","name_en":"Answer customers' questions, and provide information on procedures or policies.","name_de":"Kundenfragen beantworten und über Abläufe oder Regeln informieren","pct":0.82,"rang":16,"lehre":false},{"id":"22691","name_en":"Answer questions that patients have about their health and well-being.","name_de":"Fragen von Patientinnen und Patienten zu Gesundheit und Wohlbefinden beantworten","pct":0.81,"rang":17,"lehre":false},{"id":"21000","name_en":"Write text, such as stories, articles, editorials, or newsletters.","name_de":"Texte schreiben, etwa Geschichten, Artikel, Kommentare oder Newsletter","pct":0.78,"rang":18,"lehre":false},{"id":"7404","name_en":"Provide training and support to system designers and users.","name_de":"Systementwickler und Nutzende schulen und unterstützen","pct":0.77,"rang":19,"lehre":false},{"id":"23334","name_en":"Compose business correspondence for supervisors, managers, and professionals.","name_de":"Geschäftskorrespondenz für Führungskräfte verfassen","pct":0.76,"rang":20,"lehre":false},{"id":"7367","name_en":"Apply mathematical theories and techniques to the solution of practical problems in business, engineering, the sciences, or other fields.","name_de":"Mathematische Verfahren auf praktische Probleme in Wirtschaft und Technik anwenden","pct":0.76,"rang":20,"lehre":false},{"id":"1782","name_en":"Develop story or content ideas, considering reader or audience appeal.","name_de":"Ideen für Geschichten und Inhalte mit Blick auf das Publikum entwickeln","pct":0.75,"rang":22,"lehre":false},{"id":"11046","name_en":"Revise written material to meet personal standards and to satisfy needs of clients, publishers, directors, or producers.","name_de":"Texte nach eigenen Ansprüchen und Wünschen der Auftraggeber überarbeiten","pct":0.74,"rang":23,"lehre":false},{"id":"12980","name_en":"Counsel individuals regarding interpersonal, health, financial, or religious problems.","name_de":"Menschen bei zwischenmenschlichen, gesundheitlichen, finanziellen oder religiösen Problemen beraten","pct":0.73,"rang":24,"lehre":false},{"id":"3464","name_en":"Provide staff and users with assistance solving computer-related problems, such as malfunctions and program problems.","name_de":"Beschäftigten und Nutzenden bei Computerproblemen helfen","pct":0.71,"rang":25,"lehre":false},{"id":"834","name_en":"Review files, records, and other documents to obtain information to respond to requests.","name_de":"Akten und Dokumente durchsehen, um Anfragen zu beantworten","pct":0.7,"rang":26,"lehre":false},{"id":"22631","name_en":"Select material most pertinent to presentation, and organize this material into appropriate formats.","name_de":"Stoff für eine Präsentation auswählen und passend aufbereiten","pct":0.66,"rang":27,"lehre":false},{"id":"21732","name_en":"Confer with users to analyze, configure, or troubleshoot applications.","name_de":"Mit Nutzenden Anwendungen analysieren, einrichten und Fehler beheben","pct":0.64,"rang":28,"lehre":false},{"id":"1776","name_en":"Prepare, rewrite and edit copy to improve readability, or supervise others who do this work.","name_de":"Texte für bessere Lesbarkeit vorbereiten, umschreiben und redigieren","pct":0.61,"rang":29,"lehre":false},{"id":"22444","name_en":"Develop instructional materials, such as lesson plans, handouts, or examinations.","name_de":"Unterrichtsmaterial entwickeln, etwa Stundenentwürfe, Handouts oder Prüfungen","pct":0.61,"rang":29,"lehre":true},{"id":"4466","name_en":"Answer customer inquiries or explain cost, availability, policies, and procedures of facilities.","name_de":"Kundenanfragen zu Kosten, Verfügbarkeit und Regeln von Einrichtungen beantworten","pct":0.56,"rang":31,"lehre":false},{"id":"3966","name_en":"Organize material and complete writing assignment according to set standards regarding order, clarity, conciseness, style, and terminology.","name_de":"Schreibaufträge nach Vorgaben zu Klarheit, Kürze, Stil und Begriffen erledigen","pct":0.54,"rang":32,"lehre":false},{"id":"16960","name_en":"Evaluate new technologies and methods to make recommendations regarding their use.","name_de":"Neue Technologien und Methoden bewerten und Empfehlungen zum Einsatz geben","pct":0.52,"rang":33,"lehre":false},{"id":"21049","name_en":"Develop Web sites.","name_de":"Websites entwickeln","pct":0.52,"rang":33,"lehre":false},{"id":"14707","name_en":"Write supporting code for Web applications or Web sites.","name_de":"Programmcode für Webanwendungen oder Websites schreiben","pct":0.51,"rang":35,"lehre":false},{"id":"11052","name_en":"Develop factors such as themes, plots, characterizations, psychological analyses, historical environments, action, and dialogue to create material.","name_de":"Themen, Handlung, Figuren und Dialoge für Texte entwickeln","pct":0.49,"rang":36,"lehre":false},{"id":"13196","name_en":"Suggest specific product purchases to meet customers' needs.","name_de":"Konkrete Käufe passend zum Bedarf der Kundschaft vorschlagen","pct":0.49,"rang":36,"lehre":false},{"id":"14672","name_en":"Provide technical guidance or support for the development or troubleshooting of systems.","name_de":"Technisch bei Entwicklung und Fehlerbehebung von Systemen anleiten","pct":0.48,"rang":38,"lehre":false},{"id":"9331","name_en":"Read written materials, such as legal documents, scientific works, or news reports, and rewrite material into specified languages.","name_de":"Schriftstücke wie Rechtstexte oder Fachartikel lesen und in andere Sprachen übertragen","pct":0.47,"rang":39,"lehre":false},{"id":"692","name_en":"Advise customers on use and care of merchandise.","name_de":"Kundschaft zu Gebrauch und Pflege von Waren beraten","pct":0.46,"rang":40,"lehre":false},{"id":"802","name_en":"Adjust settings for format, page layout, line spacing, and other style requirements.","name_de":"Format, Seitenlayout, Zeilenabstand und andere Stilvorgaben einstellen","pct":0.46,"rang":40,"lehre":false},{"id":"10475","name_en":"Analyze problems and take appropriate action to ensure continuous and reliable operation of equipment and systems.","name_de":"Probleme analysieren, damit Anlagen und Systeme zuverlässig laufen","pct":0.45,"rang":42,"lehre":false},{"id":"11051","name_en":"Write fiction or nonfiction prose, such as short stories, novels, biographies, articles, descriptive or critical analyses, and essays.","name_de":"Prosa schreiben, etwa Erzählungen, Romane, Biografien, Analysen oder Essays","pct":0.45,"rang":42,"lehre":false},{"id":"22420","name_en":"Locate unusual or unique information in response to specific requests.","name_de":"Ungewöhnliche Informationen auf gezielte Anfragen hin aufspüren","pct":0.45,"rang":42,"lehre":false},{"id":"21222","name_en":"Develop communications materials, advertisements, presentations, or public relations initiatives to promote awareness of products and services.","name_de":"Werbe-, Präsentations- und PR-Material für Produkte entwickeln","pct":0.44,"rang":45,"lehre":false},{"id":"9684","name_en":"Diagnose problems with installed equipment.","name_de":"Probleme an installierten Geräten diagnostizieren","pct":0.42,"rang":46,"lehre":false},{"id":"18593","name_en":"Advise students on issues such as course selection, progress toward graduation, and career decisions.","name_de":"Studierende zu Kurswahl, Studienfortschritt und Berufsweg beraten","pct":0.41,"rang":47,"lehre":true},{"id":"22635","name_en":"Revise work to meet editorial approval or to fit time or space requirements.","name_de":"Texte für die Redaktion oder auf vorgegebene Länge überarbeiten","pct":0.4,"rang":48,"lehre":false},{"id":"21694","name_en":"Develop new visual design concepts and modify concepts based on stakeholder feedback.","name_de":"Neue visuelle Gestaltungsideen entwickeln und nach Rückmeldung anpassen","pct":0.39,"rang":49,"lehre":false},{"id":"22166","name_en":"Interact with clients to assist them in gaining insight, defining goals, and planning action to achieve effective personal, social, educational, or vocational development and adjustment.","name_de":"Menschen helfen, sich selbst zu verstehen, Ziele zu setzen und zu planen","pct":0.39,"rang":49,"lehre":false},{"id":"9328","name_en":"Translate messages simultaneously or consecutively into specified languages, orally or by using hand signs, maintaining message content, context, and style as much as possible.","name_de":"Gesprochene oder geschriebene Botschaften in andere Sprachen übersetzen","pct":0.37,"rang":51,"lehre":false},{"id":"21828","name_en":"Create graphs, charts, or other visualizations to convey the results of data analysis using specialized software.","name_de":"Diagramme und Grafiken zu Ergebnissen einer Datenanalyse erstellen","pct":0.36,"rang":52,"lehre":false},{"id":"13200","name_en":"Prepare or alter presentation contents to target specific audiences.","name_de":"Präsentationsinhalte für ein bestimmtes Publikum vorbereiten oder anpassen","pct":0.35,"rang":53,"lehre":false},{"id":"13236","name_en":"Answer questions about product features and benefits.","name_de":"Fragen zu Eigenschaften und Nutzen von Produkten beantworten","pct":0.35,"rang":53,"lehre":false},{"id":"21702","name_en":"Identify problems uncovered by testing or customer feedback, and correct problems or refer problems to appropriate personnel for correction.","name_de":"Fehler aus Tests oder Kundenrückmeldungen beheben oder weiterleiten","pct":0.35,"rang":53,"lehre":false},{"id":"799","name_en":"Electronically sort and compile text and numerical data, retrieving, updating, and merging documents as required.","name_de":"Texte und Zahlen elektronisch sortieren, zusammenstellen und Dokumente zusammenführen","pct":0.35,"rang":53,"lehre":false},{"id":"951","name_en":"Identify, develop, or evaluate marketing strategy, based on knowledge of establishment objectives, market characteristics, and cost and markup factors.","name_de":"Marketingstrategie entwickeln oder bewerten, ausgehend von Zielen, Markt und Kosten","pct":0.35,"rang":53,"lehre":false},{"id":"1592","name_en":"Encourage clients to express their feelings and discuss what is happening in their lives, helping them to develop insight into themselves or their relationships.","name_de":"Menschen ermutigen, über Gefühle und ihre Lebenslage zu sprechen","pct":0.34,"rang":58,"lehre":false},{"id":"20105","name_en":"Write articles and books.","name_de":"Artikel und Bücher schreiben","pct":0.34,"rang":58,"lehre":false},{"id":"1267","name_en":"Correct errors by making appropriate changes and rechecking the program to ensure that the desired results are produced.","name_de":"Programmfehler korrigieren und das Ergebnis erneut prüfen","pct":0.33,"rang":60,"lehre":false}],"schwaeche":"Die Überraschungspaare wählte derselbe Modelltyp aus, der danach als Mitspieler tippte. Paare, die der Intuition des Agenten widersprachen, widersprachen auch der des Mitspielers: Er lag bei 2 von 15 Kandidatenpaaren richtig. Das Duell ist also kein fairer Leistungstest, es zeigt aber, dass auch ein Sprachmodell Nutzungsdaten nicht aus dem Bauch kennt."}</script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("aei-daten").textContent);
+  var $ = function (id) { return document.getElementById(id); };
+  var KAND = {}; D.kandidaten.forEach(function (p) { KAND[p.id] = p; });
+  var SPIEL = D.spiel.map(function (id) { return KAND[id]; });
+  var BEST_KEY = "genai4teaching:s1:best";
+  var ZWECK_NAME = { Arbeit: "Arbeit", Privat: "Privates", Studium: "Studium und Kurse" };
+
+  var BAUPROMPT = "Lies `claude/mollick-formate/UEBERSICHT-umsetzung-s1-s6-2026-11-02.md` und `claude/mollick-formate/AUFTRAG-s1-hoeher-tiefer-v2-2026-11-02.md` (Fassung 2, Leserübung für allein lesende Lehrende) und setze S1 vollständig um. G1 ist entschieden: Kap. 1, Abschnitt „Wie nutzen Studierende und Lehrende GenAI?“, direkt nach den Umfragezahlen. Arbeite ohne Rückfragen bis Schritt 9; frage nur nach Push-Zugriff/Tresorit-Freigabe (Multiple Choice) und am Ende nach G3. Achte auf Token-Disziplin (CSV nie in den Kontext).";
+  var VORLAGE = "Baue mir ein Browserspiel „Höher oder tiefer“ in einer einzigen HTML-Datei für [Zielgruppe] im Fach [Fach]. Jede Runde zeigt zwei [Dinge]; die Spielenden tippen, welches den höheren Wert bei [Kennzahl] hat. Nimm die Werte ausschließlich aus [Datenquelle oder angehängter Tabelle], nenne die Quelle im Spiel und erfinde keine Zahlen.";
+  var SCHWAECHE = D.schwaeche || "";
+
+  // ---- Zustand (nur im Arbeitsspeicher dieser Seite) ----
+  var S;
+  function neu() {
+    S = { zweck: null, regler: 25, i: 0, tipp: null, einsatz: null, punkte: 0, modell: 0,
+          runden: [], wer: null, phase: 1 };
+  }
+  neu();
+
+  // ---- Hilfen ----
+  function pz(x, d) { return x.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d }) + " %"; }
+  function pct(x) { return pz(x, 2); } // Quelle ist auf zwei Nachkommastellen gerundet
+  function vz(x) { return (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(x); }
+  function melde(t) { var m = $("meldung"); m.textContent = ""; setTimeout(function () { m.textContent = t; }, 30); }
+  function stand() { $("stand").textContent = "Punkte " + vz(S.punkte).replace(/^\+/, "+"); }
+  function zeige(n) {
+    S.phase = n;
+    for (var k = 1; k <= 6; k++) $("p" + k).classList.toggle("aktiv", k === n);
+    var h = $("p" + n + "-t"); if (h) h.focus();
+    window.scrollTo(0, 0);
+  }
+  function setze(el, t) { el.textContent = t; }
+  function balken(ziel, zeilen, breit) {
+    // zeilen: [{bez, wert, vorn, text}] – Balken auf das Maximum der Gruppe skaliert
+    var max = Math.max.apply(null, zeilen.map(function (z) { return z.wert; })) || 1;
+    ziel.innerHTML = "";
+    zeilen.forEach(function (z) {
+      var r = document.createElement("div"); r.className = "balken-zeile" + (breit ? " breit" : "");
+      var b = document.createElement("span"); b.className = "bez"; b.textContent = z.bez;
+      var s = document.createElement("span"); s.className = "spur"; s.setAttribute("aria-hidden", "true");
+      var f = document.createElement("span"); f.className = "fuell" + (z.vorn ? " vorn" : ""); f.style.display = "block"; s.appendChild(f);
+      var w = document.createElement("span"); w.className = "zahl"; w.textContent = z.text;
+      r.appendChild(b); r.appendChild(s); r.appendChild(w); ziel.appendChild(r);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { f.style.width = (100 * z.wert / max) + "%"; }); });
+    });
+  }
+
+  // ---- 8-Bit-Töne (Standard aus) ----
+  var ton = false, ctx = null;
+  function piep(folge) {
+    if (!ton) return;
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      var t = ctx.currentTime;
+      folge.forEach(function (f, k) {
+        var o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "square"; o.frequency.value = f; g.gain.value = 0.05;
+        o.connect(g); g.connect(ctx.destination); o.start(t + k * 0.09); o.stop(t + k * 0.09 + 0.08);
+      });
+    } catch (e) { /* ohne Ton weiterspielen */ }
+  }
+  $("ton").addEventListener("click", function () {
+    ton = !ton; this.setAttribute("aria-pressed", String(ton)); this.textContent = "Ton: " + (ton ? "an" : "aus");
+    if (ton) piep([660]);
+  });
+
+  // ---- Phase 1 ----
+  var zweckKnoepfe = document.querySelectorAll("[data-zweck]");
+  zweckKnoepfe.forEach(function (k) {
+    k.addEventListener("click", function () {
+      S.zweck = k.getAttribute("data-zweck");
+      zweckKnoepfe.forEach(function (x) { x.setAttribute("aria-pressed", String(x === k)); });
+      $("p1-weiter").disabled = false;
+      melde("Vermutung: " + ZWECK_NAME[S.zweck]);
+    });
+  });
+  $("regler").addEventListener("input", function () {
+    S.regler = Number(this.value);
+    $("regler-wert").textContent = S.regler + " %";
+    this.setAttribute("aria-valuetext", S.regler + " Prozent");
+  });
+  $("p1-weiter").addEventListener("click", function () { S.i = 0; runde(); zeige(2); });
+
+  // ---- Phase 2 ----
+  function karte(el, a) {
+    el.querySelector(".de").textContent = a.name_de;
+    el.querySelector(".en").textContent = a.name_en;
+    el.setAttribute("title", a.name_en);
+  }
+  function runde() {
+    var p = SPIEL[S.i]; S.tipp = null; S.einsatz = null;
+    setze($("p2-fort"), "Paar " + (S.i + 1) + " von " + SPIEL.length);
+    karte($("karte-A"), p.a); karte($("karte-B"), p.b);
+    ["A", "B"].forEach(function (x) { var k = $("karte-" + x); k.setAttribute("aria-pressed", "false"); k.disabled = false; });
+    $("einsatz").hidden = true; $("aufloesung").hidden = true;
+    document.querySelectorAll("[data-einsatz]").forEach(function (k) { k.disabled = false; k.setAttribute("aria-pressed", "false"); });
+  }
+  function tippe(x) {
+    if (S.phase !== 2 || !$("aufloesung").hidden) return;
+    S.tipp = x;
+    ["A", "B"].forEach(function (y) { $("karte-" + y).setAttribute("aria-pressed", String(y === x)); });
+    $("einsatz").hidden = false;
+    melde("Tipp " + x + ". Jetzt Einsatz 1, 2 oder 3 wählen.");
+    piep([520]);
+  }
+  function setzeEin(n) {
+    if (S.phase !== 2 || !S.tipp || !$("aufloesung").hidden) return;
+    S.einsatz = n;
+    document.querySelectorAll("[data-einsatz]").forEach(function (k) {
+      k.setAttribute("aria-pressed", String(Number(k.getAttribute("data-einsatz")) === n)); k.disabled = true; });
+    ["A", "B"].forEach(function (y) { $("karte-" + y).disabled = true; });
+    loese();
+  }
+  function loese() {
+    var p = SPIEL[S.i], ok = S.tipp === p.richtig, d = ok ? S.einsatz : -S.einsatz;
+    var mok = p.model_tip === p.richtig, md = mok ? p.model_confidence : -p.model_confidence;
+    S.punkte += d; S.modell += md; stand();
+    S.runden.push({ id: p.id, einsatz: S.einsatz, ok: ok });
+    var u = $("urteil");
+    u.className = "urteil " + (ok ? "ok" : "falsch");
+    u.textContent = (ok ? "✓ Richtig: " : "✗ Daneben: ") + vz(d) + (Math.abs(d) === 1 ? " Punkt" : " Punkte") + ". Häufiger ist " + p.richtig + ".";
+    balken($("balken"), ["A", "B"].map(function (x) {
+      var a = x === "A" ? p.a : p.b;
+      return { bez: x, wert: a.pct, vorn: x === p.richtig, text: pct(a.pct) };
+    }));
+    setze($("erklaerung"), p.erklaerung);
+    setze($("modell-zeile"), "Modell-Tipp: " + p.model_tip + " (Sicherheit " + p.model_confidence + ") – " + (mok ? "richtig" : "falsch") + ".");
+    $("aufloesung").hidden = false;
+    melde(u.textContent + " A " + pct(p.a.pct) + ", B " + pct(p.b.pct) + ". " + p.erklaerung + " " + $("modell-zeile").textContent);
+    piep(ok ? [660, 880] : [330, 220]);
+    $("p2-weiter").focus();
+  }
+  $("karte-A").addEventListener("click", function () { tippe("A"); });
+  $("karte-B").addEventListener("click", function () { tippe("B"); });
+  document.querySelectorAll("[data-einsatz]").forEach(function (k) {
+    k.addEventListener("click", function () { setzeEin(Number(k.getAttribute("data-einsatz"))); });
+  });
+  $("p2-weiter").addEventListener("click", function () {
+    S.i++;
+    if (S.i < SPIEL.length) { runde(); zeige(2); } else { frageWer(); zeige(3); }
+  });
+
+  // ---- Phase 3 ----
+  function frageWer() {
+    var p = KAND[D.wer_fragt];
+    var a = p.a.lehre && /grade|evaluate/i.test(p.a.name_en) ? p.a : p.b;
+    setze($("p3-frage"), "Wer hat die Gespräche zu „" + a.name_de + "“ geführt?");
+    $("p3-aufl").hidden = true;
+    document.querySelectorAll("[data-wer]").forEach(function (k) { k.disabled = false; k.setAttribute("aria-pressed", "false"); });
+  }
+  document.querySelectorAll("[data-wer]").forEach(function (k) {
+    k.addEventListener("click", function () {
+      S.wer = k.getAttribute("data-wer");
+      document.querySelectorAll("[data-wer]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === k)); x.disabled = true; });
+      var u = $("p3-urteil");
+      u.className = "urteil " + (S.wer === "c" ? "ok" : "falsch");
+      u.textContent = S.wer === "c" ? "✓ Richtig: (c)." : "✗ Richtig ist (c).";
+      $("p3-aufl").hidden = false;
+      melde(u.textContent + " " + $("p3-aufl").querySelector("p:nth-of-type(2)").textContent);
+      piep(S.wer === "c" ? [660, 880] : [330, 220]);
+      $("p3-weiter").focus();
+    });
+  });
+  $("p3-weiter").addEventListener("click", function () { bilanz(); zeige(4); });
+
+  // ---- Phase 4 ----
+  function bilanz() {
+    var V = D.vorhersage, K = D.kopfzahlen;
+    balken($("b-zweck"), ["Arbeit", "Privat", "Studium"].map(function (z) {
+      return { bez: ZWECK_NAME[z] + (z === S.zweck ? " ◀" : ""), wert: V.werte[z], vorn: z === V.frage_richtig,
+               text: pz(V.werte[z], 1) };
+    }), true);
+    var bz = document.createElement("p"); bz.className = "hinweis";
+    bz.textContent = "◀ = Ihre Vermutung (" + ZWECK_NAME[S.zweck] + "). Am häufigsten: " + ZWECK_NAME[V.frage_richtig] + ".";
+    $("b-zweck").appendChild(bz);
+    balken($("b-regler"), [
+      { bez: "Ihre Schätzung", wert: S.regler, vorn: false, text: S.regler + " %" },
+      { bez: "Daten", wert: V.studium_pct, vorn: true, text: pz(V.studium_pct, 1) }], true);
+    var tb = $("b-kalib").querySelector("tbody"); tb.innerHTML = "";
+    [3, 2, 1].forEach(function (e) {
+      var r = S.runden.filter(function (x) { return x.einsatz === e; });
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + e + " · " + ["", "geraten", "eher sicher", "sicher"][e] + "</td><td class='zahl'>" + r.length +
+        "</td><td class='zahl'>" + r.filter(function (x) { return x.ok; }).length + "</td>";
+      tb.appendChild(tr);
+    });
+    var sicher = S.runden.filter(function (x) { return x.einsatz === 3; });
+    setze($("b-kalib-satz"), sicher.length
+      ? "Bei Ihren sicheren Tipps lagen Sie in " + sicher.filter(function (x) { return x.ok; }).length + " von " + sicher.length + " Fällen richtig."
+      : "Sie haben keinen Tipp als sicher markiert.");
+    setze($("b-duell"), "Sie " + vz(S.punkte) + " : Modell " + vz(S.modell));
+    var m = D.modell || {};
+    setze($("b-modell-hinweis"), "Modell-Mitspieler: " + (m.modell || "Sprachmodell") + ", einmalig befragt am " +
+      (m.datum ? datumDe(m.datum) : "") + ", ohne Zugriff auf die Daten; gewertet mit seiner eigenen Sicherheit als Einsatz.");
+    var kb = $("b-kopf").querySelector("tbody"); kb.innerHTML = "";
+    [["Arbeit", "use_case_work_pct"], ["Privates", "use_case_personal_pct"], ["Studium und Kurse", "use_case_coursework_pct"],
+     ["Mensch arbeitet mit (Augmentation)", "collaboration_bucket_augmentation_pct"],
+     ["KI erledigt (Automation)", "collaboration_bucket_automation_pct"]].forEach(function (z) {
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + z[0] + "</td><td class='zahl mono'>" + pz(K.GLOBAL[z[1]], 1) + "</td><td class='zahl mono'>" + pz(K.DEU[z[1]], 1) + "</td>";
+      kb.appendChild(tr);
+    });
+    setze($("b-index"), "Nutzungsindex Deutschland: " + K.DEU.usage_per_capita_index.toLocaleString("de-DE") +
+      " (1,0 hieße: Anteil an der Nutzung so groß wie der Anteil an der Bevölkerung im Alter von 15 bis 64 Jahren).");
+    var q = D.quelle;
+    $("b-quelle").innerHTML = "Quelle: Anthropic Economic Index, Datenmonat " + monatName(q.monat) +
+      ", weltweit " + D.n_aufgaben.toLocaleString("de-DE") + " Aufgaben; Massenkoff et al. (2026). " +
+      "<a href='" + q.startseite + "' target='_blank' rel='noopener'>anthropic.com/economic-index</a>";
+    var best = null;
+    try { best = localStorage.getItem(BEST_KEY); } catch (e) {}
+    best = best === null ? null : Number(best);
+    var neuBest = best === null || S.punkte > best;
+    if (neuBest) { try { localStorage.setItem(BEST_KEY, String(S.punkte)); } catch (e) {} best = S.punkte; }
+    setze($("b-best"), "Bestwert auf diesem Gerät: " + vz(best) + (neuBest ? " (neu)" : ""));
+    melde("Bilanz. Sie " + vz(S.punkte) + ", Modell " + vz(S.modell) + ".");
+  }
+  function datumDe(iso) { var t = iso.split("-"); return Number(t[2]) + ". " + monatName(iso); }
+  function monatName(iso) {
+    var n = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    var t = iso.split("-"); return n[Number(t[1]) - 1] + " " + t[0];
+  }
+  $("p4-weiter").addEventListener("click", function () { zeige(5); });
+  function vonVorn() {
+    neu(); stand();
+    zweckKnoepfe.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+    $("p1-weiter").disabled = true; $("regler").value = 25; $("regler-wert").textContent = "25 %";
+    zeige(1);
+  }
+  $("p4-neu").addEventListener("click", vonVorn);
+  $("p5-neu").addEventListener("click", vonVorn);
+
+  // ---- Phase 5 ----
+  setze($("vorlage"), VORLAGE);
+  setze($("bauprompt"), BAUPROMPT);
+  setze($("schwaeche"), SCHWAECHE);
+  $("kopieren").addEventListener("click", function () {
+    var fertig = function () { $("kopier-meldung").textContent = ""; setTimeout(function () { $("kopier-meldung").textContent = "kopiert"; }, 30); };
+    var markiere = function () {
+      try { var r = document.createRange(); r.selectNodeContents($("vorlage")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
+      $("kopier-meldung").textContent = "Text ist markiert: mit Strg+C kopieren";
+    };
+    try {
+      navigator.clipboard.writeText(VORLAGE).then(fertig, markiere);
+    } catch (e) { markiere(); }
+  });
+
+  // ---- Zufallsmodus ----
+  var Z = { serie: 0, paar: null };
+  function zPaar() {
+    var t = D.top60, a, b, n = 0;
+    do { a = t[Math.floor(Math.random() * t.length)]; b = t[Math.floor(Math.random() * t.length)]; n++; }
+    while ((a === b || Math.max(a.pct, b.pct) / Math.min(a.pct, b.pct) < 1.25) && n < 500);
+    Z.paar = { a: a, b: b, richtig: a.pct > b.pct ? "A" : "B" };
+    karte($("z-A"), a); karte($("z-B"), b);
+    ["A", "B"].forEach(function (x) { $("z-" + x).disabled = false; $("z-" + x).setAttribute("aria-pressed", "false"); });
+    $("z-aufl").hidden = true;
+    setze($("z-serie"), "Serie: " + Z.serie);
+  }
+  function zTipp(x) {
+    if (S.phase !== 6 || !$("z-aufl").hidden) return;
+    var p = Z.paar, ok = x === p.richtig;
+    Z.serie = ok ? Z.serie + 1 : 0;
+    ["A", "B"].forEach(function (y) { $("z-" + y).setAttribute("aria-pressed", String(y === x)); $("z-" + y).disabled = true; });
+    var u = $("z-urteil"); u.className = "urteil " + (ok ? "ok" : "falsch");
+    u.textContent = (ok ? "✓ Richtig." : "✗ Daneben.") + " Rang " + p.a.rang + " gegen Rang " + p.b.rang + ".";
+    balken($("z-balken"), [{ bez: "A", wert: p.a.pct, vorn: p.richtig === "A", text: pct(p.a.pct) },
+                           { bez: "B", wert: p.b.pct, vorn: p.richtig === "B", text: pct(p.b.pct) }]);
+    setze($("z-serie"), "Serie: " + Z.serie);
+    $("z-aufl").hidden = false;
+    melde(u.textContent + " A " + pct(p.a.pct) + ", B " + pct(p.b.pct) + ".");
+    piep(ok ? [660, 880] : [330, 220]);
+    $("z-weiter").focus();
+  }
+  $("z-A").addEventListener("click", function () { zTipp("A"); });
+  $("z-B").addEventListener("click", function () { zTipp("B"); });
+  $("z-weiter").addEventListener("click", function () { zPaar(); $("z-A").focus(); });
+  $("z-ende").addEventListener("click", function () { zeige(4); });
+  $("p5-zufall").addEventListener("click", function () { Z.serie = 0; zPaar(); zeige(6); });
+
+  // ---- Tastatur ----
+  document.addEventListener("keydown", function (ev) {
+    if (ev.target && ev.target.tagName === "INPUT") return; // Schieberegler behält seine Pfeiltasten
+    if (ev.altKey || ev.ctrlKey || ev.metaKey) return;
+    if (S.phase === 2) {
+      if (ev.key === "ArrowLeft") { tippe("A"); ev.preventDefault(); }
+      else if (ev.key === "ArrowRight") { tippe("B"); ev.preventDefault(); }
+      else if (ev.key === "1" || ev.key === "2" || ev.key === "3") { setzeEin(Number(ev.key)); ev.preventDefault(); }
+    } else if (S.phase === 6) {
+      if (ev.key === "ArrowLeft") { zTipp("A"); ev.preventDefault(); }
+      else if (ev.key === "ArrowRight") { zTipp("B"); ev.preventDefault(); }
+    }
+  });
+  stand();
+})();
+</script>
+</body>
+</html>
