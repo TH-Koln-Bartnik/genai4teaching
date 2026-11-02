@@ -1,4 +1,4 @@
-// Druckzwilling und QR-Codes für den 4D-Kreislauf (Kapitel 2, @fig-4d-kreislauf) und die Übung in Anhang B.
+// Druckzwilling und QR-Codes für den 4D-Kreislauf (Kapitel 2, @fig-4d-kreislauf) und die Übung in Anhang A.
 // Aufruf aus dem Repo-Wurzelordner: node scripts/druck-4d-kreislauf.cjs (braucht qrcode).
 // Schreibt images/druck/4d-kreislauf.svg (Kreislauf mit eingesetztem QR-Code),
 // images/qr/qr-4d-kreislauf.png und images/qr/qr-ai-fluency-uebung.png.

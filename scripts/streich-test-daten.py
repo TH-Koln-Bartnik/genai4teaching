@@ -149,7 +149,7 @@ def schreibe_druck(zeilen):
 ```
 
 ::: {{.callout-tip title="Der Streich-Test: Was würden Sie heute streichen?"}}
-Die Zeilen stammen aus dem Quiz-Ersteller, wie er 2024 in Anhang B stand. Die Zeilen dazwischen sind ausgelassen, die Zeilen 9 und 10 sind ergänzte Beispielzeilen. Kreuzen Sie an, welche Zeilen Sie bei einem heutigen Reasoning-Modell streichen würden, und wie sicher Sie sind (1 geraten, 2, 3 sicher).
+Die Zeilen stammen aus dem Quiz-Ersteller, wie er 2024 im damaligen Prompt-Anhang stand. Die Zeilen dazwischen sind ausgelassen, die Zeilen 9 und 10 sind ergänzte Beispielzeilen. Kreuzen Sie an, welche Zeilen Sie bei einem heutigen Reasoning-Modell streichen würden, und wie sicher Sie sind (1 geraten, 2, 3 sicher).
 
 ```{{=latex}}
 {tabelle}
@@ -177,7 +177,7 @@ def schreibe_loesung(zeilen, w_alt, w_neu):
 Gestrichen werden die Zeilen 2, 3, 9 und 10; behalten werden 5 und 6; bei 1, 4, 7 und 8 bleibt der Inhalt und ändert sich die Form. Wer eine Umformulierungszeile gestrichen oder behalten hat, lag halb richtig. Merken Sie sich besonders die Zeilen, bei denen Sie „sicher“ angekreuzt und danebengelegen haben. Quellenmarken: ■ Labor-Doku (Leitfaden eines KI-Labors), ● Studie, ▲ Folklore (ein Ratschlag, den kein Leitfaden je empfahl).
 
 {chr(10).join(z + chr(10) for z in zeilen_md)}
-Der neu gefasste Quiz-Ersteller in Anhang B (@sec-prompt-quiz-maker) hat {w_neu} statt {w_alt} Wörter. Er nennt Ziel, Wozu, Zuerst (die Fragen an Sie), Material und Abnahme; das Material, also Skript oder Folien, fehlte in der alten Fassung ganz.
+Der neu gefasste Quiz-Ersteller in Anhang A (@sec-prompt-quiz-maker) hat {w_neu} statt {w_alt} Wörter. Er nennt Ziel, Wozu, Zuerst (die Fragen an Sie), Material und Abnahme; das Material, also Skript oder Folien, fehlte in der alten Fassung ganz.
 """
     # Zahlen und Zeilenlisten in der Einleitung gegen die Tabelle prüfen
     nach = lambda u: [z["nr"] for z in zeilen if z["urteil"] == u]

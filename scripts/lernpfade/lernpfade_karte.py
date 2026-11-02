@@ -18,15 +18,14 @@ ST = {
     "e35": (420, 280, "3.5 Evidenz",        "start", -14, 58, "kapitel03.html#sec-evidenz", True),
     "k4":  (620, 280, "4 Vier Rollen",      "end", -16, -30, "kapitel04.html#sec-szenarien", True),
     "k5":  (760, 140, "5 Umsetzung",        "middle", 0, -26, "kapitel05.html#sec-umsetzung", False),
-    "pri": (760, 420, "Praxis-Primer (Anh. E)", "middle", 0, 38, "anhang-primer.html#sec-anhang-primer", False),
     "k6":  (900, 280, "6 Fallbeispiele",    "start", 26, -12, "kapitel06-fallbeispiele.html#sec-fallbeispiele", True),
-    "anh": (1040, 420, "Anhänge C, D",       "middle", 0, 38, "kapitel08-appendix03-rollenspiele-simulationen.html#sec-rollenspiele", False),
+    "anh": (1040, 420, "Anhang A",           "middle", 0, 38, "kapitel07-appendix02-prompt-sammlung.html#sec-prompts", False),
 }
 
 LINIEN = {
     1: ["k1", "k2", "k3", "e35", "k4", "k5", "k6"],
     2: ["k1", "k2", "k3", "e35", "k4", "k5", "k6"],   # S1b 01.11.2026: hält an 2.1 (vier Kompetenzen)
-    3: ["k1", "k2", "e35", "k4", "pri", "k6"],
+    3: ["k1", "k2", "e35", "k4", "k5", "k6"],   # 02.11.2026: Praxis-Primer (Anh. E) entfernt, Linie 3 hält an Kapitel 5
     4: ["k1", "e35", "k4", "k6", "anh"],
 }
 NAMEN = {
@@ -104,8 +103,8 @@ def svg(fragment=False):
     o.append('<title id="lp-titel">Lernpfade durch das Buch</title>')
     o.append('<desc id="lp-desc">Liniennetz mit vier Lernpfaden. Alle Linien halten an Kapitel 1, '
              'Abschnitt 3.5, Kapitel 4 und Kapitel 6. Linie 1 hält an allen Hauptkapiteln, Linie 2 liest '
-             'aus Kapitel 2 nur Abschnitt 2.1, Linie 3 ersetzt Abschnitte 3.1 bis 3.4 und Kapitel 5 durch die Praxis-Primer, '
-             'Linie 4 geht von der Einleitung direkt zur Evidenz und endet in den Anhängen C und D.</desc>')
+             'aus Kapitel 2 nur Abschnitt 2.1, Linie 3 überspringt die Abschnitte 3.1 bis 3.4, '
+             'Linie 4 geht von der Einleitung direkt zur Evidenz und endet in der Prompt-Sammlung in Anhang A.</desc>')
     if not fragment:
         o.append('<style>'
                  'svg{--l-dunkel:#111111;--l-hell:#8c8c94;--grund:#ffffff;--tinte:#111111;--akzent:#c81e0f;}'

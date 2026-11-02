@@ -101,12 +101,12 @@
     {
       type: "image", slug: "praesentation", src: "../images/druck/folie-mit-regeln.png",
       alt: "Folie mit Aussagetitel zu Lieferzeit und Prognosefenster, Liniendiagramm mit zwei direkt beschrifteten Kurven, ein roter Punkt markiert den Wert 9,3; kaum Text.",
-      kicker: "Anhang E · Präsentation",
+      kicker: "Präsentation",
       title: "Mit Regelwerk belegt die Folie ihren Titel mit einem Diagramm",
       about: "Eine Aussage zum Bullwhip-Effekt, gebaut nach einem Regelwerk.",
       lehre: "Die Erklärung übernimmt die Stimme.",
-      link: "../anhang-primer.html#sec-primer-praesentationen",
-      cite: "Chen, F., Drezner, Z., Ryan, J. K., & Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain: The impact of forecasting, lead times, and information. Management Science, 46(3), 436–443. https://doi.org/10.1287/mnsc.46.3.436.12069 · Folie: Claude nach dem Regelwerk aus Primer B; geprüft von R. Bartnik 2026."
+      link: "",
+      cite: "Chen, F., Drezner, Z., Ryan, J. K., & Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain: The impact of forecasting, lead times, and information. Management Science, 46(3), 436–443. https://doi.org/10.1287/mnsc.46.3.436.12069 · Folie: Claude nach einem Regelwerk für evidenzbasierte Folien; geprüft von R. Bartnik 2026."
     },
     {
       type: "video", slug: "lernsong", src: "media/lernsong-forecast.mp4",
@@ -222,7 +222,7 @@
 
     var t = $("teach"); t.textContent = "";
     var p = document.createElement("p"); p.textContent = s.about; t.appendChild(p);
-    var a = document.createElement("a"); a.href = s.link; a.target = "_top"; a.textContent = "Im Buch ansehen →"; t.appendChild(a);
+    if (s.link) { var a = document.createElement("a"); a.href = s.link; a.target = "_top"; a.textContent = "Im Buch ansehen →"; t.appendChild(a); }
     var l = document.createElement("p"); l.className = "lehre"; l.textContent = s.lehre; t.appendChild(l);
     var d = document.createElement("details"), su = document.createElement("summary");
     su.textContent = "Quelle"; d.appendChild(su);
