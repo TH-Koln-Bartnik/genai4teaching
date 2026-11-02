@@ -28,7 +28,7 @@ Branch `anhangB-prompts-neu` (von `main` @ `df0f9bc`), nur `kapitel07-appendix02
 | Goal Play Zielsetzung | Verhaltensbeschreibung mit Rolle | 946 | 327 | −65 % |
 | **Zehn Druck-Prompts** | | **6173** | **2686** | **−56 %** |
 
-Gegenüberstellung alt/neu je Prompt: `claude/prompting-primer/DIFF-anhangB-alt-neu-2026-11-02.md` (Stand vor der Druckaufnahme des Interviewers; Prompt-Texte unverändert).
+Gegenüberstellung alt/neu je Prompt: Tresorit `Projektnotizen-Claude/prompting-primer/DIFF-anhangB-alt-neu-2026-11-02.md` (85 KB, daher nicht im Projekt; Stand vor der Druckaufnahme des Interviewers, Prompt-Texte unverändert). Neu erzeugen: `git diff main anhangB-prompts-neu -- kapitel07-appendix02-prompt-sammlung.qmd`.
 
 ## Prüfung
 
