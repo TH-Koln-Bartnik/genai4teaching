@@ -4,7 +4,7 @@ Auftrag: `claude/prompting-primer/AUFTRAG-prompting-kap02-anhangB-2026-11-02.md`
 
 ## Entstanden
 
-Branch `anhangB-prompts-neu` (von `main` @ `df0f9bc`), nur `kapitel07-appendix02-prompt-sammlung.qmd`, drei Commits, letzter `7b01e1b`, gepusht, **nicht gemergt**.
+Branch `anhangB-prompts-neu` (von `main` @ `df0f9bc`), nur `kapitel07-appendix02-prompt-sammlung.qmd`, Inhalt in drei Commits bis `7b01e1b`, Statusnotiz danach, Branch-Kopf `e75fb2a` oder neuer, gepusht, **nicht gemergt**.
 
 - **Vorbemerkung** neu: Sammlung 2024/25, RTF/CREATE-Labels als Lesehilfe, zwei Muster (Arbeitsauftrag: Ziel, Wozu, Material, Abnahme; Verhaltensbeschreibung: Zweck, Ablauf, Regeln, Grenzfälle, Ende), Verweis `@sec-access`, Stand November 2026. Druckhinweis: elf Prompts im Buch, 23 online.
 - **Auftrags-Interviewer** ersetzt den Strukturierten Prompt Designer (Anker `sec-prompt-strukturierer` bleibt), 219 Wörter, **jetzt auch im Druck** (MC Roman 12:2x, a). Interview mit Antwortoptionen, Freigabe der Zusammenfassung, [Annahme]-Markierung, Stilregeln, Frage nach Zwischenabnahme. GPT-Link des alten Designers entfernt; Zeile in der Online-Tabelle entfernt.
