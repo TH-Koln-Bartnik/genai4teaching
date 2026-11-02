@@ -30,4 +30,14 @@ Grundlage: `claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md` (1
 - Streich-Test ist inzwischen auf `main` (2.4, `#sec-streichtest`) und steht in der Tabelle.
 - Prosa 243 Wörter, gleiche Gruppenfolge wie die Tabelle. Render ohne neue Warnungen, Playwright 1200/390 px ohne JS-Fehler. Commit `a0cd3db` auf `main`.
 
-Ablage geprüft: Projekt `claude/didaktik/`, Repo `notes/`, Tresorit `Projektnotizen-Claude/didaktik/`.
+## Vorwort und Übersicht zusammengelegt (02.11.2026, 14:30, Auftrag Roman: „in dieser Reihenfolge“)
+- `index.qmd` ist jetzt die Seite „Vorwort“ (`#sec-vorwort`): Einleitungsabsatz, Lernpfade, „Wie dieses Buch lehrt“, danach `## Übersicht` (`#sec-uebersicht`, Kapitel- und Anhangsliste), `## Updates seit der Vorversion` und `## Didaktische Kurse` (die beiden letzten weiter nur online).
+- `vorwort.qmd` gelöscht und aus `_quarto.yml` entfernt. Quarto verlangt `index.qmd` als Startseite, deshalb wanderte das Vorwort dorthin und nicht umgekehrt.
+- Alte Adresse: `aliases: [vorwort.html]` erzeugt `docs/vorwort.html` als Weiterleitung; Anker bleiben erhalten (`vorwort.html#sec-wie-dieses-buch-lehrt` → `index.html#sec-wie-dieses-buch-lehrt`, per Playwright geprüft).
+- Angepasst: Link in Kap. 1 (`index.qmd#sec-lernpfade`), URL im Druck-Selbsttest (`…/genai4teaching/#sec-lernpfade`), `notes/s6-fachbegriffe/kandidaten.py`.
+- Prüfung: `quarto render --to html` (1.8.25) nur die bekannten 36 × „OJS block count mismatch“, kein `?@`; Playwright 1200/390 px ohne JS-Fehler, Abbildung Lernpfade und `@tbl-mechanismen` vorhanden; Download-PDF/EPUB aus Git zurückgeholt. Druckpfad nicht gerendert (kein TeX).
+- Commit `0a8184d` auf `main` gepusht (gemergt: ja).
+- Hinweis zur Übersicht: Die Kapitelliste nennt Kap. 1 „Einleitung: KI als Hilfe zum Lehren und Lernen“, die Überschrift lautet nur „Einleitung“; Anhang B heißt im Text „…und Aufgabenstellungen“, in der Überschrift „…und GenAI Aufgabenstellungen“. Inhalt bewusst unverändert gelassen.
+- Offen: Live-Prüfung nach dem Pages-Lauf; bei der nächsten PDF-Sitzung prüfen, wie das Vorwort mit Übersicht im Druck umbricht.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (`main` @ `0a8184d`, gemergt: ja)
