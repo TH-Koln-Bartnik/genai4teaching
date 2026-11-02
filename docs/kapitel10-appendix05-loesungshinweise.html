@@ -508,7 +508,10 @@ div.csl-indent {
    
   <ul>
   <li><a href="#kapitel-1-einleitung" id="toc-kapitel-1-einleitung" class="nav-link active" data-scroll-target="#kapitel-1-einleitung">Kapitel 1: Einleitung</a></li>
-  <li><a href="#kapitel-2-grundbegriffe" id="toc-kapitel-2-grundbegriffe" class="nav-link" data-scroll-target="#kapitel-2-grundbegriffe">Kapitel 2: Grundbegriffe</a></li>
+  <li><a href="#kapitel-2-grundbegriffe" id="toc-kapitel-2-grundbegriffe" class="nav-link" data-scroll-target="#kapitel-2-grundbegriffe">Kapitel 2: Grundbegriffe</a>
+  <ul>
+  <li><a href="#loes-streichtest" id="toc-loes-streichtest" class="nav-link" data-scroll-target="#loes-streichtest">Streich-Test (Kapitel 2)</a></li>
+  </ul></li>
   <li><a href="#kapitel-3-didaktische-ziele-und-mechanismen" id="toc-kapitel-3-didaktische-ziele-und-mechanismen" class="nav-link" data-scroll-target="#kapitel-3-didaktische-ziele-und-mechanismen">Kapitel 3: Didaktische Ziele und Mechanismen</a></li>
   <li><a href="#kapitel-4-vier-szenarien-der-nutzung-von-genai" id="toc-kapitel-4-vier-szenarien-der-nutzung-von-genai" class="nav-link" data-scroll-target="#kapitel-4-vier-szenarien-der-nutzung-von-genai">Kapitel 4: Vier Szenarien der Nutzung von GenAI</a></li>
   <li><a href="#kapitel-5-empfehlungen-zur-umsetzung" id="toc-kapitel-5-empfehlungen-zur-umsetzung" class="nav-link" data-scroll-target="#kapitel-5-empfehlungen-zur-umsetzung">Kapitel 5: Empfehlungen zur Umsetzung</a></li>
@@ -567,6 +570,22 @@ div.csl-indent {
 <li>Zum äußeren Harness gehört alles, was das Team selbst festlegt: die Anleitung mit Rolle und Regeln, die hochgeladenen Kursunterlagen als Wissensbasis, die angeschlossenen Werkzeuge und die Prüfregeln; das Modell und die Plattform liefert der Hersteller. Eine gute Antwort begrenzt den Spielraum an einer Werkzeug- und an einer Ablaufstelle, etwa: nur aus den Kursunterlagen antworten und keine Lösung vor dem ersten eigenen Versuch der Studierenden. Sie erkennt die Spannung (<a href="kapitel02.html#sec-harness" class="quarto-xref"><span>Kapitel 2.2.2</span></a>): Jeder Schritt, den der Tutor selbst wählt, nimmt den Lernenden eine Entscheidung ab; ein guter Tutor gibt die Autonomie im Lernweg an die Lernenden zurück.</li>
 <li>Eine gute Antwort beginnt in der äußeren Schleife: Ziel, passendes Werkzeug und die Pflichten, die daraus folgen (Datenschutz, Offenlegung, Prüfung vor der Weitergabe), und leitet daraus ab, was beim Menschen bleibt. In der inneren Schleife nennt sie ein Prüfkriterium, das vor dem ersten Prompt feststeht, etwa eine Musterlösung oder eine Stichprobe, die man selbst nachrechnet. Die Schwachstelle liegt meist bei Discernment oder Diligence, weil man das Ergebnis selbst nicht prüfen kann oder nicht weiß, wem gegenüber man den KI-Einsatz offenlegen muss (<a href="kapitel02.html#sec-schemas" class="quarto-xref"><span>Kapitel 2.1</span></a>).</li>
 </ol>
+<!-- Automatisch erzeugt von scripts/streich-test-daten.py aus notes/streich-test/urteile.md. Nicht von Hand ändern. -->
+<section id="loes-streichtest" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="loes-streichtest">Streich-Test (Kapitel 2)</h3>
+<p>Gestrichen werden die Zeilen 2, 3, 9 und 10; behalten werden 5 und 6; bei 1, 4, 7 und 8 bleibt der Inhalt und ändert sich die Form. Wer eine Umformulierungszeile gestrichen oder behalten hat, lag halb richtig. Merken Sie sich besonders die Zeilen, bei denen Sie „sicher“ angekreuzt und danebengelegen haben. Quellenmarken: ■ Labor-Doku (Leitfaden eines KI-Labors), ● Studie, ▲ Folklore (ein Ratschlag, den kein Leitfaden je empfahl).</p>
+<p><strong>1. Umformulieren</strong> (● Studie). Für die Genauigkeit bringt die Expertenrolle nichts: In sechs Modellen änderte sie die Trefferquote auf schweren Testfragen nicht signifikant. Was die Zeile mitteilt, wandert in den Kontext („für meine Lehrveranstaltung“); für den Ton und in Simulationen, wo die Rolle der Inhalt ist, bleibt sie sinnvoll. Im neuen Prompt: <em>Ziel</em>. <span class="citation" data-cites="basil2025 anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026a</a>; <a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span></p>
+<p><strong>2. Streichen</strong> (■ Labor-Doku). Drei Adjektive beschreiben einen Charakter, kein Ergebnis. Was „präzise“ heißen soll, steht im neuen Prompt prüfbar unter Abnahme. <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026</a>)</span></p>
+<p><strong>3. Streichen</strong> (■ Labor-Doku). Reasoning-Modelle planen den Weg selbst; eine Phasen-Choreografie mit Ausrufezeichen ersetzt kein Ziel. Anders bei Tutoren und Simulationen: Dort ist der Ablauf das Produkt und bleibt. <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026</a>)</span></p>
+<p><strong>4. Umformulieren</strong> (■ Labor-Doku). Das Warten bleibt, denn das Modell soll erst fragen und dann bauen. „Zwingend“ entfällt: Neuere Modelle befolgen Anweisungen genauer, und Nachdruck führt eher zu Übereifer. Neu: „Eine Frage pro Nachricht.“ Im neuen Prompt: <em>Zuerst</em>. <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026a</a>)</span></p>
+<p><strong>5. Behalten</strong> (■ Labor-Doku). Welche Fehlvorstellungen in Ihrem Kurs vorkommen, kann kein Modell wissen. Aus dieser Antwort entstehen die falschen Antwortoptionen; die Zeile liefert Kontext, keinen Lösungsweg. Im neuen Prompt: <em>Zuerst</em>. <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026a</a>)</span></p>
+<p><strong>6. Behalten</strong> (■ Labor-Doku). Anzahl, Fragetyp und Reihenfolge sind Abnahmekriterien: Sie und das Modell können prüfen, ob das Ergebnis sie erfüllt. Genau diese Art Zeile wird wichtiger. Im neuen Prompt: <em>Abnahme</em>. <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026</a>)</span></p>
+<p><strong>7. Umformulieren</strong> (■ Labor-Doku). Die Absicht bleibt, aber „plausibel“ lässt sich nicht prüfen. Prüfbar wird es so: „Jede falsche Option beruht auf einer echten Fehlvorstellung.“ Im neuen Prompt: <em>Abnahme</em>. <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026a</a>)</span></p>
+<p><strong>8. Umformulieren</strong> (■ Labor-Doku). Die Zeile belehrt die Lehrperson über etwas, das sie weiß. Als Grund an das Modell gerichtet wird sie nützlich: Wer weiß, dass der Test eine Abrufübung ohne Notenfolgen ist, entscheidet auch ungeregelte Fälle passend. Im neuen Prompt: <em>Wozu</em>. <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026a</a>)</span></p>
+<p><strong>9. Streichen</strong> (■ Labor-Doku). 2022 hob die Aufforderung „Let’s think step by step“ die Trefferquote älterer Modelle deutlich. Reasoning-Modelle denken und prüfen von selbst; Anthropic rät, Prüfbefehle wie „double-check your answer“ zu streichen, weil sie Kosten ohne Qualitätsgewinn verursachen. <span class="citation" data-cites="openai2026reasoning anthropic2026opus5 meincke2025a kojima2022">(<a href="#ref-anthropic2026opus5" role="doc-biblioref">Anthropic, 2026b</a>; <a href="#ref-kojima2022" role="doc-biblioref">Kojima et al., 2022</a>; <a href="#ref-meincke2025a" role="doc-biblioref">Meincke et al., 2025a</a>; <a href="#ref-openai2026reasoning" role="doc-biblioref">OpenAI, o. J.</a>)</span></p>
+<p><strong>10. Streichen</strong> (▲ Folklore). Kein Leitfaden der Labore hat Trinkgeld je empfohlen; der Rat verbreitete sich über Erfahrungsberichte. Im Test änderten Trinkgeld und Drohungen die Ergebnisse auf schweren Fragen insgesamt nicht. <span class="citation" data-cites="meincke2025b">(<a href="#ref-meincke2025b" role="doc-biblioref">Meincke et al., 2025b</a>)</span></p>
+<p>Der neu gefasste Quiz-Ersteller in Anhang B (<a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-quiz-maker" class="quarto-xref"><span>Kapitel B.1.6</span></a>) hat 119 statt 275 Wörter. Er nennt Ziel, Wozu, Zuerst (die Fragen an Sie), Material und Abnahme; das Material, also Skript oder Folien, fehlte in der alten Fassung ganz.</p>
+</section>
 </section>
 <section id="kapitel-3-didaktische-ziele-und-mechanismen" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="kapitel-3-didaktische-ziele-und-mechanismen">Kapitel 3: Didaktische Ziele und Mechanismen</h2>
@@ -659,8 +678,17 @@ Acemoglu, D., Kong, F., &amp; Restrepo, P. (2025). Tasks at work: Comparative ad
 <div id="ref-alfieri2011" class="csl-entry" role="listitem">
 Alfieri, L., Brooks, P. J., Aldrich, N. J., &amp; Tenenbaum, H. R. (2011). Does discovery-based instruction enhance learning? <em>Journal of Educational Psychology</em>, <em>103</em>(1), 1–18. <a href="https://doi.org/10.1037/a0021017">https://doi.org/10.1037/a0021017</a>.
 </div>
+<div id="ref-anthropic2026prompting" class="csl-entry" role="listitem">
+Anthropic (2026a). Prompting best practices. <em>Claude Platform Docs</em>. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</a>.
+</div>
+<div id="ref-anthropic2026opus5" class="csl-entry" role="listitem">
+Anthropic (2026b). Prompting Claude Opus 5. <em>Claude Platform Docs</em>. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5</a>.
+</div>
 <div id="ref-barth2026steering" class="csl-entry" role="listitem">
 Barth, M., Thorgeirsson, S., Etemadi, K., Leinonen, J., Cotrini, C., &amp; Su, Z. (2026). Steering AI tutors through system prompts: A crossover study on self-regulated learning and cognitive engagement scaffolds in CS1. <a href="https://doi.org/10.1145/3765964.3811656">https://doi.org/10.1145/3765964.3811656</a>.
+</div>
+<div id="ref-basil2025" class="csl-entry" role="listitem">
+Basil, S., Shapiro, I., Shapiro, D., Mollick, E., Mollick, L., &amp; Meincke, L. (2025). <em>Prompting Science Report 4: Playing Pretend: Expert Personas Don’t Improve Factual Accuracy</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2512.05858">https://doi.org/10.48550/arXiv.2512.05858</a>.
 </div>
 <div id="ref-bastani2025" class="csl-entry" role="listitem">
 Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>Proceedings of the National Academy of Sciences</em>, <em>122</em>(26), e2422633122. <a href="https://doi.org/10.1073/pnas.2422633122">https://doi.org/10.1073/pnas.2422633122</a>.
@@ -680,8 +708,23 @@ Gerber, A., Lorenz, L., &amp; Pfeiffer, U. (2026). KI-Tutoren in der Lehre: rech
 <div id="ref-katz2021" class="csl-entry" role="listitem">
 Katz, J. J., Ando, M., &amp; Wiseheart, M. (2021). Optimizing song retention through the spacing effect. <em>Cognitive Research: Principles and Implications</em>, <em>6</em>(1), 79. <a href="https://doi.org/10.1186/s41235-021-00345-7">https://doi.org/10.1186/s41235-021-00345-7</a>.
 </div>
+<div id="ref-kojima2022" class="csl-entry" role="listitem">
+Kojima, T., Gu, S. S., Reid, M., Matsuo, Y., &amp; Iwasawa, Y. (2022). Large language models are zero-shot reasoners. <a href="https://doi.org/10.48550/arXiv.2205.11916">https://doi.org/10.48550/arXiv.2205.11916</a>.
+</div>
 <div id="ref-liu2026courseintegrated" class="csl-entry" role="listitem">
 Liu, J., Sweet, T., Chen, M. H., Engelberg, J., Masters, M. C., Clark, M., Persaud, A., Lancaster, A., Hollingsworth, J. K., &amp; Rice, J. K. (2026). <em>The effects of course-integrated AI tutoring on student performance and engagement: A randomized university trial</em> (EdWorkingPaper; Nr. 26-1598). Annenberg Institute at Brown University. <a href="https://doi.org/10.26300/y3f8-vh05">https://doi.org/10.26300/y3f8-vh05</a>.
+</div>
+<div id="ref-meincke2025a" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E. R., Mollick, L., &amp; Shapiro, D. (2025a). <em>Prompting Science Report 2: The Decreasing Value of Chain of Thought in Prompting</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2506.07142">https://doi.org/10.48550/arXiv.2506.07142</a>.
+</div>
+<div id="ref-meincke2025b" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E., Mollick, L., &amp; Shapiro, D. (2025b). <em>Prompting Science Report 3: I’ll pay you or I’ll kill you -- but will you care?</em> arXiv. <a href="https://doi.org/10.48550/arXiv.2508.00614">https://doi.org/10.48550/arXiv.2508.00614</a>.
+</div>
+<div id="ref-openai2026reasoning" class="csl-entry" role="listitem">
+OpenAI (o. J.). Reasoning best practices. <em>OpenAI API Docs</em>. <a href="https://developers.openai.com/api/docs/guides/reasoning-best-practices">https://developers.openai.com/api/docs/guides/reasoning-best-practices</a>.
+</div>
+<div id="ref-openai2026gpt55" class="csl-entry" role="listitem">
+OpenAI (2026). Using GPT-5.5. <em>Using GPT-6 (OpenAI API Docs)</em>. <a href="https://developers.openai.com/api/docs/guides/gpt-5.5">https://developers.openai.com/api/docs/guides/gpt-5.5</a>.
 </div>
 <div id="ref-pan2023prequestion" class="csl-entry" role="listitem">
 Pan, S. C., &amp; Carpenter, S. K. (2023). Prequestioning and pretesting effects: A review of empirical research, theoretical perspectives, and implications for educational practice. <em>Educational Psychology Review</em>, <em>35</em>(4), 97. <a href="https://doi.org/10.1007/s10648-023-09814-5">https://doi.org/10.1007/s10648-023-09814-5</a>.

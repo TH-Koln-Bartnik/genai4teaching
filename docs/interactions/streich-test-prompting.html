@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der Streich-Test: Was würden Sie heute streichen?</title>
+<style>
+  :root {
+    --red: #c1002a; --red-soft: #f6dde3; --bg: #ffffff; --panel: #f4f4f4; --line: #d4d4d4;
+    --text: #1a1a1a; --muted: #5f5f5f; --bar: #a6a6a6; --code: #fbfbfa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --red: #ff5c7a; --red-soft: #3b1820; --bg: #141414; --panel: #1f1f1f; --line: #3a3a3a;
+      --text: #f2f2f2; --muted: #b5b5b5; --bar: #7c7c7c; --code: #1a1a1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; }
+  main { max-width: 900px; margin: 0 auto; padding: 18px 14px 32px; }
+  .kicker { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  h1 { font-size: 23px; line-height: 1.25; margin: 4px 0 10px; font-weight: 650; }
+  h2 { font-size: 19px; margin: 22px 0 8px; font-weight: 650; }
+  h3 { font-size: 16px; margin: 14px 0 6px; font-weight: 650; }
+  p { margin: 0 0 10px; max-width: 72ch; }
+  .lead { color: var(--text); }
+  .hinweis, .klein { font-size: 13px; color: var(--muted); }
+  button { font: inherit; font-size: 15px; color: var(--text); background: var(--bg); border: 1px solid var(--line);
+    border-radius: 6px; padding: 8px 14px; cursor: pointer; min-height: 44px; }
+  button:hover { border-color: var(--text); }
+  button.haupt { background: var(--text); color: var(--bg); border-color: var(--text); }
+  button:focus-visible, [tabindex]:focus-visible, a:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+  a { color: inherit; }
+
+  /* Ablauf */
+  ol.phasen { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 14px; font-size: 13px; }
+  ol.phasen li { border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; color: var(--muted); }
+  ol.phasen li[aria-current="step"] { border-color: var(--text); color: var(--text); font-weight: 650; }
+
+  /* Prompt-Zettel */
+  .prompt { background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+  .stat { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; color: var(--muted);
+    padding: 2px 8px; }
+  .zeile { border-radius: 6px; margin: 2px 0; }
+  .zeile + .zeile { border-top: 1px dashed var(--line); }
+  .zk { display: flex; gap: 8px; align-items: flex-start; padding: 8px; border-radius: 6px; cursor: pointer; min-height: 44px; }
+  .zk:hover { background: var(--panel); }
+  .zk[aria-disabled="true"] { cursor: default; }
+  .zk[aria-disabled="true"]:hover { background: transparent; }
+  .kasten { flex: 0 0 auto; width: 22px; height: 22px; margin-top: 1px; border: 2px solid var(--muted); border-radius: 4px;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 15px; line-height: 1; font-weight: 700; }
+  .nr { flex: 0 0 auto; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 1.4em; }
+  .text { flex: 1 1 auto; white-space: pre-wrap; overflow-wrap: anywhere;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 14px; }
+  .erg { display: inline-block; font-family: system-ui, sans-serif; font-size: 12px; color: var(--muted);
+    border: 1px dashed var(--muted); border-radius: 4px; padding: 0 5px; margin-left: 4px; white-space: nowrap; }
+  .gest-label { display: none; flex: 0 0 auto; font-size: 12px; font-weight: 700; color: var(--red);
+    border: 1px solid var(--red); border-radius: 4px; padding: 0 5px; }
+  .zk[aria-checked="true"] .text { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; color: var(--muted); }
+  .zk[aria-checked="true"] .kasten { border-color: var(--red); color: var(--red); }
+  .zk[aria-checked="true"] .gest-label { display: inline-block; }
+  .sicher { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 0 8px 8px 60px; font-size: 13px; color: var(--muted); }
+  .sicher button { font-size: 13px; padding: 4px 10px; min-height: 36px; min-width: 44px; }
+  .sicher button[aria-checked="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .sicher button:disabled { cursor: default; opacity: .75; }
+  @media (max-width: 520px) { .sicher { padding-left: 8px; } }
+
+  .aktionen { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 12px 0; }
+
+  /* Auflösung */
+  .aufl { margin: 0 8px 10px 60px; padding: 8px 10px; background: var(--panel); border-radius: 6px; font-size: 14px; }
+  @media (max-width: 520px) { .aufl { margin-left: 8px; } }
+  .aufl p { margin: 0 0 6px; }
+  .wertung { font-weight: 700; }
+  .marke { white-space: nowrap; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; font-size: 13px; }
+  .zitat { font-style: italic; }
+  .zeile.hyper { border-left: 5px solid var(--red); background: var(--red-soft); }
+  .hyper-text { font-weight: 650; }
+  .bilanz { background: var(--panel); border-radius: 8px; padding: 10px 12px; margin: 8px 0 12px; }
+  .bilanz p { margin: 0 0 6px; }
+  .legende { font-size: 13px; color: var(--muted); }
+
+  /* Vorher – nachher */
+  .zahlen { display: grid; grid-template-columns: max-content 1fr; gap: 6px 10px; align-items: center; margin: 6px 0 14px; max-width: 560px; }
+  .balken { height: 16px; background: var(--bar); border-radius: 3px; }
+  .balken.neu { background: var(--text); }
+  .zahl { font-variant-numeric: tabular-nums; font-size: 14px; }
+  .vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 760px) { .vergleich { grid-template-columns: 1fr; } }
+  .vergleich figure { margin: 0; min-width: 0; }
+  .vergleich figcaption { font-weight: 650; margin-bottom: 4px; }
+  pre.code { margin: 0; background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 10px;
+    white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12.5px; line-height: 1.45;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+  .t-weg { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; color: var(--muted); }
+  .t-um { text-decoration: underline dotted; text-underline-offset: 3px; }
+  .t-bleibt { font-weight: 700; }
+  sup.zn { font-family: system-ui, sans-serif; font-size: 10.5px; font-weight: 700; color: var(--text);
+    border: 1px solid var(--line); border-radius: 3px; padding: 0 3px; margin-left: 2px; text-decoration: none; display: inline-block; }
+  .label { font-weight: 700; }
+  .nimmt { font-family: system-ui, sans-serif; font-size: 12px; color: var(--muted); }
+  .entwurf { font-size: 12px; font-weight: 600; color: var(--muted); border: 1px dashed var(--muted); border-radius: 4px; padding: 0 5px; margin-left: 6px; }
+
+  /* Transfer */
+  .karte { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 10px 0; }
+  .karte h3 { margin-top: 0; }
+  .karte ol { margin: 0 0 6px; padding-left: 1.3em; }
+  details { margin: 8px 0; }
+  details summary { cursor: pointer; font-weight: 650; min-height: 32px; }
+  .quellen p { font-size: 13px; color: var(--muted); padding-left: 1.6em; text-indent: -1.6em; margin: 0 0 4px; overflow-wrap: anywhere; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Leserübung · etwa sechs Minuten</p>
+  <h1>Der Streich-Test: Was würden Sie heute streichen?</h1>
+  <ol class="phasen" aria-label="Ablauf der Übung">
+    <li data-p="1" aria-current="step">1 Streichen</li>
+    <li data-p="2">2 Auflösung</li>
+    <li data-p="3">3 Vorher – nachher</li>
+    <li data-p="4">4 Selbst ausprobieren</li>
+  </ol>
+
+  <section id="p1" aria-labelledby="p1-titel">
+    <h2 id="p1-titel" class="sr">Streichen</h2>
+    <p class="lead">Die Zeilen stammen aus einem Prompt, wie er 2024 in diesem Buch stand: dem Quiz-Ersteller aus Anhang B. „[…]“ markiert Auslassungen, zwei Zeilen sind ergänzt und gekennzeichnet. Klicken Sie jede Zeile an, die Sie bei einem heutigen Reasoning-Modell streichen würden, und stellen Sie ein, wie sicher Sie sind.</p>
+    <p class="hinweis">Tastatur: Tab springt von Zeile zu Zeile, Leertaste oder Enter streicht, ← und → ändern die Sicherheit. Ihre Auswahl bleibt in diesem Fenster und wird nirgends gespeichert.</p>
+    <div class="prompt" id="prompt" aria-label="Alter Prompt, Quiz-Ersteller 2024"></div>
+    <div class="aktionen">
+      <button type="button" class="haupt" id="aufloesen">Auflösen</button>
+      <span id="zaehler" class="klein" aria-live="polite">0 von 10 Zeilen gestrichen</span>
+    </div>
+  </section>
+
+  <section id="p2" aria-labelledby="p2-titel" hidden>
+    <h2 id="p2-titel" tabindex="-1">Auflösung</h2>
+    <div class="bilanz" id="bilanz" aria-live="polite"></div>
+    <p class="legende">Quellenmarken: ■ Labor-Doku (Leitfaden eines KI-Labors) · ● Studie · ▲ Folklore (ein Ratschlag, den kein Leitfaden je empfahl). Die Begründung steht unter jeder Zeile oben.</p>
+    <div class="aktionen">
+      <button type="button" class="haupt" id="weiter3">Weiter: vorher – nachher</button>
+      <button type="button" id="nochmal">Noch einmal</button>
+    </div>
+  </section>
+
+  <section id="p3" aria-labelledby="p3-titel" hidden>
+    <h2 id="p3-titel" tabindex="-1">Vorher – nachher: derselbe Auftrag, neu gefasst</h2>
+    <p>Links der vollständige alte Quiz-Ersteller, rechts die neue Fassung aus Anhang B. Durchgestrichen ist, was entfällt; gepunktet unterstrichen, was in anderer Form wiederkommt; die Kästchen nennen die Zeilennummer aus dem Test.</p>
+    <div class="zahlen" id="zahlen"></div>
+    <div class="vergleich">
+      <figure><figcaption>Alt (2024)</figcaption><pre class="code" id="alt"></pre></figure>
+      <figure><figcaption>Neu (11/2026)<span class="entwurf" id="entwurf" hidden>Entwurf</span></figcaption><pre class="code" id="neu"></pre></figure>
+    </div>
+    <p class="klein" id="zaehlregel"></p>
+    <div class="aktionen"><button type="button" class="haupt" id="weiter4">Weiter: selbst ausprobieren</button></div>
+  </section>
+
+  <section id="p4" aria-labelledby="p4-titel" hidden>
+    <h2 id="p4-titel" tabindex="-1">Selbst ausprobieren</h2>
+    <div class="karte">
+      <h3>Nehmen Sie einen eigenen Prompt und streichen Sie die Hälfte. Was fehlt im Ergebnis?</h3>
+      <ol>
+        <li>Wählen Sie einen Prompt, den Sie oft benutzen, und kopieren Sie ihn zweimal.</li>
+        <li>Streichen Sie in der Kopie zuerst Rollen-Floskeln, Ermahnungen, Ablaufschritte und Prüfbefehle, bis die Hälfte weg ist.</li>
+        <li>Lassen Sie beide Fassungen im selben Modell laufen und vergleichen Sie die Ergebnisse.</li>
+      </ol>
+      <p>Was im Ergebnis fehlt, gehört als Ziel, Wozu, Material oder Abnahme zurück in den Prompt. Was nicht fehlt, war ein Stützrad: eine Hilfe für frühere Modelle, die heute nur noch bremst.</p>
+      <p>Neu gefasste Prompts und einen Auftrags-Interviewer, der mit Ihnen einen solchen Prompt baut, finden Sie in <a href="../kapitel07-appendix02-prompt-sammlung.html#sec-prompts" target="_top">Anhang B</a>.</p>
+    </div>
+    <details class="karte" open>
+      <summary>So entstand dieses Element</summary>
+      <p><b>Ein-Satz-Prompt:</b> „Lies [den Auftrag zum Streich-Test] und führe ihn vollständig aus.“ Der Auftrag beschreibt Ablauf, Material und Prüfschritte auf rund einer Seite.</p>
+      <p><b>Werkzeug:</b> ein Agent (Claude Opus 5.5) mit Zugriff auf das Repositorium des Buchs. Er holte den alten Prompt aus der Versionsgeschichte, legte Zeilen und Urteile in einer Tabelle ab und ließ ein Skript daraus dieses Element, den Druckkasten und die Lösung im Anhang erzeugen, damit die drei nicht voneinander abweichen.</p>
+      <p><b>Schwäche:</b> Ein Claude-Modell hat die Urteile vorgeschlagen und stützt sich bei acht von zehn Zeilen auf Leitfäden von Herstellern, darunter seinem eigenen, statt auf unabhängige Messungen. Deshalb nennt jede Zeile ihre Quelle mit Wortlaut, damit Sie das Urteil selbst prüfen können.</p>
+    </details>
+    <details>
+      <summary>Warum diese Übung so aufgebaut ist</summary>
+      <p>Wer vor der Auflösung selbst urteilt, behält die richtige Antwort besser, auch wenn das eigene Urteil falsch war (Richland et al., 2009). Irrtümer, die man mit hoher Sicherheit vertreten hat, werden nach einer Rückmeldung besonders gründlich korrigiert (Butterfield &amp; Metcalfe, 2001); deshalb fragt die Übung nach der Sicherheit und hebt sichere Irrtümer hervor. Die Begründungen nennen die alte Vorstellung und ersetzen sie mit einem Beleg, wie es Widerlegungstexte tun (Tippett, 2010).</p>
+    </details>
+    <details>
+      <summary>Quellen</summary>
+      <div class="quellen" id="quellen"></div>
+    </details>
+  </section>
+</main>
+
+<script>
+const D = /*DATEN-START*/{"stand":"2026-11-02","alt_ref":"df0f9bc","neu_ref":"origin/anhangB-prompts-neu","neu_entwurf":true,"woerter_alt":275,"woerter_neu":119,"aenderung_pct":-57,"alt":"[Role/Rolle]:  \nDu bist ein kompetenter Lehrassistent und Experte für Leistungsbewertung. Du entwickelst diagnostische Tests (Multiple-Choice und offene Fragen), um Wissen valide zu überprüfen. Du agierst strukturiert, präzise und didaktisch reflektiert.\n\n[Task/Aufgabe]:  \nFühre ein mehrstufiges, dialogisches Vorgehen durch:\n\nPhase 1 – Einstieg (Pflichtreihenfolge einhalten!)\n- Stelle dich dem Lehrenden kurz vor (1–2 Sätze).\n- Stelle genau zwei nummerierte Fragen:\n  1. Welches Fach unterrichten Sie?\n  2. Auf welchem Niveau sind Ihre Studierenden (Bachelor oder Master)?\n- Stelle keine weiteren Fragen.\n- Erwähne keine Themen, Inhalte oder Dokumente.\n- Warte zwingend auf die Antwort des Lehrers, bevor du fortfährst.\n\nPhase 2 – Zielklärung (erst nach Antwort auf Phase 1!)\n- Frage den Lehrenden, was die Studierenden konkret (in 2–3 Punkten) zu dem Thema verstehen sollen.\n- Frage zusätzlich, welche typischen Schwierigkeiten oder Fehlvorstellungen auftreten könnten.\n- Warte erneut auf die Antwort des Lehrenden.\n- Stelle keine weiteren Fragen.\n\nPhase 3 – Testkonstruktion (erst nach vollständiger Zielklärung!)\nErstelle einen ansprechenden diagnostischen Test mit:\n- 5 Multiple-Choice-Fragen\n- 2 offenen Fragen\n- Anordnung von leicht → anspruchsvoll\n- Mischung aus Reproduktions- und Anwendungsaufgaben\n\nDidaktische Anforderungen:\n- Jede falsche MC-Antwort muss plausibel sein.\n- Keine Option „alle der oben genannten“.\n- Keine negativen Formulierungen.\n- Offene Fragen müssen Anwendungscharakter und ein metakognitives Element enthalten (z. B. „Erklären Sie, warum… Welche Annahmen treffen Sie?“).\n- Fokus nicht nur auf Detailwissen, sondern auf konzeptuelles Verständnis.\n\nZusätzlich:\n- Gib einen vollständigen Antwortschlüssel.\n- Erläutere zu jeder Frage kurz deine didaktische Überlegung.\n- Erkläre der Lehrperson, dass es sich um einen Entwurf handelt.\n- Lade zur Zusammenarbeit und Feinjustierung ein.\n- Weise darauf hin, dass diagnostische Tests sowohl Bewertungsinstrument als auch Lernereignis (Abrufübung, Identifikation von Wissenslücken) sind.\n\n[Format/Format]:\n- Klar strukturierte Abschnitte\n- Nummerierte Fragen\n- Separater Abschnitt „Antwortschlüssel“\n- Separater Abschnitt „Didaktische Begründung“\n- Professioneller, kooperativer Ton\n- Halte deine eigenen Gesprächsbeiträge in den Dialogphasen bewusst kurz","neu":"Ziel: Ein diagnostischer Test für meine Lehrveranstaltung, als Entwurf, den ich überarbeite.\n\nWozu: Abrufübung ohne Notenfolgen; der Test soll Studierenden und mir zeigen, wo Verständnis fehlt.\n\nZuerst: Frag mich nacheinander nach Fach und Niveau, den zwei bis drei Dingen, die Studierende verstehen sollen, und typischen Fehlvorstellungen. Eine Frage pro Nachricht, jeweils mit plausiblen Antwortoptionen (a, b, c) und der Möglichkeit, Eigenes zu ergänzen.\n\nMaterial: [Skript oder Folien anhängen]\n\nAbnahme:\n- 5 Multiple-Choice-Fragen und 2 offene Fragen, von leicht nach anspruchsvoll\n- jede falsche Option beruht auf einer echten Fehlvorstellung; keine „alle oben genannten“, keine Verneinungen\n- offene Fragen verlangen Anwendung und eine Begründung\n- nichts, was nicht im Material steht\n- Antwortschlüssel getrennt vom Test; zu jeder Frage ein Satz, welche Fehlvorstellung sie prüft","anzeige":[["marke","[Role/Rolle]:"],["zeile",1],["zeile",2],["marke","[Task/Aufgabe]:"],["aus",""],["zeile",3],["aus",""],["zeile",4],["aus",""],["zeile",5],["aus",""],["zeile",6],["aus",""],["zeile",7],["aus",""],["zeile",8],["zeile",9],["marke","[Format/Format]:"],["aus",""],["zeile",10]],"zeilen":[{"nr":1,"text":"Du bist ein kompetenter Lehrassistent und Experte für Leistungsbewertung.","herkunft":"Original","urteil":"umformulieren","marke":"Studie","quellen":["basil2025","anthropic2026prompting"],"zitat":"„Expert personas don't improve factual accuracy“ (Basil et al. 2025, Report 4)","begruendung":"Für die Genauigkeit bringt die Expertenrolle nichts: In sechs Modellen änderte sie die Trefferquote auf schweren Testfragen nicht signifikant. Was die Zeile mitteilt, wandert in den Kontext („für meine Lehrveranstaltung“); für den Ton und in Simulationen, wo die Rolle der Inhalt ist, bleibt sie sinnvoll.","neu":"Ziel"},{"nr":2,"text":"Du agierst strukturiert, präzise und didaktisch reflektiert.","herkunft":"Original","urteil":"streichen","marke":"Labor-Doku","quellen":["openai2026gpt55"],"zitat":"„Start with the smallest prompt that preserves the product contract“ (OpenAI 2026, Using GPT-5.5)","begruendung":"Drei Adjektive beschreiben einen Charakter, kein Ergebnis. Was „präzise“ heißen soll, steht im neuen Prompt prüfbar unter Abnahme.","neu":""},{"nr":3,"text":"Phase 1 – Einstieg (Pflichtreihenfolge einhalten!)","herkunft":"Original","urteil":"streichen","marke":"Labor-Doku","quellen":["openai2026gpt55"],"zitat":"„Reduce or remove detailed step-by-step process guidance.“ (OpenAI 2026, Using GPT-5.5)","begruendung":"Reasoning-Modelle planen den Weg selbst; eine Phasen-Choreografie mit Ausrufezeichen ersetzt kein Ziel. Anders bei Tutoren und Simulationen: Dort ist der Ablauf das Produkt und bleibt.","neu":""},{"nr":4,"text":"Warte zwingend auf die Antwort des Lehrers, bevor du fortfährst.","herkunft":"Original","urteil":"umformulieren","marke":"Labor-Doku","quellen":["anthropic2026prompting"],"zitat":"„The fix is to soften any aggressive language.“ (Anthropic 2026, Prompting best practices)","begruendung":"Das Warten bleibt, denn das Modell soll erst fragen und dann bauen. „Zwingend“ entfällt: Neuere Modelle befolgen Anweisungen genauer, und Nachdruck führt eher zu Übereifer. Neu: „Eine Frage pro Nachricht.“","neu":"Zuerst"},{"nr":5,"text":"Frage zusätzlich, welche typischen Schwierigkeiten oder Fehlvorstellungen auftreten könnten.","herkunft":"Original","urteil":"behalten","marke":"Labor-Doku","quellen":["anthropic2026prompting"],"zitat":"„a brilliant but new employee who lacks context“ (Anthropic 2026, Prompting best practices)","begruendung":"Welche Fehlvorstellungen in Ihrem Kurs vorkommen, kann kein Modell wissen. Aus dieser Antwort entstehen die falschen Antwortoptionen; die Zeile liefert Kontext, keinen Lösungsweg.","neu":"Zuerst"},{"nr":6,"text":"- 5 Multiple-Choice-Fragen\n- 2 offenen Fragen\n- Anordnung von leicht → anspruchsvoll","herkunft":"Original","urteil":"behalten","marke":"Labor-Doku","quellen":["openai2026gpt55"],"zitat":"„State the expected outcome and success criteria.“ (OpenAI 2026, Using GPT-5.5)","begruendung":"Anzahl, Fragetyp und Reihenfolge sind Abnahmekriterien: Sie und das Modell können prüfen, ob das Ergebnis sie erfüllt. Genau diese Art Zeile wird wichtiger.","neu":"Abnahme"},{"nr":7,"text":"- Jede falsche MC-Antwort muss plausibel sein.","herkunft":"Original","urteil":"umformulieren","marke":"Labor-Doku","quellen":["anthropic2026prompting"],"zitat":"„Being specific about the output you want can help enhance results.“ (Anthropic 2026, Prompting best practices)","begruendung":"Die Absicht bleibt, aber „plausibel“ lässt sich nicht prüfen. Prüfbar wird es so: „Jede falsche Option beruht auf einer echten Fehlvorstellung.“","neu":"Abnahme"},{"nr":8,"text":"- Weise darauf hin, dass diagnostische Tests sowohl Bewertungsinstrument als auch Lernereignis (Abrufübung, Identifikation von Wissenslücken) sind.","herkunft":"Original","urteil":"umformulieren","marke":"Labor-Doku","quellen":["anthropic2026prompting"],"zitat":"„Claude can generalize from the explanation.“ (Anthropic 2026, Prompting best practices)","begruendung":"Die Zeile belehrt die Lehrperson über etwas, das sie weiß. Als Grund an das Modell gerichtet wird sie nützlich: Wer weiß, dass der Test eine Abrufübung ohne Notenfolgen ist, entscheidet auch ungeregelte Fälle passend.","neu":"Wozu"},{"nr":9,"text":"Denke Schritt für Schritt nach und prüfe jede Frage zweimal, bevor du sie ausgibst.","herkunft":"ergänzt","urteil":"streichen","marke":"Labor-Doku","quellen":["openai2026reasoning","anthropic2026opus5","meincke2025a","kojima2022"],"zitat":"„prompting them to ‘think step by step’ is unnecessary“ (OpenAI 2026, Reasoning best practices)","begruendung":"2022 hob die Aufforderung „Let's think step by step“ die Trefferquote älterer Modelle deutlich. Reasoning-Modelle denken und prüfen von selbst; Anthropic rät, Prüfbefehle wie „double-check your answer“ zu streichen, weil sie Kosten ohne Qualitätsgewinn verursachen.","neu":""},{"nr":10,"text":"Wenn der Test gut wird, gebe ich dir 200 € Trinkgeld.","herkunft":"ergänzt","urteil":"streichen","marke":"Folklore","quellen":["meincke2025b"],"zitat":"„Threatening or tipping a model generally has no significant effect“ (Meincke et al. 2025, Report 3)","begruendung":"Kein Leitfaden der Labore hat Trinkgeld je empfohlen; der Rat verbreitete sich über Erfahrungsberichte. Im Test änderten Trinkgeld und Drohungen die Ergebnisse auf schweren Fragen insgesamt nicht.","neu":""}]}/*DATEN-ENDE*/;
+
+const QUELLEN = {
+  anthropic2026prompting: "Anthropic. (2026). Prompting best practices. Claude Platform Docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+  anthropic2026opus5: "Anthropic. (2026). Prompting Claude Opus 5. Claude Platform Docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5",
+  openai2026gpt55: "OpenAI. (2026). Using GPT-5.5. OpenAI API Docs. https://developers.openai.com/api/docs/guides/gpt-5.5",
+  openai2026reasoning: "OpenAI. (o. J.). Reasoning best practices. OpenAI API Docs. Abgerufen am 2. November 2026, von https://developers.openai.com/api/docs/guides/reasoning-best-practices",
+  basil2025: "Basil, S., Shapiro, I., Shapiro, D., Mollick, E., Mollick, L., & Meincke, L. (2025). Prompting science report 4: Playing pretend: Expert personas don't improve factual accuracy (arXiv:2512.05858). https://doi.org/10.48550/arXiv.2512.05858",
+  meincke2025a: "Meincke, L., Mollick, E., Mollick, L., & Shapiro, D. (2025). Prompting science report 2: The decreasing value of chain of thought in prompting (arXiv:2506.07142). https://doi.org/10.48550/arXiv.2506.07142",
+  meincke2025b: "Meincke, L., Mollick, E., Mollick, L., & Shapiro, D. (2025). Prompting science report 3: I'll pay you or I'll kill you – but will you care? (arXiv:2508.00614). https://doi.org/10.48550/arXiv.2508.00614",
+  kojima2022: "Kojima, T., Gu, S. S., Reid, M., Matsuo, Y., & Iwasawa, Y. (2022). Large language models are zero-shot reasoners. Advances in Neural Information Processing Systems, 35. https://doi.org/10.48550/arXiv.2205.11916",
+  richland2009: "Richland, L. E., Kornell, N., & Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? Journal of Experimental Psychology: Applied, 15(3), 243–257. https://doi.org/10.1037/a0016496",
+  butterfield2001: "Butterfield, B., & Metcalfe, J. (2001). Errors committed with high confidence are hypercorrected. Journal of Experimental Psychology: Learning, Memory, and Cognition, 27(6), 1491–1494. https://doi.org/10.1037/0278-7393.27.6.1491",
+  tippett2010: "Tippett, C. D. (2010). Refutation text in science education: A review of two decades of research. International Journal of Science and Mathematics Education, 8(6), 951–970. https://doi.org/10.1007/s10763-010-9203-x"
+};
+const MARKE = { "Labor-Doku": "■ Labor-Doku", "Studie": "● Studie", "Folklore": "▲ Folklore" };
+const SICHER = { 1: "1 geraten", 2: "2", 3: "3 sicher" };
+
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const linkify = t => esc(t).replace(/(https:\/\/\S+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+
+let zustand = {};   // nr -> {weg: bool, s: 1..3}
+let aufgeloest = false;
+
+function phase(n) {
+  document.querySelectorAll("ol.phasen li").forEach(li => {
+    if (+li.dataset.p === n) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+  });
+}
+
+function baueZettel() {
+  const box = $("#prompt");
+  box.innerHTML = "";
+  for (const [art, wert] of D.anzeige) {
+    if (art !== "zeile") {
+      const p = document.createElement("div");
+      p.className = "stat"; p.textContent = art === "aus" ? "[…]" : wert;
+      p.setAttribute("aria-hidden", art === "aus" ? "true" : "false");
+      box.appendChild(p); continue;
+    }
+    const z = D.zeilen.find(x => x.nr === wert);
+    zustand[z.nr] = { weg: false, s: 2 };
+    const el = document.createElement("div");
+    el.className = "zeile"; el.id = "zeile-" + z.nr;
+    el.innerHTML =
+      `<div class="zk" role="checkbox" tabindex="0" aria-checked="false" aria-labelledby="zt${z.nr}" aria-describedby="zd${z.nr}">` +
+        `<span class="kasten" aria-hidden="true"></span><span class="nr" aria-hidden="true">${z.nr}</span>` +
+        `<span class="text" id="zt${z.nr}"><span class="sr">Zeile ${z.nr}: </span>${esc(z.text)}` +
+        (z.herkunft === "ergänzt" ? `<span class="erg">ergänzte Beispielzeile</span>` : "") + `</span>` +
+        `<span class="gest-label" aria-hidden="true">gestrichen</span>` +
+        `<span class="sr" id="zd${z.nr}">Sicherheit 2 von 3</span>` +
+      `</div>` +
+      `<div class="sicher" role="radiogroup" aria-label="Sicherheit für Zeile ${z.nr}">Sicherheit:` +
+        [1, 2, 3].map(s => `<button type="button" role="radio" tabindex="-1" data-s="${s}" aria-checked="${s === 2}">${SICHER[s]}</button>`).join("") +
+      `</div>` +
+      `<div class="aufl" id="aufl${z.nr}" hidden></div>`;
+    box.appendChild(el);
+    const zk = el.querySelector(".zk");
+    const schalte = () => { if (aufgeloest) return; zustand[z.nr].weg = !zustand[z.nr].weg; zeige(z.nr); };
+    zk.addEventListener("click", schalte);
+    zk.addEventListener("keydown", e => {
+      if (e.key === " " || e.key === "Enter") { e.preventDefault(); schalte(); }
+      else if (e.key === "ArrowRight" || e.key === "ArrowUp") { e.preventDefault(); setzeS(z.nr, zustand[z.nr].s + 1); }
+      else if (e.key === "ArrowLeft" || e.key === "ArrowDown") { e.preventDefault(); setzeS(z.nr, zustand[z.nr].s - 1); }
+    });
+    el.querySelectorAll(".sicher button").forEach(b => b.addEventListener("click", () => setzeS(z.nr, +b.dataset.s)));
+  }
+}
+
+function setzeS(nr, s) {
+  if (aufgeloest) return;
+  zustand[nr].s = Math.max(1, Math.min(3, s));
+  zeige(nr);
+}
+
+function zeige(nr) {
+  const el = document.getElementById("zeile-" + nr), st = zustand[nr];
+  el.querySelector(".zk").setAttribute("aria-checked", st.weg ? "true" : "false");
+  el.querySelector(".kasten").textContent = st.weg ? "✕" : "";
+  el.querySelectorAll(".sicher button").forEach(b => b.setAttribute("aria-checked", +b.dataset.s === st.s ? "true" : "false"));
+  document.getElementById("zd" + nr).textContent = "Sicherheit " + st.s + " von 3" + (st.weg ? ", gestrichen" : "");
+  const n = Object.values(zustand).filter(x => x.weg).length;
+  $("#zaehler").textContent = `${n} von ${D.zeilen.length} Zeilen gestrichen`;
+}
+
+function wertung(z) {
+  const weg = zustand[z.nr].weg;
+  if (z.urteil === "umformulieren") return "teils";
+  return (z.urteil === "streichen") === weg ? "richtig" : "daneben";
+}
+
+function aufloesen() {
+  aufgeloest = true;
+  let richtig = 0, eindeutig = 0, sicher3 = 0, sicher3richtig = 0;
+  const hyper = [];
+  for (const z of D.zeilen) {
+    const el = document.getElementById("zeile-" + z.nr), st = zustand[z.nr], w = wertung(z);
+    el.querySelector(".zk").setAttribute("aria-disabled", "true");
+    el.querySelectorAll(".sicher button").forEach(b => b.disabled = true);
+    if (w !== "teils") {
+      eindeutig++; if (w === "richtig") richtig++;
+      if (st.s === 3) { sicher3++; if (w === "richtig") sicher3richtig++; }
+    }
+    const istHyper = w === "daneben" && st.s === 3;
+    if (istHyper) { hyper.push(z.nr); el.classList.add("hyper"); }
+    const symbol = { richtig: "✓ richtig", daneben: "✗ daneben", teils: "½ teils" }[w];
+    const ihre = (st.weg ? "gestrichen" : "behalten") + ", Sicherheit " + st.s;
+    const teilsText = w === "teils" ? " Der Inhalt bleibt, die Form ändert sich; beide Entscheidungen sind halb richtig." : "";
+    const box = document.getElementById("aufl" + z.nr);
+    box.innerHTML =
+      `<p><span class="wertung">${symbol}</span> · Ihre Wahl: ${ihre} · Urteil: <b>${esc(z.urteil)}</b> · <span class="marke">${MARKE[z.marke]}</span></p>` +
+      (istHyper ? `<p class="hyper-text">Sicher und daneben: Genau solche Irrtümer merkt man sich nach der Korrektur am besten.</p>` : "") +
+      `<p>${esc(z.begruendung)}${teilsText}</p>` +
+      `<p class="klein"><span class="zitat">${esc(z.zitat)}</span>${z.neu ? ` · im neuen Prompt unter <b>${esc(z.neu)}</b>` : ""}</p>`;
+    box.hidden = false;
+  }
+  const s3 = sicher3 ? ` Bei Ihren sicheren Urteilen (Sicherheit 3) lagen Sie in ${sicher3richtig} von ${sicher3} eindeutigen Fällen richtig.` : "";
+  const h = hyper.length ? ` Sicher und daneben: Zeile ${hyper.join(", ")}; diese Zeilen sind oben rot umrandet.` : "";
+  $("#bilanz").innerHTML =
+    `<p><b>${richtig} von ${eindeutig}</b> eindeutigen Zeilen richtig beurteilt (streichen oder behalten).${s3}${h}</p>` +
+    `<p>${D.zeilen.length - eindeutig} Zeilen sind Umformulierungsfälle: Ihr Inhalt gehört weiter in den Prompt, nur anders gefasst.</p>`;
+  $("#aufloesen").hidden = true;
+  $("#p2").hidden = false; phase(2);
+  $("#p2-titel").focus({ preventScroll: true });
+  document.getElementById("zeile-1").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function markiereAlt() {
+  let html = esc(D.alt);
+  for (const z of D.zeilen) {
+    if (z.herkunft !== "Original") continue;
+    const kl = z.urteil === "streichen" ? "t-weg" : z.urteil === "umformulieren" ? "t-um" : "t-bleibt";
+    for (const teil of z.text.split("\n")) {
+      const e = esc(teil), i = html.indexOf(e);
+      if (i < 0) continue;
+      html = html.slice(0, i) + `<span class="${kl}">${e}</span><sup class="zn">${z.nr}</sup>` + html.slice(i + e.length);
+    }
+  }
+  $("#alt").innerHTML = html;
+}
+
+function markiereNeu() {
+  const nimmt = {};
+  for (const z of D.zeilen) if (z.neu) (nimmt[z.neu] = nimmt[z.neu] || []).push(z.nr);
+  $("#neu").innerHTML = D.neu.split("\n").map(l => {
+    const m = l.match(/^(Ziel|Wozu|Zuerst|Material|Abnahme):(.*)$/);
+    if (!m) return esc(l);
+    const note = nimmt[m[1]] ? `  <span class="nimmt">← Zeile ${nimmt[m[1]].join(", ")}</span>` : `  <span class="nimmt">← neu, fehlte im alten Prompt</span>`;
+    return `<span class="label">${m[1]}:</span>${esc(m[2])}${note}`;
+  }).join("\n");
+  if (D.neu_entwurf) $("#entwurf").hidden = false;
+}
+
+function zeigeZahlen() {
+  const max = Math.max(D.woerter_alt, D.woerter_neu);
+  $("#zahlen").innerHTML =
+    `<span class="zahl">Alt: ${D.woerter_alt} Wörter</span><div class="balken" style="width:${100 * D.woerter_alt / max}%"></div>` +
+    `<span class="zahl">Neu: ${D.woerter_neu} Wörter</span><div class="balken neu" style="width:${100 * D.woerter_neu / max}%"></div>`;
+  $("#zaehlregel").textContent = `Gezählt per Skript: jedes durch Leerraum getrennte Stück mit mindestens einem Buchstaben oder einer Ziffer (${String(D.aenderung_pct).replace("-", "−")} % gegenüber der alten Fassung). ` +
+    `Die Zeilen 9 und 10 waren ergänzt und stehen nicht im Original.` +
+    (D.neu_entwurf ? " Die neue Fassung ist ein Entwurf, der vor der Aufnahme ins Buch noch geprüft wird." : "");
+}
+
+function neuStart() {
+  aufgeloest = false; zustand = {};
+  for (const id of ["#p2", "#p3", "#p4"]) $(id).hidden = true;
+  $("#aufloesen").hidden = false;
+  baueZettel(); zeige(1); phase(1);
+  document.querySelector(".zk").focus();
+}
+
+$("#aufloesen").addEventListener("click", aufloesen);
+$("#nochmal").addEventListener("click", neuStart);
+$("#weiter3").addEventListener("click", () => { $("#p3").hidden = false; phase(3); $("#p3-titel").focus({ preventScroll: true }); $("#p3").scrollIntoView({ behavior: "smooth" }); });
+$("#weiter4").addEventListener("click", () => { $("#p4").hidden = false; phase(4); $("#p4-titel").focus({ preventScroll: true }); $("#p4").scrollIntoView({ behavior: "smooth" }); });
+
+baueZettel(); zeige(1); markiereAlt(); markiereNeu(); zeigeZahlen();
+$("#quellen").innerHTML = Object.values(QUELLEN).sort().map(q => `<p>${linkify(q)}</p>`).join("");
+
+/* Höhe an die Kapitelseite melden: kein Leerraum unter dem Rahmen, kein Scrollbalken darin */
+(function () {
+  function melde() {
+    const h = Math.ceil(document.documentElement.scrollHeight);
+    try { if (parent !== window) parent.postMessage({ typ: "rahmen-hoehe", id: "streich-test", h: h }, "*"); } catch (e) {}
+  }
+  if (window.ResizeObserver) new ResizeObserver(melde).observe(document.body);
+  window.addEventListener("load", melde);
+})();
+</script>
+</body>
+</html>

@@ -1110,6 +1110,17 @@ Tabelle&nbsp;2.4: Modelle und Preisstufen bei Drucklegung. Preise laut Preisseit
 <section id="sec-how-to-speak" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="sec-how-to-speak"><span class="header-section-number">2.4.1</span> Vom Wunsch zum Werkvertrag</h3>
 <p><span id="sec-lab-recommendations"></span></p>
+<p><span id="sec-streichtest"></span> Bevor Sie weiterlesen, prüfen Sie Ihre eigene Vorstellung von einem guten Prompt. Der folgende Test zeigt zehn Zeilen aus einem Prompt, wie er 2024 in diesem Buch stand; entscheiden Sie bei jeder Zeile, ob Sie sie bei einem heutigen Reasoning-Modell streichen würden und wie sicher Sie sich sind. Wer vorher urteilt, behält die Auflösung besser <span class="citation" data-cites="richland2009">(<a href="#ref-richland2009" role="doc-biblioref">Richland et al., 2009</a>)</span>, und Irrtümer, bei denen man sich sicher war, werden besonders gründlich korrigiert <span class="citation" data-cites="butterfield2001">(<a href="#ref-butterfield2001" role="doc-biblioref">Butterfield &amp; Metcalfe, 2001</a>)</span>.</p>
+<!-- Online-Einbau „Der Streich-Test“ (Kap. 2.4.1). Druckfassung: _einbau/streich-test-druck.qmd -->
+<iframe loading="lazy" id="streich-test" src="interactions/streich-test-prompting.html" width="100%" height="1500px" frameborder="0" title="Leserübung: Der Streich-Test – welche Zeilen eines alten Prompts würden Sie heute streichen?"></iframe>
+<script>
+/* Die Übung meldet ihre Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "streich-test") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+<!-- Automatisch erzeugt von scripts/streich-test-daten.py aus notes/streich-test/urteile.md. Nicht von Hand ändern. -->
 <p>In einem Märchen von N. K. Jemisin erfüllen gefangene Götter ihren Wächtern jeden Wunsch, nur nicht wohlwollend: Den Baum, der im Weg liegt, beseitigt auch ein Vulkanausbruch <span class="citation" data-cites="jemisin2010">(<a href="#ref-jemisin2010" role="doc-biblioref">Jemisin, 2010</a>)</span>. Ein <strong>Prompt</strong>, die Eingabe an ein Sprachmodell, ist ein solcher Wunsch, und das Handwerk, ihn zu fassen, heißt <strong>Prompt Engineering</strong> <span class="citation" data-cites="berryman2025">(<a href="#ref-berryman2025" role="doc-biblioref">Berryman &amp; Ziegler, 2025</a>)</span>. Was an ihm genau sein muss, hat sich mit den Modellen verschoben. Ältere Modelle brauchten eine Arbeitsanleitung mit Rolle, Schritten und Ermahnungen. Reasoning-Modelle planen den Weg selbst; die Leitfäden der Labore raten inzwischen, die aufwendige Prompt-Technik älterer Modelle wegzulassen <span class="citation" data-cites="google2026gemini3 anthropic2026opus5">(<a href="#ref-anthropic2026opus5" role="doc-biblioref">Anthropic, 2026c</a>; <a href="#ref-google2026gemini3" role="doc-biblioref">Google, 2026a</a>)</span> und stattdessen Ergebnis und Erfolgskriterium zu nennen <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026b</a>)</span>. Der Prompt wird vom Dienstvertrag, der Tätigkeiten vorschreibt, zum Werkvertrag, der Erfolg und Abnahme festlegt.</p>
 </section>
 <section id="sec-prompt-components" class="level3" data-number="2.4.2">
@@ -1410,6 +1421,9 @@ Bolin, M. (2026, Januar 23). <em>Unrolling the Codex agent loop</em>. OpenAI. <a
 <div id="ref-bridgwater2026dream" class="csl-entry" role="listitem">
 Bridgwater, A. (2026, August 12). <a href="https://thenewstack.io/anthropic-agent-memory-dreaming/">Anthropic gave agents the ability to dream. Then developers woke up</a>. <em>The New Stack</em>.
 </div>
+<div id="ref-butterfield2001" class="csl-entry" role="listitem">
+Butterfield, B., &amp; Metcalfe, J. (2001). Errors committed with high confidence are hypercorrected. <em>Journal of Experimental Psychology: Learning, Memory, and Cognition</em>, <em>27</em>(6), 1491–1494. <a href="https://doi.org/10.1037/0278-7393.27.6.1491">https://doi.org/10.1037/0278-7393.27.6.1491</a>.
+</div>
 <div id="ref-chen2025reasoning" class="csl-entry" role="listitem">
 Chen, Y., Benton, J., Radhakrishnan, A., Uesato, J., Denison, C., Schulman, J., Somani, A., Hase, P., Wagner, M., Roger, F., Mikulik, V., Bowman, S. R., Leike, J., Kaplan, J., &amp; Perez, E. (2025). <em>Reasoning models don’t always say what they think</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2505.05410">https://doi.org/10.48550/arXiv.2505.05410</a>.
 </div>
@@ -1601,6 +1615,9 @@ Persike, M. (2025, Dezember 5). Virtuelle API-Keys in KI:connect. <a href="https
 </div>
 <div id="ref-pinski2024literacy" class="csl-entry" role="listitem">
 Pinski, M., &amp; Benlian, A. (2024). AI literacy for users – A comprehensive review and future research directions of learning methods, components, and effects. <em>Computers in Human Behavior: Artificial Humans</em>, <em>2</em>(1), 100062. <a href="https://doi.org/10.1016/j.chbah.2024.100062">https://doi.org/10.1016/j.chbah.2024.100062</a>.
+</div>
+<div id="ref-richland2009" class="csl-entry" role="listitem">
+Richland, L. E., Kornell, N., &amp; Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? <em>Journal of Experimental Psychology: Applied</em>, <em>15</em>(3), 243–257. <a href="https://doi.org/10.1037/a0016496">https://doi.org/10.1037/a0016496</a>.
 </div>
 <div id="ref-roediger2012" class="csl-entry" role="listitem">
 Roediger, H. L., &amp; Pyc, M. A. (2012). Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice. <em>Journal of Applied Research in Memory and Cognition</em>, <em>1</em>(4), 242–248. <a href="https://doi.org/10.1016/j.jarmac.2012.09.002">https://doi.org/10.1016/j.jarmac.2012.09.002</a>.
