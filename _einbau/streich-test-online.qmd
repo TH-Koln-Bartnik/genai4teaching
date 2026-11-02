@@ -1,0 +1,13 @@
+<!-- Online-Einbau „Der Streich-Test“ (Kap. 2.4.1). Druckfassung: _einbau/streich-test-druck.qmd -->
+::: {.content-visible when-format="html"}
+```{=html}
+<iframe loading="lazy" id="streich-test" src="interactions/streich-test-prompting.html" width="100%" height="1500px" frameborder="0" title="Leserübung: Der Streich-Test – welche Zeilen eines alten Prompts würden Sie heute streichen?"></iframe>
+<script>
+/* Die Übung meldet ihre Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "streich-test") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+```
+:::
