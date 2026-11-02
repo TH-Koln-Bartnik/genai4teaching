@@ -125,6 +125,20 @@ Viertens lassen sich mündliche und performative Formate mit KI zugänglicher un
 
 Fünftens unterstützt KI das Bewerten, ersetzt das menschliche Urteil aber noch nicht; die Skalierung der neuen Formate bleibt an Menschen gebunden. @sapkota2026 lassen sechs LLM-Konfigurationen eine Klausur in diskreter Mathematik gegen menschliche Bewertende korrigieren. Großzügige Teilpunkt-Vorgaben senken den Fehler über alle Modellfamilien, doch Kalibrierung und Rangerhaltung (*point calibration, rank preservation*) fallen auseinander: Die beste mittlere Abweichung und die beste Korrelation entstehen unter verschiedenen Konfigurationen, und keine ist reif für unbeaufsichtigtes Benoten. @levine2026 untersuchen die Bewertung handschriftlicher Mathematik durch sehfähige Modelle (*vision-capable LLMs*): Die Gesamtgenauigkeit ist hoch, doch 87 % der Fehler des besten Modells stammen aus der Transkription der Handschrift, nicht aus falsch angewandten Rubriken (Bewertungsrastern). Der Engpass sitzt in der Erfassung, nicht im Urteil; automatisierbar ist die Rubrik-Anwendung, die Wahrnehmung des studentischen Artefakts bleibt vorerst menschliche Aufgabe (zur Verschiebung der Bewertungsarbeit vgl. @sec-hiwi).
 
+### Selbsttest: Erkennen Sie KI-Texte besser als ein Detektor? {#sec-detektor-duell}
+
+Henrik Sauers Kollege will alle Abgaben durch einen KI-Detektor schicken. Bevor Sie ihm antworten, prüfen Sie zuerst sich selbst und dann einen Detektor. In etwa sieben Minuten ordnen Sie acht Auszüge aus Schüleraufsätzen und KI-Texten zu, setzen auf jedes Urteil eine Sicherheit und treten gegen einen kleinen, offen gebauten Detektor an, dessen Rechnung Sie nach jedem Auszug sehen. Eine zweite Runde zeigt, wen ein Detektor zu Unrecht verdächtigt. Dass Prüfende KI-gestützte Arbeiten nicht erkennen, haben @kofinas2025 im Experiment gezeigt; hier erleben Sie es am eigenen Urteil.
+
+{{< include _einbau/detektor-duell-online.qmd >}}
+
+{{< include _einbau/detektor-duell-druck.qmd >}}
+
+{{< include _einbau/detektor-duell-einordnung.qmd >}}
+
+::: {.callout-note title="So entstand dieses Spiel" collapse="true"}
+Bauauftrag an einen KI-Agenten (Claude Opus 5.5): „Lies die Auftragsdatei zum Detektor-Duell und führe den Auftrag aus.“ Werkzeuge: zwei offene Datensätze, PERSUADE 2.0 [@crossley2024persuade] und die Daten von @liang2023detectors, acht frische Teilagenten für 40 KI-Essays, die Programmbibliothek scikit-learn für den Detektor; Bauzeit einen Nachmittag. Schwäche: Unter den „KI-Wörtern“, die der Detektor selbst aus seinen Trainingstexten ableitete, stehen Themenwörter wie *June* und *August*. Er lernt, was in seinen Daten zufällig zusammenfällt, und erkannte deshalb nur 5 von 8 aktuellen KI-Texten.
+:::
+
 ### Formate nach den vier Säulen
 
 Die Ratgeber der Jahre 2023 bis 2025 übersetzen die vier Säulen in konkrete Formate (@tbl-vier-saeulen). **Mündlichkeit** macht Verständnis, Transfer und Autorschaft im Gespräch sichtbar; eigene Entscheidungen müssen erläutert und verteidigt werden, und die schriftliche Arbeit wird vom Leistungsnachweis getrennt [@gmeiner2025]. **Prozessorientierung** verlagert das Gewicht vom Produkt auf den Weg dorthin und beteiligt die Prüfenden am Entstehungsprozess; die Sichtbarkeit individueller und kollaborativer Arbeitsschritte macht unreflektierte KI-Nutzung unattraktiv [@mulder2023; @hanoverresearch2024; @monashuniversity2025]. **Kontextualisierung** bindet die Leistung an reale, lokale oder persönliche Daten, Orte und Rollen; solche Aufgaben sind „un-promptbar“, weil sie nicht-öffentliche Informationen, eigene Beobachtung und Gegenwartsbezug verlangen [@mulder2023; @gmeiner2025]. **Kollaboration und Kreation** prüfen über Gruppenaufgaben in der Veranstaltung, Peer- und Selbstbeurteilung und gestufte Projekte die soziale, evaluative und kreative Seite des Lernens [@mulder2023; @hanoverresearch2024]. In allen Formaten legen Studierende ihre KI-Nutzung offen; KI darf strukturieren und sprachlich glätten, nicht aber Evidenz, Theoriebildung oder Ergebnisse ersetzen.
