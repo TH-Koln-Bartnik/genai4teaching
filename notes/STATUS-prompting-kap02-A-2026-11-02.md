@@ -62,3 +62,5 @@ Ein leerer Span `[]{#sec-…}` ist für Quarto **kein** Querverweisziel (`@sec-�
 
 ## Startauftrag nächste Sitzung
 Sitzung A ist abgeschlossen. Weiter mit Sitzung B laut `AUFTRAG-prompting-kap02-anhangB-2026-11-02.md`; vor deren Merge `git fetch && git rebase origin/main` und die Hinweise oben unter „Für Sitzung B“ abarbeiten.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht, gemergt: ja; main @ bd7ac26 + Notiz-Update)
