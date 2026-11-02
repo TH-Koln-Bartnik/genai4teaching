@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -446,8 +466,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link active" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/glossar.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/glossar.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -545,10 +571,15 @@ Pretraining ist das Vortrainieren des Modells an großen Textmengen ohne konkret
 <p>Ein Sprachmodell, das vor der Antwort schrittweise „nachdenkt“, also Zwischenschritte erzeugt und die eigenen Ergebnisse prüft, bevor es antwortet. Technisch wird mehr Rechenzeit in die Antwort statt ins Training gesteckt (<em>test-time compute</em>). Für anspruchsvolle Aufgaben sind solche Modelle deutlich zuverlässiger als ihre schnellen Varianten (<a href="kapitel02.html#sec-capabilities" class="quarto-xref"><span>Was die Modelle können und was nicht</span></a>; <a href="kapitel02.html#sec-model-choice" class="quarto-xref"><span>Welches Modell?</span></a>).</p>
 <p><em>Herkunft:</em> engl. <em>reason</em> über altfrz. <em>raison</em> zu lat. <em>ratio</em>, „Berechnung, Vernunft“.</p>
 </dd>
+<dt>Frontier-Modell</dt>
+<dd>
+<p>Eines der wenigen Sprachmodelle, die zu einem Zeitpunkt den Stand der Technik bilden und in den Ranglisten deutlich vor allen anderen liegen. Frontier ist ein Rang, keine Bauart: Nicht jedes große Labor hat ein Frontier-Modell, kleine Varianten sind nie eines, und wer dazugehört, wechselt mit jeder Modellgeneration. Wie groß der Abstand ausfällt, hängt am gewählten Leistungstest (<a href="kapitel02.html#sec-model-choice" class="quarto-xref"><span>Welches Modell?</span></a>) <span class="citation" data-cites="fmf2026about">(<a href="#ref-fmf2026about" role="doc-biblioref">Frontier Model Forum, 2026</a>)</span>.</p>
+<p><em>Herkunft:</em> engl. <em>frontier</em> über altfrz. <em>frontiere</em> zu lat. <em>frons</em>, „Stirn“: die vorderste Linie, an der man einander die Stirn bietet.</p>
+</dd>
 <dt>Jagged Frontier</dt>
 <dd>
 <p>„Zerklüftete Technikgrenze“: Sprachmodelle lösen manche Aufgaben auf Expertenniveau und scheitern an anderen, die für Menschen ähnlich schwer sind. Die Grenze verläuft unregelmäßig und ist nur durch Ausprobieren zu finden; wer sie nicht kennt, arbeitet mit KI schlechter als ohne (<a href="kapitel02.html#sec-capabilities" class="quarto-xref"><span>Was die Modelle können und was nicht</span></a>).</p>
-<p><em>Herkunft:</em> engl. <em>frontier</em> über altfrz. <em>frontiere</em> zu lat. <em>frons</em>, „Stirn“: die Linie, an der man einander die Stirn bietet.</p>
+<p><em>Herkunft:</em> engl. <em>jagged</em>, „gezackt“; zu <em>frontier</em> s. Frontier-Modell.</p>
 </dd>
 <dt>Centaur und Cyborg</dt>
 <dd>
@@ -714,6 +745,15 @@ Rangfolge kognitiven Engagements nach Chi und Wylie: interaktiv wirkt besser als
   </li>
 </ul>
 </div>
+
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-fmf2026about" class="csl-entry" role="listitem">
+Frontier Model Forum (2026). About us. <em>Frontier Model Forum</em>. <a href="https://www.frontiermodelforum.org/about-us">https://www.frontiermodelforum.org/about-us</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <!-- Einschätzungen vorab, Auflösung im Text (Gegenstück zu _filters/einschaetzung.lua).
@@ -1669,7 +1709,7 @@ Rangfolge kognitiven Engagements nach Chi und Wylie: interaktiv wirkt besser als
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/glossar.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/glossar.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/glossar.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/glossar.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
