@@ -1,0 +1,984 @@
+{
+ "quelle": {
+  "datensatz": "Anthropic Economic Index, Release 2026-06-26 (Hugging Face Anthropic/EconomicIndex, CC BY)",
+  "datei": "release_2026_06_26/data/aei_claude_ai_2026-06-26.csv",
+  "monat": "2026-05-01",
+  "geo": "GLOBAL",
+  "kategorie": "onet, hierarchy_level 0, metric pct",
+  "bericht": "https://www.anthropic.com/research/economic-index-june-2026-report",
+  "startseite": "https://www.anthropic.com/economic-index",
+  "zitation": "Massenkoff et al. (2026). Anthropic Economic Index report: Cadences."
+ },
+ "n_aufgaben": 2713,
+ "n_lehraufgaben": 150,
+ "kopfzahlen": {
+  "GLOBAL": {
+   "use_case_coursework_pct": 16.45,
+   "use_case_work_pct": 43.36,
+   "use_case_personal_pct": 40.2,
+   "collaboration_bucket_augmentation_pct": 51.38,
+   "collaboration_bucket_automation_pct": 48.62,
+   "usage_per_capita_index": 1.0
+  },
+  "DEU": {
+   "use_case_coursework_pct": 13.65,
+   "use_case_work_pct": 37.62,
+   "use_case_personal_pct": 48.73,
+   "collaboration_bucket_augmentation_pct": 54.78,
+   "collaboration_bucket_automation_pct": 45.22,
+   "usage_per_capita_index": 2.4
+  }
+ },
+ "vorhersage": {
+  "frage_richtig": "Arbeit",
+  "werte": {
+   "Arbeit": 43.36,
+   "Privat": 40.2,
+   "Studium": 16.45
+  },
+  "studium_pct": 16.45
+ },
+ "modell": {
+  "modell": "Claude Opus 5.5",
+  "datum": "2026-11-02",
+  "verfahren": "Einmalig befragt (frischer Teilagent, neuer Kontext, ohne Werkzeuge und ohne Zugriff auf CSV, JSON oder Werte); nur englische Originaltexte, Reihenfolge A/B wie im Spiel (Zufall mit festem Startwert 20261102). Keine Nachbefragung; Paarauswahl stand vorher fest.",
+  "prompt": "Hier sind zwei Arbeitsaufgaben aus der US-Berufsdatenbank O*NET. Welche der beiden kommt in Gesprächen mit dem KI-Assistenten Claude häufiger vor? Antworte je Paar mit A oder B und deiner Sicherheit 1 (geraten), 2 (eher sicher) oder 3 (sicher).",
+  "rohantwort": "Paar 1: A (Sicherheit 1)\nPaar 2: B (Sicherheit 2)\nPaar 3: A (Sicherheit 2)\nPaar 4: A (Sicherheit 2)\nPaar 5: B (Sicherheit 1)\nPaar 6: B (Sicherheit 2)\nPaar 7: A (Sicherheit 3)\nPaar 8: B (Sicherheit 1)\nPaar 9: A (Sicherheit 1)\nPaar 10: A (Sicherheit 2)\nPaar 11: A (Sicherheit 2)\nPaar 12: A (Sicherheit 2)\nPaar 13: A (Sicherheit 1)\nPaar 14: A (Sicherheit 3)\nPaar 15: A (Sicherheit 2)",
+  "paar_nummern": {
+   "1": "L1",
+   "2": "L2",
+   "3": "L3",
+   "4": "L4",
+   "5": "L5",
+   "6": "U1",
+   "7": "U2",
+   "8": "U3",
+   "9": "U4",
+   "10": "U5",
+   "11": "U6",
+   "12": "U7",
+   "13": "U8",
+   "14": "U9",
+   "15": "U10"
+  }
+ },
+ "kandidaten": [
+  {
+   "id": "L1",
+   "typ": "lehre",
+   "a": {
+    "id": "5217",
+    "name_en": "Teach classes or courses to students.",
+    "name_de": "Kurse und Lehrveranstaltungen für Studierende unterrichten",
+    "pct": 0.23,
+    "rang": 79,
+    "lehre": true
+   },
+   "b": {
+    "id": "22389",
+    "name_en": "Answer students' questions.",
+    "name_de": "Fragen von Studierenden beantworten",
+    "pct": 1.15,
+    "rang": 9,
+    "lehre": true
+   },
+   "richtig": "B",
+   "faktor": 5.0,
+   "begruendung_agent": "Kernaufgabe Unterricht gegen Einzelfrage: Viele vermuten das Unterrichten vorn.",
+   "erklaerung": "Einzelne Fragen beantworten liegt auf Rang 9 von 2713 Aufgaben; ganze Kurse unterrichten landet weit dahinter auf Rang 79.",
+   "ausgewaehlt": true,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 1
+  },
+  {
+   "id": "L2",
+   "typ": "lehre",
+   "a": {
+    "id": "22406",
+    "name_en": "Tutor or assist students individually or in small groups.",
+    "name_de": "Studierende einzeln oder in Kleingruppen betreuen (Nachhilfe)",
+    "pct": 0.2,
+    "rang": 96,
+    "lehre": true
+   },
+   "b": {
+    "id": "17031",
+    "name_en": "Develop teaching or training materials, such as handouts, study materials, or quizzes.",
+    "name_de": "Lehr- und Schulungsmaterial entwickeln, etwa Handouts, Lernmaterial oder Quizze",
+    "pct": 0.98,
+    "rang": 11,
+    "lehre": true
+   },
+   "richtig": "B",
+   "faktor": 4.9,
+   "begruendung_agent": "Der viel beschworene KI-Tutor gegen das unscheinbare Materialerstellen.",
+   "erklaerung": "Lehrmaterial entwerfen (Rang 11) kommt fast fünfmal so oft vor wie Einzelnachhilfe (Rang 96), obwohl der KI-Tutor die Debatte prägt.",
+   "ausgewaehlt": true,
+   "druck": false,
+   "model_tip": "B",
+   "model_confidence": 2
+  },
+  {
+   "id": "L3",
+   "typ": "lehre",
+   "a": {
+    "id": "22444",
+    "name_en": "Develop instructional materials, such as lesson plans, handouts, or examinations.",
+    "name_de": "Unterrichtsmaterial entwickeln, etwa Stundenentwürfe, Handouts oder Prüfungen",
+    "pct": 0.61,
+    "rang": 29,
+    "lehre": true
+   },
+   "b": {
+    "id": "5663",
+    "name_en": "Evaluate and grade students' class work, assignments, and papers.",
+    "name_de": "Studentische Arbeiten, Aufgaben und Hausarbeiten bewerten und benoten",
+    "pct": 0.05,
+    "rang": 297,
+    "lehre": true
+   },
+   "richtig": "A",
+   "faktor": 12.2,
+   "begruendung_agent": "Bewerten gilt als Entlastungsfeld für Lehrende; Unterrichtsplanung wirkt alltäglicher.",
+   "erklaerung": "Unterrichtsmaterial und Prüfungen entwerfen liegt auf Rang 29; Arbeiten bewerten und benoten nur auf Rang 297.",
+   "ausgewaehlt": true,
+   "druck": true,
+   "model_tip": "A",
+   "model_confidence": 2
+  },
+  {
+   "id": "L4",
+   "typ": "lehre",
+   "a": {
+    "id": "6454",
+    "name_en": "Develop curricula and plan course content and methods of instruction.",
+    "name_de": "Curricula entwickeln, Kursinhalte und Lehrmethoden planen",
+    "pct": 0.04,
+    "rang": 341,
+    "lehre": true
+   },
+   "b": {
+    "id": "18593",
+    "name_en": "Advise students on issues such as course selection, progress toward graduation, and career decisions.",
+    "name_de": "Studierende zu Kurswahl, Studienfortschritt und Berufsweg beraten",
+    "pct": 0.41,
+    "rang": 47,
+    "lehre": true
+   },
+   "richtig": "B",
+   "faktor": 10.25,
+   "begruendung_agent": "Curriculumsplanung ist Lehrenden-Alltag; Studienberatung wirkt randständig.",
+   "erklaerung": "Studien- und Laufbahnberatung (Rang 47) liegt weit vor der Planung von Curricula und Kursinhalten (Rang 341).",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 2
+  },
+  {
+   "id": "L5",
+   "typ": "lehre",
+   "a": {
+    "id": "6263",
+    "name_en": "Prepare students for performances, exams, or assessments.",
+    "name_de": "Studierende auf Auftritte, Prüfungen oder Leistungsnachweise vorbereiten",
+    "pct": 0.2,
+    "rang": 96,
+    "lehre": true
+   },
+   "b": {
+    "id": "6446",
+    "name_en": "Observe and evaluate students' work to determine progress, provide feedback, and make suggestions for improvement.",
+    "name_de": "Arbeiten von Studierenden beobachten, Fortschritt einschätzen und Rückmeldung geben",
+    "pct": 0.07,
+    "rang": 228,
+    "lehre": true
+   },
+   "richtig": "A",
+   "faktor": 2.86,
+   "begruendung_agent": "Feedback zum Lernfortschritt gilt als Paradefall; Prüfungsvorbereitung wirkt enger.",
+   "erklaerung": "Auf Prüfungen vorbereiten (Rang 96) liegt vor dem Beobachten und Rückmelden von Lernfortschritt (Rang 228).",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "B",
+   "model_confidence": 1
+  },
+  {
+   "id": "U1",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "16221",
+    "name_en": "Search electronic sources, such as databases or repositories, or manual sources for information.",
+    "name_de": "Informationen in elektronischen oder gedruckten Quellen suchen",
+    "pct": 4.95,
+    "rang": 1,
+    "lehre": false
+   },
+   "b": {
+    "id": "21000",
+    "name_en": "Write text, such as stories, articles, editorials, or newsletters.",
+    "name_de": "Texte schreiben, etwa Geschichten, Artikel, Kommentare oder Newsletter",
+    "pct": 0.78,
+    "rang": 18,
+    "lehre": false
+   },
+   "richtig": "A",
+   "faktor": 6.35,
+   "begruendung_agent": "Texte schreiben gilt als Paradeaufgabe generativer KI; Recherche wirkt wie Suchmaschine.",
+   "erklaerung": "Informationen in Quellen suchen ist die häufigste Einzelaufgabe im ganzen Datensatz (Rang 1); Texte schreiben folgt auf Rang 18.",
+   "ausgewaehlt": true,
+   "druck": true,
+   "model_tip": "B",
+   "model_confidence": 2
+  },
+  {
+   "id": "U2",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "16120",
+    "name_en": "Write new programs or modify existing programs to meet customer requirements, using current programming languages and technologies.",
+    "name_de": "Programme nach Kundenanforderungen neu schreiben oder ändern",
+    "pct": 1.47,
+    "rang": 5,
+    "lehre": false
+   },
+   "b": {
+    "id": "680",
+    "name_en": "Recommend and provide advice on a wide variety of products and services.",
+    "name_de": "Zu Produkten und Dienstleistungen aller Art beraten und Empfehlungen geben",
+    "pct": 2.25,
+    "rang": 3,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 1.53,
+   "begruendung_agent": "Programmieren ist der bekannteste Profi-Einsatz; Kaufberatung wirkt banal.",
+   "erklaerung": "Produkte und Dienstleistungen empfehlen liegt auf Rang 3, Programme schreiben auf Rang 5: Rat im Alltag schlägt Code.",
+   "ausgewaehlt": true,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 3
+  },
+  {
+   "id": "U3",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "22691",
+    "name_en": "Answer questions that patients have about their health and well-being.",
+    "name_de": "Fragen von Patientinnen und Patienten zu Gesundheit und Wohlbefinden beantworten",
+    "pct": 0.81,
+    "rang": 17,
+    "lehre": false
+   },
+   "b": {
+    "id": "9328",
+    "name_en": "Translate messages simultaneously or consecutively into specified languages, orally or by using hand signs, maintaining message content, context, and style as much as possible.",
+    "name_de": "Gesprochene oder geschriebene Botschaften in andere Sprachen übersetzen",
+    "pct": 0.37,
+    "rang": 51,
+    "lehre": false
+   },
+   "richtig": "A",
+   "faktor": 2.19,
+   "begruendung_agent": "Übersetzen ist der Klassiker maschineller Sprachverarbeitung; Gesundheitsfragen wirken heikel.",
+   "erklaerung": "Fragen zu Gesundheit und Wohlbefinden (Rang 17) kommen gut doppelt so oft vor wie Übersetzen (Rang 51).",
+   "ausgewaehlt": true,
+   "druck": false,
+   "model_tip": "B",
+   "model_confidence": 1
+  },
+  {
+   "id": "U4",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "21828",
+    "name_en": "Create graphs, charts, or other visualizations to convey the results of data analysis using specialized software.",
+    "name_de": "Diagramme und Grafiken zu Ergebnissen einer Datenanalyse erstellen",
+    "pct": 0.36,
+    "rang": 52,
+    "lehre": false
+   },
+   "b": {
+    "id": "12980",
+    "name_en": "Counsel individuals regarding interpersonal, health, financial, or religious problems.",
+    "name_de": "Menschen bei zwischenmenschlichen, gesundheitlichen, finanziellen oder religiösen Problemen beraten",
+    "pct": 0.73,
+    "rang": 24,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 2.03,
+   "begruendung_agent": "Diagramme erstellen wirkt wie typische Büroarbeit für KI; Lebensberatung wirkt menschlich.",
+   "erklaerung": "Beratung bei persönlichen Problemen liegt auf Rang 24, Diagramme und Grafiken erstellen auf Rang 52.",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 1
+  },
+  {
+   "id": "U5",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "23994",
+    "name_en": "Prepare, edit, or review legal documents, including legislation, briefs, pleadings, appeals, wills, contracts, and real estate closing statements.",
+    "name_de": "Juristische Dokumente entwerfen oder prüfen, etwa Verträge, Schriftsätze, Testamente",
+    "pct": 0.13,
+    "rang": 139,
+    "lehre": false
+   },
+   "b": {
+    "id": "1592",
+    "name_en": "Encourage clients to express their feelings and discuss what is happening in their lives, helping them to develop insight into themselves or their relationships.",
+    "name_de": "Menschen ermutigen, über Gefühle und ihre Lebenslage zu sprechen",
+    "pct": 0.34,
+    "rang": 58,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 2.62,
+   "begruendung_agent": "Juristische Entwürfe gelten als Vorzeigefall; Gefühle aussprechen wirkt wie Therapie.",
+   "erklaerung": "Gespräche, in denen Menschen über Gefühle und Lebenslage sprechen (Rang 58), sind häufiger als juristische Dokumente (Rang 139).",
+   "ausgewaehlt": true,
+   "druck": true,
+   "model_tip": "A",
+   "model_confidence": 2
+  },
+  {
+   "id": "U6",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "11055",
+    "name_en": "Write narrative, dramatic, lyric, or other types of poetry for publication.",
+    "name_de": "Gedichte schreiben, erzählend, dramatisch oder lyrisch, zur Veröffentlichung",
+    "pct": 0.04,
+    "rang": 341,
+    "lehre": false
+   },
+   "b": {
+    "id": "1101",
+    "name_en": "Create specialty dishes and develop recipes to be used in dining facilities.",
+    "name_de": "Spezialgerichte kreieren und Rezepte für Gastronomiebetriebe entwickeln",
+    "pct": 0.08,
+    "rang": 207,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 2.0,
+   "begruendung_agent": "Gedichte sind das bekannteste Partystück von Chatbots; Rezepte wirken unspektakulär.",
+   "erklaerung": "Rezepte entwickeln (Rang 207) liegt vor Gedichte schreiben (Rang 341); beide Werte sind klein.",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 2
+  },
+  {
+   "id": "U7",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "945",
+    "name_en": "Develop or implement product-marketing strategies, including advertising campaigns or sales promotions.",
+    "name_de": "Produktmarketing planen oder umsetzen, etwa Werbekampagnen oder Verkaufsaktionen",
+    "pct": 0.18,
+    "rang": 106,
+    "lehre": false
+   },
+   "b": {
+    "id": "802",
+    "name_en": "Adjust settings for format, page layout, line spacing, and other style requirements.",
+    "name_de": "Format, Seitenlayout, Zeilenabstand und andere Stilvorgaben einstellen",
+    "pct": 0.46,
+    "rang": 40,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 2.56,
+   "begruendung_agent": "Marketingstrategie klingt nach Wissensarbeit für KI; Seitenlayout einstellen wirkt nebensächlich.",
+   "erklaerung": "Formatierung und Seitenlayout (Rang 40) kommen häufiger vor als Marketingstrategien (Rang 106).",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 2
+  },
+  {
+   "id": "U8",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "9788",
+    "name_en": "Compute and analyze data, using statistical formulas and computers or calculators.",
+    "name_de": "Daten mit statistischen Formeln und Computern berechnen und auswerten",
+    "pct": 0.27,
+    "rang": 71,
+    "lehre": false
+   },
+   "b": {
+    "id": "1782",
+    "name_en": "Develop story or content ideas, considering reader or audience appeal.",
+    "name_de": "Ideen für Geschichten und Inhalte mit Blick auf das Publikum entwickeln",
+    "pct": 0.75,
+    "rang": 22,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 2.78,
+   "begruendung_agent": "Statistische Auswertung gilt als Stärke von KI; Themenideen wirken weich.",
+   "erklaerung": "Ideen für Geschichten und Inhalte (Rang 22) liegen vor statistischer Datenauswertung (Rang 71).",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 1
+  },
+  {
+   "id": "U9",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "14707",
+    "name_en": "Write supporting code for Web applications or Web sites.",
+    "name_de": "Programmcode für Webanwendungen oder Websites schreiben",
+    "pct": 0.51,
+    "rang": 35,
+    "lehre": false
+   },
+   "b": {
+    "id": "8114",
+    "name_en": "Recommend products to customers, based on customers' needs and interests.",
+    "name_de": "Kundschaft Produkte passend zu Bedarf und Interessen empfehlen",
+    "pct": 1.28,
+    "rang": 8,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 2.51,
+   "begruendung_agent": "Webentwicklung ist ein bekannter Codefall; persönliche Produktempfehlung wirkt trivial.",
+   "erklaerung": "Produkte nach Bedarf empfehlen (Rang 8) liegt vor Code für Webanwendungen (Rang 35).",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 3
+  },
+  {
+   "id": "U10",
+   "typ": "ueberraschung",
+   "a": {
+    "id": "14713",
+    "name_en": "Respond to user email inquiries, or set up automated systems to send responses.",
+    "name_de": "E-Mail-Anfragen von Nutzenden beantworten oder automatische Antworten einrichten",
+    "pct": 0.08,
+    "rang": 207,
+    "lehre": false
+   },
+   "b": {
+    "id": "692",
+    "name_en": "Advise customers on use and care of merchandise.",
+    "name_de": "Kundschaft zu Gebrauch und Pflege von Waren beraten",
+    "pct": 0.46,
+    "rang": 40,
+    "lehre": false
+   },
+   "richtig": "B",
+   "faktor": 5.75,
+   "begruendung_agent": "E-Mails beantworten gilt als typische Büro-KI; Pflegehinweise für Waren wirken exotisch.",
+   "erklaerung": "Ratschläge zu Gebrauch und Pflege von Waren (Rang 40) kommen deutlich häufiger vor als E-Mail-Anfragen beantworten (Rang 207).",
+   "ausgewaehlt": false,
+   "druck": false,
+   "model_tip": "A",
+   "model_confidence": 2
+  }
+ ],
+ "spiel": [
+  "U1",
+  "U2",
+  "L2",
+  "L1",
+  "L3",
+  "U3",
+  "U5"
+ ],
+ "wer_fragt": "L3",
+ "druck": [
+  "U1",
+  "L3",
+  "U5"
+ ],
+ "top60": [
+  {
+   "id": "16221",
+   "name_en": "Search electronic sources, such as databases or repositories, or manual sources for information.",
+   "name_de": "Informationen in elektronischen oder gedruckten Quellen suchen",
+   "pct": 4.95,
+   "rang": 1,
+   "lehre": false
+  },
+  {
+   "id": "22411",
+   "name_en": "Search standard reference materials, including online sources and the Internet, to answer patrons' reference questions.",
+   "name_de": "Nachschlagewerke und Internet durchsuchen, um Auskunftsfragen zu beantworten",
+   "pct": 3.74,
+   "rang": 2,
+   "lehre": false
+  },
+  {
+   "id": "680",
+   "name_en": "Recommend and provide advice on a wide variety of products and services.",
+   "name_de": "Zu Produkten und Dienstleistungen aller Art beraten und Empfehlungen geben",
+   "pct": 2.25,
+   "rang": 3,
+   "lehre": false
+  },
+  {
+   "id": "1282",
+   "name_en": "Answer user inquiries regarding computer software or hardware operation to resolve problems.",
+   "name_de": "Fragen zur Bedienung von Software und Hardware beantworten",
+   "pct": 1.98,
+   "rang": 4,
+   "lehre": false
+  },
+  {
+   "id": "16120",
+   "name_en": "Write new programs or modify existing programs to meet customer requirements, using current programming languages and technologies.",
+   "name_de": "Programme nach Kundenanforderungen neu schreiben oder ändern",
+   "pct": 1.47,
+   "rang": 5,
+   "lehre": false
+  },
+  {
+   "id": "1695",
+   "name_en": "Conduct reference searches, using printed materials and in-house and online databases.",
+   "name_de": "Recherchen in gedruckten Werken und Datenbanken durchführen",
+   "pct": 1.38,
+   "rang": 6,
+   "lehre": false
+  },
+  {
+   "id": "18933",
+   "name_en": "Advise clients or respond to inquiries about financial matters in person or via phone, email, Web site, or Internet chat.",
+   "name_de": "Kundschaft in Geldfragen beraten, persönlich, per Telefon, E-Mail oder Chat",
+   "pct": 1.37,
+   "rang": 7,
+   "lehre": false
+  },
+  {
+   "id": "8114",
+   "name_en": "Recommend products to customers, based on customers' needs and interests.",
+   "name_de": "Kundschaft Produkte passend zu Bedarf und Interessen empfehlen",
+   "pct": 1.28,
+   "rang": 8,
+   "lehre": false
+  },
+  {
+   "id": "22389",
+   "name_en": "Answer students' questions.",
+   "name_de": "Fragen von Studierenden beantworten",
+   "pct": 1.15,
+   "rang": 9,
+   "lehre": true
+  },
+  {
+   "id": "3968",
+   "name_en": "Edit, standardize, or make changes to material prepared by other writers or establishment personnel.",
+   "name_de": "Texte anderer Autorinnen und Autoren redigieren, vereinheitlichen oder ändern",
+   "pct": 1.06,
+   "rang": 10,
+   "lehre": false
+  },
+  {
+   "id": "17031",
+   "name_en": "Develop teaching or training materials, such as handouts, study materials, or quizzes.",
+   "name_de": "Lehr- und Schulungsmaterial entwickeln, etwa Handouts, Lernmaterial oder Quizze",
+   "pct": 0.98,
+   "rang": 11,
+   "lehre": true
+  },
+  {
+   "id": "23972",
+   "name_en": "Write or edit copy for clients.",
+   "name_de": "Werbe- und Gebrauchstexte für Kundschaft schreiben oder redigieren",
+   "pct": 0.97,
+   "rang": 12,
+   "lehre": false
+  },
+  {
+   "id": "22664",
+   "name_en": "Edit or rewrite existing written material as necessary, and submit written material for approval by supervisor, editor, or publisher.",
+   "name_de": "Vorhandene Texte überarbeiten und zur Freigabe einreichen",
+   "pct": 0.94,
+   "rang": 13,
+   "lehre": false
+  },
+  {
+   "id": "20950",
+   "name_en": "Troubleshoot program and system malfunctions to restore normal functioning.",
+   "name_de": "Programm- und Systemstörungen beheben",
+   "pct": 0.93,
+   "rang": 14,
+   "lehre": false
+  },
+  {
+   "id": "14642",
+   "name_en": "Identify, analyze, and document problems with program function, output, online screen, or content.",
+   "name_de": "Fehler in Programmfunktion, Ausgabe oder Bildschirminhalt finden und dokumentieren",
+   "pct": 0.91,
+   "rang": 15,
+   "lehre": false
+  },
+  {
+   "id": "2408",
+   "name_en": "Answer customers' questions, and provide information on procedures or policies.",
+   "name_de": "Kundenfragen beantworten und über Abläufe oder Regeln informieren",
+   "pct": 0.82,
+   "rang": 16,
+   "lehre": false
+  },
+  {
+   "id": "22691",
+   "name_en": "Answer questions that patients have about their health and well-being.",
+   "name_de": "Fragen von Patientinnen und Patienten zu Gesundheit und Wohlbefinden beantworten",
+   "pct": 0.81,
+   "rang": 17,
+   "lehre": false
+  },
+  {
+   "id": "21000",
+   "name_en": "Write text, such as stories, articles, editorials, or newsletters.",
+   "name_de": "Texte schreiben, etwa Geschichten, Artikel, Kommentare oder Newsletter",
+   "pct": 0.78,
+   "rang": 18,
+   "lehre": false
+  },
+  {
+   "id": "7404",
+   "name_en": "Provide training and support to system designers and users.",
+   "name_de": "Systementwickler und Nutzende schulen und unterstützen",
+   "pct": 0.77,
+   "rang": 19,
+   "lehre": false
+  },
+  {
+   "id": "23334",
+   "name_en": "Compose business correspondence for supervisors, managers, and professionals.",
+   "name_de": "Geschäftskorrespondenz für Führungskräfte verfassen",
+   "pct": 0.76,
+   "rang": 20,
+   "lehre": false
+  },
+  {
+   "id": "7367",
+   "name_en": "Apply mathematical theories and techniques to the solution of practical problems in business, engineering, the sciences, or other fields.",
+   "name_de": "Mathematische Verfahren auf praktische Probleme in Wirtschaft und Technik anwenden",
+   "pct": 0.76,
+   "rang": 20,
+   "lehre": false
+  },
+  {
+   "id": "1782",
+   "name_en": "Develop story or content ideas, considering reader or audience appeal.",
+   "name_de": "Ideen für Geschichten und Inhalte mit Blick auf das Publikum entwickeln",
+   "pct": 0.75,
+   "rang": 22,
+   "lehre": false
+  },
+  {
+   "id": "11046",
+   "name_en": "Revise written material to meet personal standards and to satisfy needs of clients, publishers, directors, or producers.",
+   "name_de": "Texte nach eigenen Ansprüchen und Wünschen der Auftraggeber überarbeiten",
+   "pct": 0.74,
+   "rang": 23,
+   "lehre": false
+  },
+  {
+   "id": "12980",
+   "name_en": "Counsel individuals regarding interpersonal, health, financial, or religious problems.",
+   "name_de": "Menschen bei zwischenmenschlichen, gesundheitlichen, finanziellen oder religiösen Problemen beraten",
+   "pct": 0.73,
+   "rang": 24,
+   "lehre": false
+  },
+  {
+   "id": "3464",
+   "name_en": "Provide staff and users with assistance solving computer-related problems, such as malfunctions and program problems.",
+   "name_de": "Beschäftigten und Nutzenden bei Computerproblemen helfen",
+   "pct": 0.71,
+   "rang": 25,
+   "lehre": false
+  },
+  {
+   "id": "834",
+   "name_en": "Review files, records, and other documents to obtain information to respond to requests.",
+   "name_de": "Akten und Dokumente durchsehen, um Anfragen zu beantworten",
+   "pct": 0.7,
+   "rang": 26,
+   "lehre": false
+  },
+  {
+   "id": "22631",
+   "name_en": "Select material most pertinent to presentation, and organize this material into appropriate formats.",
+   "name_de": "Stoff für eine Präsentation auswählen und passend aufbereiten",
+   "pct": 0.66,
+   "rang": 27,
+   "lehre": false
+  },
+  {
+   "id": "21732",
+   "name_en": "Confer with users to analyze, configure, or troubleshoot applications.",
+   "name_de": "Mit Nutzenden Anwendungen analysieren, einrichten und Fehler beheben",
+   "pct": 0.64,
+   "rang": 28,
+   "lehre": false
+  },
+  {
+   "id": "1776",
+   "name_en": "Prepare, rewrite and edit copy to improve readability, or supervise others who do this work.",
+   "name_de": "Texte für bessere Lesbarkeit vorbereiten, umschreiben und redigieren",
+   "pct": 0.61,
+   "rang": 29,
+   "lehre": false
+  },
+  {
+   "id": "22444",
+   "name_en": "Develop instructional materials, such as lesson plans, handouts, or examinations.",
+   "name_de": "Unterrichtsmaterial entwickeln, etwa Stundenentwürfe, Handouts oder Prüfungen",
+   "pct": 0.61,
+   "rang": 29,
+   "lehre": true
+  },
+  {
+   "id": "4466",
+   "name_en": "Answer customer inquiries or explain cost, availability, policies, and procedures of facilities.",
+   "name_de": "Kundenanfragen zu Kosten, Verfügbarkeit und Regeln von Einrichtungen beantworten",
+   "pct": 0.56,
+   "rang": 31,
+   "lehre": false
+  },
+  {
+   "id": "3966",
+   "name_en": "Organize material and complete writing assignment according to set standards regarding order, clarity, conciseness, style, and terminology.",
+   "name_de": "Schreibaufträge nach Vorgaben zu Klarheit, Kürze, Stil und Begriffen erledigen",
+   "pct": 0.54,
+   "rang": 32,
+   "lehre": false
+  },
+  {
+   "id": "16960",
+   "name_en": "Evaluate new technologies and methods to make recommendations regarding their use.",
+   "name_de": "Neue Technologien und Methoden bewerten und Empfehlungen zum Einsatz geben",
+   "pct": 0.52,
+   "rang": 33,
+   "lehre": false
+  },
+  {
+   "id": "21049",
+   "name_en": "Develop Web sites.",
+   "name_de": "Websites entwickeln",
+   "pct": 0.52,
+   "rang": 33,
+   "lehre": false
+  },
+  {
+   "id": "14707",
+   "name_en": "Write supporting code for Web applications or Web sites.",
+   "name_de": "Programmcode für Webanwendungen oder Websites schreiben",
+   "pct": 0.51,
+   "rang": 35,
+   "lehre": false
+  },
+  {
+   "id": "11052",
+   "name_en": "Develop factors such as themes, plots, characterizations, psychological analyses, historical environments, action, and dialogue to create material.",
+   "name_de": "Themen, Handlung, Figuren und Dialoge für Texte entwickeln",
+   "pct": 0.49,
+   "rang": 36,
+   "lehre": false
+  },
+  {
+   "id": "13196",
+   "name_en": "Suggest specific product purchases to meet customers' needs.",
+   "name_de": "Konkrete Käufe passend zum Bedarf der Kundschaft vorschlagen",
+   "pct": 0.49,
+   "rang": 36,
+   "lehre": false
+  },
+  {
+   "id": "14672",
+   "name_en": "Provide technical guidance or support for the development or troubleshooting of systems.",
+   "name_de": "Technisch bei Entwicklung und Fehlerbehebung von Systemen anleiten",
+   "pct": 0.48,
+   "rang": 38,
+   "lehre": false
+  },
+  {
+   "id": "9331",
+   "name_en": "Read written materials, such as legal documents, scientific works, or news reports, and rewrite material into specified languages.",
+   "name_de": "Schriftstücke wie Rechtstexte oder Fachartikel lesen und in andere Sprachen übertragen",
+   "pct": 0.47,
+   "rang": 39,
+   "lehre": false
+  },
+  {
+   "id": "692",
+   "name_en": "Advise customers on use and care of merchandise.",
+   "name_de": "Kundschaft zu Gebrauch und Pflege von Waren beraten",
+   "pct": 0.46,
+   "rang": 40,
+   "lehre": false
+  },
+  {
+   "id": "802",
+   "name_en": "Adjust settings for format, page layout, line spacing, and other style requirements.",
+   "name_de": "Format, Seitenlayout, Zeilenabstand und andere Stilvorgaben einstellen",
+   "pct": 0.46,
+   "rang": 40,
+   "lehre": false
+  },
+  {
+   "id": "10475",
+   "name_en": "Analyze problems and take appropriate action to ensure continuous and reliable operation of equipment and systems.",
+   "name_de": "Probleme analysieren, damit Anlagen und Systeme zuverlässig laufen",
+   "pct": 0.45,
+   "rang": 42,
+   "lehre": false
+  },
+  {
+   "id": "11051",
+   "name_en": "Write fiction or nonfiction prose, such as short stories, novels, biographies, articles, descriptive or critical analyses, and essays.",
+   "name_de": "Prosa schreiben, etwa Erzählungen, Romane, Biografien, Analysen oder Essays",
+   "pct": 0.45,
+   "rang": 42,
+   "lehre": false
+  },
+  {
+   "id": "22420",
+   "name_en": "Locate unusual or unique information in response to specific requests.",
+   "name_de": "Ungewöhnliche Informationen auf gezielte Anfragen hin aufspüren",
+   "pct": 0.45,
+   "rang": 42,
+   "lehre": false
+  },
+  {
+   "id": "21222",
+   "name_en": "Develop communications materials, advertisements, presentations, or public relations initiatives to promote awareness of products and services.",
+   "name_de": "Werbe-, Präsentations- und PR-Material für Produkte entwickeln",
+   "pct": 0.44,
+   "rang": 45,
+   "lehre": false
+  },
+  {
+   "id": "9684",
+   "name_en": "Diagnose problems with installed equipment.",
+   "name_de": "Probleme an installierten Geräten diagnostizieren",
+   "pct": 0.42,
+   "rang": 46,
+   "lehre": false
+  },
+  {
+   "id": "18593",
+   "name_en": "Advise students on issues such as course selection, progress toward graduation, and career decisions.",
+   "name_de": "Studierende zu Kurswahl, Studienfortschritt und Berufsweg beraten",
+   "pct": 0.41,
+   "rang": 47,
+   "lehre": true
+  },
+  {
+   "id": "22635",
+   "name_en": "Revise work to meet editorial approval or to fit time or space requirements.",
+   "name_de": "Texte für die Redaktion oder auf vorgegebene Länge überarbeiten",
+   "pct": 0.4,
+   "rang": 48,
+   "lehre": false
+  },
+  {
+   "id": "21694",
+   "name_en": "Develop new visual design concepts and modify concepts based on stakeholder feedback.",
+   "name_de": "Neue visuelle Gestaltungsideen entwickeln und nach Rückmeldung anpassen",
+   "pct": 0.39,
+   "rang": 49,
+   "lehre": false
+  },
+  {
+   "id": "22166",
+   "name_en": "Interact with clients to assist them in gaining insight, defining goals, and planning action to achieve effective personal, social, educational, or vocational development and adjustment.",
+   "name_de": "Menschen helfen, sich selbst zu verstehen, Ziele zu setzen und zu planen",
+   "pct": 0.39,
+   "rang": 49,
+   "lehre": false
+  },
+  {
+   "id": "9328",
+   "name_en": "Translate messages simultaneously or consecutively into specified languages, orally or by using hand signs, maintaining message content, context, and style as much as possible.",
+   "name_de": "Gesprochene oder geschriebene Botschaften in andere Sprachen übersetzen",
+   "pct": 0.37,
+   "rang": 51,
+   "lehre": false
+  },
+  {
+   "id": "21828",
+   "name_en": "Create graphs, charts, or other visualizations to convey the results of data analysis using specialized software.",
+   "name_de": "Diagramme und Grafiken zu Ergebnissen einer Datenanalyse erstellen",
+   "pct": 0.36,
+   "rang": 52,
+   "lehre": false
+  },
+  {
+   "id": "13200",
+   "name_en": "Prepare or alter presentation contents to target specific audiences.",
+   "name_de": "Präsentationsinhalte für ein bestimmtes Publikum vorbereiten oder anpassen",
+   "pct": 0.35,
+   "rang": 53,
+   "lehre": false
+  },
+  {
+   "id": "13236",
+   "name_en": "Answer questions about product features and benefits.",
+   "name_de": "Fragen zu Eigenschaften und Nutzen von Produkten beantworten",
+   "pct": 0.35,
+   "rang": 53,
+   "lehre": false
+  },
+  {
+   "id": "21702",
+   "name_en": "Identify problems uncovered by testing or customer feedback, and correct problems or refer problems to appropriate personnel for correction.",
+   "name_de": "Fehler aus Tests oder Kundenrückmeldungen beheben oder weiterleiten",
+   "pct": 0.35,
+   "rang": 53,
+   "lehre": false
+  },
+  {
+   "id": "799",
+   "name_en": "Electronically sort and compile text and numerical data, retrieving, updating, and merging documents as required.",
+   "name_de": "Texte und Zahlen elektronisch sortieren, zusammenstellen und Dokumente zusammenführen",
+   "pct": 0.35,
+   "rang": 53,
+   "lehre": false
+  },
+  {
+   "id": "951",
+   "name_en": "Identify, develop, or evaluate marketing strategy, based on knowledge of establishment objectives, market characteristics, and cost and markup factors.",
+   "name_de": "Marketingstrategie entwickeln oder bewerten, ausgehend von Zielen, Markt und Kosten",
+   "pct": 0.35,
+   "rang": 53,
+   "lehre": false
+  },
+  {
+   "id": "1592",
+   "name_en": "Encourage clients to express their feelings and discuss what is happening in their lives, helping them to develop insight into themselves or their relationships.",
+   "name_de": "Menschen ermutigen, über Gefühle und ihre Lebenslage zu sprechen",
+   "pct": 0.34,
+   "rang": 58,
+   "lehre": false
+  },
+  {
+   "id": "20105",
+   "name_en": "Write articles and books.",
+   "name_de": "Artikel und Bücher schreiben",
+   "pct": 0.34,
+   "rang": 58,
+   "lehre": false
+  },
+  {
+   "id": "1267",
+   "name_en": "Correct errors by making appropriate changes and rechecking the program to ensure that the desired results are produced.",
+   "name_de": "Programmfehler korrigieren und das Ergebnis erneut prüfen",
+   "pct": 0.33,
+   "rang": 60,
+   "lehre": false
+  }
+ ]
+}
