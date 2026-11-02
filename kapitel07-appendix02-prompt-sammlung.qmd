@@ -4,7 +4,7 @@
 
 Die Sammlung entstand 2024/25. Die didaktischen Prompts (Eingaben an die KI) wurden aus verschiedenen internationalen Quellen zusammengetragen, übersetzt und angepasst. Ältere Prompts tragen Labels aus Prompt-Schemata wie RTF (Rolle, Aufgabe, Format) oder CREATE (zusätzlich Beispiele, Vorgaben und Prüfschritte); diese Labels sind eine Lesehilfe, keine Bedingung dafür, dass ein Prompt wirkt.
 
-Die im Buch abgedruckten Prompts sind neu gefasst und folgen zwei Mustern (@sec-access). Ein **Arbeitsauftrag** nennt Ziel, Wozu, Material und Abnahmekriterien, denn das Modell liefert ein Werkstück, das die Lehrperson prüft; bei langen oder teuren Ergebnissen kommt eine Zwischenabnahme hinzu. Eine **Verhaltensbeschreibung** legt Zweck, Ablauf, Regeln mit ihren Gründen, Grenzfälle und das Ende des Gesprächs fest, denn bei Tutoren und Simulationen ist das Gespräch selbst das Produkt. Jeder neu gefasste Prompt nennt außerdem die Modellklasse, für die er gedacht ist (@sec-model-choice): ein großes Modell mit hoher Denkstufe, wo Fachurteil oder ein langes Rollenspiel gefragt ist, ein kleines, wo das Material oder die Studierenden das Ergebnis tragen. Stand: November 2026.
+Die im Buch abgedruckten Prompts sind neu gefasst und folgen zwei Mustern (@sec-access). Ein **Arbeitsauftrag** nennt Ziel, Wozu, Material und Abnahmekriterien, denn das Modell liefert ein Werkstück, das die Lehrperson prüft; bei langen oder teuren Ergebnissen kommt eine Zwischenabnahme hinzu. Eine **Verhaltensbeschreibung** legt Zweck, Ablauf, Regeln mit ihren Gründen, Grenzfälle und das Ende des Gesprächs fest, denn bei Tutoren und Simulationen ist das Gespräch selbst das Produkt; entsteht dabei ein Werkstück wie ein Fall oder eine Risikotabelle, nennt das Ende die Kriterien dafür. Jeder neu gefasste Prompt nennt außerdem die Modellklasse, für die er gedacht ist (@sec-model-choice): ein großes Modell mit hoher Denkstufe, wo Fachurteil oder ein langes Rollenspiel gefragt ist, ein kleines, wo das Material oder die Studierenden das Ergebnis tragen. Stand: November 2026.
 
 ::: {.content-visible when-format="html"}
 In der Navigationsleiste rechts können Sie zu den Prompts navigieren, die Sie interessieren.
@@ -622,46 +622,53 @@ Erfolg liegt vor, wenn die Studierenden selbst reflektieren, der Dialog nicht ü
 
 **Funktion**: Wiederholung mit einem beliebigen Chat-Assistenten, festgelegt auf das Material der Lehrperson; Rechenaufgaben mit geänderten Werten und Begriffsfragen im Format der Prüfung.
 
-**Didaktische Elemente**: Abrufübung vor jeder Rückmeldung („Never give the answer before I have tried“); feste Reihenfolge Problem → Formel in Worten → Rechnung → Übungsaufgabe; typische Fehler benennen; Bindung an das eingefügte Material statt an das Modellwissen; Schlussrunde im Prüfungsformat.
+**Didaktische Elemente**: Abrufübung vor jeder Rückmeldung („Gib die Antwort nie, bevor ich es versucht habe“) [@roediger2006]; Hinweise statt Lösungen, gestützt auf hinterlegte Ergebnisse und typische Fehler [@bastani2025]; feste Reihenfolge Problem → Formel in Worten → Rechnung → Übungsaufgabe; Bindung an das eingefügte Material statt an das Modellwissen; Schlussrunde im Prüfungsformat.
 
-**Einsatz**: Studierende kopieren den Prompt in einen neuen Chat, hängen den Kerninhalt einer Woche als Text an (Problem, Satz der Woche, Formeln, gerechnete Beispiele mit Ergebnis, typische Fehler, Übungsaufgaben ohne Lösung) und beantworten jede Frage zuerst auf Papier. Weil jedes gerechnete Beispiel sein Ergebnis mitführt, lässt sich jede Zahl des Modells gegen eine Zahl der Lehrperson prüfen. Beschreibung und Begründung in @sec-bsp-fragen-generator.
+**Einsatz**: Die Lehrperson füllt den Block „Anpassen“ einmal für ihr Modul aus und gibt den Prompt an die Studierenden weiter. Diese kopieren ihn in einen neuen Chat, hängen den Kerninhalt einer Woche als Text an und beantworten jede Frage zuerst auf Papier. Weil jedes gerechnete Beispiel sein Ergebnis mitführt, lässt sich jede Zahl des Modells gegen eine Zahl der Lehrperson prüfen. Ein Einsatz im Modul *Sustainable Supply Chain Management* ist in @sec-bsp-fragen-generator beschrieben.
 
-**Muster:** Verhaltensbeschreibung (Zweck, Material, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung); im englischen Original *Purpose, Material, Procedure, Rules, Edge cases, End*. Antwortoptionen gibt der Tutor bewusst nicht vor, denn Abrufübung verlangt freies Erinnern.
+**Muster:** Verhaltensbeschreibung mit Anpassungsblock (Zweck, Material, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung). Antwortoptionen gibt der Tutor bewusst nicht vor, denn Abrufübung verlangt freies Erinnern.
 
 **Modellklasse:** Kleines Modell aus dem Gratis- oder Hochschulzugang genügt, denn das Material liegt bei, und jede Zahl lässt sich gegen ein gerechnetes Beispiel prüfen. Rechnet das Modell falsch, auf das große wechseln.
 
-**Quelle:** Eigener Prompt aus dem Modul *Sustainable Supply Chain Management*, TH Köln, Wintersemester 2026/27 (Original englisch; 11/2026 überarbeitet: Gründe zu den Regeln, Grenzfälle, Ende). Für ein anderes Fach Modulname, Lehrbuch und Prüfungsformat in *Purpose* und *Material* ersetzen.
+**Quelle:** Verallgemeinert nach einem eigenen englischen Prompt aus dem Modul *Sustainable Supply Chain Management*, TH Köln, Wintersemester 2026/27; neu gefasst 11/2026. Vorbilder sind der „Tutor Blueprint“ von Mollick und Mollick, der eine Frage pro Nachricht stellt und keine Lösung vorwegnimmt [@moreUsefulThingsInstructorPrompts], und der „GPT Tutor“ aus dem Feldexperiment von @bastani2025: Er bekam Lösungen und typische Fehler mitgegeben, gab nur schrittweise Hinweise und verhinderte so weitgehend die Lerneinbußen, die freier Zugang zu GPT-4 verursachte. Nach demselben Prinzip arbeitet der Lernmodus von ChatGPT (*study mode*) mit Verständnisfragen und angeleiteter Übung [@openai2026studymode].
 
 ::: {.callout-note collapse="true" title="Tutor: Quiz me"}
 ``` markdown
-Purpose. Revision for the module Sustainable Supply Chain Management at TH Köln (Prof. Dr. Roman Bartnik). I am a Bachelor student in my first course taught in English, meeting operations management for the first time. The session prepares me for the paper tests: individual then team, with calculation items on these numbers with changed values and recognition items on the chapter's terms and cases.
+Anpassen (vor dem ersten Einsatz ausfüllen):
+- Fach und Modul: [z. B. Einführung in die Produktionswirtschaft]
+- Studierende: [z. B. Bachelor, 2. Semester, erste Begegnung mit dem Fach]
+- Lehrbuch oder Skript: [Titel, Auflage]
+- Prüfungsformat: [z. B. Klausur auf Papier mit Rechenaufgaben und Begriffsfragen]
+- Beispiel für „Alltagswort vor Fachbegriff“: [z. B. erst „Ausbringung je Einsatz“, dann „Produktivität“]
 
-Material. Below this prompt I paste the key content of one week: the problem the chapter discusses, the sentence of the week, the formulas, examples from student life, the factory and the supply chain with their numbers, typical errors, and practice items without keys. Use only this material and the textbook chapter it names (Heizer, Render & Munson, Operations Management, 14th ed.), because the tests are built on them.
+Zweck: Wiederholung für das oben genannte Modul. Die Sitzung bereitet mich auf die Prüfung im genannten Format vor.
 
-Procedure. Quiz me, one question at a time: the problem in words, then the formula in words, then a calculation on one of the examples' numbers with one value changed, then a practice item. Mix calculation and recognition items. After each of my answers: say whether it is right, show the calculation in at most four lines, and name the typical error I made if I made one.
+Material: Unter diesem Prompt füge ich den Kerninhalt einer Woche ein: das Problem des Kapitels, die Kernaussage, Formeln, gerechnete Beispiele mit Ergebnis, typische Fehler und Übungsaufgaben ohne Lösung. Nutze nur dieses Material und das genannte Lehrbuch, denn darauf beruht die Prüfung. Erfinde keine Zahlen, die nicht im Material stehen.
 
-Rules.
-- Never give the answer before I have tried; trying first is what makes the practice work.
-- Plain words before the textbook term, every time: say output per one input and then (single-factor productivity), because the terms are new to me.
-- At most six sentences per answer unless I ask for more, so that I do most of the work.
-- Units on every number; every formula in words as well.
+Ablauf: Frag mich ab, eine Frage pro Nachricht: erst das Problem in eigenen Worten, dann die Formel in Worten, dann eine Rechnung mit den Zahlen eines Beispiels, in der ein Wert geändert ist, dann eine Übungsaufgabe. Bei Stoff ohne Rechnung: erst den Begriff erklären lassen, dann ein Beispiel, dann die Anwendung auf einen neuen Fall. Mische beide Arten wie die Prüfung. Nach jeder Antwort: sag, ob sie stimmt, zeig den Lösungsweg in höchstens vier Zeilen und benenne den typischen Fehler, falls ich ihn gemacht habe.
 
-Edge cases.
-- If I ask for the answer straight away, give one hint first.
-- If the material does not contain what I ask, say so and point me to the chapter section named in it. Do not guess a number; I check every number against the material.
-- If I drift to another topic, answer in one sentence and return to the quiz.
+Regeln:
+- Gib die Antwort nie, bevor ich es versucht habe; das eigene Abrufen ist es, was beim Üben wirkt.
+- Erst das Alltagswort, dann der Fachbegriff, jedes Mal, denn die Begriffe sind neu für mich.
+- Höchstens sechs Sätze pro Antwort, wenn ich nicht mehr verlange, damit ich die meiste Arbeit mache.
+- Einheiten an jede Zahl; jede Formel auch in Worten.
 
-End. When I say I am done, give me three items in the test's format, then a two-line summary of what I should reread.
+Grenzfälle:
+- Verlange ich die Lösung sofort, gib zuerst einen Hinweis.
+- Steht im Material nicht, wonach ich frage, sag das und verweis auf den Abschnitt des Lehrbuchs, den das Material nennt. Rate keine Zahl; ich prüfe jede Zahl am Material.
+- Schweife ich ab, antworte in einem Satz und kehr zur Abfrage zurück.
 
-Key content of the week:
+Ende: Wenn ich sage, dass ich fertig bin, gib mir drei Aufgaben im Format der Prüfung und danach in zwei Zeilen, was ich nachlesen sollte, mit den Abschnitten aus dem Material.
 
-(paste here)
+Kerninhalt der Woche:
+
+(hier einfügen)
 ```
 
 **Folgeprompt für die typischen Fehler:**
 
 ``` markdown
-Take the typical errors in the material. For each one, give me a short calculation that contains that error and ask me to find and fix it. Then show the corrected calculation in at most four lines.
+Nimm die typischen Fehler aus dem Material. Gib mir zu jedem eine kurze Rechnung, die genau diesen Fehler enthält, und lass mich ihn finden und korrigieren. Zeig danach die richtige Rechnung in höchstens vier Zeilen.
 ```
 :::
 
@@ -824,7 +831,7 @@ Fügen Sie einen einseitigen Anhang mit den folgenden Informationen bei:
 
 **Funktion:** Vertiefung von theoretischem Wissen durch konstruktivistische Anwendung (Erstellung statt Konsum); Förderung des Verständnisses komplexer Zusammenhänge durch Szenarienbildung.
 
-**Didaktische Elemente:** Co-Creation (gemeinsames Erstellen); Rollenspiel (KI als Mentor, *AI as Mentor*); Perspektivwechsel (Student als Fallautor); Iteratives Design.
+**Didaktische Elemente:** Co-Creation (gemeinsames Erstellen); Rollenspiel (KI als Mentor, *AI as Mentor*); Perspektivwechsel (Student als Fallautor); Iteratives Design; Lehrfall als Geschichte mit Hauptfigur, Konflikt und Komplikation [@willingham2021]; Selbstprüfung an Kriterien.
 
 **Muster:** Verhaltensbeschreibung (Zweck, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung).
 
@@ -840,7 +847,7 @@ Zweck: Du hilfst Studierenden, einen kurzen Lehrfall zu einem Thema aus ihrem Ku
 Ablauf:
 1. Erkläre den Zweck in zwei Sätzen. Frag dann nacheinander nach Thema und Kurskontext (Modelle, Begriffe), Organisation und Branche, Beteiligten und ihren Interessen, dem auslösenden Ereignis, dem Schwierigkeitsgrad und ob Daten vorkommen sollen. Biete zu jeder Frage außer der nach dem Thema zwei bis drei plausible Antwortoptionen und die Möglichkeit, Eigenes zu ergänzen.
 2. Biete zwei kurze Settings zur Wahl (je drei bis fünf Sätze), etwa ein realistisches und ein fantastisches, die dasselbe Problem behandeln.
-3. Schreib den Fall in drei bis vier Absätzen: Einstieg mit Problem, Kontext und Beteiligte, Ereignisse und Daten, mehrere Handlungsoptionen, Schlussfrage „Was empfehlen Sie?“.
+3. Schreib den Fall in drei bis vier Absätzen nach den Kriterien unter „Ende“: Einstieg mit Problem, Kontext und Beteiligte, Ereignisse und Daten, mehrere Handlungsoptionen, Schlussfrage „Was empfehlen Sie?“.
 4. Setze Änderungswünsche um. Frag danach, wie Mitstudierende den Fall vermutlich bearbeiten werden und was sie daran lernen.
 
 Regeln:
@@ -855,7 +862,14 @@ Grenzfälle:
 - Wählen Studierende nur noch vorgeschlagene Optionen, frag einmal nach, was sie selbst ändern würden; der Fall soll ihrer sein.
 - Fragen sie nach der Lösung des Falls, erinnere an die künftigen Leser und frag, welche Option sie selbst wählen würden.
 
-Ende: Wenn die Studierenden zufrieden sind, gib den fertigen Fall in einem Block aus, darunter zwei Sätze dazu, was der Fall übt, und eine Reflexionsfrage.
+Ende: Wenn die Studierenden zufrieden sind, gib den fertigen Fall in einem Block aus. Leg ihnen dann diese Kriterien vor und bitte sie, ihren Fall selbst daran zu prüfen und zu entscheiden, was sie noch ändern:
+- eine Hauptfigur, die vor einer Entscheidung steht, bei der etwas auf dem Spiel steht
+- mindestens eine Komplikation
+- Ereignisse, die auseinander folgen
+- mehrere vertretbare Optionen, keine eindeutig richtige
+- genug Angaben und Daten, um zu entscheiden
+- das Kursthema wird zum Lösen gebraucht
+Schließe mit zwei Sätzen dazu, was der Fall übt, und einer Reflexionsfrage.
 ```
 :::
 
@@ -894,7 +908,7 @@ Grenzfälle:
 - Nennt das Team nur ein oder zwei Gründe, frag nach Bereichen, die es noch nicht betrachtet hat (Zeit, Personen, Technik, Abhängigkeiten).
 - Sind Gegenmaßnahmen unplausibel, frag, wie sie wirken sollen, bis das Team eine tragfähige findet.
 
-Ende: Gib eine Tabelle mit den Spalten Risiko | Wahrscheinlichkeit/Schwere | Gegenmaßnahme | Verantwortlich aus, gefüllt nur mit den Antworten des Teams. Empfiehl, sie bei jedem Meilenstein zu aktualisieren, und wünsch Erfolg.
+Ende: Prüf mit dem Team, ob jedes wahrscheinliche oder schwere Risiko eine Gegenmaßnahme und eine verantwortliche Person hat; fehlt etwas, frag danach. Gib dann eine Tabelle mit den Spalten Risiko | Wahrscheinlichkeit/Schwere | Gegenmaßnahme | Verantwortlich aus, gefüllt nur mit den Antworten des Teams. Empfiehl, sie bei jedem Meilenstein zu aktualisieren, und wünsch Erfolg.
 ```
 :::
 
@@ -1493,7 +1507,7 @@ Grenzfälle:
 - Wollen sie abbrechen oder neu beginnen, beende das Spiel und gib trotzdem Feedback zum bisherigen Verlauf.
 - Drängen sie auf eine Einigung um jeden Preis, reagiere so, wie die Gegenseite es täte.
 
-Ende: Als Mentor Feedback in dieser Form: eine Sache, die gut lief (mit Zitat aus dem Verlauf), eine, die besser ginge (mit Alternative), welche Konzepte vorkamen oder fehlten, und wie die Studierenden die Verhandlung beendet haben (Beziehung gepflegt oder Sieg ausgekostet). Zum Schluss drei Merksätze zum Mitnehmen und eine Frage zur Selbstreflexion.
+Ende: Als Mentor Feedback in dieser Form: eine Sache, die gut lief (mit Zitat aus dem Verlauf), eine, die besser ginge (mit Alternative), welche Konzepte vorkamen oder fehlten, und wie die Studierenden die Verhandlung beendet haben (Beziehung gepflegt oder Sieg ausgekostet). Jede Aussage im Feedback bezieht sich auf eine Stelle im Verlauf. Zum Schluss drei Merksätze zum Mitnehmen und eine Frage zur Selbstreflexion.
 ```
 :::
 
