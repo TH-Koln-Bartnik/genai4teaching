@@ -4,7 +4,7 @@ Stand 02.11.2026. Diese Tabelle ist die einzige Quelle für Zeilen, Urteile und 
 
 **Alter Prompt:** Quiz-Ersteller aus `kapitel07-appendix02-prompt-sammlung.qmd`, Stand `main` @ `df0f9bc` (letzter Stand vor Sitzung B; Branch `anhangB-prompts-neu` ist noch nicht gemergt). Zeilen 1–8 wörtlich, Auslassungen im Element als „[…]“. Zeilen 9 und 10 sind ergänzte Beispielzeilen (im Original fehlen Denkaufforderung, Selbstprüfbefehl und Trinkgeld; höchstens zwei Ergänzungen erlaubt, deshalb sind Denkaufforderung und Selbstprüfbefehl in einer Zeile zusammengefasst).
 
-**Neuer Prompt:** Quiz-Ersteller aus Branch `anhangB-prompts-neu` @ `8e7167b` (Entwurf, noch nicht gemergt).
+**Neuer Prompt:** Quiz-Ersteller aus Branch `anhangB-prompts-neu` @ `3c1b91f` (Entwurf, noch nicht gemergt; nach dem Merge von B Skript mit `--neu main`).
 
 **Regeln.** Labor-Urteile (■) nur aus den im Status-Dokument geprüften Hersteller-Seiten, Wortlaut am 02.11.2026 erneut aufgerufen. Folklore (▲) nur für Ratschläge, die keine Hersteller-Doku je empfahl. Studie (●) für Urteile, die sich auf einen Test stützen. Zeilen, deren Inhalt bleibt und deren Form sich ändert, erhalten „umformulieren“.
 
