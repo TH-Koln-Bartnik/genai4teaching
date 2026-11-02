@@ -20,7 +20,8 @@ for (const { dir, m } of filme) {
     for (const s of m.szenen) {
       for (const k of ["id", "genre", "idee", "datei", "sprechtext", "v3", "stimmhinweis", "bildtext", "bildobjekte", "belege"]) assert.ok(s[k], `${s.id}: ${k} fehlt`);
       const w = s.sprechtext.split(/\s+/).length;
-      assert.ok(w >= 35 && w <= 55, `${s.id}: ${w} Wörter (35–55)`);
+      const [wMin, wMax] = m.grenzen?.woerter || [35, 55];
+      assert.ok(w >= wMin && w <= wMax, `${s.id}: ${w} Wörter (${wMin}–${wMax})`);
       assert.ok(s.belege.length >= 1 && s.belege.every((b) => b.aussage && b.beleg), `${s.id}: Beleg je Fachaussage`);
       // v3-Text = Sprechtext + Tags: ohne die Tags und Auslassungspunkte müssen die Wörter gleich sein
       const nackt = (t) => t.replace(/\[[^\]]*\]/g, " ").replace(/\.\.\./g, ",").toLowerCase().match(/[a-zäöüß]+/g).join(" ");
@@ -59,6 +60,45 @@ for (const { dir, m } of filme) {
     });
     assert.ok(cues.every((c) => c.b <= T + 1e-3 && c.t.split("\n").length <= 2 && c.t.split("\n").every((l) => l.length <= 50)), "Untertitel im Film, ≤ 2 Zeilen");
   });
+
+  // Filme mit Quellenliste (P6, S6): jede Szene verweist auf bestätigte Zeilen; Zahlen im Manifest = Zahlen in der Liste
+  if (m.quellenliste) {
+    const liste = readFileSync(join(REPO, m.quellenliste), "utf8");
+    const zeilen = Object.fromEntries([...liste.matchAll(/^\|\s*(Q\d+)\s*\|(.*)\|\s*$/gm)].map((x) => {
+      const zellen = x[2].split("|").map((z) => z.trim());
+      return [x[1], { zahlen: (zellen.at(-2).match(/\d+/g) || []), status: zellen.at(-1) }];
+    }));
+    test(`${m.film}: jede Szene stützt sich auf bestätigte Zeilen in ${m.quellenliste}`, () => {
+      for (const s of m.szenen) {
+        assert.ok(s.belege.length, `${s.id}: keine Belege`);
+        for (const b of s.belege) {
+          const z = zeilen[b.zeile];
+          assert.ok(z, `${s.id}: Zeile ${b.zeile} fehlt in der Quellenliste`);
+          assert.match(z.status, /bestätigt am|Analogie|Beispiel|Buch|gezählt am/, `${s.id}: ${b.zeile} nicht bestätigt (${z.status})`);
+        }
+      }
+    });
+    test(`${m.film}: Zahlen in Sprechtext und Bildtext stehen in der Quellenliste`, () => {
+      for (const s of m.szenen) {
+        const erlaubt = new Set(s.belege.flatMap((b) => zeilen[b.zeile]?.zahlen || []));
+        const zahlen = [s.sprechtext, s.jahr || "", ...s.bildtext].join(" ").match(/\d+/g) || [];
+        for (const n of zahlen) assert.ok(erlaubt.has(n), `${s.id}: Zahl ${n} ohne Zeile in der Quellenliste`);
+      }
+    });
+    test(`${m.film}: Bildtext im Szenencode = Bildtext im Manifest`, async () => {
+      // Jede Szene wird mit einer Schein-Zeitleiste gebaut; sichtbarer Text (ohne Zitate der Quellenmarke) muss im Manifest stehen
+      const { szenen } = await import(join(dir, "szenen.mjs"));
+      const { esc } = await import("../scripts/genrefilm/komposition.mjs");
+      const w = (t) => (t.toLowerCase().match(/[a-zäöüß]+/g) || []);
+      m.szenen.forEach((s, i) => {
+        const ctx = { s, nr: i + 1, n: 9, t0: 0, d: 20, a0: 0.25, ad: 19, at: (f) => f * 20, wt: (wort) => { assert.ok(s.sprechtext.includes(wort), `${s.id}: „${wort}“ nicht im Sprechtext`); return 1; }, W: 1280, H: 720, farben: m.farben, esc };
+        const html = szenen[s.id](ctx).html.replace(/<span class="zit">[\s\S]*?<\/span>/g, " ").replace(/<style[\s\S]*?<\/style>|<[^>]+>/g, " ").replace(/&amp;/g, "&");
+        const soll = new Set(w([s.genre, ...s.bildtext].join(" ")));
+        const fremd = w(html).filter((x) => !soll.has(x));
+        assert.deepEqual([...new Set(fremd)], [], `${s.id}: Bildwörter im Code, die im Manifest fehlen: ${[...new Set(fremd)].join(", ")}`);
+      });
+    });
+  }
 
   if (m.film === "kap02-token-genres") {
     test("kap02-token-genres: Tokenwerte = T1 und = gpt-tokenizer", async () => {
