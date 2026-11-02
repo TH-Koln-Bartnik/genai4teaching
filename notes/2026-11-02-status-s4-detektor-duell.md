@@ -101,6 +101,8 @@ b) Erst nachbessern: Druckkasten auf eine Seite bringen (kürzere Auszüge)
 c) Erst nachbessern: andere Spieltexte (neuer Startwert, dokumentiert)
 d) Nicht mergen, Branch liegen lassen
 
+**Entscheid Roman (02.11.2026, 16:00, MC): a) mergen wie gebaut, in einer neuen Sitzung mit dem Startauftrag unten.**
+
 ## Startauftrag nächste Sitzung (nach G3 = a)
 
 ```
