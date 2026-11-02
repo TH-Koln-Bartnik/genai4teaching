@@ -117,10 +117,13 @@ Keine eigene Rechtsauslegung. Offen bleiben (a) ob Logos die Veröffentlichung e
 
 S2 Schritte 6–8 für diese Fassung: Kapiteltext (Zeitangabe ≈ 20 min, Befund 37/13/23/1), Druckkasten mit einer der drei Aussagen (Vorschlag Nr. 33, Interview 016), Lösung in `kapitel10-appendix05-loesungshinweise.qmd`, Making-of-Kasten; Anker `#sec-podcast-interviews` mit S2 abstimmen (beide Branches fügen an derselben Stelle ein). Bei Option (c) Vergleichszahl aus der Vergleichsnotiz.
 
-## G2c und Hörproben – Fragen an Roman (Multiple Choice)
+## G2c und Hörproben – Entscheide (Roman, 02.11.2026, MC)
 
-**G2c Fassung fürs Buch:** (a) ElevenLabs-Fassung (S2) · (b) Gemini-Notebook-Fassung (S2-N) · (c) eine Fassung im Element, die andere als Vergleichszahl im Making-of · (d) erst nach S2 Sitzung B entscheiden.
-**Rechte:** falls (b) oder (c) mit S2-N im Element: bei Logos nachfragen / nur online / doch ElevenLabs.
-**Hörproben:** Z21 „füttert“, Z56 „meidet“, Z65 „Wegen“ bestätigen oder korrigieren.
+- **G2c: erst nach S2 Sitzung B.** Grundlage dann: diese Notiz und `VERGLEICH-s2-elevenlabs-notebook-2026-11-02.md` (ElevenLabs-Spalte nach Sitzung B ergänzen). S2 Sitzung B stellt am Ende G2c zusammen mit G3.
+- **Rechte, falls S2-N gewählt wird: nur online verwenden.** Die Druckfassung erhält kein Gemini-Audio; Druckkasten dann ohne Bezug auf das Hörstück aus Gemini Notebook oder mit der S2-Fassung. Konto bleibt als privates Google-Konto mit Abo angenommen.
+- **Hörproben: später nachhören.** Die drei Einsetzungen (2:44 „füttert“, 5:52 „meidet“, 6:47 „Wegen“) bleiben vorläufig; Änderung nur in `_src/audio/s2n-notebook/erkennung-korrekturen.json`, dann `audio-s2n-sprecher.py` und `audio-s2n-daten.py` neu laufen lassen.
+- **Nächste Sitzung:** S2 Sitzung B (nach Romans ElevenLabs-Vertonung), Startprompt:
+
+> Lies `claude/mollick-formate/STATUS-s2-podcast-teilA-2026-11-02.md`, Abschnitt 5 von `claude/mollick-formate/AUFTRAG-s2-interviews-podcast-2026-11-02.md` und `claude/mollick-formate/VERGLEICH-s2-elevenlabs-notebook-2026-11-02.md`. Die ElevenLabs-Blöcke liegen in Tresorit `06-Lehrbuch-Publikation-Logos/Audio-S2-Podcast/`. Baue sie ein, prüfe, ergänze in der Vergleichsnotiz die ElevenLabs-Spalte (Dauer, Roman-Zeit) und frage am Ende nach G2c und G3 (Multiple Choice). Entscheid zu S2-N vorab: falls gewählt, nur online.
 
 Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (Branch `mollick-s2n-notebook`, gepusht, gemergt: nein)
