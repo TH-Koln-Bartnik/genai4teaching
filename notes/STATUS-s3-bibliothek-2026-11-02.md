@@ -65,8 +65,13 @@ b) Nachbessern (was?) und dann mergen
 c) Erst S1 mergen, dann S3 darauf rebasen (Duplikat `massenkoff2026cadences` entfernen) und mergen
 d) Zurückstellen bis nach der Abgabe 15.11.
 
+## Entscheide Roman (02.11.2026, MC)
+- **G3: c) Erst S1 mergen, dann S3** darauf rebasen, Duplikat `massenkoff2026cadences` entfernen, mergen.
+- Tresorit: Freigabe im zweiten Anlauf erteilt; Notizen und 24 Screenshots liegen in `Projektnotizen-Claude/mollick-formate/` bzw. `…/s3-screenshots/`.
+- Weiter in einer neuen Sitzung mit dem Startauftrag unten.
+
 ## Nächste Sitzung (Startauftrag nach G3)
-> Lies claude/PROMPTS-naechste-schritte-2026-11-02.md (Gemeinsame Regeln) und claude/mollick-formate/STATUS-s3-bibliothek-2026-11-02.md. Setze den G3-Entscheid um: Branch mollick-s3-bibliothek auf main rebasen, Konflikte nach Abschnitt „Konflikte beim Merge mit S1“ lösen, npm test, Render, Playwright (node scripts/pruefe-bibliothek.mjs), Diff per MC freigeben lassen, mergen, Pages-Lauf abwarten und live prüfen (Element auf Laptop und Tablet öffnen, Bildrate notieren).
+> Lies claude/PROMPTS-naechste-schritte-2026-11-02.md (Gemeinsame Regeln) und claude/mollick-formate/STATUS-s3-bibliothek-2026-11-02.md. G3 ist entschieden: erst S1, dann S3. Prüfe, ob mollick-s1-hoeher-tiefer in main ist (git merge-base --is-ancestor); falls nicht, zuerst Startprompt Nr. 1 ausführen. Dann Branch mollick-s3-bibliothek auf main rebasen, Konflikte nach Abschnitt „Konflikte beim Merge mit S1“ lösen, npm test, Render, Playwright (node scripts/pruefe-bibliothek.mjs), Diff per MC freigeben lassen, mergen, Pages-Lauf abwarten und live prüfen (Element auf Laptop und Tablet öffnen, Bildrate notieren).
 
 ## Candidate permanent notes
 - Ein großes Regal im Economic Index heißt nicht, dass der Beruf besonders von KI betroffen ist, sondern dass viele Gespräche Aufgaben berühren, die O*NET diesem Beruf zuordnet.
@@ -74,4 +79,4 @@ d) Zurückstellen bis nach der Abgabe 15.11.
 - Parallele Übersetzungs-Agenten erzeugen uneinheitliche Begriffe, die sich per Skript nur in der Schreibweise, nicht in der Bedeutung angleichen lassen.
 - Eine 3D-Ansicht trägt das Lernziel nur, wenn eine gleichwertige Listenansicht dieselbe Aussage allein tragen kann.
 
-Ablage geprüft: Projekt ✓ / Tresorit ✗ (Ordnerfreigabe abgelehnt, siehe MC) / Repo ✓ (gepusht, gemergt: nein)
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht, gemergt: nein)
