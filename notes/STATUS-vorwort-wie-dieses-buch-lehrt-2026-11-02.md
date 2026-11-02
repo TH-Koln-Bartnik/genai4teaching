@@ -41,3 +41,16 @@ Grundlage: `claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md` (1
 - Offen: Live-Prüfung nach dem Pages-Lauf; bei der nächsten PDF-Sitzung prüfen, wie das Vorwort mit Übersicht im Druck umbricht.
 
 Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (`main` @ `0a8184d`, gemergt: ja)
+
+## Fassung 3 (02.11.2026, 14:10, Auftrag Roman)
+- Advance Organizer als Mechanismus aufgenommen (Tabellenzeile „Vorangestellte Ordnungshilfe (*advance organizer*)“ unter Verstehen, vor „Geschichte als Einstieg“, Quelle `@ausubel1960`); je Mechanismus Fachbegriff im Fließtext mit Beispiel; für Erstlesende beschrieben, was vorliegt („Am Ende jedes Kapitels stehen Lernfragen …“). Commit `82a4470`.
+
+## Fassung 4 (02.11.2026, 14:20, Entscheidung Roman nach Bewertung Classic Prose: 1a, 2a, 3a)
+- Bewertung: `claude/didaktik/BEWERTUNG-vorwort-classic-prose-2026-11-02.md` (Projekt). Hauptbefund: Abstrakta als Handelnde, Hecken, Genitivketten, Klammer-Etiketten am Satzende.
+- Ganzes Vorwort in Ich-Stimme neu geschrieben (Einleitungsabsatz, Lernpfade, „Wie dieses Buch lehrt“, Einleitung der Übersicht); Listen, Selbsttest, Updates und Kurse unverändert. Fachbegriff fett als Satzsubjekt, dann Ort im Buch mit „Sie“/„ich“, Wirkung am Satzende. Lernpfade: zwei Leser (Informatiker, Kollegin) als Denkfigur, nicht als beobachtete Szene; Morehead und Kalyuga mit handelnden Forschenden.
+- Tabellenbegriff vereinheitlicht: „Selbst-Erzeugen“. „Wie dieses Buch lehrt“ ≈ 550 Wörter Prosa.
+- Offen: Name „Taskforce GenAI in der Lehre … seit 2026“ prüfen (sonst Expertisezirkel GenKI?). Kapitel sprechen weiter mit „wir“, das Vorwort mit „ich“ (gewollt).
+- Prüfung: `quarto render --to html` (1.8.25) nur 36 × „OJS block count mismatch“, kein `?@`; Playwright 1200/390 px ohne JS-Fehler, `#tbl-mechanismen` vorhanden; Download-PDF/EPUB aus Git zurückgeholt. Druckpfad nicht gerendert.
+- Commit `da1f5ee` auf `main` gepusht (gemergt: ja).
+
+Ablage geprüft: Projekt ✓ / Tresorit ✗ (kein Ordner verbunden) / Repo ✓ (`main` @ `da1f5ee`)
