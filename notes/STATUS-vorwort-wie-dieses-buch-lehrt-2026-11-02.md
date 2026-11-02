@@ -23,4 +23,11 @@ Grundlage: `claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md` (1
 - Kap. 4–6: Einstiegsszene + Einschätzungen; Schlüsselbegriffe Kap. 2–6 – erst dann stimmen die beiden Zusagen.
 - Tabelle nach Merge von P1, S1, S4, S5/P6, Escape Room um die Zeile Hyperkorrektur ergänzen.
 
-Ablage geprüft: Projekt `claude/didaktik/`, Repo `notes/`; Tresorit offen (Ordnerfreigabe nicht erteilt).
+## Fassung 2 (02.11.2026, 14:00, Rückmeldung Roman: „zu kleinteilig, Reihenfolge willkürlich“)
+- Gruppiert nach Lernzielen (Anderson & Krathwohl, 2001): Erinnern, Verstehen, Anwenden; Gruppen und Zeilen nach Stärke der Befunde geordnet.
+- Zehn statt zwölf Zeilen: Rückmeldung in Abrufübung, Hyperkorrektur in „Fehlvorstellungen widerlegen“ aufgegangen; Signalisieren nur noch als Gestaltungsprinzip in der Übersicht.
+- Neue Spalte „Kanonische Quelle“: roediger2006, cepeda2006, richland2009, wallace1994, sweller1985, tippett2010, kornell2008, mar2021, chi2014, wood1976. Neu in `references.json`: wallace1994, wood1976, sweller1985 (DOIs per Crossref geprüft).
+- Streich-Test ist inzwischen auf `main` (2.4, `#sec-streichtest`) und steht in der Tabelle.
+- Prosa 243 Wörter, gleiche Gruppenfolge wie die Tabelle. Render ohne neue Warnungen, Playwright 1200/390 px ohne JS-Fehler. Commit `a0cd3db` auf `main`.
+
+Ablage geprüft: Projekt `claude/didaktik/`, Repo `notes/`, Tresorit `Projektnotizen-Claude/didaktik/`.
