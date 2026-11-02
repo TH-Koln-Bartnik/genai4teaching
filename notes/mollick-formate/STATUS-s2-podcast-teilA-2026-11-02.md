@@ -138,7 +138,7 @@ Nicht geglättet (bewusst, Schritt 3.5): Nr. 12, 15, 16, 22, 34.
 - `quarto render kapitel04.qmd --to html`: 79 Warnungen, identisch mit `main` (alles Querverweise auf andere Kapitel beim Einzelrender, OJS-Zeilenzählung), keine neue.
 - Playwright 1200/390 px, je Klick- und Tastaturdurchlauf: alle Phasen bedienbar; Hervorhebung bei drei Stichproben (Zeilen 3, 17, 31) synchron; Klick auf Zeile springt; Kopier-Knopf kopiert; Fokus wandert beim Phasenwechsel auf die Überschrift; kein horizontales Scrollen; keine Konsolenfehler; iframe-Höhe 1.406 px (Buchspalte) bzw. 2.218 px (390 px). Dabei gefunden und behoben: Prüfkarten wurden nicht eingehängt; kein Halt-Knopf in der Prüfphase; Hinweis stand hinter den Originalstellen.
 - axe (Element und Kapitelabschnitt): keine Verstöße (nach Umstellung auf h1-Hierarchie im Element und offenem Making-of-Kasten).
-- Hinweis für lokale Vorschau: Pythons `http.server` liefert keine Byte-Bereiche, dann springt das Audio nicht; GitHub Pages kann das. Testserver mit Range: `/home/claude/tools/server.cjs` (nicht im Repo).
+- Hinweis für lokale Vorschau: Pythons `http.server` liefert keine Byte-Bereiche, dann springt das Audio nicht; GitHub Pages kann das. Testserver mit Range: `scripts/testserver-range.cjs`; Prüfskript `scripts/pruefe-podcast-s2.cjs`.
 - Druck-Testrender des Kastens als Einzeldokument (xelatex, TeX Gyre Pagella, A5): sauber, Ankreuzfelder $\square$ gesetzt, QR lesbar. `fontawesome5.sty` fehlt im Container und wurde für den Test durch einen Platzhalter ersetzt (nur Kastensymbole). Gesamt-PDF des Buchs nicht gebaut.
 - Screenshots: Tresorit `Projektnotizen-Claude/mollick-formate/s2-podcast/screens-s2/` (Phasen 1–5 bei 1200 px, Hören und Prüfen bei 390 px, Dunkelmodus, Druckkasten A5). Dort auch: Erstfassung, Hörfassung (`s2-hoerfassung.md`, zum Lesen für G2b), Prüftabelle, ElevenLabs-Blöcke und der Platzhalterton `s2-platzhalter-piper.mp3`.
 
@@ -151,7 +151,7 @@ In Tresorit liegt seit 10:00 `AUFTRAG-s2n-podcast-gemini-notebook-2026-11-02.md`
 1. Romans Blöcke `s2-block-01.mp3` … `-05.mp3` aus Tresorit `06-Lehrbuch-Publikation-Logos/Audio-S2-Podcast/` nach `_src/audio/s2-podcast/roh/`.
 2. `python3 scripts/audio-s2-zusammenfuegen.py ton` (ohne `--platzhalter`). Das Skript findet die Sprecherwechsel in einem Block über Pausen (silencedetect, ≥ 0,25 s, −40 dB); meldet es „Zeitmarken nach Zeichenzahl verteilt“, die Stichproben besonders genau ansehen. Rückfall: Einzeldateien je Zeile in `roh/zeilen/` (Dateinamen `s2-zeile-NN.mp3`).
 3. Ändert Roman bei G2b Zeilen, zuerst `manifest.json` (Felder `text` und `tts`) anpassen, dann `bloecke` neu schreiben; **nicht** `manifest --neu` (überschreibt die Korrekturen).
-4. Tests, Render, Playwright (`/home/claude/tools/pruefe-s2.cjs` neu anlegen oder aus dieser Notiz nachbauen), mp3 committen, G3.
+4. Tests, Render, Browserprüfung: `node scripts/testserver-range.cjs docs &`, dann `AXE=<pfad>/axe.min.js node scripts/pruefe-podcast-s2.cjs` (Ausgabe: Befunde je Breite und Durchlauf, Screenshots), mp3 committen, G3.
 
 ## G2b – Frage an Roman (Multiple Choice)
 
@@ -160,3 +160,5 @@ Drehbuch: `_src/audio/s2-podcast/drehbuch-erstfassung.md` (Erstfassung) bzw. Spa
 - (b) Einzelne Stellen ändern (welche?).
 - (c) Prüfaussagen tauschen (z. B. eine der zitatbezogenen Überzeichnungen, Nr. 12 oder 22, statt Nr. 15).
 
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (Branch `mollick-s2-podcast`, Commits 31edde3, b962b09, 58369f5 und Werkzeug-Commit; gepusht, gemergt: nein)
