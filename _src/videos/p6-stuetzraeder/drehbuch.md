@@ -2,7 +2,7 @@
 
 Erzeugt aus `manifest.json` (einzige Quelle; Änderungen dort, dann `node scripts/genrefilm/drehbuch.mjs --film kap02-stuetzraeder`).
 Bildsprache: Graustufen + eine Akzentfarbe (#c1002a; auf dunklem Grund #ff5c7a); Leitobjekt: Prompt-Zettel (weiße Karte): wächst in Szene 1–3, verliert die Aufkleber in 4–5, wird in 6–7 neu gebaut.
-Laufzeit mit aktueller Tonspur: 134.7 s.
+Laufzeit mit aktueller Tonspur: 136.2 s.
 
 ## Vorhersage vor dem Start
 
@@ -14,7 +14,7 @@ c) kürzer. **(richtig)**
 
 Auflösung: Kürzer. Szene 9 zeigt es am Quiz-Ersteller aus Anhang B: Er schrumpfte von 308 auf rund 120 Wörter, weil Rolle, Ablaufvorschriften und Ermahnungen wegfielen. Ziel, Wozu, Material und Abnahme blieben.
 
-## Szene 1: Stummfilm (0.0–16.4 s)
+## Szene 1: Stummfilm (0.0–17.3 s)
 
 **Idee:** Few-Shot: Man macht dem Modell die Aufgabe an Beispielen vor.  
 **Sprechtext (39 Wörter):** 2020. Sprachmodelle verstehen eine Aufgabe noch schlecht. Also macht man es ihnen vor: drei gelöste Beispiele, dann die eigene Aufgabe. Few-Shot-Prompting heißt das, Lernen aus wenigen Beispielen. Es wirkt erstaunlich gut. Der erste Ratschlag ist geboren: Zeig’s ihm vor.  
@@ -28,7 +28,7 @@ Auflösung: Kürzer. Szene 9 zeigt es am Quiz-Ersteller aus Anhang B: Er schrump
 | Few-Shot-Prompting: Das Modell löst Aufgaben aus wenigen Beispielen im Prompt, ohne Nachtraining; deutlich besser als ohne Beispiele. | Brown et al. (2020) |
 | Leitjahr 2020 | Brown et al. (2020) |
 
-## Szene 2: Zaubershow (16.4–29.8 s)
+## Szene 2: Zaubershow (17.3–31.0 s)
 
 **Idee:** Chain of Thought: Ein Satz lässt das Modell Zwischenschritte schreiben.  
 **Sprechtext (35 Wörter):** Meine Damen und Herren: ein einziger Satz! ‚Denken wir Schritt für Schritt.‘ Und das Modell löst plötzlich 79 statt 18 von hundert Rechenaufgaben. Kein Trick, sondern gemessen. Ab jetzt gilt: Lass das Modell laut denken.  
@@ -42,7 +42,7 @@ Auflösung: Kürzer. Szene 9 zeigt es am Quiz-Ersteller aus Anhang B: Er schrump
 | „Let’s think step by step“ hebt MultiArith von 17,7 auf 78,7 % (text-davinci-002), gerundet 18 → 79 von 100. | Kojima et al. (2022) |
 | Chain-of-Thought-Prompting verbessert Rechen- und Denkaufgaben (laut denken lassen). | Wei et al. (2022) |
 
-## Szene 3: Teleshopping (29.8–44.4 s)
+## Szene 3: Teleshopping (31.0–46.2 s)
 
 **Idee:** Aufkleber-Inflation: Rolle, Trinkgeld, Großbuchstaben, emotionale Appelle.  
 **Sprechtext (39 Wörter):** Aber das ist noch nicht alles! Jetzt neu: die Expertenrolle! Das Trinkgeld! Großbuchstaben! Und dazu: Das ist sehr wichtig für meine Karriere. Einiges davon stand in Studien und Hersteller-Anleitungen, vieles nur in Ratgebern. Der Zettel wird länger und länger.  
@@ -62,7 +62,7 @@ b) Kaum oder gar nicht. **(richtig)**
 c) Nur die Expertenrolle.  
 Auflösung: Kaum oder gar nicht. In Tests mit schweren Fragen hatten Trinkgeld und Drohungen keinen messbaren Effekt, und Expertenrollen machten die Antworten nicht genauer. Für Ton und Simulationen bleiben Rollen sinnvoll. Die nächste Szene zeigt die Beweisaufnahme.
 
-## Szene 4: Gerichtsdrama (44.4–61.6 s)
+## Szene 4: Gerichtsdrama (46.2–62.9 s)
 
 **Idee:** Die Hausrezepte im Test: nicht erwiesen.  
 **Sprechtext (31 Wörter):** Die Beweisaufnahme, 2025. Trinkgeld und Drohungen: kein messbarer Effekt auf schweren Tests. Expertenrollen: keine genaueren Fakten. Höflichkeit: hilft mal, schadet mal. Das Gericht urteilt: nicht erwiesen. Die Aufkleber kommen vom Zettel.  
@@ -76,7 +76,7 @@ Auflösung: Kaum oder gar nicht. In Tests mit schweren Fragen hatten Trinkgeld u
 | Expertenrollen machen Antworten nicht faktengenauer. | Basil et al. (2025) |
 | Höflichkeit hilft bei manchen Fragen und schadet bei anderen. | Meincke et al. (2025a) |
 
-## Szene 5: Naturdokumentation (61.6–76.3 s)
+## Szene 5: Naturdokumentation (62.9–77.8 s)
 
 **Idee:** Reasoning-Modelle denken selbst; Denkvorschriften werden zu Stützrädern.  
 **Sprechtext (41 Wörter):** Hier sehen wir ein Reasoning-Modell in freier Wildbahn. Es denkt, bevor es antwortet, ganz ohne Aufforderung. Wer ihm vorsagt, wie es denken soll, gewinnt kaum etwas und zahlt mit Zeit und Tokens. Stützräder helfen beim Lernen. In der Kurve stören sie.  
@@ -99,7 +99,7 @@ b) Kaum bessere, aber langsamere und teurere Antworten. **(richtig)**
 c) Immer schlechtere Antworten.  
 Auflösung: Kaum bessere, aber langsamere und teurere Antworten: Reasoning-Modelle gehen ohnehin schrittweise vor. Bei manchen Aufgabentypen wird es sogar schlechter, nämlich dort, wo langes Nachdenken auch Menschen schadet (Liu, R. et al., 2025).
 
-## Szene 6: Kochshow (76.3–90.4 s)
+## Szene 6: Kochshow (77.8–92.2 s)
 
 **Idee:** Was bleibt: Ziel, Wozu, Material, Format, Stilbeispiele; im Tutor der Ablauf.  
 **Sprechtext (41 Wörter):** Was bleibt im Topf? Das Ziel. Der Grund, wozu Sie es brauchen. Ihr Material, lange Texte oben, die Frage darunter. Format und Länge. Beispiele, wenn der Stil zählt. Und bei Tutor-Bots bleibt das Rezept, denn dort ist der Ablauf das Gericht.  
@@ -113,10 +113,10 @@ Auflösung: Kaum bessere, aber langsamere und teurere Antworten: Reasoning-Model
 | Lange Dokumente oben, Frage unten. | Anthropic (2026a); Liu, N. F. et al. (2024) |
 | Bei Tutor-Bots bleibt der Ablauf: Er ist Spezifikation, nicht Lösungsweg. | Leitlinie Kap. 2.4 / Anhang A (Buch) |
 
-## Szene 7: Roadmovie (90.4–105.3 s)
+## Szene 7: Roadmovie (92.2–106.7 s)
 
 **Idee:** Die neue Grundregel: Ziel und Erfolgskriterium nennen, dann fahren lassen.  
-**Sprechtext (33 Wörter):** Dem Taxifahrer sagen Sie nicht: blinken, kuppeln, links. Sie sagen: Hauptbahnhof, bis 14:40, ich muss den Zug kriegen. Genau das raten heute alle drei großen Labore: Ziel nennen, Erfolgskriterium nennen, dann fahren lassen.  
+**Sprechtext (34 Wörter):** Dem Taxifahrer sagen Sie nicht: blinken, kuppeln, links. Sie sagen: Hauptbahnhof, bis 14:40, ich muss den Zug kriegen. In diese Richtung raten heute alle drei großen Labore: Ziel nennen, Erfolgskriterium nennen, dann fahren lassen.  
 **Stimme:** Roadmovie-Erzähler: gelassen, trocken, gleichmäßiges Tempo  
 **Bildtext:** „Roadmovie“, „2026“, „TAXI“, „Ziel: Hauptbahnhof“, „Abnahme: 14:40, ICE“, „Anthropic“, „OpenAI“, „Google“, „■ Labor“  
 **Bild:** Nachtstraße mit Mittelstreifen; Taxi von hinten; Zettel an der Heckscheibe mit Ziel und Abnahme (Zeile „Abnahme“ in Akzent); drei Wegweiser mit Labornamen als Text zeigen in dieselbe Richtung  
@@ -135,7 +135,7 @@ b) Sich vom Modell interviewen lassen, daraus eine Spezifikation machen, dann ne
 c) „Du bist ein erfahrener Didaktiker“ voranstellen.  
 Auflösung: Erst das Interview, dann eine Spezifikation; die Ausführung startet in einer frischen Sitzung, und am Ende prüft jemand, der beim Planen nicht dabei war. Die nächste Szene zeigt den Plan.
 
-## Szene 8: Heist-Film (105.3–119.1 s)
+## Szene 8: Heist-Film (106.7–120.6 s)
 
 **Idee:** Unklares Ziel: Interview, Spezifikation, frische Sitzung, fremde Prüfung.  
 **Sprechtext (42 Wörter):** Und wenn das Ziel noch unscharf ist? Dann zuerst der Plan. Das Modell interviewt Sie, eine Frage nach der anderen. Daraus wird eine Spezifikation. Die Ausführung startet in einer frischen Sitzung, und am Ende prüft jemand, der beim Planen nicht dabei war.  
@@ -148,7 +148,7 @@ Auflösung: Erst das Interview, dann eine Spezifikation; die Ausführung startet
 | Interview → Spezifikation → frische Sitzung; Prüfung durch einen Agenten ohne Planungskontext. | Anthropic (2026d) |
 | Planungsregel: Ziel unklar → Interview und Spezifikation, dann neue Sitzung. | Leitlinie Kap. 2.4 (Buch) |
 
-## Szene 9: Science-Fiction (119.1–134.7 s)
+## Szene 9: Science-Fiction (120.6–136.2 s)
 
 **Idee:** Zeitkapsel: Der eigene Prompt schrumpfte; auch heutige Regeln sind Stützräder auf Zeit.  
 **Sprechtext (40 Wörter):** Eine Nachricht an Sie, später. Unser eigener Quiz-Prompt schrumpfte von 308 auf rund 120 Wörter. Auch die Regeln von heute gleichen nur aus, was Modelle heute noch nicht können. Wenn das nächste Modell kommt: Zettel hervorholen, Zeile für Zeile prüfen.  
