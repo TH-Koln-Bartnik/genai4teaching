@@ -1238,6 +1238,30 @@ Tabelle&nbsp;2.5: Sechs gezielte Einschränkungen in didaktischen Prompts. Eigen
 <p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
 <iframe loading="lazy" src="interactions/vom-satz-zum-naechsten-wort.html" width="100%" height="860px" frameborder="0" title="Animation: Vom Satz zum nächsten Wort über Tokens, Zahlen und Aufmerksamkeit">
 </iframe>
+<p>Dieselbe Kette gibt es noch einmal als Film, diesmal in neun Genres: Ein Film noir zerlegt den Text in Tokens, eine Naturdokumentation beringt sie mit Nummern, eine Quizshow lässt das nächste Token ziehen, und ein Gerichtsdrama verhandelt, warum wahrscheinlich nicht wahr heißt. Der Film hält nach jedem Genre an und stellt Ihnen an drei Stellen eine Frage, bevor die nächste Szene sie auflöst; mit den Fragen dauert er etwa fünf Minuten. Die Idee stammt von Ethan Mollick, der ein Sprachmodell mit einem einzigen Prompt ein Video bauen ließ, das den Begriff Rekursion mit neun Stilwechseln erklärt <span class="citation" data-cites="mollick2026rekursion">(<a href="#ref-mollick2026rekursion" role="doc-biblioref">E. Mollick, 2026c</a>)</span>.</p>
+<p><span id="vid-naechstes-token-genres"></span></p>
+<p>Geben Sie zuerst Ihre Vorhersage ab und starten Sie dann den Film.</p>
+<iframe loading="lazy" id="genrefilm-kap02-token-genres" src="interactions/genrefilm-player.html?film=kap02-token-genres" width="100%" height="900px" frameborder="0" title="Film mit Haltepunkten: Das nächste Token in neun Genres"></iframe>
+<script>
+/* Der Player meldet seine Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "genrefilm-kap02-token-genres") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+<div class="callout callout-style-default callout-note callout-titled" title="So entstand dieser Film">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>So entstand dieser Film
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Bauauftrag passt in einen Satz: „Erzähle die Kette aus diesem Abschnitt in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre, mit den echten Tokenwerten aus der Animation, und baue daraus einen Film mit HyperFrames.“ Claude Code schrieb Drehbuch, Szenen und eine Bauanleitung, die die Szenenlängen aus der Tonaufnahme ableitet und die Tokenwerte bei jedem Bau neu berechnet; das Rendern dauert rund sechs Minuten. Die Schwäche zeigte ein Prüfagent: Im ersten Drehbuch zog „Baum“ die „Bank“ selbst Richtung Park, obwohl die Aufmerksamkeit nur zurückblickt. Die Szene zeigt jetzt wie die Animation einen neuen Punkt „Bank im Satz“.</p>
+</div>
+</div>
 <p><strong>Was heißt hier GPT?</strong> Die drei Buchstaben stehen für <em>Generative Pre-trained Transformer</em>. <em>Pre-trained</em> heißt, dass das Modell zuerst mit riesigen Textmengen <strong>vortrainiert</strong> wurde (<strong>Pretraining</strong>), und zwar <em>selbstüberwacht</em> (<em>self-supervised</em>): Die Aufgabe, das jeweils nächste Token vorherzusagen, steckt im Text selbst, niemand muss Lösungen beschriften. Danach bewerten Menschen verschiedene Antworten des Modells, und es lernt, die bevorzugten zu erzeugen (<em>Reinforcement Learning from Human Feedback</em>, <strong>RLHF</strong>); so wird aus einem Textfortsetzer ein Assistent. <em>Transformer</em> heißt das Rechenverfahren im Kern, und sein Herzstück ist die <strong>Aufmerksamkeit</strong> (<em>Attention</em>): Für jedes Token gewichtet das Modell, welche anderen Tokens für seine Bedeutung am wichtigsten sind; so zieht „Baum“ im Beispielsatz die „Bank“ in Richtung Park, wie Schritt 6 der Animation zeigt. Der Fachartikel von 2017, der das Verfahren vorstellte, trägt den knappen Titel „Attention is all you need“ <span class="citation" data-cites="vaswani2017">(<a href="#ref-vaswani2017" role="doc-biblioref">Vaswani et al., 2017</a>)</span>.</p>
 <p>Wer tiefer einsteigen will, findet im Transformer Explainer ein echtes kleines Sprachmodell zum Ausprobieren im Browser [<span class="citation" data-cites="cho2025">Cho et al. (<a href="#ref-cho2025" role="doc-biblioref">2025</a>)</span>; <a href="https://poloclub.github.io/transformer-explainer/" class="uri">https://poloclub.github.io/transformer-explainer/</a>], bei Grant Sanderson ein siebenminütiges Erklärvideo (<a href="https://youtu.be/LPZh9BOjkQs" class="uri">https://youtu.be/LPZh9BOjkQs</a>), bei Brendan Bycroft eine dreidimensionale Animation der Rechenschritte (<a href="https://bbycroft.net/llm" class="uri">https://bbycroft.net/llm</a>) und im frei verfügbaren Lehrbuch von <span class="citation" data-cites="jurafsky2025">Jurafsky &amp; Martin (<a href="#ref-jurafsky2025" role="doc-biblioref">2025</a>)</span> die technischen Grundlagen.</p>
 </section>
@@ -1666,6 +1690,9 @@ Mollick, E. (2026a, Februar 18). A Guide to Which AI to Use in the Agentic Era. 
 </div>
 <div id="ref-mollick2026guide" class="csl-entry" role="listitem">
 Mollick, E. (2026b, Juli 23). An opinionated guide to which AI to use to do stuff: The Summer 2026 Edition. <a href="https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22">https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22</a>.
+</div>
+<div id="ref-mollick2026rekursion" class="csl-entry" role="listitem">
+Mollick, E. (2026c, September 26). How do you explain recursion? This one is pretty fun [Video attached]. <em>X</em>. <a href="https://x.com/emollick/status/2103688362960019567">https://x.com/emollick/status/2103688362960019567</a>.
 </div>
 <div id="ref-mollick2025" class="csl-entry" role="listitem">
 Mollick, E. R. (2025, Januar 26). A new generation of AIs: Claude 3.7 and Grok 3. <a href="https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37">https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37</a>.

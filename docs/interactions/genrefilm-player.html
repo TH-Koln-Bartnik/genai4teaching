@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genrefilm mit Haltepunkten</title>
+<!-- Wiederverwendbarer Player für Erklärfilme in neun Genres (S5, S6). Aufruf: genrefilm-player.html?film=<id>.
+     Filmdaten stehen als JSON-Blöcke am Dateiende; das Build-Skript scripts/genrefilm/bauen.mjs schreibt sie hinein. -->
+<style>
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#666666; --hell:#e4e4e4; --panel:#f4f4f4; --akzent:#b45309; --ok:#1b1b1b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#151515; --tinte:#f0f0f0; --grau:#a8a8a8; --hell:#3a3a3a; --panel:#202020; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:16px 14px 28px; }
+  h1 { font-size:22px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  h2 { font-size:18px; margin:18px 0 8px; }
+  p { margin:0 0 8px; max-width:75ch; }
+  button { font:inherit; font-size:15px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:6px 12px; cursor:pointer; margin:0 6px 6px 0; text-align:left; }
+  button:hover { border-color:var(--tinte); }
+  button:focus-visible, video:focus-visible, input:focus-visible, summary:focus-visible { outline:3px solid var(--akzent); outline-offset:2px; }
+  button[aria-pressed="true"] { background:var(--tinte); color:var(--grund); }
+  button.richtig { border:2px solid var(--tinte); font-weight:650; }
+  button.richtig::after { content:" ✓ richtig"; }
+  button.falsch-gewaehlt::after { content:" ✗"; }
+  button:disabled { cursor:default; opacity:1; }
+  .haupt { background:var(--tinte); color:var(--grund); border-color:var(--tinte); font-weight:650; }
+  .box { background:var(--panel); border-radius:8px; padding:12px 14px; margin:10px 0; }
+  .optionen { display:flex; flex-direction:column; align-items:flex-start; }
+  .rueck { min-height:1.4em; margin:6px 0; }
+  .rueck:empty { display:none; }
+  .klein { font-size:13px; color:var(--grau); }
+  .film { position:relative; margin:10px 0 6px; }
+  video { width:100%; height:auto; display:block; background:#000; border-radius:6px; }
+  .halt { display:none; background:var(--panel); border:2px solid var(--tinte); border-radius:8px; padding:12px 14px; margin-top:8px; }
+  .halt.an { display:block; }
+  @media (min-width:720px) {
+    .halt { position:absolute; left:6%; right:6%; bottom:10%; margin:0; background:color-mix(in srgb, var(--panel) 96%, transparent); box-shadow:0 6px 24px #0006; }
+  }
+  .halt h3 { font-size:16px; margin:0 0 6px; }
+  .leiste { display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin:6px 0; }
+  .leiste label { display:flex; gap:6px; align-items:center; font-size:15px; cursor:pointer; }
+  .kapitel { display:flex; flex-wrap:wrap; gap:0; margin:4px 0 6px; }
+  .kapitel button { font-size:13px; padding:4px 9px; }
+  .kapitel button.aktuell { border:2px solid var(--akzent); }
+  .kennz { font-size:13px; color:var(--grau); margin:2px 0 8px; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:10px; }
+  summary { cursor:pointer; font-weight:650; }
+  textarea { width:100%; box-sizing:border-box; font:inherit; font-size:14px; min-height:6.5em; padding:8px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau); border-radius:6px; }
+  .frage { margin:12px 0; }
+  .frage p { font-weight:600; }
+  .fehlt { display:none; padding:10px; border:1px dashed var(--grau); border-radius:6px; margin:8px 0; }
+  .fehlt.an { display:block; }
+  a { color:inherit; }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="titel">Genrefilm</h1>
+
+  <section class="box" id="vorhersage" aria-labelledby="vh-frage">
+    <p id="vh-frage"></p>
+    <div class="optionen" id="vh-optionen"></div>
+    <p class="klein">Ihre Antwort bleibt nur auf dieser Seite im Arbeitsspeicher. Die Auflösung kommt im Film.</p>
+  </section>
+
+  <div class="film">
+    <video id="video" controls playsinline preload="metadata" tabindex="0"></video>
+    <div class="halt" id="halt" role="dialog" aria-modal="false" aria-labelledby="halt-titel">
+      <h3 id="halt-titel"></h3>
+      <p id="halt-frage"></p>
+      <div class="optionen" id="halt-optionen"></div>
+      <p class="rueck" id="halt-rueck" aria-live="polite"></p>
+      <button class="haupt" id="weiter" type="button">Weiter ▶</button>
+    </div>
+  </div>
+  <p class="fehlt" id="fehlt">Das Video ist in dieser Fassung noch nicht hinterlegt. Fragen, Kapitel und Selbsttest lassen sich trotzdem ansehen.</p>
+  <p class="kennz" id="kennz"></p>
+
+  <div class="leiste">
+    <label><input type="checkbox" id="anhalten" checked> Nach jedem Genre anhalten</label>
+    <span>Tempo:</span>
+    <button type="button" class="tempo" data-tempo="0.75" aria-pressed="false">0,75×</button>
+    <button type="button" class="tempo" data-tempo="1" aria-pressed="true">1×</button>
+    <span class="klein">Leertaste: Start/Pause · Pfeiltasten: 5 s zurück/vor</span>
+  </div>
+  <nav aria-label="Kapitel des Films"><div class="kapitel" id="kapitel"></div></nav>
+
+  <details id="selbsttest">
+    <summary>Selbsttest: drei Fragen</summary>
+    <div id="st-fragen"></div>
+  </details>
+
+  <details id="makingof">
+    <summary>So entstand dieser Film</summary>
+    <p id="mo-prompt"></p>
+    <p class="klein" id="mo-werkzeuge"></p>
+    <p><strong>Vorlage für Ihr Fach</strong> (Begriff in eckigen Klammern ersetzen):</p>
+    <textarea id="mo-vorlage" readonly aria-label="Prompt-Vorlage zum Kopieren"></textarea>
+    <button type="button" id="kopieren">Vorlage kopieren</button>
+    <span id="kopiert" class="klein" aria-live="polite"></span>
+  </details>
+
+  <p class="klein" id="zurueck"></p>
+</main>
+
+<!-- FILMDATEN-ANFANG -->
+<script type="application/json" class="filmdaten" data-film="kap02-token-genres">
+{"film":"kap02-token-genres","titel":"Das nächste Token – in neun Genres","anker":"vid-naechstes-token-genres","video":"media/kap02-token-genres.mp4","poster":"media/kap02-token-genres-poster.png","untertitel":"media/kap02-token-genres.de.vtt","kapitelVtt":"media/kap02-token-genres-kapitel.vtt","dauer":203.069,"stimme":"elevenlabs","kennzeichnung":"Stimme KI-erzeugt (ElevenLabs v4); Bilder aus Programmcode (HyperFrames)","kapitel":[{"nr":1,"genre":"Film noir","start":0,"ende":26.409},{"nr":2,"genre":"Naturdokumentation","start":26.409,"ende":53.837},{"nr":3,"genre":"Kochshow","start":53.837,"ende":72.383},{"nr":4,"genre":"Sportreportage","start":72.383,"ende":93.332},{"nr":5,"genre":"Wetterbericht","start":93.332,"ende":116.058},{"nr":6,"genre":"Quizshow","start":116.058,"ende":138.131},{"nr":7,"genre":"Stummfilm","start":138.131,"ende":158.61},{"nr":8,"genre":"Gerichtsdrama","start":158.61,"ende":181.963},{"nr":9,"genre":"Märchen","start":181.963,"ende":203.069}],"vorhersage":{"frage":"Bevor der Film startet: Was liefert ein Sprachmodell nach „Die Bank steht unter einem Baum.“?","optionen":["Genau ein Wort, das nächste.","Eine Liste möglicher nächster Tokens, jedes mit einer Wahrscheinlichkeit.","Den ganzen Rest des Satzes auf einmal."],"richtig":1,"aufloesung":"Szene 5 (Wetterbericht) zeigt es: Das Modell gibt eine Verteilung über alle möglichen nächsten Tokens aus. Erst danach wird ein Token gezogen (Szene 6)."},"haltepunkte":[{"nachSzene":4,"frage":"Nach „Die Bank steht unter einem Baum.“: Welchem nächsten Token gibt das Modell eher eine hohe Wahrscheinlichkeit?","optionen":["„Sie“","„Kunden“","Beide gleich"],"richtig":0,"aufloesung":"„Sie“ – mit „Baum“ im Blick liegt die Bank im Park; eine Fortsetzung über Bankkunden wird unwahrscheinlich. Die nächste Szene zeigt die Lehrwerte: etwa 45 % gegen 1 %."},{"nachSzene":5,"frage":"Wird immer das Token mit dem höchsten Balken gewählt?","optionen":["Ja, immer.","Nein: Mit einer Temperatur über null gewinnt manchmal ein kleinerer Balken.","Nein: Alle Tokens haben dieselbe Chance."],"richtig":1,"aufloesung":"Die Verteilung legt die Chancen fest, gezogen wird erst danach. Bei Temperatur null gewinnt der höchste Balken, darüber manchmal ein kleinerer. Die nächste Szene zeigt beides."},{"nachSzene":7,"frage":"Ein Token passt nicht ganz, wird aber gezogen. Was passiert damit?","optionen":["Das Modell bemerkt den Fehler und löscht es.","Es bleibt stehen; alle folgenden Tokens bauen darauf auf.","Der Satz bricht an dieser Stelle ab."],"richtig":1,"aufloesung":"Ein angehängtes Token gilt als gesetzt. Die folgenden Tokens setzen es plausibel fort, so entsteht eine flüssige, aber falsche Aussage. Die nächste Szene verhandelt genau diesen Fall."}],"selbsttest":[{"frage":"Welche Kette beschreibt, wie ein Sprachmodell das nächste Token erzeugt?","optionen":["Text → Tokens → Zahlen → Wahrscheinlichkeiten → Auswahl → Anhängen","Text → Wörterbuch → Bedeutung nachschlagen → Antwort","Text → Wahrscheinlichkeiten → Tokens → Anhängen"],"richtig":0,"erklaerung":"Erst wird zerlegt und in Zahlen übersetzt, dann gerechnet, dann gezogen und angehängt; danach beginnt die Schleife neu."},{"frage":"Warum braucht „Lieferantenbewertung“ mehr Tokens als „supplier evaluation“?","optionen":["Weil Deutsch für das Modell schwerer zu verstehen ist.","Weil der Tokenizer sein Vokabular aus Texten gelernt hat, in denen Englisch überwiegt; deutsche Komposita zerfallen in Stücke.","Weil das Modell deutschen Text zuerst ins Englische übersetzt."],"richtig":1,"erklaerung":"Häufige englische Wörter sind oft ein einziges Token. Mehr Tokens heißt: höhere Kosten pro Text und ein schneller gefülltes Kontextfenster."},{"frage":"Warum ist eine flüssige Antwort nicht automatisch eine richtige?","optionen":["Weil das Modell absichtlich täuscht.","Weil gewählt wird, was wahrscheinlich folgt, nicht, was geprüft wahr ist.","Weil flüssige Antworten grundsätzlich falsch sind."],"richtig":1,"erklaerung":"Das Modell schreibt fort, was wahrscheinlich ist, und prüft keine Wahrheit (Kapitel 2, Abschnitt Discernment). Prüfen bleibt Aufgabe der Lesenden."}],"makingof":{"prompt":"Erzähle die Kette aus dem Abschnitt „Tokens, Zahlen, Aufmerksamkeit“ (Tokens, Nummern, Zahlenlisten, Aufmerksamkeit, Wahrscheinlichkeiten, Auswahl, Anhängen) in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre, mit den echten Tokenwerten aus der Animation „Vom Satz zum nächsten Wort“, und baue daraus einen Film mit HyperFrames.","werkzeuge":"Claude Code (Opus 5.5), HyperFrames 0.9.2, gpt-tokenizer 4.1.0, ffmpeg; Stimme: ElevenLabs v4 (eine Erzählstimme), Faster-Whisper für die Wortzeiten","vorlage":"Erkläre [Begriff] aus meinem Fach in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre. Jede Szene enthält genau einen Schritt der Erklärung; die Fachaussage bleibt in jedem Genre korrekt. Schreibe die Szenen als HTML für HyperFrames und den Sprechtext als Tabelle. Liste jede Fachaussage mit Beleg.","hinweis":"Zusammenfassung des Bauauftrags in einem Satz (Auftrag S5 vom 02.11.2026), kein wörtlicher Einzelprompt."},"zurueck":{"text":"Zurück zur Animation „Vom Satz zum nächsten Wort“","url":"vom-satz-zum-naechsten-wort.html"}}
+</script>
+<!-- FILMDATEN-ENDE -->
+
+<script>
+(function () {
+  "use strict";
+  var bloecke = document.querySelectorAll("script.filmdaten");
+  var wunsch = new URLSearchParams(location.search).get("film");
+  var F = null;
+  bloecke.forEach(function (b) {
+    var d = JSON.parse(b.textContent || "{}");
+    if (!d.film) return;
+    if (!F || d.film === wunsch) F = d;
+  });
+  if (!F) { document.getElementById("titel").textContent = "Keine Filmdaten gefunden."; return; }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var video = $("video"), halt = $("halt");
+  document.title = F.titel;
+  $("titel").textContent = F.titel;
+  $("kennz").textContent = F.kennzeichnung;
+
+  // ---- Video, Untertitel (Standard an), Kapitelmarken ----
+  video.poster = F.poster;
+  video.innerHTML = '<source src="' + F.video + '" type="video/mp4">' +
+    '<track kind="subtitles" srclang="de" label="Deutsch" src="' + F.untertitel + '" default>' +
+    '<track kind="chapters" srclang="de" src="' + F.kapitelVtt + '">';
+  video.addEventListener("error", zeigeFehlt, true);
+  video.querySelector("source").addEventListener("error", zeigeFehlt);
+  function zeigeFehlt() { $("fehlt").classList.add("an"); melde(); }
+  video.addEventListener("loadedmetadata", function () {
+    for (var i = 0; i < video.textTracks.length; i++)
+      if (video.textTracks[i].kind === "subtitles") video.textTracks[i].mode = "showing";
+  });
+
+  var kapBtn = F.kapitel.map(function (k, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.textContent = k.nr + " " + k.genre;
+    b.setAttribute("aria-label", "Kapitel " + k.nr + ": " + k.genre + " ansehen");
+    b.addEventListener("click", function () { springe(i); });
+    $("kapitel").appendChild(b);
+    return b;
+  });
+  function springe(i) {
+    schliesseHalt(); gehalten = {}; for (var j = 0; j < i; j++) gehalten[j] = true;
+    video.currentTime = F.kapitel[i].start + 0.01; video.play();
+  }
+
+  // ---- Tempo ----
+  document.querySelectorAll(".tempo").forEach(function (b) {
+    b.addEventListener("click", function () {
+      video.playbackRate = parseFloat(b.dataset.tempo);
+      document.querySelectorAll(".tempo").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    });
+  });
+
+  // ---- Phase 1: Vorhersage ----
+  var vorhersage = null;
+  $("vh-frage").textContent = F.vorhersage.frage;
+  F.vorhersage.optionen.forEach(function (o, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.textContent = String.fromCharCode(97 + i) + ") " + o; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () {
+      vorhersage = i;
+      $("vh-optionen").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    });
+    $("vh-optionen").appendChild(b);
+  });
+
+  // ---- Haltepunkte ----
+  var gehalten = {}, offen = null;
+  var hp = {}; (F.haltepunkte || []).forEach(function (h) { hp[h.nachSzene] = h; });
+  function aktuellesKapitel(t) {
+    for (var i = F.kapitel.length - 1; i >= 0; i--) if (t >= F.kapitel[i].start - 0.01) return i;
+    return 0;
+  }
+  function pruefe() {
+    var t = video.currentTime, i = aktuellesKapitel(t);
+    kapBtn.forEach(function (b, j) { b.classList.toggle("aktuell", j === i); });
+    if (!video.paused && $("anhalten").checked && i < F.kapitel.length - 1 && !gehalten[i] && t >= F.kapitel[i].ende - 0.12) {
+      gehalten[i] = true; video.pause(); oeffneHalt(i);
+    }
+    if (!video.paused) requestAnimationFrame(pruefe);
+  }
+  video.addEventListener("play", function () { if (offen !== null) schliesseHalt(); requestAnimationFrame(pruefe); });
+  video.addEventListener("seeked", function () { kapBtn.forEach(function (b, j) { b.classList.toggle("aktuell", j === aktuellesKapitel(video.currentTime)); }); });
+
+  function knoepfe(ziel, frage, rueckEl, nachher) {
+    ziel.innerHTML = "";
+    frage.optionen.forEach(function (o, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = String.fromCharCode(97 + i) + ") " + o;
+      b.addEventListener("click", function () {
+        ziel.querySelectorAll("button").forEach(function (x, j) {
+          x.disabled = true;
+          if (j === frage.richtig) x.classList.add("richtig");
+          else if (x === b) x.classList.add("falsch-gewaehlt");
+        });
+        rueckEl.textContent = (i === frage.richtig ? "Richtig. " : "Nicht ganz. ") + (frage.aufloesung || frage.erklaerung || "");
+        if (nachher) nachher(i);
+      });
+      ziel.appendChild(b);
+    });
+  }
+  function oeffneHalt(i) {
+    offen = i;
+    var k = F.kapitel[i], h = hp[k.nr];
+    $("halt-titel").textContent = "Genre " + k.nr + " von " + F.kapitel.length + " geschafft: " + k.genre;
+    $("halt-rueck").textContent = "";
+    if (h) {
+      $("halt-frage").textContent = "Vorhersage: " + h.frage;
+      knoepfe($("halt-optionen"), h, $("halt-rueck"));
+    } else {
+      $("halt-frage").textContent = "Weiter mit: " + F.kapitel[i + 1].genre + ".";
+      $("halt-optionen").innerHTML = "";
+    }
+    // Auflösung der Eingangsvorhersage, sobald der Film sie gezeigt hat (Szene der Verteilung)
+    if (F.vorhersage.nachSzene ? k.nr === F.vorhersage.nachSzene : k.nr === 5) {
+      var v = document.createElement("p");
+      v.className = "klein";
+      v.textContent = (vorhersage === null ? "Zu Ihrer Eingangsfrage: " : vorhersage === F.vorhersage.richtig ? "Ihre Eingangsvorhersage stimmte. " : "Ihre Eingangsvorhersage war " + String.fromCharCode(97 + vorhersage) + "). ") + F.vorhersage.aufloesung;
+      $("halt-optionen").appendChild(v);
+    }
+    halt.classList.add("an");
+    (h ? $("halt-optionen").querySelector("button") : $("weiter")).focus();
+    melde();
+  }
+  function schliesseHalt() { halt.classList.remove("an"); offen = null; melde(); }
+  $("weiter").addEventListener("click", function () { schliesseHalt(); video.play(); video.focus(); });
+
+  // ---- Ende: Selbsttest öffnen ----
+  video.addEventListener("ended", function () { $("selbsttest").open = true; $("selbsttest").querySelector("summary").focus(); melde(); });
+  F.selbsttest.forEach(function (f, i) {
+    var d = document.createElement("div"); d.className = "frage";
+    var p = document.createElement("p"); p.textContent = (i + 1) + ". " + f.frage;
+    var o = document.createElement("div"); o.className = "optionen";
+    var r = document.createElement("p"); r.className = "rueck"; r.setAttribute("aria-live", "polite");
+    d.appendChild(p); d.appendChild(o); d.appendChild(r); $("st-fragen").appendChild(d);
+    knoepfe(o, f, r);
+  });
+
+  // ---- Making-of mit Kopier-Knopf ----
+  $("mo-prompt").textContent = "Bauauftrag in einem Satz: „" + F.makingof.prompt + "“";
+  $("mo-werkzeuge").textContent = "Werkzeuge: " + F.makingof.werkzeuge;
+  $("mo-vorlage").value = F.makingof.vorlage;
+  $("kopieren").addEventListener("click", function () {
+    var ta = $("mo-vorlage");
+    var fertig = function () { $("kopiert").textContent = "Kopiert."; };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(ta.value).then(fertig, alt);
+    else alt();
+    function alt() { ta.focus(); ta.select(); try { document.execCommand("copy"); fertig(); } catch (e) { $("kopiert").textContent = "Bitte markierten Text mit Strg+C kopieren."; } }
+  });
+  if (F.zurueck) $("zurueck").innerHTML = '<a href="' + F.zurueck.url + '">' + F.zurueck.text + "</a>";
+
+  // ---- Tastatur: Leertaste Start/Pause, Pfeile ±5 s (nicht, wenn ein Bedienelement den Fokus hat) ----
+  document.addEventListener("keydown", function (e) {
+    var tag = (e.target.tagName || "").toLowerCase();
+    if (["button", "input", "textarea", "summary", "a"].indexOf(tag) >= 0) return;
+    if (e.key === " ") { e.preventDefault(); if (video.paused) { schliesseHalt(); video.play(); } else video.pause(); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); video.currentTime = Math.max(0, video.currentTime - 5); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); video.currentTime = Math.min(F.dauer, video.currentTime + 5); }
+  });
+
+  // ---- Höhe an die einbettende Seite melden ----
+  var rahmenId = new URLSearchParams(location.search).get("id") || ("genrefilm-" + F.film);
+  function melde() {
+    var b = document.body, cs = getComputedStyle(b);
+    var h = Math.ceil(b.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom));
+    try { if (parent !== window) parent.postMessage({ typ: "rahmen-hoehe", id: rahmenId, h: h }, "*"); } catch (e) {}
+  }
+  if (window.ResizeObserver) new ResizeObserver(melde).observe(document.body);
+  window.addEventListener("load", melde);
+  document.querySelectorAll("details").forEach(function (d) { d.addEventListener("toggle", melde); });
+  window.__genrefilm = { F: F, oeffneHalt: oeffneHalt, video: video };
+})();
+</script>
+</body>
+</html>
