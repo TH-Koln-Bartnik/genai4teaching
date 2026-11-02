@@ -1,5 +1,7 @@
 # STATUS Sitzung B: Anhang B, Druck-Prompts neu gefasst (02.11.2026)
 
+> **Stand 13:30: gemergt und live.** `main` @ `646e194` (Merge-Commit `70adc06`). Details unter „Merge-Sitzung“ am Ende; die Abschnitte „Stand“ und „Offen“ beschreiben den Zwischenstand vor dem Merge.
+
 Auftrag: `claude/prompting-primer/AUFTRAG-prompting-kap02-anhangB-2026-11-02.md`, Abschnitt „Sitzung B“, einschließlich Nachtrag 11:42 („Prompts von der KI schreiben lassen“, fünf Kontrollpunkte).
 
 ## Stand
@@ -57,4 +59,27 @@ Gegenüberstellung alt/neu (Zwischenstand 12:2x): Tresorit `Projektnotizen-Claud
 Lies claude/prompting-primer/STATUS-prompting-kap02-B-2026-11-02.md. Roman hat Quiz-Ersteller, Quiz me und Verhandlungssimulation getestet: [Testbericht: je Prompt Modell, was klappte, was scheiterte, Zitat der problematischen Stelle]. Setze nötige Änderungen nach dem Prinzip der kleinsten Änderung auf Branch anhangB-prompts-neu um (Repo frisch klonen, Quarto 1.8.25 installieren), hole main (rebase), prüfe Querverweise, rendere das Buch, lass den Diff per MC freigeben, merge, rendere docs/ und prüfe live. Fragen nur als Multiple Choice; Statusnotiz in Projekt, Tresorit und Repo.
 ```
 
-Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht, gemergt: nein)
+## Merge-Sitzung (02.11.2026, 12:49–13:30)
+
+- **Test Roman (MC 12:5x):** Quiz-Ersteller, Quiz me und Verhandlungssimulation „Alles lief gut“, keine Änderungen an den Prompts.
+- **Rebase:** Branch auf `main` @ `afb1191` (Streich-Test P1, Vorwort „Wie dieses Buch lehrt“), konfliktfrei. Der rebaste Stand wurde **nicht** auf `origin/anhangB-prompts-neu` geschrieben (Force-Push von der Umgebung gesperrt); der Remote-Branch steht auf dem alten Stand `efc8cd3` und ist inhaltlich vollständig in `main` enthalten. Kann gelöscht werden.
+- **Querverweise:** kein Anker in Anhang B entfernt; einziger neuer Verweis aus `main` ist `_einbau/streich-test-loesung.qmd` → `@sec-prompt-quiz-maker` (bleibt, steht im Druck). Wortzahlen dort (119 statt 275) folgen der Zählregel des Streich-Test-Skripts, unsere Tabelle (124/308) zählt anders; beides stimmt. Druck→Online-Verweise: Branch bringt keine neuen und behebt `sec-prompt-strukturierer` in Kap. 2 (jetzt im Druck).
+- **Render** ganzes Buch `--to html`, Quarto 1.8.25: Exit 0, kein `?@`, nur die 36 OJS-Warnungen aus Kap. 4.
+- **Freigabe Roman (MC):** „Mergen + Streich-Test“. Merge `--no-ff` (`70adc06`); danach `scripts/streich-test-daten.py … --neu main`: Kennzeichnung „Entwurf“ im Streich-Test entfällt, Wortzahl unverändert, `node --test tests/streich-test.test.mjs` 8/8 (`c43da5f`, dazu Vermerk in `notes/streich-test/STATUS-p1-…`; dessen Startauftrag ist damit hinfällig).
+- **docs/** gerendert (`37ae760`), PDF/EPUB unverändert behalten; zweimal `origin/main` hereingeholt (Parallelsitzung Vorwort Fassung 2), Neu-Render ohne Änderung; gepusht `646e194`.
+- **Live (Pages-Lauf success):** Anhang B mit Auftrags-Interviewer, elf „Modellklasse“-Angaben, neuer Quiz-Ersteller, alter Text weg, Quiz me mit „Anpassen“; Kap. 2 „Zwei Vorlagen dafür stehen in Anhang B“; Streich-Test `neu_ref: main`, „Entwurf“ unsichtbar; kein `?@`, keine Skriptfehler; live = `docs/`. 390 px: 44 px Überbreite aus Bestehendem (Navbar, lange URLs). Screenshots 1200/390 px in Tresorit.
+- **Nicht getan:** LaTeX/PDF-Testrender (kein `fontawesome5` in der Cloud); Download-PDF/EPUB in `docs/` enthalten Anhang B daher noch in alter Fassung.
+
+## Offen (neu)
+
+1. Download-PDF und EPUB neu erzeugen (lokal oder Cloud mit `apt-get install texlive-fonts-extra`), dabei Druckvorschau Anhang B prüfen (elf Prompts, Seitenumbrüche der Codeblöcke).
+2. Remote-Branch `anhangB-prompts-neu` löschen (alter Stand, vollständig gemergt).
+3. Die 19 Online-Prompts nach der Verlagsabgabe (15.11.2026).
+
+## Startauftrag nächste Sitzung (PDF/EPUB)
+
+```
+Lies claude/prompting-primer/STATUS-prompting-kap02-B-2026-11-02.md (Abschnitt Merge-Sitzung). Repo th-koln-bartnik/genai4teaching frisch klonen, Quarto 1.8.25 und texlive-fonts-extra installieren. Erst quarto render --profile print --to pdf, PDF sichern; dann --to epub, sichern; zuletzt --to html; PDF/EPUB nach docs/ kopieren. Druckvorschau Anhang B prüfen (elf Prompts, Codeblöcke, Umbrüche) und Auffälligkeiten per MC vorlegen. Committen, pushen, live prüfen. Statusnotiz in Projekt, Tresorit und Repo.
+```
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (`main` @ `646e194`, gemergt: ja)
