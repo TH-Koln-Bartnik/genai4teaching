@@ -23,7 +23,8 @@ def prompt_block(quelltext):
 
 
 def woerter(text):
-    return len(re.findall(r"\S+", text))
+    # Zählregel wie Streich-Test (P1): nur Stücke mit Buchstabe oder Ziffer; Aufzählungszeichen, Pfeile, Gedankenstriche zählen nicht
+    return sum(1 for w in text.split() if re.search(r"[0-9A-Za-zÄÖÜäöüß]", w))
 
 
 def main(staende):
