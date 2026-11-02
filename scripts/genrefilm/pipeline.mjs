@@ -5,6 +5,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { zeitAnPosition } from "./komposition.mjs";
 
 export const REPO = resolve(new URL("../..", import.meta.url).pathname);
 export const AUDIO_ENDUNGEN = ["mp3", "wav", "m4a", "flac", "ogg"];
@@ -52,12 +53,19 @@ export function audioDatei(ordner, name) {
 /** Zeitplan: Szenendauer = Audiolänge + Luft; Ton beginnt nach dem Vorlauf. */
 export function zeitplan(manifest, audioOrdner) {
   const { luft, vorlauf } = manifest.ton;
+  // optional: gemessene Wortzeiten (scripts/genrefilm/wortzeiten.py) neben den Takes; passen sie nicht zur
+  // Länge der Aufnahme (Take ersetzt, Liste alt), gilt wieder die Schätzung aus der Zeichenposition
+  const wzDatei = join(audioOrdner, "wortzeiten.json");
+  const wz = existsSync(wzDatei) ? JSON.parse(readFileSync(wzDatei, "utf8")) : {};
   let t = 0;
   return manifest.szenen.map((s) => {
     const datei = audioDatei(audioOrdner, s.datei);
     if (!datei) throw new Error(`Audio fehlt: ${s.datei}.(${AUDIO_ENDUNGEN.join("|")}) in ${audioOrdner}`);
     const ad = +dauer(datei).toFixed(3);
     const z = { id: s.id, genre: s.genre, datei, start: +t.toFixed(3), dauer: +(ad + luft).toFixed(3), audioStart: vorlauf, audioDauer: ad };
+    const w = wz[s.datei];
+    if (w && Math.abs(w.dauer - ad) < 0.1) z.anker = w.anker;
+    else if (w) console.warn(`wortzeiten.json passt nicht zu ${s.datei} (${w.dauer} s statt ${ad} s) – Schätzung aus Textposition`);
     t += z.dauer;
     return z;
   });
@@ -129,14 +137,21 @@ export function stuecke(text) {
 export function untertitel(manifest, zp) {
   let vtt = "WEBVTT\n\n", n = 1;
   zp.forEach((z, i) => {
-    const teile = stuecke(manifest.szenen[i].sprechtext);
-    const summe = teile.reduce((a, t) => a + t.length, 0);
-    let t = z.start + z.audioStart;
-    for (const teil of teile) {
-      const d = (teil.length / summe) * z.audioDauer;
-      vtt += `${n++}\n${vttZeit(t)} --> ${vttZeit(t + d)}\n${umbrechen(teil)}\n\n`;
-      t += d;
-    }
+    // Grenzen zwischen den Stücken: Zeitpunkt des ersten Zeichens des nächsten Stücks (gemessen, falls
+    // Wortzeiten vorliegen, sonst geschätzt), 0,15 s vorgezogen, damit der Text kurz vor dem Wort steht
+    const text = manifest.szenen[i].sprechtext;
+    const teile = stuecke(text);
+    const zeit = zeitAnPosition(text.length, z.audioDauer, z.anker);
+    const a0 = z.start + z.audioStart, a1 = a0 + z.audioDauer;
+    let pos = 0;
+    const grenzen = [a0];
+    teile.forEach((teil, k) => {
+      pos = text.indexOf(teil, pos);
+      if (k) grenzen.push(Math.min(a1 - 0.5, Math.max(grenzen.at(-1) + 0.8, a0 + zeit(pos) - (z.anker ? 0.15 : 0))));
+      pos += teil.length;
+    });
+    grenzen.push(a1);
+    teile.forEach((teil, k) => { vtt += `${n++}\n${vttZeit(grenzen[k])} --> ${vttZeit(grenzen[k + 1])}\n${umbrechen(teil)}\n\n`; });
   });
   return vtt;
 }

@@ -6,17 +6,35 @@
 
 export const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-/** Ungefährer Zeitpunkt eines Wortes im Sprechtext: Anteil der Zeichenposition × Audiolänge.
- *  Gilt für Piper wie ElevenLabs gut genug, um Bildereignisse an das gesprochene Wort zu koppeln. */
-export function wortzeit(sprechtext, a0, ad) {
+/** Zeitpunkt (Sekunden ab Tonbeginn) einer Zeichenposition im Sprechtext.
+ *  Ohne Anker: Anteil der Zeichenposition × Audiolänge (Schätzung, bei lebhafter Stimme bis ~1,5 s daneben).
+ *  Mit Ankern aus wortzeiten.json ([[position, sekunden], …], gemessen mit wortzeiten.py): linear zwischen
+ *  den gemessenen Wörtern, also so genau wie die Spracherkennung. */
+export function zeitAnPosition(textLaenge, ad, anker) {
+  const p = [[0, 0], ...(anker || []).filter(([, t]) => t >= 0 && t <= ad), [textLaenge, ad]];
+  return (pos) => {
+    if (!anker?.length) return (pos / textLaenge) * ad;
+    for (let i = 1; i < p.length; i++) {
+      if (pos <= p[i][0]) {
+        const [x0, y0] = p[i - 1], [x1, y1] = p[i];
+        return x1 === x0 ? y0 : y0 + ((pos - x0) / (x1 - x0)) * (y1 - y0);
+      }
+    }
+    return ad;
+  };
+}
+
+/** Zeitpunkt eines Wortes im Sprechtext (für Bildereignisse, die am gesprochenen Wort hängen). */
+export function wortzeit(sprechtext, a0, ad, anker) {
   const text = sprechtext;
+  const zeit = zeitAnPosition(text.length, ad, anker);
   return (wort, n = 1, versatz = 0) => {
     let pos = -1;
     for (let i = 0; i < n; i++) {
       pos = text.indexOf(wort, pos + 1);
       if (pos < 0) throw new Error(`Wort „${wort}“ (${n}.) nicht im Sprechtext: ${text.slice(0, 40)}…`);
     }
-    return +(a0 + (pos / text.length) * ad + versatz).toFixed(3);
+    return +(a0 + zeit(pos) + versatz).toFixed(3);
   };
 }
 
@@ -39,7 +57,7 @@ export function baueKomposition({ manifest, zeitplan, szenen, basisCss = "", ext
     const ctx = {
       s, nr: i + 1, n: zeitplan.length, t0: z.start, d: z.dauer, a0: z.start + z.audioStart, ad: z.audioDauer,
       at: (f) => +(z.start + f * z.dauer).toFixed(3),
-      wt: wortzeit(s.sprechtext, z.start + z.audioStart, z.audioDauer),
+      wt: wortzeit(s.sprechtext, z.start + z.audioStart, z.audioDauer, z.anker),
       W, H, farben: manifest.farben, esc, ...extra,
     };
     const r = fn(ctx);

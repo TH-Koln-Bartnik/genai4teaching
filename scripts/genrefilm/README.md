@@ -11,6 +11,7 @@ Ein Genrefilm erklärt eine Kette von Ideen in neun kurzen Szenen, jede in einem
 | `scripts/genrefilm/komposition.mjs` | setzt die Szenen auf eine Zeitleiste (HyperFrames-Komposition, Genre-Karte je Szene) |
 | `scripts/genrefilm/pipeline.mjs` | Zeitplan aus Audiolängen, Tonspur (−16 LUFS, Übergangston), Mux (H.264 CRF 23 veryfast), Untertitel, Kapitelmarken, Standbilder, Poster, Player-Daten |
 | `scripts/genrefilm/bauen.mjs` | Hauptskript: `--film <id> --audio <ordner> [--stimme piper|elevenlabs] [--probe 10] [--ohne-render]` |
+| `scripts/genrefilm/wortzeiten.py` | misst mit faster-whisper, wann jedes Wort in den Takes fällt, und schreibt `<audio>/wortzeiten.json`; Bildereignisse (`ctx.wt`) und Untertitel folgen dann der echten Stimme statt einer Schätzung aus der Textposition (bei ElevenLabs bis 1,7 s Unterschied). Listet zugleich Abweichungen vom Sprechtext (Wortlautprüfung). Passt eine Liste nicht zur Länge des Takes, gilt wieder die Schätzung. |
 | `scripts/genrefilm/stimme-piper.py` | Platzhalterstimme je Szene nach `<film>/audio-platzhalter/` (nicht committen) |
 | `scripts/genrefilm/vorschau.mjs` | Bildschirmfotos ohne Rendern + Kontrastprüfung (WCAG AA) aller sichtbaren Texte |
 | `scripts/genrefilm/drehbuch.mjs` | `drehbuch.md` und Vertonungsblatt aus dem Manifest |
@@ -25,8 +26,9 @@ Ein Genrefilm erklärt eine Kette von Ideen in neun kurzen Szenen, jede in einem
 3. `node scripts/genrefilm/bauen.mjs --film <id> --audio _src/videos/s6-<name>/audio-platzhalter --probe 10`, dann ohne `--probe`.
 4. `node scripts/genrefilm/vorschau.mjs --film <id> --anteile 0.5,0.97` → Bilder und Kontrast in `build/`.
 5. `python3 scripts/genrefilm/druckraster.py --film <id> --name <kurzname>`; `node scripts/genrefilm/drehbuch.mjs --film <id> --vertonung <pfad>`.
-6. Im Player ist nichts zu ändern; der Build hängt den JSON-Block des neuen Films an.
+6. Echte Stimme: Takes nach `_src/videos/<film>/audio/`, `python3 scripts/genrefilm/wortzeiten.py --film <id> --audio _src/videos/<film>/audio` (Wortlaut prüfen), dann bauen mit `--stimme elevenlabs`.
+7. Im Player ist nichts zu ändern; der Build hängt den JSON-Block des neuen Films an.
 
 ## Werkzeuge
 
-HyperFrames 0.9.2 (npm, Apache-2.0), GSAP 3, gpt-tokenizer 4.1.0, ffmpeg ≥ 6, Piper (`pip install piper-tts`, Stimmen `de_DE-thorsten-high`, CC0), Playwright (Vorschau), Python: Pillow, qrcode, opencv-python-headless. Renderzeit im Container (2 Kerne, keine GPU): Faktor ≈ 3,8 (10 s Film in 38 s), S5 gesamt ≈ 10 min.
+HyperFrames 0.9.2 (npm, Apache-2.0), GSAP 3, gpt-tokenizer 4.1.0, ffmpeg ≥ 6, Piper (`pip install piper-tts`, Stimmen `de_DE-thorsten-high`, CC0), Playwright (Vorschau), Python: Pillow, qrcode, opencv-python-headless, faster-whisper (Wortzeiten, Modell „small“). Renderzeit im Container (2 Kerne, keine GPU): Faktor ≈ 3,8 (10 s Film in 38 s), S5 gesamt ≈ 10 min.
