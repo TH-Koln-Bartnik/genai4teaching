@@ -715,6 +715,44 @@ Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte
 ![Ein Sprachmodell rechnet mit Zahlen, nicht mit Wörtern: Der Satz wird in Tokens mit festen Nummern zerlegt (echte Werte, Tokenizer o200k_base), über die Aufmerksamkeit rückt „Bank“ durch „Baum“ in die Nachbarschaft von „Park“, und aus einer Wahrscheinlichkeitsverteilung wird das nächste Token gezogen (eigene Darstellung; Bedeutungskarte und Werte schematisch). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/vom-satz-zum-naechsten-wort.html> aufrufen.](images/druck/vom-satz-zum-naechsten-wort-qr.png){#fig-vom-satz-zum-wort width="100%" fig-pos="htbp"}
 :::
 
+Dieselbe Kette gibt es noch einmal als Film, diesmal in neun Genres: Ein Film noir zerlegt den Text in Tokens, eine Naturdokumentation beringt sie mit Nummern, eine Quizshow lässt das nächste Token ziehen, und ein Gerichtsdrama verhandelt, warum wahrscheinlich nicht wahr heißt.
+Der Film hält nach jedem Genre an und stellt Ihnen an drei Stellen eine Frage, bevor die nächste Szene sie auflöst; mit den Fragen dauert er etwa fünf Minuten.
+Die Idee stammt von Ethan Mollick, der ein Sprachmodell den Begriff Rekursion in einem Video mit neun Stilwechseln erklären ließ [@mollick2026rekursion].
+
+[]{#vid-naechstes-token-genres}
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und starten Sie dann den Film.
+
+```{=html}
+<iframe loading="lazy" id="genrefilm-kap02-token-genres" src="interactions/genrefilm-player.html?film=kap02-token-genres" width="100%" height="900px" frameborder="0" title="Film mit Haltepunkten: Das nächste Token in neun Genres"></iframe>
+<script>
+/* Der Player meldet seine Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "genrefilm-kap02-token-genres") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+```
+:::
+
+::: {.content-visible unless-format="html"}
+![Neun Genres, eine Kette: Tokens, Nummern, Zahlenlisten, Aufmerksamkeit, Wahrscheinlichkeiten, Auswahl, Anhängen. Standbilder aus einem Film von knapp drei Minuten mit Haltepunkten, erstellt mit Claude Code und HyperFrames 0.9.2 [@heygen2026hyperframes092]; Stimmen KI-erzeugt (ElevenLabs v3); Bedeutungskarte und Wahrscheinlichkeiten schematisch. Den Film gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel02.html#vid-naechstes-token-genres> aufrufen.](images/druck/video-token-genres.png){#fig-video-token-genres width="100%" fig-pos="htbp"}
+
+**Selbsttest zum Film.** Beantworten Sie die drei Fragen, bevor Sie in @sec-loesung-token-genres nachsehen.
+
+1. Welche Kette beschreibt, wie ein Sprachmodell das nächste Token erzeugt? (a) Text → Tokens → Zahlen → Wahrscheinlichkeiten → Auswahl → Anhängen; (b) Text → Wörterbuch → Bedeutung nachschlagen → Antwort; (c) Text → Wahrscheinlichkeiten → Tokens → Anhängen.
+2. Warum braucht „Lieferantenbewertung“ mehr Tokens als „supplier evaluation“? (a) Weil Deutsch für das Modell schwerer zu verstehen ist; (b) weil der Tokenizer sein Vokabular aus Texten gelernt hat, in denen Englisch überwiegt; (c) weil das Modell deutschen Text zuerst ins Englische übersetzt.
+3. Warum ist eine flüssige Antwort nicht automatisch eine richtige? (a) Weil das Modell absichtlich täuscht; (b) weil gewählt wird, was wahrscheinlich folgt, nicht, was geprüft wahr ist; (c) weil flüssige Antworten grundsätzlich falsch sind.
+:::
+
+::: {.callout-note title="So entstand dieser Film"}
+Der Bauauftrag passt in einen Satz: „Erzähle die Kette aus diesem Abschnitt in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre, mit den echten Tokenwerten aus der Animation, und baue daraus einen Film mit HyperFrames.“
+Claude Code schrieb Drehbuch, Szenen und eine Bauanleitung, die die Szenenlängen aus der Tonaufnahme ableitet und die Tokenwerte bei jedem Bau neu berechnet; das Rendern dauert rund zehn Minuten.
+Die Schwäche zeigte ein Prüfagent: Im ersten Drehbuch zog „Baum“ die „Bank“ selbst Richtung Park, obwohl die Aufmerksamkeit nur zurückblickt.
+Die Szene zeigt jetzt wie die Animation einen neuen Punkt „Bank im Satz“.
+:::
+
 **Was heißt hier GPT?** Die drei Buchstaben stehen für *Generative Pre-trained Transformer*.
 *Pre-trained* heißt, dass das Modell zuerst mit riesigen Textmengen **vortrainiert** wurde (**Pretraining**), und zwar *selbstüberwacht* (*self-supervised*): Die Aufgabe, das jeweils nächste Token vorherzusagen, steckt im Text selbst, niemand muss Lösungen beschriften.
 Danach bewerten Menschen verschiedene Antworten des Modells, und es lernt, die bevorzugten zu erzeugen (*Reinforcement Learning from Human Feedback*, **RLHF**); so wird aus einem Textfortsetzer ein Assistent.
