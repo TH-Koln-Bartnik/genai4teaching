@@ -67,6 +67,49 @@ Ein KI-Tutor verbessert das Lernen, sobald die Studierenden Zugang zu ihm erhalt
 
 In Workshops mit Lehrenden zeigt sich: Auch wer KI häufig nutzt, nutzt sie meist **unsystematisch**. Die Arbeit findet fast nur im **Chatfenster** statt, man übernimmt, was brauchbar wirkt, und beginnt beim nächsten Mal von vorn, ohne Vorlagen, eigene Quellensammlungen, Projekte oder Agenten. Ethan Mollick nennt diese Lücke den **Fähigkeitsüberhang** (*capability overhang*)[]{#sb-k1-faehigkeitsueberhang}: den Abstand zwischen dem, was die Modelle können, und dem, was fast alle mit ihnen tun [@mollick2026overhang]. Für die Lehre heißt das: Wer mehr erreichen will, muss nicht auf bessere Modelle warten, sondern die vorhandenen anders nutzen.
 
+### Höher oder tiefer: Wofür Menschen KI tatsächlich nutzen {#sec-spiel-ki-aufgaben}
+
+**Umfragen messen, was Menschen über ihre Nutzung sagen.** Der *Anthropic Economic Index* misst etwas anderes: Er ordnet Gespräche mit dem KI-Assistenten Claude automatisch Arbeitsaufgaben der US-Berufsdatenbank O\*NET zu und veröffentlicht, welcher Anteil der Gespräche eines Monats auf jede Aufgabe entfällt [@massenkoff2026cadences].[^aei-daten] Die folgende Übung stellt Ihre Vermutung gegen diese beobachtete Nutzung. Raten Sie zuerst und schauen Sie erst dann auf die Auflösung: Wer vorher rät, behält die richtige Antwort besser, auch wenn der eigene Tipp falsch war [@richland2009]. Bei jedem Paar setzen Sie ein, wie sicher Sie sind, und spielen gegen ein Sprachmodell, das dieselben Paare ohne Zugriff auf die Daten getippt hat. Die Übung dauert etwa sechs Minuten.
+
+[^aei-daten]: Datensatz `Anthropic/EconomicIndex` auf Hugging Face, Release vom 26. Juni 2026, Datei `aei_claude_ai_2026-06-26.csv`, Datenmonat Mai 2026, weltweit, Lizenz CC BY; abrufbar über [Hugging Face, Anthropic/EconomicIndex](https://huggingface.co/datasets/Anthropic/EconomicIndex). Auszug, Paarauswahl und Übersetzung: `scripts/aei-hoeher-tiefer.py` im Repositorium des Buchs.
+
+::: {.content-visible when-format="html"}
+<iframe loading="lazy" src="interactions/hoeher-tiefer-ki-aufgaben.html" width="100%" height="900px" frameborder="0" title="Leserübung: Höher oder tiefer – welche Arbeitsaufgabe kommt in Gesprächen mit Claude häufiger vor?"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+```{=latex}
+% Kasten nicht mit allein stehendem Titel am Seitenende beginnen (bedingter Seitenumbruch ohne Zusatzpaket)
+\par\vspace{0pt plus 14\baselineskip}\pagebreak[3]\vspace{0pt plus -14\baselineskip}
+```
+
+::: {.callout-tip title="Raten Sie zuerst"}
+Welche der beiden Aufgaben kam im Mai 2026 in Gesprächen mit Claude häufiger vor? Kreuzen Sie A oder B an und notieren Sie, wie sicher Sie sind (1 geraten, 2 eher sicher, 3 sicher).
+
+**Paar 1.** A: Informationen in elektronischen oder gedruckten Quellen suchen · B: Texte schreiben, etwa Geschichten, Artikel, Kommentare oder Newsletter\
+Ihr Tipp: $\square$ A $\quad$ $\square$ B $\qquad$ Sicherheit: $\square$ 1 $\quad$ $\square$ 2 $\quad$ $\square$ 3
+
+**Paar 2.** A: Unterrichtsmaterial entwickeln, etwa Stundenentwürfe, Handouts oder Prüfungen · B: Studentische Arbeiten, Aufgaben und Hausarbeiten bewerten und benoten\
+Ihr Tipp: $\square$ A $\quad$ $\square$ B $\qquad$ Sicherheit: $\square$ 1 $\quad$ $\square$ 2 $\quad$ $\square$ 3
+
+**Paar 3.** A: Juristische Dokumente entwerfen oder prüfen, etwa Verträge, Schriftsätze, Testamente · B: Menschen ermutigen, über Gefühle und ihre Lebenslage zu sprechen\
+Ihr Tipp: $\square$ A $\quad$ $\square$ B $\qquad$ Sicherheit: $\square$ 1 $\quad$ $\square$ 2 $\quad$ $\square$ 3
+
+**Wer fragt?** Wer hat die Gespräche zu „Studentische Arbeiten, Aufgaben und Hausarbeiten bewerten und benoten“ geführt?\
+$\square$ (a) Lehrende $\quad$ $\square$ (b) Studierende $\quad$ $\square$ (c) Das lässt sich aus den Daten nicht sagen.
+
+Das vollständige Spiel mit sieben Paaren und Modell-Mitspieler gibt es in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel01.html#sec-spiel-ki-aufgaben> aufrufen. Die Lösung steht in den Lösungshinweisen im Anhang (@sec-loesungshinweise).
+
+![](images/qr/qr-hoeher-tiefer.png){width="18%"}
+:::
+:::
+
+**Die Daten zeigen Gesprächsinhalte, nicht die Menschen dahinter.** Was als Bewerten und Benoten zählt, kann eine Professorin ebenso geschrieben haben wie ein Student, der seinen Entwurf vorab prüfen lässt; und als Momentaufnahme eines Monats und eines Anbieters sagt der Index nichts darüber, welche Jobs KI verändert.
+
+::: {.callout-note title="So entstand dieses Spiel"}
+Gebaut hat es ein Agent (Claude Opus 5.5) in einer Sitzung von gut zwei Stunden, auf einen Auftrag hin, der auf eine schriftliche Bauanleitung verwies: „Lies [die Übersicht] und [den Auftrag] und setze S1 vollständig um.“ Er lud den öffentlichen Datensatz, zog die Werte per Skript und ließ ein frisches Modell die Paare tippen. Die Schwäche: Die Überraschungspaare wählte derselbe Modelltyp aus, der danach als Mitspieler tippte; er lag nur bei 2 von 15 Paaren richtig. Eine Prompt-Vorlage für ein solches Spiel in Ihrem Fach steht am Ende der Übung.
+:::
+
 ## Was geht schief? {#sec-risiken}
 
 **Die Metapher mit dem E-Bike trägt auch die Nebenwirkung:** Wer nur noch mit Motor fährt, verliert Muskeln. Das zeigt sich zuerst beim Üben. In einem Feldexperiment mit knapp tausend Oberstufenschülern verbesserte ein Tutor im Stil des normalen ChatGPT die Übungsleistung um 48 Prozent; als der Zugang in der Prüfung fehlte, lagen dieselben Schüler 17 Prozent *unter* der Kontrollgruppe, die nie Zugang hatte [@bastani2025]. Die Übungen waren gelöst, gelernt war weniger als ohne Hilfe.
