@@ -155,6 +155,8 @@ In Tresorit liegt seit 10:00 `AUFTRAG-s2n-podcast-gemini-notebook-2026-11-02.md`
 
 ## G2b – Frage an Roman (Multiple Choice)
 
+**Entschieden (Roman, 02.11.2026, MC): (a) freigegeben, so vertonen.** Nächster Schritt liegt bei Roman: Vertonung nach `VERTONUNG-s2-elevenlabs-2026-11-02.md`, danach Sitzung B in einer frischen Sitzung (Startprompt im Vertonungsblatt, Abschnitt 3).
+
 Drehbuch: `_src/audio/s2-podcast/drehbuch-erstfassung.md` (Erstfassung) bzw. Spalte `text` in `manifest.json` (Hörfassung mit drei Korrekturen).
 - (a) Freigeben, so vertonen.
 - (b) Einzelne Stellen ändern (welche?).
