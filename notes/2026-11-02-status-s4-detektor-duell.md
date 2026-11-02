@@ -114,4 +114,4 @@ Lies claude/PROMPTS-naechste-schritte-2026-11-02.md (Gemeinsame Regeln) und clau
 - Selbst gebaute Detektoren lernen Themenwörter als „KI-Merkmale“, wenn Trainingstexte von Mensch und Maschine sich zufällig im Wortschatz unterscheiden.
 - Fehlalarme eines Detektors verschieben den Schaden von der Prüfungsleistung auf das Vertrauensverhältnis zwischen Prüfenden und Geprüften.
 
-Ablage geprüft: wird nach der Prüfung ergänzt
+Ablage geprüft: Projekt ✓ (claude/mollick-formate/STATUS-s4-detektor-duell-2026-11-02.md) / Tresorit ✓ (Projektnotizen-Claude/mollick-formate/, Statusnotiz + 22 Dateien in s4-detektor-duell/) / Repo ✓ (Branch mollick-s4-detektor gepusht, notes/2026-11-02-status-s4-detektor-duell.md; gemergt: nein, wartet auf G3)
