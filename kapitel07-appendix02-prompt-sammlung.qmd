@@ -93,17 +93,17 @@ Den Auftrags-Interviewer, der aus einer vagen Idee einen Arbeitsauftrag mit Ziel
 ::::: {.content-visible when-format="html"}
 ### Hiwi: Auftrags-Interviewer {#sec-prompt-strukturierer}
 
-**Funktion:** Macht aus einer vagen Idee einen klaren Arbeitsauftrag an ein Sprachmodell: fragt nacheinander nach Ziel, Wozu, Material und Abnahmekriterien und gibt einen kopierbaren Prompt aus.
+**Funktion:** Lässt das Modell aus einer vagen Idee einen klaren Arbeitsauftrag schreiben, während die Lehrperson steuert: Interview zu Ziel, Wozu, Material und Abnahmekriterien, Freigabe der Zusammenfassung, markierte Annahmen, kopierbarer Prompt. Für Tutoren und Simulationen dient der Verhaltens-Interviewer (@sec-prompt-systemprompt).
 
-**Didaktische Elemente:** Scaffolding; Klärungsfragen mit Antwortoptionen; umgekehrte Befragung (*Flipped Interaction*: das Modell fragt, die Lehrperson antwortet) [@white2023].
+**Didaktische Elemente:** Arbeitsteilung wie Lastenheft und Pflichtenheft (die Lehrperson bestimmt das Was, das Modell formuliert); umgekehrte Befragung (*Flipped Interaction*: das Modell fragt, die Lehrperson antwortet) [@white2023]; Kontrollpunkte vor und nach dem Schreiben.
 
-**Muster:** Arbeitsauftrag mit Interview (Ziel, Wozu, Material, Abnahme; siehe Vorbemerkung).
+**Muster:** Arbeitsauftrag mit Interview und Freigabe (Ziel, Wozu, Material, Abnahme; siehe Vorbemerkung).
 
 **Quelle:** Selbst erstellt, 11/2026; ersetzt den früheren Strukturierten Prompt Designer, der Prompt-Ideen in die Schemata RTF und CREATE überführte (@pmi2024).
 
 ::: {.callout-note collapse="true" title="Hiwi: Auftrags-Interviewer"}
 ``` markdown
-Ziel: Ein Prompt, mit dem ich in einem neuen Chat eine Aufgabe aus Lehre oder Forschung an ein Sprachmodell gebe.
+Ziel: Ein Prompt, mit dem ich in einem neuen Chat eine Aufgabe aus Lehre oder Forschung an ein Sprachmodell gebe. Was verlangt wird, entscheide ich; die Formulierung schlägst du vor.
 
 Wozu: Ich habe eine Idee, aber noch keinen klaren Auftrag. Ein klarer Auftrag spart Korrekturschleifen.
 
@@ -114,12 +114,16 @@ Zuerst: Frag mich nacheinander,
 4. woran ich ein gutes Ergebnis erkenne (Abnahme).
 Eine Frage pro Nachricht, jeweils mit plausiblen Antwortoptionen (a, b, c) und der Möglichkeit, Eigenes zu ergänzen.
 
-Abnahme:
-- Prompt mit den Überschriften Ziel, Wozu, Material, Abnahme; die Abnahmekriterien als prüfbare Liste
-- keine Rollen-Floskeln, keine Großbuchstaben, keine Aufforderung zum schrittweisen Denken
-- ist mein Ziel noch unklar: ein kurzes Interview am Anfang des Prompts
-- als Codeblock zum Kopieren
+Freigabe: Fasse meine Vorgaben in fünf bis acht Zeilen zusammen und warte, bis ich sie freigebe.
+
+Abnahme für den Prompt:
+- Überschriften Ziel, Wozu, Material, Abnahme; die Abnahmekriterien als prüfbare Liste
+- Gründe statt Befehle; keine Rollen-Floskeln, keine Großbuchstaben, keine Aufforderung zum schrittweisen Denken
+- höchstens 150 Wörter, wenn ich nichts anderes sage
+- ist mein Ziel noch offen: ein kurzes Interview am Anfang des Prompts
+- alles, was du ergänzt hast, ohne dass ich es gesagt habe, ist mit [Annahme] markiert; ich übernehme oder streiche
 - danach eine Frage an mich: Ist das Ergebnis lang oder teuer zu wiederholen? Dann ergänze eine Zwischenabnahme („Zeig mir zuerst die Gliederung und warte“).
+- zum Schluss die bereinigte Fassung als Codeblock zum Kopieren
 ```
 :::
 
@@ -194,37 +198,47 @@ POTATO — 1 Blinde Flecken, die Du übersiehst
 
 :::::
 
-### Hiwi: System-Prompt für typische Anforderungen erstellen {#sec-prompt-systemprompt}
+### Hiwi: System-Prompt für Tutor, Simulation oder Assistent schreiben lassen {#sec-prompt-systemprompt}
 
-**Funktion**: Erstellt allgemeine Instruktionen, die das Sprachmodell an die User-Bedürfnisse anpasst.
-Es entsteht ein *angepasster* akademischer Hiwi für den eigenen Lehr- und Forschungsbereich.
-Dieser System-Prompt kann im Sprachmodell hinterlegt werden ("Personalisierung" bei ChatGPT), oder als Textdatei punktuell beigefügt werden.
+**Funktion**: Lässt das Modell einen System-Prompt für einen Tutor, eine Simulation oder einen persönlichen Assistenten schreiben, während die Lehrperson steuert: Interview, Freigabe der Zusammenfassung, markierte Annahmen, Testnachrichten und Kaltlesung. Den fertigen Prompt hinterlegt man als Personalisierung (bei ChatGPT), als Projekt-Anweisung oder als eigenen Assistenten. Für Arbeitsaufträge dient der Auftrags-Interviewer (@sec-prompt-strukturierer).
 
-**Didaktische Elemente**: Scaffolding (Lerngerüst: Profil als Vorschlag), Klärungsfragen (eine pro Nachricht mit Antwortoptionen), Zwischenabnahme vor dem Schreiben, Testfragen zur Prüfung.
+**Didaktische Elemente**: Arbeitsteilung wie Lastenheft und Pflichtenheft (die Lehrperson bestimmt das Was, das Modell formuliert); Klärungsfragen mit Antwortoptionen; Kontrollpunkte vor dem Einsatz: Freigabe, markierte Annahmen, Kaltlesung in frischer Sitzung, Testen mit unfreundlichen Nachrichten (@sec-d-ue6), kleinste Änderung bei Fehlern.
 
-**Muster:** Arbeitsauftrag mit Interview und Zwischenabnahme (Ziel, Wozu, Material, Abnahme; siehe Vorbemerkung).
+**Muster:** Arbeitsauftrag mit Interview und Freigabe; er erzeugt eine Verhaltensbeschreibung (siehe Vorbemerkung).
 
-**Quelle**: Selbst erstellt; strukturiert nach dokumentierten Best Practices für System Prompts von OpenAI, Anthropic und Google [@kotha2025; @google2025; @anthropic2025c].
-Neu gefasst 11/2026 nach den aktuellen Anleitungen der Anbieter (@sec-access).
+**Quelle**: Selbst erstellt; ursprünglich strukturiert nach dokumentierten Best Practices für System Prompts von OpenAI, Anthropic und Google [@kotha2025; @google2025; @anthropic2025c]. Neu gefasst 11/2026 nach den aktuellen Anleitungen der Anbieter (@sec-access).
 
-::: {.callout-note collapse="true" title="Hiwi: Allgemeine Anweisungen im System-Prompt"}
+::: {.callout-note collapse="true" title="Hiwi: Verhaltens-Interviewer für System-Prompts"}
 ``` markdown
-Ziel: Ein System-Prompt (dauerhafte Anweisung, die das Modell vor jedem Gespräch liest), der ein Sprachmodell zu meinem Assistenten für Lehre und Forschung macht. Ich hinterlege ihn als Personalisierung, Projekt-Anweisung oder eigenen Assistenten.
+Ziel: Ein System-Prompt (dauerhafte Anweisung, die das Modell vor jedem Gespräch liest) für einen Tutor, eine Simulation oder meinen persönlichen Assistenten. Was der Bot leisten soll, für wen, was er nie tut und woran ich Erfolg erkenne, entscheide ich; die Formulierung schlägst du vor.
 
-Wozu: Ich will nicht in jedem Chat erklären, wer ich bin, was ich unterrichte und wie ich Antworten haben möchte.
+Wozu: Der Bot arbeitet oft, ohne dass ich dabei bin. Der Prompt muss deshalb auch Fälle regeln, an die ich nicht gedacht habe.
 
-Zuerst: Bitte mich um einen Profiltext (Lebenslauf oder Webseite als kopierten Text; Namen und Kontaktdaten darf ich entfernen). Fasse ihn in fünf Zeilen zusammen: Fach, Lehrformate, Berufserfahrung, Forschung, Hochschultyp. Frag dann nacheinander nach Plattform, Nutzerkreis, drei bis fünf Kernaufgaben, Ton und Grenzen; was das Profil schon beantwortet, lass nur bestätigen. Eine Frage pro Nachricht, jeweils mit plausiblen Antwortoptionen (a, b, c) und der Möglichkeit, Eigenes zu ergänzen.
+Zuerst: Frag mich nacheinander nach
+1. Art des Bots und Plattform; optional einem Profiltext von mir (Lebenslauf oder Webseite als kopierter Text),
+2. Zweck, Lernziel und Nutzerkreis,
+3. Ablauf eines Gesprächs,
+4. Regeln und dem, was der Bot nie tun darf,
+5. Grenzfällen (bei Tutoren etwa: Lösung verlangen, Thema wechseln, abbrechen),
+6. Ende und Übergabe,
+7. woran ich Erfolg erkenne.
+Eine Frage pro Nachricht, jeweils mit plausiblen Antwortoptionen (a, b, c) und der Möglichkeit, Eigenes zu ergänzen.
 
-Zwischenabnahme: Zeig mir vor dem Schreiben einen Entwurf in Stichworten (Aufgaben, Ton, Grenzen) und warte auf meine Freigabe.
+Freigabe: Fasse meine Vorgaben in fünf bis acht Zeilen zusammen und warte, bis ich sie freigebe.
 
 Abnahme für den System-Prompt:
-- schlichte Überschriften: Wer ich bin, Wobei du hilfst, Wie du antwortest, Grenzen
+- Überschriften Zweck, Ablauf, Regeln, Grenzfälle, Ende; in Simulationen zusätzlich die Rolle
 - jede Regel mit einem Grund in einem Halbsatz
-- sagt, was zu tun ist, statt Verbote zu häufen
-- Umgang mit Unsicherheit: nachfragen, Annahmen kennzeichnen, „weiß ich nicht“ sagen, keine erfundenen Quellen
-- keine Rollen-Floskeln, keine Großbuchstaben
-- passt ins Zeichenlimit der Plattform; kennst du es nicht, frag mich
-- als Codeblock zum Kopieren; darunter drei Testfragen, darunter ein Grenzfall, mit denen ich prüfe, ob er wirkt
+- Umgang mit Unsicherheit: nachfragen, Annahmen kennzeichnen, keine erfundenen Quellen
+- keine Charakter-Adjektive, keine Großbuchstaben, keine Aufforderung zum schrittweisen Denken
+- höchstens 350 Wörter und innerhalb des Zeichenlimits der Plattform; kennst du es nicht, frag mich
+- alles, was du ergänzt hast, ohne dass ich es gesagt habe, ist mit [Annahme] markiert; ich übernehme oder streiche
+- zum Schluss die bereinigte Fassung als Codeblock, mit dem Datum als Versionsangabe
+
+Danach:
+- acht Testnachrichten von Studierenden oder Nutzern für eine frische Sitzung, davon mindestens drei unfreundliche (Lösung verlangen, Thema wechseln, falsche Antwort verteidigen), je mit dem erwarteten Verhalten
+- eine Prüfliste für die Kaltlesung: Eine frische Sitzung, die nur den Prompt kennt, beschreibt, wie sich der Bot verhalten wird; welche Punkte muss diese Beschreibung enthalten?
+- Melde ich später ein Fehlverhalten mit erwünschtem und tatsächlichem Verhalten, schlag die kleinste Änderung vor, die genügt.
 ```
 :::
 
