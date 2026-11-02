@@ -61,6 +61,7 @@ G3 (Roman, MC, 02.11.2026): **mergen**, in dieser Sitzung. Fast-Forward `prompti
 - Download-PDF und EPUB neu erzeugen (siehe oben).
 - Nach dem Merge von B: `python3 -I scripts/streich-test-daten.py notes/streich-test/urteile.md --neu main`, Kennzeichnung „Entwurf“ fällt weg; Wortzahl prüfen.
 - S1 (`mollick-s1-hoeher-tiefer`) fügt `richland2009` ebenfalls an `references.json` an; beim Merge von S1 das Duplikat entfernen (`node --test tests/streich-test.test.mjs` prüft das).
+- P6 (`prompting-film-stuetzraeder`, nicht gemergt) fügt `kojima2022` ebenfalls an und führt dieselbe OpenAI-Seite als `openaireasoning`, hier `openai2026reasoning`. Beim Merge von P6: Duplikat `kojima2022` entfernen und einen der beiden OpenAI-Schlüssel buchweit ersetzen.
 
 ## Startauftrag für die nächste Sitzung (nach dem Merge von Anhang B)
 
