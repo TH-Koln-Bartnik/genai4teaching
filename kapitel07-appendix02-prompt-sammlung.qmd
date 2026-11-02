@@ -90,7 +90,7 @@ Abnahme:
 
 ### Hiwi: Auftrags-Interviewer {#sec-prompt-strukturierer}
 
-**Funktion:** Lässt das Modell aus einer vagen Idee einen klaren Arbeitsauftrag schreiben, während die Lehrperson steuert: Interview zu Ziel, Wozu, Material und Abnahmekriterien, Freigabe der Zusammenfassung, markierte Annahmen, kopierbarer Prompt. Für Tutoren und Simulationen dient der Verhaltens-Interviewer (@sec-prompt-systemprompt).
+**Funktion:** Lässt das Modell aus einer vagen Idee einen klaren Arbeitsauftrag schreiben, während die Lehrperson steuert: Interview zu Ziel, Wozu, Material und Abnahmekriterien, Freigabe der Zusammenfassung, markierte Annahmen, kopierbarer Prompt. Dauerhafte Anweisungen für den eigenen Assistenten entstehen mit @sec-prompt-systemprompt.
 
 **Didaktische Elemente:** Arbeitsteilung wie Lastenheft und Pflichtenheft (die Lehrperson bestimmt das Was, das Modell formuliert); umgekehrte Befragung (*Flipped Interaction*: das Modell fragt, die Lehrperson antwortet) [@white2023]; Kontrollpunkte vor und nach dem Schreiben.
 
@@ -194,48 +194,40 @@ POTATO — 1 Blinde Flecken, die Du übersiehst
 
 :::::
 
-### Hiwi: System-Prompt für Tutor, Simulation oder Assistent schreiben lassen {#sec-prompt-systemprompt}
+### Hiwi: System-Prompt für typische Anforderungen erstellen {#sec-prompt-systemprompt}
 
-**Funktion**: Lässt das Modell einen System-Prompt für einen Tutor, eine Simulation oder einen persönlichen Assistenten schreiben, während die Lehrperson steuert: Interview, Freigabe der Zusammenfassung, markierte Annahmen, Testnachrichten und Kaltlesung. Den fertigen Prompt hinterlegt man als Personalisierung (bei ChatGPT), als Projekt-Anweisung oder als eigenen Assistenten. Für Arbeitsaufträge dient der Auftrags-Interviewer (@sec-prompt-strukturierer).
+**Funktion**: Erstellt im Interview einen System-Prompt, der das Sprachmodell an die eigene Lehre und Forschung anpasst; es entsteht ein *angepasster* akademischer Hiwi. Die Lehrperson bestimmt die Vorgaben, das Modell formuliert; Freigabe, markierte Annahmen, Testanfragen und Kaltlesung halten die Steuerung bei ihr. Der fertige Prompt wird als Personalisierung (bei ChatGPT) oder als Anweisung eines Projekts hinterlegt.
 
-**Didaktische Elemente**: Arbeitsteilung wie Lastenheft und Pflichtenheft (die Lehrperson bestimmt das Was, das Modell formuliert); Klärungsfragen mit Antwortoptionen; Kontrollpunkte vor dem Einsatz: Freigabe, markierte Annahmen, Kaltlesung in frischer Sitzung, Testen mit unfreundlichen Nachrichten (@sec-d-ue6), kleinste Änderung bei Fehlern.
+**Didaktische Elemente**: Scaffolding (Profilkarte als Vorschlag); Klärungsfragen mit Antwortoptionen; Kontrollpunkte vor dem Einsatz: Freigabe der Vorgaben, markierte Annahmen, Kaltlesung in frischer Sitzung, Testanfragen, kleinste Änderung bei Fehlern.
 
-**Muster:** Arbeitsauftrag mit Interview und Freigabe; er erzeugt eine Verhaltensbeschreibung (siehe Vorbemerkung).
+**Muster:** Arbeitsauftrag mit Interview und Freigabe; er erzeugt die dauerhaften Anweisungen für den eigenen Assistenten (siehe Vorbemerkung).
 
-**Modellklasse:** Großes Modell mit hoher Denkstufe. Kaltlesung und Testnachrichten laufen in einer frischen Sitzung des Modells, auf dem der Bot später arbeitet, denn derselbe Prompt wirkt in jedem Modell anders.
+**Modellklasse:** Großes Modell mit hoher Denkstufe. Kaltlesung und Testanfragen laufen in einer frischen Sitzung des Modells, mit dem Sie später arbeiten, denn derselbe Prompt wirkt in jedem Modell anders.
 
 **Quelle**: Selbst erstellt; ursprünglich strukturiert nach dokumentierten Best Practices für System Prompts von OpenAI, Anthropic und Google [@kotha2025; @google2025; @anthropic2025c]. Neu gefasst 11/2026 nach den aktuellen Anleitungen der Anbieter (@sec-access).
 
-::: {.callout-note collapse="true" title="Hiwi: Verhaltens-Interviewer für System-Prompts"}
+::: {.callout-note collapse="true" title="Hiwi: Allgemeine Anweisungen im System-Prompt"}
 ``` markdown
-Ziel: Ein System-Prompt (dauerhafte Anweisung, die das Modell vor jedem Gespräch liest) für einen Tutor, eine Simulation oder meinen persönlichen Assistenten. Was der Bot leisten soll, für wen, was er nie tut und woran ich Erfolg erkenne, entscheide ich; die Formulierung schlägst du vor.
+Ziel: Ein System-Prompt (dauerhafte Anweisung, die das Modell vor jedem Gespräch liest), der ein Sprachmodell zu meinem Assistenten für Lehre und Forschung macht. Ich hinterlege ihn als Personalisierung oder als Anweisung eines Projekts. Was der Assistent für mich tun soll, wie er antwortet und was er nie tut, entscheide ich; die Formulierung schlägst du vor.
 
-Wozu: Der Bot arbeitet oft, ohne dass ich dabei bin. Der Prompt muss deshalb auch Fälle regeln, an die ich nicht gedacht habe.
+Wozu: Ich will nicht in jedem Chat erklären, wer ich bin, was ich unterrichte und wie ich Antworten haben möchte.
 
-Zuerst: Frag mich nacheinander nach
-1. Art des Bots und Plattform; optional einem Profiltext von mir (Lebenslauf oder Webseite als kopierter Text),
-2. Zweck, Lernziel und Nutzerkreis,
-3. Ablauf eines Gesprächs,
-4. Regeln und dem, was der Bot nie tun darf,
-5. Grenzfällen (bei Tutoren etwa: Lösung verlangen, Thema wechseln, abbrechen),
-6. Ende und Übergabe,
-7. woran ich Erfolg erkenne.
-Eine Frage pro Nachricht, jeweils mit plausiblen Antwortoptionen (a, b, c) und der Möglichkeit, Eigenes zu ergänzen.
+Zuerst: Bitte mich um einen Profiltext (Lebenslauf oder Webseite als kopierten Text; Namen und Kontaktdaten darf ich entfernen). Fasse ihn als Profilkarte in fünf Zeilen zusammen: Fach, Lehrformate, Berufserfahrung, Forschung, Hochschultyp. Frag dann nacheinander nach Plattform, drei bis fünf typischen Aufgaben, Ton und Detailgrad, Grenzen (etwa Datenschutz, Prüfungsfairness, Quellen) und woran ich einen guten Assistenten erkenne; was die Profilkarte schon beantwortet, lass nur bestätigen. Eine Frage pro Nachricht, jeweils mit plausiblen Antwortoptionen (a, b, c) und der Möglichkeit, Eigenes zu ergänzen.
 
 Freigabe: Fasse meine Vorgaben in fünf bis acht Zeilen zusammen und warte, bis ich sie freigebe.
 
 Abnahme für den System-Prompt:
-- Überschriften Zweck, Ablauf, Regeln, Grenzfälle, Ende; in Simulationen zusätzlich die Rolle
+- Überschriften: Wer ich bin, Wobei du hilfst, Wie du antwortest, Grenzen
 - jede Regel mit einem Grund in einem Halbsatz
-- Umgang mit Unsicherheit: nachfragen, Annahmen kennzeichnen, keine erfundenen Quellen
-- keine Charakter-Adjektive, keine Großbuchstaben, keine Aufforderung zum schrittweisen Denken
-- höchstens 350 Wörter und innerhalb des Zeichenlimits der Plattform; kennst du es nicht, frag mich
+- Umgang mit Unsicherheit: nachfragen, Annahmen kennzeichnen, „weiß ich nicht“ sagen, keine erfundenen Quellen
+- keine Rollen-Floskeln, keine Großbuchstaben, keine Aufforderung zum schrittweisen Denken
+- passt ins Zeichenlimit der Plattform, bei der ChatGPT-Personalisierung in zwei Feldern; kennst du das Limit nicht, frag mich
 - alles, was du ergänzt hast, ohne dass ich es gesagt habe, ist mit [Annahme] markiert; ich übernehme oder streiche
 - zum Schluss die bereinigte Fassung als Codeblock, mit dem Datum als Versionsangabe
 
 Danach:
-- acht Testnachrichten von Studierenden oder Nutzern für eine frische Sitzung, davon mindestens drei unfreundliche (Lösung verlangen, Thema wechseln, falsche Antwort verteidigen), je mit dem erwarteten Verhalten
-- eine Prüfliste für die Kaltlesung: Eine frische Sitzung, die nur den Prompt kennt, beschreibt, wie sich der Bot verhalten wird; welche Punkte muss diese Beschreibung enthalten?
+- sechs bis acht Testanfragen aus meinem Lehralltag für eine frische Sitzung, darunter eine unklare Anfrage, eine Bitte um Quellen und eine mit personenbezogenen Daten, je mit dem erwarteten Verhalten
+- eine Prüfliste für die Kaltlesung: Eine frische Sitzung, die nur den Prompt kennt, beschreibt, wie sich der Assistent verhalten wird; welche Punkte muss diese Beschreibung enthalten?
 - Melde ich später ein Fehlverhalten mit erwünschtem und tatsächlichem Verhalten, schlag die kleinste Änderung vor, die genügt.
 ```
 :::
