@@ -408,6 +408,8 @@ Seit der agentischen Wende Ende 2025, dem „Agentic Turn“ [@willison2025; @st
 
 **Welches Modell für welche Aufgabe?** Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel. Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.
 
+**Offene Modelle auf dem eigenen Laptop.** Ein lokales Modell ist die eigene Küche statt des Lieferdienstes: Nichts verlässt das Haus, dafür sind die Töpfe kleiner. Programme wie LM Studio laden ein offenes Modell einmal herunter und führen es danach vollständig offline aus; die Topfgröße bestimmt der Arbeitsspeicher. Kleine Modelle fassen gut zusammen, formulieren um und sortieren, rechnen in mehreren Schritten aber unzuverlässig und kennen keine aktuellen Fakten. Sie gehören deshalb an Aufgaben, bei denen die Daten das Gerät nicht verlassen sollen und eine Stichprobe das Ergebnis prüft. Ein Beispiel sind Codenamen für anonyme Abgaben: Studierende reichen Tests unter einem Namen wie „Deming1900“ ein, KI-gestützte Rückmeldungen sehen nie einen echten Namen, und die Zuordnung zur Person steht allein in der Tabelle der Lehrenden.
+
 ::: {.content-visible when-format="html"}
 Der folgende Entscheidungsbaum führt Frage für Frage zu Modellklasse und Preisstufe.
 
@@ -598,6 +600,21 @@ Prompts aus dem Vorjahr verdienen deshalb alle paar Monate eine Durchsicht: Für
 
 **Didaktische Prompts sollen den Studierenden das Leben gezielt schwer machen.** Für die Lehre ergänzen wir Prompts um didaktische Hürden, die etwa verhindern, dass sofort eine Lösung erscheint, denn eigenes Nachdenken in Fragen und sokratischem Dialog hilft, das Gelernte zu behalten [@roediger2012].
 Für einen **Arbeitsauftrag**, der ein Werkstück wie ein Quiz bestellt, gilt alles oben Gesagte; in einer **Verhaltensbeschreibung** für Tutor oder Simulation ist das Gespräch selbst das Produkt, und Ablauf, Rolle und Hürden gehören zur Spezifikation.
+Welche Hürden das sind, ordnet @tbl-einschraenkungen nach ihrem Zweck. Aktives Lernen verlangt, dass die KI Wegweiser bleibt statt Orakel; eine realistische Simulation verlangt, dass sie in der Rolle bleibt und Informationen nur so herausgibt, wie es das Gegenüber täte; eine begrenzte kognitive Belastung (*cognitive load*) verlangt, dass sie eine Frage nach der anderen stellt. Die Lernforschung nennt solche Hürden erwünschte Schwierigkeiten (*desirable difficulties*) [@bjork2011; @sweller2011]. Jede Regel der Tabelle lässt sich abhaken, und genau solche Regeln halten Modelle ein (@sec-agenten-praxis).
+
+::: {.tabelle-scroll}
+| Einschränkung | Zweck | Formulierung im Prompt |
+|:--|:--|:--|
+| Keine fertige Lösung | Aktives Lernen: Lernende erklären ihre Überlegung und korrigieren sich selbst | „Keine fertigen Lösungen.“ „Antworten möglichst mit einer Frage beenden.“ |
+| Kein Monolog | Aktives Lernen: Das Gespräch bleibt dialogisch, niemand steigt aus | „Nicht fortfahren ohne Antwort.“ |
+| In der Rolle bleiben | Realistische Simulation: Die Situation trägt bis zum Ende | „Bleiben Sie während des Rollenspiels strikt in Ihrer zugewiesenen Rolle.“ |
+| Informationen dosieren | Realistische Simulation: Lernende üben gezieltes Nachfragen statt eine Datenflut zu lesen | „Sie liefern Informationen nur, soweit sie für den Patienten plausibel sind.“ |
+| Nur aus der Quelle | Sachliche Grundlage: keine erfundenen Inhalte, die Übung bleibt beim Text | „Keine erfundenen Zitate.“ |
+| Eine Frage pro Zug | Kognitive Belastung begrenzen: ein Schritt nach dem anderen | „Stellen Sie nicht mehr als eine Frage auf einmal.“ |
+
+: Sechs gezielte Einschränkungen in didaktischen Prompts. Eigene Darstellung; die Formulierungen stammen aus den Prompts in Anhang A {#tbl-einschraenkungen tbl-colwidths="[22,40,38]"}
+:::
+
 Wie das geht, zeigen @sec-didaktik und @sec-szenarien; viele konkrete Prompts und Aufgabenstellungen sammelt Anhang A (@sec-prompts).
 
 :::: {.callout-note title="Anwendungsbeispiel: Ein Prompt, der in der Vorführung funktioniert, scheitert im Gespräch"}
@@ -755,6 +772,24 @@ Der **Werkzeuganschluss** über MCP (@sec-harness) ist für Lehrende die Stelle,
 
 Eigene Quellen sind der Sonderfall, der in der Lehre am häufigsten gebraucht wird: als Projekt oder Notebook im Chat-Interface mit Skript, Übungsblättern und Musterlösungen oder als eigener Tutor, der über RAG auf einer Dokumentablage sitzt [@lewis2020].
 Ob die KI aus den Quellen antwortet oder doch aus dem Training, prüft man mit Fragen, deren Antwort in den Quellen bewusst anders lautet als im Allgemeinwissen.
+
+Skill, Werkzeuganschluss und eigene Quellen sind drei von fünf Bausteinen, mit denen wir der KI dauerhaft beibringen, was sie über einen Kurs wissen soll. @tbl-bausteine ordnet sie danach, was das Modell wann liest, denn diese Spalte entscheidet, wohin eine Regel gehört.
+
+::: {.tabelle-scroll}
+| Baustein | Bild für die Lehre | Was das Modell wann liest |
+|:--|:--|:--|
+| System-Prompt (Personalisierung, benutzerdefinierte Anweisungen) | Einarbeitungsmappe einer neuen Hilfskraft | immer, vor jedem Gespräch, vollständig |
+| Projekt | Ordner mit Notizzettel obendrauf | die Anleitung jede Runde vollständig, die Dateien nur per Suche und gestückelt |
+| Skill | Kapitel im Handbuch | ständig nur Name und Kurzbeschreibung, den Rest, wenn die Anfrage passt |
+| Verbindung (App, Konnektor, MCP-Server) | Kabel mit Stecker zu einem fremden Gerät | wenn eine Aufgabe den Dienst braucht |
+| Plugin | Werkzeugkoffer | löst selbst nichts aus, bündelt Skills und Verbindungen |
+
+: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das Modell davon wann liest. Eigene Darstellung {#tbl-bausteine tbl-colwidths="[30,30,40]"}
+:::
+
+Daraus folgt eine Merkregel: Was immer gelten muss, steht im System-Prompt oder in der Projektanleitung; Beispiele und Material liegen als Datei daneben; ein wiederkehrender Ablauf mit eigenen Regeln wird zum Skill. Wer in seinem Tarif keine Skills hat, baut den Skill als Projekt nach.
+
+Ob ein Modell diese Regeln befolgt, hängt an ihrer Form. @nepal2026faithful prüften einen Reflexions-Bot Regel für Regel gegen seinen eigenen System-Prompt: Regeln, deren Einhaltung sich leicht feststellen ließ, befolgte er zuverlässig, vage Haltungsregeln nicht; die Studie ist ein Preprint ohne abgeschlossene Begutachtung. „Höchstens drei Sätze“ hält ein Modell ein, „sei ermutigend“ dehnt es wie eine neue Hilfskraft am ersten Tag. Ein Folien-Skill verlangt deshalb nicht „gute Folien“, sondern Regeln zum Abhaken: ein ganzer Satz als Titel, ein Bild, das ihn belegt, höchstens fünfzehn Wörter im Folienkörper und eine vollständige Quelle. Diese Folienform ist zugleich die besser belegte. Ingenieurstudierende, die denselben Vortrag mit Satztitel und Bildbeleg statt mit Themenüberschrift und Aufzählung sahen, verstanden mehr und hatten weniger Fehlvorstellungen [@garner2013]; Text, den die Vortragende zugleich spricht, unterdrückt dagegen die Aufnahme des Gesprochenen [@wecker2012].
 
 Die Konsequenz der Delegation ist weniger technisch als organisatorisch.
 Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält [@parasuraman2000].
