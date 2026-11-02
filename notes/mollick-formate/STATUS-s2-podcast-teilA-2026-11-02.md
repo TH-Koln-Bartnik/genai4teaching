@@ -161,4 +161,4 @@ Drehbuch: `_src/audio/s2-podcast/drehbuch-erstfassung.md` (Erstfassung) bzw. Spa
 - (c) Prüfaussagen tauschen (z. B. eine der zitatbezogenen Überzeichnungen, Nr. 12 oder 22, statt Nr. 15).
 
 
-Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (Branch `mollick-s2-podcast`, Commits 31edde3, b962b09, 58369f5 und Werkzeug-Commit; gepusht, gemergt: nein)
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (Branch `mollick-s2-podcast`, Commits 31edde3, b962b09, 58369f5, 1c1eefa; gepusht, gemergt: nein)
