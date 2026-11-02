@@ -663,6 +663,32 @@ Abbildung&nbsp;4.1: Beispiel: Tutor-Bot BWL Grundlagen. Screenshot der Testversi
 <section id="was-sind-unsere-aufgaben" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="was-sind-unsere-aufgaben"><span class="header-section-number">4.1.1</span> Was sind unsere Aufgaben?</h3>
 <p>Beschäftigte in Forschung und Lehre erfüllen eine Vielzahl sehr heterogener Aufgaben, mit einem wachsenden Teil an „Verwaltung“. Wer lehrt, merkt schnell, dass die Präsenzveranstaltung nur die Spitze eines ganzen Eisbergs an Aufgaben darstellt. Eine Umfrage unter Lehrenden in Österreich zeigt, dass sie etwa ein Drittel ihrer Zeit mit Lehraktivitäten verbringen (32 %) und etwa ein Fünftel mit Verwaltungstätigkeiten in der Hochschule (20 %) sowie ein weiteres Fünftel mit externen Verpflichtungen wie Gutachten oder Tätigkeiten in wissenschaftlichen Gesellschaften (9 %, 10 %) <span class="citation" data-cites="oesterreichischeruniversitaetsprofessor/innenverband2018">(<a href="#ref-oesterreichischeruniversitaetsprofessor/innenverband2018" role="doc-biblioref">Österreichischer Universitätsprofessor/innenverband, 2018</a>)</span>. Wie Unkraut im Garten wächst der Anteil, den Lehrende mit „sonstigem“ verbringen: Vor allem der Zeitaufwand für Verwaltung stieg an <span class="citation" data-cites="schomburg2012">(<a href="#ref-schomburg2012" role="doc-biblioref">Schomburg et al., 2012</a>)</span>.</p>
+<div id="sec-bibliothek-prompts">
+<p><strong>Bevor wir die Aufgaben der Lehre einzeln ansehen, ein Blick darauf, welchen Berufen Gespräche mit einer KI überhaupt zugeordnet werden.</strong> Der <em>Anthropic Economic Index</em> ordnet Gespräche mit dem Assistenten Claude automatisch Berufen und Arbeitsaufgaben der US-Berufsdatenbank O*NET zu und veröffentlicht, welcher Anteil der Gespräche eines Monats auf jeden Beruf entfällt <span class="citation" data-cites="massenkoff2026cadences onet2026database">(<a href="#ref-massenkoff2026cadences" role="doc-biblioref">Massenkoff et al., 2026</a>; <a href="#ref-onet2026database" role="doc-biblioref">National Center for O*NET Development, 2026</a>)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Die <em>Bibliothek der Prompts</em> macht daraus einen Raum: Jedes Regal ist eine von 22 Berufshauptgruppen, jedes Buch ein Beruf, die Buchbreite sein Anteil. Raten Sie zuerst, wo das Regal der Lehre steht, und machen Sie dann den Rundgang; wer vorher rät, behält die Auflösung besser, auch wenn der Tipp danebenlag <span class="citation" data-cites="richland2009">(<a href="#ref-richland2009" role="doc-biblioref">Richland et al., 2009</a>)</span>. Das dauert etwa fünf Minuten.</p>
+<iframe loading="lazy" id="bibliothek-der-prompts" src="interactions/bibliothek-der-prompts.html" width="100%" height="1250px" frameborder="0" title="Leserübung: Die Bibliothek der Prompts – 22 Regale mit Berufen, denen Gespräche mit Claude zugeordnet wurden"></iframe>
+<script>
+/* Das Element meldet seine Inhaltshöhe; so entsteht kein Scrollbalken im Rahmen. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "bibliothek-der-prompts") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+<p>Im Mai 2026 stand das Regal <em>Bildung, Ausbildung und Bibliothek</em> mit 12,79 % der Gespräche auf Platz 3 von 22, bei Gesprächen aus Deutschland mit 12,87 % auf Platz 2. Breit ist es vor allem durch den Bibliotheksberuf (4,22 %), dem O*NET Auskunfts- und Rechercheaufgaben zuordnet; die Hochschullehrenden aller 35 Fächer kommen zusammen auf 2,12 %.</p>
+<p><strong>Die Daten zeigen Gesprächsinhalte, nicht die Menschen dahinter.</strong> Ein Gespräch über eine Klausur landet im Bildungsregal, auch wenn eine Studentin es geführt hat; und als Momentaufnahme eines Monats mit einem einzigen Assistenten sagt die Bibliothek nichts darüber, welche Berufe KI verändert.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="So entstand diese Bibliothek">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>So entstand diese Bibliothek
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gebaut hat sie ein Agent (Claude Opus 5.5) in einer Sitzung von rund 40 Minuten, auf einen Satz hin, der auf eine schriftliche Bauanleitung verwies: „Lies [die Regeln], [die Standards] und [den Auftrag] und führe den Auftrag aus.“ Er zog die Werte per Skript aus Economic Index und O*NET und baute den Raum mit Three.js; 1.483 Berufsnamen und Aufgaben übersetzten fünf Teilagenten. Die Schwäche: Sie übersetzten uneinheitlich, „students“ etwa mal als „Studierende“, mal als „Lernende“. Schreibweisen ließen sich per Skript angleichen, Bedeutungen nicht. Eine Prompt-Vorlage steht am Ende des Rundgangs.</p>
+</div>
+</div>
+</div>
 <p>Woraus besteht das im Detail und wo könnten große Sprachmodelle (LLMs) helfen? Vor- und Nachbereitung, Evaluation, Beratung, Planung und vieles mehr lassen die Stunden eines Tages schnell vergehen. <a href="#fig-onet-tasks" class="quarto-xref">Abbildung&nbsp;<span>4.2</span></a> zeigt die 25 Hauptaufgaben, die Lehrende nach Umfragen des US-Arbeitsministeriums verrichten (https://www.onetonline.org/link/summary/25-1011.00). Welche Auswirkungen können wir von LLM auf diese konkreten Aufgaben erwarten?</p>
 <div id="fig-onet-tasks" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -909,7 +935,7 @@ Tabelle&nbsp;4.3: Werkzeugtypen je Phase der Literaturrecherche. Typen nach <spa
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Nur online: Ausführliche Übersicht der Formen von KI-Zusammenfassungen nach Tay (2024)">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -918,7 +944,7 @@ Tabelle&nbsp;4.3: Werkzeugtypen je Phase der Literaturrecherche. Typen nach <spa
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="tbl-paper-analysis-types" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1504,7 +1530,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Probieren Sie mal">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1513,7 +1539,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Ein Studienbüro erhält im Mittel 40 Anträge pro Woche, im Stapel liegen 120. Wie lange wartet ein Antrag im Mittel, ohne dass jemand Zeiten misst?</p>
 <p><em>Lösung:</em> W = L / λ = 120 / 40 = 3 Wochen. Die Rechnung gilt, wenn das Büro über die Zeit so viele Anträge abarbeitet, wie eingehen.</p>
@@ -1803,7 +1829,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 <p>Das Modell zeigt die operativen Ursachen, nicht die menschlichen. In den Experimenten von <span class="citation" data-cites="croson2006behavioral">Croson &amp; Donohue (<a href="#ref-croson2006behavioral" role="doc-biblioref">2006</a>)</span> entstand der Bullwhip-Effekt auch dann, als Prognose, Bündelung und Preisaktionen ausgeschaltet waren, weil die Teilnehmenden die bereits bestellte, noch unterwegs befindliche Ware zu wenig berücksichtigten (<em>underweighting the supply line</em>). <span class="citation" data-cites="sterman1989modeling">Sterman (<a href="#ref-sterman1989modeling" role="doc-biblioref">1989</a>)</span> hatte dieses Verhalten im Beer Game (Lieferketten-Planspiel) als Verankern und Anpassen (<em>anchoring and adjustment</em>) beschrieben. Wer das Widget allein zeigt, legt deshalb eine Fehlvorstellung nahe: dass bessere Prognoseverfahren das Problem lösten. In der Lehre passt es besser in die Nachbesprechung eines Beer Game, in der Studierende ihre eigenen Bestellkurven neben die Kurven des Modells legen. Simulationsspiele wirken als Ergänzung anderer Lehrformen stärker denn als alleinige Unterweisung <span class="citation" data-cites="sitzmann2011metaanalytic">(<a href="#ref-sitzmann2011metaanalytic" role="doc-biblioref">Sitzmann, 2011</a>)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Probieren Sie mal">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1812,7 +1838,7 @@ body.quarto-dark .ll-widget { --red: #ff5c7a; --red-soft: #3b1820; --panel: #1f1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Ein Händler bestellt bei drei Wochen Lieferzeit und prognostiziert mit dem Mittelwert der letzten sechs Wochen. Um welchen Faktor streuen seine Bestellungen mindestens stärker als die Nachfrage? Und wie viele Wochen muss er bei vier Wochen Lieferzeit mitteln, damit der Faktor unter 1,5 fällt?</p>
 <p><em>Lösung:</em> 1 + 2·3/6 + 2·9/36 = 2,5; die Standardabweichung ist damit gut das 1,6-Fache. Bei L = 4 fällt der Faktor erst ab p = 20 Wochen unter 1,5 (1,48). Ein so langes Fenster reagiert aber träge auf echte Trendwechsel; die Dämpfung hat ihren Preis.</p>
@@ -2261,6 +2287,9 @@ Liu, J., Sweet, T., Chen, M. H., Engelberg, J., Masters, M. C., Clark, M., Persa
 <div id="ref-marchena2018bullwhipgame" class="csl-entry" role="listitem">
 Marchena, M. (2018). <em>bullwhipgame: Bullwhip effect demo in Shiny</em>. CRAN. <a href="https://doi.org/10.32614/CRAN.package.bullwhipgame">https://doi.org/10.32614/CRAN.package.bullwhipgame</a>.
 </div>
+<div id="ref-massenkoff2026cadences" class="csl-entry" role="listitem">
+Massenkoff, M., Lyubich, E., Sacher, S., Hitzig, Z., Zhang, S., Heller, R., &amp; McCrory, P. (2026). <em><a href="https://www.anthropic.com/research/economic-index-june-2026-report">Anthropic Economic Index report: Cadences</a></em>. Anthropic.
+</div>
 <div id="ref-meincke2024" class="csl-entry" role="listitem">
 Meincke, L., Mollick, E. R., &amp; Terwiesch, C. (2024). <em>Prompting Diverse Ideas: Increasing AI Idea Variance</em>. <a href="https://papers.ssrn.com/abstract=4708466">https://papers.ssrn.com/abstract=4708466</a>.
 </div>
@@ -2281,6 +2310,9 @@ Morgan, G. (2024, Juli 11). <a href="https://onedtech.philhillaa.com/p/what-stud
 </div>
 <div id="ref-naddaf2025" class="csl-entry" role="listitem">
 Naddaf, M. (2025). How are researchers using AI? Survey reveals pros and cons for science. <em>Nature</em>. <a href="https://doi.org/10.1038/d41586-025-00343-5">https://doi.org/10.1038/d41586-025-00343-5</a>.
+</div>
+<div id="ref-onet2026database" class="csl-entry" role="listitem">
+National Center for O*NET Development (2026). <em>O*NET 31.0 Database</em>. U.S. Department of Labor, Employment and Training Administration. <a href="https://www.onetcenter.org/database.html">https://www.onetcenter.org/database.html</a>.
 </div>
 <div id="ref-netland2025aivideos" class="csl-entry" role="listitem">
 Netland, T., von Dzengelevski, O., Tesch, K., &amp; Kwasnitschka, D. (2025). Comparing human-made and AI-generated teaching videos: An experimental study on learning effects. <em>Computers &amp; Education</em>, <em>224</em>, 105164. <a href="https://doi.org/10.1016/j.compedu.2024.105164">https://doi.org/10.1016/j.compedu.2024.105164</a>.
@@ -2326,6 +2358,9 @@ Porter, L., &amp; Zingaro, D. (2024). <em>Learn AI-Assisted Python Programming: 
 </div>
 <div id="ref-puryear2022" class="csl-entry" role="listitem">
 Puryear, B., &amp; Sprint, G. (2022). Github copilot in the classroom: learning to code with AI assistance. <em>Journal of Computing Sciences in Colleges</em>, <em>38</em>(1), 37–47.
+</div>
+<div id="ref-richland2009" class="csl-entry" role="listitem">
+Richland, L. E., Kornell, N., &amp; Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? <em>Journal of Experimental Psychology: Applied</em>, <em>15</em>(3), 243–257. <a href="https://doi.org/10.1037/a0016496">https://doi.org/10.1037/a0016496</a>.
 </div>
 <div id="ref-schomburg2012" class="csl-entry" role="listitem">
 Schomburg, H., Flöther, C., &amp; Wolf, V. (2012). <em>Wandel von Lehre und Studium an deutschen Hochschulen–Erfahrungen und Sichtweisen der Lehrenden</em>.
@@ -2388,6 +2423,12 @@ Yang, K. B., Liu, M., Xu, L., Rummel, N., &amp; Aleven, V. (2026). Balancing tea
 Yang, L., Liu, H., Li, S., Jia, R., Xiao, Y., Chen, G., &amp; Lu, L. (2026). <em>Evaluating scaffolding-oriented multi-agent large language model system for clinical interview training</em>. <a href="https://doi.org/10.48550/arXiv.2609.10939">https://doi.org/10.48550/arXiv.2609.10939</a>.
 </div>
 </div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Datensatz <code>Anthropic/EconomicIndex</code> auf Hugging Face, Release vom 26. Juni 2026, Datei <code>aei_claude_ai_2026-06-26.csv</code>, Datenmonat Mai 2026, Kennzahl <code>pct</code> der Kategorie <code>soc_occupation</code>, Lizenz CC BY; Aufgaben je Beruf aus der O*NET 31.0 Database (<code>task_statements.csv</code>), Lizenz CC BY 4.0. Auszug und Übersetzung: <code>scripts/aei-bibliothek.py</code> im Repositorium des Buchs.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
