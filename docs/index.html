@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -31,7 +51,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./vorwort.html" rel="next">
+<link href="./kapitel01.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -324,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Übersicht</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Vorwort</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -343,12 +363,6 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Übersicht</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./vorwort.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vorwort</span></a>
   </div>
 </li>
@@ -487,9 +501,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#übersicht" id="toc-übersicht" class="nav-link active" data-scroll-target="#übersicht">Übersicht</a></li>
+  <li><a href="#sec-vorwort" id="toc-sec-vorwort" class="nav-link active" data-scroll-target="#sec-vorwort">Vorwort</a>
+  <ul>
+  <li><a href="#sec-lernpfade" id="toc-sec-lernpfade" class="nav-link" data-scroll-target="#sec-lernpfade">Wählen Sie Ihren Lernpfad</a></li>
+  <li><a href="#sec-wie-dieses-buch-lehrt" id="toc-sec-wie-dieses-buch-lehrt" class="nav-link" data-scroll-target="#sec-wie-dieses-buch-lehrt">Wie dieses Buch lehrt</a></li>
+  <li><a href="#sec-uebersicht" id="toc-sec-uebersicht" class="nav-link" data-scroll-target="#sec-uebersicht">Übersicht</a></li>
   <li><a href="#updates-seit-der-vorversion-vom-september-2025" id="toc-updates-seit-der-vorversion-vom-september-2025" class="nav-link" data-scroll-target="#updates-seit-der-vorversion-vom-september-2025">Updates seit der Vorversion vom September 2025</a></li>
   <li><a href="#didaktische-kurse" id="toc-didaktische-kurse" class="nav-link" data-scroll-target="#didaktische-kurse">Didaktische Kurse</a></li>
+  </ul></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
     </div>
@@ -529,8 +549,145 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="übersicht" class="level1 unnumbered">
-<h1 class="unnumbered">Übersicht</h1><p><img src="images/logos/logo-cover.jpg" title="Generative KI als Hilfe zum Lehren und Lernen" class="quarto-cover-image nolightbox img-fluid"></p>
+<section id="sec-vorwort" class="level1 unnumbered">
+<h1 class="unnumbered">Vorwort</h1><p><img src="images/logos/logo-cover.jpg" title="Generative KI als Hilfe zum Lehren und Lernen" class="quarto-cover-image nolightbox img-fluid"></p>
+<p>Dieses Buch ist aus einem Skript gewachsen. Als die ersten Kolleginnen und Kollegen fragten, wie man die neuen Sprachmodelle (<em>Large Language Models</em>) eigentlich sinnvoll in der Lehre einsetzt, habe ich meine Notizen aus dem eigenen Unterricht in Supply Management und Projektmanagement am Campus Gummersbach der TH Köln zusammengeschrieben. Daraus wurde ein Workshop, aus dem Workshop eine Reihe von Kursen im Netzwerk für hochschuldidaktische Weiterbildung (hdw nrw) an Hochschulen in ganz Nordrhein-Westfalen, und aus den Fragen der Teilnehmenden immer neue Abschnitte. Parallel entstand an der TH Köln die Taskforce GenAI in der Lehre, in der wir seit 2026 regelmäßig darüber diskutieren, was in Lehre und Prüfung funktioniert und was nicht.</p>
+<!-- Lernpfade (Claude, 01.11.2026; am 01.11. auf Wunsch Roman aus Kapitel 1 ins Vorwort verschoben) nach Entscheidung Roman: Option b, U-Bahn-Plan als Buchlandkarte, Selbsttest. Karte und Widget werden aus scripts/lernpfade/ erzeugt. -->
+<section id="sec-lernpfade" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-lernpfade">Wählen Sie Ihren Lernpfad</h2>
+<p>Nicht jede Leserin braucht jede Etappe. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also ihrer Befunde zu den Wirkmechanismen des Lernens, der Wege, sie in der Lehre umzusetzen, und der erprobten Formen des KI-Einsatzes. Lehrerfahrung allein bringt diese Kenntnis nicht mit sich: In einer Befragung kannten Hochschullehrende wirksame Lernstrategien etwas besser als ihre Studierenden, teilten mit ihnen aber verbreitete Fehlannahmen <span class="citation" data-cites="morehead2016">(<a href="#ref-morehead2016" role="doc-biblioref">Morehead et al., 2016</a>)</span>. Ein Informatiker, der täglich mit Agenten (eigenständig handelnden KI-Systemen) arbeitet, hat womöglich nie gehört, warum verteiltes Üben länger hält; eine Kollegin, die die Befunde zu Abrufübungen kennt, weiß nicht unbedingt, was einen Agenten von einem Chatbot unterscheidet. Beiden kostet die vollständige Strecke mehr als Zeit, denn Erklärungen, die Neulingen helfen, belasten Erfahrene, die Bekanntes ein zweites Mal verarbeiten müssen (Expertise-Umkehreffekt, <em>expertise reversal effect</em>) <span class="citation" data-cites="kalyuga2003">(<a href="#ref-kalyuga2003" role="doc-biblioref">Kalyuga et al., 2003</a>)</span>. <a href="#fig-lernpfade" class="quarto-xref">Abbildung&nbsp;<span>1</span></a> zeigt die vier Kombinationen als Liniennetz.</p>
+<div id="fig-lernpfade" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lernpfade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe loading="lazy" id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
+<script>
+/* Das Lernpfad-Widget meldet seine Höhe; so entsteht kein Scrollbalken im Rahmen. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "galerie-hoehe") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
+});
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lernpfade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1: Lernpfade durch das Buch. Nach den sechs Antworten tritt die passende Linie hervor; jede Station führt zum Kapitel. Eigene Darstellung.
+</figcaption>
+</figure>
+</div>
+<!-- Abschnitt „Wie dieses Buch lehrt“ (Claude, 02.11.2026, Fassung 2: gruppiert nach Lernzielen, je Mechanismus eine kanonische Quelle;
+Grundlage claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md).
+Zielzustand, vor Drucklegung prüfen: Einstiegsszene und Einschätzungen bisher nur Kap. 1–3 (Kap. 4–6 noch MC-Fragen);
+Schlüsselbegriffe bisher nur Kap. 1, Wiederkehr-Karten wirken erst mit den Kästen in Kap. 2–6.
+Nach Merge ergänzen: „Höher oder tiefer“ (Kap. 1), Detektor-Duell (Kap. 5), Genrefilme mit Haltepunkten, Escape Room Kap. 2. -->
+</section>
+<section id="sec-wie-dieses-buch-lehrt" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-wie-dieses-buch-lehrt">Wie dieses Buch lehrt</h2>
+<p>Ein Buch über wirksames Lernen sollte selbst so gebaut sein, wie es empfiehlt. Seine Lernhilfen folgen den Mechanismen, die Kapitel 3 als belegt vorstellt (<a href="kapitel03.html#sec-lerntechniken" class="quarto-xref"><span>Effektive Lerntechniken und Unterstützung mit KI</span></a>), und ordnen sich nach drei Lernzielen <span class="citation" data-cites="anderson2001">(<a href="#ref-anderson2001" role="doc-biblioref">Anderson &amp; Krathwohl, 2001</a>)</span>: Erinnern, Verstehen, Anwenden.</p>
+<p>Für das <strong>Erinnern</strong> sind die Befunde am stärksten. Die Lernfragen am Kapitelende wirken nur, wenn Sie zuerst aus dem Gedächtnis antworten und erst dann die Lösungshinweise aufschlagen (<a href="kapitel10-appendix05-loesungshinweise.html" class="quarto-xref"><span>Anhang F — Lösungshinweise zu Lernfragen und Übungen</span></a>), denn der Abruf selbst ist die Übung. Begriffe, die Sie online als nicht gewusst markieren, kehren in späteren Kapiteln wieder, weil verteilte Wiederholung länger hält. Die Aussagen am Kapitelanfang schätzen Sie ein, bevor Sie weiterlesen: Wer vorher rät, auch falsch, behält die Antwort besser.</p>
+<p>Für das <strong>Verstehen</strong> zeigt das Buch ein gelöstes Beispiel aus der eigenen Lehre, bevor es eine Methode empfiehlt; Kapitel 6 folgt durchgehend dem Dreischritt Prinzip, Empfehlung, Umsetzung. Hält es eine verbreitete Vorstellung für überholt, nennt es sie ausdrücklich und ersetzt sie mit Gründen, etwa beim <a href="./kapitel02.html#sec-streichtest">Prompting</a>, wo Sie vorher angeben, wie sicher Sie sich sind. Die Übungen zu den Schlüsselbegriffen verlangen, ähnliche Begriffe gegeneinander abzugrenzen, und jedes Kapitel beginnt mit einer Szene, weil Geschichten besser haften als Sachtext.</p>
+<p>Für das <strong>Anwenden</strong> lassen Sie die Kästen „Ausprobiert“ selbst prompten, prüfen und bauen. Die Hilfen richten sich nach dem Vorwissen; die Lernpfade oben und die überspringbare Vertiefung in Kapitel 2 nehmen sie für Erfahrene zurück, denn was Neulingen hilft, belastet Erfahrene <span class="citation" data-cites="kalyuga2003">(<a href="#ref-kalyuga2003" role="doc-biblioref">Kalyuga et al., 2003</a>)</span>. <a href="#tbl-mechanismen" class="quarto-xref">Tabelle&nbsp;<span>1</span></a> nennt je Mechanismus die Wirkweise, die Stellen im Buch und eine kanonische Quelle.</p>
+<div id="tbl-mechanismen" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mechanismen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;1: Didaktische Mechanismen in diesem Buch, geordnet nach Lernzielen und innerhalb jeder Gruppe nach Stärke der Befunde. Eigene Darstellung.
+</figcaption>
+<div aria-describedby="tbl-mechanismen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mechanismus</th>
+<th style="text-align: left;">Wirkweise</th>
+<th style="text-align: left;">Wo im Buch</th>
+<th style="text-align: left;">Kanonische Quelle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Erinnern</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abrufübung mit Rückmeldung (<em>retrieval practice</em>)</td>
+<td style="text-align: left;">Abrufen festigt Gelerntes stärker als Wiederlesen</td>
+<td style="text-align: left;">Lernfragen; Schlüsselbegriffe; Lernspiele in Kapitel 2</td>
+<td style="text-align: left;"><span class="citation" data-cites="roediger2006">Roediger &amp; Karpicke (<a href="#ref-roediger2006" role="doc-biblioref">2006</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Verteiltes Wiederholen (<em>spacing</em>)</td>
+<td style="text-align: left;">Abstand zwingt zum Rekonstruieren und hält länger</td>
+<td style="text-align: left;">Wiederkehr-Karten; Kernaussagen</td>
+<td style="text-align: left;"><span class="citation" data-cites="cepeda2006">Cepeda et al. (<a href="#ref-cepeda2006" role="doc-biblioref">2006</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vortest (<em>pretesting</em>)</td>
+<td style="text-align: left;">Raten vor dem Lesen lenkt die Aufmerksamkeit auf die Antwort</td>
+<td style="text-align: left;">„Bevor Sie weiterlesen“; <a href="./kapitel02.html#sec-streichtest">Streich-Test</a></td>
+<td style="text-align: left;"><span class="citation" data-cites="richland2009">Richland et al. (<a href="#ref-richland2009" role="doc-biblioref">2009</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Melodie als Gedächtnisstütze</td>
+<td style="text-align: left;">Melodie und Rhythmus geben dem Wortlaut ein Abrufgerüst</td>
+<td style="text-align: left;"><a href="./kapitel06-fallbeispiele.html#sec-bsp-lernsong-forecast">Lernsong in Kapitel 6</a>; <a href="./anhang-primer.html#sec-primer-lernsongs">Primer C</a></td>
+<td style="text-align: left;"><span class="citation" data-cites="wallace1994">Wallace (<a href="#ref-wallace1994" role="doc-biblioref">1994</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Verstehen</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ausgearbeitete Beispiele (<em>worked examples</em>)</td>
+<td style="text-align: left;">Ein gelöstes Beispiel entlastet das Arbeitsgedächtnis</td>
+<td style="text-align: left;">Kapitel 6; Anwendungsbeispiele in Kapitel 1–5</td>
+<td style="text-align: left;"><span class="citation" data-cites="sweller1985">Sweller &amp; Cooper (<a href="#ref-sweller1985" role="doc-biblioref">1985</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fehlvorstellungen widerlegen (<em>refutation text</em>)</td>
+<td style="text-align: left;">Die alte Vorstellung wird genannt und mit Gründen ersetzt; sicher vertretene Irrtümer werden besonders gründlich korrigiert</td>
+<td style="text-align: left;"><a href="./kapitel02.html#sec-streichtest">Prompting mit Streich-Test</a>; Auflösungen „nein“</td>
+<td style="text-align: left;"><span class="citation" data-cites="tippett2010">Tippett (<a href="#ref-tippett2010" role="doc-biblioref">2010</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unterscheiden durch Vermischen (<em>interleaving</em>)</td>
+<td style="text-align: left;">Im direkten Vergleich treten die trennenden Merkmale hervor</td>
+<td style="text-align: left;">Fall-Zuordnung; <a href="./kapitel02.html#sec-patterns-usage">Lernspiel LLM, RAG oder Agent</a></td>
+<td style="text-align: left;"><span class="citation" data-cites="kornell2008">Kornell &amp; Bjork (<a href="#ref-kornell2008" role="doc-biblioref">2008</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Geschichte als Einstieg</td>
+<td style="text-align: left;">Kausal verknüpfte Ereignisse um eine Person werden besser behalten und verstanden</td>
+<td style="text-align: left;">Szene am Kapitelanfang</td>
+<td style="text-align: left;"><span class="citation" data-cites="mar2021">Mar et al. (<a href="#ref-mar2021" role="doc-biblioref">2021</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Anwenden</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Selbst erzeugen (<em>generative and constructive learning</em>)</td>
+<td style="text-align: left;">Wer formuliert, erklärt oder baut, lernt tiefer als wer liest</td>
+<td style="text-align: left;">Kästen „Ausprobiert“; eigene Erklärung vor der Musterantwort</td>
+<td style="text-align: left;"><span class="citation" data-cites="chi2014">Chi &amp; Wylie (<a href="#ref-chi2014" role="doc-biblioref">2014</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Scaffolding und Ausblenden (<em>fading</em>)</td>
+<td style="text-align: left;">Hilfen stützen, solange sie nötig sind, und treten mit wachsendem Können zurück</td>
+<td style="text-align: left;">Lernpfade; Lernfragen in drei Stufen; <a href="./kapitel02.html#sec-vertiefung">Vertiefung</a> in Kapitel 2</td>
+<td style="text-align: left;"><span class="citation" data-cites="wood1976">Wood et al. (<a href="#ref-wood1976" role="doc-biblioref">1976</a>)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<!-- Bis 02.11.2026 eigene Seite „Übersicht“ (index.qmd) vor dem Vorwort; auf Wunsch Roman zusammengelegt: erst Vorwort, dann Übersicht. Die alte Adresse vorwort.html leitet hierher um (aliases). -->
+</section>
+<section id="sec-uebersicht" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-uebersicht">Übersicht</h2>
 <p>Generative künstliche Intelligenz (GenAI) kann Lehrenden aufwendige Vorbereitung abnehmen und Studierenden beim Üben helfen; sie kann ihnen aber auch das Denken abnehmen. Dieses Buch zeigt Lehrenden, Forschenden und Studierenden, wie sie <strong>KI als Werkzeug der Hochschuldidaktik</strong> so einsetzen, dass das Lernen gewinnt.</p>
 <p>Das Buch besteht aus sechs Kapiteln und sechs Anhängen:</p>
 <ol type="1">
@@ -550,8 +707,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Anhang F: Lösungshinweise zu den Lernfragen</li>
 </ul>
 </section>
-<section id="updates-seit-der-vorversion-vom-september-2025" class="level1 unnumbered">
-<h1 class="unnumbered">Updates seit der Vorversion vom September 2025</h1>
+<section id="updates-seit-der-vorversion-vom-september-2025" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="updates-seit-der-vorversion-vom-september-2025">Updates seit der Vorversion vom September 2025</h2>
 <ul>
 <li>Erstellung dieser <strong>Online-Version</strong>.</li>
 <li>Mehrere <strong>interaktive Elemente und Lernspiele</strong> wurden in den ersten Kapiteln hinzugefügt.</li>
@@ -563,8 +720,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Eine überarbeitete und erweiterte Fassung erscheint Ende 2026 beim Logos Verlag Berlin als <strong>Open-Access-Lehrbuch</strong> (CC BY-SA); die Online-Version wird parallel aktualisiert.</li>
 </ul>
 </section>
-<section id="didaktische-kurse" class="level1 unnumbered">
-<h1 class="unnumbered">Didaktische Kurse</h1>
+<section id="didaktische-kurse" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="didaktische-kurse">Didaktische Kurse</h2>
 <ul>
 <li>Wer das Thema GenAI in der Lehre anwendungsorientiert vertiefen will, findet hier eine laufend gepflegte <strong>Übersicht der hochschuldidaktischen Kurse,</strong> die ich im Netzwerk hdw anbiete: <a href="https://www.hdw-nrw.de/workshops?referentensuche=Prof.%20Dr.%20Roman%20Bartnik" class="uri">https://www.hdw-nrw.de/workshops?referentensuche=Prof.%20Dr.%20Roman%20Bartnik</a> .</li>
 <li>Der Fokus der Kurse seit 2025 liegt auf der <strong>Anpassung von Prüfungsleistungen und Gruppenarbeiten</strong> an die neuen technischen Möglichkeiten.</li>
@@ -573,7 +730,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="support-this-section">
-<h3 class="support-this-heading anchored" data-anchor-id="didaktische-kurse">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<h3 class="support-this-heading anchored">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
 <ul class="support-this-links">
   <li class="support-this-item">
     <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
@@ -590,6 +747,51 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 
+</section>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-anderson2001" class="csl-entry" role="listitem">
+Anderson, L. W., &amp; Krathwohl, D. R. (2001). <em>A taxonomy for learning, teaching, and assessing: A revision of Bloom’s taxonomy of educational objectives</em>. Longman.
+</div>
+<div id="ref-cepeda2006" class="csl-entry" role="listitem">
+Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., &amp; Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. <em>Psychological Bulletin</em>, <em>132</em>(3), 354–380. <a href="https://doi.org/10.1037/0033-2909.132.3.354">https://doi.org/10.1037/0033-2909.132.3.354</a>.
+</div>
+<div id="ref-chi2014" class="csl-entry" role="listitem">
+Chi, M. T. H., &amp; Wylie, R. (2014). The ICAP framework: Linking cognitive engagement to active learning outcomes. <em>Educational Psychologist</em>, <em>49</em>(4), 219–243. <a href="https://doi.org/10.1080/00461520.2014.965823">https://doi.org/10.1080/00461520.2014.965823</a>.
+</div>
+<div id="ref-kalyuga2003" class="csl-entry" role="listitem">
+Kalyuga, S., Ayres, P., Chandler, P., &amp; Sweller, J. (2003). The expertise reversal effect. <em>Educational Psychologist</em>, <em>38</em>(1), 23–31. <a href="https://doi.org/10.1207/S15326985EP3801_4">https://doi.org/10.1207/S15326985EP3801_4</a>.
+</div>
+<div id="ref-kornell2008" class="csl-entry" role="listitem">
+Kornell, N., &amp; Bjork, R. A. (2008). Learning concepts and categories: Is spacing the <span>„enemy of induction“</span>? <em>Psychological Science</em>, <em>19</em>(6), 585–592. <a href="https://doi.org/10.1111/j.1467-9280.2008.02127.x">https://doi.org/10.1111/j.1467-9280.2008.02127.x</a>.
+</div>
+<div id="ref-mar2021" class="csl-entry" role="listitem">
+Mar, R. A., Li, J., Nguyen, A. T. P., &amp; Ta, C. P. (2021). Memory and comprehension of narrative versus expository texts: A meta-analysis. <em>Psychonomic Bulletin &amp; Review</em>, <em>28</em>(3), 732–749. <a href="https://doi.org/10.3758/s13423-020-01853-1">https://doi.org/10.3758/s13423-020-01853-1</a>.
+</div>
+<div id="ref-morehead2016" class="csl-entry" role="listitem">
+Morehead, K., Rhodes, M. G., &amp; DeLozier, S. (2016). Instructor and student knowledge of study strategies. <em>Memory</em>, <em>24</em>(2), 257–271. <a href="https://doi.org/10.1080/09658211.2014.1001992">https://doi.org/10.1080/09658211.2014.1001992</a>.
+</div>
+<div id="ref-richland2009" class="csl-entry" role="listitem">
+Richland, L. E., Kornell, N., &amp; Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? <em>Journal of Experimental Psychology: Applied</em>, <em>15</em>(3), 243–257. <a href="https://doi.org/10.1037/a0016496">https://doi.org/10.1037/a0016496</a>.
+</div>
+<div id="ref-roediger2006" class="csl-entry" role="listitem">
+Roediger, H. L., &amp; Karpicke, J. D. (2006). Test-enhanced learning: taking memory tests improves long-term retention. <em>Psychological science</em>, <em>17</em>(3), 249–255. <a href="https://doi.org/10.1111/j.1467-9280.2006.01693.x">https://doi.org/10.1111/j.1467-9280.2006.01693.x</a>.
+</div>
+<div id="ref-sweller1985" class="csl-entry" role="listitem">
+Sweller, J., &amp; Cooper, G. A. (1985). The use of worked examples as a substitute for problem solving in learning algebra. <em>Cognition and Instruction</em>, <em>2</em>(1), 59–89. <a href="https://doi.org/10.1207/s1532690xci0201_3">https://doi.org/10.1207/s1532690xci0201_3</a>.
+</div>
+<div id="ref-tippett2010" class="csl-entry" role="listitem">
+Tippett, C. D. (2010). Refutation text in science education: A review of two decades of research. <em>International Journal of Science and Mathematics Education</em>, <em>8</em>(6), 951–970. <a href="https://doi.org/10.1007/s10763-010-9203-x">https://doi.org/10.1007/s10763-010-9203-x</a>.
+</div>
+<div id="ref-wallace1994" class="csl-entry" role="listitem">
+Wallace, W. T. (1994). Memory for music: Effect of melody on recall of text. <em>Journal of Experimental Psychology: Learning, Memory, and Cognition</em>, <em>20</em>(6), 1471–1485. <a href="https://doi.org/10.1037/0278-7393.20.6.1471">https://doi.org/10.1037/0278-7393.20.6.1471</a>.
+</div>
+<div id="ref-wood1976" class="csl-entry" role="listitem">
+Wood, D., Bruner, J. S., &amp; Ross, G. (1976). The role of tutoring in problem solving. <em>Journal of Child Psychology and Psychiatry</em>, <em>17</em>(2), 89–100. <a href="https://doi.org/10.1111/j.1469-7610.1976.tb00381.x">https://doi.org/10.1111/j.1469-7610.1976.tb00381.x</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1677,8 +1879,8 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./vorwort.html" class="pagination-link" aria-label="Vorwort">
-        <span class="nav-page-text">Vorwort</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./kapitel01.html" class="pagination-link" aria-label="Einleitung">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

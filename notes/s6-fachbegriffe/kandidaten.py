@@ -5,7 +5,7 @@ Aufruf: python3 kandidaten.py <repo> <out.csv>
 import csv, re, sys, pathlib
 
 repo = pathlib.Path(sys.argv[1]); out = sys.argv[2]
-FILES = [("Vorwort","vorwort.qmd"),("Kap1","kapitel01.qmd"),("Kap2","kapitel02.qmd"),("Kap3","kapitel03.qmd"),
+FILES = [("Vorwort","index.qmd"),("Kap1","kapitel01.qmd"),("Kap2","kapitel02.qmd"),("Kap3","kapitel03.qmd"),
          ("Kap4","kapitel04.qmd"),("Kap5","kapitel05.qmd"),("Kap6","kapitel06-fallbeispiele.qmd"),
          ("AnhA","kapitel06-appendix01-prompt-ueberblick.qmd"),("AnhB","kapitel07-appendix02-prompt-sammlung.qmd"),
          ("AnhC","kapitel08-appendix03-rollenspiele-simulationen.qmd"),("AnhD","kapitel09-appendix04-fortgeschrittene-nutzungsformen.qmd"),

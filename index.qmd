@@ -1,4 +1,84 @@
-# Übersicht {.unnumbered}
+---
+aliases:
+  - vorwort.html
+---
+
+# Vorwort {.unnumbered #sec-vorwort}
+
+Dieses Buch ist aus einem Skript gewachsen. Als die ersten Kolleginnen und Kollegen fragten, wie man die neuen Sprachmodelle (*Large Language Models*) eigentlich sinnvoll in der Lehre einsetzt, habe ich meine Notizen aus dem eigenen Unterricht in Supply Management und Projektmanagement am Campus Gummersbach der TH Köln zusammengeschrieben. Daraus wurde ein Workshop, aus dem Workshop eine Reihe von Kursen im Netzwerk für hochschuldidaktische Weiterbildung (hdw nrw) an Hochschulen in ganz Nordrhein-Westfalen, und aus den Fragen der Teilnehmenden immer neue Abschnitte. Parallel entstand an der TH Köln die Taskforce GenAI in der Lehre, in der wir seit 2026 regelmäßig darüber diskutieren, was in Lehre und Prüfung funktioniert und was nicht.
+
+<!-- Lernpfade (Claude, 01.11.2026; am 01.11. auf Wunsch Roman aus Kapitel 1 ins Vorwort verschoben) nach Entscheidung Roman: Option b, U-Bahn-Plan als Buchlandkarte, Selbsttest. Karte und Widget werden aus scripts/lernpfade/ erzeugt. -->
+
+## Wählen Sie Ihren Lernpfad {#sec-lernpfade .unnumbered}
+
+Nicht jede Leserin braucht jede Etappe. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also ihrer Befunde zu den Wirkmechanismen des Lernens, der Wege, sie in der Lehre umzusetzen, und der erprobten Formen des KI-Einsatzes. Lehrerfahrung allein bringt diese Kenntnis nicht mit sich: In einer Befragung kannten Hochschullehrende wirksame Lernstrategien etwas besser als ihre Studierenden, teilten mit ihnen aber verbreitete Fehlannahmen [@morehead2016]. Ein Informatiker, der täglich mit Agenten (eigenständig handelnden KI-Systemen) arbeitet, hat womöglich nie gehört, warum verteiltes Üben länger hält; eine Kollegin, die die Befunde zu Abrufübungen kennt, weiß nicht unbedingt, was einen Agenten von einem Chatbot unterscheidet. Beiden kostet die vollständige Strecke mehr als Zeit, denn Erklärungen, die Neulingen helfen, belasten Erfahrene, die Bekanntes ein zweites Mal verarbeiten müssen (Expertise-Umkehreffekt, *expertise reversal effect*) [@kalyuga2003]. @fig-lernpfade zeigt die vier Kombinationen als Liniennetz.
+
+::: {.content-visible when-format="html"}
+::: {#fig-lernpfade}
+```{=html}
+<iframe loading="lazy" id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
+<script>
+/* Das Lernpfad-Widget meldet seine Höhe; so entsteht kein Scrollbalken im Rahmen. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "galerie-hoehe") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
+});
+</script>
+```
+
+Lernpfade durch das Buch. Nach den sechs Antworten tritt die passende Linie hervor; jede Station führt zum Kapitel. Eigene Darstellung.
+:::
+:::
+
+::: {.content-visible unless-format="html"}
+![Lernpfade durch das Buch. Rot umrandet sind die Stationen, an denen alle Linien halten. Eigene Darstellung.](images/lernpfade/lernpfade-karte.svg){#fig-lernpfade width="100%" fig-pos="htbp"}
+
+::: {.callout-note title="Selbsttest: Welche Linie passt?"}
+**Erfahrung mit KI.** (a) Ich nutze ein Sprachmodell mindestens einmal pro Woche für meine Arbeit. (b) Ich habe einen eigenen Assistenten eingerichtet, etwa ein Projekt mit festen Anweisungen und eigenen Dateien. (c) Ich habe einer KI eine mehrschrittige Aufgabe übertragen, bei der sie selbst sucht, Dateien liest oder Code ausführt.
+
+**Kenntnis der Lernforschung.** (d) Ich kenne zentrale Wirkmechanismen aus der Lernforschung und kann erklären, warum etwa Abrufübungen, verteiltes Üben und Selbsterklären das Behalten stärken. (e) Ich weiß, wie sich solche Mechanismen in einer Lehrveranstaltung umsetzen lassen, etwa mit kurzen Abfragen zu Beginn, Wiederholung über das Semester oder Aufgaben, in denen Studierende einander erklären. (f) Ich kenne erprobte Einsatzformen und Befunde zu KI in der Lehre, etwa wann ein KI-Tutor das Lernen stärkt und wann er es durch Auslagerung des Denkens schwächt.
+
+Höchstens eine Zustimmung je Gruppe: Linie 1. Zwei oder mehr nur bei KI: Linie 2. Nur bei Lernforschung: Linie 3. In beiden Gruppen: Linie 4. Online prüft der Selbsttest die Antworten und hebt die Linie hervor: <https://th-koln-bartnik.github.io/genai4teaching/#sec-lernpfade>.
+:::
+:::
+
+<!-- Abschnitt „Wie dieses Buch lehrt“ (Claude, 02.11.2026, Fassung 2: gruppiert nach Lernzielen, je Mechanismus eine kanonische Quelle;
+Grundlage claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md).
+Zielzustand, vor Drucklegung prüfen: Einstiegsszene und Einschätzungen bisher nur Kap. 1–3 (Kap. 4–6 noch MC-Fragen);
+Schlüsselbegriffe bisher nur Kap. 1, Wiederkehr-Karten wirken erst mit den Kästen in Kap. 2–6.
+Nach Merge ergänzen: „Höher oder tiefer“ (Kap. 1), Detektor-Duell (Kap. 5), Genrefilme mit Haltepunkten, Escape Room Kap. 2. -->
+
+## Wie dieses Buch lehrt {#sec-wie-dieses-buch-lehrt .unnumbered}
+
+Ein Buch über wirksames Lernen sollte selbst so gebaut sein, wie es empfiehlt. Seine Lernhilfen folgen den Mechanismen, die Kapitel 3 als belegt vorstellt (@sec-lerntechniken), und ordnen sich nach drei Lernzielen [@anderson2001]: Erinnern, Verstehen, Anwenden.
+
+Für das **Erinnern** sind die Befunde am stärksten. Die Lernfragen am Kapitelende wirken nur, wenn Sie zuerst aus dem Gedächtnis antworten und erst dann die Lösungshinweise aufschlagen (@sec-loesungshinweise), denn der Abruf selbst ist die Übung. Begriffe, die Sie online als nicht gewusst markieren, kehren in späteren Kapiteln wieder, weil verteilte Wiederholung länger hält. Die Aussagen am Kapitelanfang schätzen Sie ein, bevor Sie weiterlesen: Wer vorher rät, auch falsch, behält die Antwort besser.
+
+Für das **Verstehen** zeigt das Buch ein gelöstes Beispiel aus der eigenen Lehre, bevor es eine Methode empfiehlt; Kapitel 6 folgt durchgehend dem Dreischritt Prinzip, Empfehlung, Umsetzung. Hält es eine verbreitete Vorstellung für überholt, nennt es sie ausdrücklich und ersetzt sie mit Gründen, etwa beim [Prompting](kapitel02.qmd#sec-streichtest), wo Sie vorher angeben, wie sicher Sie sich sind. Die Übungen zu den Schlüsselbegriffen verlangen, ähnliche Begriffe gegeneinander abzugrenzen, und jedes Kapitel beginnt mit einer Szene, weil Geschichten besser haften als Sachtext.
+
+Für das **Anwenden** lassen Sie die Kästen „Ausprobiert“ selbst prompten, prüfen und bauen. Die Hilfen richten sich nach dem Vorwissen; die Lernpfade oben und die überspringbare Vertiefung in Kapitel 2 nehmen sie für Erfahrene zurück, denn was Neulingen hilft, belastet Erfahrene [@kalyuga2003]. @tbl-mechanismen nennt je Mechanismus die Wirkweise, die Stellen im Buch und eine kanonische Quelle.
+
+| Mechanismus | Wirkweise | Wo im Buch | Kanonische Quelle |
+|:---|:---|:---|:---|
+| **Erinnern** | | | |
+| Abrufübung mit Rückmeldung (*retrieval practice*) | Abrufen festigt Gelerntes stärker als Wiederlesen | Lernfragen; Schlüsselbegriffe; Lernspiele in Kapitel 2 | @roediger2006 |
+| Verteiltes Wiederholen (*spacing*) | Abstand zwingt zum Rekonstruieren und hält länger | Wiederkehr-Karten; Kernaussagen | @cepeda2006 |
+| Vortest (*pretesting*) | Raten vor dem Lesen lenkt die Aufmerksamkeit auf die Antwort | „Bevor Sie weiterlesen“; [Streich-Test](kapitel02.qmd#sec-streichtest) | @richland2009 |
+| Melodie als Gedächtnisstütze | Melodie und Rhythmus geben dem Wortlaut ein Abrufgerüst | [Lernsong in Kapitel 6](kapitel06-fallbeispiele.qmd#sec-bsp-lernsong-forecast); [Primer C](anhang-primer.qmd#sec-primer-lernsongs) | @wallace1994 |
+| **Verstehen** | | | |
+| Ausgearbeitete Beispiele (*worked examples*) | Ein gelöstes Beispiel entlastet das Arbeitsgedächtnis | Kapitel 6; Anwendungsbeispiele in Kapitel 1–5 | @sweller1985 |
+| Fehlvorstellungen widerlegen (*refutation text*) | Die alte Vorstellung wird genannt und mit Gründen ersetzt; sicher vertretene Irrtümer werden besonders gründlich korrigiert | [Prompting mit Streich-Test](kapitel02.qmd#sec-streichtest); Auflösungen „nein“ | @tippett2010 |
+| Unterscheiden durch Vermischen (*interleaving*) | Im direkten Vergleich treten die trennenden Merkmale hervor | Fall-Zuordnung; [Lernspiel LLM, RAG oder Agent](kapitel02.qmd#sec-patterns-usage) | @kornell2008 |
+| Geschichte als Einstieg | Kausal verknüpfte Ereignisse um eine Person werden besser behalten und verstanden | Szene am Kapitelanfang | @mar2021 |
+| **Anwenden** | | | |
+| Selbst erzeugen (*generative and constructive learning*) | Wer formuliert, erklärt oder baut, lernt tiefer als wer liest | Kästen „Ausprobiert“; eigene Erklärung vor der Musterantwort | @chi2014 |
+| Scaffolding und Ausblenden (*fading*) | Hilfen stützen, solange sie nötig sind, und treten mit wachsendem Können zurück | Lernpfade; Lernfragen in drei Stufen; [Vertiefung](kapitel02.qmd#sec-vertiefung) in Kapitel 2 | @wood1976 |
+
+: Didaktische Mechanismen in diesem Buch, geordnet nach Lernzielen und innerhalb jeder Gruppe nach Stärke der Befunde. Eigene Darstellung. {#tbl-mechanismen}
+
+<!-- Bis 02.11.2026 eigene Seite „Übersicht“ (index.qmd) vor dem Vorwort; auf Wunsch Roman zusammengelegt: erst Vorwort, dann Übersicht. Die alte Adresse vorwort.html leitet hierher um (aliases). -->
+
+## Übersicht {#sec-uebersicht .unnumbered}
 
 Generative künstliche Intelligenz (GenAI) kann Lehrenden aufwendige Vorbereitung abnehmen und Studierenden beim Üben helfen; sie kann ihnen aber auch das Denken abnehmen. Dieses Buch zeigt Lehrenden, Forschenden und Studierenden, wie sie **KI als Werkzeug der Hochschuldidaktik** so einsetzen, dass das Lernen gewinnt.
 
@@ -20,7 +100,7 @@ Das Buch besteht aus sechs Kapiteln und sechs Anhängen:
 
 ::: {.content-visible when-format="html"}
 
-# Updates seit der Vorversion vom September 2025  {.unnumbered}
+## Updates seit der Vorversion vom September 2025 {.unnumbered}
 
 - Erstellung dieser **Online-Version**.
 - Mehrere **interaktive Elemente und Lernspiele** wurden in den ersten Kapiteln hinzugefügt.
@@ -31,7 +111,7 @@ Das Buch besteht aus sechs Kapiteln und sechs Anhängen:
 - Die Online-Fassung wird **laufend korrigiert und ergänzt**.
 - Eine überarbeitete und erweiterte Fassung erscheint Ende 2026 beim Logos Verlag Berlin als **Open-Access-Lehrbuch** (CC BY-SA); die Online-Version wird parallel aktualisiert.
 
-# Didaktische Kurse  {.unnumbered}
+## Didaktische Kurse {.unnumbered}
 
 - Wer das Thema GenAI in der Lehre anwendungsorientiert vertiefen will, findet hier eine laufend gepflegte **Übersicht der hochschuldidaktischen Kurse,** die ich im Netzwerk hdw anbiete: <https://www.hdw-nrw.de/workshops?referentensuche=Prof.%20Dr.%20Roman%20Bartnik> .
 - Der Fokus der Kurse seit 2025 liegt auf der **Anpassung von Prüfungsleistungen und Gruppenarbeiten** an die neuen technischen Möglichkeiten.
