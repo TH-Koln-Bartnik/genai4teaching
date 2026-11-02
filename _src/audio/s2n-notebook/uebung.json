@@ -1,0 +1,159 @@
+{
+ "hinweis": "Übungstexte für interactions/podcast-forschende-ki-notebook.html. Urteile und Belegstellen aus pruefung-transkript.md (Prüfagent B, 02.11.2026); Zahlen aus zaehlung.json (Skript); Originalstellen wörtlich aus scientists_transcripts.csv (Test tests/podcast-s2n.test.mjs). Zusammenführen: python3 -I scripts/audio-s2n-daten.py",
+ "meta": {
+  "kicker": "Hörstück mit Prüfauftrag · etwa 20 Minuten",
+  "einleitung": "Zwei KI-Stimmen aus Gemini Notebook (früher NotebookLM) besprechen, was 125 Forschende in Interviews über ihre Arbeit mit KI gesagt haben. Das Werkzeug bekam alle Interviews vollständig und erzeugte das Gespräch in einem einzigen Lauf; es ist ungeprüft und ungekürzt. Den Mitlesetext hat eine Spracherkennung erstellt. Sie können hören oder nur lesen; ein Klick auf einen Absatz springt im Ton dorthin.",
+  "quelle": {
+   "text": "Anthropic/AnthropicInterviewer auf Hugging Face, CC BY",
+   "href": "https://huggingface.co/datasets/Anthropic/AnthropicInterviewer"
+  },
+  "bericht": {
+   "text": "Handa et al. (2025): Introducing Anthropic Interviewer",
+   "href": "https://www.anthropic.com/research/anthropic-interviewer"
+  },
+  "kennzeichnung": "Gespräch und Stimmen KI-erzeugt (Gemini Notebook, Audio-Überblick, 02.11.2026); Inhalt ungeprüft; Mitlese-Text per Spracherkennung."
+ },
+ "vorhersage": {
+  "einleitung": "Bevor Sie hören: Legen Sie sich kurz fest. In der Bilanz vergleichen Sie Ihre Vorhersage mit einer Zählung in den 125 Interviews.",
+  "frage": "Worüber sprechen die Forschenden am häufigsten, wenn sie von ihrer Arbeit mit KI erzählen?",
+  "optionen": [
+   {
+    "id": "lit",
+    "thema": "literatur_schreiben",
+    "label": "Literatur und Schreiben"
+   },
+   {
+    "id": "code",
+    "thema": "code_daten",
+    "label": "Datenanalyse und Code"
+   },
+   {
+    "id": "ideen",
+    "thema": "ideen_hypothesen",
+    "label": "Ideen und Hypothesen"
+   }
+  ],
+  "zaehlhinweis": "Gezählt wurde, in wie vielen Interviews mindestens ein Stichwort des Themas in den Antworten der Forschenden vorkommt (etwa „paper“, „draft“ oder „python“, „dataset“). Das misst Erwähnungen, nicht Vertrauen und nicht, wie oft jemand KI nutzt.",
+  "regler": {
+   "thema": "misstrauen_fehler",
+   "frage": "In wie viel Prozent der 125 Interviews kommt Misstrauen gegenüber KI-Ergebnissen zur Sprache?",
+   "frage_kurz": "Misstrauen gegenüber KI-Ergebnissen",
+   "hinweis": "Grobe Zählung über Stichwörter wie „hallucinate“, „wrong“, „mistake“, „don’t trust“. Fehltreffer zählen mit (etwa Grammatikfehler im eigenen Text), Misstrauen ohne eines dieser Wörter fehlt. Die Zahl zeigt eine Größenordnung, keinen Messwert."
+  }
+ },
+ "pruefeinleitung": "Das Hörstück ist ungeprüft: Gemini Notebook hat es in einem Lauf aus allen 125 Interviews erzeugt. Ein KI-Agent, der weder den Auftrag noch das Werkzeug kannte, hat danach jede Sachaussage an den Transkripten geprüft. Urteilen Sie selbst, bevor Sie seinen Befund sehen: belegt (die Quellen sagen das so), überzogen (der Kern stimmt, die Verallgemeinerung oder Zuspitzung geht darüber hinaus) oder nicht belegt (keine passende Stelle).",
+ "pruefung": [
+  {
+   "nr": 1,
+   "zeile": 79,
+   "start": 518.03,
+   "ende": 533.03,
+   "pruefagent_nr": 21,
+   "aussage": "„Und weil die KI eben für diese tiefe analytische Wahrheit momentan noch zu unzuverlässig ist, wird sie von vielen Forschenden ganz ans Ende des wissenschaftlichen Prozesses verschoben.“ – „Zur Kommunikation der Ergebnisse, meinst du?“ – „Ganz genau, zum Schreiben, Formulieren und Aufbereiten.“",
+   "hinweis": "Diese Aussage nennt keine Interview-Nummer. Unten drei Stellen, in denen Forschende sagen, in welcher Phase ihrer Arbeit sie KI einsetzen.",
+   "stellen": [
+    {
+     "id": "science_0041",
+     "en": "For technical report writing, I still write myself 99%+ but often have an AI critique and modify as a close partner/assistant and critic, especially after my draft is near final.",
+     "de": "Technische Berichte schreibe ich nach wie vor zu über 99 % selbst, lasse aber oft eine KI als enge Partnerin, Assistentin und Kritikerin kritisieren und ändern, vor allem wenn mein Entwurf fast fertig ist."
+    },
+    {
+     "id": "science_0051",
+     "en": "AI is invaluable for me in the planning stage of my projects and has made me feel more positive about doing research than before.",
+     "de": "In der Planungsphase meiner Projekte ist KI für mich unschätzbar; sie hat mir eine positivere Einstellung zur Forschung gegeben als vorher."
+    },
+    {
+     "id": "science_0025",
+     "en": "The beginning research phase, I would say, used a lot of AI.",
+     "de": "In der Anfangsphase der Recherche wurde, würde ich sagen, viel KI genutzt."
+    }
+   ],
+   "urteil": "nicht_belegt",
+   "begruendung": "Keine Stelle in den 125 Interviews beschreibt, dass Forschende KI ans Ende ihrer Arbeit verschieben. Viele setzen sie gerade am Anfang ein, für Literatur, Planung und Ideen (zweite und dritte Stelle). Am nächsten kommt die erste Stelle: KI als Kritikerin eines fast fertigen Berichts, bei einer Person, die über 99 % selbst schreibt. Das Hörstück macht daraus eine Bewegung „vieler Forschender“."
+  },
+  {
+   "nr": 2,
+   "zeile": 112,
+   "start": 721.28,
+   "ende": 732.14,
+   "pruefagent_nr": 33,
+   "aussage": "„Oh, das ist das Beispiel mit dem blinden Vertrauen, oder?“ – „Richtig. Die Studierenden, die der KI blind vertraut haben, sind krachend durchgefallen. Die haben nämlich genau diese halluzinierten, erfundenen Studien zitiert.“",
+   "hinweis": "Genannt ist Interview 016 (im Datensatz science_0015): eine Lehrperson in der Biologie, deren Studierende für eine Fallstudie zu Prion-Erkrankungen KI nutzen durften.",
+   "stellen": [
+    {
+     "id": "science_0015",
+     "en": "Several students simply used what the AI told them, verbatim, and it showed as they had completely different results to other groups and were quoting details that were inaccurate.",
+     "de": "Mehrere Studierende übernahmen einfach wörtlich, was die KI ihnen sagte, und das zeigte sich: Sie hatten völlig andere Ergebnisse als andere Gruppen und zitierten ungenaue Details."
+    },
+    {
+     "id": "science_0015",
+     "en": "were claiming research papers that were not case studies and findings from these case studies that were not accurately portrayed",
+     "de": "… führten Studien an, die gar keine Fallstudien waren, und Befunde aus diesen Fallstudien, die nicht zutreffend wiedergegeben waren"
+    },
+    {
+     "id": "science_0015",
+     "en": "but when it came to specific papers and research (including number of citations on specific sites such as Google Scholar and PubMed) AI was way off and frequently hallucinated.",
+     "de": "… aber bei konkreten Aufsätzen und Studien (einschließlich der Zitationszahlen auf Seiten wie Google Scholar und PubMed) lag die KI weit daneben und halluzinierte häufig."
+    }
+   ],
+   "urteil": "ueberzogen",
+   "begruendung": "Belegt ist: Mehrere Studierende übernahmen KI-Angaben wörtlich, zitierten ungenaue Details und falsch eingeordnete Studien, und die KI halluzinierte bei konkreten Studien häufig. Dass Studierende „krachend durchgefallen“ seien, steht nicht in der Quelle; dort geht es eher um falsch eingeordnete als um erfundene Studien. Die Zuspitzung trifft Dritte, die Studierenden der befragten Lehrperson."
+  },
+  {
+   "nr": 3,
+   "zeile": 115,
+   "start": 733.5,
+   "ende": 745.22,
+   "pruefagent_nr": 34,
+   "aussage": "„Die erfolgreichen Studierenden haben die KI lediglich genutzt, um intelligente Suchbegriffe zu generieren. Mit diesen Begriffen sind sie dann in professionelle Datenbanken wie PubMed gegangen und haben die echten Fakten recherchiert.“",
+   "hinweis": "Wieder Interview 016 (science_0015), unmittelbar nach Aussage 2.",
+   "stellen": [
+    {
+     "id": "science_0015",
+     "en": "The students that approached this the way I would have done, used the AI for initial general direction and then used this to craft search terms for the major databases, which provided articles that filled in the 'blanks' of AI.",
+     "de": "Die Studierenden, die so vorgingen, wie ich es getan hätte, nutzten die KI für eine erste allgemeine Richtung und formulierten damit Suchbegriffe für die großen Datenbanken; die lieferten Artikel, die die „Lücken“ der KI füllten."
+    },
+    {
+     "id": "science_0015",
+     "en": "The students were asked to use a trusted, established research engine such as PubMed or Scholar to check claims",
+     "de": "Die Studierenden sollten eine vertrauenswürdige, etablierte Suchmaschine wie PubMed oder Scholar nutzen, um Behauptungen zu prüfen"
+    }
+   ],
+   "urteil": "belegt",
+   "begruendung": "Die Quelle sagt das so: erste Richtung per KI, dann Suchbegriffe für die großen Datenbanken; PubMed nennt die Lehrperson ausdrücklich. Eine belegte Aussage folgt hier unmittelbar auf eine überzogene aus derselben Quelle. Erst der Blick in die Quelle trennt die beiden."
+  }
+ ],
+ "bilanz": {
+  "befund": "Der Prüfagent zerlegte das Gespräch in 37 Sachaussagen: 13 belegt, 23 überzogen, 1 nicht belegt. 23 Aussagen nennen eine Interview-Nummer; 19 Nummern stimmen, 4 verweisen auf das falsche Interview (031, 077, 052, 036), der Inhalt steht jeweils in einem anderen. Alle 11 Häufigkeitsaussagen („alle Befragten“, „viele“, „extrem beliebt“) gehen über die Stichwortzählung hinaus. Den Begriff „Frankensteinpapiere“ verwendet keine der befragten Personen. Die Interviews sind anonym; trotzdem legt das Hörstück einzelnen Personen Dinge in den Mund, die sie nicht gesagt haben.",
+  "grenzen": [
+   "Die 125 Forschenden haben freiwillig teilgenommen; sie sind keine Stichprobe aller Forschenden, einige beschreiben sich selbst als Studierende.",
+   "Der Interviewer war selbst eine KI (Claude); Fragen und Nachfragen prägen, was zur Sprache kam.",
+   "Das Hörstück ist eine Auswahl: Gemini Notebook bekam alle rund 180.000 Wörter, wählte selbst aus und spitzte zu. Zahlen in dieser Bilanz sind Stichwortzählungen, keine Anteile der Forschenden.",
+   "Der Mitlesetext stammt aus einer Spracherkennung; neun Stellen wurden als Erkennungsfehler korrigiert, Inhalte nie."
+  ]
+ },
+ "transfer": {
+  "einleitung": "Dasselbe Verfahren passt auf eigene Freitexte: Lehrveranstaltungs-Evaluationen, offene Antworten einer Umfrage, Interviews aus einem Lehrprojekt. Die Vorlage verlangt die Prüftabelle gleich mit; prüfen müssen Sie die Tabelle trotzdem selbst, mindestens bei allen Verallgemeinerungen.",
+  "vorlage": "Fasse die angehängten [Interviews / Freitextantworten / Evaluationskommentare] als Gespräch zweier Moderierender für [Zielgruppe] zusammen, etwa [Länge] Wörter. Nenne zu jedem Zitat und jeder Zahl die ID der Quelle. Erstelle danach eine Tabelle aller Sachaussagen mit wörtlicher Beleg-Stelle und dem Urteil belegt / überzogen / nicht belegt. Prüfe besonders Wörter wie „viele“, „die meisten“, „typisch“.",
+  "datenschutz": "Interviews und Evaluationskommentare enthalten oft personenbezogene Daten: nur mit Einwilligung und nur in datenschutzkonformen Werkzeugen verarbeiten (siehe Kapitel 5, Richtlinien zur KI-Nutzung).",
+  "notebook": "Denselben Weg können Sie in Gemini Notebook gehen: Quellen hochladen, Audio-Überblick erzeugen und danach im Chat nach den Belegen fragen; die Chat-Antworten verweisen auf Quellenstellen. Eine Prüfung durch dasselbe Werkzeug ist aber keine unabhängige Prüfung. Die Stichproben an den Originalen bleiben Ihre Aufgabe.",
+  "makingof": "Die 125 Transkripte wurden vollständig, in fünf Textdateien, als Quellen in Gemini Notebook geladen und mit einem kurzen Anpassungsprompt zu einem deutschen Audio-Überblick verarbeitet: erster Lauf, ohne Nachbearbeitung. Eine Spracherkennung lieferte den Mitlesetext; ein KI-Agent (Claude), der weder den Prompt noch das Werkzeug kannte, prüfte jede Aussage an den Transkripten.",
+  "prompttitel": "Der Anpassungsprompt in Gemini Notebook im Wortlaut (397 Zeichen):",
+  "prompt": "Sprecht zu Hochschullehrenden über die Quellen: 125 Interviews, in denen Forschende von ihrer Arbeit mit KI berichten. Gliedert das Gespräch in vier bis fünf Themen. Gebt Aussagen der Teilnehmenden sinngemäß auf Deutsch wieder und nennt bei jeder Aussage die Interview-Nummer (zum Beispiel „Interview 042“). Haltet das Gespräch bei etwa acht Minuten. Endet mit einer offenen Frage an die Hörenden.",
+  "entstehung": [
+   "Werkzeug: Gemini Notebook (früher NotebookLM), Audio-Überblick, Ausgabesprache Deutsch, Standardgespräch in Standardlänge; erzeugt am 2. November 2026 im ersten Lauf.",
+   "Quellen: fünf Textdateien mit je 25 Interviews (rund 180.000 Wörter); nur die Sprecherbezeichnungen wurden in „Interviewer (KI)“ und „Teilnehmende Person“ umbenannt.",
+   "Ergebnis: 14:37 Minuten statt der verlangten etwa acht; nach einem Einstieg fünf Themen, wie verlangt; Interview-Nummern bei 23 von 37 Sachaussagen.",
+   "Mitlesetext: Spracherkennung faster-whisper (Modell large-v3), Stimmen über die Tonhöhe getrennt; neun Erkennungsfehler korrigiert."
+  ],
+  "schwaechen": [
+   "Vier von 23 Interview-Nummern sind falsch: Was unter 031, 077, 052 und 036 erzählt wird, steht in den Interviews 035, 039, 054 sowie 039 und 122.",
+   "„Frankensteinpapiere“: Den Begriff verwendet keine befragte Person; das Hörstück schreibt ihn Interview 077 zu.",
+   "Ein als „wortwörtlich“ angekündigtes Zitat (Interview 042) ist inhaltlich ergänzt; zwei Personen bekommen ein Geschlecht zugeschrieben, das die Quellen nicht nennen.",
+   "Alle elf Häufigkeitsaussagen gehen über die Daten hinaus: „alle Befragten“ kämpfen mit der Vertrauenslücke (Stichwortzählung Misstrauen: 73 von 125), Schreibhilfe sei „extrem beliebt“ (Schreibblockade: 1 Interview).",
+   "Ausschmückungen: Studierende seien „krachend durchgefallen“ (Interview 016); aus der Berufspraxis eines Ingenieurs (Interview 011) wird ein Student, der „das beste Bauteil für eine Schaltung“ bekommt.",
+   "„Interview 042“ fällt zweimal, genau die Nummer, die der Prompt als Beispiel nannte. Die Nummer passt jeweils zum Inhalt (eine Aussage belegt, zwei überzogen); ob das Beispiel die Auswahl gelenkt hat, lässt sich nicht prüfen.",
+   "Länge 14:37 statt etwa acht Minuten."
+  ]
+ }
+}
