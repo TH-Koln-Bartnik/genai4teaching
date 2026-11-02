@@ -231,6 +231,48 @@ Wie eine Agentenrecherche mit festen Kontrollpunkten in der Praxis abläuft, zei
 Was die Prüfung regelmäßig als unzuverlässig zeigt, wandert aus der Delegation wieder heraus.
 [Den Kreislauf mit hervorgehobenem Engpass zeigt die [interaktive Fassung](interactions/4d-kreislauf.html?rolle=hiwi).]{.content-visible when-format="html"}
 
+#### Interviews auswerten lassen – und prüfen {#sec-podcast-interviews}
+
+Literatur ist nicht die einzige Quelle, die ein Hiwi auswertet. Interviews aus einem Lehrprojekt, Freitexte der Lehrevaluation und Feedback am Semesterende sind qualitative Daten derselben Art, und Werkzeuge wie Gemini Notebook (früher NotebookLM) machen daraus in Minuten ein Gespräch zweier Stimmen. Das folgende Hörstück entstand so: Ein KI-Agent schrieb in einem Durchgang ein Drehbuch aus 125 Interviews, in denen Forschende über ihre Arbeit mit KI berichten [@handa2025interviewer].^[Datensatz: Anthropic Interviewer, Teil der Forschenden (*scientists*), <https://huggingface.co/datasets/Anthropic/AnthropicInterviewer>, Lizenz CC BY. Alle Teilnehmenden haben der Veröffentlichung ihrer Transkripte zugestimmt.] Das Drehbuch ist absichtlich ungeprüft. Ihre Aufgabe ist die der Betreuung: vorher eine Vermutung festhalten, zuhören, dann drei Aussagen an den Originalstellen prüfen. Die Vermutung zählt mit, denn wer vorab rät, behält die Auflösung oft besser [@pan2023prequestion]. Das Ganze dauert etwa zwölf Minuten.
+
+::: {.content-visible when-format="html"}
+```{=html}
+<iframe loading="lazy" id="podcast-forschende-ki" src="interactions/podcast-forschende-ki.html" width="100%" height="900px" frameborder="0" title="Hörstück mit Prüfauftrag: Was Forschende über KI sagen. Vorhersage, Hören mit Transkript, drei Aussagen prüfen, Bilanz, Prompt-Vorlage"></iframe>
+<script>
+/* Das Element meldet seine Inhaltshöhe (wie agenten-engpass.html); beim Wechsel der Phase rückt sein Anfang ins Bild. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.id !== "podcast-forschende-ki") return;
+  var f = document.getElementById(d.id); if (!f) return;
+  if (d.typ === "rahmen-hoehe" && d.h > 200) f.style.height = (d.h + 2) + "px";
+  if (d.typ === "rahmen-anfang" && f.getBoundingClientRect().top < 0) f.scrollIntoView({ block: "start" });
+});
+</script>
+```
+:::
+
+::: {.content-visible unless-format="html"}
+::: {.callout-note title="Prüfen Sie selbst: Ziehen Forschende der KI klare Grenzen?" appearance="simple"}
+Im Hörstück sagt der Moderator: „Viele ziehen klare persönliche Grenzen.“ Eine Stichwortzählung (etwa *boundary*, *draw the line*, *would never*) findet solche Wörter in den Antworten von 12 der 125 Interviews. Zwei der Treffer, in Arbeitsübersetzung:
+
+1. „Ich setze der KI klare Grenzen, um wesentliche Lernschritte zu bewahren.“ (Transkript science_0077)\
+   *Original: „I set clear boundaries around AI to preserve essential learning steps.“*
+2. „Wenn die KI zum Beispiel eigene mathematische Sätze aufstellen und die Grenzen der Wissenschaft verschieben könnte, wäre das eine große Hilfe.“ (Transkript science_0050)\
+   *Original: „For example, if AI was able to produce its own mathematical theorems and push the boundaries of science, it would be a great help“*
+
+Ihr Urteil zur Aussage: $\square$ belegt $\square$ überzogen $\square$ nicht belegt. Den Befund des Prüfagenten finden Sie in @sec-loesungshinweise.
+
+Das Hörstück (sieben bis acht Minuten) mit Transkript und zwei weiteren Prüfaufgaben gibt es in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#sec-podcast-interviews> aufrufen.
+
+![](images/qr/qr-podcast-forschende.png){width="25mm"}
+:::
+:::
+
+Der Prüfagent, ein zweiter KI-Agent ohne Kenntnis des ersten Auftrags, zerlegte das Drehbuch in 39 Sachaussagen: 33 waren belegt, 6 überzogen, keine ohne Quelle. Die Zitate hielten, die Verallgemeinerungen nicht; aus 12 von 125 Interviews wurde „viele“. Für eigene Auswertungen heißt das: Zitate stichprobenartig prüfen, Wörter wie „viele“, „die meisten“ und „typisch“ ausnahmslos, und Zahlen nur nennen, wenn klar ist, was gezählt wurde.
+
+::: {.callout-note title="So entstand dieses Hörstück" appearance="simple"}
+Der Drehbuch-Prompt begann: „Schreibe ein deutsches Podcast-Gespräch von etwa 1.150 Wörtern (8 Minuten) zwischen zwei Moderierenden, Lea und Jonas, über die angehängten Auszüge aus 125 Interviews mit Forschenden zu ihrer Arbeit mit KI.“ Ein Skript zog dafür 93 Originalstellen und eine Stichwortzählung aus den Transkripten. Das Drehbuch schrieb ein Agent in Claude Code in 75 Sekunden, die Prüfung dauerte fünfeinhalb Minuten; gesprochen haben zwei Stimmen aus ElevenLabs v3. Die Schwäche, die tatsächlich auftrat: Der Agent übernahm Stichwortzählungen als Aussagen über die Forschenden. Drei Stellen, die Teilnehmende verkürzt wiedergaben, wurden vor der Vertonung korrigiert, alles andere nicht.
+:::
+
 ## KI als Copilot {#sec-copilot}
 
 In dieser Kategorie hilft das Sprachmodell uns dabei, etwas zu tun, was wir sonst nicht könnten.

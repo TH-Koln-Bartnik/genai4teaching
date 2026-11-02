@@ -1,0 +1,83 @@
+{
+ "hinweis": "Übungstexte für interactions/podcast-forschende-ki.html. Zahlen aus auszug.json (Skript) und pruefung-drehbuch.md (Prüfagent); Originalstellen wörtlich aus scientists_transcripts.csv (Test tests/podcast-s2.test.mjs). Zusammenführen: python3 scripts/audio-s2-zusammenfuegen.py daten",
+ "meta": {
+  "einleitung": "Zwei KI-Stimmen besprechen, was 125 Forschende in Interviews über ihre Arbeit mit KI gesagt haben. Das Drehbuch hat eine KI in einem Durchgang geschrieben; es ist absichtlich ungeprüft. Sie können hören oder nur das Transkript lesen. Ein Klick auf einen Satz springt im Ton dorthin.",
+  "quelle": {"text": "Anthropic/AnthropicInterviewer auf Hugging Face, CC BY", "href": "https://huggingface.co/datasets/Anthropic/AnthropicInterviewer"},
+  "bericht": {"text": "Handa et al. (2025): Introducing Anthropic Interviewer", "href": "https://www.anthropic.com/research/anthropic-interviewer"}
+ },
+ "vorhersage": {
+  "einleitung": "Bevor Sie hören: Legen Sie sich kurz fest. In der Bilanz vergleichen Sie Ihre Vorhersage mit einer Zählung in den 125 Interviews.",
+  "frage": "Worüber sprechen die Forschenden am häufigsten, wenn sie von ihrer Arbeit mit KI erzählen?",
+  "optionen": [
+   {"id": "lit", "thema": "literatur_schreiben", "label": "Literatur und Schreiben"},
+   {"id": "code", "thema": "code_daten", "label": "Datenanalyse und Code"},
+   {"id": "ideen", "thema": "ideen_hypothesen", "label": "Ideen und Hypothesen"}
+  ],
+  "zaehlhinweis": "Gezählt wurde, in wie vielen Interviews mindestens ein Stichwort des Themas in den Antworten der Forschenden vorkommt (etwa „paper“, „draft“ oder „python“, „dataset“). Das misst Erwähnungen, nicht Vertrauen und nicht, wie oft jemand KI nutzt.",
+  "regler": {
+   "thema": "misstrauen_fehler",
+   "frage": "In wie viel Prozent der 125 Interviews kommt Misstrauen gegenüber KI-Ergebnissen zur Sprache?",
+   "frage_kurz": "Misstrauen gegenüber KI-Ergebnissen",
+   "hinweis": "Grobe Zählung über Stichwörter wie „hallucinate“, „wrong“, „mistake“, „don’t trust“. Fehltreffer zählen mit (etwa Grammatikfehler im eigenen Text), Misstrauen ohne eines dieser Wörter fehlt. Die Zahl zeigt eine Größenordnung, keinen Messwert."
+  }
+ },
+ "pruefeinleitung": "Das Hörstück ist der ungeprüfte Erstentwurf einer KI. Ein zweiter KI-Agent, der den Auftrag des ersten nicht kannte, hat danach jede Sachaussage an den Transkripten geprüft. Urteilen Sie selbst, bevor Sie seinen Befund sehen: belegt (die Quellen sagen das so), überzogen (der Kern stimmt, die Verallgemeinerung oder Zuspitzung geht darüber hinaus) oder nicht belegt (keine passende Stelle).",
+ "pruefung": [
+  {
+   "nr": 1, "zeile": 12,
+   "aussage": "„Prüfen und Verifizieren kommt in 95 Interviews vor, Misstrauen und Fehler in 73. Das Thema ist also fast so präsent wie die Nutzung selbst.“",
+   "hinweis": "Zum Vergleich die Stichwortzählung: Literatur und Schreiben 105, Code und Datenanalyse 102, Prüfen und Verifizieren 95 von 125 Interviews. Das Stichwort „check“ allein trifft 62 Interviews. Zu prüfen ist der zweite Satz.",
+   "stellen": [
+    {"id": "science_0001", "en": "Initially, I would use AI to check over emails I was writing to send to my advisor.", "de": "Anfangs habe ich die KI E-Mails an meinen Betreuer durchsehen lassen, die ich gerade schrieb."},
+    {"id": "science_0007", "en": "Any source the AI gives me I check over myself to verify the contents of it and if the source is actually relevant.", "de": "Jede Quelle, die mir die KI nennt, sehe ich selbst durch, um den Inhalt zu prüfen und ob die Quelle überhaupt relevant ist."}
+   ],
+   "urteil": "ueberzogen",
+   "begruendung": "Die Zahlen stimmen, der Schluss nicht. Die 95 entstehen zu einem großen Teil aus dem Allerweltswort „check“, das auch die Nutzung selbst meint: In der ersten Stelle prüft die KI E-Mails, nicht ein Mensch die KI. Mit engeren Prüfwörtern (verify, validate, double-check, cross-check, fact-check) bleiben 73 Interviews. Wie „präsent“ ein Thema ist, lässt sich aus Stichworttreffern nicht ablesen."
+  },
+  {
+   "nr": 2, "zeile": 28,
+   "aussage": "„Viele ziehen klare persönliche Grenzen.“",
+   "hinweis": "Stichwortzählung für „Grenzen“ (etwa boundary, draw the line, would never, not comfortable): 12 von 125 Interviews.",
+   "stellen": [
+    {"id": "science_0077", "en": "I set clear boundaries around AI to preserve essential learning steps.", "de": "Ich setze der KI klare Grenzen, um wesentliche Lernschritte zu bewahren."},
+    {"id": "science_0050", "en": "For example, if AI was able to produce its own mathematical theorems and push the boundaries of science, it would be a great help", "de": "Wenn die KI zum Beispiel eigene mathematische Sätze aufstellen und die Grenzen der Wissenschaft verschieben könnte, wäre das eine große Hilfe."}
+   ],
+   "urteil": "ueberzogen",
+   "begruendung": "Grenzziehungen gibt es, wie die erste Stelle zeigt. Die Zählung trifft aber nur 12 von 125 Interviews, und vier davon sind Fehltreffer wie die zweite Stelle, in der es um die „Grenzen der Wissenschaft“ geht. Einzelne weitere Grenzziehungen ohne Stichwort kommen vor; „viele“ ist damit nicht gedeckt."
+  },
+  {
+   "nr": 3, "zeile": 29,
+   "aussage": "„Bei der Literatur ähnlich: KI-Vorschläge dienen einer Person als Sprungbrett für die eigene Recherche, und sie prüfe, ob die genannten Aufsätze echt, relevant und seriös sind.“",
+   "hinweis": null,
+   "stellen": [
+    {"id": "science_0087", "en": "I would never solely use AI for these tasks.", "de": "Ich würde für diese Aufgaben nie ausschließlich KI nutzen."},
+    {"id": "science_0087", "en": "For the literature review I would use AI suggestions as a springboard to do my own research and I would verify that the papers it suggested were real, relevant and reputable.", "de": "Für die Literaturübersicht nutze ich Vorschläge der KI als Sprungbrett für die eigene Recherche und prüfe, ob die vorgeschlagenen Aufsätze echt, relevant und seriös sind."}
+   ],
+   "urteil": "belegt",
+   "begruendung": "Die Quelle sagt das so. Der Erstentwurf hat hier sauber gearbeitet: Nicht jede flüssige Zusammenfassung ist falsch, aber erst der Blick in die Quelle zeigt, welche Aussage trägt."
+  }
+ ],
+ "bilanz": {
+  "befund": "Der Prüfagent zerlegte das Drehbuch in 39 Sachaussagen: 33 belegt, 6 überzogen, keine ohne Beleg. Alle Zahlen ließen sich nachrechnen, alle Transkript-IDs passten. Die Schwächen lagen in Verallgemeinerungen („viele“, „fast so präsent“) und in Zitaten, denen eine Einschränkung aus der Quelle fehlte. Drei Stellen gaben Teilnehmende verkürzt oder falsch wieder; sie wurden vor der Vertonung korrigiert. Alles Übrige, auch fünf überzogene Aussagen, steht im Hörstück wie im Erstentwurf.",
+  "grenzen": [
+   "Die 125 Forschenden haben freiwillig teilgenommen; sie sind keine Stichprobe aller Forschenden, einige beschreiben sich selbst als Studierende.",
+   "Der Interviewer war selbst eine KI (Claude); Fragen und Nachfragen prägen, was zur Sprache kam.",
+   "Das Hörstück ist eine Auswahl: 93 Originalstellen aus rund 84.000 Wörtern Antworten, von einer KI ausgewählt und zugespitzt. Zahlen im Hörstück sind Stichwortzählungen, keine Anteile der Forschenden."
+  ]
+ },
+ "transfer": {
+  "einleitung": "Dasselbe Verfahren passt auf eigene Freitexte: Lehrveranstaltungs-Evaluationen, offene Antworten einer Umfrage, Interviews aus einem Lehrprojekt. Die Vorlage verlangt die Prüftabelle gleich mit; prüfen müssen Sie die Tabelle trotzdem selbst, mindestens bei allen Verallgemeinerungen.",
+  "vorlage": "Fasse die angehängten [Interviews / Freitextantworten / Evaluationskommentare] als Gespräch zweier Moderierender für [Zielgruppe] zusammen, etwa [Länge] Wörter. Nenne zu jedem Zitat und jeder Zahl die ID der Quelle. Erstelle danach eine Tabelle aller Sachaussagen mit wörtlicher Beleg-Stelle und dem Urteil belegt / überzogen / nicht belegt. Prüfe besonders Wörter wie „viele“, „die meisten“, „typisch“.",
+  "datenschutz": "Interviews und Evaluationskommentare enthalten oft personenbezogene Daten: nur mit Einwilligung und nur in datenschutzkonformen Werkzeugen verarbeiten (siehe Kapitel 5, Richtlinien zur KI-Nutzung).",
+  "makingof": "Ein Skript zog aus den 125 Transkripten 93 kurze Originalstellen und eine Stichwortzählung (rund 3.700 Wörter). Ein KI-Agent (Claude) schrieb daraus in einem Durchgang das Drehbuch, ein zweiter Agent ohne Kenntnis des ersten Auftrags prüfte jede Aussage an den Transkripten. Gesprochen haben zwei KI-Stimmen.",
+  "drehbuchprompt": "Schreibe ein deutsches Podcast-Gespräch von etwa 1.150 Wörtern (8 Minuten) zwischen zwei Moderierenden, Lea und Jonas, über die angehängten Auszüge aus 125 Interviews mit Forschenden zu ihrer Arbeit mit KI. Zielgruppe: Hochschullehrende. Zitiere Teilnehmende sinngemäß auf Deutsch und nenne bei jedem Zitat die Transkript-ID in eckigen Klammern. Gliedere in vier bis fünf Themen. Ende mit einer offenen Frage an die Hörenden.",
+  "schwaechen": [
+   "„Viele ziehen klare persönliche Grenzen“: Die Zählung trifft 12 von 125 Interviews, vier davon Fehltreffer.",
+   "„Fast so präsent wie die Nutzung selbst“: ein Schluss aus dem Allerweltswort „check“.",
+   "„Die Fehlerberichte sind sehr fachspezifisch“: Ein großer Teil betrifft erfundene Quellen und Zitate, also gerade keine Fachfrage.",
+   "Zwei Zitate verloren ihren Bezugspunkt: „Das spart keine Zeit“ galt nur für komplexe Datenanalyse, „die Arbeit selbst wiederholen“ nur für Auswertungen.",
+   "Drei Stellen gaben Teilnehmende verkürzt oder falsch wieder (eine davon zugleich überzogen); sie wurden vor der Vertonung korrigiert.",
+   "Die Stichwortzählung selbst ist grob: Unter „Sorge um Fachkompetenz“ passen nur 3 von 9 Treffern, unter „Grenzen“ landen atmosphärische Grenzschichten. Das Drehbuch sagt das selbst."
+  ]
+ }
+}
