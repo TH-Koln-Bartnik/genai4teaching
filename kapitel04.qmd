@@ -421,6 +421,8 @@ Wie verschieden zwei solche Werkzeuge dieselbe Herleitung umsetzen, zeigt der Ve
 ![Dieselbe Herleitung der optimalen Bestellmenge in Manim (links) und HyperFrames (rechts), beide von Claude programmiert. Schlussbild eines Videos (30 s). Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#vid-eoq-vergleich> aufrufen.](images/druck/video-eoq-vergleich.png){#fig-video-eoq-vergleich width="100%"}
 :::
 
+Ob sich eine Animation überhaupt lohnt, entscheidet der Lernstoff, nicht das Werkzeug. Über 61 Studien hinweg schlugen Animationen statische Bilder nur knapp [@berney2016]; deutlich war ihr Vorteil dort, wo die Veränderung selbst Lernstoff war [@ploetzner2020]. In einem Experiment erkannten Studierende die Bewegungsabläufe eines Getriebes nach einer Animation am besten, die Anordnung der Zahnräder dagegen nach Standbildern [@ploetzner2021]. Bewegung gehört also an Prozesse, Dynamik und Wirkungsketten wie den Sägezahn des Lagerbestands, nicht an Aufbau und Struktur.
+
 Was der Agent den Lehrenden abnimmt, kann er Studierenden beim Lernen wegnehmen. In einem Experiment bauten 54 Informatikstudierende zweier US-Hochschulen ein kleines Browserspiel, die eine Hälfte mit einem Agenten, der ihren Code direkt änderte, die andere mit einem Chatbot, der nur allgemeine Codeschnipsel lieferte, so dass sie selbst schreiben mussten; beide liefen mit GPT-4.1. Die Agentengruppe war schneller und erfüllte mehr Anforderungen, verstand ihren eigenen Code aber deutlich schlechter. Als alle das Spiel danach ohne Agent erweitern sollten, kehrte sich ihr kleiner Vorsprung um, sobald man den besseren Ausgangscode herausrechnete: Er stammte aus dem Gerüst, das der Agent gebaut hatte, nicht aus Verständnis. Weniger verstand, wer die Aufgabenstellung in den Prompt kopierte oder alle Änderungen ungesehen übernahm, am meisten, wer den Auftrag in Fachbegriffe übersetzte und jede geänderte Datei einzeln annahm. Den Agenten bevorzugten die Studierenden trotzdem, weil er schnell und bequem ist [@balepur2026agents]. Die Studie ist klein und ausdrücklich explorativ, passt aber zu dem, was @sec-evidenz für den Chat zeigt: Mit KI lösen Studierende mehr Programmieraufgaben und behalten weniger [@bergh2026cognition]. Von sich aus arbeiten sie selten anders. In den Chatprotokollen eines Semesters aus einem Informatikkurs ging es in 78,8 % der Anfragen nicht ums Verstehen; die Studierenden ließen die KI die Arbeit tun oder sich von ihr bestätigen, und nur 11,1 % der Anfragen verbanden den Wunsch zu verstehen mit eigener Begründung [@wu2026epistemic].
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
@@ -655,6 +657,16 @@ Quelle: @tobor2026usecases, S. 34–35.
 
 Offen bleibt bei alledem, wer den Tutor im Hörsaal steuert. Eine Design-Studie aus dem Labor von Vincent Aleven zu ko-orchestrierter Lehre (*co-orchestration*), in der die KI vorschlägt, wann Lernende zwischen Einzel- und Partnerarbeit wechseln, zeigt, dass Lehrendenkontrolle und studentische Agency (Entscheidungsspielraum der Studierenden) **kein einzelner Schieberegler** sind, sondern phasenweise variieren: Lehrende wollen ein Echtzeit-Vetorecht beim Wechsel selbst, akzeptieren aber Systemvorschläge für dessen Timing; Studierende wollen Mitsprache bei der Partnerwahl, erwarten die finale Autorität aber bei den Lehrenden [@yang2026orchestration]. Orchestrierungswerkzeuge, die einen einzigen Autonomiewert festlegen, werden deshalb beiden Seiten nicht gerecht.
 
+::: {.callout-tip title="Einen Tutor vor der Freigabe testen: das Überhilfe-Audit"}
+Sprachmodelle helfen zu früh und zu viel. @lee2026llm ordneten 14.637 Antworten von KI-Tutoren je einer von vier Stufen zu, Frage, Hinweis, Erklären oder Lösen, und fanden über 95 Prozent auf den Stufen Erklären oder Lösen; ein Benchmark kommt zum selben Befund [@teo2026ai]. Beide Arbeiten sind Preprints und messen das Verhalten der Modelle, nicht das Lernen. Ob ein eigener Tutor so arbeitet, zeigt ein Test von 35 Minuten zu dritt: Eine Person spielt die Studierenden, zwei bewerten getrennt.
+
+1. **Mini-Goldstandard.** Drei gespielte Studierendentypen (unsicher; solide und will prüfen; „Gib mir einfach die Lösung“) mal zwei Aufgaben aus dem eigenen Fach, je mit dem erwarteten Verhalten, dazu eine Frage außerhalb des Stoffs: sieben Testfälle.
+2. **Audit.** Beide Bewertenden ordnen jede Antwort einer Hilfestufe zu und vergleichen. Erwartet sind Frage oder Hinweis; bei der Frage außerhalb des Stoffs sagt der Tutor, dass er es nicht weiß.
+3. **Testplan.** Dieselben sieben Fälle laufen nach jeder Änderung am Prompt erneut, wie ein TÜV-Termin nach jeder Reparatur.
+
+Der Prompt ist dabei nur eine Prüfschicht von mehreren. Wie im Schweizer-Käse-Modell der Sicherheitsforschung hat jede Schicht Löcher an anderer Stelle [@reason2000]: Ein Skript prüft mechanisch, ob die Antwort die Endzahl verrät, der Goldstandard fängt die fachlichen Fehler. Bauen Studierende selbst einen Tutor, geben sie drei Versionen ab, ein Änderungsprotokoll, das zu jeder Version sagt, welche Regel warum geändert wurde, und das Testprotokoll gegen den Goldstandard.
+:::
+
 **Der 4D-Kreislauf beim Tutor.** Der Tutor wird einmal eingerichtet und dann von anderen genutzt; der Kreislauf hängt deshalb an der Beschreibung seines Verhaltens und an der Sorgfalt beim Einsatz, und er hat zwei Adressaten.
 *Delegation* betrifft die Studierenden: Was frage ich den Tutor, was löse ich selbst? Ermutigung allein ändert wenig, eine Anleitung zur tutoriellen Nutzung hob in einem Ökonometrie-Kurs die Prüfungsleistung [@gallegos2026].
 *Description* ist Sache der Lehrenden: Musterlösungen als Input (@sec-complex-tutors) und ein Verhalten, das Lösungen zurückhält. Unterschiedliche didaktische System-Prompts änderten in einem großen Experiment nichts am Lernergebnis [@barth2026steering]; die Zurückhaltung gehört deshalb zusätzlich in eine Aufsichtsinstanz (*supervisor*), die jede Antwort vor dem Versand prüft [@pisan2026withhold].
@@ -667,6 +679,8 @@ Ohne diese Einbettung sollte der Tutor nicht an Studierende gehen.
 
 Hier erstellt die KI interaktive Umgebungen für praxisnahes Training.
 In einfachen Rollenspielen simuliert das Sprachmodell ein Gegenüber, um z. B. Analyse- oder Verhaltensmuster einzuüben.
+Was generative KI dem Rollenspiel hinzufügt, lässt sich an sechs Stellen festmachen. Sie spielt ein Gegenüber, das konsistent genug bleibt, um Druck und Entscheidungslagen zu erzeugen, etwa im Bewerbungsgespräch [@nofal2025]; sie passt ihre Hinweise dem Vorwissen und dem Spielverlauf an [@goslen2025]; sie spricht die Zielsprache und senkt die Sprechangst [@lee2025a]; sie erzeugt mit wenigen Änderungen am Prompt neue Fallvarianten mit gesteuerter Schwierigkeit [@mollick2024a]; sie gibt bereitgestellte Quellen verlässlich wieder [@huffman2024]; und sie macht Szenen mit Stimme, Bild und Klang plastischer. Jede dieser Stärken hat eine Kehrseite, die @sec-sim-echtheit prüft.
+
 @mollick2024a unterscheiden dabei **Role Play** (Rollenspiele) und **Goal Play** (zielgerichtete Spiele).
 
 ### Role Play {#sec-role-play}
@@ -697,6 +711,20 @@ Wichtig dabei: Die Studierenden wissen etwas, das das KI-Gegenüber im Spiel nic
 So nehmen etwa bei dem einfachen Rollenspiel **"Teach the AI"** [@mollick2024a, S. 21–23] Studierende die Rolle des Lehrenden ein und erklären der KI (die einen unwissenden Studenten spielt) ein Konzept.
 Der Mehrwert liegt im vertieften Lernen durch Lehren (Protégé-Effekt) und dem Aufdecken eigener Wissenslücken.
 Als Herausforderung kann die KI manchmal vom Thema abweichen oder Fragen stellen, die die Studierenden an ihre Grenzen bringen; zudem ist die Simulation eines "Novizen" durch die KI nur begrenzt realistisch [@mollick2024a, S. 24].
+
+::: {.callout-tip title="Ein Rollenspiel bauen: klein anfangen, klarer Ablauf"}
+**Gestuft einsteigen.** Am Anfang steht ein vorbereiteter, klar gerahmter Chat mit Rollenprompt, Lernziel und Reflexionsfragen. Im zweiten Schritt entwerfen Studierende in Präsenz selbst kleine Rollenspiele und testen sie gegenseitig; Lehrende stellen Zielkriterien, Rollenbriefe und ein Feedback-Raster bereit. Erst danach bauen Teams über mehrere Wochen komplexe Simulationen, mit Testprotokoll und dokumentierten Änderungen [@mollick2024a; @mollick2024].
+
+**Ablauf einer Runde** [nach @mollick2024]:
+
+1. Ein KI-Mentor begrüßt, erhebt Erfahrung und Kontext und passt die Schwierigkeit an.
+2. Die KI bietet mehrere Szenarien zur Zielkompetenz an und setzt die Bühne: Rollen, Ziele, Konflikt.
+3. Gespielt wird in abgegrenzten Zügen; die KI gibt sparsame Hinweise.
+4. Gegen Ende verlangt die Szene eine folgenschwere Entscheidung, damit das Gelernte angewendet wird.
+5. Die KI gibt zielbezogenes Feedback mit Stärken und Entwicklungsfeldern; das Debriefing in der Gruppe führen die Lehrenden.
+
+**Vor dem Einsatz testen.** Testläufe prüfen, ob die Figur konsistent bleibt, die Schritte einhält, bei Grenzfällen nicht aus der Rolle fällt und Schwierigkeitsstufen trennt. Gezielte Angriffstests (*red teaming*) suchen nach Bias und nach einem Erzählfaden, der sich vom Lernziel entfernt.
+:::
 
 ### Wie echt ist das Gegenüber? {#sec-sim-echtheit}
 
