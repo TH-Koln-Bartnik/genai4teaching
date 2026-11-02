@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Erzeugt aus dem Manifest (einzige Quelle) zwei lesbare Fassungen:
 //   1. <Filmordner>/drehbuch.md  – Szenen, Sprechtext, Bildtext, Prüfspalte mit Belegen, Haltepunkte
-//   2. Arbeitsblatt für die Vertonung (ElevenLabs v3) – Pfad über --vertonung <datei>
+//   2. Arbeitsblatt für die Vertonung (ElevenLabs; Modell aus manifest.vertonung, Standard v3) – Pfad über --vertonung <datei>
 // Aufruf: node scripts/genrefilm/drehbuch.mjs --film kap02-token-genres [--vertonung claude-notizen/VERTONUNG-….md]
 import { writeFileSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
@@ -34,13 +34,13 @@ writeFileSync(join(src, "drehbuch.md"), d);
 console.log("drehbuch.md geschrieben");
 
 if (a.vertonung) {
-  let v = `# Vertonung „${m.titel}“ mit ElevenLabs v3 – Arbeitsblatt für Roman\n\n`;
+  let v = `# Vertonung „${m.titel}“ mit ${m.vertonung?.modell || "ElevenLabs v3"} – Arbeitsblatt für Roman\n\n`;
   v += `Film: \`${m.film}\` · Szenen: ${m.szenen.length} · eine Datei je Szene · geschätzte Zeit: ${m.vertonung?.zeit || "20–25 min (eine Stimme für alle Szenen) bzw. 35–45 min (eigene Stimme je Genre)"}.\n\n`;
-  v += `## So geht es\n\n1. **Tarif:** bezahlter Tarif (kommerzielle Nutzung; Starter genügt, wie bei den Hörbeispielen Kap. 2.3.1).\n2. **Modell:** Text to Speech → **Eleven v3** (\`eleven_v3\`). Nur v3 versteht die Regieanweisungen in eckigen Klammern (Englisch, z. B. \`[whispers]\`). Keine SSML-Pausen; Pausen entstehen aus \`[pause]\`, Auslassungspunkten und Satzzeichen.\n3. **Stimme wählen (Empfehlung: eine Stimme für alle neun Szenen).** Die Genres tragen die Tags und die Wortwahl; eine Stimme spart Zeit und hält den Film zusammen. In der Stimmenbibliothek (*Voice Library*) filtern: Sprache **German**, Akzent Standard, Einsatz *Narrative & Story* oder *Characters*, Alter *middle aged*, Geschlecht nach Wahl; 2–3 Kandidaten mit Szene 1 und Szene 5 probehören und die Stimme nehmen, die sowohl rauchig (Noir) als auch sachlich (Wetter) glaubwürdig klingt. Konkrete Stimmennamen sind hier nicht vorgegeben, weil die Bibliothek in dieser Sitzung nicht einsehbar war. Keine geklonte Stimme einer realen Person.\n`;
+  v += `## So geht es\n\n1. **Tarif:** bezahlter Tarif (kommerzielle Nutzung; Starter genügt, wie bei den Hörbeispielen Kap. 2.3.1).\n2. **Modell:** ${m.vertonung?.modellText || "Text to Speech → **Eleven v3** (\\`eleven_v3\\`). Nur v3 versteht die Regieanweisungen in eckigen Klammern (Englisch, z. B. \\`[whispers]\\`)."} Keine SSML-Pausen; Pausen entstehen aus \`[pause]\`, Auslassungspunkten und Satzzeichen.\n3. **Stimme wählen (Empfehlung: eine Stimme für alle neun Szenen).** Die Genres tragen die Tags und die Wortwahl; eine Stimme spart Zeit und hält den Film zusammen. In der Stimmenbibliothek (*Voice Library*) filtern: Sprache **German**, Akzent Standard, Einsatz *Narrative & Story* oder *Characters*, Alter *middle aged*, Geschlecht nach Wahl; 2–3 Kandidaten mit Szene 1 und Szene 5 probehören und die Stimme nehmen, die sowohl rauchig (Noir) als auch sachlich (Wetter) glaubwürdig klingt. Konkrete Stimmennamen sind hier nicht vorgegeben, weil die Bibliothek in dieser Sitzung nicht einsehbar war. Keine geklonte Stimme einer realen Person.\n`;
   v += `4. **Einstellungen:** Stabilität „Natural“; wirkt ein Genre zu flach, „Creative“. Tempo Standard.\n5. **Erzeugen:** je Szene den Eingabetext unten einfügen (ohne Backticks), 2–3 Varianten, die beste behalten. Prüffragen: Wortlaut genau wie im Text (die Untertitel zeigen ihn wörtlich)? ${m.vertonung?.aussprache || "Zahlen richtig ausgesprochen („achttausendsiebenhundertsechsundneunzig“)? Tokens als Wörter gesprochen („Lieferantenbewertung“, „Supplier evaluation“ englisch)?"}\n`;
   v += `6. **Speichern:** mp3, Dateiname genau wie in der Tabelle (z. B. \`${m.szenen[0].datei}.mp3\`), Ablage in Tresorit \`${m.vertonung?.ordner || "0_GenAI/1-Research/06-Lehrbuch-Publikation-Logos/Audio-S5-Token-Genres/"}\`.\n7. **Danach (Sitzung B):** Claude holt die Dateien, baut den Film neu (die Szenenlängen passen sich der Tonlänge an) und stellt G3.\n\n`;
   v += `Länge zur Orientierung: Die Platzhalterstimme braucht je Szene ${zp ? zp.map((z) => z.audioDauer.toFixed(0) + " s").join(", ") : "15–22 s"}; ElevenLabs-Takes dürfen 10–30 % länger sein.\n\n`;
-  v += `## Szenen\n\n| Nr. | Datei | Genre / Stimmhinweis | Eingabetext für ElevenLabs v3 |\n|---|---|---|---|\n`;
+  v += `## Szenen\n\n| Nr. | Datei | Genre / Stimmhinweis | Eingabetext für ${m.vertonung?.modell || "ElevenLabs v3"} (Audio Tags in eckigen Klammern) |\n|---|---|---|---|\n`;
   v += m.szenen.map((s, i) => `| ${i + 1} | \`${s.datei}.mp3\` | **${s.genre}** – ${zelle(s.stimmhinweis)} | \`${zelle(s.v3)}\` |`).join("\n") + "\n";
   v += `\n## Wenn eigene Stimmen je Genre gewünscht sind\n\nFilterprofile (Sprache jeweils German): ${m.szenen.map((s, i) => `${i + 1} ${s.genre}: ${s.stimmhinweis}`).join("; ")}.\n`;
   writeFileSync(a.vertonung, v);

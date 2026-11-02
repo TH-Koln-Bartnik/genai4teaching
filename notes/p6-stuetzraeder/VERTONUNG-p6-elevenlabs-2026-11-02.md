@@ -1,15 +1,15 @@
-# Vertonung „Stützräder – wie die Prompting-Ratschläge kamen und gingen“ mit ElevenLabs v3 – Arbeitsblatt für Roman
+# Vertonung „Stützräder – wie die Prompting-Ratschläge kamen und gingen“ mit ElevenLabs v4 – Arbeitsblatt für Roman
 
 Film: `kap02-stuetzraeder` · Szenen: 9 · eine Datei je Szene · geschätzte Zeit: ca. 15 min (eine Stimme für alle neun Szenen).
 
-**Hinweis:** Szene 7 ist gegenüber dem Drehbuch geändert (Roman, MC, 02.11.2026): „In diese Richtung raten heute alle drei großen Labore …“. Der Text in der Tabelle ist maßgeblich.
+**Hinweis:** Szene 7 ist gegenüber dem Drehbuch geändert (Roman, MC, 02.11.2026): „In diese Richtung raten heute alle drei großen Labore …“. Der Text in der Tabelle ist maßgeblich. **Modell: Eleven v4** (Entscheidung Roman, 02.11.2026); am besten S2, S5, S6 und P6 in einem Durchgang mit demselben Modell und derselben Stimme.
 
 ## So geht es
 
 1. **Tarif:** bezahlter Tarif (kommerzielle Nutzung; Starter genügt, wie bei den Hörbeispielen Kap. 2.3.1).
-2. **Modell:** Text to Speech → **Eleven v3** (`eleven_v3`). Nur v3 versteht die Regieanweisungen in eckigen Klammern (Englisch, z. B. `[whispers]`). Keine SSML-Pausen; Pausen entstehen aus `[pause]`, Auslassungspunkten und Satzzeichen.
+2. **Modell:** Text to Speech → **Eleven v4** (nicht „v4 Turbo“; Turbo ist für Entwürfe gedacht). v4 versteht dieselben Regieanweisungen in eckigen Klammern wie v3 (Audio Tags, freier Text auf Englisch, z. B. `[whispers]`); die Texte unten gelten unverändert. Entscheidung Roman, 02.11.2026. Keine SSML-Pausen; Pausen entstehen aus `[pause]`, Auslassungspunkten und Satzzeichen.
 3. **Stimme wählen (Empfehlung: eine Stimme für alle neun Szenen).** Die Genres tragen die Tags und die Wortwahl; eine Stimme spart Zeit und hält den Film zusammen. In der Stimmenbibliothek (*Voice Library*) filtern: Sprache **German**, Akzent Standard, Einsatz *Narrative & Story* oder *Characters*, Alter *middle aged*, Geschlecht nach Wahl; Am einfachsten dieselbe Stimme wie für S5/S6 (ein Durchgang); sonst 2–3 Kandidaten mit Szene 2 (Zaubershow, laut) und Szene 5 (Naturdokumentation, leise) probehören. Konkrete Stimmennamen sind hier nicht vorgegeben, weil die Bibliothek in dieser Sitzung nicht einsehbar war. Keine geklonte Stimme einer realen Person.
-4. **Einstellungen:** Stabilität „Natural“; wirkt ein Genre zu flach, „Creative“. Tempo Standard.
+4. **Einstellungen:** Standard lassen; wirkt ein Genre zu flach, die Stabilität etwas senken (die Bezeichnungen der Regler können in v4 von v3 abweichen). Tempo Standard.
 5. **Erzeugen:** je Szene den Eingabetext unten einfügen (ohne Backticks), 2–3 Varianten, die beste behalten. Prüffragen: Wortlaut genau wie im Text (die Untertitel zeigen ihn wörtlich)? Zahlen prüfen: „2020“ = zwanzig-zwanzig, „79 statt 18“ = neunundsiebzig statt achtzehn, „14:40“ = vierzehn Uhr vierzig, „308“ = dreihundertacht; „Reasoning-Modell“ englisch, „Few-Shot-Prompting“ englisch.
 6. **Speichern:** mp3, Dateiname genau wie in der Tabelle (z. B. `p6-szene01.mp3`), Ablage in Tresorit `0_GenAI/1-Research/06-Lehrbuch-Publikation-Logos/Audio-P6-Stuetzraeder/`.
 7. **Danach (Sitzung B):** Claude holt die Dateien, baut den Film neu (die Szenenlängen passen sich der Tonlänge an) und stellt G3.
@@ -18,7 +18,7 @@ Länge zur Orientierung: Die Platzhalterstimme braucht je Szene 17 s, 13 s, 15 s
 
 ## Szenen
 
-| Nr. | Datei | Genre / Stimmhinweis | Eingabetext für ElevenLabs v3 |
+| Nr. | Datei | Genre / Stimmhinweis | Eingabetext für ElevenLabs v4 (Audio Tags in eckigen Klammern) |
 |---|---|---|---|
 | 1 | `p6-szene01.mp3` | **Stummfilm** – Ansager eines alten Wochenschau-Films: gemessen, etwas feierlich | `[old-fashioned announcer voice] 2020. [pause] Sprachmodelle verstehen eine Aufgabe noch schlecht. Also macht man es ihnen vor: drei gelöste Beispiele, dann die eigene Aufgabe. [slowly] Few-Shot-Prompting heißt das, Lernen aus wenigen Beispielen. [impressed] Es wirkt erstaunlich gut. [pause] Der erste Ratschlag ist geboren: Zeig’s ihm vor.` |
 | 2 | `p6-szene02.mp3` | **Zaubershow** – Zauberkünstler auf der Bühne: große Geste, dann ein Flüstern beim Zaubersatz | `[theatrical showman voice] Meine Damen und Herren: ein einziger Satz! [whispers] ‚Denken wir Schritt für Schritt.‘ [pause] [excited] Und das Modell löst plötzlich 79 statt 18 von hundert Rechenaufgaben. [matter-of-fact] Kein Trick, sondern gemessen. Ab jetzt gilt: Lass das Modell laut denken.` |
