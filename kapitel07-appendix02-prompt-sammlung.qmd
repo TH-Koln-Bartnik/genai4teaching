@@ -4,7 +4,7 @@
 
 Die Sammlung entstand 2024/25. Die didaktischen Prompts (Eingaben an die KI) wurden aus verschiedenen internationalen Quellen zusammengetragen, übersetzt und angepasst. Ältere Prompts tragen Labels aus Prompt-Schemata wie RTF (Rolle, Aufgabe, Format) oder CREATE (zusätzlich Beispiele, Vorgaben und Prüfschritte); diese Labels sind eine Lesehilfe, keine Bedingung dafür, dass ein Prompt wirkt.
 
-Die im Buch abgedruckten Prompts sind neu gefasst und folgen zwei Mustern (@sec-access). Ein **Arbeitsauftrag** nennt Ziel, Wozu, Material und Abnahmekriterien, denn das Modell liefert ein Werkstück, das die Lehrperson prüft; bei langen oder teuren Ergebnissen kommt eine Zwischenabnahme hinzu. Eine **Verhaltensbeschreibung** legt Zweck, Ablauf, Regeln mit ihren Gründen, Grenzfälle und das Ende des Gesprächs fest, denn bei Tutoren und Simulationen ist das Gespräch selbst das Produkt. Stand: November 2026.
+Die im Buch abgedruckten Prompts sind neu gefasst und folgen zwei Mustern (@sec-access). Ein **Arbeitsauftrag** nennt Ziel, Wozu, Material und Abnahmekriterien, denn das Modell liefert ein Werkstück, das die Lehrperson prüft; bei langen oder teuren Ergebnissen kommt eine Zwischenabnahme hinzu. Eine **Verhaltensbeschreibung** legt Zweck, Ablauf, Regeln mit ihren Gründen, Grenzfälle und das Ende des Gesprächs fest, denn bei Tutoren und Simulationen ist das Gespräch selbst das Produkt. Jeder neu gefasste Prompt nennt außerdem die Modellklasse, für die er gedacht ist (@sec-model-choice): ein großes Modell mit hoher Denkstufe, wo Fachurteil oder ein langes Rollenspiel gefragt ist, ein kleines, wo das Material oder die Studierenden das Ergebnis tragen. Stand: November 2026.
 
 ::: {.content-visible when-format="html"}
 In der Navigationsleiste rechts können Sie zu den Prompts navigieren, die Sie interessieren.
@@ -63,6 +63,8 @@ Gehe schrittweise vor (Analyse → Struktur → Materialien → Differenzierung)
 
 **Muster:** Arbeitsauftrag mit Interview und Zwischenabnahme (Ziel, Wozu, Material, Abnahme; siehe Vorbemerkung).
 
+**Modellklasse:** Großes Modell; für eine erste Ideensammlung genügt ein kleines, denn den Ablaufplan prüft die Lehrperson ohnehin selbst.
+
 **Quelle:** Angepasst und übersetzt von der [System Prompt Library (Harvard VPAL/HILT)](https://github.com/ncwilson78/System-Prompt-Library) [@systemPromptLibrary]; thematischer Prompt im Fork als Datei: [Interactive Lecture Assistant](https://github.com/motazsaad/Harvard-System-Prompt-Library/blob/main/Prompts/Teaching%20Activities/Interactive%20Lecture%20Assistant%20GPT.md); neu gefasst 11/2026.
 
 ::: {.callout-note collapse="true" title="Hiwi: Aktivierungs-Coach"}
@@ -93,6 +95,8 @@ Abnahme:
 **Didaktische Elemente:** Arbeitsteilung wie Lastenheft und Pflichtenheft (die Lehrperson bestimmt das Was, das Modell formuliert); umgekehrte Befragung (*Flipped Interaction*: das Modell fragt, die Lehrperson antwortet) [@white2023]; Kontrollpunkte vor und nach dem Schreiben.
 
 **Muster:** Arbeitsauftrag mit Interview und Freigabe (Ziel, Wozu, Material, Abnahme; siehe Vorbemerkung).
+
+**Modellklasse:** Großes Modell mit hoher Denkstufe, denn eine Unschärfe im erzeugten Prompt wirkt in jedem späteren Einsatz nach.
 
 **Quelle:** Selbst erstellt, 11/2026; ersetzt den früheren Strukturierten Prompt Designer, der Prompt-Ideen in die Schemata RTF und CREATE überführte (@pmi2024).
 
@@ -198,6 +202,8 @@ POTATO — 1 Blinde Flecken, die Du übersiehst
 
 **Muster:** Arbeitsauftrag mit Interview und Freigabe; er erzeugt eine Verhaltensbeschreibung (siehe Vorbemerkung).
 
+**Modellklasse:** Großes Modell mit hoher Denkstufe. Kaltlesung und Testnachrichten laufen in einer frischen Sitzung des Modells, auf dem der Bot später arbeitet, denn derselbe Prompt wirkt in jedem Modell anders.
+
 **Quelle**: Selbst erstellt; ursprünglich strukturiert nach dokumentierten Best Practices für System Prompts von OpenAI, Anthropic und Google [@kotha2025; @google2025; @anthropic2025c]. Neu gefasst 11/2026 nach den aktuellen Anleitungen der Anbieter (@sec-access).
 
 ::: {.callout-note collapse="true" title="Hiwi: Verhaltens-Interviewer für System-Prompts"}
@@ -241,6 +247,8 @@ Danach:
 **Didaktische Elemente:** Testing Effect (Testeffekt); Low Stakes Test (Test ohne Notenfolgen); Retrieval Practice
 
 **Muster:** Arbeitsauftrag mit kurzem Interview am Anfang (Ziel, Wozu, Material, Abnahme; siehe Vorbemerkung).
+
+**Modellklasse:** Großes Modell mit hoher Denkstufe, denn gute falsche Antwortoptionen setzen Fachwissen über typische Fehlvorstellungen voraus.
 
 **Quelle:** Angepasst & übersetzt basierend auf dem Blog von Ethan Mollick, Online: https://www.moreusefulthings.com/instructor-prompts; neu gefasst 11/2026.
 
@@ -628,6 +636,8 @@ Erfolg liegt vor, wenn die Studierenden selbst reflektieren, der Dialog nicht ü
 
 **Muster:** Verhaltensbeschreibung (Zweck, Material, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung); im englischen Original *Purpose, Material, Procedure, Rules, Edge cases, End*. Antwortoptionen gibt der Tutor bewusst nicht vor, denn Abrufübung verlangt freies Erinnern.
 
+**Modellklasse:** Kleines Modell aus dem Gratis- oder Hochschulzugang genügt, denn das Material liegt bei, und jede Zahl lässt sich gegen ein gerechnetes Beispiel prüfen. Rechnet das Modell falsch, auf das große wechseln.
+
 **Quelle:** Eigener Prompt aus dem Modul *Sustainable Supply Chain Management*, TH Köln, Wintersemester 2026/27 (Original englisch; 11/2026 überarbeitet: Gründe zu den Regeln, Grenzfälle, Ende). Für ein anderes Fach Modulname, Lehrbuch und Prüfungsformat in *Purpose* und *Material* ersetzen.
 
 ::: {.callout-note collapse="true" title="Tutor: Quiz me"}
@@ -674,6 +684,8 @@ Die Studierenden stellen der KI definitorische und prüfende Fragen, identifizie
 Das Endprodukt ist eine überarbeitete Fassung inklusive Begründungen und einer Dokumentation des kognitiven Prozesses.
 
 **Muster:** Aufgabenstellung für Studierende als Arbeitsauftrag (Ziel, Wozu, Ablauf, Abgabe; siehe Vorbemerkung).
+
+**Modellklasse:** Jedes Modell, das die Studierenden haben, auch ein kleines; seine Schwächen sind hier Stoff für den sokratischen Dialog. Wer zwei Modelle vergleicht, gewinnt in Schritt 6 zusätzliches Material.
 
 **Quelle:** @yuen2025, Online: [AI Pedagogy Project](https://aipedagogy.org/assignment/questioning-the-bot-socratic-chats-with-ai-2/); übersetzt, gekürzt und neu gefasst 11/2026.
 
@@ -824,6 +836,8 @@ Fügen Sie einen einseitigen Anhang mit den folgenden Informationen bei:
 
 **Muster:** Verhaltensbeschreibung (Zweck, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung).
 
+**Modellklasse:** Großes Modell, etwa über den Hochschulzugang, denn der Fall muss in sich stimmig bleiben, auch mit erfundenen Daten.
+
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Co-create a case study with Copilot.
 Online: https://www.moreusefulthings.com/student-exercises; neu gefasst 11/2026.
 
@@ -860,6 +874,8 @@ Ende: Wenn die Studierenden zufrieden sind, gib den fertigen Fall in einem Block
 **Didaktische Elemente:** Sokratische Gesprächsführung; Prospective Hindsight (Prospektive Rückschau)
 
 **Muster:** Verhaltensbeschreibung (Zweck, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung). Antwortoptionen gibt der Coach nur für die Einschätzung vor, nicht für die Scheitergründe, denn diese soll das Team selbst finden.
+
+**Modellklasse:** Kleines Modell genügt, denn der Coach stellt nur Fragen; die Inhalte kommen vom Team. Interne Projektdaten gehören in den Hochschulzugang.
 
 **Quelle:** Angepasst & übersetzt basierend auf @MoreUsefulThingsStudentExercises, Project pre-mortem.
 Online: https://www.moreusefulthings.com/student-exercises; neu gefasst 11/2026.
@@ -1257,6 +1273,8 @@ Die Lehrperson verankert das Sandwich-Prinzip in der Aufgabenstellung: Zuerst we
 
 **Muster:** Aufgabenstellung für Studierende als Arbeitsauftrag (Ziel, Wozu, Ablauf, Abgabe; siehe Vorbemerkung).
 
+**Modellklasse:** Kleines Modell genügt für Interviewfragen und Entwurf, denn die Studierenden prüfen jede Schlussfolgerung an ihren eigenen Interviews. Die Interviewnotizen sind personenbezogene Daten und gehören auch anonymisiert in den Hochschulzugang oder ein offenes Modell.
+
 **Quelle:** Übersetzt und angepasst nach @ippolito2025, Online: [AI Pedagogy Harvard](https://aipedagogy.org/assignment/ai-sandwich/); neu gefasst 11/2026.
 
 ::: {.callout-note collapse="true" title="Copilot-Aufgabe: AI-Sandwich"}
@@ -1453,6 +1471,8 @@ Schritte:
 Situiertes Lernen.
 
 **Muster:** Verhaltensbeschreibung mit Rolle; in Simulationen ist die Rolle der Inhalt (Zweck, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung).
+
+**Modellklasse:** Großes Modell, denn die Gegenseite muss über viele Runden in der Rolle bleiben, ihre verdeckte Alternative durchhalten und danach treffendes Feedback geben.
 
 **Quelle:** Angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises.
 Negotiation Simulator.
@@ -1694,6 +1714,8 @@ Diese Konzepte sollen implizit im Rollenspiel gefördert und im Feedback reflekt
 **Didaktische Elemente:** Scaffolding (durch KI-Mentor); Szenariobasiertes Lernen (*storytelling*); Lernen durch Lehren (*learning by teaching*); Formatives Feedback (Debriefing)
 
 **Muster:** Verhaltensbeschreibung mit Rolle; in Simulationen ist die Rolle der Inhalt (Zweck, Ablauf, Regeln, Grenzfälle, Ende; siehe Vorbemerkung).
+
+**Modellklasse:** Großes Modell, denn die Figur muss in der Rolle bleiben und das Feedback die Grundsätze sicher anwenden.
 
 **Quelle:** Angepasst & übersetzt basierend auf @mollickMollickMoreUsefulThingsStudentExercises Mollick, E.
 & Mollick, L.
