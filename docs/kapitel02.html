@@ -616,25 +616,25 @@ Tabelle&nbsp;2.1: Die vier Kompetenzen des AI-Fluency-Modells mit ihren Unterkom
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Delegation</strong></td>
+<td><span id="sb-k2-delegation"></span><strong>Delegation</strong></td>
 <td>Was übernimmt der Mensch, was die KI?</td>
 <td>Ziel- und Aufgabenbewusstsein (<em>goal and task awareness</em>), Kenntnis der Werkzeuge (<em>platform awareness</em>), Aufgabenverteilung (<em>task delegation</em>)</td>
 <td>lat. <em>delegare</em>, übertragen</td>
 </tr>
 <tr class="even">
-<td><strong>Description</strong></td>
+<td><span id="sb-k2-description"></span><strong>Description</strong></td>
 <td>Wie sage ich der KI klar, was ich will?</td>
 <td>Ergebnis beschreiben (<em>product description</em>), Zusammenarbeit beschreiben (<em>process description</em>), Verhalten festlegen (<em>performance description</em>)</td>
 <td>lat. <em>describere</em>, umreißen, aufzeichnen</td>
 </tr>
 <tr class="odd">
-<td><strong>Discernment</strong></td>
+<td><span id="sb-k2-discernment"></span><strong>Discernment</strong></td>
 <td>Wie beurteile ich, was die KI liefert?</td>
 <td>Ergebnis beurteilen (<em>product discernment</em>), Zusammenarbeit beurteilen (<em>process discernment</em>), Verhalten beurteilen (<em>performance discernment</em>)</td>
 <td>lat. <em>discernere</em>, unterscheiden, trennen</td>
 </tr>
 <tr class="even">
-<td><strong>Diligence</strong></td>
+<td><span id="sb-k2-diligence"></span><strong>Diligence</strong></td>
 <td>Wie setze ich KI verantwortlich und offen ein?</td>
 <td>Sorgfalt beim Erzeugen (<em>creation diligence</em>), Offenlegung (<em>transparency diligence</em>), Prüfung vor der Freigabe (<em>deployment diligence</em>)</td>
 <td>lat. <em>diligentia</em>, Sorgfalt, von <em>diligere</em>, hochachten, sorgsam auswählen</td>
@@ -814,7 +814,7 @@ Tabelle&nbsp;2.3: Modell, Harness und Agent: zwei Bauteile und eine Betriebsweis
 <p>Daraus folgt: <strong>Jeder Agent braucht einen Harness, aber nicht jeder Harness macht einen Agenten.</strong> Ein Chatbot, der vor jeder Antwort fest Stellen aus dem Skript holt, hat einen Harness und bleibt doch ein fest programmierter Ablauf.</p>
 <p><strong>Ausgangspunkt: das Modell allein.</strong> Um 2022 war das Chatfenster die ganze Schnittstelle: Das Modell lieferte Text, Nachrechnen, Quellensuche und Prüfen blieben bei uns, und mit dem Fenster vergaß es das Gespräch. Im Bild des Fuhrwerks war es ein Pferd ohne Geschirr.</p>
 <p><strong>Erster Ermöglicher: Werkzeuge.</strong> Statt einer Antwort schreibt das Modell eine strukturierte Bitte, etwa „rechne 17 × 23“; ein gewöhnliches Programm führt sie aus und legt das Ergebnis zurück in den Text, den das Modell weiterschreibt. Dass Sprachmodelle selbst lernen können, wann sich ein solcher Aufruf lohnt, zeigten <span class="citation" data-cites="schick2023toolformer">Schick et al. (<a href="#ref-schick2023toolformer" role="doc-biblioref">2023</a>)</span>. Seit Ende 2024 schließt das Model Context Protocol (MCP) beliebige Dienste nach demselben Muster an, so wie der USB-Anschluss Drucker und Kameras <span class="citation" data-cites="anthropic2024mcp">(<a href="#ref-anthropic2024mcp" role="doc-biblioref">Anthropic, 2024</a>)</span>. Ein <strong>Werkzeug</strong> ist also ein Programm, das das Modell anfordern, aber nicht selbst ausführen kann (Vertiefung: <a href="#sec-agenten-praxis" class="quarto-xref"><span>Kapitel 2.7.3</span></a>).</p>
-<p><strong>Zweiter Ermöglicher: Gedächtnis.</strong> Vor der Antwort kann eine Suche in eigenen Dokumenten, etwa Skript, Folien oder Prüfungsordnung, die passenden Stellen heraussuchen und dem Modell mit der Frage vorlegen, so wie eine Bibliothekarin die richtigen Seiten aufgeschlagen auf den Tisch legt; Fachleute nennen das <em>Retrieval-Augmented Generation</em> (RAG), etwa „abrufgestützte Erzeugung“ <span class="citation" data-cites="lewis2020">(<a href="#ref-lewis2020" role="doc-biblioref">Lewis et al., 2020</a>)</span>. Die Kontextfenster (<em>context windows</em>), also die Textmenge, die das Modell bei einer Antwort auf einmal überblickt, sind von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei trägt Regeln und Zwischenstände von einer Sitzung in die nächste (Vertiefung: <a href="#sec-agenten-gedaechtnis" class="quarto-xref"><span>Kapitel 2.7.4</span></a>).</p>
+<p><strong>Zweiter Ermöglicher: Gedächtnis.</strong> Vor der Antwort kann eine Suche in eigenen Dokumenten, etwa Skript, Folien oder Prüfungsordnung, die passenden Stellen heraussuchen und dem Modell mit der Frage vorlegen, so wie eine Bibliothekarin die richtigen Seiten aufgeschlagen auf den Tisch legt; Fachleute nennen das <em>Retrieval-Augmented Generation</em> (RAG), etwa „abrufgestützte Erzeugung“ <span class="citation" data-cites="lewis2020">(<a href="#ref-lewis2020" role="doc-biblioref">Lewis et al., 2020</a>)</span>. Die Kontextfenster (<em>context windows</em>)<span id="sb-k2-kontextfenster"></span>, also die Textmenge, die das Modell bei einer Antwort auf einmal überblickt, sind von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei trägt Regeln und Zwischenstände von einer Sitzung in die nächste (Vertiefung: <a href="#sec-agenten-gedaechtnis" class="quarto-xref"><span>Kapitel 2.7.4</span></a>).</p>
 <p><strong>Die Folge: Autonomie im Vorgehen.</strong> Mit Werkzeugen und Gedächtnis wird aus einem Durchgang eine Schleife: Das Modell plant einen Schritt, ruft ein Werkzeug auf, liest das Ergebnis und plant den nächsten; <span class="citation" data-cites="yao2023react">Yao et al. (<a href="#ref-yao2023react" role="doc-biblioref">2023</a>)</span> nennen dieses Wechselspiel aus Denken und Handeln ReAct. <span class="citation" data-cites="schluntz2024agents">Schluntz &amp; Zhang (<a href="#ref-schluntz2024agents" role="doc-biblioref">2024</a>)</span> ziehen daraus die Grenze, die für dieses Buch gilt: In einem <strong>Workflow</strong> folgen Modell und Werkzeuge vorgegebenen Pfaden, ein <strong>Agent</strong> steuert seinen Ablauf und seine Werkzeugnutzung selbst. Das Wort kommt vom lateinischen <em>agere</em>, handeln, in Gang bringen. Wie weit diese Selbststeuerung reicht, misst das gemeinnützige Prüfinstitut METR (<em>Model Evaluation and Threat Research</em>) als Zeithorizont (<em>time horizon</em>) , <a href="#sec-capabilities" class="quarto-xref">s.&nbsp;<span>2.3.1</span></a>.</p>
 <p>„Autonom“ verlangt eine Einschränkung: Das griechische <em>autónomos</em> heißt, sich selbst das Gesetz (<em>nómos</em>) geben, und das tut ein Agent nicht, denn das Ziel setzt der Mensch. Wir nennen solche Systeme deshalb <strong>teilautonom</strong>; die Norm zum automatisierten Fahren meidet das Wort „autonom“ aus demselben Grund und spricht von Automatisierungsstufen <span class="citation" data-cites="sae2021j3016">(<a href="#ref-sae2021j3016" role="doc-biblioref">SAE International, 2021</a>)</span>. Wir sprechen von <strong>Autonomie im Vorgehen</strong>; „Autonomie der Lernenden“ (<em>learner autonomy</em>) meint dagegen die Fähigkeit, das eigene Lernen zu steuern <span class="citation" data-cites="holec1981">(<a href="#ref-holec1981" role="doc-biblioref">Holec, 1981</a>)</span>.</p>
 <p>Wie viel Autonomie ein Modell bekommt, entscheiden die Menschen, die es einsetzen, nicht das Modell. <span class="citation" data-cites="morris2024">Morris et al. (<a href="#ref-morris2024" role="doc-biblioref">2024</a>)</span> ordnen die Zusammenarbeit von Mensch und KI in sechs Stufen (<em>Levels of Autonomy</em>), von „keine KI“ bis zum vollständig selbstständigen Agenten, und betonen, dass für Bildung und Prüfungen auch die unterste Stufe ihren Platz behält.</p>
@@ -835,7 +835,7 @@ Tabelle&nbsp;2.3: Modell, Harness und Agent: zwei Bauteile und eine Betriebsweis
 <p>Delegation fragt, was der Mensch übernimmt und was die KI (<a href="#tbl-4d" class="quarto-xref">Tabelle&nbsp;<span>2.1</span></a>). Die Antwort hat drei Teile, die den Unterkompetenzen des Modells entsprechen: wissen, was die Modelle können (<a href="#sec-capabilities" class="quarto-xref"><span>Kapitel 2.3.1</span></a>), Setup und Modell kennen (<a href="#sec-patterns-usage" class="quarto-xref"><span>Kapitel 2.3.2</span></a>, <a href="#sec-model-choice" class="quarto-xref"><span>Kapitel 2.3.3</span></a>) und die Arbeit zwischen Mensch und KI verteilen (<a href="#sec-arbeitsweisen" class="quarto-xref"><span>Kapitel 2.3.4</span></a>). Den größten Teil des Harness liefert dabei der Hersteller; den Teil, den die Nutzenden selbst bauen, nennt <span class="citation" data-cites="bockeler2026harness">Böckeler (<a href="#ref-bockeler2026harness" role="doc-biblioref">2026</a>)</span> den äußeren Harness (<em>outer harness</em>): Anleitungsdateien, Skills (bei Bedarf geladene Gebrauchsanweisungen), eigene Wissensbasen und Prüfregeln. An diesem äußeren Harness gestalten Lehrende und Studierende; ein Übungstutor (<a href="kapitel06-fallbeispiele.html#sec-fall-tutor-bwl" class="quarto-xref"><span>Kapitel 6.2.2</span></a>), ein Karriereberater (<a href="kapitel06-fallbeispiele.html#sec-fall-job-buddy" class="quarto-xref"><span>Kapitel 6.3.4</span></a>) und eine Quellenanbindung mit Praxispartnern (<a href="kapitel06-fallbeispiele.html#sec-fall-unternehmen" class="quarto-xref"><span>Kapitel 6.3.5</span></a>) laufen auf denselben großen Modellen und unterscheiden sich in Anleitung, Quellen und Grenzen. Unsere Rolle verschiebt sich dabei: Wir setzen das Ziel, legen fest, wo der Agent anhält, und prüfen, was zurückkommt; OpenAI fasst das in den Leitsatz „Humans steer. Agents execute.“ <span class="citation" data-cites="lopopolo2026harness">(<a href="#ref-lopopolo2026harness" role="doc-biblioref">Lopopolo, 2026</a>)</span>.</p>
 <section id="sec-capabilities" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="sec-capabilities"><span class="header-section-number">2.3.1</span> Was die Modelle können und was nicht</h3>
-<p>Was Sprachmodelle können, ist sehr uneinheitlich und <strong>verändert sich schnell</strong>. Mollick und Kollegen sprechen von einer „<strong>Jagged Technological Frontier</strong>“, einer zerklüfteten Technik-Grenze: Zwei Aufgaben von ähnlicher Schwierigkeit für Menschen können auf verschiedenen Seiten der Grenze liegen; die eine löst die KI auf menschlichem Niveau oder besser, an der anderen scheitert sie <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. In ihrem Experiment mit Consultants brachte KI bei den meisten von 18 Beratungsaufgaben große Vorteile; bei einer gezielt außerhalb der Grenze gewählten Aufgabe lagen die Consultants mit KI dagegen 19 Prozentpunkte seltener richtig als ohne <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>.</p>
+<p>Was Sprachmodelle können, ist sehr uneinheitlich und <strong>verändert sich schnell</strong>. Mollick und Kollegen sprechen von einer „<strong>Jagged Technological Frontier</strong>“<span id="sb-k2-zerklueftete-grenze"></span>, einer zerklüfteten Technik-Grenze: Zwei Aufgaben von ähnlicher Schwierigkeit für Menschen können auf verschiedenen Seiten der Grenze liegen; die eine löst die KI auf menschlichem Niveau oder besser, an der anderen scheitert sie <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. In ihrem Experiment mit Consultants brachte KI bei den meisten von 18 Beratungsaufgaben große Vorteile; bei einer gezielt außerhalb der Grenze gewählten Aufgabe lagen die Consultants mit KI dagegen 19 Prozentpunkte seltener richtig als ohne <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>.</p>
 <div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -868,7 +868,7 @@ Tabelle&nbsp;2.3: Modell, Harness und Agent: zwei Bauteile und eine Betriebsweis
 </section>
 <section id="sec-patterns-usage" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="sec-patterns-usage"><span class="header-section-number">2.3.2</span> Welches Setup: LLM, RAG oder Agent?</h3>
-<p>Auch das klügste Modell hilft nur, wenn es den <strong>Kontext unserer Aufgabe kennt</strong>. Diesen Kontext geben wir ihm auf zwei Arten, bildlich gesprochen mit ein paar <strong>Büchern oder einem Werkzeugkoffer</strong> <span class="citation" data-cites="huyen2025">(<a href="#ref-huyen2025" role="doc-biblioref">Huyen, 2025, Kap.6</a>)</span>. Bei <strong>RAG (Retrieval-Augmented Generation)</strong>, der in <a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.2.2</span></a> eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal. Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche. Die Unterschiede zwischen dem reinen Sprachmodell, dem Modell mit Bücherregal und dem Modell mit Werkzeugkoffer übt das folgende Spiel.</p>
+<p>Auch das klügste Modell hilft nur, wenn es den <strong>Kontext unserer Aufgabe kennt</strong>. Diesen Kontext geben wir ihm auf zwei Arten, bildlich gesprochen mit ein paar <strong>Büchern oder einem Werkzeugkoffer</strong> <span class="citation" data-cites="huyen2025">(<a href="#ref-huyen2025" role="doc-biblioref">Huyen, 2025, Kap.6</a>)</span>. Bei <strong>RAG (Retrieval-Augmented Generation)</strong><span id="sb-k2-rag"></span>, der in <a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.2.2</span></a> eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal. Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche. Die Unterschiede zwischen dem reinen Sprachmodell, dem Modell mit Bücherregal und dem Modell mit Werkzeugkoffer übt das folgende Spiel.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1044,7 +1044,7 @@ Tabelle&nbsp;2.4: Modelle und Preisstufen bei Drucklegung. Preise laut Preisseit
 <section id="sec-arbeitsweisen" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="sec-arbeitsweisen"><span class="header-section-number">2.3.4</span> Wer macht was: Arbeitsweisen von Centaur bis dunkle Fabrik</h3>
 <p>Wer welchen Schritt einer Aufgabe übernimmt, ist die dritte Delegationsfrage. Das 4D-Modell unterscheidet drei Formen der Zusammenarbeit, die es <em>Modalitäten</em> nennt <span class="citation" data-cites="dakan2025">(<a href="#ref-dakan2025" role="doc-biblioref">Dakan &amp; Feller, 2025</a>)</span>: In der <strong>Automation</strong> führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der <strong>Augmentation</strong> erledigen Mensch und KI sie gemeinsam und im Wechsel; in der <strong>Agency</strong> richtet der Mensch eine KI ein, die später selbstständig handelt, oft für andere (nicht zu verwechseln mit den Formen des Aufgabenmodells in <a href="kapitel04.html#sec-hiwi" class="quarto-xref"><span>Kapitel 4.1</span></a>). Der Hiwi aus <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a> arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency.</p>
-<p>Feiner unterscheidet die Studie zur Jagged Frontier <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. Der <strong>Centaur</strong> teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest. Der <strong>Cyborg</strong> arbeitet in ständigem Wechsel mit der KI und nutzt ihre Rückmeldungen laufend. Beide setzen voraus, dass der Mensch die Stärken und Schwächen des Modells kennt. Eine spätere Studie des weitgehend selben Teams mit 776 Beschäftigten von Procter &amp; Gamble fand, dass Einzelne mit KI-Unterstützung teils das Leistungsniveau ganzer Teams erreichten; die KI wirkte als „<strong>Cybernetic Teammate</strong>“ <span class="citation" data-cites="dellacqua2025">(<a href="#ref-dellacqua2025" role="doc-biblioref">Dell’Acqua et al., 2025</a>)</span>.</p>
+<p>Feiner unterscheidet die Studie zur Jagged Frontier <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. Der <strong>Centaur</strong><span id="sb-k2-centaur-cyborg"></span> teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest. Der <strong>Cyborg</strong> arbeitet in ständigem Wechsel mit der KI und nutzt ihre Rückmeldungen laufend. Beide setzen voraus, dass der Mensch die Stärken und Schwächen des Modells kennt. Eine spätere Studie des weitgehend selben Teams mit 776 Beschäftigten von Procter &amp; Gamble fand, dass Einzelne mit KI-Unterstützung teils das Leistungsniveau ganzer Teams erreichten; die KI wirkte als „<strong>Cybernetic Teammate</strong>“ <span class="citation" data-cites="dellacqua2025">(<a href="#ref-dellacqua2025" role="doc-biblioref">Dell’Acqua et al., 2025</a>)</span>.</p>
 <p>Mit stärkeren Agenten kommen Arbeitsweisen hinzu, in denen der Mensch nicht mehr in jeder Schleife sitzt. Als <strong>Beschwörer</strong> (<em>conjurer</em>) ruft er Agenten bei Bedarf herbei, weist ihnen Arbeit zu und bewertet, was zurückkommt, ohne den Weg dorthin zu begleiten. Mollick hält das für die leistungsfähigste Arbeitsweise, die aber neue Risiken bringt, weil niemand mehr genau sieht, wie die KI zu ihren Ergebnissen kommt <span class="citation" data-cites="mollick2026charts">(<a href="#ref-mollick2026charts" role="doc-biblioref">E. R. Mollick, 2026b</a>)</span>. Am Ende der Reihe steht die <strong>dunkle Fabrik</strong> (<em>dark factory</em>): Menschen legen fest, was entstehen soll, Maschinen führen aus und prüfen; das trägt nur dort, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt, etwa bei Software mit automatischen Tests <span class="citation" data-cites="mollick2026agents">(<a href="#ref-mollick2026agents" role="doc-biblioref">E. R. Mollick, 2026a</a>)</span>. Dazwischen liegt die <strong>Dämmerfabrik</strong> (<em>twilight factory</em>): Agenten arbeiten, aber ein vermittelnder Agent holt Menschen hinzu, wenn eine Freigabe nötig ist, Fachwissen fehlt, die Ideen zu gleichförmig werden oder eine Entscheidung interessant ist <span class="citation" data-cites="mollick2026agents">(<a href="#ref-mollick2026agents" role="doc-biblioref">E. R. Mollick, 2026a</a>)</span>. Für die Lehre wiegt eine Folge am schwersten: Wer nur Freigaben und Ausnahmen bearbeitet, übt nie das Urteilen, das eine gute Freigabe voraussetzt, und die Fachleute, die künftig prüfen sollen, wachsen nicht nach <span class="citation" data-cites="mollick2026agents">(<a href="#ref-mollick2026agents" role="doc-biblioref">E. R. Mollick, 2026a</a>)</span>. Das folgende Schema ordnet die fünf Arbeitsweisen den Schritten einer Aufgabe zu.</p>
 <p>Im interaktiven Schema lassen sich die Anlässe der Dämmerfabrik einzeln abschalten.</p>
 <iframe loading="lazy" src="interactions/ki-entwicklung.html?zeige=arbeitsweisen" width="100%" height="820px" frameborder="0" title="Schema: Wer übernimmt welchen Arbeitsschritt in den Arbeitsweisen Centaur, Cyborg, Beschwörer, Dämmerfabrik und dunkle Fabrik">
@@ -1086,7 +1086,7 @@ window.addEventListener("message", function (e) {
 });
 </script>
 <!-- Automatisch erzeugt von scripts/streich-test-daten.py aus notes/streich-test/urteile.md. Nicht von Hand ändern. -->
-<p>In einem Märchen von N. K. Jemisin erfüllen gefangene Götter ihren Wächtern jeden Wunsch, nur nicht wohlwollend: Den Baum, der im Weg liegt, beseitigt auch ein Vulkanausbruch <span class="citation" data-cites="jemisin2010">(<a href="#ref-jemisin2010" role="doc-biblioref">Jemisin, 2010</a>)</span>. Ein <strong>Prompt</strong>, die Eingabe an ein Sprachmodell, ist ein solcher Wunsch, und das Handwerk, ihn zu fassen, heißt <strong>Prompt Engineering</strong> <span class="citation" data-cites="berryman2025">(<a href="#ref-berryman2025" role="doc-biblioref">Berryman &amp; Ziegler, 2025</a>)</span>. Was an ihm genau sein muss, hat sich mit den Modellen verschoben. Ältere Modelle brauchten eine Arbeitsanleitung mit Rolle, Schritten und Ermahnungen. Reasoning-Modelle planen den Weg selbst; die Leitfäden der Labore raten inzwischen, die aufwendige Prompt-Technik älterer Modelle wegzulassen <span class="citation" data-cites="google2026gemini3 anthropic2026opus5">(<a href="#ref-anthropic2026opus5" role="doc-biblioref">Anthropic, 2026c</a>; <a href="#ref-google2026gemini3" role="doc-biblioref">Google, 2026a</a>)</span> und stattdessen Ergebnis und Erfolgskriterium zu nennen <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026b</a>)</span>. Der Prompt wird vom Dienstvertrag, der Tätigkeiten vorschreibt, zum Werkvertrag, der Erfolg und Abnahme festlegt.</p>
+<p>In einem Märchen von N. K. Jemisin erfüllen gefangene Götter ihren Wächtern jeden Wunsch, nur nicht wohlwollend: Den Baum, der im Weg liegt, beseitigt auch ein Vulkanausbruch <span class="citation" data-cites="jemisin2010">(<a href="#ref-jemisin2010" role="doc-biblioref">Jemisin, 2010</a>)</span>. Ein <strong>Prompt</strong>, die Eingabe an ein Sprachmodell, ist ein solcher Wunsch, und das Handwerk, ihn zu fassen, heißt <strong>Prompt Engineering</strong> <span class="citation" data-cites="berryman2025">(<a href="#ref-berryman2025" role="doc-biblioref">Berryman &amp; Ziegler, 2025</a>)</span>. Was an ihm genau sein muss, hat sich mit den Modellen verschoben. Ältere Modelle brauchten eine Arbeitsanleitung mit Rolle, Schritten und Ermahnungen. Reasoning-Modelle planen den Weg selbst; die Leitfäden der Labore raten inzwischen, die aufwendige Prompt-Technik älterer Modelle wegzulassen <span class="citation" data-cites="google2026gemini3 anthropic2026opus5">(<a href="#ref-anthropic2026opus5" role="doc-biblioref">Anthropic, 2026c</a>; <a href="#ref-google2026gemini3" role="doc-biblioref">Google, 2026a</a>)</span> und stattdessen Ergebnis und Erfolgskriterium zu nennen <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026b</a>)</span>. Der Prompt wird vom Dienstvertrag, der Tätigkeiten vorschreibt, zum Werkvertrag<span id="sb-k2-werkvertrag"></span>, der Erfolg und Abnahme festlegt.</p>
 </section>
 <section id="sec-prompt-components" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-prompt-components"><span class="header-section-number">2.4.2</span> Ein Auftrag mit Abnahmekriterium</h3>
@@ -1201,7 +1201,7 @@ Tabelle&nbsp;2.5: Sechs gezielte Einschränkungen in didaktischen Prompts. Eigen
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-hallucinations"><span class="header-section-number">2.5</span> Discernment: Wie beurteile ich, was die KI liefert?</h2>
 <p>Discernment fragt, wie wir beurteilen, was die KI liefert (<a href="#tbl-4d" class="quarto-xref">Tabelle&nbsp;<span>2.1</span></a>). Die Grundlage ist ein nüchterner Befund: Ein Sprachmodell prüft keine Wahrheit, und über sein eigenes Vorgehen gibt es nicht verlässlich Auskunft.</p>
 <p><strong>Können wir das Modell fragen, wie es zu einem Ergebnis gekommen ist?</strong> Eher nicht. Eine Studie des KI-Labors Anthropic, die mit neuen Methoden in ein Modell hineinschaut, fand bei einfachen Rechnungen wie der Quadratwurzel von 0,64 klare interne Rechenschritte; bei schwierigeren, etwa dem Kosinus einer großen Zahl, gab das Modell Rechnungen an, für die keine internen Prozesse erkennbar waren <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>. Es erfindet dann eine plausible Rechnung, ohne gerechnet zu haben; die Autoren nennen das mit dem Philosophen Harry Frankfurt <em>bullshitting</em>. Bekommt es einen Hinweis auf das gewünschte Ergebnis, rechnet es rückwärts darauf hin, ein Verhalten, das sie als „motiviertes Denken“ (<em>motivated reasoning</em>) bezeichnen. Weitere Befunde dieser Studie stellt die Vertiefung vor (<a href="#sec-blick-ins-modell" class="quarto-xref"><span>Kapitel 2.7.2</span></a>).</p>
-<p><strong>Was kann zu Halluzinationen führen?</strong> Die erfundene Literaturangabe aus dem Kapitelauftakt hat einen erkennbaren Mechanismus. Im Modell ist standardmäßig ein Schaltkreis (<em>circuit</em>) aktiv, der die Antwort verweigert, wenn Informationen fehlen; erkennt das Modell einen bekannten Namen, hemmt ein konkurrierender Mechanismus diese Verweigerung und gibt die Antwort frei. Kennt das Modell den Namen, aber nicht die gesuchte Tatsache, entsteht eine Halluzination: Nach einem Fachartikel des bekannten Forschers Karpathy gefragt, nennt es einen erfundenen Titel, bei weniger bekannten Namen sagt es, die Antwort nicht zu kennen <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>.</p>
+<p><strong>Was kann zu Halluzinationen führen?</strong> Die erfundene Literaturangabe aus dem Kapitelauftakt hat einen erkennbaren Mechanismus. Im Modell ist standardmäßig ein Schaltkreis (<em>circuit</em>) aktiv, der die Antwort verweigert, wenn Informationen fehlen; erkennt das Modell einen bekannten Namen, hemmt ein konkurrierender Mechanismus diese Verweigerung und gibt die Antwort frei. Kennt das Modell den Namen, aber nicht die gesuchte Tatsache, entsteht eine Halluzination<span id="sb-k2-halluzination"></span>: Nach einem Fachartikel des bekannten Forschers Karpathy gefragt, nennt es einen erfundenen Titel, bei weniger bekannten Namen sagt es, die Antwort nicht zu kennen <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>.</p>
 <p>Wie man Ergebnisse prüft, zeigt dieses Buch dort, wo es gebraucht wird: in der Prüfregel der Modellwahl (<a href="#sec-model-choice" class="quarto-xref"><span>Kapitel 2.3.3</span></a>), beim Tutor (<a href="kapitel04.html#sec-tutor-betrieb" class="quarto-xref"><span>Kapitel 4.3.3</span></a>) und bei KI-gebauten Simulationen (<a href="kapitel04.html#sec-widget-pruefen" class="quarto-xref"><span>Kapitel 4.2.2.3</span></a>).</p>
 <div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
 <div class="callout-header d-flex align-content-center">
@@ -1422,6 +1422,119 @@ window.addEventListener("message", function (e) {
 <li>Halluzinationen sind kein Betriebsunfall, sondern folgen aus der Funktionsweise. Gegenmittel sind Eingrenzung des Inputs, Musterlösungen und systematische Prüfung.</li>
 <li>Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.</li>
 </ol>
+</div>
+</div>
+<div class="schluesselbegriffe callout callout-style-default callout-note callout-titled" title="Schlüsselbegriffe">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Schlüsselbegriffe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="sb-begriffe">
+<div class="sb-begriff" data-begriff="k2-delegation">
+<p>Delegation</p>
+<p>Die erste Kompetenz im 4D-Modell: entscheiden, was der Mensch übernimmt und was die KI. Dazu gehört, das eigene Ziel und die verfügbaren Werkzeuge zu kennen und die Arbeit danach aufzuteilen.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-description">
+<p>Description</p>
+<p>Die zweite Kompetenz im 4D-Modell: der KI klar sagen, welches Ergebnis, welche Art der Zusammenarbeit und welches Verhalten man will. Im Alltag heißt das, Prompts als Auftrag mit Ziel und Abnahmekriterium zu schreiben.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-discernment">
+<p>Discernment</p>
+<p>Die dritte Kompetenz im 4D-Modell: beurteilen, was die KI liefert, also Ergebnis, Verlauf der Zusammenarbeit und Verhalten der KI. Nötig, weil ein Sprachmodell keine Wahrheit prüft.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-diligence">
+<p>Diligence</p>
+<p>Die vierte Kompetenz im 4D-Modell: KI verantwortlich und offen einsetzen, sorgfältig beim Erzeugen, offen über die Mitarbeit der KI und prüfend vor der Freigabe. Die Technik verschiebt die Verantwortung, sie nimmt sie nicht ab.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-kontextfenster">
+<p>Kontextfenster (<em>context window</em>)</p>
+<p>Die Textmenge, die ein Modell bei einer Antwort auf einmal überblickt: bisherige Unterhaltung, hochgeladene Dokumente, aktuelle Frage. Was nicht hineinpasst, kennt das Modell in diesem Moment nicht.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-zerklueftete-grenze">
+<p>Zerklüftete Grenze (<em>jagged frontier</em>)</p>
+<p>Modelle lösen manche Aufgaben auf Expertenniveau und scheitern an anderen, die für Menschen ähnlich schwer sind. Wo die Grenze im eigenen Fach verläuft, zeigt nur der Test an den eigenen Aufgaben.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-rag">
+<p>RAG (<em>Retrieval-Augmented Generation</em>)</p>
+<p>Das System holt vor der Antwort passende Stellen aus eigenem Material wie Skript oder Musterlösungen und legt sie dem Modell vor. Die KI ist das Gehirn, das Material das Bücherregal; in der Lehre der wichtigste Hebel gegen Halluzinationen.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-centaur-cyborg">
+<p>Centaur und Cyborg</p>
+<p>Zwei Arbeitsweisen entlang der zerklüfteten Grenze. Der Centaur teilt die Arbeit zwischen sich und der KI auf, der Cyborg verwebt beide in jedem Arbeitsschritt, etwa Satz für Satz beim Schreiben.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-werkvertrag">
+<p>Prompt als Werkvertrag</p>
+<p>Ein guter Prompt legt wie ein Werkvertrag Erfolg und Abnahme fest: Ziel, Grund, Material und das Kriterium, an dem das Ergebnis abgenommen wird. Den Weg überlässt er dem Modell.</p>
+</div>
+<div class="sb-begriff" data-begriff="k2-halluzination">
+<p>Halluzination (<em>hallucination</em>)</p>
+<p>Eine sprachlich überzeugende, aber sachlich falsche oder erfundene Antwort, etwa eine Quelle, die es nicht gibt. Sie folgt aus der Funktionsweise: Das Modell erzeugt Plausibles, nicht Geprüftes.</p>
+</div>
+</div>
+<div class="sb-spiel" data-modus="fall" data-kapitel="2">
+<div class="sb-aufgabe" data-loesung="k2-delegation" data-ablenker="k2-description k2-kontextfenster k2-werkvertrag">
+<p>Vor Semesterbeginn legt ein Dozent fest, dass der Chatbot Varianten der Übungsaufgaben entwirft; die Klausur schreibt er selbst.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach der äußeren Schleife des 4D-Modells (<a href="#sec-4d" class="quarto-xref"><span>Kapitel 2.1.1</span></a>).</p>
+</div>
+<div class="sb-begruendung">
+<p>Er entscheidet einmal für das Vorhaben, welche Arbeit an die KI geht und welche bei ihm bleibt. Wie er die Aufgabenvarianten anschließend in Auftrag gibt, wäre Description.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k2-halluzination" data-ablenker="k2-kontextfenster k2-centaur-cyborg k2-rag">
+<p>Ein Student lässt sich für seine Hausarbeit Literatur empfehlen. Eine Angabe nennt Autorin, Jahr, Zeitschrift und Seitenzahlen; im Katalog ist der Aufsatz nicht zu finden.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach dem Mechanismus in <a href="#sec-hallucinations" class="quarto-xref"><span>Kapitel 2.5</span></a>.</p>
+</div>
+<div class="sb-begruendung">
+<p>Das Modell hat die typische Form einer Literaturangabe erzeugt, keine geprüfte Tatsache. Das ist kein Programmfehler, sondern folgt aus der Funktionsweise.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k2-discernment" data-ablenker="k2-delegation k2-werkvertrag k2-kontextfenster">
+<p>Ein Projektteam vergleicht die Zusammenfassung eines Fachartikels, die der Chatbot geliefert hat, Absatz für Absatz mit dem Original und markiert zwei Zahlen, die dort nicht stehen.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#sec-hallucinations" class="quarto-xref"><span>Kapitel 2.5</span></a>.</p>
+</div>
+<div class="sb-begruendung">
+<p>Das Team beurteilt das Ergebnis der KI an einer Quelle. Diligence beträfe die Offenlegung der KI-Mitarbeit oder die Prüfung eines Systems vor der Freigabe.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k2-diligence" data-ablenker="k2-description k2-delegation k2-rag">
+<p>Im Projektbericht vermerkt ein Team, welche Abschnitte mit KI entworfen wurden und mit welchem Werkzeug.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach der Offenlegung im 4D-Modell (<a href="#sec-diligence" class="quarto-xref"><span>Kapitel 2.6</span></a>).</p>
+</div>
+<div class="sb-begruendung">
+<p>Offen zu sagen, wo KI mitgearbeitet hat, gehört zum verantwortlichen Einsatz. Discernment fragte nach der Qualität der Abschnitte, nicht nach ihrer Kennzeichnung.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k2-rag" data-ablenker="k2-werkvertrag k2-centaur-cyborg k2-diligence">
+<p>Der Tutor-Bot im Modul „Grundlagen der BWL“ soll aus den Modulmaterialien antworten; vor jeder Antwort sucht das System die passenden Stellen aus Skript und Musterlösungen heraus.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach dem Tutor-Bot (<a href="kapitel06-fallbeispiele.html#sec-fall-tutor-bwl" class="quarto-xref"><span>Kapitel 6.2.2</span></a>; <a href="kapitel04.html#sec-tutor-betrieb" class="quarto-xref"><span>Kapitel 4.3.3</span></a>).</p>
+</div>
+<div class="sb-begruendung">
+<p>Das Modell antwortet aus hinterlegtem Material statt nur aus dem Trainingswissen. Das senkt das Risiko erfundener oder vom Kurs abweichender Inhalte.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k2-werkvertrag" data-ablenker="k2-delegation k2-rag k2-kontextfenster">
+<p>Ein Prompt für Klausuraufgaben beginnt nicht mehr mit „Du bist ein erfahrener Professor“, sondern nennt Lernziel, Zweck der Aufgaben, das Skriptkapitel und die Bedingung, dass jede Aufgabe ohne Taschenrechner lösbar ist.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#sec-prompt-components" class="quarto-xref"><span>Kapitel 2.4.2</span></a>.</p>
+</div>
+<div class="sb-begruendung">
+<p>Ziel, Grund, Material und ein prüfbares Abnahmekriterium machen den Prompt zum Werkvertrag. Die Expertenrolle macht die Antworten nicht besser.</p>
+</div>
+</div>
+</div>
+<div class="sb-wiederkehr" data-quellen="kapitel01.html" data-druck="k1-faehigkeitsueberhang k1-erwuenschte-schwierigkeiten k1-auslagerung">
+
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Lernfragen">
@@ -1950,6 +2063,7 @@ Zhang, B., Lazuka, K., &amp; Murag, M. (2025, Oktober 16). Equipping agents for 
 .sb-aufgabe { border-top: 1px solid var(--bs-border-color, #ddd); padding: 0.6rem 0; }
 .sb-aufgabe > p:first-child { margin-bottom: 0.3rem; }
 .sb-herkunft, .sb-herkunft p { font-size: 0.85em; color: #6c757d; margin-bottom: 0.35rem; }
+.sb-herkunft a { text-decoration: underline; }
 .sb-js .sb-begruendung { display: none; }
 .sb-js .sb-aufgabe.sb-beantwortet .sb-begruendung { display: block; }
 .sb-begruendung, .sb-begruendung p { font-size: 0.95em; }

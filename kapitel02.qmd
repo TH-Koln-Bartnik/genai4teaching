@@ -62,10 +62,10 @@ Das Modell zerlegt sie in vier Kompetenzen, die *4 D*, mit je drei Unterkompeten
 ::: {.tabelle-scroll}
 | Kompetenz | Leitfrage | Unterkompetenzen | Herkunft des Wortes |
 |---|---|---|---|
-| **Delegation** | Was übernimmt der Mensch, was die KI? | Ziel- und Aufgabenbewusstsein (*goal and task awareness*), Kenntnis der Werkzeuge (*platform awareness*), Aufgabenverteilung (*task delegation*) | lat. *delegare*, übertragen |
-| **Description** | Wie sage ich der KI klar, was ich will? | Ergebnis beschreiben (*product description*), Zusammenarbeit beschreiben (*process description*), Verhalten festlegen (*performance description*) | lat. *describere*, umreißen, aufzeichnen |
-| **Discernment** | Wie beurteile ich, was die KI liefert? | Ergebnis beurteilen (*product discernment*), Zusammenarbeit beurteilen (*process discernment*), Verhalten beurteilen (*performance discernment*) | lat. *discernere*, unterscheiden, trennen |
-| **Diligence** | Wie setze ich KI verantwortlich und offen ein? | Sorgfalt beim Erzeugen (*creation diligence*), Offenlegung (*transparency diligence*), Prüfung vor der Freigabe (*deployment diligence*) | lat. *diligentia*, Sorgfalt, von *diligere*, hochachten, sorgsam auswählen |
+| []{#sb-k2-delegation}**Delegation** | Was übernimmt der Mensch, was die KI? | Ziel- und Aufgabenbewusstsein (*goal and task awareness*), Kenntnis der Werkzeuge (*platform awareness*), Aufgabenverteilung (*task delegation*) | lat. *delegare*, übertragen |
+| []{#sb-k2-description}**Description** | Wie sage ich der KI klar, was ich will? | Ergebnis beschreiben (*product description*), Zusammenarbeit beschreiben (*process description*), Verhalten festlegen (*performance description*) | lat. *describere*, umreißen, aufzeichnen |
+| []{#sb-k2-discernment}**Discernment** | Wie beurteile ich, was die KI liefert? | Ergebnis beurteilen (*product discernment*), Zusammenarbeit beurteilen (*process discernment*), Verhalten beurteilen (*performance discernment*) | lat. *discernere*, unterscheiden, trennen |
+| []{#sb-k2-diligence}**Diligence** | Wie setze ich KI verantwortlich und offen ein? | Sorgfalt beim Erzeugen (*creation diligence*), Offenlegung (*transparency diligence*), Prüfung vor der Freigabe (*deployment diligence*) | lat. *diligentia*, Sorgfalt, von *diligere*, hochachten, sorgsam auswählen |
 
 : Die vier Kompetenzen des AI-Fluency-Modells mit ihren Unterkompetenzen. Übersetzung nach @dakan2025, CC BY-SA 4.0 {#tbl-4d tbl-colwidths="[16,24,40,20]"}
 :::
@@ -202,7 +202,7 @@ Ein **Werkzeug** ist also ein Programm, das das Modell anfordern, aber nicht sel
 
 **Zweiter Ermöglicher: Gedächtnis.**
 Vor der Antwort kann eine Suche in eigenen Dokumenten, etwa Skript, Folien oder Prüfungsordnung, die passenden Stellen heraussuchen und dem Modell mit der Frage vorlegen, so wie eine Bibliothekarin die richtigen Seiten aufgeschlagen auf den Tisch legt; Fachleute nennen das *Retrieval-Augmented Generation* (RAG), etwa „abrufgestützte Erzeugung“ [@lewis2020].
-Die Kontextfenster (*context windows*), also die Textmenge, die das Modell bei einer Antwort auf einmal überblickt, sind von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei trägt Regeln und Zwischenstände von einer Sitzung in die nächste (Vertiefung: @sec-agenten-gedaechtnis).
+Die Kontextfenster (*context windows*)[]{#sb-k2-kontextfenster}, also die Textmenge, die das Modell bei einer Antwort auf einmal überblickt, sind von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei trägt Regeln und Zwischenstände von einer Sitzung in die nächste (Vertiefung: @sec-agenten-gedaechtnis).
 
 **Die Folge: Autonomie im Vorgehen.**
 Mit Werkzeugen und Gedächtnis wird aus einem Durchgang eine Schleife: Das Modell plant einen Schritt, ruft ein Werkzeug auf, liest das Ergebnis und plant den nächsten; @yao2023react nennen dieses Wechselspiel aus Denken und Handeln ReAct.
@@ -265,7 +265,7 @@ Unsere Rolle verschiebt sich dabei: Wir setzen das Ziel, legen fest, wo der Agen
 ### Was die Modelle können und was nicht {#sec-capabilities}
 
 Was Sprachmodelle können, ist sehr uneinheitlich und **verändert sich schnell**.
-Mollick und Kollegen sprechen von einer „**Jagged Technological Frontier**“, einer zerklüfteten Technik-Grenze: Zwei Aufgaben von ähnlicher Schwierigkeit für Menschen können auf verschiedenen Seiten der Grenze liegen; die eine löst die KI auf menschlichem Niveau oder besser, an der anderen scheitert sie [@dellacqua2023].
+Mollick und Kollegen sprechen von einer „**Jagged Technological Frontier**“[]{#sb-k2-zerklueftete-grenze}, einer zerklüfteten Technik-Grenze: Zwei Aufgaben von ähnlicher Schwierigkeit für Menschen können auf verschiedenen Seiten der Grenze liegen; die eine löst die KI auf menschlichem Niveau oder besser, an der anderen scheitert sie [@dellacqua2023].
 In ihrem Experiment mit Consultants brachte KI bei den meisten von 18 Beratungsaufgaben große Vorteile; bei einer gezielt außerhalb der Grenze gewählten Aufgabe lagen die Consultants mit KI dagegen 19 Prozentpunkte seltener richtig als ohne [@dellacqua2023].
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
@@ -342,7 +342,7 @@ Zum Standardumfang der großen Chat-Interfaces gehören inzwischen vier **Funkti
 
 Auch das klügste Modell hilft nur, wenn es den **Kontext unserer Aufgabe kennt**.
 Diesen Kontext geben wir ihm auf zwei Arten, bildlich gesprochen mit ein paar **Büchern oder einem Werkzeugkoffer** [@huyen2025, Kapitel 6].
-Bei **RAG (Retrieval-Augmented Generation)**, der in @sec-harness eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
+Bei **RAG (Retrieval-Augmented Generation)**[]{#sb-k2-rag}, der in @sec-harness eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
 Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche.
 Die Unterschiede zwischen dem reinen Sprachmodell, dem Modell mit Bücherregal und dem Modell mit Werkzeugkoffer übt das folgende Spiel.
 
@@ -475,7 +475,7 @@ Wer welchen Schritt einer Aufgabe übernimmt, ist die dritte Delegationsfrage.
 Das 4D-Modell unterscheidet drei Formen der Zusammenarbeit, die es *Modalitäten* nennt [@dakan2025]: In der **Automation** führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der **Augmentation** erledigen Mensch und KI sie gemeinsam und im Wechsel; in der **Agency** richtet der Mensch eine KI ein, die später selbstständig handelt, oft für andere (nicht zu verwechseln mit den Formen des Aufgabenmodells in @sec-hiwi).
 Der Hiwi aus @sec-szenarien arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency.
 
-Feiner unterscheidet die Studie zur Jagged Frontier [@dellacqua2023]. Der **Centaur** teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest.
+Feiner unterscheidet die Studie zur Jagged Frontier [@dellacqua2023]. Der **Centaur**[]{#sb-k2-centaur-cyborg} teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest.
 Der **Cyborg** arbeitet in ständigem Wechsel mit der KI und nutzt ihre Rückmeldungen laufend.
 Beide setzen voraus, dass der Mensch die Stärken und Schwächen des Modells kennt.
 Eine spätere Studie des weitgehend selben Teams mit 776 Beschäftigten von Procter & Gamble fand, dass Einzelne mit KI-Unterstützung teils das Leistungsniveau ganzer Teams erreichten; die KI wirkte als „**Cybernetic Teammate**“ [@dellacqua2025].
@@ -550,7 +550,7 @@ Ein **Prompt**, die Eingabe an ein Sprachmodell, ist ein solcher Wunsch, und das
 Was an ihm genau sein muss, hat sich mit den Modellen verschoben.
 Ältere Modelle brauchten eine Arbeitsanleitung mit Rolle, Schritten und Ermahnungen.
 Reasoning-Modelle planen den Weg selbst; die Leitfäden der Labore raten inzwischen, die aufwendige Prompt-Technik älterer Modelle wegzulassen [@google2026gemini3; @anthropic2026opus5] und stattdessen Ergebnis und Erfolgskriterium zu nennen [@openai2026gpt55].
-Der Prompt wird vom Dienstvertrag, der Tätigkeiten vorschreibt, zum Werkvertrag, der Erfolg und Abnahme festlegt.
+Der Prompt wird vom Dienstvertrag, der Tätigkeiten vorschreibt, zum Werkvertrag[]{#sb-k2-werkvertrag}, der Erfolg und Abnahme festlegt.
 
 ### Ein Auftrag mit Abnahmekriterium {#sec-prompt-components}
 
@@ -652,7 +652,7 @@ Weitere Befunde dieser Studie stellt die Vertiefung vor (@sec-blick-ins-modell).
 
 **Was kann zu Halluzinationen führen?** Die erfundene Literaturangabe aus dem Kapitelauftakt hat einen erkennbaren Mechanismus.
 Im Modell ist standardmäßig ein Schaltkreis (*circuit*) aktiv, der die Antwort verweigert, wenn Informationen fehlen; erkennt das Modell einen bekannten Namen, hemmt ein konkurrierender Mechanismus diese Verweigerung und gibt die Antwort frei.
-Kennt das Modell den Namen, aber nicht die gesuchte Tatsache, entsteht eine Halluzination: Nach einem Fachartikel des bekannten Forschers Karpathy gefragt, nennt es einen erfundenen Titel, bei weniger bekannten Namen sagt es, die Antwort nicht zu kennen [@lindsey2025].
+Kennt das Modell den Namen, aber nicht die gesuchte Tatsache, entsteht eine Halluzination[]{#sb-k2-halluzination}: Nach einem Fachartikel des bekannten Forschers Karpathy gefragt, nennt es einen erfundenen Titel, bei weniger bekannten Namen sagt es, die Antwort nicht zu kennen [@lindsey2025].
 
 Wie man Ergebnisse prüft, zeigt dieses Buch dort, wo es gebraucht wird: in der Prüfregel der Modellwahl (@sec-model-choice), beim Tutor (@sec-tutor-betrieb) und bei KI-gebauten Simulationen (@sec-widget-pruefen).
 
@@ -950,6 +950,147 @@ Prüfkriterium: Kann ein neues Teammitglied allein aus der Datei sagen, was ents
 
 6. Halluzinationen sind kein Betriebsunfall, sondern folgen aus der Funktionsweise. Gegenmittel sind Eingrenzung des Inputs, Musterlösungen und systematische Prüfung.
 7. Der Energieverbrauch einer einzelnen Anfrage ist gering, der Gesamtbedarf der Infrastruktur wächst stark. Beides stimmt, und die Steuerung ist eine politische Aufgabe.
+:::
+
+::: {.callout-note .schluesselbegriffe title="Schlüsselbegriffe"}
+::: sb-begriffe
+::: {.sb-begriff begriff="k2-delegation"}
+Delegation
+
+Die erste Kompetenz im 4D-Modell: entscheiden, was der Mensch übernimmt und was die KI. Dazu gehört, das eigene Ziel und die verfügbaren Werkzeuge zu kennen und die Arbeit danach aufzuteilen.
+:::
+
+::: {.sb-begriff begriff="k2-description"}
+Description
+
+Die zweite Kompetenz im 4D-Modell: der KI klar sagen, welches Ergebnis, welche Art der Zusammenarbeit und welches Verhalten man will. Im Alltag heißt das, Prompts als Auftrag mit Ziel und Abnahmekriterium zu schreiben.
+:::
+
+::: {.sb-begriff begriff="k2-discernment"}
+Discernment
+
+Die dritte Kompetenz im 4D-Modell: beurteilen, was die KI liefert, also Ergebnis, Verlauf der Zusammenarbeit und Verhalten der KI. Nötig, weil ein Sprachmodell keine Wahrheit prüft.
+:::
+
+::: {.sb-begriff begriff="k2-diligence"}
+Diligence
+
+Die vierte Kompetenz im 4D-Modell: KI verantwortlich und offen einsetzen, sorgfältig beim Erzeugen, offen über die Mitarbeit der KI und prüfend vor der Freigabe. Die Technik verschiebt die Verantwortung, sie nimmt sie nicht ab.
+:::
+
+::: {.sb-begriff begriff="k2-kontextfenster"}
+Kontextfenster (*context window*)
+
+Die Textmenge, die ein Modell bei einer Antwort auf einmal überblickt: bisherige Unterhaltung, hochgeladene Dokumente, aktuelle Frage. Was nicht hineinpasst, kennt das Modell in diesem Moment nicht.
+:::
+
+::: {.sb-begriff begriff="k2-zerklueftete-grenze"}
+Zerklüftete Grenze (*jagged frontier*)
+
+Modelle lösen manche Aufgaben auf Expertenniveau und scheitern an anderen, die für Menschen ähnlich schwer sind. Wo die Grenze im eigenen Fach verläuft, zeigt nur der Test an den eigenen Aufgaben.
+:::
+
+::: {.sb-begriff begriff="k2-rag"}
+RAG (*Retrieval-Augmented Generation*)
+
+Das System holt vor der Antwort passende Stellen aus eigenem Material wie Skript oder Musterlösungen und legt sie dem Modell vor. Die KI ist das Gehirn, das Material das Bücherregal; in der Lehre der wichtigste Hebel gegen Halluzinationen.
+:::
+
+::: {.sb-begriff begriff="k2-centaur-cyborg"}
+Centaur und Cyborg
+
+Zwei Arbeitsweisen entlang der zerklüfteten Grenze. Der Centaur teilt die Arbeit zwischen sich und der KI auf, der Cyborg verwebt beide in jedem Arbeitsschritt, etwa Satz für Satz beim Schreiben.
+:::
+
+::: {.sb-begriff begriff="k2-werkvertrag"}
+Prompt als Werkvertrag
+
+Ein guter Prompt legt wie ein Werkvertrag Erfolg und Abnahme fest: Ziel, Grund, Material und das Kriterium, an dem das Ergebnis abgenommen wird. Den Weg überlässt er dem Modell.
+:::
+
+::: {.sb-begriff begriff="k2-halluzination"}
+Halluzination (*hallucination*)
+
+Eine sprachlich überzeugende, aber sachlich falsche oder erfundene Antwort, etwa eine Quelle, die es nicht gibt. Sie folgt aus der Funktionsweise: Das Modell erzeugt Plausibles, nicht Geprüftes.
+:::
+:::
+
+::: {.sb-spiel modus="fall" kapitel="2"}
+::: {.sb-aufgabe loesung="k2-delegation" ablenker="k2-description k2-kontextfenster k2-werkvertrag"}
+Vor Semesterbeginn legt ein Dozent fest, dass der Chatbot Varianten der Übungsaufgaben entwirft; die Klausur schreibt er selbst.
+
+::: sb-herkunft
+Herkunft: konstruiert nach der äußeren Schleife des 4D-Modells (@sec-4d).
+:::
+
+::: sb-begruendung
+Er entscheidet einmal für das Vorhaben, welche Arbeit an die KI geht und welche bei ihm bleibt. Wie er die Aufgabenvarianten anschließend in Auftrag gibt, wäre Description.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k2-halluzination" ablenker="k2-kontextfenster k2-centaur-cyborg k2-rag"}
+Ein Student lässt sich für seine Hausarbeit Literatur empfehlen. Eine Angabe nennt Autorin, Jahr, Zeitschrift und Seitenzahlen; im Katalog ist der Aufsatz nicht zu finden.
+
+::: sb-herkunft
+Herkunft: konstruiert nach dem Mechanismus in @sec-hallucinations.
+:::
+
+::: sb-begruendung
+Das Modell hat die typische Form einer Literaturangabe erzeugt, keine geprüfte Tatsache. Das ist kein Programmfehler, sondern folgt aus der Funktionsweise.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k2-discernment" ablenker="k2-delegation k2-werkvertrag k2-kontextfenster"}
+Ein Projektteam vergleicht die Zusammenfassung eines Fachartikels, die der Chatbot geliefert hat, Absatz für Absatz mit dem Original und markiert zwei Zahlen, die dort nicht stehen.
+
+::: sb-herkunft
+Herkunft: konstruiert nach @sec-hallucinations.
+:::
+
+::: sb-begruendung
+Das Team beurteilt das Ergebnis der KI an einer Quelle. Diligence beträfe die Offenlegung der KI-Mitarbeit oder die Prüfung eines Systems vor der Freigabe.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k2-diligence" ablenker="k2-description k2-delegation k2-rag"}
+Im Projektbericht vermerkt ein Team, welche Abschnitte mit KI entworfen wurden und mit welchem Werkzeug.
+
+::: sb-herkunft
+Herkunft: konstruiert nach der Offenlegung im 4D-Modell (@sec-diligence).
+:::
+
+::: sb-begruendung
+Offen zu sagen, wo KI mitgearbeitet hat, gehört zum verantwortlichen Einsatz. Discernment fragte nach der Qualität der Abschnitte, nicht nach ihrer Kennzeichnung.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k2-rag" ablenker="k2-werkvertrag k2-centaur-cyborg k2-diligence"}
+Der Tutor-Bot im Modul „Grundlagen der BWL“ soll aus den Modulmaterialien antworten; vor jeder Antwort sucht das System die passenden Stellen aus Skript und Musterlösungen heraus.
+
+::: sb-herkunft
+Herkunft: konstruiert nach dem Tutor-Bot (@sec-fall-tutor-bwl; @sec-tutor-betrieb).
+:::
+
+::: sb-begruendung
+Das Modell antwortet aus hinterlegtem Material statt nur aus dem Trainingswissen. Das senkt das Risiko erfundener oder vom Kurs abweichender Inhalte.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k2-werkvertrag" ablenker="k2-delegation k2-rag k2-kontextfenster"}
+Ein Prompt für Klausuraufgaben beginnt nicht mehr mit „Du bist ein erfahrener Professor“, sondern nennt Lernziel, Zweck der Aufgaben, das Skriptkapitel und die Bedingung, dass jede Aufgabe ohne Taschenrechner lösbar ist.
+
+::: sb-herkunft
+Herkunft: konstruiert nach @sec-prompt-components.
+:::
+
+::: sb-begruendung
+Ziel, Grund, Material und ein prüfbares Abnahmekriterium machen den Prompt zum Werkvertrag. Die Expertenrolle macht die Antworten nicht besser.
+:::
+:::
+:::
+
+::: {.sb-wiederkehr quellen="kapitel01.html" druck="k1-faehigkeitsueberhang k1-erwuenschte-schwierigkeiten k1-auslagerung"}
+:::
 :::
 
 ::: {.callout-note title="Lernfragen"}
