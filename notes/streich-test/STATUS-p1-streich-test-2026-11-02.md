@@ -1,6 +1,6 @@
-# Status P1: „Der Streich-Test“ – gebaut, geprüft, gepusht, wartet auf G3 (02.11.2026)
+# Status P1: „Der Streich-Test“ – gebaut, geprüft, gemergt, live (02.11.2026)
 
-Auftrag: `claude/prompting-primer/AUFTRAG-p1-streich-test-2026-11-02.md`. Repo `TH-Koln-Bartnik/genai4teaching`, Branch `prompting-streichtest` @ `0d7452c` (auf `main` @ `5837b77`, also nach dem Merge von Sitzung A), gepusht, **nicht gemergt**. `docs/` nicht committet (Render erst nach dem Merge).
+Auftrag: `claude/prompting-primer/AUFTRAG-p1-streich-test-2026-11-02.md`. Repo `TH-Koln-Bartnik/genai4teaching`, Branch `prompting-streichtest` @ `0d7452c` (auf `main` @ `5837b77`, also nach dem Merge von Sitzung A), nach G3 per Fast-Forward nach `main` gemergt; `docs/` gerendert (`1011dc6`).
 
 ## Was entstanden ist
 
@@ -52,17 +52,20 @@ Quellen am 02.11.2026 erneut aufgerufen, Kurzzitate wörtlich: Anthropic *Prompt
 
 Ein Claude-Modell hat die Urteile vorgeschlagen und stützt sich bei acht von zehn Zeilen auf Leitfäden von Herstellern, darunter seinem eigenen, statt auf unabhängige Messungen. Jede Zeile nennt deshalb Quelle und Wortlaut.
 
+## G3 und Merge
+
+G3 (Roman, MC, 02.11.2026): **mergen**, in dieser Sitzung. Fast-Forward `prompting-streichtest` → `main` (`4aa3fd0`), dann `quarto render --to html`, `docs/` committet und gepusht (`1011dc6`). Live geprüft mit `pruefe-playwright.mjs` gegen `https://th-koln-bartnik.github.io/genai4teaching`: alle Prüfungen bestanden (1200/390 px, Maus/Tastatur, axe, iframe-Höhe). **PDF und EPUB in `docs/` nicht neu erzeugt:** Der EPUB-Render leert `docs/` (Ausgabeordner), und der PDF-Render braucht `fontawesome5`, das in der Cloud fehlt; beide Dateien stehen auf dem Stand von Sitzung A, ohne Streich-Test. Beim nächsten vollständigen Render (lokal oder mit installiertem `fontawesome5`) mitnehmen.
+
 ## Offen
 
-- **G3 (Roman, MC):** mergen / Zeilen ändern / Begründungen ändern.
+- Download-PDF und EPUB neu erzeugen (siehe oben).
 - Nach dem Merge von B: `python3 -I scripts/streich-test-daten.py notes/streich-test/urteile.md --neu main`, Kennzeichnung „Entwurf“ fällt weg; Wortzahl prüfen.
-- Nach dem Merge dieses Branches: `docs/` rendern, live prüfen (`kapitel02.html#sec-streichtest`, QR).
-- Merge-Reihenfolge mit S1: Beide Branches fügen `richland2009` an `references.json` an; wer zweit mergt, entfernt das Duplikat (der Test „keine doppelten Schlüssel“ schlägt sonst an).
+- S1 (`mollick-s1-hoeher-tiefer`) fügt `richland2009` ebenfalls an `references.json` an; beim Merge von S1 das Duplikat entfernen (`node --test tests/streich-test.test.mjs` prüft das).
 
-## Startauftrag für die Merge-Sitzung (nach G3 „mergen“)
+## Startauftrag für die nächste Sitzung (nach dem Merge von Anhang B)
 
 ```
-Lies claude/prompting-primer/STATUS-p1-streich-test-2026-11-02.md. Roman hat bei G3 „mergen“ gewählt. Repo th-koln-bartnik/genai4teaching frisch klonen, Branch prompting-streichtest auf main rebasen (Duplikate in references.json prüfen), node --test tests/streich-test.test.mjs, falls Anhang B gemergt ist Skript mit --neu main laufen lassen, mergen, docs/ rendern (Quarto 1.8.25), live prüfen. Fragen nur als Multiple Choice; Statusnotiz in Projekt, Tresorit und Repo.
+Lies claude/prompting-primer/STATUS-p1-streich-test-2026-11-02.md. Anhang B ist gemergt. Repo th-koln-bartnik/genai4teaching frisch klonen, Branch streichtest-anhangB-final von main, python3 -I scripts/streich-test-daten.py notes/streich-test/urteile.md --neu main, node --test tests/streich-test.test.mjs, docs/ rendern (Quarto 1.8.25, --to html), Diff per MC freigeben lassen, mergen, live prüfen. Statusnotiz in Projekt, Tresorit und Repo.
 ```
 
-Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht `prompting-streichtest` @ `0d7452c` + Statusnotiz, gemergt: nein)
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (`main` @ `1011dc6` + diese Notiz, gemergt: ja)
