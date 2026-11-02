@@ -12,11 +12,11 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const t = (x, y, s, a = '') => `<text x="${x}" y="${y}" ${a}>${esc(s)}</text>`;
 
 const ZEILEN = [
-  ['… eine Frage klären, einen Text überarbeiten', 'kleines Frontier-Modell', '0 €'],
-  ['… ein Bild erstellen (Diagramme besser als Code)', 'Frontier-Modell mit Bildgenerator', '0 €'],
-  ['… eine Lerneinheit, Folien, Aufgaben erstellen', 'großes Frontier-Modell, hohe Denkstufe', '20 €'],
-  ['… regelmäßig recherchieren', 'großes Frontier-Modell mit Recherche-Agent', '20 €'],
-  ['… ein Werkzeug bauen (Simulation, Lernspiel)', 'großes Frontier-Modell im Agentenmodus', '20 €'],
+  ['… eine Frage klären, einen Text überarbeiten', 'kleines Modell', '0 €'],
+  ['… ein Bild erstellen (Diagramme besser als Code)', 'Modell mit Bildgenerator', '0 €'],
+  ['… eine Lerneinheit, Folien, Aufgaben erstellen', 'großes Modell, hohe Denkstufe', '20 €'],
+  ['… regelmäßig recherchieren', 'großes Modell mit Recherche-Agent', '20 €'],
+  ['… ein Werkzeug bauen (Simulation, Lernspiel)', 'großes Modell im Agentenmodus', '20 €'],
   ['… einen Tutor für Studierende betreiben', 'API (nach Verbrauch) oder Hochschule', 'kein Abo'],
 ];
 
