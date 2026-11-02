@@ -1189,6 +1189,7 @@ Tabelle&nbsp;4.5: Acht Schreibtrainer entlang der Abschlussarbeit (TH Köln, Wir
   <source src="interactions/media/kap04-eoq-vergleich.mp4" type="video/mp4">
 </video>
 <p><em>Video (30 s, ohne Ton): dieselbe Herleitung der optimalen Bestellmenge in Manim (links) und HyperFrames (rechts), beide von Claude programmiert.</em></p>
+<p>Ob sich eine Animation überhaupt lohnt, entscheidet der Lernstoff, nicht das Werkzeug. Über 61 Studien hinweg schlugen Animationen statische Bilder nur knapp <span class="citation" data-cites="berney2016">(<a href="#ref-berney2016" role="doc-biblioref">Berney &amp; Bétrancourt, 2016</a>)</span>; deutlich war ihr Vorteil dort, wo die Veränderung selbst Lernstoff war <span class="citation" data-cites="ploetzner2020">(<a href="#ref-ploetzner2020" role="doc-biblioref">Ploetzner et al., 2020</a>)</span>. In einem Experiment erkannten Studierende die Bewegungsabläufe eines Getriebes nach einer Animation am besten, die Anordnung der Zahnräder dagegen nach Standbildern <span class="citation" data-cites="ploetzner2021">(<a href="#ref-ploetzner2021" role="doc-biblioref">Ploetzner et al., 2021</a>)</span>. Bewegung gehört also an Prozesse, Dynamik und Wirkungsketten wie den Sägezahn des Lagerbestands, nicht an Aufbau und Struktur.</p>
 <p>Was der Agent den Lehrenden abnimmt, kann er Studierenden beim Lernen wegnehmen. In einem Experiment bauten 54 Informatikstudierende zweier US-Hochschulen ein kleines Browserspiel, die eine Hälfte mit einem Agenten, der ihren Code direkt änderte, die andere mit einem Chatbot, der nur allgemeine Codeschnipsel lieferte, so dass sie selbst schreiben mussten; beide liefen mit GPT-4.1. Die Agentengruppe war schneller und erfüllte mehr Anforderungen, verstand ihren eigenen Code aber deutlich schlechter. Als alle das Spiel danach ohne Agent erweitern sollten, kehrte sich ihr kleiner Vorsprung um, sobald man den besseren Ausgangscode herausrechnete: Er stammte aus dem Gerüst, das der Agent gebaut hatte, nicht aus Verständnis. Weniger verstand, wer die Aufgabenstellung in den Prompt kopierte oder alle Änderungen ungesehen übernahm, am meisten, wer den Auftrag in Fachbegriffe übersetzte und jede geänderte Datei einzeln annahm. Den Agenten bevorzugten die Studierenden trotzdem, weil er schnell und bequem ist <span class="citation" data-cites="balepur2026agents">(<a href="#ref-balepur2026agents" role="doc-biblioref">Balepur et al., 2026</a>)</span>. Die Studie ist klein und ausdrücklich explorativ, passt aber zu dem, was <a href="kapitel03.html#sec-evidenz" class="quarto-xref"><span>Kapitel 3.5</span></a> für den Chat zeigt: Mit KI lösen Studierende mehr Programmieraufgaben und behalten weniger <span class="citation" data-cites="bergh2026cognition">(<a href="#ref-bergh2026cognition" role="doc-biblioref">Bergh et al., 2026</a>)</span>. Von sich aus arbeiten sie selten anders. In den Chatprotokollen eines Semesters aus einem Informatikkurs ging es in 78,8 % der Anfragen nicht ums Verstehen; die Studierenden ließen die KI die Arbeit tun oder sich von ihr bestätigen, und nur 11,1 % der Anfragen verbanden den Wunsch zu verstehen mit eigener Begründung <span class="citation" data-cites="wu2026epistemic">(<a href="#ref-wu2026epistemic" role="doc-biblioref">Wu, 2026</a>)</span>.</p>
 <div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
 <div class="callout-header d-flex align-content-center">
@@ -1980,12 +1981,32 @@ rechnet und nicht nur abspielt.</code></pre>
 </div>
 </div>
 <p>Offen bleibt bei alledem, wer den Tutor im Hörsaal steuert. Eine Design-Studie aus dem Labor von Vincent Aleven zu ko-orchestrierter Lehre (<em>co-orchestration</em>), in der die KI vorschlägt, wann Lernende zwischen Einzel- und Partnerarbeit wechseln, zeigt, dass Lehrendenkontrolle und studentische Agency (Entscheidungsspielraum der Studierenden) <strong>kein einzelner Schieberegler</strong> sind, sondern phasenweise variieren: Lehrende wollen ein Echtzeit-Vetorecht beim Wechsel selbst, akzeptieren aber Systemvorschläge für dessen Timing; Studierende wollen Mitsprache bei der Partnerwahl, erwarten die finale Autorität aber bei den Lehrenden <span class="citation" data-cites="yang2026orchestration">(<a href="#ref-yang2026orchestration" role="doc-biblioref">K. B. Yang et al., 2026</a>)</span>. Orchestrierungswerkzeuge, die einen einzigen Autonomiewert festlegen, werden deshalb beiden Seiten nicht gerecht.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Einen Tutor vor der Freigabe testen: das Überhilfe-Audit">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Einen Tutor vor der Freigabe testen: das Überhilfe-Audit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sprachmodelle helfen zu früh und zu viel. <span class="citation" data-cites="lee2026llm">Suhyeon Lee et al. (<a href="#ref-lee2026llm" role="doc-biblioref">2026</a>)</span> ordneten 14.637 Antworten von KI-Tutoren je einer von vier Stufen zu, Frage, Hinweis, Erklären oder Lösen, und fanden über 95 Prozent auf den Stufen Erklären oder Lösen; ein Benchmark kommt zum selben Befund <span class="citation" data-cites="teo2026ai">(<a href="#ref-teo2026ai" role="doc-biblioref">Teo et al., 2026</a>)</span>. Beide Arbeiten sind Preprints und messen das Verhalten der Modelle, nicht das Lernen. Ob ein eigener Tutor so arbeitet, zeigt ein Test von 35 Minuten zu dritt: Eine Person spielt die Studierenden, zwei bewerten getrennt.</p>
+<ol type="1">
+<li><strong>Mini-Goldstandard.</strong> Drei gespielte Studierendentypen (unsicher; solide und will prüfen; „Gib mir einfach die Lösung“) mal zwei Aufgaben aus dem eigenen Fach, je mit dem erwarteten Verhalten, dazu eine Frage außerhalb des Stoffs: sieben Testfälle.</li>
+<li><strong>Audit.</strong> Beide Bewertenden ordnen jede Antwort einer Hilfestufe zu und vergleichen. Erwartet sind Frage oder Hinweis; bei der Frage außerhalb des Stoffs sagt der Tutor, dass er es nicht weiß.</li>
+<li><strong>Testplan.</strong> Dieselben sieben Fälle laufen nach jeder Änderung am Prompt erneut, wie ein TÜV-Termin nach jeder Reparatur.</li>
+</ol>
+<p>Der Prompt ist dabei nur eine Prüfschicht von mehreren. Wie im Schweizer-Käse-Modell der Sicherheitsforschung hat jede Schicht Löcher an anderer Stelle <span class="citation" data-cites="reason2000">(<a href="#ref-reason2000" role="doc-biblioref">Reason, 2000</a>)</span>: Ein Skript prüft mechanisch, ob die Antwort die Endzahl verrät, der Goldstandard fängt die fachlichen Fehler. Bauen Studierende selbst einen Tutor, geben sie drei Versionen ab, ein Änderungsprotokoll, das zu jeder Version sagt, welche Regel warum geändert wurde, und das Testprotokoll gegen den Goldstandard.</p>
+</div>
+</div>
 <p><strong>Der 4D-Kreislauf beim Tutor.</strong> Der Tutor wird einmal eingerichtet und dann von anderen genutzt; der Kreislauf hängt deshalb an der Beschreibung seines Verhaltens und an der Sorgfalt beim Einsatz, und er hat zwei Adressaten. <em>Delegation</em> betrifft die Studierenden: Was frage ich den Tutor, was löse ich selbst? Ermutigung allein ändert wenig, eine Anleitung zur tutoriellen Nutzung hob in einem Ökonometrie-Kurs die Prüfungsleistung <span class="citation" data-cites="gallegos2026">(<a href="#ref-gallegos2026" role="doc-biblioref">Gallegos, 2026</a>)</span>. <em>Description</em> ist Sache der Lehrenden: Musterlösungen als Input (<a href="#sec-complex-tutors" class="quarto-xref"><span>Kapitel 4.3.2</span></a>) und ein Verhalten, das Lösungen zurückhält. Unterschiedliche didaktische System-Prompts änderten in einem großen Experiment nichts am Lernergebnis <span class="citation" data-cites="barth2026steering">(<a href="#ref-barth2026steering" role="doc-biblioref">Barth et al., 2026</a>)</span>; die Zurückhaltung gehört deshalb zusätzlich in eine Aufsichtsinstanz (<em>supervisor</em>), die jede Antwort vor dem Versand prüft <span class="citation" data-cites="pisan2026withhold">(<a href="#ref-pisan2026withhold" role="doc-biblioref">Pisan, 2026</a>)</span>. <em>Discernment:</em> Vor der Freigabe muss der Tutor an einem Goldstandard bestehen, an von Fachleuten geprüften Musterantworten. <em>Diligence:</em> Wer Studierenden einen Tutor bereitstellt, ist Betreiber im Sinn der KI-Verordnung <span class="citation" data-cites="wissenschaftsrat2026">(<a href="#ref-wissenschaftsrat2026" role="doc-biblioref">Wissenschaftsrat, 2026</a>)</span> (<a href="kapitel05.html#sec-ki-vo" class="quarto-xref"><span>Kapitel 5.5.2</span></a>), und der Tutor wirkt nur so gut, wie er in den Kurs eingebettet ist (<a href="kapitel03.html#sec-evidenz" class="quarto-xref"><span>Kapitel 3.5</span></a>). Ohne diese Einbettung sollte der Tutor nicht an Studierende gehen. <span>Den Kreislauf mit hervorgehobenem Engpass zeigt die <a href="interactions/4d-kreislauf.html?rolle=tutor">interaktive Fassung</a>.</span></p>
 </section>
 </section>
 <section id="sec-simulator" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="sec-simulator"><span class="header-section-number">4.4</span> KI als Simulator</h2>
-<p>Hier erstellt die KI interaktive Umgebungen für praxisnahes Training. In einfachen Rollenspielen simuliert das Sprachmodell ein Gegenüber, um z. B. Analyse- oder Verhaltensmuster einzuüben. <span class="citation" data-cites="mollick2024a">Mollick &amp; Mollick (<a href="#ref-mollick2024a" role="doc-biblioref">2024</a>)</span> unterscheiden dabei <strong>Role Play</strong> (Rollenspiele) und <strong>Goal Play</strong> (zielgerichtete Spiele).</p>
+<p>Hier erstellt die KI interaktive Umgebungen für praxisnahes Training. In einfachen Rollenspielen simuliert das Sprachmodell ein Gegenüber, um z. B. Analyse- oder Verhaltensmuster einzuüben. Was generative KI dem Rollenspiel hinzufügt, lässt sich an sechs Stellen festmachen. Sie spielt ein Gegenüber, das konsistent genug bleibt, um Druck und Entscheidungslagen zu erzeugen, etwa im Bewerbungsgespräch <span class="citation" data-cites="nofal2025">(<a href="#ref-nofal2025" role="doc-biblioref">Nofal et al., 2025</a>)</span>; sie passt ihre Hinweise dem Vorwissen und dem Spielverlauf an <span class="citation" data-cites="goslen2025">(<a href="#ref-goslen2025" role="doc-biblioref">Goslen et al., 2025</a>)</span>; sie spricht die Zielsprache und senkt die Sprechangst <span class="citation" data-cites="lee2025a">(<a href="#ref-lee2025a" role="doc-biblioref">Sangmin Lee et al., 2025</a>)</span>; sie erzeugt mit wenigen Änderungen am Prompt neue Fallvarianten mit gesteuerter Schwierigkeit <span class="citation" data-cites="mollick2024a">(<a href="#ref-mollick2024a" role="doc-biblioref">Mollick &amp; Mollick, 2024</a>)</span>; sie gibt bereitgestellte Quellen verlässlich wieder <span class="citation" data-cites="huffman2024">(<a href="#ref-huffman2024" role="doc-biblioref">Huffman &amp; Hutson, 2024</a>)</span>; und sie macht Szenen mit Stimme, Bild und Klang plastischer. Jede dieser Stärken hat eine Kehrseite, die <a href="#sec-sim-echtheit" class="quarto-xref"><span>Kapitel 4.4.3</span></a> prüft.</p>
+<p><span class="citation" data-cites="mollick2024a">Mollick &amp; Mollick (<a href="#ref-mollick2024a" role="doc-biblioref">2024</a>)</span> unterscheiden dabei <strong>Role Play</strong> (Rollenspiele) und <strong>Goal Play</strong> (zielgerichtete Spiele).</p>
 <section id="sec-role-play" class="level3" data-number="4.4.1">
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="sec-role-play"><span class="header-section-number">4.4.1</span> Role Play</h3>
 <p><strong>Rollenspiel-Simulationen</strong> lassen Studierende eine fremde Rolle einnehmen und risikofrei üben, etwa Verhandlungen, Mitarbeitergespräche oder Zeugenbefragungen; die KI spielt das Gegenüber. Rechtsreferendarinnen und -referendare üben die Zeugenbefragung im Rollenspiel mit Brillen für virtuelle Realität (VR) <span class="citation" data-cites="heetkamp2023">(<a href="#ref-heetkamp2023" role="doc-biblioref">Heetkamp, 2023</a>)</span>, an der Wharton School trainiert der Simulator <strong>„Pitch Quest“</strong> Venture-Capital-Pitches (Kurzpräsentationen vor Investoren) mit mehreren KI-Agenten als Mentor, Investor und Bewerter <span class="citation" data-cites="mollick2024">(<a href="#ref-mollick2024" role="doc-biblioref">Mollick et al., 2024, S.5–10</a>)</span>. Die Grenzen sind bei allen Formaten ähnlich: Die KI hält ihre Rolle nicht immer konsistent, neigt zu Bias (Verzerrungen) und Halluzinationen, und Konfiguration und Entwicklung kosten Aufwand <span class="citation" data-cites="mollick2024 wannemacher2025">(<a href="#ref-mollick2024" role="doc-biblioref">Mollick et al., 2024, S.2–3</a>; <a href="#ref-wannemacher2025" role="doc-biblioref">Wannemacher et al., 2025</a>)</span>. Sprachmodi, die mit Stimme statt Text arbeiten, machen solche Simulationen realistischer <span class="citation" data-cites="barra2024">(<a href="#ref-barra2024" role="doc-biblioref">Barra et al., 2024</a>)</span>.</p>
@@ -2011,6 +2032,28 @@ rechnet und nicht nur abspielt.</code></pre>
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="sec-goal-play"><span class="header-section-number">4.4.2</span> Goal Play – zielgerichtete Spiele</h3>
 <p>In <strong>zielgerichteten Spielen</strong> (“Goal Play”, <span class="citation" data-cites="mollick2024a">Mollick &amp; Mollick (<a href="#ref-mollick2024a" role="doc-biblioref">2024</a>)</span>) bleiben Studierende in ihrer normalen Rolle und wenden in einer Situation bestimmtes Wissen oder theoretische Konzepte an (z. B. Zielsetzung, Selbst-Distanzierung oder Analyseraster wie Transaktionskostenanalyse), indem sie einen KI-Charakter anleiten. Wichtig dabei: Die Studierenden wissen etwas, das das KI-Gegenüber im Spiel nicht weiß.</p>
 <p>So nehmen etwa bei dem einfachen Rollenspiel <strong>“Teach the AI”</strong> <span class="citation" data-cites="mollick2024a">(<a href="#ref-mollick2024a" role="doc-biblioref">Mollick &amp; Mollick, 2024, S.21–23</a>)</span> Studierende die Rolle des Lehrenden ein und erklären der KI (die einen unwissenden Studenten spielt) ein Konzept. Der Mehrwert liegt im vertieften Lernen durch Lehren (Protégé-Effekt) und dem Aufdecken eigener Wissenslücken. Als Herausforderung kann die KI manchmal vom Thema abweichen oder Fragen stellen, die die Studierenden an ihre Grenzen bringen; zudem ist die Simulation eines “Novizen” durch die KI nur begrenzt realistisch <span class="citation" data-cites="mollick2024a">(<a href="#ref-mollick2024a" role="doc-biblioref">Mollick &amp; Mollick, 2024, S.24</a>)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ein Rollenspiel bauen: klein anfangen, klarer Ablauf">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Ein Rollenspiel bauen: klein anfangen, klarer Ablauf
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Gestuft einsteigen.</strong> Am Anfang steht ein vorbereiteter, klar gerahmter Chat mit Rollenprompt, Lernziel und Reflexionsfragen. Im zweiten Schritt entwerfen Studierende in Präsenz selbst kleine Rollenspiele und testen sie gegenseitig; Lehrende stellen Zielkriterien, Rollenbriefe und ein Feedback-Raster bereit. Erst danach bauen Teams über mehrere Wochen komplexe Simulationen, mit Testprotokoll und dokumentierten Änderungen <span class="citation" data-cites="mollick2024a mollick2024">(<a href="#ref-mollick2024" role="doc-biblioref">Mollick et al., 2024</a>; <a href="#ref-mollick2024a" role="doc-biblioref">Mollick &amp; Mollick, 2024</a>)</span>.</p>
+<p><strong>Ablauf einer Runde</strong> <span class="citation" data-cites="mollick2024">(nach <a href="#ref-mollick2024" role="doc-biblioref">Mollick et al., 2024</a>)</span>:</p>
+<ol type="1">
+<li>Ein KI-Mentor begrüßt, erhebt Erfahrung und Kontext und passt die Schwierigkeit an.</li>
+<li>Die KI bietet mehrere Szenarien zur Zielkompetenz an und setzt die Bühne: Rollen, Ziele, Konflikt.</li>
+<li>Gespielt wird in abgegrenzten Zügen; die KI gibt sparsame Hinweise.</li>
+<li>Gegen Ende verlangt die Szene eine folgenschwere Entscheidung, damit das Gelernte angewendet wird.</li>
+<li>Die KI gibt zielbezogenes Feedback mit Stärken und Entwicklungsfeldern; das Debriefing in der Gruppe führen die Lehrenden.</li>
+</ol>
+<p><strong>Vor dem Einsatz testen.</strong> Testläufe prüfen, ob die Figur konsistent bleibt, die Schritte einhält, bei Grenzfällen nicht aus der Rolle fällt und Schwierigkeitsstufen trennt. Gezielte Angriffstests (<em>red teaming</em>) suchen nach Bias und nach einem Erzählfaden, der sich vom Lernziel entfernt.</p>
+</div>
+</div>
 </section>
 <section id="sec-sim-echtheit" class="level3" data-number="4.4.3">
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="sec-sim-echtheit"><span class="header-section-number">4.4.3</span> Wie echt ist das Gegenüber?</h3>
@@ -2147,6 +2190,9 @@ Barton, M. (2026). <em>KI-gestütztes Rollenspiel für Kommunikations- und Probl
 <div id="ref-bergh2026cognition" class="csl-entry" role="listitem">
 Bergh, C., Tag, B., Vassar, A., &amp; Renzella, J. (2026). <em>Your programming students’ cognition with ChatGPT: Higher performance, lower retention, and reduced ownership</em>. <a href="https://doi.org/10.48550/arXiv.2609.21194">https://doi.org/10.48550/arXiv.2609.21194</a>.
 </div>
+<div id="ref-berney2016" class="csl-entry" role="listitem">
+Berney, S., &amp; Bétrancourt, M. (2016). Does animation enhance learning? A meta-analysis. <em>Computers &amp; Education</em>, <em>101</em>, 150–167. <a href="https://doi.org/10.1016/j.compedu.2016.06.005">https://doi.org/10.1016/j.compedu.2016.06.005</a>.
+</div>
 <div id="ref-bien2025" class="csl-entry" role="listitem">
 Bien, J., &amp; Mukherjee, G. (2025). Generative AI for Data Science 101: Coding Without Learning to Code. <em>Journal of Statistics and Data Science Education</em>, <em>33</em>(2), 129–142. <a href="https://doi.org/10.1080/26939169.2024.2432397">https://doi.org/10.1080/26939169.2024.2432397</a>.
 </div>
@@ -2210,6 +2256,9 @@ Google Workspace Updates (2026a, August). <em>Gemini in Google Classroom is expa
 <div id="ref-google2026skills" class="csl-entry" role="listitem">
 Google Workspace Updates (2026b, September). <em>Introducing skills in the Gemini app and Workspace, plus what’s next for Gems</em>. <a href="https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html">https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html</a>.
 </div>
+<div id="ref-goslen2025" class="csl-entry" role="listitem">
+Goslen, A., Kim, Y. J., Rowe, J., &amp; Lester, J. (2025). LLM-based student plan generation for adaptive scaffolding in game-based learning environments. <em>International Journal of Artificial Intelligence in Education</em>, <em>35</em>(2), 533–558. <a href="https://doi.org/10.1007/s40593-024-00421-1">https://doi.org/10.1007/s40593-024-00421-1</a>.
+</div>
 <div id="ref-gottweis2025" class="csl-entry" role="listitem">
 Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2502.18864">https://doi.org/10.48550/arXiv.2502.18864</a>.
 </div>
@@ -2221,6 +2270,9 @@ HeyGen (2026). <em>HyperFrames</em>. GitHub. <a href="https://github.com/heygen-
 </div>
 <div id="ref-hou2026comet" class="csl-entry" role="listitem">
 Hou, X., Weng, Y., Yeh, C. H., Lee, D. L., Zheng, L., Li, F., Wang, W., &amp; Liu, Y. (2026). <em>Adaptive scaffolding needs contingency: An AI tutor that escalates and fades on what the learner does</em>. <a href="https://doi.org/10.48550/arXiv.2609.22993">https://doi.org/10.48550/arXiv.2609.22993</a>.
+</div>
+<div id="ref-huffman2024" class="csl-entry" role="listitem">
+Huffman, P., &amp; Hutson, J. (2024). <a href="https://digitalcommons.lindenwood.edu/faculty-research-papers/683">Enhancing History Education with Google NotebookLM: Case Study of Mary Easton Sibley’s Diary for Multimedia Content and Podcast Creation</a>. <em>ISRG Journal of Arts, Humanities and Social Sciences</em>, <em>2</em>(5).
 </div>
 <div id="ref-jurran2025" class="csl-entry" role="listitem">
 Jurran, N. (2025). ChatGPT als sprechtrainer. <em>c’t Special</em>, <em>2</em>, 100–103.
@@ -2245,6 +2297,12 @@ Lee, H. L., Padmanabhan, V., &amp; Whang, S. (1997). Information distortion in a
 </div>
 <div id="ref-lee2025" class="csl-entry" role="listitem">
 Lee, H.-P. H., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R., &amp; Wilson, N. (2025). The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers. <a href="https://doi.org/10.1145/3706598.3713778">https://doi.org/10.1145/3706598.3713778</a>.
+</div>
+<div id="ref-lee2026llm" class="csl-entry" role="listitem">
+Lee, Suhyeon, Baek, J., Park, J., &amp; Shin, D. (2026). <em>LLM pedagogical behavior in AI tutoring interactions</em>. <a href="https://doi.org/10.48550/arXiv.2608.22993">https://doi.org/10.48550/arXiv.2608.22993</a>.
+</div>
+<div id="ref-lee2025a" class="csl-entry" role="listitem">
+Lee, Sangmin, Choe, H., Zou, D., &amp; Jeon, J. (2025). Generative AI (GenAI) in the language classroom: A systematic review. <em>Interactive Learning Environments</em>, 1–25. <a href="https://doi.org/10.1080/10494820.2025.2498537">https://doi.org/10.1080/10494820.2025.2498537</a>.
 </div>
 <div id="ref-levine2026" class="csl-entry" role="listitem">
 Levine, J., Aenlle, M., Zilles, C., West, M., &amp; Silva, M. (2026). Automated grading of handwritten mathematics using vision-capable LLMs. <a href="https://doi.org/10.48550/arXiv.2605.19043">https://doi.org/10.48550/arXiv.2605.19043</a>.
@@ -2288,6 +2346,9 @@ Netland, T., von Dzengelevski, O., Tesch, K., &amp; Kwasnitschka, D. (2025). Com
 <div id="ref-nizamudeen2024" class="csl-entry" role="listitem">
 Nizamudeen, F., Gatti, L., Bouali, N., &amp; Ahmed, F. (2024). Investigating the Impact of Code Generation Tools (ChatGPT &amp; Github CoPilot) on Programming Education. <a href="https://doi.org/10.5220/0012628000003693">https://doi.org/10.5220/0012628000003693</a>.
 </div>
+<div id="ref-nofal2025" class="csl-entry" role="listitem">
+Nofal, A. B., Ali, H., Hadi, M., Ahmad, A., Qayyum, A., Johri, A., Al-Fuqaha, A., &amp; Qadir, J. (2025). AI-enhanced interview simulation in the metaverse: Transforming professional skills training through VR and generative conversational AI. <em>Computers and Education: Artificial Intelligence</em>, <em>8</em>, 100347. <a href="https://doi.org/10.1016/j.caeai.2024.100347">https://doi.org/10.1016/j.caeai.2024.100347</a>.
+</div>
 <div id="ref-ogunleye2024" class="csl-entry" role="listitem">
 Ogunleye, B., Zakariyyah, K. I., Ajao, O., Olayinka, O., &amp; Sharma, H. (2024). A Systematic Review of Generative AI for Teaching and Learning Practice. <em>Education Sciences</em>, <em>14</em>(6), 636. <a href="https://doi.org/10.3390/educsci14060636">https://doi.org/10.3390/educsci14060636</a>.
 </div>
@@ -2321,11 +2382,20 @@ Perczel, J., Chow, J., &amp; Demszky, D. (2025). TeachLM: Post-training LLMs for
 <div id="ref-pisan2026withhold" class="csl-entry" role="listitem">
 Pisan, Y. (2026). <em>Teaching a large language model tutor to withhold the answer: A supervisor architecture and an evidence-driven method for tuning socratic behavior</em>. <a href="https://doi.org/10.48550/arXiv.2608.12292">https://doi.org/10.48550/arXiv.2608.12292</a>.
 </div>
+<div id="ref-ploetzner2020" class="csl-entry" role="listitem">
+Ploetzner, R., Berney, S., &amp; Bétrancourt, M. (2020). A review of learning demands in instructional animations: The educational effectiveness of animations unfolds if the features of change need to be learned. <em>Journal of Computer Assisted Learning</em>, <em>36</em>(6), 838–860. <a href="https://doi.org/10.1111/jcal.12476">https://doi.org/10.1111/jcal.12476</a>.
+</div>
+<div id="ref-ploetzner2021" class="csl-entry" role="listitem">
+Ploetzner, R., Berney, S., &amp; Bétrancourt, M. (2021). When learning from animations is more successful than learning from static pictures: learning the specifics of change. <em>Instructional Science</em>, <em>49</em>(4), 497–514. <a href="https://doi.org/10.1007/s11251-021-09541-w">https://doi.org/10.1007/s11251-021-09541-w</a>.
+</div>
 <div id="ref-porter2024" class="csl-entry" role="listitem">
 Porter, L., &amp; Zingaro, D. (2024). <em>Learn AI-Assisted Python Programming: With Github Copilot and ChatGPT</em>. Simon and Schuster.
 </div>
 <div id="ref-puryear2022" class="csl-entry" role="listitem">
 Puryear, B., &amp; Sprint, G. (2022). Github copilot in the classroom: learning to code with AI assistance. <em>Journal of Computing Sciences in Colleges</em>, <em>38</em>(1), 37–47.
+</div>
+<div id="ref-reason2000" class="csl-entry" role="listitem">
+Reason, J. (2000). Human error: models and management. <em>BMJ</em>, <em>320</em>(7237), 768–770. <a href="https://doi.org/10.1136/bmj.320.7237.768">https://doi.org/10.1136/bmj.320.7237.768</a>.
 </div>
 <div id="ref-schomburg2012" class="csl-entry" role="listitem">
 Schomburg, H., Flöther, C., &amp; Wolf, V. (2012). <em>Wandel von Lehre und Studium an deutschen Hochschulen–Erfahrungen und Sichtweisen der Lehrenden</em>.
@@ -2356,6 +2426,9 @@ Tay, A. (2024b, Dezember 1). <em>MCP servers and academic search - The future of
 </div>
 <div id="ref-tay2025agentic" class="csl-entry" role="listitem">
 Tay, A. (2025, Januar 19). <em>How agentic are academic deep research tools? Testing Perplexity, Elicit, Consensus and Academic GPTs</em>. <a href="https://aarontay.substack.com/p/how-agentic-are-academic-deep-research">https://aarontay.substack.com/p/how-agentic-are-academic-deep-research</a>.
+</div>
+<div id="ref-teo2026ai" class="csl-entry" role="listitem">
+Teo, V., Jain, R., Gerstenberg, T., &amp; Kleiman-Weiner, M. (2026). <em>AI assistants overassist</em>. <a href="https://doi.org/10.48550/arXiv.2607.21306">https://doi.org/10.48550/arXiv.2607.21306</a>.
 </div>
 <div id="ref-tobor2026usecases" class="csl-entry" role="listitem">
 Tobor, J., Then Bergh, C., &amp; Lüthi, R. (2026). <em><a href="https://hochschulforumdigitalisierung.de/wp-content/uploads/2026/06/Blickpunkt-Use-Cases-in-Bewegung-2026.pdf">Use Cases in Bewegung: Wie KI Studium und Lehre weiter verändert</a></em> (Blickpunkt). Hochschulforum Digitalisierung.

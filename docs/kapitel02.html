@@ -933,6 +933,7 @@ Abbildung&nbsp;2.2: Was ein Abo kauft: Ab rund 20 € im Monat arbeitet das gro�
 <p>Seit der agentischen Wende Ende 2025, dem „Agentic Turn“ <span class="citation" data-cites="willison2025 steinberger2025 mollick2025">(<a href="#ref-mollick2025" role="doc-biblioref">E. R. Mollick, 2025</a>; <a href="#ref-steinberger2025" role="doc-biblioref">Steinberger, 2025</a>; <a href="#ref-willison2025" role="doc-biblioref">Willison, 2025</a>)</span>, zählt dabei nicht das Modell allein, sondern das ganze <strong>Setup</strong>: ein starkes Modell, eine praktische Oberfläche und ein Harness mit sinnvollen Werkzeugen (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.2.2</span></a>) <span class="citation" data-cites="mollick2025e">(<a href="#ref-mollick2025e" role="doc-biblioref">E. Mollick, 2026a</a>)</span>.</p>
 <p><strong>Kostenfreie Zugänge über die Hochschule.</strong> Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die Gesellschaft für wissenschaftliche Datenverarbeitung in Göttingen (GWDG) etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über ihre KI-Plattform THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen (NRW) ist <strong>KI:connect.nrw</strong> der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, Frontier-Modelle über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge <span class="citation" data-cites="mkw2025kiconnect kiconnect2026inferenz persike2025apikeys">(<a href="#ref-kiconnect2026inferenz" role="doc-biblioref">KI:connect.nrw, 2026</a>; <a href="#ref-mkw2025kiconnect" role="doc-biblioref">Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen, 2025</a>; <a href="#ref-persike2025apikeys" role="doc-biblioref">Persike, 2025</a>)</span>. Über die API sprechen Programme statt Menschen mit dem Modell. Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Wer eine ältere Generation oder eine kleine Variante nutzt, fährt mit dem Fahrrad auf der Autobahn und bekommt ein falsches Bild davon, was die Modelle können.</p>
 <p><strong>Welches Modell für welche Aufgabe?</strong> Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel. Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.</p>
+<p><strong>Offene Modelle auf dem eigenen Laptop.</strong> Ein lokales Modell ist die eigene Küche statt des Lieferdienstes: Nichts verlässt das Haus, dafür sind die Töpfe kleiner. Programme wie LM Studio laden ein offenes Modell einmal herunter und führen es danach vollständig offline aus; die Topfgröße bestimmt der Arbeitsspeicher. Kleine Modelle fassen gut zusammen, formulieren um und sortieren, rechnen in mehreren Schritten aber unzuverlässig und kennen keine aktuellen Fakten. Sie gehören deshalb an Aufgaben, bei denen die Daten das Gerät nicht verlassen sollen und eine Stichprobe das Ergebnis prüft. Ein Beispiel sind Codenamen für anonyme Abgaben: Studierende reichen Tests unter einem Namen wie „Deming1900“ ein, KI-gestützte Rückmeldungen sehen nie einen echten Namen, und die Zuordnung zur Person steht allein in der Tabelle der Lehrenden.</p>
 <p>Der folgende Entscheidungsbaum führt Frage für Frage zu Modellklasse und Preisstufe.</p>
 <iframe loading="lazy" src="interactions/modellwahl-baum.html" width="100%" height="820px" frameborder="0" title="Entscheidungsbaum: Welches Modell für welche Aufgabe?">
 </iframe>
@@ -1118,7 +1119,65 @@ window.addEventListener("message", function (e) {
 </section>
 <section id="sec-prompts-teaching" class="level3" data-number="2.4.5">
 <h3 data-number="2.4.5" class="anchored" data-anchor-id="sec-prompts-teaching"><span class="header-section-number">2.4.5</span> Was heißt das für Prompts in der Lehre?</h3>
-<p><strong>Didaktische Prompts sollen den Studierenden das Leben gezielt schwer machen.</strong> Für die Lehre ergänzen wir Prompts um didaktische Hürden, die etwa verhindern, dass sofort eine Lösung erscheint, denn eigenes Nachdenken in Fragen und sokratischem Dialog hilft, das Gelernte zu behalten <span class="citation" data-cites="roediger2012">(<a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>. Für einen <strong>Arbeitsauftrag</strong>, der ein Werkstück wie ein Quiz bestellt, gilt alles oben Gesagte; in einer <strong>Verhaltensbeschreibung</strong> für Tutor oder Simulation ist das Gespräch selbst das Produkt, und Ablauf, Rolle und Hürden gehören zur Spezifikation. Wie das geht, zeigen <a href="kapitel03.html" class="quarto-xref"><span>Kapitel 3</span></a> und <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a>; viele konkrete Prompts und Aufgabenstellungen sammelt Anhang A (<a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang A</span></a>).</p>
+<p><strong>Didaktische Prompts sollen den Studierenden das Leben gezielt schwer machen.</strong> Für die Lehre ergänzen wir Prompts um didaktische Hürden, die etwa verhindern, dass sofort eine Lösung erscheint, denn eigenes Nachdenken in Fragen und sokratischem Dialog hilft, das Gelernte zu behalten <span class="citation" data-cites="roediger2012">(<a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>. Für einen <strong>Arbeitsauftrag</strong>, der ein Werkstück wie ein Quiz bestellt, gilt alles oben Gesagte; in einer <strong>Verhaltensbeschreibung</strong> für Tutor oder Simulation ist das Gespräch selbst das Produkt, und Ablauf, Rolle und Hürden gehören zur Spezifikation. Welche Hürden das sind, ordnet <a href="#tbl-einschraenkungen" class="quarto-xref">Tabelle&nbsp;<span>2.5</span></a> nach ihrem Zweck. Aktives Lernen verlangt, dass die KI Wegweiser bleibt statt Orakel; eine realistische Simulation verlangt, dass sie in der Rolle bleibt und Informationen nur so herausgibt, wie es das Gegenüber täte; eine begrenzte kognitive Belastung (<em>cognitive load</em>) verlangt, dass sie eine Frage nach der anderen stellt. Die Lernforschung nennt solche Hürden erwünschte Schwierigkeiten (<em>desirable difficulties</em>) <span class="citation" data-cites="bjork2011 sweller2011">(<a href="#ref-bjork2011" role="doc-biblioref">Bjork &amp; Bjork, 2011</a>; <a href="#ref-sweller2011" role="doc-biblioref">Sweller, 2011</a>)</span>. Jede Regel der Tabelle lässt sich abhaken, und genau solche Regeln halten Modelle ein (<a href="#sec-agenten-praxis" class="quarto-xref"><span>Kapitel 2.7.3</span></a>).</p>
+<div class="tabelle-scroll">
+<div id="tbl-einschraenkungen" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[22,40,38]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-einschraenkungen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;2.5: Sechs gezielte Einschränkungen in didaktischen Prompts. Eigene Darstellung; die Formulierungen stammen aus den Prompts in Anhang A
+</figcaption>
+<div aria-describedby="tbl-einschraenkungen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 40%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Einschränkung</th>
+<th style="text-align: left;">Zweck</th>
+<th style="text-align: left;">Formulierung im Prompt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Keine fertige Lösung</td>
+<td style="text-align: left;">Aktives Lernen: Lernende erklären ihre Überlegung und korrigieren sich selbst</td>
+<td style="text-align: left;">„Keine fertigen Lösungen.“ „Antworten möglichst mit einer Frage beenden.“</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kein Monolog</td>
+<td style="text-align: left;">Aktives Lernen: Das Gespräch bleibt dialogisch, niemand steigt aus</td>
+<td style="text-align: left;">„Nicht fortfahren ohne Antwort.“</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">In der Rolle bleiben</td>
+<td style="text-align: left;">Realistische Simulation: Die Situation trägt bis zum Ende</td>
+<td style="text-align: left;">„Bleiben Sie während des Rollenspiels strikt in Ihrer zugewiesenen Rolle.“</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Informationen dosieren</td>
+<td style="text-align: left;">Realistische Simulation: Lernende üben gezieltes Nachfragen statt eine Datenflut zu lesen</td>
+<td style="text-align: left;">„Sie liefern Informationen nur, soweit sie für den Patienten plausibel sind.“</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nur aus der Quelle</td>
+<td style="text-align: left;">Sachliche Grundlage: keine erfundenen Inhalte, die Übung bleibt beim Text</td>
+<td style="text-align: left;">„Keine erfundenen Zitate.“</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eine Frage pro Zug</td>
+<td style="text-align: left;">Kognitive Belastung begrenzen: ein Schritt nach dem anderen</td>
+<td style="text-align: left;">„Stellen Sie nicht mehr als eine Frage auf einmal.“</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<p>Wie das geht, zeigen <a href="kapitel03.html" class="quarto-xref"><span>Kapitel 3</span></a> und <a href="kapitel04.html" class="quarto-xref"><span>Kapitel 4</span></a>; viele konkrete Prompts und Aufgabenstellungen sammelt Anhang A (<a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang A</span></a>).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Anwendungsbeispiel: Ein Prompt, der in der Vorführung funktioniert, scheitert im Gespräch">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1201,6 +1260,61 @@ window.addEventListener("message", function (e) {
 </iframe>
 <p>Der <strong>Werkzeuganschluss</strong> über MCP (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.2.2</span></a>) ist für Lehrende die Stelle, an der die KI aufhört, ein Textfenster zu sein, und in unseren Systemen handelt: im Bibliothekskatalog, auf der Lernplattform, im Kalender.</p>
 <p>Eigene Quellen sind der Sonderfall, der in der Lehre am häufigsten gebraucht wird: als Projekt oder Notebook im Chat-Interface mit Skript, Übungsblättern und Musterlösungen oder als eigener Tutor, der über RAG auf einer Dokumentablage sitzt <span class="citation" data-cites="lewis2020">(<a href="#ref-lewis2020" role="doc-biblioref">Lewis et al., 2020</a>)</span>. Ob die KI aus den Quellen antwortet oder doch aus dem Training, prüft man mit Fragen, deren Antwort in den Quellen bewusst anders lautet als im Allgemeinwissen.</p>
+<p>Skill, Werkzeuganschluss und eigene Quellen sind drei von fünf Bausteinen, mit denen wir der KI dauerhaft beibringen, was sie über einen Kurs wissen soll. <a href="#tbl-bausteine" class="quarto-xref">Tabelle&nbsp;<span>2.6</span></a> ordnet sie danach, was das Modell wann liest, denn diese Spalte entscheidet, wohin eine Regel gehört.</p>
+<div class="tabelle-scroll">
+<div id="tbl-bausteine" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[30,30,40]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bausteine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;2.6: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das Modell davon wann liest. Eigene Darstellung
+</figcaption>
+<div aria-describedby="tbl-bausteine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Baustein</th>
+<th style="text-align: left;">Bild für die Lehre</th>
+<th style="text-align: left;">Was das Modell wann liest</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">System-Prompt (Personalisierung, benutzerdefinierte Anweisungen)</td>
+<td style="text-align: left;">Einarbeitungsmappe einer neuen Hilfskraft</td>
+<td style="text-align: left;">immer, vor jedem Gespräch, vollständig</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Projekt</td>
+<td style="text-align: left;">Ordner mit Notizzettel obendrauf</td>
+<td style="text-align: left;">die Anleitung jede Runde vollständig, die Dateien nur per Suche und gestückelt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Skill</td>
+<td style="text-align: left;">Kapitel im Handbuch</td>
+<td style="text-align: left;">ständig nur Name und Kurzbeschreibung, den Rest, wenn die Anfrage passt</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Verbindung (App, Konnektor, MCP-Server)</td>
+<td style="text-align: left;">Kabel mit Stecker zu einem fremden Gerät</td>
+<td style="text-align: left;">wenn eine Aufgabe den Dienst braucht</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Plugin</td>
+<td style="text-align: left;">Werkzeugkoffer</td>
+<td style="text-align: left;">löst selbst nichts aus, bündelt Skills und Verbindungen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<p>Daraus folgt eine Merkregel: Was immer gelten muss, steht im System-Prompt oder in der Projektanleitung; Beispiele und Material liegen als Datei daneben; ein wiederkehrender Ablauf mit eigenen Regeln wird zum Skill. Wer in seinem Tarif keine Skills hat, baut den Skill als Projekt nach.</p>
+<p>Ob ein Modell diese Regeln befolgt, hängt an ihrer Form. <span class="citation" data-cites="nepal2026faithful">Nepal et al. (<a href="#ref-nepal2026faithful" role="doc-biblioref">2026</a>)</span> prüften einen Reflexions-Bot Regel für Regel gegen seinen eigenen System-Prompt: Regeln, deren Einhaltung sich leicht feststellen ließ, befolgte er zuverlässig, vage Haltungsregeln nicht; die Studie ist ein Preprint ohne abgeschlossene Begutachtung. „Höchstens drei Sätze“ hält ein Modell ein, „sei ermutigend“ dehnt es wie eine neue Hilfskraft am ersten Tag. Ein Folien-Skill verlangt deshalb nicht „gute Folien“, sondern Regeln zum Abhaken: ein ganzer Satz als Titel, ein Bild, das ihn belegt, höchstens fünfzehn Wörter im Folienkörper und eine vollständige Quelle. Diese Folienform ist zugleich die besser belegte. Ingenieurstudierende, die denselben Vortrag mit Satztitel und Bildbeleg statt mit Themenüberschrift und Aufzählung sahen, verstanden mehr und hatten weniger Fehlvorstellungen <span class="citation" data-cites="garner2013">(<a href="#ref-garner2013" role="doc-biblioref">Garner &amp; Alley, 2013</a>)</span>; Text, den die Vortragende zugleich spricht, unterdrückt dagegen die Aufnahme des Gesprochenen <span class="citation" data-cites="wecker2012">(<a href="#ref-wecker2012" role="doc-biblioref">Wecker, 2012</a>)</span>.</p>
 <p>Die Konsequenz der Delegation ist weniger technisch als organisatorisch. Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält <span class="citation" data-cites="parasuraman2000">(<a href="#ref-parasuraman2000" role="doc-biblioref">Parasuraman et al., 2000</a>)</span>. Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet, bei einer Literaturrecherche etwa beim Quellenkorb, beim Rechercheplan und bei der Stichprobe von Aussagen, die wir gegen das Original halten. Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte.</p>
 <p>Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Programmier-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig <span class="citation" data-cites="johnston2026the">(<a href="#ref-johnston2026the" role="doc-biblioref">Johnston et al., 2026</a>)</span>. Das folgende Modell verfolgt eine einzelne Aufgabe, Kugel A, durch Auftrag, Recherche, Entscheidung, Rechnung und Freigabe, einmal allein und einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.</p>
 <p>Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.</p>
@@ -1376,6 +1490,9 @@ Basil, S., Shapiro, I., Shapiro, D., Mollick, E., Mollick, L., &amp; Meincke, L.
 <div id="ref-berryman2025" class="csl-entry" role="listitem">
 Berryman, J., &amp; Ziegler, A. (2025). <em>Prompt engineering for LLMs: the art and science of building large language model-based applications</em>. O’Reilly Media.
 </div>
+<div id="ref-bjork2011" class="csl-entry" role="listitem">
+Bjork, E. L., &amp; Bjork, R. A. (2011). Making things hard on yourself, but in a good way: Creating desirable difficulties to enhance learning. In M. A. Gernsbacher, R. W. Pew, L. M. Hough, &amp; J. R. Pomerantz (Hrsg.), <em>Psychology and the real world: Essays illustrating fundamental contributions to society</em>: (S. 56–64). Worth Publishers.
+</div>
 <div id="ref-bockeler2026harness" class="csl-entry" role="listitem">
 Böckeler, B. (2026, April 2). Harness engineering for coding agent users. <a href="https://martinfowler.com/articles/harness-engineering.html">https://martinfowler.com/articles/harness-engineering.html</a>.
 </div>
@@ -1426,6 +1543,9 @@ Feil, S., Hoffmann, I., &amp; Schroeder, F. (2026). <em><a href="https://hochsch
 </div>
 <div id="ref-gallegos2026" class="csl-entry" role="listitem">
 Gallegos, S. (2026). <em><a href="https://www.iza.org/publications/dp18513">Guidance over adoption: Experimental evidence on AI-assisted learning</a></em> (IZA Discussion Paper; Nr. 18513). Institute of Labor Economics (IZA).
+</div>
+<div id="ref-garner2013" class="csl-entry" role="listitem">
+Garner, J. K., &amp; Alley, M. (2013). <a href="https://www.ijee.ie/articles/Vol29-6/23_ijee2791ns.pdf">How the design of presentation slides affects audience comprehension: A case for the assertion–evidence approach</a>. <em>International Journal of Engineering Education</em>, <em>29</em>(6), 1564–1579.
 </div>
 <div id="ref-gimpel2024competencies" class="csl-entry" role="listitem">
 Gimpel, H., Gutheil, N., Mayer, V., Bandtel, M., Büttgen, M., Decker, S., Eymann, T., Feulner, S., Kaya, M. F., Kufner, M., Kühl, N., Lämmermann, L., Maedche, A., Ruiner, C., Schoop, M., &amp; Urbach, N. (2024). <em>(Generative) AI competencies for future-proof graduates: Inspiration for higher education institutions</em>. University of Hohenheim. <a href="https://doi.org/10.5281/zenodo.10680210">https://doi.org/10.5281/zenodo.10680210</a>.
@@ -1556,6 +1676,9 @@ Mollick, E. R. (2026b, Oktober 20). 30 months on the exponential (in charts). <a
 <div id="ref-morris2024" class="csl-entry" role="listitem">
 Morris, M. R., Sohl-Dickstein, J., Fiedel, N., Warkentin, T., Dafoe, A., Faust, A., Farabet, C., &amp; Legg, S. (2024). <a href="https://proceedings.mlr.press/v235/morris24b.html">Position: Levels of AGI for operationalizing progress on the path to AGI</a>.
 </div>
+<div id="ref-nepal2026faithful" class="csl-entry" role="listitem">
+Nepal, S. K., Soh, S., Vinoya, N., Park, S., Roshanaei, M., &amp; Harari, G. (2026). <em>Faithful where it can be checked: Auditing a reflection agent against its system prompt in a randomized trial</em>. <a href="https://doi.org/10.48550/arXiv.2609.19635">https://doi.org/10.48550/arXiv.2609.19635</a>.
+</div>
 <div id="ref-odonnell2025" class="csl-entry" role="listitem">
 O’Donnell, J., &amp; Crownhart, C. (2025, Mai 20). <a href="https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/">We did the math on AI’s energy footprint. Here’s the story you haven’t heard.</a> <em>MIT Technology Review</em>.
 </div>
@@ -1625,11 +1748,17 @@ Spencer, T., &amp; Singh, S. (2025). <em><a href="https://www.iea.org/reports/en
 <div id="ref-steinberger2025" class="csl-entry" role="listitem">
 Steinberger, P. (2025, Oktober 14). <em>Just Talk To It - the no-bs Way of Agentic Engineering | Peter Steinberger</em>. <a href="https://steipete.me/posts/just-talk-to-it">https://steipete.me/posts/just-talk-to-it</a>.
 </div>
+<div id="ref-sweller2011" class="csl-entry" role="listitem">
+Sweller, J. (2011). Cognitive load theory. In <em>Psychology of learning and motivation</em>: (Bd. 55, 37–76). Elsevier.
+</div>
 <div id="ref-tobor2026usecases" class="csl-entry" role="listitem">
 Tobor, J., Then Bergh, C., &amp; Lüthi, R. (2026). <em><a href="https://hochschulforumdigitalisierung.de/wp-content/uploads/2026/06/Blickpunkt-Use-Cases-in-Bewegung-2026.pdf">Use Cases in Bewegung: Wie KI Studium und Lehre weiter verändert</a></em> (Blickpunkt). Hochschulforum Digitalisierung.
 </div>
 <div id="ref-vaswani2017" class="csl-entry" role="listitem">
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., &amp; Polosukhin, I. (2017). Attention is all you need. <em>Advances in neural information processing systems</em>, <em>30</em>.
+</div>
+<div id="ref-wecker2012" class="csl-entry" role="listitem">
+Wecker, C. (2012). Slide presentations as speech suppressors: When and why learners miss oral information. <em>Computers &amp; Education</em>, <em>59</em>(2), 260–273. <a href="https://doi.org/10.1016/j.compedu.2012.01.013">https://doi.org/10.1016/j.compedu.2012.01.013</a>.
 </div>
 <div id="ref-wiesinger2024agents" class="csl-entry" role="listitem">
 Wiesinger, J., Marlow, P., &amp; Vuskovic, V. (2024). <em><a href="https://www.kaggle.com/whitepaper-agents">Agents</a></em> (Whitepaper). Google.
