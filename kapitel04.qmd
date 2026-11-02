@@ -1,5 +1,51 @@
 # Vier Szenarien der Nutzung von GenAI: Hiwi, Copilot, Tutor, Simulator {#sec-szenarien}
 
+::: kapitel-gliederung
+:::
+
+Prof. Dr. Lena Hoffmeister lehrt Produktionslogistik für 90 Studierende im Maschinenbau. Ihre Übungsblätter zur Warteschlangenrechnung erstellt die KI in einer Stunde statt einem Tag, und für einen Forschungsantrag lässt sie einen Deep-Research-Bericht schreiben: zwölf Seiten, 40 Quellen, zehn Minuten. Im Projektmodul bauen ihre Studierenden mit einem Programmier-Agenten eine Simulation der Fertigungslinie; nach zwei Tagen läuft sie. In der Abnahme kann niemand erklären, warum sich die Warteschlange vor der Lackiererei bildet. Ein Tutor soll die Studierenden abends durch die Übungen führen, doch im Test rechnet er eine Aufgabe überzeugend und falsch. Hoffmeister verbringt ihre Abende nun mit Kontrollieren und fragt sich, wo die gesparte Zeit geblieben ist.
+
+*Die Szene ist aus Gesprächen in Workshops und aus der eigenen Lehre zusammengesetzt.*
+
+{{< pagebreak >}}
+
+::: {.callout-note .ez-block title="Bevor Sie weiterlesen: Wie sehen Sie das?"}
+*Wie sehr stimmen Sie den vier Aussagen zu? Jede Aussage wird an der Stelle im Kapitel aufgelöst, die sie beantwortet. Wer sich vorher festlegt, liest gezielter.*
+
+::: {.einschaetzung #ez-k4-1}
+Wenn die KI Übungsblätter in einer Stunde statt einem Tag erstellt, haben Lehrende am Ende des Semesters Zeit gewonnen.
+
+[Auflösung in @sec-hiwi]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k4-2}
+Für einen Überblick über den Forschungsstand ist ein Deep-Research-Bericht die verlässlichste Form der KI-Recherche, weil er die meisten Quellen auswertet.
+
+[Auflösung in @sec-recherche]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k4-3}
+Studierende, die mit einem Programmier-Agenten arbeiten, kommen schneller zu einem lauffähigen Programm, verstehen ihren Code aber schlechter als Studierende, die ihn selbst schreiben müssen.
+
+[Auflösung in @sec-coding]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k4-4}
+Ein KI-Tutor für Rechenaufgaben sollte die Musterlösungen als Vorgabe bekommen, statt die Lösungswege selbst zu erzeugen.
+
+[Auflösung in @sec-tutor]{.ez-verweis}
+:::
+:::
+
+::: {.callout-note .lernziele title="Lernziele: Nach diesem Kapitel können Sie …"}
+1. die vier Rollen Hiwi, Copilot, Tutor und Simulator unterscheiden, eigene Ideen zuordnen und abschätzen, welche Aufgaben dadurch wegfallen, schneller werden oder neu entstehen;
+2. ein Recherchewerkzeug nach dem Muster der Aufgabe statt nach dem Markennamen wählen;
+3. beurteilen, wie viel Studierende beim Schreiben und Programmieren mit KI selbst verantworten müssen, und prüfen, ob eine KI-gebaute Simulation rechnet oder nur abspielt;
+4. beschreiben, was ein KI-Tutor und eine KI-Simulation brauchen, damit sie das Lernen fördern.
+
+*Die Kernaussagen am Kapitelende sind nach diesen vier Zielen geordnet.*
+:::
+
 Wie nutzen Lehrende generative KI?
 Wir sortieren die sehr vielfältigen Hilfestellungen der neuen Tools in vier Kategorien von Anwendungen: Hiwi, Copilot, Tutor, Simulator [@mollick2023a; @mollick2024a].
 
@@ -13,79 +59,6 @@ Hier ein Beispiel für einen Tutor-Bot, den wir seit dem Wintersemester 2025/26 
 
 ::: {.content-visible when-format="pdf"}
 Eine Testversion und der aktuelle Stand des Projekts sind über die Online-Fassung dieses Buches erreichbar; Aufbau, Betrieb und Erfahrungen beschreibt @sec-fall-tutor-bwl.
-:::
-
-::: {.callout-note title="Lernziele"}
-Nach diesem Kapitel können Sie …
-
-- die vier Rollen Hiwi, Copilot, Tutor und Simulator unterscheiden, eigene Ideen zuordnen und abschätzen, welche Aufgaben dadurch wegfallen, schneller werden oder neu entstehen;
-- ein Recherchewerkzeug nach dem Muster der Aufgabe statt nach dem Markennamen wählen;
-- beurteilen, wie viel Studierende beim Schreiben und Programmieren mit KI selbst verantworten müssen, und prüfen, ob eine KI-gebaute Simulation rechnet oder nur abspielt;
-- beschreiben, was ein KI-Tutor und eine KI-Simulation brauchen, damit sie das Lernen fördern.
-:::
-
-::: {.callout-note .mc-block title="Probleme aus der Lehre"}
-*Zu jedem dieser Probleme bietet das Kapitel Lösungsansätze. Wählen Sie eine Antwort, bevor Sie weiterlesen: Wer vorher rät, behält die Auflösung besser. Die Kernaussagen am Kapitelende greifen die Probleme in derselben Reihenfolge auf.*
-
-::: mc-frage
-Im Kollegium reichen die Ideen für KI von Folienerstellung bis Verhandlungstraining, und niemand behält den Überblick. Wie ordnen Sie sie sinnvoll?
-
-- Nach Anbieter, also nach dem verwendeten Produkt.
-- Nach Kosten, also kostenlos oder lizenzpflichtig.
-- [Nach Rolle: abnehmen, mitarbeiten, begleiten oder Übung bereitstellen.]{.richtig}
-
-::: mc-rueckmeldung
-Vier Rollen ordnen die Praxis: Als Hiwi nimmt die KI Arbeit ab, als Copilot arbeitet sie mit, als Tutor begleitet sie Lernende, als Simulator stellt sie Übungssituationen bereit. Die Rolle bestimmt, worauf Sie achten müssen; Produkte wechseln schneller (@sec-hiwi bis @sec-simulator).
-:::
-:::
-
-::: mc-frage
-Die Übungsaufgaben waren mit KI in einer Stunde statt einem Tag fertig. Jetzt verbringen Sie Abende damit, Lösungen zu prüfen und einen Tutor-Bot zu pflegen. Was beschreibt das?
-
-- Einen Bedienfehler; mit besseren Prompts entfiele das Prüfen.
-- [Das übliche Muster: Arbeit fällt weg, wird schneller oder entsteht neu.]{.richtig}
-- Den Beleg, dass KI in der Lehre grundsätzlich keine Zeit spart.
-
-::: mc-rueckmeldung
-Technik ersetzt Tätigkeiten, nicht Berufe. KI automatisiert Standardisiertes, unterstützt bei Kernaufgaben und schafft neue Aufgaben wie Qualitätskontrolle und Kursdesign. Ob am Ende Zeit gespart wird, ist offen (@sec-hiwi).
-:::
-:::
-
-::: mc-frage
-Für einen Antrag brauchen Sie einen Überblick über den Forschungsstand und überlegen, welches KI-Werkzeug Sie nehmen. Wonach entscheiden Sie?
-
-- [Nach dem Muster: einmalige oder iterative Suche, Trefferliste oder Analyse.]{.richtig}
-- Nach dem bekanntesten Anbieter, weil er die meisten Quellen kennt.
-- Nach der Zahl der Quellen, die das Werkzeug in der Werbung verspricht.
-
-::: mc-rueckmeldung
-Bei der Literaturrecherche entscheidet nicht der Markenname, sondern das Muster der Aufgabe (@sec-recherche).
-:::
-:::
-
-::: mc-frage
-Ein KI-Tutor erklärt Ihren Studierenden eine Rechenaufgabe überzeugend und falsch. Was hätte das am ehesten verhindert?
-
-- Die Anweisung „Mach keine Fehler“ am Anfang des Prompts.
-- [Musterlösungen als Grundlage und Qualitätstests vor dem Einsatz.]{.richtig}
-- Ein Tutor, der nur Fragen stellt und nie etwas erklärt.
-
-::: mc-rueckmeldung
-Ein guter Tutor braucht Musterlösungen als Input und systematische Qualitätstests, sonst produziert er überzeugende Fehler (@sec-complex-tutors, @sec-tutor-betrieb).
-:::
-:::
-
-::: mc-frage
-Ihre Studierenden üben Verhandlungen mit einer KI-Simulation. Die Gespräche laufen flüssig, aber es bleibt wenig hängen. Was fehlt?
-
-- Mehr Durchgänge, die Studierende allein absolvieren.
-- Eine realistischere Stimme und Mimik der KI-Figur.
-- [Rahmung vorher und eine Nachbesprechung durch Sie.]{.richtig}
-
-::: mc-rueckmeldung
-Simulationen wirken, wenn Lehrende sie rahmen und nachbesprechen. Die KI kann aus der Rolle fallen; der Mensch bleibt in der Schleife (@sec-simulator).
-:::
-:::
 :::
 
 ## KI als Hiwi {#sec-hiwi}
@@ -159,6 +132,12 @@ Wir sehen, dass generative KI wahrscheinlich mittelfristig einen Teil der bisher
 Ob das **insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher**, denn die neuen Aufgaben um die Einrichtung und Betreuung der KI-Unterstützung können sehr zeitintensiv sein, als Beispiel sei hier etwa die Einrichtung eines Physik-Tutor-Bots [@kestin2025] oder einer Startup-Simulation, in der KI in verschiedenen Rollen beim Aufsetzen und Verbessern von Geschäftsplänen hilft [@mollick2024].
 Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt es auch hier nicht umsonst.
 
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Wenn die KI Übungsblätter in einer Stunde statt einem Tag erstellt, haben Lehrende am Ende des Semesters Zeit gewonnen.“* []{.ez-ihre data-ez="ez-k4-1"}
+
+**Auflösung: eher nicht.** Sicher ist nur, dass sich der Aufgaben-Mix verschiebt: Einiges wandert zur KI, anderes geht schneller, und neue Aufgaben kommen hinzu, etwa die Qualitätskontrolle der Materialien und die Pflege eines Tutors. Ob am Ende Zeit übrig bleibt, hängt davon ab, wie viel diese neuen Aufgaben verschlingen; gemessen ist die Bilanz bisher nicht.
+:::
+
 ### Fachartikel finden und auswerten: Welches Werkzeug passt zu welcher Aufgabe? {#sec-recherche}
 
 Was leisten die KI-Helfer bei der Literaturrecherche, und wie prüft man, was sie liefern?
@@ -210,6 +189,12 @@ Die Kurzform „Antwort mit Zitaten“ ist für wissenschaftliche Arbeit deshalb
 Ein praktisches Problem der spezialisierten Suchwerkzeuge kommt hinzu: Sie kommen nicht hinter die Bezahlschranken der Verlage und arbeiten deshalb mit Abstracts oder Open-Access-Korpora.
 Akademische Konnektoren zu den großen Sprachmodellen verschieben die Arbeit hier von abstract-basiertem Raten zu passagenbasiertem Prüfen, weil das Modell über eine institutionelle Anmeldung lizenzierte Volltexte durchsuchen und Behauptungen an Fundstellen binden kann, begrenzt auf den Bestand des jeweiligen Anbieters [@tay2024mcp].
 Wie eine Agentenrecherche mit festen Kontrollpunkten in der Praxis abläuft, zeigt @sec-d-agenten.
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Für einen Überblick über den Forschungsstand ist ein Deep-Research-Bericht die verlässlichste Form der KI-Recherche, weil er die meisten Quellen auswertet.“* []{.ez-ihre data-ez="ez-k4-2"}
+
+**Auflösung: nein.** Die Synthese über viele Dokumente trägt das höchste Fehlerrisiko, weil sich Suchfehler, untreue Zusammenfassung und schwache Gewichtung der Belege addieren. Verlässlicher ist es, das Werkzeug nach dem Muster der Aufgabe zu wählen: eine Trefferliste zum Suchen, eine Extraktionstabelle zum Auswerten, beides stichprobenartig gegen das Original geprüft.
+:::
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-note collapse="true" title="Nur online: Ausführliche Übersicht der Formen von KI-Zusammenfassungen nach Tay (2024)"}
@@ -440,6 +425,12 @@ Wie verschieden zwei solche Werkzeuge dieselbe Herleitung umsetzen, zeigt der Ve
 
 Was der Agent den Lehrenden abnimmt, kann er Studierenden beim Lernen wegnehmen. In einem Experiment bauten 54 Informatikstudierende zweier US-Hochschulen ein kleines Browserspiel, die eine Hälfte mit einem Agenten, der ihren Code direkt änderte, die andere mit einem Chatbot, der nur allgemeine Codeschnipsel lieferte, so dass sie selbst schreiben mussten; beide liefen mit GPT-4.1. Die Agentengruppe war schneller und erfüllte mehr Anforderungen, verstand ihren eigenen Code aber deutlich schlechter. Als alle das Spiel danach ohne Agent erweitern sollten, kehrte sich ihr kleiner Vorsprung um, sobald man den besseren Ausgangscode herausrechnete: Er stammte aus dem Gerüst, das der Agent gebaut hatte, nicht aus Verständnis. Weniger verstand, wer die Aufgabenstellung in den Prompt kopierte oder alle Änderungen ungesehen übernahm, am meisten, wer den Auftrag in Fachbegriffe übersetzte und jede geänderte Datei einzeln annahm. Den Agenten bevorzugten die Studierenden trotzdem, weil er schnell und bequem ist [@balepur2026agents]. Die Studie ist klein und ausdrücklich explorativ, passt aber zu dem, was @sec-evidenz für den Chat zeigt: Mit KI lösen Studierende mehr Programmieraufgaben und behalten weniger [@bergh2026cognition]. Von sich aus arbeiten sie selten anders. In den Chatprotokollen eines Semesters aus einem Informatikkurs ging es in 78,8 % der Anfragen nicht ums Verstehen; die Studierenden ließen die KI die Arbeit tun oder sich von ihr bestätigen, und nur 11,1 % der Anfragen verbanden den Wunsch zu verstehen mit eigener Begründung [@wu2026epistemic].
 
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Studierende, die mit einem Programmier-Agenten arbeiten, kommen schneller zu einem lauffähigen Programm, verstehen ihren Code aber schlechter als Studierende, die ihn selbst schreiben müssen.“* []{.ez-ihre data-ez="ez-k4-3"}
+
+**Auflösung: eher ja.** Im Experiment mit 54 Informatikstudierenden erfüllte die Agentengruppe mehr Anforderungen und verstand ihren Code deutlich schlechter; ihr Vorsprung verschwand, als alle ohne Agent weiterbauen mussten. Die Studie ist klein und explorativ, passt aber zu den Befunden für den Chat. Am meisten verstand, wer den Auftrag in Fachbegriffe übersetzte und jede Änderung einzeln annahm.
+:::
+
 Daraus folgt eine Arbeitsteilung, die sich am Lernziel ausrichtet. Wo das Produkt zählt, etwa ein Lernspiel, ein Prototyp oder eine Simulation für die eigene Lehre, darf der Agent schreiben, und die Prüfung des Ergebnisses bleibt Pflicht (@sec-widget-pruefen). Wo das Verstehen des Codes selbst Lernziel ist, gehören die Bremsen in die Aufgabe: Aufträge in Fachbegriffen statt kopierter Aufgabenstellung, jede Änderung einzeln annehmen, eine schriftliche Begründung für jede übernommene Änderung, wie sie beim Schreiben mit KI die Übernahme fehlerhafter Vorschläge senkt [@tao2026justification], und am Ende eine Erweiterung ohne Agent, die zeigt, was verstanden wurde. Wie sich solche Kontrollpunkte allgemein setzen lassen, beschreibt @sec-d-modus.
 
 #### Beispiel: Little's Law selbst nachrechnen {#sec-widget-littles-law}
@@ -590,6 +581,12 @@ Eine interessante Möglichkeit, die beim Physik-Tutor der Harvard Studie besproc
 Der Aufwand für die Erstaufsetzung steigt hier zwar, im Gegenzug sinkt die Qualitätsunsicherheit, die individuelle Anleitung durch ein Sprachmodell sonst begleitet.
 Insgesamt ist eine solche Durchsicht und intensive Qualitätskontrolle klar zu empfehlen (dieser Aspekt der intensiven Qualitätstests wird bei der Kurzvorstellung einiger deutscher Fallstudien in @wannemacher2025 vernachlässigt).
 
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Ein KI-Tutor für Rechenaufgaben sollte die Musterlösungen als Vorgabe bekommen, statt die Lösungswege selbst zu erzeugen.“* []{.ez-ihre data-ez="ez-k4-4"}
+
+**Auflösung: ja.** Erzeugt das Modell die Lösungswege selbst, entstehen Ungenauigkeiten und Halluzinationen, die im Tutorgespräch überzeugend klingen. Der Physik-Tutor der Harvard-Studie bekam deshalb zu jeder Aufgabe eine ausführliche Musterlösung; das kostet mehr Aufwand beim Einrichten und senkt die Qualitätsunsicherheit. Systematische Tests vor dem Einsatz bleiben trotzdem nötig.
+:::
+
 ### Beispiele für einfache Tutoren {#sec-simple-tutors}
 
 @mollick2024a beschreiben eine Reihe allgemeiner Tutorenkonzepte: Der **"Integration Agent"** [@mollick2024a, S. 31–33] fordert Studierende durch offene Fragen heraus, Verbindungen zwischen verschiedenen Kurskonzepten herzustellen, was vernetztes Denken fördert.
@@ -726,10 +723,21 @@ Was die Prüfung der Echtheit nicht trägt, wird nicht als Übungsgegenüber del
 [Den Kreislauf mit hervorgehobenem Engpass zeigt die [interaktive Fassung](interactions/4d-kreislauf.html?rolle=simulator).]{.content-visible when-format="html"}
 
 ::: {.callout-tip title="Kernaussagen"}
+**Zu Lernziel 1: Rollen und Aufgaben**
+
 1. Vier Rollen ordnen die Praxis: Als Hiwi nimmt die KI Arbeit ab, als Copilot ermöglicht sie, was wir allein nicht könnten, als Tutor begleitet sie Lernende, als Simulator stellt sie Übungssituationen bereit.
 2. Technik ersetzt Tätigkeiten, nicht Berufe. In der Lehre automatisiert KI vor allem Standardisiertes, unterstützt bei Kernaufgaben und schafft neue Aufgaben wie Qualitätskontrolle und Kursdesign. Ob am Ende Zeit gespart wird, ist offen.
+
+**Zu Lernziel 2: Recherchewerkzeuge**
+
 3. Bei der Literaturrecherche entscheidet nicht der Markenname, sondern das Muster: einmalige Suche oder iterativer Prozess, Trefferliste oder zusammenfassende Analyse.
+
+**Zu Lernziel 3: Schreiben, Programmieren, Simulationen bauen**
+
 4. Schreiben und Programmieren mit KI sind Cyborg-Tätigkeiten. Der Lernwert hängt davon ab, wie viel die Studierenden selbst verstehen und verantworten müssen. Wer eine Simulation von KI bauen lässt, prüft das Modell, nicht das Bild. Programmier-Agenten liefern schneller fertigen Code und weniger Verständnis; wo der Code Lernziel ist, gehören Prüfschritte in die Aufgabe.
+
+**Zu Lernziel 4: Tutor und Simulator**
+
 5. Ein guter KI-Tutor lässt Lernende im eigenen Tempo arbeiten, gibt sofort Rückmeldung, hält sie aktiv und verschiebt die Arbeit der Lehrenden von der Einführung zur Vertiefung. Er braucht Musterlösungen als Input und systematische Qualitätstests, sonst produziert er überzeugende Fehler.
 6. Simulationen wirken, wenn Lehrende sie rahmen und nachbesprechen. Ein simuliertes Gegenüber trifft den typischen Fall, nicht den Einzelfall, und kann aus der Rolle fallen; der Mensch bleibt in der Schleife.
 :::

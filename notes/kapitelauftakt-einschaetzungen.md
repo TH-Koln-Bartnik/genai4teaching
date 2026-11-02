@@ -25,7 +25,8 @@ Kernaussagen gruppiert: `**Zu Lernziel 1: Stichwort**`, darunter die Aussagen (f
 ## Technik
 - `_filters/einschaetzung.lua`: Druck/EPUB nummerieren die Aussagen, setzen die Skala „stimme zu 1 – 2 – 3 – 4 – 5 stimme nicht zu“ zum Ankreuzen, Verweis in Klammern; `.ez-ihre` entfällt; füllt `kapitel-gliederung`.
 - `include/einschaetzung.html` (online): Skala mit fünf Knöpfen, Wahl im Browser gespeichert (`localStorage`, Schlüssel `genai4teaching:ez:<id>`), danach „Gespeichert. Auflösung in …“ mit Sprung direkt zum Prüfkasten; dort „Ihre Einschätzung vorab: …“. Keine Sofort-Auflösung (Aufmerksamkeitsfenster bleibt bis zur Textstelle offen).
-- Stand 01.11.2026: Kap. 1–3 nach dieser Schablone (je vier Aussagen, IDs `ez-k1-…` bis `ez-k3-…`). Kap. 4–6 nutzen noch `mc-frage` (Multiple Choice); Filter `_filters/mc-frage.lua`, `include/mc-frage.html` und die Einträge in `_quarto.yml` erst nach dem Umbau von Kap. 6 entfernen.
+- Stand 02.11.2026: Kap. 1–6 nach dieser Schablone (je vier Aussagen, IDs `ez-k1-…` bis `ez-k6-…`; Kap. 6 = `kapitel06-fallbeispiele.qmd`). Die Multiple-Choice-Technik (`_filters/mc-frage.lua`, `include/mc-frage.html`, Einträge in `_quarto.yml`) ist entfernt.
+- Szenen-Personen (alle erfunden, als Komposit gekennzeichnet): Kap. 1 Albers (Technische Mechanik), Kap. 2 Kessler (Statistik, Psychologie), Kap. 3 Brandt (Kostenrechnung), Kap. 4 Hoffmeister (Produktionslogistik, Maschinenbau), Kap. 5 Sauer (Studiendekan, Marketing), Kap. 6 Arnold (neu berufen, Wirtschaftsingenieurwesen; Module und Projekte aus der eigenen Lehre). Neue Szenen nehmen andere Fächer und Rollen.
 
 - Kap. 2 seit der Neugliederung nach dem 4D-Modell (S1b, 01.11.2026): Reihenfolge im Kopf folgt der Lesereihenfolge `ez-k2-3` (2.3.1 Fähigkeiten), `ez-k2-1` (2.3.2 Setup), `ez-k2-4` (2.4.5 Prompt-Mythen), `ez-k2-2` (2.5 Discernment). Die IDs bleiben, damit gespeicherte Antworten erhalten bleiben; die Druck-Nummerierung folgt der Position im Kasten.
 
