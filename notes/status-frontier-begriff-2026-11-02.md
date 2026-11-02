@@ -18,7 +18,7 @@ Entscheidung Roman (Multiple Choice, nach Pro/Contra-Diskussion mit Quellen): **
 - Abbildung und Baum als PNG gesichtet: keine Überläufe. Klick-Baum (390 px) ohne JS-Fehler.
 
 ## Offen
-1. Merge `frontier-begriff` → `main` nach Freigabe des Diffs durch Roman.
+1. ~~Merge~~ erledigt: Roman gab frei (MC, ca. 16:45); Commit auf aktuelles `main` gesetzt (main war parallel weitergelaufen, nur Konflikt in `docs/search.json`, danach neu gerendert) → **`6fca58e`** auf `main`. Branch `frontier-begriff` (`178a3cb`, alte Basis) im GitHub-Webinterface löschen.
 2. Druck-PDF neu rendern (TeX fehlt in der Cloud).
 3. Datierter Kasten @tbl-modellstand / Modellübersicht: Claude Sonnet 5.5 ist als „klein“ geführt, liegt in aggregierten Ranglisten aber vor Gemini 4 Argon („groß“). Zuordnung prüfen.
 4. Gemini 4 Argon: Ranglisten widersprechen sich (ArtificialWatch Platz 7; Metatext Okt. 2026 Platz 1 LMArena). Offizielle Arena-Seite vor einer Aussage im Buch selbst prüfen.
