@@ -50,29 +50,46 @@ for (const breite of [1200, 390]) {
   ok(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), `${breite}px: kein horizontales Scrollen`);
   ok(await page.evaluate(() => [...document.querySelectorAll("video track")].some((t) => t.default)), `${breite}px: Untertitel standardmäßig an`);
   ok(await page.evaluate(() => window.__genrefilm.video.autoplay === false && window.__genrefilm.video.paused), `${breite}px: kein Autoplay`);
-  // Phase 1
-  await page.click("#vh-optionen button:nth-child(2)");
-  ok((await page.getAttribute("#vh-optionen button:nth-child(2)", "aria-pressed")) === "true", `${breite}px: Vorhersage wählbar`);
-  // Haltepunkt nach Szene 4
-  const k4 = F.kapitel[3];
-  await page.evaluate((t) => { const v = window.__genrefilm.video; v.muted = true; v.currentTime = t; }, k4.ende - 0.8);
+  // Phase 1 (richtige Antwort wählen, damit die Auflösung „stimmte“ meldet)
+  const vr = F.vorhersage.richtig + 1;
+  await page.click(`#vh-optionen button:nth-child(${vr})`);
+  ok((await page.getAttribute(`#vh-optionen button:nth-child(${vr})`, "aria-pressed")) === "true", `${breite}px: Vorhersage wählbar`);
+  if (F.vorhersage.sicherheit) ok(await page.isVisible("#vh-sicher button"), `${breite}px: Sicherheit 1–3 bei der Vorhersage`);
+  // Erster Haltepunkt (S5: nach Szene 4, P6: nach Szene 3); mit Sicherheitsangabe, falls der Film sie hat
+  const h1 = F.haltepunkte[0], k1 = F.kapitel[h1.nachSzene - 1];
+  await page.evaluate((t) => { const v = window.__genrefilm.video; v.muted = true; v.currentTime = t; }, k1.ende - 0.8);
   await page.evaluate(() => window.__genrefilm.video.play());
   await page.waitForSelector("#halt.an", { timeout: 8000 }).catch(() => {});
-  const haltOffen = await page.isVisible("#halt.an");
-  ok(haltOffen, `${breite}px: Film hält nach Szene 4 an`);
+  ok(await page.isVisible("#halt.an"), `${breite}px: Film hält nach Szene ${h1.nachSzene} an`);
   ok(await page.evaluate(() => window.__genrefilm.video.paused), `${breite}px: Video pausiert am Haltepunkt`);
-  ok((await page.textContent("#halt-frage")).includes(F.haltepunkte[0].frage.slice(0, 20)), `${breite}px: Haltepunkt-Frage angezeigt`);
+  ok((await page.textContent("#halt-frage")).includes(h1.frage.slice(0, 20)), `${breite}px: Haltepunkt-Frage angezeigt`);
+  if (F.sicherheit) ok(await page.isVisible("#halt-sicher button"), `${breite}px: Sicherheit 1–3 am Haltepunkt wählbar`);
   if (breite === 1200) await page.screenshot({ path: join(aus, `player-${breite}-haltepunkt.png`) });
-  await page.click("#halt-optionen button:nth-child(1)");
+  await page.click(`#halt-optionen button:nth-child(${h1.richtig + 1})`);
   ok((await page.textContent("#halt-rueck")).startsWith("Richtig."), `${breite}px: Rückmeldung nach Klick (aria-live)`);
   ok((await page.getAttribute("#halt-rueck", "aria-live")) === "polite", `${breite}px: Rückmeldung mit aria-live`);
   await page.click("#weiter");
   await page.waitForTimeout(600);
   ok(!(await page.evaluate(() => window.__genrefilm.video.paused)), `${breite}px: Weiter spielt ab`);
-  // Haltepunkt nach Szene 5 zeigt Auflösung der Eingangsvorhersage
-  await page.evaluate((t) => { window.__genrefilm.video.currentTime = t; }, F.kapitel[4].ende - 0.6);
+  // Zweiter Haltepunkt: bei Sicherheit 3 und falscher Antwort erscheint der Hinweis zur Hyperkorrektur
+  const h2 = F.haltepunkte[1];
+  await page.evaluate((t) => { window.__genrefilm.video.currentTime = t; }, F.kapitel[h2.nachSzene - 1].ende - 0.6);
   await page.waitForSelector("#halt.an", { timeout: 8000 }).catch(() => {});
-  ok((await page.textContent("#halt-optionen")).includes("Eingangsvorhersage stimmte"), `${breite}px: Eingangsvorhersage nach Szene 5 aufgelöst`);
+  if (F.sicherheit) {
+    await page.click(`#halt-sicher button:nth-of-type(${F.sicherheit.stufen.length})`);
+    await page.click(`#halt-optionen button:nth-child(${((h2.richtig + 1) % 3) + 1})`);
+    ok((await page.textContent("#halt-rueck")).includes(F.sicherheit.hyperkorrektur.slice(0, 30)), `${breite}px: Hinweis bei sicherem Irrtum (Sicherheit 3)`);
+  }
+  // Eingangsvorhersage: Auflösung am Haltepunkt der genannten Szene (S5: 5) oder am Ende (P6: letzte Szene)
+  const vhNach = F.vorhersage.nachSzene || 5;
+  if (vhNach < F.kapitel.length) {
+    if (vhNach !== h2.nachSzene) {
+      await page.click("#weiter");
+      await page.evaluate((t) => { window.__genrefilm.video.currentTime = t; }, F.kapitel[vhNach - 1].ende - 0.6);
+      await page.waitForSelector("#halt.an", { timeout: 8000 }).catch(() => {});
+    }
+    ok((await page.textContent("#halt-optionen")).includes("Eingangsvorhersage"), `${breite}px: Eingangsvorhersage nach Szene ${vhNach} aufgelöst`);
+  }
   await page.click("#weiter");
   // Kapitelsprung
   await page.click("#kapitel button:nth-child(7)");
@@ -93,7 +110,8 @@ for (const breite of [1200, 390]) {
   await page.evaluate((t) => { const v = window.__genrefilm.video; v.currentTime = t; v.play(); }, F.dauer - 0.5);
   await page.waitForFunction(() => document.getElementById("selbsttest").open, null, { timeout: 8000 }).catch(() => {});
   ok(await page.evaluate(() => document.getElementById("selbsttest").open), `${breite}px: Selbsttest öffnet sich am Ende`);
-  await page.click("#st-fragen .frage:nth-child(3) .optionen button:nth-child(2)");
+  if (vhNach >= F.kapitel.length) ok((await page.textContent("#vh-aufloesung")).includes("Eingangsvorhersage"), `${breite}px: Eingangsvorhersage am Ende aufgelöst`);
+  await page.click(`#st-fragen .frage:nth-child(3) .optionen button:nth-child(${F.selbsttest[2].richtig + 1})`);
   ok((await page.textContent("#st-fragen .frage:nth-child(3) .rueck")).startsWith("Richtig."), `${breite}px: Selbsttest-Rückmeldung`);
   // Making-of, Kopier-Knopf
   await page.click("#makingof summary");

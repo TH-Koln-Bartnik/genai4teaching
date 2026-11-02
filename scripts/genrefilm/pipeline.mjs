@@ -183,6 +183,10 @@ export function playerDaten(manifest, zp, stimme) {
     kapitel: zp.map((z, i) => ({ nr: i + 1, genre: z.genre, start: z.start, ende: +(z.start + z.dauer).toFixed(3) })),
     vorhersage: manifest.vorhersage, haltepunkte: manifest.haltepunkte, selbsttest: manifest.selbsttest,
     makingof: manifest.makingof, zurueck: manifest.zurueck,
+    // optional (P6): Sicherheitsangabe 1–3, Legende der Quellenmarken, eigene Akzentfarbe
+    ...(manifest.sicherheit ? { sicherheit: manifest.sicherheit } : {}),
+    ...(manifest.quellenmarken ? { quellenmarken: manifest.quellenmarken } : {}),
+    ...(manifest.farben?.player ? { akzent: { hell: manifest.farben.hell, dunkel: manifest.farben.dunkel } } : {}),
   };
 }
 export function playerEinbetten(playerPfad, daten) {

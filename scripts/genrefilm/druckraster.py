@@ -28,8 +28,8 @@ def finde_film(film):
     raise SystemExit(f"Kein Manifest mit film={film}")
 
 
-def qr_bild(url, ziel):
-    q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=1, border=2)
+def qr_bild(url, ziel, rand=2):
+    q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=1, border=rand)
     q.add_data(url); q.make(fit=True)
     m = q.make_image(fill_color="black", back_color="white").convert("1")
     k = ziel // m.size[0]
@@ -71,7 +71,7 @@ def main():
     d.text((xq, yq + 460), "mit Haltepunkten", font=normal, fill=(90, 90, 96))
     ziel = REPO / f"images/druck/video-{a.name}.png"
     c.save(ziel, dpi=(300, 300))
-    e = qr_bild(url, 500); flaeche = Image.new("1", (540, 540), 1)
+    e = qr_bild(url, 500, rand=4); flaeche = Image.new("1", (540, 540), 1)  # Ruhezone 4 Module (Norm)
     flaeche.paste(e, ((540 - e.size[0]) // 2, (540 - e.size[1]) // 2))
     qr_datei = REPO / f"images/qr/qr-video-{a.name}.png"
     flaeche.save(qr_datei)
