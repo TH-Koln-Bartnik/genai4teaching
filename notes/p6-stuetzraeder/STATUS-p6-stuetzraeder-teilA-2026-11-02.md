@@ -25,6 +25,8 @@ Befunde des Prüf-Teilagenten: Google-Leitfaden-URL (alt) liefert 404, Buchschl�
 
 ## Entscheidung in der Sitzung (MC)
 
+**Modell:** Eleven v4 statt v3 (Roman, 02.11.2026, 13:47). v4 versteht dieselben Audio Tags; Sprechtexte unverändert. Kennzeichnung im Manifest (`kennzeichnung.elevenlabs`), Making-of und Druck-Bildunterschrift Kap. 2.4 auf „ElevenLabs v4“ umgestellt; `drehbuch.mjs` liest das Modell jetzt aus `manifest.vertonung`. **Achtung:** Vertonungsblätter S2/S5 und deren Kennzeichnungen nennen noch v3; werden sie ebenfalls mit v4 vertont, in deren Sitzung B auf v4 umstellen.
+
 **Szene 7:** Google nennt kein Erfolgskriterium. Roman wählte: „**In diese Richtung** raten heute alle drei großen Labore: Ziel nennen, Erfolgskriterium nennen, dann fahren lassen.“ (statt „Genau das …“). Im Manifest und Vertonungsblatt umgesetzt.
 
 ## Bild und Pipeline
@@ -49,9 +51,9 @@ Laufzeit 136,2 s (2:16); MP4 1280 × 720, 30 fps, H.264 CRF 23 veryfast: 4,9 MB;
 - Druckabbildung in Graustufen angesehen; QR farbig und grau gelesen. PDF-Testrender nicht versucht (TeX im Container unvollständig, wie S5).
 - Kein eigener Prüfagent für die Szenen: Die Sprechtexte waren freigegeben; die Quellen prüfte ein frischer Teilagent gegen die Originalseiten.
 
-## Take-Liste für Roman (ElevenLabs v3)
+## Take-Liste für Roman (ElevenLabs v4)
 
-Arbeitsblatt mit v3-Tags: `VERTONUNG-p6-elevenlabs-2026-11-02.md` (Projekt, Tresorit, Repo `notes/p6-stuetzraeder/`). Ablage der mp3: Tresorit `06-Lehrbuch-Publikation-Logos/Audio-P6-Stuetzraeder/` (Ordner angelegt). Länge = Platzhalter (Piper); ElevenLabs darf 10–30 % länger sein.
+Arbeitsblatt mit Audio Tags (für Eleven v4): `VERTONUNG-p6-elevenlabs-2026-11-02.md` (Projekt, Tresorit, Repo `notes/p6-stuetzraeder/`). Ablage der mp3: Tresorit `06-Lehrbuch-Publikation-Logos/Audio-P6-Stuetzraeder/` (Ordner angelegt). Länge = Platzhalter (Piper); ElevenLabs darf 10–30 % länger sein.
 
 | Datei | Genre | Sprechtext | Platzhalter |
 |---|---|---|---|
