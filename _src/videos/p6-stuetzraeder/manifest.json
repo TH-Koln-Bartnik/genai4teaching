@@ -59,7 +59,7 @@
   "vertonung": {
     "ordner": "0_GenAI/1-Research/06-Lehrbuch-Publikation-Logos/Audio-P6-Stuetzraeder/",
     "zeit": "ca. 15 min (eine Stimme für alle neun Szenen)",
-    "aussprache": "Zahlen prüfen: „2020“ = zwanzig-zwanzig, „79 statt 18“ = neunundsiebzig statt achtzehn, „14:40“ = vierzehn Uhr vierzig, „308“ = dreihundertacht; „Reasoning-Modell“ englisch, „Few-Shot-Prompting“ englisch.",
+    "aussprache": "Zahlen prüfen: „2020“ = zwanzig-zwanzig, „79 statt 18“ = neunundsiebzig statt achtzehn, „14:40“ = vierzehn Uhr vierzig; „Reasoning-Modell“ englisch, „Few-Shot-Prompting“ englisch.",
     "modell": "ElevenLabs v4",
     "modellText": "Text to Speech → **Eleven v4** (nicht „v4 Turbo“; Turbo ist für Entwürfe gedacht). v4 versteht dieselben Regieanweisungen in eckigen Klammern wie v3 (Audio Tags, freier Text auf Englisch, z. B. `[whispers]`); die Texte unten gelten unverändert. Entscheidung Roman, 02.11.2026."
   },
@@ -73,7 +73,7 @@
     "richtig": 2,
     "nachSzene": 9,
     "sicherheit": true,
-    "aufloesung": "Kürzer. Szene 9 zeigt es am Quiz-Ersteller aus Anhang B: Er schrumpfte von 308 auf rund 120 Wörter, weil Rolle, Ablaufvorschriften und Ermahnungen wegfielen. Ziel, Wozu, Material und Abnahme blieben."
+    "aufloesung": "Kürzer. Szene 9 zeigt es am Quiz-Ersteller aus Anhang B: Er schrumpfte auf weniger als die Hälfte (von 275 auf 119 Wörter), weil Rolle, Ablaufvorschriften und Ermahnungen wegfielen. Ziel, Wozu, Material und Abnahme blieben."
   },
   "sicherheit": {
     "frage": "Wie sicher sind Sie?",
@@ -307,9 +307,9 @@
       "genre": "Gerichtsdrama",
       "jahr": "2025",
       "datei": "p6-szene04",
-      "idee": "Die Hausrezepte im Test: nicht erwiesen.",
-      "sprechtext": "Die Beweisaufnahme, 2025. Trinkgeld und Drohungen: kein messbarer Effekt auf schweren Tests. Expertenrollen: keine genaueren Fakten. Höflichkeit: hilft mal, schadet mal. Das Gericht urteilt: nicht erwiesen. Die Aufkleber kommen vom Zettel.",
-      "v3": "[formal, serious judge] Die Beweisaufnahme, 2025. [pause] Trinkgeld und Drohungen: kein messbarer Effekt auf schweren Tests. Expertenrollen: keine genaueren Fakten. Höflichkeit: hilft mal, schadet mal. [firm] Das Gericht urteilt: nicht erwiesen. [pause] Die Aufkleber kommen vom Zettel.",
+      "idee": "Die Hausrezepte im Test: bringt nichts.",
+      "sprechtext": "Die Beweisaufnahme, 2025. Der KI eine Rolle geben: kein Effekt bei neueren Modellen. Trinkgeld und Drohungen: kein messbarer Effekt. Höflichkeit: keine Wirkung. Das Gericht urteilt: bringt nichts. Die Aufkleber kommen vom Zettel.",
+      "v3": "[formal, serious judge] Die Beweisaufnahme, 2025. [pause] Der KI eine Rolle geben: kein Effekt bei neueren Modellen. Trinkgeld und Drohungen: kein messbarer Effekt. Höflichkeit: keine Wirkung. [firm] Das Gericht urteilt: bringt nichts. [pause] Die Aufkleber kommen vom Zettel.",
       "stimmhinweis": "Vorsitzende Richterin: ruhig, sachlich, Pausen vor dem Urteil",
       "bildtext": [
         "Gerichtsdrama",
@@ -318,13 +318,13 @@
         "1",
         "2",
         "3",
-        "Trinkgeld",
         "Expertin",
+        "Trinkgeld",
         "Bitte",
-        "nicht erwiesen",
+        "bringt nichts",
         "● Studie"
       ],
-      "bildobjekte": "Holzvertäfelung in Graustufen, Richtertisch; drei Beweisstücke (Trinkgeld, Expertin, Bitte) mit Nummern; Hammerschlag; Stempel „nicht erwiesen“ (Akzent); die Aufkleber fallen vom Zettel",
+      "bildobjekte": "Holzvertäfelung in Graustufen, Richtertisch; drei Beweisstücke (Expertin, Trinkgeld, Bitte) mit Nummern; Hammerschlag; Stempel „bringt nichts“ (Akzent); die Aufkleber fallen vom Zettel",
       "quellenmarke": [
         {
           "typ": "studie",
@@ -338,17 +338,17 @@
       "schematisch": null,
       "belege": [
         {
+          "aussage": "Der KI eine Rolle geben: kein Effekt auf die Genauigkeit bei aktuellen Modellen.",
+          "beleg": "Basil et al. (2025)",
+          "zeile": "Q08"
+        },
+        {
           "aussage": "Trinkgeld und Drohungen: kein messbarer Effekt auf schweren Benchmarks (GPQA, MMLU-Pro).",
           "beleg": "Meincke et al. (2025c)",
           "zeile": "Q07"
         },
         {
-          "aussage": "Expertenrollen machen Antworten nicht faktengenauer.",
-          "beleg": "Basil et al. (2025)",
-          "zeile": "Q08"
-        },
-        {
-          "aussage": "Höflichkeit hilft bei manchen Fragen und schadet bei anderen.",
+          "aussage": "Höflichkeit: keine verlässliche Wirkung (Sprechtext vereinfacht zu „keine Wirkung“; Take übernommen, Roman 02.11.2026).",
           "beleg": "Meincke et al. (2025a)",
           "zeile": "Q09"
         }
@@ -561,8 +561,8 @@
       "jahr": "",
       "datei": "p6-szene09",
       "idee": "Zeitkapsel: Der eigene Prompt schrumpfte; auch heutige Regeln sind Stützräder auf Zeit.",
-      "sprechtext": "Eine Nachricht an Sie, später. Unser eigener Quiz-Prompt schrumpfte von 308 auf rund 120 Wörter. Auch die Regeln von heute gleichen nur aus, was Modelle heute noch nicht können. Wenn das nächste Modell kommt: Zettel hervorholen, Zeile für Zeile prüfen.",
-      "v3": "[calm, slightly echoing voice from the future] Eine Nachricht an Sie, später. [pause] Unser eigener Quiz-Prompt schrumpfte von 308 auf rund 120 Wörter. [thoughtful] Auch die Regeln von heute gleichen nur aus, was Modelle heute noch nicht können. [pause] Wenn das nächste Modell kommt: Zettel hervorholen, Zeile für Zeile prüfen.",
+      "sprechtext": "Eine Nachricht an Sie, später. Unser eigener Quiz-Prompt schrumpfte auf weniger als die Hälfte. Auch die Regeln von heute gleichen nur aus, was Modelle heute noch nicht können. Wenn das nächste Modell kommt: Zettel hervorholen, Zeile für Zeile prüfen.",
+      "v3": "[calm, slightly echoing voice from the future] Eine Nachricht an Sie, später. [pause] Unser eigener Quiz-Prompt schrumpfte auf weniger als die Hälfte. [thoughtful] Auch die Regeln von heute gleichen nur aus, was Modelle heute noch nicht können. [pause] Wenn das nächste Modell kommt: Zettel hervorholen, Zeile für Zeile prüfen.",
       "stimmhinweis": "Botschaft aus der Zukunft: ruhig, freundlich, leicht entrückt",
       "bildtext": [
         "Science-Fiction",
@@ -571,13 +571,13 @@
         "Wozu",
         "Material",
         "Abnahme",
-        "308 Wörter",
-        "rund 120 Wörter",
+        "vorher",
+        "weniger als ½",
         "Stand: November 2026",
         "prüfen",
         "■ Labor"
       ],
-      "bildobjekte": "Sternenhimmel; Zeitkapsel öffnet sich; alter Zettel (lang, viele graue Zeilen, „308 Wörter“) neben neuem (kurz, „rund 120 Wörter“ in Akzent); Stempel „Stand: November 2026“; Prüflinie fährt über den neuen Zettel",
+      "bildobjekte": "Sternenhimmel; Zeitkapsel öffnet sich; alter Zettel (lang, viele graue Zeilen, „vorher“) neben neuem (kurz, „weniger als ½“ in Akzent); Stempel „Stand: November 2026“; Prüflinie fährt über den neuen Zettel",
       "quellenmarke": [
         {
           "typ": "zaehlung",
@@ -588,10 +588,10 @@
           "zitat": "Anthropic 2026 („kurz halten“); OpenAI 2026"
         }
       ],
-      "schematisch": "Zettelzeilen schematisch; Wortzahlen per Skript gezählt",
+      "schematisch": "Zettelzeilen schematisch; Wortzahlen per Skript gezählt (275 → 119, Zählregel wie Streich-Test)",
       "belege": [
         {
-          "aussage": "Quiz-Ersteller (Anhang B): 308 Wörter alt, neu rund 120 (per Skript gezählt).",
+          "aussage": "Quiz-Ersteller (Anhang B) schrumpft auf weniger als die Hälfte: 275 → 119 Wörter (−57 %), Zählregel wie Streich-Test (P1).",
           "beleg": "eigene Zählung, scripts/p6-quiz-woerter.py",
           "zeile": "Q23"
         },

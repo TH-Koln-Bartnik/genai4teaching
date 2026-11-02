@@ -186,14 +186,14 @@ export const szenen = {
     };
   },
 
-  // 4 Gerichtsdrama, 2025: drei Beweisstücke, Stempel „nicht erwiesen“, Aufkleber fallen vom Zettel
+  // 4 Gerichtsdrama, 2025: drei Beweisstücke (Reihenfolge wie im ElevenLabs-Take), Stempel „bringt nichts“, Aufkleber fallen vom Zettel
   s4(c) {
-    const t = { auf: c.wt("Die Beweisaufnahme"), b1: c.wt("kein messbarer"), b2: c.wt("keine genaueren"), b3: c.wt("hilft mal"), urteil: c.wt("Das Gericht"), fall: c.wt("Die Aufkleber") };
-    const stueck = (n, text) => `<div class="stueck s${n}"><span class="nr">${n}</span><span class="wort">${text}</span><div class="stempel">nicht erwiesen</div></div>`;
+    const t = { auf: c.wt("Die Beweisaufnahme"), b1: c.wt("kein Effekt"), b2: c.wt("kein messbarer"), b3: c.wt("keine Wirkung"), urteil: c.wt("Das Gericht"), fall: c.wt("Die Aufkleber") };
+    const stueck = (n, text) => `<div class="stueck s${n}"><span class="nr">${n}</span><span class="wort">${text}</span><div class="stempel">bringt nichts</div></div>`;
     return {
       html: `<div class="bg"></div><div class="tisch"></div>${kopf(c, "dunkel gericht")}
   <div class="hammer"><div class="kopf"></div><div class="stiel"></div></div><div class="block"></div>
-  ${stueck(1, "Trinkgeld")}${stueck(2, "Expertin")}${stueck(3, "Bitte")}
+  ${stueck(1, "Expertin")}${stueck(2, "Trinkgeld")}${stueck(3, "Bitte")}
   <div class="zettel z4"><div class="titel">Prompt</div>${balken(70)}${balken(55)}${balken(66)}
     <i class="mk m1"></i><i class="mk m2"></i><i class="mk m3"></i><i class="mk m4"></i></div>
   ${marke(c, "dunkel")}`,
@@ -413,9 +413,9 @@ export const szenen = {
     };
   },
 
-  // 9 Science-Fiction (Zeitkapsel): 308 → rund 120 Wörter; Stand November 2026; beim nächsten Modell prüfen
+  // 9 Science-Fiction (Zeitkapsel): vorher → weniger als ½ (275 → 119 Wörter, nicht im Bild); Stand November 2026; beim nächsten Modell prüfen
   s9(c) {
-    const t = { kapsel: c.wt("Eine Nachricht"), alt: c.wt("308"), neu: c.wt("rund 120"), regeln: c.wt("Auch die Regeln"), zettel: c.wt("Zettel hervorholen"), zeile: c.wt("Zeile für") };
+    const t = { kapsel: c.wt("Eine Nachricht"), alt: c.wt("Quiz-Prompt"), neu: c.wt("weniger als"), regeln: c.wt("Auch die Regeln"), zettel: c.wt("Zettel hervorholen"), zeile: c.wt("Zeile für") };
     const sterne = Array.from({ length: 70 }, (_, i) => {
       const x = (i * 137.5) % 1280, y = (i * 89.3 + (i % 7) * 53) % 720, r = 1 + (i % 3);
       return `<i class="stern" style="left:${x.toFixed(0)}px;top:${y.toFixed(0)}px;width:${r}px;height:${r}px"></i>`;
@@ -427,7 +427,7 @@ export const szenen = {
   <div class="zettel neu"><div class="titel">Prompt</div>
     <div class="nz">Ziel</div>${balken(70)}<div class="nz">Wozu</div>${balken(56)}<div class="nz">Material</div>${balken(40)}<div class="nz">Abnahme</div>${balken(80)}${balken(62)}
     <i class="scan"></i></div>
-  <div class="zahl za">308 Wörter</div><div class="zahl zn">rund 120 Wörter</div>
+  <div class="zahl za">vorher</div><div class="zahl zn">weniger als ½</div>
   <div class="kapsel kl"></div><div class="kapsel kr"></div>
   <div class="stand">Stand: November 2026</div>
   <div class="tag pr">prüfen</div>
@@ -441,8 +441,8 @@ export const szenen = {
 #s9 .nz { font-size:15px; font-weight:700; color:#333; margin-top:6px; }
 #s9 .neu .bal { height:8px; margin:3px 0 4px; }
 #s9 .scan { position:absolute; left:0; right:0; top:44px; height:4px; background:var(--A); box-shadow:0 0 12px var(--A); opacity:0; }
-#s9 .zahl { position:absolute; top:596px; width:300px; text-align:center; font-family:"DejaVu Sans Mono", monospace; font-size:30px; opacity:0; }
-#s9 .za { left:310px; color:#e2e2e2; } #s9 .zn { left:670px; color:var(--Ad); font-weight:700; }
+#s9 .zahl { position:absolute; top:596px; width:360px; text-align:center; font-family:"DejaVu Sans Mono", monospace; font-size:30px; opacity:0; }
+#s9 .za { left:280px; color:#e2e2e2; } #s9 .zn { left:640px; color:var(--Ad); font-weight:700; }
 #s9 .kapsel { position:absolute; top:120px; width:330px; height:470px; background:linear-gradient(90deg, #5a5a5a, #9c9c9c 40%, #6a6a6a); border:3px solid #bdbdbd; }
 #s9 .kl { left:310px; border-radius:160px 0 0 160px; } #s9 .kr { left:640px; border-radius:0 160px 160px 0; }
 #s9 .stand { position:absolute; left:960px; top:110px; font-family:"DejaVu Sans Mono", monospace; font-size:22px; color:#e6e6e6; border:3px solid #e6e6e6; padding:6px 12px; transform:rotate(-4deg); opacity:0; }
