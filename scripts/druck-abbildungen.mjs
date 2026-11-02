@@ -11,8 +11,9 @@
 // Ergebnis:
 //   images/druck/littles-law-szenarien.svg, images/druck/bullwhip-szenarien.svg
 //   images/qr/qr-littles-law.png, images/qr/qr-bullwhip.png
+//   images/druck/hoeher-tiefer-ki-aufgaben.svg, images/qr/qr-hoeher-tiefer.png (Leserübung Kap. 1)
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { JSDOM } from "jsdom";
 import * as Plot from "@observablehq/plot";
 import QRCode from "qrcode";
@@ -169,7 +170,59 @@ ${inhalt}
   }
 }
 
+// Leserübung „Höher oder tiefer“ (Kap. 1): Lösung zu den drei Druckpaaren. Je Paar
+// zwei waagerechte Balken, Achse ab 0, auf das Paarmaximum skaliert (die Werte liegen
+// zwischen 0,05 und 4,95 %, eine gemeinsame Achse ließe die kleinen Balken verschwinden).
+// Graustufen; Lehraufgaben schraffiert und fett. Werte nur aus der Skript-Ausgabe.
+function hoeherTiefer() {
+  const d = JSON.parse(readFileSync("interactions/data/aei-hoeher-tiefer.json", "utf8"));
+  const paare = d.druck.map(id => d.kandidaten.find(p => p.id === id));
+  const B = 450, L = 8, BMAX = 360, ZEILE = 34, KOPF = 16, LUECKE = 12;
+  const zahl = x => x.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " %";
+  const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  let y = 4, teile = [];
+  paare.forEach((p, i) => {
+    const max = Math.max(p.a.pct, p.b.pct);
+    teile.push(`<text x="${L}" y="${y + 11}" font-weight="bold" font-size="10">Paar ${i + 1}: häufiger ist ${p.richtig}` +
+      ` (Faktor ${p.faktor.toLocaleString("de-DE")})</text>`);
+    y += KOPF;
+    const balkenY = [];
+    for (const [m, a] of [["A", p.a], ["B", p.b]]) {
+      balkenY.push(y + 13);
+      const w = Math.max(1, BMAX * a.pct / max);
+      const fill = m === p.richtig ? "#555" : "#a6a6a6";
+      teile.push(`<text x="${L}" y="${y + 9}"${a.lehre ? ' font-weight="bold"' : ""}>${m}  ${esc(a.name_de)}${a.lehre ? " (Lehre)" : ""}</text>`);
+      teile.push(`<rect x="${L + 14}" y="${y + 13}" width="${w.toFixed(1)}" height="11" fill="${fill}"/>`);
+      if (a.lehre) teile.push(`<rect x="${L + 14}" y="${y + 13}" width="${w.toFixed(1)}" height="11" fill="url(#schraffur)"/>`);
+      teile.push(`<text x="${(L + 18 + w).toFixed(1)}" y="${y + 22}">${zahl(a.pct)}</text>`);
+      y += ZEILE - 4;
+    }
+    // Nulllinie je Balken (die Beschriftung darüber bleibt frei)
+    for (const yb of balkenY) teile.push(`<line x1="${L + 14}" x2="${L + 14}" y1="${yb - 1}" y2="${yb + 12}" stroke="black" stroke-width="0.8"/>`);
+    y += LUECKE;
+  });
+  teile.push(`<text x="${L}" y="${y + 9}" font-weight="bold" font-size="10">Wer fragt? Richtig ist (c): Das lässt sich aus den Daten nicht sagen.</text>`);
+  y += 14;
+  teile.push(`<text x="${L}" y="${y + 9}">Die Daten ordnen Gesprächsinhalte Aufgaben zu; wer das Gespräch führte, ist nicht erfasst.</text>`);
+  y += 16;
+  const H = y + 4;
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<!-- Erzeugt von scripts/druck-abbildungen.mjs aus interactions/data/aei-hoeher-tiefer.json; nicht von Hand bearbeiten. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="${B}" height="${H}" viewBox="0 0 ${B} ${H}" font-family="${SCHRIFT}" font-size="9">
+<defs><pattern id="schraffur" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+<line x1="0" y1="0" x2="0" y2="4" stroke="white" stroke-width="1.4"/></pattern></defs>
+<rect width="100%" height="100%" fill="white"/>
+${teile.join("\n")}
+</svg>
+`;
+  mkdirSync("images/druck", { recursive: true });
+  writeFileSync("images/druck/hoeher-tiefer-ki-aufgaben.svg", svg);
+  for (const p of paare) console.log(`hoeher-tiefer ${p.id}: A ${p.a.pct} / B ${p.b.pct} → ${p.richtig}`);
+}
+
 littlesLaw();
 bullwhip();
+hoeherTiefer();
 await qr("images/qr/qr-littles-law.png", BASIS + "kapitel04.html#sec-widget-littles-law");
 await qr("images/qr/qr-bullwhip.png", BASIS + "kapitel04.html#sec-widget-bullwhip");
+await qr("images/qr/qr-hoeher-tiefer.png", BASIS + "kapitel01.html#sec-spiel-ki-aufgaben");
