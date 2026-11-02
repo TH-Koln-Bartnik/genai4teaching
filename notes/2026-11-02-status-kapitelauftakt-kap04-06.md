@@ -43,3 +43,10 @@ Auftrag: Roman, 02.11.2026 – Einstiegsszene und Einschätzungen für Kap. 4–
 1. Branch pushen und mergen (Repo-Zugriff mit Schreibrecht oder Roman lokal: `git fetch <bundle> kapitelauftakt-kap04-06` bzw. `git am`).
 2. Inhaltlich prüfen: Szenen-Personen Hoffmeister, Sauer, Arnold (erfunden); Kap. 6 Szene nennt den Automobilzulieferer aus dem Wahlpflichtmodul.
 3. Schlüsselbegriffe Kap. 2–6 (zweite Zusage im Vorwort).
+
+## Nachtrag 02.11.2026, nach Rückfrage Roman
+- Schreibzugriff erneut angefragt und erteilt. Branch auf `origin/main` @ `4a62d44` rebased (dort ist `vorwort.qmd` in `index.qmd` aufgegangen; der Kommentar zur Zusage steht jetzt in `index.qmd`). `docs/` neu gerendert (36 bekannte OJS-Warnungen), Playwright 1200/390 px Kap. 4–6 erneut ohne Fehler.
+- **Gepusht:** `kapitelauftakt-kap04-06` @ `1f0d376` (Quelltext `b610672`, `docs/` `1f0d376`). Vergleich: https://github.com/TH-Koln-Bartnik/genai4teaching/compare/main...kapitelauftakt-kap04-06
+- **Nicht gemergt** – Entscheidung Roman: erst Szenen und Aussagen lesen, dann mergen. Patch und Bundle in Tresorit sind damit überholt.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (Branch gepusht; gemergt: nein)
