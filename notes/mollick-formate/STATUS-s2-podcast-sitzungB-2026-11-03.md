@@ -2,7 +2,7 @@
 
 Grundlage: `STATUS-s2-podcast-teilA-2026-11-02.md`, Auftrag S2 Abschnitt 5. Romans Blöcke (ElevenLabs Text to Dialogue, `eleven_v3`, Stability „Creative“, erweiterte Tags laut `VERTONUNG-s2-tags-erweitert-2026-11-03.md`) aus Tresorit `Audio-S2-Podcast/` (Dateinamen dort `s2-block-NN.mp3.mp3`, doppelte Endung, im Repo als `roh/s2-block-NN.mp3`).
 
-**Ergebnis:** Ton eingebaut, 7:17 min (437,4 s), alle 35 Zeitmarken geprüft, Element und Kapitel getestet. **Offen:** drei Ersatzzeilen (Lea, Zeilen 15/17/23), danach ein Skriptlauf, mp3 committen, Push, G3.
+**Ergebnis (Stand 12:15):** Fertig. Ersatzzeilen eingesetzt, Ton 7:28 min (448,4 s), Tests 8/8, mp3 committet, Branch gepusht (`146cede` + Folgecommit). **G2c entschieden, G3 entschieden** (siehe unten). Offen: Merge in neuer Sitzung.
 
 ## Befund: drei unkorrigierte Zeilen in der Aufnahme
 
@@ -44,4 +44,18 @@ Commit **def8c1a** gepusht (Schreibzugriff nachträglich freigegeben). Sicherung
 ## G3 (nach Einschnitt, MC)
 (a) Merge in `main` · (b) nachbessern (welche Stelle?) · (c) Prüfaussage tauschen. Danach G2c (Fassung S2 vs. S2-N) mit Dauer 7:17 für die ElevenLabs-Fassung; Romans Vertonungszeit bitte nachtragen.
 
-Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (Branch `mollick-s2-podcast`, def8c1a + Notiz; gepusht, gemergt: nein)
+## Nachtrag 03.11., 11:40–12:15: Ersatzzeilen und Entscheide
+
+- Romans Ersatzaufnahmen (`s2-ersatz-zeile-NN.mp3.mp3` in Tresorit, doppelte Endung): Spracherkennung je Datei 100 % Übereinstimmung mit der korrigierten Hörfassung; Dauer 16,8 / 18,3 / 11,0 s.
+- `ton`-Lauf: „Ersatzzeile … eingesetzt“ für 15/17/23; Gesamtdauer 7:28. Lautheit Ersatz −18,4 … −18,8 LUFS, Nachbarn −17,2 … −18,9 (Zeilen 13/25 mit Lachern −23,5).
+- Kontrolle aller 35 Zeilenausschnitte erneut: Anfang/Ende passen, Ersatzzeilen enden auf dem neuen Text.
+- Tests 8/8; Render 79 Warnungen (unverändert); Browser 1200/390 px, Klick/Tastatur: Hervorhebung Zeilen 3/17/31 synchron, axe ohne Verstöße, keine Konsolenfehler, Audiodauer 448,3 s.
+- Hörprobe der drei Übergänge an Roman geschickt (`s2-hoerprobe-ersatzzeilen.mp3`, Tresorit `s2-podcast/`).
+- **G2c (Roman, MC): ElevenLabs-Fassung im Element, Gemini Notebook als Vergleich.** Umgesetzt: Making-of-Kasten Kap. 4 um zwei Sätze ergänzt (fast 15 min, 24 von 37 Aussagen überzogen oder ohne Beleg, vier falsche Interviewnummern; Werkzeug und Vorauswahl nicht trennbar). Branch `mollick-s2n-notebook` wird nicht gemergt (Roman kann ihn löschen).
+- **G3 (Roman, MC): Merge in neuer Sitzung.** Konflikte mit `main` (Stand `229e2fa`, 102 Commits seit Abzweig): `.gitignore`, `references.json`, `kapitel10-appendix05-loesungshinweise.qmd`, `docs/kapitel04.html`, `docs/search.json`; `kapitel04.qmd` mischt sich automatisch.
+
+## Startprompt Merge-Sitzung (zum Kopieren)
+
+> Lies `claude/mollick-formate/STATUS-s2-podcast-sitzungB-2026-11-03.md` (Abschnitt Nachtrag) und `claude/STATUS-branch-abgleich-2026-11-03.md`. Merge den Branch `mollick-s2-podcast` in `main` (G3 entschieden): Konflikte lösen (`.gitignore` und `references.json` beide Seiten behalten, `handa2025interviewer` genau einmal; Lösungshinweise Kap. 4 beide Ergänzungen; `docs/` nicht von Hand mischen, sondern nach dem Merge Kap. 4 und Kap. 10 neu rendern), danach `node --test tests/podcast-s2.test.mjs` (CSV von HF `Anthropic/AnthropicInterviewer`), Browserprüfung `scripts/pruefe-podcast-s2.cjs`, Push, kurze Statusnotiz. Frage nur nach Push-Zugriff (Multiple Choice). Token-Disziplin: Transkripte nie ganz in den Kontext.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (Branch `mollick-s2-podcast`; gepusht, gemergt: nein)
