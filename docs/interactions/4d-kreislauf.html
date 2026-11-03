@@ -181,8 +181,8 @@
     if (r) { tr.hidden = false; tr.innerHTML = `<b>${r.name}${r.engpass.includes(stufe) ? ' · Engpass' : ''}:</b> ${r.t[stufe]}`; }
     else { tr.hidden = true; }
     $('zurueck').innerHTML = r
-      ? `Zurück zum Buch: <a href="../kapitel04.html#${r.anker}" target="_top">${r.abschnitt}</a>`
-      : 'Zurück zum Buch: <a href="../kapitel02.html#sec-schemas" target="_top">Mit KI arbeiten: vier Kompetenzen</a>';
+      ? `Zurück zum Buch: <a href="../kapitel06-rollen.html#${r.anker}" target="_top">${r.abschnitt}</a>`
+      : 'Zurück zum Buch: <a href="../kapitel05-4d-phasen.html#sec-schemas" target="_top">Mit KI arbeiten: vier Kompetenzen</a>';
   }
   knoepfe.forEach(b => b.addEventListener('click', () => {
     rolle = b.dataset.rolle;

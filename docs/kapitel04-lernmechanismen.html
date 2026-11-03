@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Lern- und Wirkmechanismen – Generative KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./kapitel05-4d-phasen.html" rel="next">
+<link href="./kapitel03-automation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4622c99584d0b91f3844d5069d85751c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<!-- Webschrift Lato (Theme flatly) früh anfordern: Das Theme lädt sie per @import erst
+     nach dem Stylesheet; bis dahin steht eine Ersatzschrift, und beim Wechsel springt
+     der Text. Preconnect + direkter Stylesheet-Link verkürzen diese Phase. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ko-fi.com/romanbartnik"> 
+<span class="menu-text">Ko-fi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://buymeacoffee.com/roman.bartnik.th"> 
+<span class="menu-text">Buy me a coffee</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel01-einleitung.html">Teil I: Grundlagen</a></li><li class="breadcrumb-item"><a href="./kapitel04-lernmechanismen.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lern- und Wirkmechanismen</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Teil I: Grundlagen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01-einleitung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02-grundlagen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundlagen von KI und LLMs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03-automation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prinzipien der Automation von Aufgaben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04-lernmechanismen.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lern- und Wirkmechanismen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Teil II: Anwendungen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05-4d-phasen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Phasen der Arbeit mit generativer KI (4D)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-rollen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rollen der KI: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-artefakte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Artefakte: Fallbeispiele aus der Lehre</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./praxisbeispiele.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Praxisbeispiele im Überblick</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel10-appendix05-loesungshinweise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Lösungshinweise zu Lernfragen und Übungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transparenz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transparenzhinweis zum Gesamtwerk</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schreibtrainer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Online-Material: Schreibtrainer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelluebersicht.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modellübersicht (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forschungsstand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forschungsstand (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./energie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Ressourcenverbrauch der Modelle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#sec-ziele-genai" id="toc-sec-ziele-genai" class="nav-link active" data-scroll-target="#sec-ziele-genai"><span class="header-section-number">4.1</span> Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre?</a></li>
+  <li><a href="#sec-wissenstypen" id="toc-sec-wissenstypen" class="nav-link" data-scroll-target="#sec-wissenstypen"><span class="header-section-number">4.2</span> Wissenstypen</a></li>
+  <li><a href="#sec-anwendungsbeispiele" id="toc-sec-anwendungsbeispiele" class="nav-link" data-scroll-target="#sec-anwendungsbeispiele"><span class="header-section-number">4.3</span> Anwendungsbeispiele nach Wissenskategorien</a></li>
+  <li><a href="#sec-lerntechniken" id="toc-sec-lerntechniken" class="nav-link" data-scroll-target="#sec-lerntechniken"><span class="header-section-number">4.4</span> Effektive Lerntechniken und Unterstützung mit KI</a>
+  <ul>
+  <li><a href="#wie-lernen-wir-besonders-effektiv" id="toc-wie-lernen-wir-besonders-effektiv" class="nav-link" data-scroll-target="#wie-lernen-wir-besonders-effektiv"><span class="header-section-number">4.4.1</span> Wie lernen wir besonders effektiv?</a></li>
+  <li><a href="#wie-können-llms-genutzt-werden-um-diese-lerntechniken-zu-unterstützen" id="toc-wie-können-llms-genutzt-werden-um-diese-lerntechniken-zu-unterstützen" class="nav-link" data-scroll-target="#wie-können-llms-genutzt-werden-um-diese-lerntechniken-zu-unterstützen"><span class="header-section-number">4.4.2</span> Wie können LLMs genutzt werden, um diese Lerntechniken zu unterstützen?</a></li>
+  <li><a href="#ausrichtung-der-anpassungen-nach-empfehlungen-der-lernforschung" id="toc-ausrichtung-der-anpassungen-nach-empfehlungen-der-lernforschung" class="nav-link" data-scroll-target="#ausrichtung-der-anpassungen-nach-empfehlungen-der-lernforschung"><span class="header-section-number">4.4.3</span> Ausrichtung der Anpassungen nach Empfehlungen der Lernforschung</a></li>
+  </ul></li>
+  <li><a href="#sec-evidenz" id="toc-sec-evidenz" class="nav-link" data-scroll-target="#sec-evidenz"><span class="header-section-number">4.5</span> Was die Forschung seit 2025 zeigt: Lernwirkung und kognitive Auslagerung</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel04-lernmechanismen.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel04-lernmechanismen.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel01-einleitung.html">Teil I: Grundlagen</a></li><li class="breadcrumb-item"><a href="./kapitel04-lernmechanismen.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lern- und Wirkmechanismen</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-didaktik" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lern- und Wirkmechanismen</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Thomas Brandt unterrichtet als Lehrkraft für besondere Aufgaben Kostenrechnung für 250 Erstsemester. Er weiß, dass Übungen mehr bringen als Vortrag, doch bei 18 Semesterwochenstunden und einem Hörsaal mit festen Bänken trägt er vor. Vor der Klausur lesen seine Studierenden das Skript zum dritten Mal. Seit dem Sommer lösen sie die Übungsblätter mit dem Chatbot, fehlerfrei und in Minuten. Brandt will einen eigenen Tutor einrichten, dessen Anweisung fertige Lösungen verbietet und sokratisches Nachfragen verlangt. Ein Kollege winkt ab: Seine Studierenden hätten den Tutor gebeten, die Anweisung zu vergessen, und die Lösungen trotzdem bekommen. Brandt fragt sich, ob er an der Technik feilen muss oder an seiner Lehre.</p>
+<p><em>Die Szene ist aus Gesprächen in Workshops und aus der eigenen Lehre zusammengesetzt.</em></p>
+<div style="page-break-after: always;"></div>
+<div class="ez-block callout callout-style-default callout-note callout-titled" title="Bevor Sie weiterlesen: Wie sehen Sie das?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Bevor Sie weiterlesen: Wie sehen Sie das?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Wie sehr stimmen Sie den vier Aussagen zu? Jede Aussage wird an der Stelle im Kapitel aufgelöst, die sie beantwortet. Wer sich vorher festlegt, liest gezielter.</em></p>
+<div id="ez-k3-1" class="einschaetzung">
+<p>Dass wirksame Lehrmethoden selten eingesetzt werden, liegt vor allem daran, dass Lehrende die Forschung dazu nicht kennen oder ihr nicht trauen.</p>
+<p><span class="ez-verweis">Auflösung in <a href="#sec-ziele-genai" class="quarto-xref"><span>Kapitel 4.1</span></a></span></p>
+</div>
+<div id="ez-k3-2" class="einschaetzung">
+<p>Solange seine Lösungen fachlich richtig sind, schadet ein Chatbot, der jede Übungsfrage sofort vollständig löst, dem Lernen nicht.</p>
+<p><span class="ez-verweis">Auflösung in <a href="#sec-ziele-genai" class="quarto-xref"><span>Kapitel 4.1</span></a></span></p>
+</div>
+<div id="ez-k3-3" class="einschaetzung">
+<p>Häufige kleine Abfragen, über das Semester verteilt, lassen den Stoff besser behalten als dieselbe Zeit für gründliches Wiederlesen.</p>
+<p><span class="ez-verweis">Auflösung in <a href="#sec-lerntechniken" class="quarto-xref"><span>Kapitel 4.4</span></a></span></p>
+</div>
+<div id="ez-k3-4" class="einschaetzung">
+<p>Eine gut formulierte Anweisung an das Modell genügt, damit ein KI-Tutor zum Lernen anleitet, statt Lösungen zu liefern.</p>
+<p><span class="ez-verweis">Auflösung in <a href="#sec-evidenz" class="quarto-xref"><span>Kapitel 4.5</span></a></span></p>
+</div>
+</div>
+</div>
+<div class="lernziele callout callout-style-default callout-note callout-titled" title="Lernziele: Nach diesem Kapitel können Sie …">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Lernziele: Nach diesem Kapitel können Sie …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>erklären, warum wirksame Lehrmethoden bekannt, aber selten umgesetzt sind, und wo generative KI den Aufwand senken kann;</li>
+<li>begründen, warum Chatbots ohne didaktische Bremsen dem Lernen eher schaden, mit Bezug auf erwünschte Schwierigkeiten und kognitive Belastung;</li>
+<li>je Wissensstufe und je gut belegter Lerntechnik einen passenden KI-Einsatz wählen und ihn mit der ICAP-Rangfolge (interaktiv vor konstruktiv, aktiv und passiv) bewerten;</li>
+<li>den Stand der Evidenz seit 2025 wiedergeben: wann KI-Tutoren Lernen fördern und wann ungebremste Nutzung es senkt.</li>
+</ol>
+<p><em>Die Kernaussagen am Kapitelende sind nach diesen vier Zielen geordnet.</em></p>
+</div>
+</div>
+<section id="sec-ziele-genai" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-ziele-genai"><span class="header-section-number">4.1</span> Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre?</h2>
+<p>Bevor wir uns der konkreten Umsetzung zuwenden, müssen wir uns zunächst fragen, was wir überhaupt bezwecken: Was sind typische Probleme und was sind unsere Ziele für die konkrete Umsetzung in Lehrsituationen?</p>
+<p>Schauen wir uns zunächst ein zentrales Problem der Lernsituation an Hochschulen an <span class="citation" data-cites="freeman2014 roediger2012">(<a href="#ref-freeman2014" role="doc-biblioref">Freeman et al., 2014</a>; <a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>: <strong>Wir wissen, was effektive Formen der Lehre sind, diese werden jedoch häufig nicht angewendet.</strong> Studien deuten darauf hin, dass dies eher an situativen Hindernissen der Lernumgebung liegt als am Willen der Lehrenden <span class="citation" data-cites="henderson2007">(<a href="#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>)</span>.</p>
+<p>Ein Beispiel ist die <strong>Vorlesung</strong>. Es ist gut belegt, dass diese Form des passiven Konsums eine sehr schwache Form der Wissensvermittlung ist. <strong>Man lernt nicht nichts, aber anders würde man mehr lernen.</strong> Empirisch und theoretisch ist sehr gut belegt, dass Studierende Wissen besser behalten, wenn sie dieselbe Zeit für aktives Üben (<em>active learning</em>), Frage-Antwort Interaktionen oder Diskussion in Kleingruppen verwenden <span class="citation" data-cites="freeman2014 hake1998">(<a href="#ref-freeman2014" role="doc-biblioref">Freeman et al., 2014</a>; <a href="#ref-hake1998" role="doc-biblioref">Hake, 1998</a>)</span>.</p>
+<p>Praktisch wird oft mit dem positiven Effekt der reinen Anwesenheit argumentiert (besser als wenn die Studierenden zu Hause Netflix schauen; wer zur Vorlesung kommt hat bessere Noten), aber <strong>diese spezielle Form der Präsenzlehre hat durch mangelnde Interaktion klare Nachteile.</strong> Der Harvard Physiker <span class="citation" data-cites="kestin2025">Kestin et al. (<a href="#ref-kestin2025" role="doc-biblioref">2025</a>)</span> fasst drei zentrale Probleme von Vorlesungen zusammen: Mangelnde Anpassung, mangelndes individuelles Feedback und mangelnde Aktivierung der Lernenden. Genauer <span class="citation" data-cites="kestin2025">(<a href="#ref-kestin2025" role="doc-biblioref">Kestin et al., 2025, S.2–3</a>)</span>: “1. They move too quickly for some students and too slowly for others because the teacher controls the pace of instruction; 2. Students do not receive personalized feedback to their questions as they arise; and 3. They fail to maintain consistent student engagement.”</p>
+<p><strong>Warum werden trotzdem Vorlesungen sehr häufig und aktivere Lehrformen relativ selten eingesetzt</strong> <span class="citation" data-cites="stains2018">(<a href="#ref-stains2018" role="doc-biblioref">Stains et al., 2018</a>)</span>? Studien deuten an, dass es oft nicht am Willen der Lehrenden liegt, sondern dass <strong>situative Hindernisse</strong> eine große Rolle spielen, vor allem Zeitmangel wird sehr häufig in Umfragen genannt <span class="citation" data-cites="shadle2017">(<a href="#ref-shadle2017" role="doc-biblioref">Shadle et al., 2017</a>)</span>, außerdem bremsen Faktoren wie Gruppengröße oder ein ungünstiger Setup der Räume <span class="citation" data-cites="henderson2007">(<a href="#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>)</span>. Auch erfolgt die <strong>Umsetzung oft zu optimistisch und ohne Berücksichtigung von Widerständen und Hindernissen</strong> (z.B. Anreize für Studierende, zu Gruppenübungen auch zu kommen, oder nicht lieber ihr Wochenende in Kleingruppen zu besprechen als die Übungsaufgabe), so dass z.B. mangels notwendiger Anreizsetzung die erhoffte Lernwirkung ausbleibt und schnell Frust bei der Umsetzung entsteht <span class="citation" data-cites="henderson2007">(<a href="#ref-henderson2007" role="doc-biblioref">Henderson &amp; Dancy, 2007</a>)</span>.</p>
+<div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Ihre Einschätzung prüfen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>„Dass wirksame Lehrmethoden selten eingesetzt werden, liegt vor allem daran, dass Lehrende die Forschung dazu nicht kennen oder ihr nicht trauen.“</em> <span class="ez-ihre" data-ez="ez-k3-1"></span></p>
+<p><strong>Auflösung: eher nicht.</strong> Die Befragungen deuten auf situative Hindernisse: Am häufigsten nennen Lehrende Zeitmangel, dazu bremsen Gruppengröße und Räume, und die Umsetzung wird oft zu optimistisch geplant. Genau beim Zeitproblem kann generative KI ansetzen.</p>
+</div>
+</div>
+<p>Wir argumentieren hier, dass GenAI <strong>helfen kann, solche situativen Barrieren zu verringern,</strong> speziell das häufig genannte <strong>Zeitproblem</strong> bei der Umsetzung effektiver Lehrmethoden <span class="citation" data-cites="shadle2017">(<a href="#ref-shadle2017" role="doc-biblioref">Shadle et al., 2017</a>)</span>. Bei sorgfältiger Umsetzung könnte GenAI so als “Kraftverstärker” (<em>force multiplier</em>) für Lehrkräfte dienen <span class="citation" data-cites="mollick2023b">(<a href="#ref-mollick2023b" role="doc-biblioref">Mollick &amp; Mollick, 2023</a>)</span>, indem es die Implementierung evidenzbasierter Lehransätze erleichtert, die sonst aufgrund von Zeit- und Arbeitsaufwand oft schwer umzusetzen sind.</p>
+<p>Auch hier gibt es allerdings nichts umsonst: Die <strong>neuen Tools haben ihre eigenen Risiken und Nebenwirkungen</strong> und <strong>der Aufwand für Anpassung und Umsetzung</strong> darf nicht unterschätzt werden. Einfach Sprachmodelle ohne Anpassung und didaktische ‘Bremsen’ einzusetzen ist oft nicht sinnvoll. Wie wir in der weiteren Diskussion sehen werden, nehmen sonst die KI-Chatbots den Studierenden erwünschte Schwierigkeiten ab (<em>desirable difficulties</em>), ermuntern sie nicht dazu, selbst Informationen abzuwägen, das eigene Verständnis zu vertiefen und so den eigenen Fähigkeitsstand aktiv zu verbessern (<em>growth mindset</em>) oder überfordern die kognitive Aufnahmefähigkeit der Lernenden durch Wissens-Dumps (<em>cognitive load</em>)<span id="sb-k3-kognitive-belastung"></span>. Werden die Sprachmodelle nicht dazu angehalten, klar zu sagen, wenn sie zu etwas keine Informationen haben, so können sie die Lernenden durch überzeugend vorgetragene Halluzinationen oder Fehlschlüsse in die Irre führen. Um effektiv zu sein, müssen GenAI Lernhilfen insofern didaktisch gebremst, themenspezifisch angepasst und systematisch erprobt werden <span class="citation" data-cites="kestin2025">(<a href="#ref-kestin2025" role="doc-biblioref">Kestin et al., 2025</a>)</span>:</p>
+<blockquote class="blockquote">
+<p>“AI chatbots are generally designed to be helpful, not to promote learning. They are not trained to follow pedagogical best practices (e.g., facilitating active learning, managing cognitive load and promoting a growth mindset) (…) . Another well-known flaw of AI tutors is their uncanny confidence when giving an incorrect answer or when marking a correct reply as incorrect <span class="citation" data-cites="kestin2025">(<a href="#ref-kestin2025" role="doc-biblioref">Kestin et al., 2025</a>)</span>.”</p>
+</blockquote>
+<div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Ihre Einschätzung prüfen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>„Solange seine Lösungen fachlich richtig sind, schadet ein Chatbot, der jede Übungsfrage sofort vollständig löst, dem Lernen nicht.“</em> <span class="ez-ihre" data-ez="ez-k3-2"></span></p>
+<p><strong>Auflösung: nein.</strong> Auch eine richtige Lösung nimmt die Anstrengung ab, die Behalten und Verstehen erst erzeugt, die erwünschten Schwierigkeiten. Wie groß der Schaden ist, zeigt <a href="#sec-evidenz" class="quarto-xref"><span>Kapitel 4.5</span></a>: Mit einem Tutor im Stil des normalen ChatGPT stieg die Übungsleistung, und in der Prüfung ohne KI lagen dieselben Schüler 17 Prozent unter der Kontrollgruppe.</p>
+</div>
+</div>
+<p>Die nächsten Abschnitte geben eine theoriegestützte Orientierung, wie solche Anpassungen erfolgen könnten und welche Mechanismen die Lernforschung als besonders effektiv herausstellt. Zunächst führen wir zur genaueren Zielbestimmung Kategorien von Wissen und Lernmethoden ein. Dann können wir im Detail diskutieren, für welche Ziele und Methodenwahl welche Art der Unterstützung geeignet ist.</p>
+</section>
+<section id="sec-wissenstypen" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-wissenstypen"><span class="header-section-number">4.2</span> Wissenstypen</h2>
+<p><span class="citation" data-cites="hattie2023">Hattie (<a href="#ref-hattie2023" role="doc-biblioref">2023, S.358, 340ff</a>.)</span> unterscheidet drei Stufen des Lernens (s. <a href="#tbl-wissenstypen" class="quarto-xref">Tabelle&nbsp;<span>4.1</span></a>).</p>
+<p>Zunächst geht es um <strong>„knowing that“</strong><span id="sb-k3-wissen-dass"></span>, also das reine <strong>Fakten- und Begriffswissen</strong>, das erworben und dann gefestigt werden muss: Hier soll eine belastbare Wissensbasis entstehen, weshalb Lehrkräfte häufig Vorwissensaktivierung oder Drill-and-Practice (wiederholtes Einüben) einsetzen und durch unmittelbares Feedback die korrekte Erinnerung verankern.</p>
+<p>Darauf baut <strong>„knowing how“</strong><span id="sb-k3-wissen-wie"></span> auf, das <strong>prozedurale und strategische Können</strong>. Auch hier müssen Abläufe zunächst erworben und dann gefestigt werden. Lernende erwerben Prozesswissen, indem sie modellierte Beispiele studieren, in gelenkten Übungen selbst anwenden und mithilfe von „worked examples“ (durchgearbeiteten Beispielen) sowie Fehleranalysen Schritt für Schritt ihre Vorgehensweisen optimieren. Festigen können Lernende dieses Prozesswissen besonders gut durch Interaktion oder Wettbewerb mit anderen Lernenden, da diese Auseinandersetzung ihnen dabei hilft, verschiedene Nutzungskontexte zu vergleichen <span class="citation" data-cites="chi2018">(<a href="#ref-chi2018" role="doc-biblioref">Chi et al., 2018</a>)</span>.</p>
+<p>Die höchste Stufe nennt Hattie <strong>„knowing with“</strong><span id="sb-k3-wissen-anwenden"></span>: Wissen wird flexibel <strong>auf neue Situationen übertragen</strong>. Problembasiertes Lernen, authentische Fallstudien, bewusste Reflexionsphasen und kooperativ angelegte Projekte helfen dabei, Konzepte in unbekannten Kontexten sicher anzuwenden und weiterzuentwickeln.</p>
+<p>Wo können wir neue technische Hilfsmittel wie große Sprachmodelle (LLMs) zur Unterstützung dieser Methoden besonders effektiv einsetzen?</p>
+<div id="tbl-wissenstypen" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wissenstypen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.1: Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle: Basierend auf <span class="citation" data-cites="hattie2023">Hattie (<a href="#ref-hattie2023" role="doc-biblioref">2023</a>)</span>, S. 358, 340ff.
+</figcaption>
+<div aria-describedby="tbl-wissenstypen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Kategorie</th>
+<th style="text-align: left;">Phase</th>
+<th style="text-align: left;">Typische Methoden</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Wissen, dass</strong> („Knowing that“)</td>
+<td style="text-align: left;"><strong>Erwerben</strong></td>
+<td style="text-align: left;">Notizen zusammenführen; Zusammenfassen; Heft-/Notizbuch-Durchsicht; Bildhafte Notizen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Wissen, dass</strong> („Knowing that“)</td>
+<td style="text-align: left;"><strong>Festigen</strong></td>
+<td style="text-align: left;">Argumente prüfen; Fehler identifizieren; Einschränkungen formulieren; Formale Argumentstrukturen darstellen; Belege liefern; Durchgearbeitete Beispiele</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Wissen, wie</strong> („Knowing how“)</td>
+<td style="text-align: left;"><strong>Erwerben</strong></td>
+<td style="text-align: left;">Aufgabenüberarbeitung; Häufiges Üben; Übungseinheit vor Tests; Zweispaltige Notizen; Problembasiertes Lernen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Wissen, wie</strong> („Knowing how“)</td>
+<td style="text-align: left;"><strong>Festigen</strong></td>
+<td style="text-align: left;">Peer-Feedback / Peer-Response-Gruppen; Peer-Tutoring; Studierenden-Turniere; Think-Pair-Share; Kumulative Wiederholung</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Wissen anwenden</strong> („Knowing with“)</td>
+<td style="text-align: left;"><strong>Transfer</strong></td>
+<td style="text-align: left;">Sortieren, Zuordnen, Kategorisieren; Dichotome Schlüssel; Von Studierenden erstellte Klassifikationsmuster; Klassifikationsdiagramme</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-anwendungsbeispiele" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-anwendungsbeispiele"><span class="header-section-number">4.3</span> Anwendungsbeispiele nach Wissenskategorien</h2>
+<p>Zur Unterstützung des <strong>Aufbaus von Faktenwissen („knowing that“)</strong> können starke LLMs gut grundlegende Konzepte erklären <span class="citation" data-cites="korinek2024">(<a href="#ref-korinek2024" role="doc-biblioref">Korinek, 2024, S.48</a>)</span> und zum Selbststudium komplette Abruf-Übungen (<em>retrieval practice</em>) erzeugen: Sie formulieren Multiple-Choice- und Kurzantwortfragen, bewerten die Eingaben sofort und erklären fehlerhafte Distraktoren – ein Verfahren, das in einer Untersuchung zur automatischen Erzeugung deutschsprachiger Leseverständnis-Aufgaben überzeugende Validitätswerte zeigte <span class="citation" data-cites="sauberli2024">(<a href="#ref-sauberli2024" role="doc-biblioref">Säuberli &amp; Clematide, 2024</a>)</span>.</p>
+<p>Ebenso lassen sich sehr schnell Definitionen, Paraphrasen oder Mini-Zusammenfassungen erzeugen, was personalisierte Glossare ermöglicht <span class="citation" data-cites="chen2024">(<a href="#ref-chen2024" role="doc-biblioref">J. Chen et al., 2024</a>)</span>. <span class="citation" data-cites="wang2024">Wang et al. (<a href="#ref-wang2024" role="doc-biblioref">2024</a>)</span> sprechen von KI als „Confusion Helper“. Um Halluzinationen zu vermeiden, wird das Modell häufig per Suche in eigenen Dokumenten (<em>Retrieval-Augmented Generation</em>, RAG) an externe Wissensbasen gekoppelt (also z. B. durch Beigabe von Skripten oder Fachartikeln als PDF. Siehe auch das Harvard-Tutor-Bot-Beispiel in <a href="kapitel06-rollen.html#sec-complex-tutors" class="quarto-xref"><span>Kapitel 6.3.2</span></a>, wo Musterlösungen beigegeben werden.).</p>
+<p>Zur <strong>Festigung von Prozessen und Strategien („knowing how“)</strong> dient das LLM als dialogischer Coach: Feingranulierte Prompts („Erkläre den Beschaffungsprozess in 5 Schritten und stelle nach jeder Stufe eine Kontrollfrage“) steigern die Lösungswahrscheinlichkeit in Tutorendialogen <span class="citation" data-cites="scarlatos2025">(<a href="#ref-scarlatos2025" role="doc-biblioref">Scarlatos et al., 2025</a>)</span>. Sprachmodelle können Lehrenden dabei helfen, komplette „worked examples“ mitsamt Zwischenschritten zu generieren <span class="citation" data-cites="hassany2024">(<a href="#ref-hassany2024" role="doc-biblioref">Hassany et al., 2024</a>)</span>.</p>
+<p>Angepasste Sprachmodelle können Lernende zur Selbstkorrektur anleiten. Umso besser geht das, wenn das Sprachmodell <strong>fachspezifische Lerntheorien</strong> kennen (z.B.: typische Englischfehler von Deutschen oder typische Verhaltensfehler bei Verhandlungen oder beim Feedback-Gespräch im sozialen Bereich) und <strong>die individuelle Lernhistorie</strong> - sie also wissen, in welche Fallen ich als Lernender gerne tappe. <span class="citation" data-cites="zhang2025">Zhang et al. (<a href="#ref-zhang2025" role="doc-biblioref">2025</a>)</span> demonstrieren dies am Beispiel eines selbst entwickelten multimodalen <strong>Mathematik-Tutor-Bots</strong> (MathCCS, Mathematical Classification and Constructive Suggestions).</p>
+<p>Der <strong>Teachable-Agent-Ansatz</strong> (KI in der Schülerrolle) nutzt umgekehrt das Lernen-durch-Lehren-Prinzip: Studierende bringen dem LLM eine Methode bei und reflektieren dabei ihre eigene Strategie. Dies basiert auf der Annahme, dass Interaktionen besonders effektiv zum Lernen beitragen <span class="citation" data-cites="chi2018 hayashi2025">(<a href="#ref-chi2018" role="doc-biblioref">Chi et al., 2018</a>; <a href="#ref-hayashi2025" role="doc-biblioref">Hayashi et al., 2025</a>)</span>. Wie auch in der persönlichen Interaktion scheint hierbei wichtig zu sein, welche „Persönlichkeit“ der KI-Bot hat, dem Studierende etwas beibringen sollen <span class="citation" data-cites="lyu2025">(<a href="#ref-lyu2025" role="doc-biblioref">Lyu et al., 2025</a>)</span> und mehr Anstrengung in der Interaktion (etwa durch ausführlicheres Formulieren beim Erklären) führt zu mehr Lernerfolg <span class="citation" data-cites="love2025">(<a href="#ref-love2025" role="doc-biblioref">Love et al., 2025</a>)</span>.</p>
+<p>Sprachmodelle können genutzt werden, um komplexe (mathematische) Anwendungsprobleme mit einem simulierten User <strong>„durchzuspielen“,</strong> so dass <strong>logische Fehler im Lösungsprozess sichtbar werden,</strong> wie der Prototyp „MathChat“ von <span class="citation" data-cites="wu2023a">Y. Wu et al. (<a href="#ref-wu2023a" role="doc-biblioref">2023</a>)</span> zeigt. Meta-Analysen zeigen starke positive Lerneffekte, deuten aber auch auf mögliche Einschränkungen hin. So gibt es Anzeichen dafür, dass die Effekte höher für Studierende sind als für Schüler und möglicherweise schwinden Motivationsschübe durch <strong>abnehmende ‘novelty effects’</strong> (Neuheitseffekte) einfacher Chat-Interfaces über die Zeit der Nutzung. Die Autoren der Metastudie empfehlen, hier mit stärkerer <strong>Gamifizierung und Personalisierung</strong> der Chatbots gegenzusteuern <span class="citation" data-cites="wu2024a">(<a href="#ref-wu2024a" role="doc-biblioref">R. Wu &amp; Yu, 2024</a>)</span>, was sich mit praktischen Ansätzen etwa von Duolingo deckt <span class="citation" data-cites="kazu2025">(<a href="#ref-kazu2025" role="doc-biblioref">Kazu &amp; Kuvvetli, 2025</a>)</span> (z. B. Gamifizierung durch Streaks und Leaderboards, Challenges, Video-Chats mit dem Emo-Teen Lili usw.). Solche aufwändigen Setups sind im Hochschulkontext natürlich schwieriger abzudecken, ließen sich aber vielleicht graduell als Studierendenprojekt entwickeln?</p>
+<p>Für <strong>Transfer und Anwendung („knowing with“)</strong> entwirft das LLM realitätsnahe Szenarien – etwa Rollenspiele zu Lieferantenausfällen – und übernimmt Stakeholder-Rollen, wobei Analysen des Brookings-Instituts das Potenzial für kollaboratives Reasoning hervorheben <span class="citation" data-cites="korinek2024">(<a href="#ref-korinek2024" role="doc-biblioref">Korinek, 2024</a>)</span>. Cross-Domain-Prompts fördern Analogiebildung („Welche Parallelen bestehen zwischen agilem Projektmanagement und Lean-Procurement?“) <span class="citation" data-cites="mollick2023b">(<a href="#ref-mollick2023b" role="doc-biblioref">Mollick &amp; Mollick, 2023</a>)</span>.</p>
+<p>In Gruppenarbeiten funktioniert das Modell als Co-Autor: KI-unterstützte Schreibprozesse können die Menge und Vielfalt der Ideen steigern <span class="citation" data-cites="meincke2024 shaer2024">(<a href="#ref-meincke2024" role="doc-biblioref">Meincke et al., 2024</a>; <a href="#ref-shaer2024" role="doc-biblioref">Shaer et al., 2024</a>)</span>. Auch hier ist jedoch die sorgfältige Gestaltung des Lernprozesses wichtig, so dass nicht erwünschte Schwierigkeiten an die KI delegiert und so kritisches Denken (<em>critical thinking</em>) nicht eingeübt wird <span class="citation" data-cites="lee2025">(<a href="#ref-lee2025" role="doc-biblioref">Lee et al., 2025</a>)</span>.</p>
+</section>
+<section id="sec-lerntechniken" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-lerntechniken"><span class="header-section-number">4.4</span> Effektive Lerntechniken und Unterstützung mit KI</h2>
+<section id="wie-lernen-wir-besonders-effektiv" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="wie-lernen-wir-besonders-effektiv"><span class="header-section-number">4.4.1</span> Wie lernen wir besonders effektiv?</h3>
+<p>In diesem Abschnitt verdeutlichen wir kurz die angestrebten Wirkmechanismen mit Fokus auf drei Lehrtechniken, die die Kognitionswissenschaft als besonders effektiv heraushebt (siehe <span class="citation" data-cites="morth2021">Mörth et al. (<a href="#ref-morth2021" role="doc-biblioref">2021</a>)</span> für eine gute deutschsprachige Übersicht).</p>
+<p>Die moderne Lernforschung der Kognitionspsychologie stellt drei Gruppen von Techniken als besonders gute Kombination zwischen Effektivität und einfacher Anwendung heraus: <strong>Verteiltes und gemischtes Lernen</strong>, <strong>testgestütztes Lernen</strong> und <strong>fragebasierte Ausarbeitung</strong> <span class="citation" data-cites="dunlosky2013 morth2021 roediger2012">(<a href="#ref-dunlosky2013" role="doc-biblioref">Dunlosky et al., 2013</a>; <a href="#ref-morth2021" role="doc-biblioref">Mörth et al., 2021</a>; <a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>. Diese Wirkung gibt es allerdings nicht umsonst: Den positiven Effekten der Techniken steht oft ein deutlich höherer Vorbereitungsaufwand gegenüber. Wie im Folgenden kurz skizziert wird, lassen sich KI-Tools nutzen, um den Aufwand dieser drei Mechanismen zu verringern, was die Lernwirkung im Vergleich zu traditionellen Ansätzen deutlich erhöhen kann.</p>
+<p><strong>Zeitliche Verteilung und inhaltliche Mischung von Lerninhalten (<em>spacing &amp; interleaving</em>)</strong>: Diese Technik basiert auf dem Prinzip, dass Informationen besser behalten werden, wenn das Lernen über die Zeit verteilt und in verschiedenen Kontexten stattfindet, anstatt in einer einzigen, intensiven Sitzung <span class="citation" data-cites="brown2014 murre2015 roediger2012">(<a href="#ref-brown2014" role="doc-biblioref">Brown et al., 2014</a>; <a href="#ref-murre2015" role="doc-biblioref">Murre &amp; Dros, 2015</a>; <a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>.</p>
+<p><span id="sb-k3-verteiltes-ueben"></span><strong>Abstände</strong> zwischen Lerneinheiten und die wiederholte Aktivierung von Wissensstrukturen stärken die Verbindung zwischen Hinweisreizen (<em>cues</em>) und Gedächtnis und geben dem Gehirn Zeit, Erinnerungen effektiv zu speichern. Dies fördert die Langzeiterinnerung, denn der wiederholte Abruf verstärkt die gespeicherten Muster und vertieft sie so.</p>
+<div id="fig-spacing" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spacing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script03-lerntechniken-spacing.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spacing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.1: Illustration Zeitlich verteiltes Lernen – spacing
+</figcaption>
+</figure>
+</div>
+<p><em>Quelle: Erstellt mit Gemini 3 Pro, basierend auf <span class="citation" data-cites="roediger2012">Roediger &amp; Pyc (<a href="#ref-roediger2012" role="doc-biblioref">2012</a>)</span>.</em></p>
+<p>Weiterhin hilft es, zu „mischen“: <strong>inhaltlich gemischtes Üben</strong> (<em>interleaving</em>)<span id="sb-k3-gemischtes-ueben"></span> ist effektiver als die isolierte Behandlung von Themenblöcken, die linear im Semesterverlauf abgehandelt werden <span class="citation" data-cites="morth2021">(<a href="#ref-morth2021" role="doc-biblioref">Mörth et al., 2021</a>)</span>. Das liegt daran, dass das gemischte Üben die Unterscheidung zwischen verschiedenen Aufgabentypen fördert, was entscheidend für die spätere Anwendungskompetenz ist. Nur durch den geübten Vergleich verschiedener Kombinationen von Anwendungskontexten und Lösungsansätzen kann ein Gefühl dafür ausgebildet werden, welches Werkzeug zu welchem Problem passt. Fallstudien und Simulationen bieten sich hier an, wenn diese ausreichend komplex sind, um bekannte Analysen in neuen Kontexten anzuwenden und neue einzuführen.</p>
+<div id="fig-interleaving" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interleaving-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script03-lerntechniken-interleaving.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interleaving-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.2: Illustration Inhaltlich gemischtes Lernen – interleaving
+</figcaption>
+</figure>
+</div>
+<p><em>Quelle: Erstellt mit Gemini 3 Pro, basierend auf <span class="citation" data-cites="morth2021">Mörth et al. (<a href="#ref-morth2021" role="doc-biblioref">2021</a>)</span>.</em></p>
+<p><span id="sb-k3-testgestuetzt"></span><strong>Testgestütztes Lernen (<em>test-enhanced learning</em>)</strong>: Das Abrufen von Informationen durch Tests fördert das Langzeitgedächtnis deutlich stärker als das erneute Lesen des Stoffes (Testeffekt, <em>testing effect</em>). Für Studierende ist das anstrengender, es bringt aber deutlich mehr <span class="citation" data-cites="brown2014">(<a href="#ref-brown2014" role="doc-biblioref">Brown et al., 2014</a>)</span>. Ein ‚Test‘ kann dabei auch die Bearbeitung von Lerninhalten im Rahmen einer Fallstudie, die kritische Bewertung potenziell falscher Aussagen eines LLMs oder die Beantwortung von Verständnisfragen im Dialog mit einem Tutor-Bot sein.</p>
+<div id="fig-testing-effect" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-testing-effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/script03-lerntechniken-testing-effect.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-testing-effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;4.3: Illustration Testgestütztes Lernen – test-enhanced learning
+</figcaption>
+</figure>
+</div>
+<p><em>Quelle: Erstellt mit Gemini 3 Pro, basierend auf <span class="citation" data-cites="roediger2012">Roediger &amp; Pyc (<a href="#ref-roediger2012" role="doc-biblioref">2012</a>)</span>.</em></p>
+<p>Häufige Aktivierung von Lerninhalten durch Fragen verbessert den Lernerfolg durch mehrere Mechanismen <span class="citation" data-cites="roediger2006">(<a href="#ref-roediger2006" role="doc-biblioref">Roediger &amp; Karpicke, 2006</a>)</span>. Erstens fördert solches Testen das <strong>transfergerechte Verarbeiten</strong> (<em>transfer-appropriate processing</em>)<span id="sb-k3-transfergerecht"></span>, da die mentalen Prozesse beim Testen und beim späteren Abrufen ähnlich sind, was die Erinnerungsfähigkeit verbessert. Zweitens stärkt die Wiederholung durch Tests einerseits den erinnerten <strong>Inhalt</strong> und fügt andererseits <strong>neue ‚Haken‘</strong> hinzu, mit denen wir den Inhalt aus dem Gedächtnis ziehen: die Beziehungen zwischen Hinweisreizen (<em>cues</em>) und dem Inhalt im Gedächtnis, indem zusätzliche Abrufwege (<em>retrieval routes</em>) zu gespeicherten Wissensmustern geschaffen werden, was den Abruf verbessert. Praktisch kann man diesen tollen Effekt auch recht einfach durch regelmäßige kurze Fragerunden nutzen: Wie die Lernforscher herausstellen: „frequent low-stakes quizzes (last only 5 or 10 min) can produce a large boost in performance“ <span class="citation" data-cites="roediger2012">(<a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012, S.246</a>)</span>.</p>
+<div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Ihre Einschätzung prüfen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>„Häufige kleine Abfragen, über das Semester verteilt, lassen den Stoff besser behalten als dieselbe Zeit für gründliches Wiederlesen.“</em> <span class="ez-ihre" data-ez="ez-k3-3"></span></p>
+<p><strong>Auflösung: ja.</strong> Das Abrufen durch Tests stärkt das Langzeitgedächtnis deutlich mehr als erneutes Lesen, und verteilte Wiederholung wirkt besser als eine einzige intensive Sitzung. Für Studierende ist das anstrengender, für Lehrende aufwendiger, weil laufend neue Fragen nötig sind; diesen Aufwand können Sprachmodelle senken (nächster Abschnitt).</p>
+</div>
+</div>
+<p><span id="sb-k3-ausarbeitung"></span><strong>Fragebasierte Ausarbeitung (<em>explanatory questioning</em>)</strong>: Bei dieser Technik wird das tiefergehende Verständnis von Material durch das Stellen und Beantworten von „Warum“-Fragen gefördert. In <strong>Rollenspielen und Simulationen</strong> können Teilnehmer durch bewusste Praxis aktiv Szenarien durchspielen, während sie gleichzeitig durch gezielte Fragen angeleitet werden, die zum tieferen Nachdenken und zur Reflexion anregen. Diese Fragen können dazu dienen, die Teilnehmer dazu zu bringen, ihre Entscheidungen und Handlungen im Kontext des Rollenspiels zu erklären, wodurch das Verständnis für die Anwendung von Konzepten in realen oder simulierten Situationen vertieft wird.</p>
+<p>Indem Lernende über die Gründe hinter den Fakten nachdenken, werden Verbindungen zu bereits bekanntem Wissen hergestellt, was zu einem tieferen Verständnis und besserer Erinnerung führt. Dies deckt sich mit dem Postulat der ICAP-Theorie<span id="sb-k3-icap"></span> des kognitiven Engagements <span class="citation" data-cites="chi2018">(<a href="#ref-chi2018" role="doc-biblioref">Chi et al., 2018</a>)</span>: Interaktion (I) ist effektiver als individuelle Konstruktion, was wiederum effektiver ist als aktive (aber nicht konstruktive) Beteiligung, was wiederum die passive Lernteilnahme schlägt (I &gt; C &gt; A &gt; P; <em>interactive, constructive, active, passive</em>).</p>
+</section>
+<section id="wie-können-llms-genutzt-werden-um-diese-lerntechniken-zu-unterstützen" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="wie-können-llms-genutzt-werden-um-diese-lerntechniken-zu-unterstützen"><span class="header-section-number">4.4.2</span> Wie können LLMs genutzt werden, um diese Lerntechniken zu unterstützen?</h3>
+<p>Wir skizzieren das hier kurz an einem Seminar zum interkulturellen Management. Um <strong>zeitliche Verteilung und Mischung</strong> zu fördern, kann mit LLMs eine Serie von kurzen, thematisch variierenden Aufgaben und Fallstudien über das Semester verteilt erstellt werden. Diese könnten reale Szenarien abbilden, in denen Studierende ihre Fähigkeiten im interkulturellen Management anwenden müssen. Beispielsweise könnte das Sprachmodell Aufgaben generieren, bei denen Studierende Strategien für die Überwindung kultureller Barrieren in internationalen Teams entwickeln.</p>
+<p>Was sind Beispiele für <strong>testgestütztes Lernen</strong>? Regelmäßige, durch LLMs generierte Quizze bringen Studierende dazu, ihr Wissen häufiger aktiv abzurufen. Durch LLMs können Multiple-Choice-Fragen, Fallstudienanalysen und Szenariobeschreibungen zu interkulturellen Missverständnissen erzeugt werden, welche die Studierenden lösen müssen.</p>
+<p>Zur Unterstützung von <strong>fragebasierter Ausarbeitung</strong> können LLMs die Erstellung von Fallstudien, Simulationen und Rollenspielen unterstützen, damit Studierende über interkulturelle Dynamiken und Managementstrategien nachdenken. Diese könnten als Ausgangspunkt für Diskussionen im Kurs oder als Teil von Hausaufgaben dienen, wobei die Studierenden angehalten werden, über die Verbindungen zwischen dem Kursmaterial und den simulierten interkulturellen Interaktionen zu reflektieren. Ein rechnendes Beispiel aus der Logistik ist das Bullwhip-Widget in <a href="kapitel06-rollen.html#sec-widget-bullwhip" class="quarto-xref"><span>Kapitel 6.2.2.2</span></a>: Warum die Fabrik viel stärker schwankt als die Kundschaft, erklären Studierende erst, wenn sie Lieferzeit und Informationsfluss einzeln verändert und die Folgen gesehen haben. Viele weitere Beispiele hierfür besprechen wir im folgenden Kapitel, wo wir Anwendungsfälle von KI in der Lehre nach der didaktischen Rolle des Werkzeugs darstellen: Hilfskraft, Copilot, Tutor oder Simulator.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Anwendungsbeispiel: KI-Feedback zum Schreiben kommt sofort, ist aber nicht immer richtig">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Anwendungsbeispiel: KI-Feedback zum Schreiben kommt sofort, ist aber nicht immer richtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Problem ohne KI.</strong> In Sprachkursen ist individuelles Feedback zu Texten knapp, weil jede Rückmeldung Zeit der Lehrkraft kostet.</p>
+<p><strong>Problem mit KI.</strong> Ein Sprachmodell kommentiert jeden Entwurf sofort, aber nicht immer richtig; wer die Fremdsprache erst lernt, erkennt falsche Vorschläge schwer.</p>
+<p><strong>Der Lösungsansatz.</strong> Das Sprachlernzentrum der Universität Bonn (Projekt Digital Literacy, Géraldine Stich-Desmarchelier, Torsten Kirchner, Elisabeth Schmitt) erprobt seit dem Wintersemester 2024/25 Englischmodule auf den fortgeschrittenen Sprachniveaus B2+ und C1.1 des Europäischen Referenzrahmens mit KI. In E-Learning-Einheiten bauen die Studierenden einen Essay Schritt für Schritt auf: Argumente sammeln und von der KI bewerten lassen, die Struktur eines Musteressays erkennen, Einleitung und Fazit mit KI-Feedback schreiben, schließlich den ganzen Essay selbstständig verfassen. Jede KI-Rückmeldung prüfen sie an verlässlichen Quellen, die die Lehrkraft bereitstellt. Ins E-Portfolio laden sie die Chats, den eigenständig verfassten Text, die KI-gestützt überarbeitete Fassung und eine angeleitete Reflexion; die Lehrkraft ergänzt das KI-Feedback um eigenes.</p>
+<p><strong>Was das für wirksames Lernen heißt.</strong> <em>Erfahrungsbericht.</em> Das Prüfen der KI-Rückmeldung ist selbst ein Abrufanlass im Sinne des testgestützten Lernens, das ausdrücklich die kritische Bewertung möglicherweise falscher Aussagen eines Sprachmodells einschließt. Dass der eigene Text vor der KI-Überarbeitung feststeht, folgt einer Leitplanke (<em>guardrail</em>), die sich in den Experimenten seit 2025 bewährt: erst die eigene Antwort, dann die Antwort der KI <span class="citation" data-cites="xu2026">(<a href="#ref-xu2026" role="doc-biblioref">Xu et al., 2026</a>)</span> (<a href="#sec-evidenz" class="quarto-xref"><span>Kapitel 4.5</span></a>).</p>
+<p>Quelle: <span class="citation" data-cites="tobor2026usecases">Tobor et al. (<a href="#ref-tobor2026usecases" role="doc-biblioref">2026</a>)</span>, S. 32–33.</p>
+</div>
+</div>
+</section>
+<section id="ausrichtung-der-anpassungen-nach-empfehlungen-der-lernforschung" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="ausrichtung-der-anpassungen-nach-empfehlungen-der-lernforschung"><span class="header-section-number">4.4.3</span> Ausrichtung der Anpassungen nach Empfehlungen der Lernforschung</h3>
+<p>Um die Empfehlungen der Lernforschung in das Vorgehen mit Künstlicher Intelligenz (KI) und Aufgabensets zu integrieren, könnten folgende Schritte unternommen werden <span class="citation" data-cites="mitteaching+learninglab2023 roediger2012">(<a href="#ref-mitteaching+learninglab2023" role="doc-biblioref">MIT Teaching + Learning Lab, 2023</a>; Begriffe nach <a href="#ref-roediger2012" role="doc-biblioref">Roediger &amp; Pyc, 2012</a>)</span>:</p>
+<ul>
+<li><strong>Zeitliche Verteilung und inhaltliche Mischung von Lerninhalten (<em>spacing &amp; interleaving</em>)</strong>: Die Aufgabensets sollten so gestaltet werden, dass sie über das Semester verteilt sind und eine Vielfalt an Themen abdecken. Dies fördert die Langzeiterinnerung und hilft den Studierenden, die Anwendung der Konzepte in verschiedenen Kontexten zu üben. KI kann genutzt werden, um personalisierte Lernpläne zu erstellen, die auf den individuellen Fortschritt der Studierenden abgestimmt sind und eine Mischung aus verschiedenen Aufgabentypen bieten.</li>
+<li><strong>Testgestütztes Lernen (<em>test-enhanced learning</em>)</strong>: Regelmäßige, durch KI unterstützte Quizze und Tests können in den Lehrplan integriert werden, um das Abrufen von Informationen zu fördern. Diese Tests könnten auch die kritische Bewertung von KI-generierten Antworten beinhalten, um die kritische Denkfähigkeit der Studierenden zu schärfen.</li>
+<li><strong>Fragebasierte Ausarbeitung (<em>explanatory questioning</em>)</strong>: KI-Tutor-Bots könnten entwickelt werden, um Studierende durch gezielte “Warum”-Fragen zu leiten, die ein tieferes Verständnis des Materials fördern. Diese Bots könnten in Simulationen und Rollenspielen eingesetzt werden, um die Studierenden dazu zu bringen, ihre Entscheidungen zu erklären und zu reflektieren, wodurch die Anwendung von Konzepten in realen oder simulierten Situationen vertieft wird.</li>
+</ul>
+</section>
+</section>
+<section id="sec-evidenz" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-evidenz"><span class="header-section-number">4.5</span> Was die Forschung seit 2025 zeigt: Lernwirkung und kognitive Auslagerung</h2>
+<p>Die Mechanismen der vorigen Abschnitte sind seit Jahrzehnten belegt; ob sie mit Sprachmodellen tragen, war 2024 noch eine Vermutung. Seit 2025 gibt es Messungen mit den zwei stärksten verfügbaren Methoden, randomisierten Feldexperimenten und Paneldaten aus echten Kursen, und seit Sommer 2026 liegen die ersten großen Feldversuche vor, bei denen ein Tutor nicht als Laborprototyp, sondern als Teil eines laufenden Kurses getestet wurde. Vier Gestaltungsfragen ordnen die Befunde; je Frage stehen hier die belastbarsten oder neuesten Studien, weitere im Kasten am Ende des Abschnitts und auf der Online-Seite „Forschungsstand“.</p>
+<p><strong>Lernen Studierende mit KI-Tutoren mehr?</strong> Die Antwort lautete 2025 noch „im Mittel ja“, seit 2026 lautet sie „nur unter Bedingungen“. Die Einzelstudie mit dem saubersten Design bleibt das Harvard-Experiment von <span class="citation" data-cites="kestin2025">Kestin et al. (<a href="#ref-kestin2025" role="doc-biblioref">2025</a>)</span>, dessen Tutor mit Musterlösungen, Portionierung und Wachstumsdenken gebaut war (<a href="#sec-ziele-genai" class="quarto-xref"><span>Kapitel 4.1</span></a>): Studierende lernten mit ihm in weniger Zeit mehr als in der aktiven Präsenzübung. Das bislang größte Hochschulexperiment zeigt das Gegenteil für den Normalfall: An der University of Maryland erhielten per Los 2.379 Studierende in den Kursen von 30 Lehrenden Zugang zu einem Tutor, der mit den Kursmaterialien aus dem Lernmanagementsystem arbeitete; ihre Abschlussnote lag 0,37 Standardabweichungen <em>unter</em> der Kontrollgruppe, ihre Beteiligung im Kurs 0,90 Standardabweichungen darunter, und bei Erstakademikerinnen und Erstakademikern war der Verlust doppelt so groß. Nur 15 Prozent der Berechtigten nutzten den Tutor überhaupt, und drei Viertel ihrer Anfragen verlangten eine direkte Antwort, weniger als ein Prozent Rückmeldung auf eigene Arbeit <span class="citation" data-cites="liu2026courseintegrated">(<a href="#ref-liu2026courseintegrated" role="doc-biblioref">Liu et al., 2026</a>)</span>. Dazwischen liegt das präregistrierte Schulexperiment von <span class="citation" data-cites="oreopoulos2026productive">Oreopoulos, Liut, et al. (<a href="#ref-oreopoulos2026productive" role="doc-biblioref">2026</a>)</span> mit 6.997 Lernenden und einem verzögerten Test: Weder ein Tutor allein noch ein Übungsablauf, der erst nach gezeigter Beherrschung weiterführt (<em>mastery-based practice</em>), verbesserten das Behalten; nur die Kombination tat es, und nach einem Fehler stieg mit Tutor die Trefferquote im nächsten Versuch um 8,5 Prozentpunkte. Die Meta-Analysen, die 2025 große positive Effekte berichteten, sind inzwischen methodisch geprüft: Die meisten ihrer Vergleiche setzen ChatGPT gegen Kontrollgruppen, die zugleich andere Methoden, weniger Übungszeit oder kürzere Interventionen hatten, so dass der Werkzeugeffekt nicht vom Methodeneffekt zu trennen ist <span class="citation" data-cites="lawson2026">(<a href="#ref-lawson2026" role="doc-biblioref">Lawson et al., 2026</a>)</span>; der Wissenschaftsrat nennt die Studienlage „(noch) nicht belastbar“ <span class="citation" data-cites="wissenschaftsrat2026">(<a href="#ref-wissenschaftsrat2026" role="doc-biblioref">Wissenschaftsrat, 2026</a>)</span>. Ein deutscher Hochschulbeleg mit sauberem Design existiert: 334 Studierende, die sich auf eine Prüfung mit Anreiz vorbereiteten, erreichten mit freiem Zugang zu einem Tutor 0,23 Standardabweichungen mehr als mit dem Lehrbuch allein, ohne weniger zu lesen <span class="citation" data-cites="fischer2025">(<a href="#ref-fischer2025" role="doc-biblioref">Fischer et al., 2025</a>)</span>.</p>
+<p><strong>Was passiert ohne didaktische Bremse?</strong> Hier ist die Evidenz eindeutig und sie kam zuerst. In einem Feldexperiment mit knapp tausend Oberstufenschülern verbesserte ein Tutor im Stil des normalen ChatGPT die Übungsleistung um 48 Prozent; als der Zugang in der Prüfung fehlte, lagen dieselben Schüler 17 Prozent <em>unter</em> der Kontrollgruppe, die nie Zugang hatte. Ein zweiter Tutor mit Leitplanken, der Hinweise statt Lösungen gab, hob die Übungsleistung um 127 Prozent und ließ in der Prüfung keinen Schaden zurück <span class="citation" data-cites="bastani2025">(<a href="#ref-bastani2025" role="doc-biblioref">Bastani et al., 2025</a>)</span>. Die Paneldaten einer Mathematik-Lernplattform zeigen denselben Mechanismus im Großen: Über 3,2 Millionen Lerninteraktionen sank nach dem Start von ChatGPT die Lernzeit auf Aufgaben, deren Text sich in einen Chatbot kopieren lässt, kumuliert um 27 Prozent bei Studierenden und 31 Prozent in der Oberstufe, und mit ihr der daraus gebaute Wissenszuwachs; unter Aufsicht verschwindet der Effekt vollständig <span class="citation" data-cites="rismanchian2026">(<a href="#ref-rismanchian2026" role="doc-biblioref">Rismanchian et al., 2026</a>)</span>. Die Dissoziation von Leistung und Behalten ist inzwischen im Labor repliziert: 59 Informatikstudierende lösten Programmieraufgaben mit ChatGPT zu 89 statt 69 Prozent, behielten den Stoff nach 48 Stunden aber nur zu 39 statt 52 Prozent und schrieben sich die Lösung seltener selbst zu <span class="citation" data-cites="bergh2026cognition">(<a href="#ref-bergh2026cognition" role="doc-biblioref">Bergh et al., 2026</a>)</span>. Die Theorie dazu liefert <span class="citation" data-cites="nakamura2026">Nakamura (<a href="#ref-nakamura2026" role="doc-biblioref">2026</a>)</span>: Auslagerung an die KI (<em>cognitive offloading</em>) augmentiert, wenn sie Nebenoperationen abnimmt, und erodiert, wenn sie genau die Operationen umgeht, die das Lernziel ausmachen.</p>
+<p><strong>Welche Gestaltungsmerkmale schützen vor Auslagerung?</strong> Drei präregistrierte Experimente aus dem Jahr 2026 benennen die Stellschrauben, und eines davon zeigt, welche Stellschraube nicht wirkt. Eine metakognitive Rückmeldung, die Lernenden sichtbar macht, was das Abschreiben einer KI-Lösung für ihr eigenes Können bedeutet, halbierte in einem Online-Experiment mit 704 Teilnehmenden die Auslagerung und verbesserte den anschließenden Test ohne KI; eine Belohnung für eigenständiges Arbeiten blieb wirkungslos <span class="citation" data-cites="maier2026deskilling">(<a href="#ref-maier2026deskilling" role="doc-biblioref">Maier et al., 2026</a>)</span>. In einem Cluster-Experiment mit 1.176 Erstsemestern in 48 Übungsgruppen an vier Hochschulen gewann direktes KI-Feedback kurzfristig, aber beim verzögerten Transfer ohne KI lagen die Gruppen vorn, deren Feedback zuerst zur Reflexion aufforderte und die Kritik erst danach lieferte <span class="citation" data-cites="ates2026">(<a href="#ref-ates2026" role="doc-biblioref">Ates, 2026</a>)</span>. Was nicht reicht, ist der Prompt allein: An der Technischen Hochschule ETH Zürich durchliefen 1.059 Programmieranfänger im Crossover-Design, also nacheinander, Tutoren mit System-Prompts für selbstreguliertes Lernen (<em>self-regulated learning</em>) und für kognitive Aktivierung nach ICAP, und auf keinem der vier konfirmatorischen Maße unterschieden sich die Varianten <span class="citation" data-cites="barth2026steering">(<a href="#ref-barth2026steering" role="doc-biblioref">Barth et al., 2026</a>)</span>. Die Leitplanke muss also in die Aufgabe, in die Rückmeldung und in den Ablauf gebaut werden, nicht nur in die Anweisung an das Modell. Das ist die Übersetzung der erwünschten Schwierigkeiten (<a href="#sec-ziele-genai" class="quarto-xref"><span>Kapitel 4.1</span></a>) in Werkzeugdesign: eine eigene Antwort festhalten, bevor die KI antwortet, Hinweise vor Lösungen, und eine Begründungspflicht, wo eine Lösung übernommen wird <span class="citation" data-cites="xu2026 tao2026justification">(<a href="#ref-tao2026justification" role="doc-biblioref">Tao et al., 2026</a>; <a href="#ref-xu2026" role="doc-biblioref">Xu et al., 2026</a>)</span>.</p>
+<div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Ihre Einschätzung prüfen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>„Eine gut formulierte Anweisung an das Modell genügt, damit ein KI-Tutor zum Lernen anleitet, statt Lösungen zu liefern.“</em> <span class="ez-ihre" data-ez="ez-k3-4"></span></p>
+<p><strong>Auflösung: nein.</strong> An der ETH Zürich unterschieden sich Tutoren mit System-Prompts für selbstreguliertes Lernen und für kognitive Aktivierung auf keinem der vier konfirmatorischen Maße. Die Leitplanke gehört in Aufgabe, Rückmeldung und Ablauf: eine eigene Antwort vor der KI-Antwort, Hinweise vor Lösungen, eine Begründungspflicht, wo eine Lösung übernommen wird.</p>
+</div>
+</div>
+<p><strong>Trägt die Einbettung oder das Werkzeug?</strong> Die Einbettung, und der Engpass ist fast immer die Nutzung. In einer randomisierten Studie in 83 indischen Internatsschulen erhielten alle Zugang zur selben Lernplattform; große Lerngewinne entstanden nur dort, wo betreute Lernzeiten mit Aufsichtspersonen eingeplant waren <span class="citation" data-cites="oreopoulos2026">(<a href="#ref-oreopoulos2026" role="doc-biblioref">Oreopoulos, Keyes-Krysakowski, et al., 2026</a>)</span>. Zwei Jahre Khanmigo an 18 Schulen brachten 0,06 bis 0,08 Standardabweichungen pro Jahr, nicht mehr als Khan Academy ohne KI, weil das mittlere Kind den Tutor an einem Drittel der Übungstage und in nur 17 Prozent der Sitzungen mit Fehler ansprach <span class="citation" data-cites="oreopoulos2026khanmigo">(<a href="#ref-oreopoulos2026khanmigo" role="doc-biblioref">Oreopoulos &amp; Low, 2026</a>)</span>; der Anbieter hat den Nullbefund öffentlich eingeräumt und den Tutor umgebaut, in die Aufgabe hinein, ohne Antwort vor dem ersten Versuch (<a href="kapitel06-rollen.html#sec-tutor" class="quarto-xref"><span>Kapitel 6.3</span></a>). Für die Hochschule zeigt ein deutsches Wirtschaftsinformatik-Semester mit drei Bedingungen dasselbe von der anderen Seite: Alle 87 Studierenden lernten, der Tutor brachte keinen Zusatzgewinn, aber auch keine Erosion; was zählte, war die Rahmung der Nutzung, nicht der Zugang <span class="citation" data-cites="melanou2026">(<a href="#ref-melanou2026" role="doc-biblioref">Melanou et al., 2026</a>)</span>. Und wo die Nutzung angeleitet statt nur ermutigt wird, kehrt der Effekt zurück: Ermutigung zum Tutor änderte in einem Ökonometrie-Kurs nichts, eine Anleitung zur tutoriellen Nutzung hob die Prüfungsleistung um 0,21 Standardabweichungen und die Bestehensquote um zwölf Prozentpunkte <span class="citation" data-cites="gallegos2026">(<a href="#ref-gallegos2026" role="doc-biblioref">Gallegos, 2026</a>)</span>. Für die Gestaltung heißt das zusammengenommen: Ein KI-Tutor braucht Leitplanken in Aufgabe und Rückmeldung, die Hinweise vor Lösungen setzen, eine Einbettung in den Kurs, die seine Nutzung verbindlich und angeleitet macht, und einen Test vor dem Einsatz, ob er zu viel hilft (<a href="kapitel05-4d-phasen.html#sec-pruefen" class="quarto-xref"><span>Kapitel 5.6</span></a>).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Anwendungsbeispiel: Studierende übernehmen KI-Texte, statt sich mit ihnen auseinanderzusetzen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Anwendungsbeispiel: Studierende übernehmen KI-Texte, statt sich mit ihnen auseinanderzusetzen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Problem ohne KI.</strong> Eine begründete eigene Position zu einem literarischen Thema entsteht durch wiederholtes Nachfragen, für das im Seminar wenig Zeit bleibt.</p>
+<p><strong>Problem mit KI.</strong> Der Chatbot liefert Quellen, Zusammenfassungen und Formulierungen sofort; die Studierenden übernehmen sie, statt sich mit ihnen auseinanderzusetzen.</p>
+<p><strong>Der Lösungsansatz.</strong> Nina Yuen beschreibt eine Aufgabe in sieben Schritten, am Beispiel eines Kurses über Darstellungen von „Race“ in der amerikanischen Literatur des 20. Jahrhunderts. Die Studierenden schreiben zuerst ohne KI einen kurzen Essay. Dann recherchieren sie mit dem Chatbot, entwickeln mit ihm eine Bewertungsrubrik und beurteilen ihre Arbeit danach ohne KI neu. Es folgt ein sokratischer Dialog mit dem Chatbot über drei bis fünf Ebenen von Nachfragen. Am Ende vergleichen sie eine KI-gestützte mit einer eigenen Überarbeitung und schärfen in der letzten Fassung ihre eigene Stimme.</p>
+<p><strong>Was das für wirksames Lernen heißt.</strong> <em>Unterrichtsentwurf, keine Ergebnisse berichtet.</em> Der erste, KI-freie Entwurf ist die eigene Antwort, die feststeht, bevor die KI antwortet. Die Reihenfolge entspricht dem Befund, dass Rückmeldung, die zuerst zur Reflexion auffordert und die Kritik danach liefert, beim späteren Transfer ohne KI besser abschneidet als direkte KI-Kritik <span class="citation" data-cites="ates2026">(<a href="#ref-ates2026" role="doc-biblioref">Ates, 2026</a>)</span>.</p>
+<p>Ablauf und Prompt: <a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-sokratischer-dialog" class="quarto-xref"><span>Kapitel A.3.1</span></a>. Quelle: <span class="citation" data-cites="yuen2025">Yuen (<a href="#ref-yuen2025" role="doc-biblioref">2025</a>)</span> (AI Pedagogy Project, metaLAB at Harvard).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Stand der Forschung bei Drucklegung, November 2026">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Stand der Forschung bei Drucklegung, November 2026
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die vier Gestaltungsfragen dieses Abschnitts, die Kernaussagen, die bei Drucklegung die Antwort trugen, und die weiteren Belege, nach Aussagen geordnet. Die Punkte geben an, wie belastbar eine Wirkungsaussage ist: ●●● hoch, ●●○ mittel, ●○○ begrenzt. Sie folgen den Designstufen der CAT-Leitlinie (<em>Critically Appraised Topic</em>, eine kurze, strukturierte Bewertung der Studienlage zu einer Frage) des Center for Evidence-Based Management <span class="citation" data-cites="cebma2017cat">(<a href="#ref-cebma2017cat" role="doc-biblioref">Barends et al., 2017</a>)</span>. Ausgangspunkt ist das stärkste Design unter den Studien einer Aussage: Meta-Analyse randomisierter Studien oder randomisierte Studie (RCT, <em>randomized controlled trial</em>) drei Punkte, kontrollierte Studie ohne Zufallszuteilung oder Paneldaten zwei, Befragung, Fallbericht oder Synthese einen. Einen Punkt weniger gibt es, wenn keine der Studien begutachtet ist, wenn die Daten vom Anbieter stammen oder wenn die Vergleiche nachweislich konfundiert sind. Erklärungen und Methodenkritik tragen keine Punkte, weil die Stufen nur Wirkungsaussagen bewerten. Ob ein Befund aus der Schule auf die Hochschule übertragbar ist, steht in der Studienangabe, nicht in den Punkten. Abkürzungen in der Tabelle: Standardabweichung (SD), standardisierte Effektstärke (g), ganze Gruppen statt Einzelner zugelost (Cluster-RCT), Messung der Hirnströme (EEG), Managementstudium (MBA). Die Online-Seite „Forschungsstand“ führt alle Studien vollständig und wird halbjährlich fortgeschrieben.</p>
+<div id="tbl-stand-kap3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-stand-kap3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;4.2: Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 4, Stand November 2026.
+</figcaption>
+<div aria-describedby="tbl-stand-kap3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 42%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gestaltungsfrage</th>
+<th style="text-align: left;">Kernaussagen und tragende Studien (Fließtext)</th>
+<th style="text-align: left;">Weitere Belege, nach Kernaussage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lernen Studierende mit KI-Tutoren mehr?</td>
+<td style="text-align: left;"><p><strong>Ein Tutor kann mehr Lernen bewirken als aktive Präsenzübung oder Lehrbuch allein.</strong> <span title="hoch">●●●</span></p>
+<ul>
+<li><span class="citation" data-cites="kestin2025">Kestin et al. (<a href="#ref-kestin2025" role="doc-biblioref">2025</a>)</span>: RCT, Physik, Harvard; mehr gelernt in weniger Zeit</li>
+<li><span class="citation" data-cites="fischer2025">Fischer et al. (<a href="#ref-fischer2025" role="doc-biblioref">2025</a>)</span>: RCT, 334 Studierende, Deutschland; +0,23 SD in einer Prüfung mit Anreiz</li>
+</ul>
+<p><strong>Ein Tutor, der nur bereitgestellt wird, hebt die Leistung nicht und kann sie senken.</strong> <span title="mittel">●●○</span></p>
+<ul>
+<li><span class="citation" data-cites="liu2026courseintegrated">Liu et al. (<a href="#ref-liu2026courseintegrated" role="doc-biblioref">2026</a>)</span>: RCT, 2.379 Studierende, Maryland; −0,37 SD Abschlussnote, 15 % Nutzung</li>
+<li><span class="citation" data-cites="oreopoulos2026productive">Oreopoulos, Liut, et al. (<a href="#ref-oreopoulos2026productive" role="doc-biblioref">2026</a>)</span>: präregistrierter RCT, 6.997 Schüler; Tutor allein ohne Wirkung auf das Behalten, wirksam nur im Mastery-Ablauf</li>
+</ul>
+<p><strong>Vorbehalt: Die großen Effekte der Meta-Analysen messen nicht das Werkzeug allein.</strong></p>
+<ul>
+<li><span class="citation" data-cites="lawson2026">Lawson et al. (<a href="#ref-lawson2026" role="doc-biblioref">2026</a>)</span>: Kontrollgruppen unterscheiden sich zugleich in Methode, Übungszeit und Dauer</li>
+<li><span class="citation" data-cites="wissenschaftsrat2026">Wissenschaftsrat (<a href="#ref-wissenschaftsrat2026" role="doc-biblioref">2026</a>)</span>: Studienlage „(noch) nicht belastbar“</li>
+</ul></td>
+<td style="text-align: left;"><ul>
+<li><strong>Meta-Analysen finden mittlere bis große Durchschnittseffekte; nach etwa 23 Stunden steigt der Effekt nicht weiter.</strong> <span title="mittel">●●○</span> Der Vorbehalt links gilt für sie: <span class="citation" data-cites="ren2026">Ren et al. (<a href="#ref-ren2026" role="doc-biblioref">2026</a>)</span> (47 RCTs, g = 0,68), <span class="citation" data-cites="jing2026">Jing et al. (<a href="#ref-jing2026" role="doc-biblioref">2026</a>)</span> (Hochschule, g = 0,46), <span class="citation" data-cites="deng2025">Deng et al. (<a href="#ref-deng2025" role="doc-biblioref">2025</a>)</span>, <span class="citation" data-cites="wu2024a">R. Wu &amp; Yu (<a href="#ref-wu2024a" role="doc-biblioref">2024</a>)</span>; <span class="citation" data-cites="wuouyang2026">M. Wu &amp; Ouyang (<a href="#ref-wuouyang2026" role="doc-biblioref">2026</a>)</span> trennt KI-gestützte von unbegleiteter Programmierleistung.</li>
+<li><strong>Weitere Feldversuche mit eigens gebauten Tutoren zeigen Gewinne, oft mit Beteiligung der Anbieter.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="learnlm2025">LearnLM Team et al. (<a href="#ref-learnlm2025" role="doc-biblioref">2025</a>)</span> (Herstellerangabe), <span class="citation" data-cites="harrison2026medly">Harrison et al. (<a href="#ref-harrison2026medly" role="doc-biblioref">2026</a>)</span> (Sekundarstufe, g = 0,33), <span class="citation" data-cites="northcutt2026studentbench">Northcutt et al. (<a href="#ref-northcutt2026studentbench" role="doc-biblioref">2026</a>)</span> (KI gleichauf mit menschlichem Tutoring, Industrieautoren), <span class="citation" data-cites="kuo2026">Kuo &amp; Zhuo (<a href="#ref-kuo2026" role="doc-biblioref">2026</a>)</span> (Tutor- plus Tutee-Bot schlägt Antwort-Bot).</li>
+<li><strong>Gesprochene Antworten lehren nicht besser als geschriebene, kosten aber das 2,8-Fache.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="yang2026speak">S. Yang et al. (<a href="#ref-yang2026speak" role="doc-biblioref">2026</a>)</span> (präregistriert, 86 Online-MBA-Studierende).</li>
+<li><strong>Die Rolle der KI bestimmt, was steigt: als Tutor die Motivation, nicht die Klausur; als Löser die Aufgabe, nicht der Transfer.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="chakraborty2026">Chakraborty (<a href="#ref-chakraborty2026" role="doc-biblioref">2026</a>)</span> (vier Experimente in einem Programmierkurs).</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Was passiert ohne didaktische Bremse?</td>
+<td style="text-align: left;"><p><strong>Ungebremster Zugang hebt die Leistung mit KI und senkt, was ohne KI bleibt.</strong> <span title="hoch">●●●</span></p>
+<ul>
+<li><span class="citation" data-cites="bastani2025">Bastani et al. (<a href="#ref-bastani2025" role="doc-biblioref">2025</a>)</span>: RCT, knapp 1.000 Oberstufenschüler; +48 % Übung, −17 % Prüfung</li>
+<li><span class="citation" data-cites="rismanchian2026">Rismanchian et al. (<a href="#ref-rismanchian2026" role="doc-biblioref">2026</a>)</span>: Paneldaten, 3,2 Mio. Interaktionen; −27 % Lernzeit bei kopierbaren Aufgaben</li>
+<li><span class="citation" data-cites="bergh2026cognition">Bergh et al. (<a href="#ref-bergh2026cognition" role="doc-biblioref">2026</a>)</span>: Laborexperiment, 59 Studierende; Behalten nach 48 Stunden 39 statt 52 %</li>
+</ul>
+<p><strong>Erklärung: Auslagerung schadet, wenn sie die Operationen umgeht, die das Lernziel ausmachen.</strong></p>
+<ul>
+<li><span class="citation" data-cites="nakamura2026">Nakamura (<a href="#ref-nakamura2026" role="doc-biblioref">2026</a>)</span>: Theorie</li>
+</ul></td>
+<td style="text-align: left;"><ul>
+<li><strong>Wer per Chatbot recherchiert oder schreibt, lernt weniger und denkt weniger selbst.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="mittal2026">Mittal et al. (<a href="#ref-mittal2026" role="doc-biblioref">2026</a>)</span> (RCT, acht Tage, kritisches Denken am stärksten betroffen), <span class="citation" data-cites="kosmyna2025">Kosmyna et al. (<a href="#ref-kosmyna2025" role="doc-biblioref">2025</a>)</span> (EEG, 54 Teilnehmende, Preprint).</li>
+<li><strong>Was mit KI gelingt, bleibt ohne KI nur erhalten, wo die KI ergänzt statt ersetzt oder schon Expertise da ist.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="contractor2026learning">Contractor &amp; Reyes (<a href="#ref-contractor2026learning" role="doc-biblioref">2026</a>)</span> (+0,27 SD, nach einer Woche nur bei ergänzender Nutzung), <span class="citation" data-cites="autor2026expertise">Autor et al. (<a href="#ref-autor2026expertise" role="doc-biblioref">2026</a>)</span> (133 Patentanwälte, Fähigkeit ohne KI nach 90 Tagen nur bei Erfahrenen).</li>
+<li><strong>Auch Lehrende lagern aus: Ein KI-Werkzeug für die Unterrichtsvorbereitung senkt die Lernmotivation ihrer Schülerinnen und Schüler.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="sungu2026harmteaching">Sungu et al. (<a href="#ref-sungu2026harmteaching" role="doc-biblioref">2026</a>)</span> (randomisiertes Feldexperiment, 193 Lehrkräfte, −0,11 SD).</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Welche Gestaltungsmerkmale schützen?</td>
+<td style="text-align: left;"><p><strong>Rückmeldung, die zuerst zum eigenen Denken auffordert, schützt das Können ohne KI.</strong> <span title="hoch">●●●</span></p>
+<ul>
+<li><span class="citation" data-cites="maier2026deskilling">Maier et al. (<a href="#ref-maier2026deskilling" role="doc-biblioref">2026</a>)</span>: präregistriert, 704 Teilnehmende; metakognitive Rückmeldung halbiert die Auslagerung</li>
+<li><span class="citation" data-cites="ates2026">Ates (<a href="#ref-ates2026" role="doc-biblioref">2026</a>)</span>: Cluster-RCT, 1.176 Erstsemester, vier Hochschulen; Reflexion vor Kritik gewinnt beim verzögerten Transfer</li>
+</ul>
+<p><strong>Ein System-Prompt allein ändert das Lernen nicht.</strong> <span title="hoch">●●●</span></p>
+<ul>
+<li><span class="citation" data-cites="barth2026steering">Barth et al. (<a href="#ref-barth2026steering" role="doc-biblioref">2026</a>)</span>: präregistriertes Crossover, 1.059 Programmieranfänger, ETH; kein Effekt auf vier Maße</li>
+</ul></td>
+<td style="text-align: left;"><ul>
+<li><strong>Gerüste wirken, wenn Planen, Abrufen und Korrigieren bei den Lernenden bleiben.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="hou2026">Hou et al. (<a href="#ref-hou2026" role="doc-biblioref">2026</a>)</span> (Prompting-Gerüst bei offenen Aufgaben), <span class="citation" data-cites="yang2026visar">Y. Yang et al. (<a href="#ref-yang2026visar" role="doc-biblioref">2026</a>)</span> (Planungsschritte bleiben erhalten), <span class="citation" data-cites="ross2026">Ross et al. (<a href="#ref-ross2026" role="doc-biblioref">2026</a>)</span> (Fehlvorstellungen weichen nur mit korrigierender Rolle), <span class="citation" data-cites="akgun2026">Akgun &amp; Toker (<a href="#ref-akgun2026" role="doc-biblioref">2026</a>)</span> (Abruf-Übung schlägt freies KI-Lernen nach sieben Wochen).</li>
+<li><strong>Gemeinsam verarbeitetes KI-Feedback fördert den Transfer stärker als allein verarbeitetes.</strong> <span title="hoch">●●●</span> <span class="citation" data-cites="chen2026transfer">S. Chen et al. (<a href="#ref-chen2026transfer" role="doc-biblioref">2027</a>)</span> (Cluster-RCT, 16 Wochen, 108 Studierende, China).</li>
+<li><strong>Sokratische Führung wirkt nach, wenn die Leitplanken fallen.</strong> <span title="hoch">●●●</span> <span class="citation" data-cites="brender2026reflective">Brender et al. (<a href="#ref-brender2026reflective" role="doc-biblioref">2026</a>)</span> (randomisiert, 66 Master-Studierende, danach freie KI-Nutzung im Projekt).</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trägt die Einbettung oder das Werkzeug?</td>
+<td style="text-align: left;"><p><strong>Gewinne entstehen, wo die Nutzung eingeplant und angeleitet ist, nicht durch den Zugang.</strong> <span title="mittel">●●○</span></p>
+<ul>
+<li><span class="citation" data-cites="oreopoulos2026">Oreopoulos, Keyes-Krysakowski, et al. (<a href="#ref-oreopoulos2026" role="doc-biblioref">2026</a>)</span>: RCT, 83 indische Internatsschulen; Gewinne nur mit betreuten Lernzeiten</li>
+<li><span class="citation" data-cites="gallegos2026">Gallegos (<a href="#ref-gallegos2026" role="doc-biblioref">2026</a>)</span>: zwei RCTs, Ökonometrie, Chile; Anleitung +0,21 SD, Ermutigung wirkungslos</li>
+<li><span class="citation" data-cites="melanou2026">Melanou et al. (<a href="#ref-melanou2026" role="doc-biblioref">2026</a>)</span>: Quasi-Experiment, 87 Studierende, Deutschland; die Rahmung zählt</li>
+</ul>
+<p><strong>Bereitgestellte Tutoren werden zu selten genutzt, um zu wirken.</strong> <span title="mittel">●●○</span></p>
+<ul>
+<li><span class="citation" data-cites="oreopoulos2026khanmigo">Oreopoulos &amp; Low (<a href="#ref-oreopoulos2026khanmigo" role="doc-biblioref">2026</a>)</span>: Cluster-RCT, 18 Schulen, zwei Jahre; Nutzung an einem Drittel der Übungstage</li>
+</ul></td>
+<td style="text-align: left;"><ul>
+<li><strong>Menschliche Begleitung hebt die Nutzung, nicht automatisch die Leistung.</strong> <span title="mittel">●●○</span> <span class="citation" data-cites="robinson2026">Robinson et al. (<a href="#ref-robinson2026" role="doc-biblioref">2026</a>)</span> (zwei RCTs, Grundschule, Beteiligung +71–80 %, Lesen unverändert).</li>
+<li><strong>Wo Tutoren an deutschsprachigen Hochschulen laufen, fehlen Lernmaße; Befragungen zeigen keinen Unterschied im wahrgenommenen Lernerfolg.</strong> <span title="begrenzt">●○○</span> <span class="citation" data-cites="stumpf2026">Stumpf et al. (<a href="#ref-stumpf2026" role="doc-biblioref">2026</a>)</span> (OneTutor, 84 Lehrveranstaltungen), <span class="citation" data-cites="tobler2026">Tobler &amp; Köhler (<a href="#ref-tobler2026" role="doc-biblioref">2026</a>)</span> (ETH, 407 Studierende).</li>
+<li><strong>Reine KI-Tutoren erreichen viele nie: 40–47 Prozent nutzen sie nicht.</strong> <span title="begrenzt">●○○</span> <span class="citation" data-cites="turano2026monolith">Turano et al. (<a href="#ref-turano2026monolith" role="doc-biblioref">2026</a>)</span> (Synthese).</li>
+<li><strong>Anbieterstudien berichten Gewinne, sind aber nicht unabhängig geprüft.</strong> <span title="begrenzt">●○○</span> <span class="citation" data-cites="openai2026studymode">OpenAI (<a href="#ref-openai2026studymode" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="ghahramani2026sierraleone">Ghahramani (<a href="#ref-ghahramani2026sierraleone" role="doc-biblioref">2026</a>)</span> (Herstellerangaben).</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Zur lebenden Seite <a href="./forschungsstand.html">Forschungsstand</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Kernaussagen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Kernaussagen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Zu Lernziel 1: Zeit als Engpass</strong></p>
+<ol type="1">
+<li>Das Problem der Hochschullehre ist nicht fehlendes Wissen über gute Lehre, sondern fehlende Zeit, sie umzusetzen. Genau hier kann generative KI ansetzen.</li>
+</ol>
+<p><strong>Zu Lernziel 2: Didaktische Bremsen</strong></p>
+<ol start="2" type="1">
+<li>Chatbots sind darauf gebaut, hilfreich zu sein, nicht darauf, Lernen zu fördern. Ohne Anpassung nehmen sie Lernenden die Schwierigkeiten ab, die das Lernen ausmachen.</li>
+</ol>
+<p><strong>Zu Lernziel 3: Wissensstufen, Lerntechniken und ICAP</strong></p>
+<ol start="3" type="1">
+<li>Welcher KI-Einsatz sinnvoll ist, hängt vom Wissenstyp ab: Abrufübungen und Erklärungen für Faktenwissen, dialogisches Coaching und durchgearbeitete Beispiele für Prozesswissen, Szenarien und Rollenspiele für Transfer.</li>
+<li>Verteiltes Üben, häufige Abruftests und Warum-Fragen sind die am besten belegten Lerntechniken. Ihr Haken ist der Aufwand, und den können Sprachmodelle drastisch senken.</li>
+<li>Interaktion schlägt Konstruktion schlägt aktive Beteiligung schlägt passives Zuhören. Eine KI-Lernaktivität ist umso wirksamer, je weiter oben sie auf dieser Leiter steht.</li>
+</ol>
+<p><strong>Zu Lernziel 4: Evidenz seit 2025</strong></p>
+<ol start="6" type="1">
+<li>Ungebremster KI-Zugang verbessert die Übungsleistung und senkt die Prüfungsleistung; ein Tutor, der nur bereitgestellt wird, wird kaum und dann als Antwortmaschine genutzt. Leitplanken in Aufgabe und Rückmeldung (nicht nur im Prompt) und eine verbindliche, angeleitete Einbettung in den Kurs kehren das Vorzeichen um.</li>
+</ol>
+</div>
+</div>
+<div class="schluesselbegriffe callout callout-style-default callout-note callout-titled" title="Schlüsselbegriffe">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Schlüsselbegriffe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="sb-begriffe">
+<div class="sb-begriff" data-begriff="k3-kognitive-belastung">
+<p>Kognitive Belastung (<em>cognitive load</em>)</p>
+<p>Die begrenzte Verarbeitungskapazität des Arbeitsgedächtnisses. Ein Chatbot, der mit Wissens-Dumps überschüttet, überfordert sie; didaktische Prompts begrenzen deshalb die Antwortmenge, etwa auf eine Frage pro Zug.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-wissen-dass">
+<p>Wissen, dass (<em>knowing that</em>)</p>
+<p>Fakten- und Begriffswissen, das erst erworben und dann gefestigt werden muss, die belastbare Wissensbasis. Dazu passen Abrufübungen und Erklärungen.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-wissen-wie">
+<p>Wissen, wie (<em>knowing how</em>)</p>
+<p>Prozedurales und strategisches Können: Abläufe, die man an modellierten Beispielen erwirbt und in gelenkten Übungen festigt. Dazu passen dialogisches Coaching und durchgearbeitete Beispiele.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-wissen-anwenden">
+<p>Wissen anwenden (<em>knowing with</em>)</p>
+<p>Die höchste Stufe nach Hattie: Wissen flexibel auf neue Situationen übertragen. Dazu passen Szenarien, Fallstudien und Rollenspiele.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-verteiltes-ueben">
+<p>Verteiltes Üben (<em>spacing</em>)</p>
+<p>Übung über die Zeit verteilen statt in einer Sitzung bündeln. Abstände und wiederholte Aktivierung geben dem Gedächtnis Zeit und stärken die Langzeiterinnerung.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-gemischtes-ueben">
+<p>Gemischtes Üben (<em>interleaving</em>)</p>
+<p>Aufgabentypen gemischt statt in Blöcken nacheinander üben. Der ständige Vergleich schult die Unterscheidung und damit die Wahl des passenden Lösungswegs.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-testgestuetzt">
+<p>Testgestütztes Lernen (<em>test-enhanced learning</em>)</p>
+<p>Wissen durch Fragen und Tests aktiv abrufen festigt es deutlich stärker als erneutes Lesen (Testeffekt). Für Studierende anstrengender, aber wirksamer; Sprachmodelle senken den Aufwand, die Fragen zu erstellen.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-transfergerecht">
+<p>Transfergerechte Verarbeitung (<em>transfer-appropriate processing</em>)</p>
+<p>Beim Testen laufen ähnliche Denkprozesse ab wie beim späteren Abrufen; deshalb verbessert Üben in der Form der späteren Anforderung die Erinnerung. Einer der Gründe, warum häufige Abfragen wirken.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-ausarbeitung">
+<p>Fragebasierte Ausarbeitung (<em>explanatory questioning</em>)</p>
+<p>Lernende stellen und beantworten Warum- und Wie-Fragen zum Stoff und verknüpfen ihn so mit vorhandenem Wissen. Tutor-Bots und Simulationen können solche Fragen stellen.</p>
+</div>
+<div class="sb-begriff" data-begriff="k3-icap">
+<p>ICAP</p>
+<p>Rangfolge kognitiven Engagements nach Chi: interaktiv vor konstruktiv vor aktiv vor passiv (I &gt; C &gt; A &gt; P). Eine KI-Lernaktivität wirkt umso stärker, je weiter oben sie auf dieser Leiter steht.</p>
+</div>
+</div>
+<div class="sb-spiel" data-modus="fall" data-kapitel="3">
+<div class="sb-aufgabe" data-loesung="k3-testgestuetzt" data-ablenker="k3-kognitive-belastung k3-icap k3-wissen-anwenden">
+<p>Statt am Ende der Vorlesung die Folien zusammenzufassen, lässt eine Dozentin einen Bot fünf Kurzfragen zum Stoff der Stunde erzeugen, die alle zuerst ohne Unterlagen beantworten.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#sec-lerntechniken" class="quarto-xref"><span>Kapitel 4.4</span></a>.</p>
+</div>
+<div class="sb-begruendung">
+<p>Die Studierenden rufen ab, statt wiederzulesen; das festigt den Stoff stärker. Der Bot nimmt der Dozentin nur die Arbeit ab, die Fragen zu schreiben.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k3-gemischtes-ueben" data-ablenker="k3-wissen-dass k3-ausarbeitung k3-kognitive-belastung">
+<p>Auf dem Übungsblatt vor der Klausur in Kostenrechnung stehen Aufgaben zu Zuschlagskalkulation, Deckungsbeitrag und Break-even nicht mehr in Blöcken, sondern durcheinander; zuerst muss man erkennen, welches Verfahren passt.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#sec-lerntechniken" class="quarto-xref"><span>Kapitel 4.4</span></a> und der Eingangsszene dieses Kapitels.</p>
+</div>
+<div class="sb-begruendung">
+<p>Weil die Aufgabentypen wechseln, üben die Studierenden die Unterscheidung mit, die ihnen in der Klausur niemand abnimmt. In Blöcken stünde das Verfahren schon über der Aufgabe.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k3-verteiltes-ueben" data-ablenker="k3-wissen-wie k3-icap k3-transfergerecht">
+<p>Ein Dozent streicht die lange Wiederholungssitzung vor der Klausur; dafür kehrt jedes Thema in drei kurzen Blöcken im Abstand mehrerer Wochen zurück.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#sec-lerntechniken" class="quarto-xref"><span>Kapitel 4.4</span></a>.</p>
+</div>
+<div class="sb-begruendung">
+<p>Dieselbe Übungszeit, über das Semester verteilt statt gebündelt, stärkt die Langzeiterinnerung. Die Themen werden dabei nicht gemischt, sie kehren mit Abstand wieder.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k3-ausarbeitung" data-ablenker="k3-kognitive-belastung k3-wissen-dass k3-verteiltes-ueben">
+<p>Nach jeder Antwort im Lieferkettenkurs fragt ein Bot nach: Warum steigen die Bestellungen weiter oben in der Kette stärker, und was würde sich ändern, wenn alle Stufen dieselben Verkaufsdaten sähen?</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#sec-lerntechniken" class="quarto-xref"><span>Kapitel 4.4</span></a> und dem Bullwhip-Widget (<a href="kapitel06-rollen.html#sec-widget-bullwhip" class="quarto-xref"><span>Kapitel 6.2.2.2</span></a>).</p>
+</div>
+<div class="sb-begruendung">
+<p>Warum- und Was-wäre-wenn-Fragen zwingen dazu, den Stoff mit vorhandenem Wissen zu verknüpfen. Es geht nicht um das Abrufen eines Fakts, sondern um die Begründung dahinter.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k3-kognitive-belastung" data-ablenker="k3-wissen-anwenden k3-gemischtes-ueben k3-transfergerecht">
+<p>Ein Erstsemester fragt den Kurs-Bot nach dem Unterschied zwischen fixen und variablen Kosten und bekommt eine Antwort über anderthalb Seiten mit acht Unterpunkten und drei Exkursen.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#sec-ziele-genai" class="quarto-xref"><span>Kapitel 4.1</span></a>.</p>
+</div>
+<div class="sb-begruendung">
+<p>Die Antwort überfordert das Arbeitsgedächtnis, das für das Wesentliche frei bleiben sollte. Ein didaktisch angepasster Bot würde kurz antworten und eine Frage zurückgeben.</p>
+</div>
+</div>
+<div class="sb-aufgabe" data-loesung="k3-wissen-anwenden" data-ablenker="k3-wissen-dass k3-verteiltes-ueben k3-kognitive-belastung">
+<p>Eine KI spielt einen Lieferanten, der kurz vor Vertragsabschluss die Preise erhöht; die Studierenden müssen ihr Wissen über Verhandlungen in einer Lage einsetzen, die im Skript nicht vorkommt.</p>
+<div class="sb-herkunft">
+<p>Herkunft: konstruiert nach <a href="#tbl-wissenstypen" class="quarto-xref">Tabelle&nbsp;<span>4.1</span></a> und <a href="kapitel06-rollen.html#sec-simulator" class="quarto-xref"><span>Kapitel 6.4</span></a>.</p>
+</div>
+<div class="sb-begruendung">
+<p>Das Wissen ist vorhanden und muss auf eine neue Situation übertragen werden. Das ist die höchste der drei Stufen nach Hattie.</p>
+</div>
+</div>
+</div>
+<div class="sb-wiederkehr" data-quellen="kapitel01-einleitung.html kapitel02-grundlagen.html" data-druck="k1-erwuenschte-schwierigkeiten k2-halluzination k2-rag">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Lernfragen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Lernfragen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Wiederholen</strong></p>
+<ol type="1">
+<li>Nennen Sie die drei Wissensstufen nach Hattie und je einen passenden KI-Einsatz.</li>
+<li>Bringen Sie die vier Stufen der ICAP-Rangfolge in die richtige Reihenfolge.</li>
+<li>Erklären Sie ohne Nachschlagen, warum ein Chatbot, der sofort die richtige Antwort gibt, dem Testeffekt entgegenwirkt. Wie müsste der Bot stattdessen reagieren?</li>
+</ol>
+<p><strong>Anwenden</strong></p>
+<ol start="4" type="1">
+<li>Ordnen Sie drei Lernziele Ihrer Veranstaltung den Stufen knowing that, knowing how und knowing with zu. Welche Stufe kommt bei Ihnen zu kurz, und welche KI-gestützte Methode aus diesem Kapitel würde sie stärken?</li>
+<li>Wo in Ihrem Semesterplan könnten Sie mit geringem Aufwand verteiltes und gemischtes Üben einbauen, wenn ein Sprachmodell die Aufgabenvarianten liefert?</li>
+</ol>
+<p><strong>Beurteilen</strong></p>
+<ol start="6" type="1">
+<li>Ein Kollege berichtet, seine Studierenden hätten mit einem KI-Tutor in den Übungen deutlich besser abgeschnitten. Welche eine Frage stellen Sie ihm, bevor Sie den Tutor übernehmen, und warum?</li>
+<li>Ein Anbieter wirbt mit einem Tutor, dessen System-Prompt sokratisches Fragen und kognitive Aktivierung vorschreibt. Reicht das als Leitplanke? Begründen Sie mit den Befunden des Kapitels.</li>
+</ol>
+<p>Lösungshinweise: <a href="kapitel10-appendix05-loesungshinweise.html" class="quarto-xref"><span>Anhang B</span></a>.</p>
+</div>
+</div>
+
+
+<div class="support-this-section">
+<h3 class="support-this-heading anchored">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<ul class="support-this-links">
+  <li class="support-this-item">
+    <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Buy Me a Coffee</span>:       <span class="support-this-username">roman.bartnik.th</span>
+    </a>
+  </li>
+  <li class="support-this-item">
+    <a href="https://ko-fi.com/romanbartnik" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Ko-fi</span>:       <span class="support-this-username">romanbartnik</span>
+    </a>
+  </li>
+</ul>
+</div>
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-akgun2026" class="csl-entry" role="listitem">
+Akgun, M., &amp; Toker, S. (2026). Do gains from generative AI-enabled adaptive pretesting persist? Evidence from a retention study. <a href="https://doi.org/10.48550/arXiv.2606.22328">https://doi.org/10.48550/arXiv.2606.22328</a>.
+</div>
+<div id="ref-ates2026" class="csl-entry" role="listitem">
+Ates, H. (2026). Human-centered GenAI feedback design in higher education: A multisite experiment on direct, reflective, and hybrid approaches to scientific argumentation. <em>International Journal of Educational Technology in Higher Education</em>, <em>23</em>(38). <a href="https://doi.org/10.1186/s41239-026-00614-9">https://doi.org/10.1186/s41239-026-00614-9</a>.
+</div>
+<div id="ref-autor2026expertise" class="csl-entry" role="listitem">
+Autor, D., Rodchenko, T., Martin, J., Iscenko, Z., Strand, S., Pearl, D., &amp; Ferere, M. (2026). <em>Does AI assistance enhance or erode expertise? Evidence from a three-month field experiment in patent drafting</em> (NBER Working Paper; Nr. 35720). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35720">https://doi.org/10.3386/w35720</a>.
+</div>
+<div id="ref-cebma2017cat" class="csl-entry" role="listitem">
+Barends, E., Rousseau, D. M., &amp; Briner, R. B. (2017). <em><a href="https://cebma.org/assets/Uploads/CEBMa-CAT-Guidelines.pdf">CEBMa guideline for critically appraised topics in management and organizations</a></em> (Leitlinie). Center for Evidence-Based Management.
+</div>
+<div id="ref-barth2026steering" class="csl-entry" role="listitem">
+Barth, M., Thorgeirsson, S., Etemadi, K., Leinonen, J., Cotrini, C., &amp; Su, Z. (2026). Steering AI tutors through system prompts: A crossover study on self-regulated learning and cognitive engagement scaffolds in CS1. <a href="https://doi.org/10.1145/3765964.3811656">https://doi.org/10.1145/3765964.3811656</a>.
+</div>
+<div id="ref-bastani2025" class="csl-entry" role="listitem">
+Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>Proceedings of the National Academy of Sciences</em>, <em>122</em>(26), e2422633122. <a href="https://doi.org/10.1073/pnas.2422633122">https://doi.org/10.1073/pnas.2422633122</a>.
+</div>
+<div id="ref-bergh2026cognition" class="csl-entry" role="listitem">
+Bergh, C., Tag, B., Vassar, A., &amp; Renzella, J. (2026). <em>Your programming students’ cognition with ChatGPT: Higher performance, lower retention, and reduced ownership</em>. <a href="https://doi.org/10.48550/arXiv.2609.21194">https://doi.org/10.48550/arXiv.2609.21194</a>.
+</div>
+<div id="ref-brender2026reflective" class="csl-entry" role="listitem">
+Brender, J., El-Hamamsy, L., Uittenhove, K., Perez, A., Jermann, P., Mondada, F., &amp; Bumbacher, E. (2026). Reflective dialogue or prompt refinement? Effects of tutor scaffolding on students’ independent LLM use for programming. In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Hrsg.), <em>Artificial Intelligence in Education: 27th International Conference, AIED 2026</em>: (Bd. 16584, 546–561). In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Hrsg.), <em>Artificial Intelligence in Education: 27th International Conference, AIED 2026</em>: (Bd. 16584, 546–561). <a href="https://doi.org/10.1007/978-3-032-29763-1_37">https://doi.org/10.1007/978-3-032-29763-1_37</a>.
+</div>
+<div id="ref-brown2014" class="csl-entry" role="listitem">
+Brown, P. C., Roediger, H. L., &amp; McDaniel, M. A. (2014). <em><a href="http://search.ebscohost.com/login.aspx?direct=true&amp;scope=site&amp;db=nlebk&amp;db=nlabk&amp;AN=771951">Make it stick: The science of successful learning</a></em>. The Belknap Press of Harvard University Press.
+</div>
+<div id="ref-chakraborty2026" class="csl-entry" role="listitem">
+Chakraborty, P. (2026). Effect of using generative artificial intelligence in different roles in a course on computer programming. <em>Computer Applications in Engineering Education</em>, <em>34</em>(4), e70223. <a href="https://doi.org/10.1002/cae.70223">https://doi.org/10.1002/cae.70223</a>.
+</div>
+<div id="ref-chen2024" class="csl-entry" role="listitem">
+Chen, J., Liu, Z., Huang, X., Wu, C., Liu, Q., Jiang, G., et al. (2024). When large language models meet personalization: Perspectives of challenges and opportunities. <em>World Wide Web-internet and Web Information Systems</em>, <em>27</em>(42). <a href="https://doi.org/10.1007/s11280-024-01276-1">https://doi.org/10.1007/s11280-024-01276-1</a>.
+</div>
+<div id="ref-chen2026transfer" class="csl-entry" role="listitem">
+Chen, S., Borchers, C., &amp; Schunn, C. D. (2027). From revision to learning transfer: Self- and socially shared-regulated pathways in AI-assisted feedback. <em>Learning and Instruction</em>, <em>107</em>, 102489. <a href="https://doi.org/10.1016/j.learninstruc.2026.102489">https://doi.org/10.1016/j.learninstruc.2026.102489</a>.
+</div>
+<div id="ref-chi2018" class="csl-entry" role="listitem">
+Chi, M. T. H., Adams, J., Bogusch, E. B., Bruchok, C., Kang, S., Lancaster, M., Levy, R., Li, N., McEldoon, K. L., Stump, G. S., Wylie, R., Xu, D., &amp; Yaghmourian, D. L. (2018). Translating the ICAP Theory of Cognitive Engagement Into Practice. <em>Cognitive Science</em>, <em>42</em>(6), 1777–1832. <a href="https://doi.org/10/gd5n5p">https://doi.org/10/gd5n5p</a>.
+</div>
+<div id="ref-contractor2026learning" class="csl-entry" role="listitem">
+Contractor, Z., &amp; Reyes, G. (2026). <em><a href="https://docs.iza.org/dp18792.pdf">Experimental evidence on the learning impact of generative AI</a></em> (IZA Discussion Paper; Nr. 18792). IZA Institute of Labor Economics.
+</div>
+<div id="ref-deng2025" class="csl-entry" role="listitem">
+Deng, R., Jiang, M., Yu, X., Lu, Y., &amp; Liu, S. (2025). Does ChatGPT enhance student learning? A systematic review and meta-analysis of experimental studies. <em>Computers &amp; Education</em>, <em>227</em>, 105224. <a href="https://doi.org/10.1016/j.compedu.2024.105224">https://doi.org/10.1016/j.compedu.2024.105224</a>.
+</div>
+<div id="ref-dunlosky2013" class="csl-entry" role="listitem">
+Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T. (2013). Improving Students’ Learning With Effective Learning Techniques: Promising Directions From Cognitive and Educational Psychology. <em>Psychological science in the public interest : a journal of the American Psychological Society</em>, <em>14</em>(1), 4–58. <a href="https://doi.org/10.1177/1529100612453266">https://doi.org/10.1177/1529100612453266</a>.
+</div>
+<div id="ref-fischer2025" class="csl-entry" role="listitem">
+Fischer, M., Rau, H. A., &amp; Rilke, R. M. (2025). <em><a href="https://www.iza.org/publications/dp18338">AI tutoring enhances student learning without crowding out reading effort</a></em> (IZA Discussion Paper; Nr. 18338). Institute of Labor Economics (IZA).
+</div>
+<div id="ref-freeman2014" class="csl-entry" role="listitem">
+Freeman, S., Eddy, S. L., McDonough, M., Smith, M. K., Okoroafor, N., Jordt, H., &amp; Wenderoth, M. P. (2014). Active learning increases student performance in science, engineering, and mathematics. <em>Proceedings of the national academy of sciences</em>, <em>111</em>(23), 8410–8415.
+</div>
+<div id="ref-gallegos2026" class="csl-entry" role="listitem">
+Gallegos, S. (2026). <em><a href="https://www.iza.org/publications/dp18513">Guidance over adoption: Experimental evidence on AI-assisted learning</a></em> (IZA Discussion Paper; Nr. 18513). Institute of Labor Economics (IZA).
+</div>
+<div id="ref-ghahramani2026sierraleone" class="csl-entry" role="listitem">
+Ghahramani, Z. (2026, Juni). <em>Gemini’s guided learning: Results from a randomized controlled trial in Sierra Leone</em>. <a href="https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/">https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/</a>.
+</div>
+<div id="ref-hake1998" class="csl-entry" role="listitem">
+Hake, R. R. (1998). Interactive-engagement versus traditional methods: A six-thousand-student survey of mechanics test data for introductory physics courses. <em>American Journal of Physics</em>, <em>66</em>(1), 64–74. <a href="https://doi.org/10.1119/1.18809">https://doi.org/10.1119/1.18809</a>.
+</div>
+<div id="ref-harrison2026medly" class="csl-entry" role="listitem">
+Harrison, W., Khowaja, R., Dobson, E., Uwimpuhwe, G., &amp; Higgins, S. (2026). <em>Evaluating AI tutoring at the speed of innovation: Practitioner-led micro-randomised trials of an AI tutoring platform in GCSE science</em>. <a href="https://doi.org/10.48550/arXiv.2609.14789">https://doi.org/10.48550/arXiv.2609.14789</a>.
+</div>
+<div id="ref-hassany2024" class="csl-entry" role="listitem">
+Hassany, M., Brusilovsky, P., Ke, J., Akhuseyinoglu, K., &amp; Narayanan, A. B. L. (2024). <em>Human-AI Co-Creation of Worked Examples for Programming Classes</em>. arXiv. <a href="https://doi.org/10.48550/ARXIV.2402.16235">https://doi.org/10.48550/ARXIV.2402.16235</a>.
+</div>
+<div id="ref-hattie2023" class="csl-entry" role="listitem">
+Hattie, J. (2023). <em>Visible learning, the sequel: a synthesis of over 2,100 meta-analyses relating to achievement</em>. Routledge, Taylor &amp; Francis Group. <a href="https://doi.org/10.4324/9781003380542">https://doi.org/10.4324/9781003380542</a>.
+</div>
+<div id="ref-hayashi2025" class="csl-entry" role="listitem">
+Hayashi, Y., Shimojo, S., &amp; Kawamura, T. (2025). Scripted interventions versus reciprocal teaching in collaborative learning: A comparison of pedagogical and teachable agents using a cognitive architecture. <em>Learning and Instruction</em>, <em>96</em>, 102057. <a href="https://doi.org/10.1016/j.learninstruc.2024.102057">https://doi.org/10.1016/j.learninstruc.2024.102057</a>.
+</div>
+<div id="ref-henderson2007" class="csl-entry" role="listitem">
+Henderson, C., &amp; Dancy, M. H. (2007). Barriers to the use of research-based instructional strategies: The influence of both individual and situational characteristics. <em>Physical Review Special Topics—Physics Education Research</em>, <em>3</em>(2), 020102.
+</div>
+<div id="ref-hou2026" class="csl-entry" role="listitem">
+Hou, X., Xiao, B., Liu, H., &amp; Mueller, S. (2026). The role of instructional guidance in generative AI-assisted learning: Empirical evidence from construction engineering education. <a href="https://doi.org/10.48550/arXiv.2606.05509">https://doi.org/10.48550/arXiv.2606.05509</a>.
+</div>
+<div id="ref-jing2026" class="csl-entry" role="listitem">
+Jing, Y., Wang, J., Wang, P., &amp; Xu, J. (2026). The impact of generative artificial intelligence on learning outcomes in higher education: A meta-analysis. <em>Journal of Computer Assisted Learning</em>, <em>42</em>(5), e70329. <a href="https://doi.org/10.1002/jcal.70329">https://doi.org/10.1002/jcal.70329</a>.
+</div>
+<div id="ref-kazu2025" class="csl-entry" role="listitem">
+Kazu, İ. Y., &amp; Kuvvetli, M. (2025). Digital language learning with Duolingo: assessing its impact on listening, speaking, reading, and writing skills. <em>Journal of Computers in Education</em>. <a href="https://doi.org/10.1007/s40692-025-00355-0">https://doi.org/10.1007/s40692-025-00355-0</a>.
+</div>
+<div id="ref-kestin2025" class="csl-entry" role="listitem">
+Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting. <em>Scientific Reports</em>, <em>15</em>(1), 17458. <a href="https://doi.org/10.1038/s41598-025-97652-6">https://doi.org/10.1038/s41598-025-97652-6</a>.
+</div>
+<div id="ref-korinek2024" class="csl-entry" role="listitem">
+Korinek, A. (2024). <em>Generative AI for economic research: LLMs learn to collaborate and reason (December 2024 update)</em> (NBER Working Paper; Nr. w33198). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w33198">https://doi.org/10.3386/w33198</a>.
+</div>
+<div id="ref-kosmyna2025" class="csl-entry" role="listitem">
+Kosmyna, N., Hauptmann, E., Yuan, Y. T., Situ, J., Liao, X.-H., Beresnitzky, A. V., Braunstein, I., &amp; Maes, P. (2025). Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task. <a href="https://doi.org/10.48550/arXiv.2506.08872">https://doi.org/10.48550/arXiv.2506.08872</a>.
+</div>
+<div id="ref-kuo2026" class="csl-entry" role="listitem">
+Kuo, Y.-C., &amp; Zhuo, M.-J. (2026). The impact of flipped classrooms integrated with differentiated chatbots on programming learning. <em>Educational Technology Research and Development</em>. <a href="https://doi.org/10.1007/s11423-026-10669-0">https://doi.org/10.1007/s11423-026-10669-0</a>.
+</div>
+<div id="ref-lawson2026" class="csl-entry" role="listitem">
+Lawson, A. P., Martella, A. M., Weidlich, J., Mulders, M., &amp; Buchner, J. (2026). Color me confounded: A critical analysis of media comparisons on ChatGPT in education. <em>Computers &amp; Education</em>, <em>254</em>, 105701. <a href="https://doi.org/10.1016/j.compedu.2026.105701">https://doi.org/10.1016/j.compedu.2026.105701</a>.
+</div>
+<div id="ref-learnlm2025" class="csl-entry" role="listitem">
+LearnLM Team, Eedi, Wang, A., Rysbek, A., &amp; Huber, A. (2025). AI tutoring can safely and effectively support students: An exploratory RCT in UK classrooms. <a href="https://doi.org/10.48550/arXiv.2512.23633">https://doi.org/10.48550/arXiv.2512.23633</a>.
+</div>
+<div id="ref-lee2025" class="csl-entry" role="listitem">
+Lee, H.-P. H., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R., &amp; Wilson, N. (2025). The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers. <a href="https://doi.org/10.1145/3706598.3713778">https://doi.org/10.1145/3706598.3713778</a>.
+</div>
+<div id="ref-liu2026courseintegrated" class="csl-entry" role="listitem">
+Liu, J., Sweet, T., Chen, M. H., Engelberg, J., Masters, M. C., Clark, M., Persaud, A., Lancaster, A., Hollingsworth, J. K., &amp; Rice, J. K. (2026). <em>The effects of course-integrated AI tutoring on student performance and engagement: A randomized university trial</em> (EdWorkingPaper; Nr. 26-1598). Annenberg Institute at Brown University. <a href="https://doi.org/10.26300/y3f8-vh05">https://doi.org/10.26300/y3f8-vh05</a>.
+</div>
+<div id="ref-love2025" class="csl-entry" role="listitem">
+Love, R., Law, E., Cohen, P. R., &amp; Kulić, D. (2025). Teaching a Conversational Agent using Natural Language: Effect on Learning and Engagement. <em>International Journal of Artificial Intelligence in Education</em>. <a href="https://doi.org/10.1007/s40593-025-00461-1">https://doi.org/10.1007/s40593-025-00461-1</a>.
+</div>
+<div id="ref-lyu2025" class="csl-entry" role="listitem">
+Lyu, B., Li, C., Li, H., Oh, H., Song, Y., Zhu, W., &amp; Xing, W. (2025). The Role of Teachable Agents’ Personality Traits on Student-AI Interactions and Math Learning. <em>Computers &amp; Education</em>, 105314. <a href="https://doi.org/10.1016/j.compedu.2025.105314">https://doi.org/10.1016/j.compedu.2025.105314</a>.
+</div>
+<div id="ref-maier2026deskilling" class="csl-entry" role="listitem">
+Maier, S., Schwabe, K., Schneider, M., &amp; Feuerriegel, S. (2026). <em>Designing against deskilling: Metacognitive feedback reduces cognitive offloading to LLM assistants</em>. <a href="https://doi.org/10.48550/arXiv.2609.20143">https://doi.org/10.48550/arXiv.2609.20143</a>.
+</div>
+<div id="ref-meincke2024" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E. R., &amp; Terwiesch, C. (2024). <em>Prompting Diverse Ideas: Increasing AI Idea Variance</em>. <a href="https://papers.ssrn.com/abstract=4708466">https://papers.ssrn.com/abstract=4708466</a>.
+</div>
+<div id="ref-melanou2026" class="csl-entry" role="listitem">
+Melanou, C., Beege, M., &amp; Kimmig, M. (2026). Generative AI and learning dynamics in higher education: A longitudinal empirical study. <em>Journal of Computer Assisted Learning</em>, <em>42</em>(5), e70322. <a href="https://doi.org/10.1002/jcal.70322">https://doi.org/10.1002/jcal.70322</a>.
+</div>
+<div id="ref-mitteaching+learninglab2023" class="csl-entry" role="listitem">
+MIT Teaching + Learning Lab (2023). <em>Rethinking Your Problem Sets in the World of Generative AI | Teaching + Learning Lab</em>. <a href="https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/">https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/</a>.
+</div>
+<div id="ref-mittal2026" class="csl-entry" role="listitem">
+Mittal, S., Blodgett, S. L., &amp; Liao, Q. V. (2026). Learning by chatting? Investigating the impact of generative AI on information seeking and learning. <a href="https://doi.org/10.48550/arXiv.2606.11669">https://doi.org/10.48550/arXiv.2606.11669</a>.
+</div>
+<div id="ref-mollick2023b" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2023). <em><a href="https://papers.ssrn.com/abstract=4391243">Using AI to Implement Effective Teaching Strategies in Classrooms: Five Strategies, Including Prompts</a></em> (SSRN Scholarly Paper; Nr. 4391243).
+</div>
+<div id="ref-morth2021" class="csl-entry" role="listitem">
+Mörth, M., Paridon, H., &amp; Sonntag, U. (2021). Kognitionswissenschaftliche Erkenntnisse und ihre Folgerungen für evidenzbasierte Hochschullehre: die hochschullehre 05/2021. <em>die hochschullehre</em>, <em>7</em>(1), 38–48.
+</div>
+<div id="ref-murre2015" class="csl-entry" role="listitem">
+Murre, J. M., &amp; Dros, J. (2015). Replication and analysis of Ebbinghaus’ forgetting curve. <em>PloS one</em>, <em>10</em>(7), e0120644.
+</div>
+<div id="ref-nakamura2026" class="csl-entry" role="listitem">
+Nakamura, D. (2026). Augmentation or erosion? Regulating cognitive offloading in generative AI-supported STEM learning. <em>Educational Psychology Review</em>, <em>38</em>(124). <a href="https://doi.org/10.1007/s10648-026-10224-6">https://doi.org/10.1007/s10648-026-10224-6</a>.
+</div>
+<div id="ref-northcutt2026studentbench" class="csl-entry" role="listitem">
+Northcutt, C., Hasmani, I., Feng, K., Khangi, T., Plesner, A., &amp; Mueller, J. (2026). <em>StudentBench: AI and human tutoring yield equivalent GRE learning gains</em>. <a href="https://doi.org/10.48550/arXiv.2609.28470">https://doi.org/10.48550/arXiv.2609.28470</a>.
+</div>
+<div id="ref-openai2026studymode" class="csl-entry" role="listitem">
+OpenAI (2026, März). <em>Understanding AI and learning outcomes</em>. <a href="https://openai.com/index/understanding-ai-and-learning-outcomes/">https://openai.com/index/understanding-ai-and-learning-outcomes/</a>.
+</div>
+<div id="ref-oreopoulos2026" class="csl-entry" role="listitem">
+Oreopoulos, P., Keyes-Krysakowski, O., &amp; Agarwal, D. (2026). <em>How In-School Supervised Ed-Tech Support Produces Massive Learning Gains: A Khan Academy Field Experiment in India</em> (NBER Working Paper; Nr. 34683). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w34683">https://doi.org/10.3386/w34683</a>.
+</div>
+<div id="ref-oreopoulos2026productive" class="csl-entry" role="listitem">
+Oreopoulos, P., Liut, M., Sungu, A., &amp; Low, N. (2026). <em>Making AI tutoring productive: Evidence from a mastery-based math practice experiment</em> (NBER Working Paper; Nr. 35621). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35621">https://doi.org/10.3386/w35621</a>.
+</div>
+<div id="ref-oreopoulos2026khanmigo" class="csl-entry" role="listitem">
+Oreopoulos, P., &amp; Low, N. (2026). <em>One click away: AI tutoring with Khanmigo in a two-year school experiment</em> (NBER Working Paper; Nr. 35620). National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35620">https://doi.org/10.3386/w35620</a>.
+</div>
+<div id="ref-ren2026" class="csl-entry" role="listitem">
+Ren, X., Li, X., Gao, L., Wei, Q., Liu, H., &amp; Yu, X. (2026). Effects of AI interventions across cognitive, social-emotional, and academic outcomes: A meta-analysis of randomized controlled trials with nonlinear dose–response evidence. <em>Educational Psychology Review</em>, <em>38</em>(128). <a href="https://doi.org/10.1007/s10648-026-10217-5">https://doi.org/10.1007/s10648-026-10217-5</a>.
+</div>
+<div id="ref-rismanchian2026" class="csl-entry" role="listitem">
+Rismanchian, S., Uzun, H., Matayoshi, J., Cosyn, E., &amp; Kurd-Misto, E. (2026). Faster completion, less learning: Generative AI reduced study time on math problems and the knowledge they build. <a href="https://doi.org/10.48550/arXiv.2605.21629">https://doi.org/10.48550/arXiv.2605.21629</a>.
+</div>
+<div id="ref-robinson2026" class="csl-entry" role="listitem">
+Robinson, C. D., Gormley, D., Trindade Ribeiro, A., &amp; Loeb, S. (2026). <em>The role of human support in student engagement with AI tutoring platforms</em> (EdWorkingPaper; Nr. 26-1451). Annenberg Institute at Brown University. <a href="https://doi.org/10.26300/pz7p-p388">https://doi.org/10.26300/pz7p-p388</a>.
+</div>
+<div id="ref-roediger2006" class="csl-entry" role="listitem">
+Roediger, H. L., &amp; Karpicke, J. D. (2006). Test-enhanced learning: taking memory tests improves long-term retention. <em>Psychological science</em>, <em>17</em>(3), 249–255. <a href="https://doi.org/10.1111/j.1467-9280.2006.01693.x">https://doi.org/10.1111/j.1467-9280.2006.01693.x</a>.
+</div>
+<div id="ref-roediger2012" class="csl-entry" role="listitem">
+Roediger, H. L., &amp; Pyc, M. A. (2012). Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice. <em>Journal of Applied Research in Memory and Cognition</em>, <em>1</em>(4), 242–248. <a href="https://doi.org/10.1016/j.jarmac.2012.09.002">https://doi.org/10.1016/j.jarmac.2012.09.002</a>.
+</div>
+<div id="ref-ross2026" class="csl-entry" role="listitem">
+Ross, J., So, E., &amp; Lo, A. W. (2026). Breaking Bad Financial Habits: How LLM Conversations Correct Financial Misconceptions. <a href="https://doi.org/10.48550/arXiv.2604.27022">https://doi.org/10.48550/arXiv.2604.27022</a>.
+</div>
+<div id="ref-sauberli2024" class="csl-entry" role="listitem">
+Säuberli, A., &amp; Clematide, S. (2024). Automatic generation and evaluation of reading comprehension test items with large language models. <a href="https://doi.org/10.48550/arXiv.2404.07720">https://doi.org/10.48550/arXiv.2404.07720</a>.
+</div>
+<div id="ref-scarlatos2025" class="csl-entry" role="listitem">
+Scarlatos, A., Liu, N., Lee, J., Baraniuk, R., &amp; Lan, A. (2025). Training LLM-based tutors to improve student learning outcomes in dialogues. <em>arXiv preprint</em>.
+</div>
+<div id="ref-shadle2017" class="csl-entry" role="listitem">
+Shadle, S. E., Marker, A., &amp; Earl, B. (2017). Faculty drivers and barriers: laying the groundwork for undergraduate STEM education reform in academic departments. <em>International Journal of STEM Education</em>, <em>4</em>(1), 8. <a href="https://doi.org/10.1186/s40594-017-0062-7">https://doi.org/10.1186/s40594-017-0062-7</a>.
+</div>
+<div id="ref-shaer2024" class="csl-entry" role="listitem">
+Shaer, O., Cooper, A., Mokryn, O., Kun, A. L., &amp; Ben Shoshan, H. (2024). AI-augmented brainwriting: Investigating the use of llms in group ideation. <a href="https://doi.org/10.48550/arXiv.2402.14978">https://doi.org/10.48550/arXiv.2402.14978</a>.
+</div>
+<div id="ref-stains2018" class="csl-entry" role="listitem">
+Stains, M., Harshman, J., Barker, M. K., Chasteen, S. V., Cole, R., DeChenne-Peters, S. E., Eagan, M. K., Esson, J. M., Knight, J. K., Laski, F. A., Levis-Fitzgerald, M., Lee, C. J., Lo, S. M., McDonnell, L. M., McKay, T. A., Michelotti, N., Musgrove, A., Palmer, M. S., Plank, K. M., … Young, A. M. (2018). Anatomy of STEM teaching in North American universities. <em>Science</em>, <em>359</em>(6383), 1468–1470. <a href="https://doi.org/10.1126/science.aap8892">https://doi.org/10.1126/science.aap8892</a>.
+</div>
+<div id="ref-stumpf2026" class="csl-entry" role="listitem">
+Stumpf, C., Schlude, A., Löwel, V., &amp; Stürz, R. A. (2026). <em><a href="https://publikationen.badw.de/de/050809137">Ein KI-Tutor geht in die Lehre: Empirische Ergebnisse zum Einsatz von OneTutor im Sommersemester 2025</a></em>. Bayerisches Forschungsinstitut für Digitale Transformation (bidt).
+</div>
+<div id="ref-sungu2026harmteaching" class="csl-entry" role="listitem">
+Sungu, A., Lira, B., &amp; Duckworth, A. L. (2026). <em>Generative AI can harm teaching</em>. SSRN Working Paper 7007339. <a href="https://papers.ssrn.com/abstract=7007339">https://papers.ssrn.com/abstract=7007339</a>.
+</div>
+<div id="ref-tao2026justification" class="csl-entry" role="listitem">
+Tao, Y., Meyer, J., &amp; Kizilcec, R. F. (2026). <em>Think before you accept: Can written justification reduce uncritical uptake of AI writing suggestions?</em> <a href="https://doi.org/10.48550/arXiv.2609.23936">https://doi.org/10.48550/arXiv.2609.23936</a>.
+</div>
+<div id="ref-tobler2026" class="csl-entry" role="listitem">
+Tobler, S., &amp; Köhler, K. (2026). A lecture-specific AI-based tutor for higher education: Pedagogical design and empirical evaluation. <em>Education Sciences</em>, <em>16</em>(5), 812. <a href="https://doi.org/10.3390/educsci16050812">https://doi.org/10.3390/educsci16050812</a>.
+</div>
+<div id="ref-tobor2026usecases" class="csl-entry" role="listitem">
+Tobor, J., Then Bergh, C., &amp; Lüthi, R. (2026). <em><a href="https://hochschulforumdigitalisierung.de/wp-content/uploads/2026/06/Blickpunkt-Use-Cases-in-Bewegung-2026.pdf">Use Cases in Bewegung: Wie KI Studium und Lehre weiter verändert</a></em> (Blickpunkt). Hochschulforum Digitalisierung.
+</div>
+<div id="ref-turano2026monolith" class="csl-entry" role="listitem">
+Turano, C., Pihl, V., Agnew, C., Ziegler, L., &amp; Loeb, S. (2026, August). <em>AI tutoring is not a monolith: What we actually know</em>. <a href="https://nssa.stanford.edu/briefs/ai-tutoring-not-monolith">https://nssa.stanford.edu/briefs/ai-tutoring-not-monolith</a>.
+</div>
+<div id="ref-wang2024" class="csl-entry" role="listitem">
+Wang, S., Xu, T., Li, H., Zhang, C., Liang, J., Tang, J., Yu, P. S., &amp; Wen, Q. (2024). Large language models for education: A survey and outlook. <em>arXiv preprint arXiv:2403.18105</em>.
+</div>
+<div id="ref-wissenschaftsrat2026" class="csl-entry" role="listitem">
+Wissenschaftsrat (2026). <em>Intellektuelle Souveränität: Empfehlungen für die Hochschulbildung in Zeiten von generativer KI</em> (Nr. Drs. 3319-26). Wissenschaftsrat. <a href="https://doi.org/10.57674/1evx-t906">https://doi.org/10.57674/1evx-t906</a>.
+</div>
+<div id="ref-wuouyang2026" class="csl-entry" role="listitem">
+Wu, M., &amp; Ouyang, F. (2026). How generative AI influences learning outcomes in programming education: A three-level Bayesian meta-analysis. <em>Educational Psychology Review</em>, <em>38</em>(117). <a href="https://doi.org/10.1007/s10648-026-10211-x">https://doi.org/10.1007/s10648-026-10211-x</a>.
+</div>
+<div id="ref-wu2024a" class="csl-entry" role="listitem">
+Wu, R., &amp; Yu, Z. (2024). Do AI chatbots improve students learning outcomes? Evidence from a meta-analysis. <em>British Journal of Educational Technology</em>, <em>55</em>(1), 10–33. <a href="https://doi.org/10.1111/bjet.13334">https://doi.org/10.1111/bjet.13334</a>.
+</div>
+<div id="ref-wu2023a" class="csl-entry" role="listitem">
+Wu, Y., Jia, F., Zhang, S., Li, H., Zhu, E., Wang, Y., Lee, Y. T., Peng, R., Wu, Q., &amp; Wang, C. (2023). <em>MathChat: Converse to Tackle Challenging Math Problems with LLM Agents</em>. arXiv. <a href="https://doi.org/10.48550/ARXIV.2306.01337">https://doi.org/10.48550/ARXIV.2306.01337</a>.
+</div>
+<div id="ref-xu2026" class="csl-entry" role="listitem">
+Xu, K., Shen, Y., Yan, L., &amp; Ren, Y. (2026). Cognitive agency surrender: Defending epistemic sovereignty via scaffolded AI friction. <a href="https://doi.org/10.48550/arXiv.2603.21735">https://doi.org/10.48550/arXiv.2603.21735</a>.
+</div>
+<div id="ref-yang2026speak" class="csl-entry" role="listitem">
+Yang, S., Van Alstyne, M., &amp; Dellarocas, C. (2026). <em>When AI tutors speak: Evidence from a randomized field experiment</em>. <a href="https://doi.org/10.48550/arXiv.2609.23958">https://doi.org/10.48550/arXiv.2609.23958</a>.
+</div>
+<div id="ref-yang2026visar" class="csl-entry" role="listitem">
+Yang, Y., Zhang, Z., Tang, N., Wang, X., Ambrose, A., Myers, N., Clauss, P., &amp; Li, T. J.-J. (2026). Lessons from real-world deployment of a cognition-preserving writing tool: Students actively engage with critical thinking and planning affordances. <a href="https://doi.org/10.48550/arXiv.2603.15777">https://doi.org/10.48550/arXiv.2603.15777</a>.
+</div>
+<div id="ref-yuen2025" class="csl-entry" role="listitem">
+Yuen, N. (2025). <em>Questioning the bot: Socratic chats with AI</em>. <a href="https://aipedagogy.org/assignment/questioning-the-bot-socratic-chats-with-ai-2/">https://aipedagogy.org/assignment/questioning-the-bot-socratic-chats-with-ai-2/</a>.
+</div>
+<div id="ref-zhang2025" class="csl-entry" role="listitem">
+Zhang, Y.-F., Li, H., Song, D., Sun, L., Xu, T., &amp; Wen, Q. (2025). <em>From Correctness to Comprehension: AI Agents for Personalized Error Diagnosis in Education</em>. arXiv. <a href="https://doi.org/10.48550/ARXIV.2502.13789">https://doi.org/10.48550/ARXIV.2502.13789</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<!-- Einschätzungen vorab, Auflösung im Text (Gegenstück zu _filters/einschaetzung.lua).
+     Jede Aussage bekommt eine Skala mit fünf Stufen. Die Wahl wird im Browser
+     gespeichert; der Kasten „Ihre Einschätzung prüfen“ an der Textstelle zeigt sie
+     wieder an. Die Auflösung erscheint absichtlich erst dort, damit die Frage beim
+     Lesen offen bleibt. Ohne JavaScript bleiben Aussagen und Verweise lesbar. -->
+<style>
+.einschaetzung { margin: 0.5rem 0 0.9rem; }
+.einschaetzung > p:first-child { font-weight: 600; margin-bottom: 0.45rem; }
+.ez-skala { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; margin: 0 0 0.35rem; max-width: 34rem; }
+.ez-stufe {
+  font: inherit; font-size: 0.85em; line-height: 1.2; padding: 0.35rem 0.3rem; text-align: center;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.ez-stufe:hover { border-color: #c81e0f; }
+.ez-stufe:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.ez-stufe[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.ez-js .einschaetzung .ez-verweis { display: none; }
+.ez-js .einschaetzung.ez-gewaehlt .ez-verweis { display: inline; }
+.einschaetzung .ez-verweis { font-size: 0.85em; color: #6c757d; }
+.ez-ihre { display: block; font-size: 0.9em; color: #6c757d; font-style: normal; margin-top: 0.2rem; }
+</style>
+<script>
+(function () {
+  "use strict";
+  var STUFEN = ["stimme voll zu", "stimme eher zu", "teils, teils", "stimme eher nicht zu", "stimme gar nicht zu"];
+  var KURZ = ["voll zu", "eher zu", "teils, teils", "eher nicht", "gar nicht"];
+  var PRAEFIX = "genai4teaching:ez:";
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Wahl nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function init() {
+    var aussagen = document.querySelectorAll("div.einschaetzung[id]");
+    if (!aussagen.length && !document.querySelector(".ez-ihre")) return;
+    document.documentElement.classList.add("ez-js");
+
+    Array.prototype.forEach.call(aussagen, function (div) {
+      var id = div.id;
+      var erster = div.querySelector("p");
+      var skala = document.createElement("div");
+      skala.className = "ez-skala";
+      skala.setAttribute("role", "group");
+      skala.setAttribute("aria-label", "Ihre Einschätzung: Wie sehr stimmen Sie zu?");
+      var knoepfe = STUFEN.map(function (text, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "ez-stufe";
+        b.textContent = KURZ[i];
+        b.setAttribute("aria-label", text);
+        b.title = text;
+        b.setAttribute("aria-pressed", "false");
+        b.addEventListener("click", function () { waehle(i, true); });
+        skala.appendChild(b);
+        return b;
+      });
+      var verweis = div.querySelector(".ez-verweis");
+      if (verweis) {
+        verweis.setAttribute("aria-live", "polite");
+        if (verweis.firstChild && verweis.firstChild.nodeType === 3) {
+          verweis.insertBefore(document.createTextNode("Gespeichert. "), verweis.firstChild);
+        }
+      }
+      // Link direkt auf den Prüfkasten statt auf den Abschnittsanfang
+      var ziel = document.querySelector('.ez-ihre[data-ez="' + id + '"]');
+      var kasten = ziel && ziel.closest(".callout");
+      var a = verweis && verweis.querySelector("a");
+      if (kasten && a) {
+        if (!kasten.id) kasten.id = "pruefen-" + id;
+        a.setAttribute("href", "#" + kasten.id);
+      }
+      if (erster && erster.nextSibling) div.insertBefore(skala, erster.nextSibling);
+      else div.appendChild(skala);
+
+      function waehle(i, speichern) {
+        knoepfe.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+        div.classList.add("ez-gewaehlt");
+        if (speichern) schreib(id, String(i));
+        zeigeIhre(id);
+      }
+      var alt = lies(id);
+      if (alt !== null && STUFEN[+alt]) waehle(+alt, false);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll(".ez-ihre[data-ez]"), function (sp) {
+      zeigeIhre(sp.getAttribute("data-ez"));
+    });
+  }
+  function zeigeIhre(id) {
+    Array.prototype.forEach.call(document.querySelectorAll('.ez-ihre[data-ez="' + id + '"]'), function (sp) {
+      var w = lies(id);
+      if (w !== null && STUFEN[+w]) {
+        sp.textContent = "Ihre Einschätzung vorab: " + STUFEN[+w] + ".";
+      } else {
+        sp.textContent = "Sie haben vorab keine Einschätzung abgegeben.";
+      }
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+<!-- Kasten „Schlüsselbegriffe“ am Kapitelende (Gegenstück zu _filters/schluesselbegriffe.lua).
+     Ein Skript für alle Modi, damit neue Kapitel nur Daten im .qmd brauchen:
+       .sb-begriffe     Begriffsliste: Begriff (Link zur Fundstelle), Musterantwort aufdecken,
+                        Selbsteinstufung gewusst / halb / nicht (Browser-Speicher, Präfix genai4teaching:sb:)
+       .sb-spiel        modus="fall" | "paare" | "stapel" | "luecke" | "reihenfolge"
+       .sb-wiederkehr   2–3 Begriffe früherer Kapitel als Erklärkarten; bevorzugt „nicht“, dann „halb“
+                        gewusste, ohne Einstufungen zufällig (Daten werden aus den Kapitelseiten gelesen)
+     Bedienung nur mit Klicks und Tastatur, kein Ziehen nötig. Ohne JavaScript bleiben
+     Begriffe, Szenen, Herkunft und Begründungen als Text lesbar. -->
+<style>
+.schluesselbegriffe .sb-anleitung { font-style: italic; margin: 0.2rem 0 0.7rem; }
+.sb-begriff, .sb-wk-karte { border-top: 1px solid var(--bs-border-color, #ddd); padding: 0.55rem 0 0.6rem; }
+.sb-begriff:first-of-type { border-top: 0; }
+.sb-begriff > p, .sb-wk-karte > p { margin-bottom: 0.35rem; }
+.sb-name { font-weight: 600; }
+.sb-js .sb-muster[hidden] { display: none; }
+.sb-muster { font-size: 0.95em; margin: 0.25rem 0 0.4rem; padding-left: 0.7rem; border-left: 3px solid var(--bs-border-color, #ddd); }
+.sb-zeile { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.sb-knopf {
+  font: inherit; font-size: 0.85em; line-height: 1.25; padding: 0.3rem 0.55rem;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.sb-knopf:hover:not([disabled]) { border-color: #c81e0f; }
+.sb-knopf:focus-visible, .sb-eingabe:focus-visible, .sb-erklaerung:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.sb-knopf[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.sb-knopf[disabled] { cursor: default; opacity: 0.75; }
+.sb-stufen-label { font-size: 0.85em; color: #6c757d; margin: 0 0.2rem 0 0.4rem; }
+.sb-spiel { margin-top: 1rem; }
+.sb-titel { font-weight: 600; margin: 0.8rem 0 0.2rem; }
+.sb-aufgabe { border-top: 1px solid var(--bs-border-color, #ddd); padding: 0.6rem 0; }
+.sb-aufgabe > p:first-child { margin-bottom: 0.3rem; }
+.sb-herkunft, .sb-herkunft p { font-size: 0.85em; color: #6c757d; margin-bottom: 0.35rem; }
+.sb-herkunft a { text-decoration: underline; }
+.sb-js .sb-begruendung { display: none; }
+.sb-js .sb-aufgabe.sb-beantwortet .sb-begruendung { display: block; }
+.sb-begruendung, .sb-begruendung p { font-size: 0.95em; }
+.sb-optionen .sb-knopf { text-align: left; }
+.sb-knopf.sb-richtig { border: 2px solid #2e7d32; font-weight: 600; }
+.sb-knopf.sb-falsch { border: 2px solid #c62828; text-decoration: line-through; }
+.sb-rueckmeldung { font-weight: 600; margin: 0.4rem 0 0.2rem; }
+.sb-rueckmeldung.sb-ok { color: #2e7d32; }
+.sb-rueckmeldung.sb-nein { color: #c62828; }
+.sb-eingabe { font: inherit; padding: 0.25rem 0.4rem; border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px; max-width: 14rem; width: 100%; background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); }
+.sb-erklaerung { font: inherit; font-size: 0.95em; width: 100%; min-height: 3.2rem; padding: 0.3rem 0.4rem; border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px; background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); margin-bottom: 0.35rem; }
+.sb-reihe { padding-left: 1.4rem; margin: 0.3rem 0; }
+.sb-reihe li.sb-richtig::marker { color: #2e7d32; }
+.sb-reihe li.sb-falsch { color: #c62828; }
+.sb-stand { font-size: 0.9em; margin-top: 0.6rem; }
+.sb-wiederkehr { margin-top: 1rem; }
+.sb-wiederkehr:empty { display: none; }
+@media (max-width: 480px) {
+  .sb-optionen { flex-direction: column; align-items: stretch; }
+  .sb-optionen .sb-knopf { width: 100%; }
+}
+</style>
+<script>
+(function () {
+  "use strict";
+  var PRAEFIX = "genai4teaching:sb:";
+  var STUFEN = [["gewusst", "gewusst"], ["halb", "halb"], ["nicht", "nicht gewusst"]];
+  var ANLEITUNG = {
+    fall: "Welcher Begriff passt zu der Szene? Wählen Sie eine Antwort; danach sehen Sie die Begründung.",
+    paare: "Zu welchem der beiden Begriffe passt der Satz?",
+    stapel: "In welchen Stapel gehört die Karte?",
+    luecke: "Tragen Sie den fehlenden Begriff ein und prüfen Sie.",
+    reihenfolge: "Klicken Sie die Schritte in der richtigen Reihenfolge an."
+  };
+  var TITEL = {
+    fall: "Übung: Welcher Begriff passt?", paare: "Übung: Verwechslungspaare", stapel: "Übung: Stapel sortieren",
+    luecke: "Übung: Lückentext", reihenfolge: "Übung: Reihenfolge"
+  };
+
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Einstufung nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function el(tag, klasse, text) {
+    var e = document.createElement(tag);
+    if (klasse) e.className = klasse;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function knopf(text, klasse) {
+    var b = el("button", "sb-knopf" + (klasse ? " " + klasse : ""), text);
+    b.type = "button";
+    return b;
+  }
+  function mische(a) {
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function norm(s) {
+    return (s || "").toLowerCase().replace(/\(.*?\)/g, "")
+      .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+      .replace(/[^a-z0-9]/g, "");
+  }
+  var zaehler = 0;
+  function neueId(p) { zaehler += 1; return "sb-" + p + "-" + zaehler; }
+
+  // ---------- Begriffe: Musterantwort aufdecken und selbst einstufen ----------
+  function stufen(id) {
+    var zeile = el("div", "sb-zeile sb-stufen");
+    zeile.setAttribute("role", "group");
+    zeile.setAttribute("aria-label", "Selbsteinstufung: Wie gut konnten Sie den Begriff erklären?");
+    zeile.appendChild(el("span", "sb-stufen-label", "Erklären konnte ich ihn:"));
+    var knoepfe = STUFEN.map(function (s) {
+      var b = knopf(s[1]);
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () { schreib(id, s[0]); markiere(s[0]); });
+      zeile.appendChild(b);
+      return b;
+    });
+    function markiere(w) { knoepfe.forEach(function (b, i) { b.setAttribute("aria-pressed", STUFEN[i][0] === w ? "true" : "false"); }); }
+    markiere(lies(id));
+    return zeile;
+  }
+
+  function aufdecken(muster) {
+    var mid = neueId("muster");
+    muster.id = mid;
+    muster.hidden = true;
+    var b = knopf("Musterantwort zeigen", "sb-aufdecken");
+    b.setAttribute("aria-expanded", "false");
+    b.setAttribute("aria-controls", mid);
+    b.addEventListener("click", function () {
+      var auf = muster.hidden;
+      muster.hidden = !auf;
+      b.setAttribute("aria-expanded", auf ? "true" : "false");
+      b.textContent = auf ? "Musterantwort verbergen" : "Musterantwort zeigen";
+    });
+    return b;
+  }
+
+  function richteBegriffEin(div) {
+    var id = div.getAttribute("data-begriff");
+    var absaetze = Array.prototype.slice.call(div.children);
+    var kopf = absaetze.shift();
+    if (!kopf) return;
+    var link = el("a", "sb-name");
+    link.href = "#sb-" + id;
+    link.title = "Zur Stelle im Kapitel";
+    while (kopf.firstChild) link.appendChild(kopf.firstChild);
+    kopf.appendChild(link);
+    var muster = el("div", "sb-muster");
+    absaetze.forEach(function (p) { muster.appendChild(p); });
+    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
+    var zeile = el("div", "sb-zeile");
+    zeile.appendChild(aufdecken(muster));
+    zeile.appendChild(stufen(id));
+    div.appendChild(zeile);
+    div.appendChild(muster);
+  }
+
+  function begriffsListe(liste) {
+    var hinweis = el("p", "sb-anleitung",
+      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+      "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    liste.insertBefore(hinweis, liste.firstChild);
+    Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
+  }
+
+  // ---------- Spiele ----------
+  function etiketten() {
+    var m = {};
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+      var k = d.querySelector(".sb-name") || d.firstElementChild;
+      // Auf Knöpfen nur der deutsche Begriff, ohne englischen Fachbegriff in Klammern
+      if (k) m[d.getAttribute("data-begriff")] = k.textContent.replace(/\s*\(.*\)\s*$/, "").trim();
+    });
+    return m;
+  }
+  // Fallback ohne Begriffsliste auf der Seite: Kennung lesbar machen (k1-vier-rollen -> Vier rollen)
+  function etikett(m, x) {
+    if (m[x]) return m[x];
+    var s = String(x).replace(/^k\d+-/, "").replace(/-/g, " ");
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function rueckmelden(aufgabe, ok, loesungText) {
+    var r = aufgabe.querySelector(".sb-rueckmeldung");
+    r.className = "sb-rueckmeldung " + (ok ? "sb-ok" : "sb-nein");
+    r.textContent = ok ? "✓ Richtig." : "✗ Nicht ganz. Passend ist: " + loesungText + ".";
+    aufgabe.classList.add("sb-beantwortet");
+  }
+
+  function vorRueckmeldung(aufgabe, knoten) {
+    var r = el("p", "sb-rueckmeldung");
+    r.setAttribute("aria-live", "polite");
+    var beg = aufgabe.querySelector(".sb-begruendung");
+    aufgabe.insertBefore(knoten, beg || null);
+    aufgabe.insertBefore(r, beg || null);
+  }
+
+  function auswahl(aufgabe, modus, m, spiel, zaehle) {
+    var loesung = aufgabe.getAttribute("data-loesung");
+    var optionen;
+    if (modus === "stapel") {
+      optionen = (spiel.getAttribute("data-koerbe") || "").split("|").map(function (s) { return s.trim(); }).filter(Boolean);
+    } else {
+      optionen = [loesung].concat((aufgabe.getAttribute("data-ablenker") || "").split(/\s+/).filter(Boolean));
+      optionen.sort(function (a, b) { return etikett(m, a).localeCompare(etikett(m, b), "de"); });
+    }
+    var gruppe = el("div", "sb-zeile sb-optionen");
+    gruppe.setAttribute("role", "group");
+    gruppe.setAttribute("aria-label", "Antwort wählen");
+    var knoepfe = optionen.map(function (o) {
+      var b = knopf(etikett(m, o));
+      b.addEventListener("click", function () {
+        var ok = o === loesung;
+        knoepfe.forEach(function (k, i) {
+          k.disabled = true;
+          if (optionen[i] === loesung) k.classList.add("sb-richtig");
+        });
+        if (!ok) b.classList.add("sb-falsch");
+        rueckmelden(aufgabe, ok, etikett(m, loesung));
+        zaehle(ok);
+      });
+      gruppe.appendChild(b);
+      return b;
+    });
+    vorRueckmeldung(aufgabe, gruppe);
+  }
+
+  function luecke(aufgabe, m, zaehle) {
+    var loesung = aufgabe.getAttribute("data-loesung");
+    var erlaubt = [etikett(m, loesung)].concat((aufgabe.getAttribute("data-auch") || "").split("|")).map(norm).filter(Boolean);
+    var platz = aufgabe.querySelector(".sb-luecke");
+    var feld = el("input", "sb-eingabe");
+    feld.type = "text";
+    feld.setAttribute("aria-label", "Fehlenden Begriff eintragen");
+    feld.autocomplete = "off";
+    if (platz) { platz.textContent = ""; platz.appendChild(feld); }
+    var zeile = el("div", "sb-zeile");
+    var b = knopf("Prüfen");
+    zeile.appendChild(b);
+    if (!platz) zeile.insertBefore(feld, b);
+    function pruefe() {
+      if (feld.disabled) return;
+      var ok = erlaubt.indexOf(norm(feld.value)) >= 0;
+      feld.disabled = true; b.disabled = true;
+      rueckmelden(aufgabe, ok, etikett(m, loesung));
+      zaehle(ok);
+    }
+    b.addEventListener("click", pruefe);
+    feld.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); pruefe(); } });
+    vorRueckmeldung(aufgabe, zeile);
+  }
+
+  function reihenfolge(aufgabe, zaehle) {
+    var ol = aufgabe.querySelector("ol");
+    if (!ol) return;
+    var richtig = Array.prototype.map.call(ol.children, function (li) { return li.innerHTML; });
+    var reihe = richtig.map(function (_, i) { return i; });
+    do { mische(reihe); } while (reihe.length > 1 && reihe.every(function (x, i) { return x === i; }));
+    var gewaehlt = [];
+    var vorrat = el("div", "sb-zeile sb-optionen");
+    vorrat.setAttribute("role", "group");
+    vorrat.setAttribute("aria-label", "Schritte zur Auswahl");
+    var antwort = el("ol", "sb-reihe");
+    antwort.setAttribute("aria-label", "Ihre Reihenfolge");
+    var steuer = el("div", "sb-zeile");
+    var zurueck = knopf("Zurücksetzen"), pruef = knopf("Prüfen");
+    pruef.disabled = true;
+    steuer.appendChild(zurueck); steuer.appendChild(pruef);
+    var knoepfe = reihe.map(function (i) {
+      var b = knopf("");
+      b.innerHTML = richtig[i];
+      b.addEventListener("click", function () {
+        gewaehlt.push(i); b.disabled = true;
+        var li = el("li"); li.innerHTML = richtig[i]; antwort.appendChild(li);
+        pruef.disabled = gewaehlt.length < richtig.length;
+      });
+      vorrat.appendChild(b);
+      return b;
+    });
+    zurueck.addEventListener("click", function () {
+      gewaehlt = []; antwort.innerHTML = ""; pruef.disabled = true;
+      knoepfe.forEach(function (k) { k.disabled = false; });
+    });
+    pruef.addEventListener("click", function () {
+      var ok = gewaehlt.every(function (x, i) { return x === i; });
+      Array.prototype.forEach.call(antwort.children, function (li, i) { li.className = gewaehlt[i] === i ? "sb-richtig" : "sb-falsch"; });
+      pruef.disabled = true; zurueck.disabled = true;
+      var r = aufgabe.querySelector(".sb-rueckmeldung");
+      r.className = "sb-rueckmeldung " + (ok ? "sb-ok" : "sb-nein");
+      r.textContent = ok ? "✓ Richtig." : "✗ Nicht ganz. Richtig ist: " + richtig.map(function (h) { var d = el("div"); d.innerHTML = h; return d.textContent.trim(); }).join(" → ") + ".";
+      aufgabe.classList.add("sb-beantwortet");
+      zaehle(ok);
+    });
+    ol.hidden = true;
+    var huelle = el("div");
+    huelle.appendChild(vorrat); huelle.appendChild(antwort); huelle.appendChild(steuer);
+    vorRueckmeldung(aufgabe, huelle);
+  }
+
+  function richteSpielEin(spiel, m) {
+    var modus = spiel.getAttribute("data-modus") || "fall";
+    if (!spiel.__sbVorlage) spiel.__sbVorlage = spiel.innerHTML;
+    var aufgaben = spiel.querySelectorAll(".sb-aufgabe");
+    var n = aufgaben.length, beantwortet = 0, richtig = 0;
+    spiel.insertBefore(el("p", "sb-anleitung", ANLEITUNG[modus] || ANLEITUNG.fall), spiel.firstChild);
+    spiel.insertBefore(el("p", "sb-titel", TITEL[modus] || TITEL.fall), spiel.firstChild);
+    var stand = el("p", "sb-stand");
+    stand.setAttribute("aria-live", "polite");
+    var neu = knopf("Übung neu starten");
+    neu.addEventListener("click", function () {
+      spiel.innerHTML = spiel.__sbVorlage;
+      richteSpielEin(spiel, m);
+      var t = spiel.querySelector(".sb-knopf, .sb-eingabe");
+      if (t) t.focus();
+    });
+    function zaehle(ok) {
+      beantwortet += 1; if (ok) richtig += 1;
+      stand.textContent = richtig + " von " + beantwortet + " richtig" + (beantwortet === n ? " (alle beantwortet)." : ".");
+    }
+    Array.prototype.forEach.call(aufgaben, function (a) {
+      if (modus === "luecke") luecke(a, m, zaehle);
+      else if (modus === "reihenfolge") reihenfolge(a, zaehle);
+      else auswahl(a, modus, m, spiel, zaehle);
+    });
+    var fuss = el("div", "sb-zeile");
+    fuss.appendChild(stand); fuss.appendChild(neu);
+    spiel.appendChild(fuss);
+  }
+
+  // ---------- Wiederkehr: Bonuskarten aus früheren Kapiteln ----------
+  function holeBegriffe(url) {
+    return fetch(url, { credentials: "same-origin" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      return Array.prototype.map.call(doc.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+        var teile = Array.prototype.slice.call(d.children);
+        var kopf = teile.shift();
+        return { id: d.getAttribute("data-begriff"), url: url, kopf: kopf ? kopf.innerHTML : "", muster: teile.map(function (p) { return p.outerHTML; }).join("") };
+      });
+    }).catch(function () { return []; });
+  }
+
+  function waehleKarten(alle, anzahl) {
+    var gruppen = { nicht: [], halb: [], offen: [], gewusst: [] };
+    alle.forEach(function (b) { var w = lies(b.id); (gruppen[w] || gruppen.offen).push(b); });
+    var reihe = mische(gruppen.nicht).concat(mische(gruppen.halb), mische(gruppen.offen), mische(gruppen.gewusst));
+    return reihe.slice(0, anzahl);
+  }
+
+  function richteWiederkehrEin(wk) {
+    var quellen = (wk.getAttribute("data-quellen") || "").split(/\s+/).filter(Boolean);
+    var anzahl = parseInt(wk.getAttribute("data-anzahl") || "3", 10);
+    if (!quellen.length || !window.fetch || !window.DOMParser) { wk.hidden = true; return; }
+    Promise.all(quellen.map(holeBegriffe)).then(function (listen) {
+      var alle = [].concat.apply([], listen);
+      if (!alle.length) { wk.hidden = true; return; }
+      var karten = waehleKarten(alle, anzahl);
+      wk.innerHTML = "";
+      wk.appendChild(el("p", "sb-titel", "Wiederholung aus früheren Kapiteln"));
+      wk.appendChild(el("p", "sb-anleitung", "Erklären Sie die Begriffe in eigenen Worten, bevor Sie die Musterantwort aufdecken. Ausgewählt werden bevorzugt Begriffe, die Sie dort als nicht oder halb gewusst eingestuft haben."));
+      karten.forEach(function (b) {
+        var karte = el("div", "sb-wk-karte");
+        var kopf = el("p");
+        var link = el("a", "sb-name");
+        link.href = b.url + "#sb-" + b.id;
+        link.title = "Zur Stelle im früheren Kapitel";
+        link.innerHTML = b.kopf;
+        kopf.appendChild(link);
+        karte.appendChild(kopf);
+        var feld = el("textarea", "sb-erklaerung");
+        feld.setAttribute("aria-label", "Ihre Erklärung (wird nicht gespeichert)");
+        feld.placeholder = "Ihre Erklärung in eigenen Worten (wird nicht gespeichert)";
+        karte.appendChild(feld);
+        var muster = el("div", "sb-muster");
+        muster.innerHTML = b.muster;
+        var zeile = el("div", "sb-zeile");
+        zeile.appendChild(aufdecken(muster));
+        zeile.appendChild(stufen(b.id));
+        karte.appendChild(zeile);
+        karte.appendChild(muster);
+        wk.appendChild(karte);
+      });
+    });
+  }
+
+  function init() {
+    var boxen = document.querySelectorAll(".sb-begriffe, .sb-spiel, .sb-wiederkehr");
+    if (!boxen.length) return;
+    document.documentElement.classList.add("sb-js");
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-begriffe"), begriffsListe);
+    var m = etiketten();
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-spiel"), function (s) { richteSpielEin(s, m); });
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-wiederkehr"), richteWiederkehrEin);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
+</script>
+<script>
+// Zitat-Popups auf Tablet und Smartphone.
+// Quarto zeigt den Voll-Verweis per tippy.js beim Überfahren mit der Maus.
+// Ein Fingertipp löst aber zugleich den Link aus und springt ins
+// Literaturverzeichnis, bevor man das Popup sieht. Bei Touch- oder
+// Stifteingabe öffnet ein Tipp daher nur das Popup; ein Tipp daneben
+// schließt es. Mausbedienung bleibt unverändert.
+(function () {
+  var touch = false;
+  document.addEventListener('pointerdown', function (e) {
+    var isTouch = e.pointerType === 'touch' || e.pointerType === 'pen';
+    if (isTouch === touch) return;
+    touch = isTouch;
+    document.querySelectorAll('a[role="doc-biblioref"]').forEach(function (a) {
+      if (a._tippy) a._tippy.setProps({ trigger: touch ? 'click' : 'mouseenter focus' });
+    });
+  }, true);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[role="doc-biblioref"]');
+    if (a && touch) e.preventDefault();
+  }, true);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./kapitel03-automation.html" class="pagination-link" aria-label="Prinzipien der Automation von Aufgaben">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prinzipien der Automation von Aufgaben</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./kapitel05-4d-phasen.html" class="pagination-link" aria-label="Phasen der Arbeit mit generativer KI (4D)">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Phasen der Arbeit mit generativer KI (4D)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, Roman (2026). Generative KI als Hilfe zum Lehren und Lernen. Lizenz: CC BY-SA 4.0. Online: https://th-koln-bartnik.github.io/genai4teaching/</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel04-lernmechanismen.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel04-lernmechanismen.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

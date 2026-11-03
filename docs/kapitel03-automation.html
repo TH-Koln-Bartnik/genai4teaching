@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Prinzipien der Automation von Aufgaben – Generative KI als Hilfe zum Lehren und Lernen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./kapitel04-lernmechanismen.html" rel="next">
+<link href="./kapitel02-grundlagen.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4622c99584d0b91f3844d5069d85751c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a2d887a1e5c018b44fb64840a22a9f87.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/support-this-1.0.0/support-this.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<!-- Webschrift Lato (Theme flatly) früh anfordern: Das Theme lädt sie per @import erst
+     nach dem Stylesheet; bis dahin steht eine Ersatzschrift, und beim Wechsel springt
+     der Text. Preconnect + direkter Stylesheet-Link verkürzen diese Phase. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+
+
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/style.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative KI als Hilfe zum Lehren und Lernen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ko-fi.com/romanbartnik"> 
+<span class="menu-text">Ko-fi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://buymeacoffee.com/roman.bartnik.th"> 
+<span class="menu-text">Buy me a coffee</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/TH-Koln-Bartnik/genai4teaching" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./downloads-genai4teaching.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel01-einleitung.html">Teil I: Grundlagen</a></li><li class="breadcrumb-item"><a href="./kapitel03-automation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prinzipien der Automation von Aufgaben</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Teil I: Grundlagen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel01-einleitung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel02-grundlagen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundlagen von KI und LLMs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel03-automation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prinzipien der Automation von Aufgaben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel04-lernmechanismen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lern- und Wirkmechanismen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Teil II: Anwendungen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel05-4d-phasen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Phasen der Arbeit mit generativer KI (4D)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel06-rollen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rollen der KI: Hiwi, Copilot, Tutor, Simulator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-artefakte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Artefakte: Fallbeispiele aus der Lehre</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./praxisbeispiele.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Praxisbeispiele im Überblick</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel07-appendix02-prompt-sammlung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Best-Practice-Sammlung didaktischer Prompts und GenAI Aufgabenstellungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kapitel10-appendix05-loesungshinweise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Lösungshinweise zu Lernfragen und Übungen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transparenz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transparenzhinweis zum Gesamtwerk</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schreibtrainer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Online-Material: Schreibtrainer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelluebersicht.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modellübersicht (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forschungsstand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forschungsstand (lebende Seite)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./energie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Ressourcenverbrauch der Modelle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#sec-aufgaben" id="toc-sec-aufgaben" class="nav-link active" data-scroll-target="#sec-aufgaben"><span class="header-section-number">3.1</span> Was sind unsere Aufgaben?</a></li>
+  <li><a href="#sec-arbeitsweisen" id="toc-sec-arbeitsweisen" class="nav-link" data-scroll-target="#sec-arbeitsweisen"><span class="header-section-number">3.2</span> Wer macht was: Arbeitsweisen von Centaur bis dunkle Fabrik</a></li>
+  <li><a href="#sec-leitungsaufgabe" id="toc-sec-leitungsaufgabe" class="nav-link" data-scroll-target="#sec-leitungsaufgabe"><span class="header-section-number">3.3</span> Leitungsaufgabe Mensch–LLM</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Literaturverzeichnis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel03-automation.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel03-automation.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kapitel01-einleitung.html">Teil I: Grundlagen</a></li><li class="breadcrumb-item"><a href="./kapitel03-automation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prinzipien der Automation von Aufgaben</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-automation" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prinzipien der Automation von Aufgaben</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-aufgaben" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-aufgaben"><span class="header-section-number">3.1</span> Was sind unsere Aufgaben?</h2>
+<div id="sec-bibliothek-prompts">
+<p><strong>Bevor wir die Aufgaben der Lehre einzeln ansehen, ein Blick darauf, welchen Berufen Gespräche mit einer KI überhaupt zugeordnet werden.</strong> Der <em>Anthropic Economic Index</em> ordnet Gespräche mit dem Assistenten Claude automatisch Berufen und Arbeitsaufgaben der US-Berufsdatenbank O*NET zu und veröffentlicht, welcher Anteil der Gespräche eines Monats auf jeden Beruf entfällt <span class="citation" data-cites="massenkoff2026cadences onet2026database">(<a href="#ref-massenkoff2026cadences" role="doc-biblioref">Massenkoff et al., 2026</a>; <a href="#ref-onet2026database" role="doc-biblioref">National Center for O*NET Development, 2026</a>)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Die <em>Bibliothek der Prompts</em> macht daraus einen Raum: Jedes Regal ist eine von 22 Berufshauptgruppen, jedes Buch ein Beruf, die Buchbreite sein Anteil. Raten Sie zuerst, wo das Regal der Lehre steht, und machen Sie dann den Rundgang; wer vorher rät, behält die Auflösung besser, auch wenn der Tipp danebenlag <span class="citation" data-cites="richland2009">(<a href="#ref-richland2009" role="doc-biblioref">Richland et al., 2009</a>)</span>. Das dauert etwa fünf Minuten.</p>
+<iframe loading="lazy" id="bibliothek-der-prompts" src="interactions/bibliothek-der-prompts.html" width="100%" height="1250px" frameborder="0" title="Leserübung: Die Bibliothek der Prompts – 22 Regale mit Berufen, denen Gespräche mit Claude zugeordnet wurden"></iframe>
+<script>
+/* Das Element meldet seine Inhaltshöhe; so entsteht kein Scrollbalken im Rahmen. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "bibliothek-der-prompts") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+<p>Im Mai 2026 stand das Regal <em>Bildung, Ausbildung und Bibliothek</em> mit 12,79 % der Gespräche auf Platz 3 von 22, bei Gesprächen aus Deutschland mit 12,87 % auf Platz 2. Breit ist es vor allem durch den Bibliotheksberuf (4,22 %), dem O*NET Auskunfts- und Rechercheaufgaben zuordnet; die Hochschullehrenden aller 35 Fächer kommen zusammen auf 2,12 %.</p>
+<p><strong>Die Daten zeigen Gesprächsinhalte, nicht die Menschen dahinter.</strong> Ein Gespräch über eine Klausur landet im Bildungsregal, auch wenn eine Studentin es geführt hat; und als Momentaufnahme eines Monats mit einem einzigen Assistenten sagt die Bibliothek nichts darüber, welche Berufe KI verändert.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="So entstand diese Bibliothek">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>So entstand diese Bibliothek
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gebaut hat sie ein Agent (Claude Opus 5.5) in einer Sitzung von rund 40 Minuten, auf einen Satz hin, der auf eine schriftliche Bauanleitung verwies: „Lies [die Regeln], [die Standards] und [den Auftrag] und führe den Auftrag aus.“ Er zog die Werte per Skript aus Economic Index und O*NET und baute den Raum mit Three.js; 1.483 Berufsnamen und Aufgaben übersetzten fünf Teilagenten. Die Schwäche: Sie übersetzten uneinheitlich, „students“ etwa mal als „Studierende“, mal als „Lernende“. Schreibweisen ließen sich per Skript angleichen, Bedeutungen nicht. Eine Prompt-Vorlage steht am Ende des Rundgangs.</p>
+</div>
+</div>
+</div>
+<p>Woraus besteht das im Detail und wo könnten große Sprachmodelle (LLMs) helfen? Vor- und Nachbereitung, Evaluation, Beratung, Planung und vieles mehr lassen die Stunden eines Tages schnell vergehen. <a href="#fig-onet-tasks" class="quarto-xref">Abbildung&nbsp;<span>3.1</span></a> zeigt die 25 Hauptaufgaben, die Lehrende nach Umfragen des US-Arbeitsministeriums verrichten (https://www.onetonline.org/link/summary/25-1011.00). Welche Auswirkungen können wir von LLM auf diese konkreten Aufgaben erwarten?</p>
+<div id="fig-onet-tasks" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-onet-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/druck/onet-aufgaben.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-onet-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;3.1: Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00) nach Umfragen des US-Arbeitsministeriums. Enthält Informationen aus O*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<a href="https://www.onetonline.org/help/license" class="uri">https://www.onetonline.org/help/license</a>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O*NET® ist eine Marke von USDOL/ETA.
+</figcaption>
+</figure>
+</div>
+<p>Historische Studien zeigen, dass Technologie typischerweise <strong>Tätigkeiten</strong> (<em>tasks</em>) beeinflusst und eher selten ganze Jobs ersetzt. Den Rahmen dafür liefert das Aufgabenmodell (<em>task model</em>), das der Nobelpreisträger Daron Acemoglu mit Fredric Kong und Pascual Restrepo im <em>Handbook of Labor Economics</em> zusammengefasst hat <span class="citation" data-cites="acemoglu2025tasks">(<a href="#ref-acemoglu2025tasks" role="doc-biblioref">Acemoglu et al., 2025</a>)</span>. Für Lehrende, die ihre eigene Arbeit planen, zählen drei Formen technologischen Wandels aus diesem Modell. Bei der <strong>Automatisierung</strong> (<em>automation</em>)<span id="sb-k4-automatisierung"></span> wandert eine Aufgabe vom Menschen zur Technik. Bei der <strong>Augmentierung</strong> (<em>labor-augmenting technology</em>)<span id="sb-k4-augmentierung"></span> bleibt die Aufgabe beim Menschen, der sie mit technischer Unterstützung schneller oder besser erledigt. Und Technik schafft <strong>neue Aufgaben</strong> (<em>new tasks</em>)<span id="sb-k4-neue-aufgaben"></span>, die es vorher nicht gab. Die vierte Form des Modells, leistungsfähigere Maschinen in Aufgaben, die sie schon erledigen (<em>capital-augmenting technology</em>), lassen wir hier beiseite. Die Arbeitsmarktforschung beschreibt die Folgen aus Sicht der Beschäftigten und spricht von Verdrängung (<em>displacement effect</em>) und Wiedereinsetzung (<em>reinstatement effect</em>); wer die eigene Lehre plant, fragt dagegen, welche Aufgabe wohin wandert.</p>
+<div id="tbl-acemoglu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-acemoglu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;3.1: Welche Aufgaben in der Lehre wandern zur KI, bei welchen unterstützt sie, und welche kommen neu hinzu? Legende: x = klarer Effekt, ? = gemischter Effekt. Quelle: Aufgabenmodell nach <span class="citation" data-cites="acemoglu2025tasks">Acemoglu et al. (<a href="#ref-acemoglu2025tasks" role="doc-biblioref">2025</a>)</span>
+</figcaption>
+<div aria-describedby="tbl-acemoglu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 23%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Form</th>
+<th style="text-align: left;">Beschreibung</th>
+<th style="text-align: left;">Aufgaben in der Lehre (Beispiele)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Automatisierung</strong> (<em>automation</em>)</td>
+<td style="text-align: left;">Aufgabe wandert vom Menschen zur KI</td>
+<td style="text-align: left;">• Erstellung, Durchführung und Bewertung von Prüfungen (x)<br>
+• Verwaltung von Noten und Anwesenheit (x)<br>
+• Vorbereitung standardisierter Lehrmaterialien (x)<br>
+• Zusammenstellung von Bibliographien (x)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Augmentierung</strong> (<em>labor-augmenting technology</em>)</td>
+<td style="text-align: left;">KI unterstützt Menschen; dieselbe Aufgabe braucht weniger Zeit oder gelingt besser</td>
+<td style="text-align: left;">• Vorbereitung und Durchführung von Vorlesungen (x)<br>
+• Durchführung von Seminaren und Diskussionen (x)<br>
+• Akademische und berufliche Beratung (?/x)<br>
+• Forschung und Publikation (x)<br>
+• Pflege von Webseiten und digitalen Ressourcen (?/x)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Neue Aufgaben</strong> (<em>new tasks</em>)</td>
+<td style="text-align: left;">KI schafft Aufgaben, die es vorher nicht gab</td>
+<td style="text-align: left;">• Entwicklung KI-gestützter Lehrkonzepte (x)<br>
+• Qualitätskontrolle von KI-Materialien (x)<br>
+• Gestaltung individueller Lernpfade (x)<br>
+• Ethische und rechtliche Begleitung (x)<br>
+• Weiterbildung des Personals (x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In <a href="#tbl-acemoglu" class="quarto-xref">Tabelle&nbsp;<span>3.1</span></a> übertragen wir die drei Formen auf konkrete Aufgaben in der Hochschullehre.</p>
+<p>Das folgende Video spielt die drei Formen an den Aufgaben aus <a href="#tbl-acemoglu" class="quarto-xref">Tabelle&nbsp;<span>3.1</span></a> durch. Vier Kacheln wandern von der Lehrperson zur KI, fünf schrumpfen, weil dieselbe Aufgabe weniger Zeit braucht, und fünf neue kommen hinzu. Die Größen der Kacheln sind nicht gemessen; sie zeigen die Richtung der Effekte, nicht ihr Ausmaß.</p>
+<video id="vid-acemoglu-restrepo" controls="" playsinline="" preload="metadata" style="width:100%;height:auto" poster="interactions/media/kap04-acemoglu-restrepo-poster.png" title="Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus Tabelle 4.1">
+  <source src="interactions/media/kap04-acemoglu-restrepo.mp4" type="video/mp4">
+</video>
+<p><em>Video (60 s, ohne Ton): Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus <a href="#tbl-acemoglu" class="quarto-xref">Tabelle&nbsp;<span>3.1</span></a>. Erstellt mit Claude Code und HyperFrames; die Kachelgrößen sind nicht gemessen.</em></p>
+<p>Die <strong>Automatisierung</strong> betrifft hauptsächlich administrative und stark standardisierte Tätigkeiten. Aufgaben wie das Erstellen, Durchführen und Bewerten von Prüfungen, die Verwaltung von Noten und Anwesenheiten sowie die Vorbereitung standardisierter Lehrmaterialien oder Literaturzusammenstellungen werden voraussichtlich vollständig oder überwiegend von KI übernommen. Anwendungsstudien und Umfragen der letzten zwei Jahre geben hierzu deutliche Hinweise <span class="citation" data-cites="morgan2024 naddaf2025 ogunleye2024 ou2024 tutton2025">(<a href="#ref-morgan2024" role="doc-biblioref">Morgan, 2024</a>; <a href="#ref-naddaf2025" role="doc-biblioref">Naddaf, 2025</a>; <a href="#ref-ogunleye2024" role="doc-biblioref">Ogunleye et al., 2024</a>; <a href="#ref-ou2024" role="doc-biblioref">Ou et al., 2024</a>; <a href="#ref-tutton2025" role="doc-biblioref">Tutton &amp; Cohen, 2025</a>)</span>. Wie weit die Automatisierung bei der Bewertung tatsächlich reicht, lässt sich inzwischen präzise sagen. Sehfähige Sprachmodelle bewerten fotografierte handschriftliche Mathematik-Abgaben entlang der Rubriken der Lehrenden insgesamt zuverlässig, aber 87 % der verbleibenden Fehler des besten Modells sind <strong>Transkriptionsfehler</strong> (Handschrift lesen, äquivalente Umformungen erkennen, Bildqualität), nicht falsch angewandte Bewertungskriterien <span class="citation" data-cites="levine2026">(<a href="#ref-levine2026" role="doc-biblioref">Levine et al., 2026</a>)</span>. Automatisiert wird also die Rubrik-Anwendung; die menschliche Arbeit verlagert sich auf Erfassungsqualität und stichprobenartige Kontrolle, ein konkretes Beispiel für die neue Aufgabe „Qualitätskontrolle von KI-Materialien“ im Feld „Neue Aufgaben“ derselben Tabelle (zu den Grenzen KI-gestützten Benotens vgl. <a href="kapitel05-4d-phasen.html#sec-pruefen" class="quarto-xref"><span>Kapitel 5.6</span></a>).</p>
+<p>Die <strong>Augmentierung</strong> betrifft zentrale Lehr-, Forschungs- und Betreuungstätigkeiten, die mit KI-Unterstützung effizienter werden. Dazu zählen die Vorbereitung und Durchführung von Vorlesungen, Seminaren und Diskussionen, akademische und berufliche Beratung der Studierenden sowie Forschung und Publikationen. KI unterstützt hier durch automatische Literaturauswertungen, personalisierte Lerninhalte oder Pflege digitaler Ressourcen, sodass Lehrende ihre Kernaufgaben besser und effektiver erfüllen können <span class="citation" data-cites="gottweis2025 meincke2024 mollick2024a mollick2023b schwarcz2025">(<a href="#ref-gottweis2025" role="doc-biblioref">Gottweis et al., 2025</a>; <a href="#ref-meincke2024" role="doc-biblioref">Meincke et al., 2024</a>; <a href="#ref-mollick2023b" role="doc-biblioref">Mollick &amp; Mollick, 2023</a>, <a href="#ref-mollick2024a" role="doc-biblioref">2024</a>; <a href="#ref-schwarcz2025" role="doc-biblioref">Schwarcz et al., 2025</a>)</span>.</p>
+<p><strong>Gemischte Effekte</strong> treten bei einigen Aufgaben wie der Entwicklung und Pflege von Kurswebseiten, dem digitalen Aufzeichnen von Vorträgen und der Auswahl von Lehrmaterialien auf, bei denen KI Teile der Aufgabe übernimmt und die Lehrenden beim Rest unterstützt.</p>
+<p>Schließlich schafft generative KI gänzlich <strong>neue Aufgaben</strong>. Dazu gehören beispielsweise die Entwicklung neuer KI-gestützter Lehrkonzepte und -methoden, Qualitätskontrollen von KI-generierten Lehrmaterialien, Gestaltung individueller Lernpfade, ethische und rechtliche Begleitung des KI-Einsatzes sowie die Weiterbildung des Lehrpersonals im Umgang mit KI-Technologien <span class="citation" data-cites="dihan2025 mollick2024 mollick2024a">(<a href="#ref-dihan2025" role="doc-biblioref">Dihan et al., 2025</a>; <a href="#ref-mollick2024" role="doc-biblioref">Mollick et al., 2024</a>; <a href="#ref-mollick2024a" role="doc-biblioref">Mollick &amp; Mollick, 2024</a>)</span>.</p>
+<p>Durch diese differenziertere Analyse der drei Formen wird klar, dass die Einführung von KI in die Lehre zwar mit hoher Sicherheit <strong>deutliche Änderungen im Aufgaben-Mix</strong> und der Zeitanteile bedeutet, die wir mit verschiedenen Aufgaben verbringen. Das ist nicht neu: Wer bestellt noch regelmäßig per Fernleihe, schickt Briefe oder kopiert in großem Umfang? Wir sehen, dass generative KI wahrscheinlich mittelfristig einen Teil der bisherigen Tätigkeiten automatisieren, Lehrende bei zentralen Kernaufgaben unterstützen und zugleich neue, spezialisierte Aufgaben in der Lehre schaffen wird.</p>
+<p>Ob das <strong>insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher</strong>, denn die neuen Aufgaben um die Einrichtung und Betreuung der KI-Unterstützung können sehr zeitintensiv sein, als Beispiel sei hier etwa die Einrichtung eines Physik-Tutor-Bots <span class="citation" data-cites="kestin2025">(<a href="#ref-kestin2025" role="doc-biblioref">Kestin et al., 2025</a>)</span> oder einer Startup-Simulation, in der KI in verschiedenen Rollen beim Aufsetzen und Verbessern von Geschäftsplänen hilft <span class="citation" data-cites="mollick2024">(<a href="#ref-mollick2024" role="doc-biblioref">Mollick et al., 2024</a>)</span>. Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt es auch hier nicht umsonst.</p>
+<div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Ihre Einschätzung prüfen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>„Wenn die KI Übungsblätter in einer Stunde statt einem Tag erstellt, haben Lehrende am Ende des Semesters Zeit gewonnen.“</em> <span class="ez-ihre" data-ez="ez-k4-1"></span></p>
+<p><strong>Auflösung: eher nicht.</strong> Sicher ist nur, dass sich der Aufgaben-Mix verschiebt: Einiges wandert zur KI, anderes geht schneller, und neue Aufgaben kommen hinzu, etwa die Qualitätskontrolle der Materialien und die Pflege eines Tutors. Ob am Ende Zeit übrig bleibt, hängt davon ab, wie viel diese neuen Aufgaben verschlingen; gemessen ist die Bilanz bisher nicht.</p>
+</div>
+</div>
+</section>
+<section id="sec-arbeitsweisen" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-arbeitsweisen"><span class="header-section-number">3.2</span> Wer macht was: Arbeitsweisen von Centaur bis dunkle Fabrik</h2>
+<p>Wer welchen Schritt einer Aufgabe übernimmt, ist die dritte Delegationsfrage. Das 4D-Modell unterscheidet drei Formen der Zusammenarbeit, die es <em>Modalitäten</em> nennt <span class="citation" data-cites="dakan2025">(<a href="#ref-dakan2025" role="doc-biblioref">Dakan &amp; Feller, 2025</a>)</span>: In der <strong>Automation</strong> führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der <strong>Augmentation</strong> erledigen Mensch und KI sie gemeinsam und im Wechsel; in der <strong>Agency</strong> richtet der Mensch eine KI ein, die später selbstständig handelt, oft für andere (nicht zu verwechseln mit den Formen des Aufgabenmodells in <a href="kapitel06-rollen.html#sec-hiwi" class="quarto-xref"><span>Kapitel 6.1</span></a>). Der Hiwi aus <a href="kapitel06-rollen.html" class="quarto-xref"><span>Kapitel 6</span></a> arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency.</p>
+<p>Feiner unterscheidet die Studie zur Jagged Frontier <span class="citation" data-cites="dellacqua2023">(<a href="#ref-dellacqua2023" role="doc-biblioref">Dell’Acqua et al., 2023</a>)</span>. Der <strong>Centaur</strong><span id="sb-k2-centaur-cyborg"></span> teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest. Der <strong>Cyborg</strong> arbeitet in ständigem Wechsel mit der KI und nutzt ihre Rückmeldungen laufend. Beide setzen voraus, dass der Mensch die Stärken und Schwächen des Modells kennt. Eine spätere Studie des weitgehend selben Teams mit 776 Beschäftigten von Procter &amp; Gamble fand, dass Einzelne mit KI-Unterstützung teils das Leistungsniveau ganzer Teams erreichten; die KI wirkte als „<strong>Cybernetic Teammate</strong>“ <span class="citation" data-cites="dellacqua2025">(<a href="#ref-dellacqua2025" role="doc-biblioref">Dell’Acqua et al., 2025</a>)</span>.</p>
+<p>Mit stärkeren Agenten kommen Arbeitsweisen hinzu, in denen der Mensch nicht mehr in jeder Schleife sitzt. Als <strong>Beschwörer</strong> (<em>conjurer</em>) ruft er Agenten bei Bedarf herbei, weist ihnen Arbeit zu und bewertet, was zurückkommt, ohne den Weg dorthin zu begleiten. Mollick hält das für die leistungsfähigste Arbeitsweise, die aber neue Risiken bringt, weil niemand mehr genau sieht, wie die KI zu ihren Ergebnissen kommt <span class="citation" data-cites="mollick2026charts">(<a href="#ref-mollick2026charts" role="doc-biblioref">Mollick, 2026b</a>)</span>. Am Ende der Reihe steht die <strong>dunkle Fabrik</strong> (<em>dark factory</em>): Menschen legen fest, was entstehen soll, Maschinen führen aus und prüfen; das trägt nur dort, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt, etwa bei Software mit automatischen Tests <span class="citation" data-cites="mollick2026agents">(<a href="#ref-mollick2026agents" role="doc-biblioref">Mollick, 2026a</a>)</span>. Dazwischen liegt die <strong>Dämmerfabrik</strong> (<em>twilight factory</em>): Agenten arbeiten, aber ein vermittelnder Agent holt Menschen hinzu, wenn eine Freigabe nötig ist, Fachwissen fehlt, die Ideen zu gleichförmig werden oder eine Entscheidung interessant ist <span class="citation" data-cites="mollick2026agents">(<a href="#ref-mollick2026agents" role="doc-biblioref">Mollick, 2026a</a>)</span>. Für die Lehre wiegt eine Folge am schwersten: Wer nur Freigaben und Ausnahmen bearbeitet, übt nie das Urteilen, das eine gute Freigabe voraussetzt, und die Fachleute, die künftig prüfen sollen, wachsen nicht nach <span class="citation" data-cites="mollick2026agents">(<a href="#ref-mollick2026agents" role="doc-biblioref">Mollick, 2026a</a>)</span>. Das folgende Schema ordnet die fünf Arbeitsweisen den Schritten einer Aufgabe zu.</p>
+<p>Im interaktiven Schema lassen sich die Anlässe der Dämmerfabrik einzeln abschalten.</p>
+<iframe loading="lazy" src="interactions/ki-entwicklung.html?zeige=arbeitsweisen" width="100%" height="820px" frameborder="0" title="Schema: Wer übernimmt welchen Arbeitsschritt in den Arbeitsweisen Centaur, Cyborg, Beschwörer, Dämmerfabrik und dunkle Fabrik">
+</iframe>
+<p>Das folgende Durchspiel zeigt die fünf Arbeitsweisen an einer einzigen Aufgabe, einem Übungsblatt zur optimalen Bestellmenge mit vier Gruppenvarianten. Als Centaur lässt die Professorin nur den Aufgabentext formulieren, als Cyborg entwickelt sie die Aufgabe in zwölf kurzen Wechseln mit der KI. Als Beschwörer schreibt sie einen einzigen Auftrag; ein <strong>Orchestrator</strong>, ein Programm, das eine Aufgabe zerlegt, verteilt und die Teile wieder zusammenführt, beauftragt <strong>Unteragenten</strong> (<em>subagents</em>) für die Zahlen, die Texte und die Prüfung <span class="citation" data-cites="schluntz2024agents anthropic2025research">(<a href="#ref-anthropic2025research" role="doc-biblioref">Anthropic, 2025</a>; <a href="#ref-schluntz2024agents" role="doc-biblioref">Schluntz &amp; Zhang, 2024</a>)</span> (griechisch <em>orchēstra</em>, der Tanzplatz vor der Bühne; der Orchestrator ordnet, wer wann auftritt). In der Dämmerfabrik fragt ein Vermittler-Agent die Professorin bei den vier Anlässen; in der dunklen Fabrik bestehen alle Blätter die maschinelle Prüfung und werden doch still leichter, weil der Prüfer misst, ob die Lösungen stimmen, nicht ob die Aufgaben fordern. Die Online-Fassung spielt zwei weitere Fälle durch: Rückmeldungen auf Projektberichte, bei denen die KI-Verordnung menschliche Aufsicht verlangt <span class="citation" data-cites="eu2024aiact">(<a href="#ref-eu2024aiact" role="doc-biblioref">Europäisches Parlament und Rat der Europäischen Union, 2024</a>, Anhang III Nr. 3 lit. b)</span> (<a href="kapitel05-4d-phasen.html#sec-ki-vo" class="quarto-xref"><span>Kapitel 5.5.1.2</span></a>), und die Aktualisierung einer Vorlesung. Die Denkspuren darin sind angenähert; auch echte Denkspuren geben nicht verlässlich wieder, wie ein Modell zu seinem Ergebnis kommt <span class="citation" data-cites="chen2025reasoning">(<a href="#ref-chen2025reasoning" role="doc-biblioref">Chen et al., 2025</a>)</span>.</p>
+<p>Im interaktiven Durchspiel lassen sich Fall, Arbeitsweise und Ebene (Dialog, Denkspur, Protokoll) wählen.</p>
+<iframe loading="lazy" src="interactions/ki-arbeitsweisen-durchspiel.html" width="100%" height="1500px" frameborder="0" title="Durchspiel: dieselbe Aufgabe in den Arbeitsweisen Centaur, Cyborg, Beschwörer, Dämmerfabrik und dunkle Fabrik, mit Dialogen, Denkspuren und Protokollen">
+</iframe>
+<div class="callout callout-style-default callout-tip callout-titled" title="Probieren Sie mal: Delegation an einem Berufsprofil">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tipp</span>Probieren Sie mal: Delegation an einem Berufsprofil
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wählen Sie einen Beruf, für den Sie ausbilden, und lassen Sie sich von einem Sprachmodell zehn typische Tätigkeiten dieses Berufs auflisten, etwa nach dem Berufsprofil der US-Datenbank O*NET. Ordnen Sie jede Tätigkeit selbst einer der drei Formen aus <a href="#tbl-acemoglu" class="quarto-xref">Tabelle&nbsp;<span>3.1</span></a> zu: Automatisierung, Augmentierung oder neue Aufgabe. Lassen Sie das Modell dieselbe Zuordnung vornehmen und vergleichen Sie. Wo Sie abweichen, steckt meist eine Annahme über den Beruf, die sich im Gespräch mit Studierenden lohnt.</p>
+<p><span>Die vollständige Übung mit allen vier Phasen: <a href="kapitel05-4d-phasen.html#sec-ai-fluency-uebung" class="quarto-xref"><span>Kapitel 5.2</span></a>.</span></p>
+</div>
+</div>
+</section>
+<section id="sec-leitungsaufgabe" class="level2 page-columns page-full" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-leitungsaufgabe"><span class="header-section-number">3.3</span> Leitungsaufgabe Mensch–LLM</h2>
+<p>Die Konsequenz der Delegation ist weniger technisch als organisatorisch. Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält <span class="citation" data-cites="parasuraman2000">(<a href="#ref-parasuraman2000" role="doc-biblioref">Parasuraman et al., 2000</a>)</span>. Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet, bei einer Literaturrecherche etwa beim Quellenkorb, beim Rechercheplan und bei der Stichprobe von Aussagen, die wir gegen das Original halten. Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte.</p>
+<p>Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Programmier-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig <span class="citation" data-cites="johnston2026the">(<a href="#ref-johnston2026the" role="doc-biblioref">Johnston et al., 2026</a>)</span>. Das folgende Modell verfolgt eine einzelne Aufgabe, Kugel A, durch Auftrag, Recherche, Entscheidung, Rechnung und Freigabe, einmal allein und einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.</p>
+<p>Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.</p>
+<div class="column-page">
+<iframe loading="lazy" id="agenten-engpass" src="interactions/agenten-engpass.html" width="100%" height="1000px" frameborder="0" title="Animation: Acht Aufgaben, viele Agenten, ein Mensch – wo Kugel A wartet"></iframe>
+<script>
+/* Die Animation meldet ihre Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+</div>
+<p>Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet, denn der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station; ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little’s-Law-Widget in <a href="kapitel06-rollen.html#sec-widget-littles-law" class="quarto-xref"><span>Kapitel 6.2.2.1</span></a>.</p>
+
+
+<div class="support-this-section">
+<h3 class="support-this-heading anchored">Spenden &amp; dieses Open-Access Projekt unterstützen</h3>
+<ul class="support-this-links">
+  <li class="support-this-item">
+    <a href="https://buymeacoffee.com/roman.bartnik.th" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Buy Me a Coffee</span>:       <span class="support-this-username">roman.bartnik.th</span>
+    </a>
+  </li>
+  <li class="support-this-item">
+    <a href="https://ko-fi.com/romanbartnik" class="support-this-link" target="_blank" rel="noopener">
+      <span class="support-this-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm7.5 3A1.5 1.5 0 0 0 6 6.5v3A1.5 1.5 0 0 0 7.5 11h1A1.5 1.5 0 0 0 10 9.5v-3A1.5 1.5 0 0 0 8.5 5h-1z"></path></svg></span>
+      <span class="support-this-platform">Ko-fi</span>:       <span class="support-this-username">romanbartnik</span>
+    </a>
+  </li>
+</ul>
+</div>
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-acemoglu2025tasks" class="csl-entry" role="listitem">
+Acemoglu, D., Kong, F., &amp; Restrepo, P. (2025). Tasks at work: Comparative advantage, technology and labor demand. In C. Dustmann &amp; T. Lemieux (Hrsg.), <em>Handbook of Labor Economics</em>: (Bd. 6, 1–114). Elsevier. <a href="https://doi.org/10.1016/bs.heslab.2025.08.003">https://doi.org/10.1016/bs.heslab.2025.08.003</a>.
+</div>
+<div id="ref-anthropic2025research" class="csl-entry" role="listitem">
+Anthropic (2025). How we built our multi-agent research system. <a href="https://www.anthropic.com/engineering/multi-agent-research-system">https://www.anthropic.com/engineering/multi-agent-research-system</a>.
+</div>
+<div id="ref-chen2025reasoning" class="csl-entry" role="listitem">
+Chen, Y., Benton, J., Radhakrishnan, A., Uesato, J., Denison, C., Schulman, J., Somani, A., Hase, P., Wagner, M., Roger, F., Mikulik, V., Bowman, S. R., Leike, J., Kaplan, J., &amp; Perez, E. (2025). <em>Reasoning models don’t always say what they think</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2505.05410">https://doi.org/10.48550/arXiv.2505.05410</a>.
+</div>
+<div id="ref-dakan2025" class="csl-entry" role="listitem">
+Dakan, R., &amp; Feller, J. (2025). <em><a href="https://aifluencyframework.org/">The AI Fluency Framework: A descriptive and normative model of human-AI interaction for higher education (Version 1.1)</a></em>. Higher Education Authority.
+</div>
+<div id="ref-dellacqua2025" class="csl-entry" role="listitem">
+Dell’Acqua, F., Ayoubi, C., Lifshitz-Assaf, H., Sadun, R., Mollick, E. R., Mollick, L., Han, Y., Goldman, J., Nair, H., Taub, S., &amp; Lakhani, K. R. (2025). The cybernetic teammate: A field experiment on generative AI and teamwork. <em>Organization Science</em>. <a href="https://doi.org/10.1287/orsc.2025.20702">https://doi.org/10.1287/orsc.2025.20702</a>.
+</div>
+<div id="ref-dellacqua2023" class="csl-entry" role="listitem">
+Dell’Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., &amp; Lakhani, K. R. (2023). <em>Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality</em>. <a href="https://doi.org/10.2139/ssrn.4573321">https://doi.org/10.2139/ssrn.4573321</a>.
+</div>
+<div id="ref-dihan2025" class="csl-entry" role="listitem">
+Dihan, Q. A., Nihalani, B. R., Tooley, A. A., &amp; Elhusseiny, A. M. (2025). Eyes on Google’s NotebookLM: using generative AI to create ophthalmology podcasts with a single click. <em>Eye</em>, <em>39</em>(2), 215–216. <a href="https://doi.org/10.1038/s41433-024-03481-8">https://doi.org/10.1038/s41433-024-03481-8</a>.
+</div>
+<div id="ref-eu2024aiact" class="csl-entry" role="listitem">
+Europäisches Parlament und Rat der Europäischen Union (2024). <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">Verordnung (EU) 2024/1689 des Europäischen Parlaments und des Rates vom 13. Juni 2024 zur Festlegung harmonisierter Vorschriften für künstliche Intelligenz (Verordnung über künstliche Intelligenz)</a>.
+</div>
+<div id="ref-gottweis2025" class="csl-entry" role="listitem">
+Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., Palepu, A., Sirkovic, P., Myaskovsky, A., Weissenberger, F., Rong, K., Tanno, R., Saab, K., Popovici, D., Blum, J., Zhang, F., Chou, K., Hassidim, A., Gokturk, B., Vahdat, A., Kohli, P., … Natarajan, V. (2025). <em>Towards an AI co-scientist</em>. arXiv. <a href="https://doi.org/10.48550/arXiv.2502.18864">https://doi.org/10.48550/arXiv.2502.18864</a>.
+</div>
+<div id="ref-johnston2026the" class="csl-entry" role="listitem">
+Johnston, D., Holtz, D., Richmond, A. M., Ong, C., Tambe, P., &amp; Chatterji, A. (2026). <em>The shift to agentic AI: Evidence from Codex</em>. <a href="https://doi.org/10.48550/arXiv.2606.26959">https://doi.org/10.48550/arXiv.2606.26959</a>.
+</div>
+<div id="ref-kestin2025" class="csl-entry" role="listitem">
+Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting. <em>Scientific Reports</em>, <em>15</em>(1), 17458. <a href="https://doi.org/10.1038/s41598-025-97652-6">https://doi.org/10.1038/s41598-025-97652-6</a>.
+</div>
+<div id="ref-levine2026" class="csl-entry" role="listitem">
+Levine, J., Aenlle, M., Zilles, C., West, M., &amp; Silva, M. (2026). Automated grading of handwritten mathematics using vision-capable LLMs. <a href="https://doi.org/10.48550/arXiv.2605.19043">https://doi.org/10.48550/arXiv.2605.19043</a>.
+</div>
+<div id="ref-massenkoff2026cadences" class="csl-entry" role="listitem">
+Massenkoff, M., Lyubich, E., Sacher, S., Hitzig, Z., Zhang, S., Heller, R., &amp; McCrory, P. (2026). <em><a href="https://www.anthropic.com/research/economic-index-june-2026-report">Anthropic Economic Index report: Cadences</a></em>. Anthropic.
+</div>
+<div id="ref-meincke2024" class="csl-entry" role="listitem">
+Meincke, L., Mollick, E. R., &amp; Terwiesch, C. (2024). <em>Prompting Diverse Ideas: Increasing AI Idea Variance</em>. <a href="https://papers.ssrn.com/abstract=4708466">https://papers.ssrn.com/abstract=4708466</a>.
+</div>
+<div id="ref-mollick2026agents" class="csl-entry" role="listitem">
+Mollick, E. R. (2026a, August 31). Agency and agents. <a href="https://www.oneusefulthing.org/p/agency-and-agents">https://www.oneusefulthing.org/p/agency-and-agents</a>.
+</div>
+<div id="ref-mollick2026charts" class="csl-entry" role="listitem">
+Mollick, E. R. (2026b, Oktober 20). 30 months on the exponential (in charts). <a href="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts">https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts</a>.
+</div>
+<div id="ref-mollick2023b" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2023). <em><a href="https://papers.ssrn.com/abstract=4391243">Using AI to Implement Effective Teaching Strategies in Classrooms: Five Strategies, Including Prompts</a></em> (SSRN Scholarly Paper; Nr. 4391243).
+</div>
+<div id="ref-mollick2024a" class="csl-entry" role="listitem">
+Mollick, E. R., &amp; Mollick, L. (2024). <em>Instructors as Innovators: a Future-focused Approach to New AI Learning Opportunities, With Prompts</em>. <a href="https://doi.org/10.2139/ssrn.4802463">https://doi.org/10.2139/ssrn.4802463</a>.
+</div>
+<div id="ref-mollick2024" class="csl-entry" role="listitem">
+Mollick, E. R., Mollick, L., Bach, N., Ciccarelli, L. J., Przystanski, B., &amp; Ravipinto, D. (2024). AI agents and education: Simulated practice at scale. <em>arXiv preprint arXiv:2407.12796</em>.
+</div>
+<div id="ref-morgan2024" class="csl-entry" role="listitem">
+Morgan, G. (2024, Juli 11). <a href="https://onedtech.philhillaa.com/p/what-students-want-when-it-comes-to-ai">What Students Want When It Comes To AI - The Digital Education Council Global AI Student Survey 2024</a>. <em>On EdTech Newsletter</em>.
+</div>
+<div id="ref-naddaf2025" class="csl-entry" role="listitem">
+Naddaf, M. (2025). How are researchers using AI? Survey reveals pros and cons for science. <em>Nature</em>. <a href="https://doi.org/10.1038/d41586-025-00343-5">https://doi.org/10.1038/d41586-025-00343-5</a>.
+</div>
+<div id="ref-onet2026database" class="csl-entry" role="listitem">
+National Center for O*NET Development (2026). <em>O*NET 31.0 Database</em>. U.S. Department of Labor, Employment and Training Administration. <a href="https://www.onetcenter.org/database.html">https://www.onetcenter.org/database.html</a>.
+</div>
+<div id="ref-ogunleye2024" class="csl-entry" role="listitem">
+Ogunleye, B., Zakariyyah, K. I., Ajao, O., Olayinka, O., &amp; Sharma, H. (2024). A Systematic Review of Generative AI for Teaching and Learning Practice. <em>Education Sciences</em>, <em>14</em>(6), 636. <a href="https://doi.org/10.3390/educsci14060636">https://doi.org/10.3390/educsci14060636</a>.
+</div>
+<div id="ref-ou2024" class="csl-entry" role="listitem">
+Ou, A. W., Stöhr, C., &amp; Malmström, H. (2024). Academic communication with AI-powered language tools in higher education: From a post-humanist perspective. <em>System</em>, <em>121</em>, 103225. <a href="https://doi.org/10.1016/j.system.2024.103225">https://doi.org/10.1016/j.system.2024.103225</a>.
+</div>
+<div id="ref-parasuraman2000" class="csl-entry" role="listitem">
+Parasuraman, R., Sheridan, T. B., &amp; Wickens, C. D. (2000). A model for types and levels of human interaction with automation. <em>IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans</em>, <em>30</em>(3), 286–297. <a href="https://doi.org/10.1109/3468.844354">https://doi.org/10.1109/3468.844354</a>.
+</div>
+<div id="ref-richland2009" class="csl-entry" role="listitem">
+Richland, L. E., Kornell, N., &amp; Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? <em>Journal of Experimental Psychology: Applied</em>, <em>15</em>(3), 243–257. <a href="https://doi.org/10.1037/a0016496">https://doi.org/10.1037/a0016496</a>.
+</div>
+<div id="ref-schluntz2024agents" class="csl-entry" role="listitem">
+Schluntz, E., &amp; Zhang, B. (2024, Dezember 19). Building effective agents. <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>.
+</div>
+<div id="ref-schwarcz2025" class="csl-entry" role="listitem">
+Schwarcz, D., Manning, S., Barry, P. J., Cleveland, D. R., Prescott, J. J., &amp; Rich, B. (2025). <em>AI-Powered Lawyering: AI Reasoning Models, Retrieval Augmented Generation, and the Future of Legal Practice</em>. <a href="https://doi.org/10.2139/ssrn.5162111">https://doi.org/10.2139/ssrn.5162111</a>.
+</div>
+<div id="ref-tutton2025" class="csl-entry" role="listitem">
+Tutton, M., &amp; Cohen, D. (2025). Reconceptualizing the Role of the University Language Teacher in Light of Generative AI. <em>Education Sciences</em>, <em>15</em>(1), 56. <a href="https://doi.org/10.3390/educsci15010056">https://doi.org/10.3390/educsci15010056</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Datensatz <code>Anthropic/EconomicIndex</code> auf Hugging Face, Release vom 26. Juni 2026, Datei <code>aei_claude_ai_2026-06-26.csv</code>, Datenmonat Mai 2026, Kennzahl <code>pct</code> der Kategorie <code>soc_occupation</code>, Lizenz CC BY; Aufgaben je Beruf aus der O*NET 31.0 Database (<code>task_statements.csv</code>), Lizenz CC BY 4.0. Auszug und Übersetzung: <code>scripts/aei-bibliothek.py</code> im Repositorium des Buchs.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<!-- Einschätzungen vorab, Auflösung im Text (Gegenstück zu _filters/einschaetzung.lua).
+     Jede Aussage bekommt eine Skala mit fünf Stufen. Die Wahl wird im Browser
+     gespeichert; der Kasten „Ihre Einschätzung prüfen“ an der Textstelle zeigt sie
+     wieder an. Die Auflösung erscheint absichtlich erst dort, damit die Frage beim
+     Lesen offen bleibt. Ohne JavaScript bleiben Aussagen und Verweise lesbar. -->
+<style>
+.einschaetzung { margin: 0.5rem 0 0.9rem; }
+.einschaetzung > p:first-child { font-weight: 600; margin-bottom: 0.45rem; }
+.ez-skala { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; margin: 0 0 0.35rem; max-width: 34rem; }
+.ez-stufe {
+  font: inherit; font-size: 0.85em; line-height: 1.2; padding: 0.35rem 0.3rem; text-align: center;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.ez-stufe:hover { border-color: #c81e0f; }
+.ez-stufe:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.ez-stufe[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.ez-js .einschaetzung .ez-verweis { display: none; }
+.ez-js .einschaetzung.ez-gewaehlt .ez-verweis { display: inline; }
+.einschaetzung .ez-verweis { font-size: 0.85em; color: #6c757d; }
+.ez-ihre { display: block; font-size: 0.9em; color: #6c757d; font-style: normal; margin-top: 0.2rem; }
+</style>
+<script>
+(function () {
+  "use strict";
+  var STUFEN = ["stimme voll zu", "stimme eher zu", "teils, teils", "stimme eher nicht zu", "stimme gar nicht zu"];
+  var KURZ = ["voll zu", "eher zu", "teils, teils", "eher nicht", "gar nicht"];
+  var PRAEFIX = "genai4teaching:ez:";
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Wahl nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function init() {
+    var aussagen = document.querySelectorAll("div.einschaetzung[id]");
+    if (!aussagen.length && !document.querySelector(".ez-ihre")) return;
+    document.documentElement.classList.add("ez-js");
+
+    Array.prototype.forEach.call(aussagen, function (div) {
+      var id = div.id;
+      var erster = div.querySelector("p");
+      var skala = document.createElement("div");
+      skala.className = "ez-skala";
+      skala.setAttribute("role", "group");
+      skala.setAttribute("aria-label", "Ihre Einschätzung: Wie sehr stimmen Sie zu?");
+      var knoepfe = STUFEN.map(function (text, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "ez-stufe";
+        b.textContent = KURZ[i];
+        b.setAttribute("aria-label", text);
+        b.title = text;
+        b.setAttribute("aria-pressed", "false");
+        b.addEventListener("click", function () { waehle(i, true); });
+        skala.appendChild(b);
+        return b;
+      });
+      var verweis = div.querySelector(".ez-verweis");
+      if (verweis) {
+        verweis.setAttribute("aria-live", "polite");
+        if (verweis.firstChild && verweis.firstChild.nodeType === 3) {
+          verweis.insertBefore(document.createTextNode("Gespeichert. "), verweis.firstChild);
+        }
+      }
+      // Link direkt auf den Prüfkasten statt auf den Abschnittsanfang
+      var ziel = document.querySelector('.ez-ihre[data-ez="' + id + '"]');
+      var kasten = ziel && ziel.closest(".callout");
+      var a = verweis && verweis.querySelector("a");
+      if (kasten && a) {
+        if (!kasten.id) kasten.id = "pruefen-" + id;
+        a.setAttribute("href", "#" + kasten.id);
+      }
+      if (erster && erster.nextSibling) div.insertBefore(skala, erster.nextSibling);
+      else div.appendChild(skala);
+
+      function waehle(i, speichern) {
+        knoepfe.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+        div.classList.add("ez-gewaehlt");
+        if (speichern) schreib(id, String(i));
+        zeigeIhre(id);
+      }
+      var alt = lies(id);
+      if (alt !== null && STUFEN[+alt]) waehle(+alt, false);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll(".ez-ihre[data-ez]"), function (sp) {
+      zeigeIhre(sp.getAttribute("data-ez"));
+    });
+  }
+  function zeigeIhre(id) {
+    Array.prototype.forEach.call(document.querySelectorAll('.ez-ihre[data-ez="' + id + '"]'), function (sp) {
+      var w = lies(id);
+      if (w !== null && STUFEN[+w]) {
+        sp.textContent = "Ihre Einschätzung vorab: " + STUFEN[+w] + ".";
+      } else {
+        sp.textContent = "Sie haben vorab keine Einschätzung abgegeben.";
+      }
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+<!-- Kasten „Schlüsselbegriffe“ am Kapitelende (Gegenstück zu _filters/schluesselbegriffe.lua).
+     Ein Skript für alle Modi, damit neue Kapitel nur Daten im .qmd brauchen:
+       .sb-begriffe     Begriffsliste: Begriff (Link zur Fundstelle), Musterantwort aufdecken,
+                        Selbsteinstufung gewusst / halb / nicht (Browser-Speicher, Präfix genai4teaching:sb:)
+       .sb-spiel        modus="fall" | "paare" | "stapel" | "luecke" | "reihenfolge"
+       .sb-wiederkehr   2–3 Begriffe früherer Kapitel als Erklärkarten; bevorzugt „nicht“, dann „halb“
+                        gewusste, ohne Einstufungen zufällig (Daten werden aus den Kapitelseiten gelesen)
+     Bedienung nur mit Klicks und Tastatur, kein Ziehen nötig. Ohne JavaScript bleiben
+     Begriffe, Szenen, Herkunft und Begründungen als Text lesbar. -->
+<style>
+.schluesselbegriffe .sb-anleitung { font-style: italic; margin: 0.2rem 0 0.7rem; }
+.sb-begriff, .sb-wk-karte { border-top: 1px solid var(--bs-border-color, #ddd); padding: 0.55rem 0 0.6rem; }
+.sb-begriff:first-of-type { border-top: 0; }
+.sb-begriff > p, .sb-wk-karte > p { margin-bottom: 0.35rem; }
+.sb-name { font-weight: 600; }
+.sb-js .sb-muster[hidden] { display: none; }
+.sb-muster { font-size: 0.95em; margin: 0.25rem 0 0.4rem; padding-left: 0.7rem; border-left: 3px solid var(--bs-border-color, #ddd); }
+.sb-zeile { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.sb-knopf {
+  font: inherit; font-size: 0.85em; line-height: 1.25; padding: 0.3rem 0.55rem;
+  border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px;
+  background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); cursor: pointer;
+}
+.sb-knopf:hover:not([disabled]) { border-color: #c81e0f; }
+.sb-knopf:focus-visible, .sb-eingabe:focus-visible, .sb-erklaerung:focus-visible { outline: 2px solid #c81e0f; outline-offset: 2px; }
+.sb-knopf[aria-pressed="true"] { border: 2px solid #c81e0f; font-weight: 600; }
+.sb-knopf[disabled] { cursor: default; opacity: 0.75; }
+.sb-stufen-label { font-size: 0.85em; color: #6c757d; margin: 0 0.2rem 0 0.4rem; }
+.sb-spiel { margin-top: 1rem; }
+.sb-titel { font-weight: 600; margin: 0.8rem 0 0.2rem; }
+.sb-aufgabe { border-top: 1px solid var(--bs-border-color, #ddd); padding: 0.6rem 0; }
+.sb-aufgabe > p:first-child { margin-bottom: 0.3rem; }
+.sb-herkunft, .sb-herkunft p { font-size: 0.85em; color: #6c757d; margin-bottom: 0.35rem; }
+.sb-herkunft a { text-decoration: underline; }
+.sb-js .sb-begruendung { display: none; }
+.sb-js .sb-aufgabe.sb-beantwortet .sb-begruendung { display: block; }
+.sb-begruendung, .sb-begruendung p { font-size: 0.95em; }
+.sb-optionen .sb-knopf { text-align: left; }
+.sb-knopf.sb-richtig { border: 2px solid #2e7d32; font-weight: 600; }
+.sb-knopf.sb-falsch { border: 2px solid #c62828; text-decoration: line-through; }
+.sb-rueckmeldung { font-weight: 600; margin: 0.4rem 0 0.2rem; }
+.sb-rueckmeldung.sb-ok { color: #2e7d32; }
+.sb-rueckmeldung.sb-nein { color: #c62828; }
+.sb-eingabe { font: inherit; padding: 0.25rem 0.4rem; border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px; max-width: 14rem; width: 100%; background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); }
+.sb-erklaerung { font: inherit; font-size: 0.95em; width: 100%; min-height: 3.2rem; padding: 0.3rem 0.4rem; border: 1px solid var(--bs-border-color, #ccc); border-radius: 6px; background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #222); margin-bottom: 0.35rem; }
+.sb-reihe { padding-left: 1.4rem; margin: 0.3rem 0; }
+.sb-reihe li.sb-richtig::marker { color: #2e7d32; }
+.sb-reihe li.sb-falsch { color: #c62828; }
+.sb-stand { font-size: 0.9em; margin-top: 0.6rem; }
+.sb-wiederkehr { margin-top: 1rem; }
+.sb-wiederkehr:empty { display: none; }
+@media (max-width: 480px) {
+  .sb-optionen { flex-direction: column; align-items: stretch; }
+  .sb-optionen .sb-knopf { width: 100%; }
+}
+</style>
+<script>
+(function () {
+  "use strict";
+  var PRAEFIX = "genai4teaching:sb:";
+  var STUFEN = [["gewusst", "gewusst"], ["halb", "halb"], ["nicht", "nicht gewusst"]];
+  var ANLEITUNG = {
+    fall: "Welcher Begriff passt zu der Szene? Wählen Sie eine Antwort; danach sehen Sie die Begründung.",
+    paare: "Zu welchem der beiden Begriffe passt der Satz?",
+    stapel: "In welchen Stapel gehört die Karte?",
+    luecke: "Tragen Sie den fehlenden Begriff ein und prüfen Sie.",
+    reihenfolge: "Klicken Sie die Schritte in der richtigen Reihenfolge an."
+  };
+  var TITEL = {
+    fall: "Übung: Welcher Begriff passt?", paare: "Übung: Verwechslungspaare", stapel: "Übung: Stapel sortieren",
+    luecke: "Übung: Lückentext", reihenfolge: "Übung: Reihenfolge"
+  };
+
+  // Browser-Speicher kann fehlen oder gesperrt sein: dann gilt die Einstufung nur bis zum Neuladen.
+  function lies(id) { try { return window.localStorage.getItem(PRAEFIX + id); } catch (e) { return null; } }
+  function schreib(id, w) { try { window.localStorage.setItem(PRAEFIX + id, w); } catch (e) {} }
+
+  function el(tag, klasse, text) {
+    var e = document.createElement(tag);
+    if (klasse) e.className = klasse;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function knopf(text, klasse) {
+    var b = el("button", "sb-knopf" + (klasse ? " " + klasse : ""), text);
+    b.type = "button";
+    return b;
+  }
+  function mische(a) {
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function norm(s) {
+    return (s || "").toLowerCase().replace(/\(.*?\)/g, "")
+      .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+      .replace(/[^a-z0-9]/g, "");
+  }
+  var zaehler = 0;
+  function neueId(p) { zaehler += 1; return "sb-" + p + "-" + zaehler; }
+
+  // ---------- Begriffe: Musterantwort aufdecken und selbst einstufen ----------
+  function stufen(id) {
+    var zeile = el("div", "sb-zeile sb-stufen");
+    zeile.setAttribute("role", "group");
+    zeile.setAttribute("aria-label", "Selbsteinstufung: Wie gut konnten Sie den Begriff erklären?");
+    zeile.appendChild(el("span", "sb-stufen-label", "Erklären konnte ich ihn:"));
+    var knoepfe = STUFEN.map(function (s) {
+      var b = knopf(s[1]);
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () { schreib(id, s[0]); markiere(s[0]); });
+      zeile.appendChild(b);
+      return b;
+    });
+    function markiere(w) { knoepfe.forEach(function (b, i) { b.setAttribute("aria-pressed", STUFEN[i][0] === w ? "true" : "false"); }); }
+    markiere(lies(id));
+    return zeile;
+  }
+
+  function aufdecken(muster) {
+    var mid = neueId("muster");
+    muster.id = mid;
+    muster.hidden = true;
+    var b = knopf("Musterantwort zeigen", "sb-aufdecken");
+    b.setAttribute("aria-expanded", "false");
+    b.setAttribute("aria-controls", mid);
+    b.addEventListener("click", function () {
+      var auf = muster.hidden;
+      muster.hidden = !auf;
+      b.setAttribute("aria-expanded", auf ? "true" : "false");
+      b.textContent = auf ? "Musterantwort verbergen" : "Musterantwort zeigen";
+    });
+    return b;
+  }
+
+  function richteBegriffEin(div) {
+    var id = div.getAttribute("data-begriff");
+    var absaetze = Array.prototype.slice.call(div.children);
+    var kopf = absaetze.shift();
+    if (!kopf) return;
+    var link = el("a", "sb-name");
+    link.href = "#sb-" + id;
+    link.title = "Zur Stelle im Kapitel";
+    while (kopf.firstChild) link.appendChild(kopf.firstChild);
+    kopf.appendChild(link);
+    var muster = el("div", "sb-muster");
+    absaetze.forEach(function (p) { muster.appendChild(p); });
+    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
+    var zeile = el("div", "sb-zeile");
+    zeile.appendChild(aufdecken(muster));
+    zeile.appendChild(stufen(id));
+    div.appendChild(zeile);
+    div.appendChild(muster);
+  }
+
+  function begriffsListe(liste) {
+    var hinweis = el("p", "sb-anleitung",
+      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+      "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    liste.insertBefore(hinweis, liste.firstChild);
+    Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
+  }
+
+  // ---------- Spiele ----------
+  function etiketten() {
+    var m = {};
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+      var k = d.querySelector(".sb-name") || d.firstElementChild;
+      // Auf Knöpfen nur der deutsche Begriff, ohne englischen Fachbegriff in Klammern
+      if (k) m[d.getAttribute("data-begriff")] = k.textContent.replace(/\s*\(.*\)\s*$/, "").trim();
+    });
+    return m;
+  }
+  // Fallback ohne Begriffsliste auf der Seite: Kennung lesbar machen (k1-vier-rollen -> Vier rollen)
+  function etikett(m, x) {
+    if (m[x]) return m[x];
+    var s = String(x).replace(/^k\d+-/, "").replace(/-/g, " ");
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function rueckmelden(aufgabe, ok, loesungText) {
+    var r = aufgabe.querySelector(".sb-rueckmeldung");
+    r.className = "sb-rueckmeldung " + (ok ? "sb-ok" : "sb-nein");
+    r.textContent = ok ? "✓ Richtig." : "✗ Nicht ganz. Passend ist: " + loesungText + ".";
+    aufgabe.classList.add("sb-beantwortet");
+  }
+
+  function vorRueckmeldung(aufgabe, knoten) {
+    var r = el("p", "sb-rueckmeldung");
+    r.setAttribute("aria-live", "polite");
+    var beg = aufgabe.querySelector(".sb-begruendung");
+    aufgabe.insertBefore(knoten, beg || null);
+    aufgabe.insertBefore(r, beg || null);
+  }
+
+  function auswahl(aufgabe, modus, m, spiel, zaehle) {
+    var loesung = aufgabe.getAttribute("data-loesung");
+    var optionen;
+    if (modus === "stapel") {
+      optionen = (spiel.getAttribute("data-koerbe") || "").split("|").map(function (s) { return s.trim(); }).filter(Boolean);
+    } else {
+      optionen = [loesung].concat((aufgabe.getAttribute("data-ablenker") || "").split(/\s+/).filter(Boolean));
+      optionen.sort(function (a, b) { return etikett(m, a).localeCompare(etikett(m, b), "de"); });
+    }
+    var gruppe = el("div", "sb-zeile sb-optionen");
+    gruppe.setAttribute("role", "group");
+    gruppe.setAttribute("aria-label", "Antwort wählen");
+    var knoepfe = optionen.map(function (o) {
+      var b = knopf(etikett(m, o));
+      b.addEventListener("click", function () {
+        var ok = o === loesung;
+        knoepfe.forEach(function (k, i) {
+          k.disabled = true;
+          if (optionen[i] === loesung) k.classList.add("sb-richtig");
+        });
+        if (!ok) b.classList.add("sb-falsch");
+        rueckmelden(aufgabe, ok, etikett(m, loesung));
+        zaehle(ok);
+      });
+      gruppe.appendChild(b);
+      return b;
+    });
+    vorRueckmeldung(aufgabe, gruppe);
+  }
+
+  function luecke(aufgabe, m, zaehle) {
+    var loesung = aufgabe.getAttribute("data-loesung");
+    var erlaubt = [etikett(m, loesung)].concat((aufgabe.getAttribute("data-auch") || "").split("|")).map(norm).filter(Boolean);
+    var platz = aufgabe.querySelector(".sb-luecke");
+    var feld = el("input", "sb-eingabe");
+    feld.type = "text";
+    feld.setAttribute("aria-label", "Fehlenden Begriff eintragen");
+    feld.autocomplete = "off";
+    if (platz) { platz.textContent = ""; platz.appendChild(feld); }
+    var zeile = el("div", "sb-zeile");
+    var b = knopf("Prüfen");
+    zeile.appendChild(b);
+    if (!platz) zeile.insertBefore(feld, b);
+    function pruefe() {
+      if (feld.disabled) return;
+      var ok = erlaubt.indexOf(norm(feld.value)) >= 0;
+      feld.disabled = true; b.disabled = true;
+      rueckmelden(aufgabe, ok, etikett(m, loesung));
+      zaehle(ok);
+    }
+    b.addEventListener("click", pruefe);
+    feld.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); pruefe(); } });
+    vorRueckmeldung(aufgabe, zeile);
+  }
+
+  function reihenfolge(aufgabe, zaehle) {
+    var ol = aufgabe.querySelector("ol");
+    if (!ol) return;
+    var richtig = Array.prototype.map.call(ol.children, function (li) { return li.innerHTML; });
+    var reihe = richtig.map(function (_, i) { return i; });
+    do { mische(reihe); } while (reihe.length > 1 && reihe.every(function (x, i) { return x === i; }));
+    var gewaehlt = [];
+    var vorrat = el("div", "sb-zeile sb-optionen");
+    vorrat.setAttribute("role", "group");
+    vorrat.setAttribute("aria-label", "Schritte zur Auswahl");
+    var antwort = el("ol", "sb-reihe");
+    antwort.setAttribute("aria-label", "Ihre Reihenfolge");
+    var steuer = el("div", "sb-zeile");
+    var zurueck = knopf("Zurücksetzen"), pruef = knopf("Prüfen");
+    pruef.disabled = true;
+    steuer.appendChild(zurueck); steuer.appendChild(pruef);
+    var knoepfe = reihe.map(function (i) {
+      var b = knopf("");
+      b.innerHTML = richtig[i];
+      b.addEventListener("click", function () {
+        gewaehlt.push(i); b.disabled = true;
+        var li = el("li"); li.innerHTML = richtig[i]; antwort.appendChild(li);
+        pruef.disabled = gewaehlt.length < richtig.length;
+      });
+      vorrat.appendChild(b);
+      return b;
+    });
+    zurueck.addEventListener("click", function () {
+      gewaehlt = []; antwort.innerHTML = ""; pruef.disabled = true;
+      knoepfe.forEach(function (k) { k.disabled = false; });
+    });
+    pruef.addEventListener("click", function () {
+      var ok = gewaehlt.every(function (x, i) { return x === i; });
+      Array.prototype.forEach.call(antwort.children, function (li, i) { li.className = gewaehlt[i] === i ? "sb-richtig" : "sb-falsch"; });
+      pruef.disabled = true; zurueck.disabled = true;
+      var r = aufgabe.querySelector(".sb-rueckmeldung");
+      r.className = "sb-rueckmeldung " + (ok ? "sb-ok" : "sb-nein");
+      r.textContent = ok ? "✓ Richtig." : "✗ Nicht ganz. Richtig ist: " + richtig.map(function (h) { var d = el("div"); d.innerHTML = h; return d.textContent.trim(); }).join(" → ") + ".";
+      aufgabe.classList.add("sb-beantwortet");
+      zaehle(ok);
+    });
+    ol.hidden = true;
+    var huelle = el("div");
+    huelle.appendChild(vorrat); huelle.appendChild(antwort); huelle.appendChild(steuer);
+    vorRueckmeldung(aufgabe, huelle);
+  }
+
+  function richteSpielEin(spiel, m) {
+    var modus = spiel.getAttribute("data-modus") || "fall";
+    if (!spiel.__sbVorlage) spiel.__sbVorlage = spiel.innerHTML;
+    var aufgaben = spiel.querySelectorAll(".sb-aufgabe");
+    var n = aufgaben.length, beantwortet = 0, richtig = 0;
+    spiel.insertBefore(el("p", "sb-anleitung", ANLEITUNG[modus] || ANLEITUNG.fall), spiel.firstChild);
+    spiel.insertBefore(el("p", "sb-titel", TITEL[modus] || TITEL.fall), spiel.firstChild);
+    var stand = el("p", "sb-stand");
+    stand.setAttribute("aria-live", "polite");
+    var neu = knopf("Übung neu starten");
+    neu.addEventListener("click", function () {
+      spiel.innerHTML = spiel.__sbVorlage;
+      richteSpielEin(spiel, m);
+      var t = spiel.querySelector(".sb-knopf, .sb-eingabe");
+      if (t) t.focus();
+    });
+    function zaehle(ok) {
+      beantwortet += 1; if (ok) richtig += 1;
+      stand.textContent = richtig + " von " + beantwortet + " richtig" + (beantwortet === n ? " (alle beantwortet)." : ".");
+    }
+    Array.prototype.forEach.call(aufgaben, function (a) {
+      if (modus === "luecke") luecke(a, m, zaehle);
+      else if (modus === "reihenfolge") reihenfolge(a, zaehle);
+      else auswahl(a, modus, m, spiel, zaehle);
+    });
+    var fuss = el("div", "sb-zeile");
+    fuss.appendChild(stand); fuss.appendChild(neu);
+    spiel.appendChild(fuss);
+  }
+
+  // ---------- Wiederkehr: Bonuskarten aus früheren Kapiteln ----------
+  function holeBegriffe(url) {
+    return fetch(url, { credentials: "same-origin" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      return Array.prototype.map.call(doc.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+        var teile = Array.prototype.slice.call(d.children);
+        var kopf = teile.shift();
+        return { id: d.getAttribute("data-begriff"), url: url, kopf: kopf ? kopf.innerHTML : "", muster: teile.map(function (p) { return p.outerHTML; }).join("") };
+      });
+    }).catch(function () { return []; });
+  }
+
+  function waehleKarten(alle, anzahl) {
+    var gruppen = { nicht: [], halb: [], offen: [], gewusst: [] };
+    alle.forEach(function (b) { var w = lies(b.id); (gruppen[w] || gruppen.offen).push(b); });
+    var reihe = mische(gruppen.nicht).concat(mische(gruppen.halb), mische(gruppen.offen), mische(gruppen.gewusst));
+    return reihe.slice(0, anzahl);
+  }
+
+  function richteWiederkehrEin(wk) {
+    var quellen = (wk.getAttribute("data-quellen") || "").split(/\s+/).filter(Boolean);
+    var anzahl = parseInt(wk.getAttribute("data-anzahl") || "3", 10);
+    if (!quellen.length || !window.fetch || !window.DOMParser) { wk.hidden = true; return; }
+    Promise.all(quellen.map(holeBegriffe)).then(function (listen) {
+      var alle = [].concat.apply([], listen);
+      if (!alle.length) { wk.hidden = true; return; }
+      var karten = waehleKarten(alle, anzahl);
+      wk.innerHTML = "";
+      wk.appendChild(el("p", "sb-titel", "Wiederholung aus früheren Kapiteln"));
+      wk.appendChild(el("p", "sb-anleitung", "Erklären Sie die Begriffe in eigenen Worten, bevor Sie die Musterantwort aufdecken. Ausgewählt werden bevorzugt Begriffe, die Sie dort als nicht oder halb gewusst eingestuft haben."));
+      karten.forEach(function (b) {
+        var karte = el("div", "sb-wk-karte");
+        var kopf = el("p");
+        var link = el("a", "sb-name");
+        link.href = b.url + "#sb-" + b.id;
+        link.title = "Zur Stelle im früheren Kapitel";
+        link.innerHTML = b.kopf;
+        kopf.appendChild(link);
+        karte.appendChild(kopf);
+        var feld = el("textarea", "sb-erklaerung");
+        feld.setAttribute("aria-label", "Ihre Erklärung (wird nicht gespeichert)");
+        feld.placeholder = "Ihre Erklärung in eigenen Worten (wird nicht gespeichert)";
+        karte.appendChild(feld);
+        var muster = el("div", "sb-muster");
+        muster.innerHTML = b.muster;
+        var zeile = el("div", "sb-zeile");
+        zeile.appendChild(aufdecken(muster));
+        zeile.appendChild(stufen(b.id));
+        karte.appendChild(zeile);
+        karte.appendChild(muster);
+        wk.appendChild(karte);
+      });
+    });
+  }
+
+  function init() {
+    var boxen = document.querySelectorAll(".sb-begriffe, .sb-spiel, .sb-wiederkehr");
+    if (!boxen.length) return;
+    document.documentElement.classList.add("sb-js");
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-begriffe"), begriffsListe);
+    var m = etiketten();
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-spiel"), function (s) { richteSpielEin(s, m); });
+    Array.prototype.forEach.call(document.querySelectorAll(".sb-wiederkehr"), richteWiederkehrEin);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
+</script>
+<script>
+// Zitat-Popups auf Tablet und Smartphone.
+// Quarto zeigt den Voll-Verweis per tippy.js beim Überfahren mit der Maus.
+// Ein Fingertipp löst aber zugleich den Link aus und springt ins
+// Literaturverzeichnis, bevor man das Popup sieht. Bei Touch- oder
+// Stifteingabe öffnet ein Tipp daher nur das Popup; ein Tipp daneben
+// schließt es. Mausbedienung bleibt unverändert.
+(function () {
+  var touch = false;
+  document.addEventListener('pointerdown', function (e) {
+    var isTouch = e.pointerType === 'touch' || e.pointerType === 'pen';
+    if (isTouch === touch) return;
+    touch = isTouch;
+    document.querySelectorAll('a[role="doc-biblioref"]').forEach(function (a) {
+      if (a._tippy) a._tippy.setProps({ trigger: touch ? 'click' : 'mouseenter focus' });
+    });
+  }, true);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[role="doc-biblioref"]');
+    if (a && touch) e.preventDefault();
+  }, true);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./kapitel02-grundlagen.html" class="pagination-link" aria-label="Grundlagen von KI und LLMs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grundlagen von KI und LLMs</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./kapitel04-lernmechanismen.html" class="pagination-link" aria-label="Lern- und Wirkmechanismen">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lern- und Wirkmechanismen</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Bartnik, Roman (2026). Generative KI als Hilfe zum Lehren und Lernen. Lizenz: CC BY-SA 4.0. Online: https://th-koln-bartnik.github.io/genai4teaching/</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/edit/main/kapitel03-automation.qmd" class="toc-action"><i class="bi bi-github"></i>Seite editieren</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/issues/new" class="toc-action"><i class="bi empty"></i>Problem melden</a></li><li><a href="https://github.com/TH-Koln-Bartnik/genai4teaching/blob/main/kapitel03-automation.qmd" class="toc-action"><i class="bi empty"></i>Quellcode anzeigen</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
