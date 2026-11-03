@@ -49,4 +49,4 @@ Plan Abschnitt 1 (Spalte „Druck 03.11.“) und neuer Abschnitt 2.9 (je Abschni
 - Eine Liste „überholter“ Arbeitsstände muss am Inhalt geprüft werden, weil ein falsch einsortierter Stand beim Aufräumen echte Arbeit löscht.
 - Eine Wortzählung für den Druck muss dieselben Weichen auswerten wie der Satz, sonst misst sie das Online-Buch.
 
-Ablage geprüft: siehe letzte Zeile nach Prüfung.
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht, gemergt: ja – S3, Rollen-Kasten, Vorwort-Praxisbeispiele in `main`; nicht gemergt: `zitierstil-apa7-de`, `mollick-s2-podcast`, `mollick-s2n-notebook`, `archiv/audio-beispiele`)
