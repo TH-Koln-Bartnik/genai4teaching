@@ -71,3 +71,5 @@ Startreihenfolge 04.11. (keine Abhängigkeit): K3a (Quellen Kap. 3, ohne Datei),
 - Weiterleitungen mit Ankertabelle halten gedruckte QR-Codes gültig, auch wenn ihre Ziele das Kapitel wechseln.
 - Ein Suchmuster für Dateinamen braucht eine Grenze, die Bindestriche ausschließt, sonst ändert es Namen, die den gesuchten nur enthalten.
 - Der Apparat eines Kapitels (Lernziele, Begriffe, Lernfragen) ist an Inhalte gebunden und wird beim Umzug von Abschnitten stillschweigend falsch.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht `fa1c03c` und folgende Notiz-Commits, gemergt: ja – S2, Umzug Phase 1 in `main`; nicht gemergt und löschbar: `umzug-phase1` (identisch mit `main`), `mollick-s2n-notebook`; offen: `zitierstil-apa7-de` für Phase 3)
