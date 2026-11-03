@@ -1106,7 +1106,23 @@ window.addEventListener("message", function (e) {
 <section id="sec-prompting-myths" class="level3" data-number="2.4.4">
 <h3 data-number="2.4.4" class="anchored" data-anchor-id="sec-prompting-myths"><span class="header-section-number">2.4.4</span> Drohen und Bestechen bringt nichts: Hausrezepte im Test</h3>
 <p>Dieselbe Eingabe liefert nicht immer dieselbe Antwort, und <strong>so entsteht schnell anekdotische Evidenz</strong>, dass eine Formulierung „besser geklappt“ hätte.</p>
-<p>Meincke und Kollegen haben solche Hausrezepte systematisch geprüft; <strong>die wenigsten helfen zuverlässig</strong> <span class="citation" data-cites="meincke2025 meincke2025a meincke2025b">(<a href="#ref-meincke2025" role="doc-biblioref">Meincke et al., 2025b</a>, <a href="#ref-meincke2025a" role="doc-biblioref">2025a</a>, <a href="#ref-meincke2025b" role="doc-biblioref">2025c</a>)</span>. Die Aufforderung, Schritt für Schritt zu denken, half älteren Modellen ein wenig; Reasoning-Modelle tun das von sich aus, und dort kostet die Aufforderung vor allem Zeit <span class="citation" data-cites="meincke2025a">(<a href="#ref-meincke2025a" role="doc-biblioref">Meincke et al., 2025a</a>)</span>. Auch eine Expertenrolle („Du bist eine erfahrene Physikerin“) macht die Antworten nicht genauer <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>.</p>
+<p>Meincke und Kollegen haben solche Hausrezepte systematisch geprüft; <strong>die wenigsten helfen zuverlässig</strong> <span class="citation" data-cites="meincke2025 meincke2025a meincke2025b">(<a href="#ref-meincke2025" role="doc-biblioref">Meincke et al., 2025b</a>, <a href="#ref-meincke2025a" role="doc-biblioref">2025a</a>, <a href="#ref-meincke2025b" role="doc-biblioref">2025c</a>)</span>. Die Aufforderung, Schritt für Schritt zu denken, half älteren Modellen ein wenig; Reasoning-Modelle tun das von sich aus, und dort kostet die Aufforderung vor allem Zeit <span class="citation" data-cites="meincke2025a">(<a href="#ref-meincke2025a" role="doc-biblioref">Meincke et al., 2025a</a>)</span>. Auch eine Expertenrolle („Du bist eine erfahrene Physikerin“) macht die Antworten nicht genauer <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>. Weil gerade diese Empfehlung lange das Gegenteil sagte, <span>zeigt der folgende Kasten, wie es zu dem Wechsel kam und wie gut jeder Schritt belegt ist.</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Hintergrund: Warum die Rolle aus dem Arbeitsauftrag verschwindet">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Hintergrund: Warum die Rolle aus dem Arbeitsauftrag verschwindet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span id="sec-rollen-evidenz"></span></p>
+<p><strong>Was früher für Rollen sprach.</strong> In den Jahren 2023 und 2024 brachten Rollen bei den damaligen Modellen messbare Gewinne. Ein eigens gebauter Rollenspiel-Prompt hob die Trefferquote von ChatGPT bei Algebra-Textaufgaben von 53,5 auf 63,8 Prozent; die Autoren erklären den Effekt damit, dass die Rolle das Modell zum schrittweisen Denken anstieß <span class="citation" data-cites="kong2024roleplay">(<a href="#ref-kong2024roleplay" role="doc-biblioref">Kong et al., 2024</a>)</span>. Modelle, die eine Fachexpertin spielten, schnitten besser ab als solche, die eine fachfremde Expertin spielten <span class="citation" data-cites="salewski2023impersonation">(<a href="#ref-salewski2023impersonation" role="doc-biblioref">Salewski et al., 2023</a>)</span>, und die großen Anbieter nahmen die Rolle in ihre Leitfäden auf <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>. Belegt war damit weniger, als es schien: Die Gewinne betrafen Modelle, die noch nicht von sich aus nachdachten, und der zweite Befund verglich Rolle mit Rolle, nicht Rolle mit keiner Rolle.</p>
+<p><strong>Was sich geändert hat.</strong> Zwei große Prüfungen finden keinen verlässlichen Genauigkeitsgewinn mehr. Eine begutachtete Studie verglich 162 Rollen an vier Modellfamilien und 2.410 Sachfragen mit einem Prompt ohne Rolle; ihre erste Fassung von 2023 hatte noch einen Vorteil gemeldet <span class="citation" data-cites="zheng2024persona">(<a href="#ref-zheng2024persona" role="doc-biblioref">Zheng et al., 2024</a>)</span>. Der Wharton-Report mit sechs Modellen von 2025 und Fragen auf Promotionsniveau kommt zum selben Ergebnis, und Rollen, die wenig Wissen nahelegen („Laie“, „Kleinkind“), senkten die Genauigkeit sogar <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>. Soziodemografische Rollen wie „eine asiatische Person“ lösten verzerrtes Schlussfolgern aus, beim stärksten getesteten Modell noch bei 42 Prozent der Rollen <span class="citation" data-cites="gupta2024bias">(<a href="#ref-gupta2024bias" role="doc-biblioref">Gupta et al., 2024</a>)</span>. Zugleich denken heutige Reasoning-Modelle ohnehin, bevor sie antworten; der Weg, über den Rollen früher wirkten, führt ins Leere. Der fehlende Genauigkeitsgewinn und die Verzerrung sind durch begutachtete Studien mit mehreren Modellfamilien gut belegt; der Wharton-Report ist ein Arbeitspapier, und alle Tests liefen mit englischen Multiple-Choice-Fragen.</p>
+<p><strong>Was man jetzt empfiehlt.</strong> In einem Arbeitsauftrag streichen Sie die Rolle und schreiben hinein, was sie andeuten sollte: für wen, wozu, in welchem Ton („für Erstsemester, ermutigend, ohne Fachjargon“). Das lässt sich prüfen, eine zugeschriebene Identität nicht; für diese Empfehlung ist die Evidenz stark. Für Ton und Haltung empfehlen die Anbieter Rollen weiterhin <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026b</a>)</span>; kontrollierte Tests dazu fehlen, die Empfehlung beruht auf Erfahrung. In Tutor-Bots und Simulationen bleibt die Rolle, weil sie dort das Produkt ist (<a href="#sec-prompts-teaching" class="quarto-xref"><span>Kapitel 2.4.5</span></a>). Ihr Beitrag zur Echtheit ist allerdings klein: Personenmerkmale erklären weniger als ein Zehntel der Unterschiede in menschlichen Urteilen, und Persona-Prompts verbessern solche Simulationen nur wenig <span class="citation" data-cites="hu2024persona">(<a href="#ref-hu2024persona" role="doc-biblioref">Hu &amp; Collier, 2024</a>)</span>. Weil Rollen zudem Stereotype mitbringen können, gehört ein Test darauf in die Abnahme (<a href="#sec-prompts-schreiben-lassen" class="quarto-xref"><span>Kapitel 2.4.3</span></a>).</p>
+</div>
+</div>
 <div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1738,6 +1754,9 @@ Grootendorst, M. (2025a, Februar 3). <em>A Visual Guide to Reasoning LLMs</em>. 
 <div id="ref-grootendorst2025agents" class="csl-entry" role="listitem">
 Grootendorst, M. (2025b, März 17). A visual guide to LLM agents: Exploring the main components of single- and multi-agents. <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents">https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents</a>.
 </div>
+<div id="ref-gupta2024bias" class="csl-entry" role="listitem">
+Gupta, S., Shrivastava, V., Deshpande, A., Kalyan, A., Clark, P., Sabharwal, A., &amp; Khot, T. (2024). Bias Runs Deep: Implicit Reasoning Biases in Persona-Assigned LLMs. <a href="https://doi.org/10.48550/arXiv.2311.04892">https://doi.org/10.48550/arXiv.2311.04892</a>.
+</div>
 <div id="ref-hackl2026heptagon" class="csl-entry" role="listitem">
 Hackl, V., Müller, A. E., &amp; Sailer, M. (2026). The AI literacy heptagon: A structured approach to AI literacy in higher education. <em>Computers and Education: Artificial Intelligence</em>, <em>10</em>, 100540. <a href="https://doi.org/10.1016/j.caeai.2026.100540">https://doi.org/10.1016/j.caeai.2026.100540</a>.
 </div>
@@ -1749,6 +1768,9 @@ Hoffmann, J., Borgeaud, S., Mensch, A., Buchatskaya, E., Cai, T., Rutherford, E.
 </div>
 <div id="ref-holec1981" class="csl-entry" role="listitem">
 Holec, H. (1981). <em>Autonomy and foreign language learning</em>. Pergamon.
+</div>
+<div id="ref-hu2024persona" class="csl-entry" role="listitem">
+Hu, T., &amp; Collier, N. (2024). Quantifying the Persona Effect in LLM Simulations. <a href="https://doi.org/10.18653/v1/2024.acl-long.554">https://doi.org/10.18653/v1/2024.acl-long.554</a>.
 </div>
 <div id="ref-huffman2024" class="csl-entry" role="listitem">
 Huffman, P., &amp; Hutson, J. (2024). <a href="https://digitalcommons.lindenwood.edu/faculty-research-papers/683">Enhancing History Education with Google NotebookLM: Case Study of Mary Easton Sibley’s Diary for Multimedia Content and Podcast Creation</a>. <em>ISRG Journal of Arts, Humanities and Social Sciences</em>, <em>2</em>(5).
@@ -1776,6 +1798,9 @@ Kaplan, J., McCandlish, S., Henighan, T., Brown, T. B., Chess, B., Child, R., Gr
 </div>
 <div id="ref-kiconnect2026inferenz" class="csl-entry" role="listitem">
 KI:connect.nrw (2026, Mai 11). Souveräne KI für NRW: Offene Sprachmodelle über KI:Inferenz.nrw in KI:connect. <a href="https://kiconnect.pages.rwth-aachen.de/pages/blog/2026/05/11/2026-05-11_souveraene-ki-nrw/">https://kiconnect.pages.rwth-aachen.de/pages/blog/2026/05/11/2026-05-11_souveraene-ki-nrw/</a>.
+</div>
+<div id="ref-kong2024roleplay" class="csl-entry" role="listitem">
+Kong, A., Zhao, S., Chen, H., Li, Q., Qin, Y., Sun, R., Zhou, X., Wang, E., &amp; Dong, X. (2024). Better Zero-Shot Reasoning with Role-Play Prompting. <a href="https://doi.org/10.18653/v1/2024.naacl-long.228">https://doi.org/10.18653/v1/2024.naacl-long.228</a>.
 </div>
 <div id="ref-kotha2025" class="csl-entry" role="listitem">
 Kotha, A., Lee, J., Zakariasson, E., et al. (2025). <em><a href="https://cookbook.openai.com/examples/gpt-5/gpt-5_prompting_guide">GPT-5 Prompting Guide</a></em>. OpenAI.
@@ -1891,6 +1916,9 @@ Russell, S. J., &amp; Norvig, P. (2021). <em>Artificial intelligence: a modern a
 <div id="ref-sae2021j3016" class="csl-entry" role="listitem">
 SAE International (2021). <em>Taxonomy and definitions for terms related to driving automation systems for on-road motor vehicles (J3016_202104)</em>. SAE International. <a href="https://doi.org/10.4271/J3016_202104">https://doi.org/10.4271/J3016_202104</a>.
 </div>
+<div id="ref-salewski2023impersonation" class="csl-entry" role="listitem">
+Salewski, L., Alaniz, S., Rio-Torto, I., Schulz, E., &amp; Akata, Z. (2023). In-Context Impersonation Reveals Large Language Models’ Strengths and Biases. <a href="https://doi.org/10.48550/arXiv.2305.14930">https://doi.org/10.48550/arXiv.2305.14930</a>.
+</div>
 <div id="ref-schick2023toolformer" class="csl-entry" role="listitem">
 Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Hambro, E., Zettlemoyer, L., Cancedda, N., &amp; Scialom, T. (2023). Toolformer: Language models can teach themselves to use tools. <a href="https://doi.org/10.48550/arXiv.2302.04761">https://doi.org/10.48550/arXiv.2302.04761</a>.
 </div>
@@ -1950,6 +1978,9 @@ You, J. (2025, Februar 7). How much energy does ChatGPT use? <em>Epoch AI</em>. 
 </div>
 <div id="ref-zhang2025skills" class="csl-entry" role="listitem">
 Zhang, B., Lazuka, K., &amp; Murag, M. (2025, Oktober 16). Equipping agents for the real world with Agent Skills. <em>Anthropic Engineering</em>. <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</a>.
+</div>
+<div id="ref-zheng2024persona" class="csl-entry" role="listitem">
+Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <span>„A Helpful Assistant“</span> Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of Large Language Models. <a href="https://doi.org/10.18653/v1/2024.findings-emnlp.888">https://doi.org/10.18653/v1/2024.findings-emnlp.888</a>.
 </div>
 </div>
 </section>
