@@ -22,7 +22,7 @@ Wortzahlen gesamt (online und Druck, ohne Code) und Druckwörter nach `scripts/z
 | Anhang A Prompts | 5.822 | 5.218 | AI-Fluency-Übung (1.810) steht schon nur online: Druck 0 |
 | Anhang B Lösungen | 2.801 | 2.927 | nach Kapiteln 1–6 |
 | **Summe** | **65.342** | **59.814** | |
-| Archiv (nicht im Buch) | 24.839 | Primer 7.585, Rollenspiele 5.099, Fortgeschrittene Nutzung 11.309 |
+| Archiv (nicht im Buch) | 24.839 | – | Primer 7.585, Rollenspiele 5.099, Fortgeschrittene Nutzung 11.309 |
 
 Das Repo enthält 331 automatische Querverweise (`@sec-…`) und 86 fest eingetippte Angaben wie „Kapitel 4“ oder „Abschnitt 2.3“. Die automatischen überleben jede Verschiebung, die eingetippten nicht.
 
