@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was Forschende über KI sagen: Hörstück mit Prüfauftrag</title>
+<style>
+  /* Farbbudget: Graustufen + eine Akzentfarbe, Variablen wie agenten-engpass.html */
+  :root { --bg:#ffffff; --ink:#1b1b1b; --muted:#5d5d5d; --line:#c9c9c9; --panel:#f6f5f2; --akzent:#b45309; --box:#ffffff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#151515; --ink:#f0f0f0; --muted:#b3b3b3; --line:#4a4a4a; --panel:#1f1f1f; --akzent:#f59e0b; --box:#151515; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.5; }
+  main { max-width:980px; margin:0 auto; padding:8px 6px 20px; }
+  *, *::before, *::after { box-sizing:border-box; }
+  .kicker { font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0; }
+  h1 { font-size:20px; line-height:1.3; margin:2px 0 10px; font-weight:650; }
+  h2 { font-size:17px; line-height:1.3; margin:0 0 8px; font-weight:650; }
+  h2:focus { outline:none; }
+  p { margin:0 0 10px; max-width:72ch; }
+  .klein { font-size:13.5px; color:var(--muted); }
+  a { color:inherit; }
+
+  /* Phasenleiste */
+  ol.phasen { list-style:none; display:flex; flex-wrap:wrap; gap:4px 14px; margin:0 0 14px; padding:0 0 8px;
+    border-bottom:1px solid var(--line); font-size:13.5px; color:var(--muted); counter-reset:ph; }
+  ol.phasen li { counter-increment:ph; }
+  ol.phasen li::before { content:counter(ph) " "; font-variant-numeric:tabular-nums; }
+  ol.phasen li[aria-current="step"] { color:var(--ink); font-weight:650; text-decoration:underline;
+    text-decoration-color:var(--akzent); text-decoration-thickness:3px; text-underline-offset:5px; }
+
+  button, .knopf { font:inherit; color:var(--ink); background:var(--box); border:1px solid var(--muted);
+    border-radius:6px; cursor:pointer; min-height:44px; padding:6px 14px; }
+  button:focus-visible, input:focus-visible, summary:focus-visible { outline:3px solid var(--akzent); outline-offset:2px; }
+  button.haupt { background:var(--ink); color:var(--bg); border-color:var(--ink); font-weight:600; }
+  button[aria-pressed="true"] { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  button:disabled { opacity:.45; cursor:default; }
+  .navzeile { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 0; align-items:center; }
+  .navzeile .rechts { margin-left:auto; }
+
+  .feld { background:var(--panel); border-radius:8px; padding:12px 14px; margin:0 0 12px; }
+  fieldset { border:none; margin:0 0 12px; padding:0; }
+  legend { font-weight:600; margin:0 0 6px; padding:0; }
+  .wahl { display:flex; flex-wrap:wrap; gap:8px; }
+  .wahl label { display:flex; align-items:center; gap:8px; min-height:44px; padding:6px 12px;
+    border:1px solid var(--muted); border-radius:6px; background:var(--box); cursor:pointer; }
+  .wahl input { width:18px; height:18px; margin:0; accent-color:var(--akzent); }
+  .wahl label:has(input:checked) { border-color:var(--ink); box-shadow:inset 0 0 0 2px var(--ink); font-weight:600; }
+  input[type=range] { width:100%; accent-color:var(--akzent); min-height:32px; }
+  output { font-variant-numeric:tabular-nums; font-weight:650; }
+
+  /* Player */
+  .player { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:0 0 10px; }
+  .knopfzeile { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+  .spiel { width:48px; height:48px; padding:0; border-radius:50%; display:grid; place-items:center;
+    background:var(--ink); color:var(--bg); border:none; }
+  .spiel svg { width:20px; height:20px; fill:currentColor; }
+  .zeit { font-variant-numeric:tabular-nums; font-size:14px; color:var(--muted); }
+  .tempo { display:flex; gap:6px; margin-left:auto; }
+  .tempo button { min-width:56px; padding:4px 8px; font-size:14px; }
+  .kennz { font-size:12.5px; color:var(--muted); margin:8px 0 0; }
+  .platzhalter { font-size:12.5px; margin:4px 0 0; color:var(--akzent); font-weight:600; }
+  .marken { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
+  .marken button { font-size:14px; min-height:40px; padding:4px 10px; }
+  .transkript { list-style:none; margin:0; padding:0 4px 0 0; max-height:380px; overflow-y:auto;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .transkript li { margin:0; }
+  .thema-kopf { font-size:12.5px; font-weight:650; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); padding:10px 8px 2px; }
+  .zeile { display:block; width:100%; text-align:left; border:none; border-left:3px solid transparent; border-radius:0;
+    background:none; padding:5px 8px; font-size:15px; min-height:0; }
+  .zeile:hover { background:var(--panel); }
+  .zeile.aktiv { border-left-color:var(--akzent); background:var(--panel); }
+  .zeile.aktiv .was { color:var(--akzent); }
+  .zeile.pruef .was { text-decoration:underline dotted; text-underline-offset:3px; }
+  .wer { display:block; font-size:12px; font-weight:650; letter-spacing:.02em; color:var(--muted); text-transform:uppercase; }
+
+  /* Prüfung */
+  .aussage { border:1px solid var(--line); border-radius:8px; padding:12px 14px; margin:0 0 14px; background:var(--box); }
+  blockquote { margin:0 0 10px; padding:4px 0 4px 12px; border-left:3px solid var(--akzent); font-size:16px; }
+  .stellen { list-style:none; margin:0 0 10px; padding:0; }
+  .stellen li { margin:0 0 8px; padding:8px 10px; background:var(--panel); border-radius:6px; }
+  .stellen .en { display:block; }
+  .stellen .de { display:block; font-size:13.5px; color:var(--muted); margin-top:2px; }
+  .stellen .id { font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .aufloesung { border-top:1px solid var(--line); margin-top:10px; padding-top:10px; }
+  .urteil-b { font-weight:650; }
+  .marke { display:inline-block; font-size:12.5px; font-weight:650; padding:1px 8px; border-radius:10px;
+    border:1px solid currentColor; margin-right:6px; }
+
+  /* Bilanz */
+  table { border-collapse:collapse; width:100%; font-size:14.5px; margin:0 0 12px; }
+  th, td { text-align:left; vertical-align:top; padding:6px 8px; border-bottom:1px solid var(--line); }
+  th { font-weight:650; color:var(--muted); font-size:13px; }
+  .balken { position:relative; height:14px; background:var(--panel); border:1px solid var(--line); border-radius:3px; min-width:80px; }
+  .balken span { position:absolute; inset:0 auto 0 0; background:var(--muted); }
+  .balken span.ich { background:none; border-right:3px solid var(--akzent); }
+  .kasten { border:1px solid var(--line); border-left:4px solid var(--muted); border-radius:6px; padding:10px 12px; margin:12px 0; }
+  .kasten h3 { margin:0 0 6px; font-size:15px; }
+  .kasten ul, .schwaechen { margin:0; padding-left:20px; }
+  .kasten li, .schwaechen li { margin:0 0 4px; max-width:72ch; }
+
+  /* Transfer */
+  pre.vorlage { white-space:pre-wrap; background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    padding:10px 12px; font-size:14px; font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; margin:0 0 8px; }
+  details { margin:10px 0; }
+  summary { cursor:pointer; min-height:44px; display:flex; align-items:center; font-weight:600; }
+  .status { min-height:1.5em; font-size:14px; color:var(--muted); }
+  [hidden] { display:none !important; }
+  @media (max-width: 480px) {
+    h1 { font-size:18px; }
+    .tempo { margin-left:0; }
+    th, td { padding:5px 4px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .transkript { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+<main id="buehne" aria-label="Hörstück mit Prüfauftrag: Was Forschende über KI sagen"></main>
+
+<!-- Daten werden von scripts/audio-s2-zusammenfuegen.py aus _src/audio/s2-podcast/ erzeugt; nicht von Hand ändern. -->
+<script type="application/json" id="podcastdaten">
+{
+ "meta": {
+  "einleitung": "Zwei KI-Stimmen besprechen, was 125 Forschende in Interviews über ihre Arbeit mit KI gesagt haben. Das Drehbuch hat eine KI in einem Durchgang geschrieben; es ist absichtlich ungeprüft. Sie können hören oder nur das Transkript lesen. Ein Klick auf einen Satz springt im Ton dorthin.",
+  "quelle": {
+   "text": "Anthropic/AnthropicInterviewer auf Hugging Face, CC BY",
+   "href": "https://huggingface.co/datasets/Anthropic/AnthropicInterviewer"
+  },
+  "bericht": {
+   "text": "Handa et al. (2025): Introducing Anthropic Interviewer",
+   "href": "https://www.anthropic.com/research/anthropic-interviewer"
+  },
+  "titel": "Was Forschende über KI sagen",
+  "src": "media/kap04-podcast-forschende.mp3",
+  "dauer": 448.39,
+  "platzhalter": false,
+  "kennzeichnung": "Stimmen KI-erzeugt (ElevenLabs v3); Drehbuch KI-erzeugt, ungeprüft."
+ },
+ "sprecher": {
+  "lea": "Lea",
+  "jonas": "Jonas"
+ },
+ "themen": [
+  {
+   "id": "t1",
+   "titel": "Wofür Forschende KI tatsächlich nutzen",
+   "start": 0.3
+  },
+  {
+   "id": "t2",
+   "titel": "Zeitgewinn – und wo er ausbleibt",
+   "start": 85.97
+  },
+  {
+   "id": "t3",
+   "titel": "Prüfen statt blind vertrauen",
+   "start": 151.0
+  },
+  {
+   "id": "t4",
+   "titel": "Ideen, Denken und Fachkompetenz",
+   "start": 267.73
+  },
+  {
+   "id": "t5",
+   "titel": "Grenzen ziehen – und was das für die Lehre heißt",
+   "start": 357.99
+  }
+ ],
+ "zeilen": [
+  {
+   "sprecher": "lea",
+   "text": "Willkommen zu einer neuen Folge. Heute geht es um einen öffentlichen Datensatz: 125 Interviews, in denen Forschende über ihre Arbeit mit KI berichten. Geführt hat die Gespräche übrigens selbst eine KI, nämlich Claude. Jonas, du hast die Auszüge gelesen. Was fällt zuerst auf?",
+   "thema": "t1",
+   "start": 0.3,
+   "ende": 18.65
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Wie alltäglich die Nutzung ist. Eine grobe Stichwortzählung findet Literatur und Schreiben in 105 von 125 Interviews, Code und Datenanalyse in 102. Wichtig dabei: Gezählt wird nur, ob ein Stichwort in den Antworten vorkommt. Das sind Hinweise, keine Messwerte.",
+   "thema": "t1",
+   "start": 18.65,
+   "ende": 35.66
+  },
+  {
+   "sprecher": "lea",
+   "text": "Beim Schreiben geht es oft um sehr Kleines. Eine Person erzählt, sie habe anfangs E-Mails an ihre Betreuung von der KI prüfen lassen, damit sie professionell klingen und trotzdem das eigene Anliegen rüberbringen.",
+   "thema": "t1",
+   "start": 35.66,
+   "ende": 48.51
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Beim Code ist das Bild ähnlich handfest. Jemand ließ Matlab-Code eines Kollegen in Python übertragen, und die KI nutzte dabei Bibliotheken, die die Person selbst gar nicht kannte.",
+   "thema": "t1",
+   "start": 48.51,
+   "ende": 58.41
+  },
+  {
+   "sprecher": "lea",
+   "text": "Eine andere Person sagt, Datenanalyse sei oft mühsam und eher langweilig, also Messwertlisten durchgehen, plotten und so weiter, und genau dafür setze sie KI ein.",
+   "thema": "t1",
+   "start": 58.41,
+   "ende": 71.01
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Aber nicht alle ziehen mit. Eine Person würde KI gern für die Datenanalyse nutzen, ist aber unsicher. Ihre Analysen seien komplex und voller Feinheiten, und wo ihr Wissen endet, frage sie lieber eine Fachperson aus der Biostatistik.",
+   "thema": "t1",
+   "start": 71.01,
+   "ende": 84.97
+  },
+  {
+   "sprecher": "lea",
+   "text": "Zeitgewinn taucht in 62 Interviews auf. Eine Person sagt, sie greife zur KI, wenn sie ein Problem schneller löst als die Suche auf Stack Overflow oder GitHub, und das sei bei rund 90 Prozent der Probleme der Fall.",
+   "thema": "t2",
+   "start": 85.97,
+   "ende": 99.11
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Beim Debugging wird es konkret: Die KI finde fehlende Doppelpunkte und Syntaxfehler viel schneller als ein Mensch, der eine große Codebasis durchkämmt. Und Matplotlib-Befehle nachzuschlagen sei mühsam, die KI setze sie sofort um.",
+   "thema": "t2",
+   "start": 99.11,
+   "ende": 113.32
+  },
+  {
+   "sprecher": "lea",
+   "text": "Es gibt aber deutliche Gegenstimmen. Jemand aus dem Labor sagt knapp: Das spart keine Zeit. Selbst wenn die KI vertrauenswürdig wäre, lasse sie sich nicht mit der Laborsoftware wie GraphPad verbinden.",
+   "thema": "t2",
+   "start": 113.32,
+   "ende": 125.31
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Und eine andere Person meint, sie hätte KI für den Entwurf von Prototypen nutzen können. Aber der KI den ganzen Kontext zu erklären, also vorhandene Materialien und Einschränkungen am Arbeitsplatz, hätte zu viel Zeit gekostet.",
+   "thema": "t2",
+   "start": 125.31,
+   "ende": 138.79
+  },
+  {
+   "sprecher": "lea",
+   "text": "Für uns in der Lehre ist das ein wichtiger Punkt. Zeitgewinn ist kein Naturgesetz. Er hängt davon ab, wie viel Kontext man liefern muss und wie gut sich das Werkzeug in die vorhandene Arbeit einfügt.",
+   "thema": "t2",
+   "start": 138.79,
+   "ende": 150.0
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Prüfen und Verifizieren kommt in 95 Interviews vor, Misstrauen und Fehler in 73. Das Thema ist also fast so präsent wie die Nutzung selbst.",
+   "thema": "t3",
+   "start": 151.0,
+   "ende": 160.93,
+   "pruef": 1
+  },
+  {
+   "sprecher": "lea",
+   "text": "Die Fehlerberichte sind sehr fachspezifisch. Eine Person berichtet, die KI habe Antworten erfunden und Strukturen vorgeschlagen, die chemisch unmöglich sind, etwa fünf Bindungen an einem Kohlenstoffatom.",
+   "thema": "t3",
+   "start": 160.93,
+   "ende": 174.88
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Und bei der Literatur: Wer nach Belegen für eine Behauptung fragt, bekomme oft falsche oder schwache Quellen. Auch die Suche in astronomischen Datenbanken klappe schlecht.",
+   "thema": "t3",
+   "start": 174.88,
+   "ende": 185.72
+  },
+  {
+   "sprecher": "lea",
+   "text": "Spannend sind die Prüfstrategien. Eine Person rechnet einige Werte von Hand nach, weil die KI oft Fehler mache. Nach etwa drei geprüften Werten vertraue sie ihr dann meistens. Die Werte nutzt sie aber nur, um eine Formel zu vermuten, und die beweist sie danach ohne KI.",
+   "thema": "t3",
+   "start": 185.72,
+   "ende": 202.92
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Eine andere lässt sich Gleichungen herleiten, prüft aber nach eigener Aussage jeden Schritt hundertprozentig selbst.",
+   "thema": "t3",
+   "start": 202.92,
+   "ende": 209.48
+  },
+  {
+   "sprecher": "lea",
+   "text": "Das erste Beispiel zeigt, wie Stichproben und ein eigener Beweis zusammenspielen. Eine weitere Person sagt, sie prüfe Informationen. Bei einfachen Dingen wie dem Umrechnen von Einheiten vertraue sie aber manchmal, wenn ein Ergebnis richtig wirke und ungefähr in der passenden Größenordnung liege.",
+   "thema": "t3",
+   "start": 209.48,
+   "ende": 228.05
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Dazu passt die Gegenposition: Die einzige Möglichkeit, KI-Ergebnisse zu bestätigen, sei, die Arbeit selbst zu wiederholen. Dann wirke es sinnlos, die KI überhaupt zu fragen.",
+   "thema": "t3",
+   "start": 228.05,
+   "ende": 238.97
+  },
+  {
+   "sprecher": "lea",
+   "text": "Eine pragmatische Lösung beschreibt jemand anderes: KI für kleine, leicht überprüfbare Aufgaben nutzen, um sich auf die großen Teile des Projekts zu konzentrieren, die KI nicht bewältigt.",
+   "thema": "t3",
+   "start": 238.97,
+   "ende": 250.21
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Das wäre eine gute Faustregel für Studierende: Gib ab, was du schnell prüfen kannst. Wo Fehler teuer sind, sieht es anders aus. Eine Person sagt, Fehler könnten Tage an Laborarbeit ruinieren, deshalb würde sie Schritt-für-Schritt-Anleitungen der KI nie ungeprüft übernehmen.",
+   "thema": "t3",
+   "start": 250.21,
+   "ende": 266.73
+  },
+  {
+   "sprecher": "lea",
+   "text": "Ideen und Hypothesen tauchen in 93 Interviews auf. Eine Person sagt offen, das Schwierigste sei für sie immer, überhaupt eine erste Idee zu finden, besonders in umkämpften Feldern.",
+   "thema": "t4",
+   "start": 267.73,
+   "ende": 279.92
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Eine andere sieht die KI als Brainstorming-Partner, der schneller Ideen liefert, als man selbst suchen und umsetzen kann, wobei manche davon falsch sein können. So formuliere sie auch ihre Anweisungen an Sprachmodelle.",
+   "thema": "t4",
+   "start": 279.92,
+   "ende": 292.35
+  },
+  {
+   "sprecher": "lea",
+   "text": "Gleichzeitig gibt es eine Warnung: Weil sich das Werkzeug stark auf seine Trainingsdaten stütze, kämen eher generische Ideen heraus, so jedenfalls die Vermutung einer Person.",
+   "thema": "t4",
+   "start": 292.35,
+   "ende": 304.12
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Jetzt eine Zahl, die man vorsichtig lesen muss. Sorge um Fachkompetenz erscheint nur in 9 Interviews. Schaut man genauer hin, passt nicht jeder Treffer. Ein Zitat handelt schlicht davon, mit KI Softwareabhängigkeiten und Versionskontrolle zu verwalten.",
+   "thema": "t4",
+   "start": 304.12,
+   "ende": 319.27
+  },
+  {
+   "sprecher": "lea",
+   "text": "Bei der Kategorie Grenzen ist es ähnlich: Da landen auch atmosphärische Grenzschichten in Waldbrandsimulationen. Eine grobe Zählung ersetzt eben nicht das Lesen der Transkripte.",
+   "thema": "t4",
+   "start": 319.27,
+   "ende": 331.51
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Die passenden Zitate sind aber stark. Eine Person sagt, KI helfe ihr beim Schreiben von Werkzeugen für die Datenverarbeitung, das kritische Denken solle aber allein bei ihr oder den Koautoren liegen.",
+   "thema": "t4",
+   "start": 331.51,
+   "ende": 343.4
+  },
+  {
+   "sprecher": "lea",
+   "text": "Und eine andere beschreibt es so: Sie habe ein mächtiges Werkzeug für komplexe Rechnungen und zum Prüfen ihrer Argumentation, das kritische Denken und Lernen leiste sie aber selbst. Es ersetze nicht, den Stoff wirklich zu verstehen.",
+   "thema": "t4",
+   "start": 343.4,
+   "ende": 356.99
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Viele ziehen klare persönliche Grenzen. Eine Person würde nie E-Mails von der KI schreiben lassen. Sie schreibe selbst einen Entwurf und hole sich dann Vorschläge zu Wortwahl und Grammatik.",
+   "thema": "t5",
+   "start": 357.99,
+   "ende": 368.56,
+   "pruef": 2
+  },
+  {
+   "sprecher": "lea",
+   "text": "Bei der Literatur ähnlich: KI-Vorschläge dienen einer Person als Sprungbrett für die eigene Recherche, und sie prüfe, ob die genannten Aufsätze echt, relevant und seriös sind.",
+   "thema": "t5",
+   "start": 368.56,
+   "ende": 379.8,
+   "pruef": 3
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Und es gibt Grenzen aus Gründen der Kontrolle. Jemand möchte keinen KI-Assistenten, der Praktikumsanfragen annimmt oder Termine mit Studierenden vereinbart, ohne dass er oder sie zugestimmt hat.",
+   "thema": "t5",
+   "start": 379.8,
+   "ende": 391.85
+  },
+  {
+   "sprecher": "lea",
+   "text": "Eine Person begründet ihre Zurückhaltung mit dem eigenen Stil: Sie möge ihre Art zu schreiben, und wenn sie KI nutze, wisse sie, dass das nicht mehr sie selbst sei.",
+   "thema": "t5",
+   "start": 391.85,
+   "ende": 401.9
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Was heißt das für uns als Lehrende? Erstens: Die Muster ähneln dem, was wir von Studierenden kennen. Manche Befragte beschreiben sich übrigens selbst als Studierende. Zweitens: Prüfstrategien sollten wir ausdrücklich lehren, nicht nur Regeln und Verbote aufstellen.",
+   "thema": "t5",
+   "start": 401.9,
+   "ende": 419.12
+  },
+  {
+   "sprecher": "lea",
+   "text": "Drittens: Die Zahlen dieses Auszugs sind grobe Stichwortzählungen aus einem Interviewdatensatz. Sie zeigen, worüber gesprochen wird, aber nicht, wie gut etwas funktioniert oder wie verbreitet es insgesamt ist.",
+   "thema": "t5",
+   "start": 419.12,
+   "ende": 431.68
+  },
+  {
+   "sprecher": "jonas",
+   "text": "Und damit zu unserer Frage an euch: Welche Aufgaben in eurem Fach sind klein und leicht genug überprüfbar, dass Studierende sie an eine KI abgeben dürfen, und wo sollte das kritische Denken ganz bei ihnen bleiben?",
+   "thema": "t5",
+   "start": 431.68,
+   "ende": 444.21
+  },
+  {
+   "sprecher": "lea",
+   "text": "Schreibt uns eure Beispiele. Bis zum nächsten Mal.",
+   "thema": "t5",
+   "start": 444.21,
+   "ende": 447.73
+  }
+ ],
+ "vorhersage": {
+  "einleitung": "Bevor Sie hören: Legen Sie sich kurz fest. In der Bilanz vergleichen Sie Ihre Vorhersage mit einer Zählung in den 125 Interviews.",
+  "frage": "Worüber sprechen die Forschenden am häufigsten, wenn sie von ihrer Arbeit mit KI erzählen?",
+  "optionen": [
+   {
+    "id": "lit",
+    "thema": "literatur_schreiben",
+    "label": "Literatur und Schreiben",
+    "zahl": 105
+   },
+   {
+    "id": "code",
+    "thema": "code_daten",
+    "label": "Datenanalyse und Code",
+    "zahl": 102
+   },
+   {
+    "id": "ideen",
+    "thema": "ideen_hypothesen",
+    "label": "Ideen und Hypothesen",
+    "zahl": 93
+   }
+  ],
+  "zaehlhinweis": "Gezählt wurde, in wie vielen Interviews mindestens ein Stichwort des Themas in den Antworten der Forschenden vorkommt (etwa „paper“, „draft“ oder „python“, „dataset“). Das misst Erwähnungen, nicht Vertrauen und nicht, wie oft jemand KI nutzt.",
+  "regler": {
+   "thema": "misstrauen_fehler",
+   "frage": "In wie viel Prozent der 125 Interviews kommt Misstrauen gegenüber KI-Ergebnissen zur Sprache?",
+   "frage_kurz": "Misstrauen gegenüber KI-Ergebnissen",
+   "hinweis": "Grobe Zählung über Stichwörter wie „hallucinate“, „wrong“, „mistake“, „don’t trust“. Fehltreffer zählen mit (etwa Grammatikfehler im eigenen Text), Misstrauen ohne eines dieser Wörter fehlt. Die Zahl zeigt eine Größenordnung, keinen Messwert.",
+   "zahl": 73
+  },
+  "n": 125
+ },
+ "pruefeinleitung": "Das Hörstück ist der ungeprüfte Erstentwurf einer KI. Ein zweiter KI-Agent, der den Auftrag des ersten nicht kannte, hat danach jede Sachaussage an den Transkripten geprüft. Urteilen Sie selbst, bevor Sie seinen Befund sehen: belegt (die Quellen sagen das so), überzogen (der Kern stimmt, die Verallgemeinerung oder Zuspitzung geht darüber hinaus) oder nicht belegt (keine passende Stelle).",
+ "pruefung": [
+  {
+   "nr": 1,
+   "zeile": 12,
+   "aussage": "„Prüfen und Verifizieren kommt in 95 Interviews vor, Misstrauen und Fehler in 73. Das Thema ist also fast so präsent wie die Nutzung selbst.“",
+   "hinweis": "Zum Vergleich die Stichwortzählung: Literatur und Schreiben 105, Code und Datenanalyse 102, Prüfen und Verifizieren 95 von 125 Interviews. Das Stichwort „check“ allein trifft 62 Interviews. Zu prüfen ist der zweite Satz.",
+   "stellen": [
+    {
+     "id": "science_0001",
+     "en": "Initially, I would use AI to check over emails I was writing to send to my advisor.",
+     "de": "Anfangs habe ich die KI E-Mails an meinen Betreuer durchsehen lassen, die ich gerade schrieb."
+    },
+    {
+     "id": "science_0007",
+     "en": "Any source the AI gives me I check over myself to verify the contents of it and if the source is actually relevant.",
+     "de": "Jede Quelle, die mir die KI nennt, sehe ich selbst durch, um den Inhalt zu prüfen und ob die Quelle überhaupt relevant ist."
+    }
+   ],
+   "urteil": "ueberzogen",
+   "begruendung": "Die Zahlen stimmen, der Schluss nicht. Die 95 entstehen zu einem großen Teil aus dem Allerweltswort „check“, das auch die Nutzung selbst meint: In der ersten Stelle prüft die KI E-Mails, nicht ein Mensch die KI. Mit engeren Prüfwörtern (verify, validate, double-check, cross-check, fact-check) bleiben 73 Interviews. Wie „präsent“ ein Thema ist, lässt sich aus Stichworttreffern nicht ablesen.",
+   "sprecher": "jonas",
+   "start": 151.0,
+   "ende": 160.93
+  },
+  {
+   "nr": 2,
+   "zeile": 28,
+   "aussage": "„Viele ziehen klare persönliche Grenzen.“",
+   "hinweis": "Stichwortzählung für „Grenzen“ (etwa boundary, draw the line, would never, not comfortable): 12 von 125 Interviews.",
+   "stellen": [
+    {
+     "id": "science_0077",
+     "en": "I set clear boundaries around AI to preserve essential learning steps.",
+     "de": "Ich setze der KI klare Grenzen, um wesentliche Lernschritte zu bewahren."
+    },
+    {
+     "id": "science_0050",
+     "en": "For example, if AI was able to produce its own mathematical theorems and push the boundaries of science, it would be a great help",
+     "de": "Wenn die KI zum Beispiel eigene mathematische Sätze aufstellen und die Grenzen der Wissenschaft verschieben könnte, wäre das eine große Hilfe."
+    }
+   ],
+   "urteil": "ueberzogen",
+   "begruendung": "Grenzziehungen gibt es, wie die erste Stelle zeigt. Die Zählung trifft aber nur 12 von 125 Interviews, und vier davon sind Fehltreffer wie die zweite Stelle, in der es um die „Grenzen der Wissenschaft“ geht. Einzelne weitere Grenzziehungen ohne Stichwort kommen vor; „viele“ ist damit nicht gedeckt.",
+   "sprecher": "jonas",
+   "start": 357.99,
+   "ende": 368.56
+  },
+  {
+   "nr": 3,
+   "zeile": 29,
+   "aussage": "„Bei der Literatur ähnlich: KI-Vorschläge dienen einer Person als Sprungbrett für die eigene Recherche, und sie prüfe, ob die genannten Aufsätze echt, relevant und seriös sind.“",
+   "hinweis": null,
+   "stellen": [
+    {
+     "id": "science_0087",
+     "en": "I would never solely use AI for these tasks.",
+     "de": "Ich würde für diese Aufgaben nie ausschließlich KI nutzen."
+    },
+    {
+     "id": "science_0087",
+     "en": "For the literature review I would use AI suggestions as a springboard to do my own research and I would verify that the papers it suggested were real, relevant and reputable.",
+     "de": "Für die Literaturübersicht nutze ich Vorschläge der KI als Sprungbrett für die eigene Recherche und prüfe, ob die vorgeschlagenen Aufsätze echt, relevant und seriös sind."
+    }
+   ],
+   "urteil": "belegt",
+   "begruendung": "Die Quelle sagt das so. Der Erstentwurf hat hier sauber gearbeitet: Nicht jede flüssige Zusammenfassung ist falsch, aber erst der Blick in die Quelle zeigt, welche Aussage trägt.",
+   "sprecher": "lea",
+   "start": 368.56,
+   "ende": 379.8
+  }
+ ],
+ "bilanz": {
+  "befund": "Der Prüfagent zerlegte das Drehbuch in 39 Sachaussagen: 33 belegt, 6 überzogen, keine ohne Beleg. Alle Zahlen ließen sich nachrechnen, alle Transkript-IDs passten. Die Schwächen lagen in Verallgemeinerungen („viele“, „fast so präsent“) und in Zitaten, denen eine Einschränkung aus der Quelle fehlte. Drei Stellen gaben Teilnehmende verkürzt oder falsch wieder; sie wurden vor der Vertonung korrigiert. Alles Übrige, auch fünf überzogene Aussagen, steht im Hörstück wie im Erstentwurf.",
+  "grenzen": [
+   "Die 125 Forschenden haben freiwillig teilgenommen; sie sind keine Stichprobe aller Forschenden, einige beschreiben sich selbst als Studierende.",
+   "Der Interviewer war selbst eine KI (Claude); Fragen und Nachfragen prägen, was zur Sprache kam.",
+   "Das Hörstück ist eine Auswahl: 93 Originalstellen aus rund 84.000 Wörtern Antworten, von einer KI ausgewählt und zugespitzt. Zahlen im Hörstück sind Stichwortzählungen, keine Anteile der Forschenden."
+  ]
+ },
+ "transfer": {
+  "einleitung": "Dasselbe Verfahren passt auf eigene Freitexte: Lehrveranstaltungs-Evaluationen, offene Antworten einer Umfrage, Interviews aus einem Lehrprojekt. Die Vorlage verlangt die Prüftabelle gleich mit; prüfen müssen Sie die Tabelle trotzdem selbst, mindestens bei allen Verallgemeinerungen.",
+  "vorlage": "Fasse die angehängten [Interviews / Freitextantworten / Evaluationskommentare] als Gespräch zweier Moderierender für [Zielgruppe] zusammen, etwa [Länge] Wörter. Nenne zu jedem Zitat und jeder Zahl die ID der Quelle. Erstelle danach eine Tabelle aller Sachaussagen mit wörtlicher Beleg-Stelle und dem Urteil belegt / überzogen / nicht belegt. Prüfe besonders Wörter wie „viele“, „die meisten“, „typisch“.",
+  "datenschutz": "Interviews und Evaluationskommentare enthalten oft personenbezogene Daten: nur mit Einwilligung und nur in datenschutzkonformen Werkzeugen verarbeiten (siehe Kapitel 5, Richtlinien zur KI-Nutzung).",
+  "makingof": "Ein Skript zog aus den 125 Transkripten 93 kurze Originalstellen und eine Stichwortzählung (rund 3.700 Wörter). Ein KI-Agent (Claude) schrieb daraus in einem Durchgang das Drehbuch, ein zweiter Agent ohne Kenntnis des ersten Auftrags prüfte jede Aussage an den Transkripten. Gesprochen haben zwei KI-Stimmen.",
+  "drehbuchprompt": "Schreibe ein deutsches Podcast-Gespräch von etwa 1.150 Wörtern (8 Minuten) zwischen zwei Moderierenden, Lea und Jonas, über die angehängten Auszüge aus 125 Interviews mit Forschenden zu ihrer Arbeit mit KI. Zielgruppe: Hochschullehrende. Zitiere Teilnehmende sinngemäß auf Deutsch und nenne bei jedem Zitat die Transkript-ID in eckigen Klammern. Gliedere in vier bis fünf Themen. Ende mit einer offenen Frage an die Hörenden.",
+  "schwaechen": [
+   "„Viele ziehen klare persönliche Grenzen“: Die Zählung trifft 12 von 125 Interviews, vier davon Fehltreffer.",
+   "„Fast so präsent wie die Nutzung selbst“: ein Schluss aus dem Allerweltswort „check“.",
+   "„Die Fehlerberichte sind sehr fachspezifisch“: Ein großer Teil betrifft erfundene Quellen und Zitate, also gerade keine Fachfrage.",
+   "Zwei Zitate verloren ihren Bezugspunkt: „Das spart keine Zeit“ galt nur für komplexe Datenanalyse, „die Arbeit selbst wiederholen“ nur für Auswertungen.",
+   "Drei Stellen gaben Teilnehmende verkürzt oder falsch wieder (eine davon zugleich überzogen); sie wurden vor der Vertonung korrigiert.",
+   "Die Stichwortzählung selbst ist grob: Unter „Sorge um Fachkompetenz“ passen nur 3 von 9 Treffern, unter „Grenzen“ landen atmosphärische Grenzschichten. Das Drehbuch sagt das selbst."
+  ]
+ }
+}
+</script>
+
+<script>
+(function () {
+  'use strict';
+  const D = JSON.parse(document.getElementById('podcastdaten').textContent);
+  const buehne = document.getElementById('buehne');
+  const ICON_PLAY = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3l12 7-12 7z"/></svg>';
+  const ICON_PAUSE = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3h4v14H4zM12 3h4v14h-4z"/></svg>';
+  const mmss = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+  const pz = x => Math.round(x * 100) + ' %';
+  function el(tag, attrs, ...kinder) {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v == null || v === false) continue;
+      if (k === 'class') e.className = v; else if (k === 'html') e.innerHTML = v; else e.setAttribute(k, v === true ? '' : v);
+    }
+    for (const k of kinder.flat()) { if (k == null) continue; e.append(k.nodeType ? k : document.createTextNode(String(k))); }
+    return e;
+  }
+  const URTEILE = [['belegt', 'belegt'], ['ueberzogen', 'überzogen'], ['nicht_belegt', 'nicht belegt']];
+  const urteilText = id => (URTEILE.find(u => u[0] === id) || [id, id])[1];
+
+  // Zustand nur im Arbeitsspeicher der Seite (kein Speichern, keine Übertragung)
+  const Z = { phase: 0, wahl: null, regler: 50, reglerBewegt: false, urteile: {} };
+
+  if (!D.zeilen) { buehne.textContent = 'Daten fehlen: bitte scripts/audio-s2-zusammenfuegen.py ausführen.'; return; }
+
+  // Kopf
+  buehne.append(
+    el('p', { class: 'kicker' }, 'Hörstück mit Prüfauftrag · etwa 12 Minuten'),
+    el('h1', {}, D.meta.titel)
+  );
+  const PHASEN = ['Vorhersage', 'Hören', 'Prüfen', 'Bilanz', 'Für Ihre Lehre'];
+  const leiste = el('ol', { class: 'phasen', 'aria-label': 'Ablauf' }, PHASEN.map(p => el('li', {}, p)));
+  buehne.append(leiste);
+  const seiten = PHASEN.map((p, i) => el('section', { 'aria-labelledby': 'ph' + i, hidden: i > 0 }));
+  seiten.forEach(s => buehne.append(s));
+
+  // gemeinsames Audio (eine Datei für Hören- und Prüfphase)
+  const audio = el('audio', { preload: 'metadata', src: D.meta.src });
+  buehne.append(audio);
+  // Prüfphase: eine Zeile abspielen und an ihrem Ende anhalten
+  let stopBei = null, aktiverHoer = null;
+  const hoerKnoepfe = [];
+  audio.addEventListener('timeupdate', () => { if (stopBei != null && audio.currentTime >= stopBei + 0.2) { audio.pause(); } });
+  audio.addEventListener('play', () => hoerKnoepfe.forEach(([b, t]) => {
+    const an = b === aktiverHoer && stopBei != null; b.setAttribute('aria-pressed', String(an)); b.textContent = an ? 'Anhalten' : t; }));
+  audio.addEventListener('pause', () => { stopBei = null; aktiverHoer = null;
+    hoerKnoepfe.forEach(([b, t]) => { b.setAttribute('aria-pressed', 'false'); b.textContent = t; }); });
+
+  function navzeile(i, weiterText) {
+    const z = el('div', { class: 'navzeile' });
+    if (i > 0) { const b = el('button', { type: 'button' }, 'Zurück'); b.addEventListener('click', () => zeige(i - 1, true)); z.append(b); }
+    if (i < PHASEN.length - 1) {
+      const b = el('button', { type: 'button', class: 'haupt rechts' }, weiterText || 'Weiter');
+      b.addEventListener('click', () => zeige(i + 1, true)); z.append(b);
+    }
+    return z;
+  }
+
+  // ---------- Phase 1: Vorhersage ----------
+  (function () {
+    const s = seiten[0], V = D.vorhersage;
+    s.append(el('h2', { id: 'ph0', tabindex: '-1' }, '1 Ihre Vorhersage'),
+      el('p', {}, V.einleitung));
+    const fs = el('fieldset', { class: 'feld' }, el('legend', {}, V.frage));
+    const wahl = el('div', { class: 'wahl' });
+    V.optionen.forEach(o => {
+      const inp = el('input', { type: 'radio', name: 'vorhersage', value: o.id });
+      inp.addEventListener('change', () => { Z.wahl = o.id; });
+      wahl.append(el('label', {}, inp, o.label));
+    });
+    fs.append(wahl);
+    const reg = el('input', { type: 'range', min: '0', max: '100', step: '5', value: '50', id: 'regler', 'aria-describedby': 'regler-wert' });
+    const out = el('output', { id: 'regler-wert', for: 'regler' }, '50 %');
+    reg.addEventListener('input', () => { Z.regler = Number(reg.value); Z.reglerBewegt = true; out.textContent = reg.value + ' %'; reg.setAttribute('aria-valuetext', reg.value + ' Prozent'); });
+    const f2 = el('div', { class: 'feld' },
+      el('label', { for: 'regler', style: 'font-weight:600;display:block;margin-bottom:4px' }, V.regler.frage),
+      reg, el('p', { class: 'klein', style: 'margin:0' }, 'Ihre Schätzung: ', out));
+    s.append(fs, f2, el('p', { class: 'klein' }, 'Ihre Angaben bleiben auf dieser Seite und werden nirgends gespeichert. Sie dienen nur als Vergleich in der Bilanz.'),
+      navzeile(0, 'Weiter zum Hören'));
+  })();
+
+  // ---------- Phase 2: Hören ----------
+  const knoepfe = [];
+  let aktiv = -1;
+  (function () {
+    const s = seiten[1], M = D.meta;
+    s.append(el('h2', { id: 'ph1', tabindex: '-1' }, '2 Hören (oder lesen)'),
+      el('p', {}, M.einleitung));
+    const spiel = el('button', { type: 'button', class: 'spiel', 'aria-label': 'Abspielen' , html: ICON_PLAY });
+    const zeit = el('span', { class: 'zeit' }, '0:00 / ' + mmss(M.dauer));
+    const tempo = el('div', { class: 'tempo', role: 'group', 'aria-label': 'Wiedergabetempo' });
+    const tempi = [0.75, 1, 1.25].map(r => {
+      const t = el('button', { type: 'button', 'aria-pressed': String(r === 1) }, String(r).replace('.', ',') + '×');
+      t.addEventListener('click', () => { audio.playbackRate = r; tempi.forEach(x => x.setAttribute('aria-pressed', String(x === t))); });
+      tempo.append(t); return t;
+    });
+    const regler = el('input', { type: 'range', min: '0', max: String(M.dauer), step: '0.5', value: '0', 'aria-label': 'Position im Hörstück' });
+    const player = el('div', { class: 'player' }, el('div', { class: 'knopfzeile' }, spiel, zeit, tempo), regler,
+      el('p', { class: 'kennz' }, M.kennzeichnung));
+    if (M.platzhalter) player.append(el('p', { class: 'platzhalter' }, 'Vorläufiger Ton: Die Aufnahme mit ElevenLabs v3 folgt.'));
+    const marken = el('div', { class: 'marken', role: 'group', 'aria-label': 'Sprungmarken je Thema' });
+    D.themen.forEach(t => {
+      const b = el('button', { type: 'button' }, mmss(t.start) + ' ' + t.titel);
+      b.addEventListener('click', () => { stopBei = null; aktiverHoer = null; audio.currentTime = t.start; audio.play(); });
+      marken.append(b);
+    });
+    const liste = el('ol', { class: 'transkript', 'aria-label': 'Transkript des Hörstücks' });
+    let letztesThema = null;
+    D.zeilen.forEach((z, i) => {
+      if (z.thema !== letztesThema) {
+        const t = D.themen.find(x => x.id === z.thema);
+        if (t) liste.append(el('li', { class: 'thema-kopf', 'aria-hidden': 'true' }, t.titel));
+        letztesThema = z.thema;
+      }
+      const name = D.sprecher[z.sprecher] || z.sprecher;
+      const k = el('button', { type: 'button', class: 'zeile' + (z.pruef ? ' pruef' : ''), 'aria-label': 'Ab hier abspielen: ' + name + ': ' + z.text },
+        el('span', { class: 'wer' }, name + (z.pruef ? ' · Prüfaussage ' + z.pruef : '')), el('span', { class: 'was' }, z.text));
+      k.addEventListener('click', () => { stopBei = null; aktiverHoer = null; audio.currentTime = z.start; audio.play(); });
+      liste.append(el('li', {}, k));
+      knoepfe.push(k);
+    });
+    s.append(player, marken, liste,
+      el('p', { class: 'klein', style: 'margin-top:8px' }, 'Gepunktet unterstrichen: die drei Aussagen, die Sie im nächsten Schritt prüfen.'),
+      navzeile(1, 'Weiter zum Prüfen'));
+
+    spiel.addEventListener('click', () => { stopBei = null; aktiverHoer = null; audio.paused ? audio.play() : audio.pause(); });
+    audio.addEventListener('play', () => { spiel.innerHTML = ICON_PAUSE; spiel.setAttribute('aria-label', 'Pause'); });
+    audio.addEventListener('pause', () => { spiel.innerHTML = ICON_PLAY; spiel.setAttribute('aria-label', 'Abspielen'); });
+    audio.addEventListener('timeupdate', () => {
+      regler.value = audio.currentTime;
+      zeit.textContent = mmss(audio.currentTime) + ' / ' + mmss(M.dauer);
+      markiere(audio.currentTime);
+    });
+    audio.addEventListener('ended', () => markiere(-1));
+    regler.addEventListener('input', () => { audio.currentTime = Number(regler.value); markiere(audio.currentTime); });
+
+    function markiere(t) {
+      let i = -1;
+      D.zeilen.forEach((z, j) => { if (t >= z.start - 0.05 && t < z.ende + 0.25) i = j; });
+      if (i === aktiv) return;
+      if (aktiv >= 0) { knoepfe[aktiv].classList.remove('aktiv'); knoepfe[aktiv].removeAttribute('aria-current'); }
+      aktiv = i;
+      if (i < 0) return;
+      const k = knoepfe[i];
+      k.classList.add('aktiv'); k.setAttribute('aria-current', 'true');
+      // nur innerhalb der Liste scrollen, nie die Buchseite; vorige Zeile bleibt sichtbar
+      const li = k.parentElement, top = li.offsetTop - liste.offsetTop;
+      if (top < liste.scrollTop || top + k.offsetHeight > liste.scrollTop + liste.clientHeight) {
+        const vor = li.previousElementSibling;
+        liste.scrollTop = vor ? vor.offsetTop - liste.offsetTop : 0;
+      }
+    }
+  })();
+
+  // ---------- Phase 3: Prüfen ----------
+  (function () {
+    const s = seiten[2];
+    s.append(el('h2', { id: 'ph2', tabindex: '-1' }, '3 Prüfen Sie drei Aussagen'),
+      el('p', {}, D.pruefeinleitung));
+    D.pruefung.forEach((a, n) => {
+      const key = 'a' + a.nr;
+      const box = el('article', { class: 'aussage', 'aria-labelledby': 'aus-' + a.nr });
+      const hoerText = 'Stelle anhören (' + mmss(a.start) + ')';
+      const hoer = el('button', { type: 'button', 'aria-pressed': 'false' }, hoerText);
+      hoer.addEventListener('click', () => {
+        if (!audio.paused && stopBei === a.ende) { audio.pause(); return; }
+        audio.currentTime = a.start; stopBei = a.ende; aktiverHoer = hoer; audio.play();
+      });
+      hoerKnoepfe.push([hoer, hoerText]);
+      box.append(el('h3', { id: 'aus-' + a.nr, style: 'margin:0 0 6px;font-size:15px' }, 'Aussage ' + a.nr + ' (' + D.sprecher[a.sprecher] + ')'),
+        el('blockquote', {}, a.aussage), el('p', {}, hoer),
+        a.hinweis ? el('p', { class: 'klein' }, a.hinweis) : null,
+        el('p', { class: 'klein', style: 'margin-bottom:4px' }, 'Originalstellen aus den Interviews (englisch; darunter Arbeitsübersetzung):'),
+        el('ul', { class: 'stellen' }, a.stellen.map(st => el('li', {},
+          el('span', { class: 'en', lang: 'en' }, '„' + st.en + '“'), el('span', { class: 'de' }, st.de),
+          el('span', { class: 'id' }, 'Transkript ' + st.id)))));
+      const fsU = el('fieldset', {}, el('legend', {}, 'Ihr Urteil'),
+        el('div', { class: 'wahl' }, URTEILE.map(([id, txt]) => el('label', {}, el('input', { type: 'radio', name: key + '-u', value: id }), txt))));
+      const fsS = el('fieldset', {}, el('legend', {}, 'Wie sicher sind Sie?'),
+        el('div', { class: 'wahl' }, [[1, 'geraten'], [2, 'eher sicher'], [3, 'sicher']].map(([v, t]) =>
+          el('label', {}, el('input', { type: 'radio', name: key + '-s', value: v }), v + ' ' + t))));
+      const ab = el('button', { type: 'button', class: 'haupt', disabled: true }, 'Urteil abgeben');
+      const live = el('div', { 'aria-live': 'polite' });
+      box.append(fsU, fsS, ab, live);
+      s.append(box);
+      const pruefe = () => { ab.disabled = !(box.querySelector('input[name="' + key + '-u"]:checked') && box.querySelector('input[name="' + key + '-s"]:checked')); };
+      box.addEventListener('change', pruefe);
+      ab.addEventListener('click', () => {
+        const u = box.querySelector('input[name="' + key + '-u"]:checked').value;
+        const si = Number(box.querySelector('input[name="' + key + '-s"]:checked').value);
+        Z.urteile[a.nr] = { u, si };
+        box.querySelectorAll('input').forEach(x => { x.disabled = true; });
+        ab.hidden = true;
+        const gleich = u === a.urteil;
+        live.replaceChildren(el('div', { class: 'aufloesung' },
+          el('p', {}, el('span', { class: 'marke' }, gleich ? 'gleiches Urteil' : 'anderes Urteil'),
+            'Prüfagent: ', el('span', { class: 'urteil-b' }, urteilText(a.urteil)), '. Sie: ', urteilText(u), ' (Sicherheit ' + si + ').'),
+          el('p', {}, a.begruendung)));
+        aktualisiereBilanz();
+      });
+    });
+    s.append(navzeile(2, 'Weiter zur Bilanz'));
+  })();
+
+  // ---------- Phase 4: Bilanz ----------
+  const bilanzInhalt = el('div');
+  (function () {
+    const s = seiten[3], V = D.vorhersage, B = D.bilanz;
+    s.append(el('h2', { id: 'ph3', tabindex: '-1' }, '4 Bilanz'), bilanzInhalt,
+      el('div', { class: 'kasten' }, el('h3', {}, 'Was diese Daten zeigen – und was nicht'),
+        el('ul', {}, B.grenzen.map(g => el('li', {}, g)))),
+      el('p', { class: 'klein' }, 'Quelle: ', el('a', { href: D.meta.bericht.href, target: '_blank', rel: 'noopener' }, D.meta.bericht.text),
+        '; Datensatz: ', el('a', { href: D.meta.quelle.href, target: '_blank', rel: 'noopener' }, D.meta.quelle.text), '.'),
+      navzeile(3, 'Weiter: Für Ihre Lehre'));
+  })();
+  function aktualisiereBilanz() {
+    const V = D.vorhersage, B = D.bilanz;
+    const zeilen = D.pruefung.map(a => {
+      const m = Z.urteile[a.nr];
+      return el('tr', {}, el('td', {}, 'Aussage ' + a.nr), el('td', {}, m ? urteilText(m.u) + ' (' + m.si + ')' : '–'),
+        el('td', {}, urteilText(a.urteil)));
+    });
+    const treffer = D.pruefung.filter(a => Z.urteile[a.nr] && Z.urteile[a.nr].u === a.urteil).length;
+    const geurteilt = Object.keys(Z.urteile).length;
+    const opt = V.optionen.map(o => el('tr', {},
+      el('td', {}, o.label + (Z.wahl === o.id ? ' (Ihre Wahl)' : '')),
+      el('td', { style: 'width:45%' }, el('div', { class: 'balken', role: 'img', 'aria-label': o.zahl + ' von ' + V.n + ' Interviews' },
+        el('span', { style: 'width:' + (100 * o.zahl / V.n).toFixed(1) + '%' }))),
+      el('td', { style: 'white-space:nowrap' }, o.zahl + ' von ' + V.n)));
+    const r = V.regler;
+    bilanzInhalt.replaceChildren(
+      el('p', {}, geurteilt ? 'Bei ' + treffer + ' von ' + geurteilt + ' Aussagen kamen Sie zum selben Urteil wie der Prüfagent.' : 'Sie haben noch keine Aussage beurteilt.'),
+      el('table', {}, el('thead', {}, el('tr', {}, el('th', {}, 'Aussage'), el('th', {}, 'Ihr Urteil (Sicherheit)'), el('th', {}, 'Prüfagent'))), el('tbody', {}, zeilen)),
+      el('p', {}, B.befund),
+      el('h3', { style: 'margin:14px 0 6px;font-size:15px' }, 'Ihre Vorhersage gegen die Stichwortzählung'),
+      el('p', { class: 'klein' }, V.zaehlhinweis),
+      el('table', {}, el('thead', {}, el('tr', {}, el('th', {}, 'Thema'), el('th', {}, 'Interviews mit Stichwort'), el('th', {}, 'Zahl'))), el('tbody', {}, opt)),
+      el('p', {}, r.frage_kurz + ': Sie schätzten ' + (Z.reglerBewegt ? Z.regler + ' %' : '(keine Schätzung)') + ', die Stichwortzählung ergibt ' +
+        r.zahl + ' von ' + V.n + ' Interviews (' + pz(r.zahl / V.n) + ').'),
+      el('div', { class: 'balken', role: 'img', 'aria-label': 'Zählung ' + pz(r.zahl / V.n) + (Z.reglerBewegt ? ', Ihre Schätzung ' + Z.regler + ' Prozent' : ''), style: 'max-width:420px;margin:0 0 6px' },
+        el('span', { style: 'width:' + (100 * r.zahl / V.n).toFixed(1) + '%' }),
+        Z.reglerBewegt ? el('span', { class: 'ich', style: 'width:' + Z.regler + '%' }) : null),
+      el('p', { class: 'klein' }, 'Graue Fläche: Zählung. ' + (Z.reglerBewegt ? 'Senkrechter Strich: Ihre Schätzung. ' : '') + r.hinweis)
+    );
+  }
+  aktualisiereBilanz();
+
+  // ---------- Phase 5: Transfer ----------
+  (function () {
+    const s = seiten[4], T = D.transfer;
+    const status = el('p', { class: 'status', 'aria-live': 'polite' });
+    const kopier = el('button', { type: 'button' }, 'Vorlage kopieren');
+    kopier.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(T.vorlage); status.textContent = 'Vorlage kopiert.'; }
+      catch (e) {
+        const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        status.textContent = 'Kopieren nicht erlaubt: Text ist markiert, bitte mit Strg+C kopieren.';
+      }
+    });
+    const pre = el('pre', { class: 'vorlage' }, T.vorlage);
+    s.append(el('h2', { id: 'ph4', tabindex: '-1' }, '5 Für Ihre Lehre: eigene Freitexte zusammenfassen und prüfen'),
+      el('p', {}, T.einleitung), pre, el('div', { class: 'navzeile', style: 'margin-top:0' }, kopier), status,
+      el('p', { class: 'klein' }, T.datenschutz),
+      el('details', {}, el('summary', {}, 'So entstand dieses Hörstück: Prompt und gefundene Schwächen'),
+        el('p', {}, T.makingof),
+        el('p', { class: 'klein', style: 'margin-bottom:4px' }, 'Der Drehbuch-Prompt im Wortlaut:'),
+        el('pre', { class: 'vorlage' }, T.drehbuchprompt),
+        el('p', { class: 'klein', style: 'margin-bottom:4px' }, 'Was der Prüfagent fand:'),
+        el('ul', { class: 'schwaechen' }, T.schwaechen.map(x => el('li', {}, x)))),
+      navzeile(4));
+  })();
+
+  // Phasenwechsel
+  function zeige(i, nutzer) {
+    if (nutzer) audio.pause();
+    seiten.forEach((s, j) => { s.hidden = j !== i; });
+    [...leiste.children].forEach((li, j) => { if (j === i) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current'); });
+    Z.phase = i;
+    if (i === 3) aktualisiereBilanz();
+    const h = document.getElementById('ph' + i);
+    if (h && nutzer) h.focus({ preventScroll: true });
+    if (nutzer) try { if (parent !== window) parent.postMessage({ typ: 'rahmen-anfang', id: 'podcast-forschende-ki' }, '*'); } catch (e) {}
+    melde();
+  }
+  zeige(0);
+
+  // Inhaltshöhe an die Kapitelseite melden (gleiches Protokoll wie agenten-engpass.html)
+  function melde() {
+    const b = document.body, cs = getComputedStyle(b);
+    const h = Math.ceil(b.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom));
+    try { if (parent !== window) parent.postMessage({ typ: 'rahmen-hoehe', id: 'podcast-forschende-ki', h: h }, '*'); } catch (e) {}
+  }
+  if (window.ResizeObserver) new ResizeObserver(melde).observe(document.body);
+  window.addEventListener('load', melde);
+})();
+</script>
+</body>
+</html>
