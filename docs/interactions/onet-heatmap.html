@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was für Aufgaben erledigen Lehrende? Heatmap der 25 O*NET-Aufgaben</title>
+<!--
+  Interaktive Abbildung 3.1 (Kap. 3, #fig-onet-tasks).
+  Laiensicht: Eine einzige Webseite, die ohne Internet läuft. Sie zeigt die 25 Aufgaben
+  aus O*NET als farbige Tabelle (Heatmap): je dunkler die Zelle, desto größer der Wert.
+  Die Zahlen stehen unten im Block <script id="heatmap-daten"> und werden dort von
+  scripts/onet-heatmap.py eingesetzt; nicht von Hand ändern. Nichts wird gespeichert
+  oder an einen Server geschickt.
+-->
+<style>
+:root {
+  --red: #c1002a; --bg: #ffffff; --panel: #f4f4f4; --line: #d4d4d4; --text: #1a1a1a;
+  --muted: #5f5f5f; --leer: #ececec; --schraffur: #d9d9d9;
+  --s0: #fbecef; --s1: #c1002a; --s2: #5c0014;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --red: #ff5c7a; --bg: #141414; --panel: #1f1f1f; --line: #3a3a3a; --text: #f2f2f2;
+    --muted: #b5b5b5; --leer: #222; --schraffur: #333;
+    --s0: #2a1b1e; --s1: #b3103a; --s2: #ff9fb1; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --red: #ff5c7a; --bg: #141414; --panel: #1f1f1f; --line: #3a3a3a; --text: #f2f2f2;
+  --muted: #b5b5b5; --leer: #222; --schraffur: #333;
+  --s0: #2a1b1e; --s1: #b3103a; --s2: #ff9fb1; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.4; }
+#app { max-width: 980px; margin: 0 auto; padding: 10px 8px 16px; }
+h1 { font-size: 1.12rem; margin: 0 0 2px; }
+.unter { color: var(--muted); font-size: .9rem; margin: 0 0 10px; }
+.reiter { display: flex; gap: 6px; flex-wrap: wrap; border-bottom: 3px solid var(--red); margin-bottom: 8px; }
+.reiter button { font: inherit; font-weight: 600; color: var(--text); background: var(--panel);
+  border: 1px solid var(--line); border-bottom: none; border-radius: 6px 6px 0 0;
+  padding: 8px 14px; min-height: 44px; cursor: pointer; }
+.reiter button[aria-selected="true"] { background: var(--red); color: #fff; border-color: var(--red); }
+button:focus-visible, input:focus-visible, th[tabindex]:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.steuer { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: .9rem; margin: 6px 0; }
+.steuer label { display: inline-flex; gap: 6px; align-items: center; min-height: 32px; cursor: pointer; }
+.steuer button { font: inherit; font-size: .88rem; color: var(--text); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 4px; padding: 4px 10px; min-height: 36px; cursor: pointer; }
+.lesart { background: var(--panel); border-left: 4px solid var(--red); padding: 8px 10px; margin: 6px 0 10px;
+  font-size: .95rem; }
+.huelle { overflow-x: auto; }
+table { border-collapse: separate; border-spacing: 2px; width: 100%; font-size: .86rem; }
+th, td { padding: 0; }
+thead th { font-weight: 600; font-size: .78rem; color: var(--muted); vertical-align: bottom; text-align: center; }
+thead th.gruppe { font-size: .8rem; color: var(--text); border-bottom: 2px solid var(--line); padding-bottom: 2px; }
+thead button.sort { font: inherit; color: inherit; background: none; border: none; cursor: pointer;
+  padding: 4px 2px; width: 100%; min-height: 36px; line-height: 1.15; }
+thead button.sort:hover { color: var(--text); text-decoration: underline; }
+th[aria-sort="descending"] button.sort { color: var(--red); }
+th[aria-sort="descending"] button.sort::after { content: " ▼"; font-size: .7em; }
+tbody th { text-align: left; font-weight: 400; padding: 3px 8px 3px 2px; min-width: 150px; cursor: default; }
+tbody th .nr { color: var(--muted); font-variant-numeric: tabular-nums; display: inline-block; width: 1.7em; }
+tbody th .kern { font-size: .72rem; color: var(--muted); }
+td.z { height: 30px; min-width: 38px; text-align: center; font-variant-numeric: tabular-nums;
+  border-radius: 3px; font-size: .8rem; cursor: default; }
+td.leer { background: repeating-linear-gradient(135deg, var(--leer) 0 6px, var(--schraffur) 6px 8px);
+  color: var(--muted); font-size: .76rem; text-align: center; border-radius: 3px; }
+td.txt { text-align: right; padding: 0 6px; color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: .8rem; }
+td.balken { min-width: 70px; padding: 0 4px; }
+.balken-i { display: flex; align-items: center; gap: 5px; font-variant-numeric: tabular-nums; font-size: .8rem; }
+.balken-i span.b { display: inline-block; height: 8px; background: var(--muted); border-radius: 0 4px 4px 0; }
+tr.markiert th, tr.markiert td { box-shadow: 0 0 0 2px var(--text) inset; }
+.ohne-werte td.z { color: transparent !important; }
+.legende { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--muted); margin: 10px 0 4px; flex-wrap: wrap; }
+.skala { width: 200px; height: 12px; border-radius: 3px; border: 1px solid var(--line);
+  background: linear-gradient(90deg, var(--s0), var(--s1) 70%, var(--s2)); }
+.muster { display: inline-block; width: 22px; height: 12px; border-radius: 3px;
+  background: repeating-linear-gradient(135deg, var(--leer) 0 6px, var(--schraffur) 6px 8px); border: 1px solid var(--line); }
+.hinweis { color: var(--muted); font-size: .84rem; margin: 6px 0; }
+details { font-size: .86rem; margin-top: 8px; }
+details summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+details dl { margin: 6px 0; }
+details dt { font-weight: 600; margin-top: 4px; }
+details dd { margin: 0 0 0 1em; color: var(--text); }
+.quellen { font-size: .78rem; color: var(--muted); margin-top: 10px; }
+.quellen a { color: inherit; }
+#tip { position: fixed; z-index: 10; pointer-events: none; max-width: 330px; background: var(--bg); color: var(--text);
+  border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(0,0,0,.18); border-radius: 6px; padding: 8px 10px;
+  font-size: .82rem; display: none; }
+#tip b { display: block; margin-bottom: 2px; }
+#tip .en { color: var(--muted); font-style: italic; margin: 3px 0; }
+#tip .w { font-size: 1rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (max-width: 720px) {
+  #app { padding: 8px 4px 12px; }
+  table { border-spacing: 1px; }
+  tbody th { min-width: 100px; font-size: .76rem; padding: 2px 4px 2px 0; }
+  tbody th .kern { display: none; }
+  td.z { min-width: 27px; height: 28px; font-size: .7rem; }
+  .nr-spalte { display: none; }
+  thead th:not(.gruppe) button.sort { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+    width: auto; min-height: 0; height: 96px; padding: 2px 0; margin: 0 auto; text-align: left; }
+  thead th.gruppe { font-size: .68rem; hyphens: auto; }
+  td.txt { font-size: .68rem; padding: 0 2px; white-space: normal; }
+  td.balken { min-width: 34px; }
+  .balken-i span.b { display: none; }
+  .reiter button { padding: 6px 10px; font-size: .9rem; }
+}
+@media (max-width: 400px) {
+  tbody th { min-width: 84px; max-width: 96px; font-size: .72rem; hyphens: auto; overflow-wrap: anywhere; }
+  td.z { min-width: 23px; font-size: .64rem; }
+  td.balken { min-width: 28px; }
+  .balken-i { font-size: .68rem; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <h1>Was für Aufgaben erledigen Lehrende?</h1>
+  <p class="unter">25 Aufgaben aus O*NET für <i>Business Teachers, Postsecondary</i> (25-1011.00). Drei Blicke auf dieselbe Liste.</p>
+
+  <div class="reiter" role="tablist" aria-label="Ansicht wählen">
+    <button role="tab" id="tab-oft" aria-selected="true" aria-controls="tabelle" data-ansicht="oft">1 · Wie oft?</button>
+    <button role="tab" id="tab-ki" aria-selected="false" aria-controls="tabelle" data-ansicht="ki">2 · Wie arbeitet KI mit?</button>
+    <button role="tab" id="tab-wer" aria-selected="false" aria-controls="tabelle" data-ansicht="wer">3 · In welchem Zusammenhang?</button>
+  </div>
+
+  <div class="steuer">
+    <button id="reihenfolge" type="button">O*NET-Reihenfolge</button>
+    <label id="nur-label"><input type="checkbox" id="nur-index"> nur Aufgaben mit Daten im Economic Index</label>
+    <label><input type="checkbox" id="werte" checked> Werte in den Zellen</label>
+  </div>
+
+  <p class="lesart" id="lesart" aria-live="polite"></p>
+
+  <div class="huelle">
+    <table id="tabelle" role="tabpanel" aria-labelledby="tab-oft">
+      <caption class="sr" id="tab-titel"></caption>
+      <thead id="kopf"></thead>
+      <tbody id="koerper"></tbody>
+    </table>
+  </div>
+
+  <div class="legende" id="legende">
+    <span>0 %</span><span class="skala" aria-hidden="true"></span><span>100 %</span>
+    <span id="legende-text"></span>
+    <span id="legende-leer" hidden><span class="muster" aria-hidden="true"></span> im Economic Index nicht veröffentlicht</span>
+  </div>
+  <p class="hinweis" id="ansicht-hinweis"></p>
+
+  <details>
+    <summary>Was die Spalten bedeuten</summary>
+    <dl id="erklaerung"></dl>
+  </details>
+
+  <p class="quellen">
+    Quellen: O*NET 31.0 Database, Task Statements und Task Ratings, Befragung von Stelleninhabern (Stand 08/2019),
+    U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), CC BY 4.0
+    (<a href="https://www.onetonline.org/link/summary/25-1011.00" target="_blank" rel="noopener">onetonline.org/link/summary/25-1011.00</a>);
+    übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt; O*NET® ist eine Marke von USDOL/ETA.
+    Anthropic Economic Index, Claude.ai, weltweit, <span id="q-monat"></span>, CC BY (Massenkoff et al., 2026,
+    <a href="https://www.anthropic.com/research/economic-index-june-2026-report" target="_blank" rel="noopener">Report</a>,
+    <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex" target="_blank" rel="noopener">Daten</a>).
+    Kooperationsmuster nach Handa et al. (2025), <a href="https://doi.org/10.48550/arXiv.2503.04761" target="_blank" rel="noopener">doi.org/10.48550/arXiv.2503.04761</a>.
+  </p>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script id="heatmap-daten" type="application/json">{"_hinweis":"Erzeugt von scripts/onet-heatmap.py; nicht von Hand ändern.","beruf":{"code":"25-1011.00","name":"Business Teachers, Postsecondary"},"monat":"Mai 2026","n_aufgaben_index":2713,"onet_stand":"08/2019","onet_unterdrueckt":[],"aufgaben":[{"nr":1,"id":"5662","de":"Vorlesungen vorbereiten und halten","en":"Prepare and deliver lectures to undergraduate or graduate students on topics such as financial accounting, principles of marketing, and operations management.","typ":"Core","befragte":103,"wichtigkeit":4.7,"haeufigkeit":[0.1,5.1,9.5,51.6,16.6,16.4,0.7],"aei":{"anteil":0.02,"automatisierung":30.46,"augmentierung":69.54,"anweisung":30.11,"rueckkopplung":0.24,"ueberarbeiten":9.68,"lernen":59.02,"pruefen":0.6,"ohne":0.36,"arbeit":5.73,"studium":92.0,"privat":2.27,"zeit_ohne_ki_h":5.8,"zeit_mit_ki_min":42.33,"autonomie":2.61,"rang":507}},{"nr":2,"id":"5663","de":"Studienleistungen bewerten und benoten","en":"Evaluate and grade students' class work, assignments, and papers.","typ":"Core","befragte":102,"wichtigkeit":4.59,"haeufigkeit":[0.0,2.0,13.8,56.7,22.2,4.3,0.9],"aei":{"anteil":0.05,"automatisierung":31.24,"augmentierung":68.76,"anweisung":27.82,"rueckkopplung":3.32,"ueberarbeiten":26.43,"lernen":6.34,"pruefen":35.75,"ohne":0.34,"arbeit":35.98,"studium":60.11,"privat":3.92,"zeit_ohne_ki_h":4.15,"zeit_mit_ki_min":43.94,"autonomie":2.66,"rang":297}},{"nr":3,"id":"5667","de":"Diskussionen anregen und moderieren","en":"Initiate, facilitate, and moderate classroom discussions.","typ":"Core","befragte":104,"wichtigkeit":4.57,"haeufigkeit":[0.0,2.0,7.2,67.9,20.2,1.1,1.5],"aei":{"anteil":0.07,"automatisierung":23.12,"augmentierung":76.88,"anweisung":18.36,"rueckkopplung":4.56,"ueberarbeiten":12.28,"lernen":57.87,"pruefen":6.08,"ohne":0.85,"arbeit":6.78,"studium":77.47,"privat":15.75,"zeit_ohne_ki_h":2.69,"zeit_mit_ki_min":45.04,"autonomie":2.45,"rang":228}},{"nr":4,"id":"5665","de":"Kursmaterial erstellen (Syllabus, Übungen, Handouts)","en":"Prepare course materials, such as syllabi, homework assignments, and handouts.","typ":"Core","befragte":104,"wichtigkeit":4.54,"haeufigkeit":[3.5,31.9,15.1,20.6,26.9,1.6,0.4],"aei":{"anteil":0.02,"automatisierung":42.53,"augmentierung":57.47,"anweisung":40.41,"rueckkopplung":2.07,"ueberarbeiten":55.01,"lernen":2.29,"pruefen":0.11,"ohne":0.11,"arbeit":57.85,"studium":36.94,"privat":5.2,"zeit_ohne_ki_h":12.82,"zeit_mit_ki_min":44.4,"autonomie":3.12,"rang":507}},{"nr":5,"id":"5670","de":"Fachlich auf dem Laufenden bleiben","en":"Keep abreast of developments in the field by reading current literature, talking with colleagues, and participating in professional organizations and conferences.","typ":"Core","befragte":105,"wichtigkeit":4.48,"haeufigkeit":[2.9,11.6,22.2,28.4,25.9,8.8,0.3],"aei":null},{"nr":6,"id":"5668","de":"Curricula und Kursinhalte planen und überarbeiten","en":"Plan, evaluate, and revise curricula, course content, and course materials and methods of instruction.","typ":"Core","befragte":105,"wichtigkeit":4.43,"haeufigkeit":[7.8,37.9,23.2,22.3,5.2,3.2,0.4],"aei":{"anteil":0.0,"automatisierung":29.85,"augmentierung":70.15,"anweisung":28.36,"rueckkopplung":1.49,"ueberarbeiten":61.19,"lernen":4.48,"pruefen":4.48,"ohne":0.0,"arbeit":76.47,"studium":22.06,"privat":1.47,"zeit_ohne_ki_h":12.53,"zeit_mit_ki_min":74.24,"autonomie":2.9,"rang":1148}},{"nr":7,"id":"5666","de":"Anwesenheit, Noten und Akten führen","en":"Maintain student attendance records, grades, and other required records.","typ":"Core","befragte":104,"wichtigkeit":4.4,"haeufigkeit":[0.0,3.7,17.3,56.5,20.9,1.2,0.4],"aei":null},{"nr":8,"id":"5681","de":"Forschen und publizieren","en":"Conduct research in a particular field of knowledge and publish findings in professional journals, books, or electronic media.","typ":"Core","befragte":105,"wichtigkeit":4.37,"haeufigkeit":[11.5,27.6,13.8,15.3,16.0,11.7,4.0],"aei":{"anteil":0.0,"automatisierung":35.26,"augmentierung":64.74,"anweisung":32.63,"rueckkopplung":2.63,"ueberarbeiten":24.21,"lernen":38.95,"pruefen":1.58,"ohne":0.0,"arbeit":15.03,"studium":49.74,"privat":35.23,"zeit_ohne_ki_h":10.15,"zeit_mit_ki_min":33.89,"autonomie":2.94,"rang":1148}},{"nr":9,"id":"5664","de":"Prüfungen erstellen, durchführen und bewerten","en":"Compile, administer, and grade examinations, or assign this work to others.","typ":"Core","befragte":105,"wichtigkeit":4.35,"haeufigkeit":[0.0,5.5,51.8,30.8,10.7,0.9,0.3],"aei":{"anteil":0.01,"automatisierung":60.39,"augmentierung":39.61,"anweisung":52.4,"rueckkopplung":7.69,"ueberarbeiten":34.13,"lernen":2.4,"pruefen":2.88,"ohne":0.48,"arbeit":19.23,"studium":68.75,"privat":12.02,"zeit_ohne_ki_h":8.31,"zeit_mit_ki_min":23.58,"autonomie":3.13,"rang":672}},{"nr":10,"id":"5669","de":"Sprechstunden anbieten","en":"Maintain regularly scheduled office hours to advise and assist students.","typ":"Core","befragte":105,"wichtigkeit":4.16,"haeufigkeit":[0.0,2.4,8.2,59.9,24.1,3.6,1.8],"aei":null},{"nr":11,"id":"5673","de":"Mit dem Kollegium zusammenarbeiten","en":"Collaborate with colleagues to address teaching and research issues.","typ":"Core","befragte":105,"wichtigkeit":4.05,"haeufigkeit":[7.6,21.3,42.3,27.0,1.0,0.6,0.1],"aei":null},{"nr":12,"id":"5671","de":"Zu Studium und Berufsweg beraten","en":"Advise students on academic and vocational curricula and career issues.","typ":"Core","befragte":105,"wichtigkeit":4.01,"haeufigkeit":[0.0,20.2,39.1,30.0,10.6,0.2,0.0],"aei":{"anteil":0.01,"automatisierung":30.23,"augmentierung":69.77,"anweisung":20.25,"rueckkopplung":9.75,"ueberarbeiten":30.75,"lernen":35.0,"pruefen":3.5,"ohne":0.75,"arbeit":5.71,"studium":26.8,"privat":67.49,"zeit_ohne_ki_h":4.36,"zeit_mit_ki_min":52.29,"autonomie":2.65,"rang":672}},{"nr":13,"id":"20058","de":"Kurswebseiten erstellen und pflegen","en":"Develop and maintain course Web sites.","typ":"Core","befragte":105,"wichtigkeit":3.98,"haeufigkeit":[7.1,9.9,18.1,34.3,22.9,6.8,0.8],"aei":null},{"nr":14,"id":"5674","de":"Mit Unternehmen kooperieren (Programme, Praktika)","en":"Collaborate with members of the business community to improve programs, to develop new programs, and to provide student access to learning opportunities, such as internships.","typ":"Core","befragte":105,"wichtigkeit":3.93,"haeufigkeit":[13.8,36.4,35.3,13.7,0.8,0.0,0.0],"aei":null},{"nr":15,"id":"5676","de":"In Gremien der Hochschule mitarbeiten","en":"Serve on academic or administrative committees that deal with institutional policies, departmental matters, and academic issues.","typ":"Core","befragte":105,"wichtigkeit":3.83,"haeufigkeit":[0.8,17.3,65.8,12.2,3.9,0.0,0.0],"aei":null},{"nr":16,"id":"5672","de":"Lehrmaterial und Lehrbücher auswählen","en":"Select and obtain materials and supplies, such as textbooks.","typ":"Core","befragte":104,"wichtigkeit":3.8,"haeufigkeit":[10.5,75.5,12.8,0.3,0.6,0.2,0.1],"aei":null},{"nr":17,"id":"5678","de":"Literaturlisten zusammenstellen","en":"Compile bibliographies of specialized materials for outside reading assignments.","typ":"Core","befragte":105,"wichtigkeit":3.56,"haeufigkeit":[17.1,48.7,17.8,11.9,0.5,3.9,0.2],"aei":null},{"nr":18,"id":"5677","de":"An Veranstaltungen teilnehmen (Campus, Region)","en":"Participate in campus and community events.","typ":"Core","befragte":105,"wichtigkeit":3.13,"haeufigkeit":[10.1,30.0,39.6,16.4,3.7,0.1,0.1],"aei":null},{"nr":19,"id":"21108","de":"Neue Kolleginnen und Kollegen betreuen","en":"Mentor new faculty.","typ":"Core","befragte":103,"wichtigkeit":3.09,"haeufigkeit":[22.7,40.8,20.3,15.3,0.9,0.0,0.0],"aei":null},{"nr":20,"id":"5679","de":"Verwaltungsaufgaben übernehmen, etwa im Dekanat","en":"Perform administrative duties, such as serving as department head.","typ":"Supplemental","befragte":105,"wichtigkeit":3.89,"haeufigkeit":[22.6,7.5,18.3,13.4,36.5,0.6,1.2],"aei":null},{"nr":21,"id":"5675","de":"Bei Studierendengewinnung und Vermittlung mitwirken","en":"Participate in student recruitment, registration, and placement activities.","typ":"Supplemental","befragte":105,"wichtigkeit":3.66,"haeufigkeit":[18.3,28.9,23.9,12.8,15.9,0.0,0.2],"aei":null},{"nr":22,"id":"5682","de":"Studentische Organisationen beraten","en":"Act as advisers to student organizations.","typ":"Supplemental","befragte":104,"wichtigkeit":3.4,"haeufigkeit":[17.4,18.6,30.0,21.5,7.2,5.2,0.1],"aei":null},{"nr":23,"id":"5680","de":"Abschluss-, Praxis- und Forschungsarbeiten betreuen","en":"Supervise undergraduate or graduate teaching, internship, and research work.","typ":"Supplemental","befragte":103,"wichtigkeit":3.26,"haeufigkeit":[16.3,30.7,26.6,12.3,12.8,0.9,0.4],"aei":null},{"nr":24,"id":"5683","de":"Unternehmen und Behörden beraten","en":"Provide professional consulting services to government or industry.","typ":"Supplemental","befragte":103,"wichtigkeit":3.02,"haeufigkeit":[32.9,34.5,20.8,5.2,1.6,0.0,5.0],"aei":null},{"nr":25,"id":"5684","de":"Forschungsanträge schreiben","en":"Write grant proposals to procure external research funding.","typ":"Supplemental","befragte":104,"wichtigkeit":2.57,"haeufigkeit":[76.3,23.1,0.0,0.3,0.2,0.0,0.0],"aei":{"anteil":0.0,"automatisierung":14.29,"augmentierung":85.71,"anweisung":10.71,"rueckkopplung":3.57,"ueberarbeiten":78.57,"lernen":7.14,"pruefen":0.0,"ohne":0.0,"arbeit":92.86,"studium":7.14,"privat":0.0,"zeit_ohne_ki_h":17.04,"zeit_mit_ki_min":87.86,"autonomie":2.96,"rang":1148}}]}</script>
+<script>
+"use strict";
+const D = JSON.parse(document.getElementById("heatmap-daten").textContent);
+const A = D.aufgaben;
+const zahl = (v, s = 0) => v.toLocaleString("de-DE", { minimumFractionDigits: s, maximumFractionDigits: s });
+const pz = (v) => zahl(v) + " %";
+
+const ANSICHTEN = {
+  oft: {
+    titel: "Wie oft erledigen die Befragten die Aufgabe? Anteil der Befragten je Häufigkeitsstufe",
+    gruppen: null,
+    spalten: [
+      { k: "h0", kurz: "höchstens<br>jährlich", lang: "höchstens einmal im Jahr", w: a => a.haeufigkeit[0] },
+      { k: "h1", kurz: "mehrmals<br>im Jahr", lang: "mehrmals im Jahr", w: a => a.haeufigkeit[1] },
+      { k: "h2", kurz: "mehrmals<br>im Monat", lang: "mehrmals im Monat", w: a => a.haeufigkeit[2] },
+      { k: "h3", kurz: "mehrmals<br>pro Woche", lang: "mehrmals pro Woche", w: a => a.haeufigkeit[3] },
+      { k: "h4", kurz: "täglich", lang: "täglich", w: a => a.haeufigkeit[4] },
+      { k: "h5", kurz: "mehrmals<br>täglich", lang: "mehrmals täglich", w: a => a.haeufigkeit[5] },
+      { k: "h6", kurz: "stündlich", lang: "stündlich oder öfter", w: a => a.haeufigkeit[6] },
+    ],
+    extra: { k: "wichtig", kurz: "Wichtig&shy;keit<br>(1–5)", w: a => a.wichtigkeit },
+    legende: "der Befragten, die die Aufgabe ausüben",
+    hinweis: "O*NET fragt Stelleninhaber in den USA, wie oft sie eine Aufgabe erledigen und wie wichtig sie ist. Rund 104 Befragte je Aufgabe, Stand 2019.",
+  },
+  ki: {
+    titel: "Wie arbeiten Menschen und Claude bei der Aufgabe zusammen? Anteil der Gespräche je Kooperationsmuster",
+    gruppen: [{ text: "Automati&shy;sierung", n: 2 }, { text: "Augmen&shy;tierung", n: 3 }],
+    spalten: [
+      { k: "anweisung", kurz: "Anweisung", lang: "Anweisung (Auftrag geht komplett an die KI)", w: a => a.aei && a.aei.anweisung },
+      { k: "rueckkopplung", kurz: "Rück&shy;kopplung", lang: "Rückkopplung (Mensch meldet nur Ergebnisse zurück, etwa Fehlermeldungen)", w: a => a.aei && a.aei.rueckkopplung },
+      { k: "ueberarbeiten", kurz: "Über&shy;arbeiten", lang: "gemeinsam überarbeiten (Mensch verfeinert die Entwürfe der KI)", w: a => a.aei && a.aei.ueberarbeiten },
+      { k: "lernen", kurz: "Lernen", lang: "Lernen (Mensch sucht Erklärung statt fertiger Lösung)", w: a => a.aei && a.aei.lernen },
+      { k: "pruefen", kurz: "Prüfen", lang: "Prüfen lassen (KI kontrolliert die eigene Arbeit)", w: a => a.aei && a.aei.pruefen },
+    ],
+    extra: { k: "anteil", kurz: "Anteil an<br>allen Gesprächen", w: a => a.aei && a.aei.anteil, text: true },
+    legende: "der Gespräche zu dieser Aufgabe",
+    hinweis: "Automatisierung und Augmentierung meinen hier die Art des Gesprächs (Handa et al., 2025), nicht die Verlagerung ganzer Aufgaben im Aufgabenmodell aus Tabelle 3.1.",
+  },
+  wer: {
+    titel: "In welchem Zusammenhang stehen die Gespräche zur Aufgabe? Anteil der Gespräche je Zusammenhang",
+    gruppen: null,
+    spalten: [
+      { k: "arbeit", kurz: "Arbeit", lang: "Arbeit (beruflicher Zusammenhang)", w: a => a.aei && a.aei.arbeit },
+      { k: "studium", kurz: "Studium", lang: "Studium (Kursarbeit, Hausaufgaben, Prüfungsvorbereitung)", w: a => a.aei && a.aei.studium },
+      { k: "privat", kurz: "Privat", lang: "privat", w: a => a.aei && a.aei.privat },
+    ],
+    extra: { k: "zeit", kurz: "Zeit ohne KI /<br>mit KI", w: a => a.aei && a.aei.zeit_ohne_ki_h, text: true },
+    legende: "der Gespräche zu dieser Aufgabe",
+    hinweis: "Der Index stuft Gesprächsinhalte ein, nicht die Menschen dahinter: Ein Gespräch über Vorlesungen kann eine Professorin führen oder ein Student, der eine Vorlesung nachbereitet.",
+  },
+};
+
+const ERKLAERUNG = [
+  ["Häufigkeit (Ansicht 1)", "Anteil der befragten Lehrenden, die die Aufgabe in dieser Häufigkeit erledigen. Die sieben Stufen einer Zeile ergeben zusammen 100 %."],
+  ["Wichtigkeit (Ansicht 1)", "Mittelwert der Einschätzung, wie wichtig die Aufgabe für den Beruf ist, von 1 (nicht wichtig) bis 5 (äußerst wichtig)."],
+  ["Anteil an allen Gesprächen (Ansicht 2)", "Prozent aller Claude-Gespräche eines Monats, die der Index dieser Aufgabe zuordnet, und der Rang unter allen Aufgaben mit Daten. „unter 0,005 %“: Der Wert ist veröffentlicht, rundet aber auf 0,00; diese Aufgaben teilen sich einen Rang."],
+  ["Kooperationsmuster (Ansicht 2)", "Ein Sprachmodell ordnet jedes Gespräch einem von fünf Mustern zu. Anweisung und Rückkopplung zählen als Automatisierung, Überarbeiten, Lernen und Prüfen als Augmentierung (Handa et al., 2025). Gespräche ohne erkennbares Muster fehlen, deshalb ergeben die fünf Spalten etwas weniger als 100 %."],
+  ["Zusammenhang (Ansicht 3)", "Anteil der Gespräche, die der Index als Arbeit, Studium oder privat einstuft. Die Zeitspalte nennt die geschätzte Dauer der Aufgabe ohne KI (Stunden) und mit KI (Minuten)."],
+  ["Schraffierte Zeilen", "Für diese Aufgaben veröffentlicht der Index keine Werte, weil zu wenige Gespräche vorliegen. Eine fehlende Zeile heißt nicht, dass niemand dazu fragt."],
+];
+
+let ansicht = "oft", sortKey = null, nurIndex = false;
+
+// Farbe: eine Farbe (TH-Rot), von hell nach dunkel, gemischt im OKLab-Farbraum.
+function hex2rgb(h) { h = h.trim().replace("#", ""); if (h.length === 3) h = h.split("").map(c => c + c).join("");
+  return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) / 255); }
+const lin = c => c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+const delin = c => c <= 0.0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) - 0.055;
+function toOk([r, g, b]) { r = lin(r); g = lin(g); b = lin(b);
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+  const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+  return [0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s, 1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+          0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s]; }
+function fromOk([L, a, b]) { const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3, m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3,
+  s = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
+  return [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+          -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s].map(c => Math.min(1, Math.max(0, delin(c)))); }
+let RAMPE;
+function rampe() { const cs = getComputedStyle(document.documentElement);
+  RAMPE = ["--s0", "--s1", "--s2"].map(v => toOk(hex2rgb(cs.getPropertyValue(v)))); }
+function farbe(t) { // t in 0..1; 0..0,7 von s0 nach s1, 0,7..1 von s1 nach s2
+  t = Math.max(0, Math.min(1, t));
+  const [a, b, u] = t < 0.7 ? [RAMPE[0], RAMPE[1], t / 0.7] : [RAMPE[1], RAMPE[2], (t - 0.7) / 0.3];
+  const rgb = fromOk(a.map((x, i) => x + (b[i] - x) * u));
+  const Y = 0.2126 * lin(rgb[0]) + 0.7152 * lin(rgb[1]) + 0.0722 * lin(rgb[2]);
+  return { bg: "rgb(" + rgb.map(c => Math.round(c * 255)).join(",") + ")", fg: Y > 0.18 ? "#1a1a1a" : "#ffffff" };
+}
+
+function sortierte() {
+  const V = ANSICHTEN[ansicht];
+  let liste = A.slice();
+  if (nurIndex && ansicht !== "oft") liste = liste.filter(a => a.aei);
+  if (sortKey) {
+    const sp = sortKey === V.extra.k ? V.extra : V.spalten.find(s => s.k === sortKey);
+    const wert = a => { const w = sp.w(a); return w == null ? -1 : w; };
+    liste.sort((x, y) => wert(y) - wert(x) || x.nr - y.nr);
+  }
+  return liste;
+}
+
+function kopf() {
+  const V = ANSICHTEN[ansicht];
+  let h = "";
+  if (V.gruppen) {
+    h += '<tr><th class="nr-spalte"></th><th></th>' + (V.extra.text ? "<th></th>" : "");
+    V.gruppen.forEach(g => { h += `<th class="gruppe" colspan="${g.n}" scope="colgroup">${g.text}</th>`; });
+    h += "</tr>";
+  }
+  const sortTh = (sp) => `<th scope="col" ${sortKey === sp.k ? 'aria-sort="descending"' : ""}>` +
+    `<button class="sort" type="button" data-k="${sp.k}" title="nach dieser Spalte absteigend sortieren">${sp.kurz}</button></th>`;
+  h += '<tr><th class="nr-spalte" scope="col"><span class="sr">Nr.</span></th><th scope="col" style="text-align:left">Aufgabe</th>';
+  if (V.extra.text) h += sortTh(V.extra);
+  V.spalten.forEach(sp => { h += sortTh(sp); });
+  if (!V.extra.text) h += sortTh(V.extra);
+  h += "</tr>";
+  document.getElementById("kopf").innerHTML = h;
+  document.querySelectorAll("button.sort").forEach(b => b.addEventListener("click", () => {
+    sortKey = sortKey === b.dataset.k ? null : b.dataset.k; zeichne(); }));
+}
+
+function extraZelle(V, a) {
+  if (ansicht === "oft") {
+    const w = a.wichtigkeit;
+    return `<td class="balken" data-extra="1"><div class="balken-i"><span class="b" style="width:${Math.round((w - 1) / 4 * 44) + 4}px"></span>${zahl(w, 1)}</div></td>`;
+  }
+  if (!a.aei) return "";
+  if (ansicht === "ki") {
+    const p = a.aei.anteil;
+    return `<td class="txt" data-extra="1">${p < 0.005 ? "unter 0,005 %" : zahl(p, 2) + " %"}<br><span class="kern">Rang ${zahl(a.aei.rang)}${p < 0.005 ? " (geteilt)" : ""}</span></td>`;
+  }
+  return `<td class="txt" data-extra="1">${zahl(a.aei.zeit_ohne_ki_h, 1)} h<br><span class="kern">${zahl(a.aei.zeit_mit_ki_min)} min</span></td>`;
+}
+
+function zeichne() {
+  const V = ANSICHTEN[ansicht];
+  document.getElementById("tab-titel").textContent = V.titel;
+  document.getElementById("tabelle").setAttribute("aria-labelledby", "tab-" + ansicht);
+  kopf();
+  const zeigeWerte = document.getElementById("werte").checked;
+  document.getElementById("tabelle").classList.toggle("ohne-werte", !zeigeWerte);
+  let h = "";
+  sortierte().forEach(a => {
+    h += `<tr data-nr="${a.nr}"><td class="nr-spalte"><span class="nr">${a.nr}</span></td>` +
+      `<th scope="row" tabindex="0" data-zeile="1">${a.de}${a.typ === "Supplemental" ? ' <span class="kern">(ergänzend)</span>' : ""}</th>`;
+    if (ansicht !== "oft" && !a.aei) {
+      h += `<td class="leer" colspan="${V.spalten.length + 1}">nicht veröffentlicht</td>`;
+    } else {
+      if (V.extra.text) h += extraZelle(V, a);
+      V.spalten.forEach(sp => {
+        const w = sp.w(a);
+        const f = farbe(w / 100);
+        h += `<td class="z" data-k="${sp.k}" style="background:${f.bg};color:${f.fg}">${zahl(w)}</td>`;
+      });
+      if (!V.extra.text) h += extraZelle(V, a);
+    }
+    h += "</tr>";
+  });
+  document.getElementById("koerper").innerHTML = h;
+  document.getElementById("legende-text").textContent = V.legende;
+  document.getElementById("legende-leer").hidden = ansicht === "oft" || nurIndex;
+  document.getElementById("nur-label").style.display = ansicht === "oft" ? "none" : "";
+  document.getElementById("ansicht-hinweis").textContent = V.hinweis;
+  document.getElementById("reihenfolge").disabled = !sortKey;
+  document.getElementById("lesart").innerHTML = lesart();
+}
+
+function lesart() {
+  const mitDaten = A.filter(a => a.aei);
+  if (ansicht === "oft") {
+    const oft = A.filter(a => a.haeufigkeit.slice(3).reduce((s, v) => s + v, 0) > 50);
+    const tgl = A.slice().sort((x, y) => y.haeufigkeit.slice(4).reduce((s, v) => s + v, 0) - x.haeufigkeit.slice(4).reduce((s, v) => s + v, 0))[0];
+    const tglW = tgl.haeufigkeit.slice(4).reduce((s, v) => s + v, 0);
+    return `Nur ${oft.length} der 25 Aufgaben erledigt die Mehrheit der Befragten mehrmals pro Woche oder öfter; fast alle gehören zum Lehralltag. ` +
+      `Täglich oder öfter fällt am ehesten an: <b>${tgl.de}</b> (${pz(tglW)}).`;
+  }
+  if (ansicht === "ki") {
+    const s = mitDaten.slice().sort((x, y) => y.aei.automatisierung - x.aei.automatisierung);
+    return `Nur ${mitDaten.length} der 25 Aufgaben erscheinen im Economic Index. ` +
+      `Den höchsten Automatisierungsanteil hat <b>${s[0].de}</b> (${pz(s[0].aei.automatisierung)} der Gespräche), den niedrigsten <b>${s[s.length - 1].de}</b> (${pz(s[s.length - 1].aei.automatisierung)}).`;
+  }
+  const s = mitDaten.slice().sort((x, y) => y.aei.studium - x.aei.studium);
+  const w = mitDaten.slice().sort((x, y) => y.aei.arbeit - x.aei.arbeit);
+  return `Bei <b>${s[0].de}</b> stuft der Index ${pz(s[0].aei.studium)} der Gespräche als Studium ein; ` +
+    `beruflich geprägt sind vor allem <b>${w[0].de}</b> (${pz(w[0].aei.arbeit)}) und <b>${w[1].de}</b> (${pz(w[1].aei.arbeit)}).`;
+}
+
+// Tooltip: beim Zeigen auf eine Zelle oder beim Fokussieren einer Aufgabe
+const tip = document.getElementById("tip");
+function tipText(a, k) {
+  const V = ANSICHTEN[ansicht];
+  let t = `<b>${a.nr}. ${a.de}</b><div class="en">${a.en}</div>`;
+  if (k) {
+    const sp = V.spalten.find(s => s.k === k);
+    t += `<div class="w">${pz(sp.w(a))}</div>${V.legende.replace("der ", "der ")}: ${sp.lang}`;
+    if (ansicht === "oft") t += `<br>${zahl(a.befragte)} Befragte`;
+    return t;
+  }
+  if (ansicht === "oft") {
+    const woe = a.haeufigkeit.slice(3).reduce((s, v) => s + v, 0);
+    t += `Wichtigkeit ${zahl(a.wichtigkeit, 1)} von 5 · ${pz(woe)} mindestens mehrmals pro Woche · ${zahl(a.befragte)} Befragte · ${a.typ === "Core" ? "Kernaufgabe" : "ergänzende Aufgabe"}`;
+  } else if (!a.aei) {
+    t += "Im Economic Index nicht veröffentlicht (zu wenige Gespräche im Monat).";
+  } else if (ansicht === "ki") {
+    t += `${a.aei.anteil < 0.005 ? "unter 0,005 %" : zahl(a.aei.anteil, 2) + " %"} aller Gespräche, Rang ${zahl(a.aei.rang)} von ${zahl(D.n_aufgaben_index)} Aufgaben<br>` +
+      `Automatisierung ${pz(a.aei.automatisierung)} · Augmentierung ${pz(a.aei.augmentierung)}`;
+  } else {
+    t += `Arbeit ${pz(a.aei.arbeit)} · Studium ${pz(a.aei.studium)} · privat ${pz(a.aei.privat)}<br>` +
+      `geschätzte Dauer ohne KI ${zahl(a.aei.zeit_ohne_ki_h, 1)} h, mit KI ${zahl(a.aei.zeit_mit_ki_min)} min`;
+  }
+  return t;
+}
+function zeigeTip(html, x, y) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const r = tip.getBoundingClientRect();
+  let l = x + 14, o = y + 14;
+  if (l + r.width > innerWidth - 6) l = Math.max(6, x - r.width - 14);
+  if (o + r.height > innerHeight - 6) o = Math.max(6, y - r.height - 14);
+  tip.style.left = l + "px"; tip.style.top = o + "px";
+}
+const koerper = document.getElementById("koerper");
+koerper.addEventListener("pointermove", e => {
+  const zelle = e.target.closest("td.z, th[data-zeile], td.leer, td[data-extra]");
+  const tr = e.target.closest("tr");
+  if (!zelle || !tr) { tip.style.display = "none"; return; }
+  const a = A.find(x => x.nr === +tr.dataset.nr);
+  zeigeTip(tipText(a, zelle.dataset.k), e.clientX, e.clientY);
+});
+koerper.addEventListener("pointerleave", () => { tip.style.display = "none"; });
+koerper.addEventListener("focusin", e => {
+  const tr = e.target.closest("tr"); if (!tr) return;
+  tr.classList.add("markiert");
+  const r = e.target.getBoundingClientRect();
+  zeigeTip(tipText(A.find(x => x.nr === +tr.dataset.nr)), r.right, r.top);
+});
+koerper.addEventListener("focusout", e => { const tr = e.target.closest("tr"); if (tr) tr.classList.remove("markiert"); tip.style.display = "none"; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") tip.style.display = "none"; });
+
+// Reiter, auch mit Pfeiltasten
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+function waehle(t) {
+  tabs.forEach(b => { const an = b === t; b.setAttribute("aria-selected", an); b.tabIndex = an ? 0 : -1; });
+  ansicht = t.dataset.ansicht; sortKey = null; zeichne();
+}
+tabs.forEach((t, i) => {
+  t.tabIndex = i === 0 ? 0 : -1;
+  t.addEventListener("click", () => waehle(t));
+  t.addEventListener("keydown", e => {
+    const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+    if (d) { const n = tabs[(i + d + tabs.length) % tabs.length]; n.focus(); waehle(n); }
+  });
+});
+document.getElementById("reihenfolge").addEventListener("click", () => { sortKey = null; zeichne(); });
+document.getElementById("nur-index").addEventListener("change", e => { nurIndex = e.target.checked; zeichne(); });
+document.getElementById("werte").addEventListener("change", zeichne);
+
+document.getElementById("erklaerung").innerHTML = ERKLAERUNG.map(([t, d]) => `<dt>${t}</dt><dd>${d}</dd>`).join("");
+document.getElementById("q-monat").textContent = D.monat;
+// Startansicht per Adresse: ?ansicht=ki oder ?ansicht=wer
+const start = new URLSearchParams(location.search).get("ansicht");
+rampe();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { rampe(); zeichne(); });
+waehle(tabs.find(t => t.dataset.ansicht === start) || tabs[0]);
+// Höhe an die Kapitelseite melden, damit der Rahmen (iframe) ohne eigenen Rollbalken passt
+function meldeHoehe() { try { parent.postMessage({ typ: "onet-heatmap-hoehe", h: document.documentElement.scrollHeight }, "*"); } catch (e) {} }
+new ResizeObserver(meldeHoehe).observe(document.body);
+document.querySelector("details").addEventListener("toggle", meldeHoehe);
+</script>
+</body>
+</html>

@@ -60,7 +60,30 @@ Vor- und Nachbereitung, Evaluation, Beratung, Planung und vieles mehr lassen die
 @fig-onet-tasks zeigt die 25 Hauptaufgaben, die Lehrende nach Umfragen des US-Arbeitsministeriums verrichten (https://www.onetonline.org/link/summary/25-1011.00).
 Welche Auswirkungen können wir von LLM auf diese konkreten Aufgaben erwarten?
 
-![Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00) nach Umfragen des US-Arbeitsministeriums. Enthält Informationen aus O\*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<https://www.onetonline.org/help/license>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O\*NET® ist eine Marke von USDOL/ETA.](images/druck/onet-aufgaben.svg){#fig-onet-tasks}
+::: {.content-visible when-format="html"}
+Die interaktive Fassung zeigt dieselben 25 Aufgaben in drei Ansichten: wie oft Lehrende sie erledigen, wie Gespräche mit Claude zu ihnen verlaufen und in welchem Zusammenhang diese Gespräche stehen. Ein Klick auf einen Spaltenkopf sortiert die Aufgaben.
+
+::: {#fig-onet-tasks}
+```{=html}
+<iframe loading="lazy" id="onet-heatmap" src="interactions/onet-heatmap.html" width="100%" height="1340px" frameborder="0" title="Heatmap: 25 Aufgaben von Hochschullehrenden nach Häufigkeit (O*NET) und nach Gesprächen mit Claude (Anthropic Economic Index)"></iframe>
+<script>
+window.addEventListener("message", function (e) {
+  if (!e.data || e.data.typ !== "onet-heatmap-hoehe") return;
+  var f = document.getElementById("onet-heatmap");
+  if (f && e.source === f.contentWindow) f.style.height = (e.data.h + 8) + "px";
+});
+</script>
+```
+
+Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00): wie oft Lehrende sie nach Umfragen des US-Arbeitsministeriums erledigen [@onet2026database] und wie Gespräche mit Claude zu ihnen verlaufen [@massenkoff2026cadences]. Enthält Informationen aus O\*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<https://www.onetonline.org/help/license>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O\*NET® ist eine Marke von USDOL/ETA.
+:::
+:::
+
+::: {.content-visible unless-format="html"}
+![Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00) nach Umfragen des US-Arbeitsministeriums. Interaktive Fassung mit Häufigkeiten und KI-Nutzung je Aufgabe: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel03-automation.html#fig-onet-tasks> aufrufen. Enthält Informationen aus O\*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<https://www.onetonline.org/help/license>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O\*NET® ist eine Marke von USDOL/ETA.](images/druck/onet-aufgaben.svg){#fig-onet-tasks}
+
+![](images/qr/qr-onet-heatmap.png){width="18%"}
+:::
 
 Historische Studien zeigen, dass Technologie typischerweise **Tätigkeiten** (*tasks*) beeinflusst und eher selten ganze Jobs ersetzt.
 Den Rahmen dafür liefert das Aufgabenmodell (*task model*), das der Nobelpreisträger Daron Acemoglu mit Fredric Kong und Pascual Restrepo im *Handbook of Labor Economics* zusammengefasst hat [@acemoglu2025tasks].

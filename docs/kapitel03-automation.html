@@ -564,13 +564,21 @@ window.addEventListener("message", function (e) {
 </div>
 </div>
 <p>Woraus besteht das im Detail und wo könnten große Sprachmodelle (LLMs) helfen? Vor- und Nachbereitung, Evaluation, Beratung, Planung und vieles mehr lassen die Stunden eines Tages schnell vergehen. <a href="#fig-onet-tasks" class="quarto-xref">Abbildung&nbsp;<span>3.1</span></a> zeigt die 25 Hauptaufgaben, die Lehrende nach Umfragen des US-Arbeitsministeriums verrichten (https://www.onetonline.org/link/summary/25-1011.00). Welche Auswirkungen können wir von LLM auf diese konkreten Aufgaben erwarten?</p>
+<p>Die interaktive Fassung zeigt dieselben 25 Aufgaben in drei Ansichten: wie oft Lehrende sie erledigen, wie Gespräche mit Claude zu ihnen verlaufen und in welchem Zusammenhang diese Gespräche stehen. Ein Klick auf einen Spaltenkopf sortiert die Aufgaben.</p>
 <div id="fig-onet-tasks" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-onet-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/druck/onet-aufgaben.svg" class="img-fluid figure-img">
+<iframe loading="lazy" id="onet-heatmap" src="interactions/onet-heatmap.html" width="100%" height="1340px" frameborder="0" title="Heatmap: 25 Aufgaben von Hochschullehrenden nach Häufigkeit (O*NET) und nach Gesprächen mit Claude (Anthropic Economic Index)"></iframe>
+<script>
+window.addEventListener("message", function (e) {
+  if (!e.data || e.data.typ !== "onet-heatmap-hoehe") return;
+  var f = document.getElementById("onet-heatmap");
+  if (f && e.source === f.contentWindow) f.style.height = (e.data.h + 8) + "px";
+});
+</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-onet-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;3.1: Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00) nach Umfragen des US-Arbeitsministeriums. Enthält Informationen aus O*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<a href="https://www.onetonline.org/help/license" class="uri">https://www.onetonline.org/help/license</a>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O*NET® ist eine Marke von USDOL/ETA.
+Abbildung&nbsp;3.1: Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00): wie oft Lehrende sie nach Umfragen des US-Arbeitsministeriums erledigen <span class="citation" data-cites="onet2026database">(<a href="#ref-onet2026database" role="doc-biblioref">National Center for O*NET Development, 2026</a>)</span> und wie Gespräche mit Claude zu ihnen verlaufen <span class="citation" data-cites="massenkoff2026cadences">(<a href="#ref-massenkoff2026cadences" role="doc-biblioref">Massenkoff et al., 2026</a>)</span>. Enthält Informationen aus O*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<a href="https://www.onetonline.org/help/license" class="uri">https://www.onetonline.org/help/license</a>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O*NET® ist eine Marke von USDOL/ETA.
 </figcaption>
 </figure>
 </div>
