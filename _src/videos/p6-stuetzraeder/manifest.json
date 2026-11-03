@@ -1,0 +1,613 @@
+{
+  "film": "kap02-stuetzraeder",
+  "titel": "Stützräder – wie die Prompting-Ratschläge kamen und gingen",
+  "kurztitel": "Stützräder in neun Genres",
+  "sprache": "de",
+  "kapitelseite": "kapitel02.html#vid-stuetzraeder",
+  "anker": "vid-stuetzraeder",
+  "quellenliste": "notes/p6-stuetzraeder/quellen.md",
+  "drehbuchFreigabe": "Drehbuch freigegeben von Roman Bartnik am 02.11.2026 (G2b, Multiple Choice): claude/prompting-primer/DREHBUCH-p6-stuetzraeder-neun-genres-2026-11-02.md; Sprechtexte wörtlich übernommen. Änderung Szene 7 (Roman, MC, 02.11.2026): „In diese Richtung raten heute alle drei großen Labore …“.",
+  "grenzen": {
+    "woerter": [
+      30,
+      55
+    ],
+    "hinweis": "Die freigegebenen Sprechtexte haben 31–42 Wörter (Szene 4: 31, Szene 7: 33); untere Grenze daher 30 statt 35 wie bei S5."
+  },
+  "video": {
+    "breite": 1280,
+    "hoehe": 720,
+    "fps": 30,
+    "crf": 23,
+    "preset": "veryfast",
+    "maxMB": 15
+  },
+  "ton": {
+    "luft": 0.6,
+    "vorlauf": 0.25,
+    "lufs": -16,
+    "uebergangston": true
+  },
+  "farben": {
+    "hell": "#c1002a",
+    "dunkel": "#ff5c7a",
+    "hinweis": "Akzentfarbe --red des Buchs (interactions/line-widget.html); auf dunklem Grund die helle Variante. Nur das jeweils neue Element.",
+    "player": true
+  },
+  "leitobjekt": "Prompt-Zettel (weiße Karte): wächst in Szene 1–3, verliert die Aufkleber in 4–5, wird in 6–7 neu gebaut",
+  "quellenmarken": {
+    "labor": {
+      "form": "■",
+      "text": "Labor",
+      "bedeutung": "Empfehlung in einer Hersteller-Doku (Anthropic, OpenAI, Google)"
+    },
+    "studie": {
+      "form": "●",
+      "text": "Studie",
+      "bedeutung": "veröffentlichte Messung (Fachartikel oder Preprint)"
+    },
+    "folklore": {
+      "form": "▲",
+      "text": "Folklore",
+      "bedeutung": "verbreiteter Rat ohne Hersteller-Empfehlung und ohne Beleg"
+    }
+  },
+  "kennzeichnung": {
+    "piper": "Platzhalterstimme KI-erzeugt (Piper, de_DE-thorsten-high); Bilder aus Programmcode (HyperFrames)",
+    "elevenlabs": "Stimme KI-erzeugt (ElevenLabs v4); Bilder aus Programmcode (HyperFrames)"
+  },
+  "vertonung": {
+    "ordner": "0_GenAI/1-Research/06-Lehrbuch-Publikation-Logos/Audio-P6-Stuetzraeder/",
+    "zeit": "ca. 15 min (eine Stimme für alle neun Szenen)",
+    "aussprache": "Zahlen prüfen: „2020“ = zwanzig-zwanzig, „79 statt 18“ = neunundsiebzig statt achtzehn, „14:40“ = vierzehn Uhr vierzig; „Reasoning-Modell“ englisch, „Few-Shot-Prompting“ englisch.",
+    "modell": "ElevenLabs v4",
+    "modellText": "Text to Speech → **Eleven v4** (nicht „v4 Turbo“; Turbo ist für Entwürfe gedacht). v4 versteht dieselben Regieanweisungen in eckigen Klammern wie v3 (Audio Tags, freier Text auf Englisch, z. B. `[whispers]`); die Texte unten gelten unverändert. Entscheidung Roman, 02.11.2026."
+  },
+  "vorhersage": {
+    "frage": "Bevor der Film startet: Ein gut gebauter Arbeitsauftrag an ein heutiges Modell ist im Vergleich zu einem guten Prompt von 2023 eher …",
+    "optionen": [
+      "länger.",
+      "etwa gleich lang.",
+      "kürzer."
+    ],
+    "richtig": 2,
+    "nachSzene": 9,
+    "sicherheit": true,
+    "aufloesung": "Kürzer. Szene 9 zeigt es am Quiz-Ersteller aus Anhang B: Er schrumpfte auf weniger als die Hälfte (von 275 auf 119 Wörter), weil Rolle, Ablaufvorschriften und Ermahnungen wegfielen. Ziel, Wozu, Material und Abnahme blieben."
+  },
+  "sicherheit": {
+    "frage": "Wie sicher sind Sie?",
+    "stufen": [
+      "1 geraten",
+      "2 eher sicher",
+      "3 sicher"
+    ],
+    "standard": 1,
+    "hyperkorrektur": "Sie waren sich sicher und lagen daneben. Solche Irrtümer werden nach einer Korrektur besonders oft richtig erinnert (Butterfield & Metcalfe, 2001); lesen Sie die Auflösung deshalb genau."
+  },
+  "haltepunkte": [
+    {
+      "nachSzene": 3,
+      "frage": "Helfen Trinkgeld, Drohung und Expertenrolle heutigen Modellen bei schweren Aufgaben?",
+      "optionen": [
+        "Ja, deutlich.",
+        "Kaum oder gar nicht.",
+        "Nur die Expertenrolle."
+      ],
+      "richtig": 1,
+      "aufloesung": "Kaum oder gar nicht. In Tests mit schweren Fragen hatten Trinkgeld und Drohungen keinen messbaren Effekt, und Expertenrollen machten die Antworten nicht genauer. Für Ton und Simulationen bleiben Rollen sinnvoll. Die nächste Szene zeigt die Beweisaufnahme."
+    },
+    {
+      "nachSzene": 5,
+      "frage": "Sie schreiben einem Reasoning-Modell „Denke Schritt für Schritt“. Was passiert typischerweise?",
+      "optionen": [
+        "Deutlich bessere Antworten.",
+        "Kaum bessere, aber langsamere und teurere Antworten.",
+        "Immer schlechtere Antworten."
+      ],
+      "richtig": 1,
+      "aufloesung": "Kaum bessere, aber langsamere und teurere Antworten: Reasoning-Modelle gehen ohnehin schrittweise vor. Bei manchen Aufgabentypen wird es sogar schlechter, nämlich dort, wo langes Nachdenken auch Menschen schadet (Liu, R. et al., 2025)."
+    },
+    {
+      "nachSzene": 7,
+      "frage": "Sie wissen selbst noch nicht genau, was am Ende herauskommen soll. Was tun Sie?",
+      "optionen": [
+        "Eine ausführliche Schrittliste schreiben.",
+        "Sich vom Modell interviewen lassen, daraus eine Spezifikation machen, dann neu starten.",
+        "„Du bist ein erfahrener Didaktiker“ voranstellen."
+      ],
+      "richtig": 1,
+      "aufloesung": "Erst das Interview, dann eine Spezifikation; die Ausführung startet in einer frischen Sitzung, und am Ende prüft jemand, der beim Planen nicht dabei war. Die nächste Szene zeigt den Plan."
+    }
+  ],
+  "selbsttest": [
+    {
+      "frage": "Warum halfen Tricks wie „Denke Schritt für Schritt“ früher?",
+      "optionen": [
+        "Sie glichen eine Schwäche damaliger Modelle aus.",
+        "Modelle reagieren auf Höflichkeit.",
+        "Sie verkürzten die Antwort."
+      ],
+      "richtig": 0,
+      "erklaerung": "Frühe Modelle gingen nicht von sich aus schrittweise vor; der Satz holte das nach. Reasoning-Modelle tun es selbst, deshalb bringt er heute kaum noch etwas."
+    },
+    {
+      "frage": "Welche Zeile streichen Sie in einem Arbeitsauftrag an ein Reasoning-Modell zuerst?",
+      "optionen": [
+        "„Der Test dient Erstsemestern zur Klausurvorbereitung.“",
+        "„Denke sorgfältig und prüfe deine Antwort zweimal.“",
+        "„Höchstens eine Seite.“"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die Denk- und Prüfaufforderung erledigt das Modell selbst. Zeile (a) ist das Wozu, Zeile (c) das Format; beide bleiben."
+    },
+    {
+      "frage": "Ein Tutor-Prompt verlangt: „Erst nachfragen, dann einen Hinweis geben, nie die Lösung.“ Streichen?",
+      "optionen": [
+        "Ja, das Modell plant selbst.",
+        "Nein, hier ist der Ablauf das Produkt.",
+        "Nur „nie die Lösung“ streichen."
+      ],
+      "richtig": 1,
+      "erklaerung": "In Tutor- und Simulationsprompts ist der Gesprächsablauf die Spezifikation, nicht ein Lösungsweg für das Modell. Er bleibt, am besten mit einem Halbsatz Begründung je Regel."
+    }
+  ],
+  "makingof": {
+    "prompt": "Erzähle in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre, wie die Prompting-Ratschläge von 2020 bis 2026 kamen und gingen, mit einem Prompt-Zettel als Hauptfigur und einer Quellenmarke je Szene, und baue daraus mit der Genrefilm-Pipeline aus Kapitel 2 einen Film mit Haltepunkten.",
+    "werkzeuge": "Claude Code (Opus 5.5), HyperFrames 0.9.2, ffmpeg; Stimme: Piper (Platzhalter), ElevenLabs v4 (Endfassung)",
+    "schwaeche": "Die Genres pressen sechs Jahre in neun Bilder. Leitjahre täuschen eine saubere Abfolge vor, und die Grenze zwischen Labor-Empfehlung und Ratgeber-Folklore war 2023 unschärfer, als die Quellenmarken es zeigen.",
+    "vorlage": "Erkläre [einen Wandel] aus meinem Fach in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre. Jede Szene zeigt genau eine Etappe; die Fachaussage bleibt in jedem Genre korrekt. Schreibe die Szenen als HTML für HyperFrames und den Sprechtext als Tabelle. Liste jede Fachaussage mit Beleg. Beispiel: wie sich die Empfehlungen zur Hausaufgabe geändert haben.",
+    "hinweis": "Zusammenfassung des Bauauftrags in einem Satz (Auftrag P6 vom 02.11.2026), kein wörtlicher Einzelprompt.",
+    "stand": "Stand der Quellen: November 2026"
+  },
+  "szenen": [
+    {
+      "id": "s1",
+      "genre": "Stummfilm",
+      "jahr": "2020",
+      "datei": "p6-szene01",
+      "idee": "Few-Shot: Man macht dem Modell die Aufgabe an Beispielen vor.",
+      "sprechtext": "2020. Sprachmodelle verstehen eine Aufgabe noch schlecht. Also macht man es ihnen vor: drei gelöste Beispiele, dann die eigene Aufgabe. Few-Shot-Prompting heißt das, Lernen aus wenigen Beispielen. Es wirkt erstaunlich gut. Der erste Ratschlag ist geboren: Zeig’s ihm vor.",
+      "v3": "[old-fashioned announcer voice] 2020. [pause] Sprachmodelle verstehen eine Aufgabe noch schlecht. Also macht man es ihnen vor: drei gelöste Beispiele, dann die eigene Aufgabe. [slowly] Few-Shot-Prompting heißt das, Lernen aus wenigen Beispielen. [impressed] Es wirkt erstaunlich gut. [pause] Der erste Ratschlag ist geboren: Zeig’s ihm vor.",
+      "stimmhinweis": "Ansager eines alten Wochenschau-Films: gemessen, etwas feierlich",
+      "bildtext": [
+        "Stummfilm",
+        "2020",
+        "Prompt",
+        "Beispiel 1",
+        "Beispiel 2",
+        "Beispiel 3",
+        "Ihre Aufgabe",
+        "● Studie"
+      ],
+      "bildobjekte": "Schwarzer Grund mit Filmkratzern und Flackern; Zwischentitel „2020“ im Doppelrahmen; danach der Prompt-Zettel mit drei Beispielkarten (Akzent) und einem gestrichelten Feld „Ihre Aufgabe“",
+      "quellenmarke": [
+        {
+          "typ": "studie",
+          "zitat": "Brown et al. 2020"
+        }
+      ],
+      "schematisch": "Beispielkarten schematisch (graue Balken statt Text)",
+      "belege": [
+        {
+          "aussage": "Few-Shot-Prompting: Das Modell löst Aufgaben aus wenigen Beispielen im Prompt, ohne Nachtraining; deutlich besser als ohne Beispiele.",
+          "beleg": "Brown et al. (2020)",
+          "zeile": "Q01"
+        },
+        {
+          "aussage": "Leitjahr 2020",
+          "beleg": "Brown et al. (2020)",
+          "zeile": "Q01"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "genre": "Zaubershow",
+      "jahr": "2022",
+      "datei": "p6-szene02",
+      "idee": "Chain of Thought: Ein Satz lässt das Modell Zwischenschritte schreiben.",
+      "sprechtext": "Meine Damen und Herren: ein einziger Satz! ‚Denken wir Schritt für Schritt.‘ Und das Modell löst plötzlich 79 statt 18 von hundert Rechenaufgaben. Kein Trick, sondern gemessen. Ab jetzt gilt: Lass das Modell laut denken.",
+      "v3": "[theatrical showman voice] Meine Damen und Herren: ein einziger Satz! [whispers] ‚Denken wir Schritt für Schritt.‘ [pause] [excited] Und das Modell löst plötzlich 79 statt 18 von hundert Rechenaufgaben. [matter-of-fact] Kein Trick, sondern gemessen. Ab jetzt gilt: Lass das Modell laut denken.",
+      "stimmhinweis": "Zauberkünstler auf der Bühne: große Geste, dann ein Flüstern beim Zaubersatz",
+      "bildtext": [
+        "Zaubershow",
+        "2022",
+        "Prompt",
+        "Denken wir Schritt für Schritt.",
+        "18",
+        "79",
+        "von 100 Aufgaben",
+        "● Studie"
+      ],
+      "bildobjekte": "Bühne mit Vorhangstreifen und Spotlicht; Zylinder und Zauberstab; der Satz fliegt aus dem Hut auf den Zettel (Akzent); zwei Balken 18 und 79 von 100",
+      "quellenmarke": [
+        {
+          "typ": "studie",
+          "zitat": "Kojima et al. 2022 · MultiArith, text-davinci-002"
+        },
+        {
+          "typ": "studie",
+          "zitat": "Wei et al. 2022"
+        }
+      ],
+      "schematisch": "Werte gerundet: 17,7 → 78,7 % (MultiArith, text-davinci-002)",
+      "belege": [
+        {
+          "aussage": "„Let’s think step by step“ hebt MultiArith von 17,7 auf 78,7 % (text-davinci-002), gerundet 18 → 79 von 100.",
+          "beleg": "Kojima et al. (2022)",
+          "zeile": "Q02"
+        },
+        {
+          "aussage": "Chain-of-Thought-Prompting verbessert Rechen- und Denkaufgaben (laut denken lassen).",
+          "beleg": "Wei et al. (2022)",
+          "zeile": "Q03"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "genre": "Teleshopping",
+      "jahr": "2023",
+      "datei": "p6-szene03",
+      "idee": "Aufkleber-Inflation: Rolle, Trinkgeld, Großbuchstaben, emotionale Appelle.",
+      "sprechtext": "Aber das ist noch nicht alles! Jetzt neu: die Expertenrolle! Das Trinkgeld! Großbuchstaben! Und dazu: Das ist sehr wichtig für meine Karriere. Einiges davon stand in Studien und Hersteller-Anleitungen, vieles nur in Ratgebern. Der Zettel wird länger und länger.",
+      "v3": "[fast, enthusiastic TV salesperson] Aber das ist noch nicht alles! Jetzt neu: die Expertenrolle! Das Trinkgeld! Großbuchstaben! Und dazu: Das ist sehr wichtig für meine Karriere. [calmer] Einiges davon stand in Studien und Hersteller-Anleitungen, vieles nur in Ratgebern. [dry] Der Zettel wird länger und länger.",
+      "stimmhinweis": "Verkaufssender: schnell, überdreht; die beiden letzten Sätze ruhig und trocken",
+      "bildtext": [
+        "Teleshopping",
+        "2023",
+        "Prompt",
+        "Denken wir Schritt für Schritt.",
+        "NEU!",
+        "Expertin!",
+        "200 $ Trinkgeld",
+        "WICHTIG!!!",
+        "Karriere!",
+        "■ Labor",
+        "● Studie",
+        "▲ Folklore"
+      ],
+      "bildobjekte": "Hell gestreifter Studiogrund, Stern „NEU!“; vier Aufkleber prasseln schräg auf den Zettel, jeder mit eigener Quellenmarke (Expertin ■, Karriere ●, Trinkgeld ▲, WICHTIG ▲); der Zettel wächst über den unteren Bildrand",
+      "quellenmarke": [
+        {
+          "typ": "labor",
+          "zitat": "Rollen-Prompts in Hersteller-Dokus"
+        },
+        {
+          "typ": "studie",
+          "zitat": "Li et al. 2023"
+        },
+        {
+          "typ": "folklore",
+          "zitat": "Trinkgeld, Großbuchstaben"
+        }
+      ],
+      "schematisch": null,
+      "belege": [
+        {
+          "aussage": "Rollen- bzw. Persona-Prompts standen in Hersteller-Anleitungen.",
+          "beleg": "OpenAI (2023), Prompt engineering guide; Anthropic Doku (Rollen-Prompt)",
+          "zeile": "Q04"
+        },
+        {
+          "aussage": "„Das ist sehr wichtig für meine Karriere“ (EmotionPrompt) verbesserte in einer Studie Ergebnisse damaliger Modelle.",
+          "beleg": "Li et al. (2023)",
+          "zeile": "Q05"
+        },
+        {
+          "aussage": "Trinkgeld und Großbuchstaben kursierten als Ratgeber-Tipps; keine Hersteller-Empfehlung gefunden.",
+          "beleg": "Meincke et al. (2025c), Einleitung; Anthropic (2026a) rät von aggressiver Sprache ab",
+          "zeile": "Q06"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "genre": "Gerichtsdrama",
+      "jahr": "2025",
+      "datei": "p6-szene04",
+      "idee": "Die Hausrezepte im Test: bringt nichts.",
+      "sprechtext": "Die Beweisaufnahme, 2025. Der KI eine Rolle geben: kein Effekt bei neueren Modellen. Trinkgeld und Drohungen: kein messbarer Effekt. Höflichkeit: keine Wirkung. Das Gericht urteilt: bringt nichts. Die Aufkleber kommen vom Zettel.",
+      "v3": "[formal, serious judge] Die Beweisaufnahme, 2025. [pause] Der KI eine Rolle geben: kein Effekt bei neueren Modellen. Trinkgeld und Drohungen: kein messbarer Effekt. Höflichkeit: keine Wirkung. [firm] Das Gericht urteilt: bringt nichts. [pause] Die Aufkleber kommen vom Zettel.",
+      "stimmhinweis": "Vorsitzende Richterin: ruhig, sachlich, Pausen vor dem Urteil",
+      "bildtext": [
+        "Gerichtsdrama",
+        "2025",
+        "Prompt",
+        "1",
+        "2",
+        "3",
+        "Expertin",
+        "Trinkgeld",
+        "Bitte",
+        "bringt nichts",
+        "● Studie"
+      ],
+      "bildobjekte": "Holzvertäfelung in Graustufen, Richtertisch; drei Beweisstücke (Expertin, Trinkgeld, Bitte) mit Nummern; Hammerschlag; Stempel „bringt nichts“ (Akzent); die Aufkleber fallen vom Zettel",
+      "quellenmarke": [
+        {
+          "typ": "studie",
+          "zitat": "Meincke et al. 2025 (Reports 1, 3)"
+        },
+        {
+          "typ": "studie",
+          "zitat": "Basil et al. 2025"
+        }
+      ],
+      "schematisch": null,
+      "belege": [
+        {
+          "aussage": "Der KI eine Rolle geben: kein Effekt auf die Genauigkeit bei aktuellen Modellen.",
+          "beleg": "Basil et al. (2025)",
+          "zeile": "Q08"
+        },
+        {
+          "aussage": "Trinkgeld und Drohungen: kein messbarer Effekt auf schweren Benchmarks (GPQA, MMLU-Pro).",
+          "beleg": "Meincke et al. (2025c)",
+          "zeile": "Q07"
+        },
+        {
+          "aussage": "Höflichkeit: keine verlässliche Wirkung (Sprechtext vereinfacht zu „keine Wirkung“; Take übernommen, Roman 02.11.2026).",
+          "beleg": "Meincke et al. (2025a)",
+          "zeile": "Q09"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "genre": "Naturdokumentation",
+      "jahr": "2024–2026",
+      "datei": "p6-szene05",
+      "idee": "Reasoning-Modelle denken selbst; Denkvorschriften werden zu Stützrädern.",
+      "sprechtext": "Hier sehen wir ein Reasoning-Modell in freier Wildbahn. Es denkt, bevor es antwortet, ganz ohne Aufforderung. Wer ihm vorsagt, wie es denken soll, gewinnt kaum etwas und zahlt mit Zeit und Tokens. Stützräder helfen beim Lernen. In der Kurve stören sie.",
+      "v3": "[hushed nature documentary narrator] Hier sehen wir ein Reasoning-Modell in freier Wildbahn. Es denkt, bevor es antwortet, ganz ohne Aufforderung. [pause] Wer ihm vorsagt, wie es denken soll, gewinnt kaum etwas und zahlt mit Zeit und Tokens. [warmly] Stützräder helfen beim Lernen. [pause] In der Kurve stören sie.",
+      "stimmhinweis": "Tierfilm-Erzähler: leise, staunend, langsam",
+      "bildtext": [
+        "Naturdokumentation",
+        "● REC",
+        "2024–2026",
+        "Reasoning-Modell",
+        "denkt selbst",
+        "Schritt für Schritt",
+        "Analogie",
+        "■ Labor",
+        "● Studie"
+      ],
+      "bildobjekte": "Dokumentarrahmen mit Ecken und REC; Silhouette mit Denkblase vor der Antwort; Zettelstreifen „Schritt für Schritt“ wird durchgestrichen (Akzent) und fällt; Schnitt: Fahrrad mit Stützrädern, das Stützrad schleift in der Kurve; Etikett „Analogie“",
+      "quellenmarke": [
+        {
+          "typ": "labor",
+          "zitat": "OpenAI, Reasoning best practices"
+        },
+        {
+          "typ": "studie",
+          "zitat": "Meincke et al. 2025 (Report 2); DeepSeek-AI/Guo et al. 2025"
+        }
+      ],
+      "schematisch": "Stützräder sind eine Analogie, kein Mechanismus",
+      "belege": [
+        {
+          "aussage": "Reasoning-Modelle denken vor der Antwort selbst; Chain-of-Thought-Aufforderungen sind unnötig.",
+          "beleg": "OpenAI, Reasoning best practices",
+          "zeile": "Q10"
+        },
+        {
+          "aussage": "CoT-Aufforderungen bringen bei Reasoning-Modellen kaum Gewinn und kosten Zeit und Tokens.",
+          "beleg": "Meincke et al. (2025b)",
+          "zeile": "Q11"
+        },
+        {
+          "aussage": "Few-Shot-Beispiele verschlechtern DeepSeek-R1; Zero-Shot empfohlen.",
+          "beleg": "Guo et al. (2025)",
+          "zeile": "Q12"
+        },
+        {
+          "aussage": "Leitjahre 2024–2026: Reasoning-Modelle seit 2024 (o1-preview) in Studien verglichen.",
+          "beleg": "Liu, R. et al. (2025)",
+          "zeile": "Q13"
+        },
+        {
+          "aussage": "Stützräder: Analogie, kein Mechanismus.",
+          "beleg": "eigene Analogie (OPTIONEN-Dokument)",
+          "zeile": "Q14"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "genre": "Kochshow",
+      "jahr": "",
+      "datei": "p6-szene06",
+      "idee": "Was bleibt: Ziel, Wozu, Material, Format, Stilbeispiele; im Tutor der Ablauf.",
+      "sprechtext": "Was bleibt im Topf? Das Ziel. Der Grund, wozu Sie es brauchen. Ihr Material, lange Texte oben, die Frage darunter. Format und Länge. Beispiele, wenn der Stil zählt. Und bei Tutor-Bots bleibt das Rezept, denn dort ist der Ablauf das Gericht.",
+      "v3": "[cheerful TV chef] Was bleibt im Topf? Das Ziel. Der Grund, wozu Sie es brauchen. Ihr Material, lange Texte oben, die Frage darunter. Format und Länge. Beispiele, wenn der Stil zählt. [pause] [warmly] Und bei Tutor-Bots bleibt das Rezept, denn dort ist der Ablauf das Gericht.",
+      "stimmhinweis": "Fernsehkoch: gut gelaunt, zügig, jedes Wort wie eine Zutat",
+      "bildtext": [
+        "Kochshow",
+        "Prompt",
+        "Ziel",
+        "Wozu",
+        "Material",
+        "?",
+        "Format",
+        "Tutor: Ablauf bleibt",
+        "■ Labor",
+        "● Studie"
+      ],
+      "bildobjekte": "Küchentheke mit Fliesen; Schälchen Ziel, Wozu, Material, Format springen auf einen neuen Zettel (das jeweils neue in Akzent); im Feld Material ein Dokument oben, ein Fragezeichen darunter; Rezeptkarte „Tutor: Ablauf bleibt“",
+      "quellenmarke": [
+        {
+          "typ": "labor",
+          "zitat": "Anthropic 2026, Prompting best practices"
+        },
+        {
+          "typ": "studie",
+          "zitat": "Liu, N. F. et al. 2024"
+        }
+      ],
+      "schematisch": null,
+      "belege": [
+        {
+          "aussage": "Ziel und Grund (Kontext, „warum“) angeben; Format und Länge vorgeben; Beispiele für Stil und Format.",
+          "beleg": "Anthropic (2026a)",
+          "zeile": "Q15"
+        },
+        {
+          "aussage": "Lange Dokumente oben, Frage unten.",
+          "beleg": "Anthropic (2026a); Liu, N. F. et al. (2024)",
+          "zeile": "Q16"
+        },
+        {
+          "aussage": "Bei Tutor-Bots bleibt der Ablauf: Er ist Spezifikation, nicht Lösungsweg.",
+          "beleg": "Leitlinie Kap. 2.4 / Anhang A (Buch)",
+          "zeile": "Q17"
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "genre": "Roadmovie",
+      "jahr": "2026",
+      "datei": "p6-szene07",
+      "idee": "Die neue Grundregel: Ziel und Erfolgskriterium nennen, dann fahren lassen.",
+      "sprechtext": "Dem Taxifahrer sagen Sie nicht: blinken, kuppeln, links. Sie sagen: Hauptbahnhof, bis 14:40, ich muss den Zug kriegen. In diese Richtung raten heute alle drei großen Labore: Ziel nennen, Erfolgskriterium nennen, dann fahren lassen.",
+      "v3": "[relaxed, laconic road-movie narrator] Dem Taxifahrer sagen Sie nicht: blinken, kuppeln, links. [pause] Sie sagen: Hauptbahnhof, bis 14:40, ich muss den Zug kriegen. [confident] In diese Richtung raten heute alle drei großen Labore: Ziel nennen, Erfolgskriterium nennen, dann fahren lassen.",
+      "stimmhinweis": "Roadmovie-Erzähler: gelassen, trocken, gleichmäßiges Tempo",
+      "bildtext": [
+        "Roadmovie",
+        "2026",
+        "TAXI",
+        "Ziel: Hauptbahnhof",
+        "Abnahme: 14:40, ICE",
+        "Anthropic",
+        "OpenAI",
+        "Google",
+        "■ Labor"
+      ],
+      "bildobjekte": "Nachtstraße mit Mittelstreifen; Taxi von hinten; Zettel an der Heckscheibe mit Ziel und Abnahme (Zeile „Abnahme“ in Akzent); drei Wegweiser mit Labornamen als Text zeigen in dieselbe Richtung",
+      "quellenmarke": [
+        {
+          "typ": "labor",
+          "zitat": "Anthropic 2026; OpenAI 2026; Google Cloud 2026"
+        }
+      ],
+      "schematisch": "Taxi-Beispiel ausgedacht (Analogie)",
+      "belege": [
+        {
+          "aussage": "Anthropic: vollständige Aufgabe vorab übergeben und laufen lassen (Opus 5); Abschlussbedingung vorab nennen (Opus 5.5).",
+          "beleg": "Anthropic (2026b, 2026c)",
+          "zeile": "Q18"
+        },
+        {
+          "aussage": "OpenAI: erwartetes Ergebnis und Erfolgskriterien nennen; Schritt-für-Schritt-Anleitungen reduzieren.",
+          "beleg": "OpenAI (2026)",
+          "zeile": "Q19"
+        },
+        {
+          "aussage": "Google: knappe, direkte Anweisungen statt komplexer Prompt-Technik (Erfolgskriterium dort nicht ausdrücklich).",
+          "beleg": "Google Cloud (2026)",
+          "zeile": "Q20"
+        },
+        {
+          "aussage": "Taxi, Hauptbahnhof, 14:40: ausgedachtes Beispiel (Werkvertrag statt Dienstvertrag).",
+          "beleg": "eigene Analogie (OPTIONEN-Dokument)",
+          "zeile": "Q21"
+        }
+      ],
+      "textaenderung": "02.11.2026, Roman (MC): „Genau das raten …“ → „In diese Richtung raten …“, weil Google kein Erfolgskriterium nennt (Quellenliste Q20)."
+    },
+    {
+      "id": "s8",
+      "genre": "Heist-Film",
+      "jahr": "",
+      "datei": "p6-szene08",
+      "idee": "Unklares Ziel: Interview, Spezifikation, frische Sitzung, fremde Prüfung.",
+      "sprechtext": "Und wenn das Ziel noch unscharf ist? Dann zuerst der Plan. Das Modell interviewt Sie, eine Frage nach der anderen. Daraus wird eine Spezifikation. Die Ausführung startet in einer frischen Sitzung, und am Ende prüft jemand, der beim Planen nicht dabei war.",
+      "v3": "[low, conspiratorial voice] Und wenn das Ziel noch unscharf ist? Dann zuerst der Plan. [pause] Das Modell interviewt Sie, eine Frage nach der anderen. Daraus wird eine Spezifikation. [tense] Die Ausführung startet in einer frischen Sitzung, und am Ende prüft jemand, der beim Planen nicht dabei war.",
+      "stimmhinweis": "Kopf einer Einbrecherbande über dem Bauplan: leise, verschwörerisch, präzise",
+      "bildtext": [
+        "Heist-Film",
+        "Interview",
+        "Spezifikation",
+        "neue Sitzung",
+        "fremde Prüfung",
+        "■ Labor"
+      ],
+      "bildobjekte": "Bauplan auf dunklem Tisch mit Raster; Taschenlampenkegel; vier Stationen werden nacheinander eingezeichnet und mit Pfeilen verbunden; Station „Spezifikation“ in Akzent",
+      "quellenmarke": [
+        {
+          "typ": "labor",
+          "zitat": "Anthropic 2026, Best practices for Claude Code"
+        }
+      ],
+      "schematisch": null,
+      "belege": [
+        {
+          "aussage": "Interview → Spezifikation → frische Sitzung; Prüfung durch einen Agenten ohne Planungskontext.",
+          "beleg": "Anthropic (2026d)",
+          "zeile": "Q22"
+        },
+        {
+          "aussage": "Planungsregel: Ziel unklar → Interview und Spezifikation, dann neue Sitzung.",
+          "beleg": "Leitlinie Kap. 2.4 (Buch)",
+          "zeile": "Q17"
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "genre": "Science-Fiction",
+      "jahr": "",
+      "datei": "p6-szene09",
+      "idee": "Zeitkapsel: Der eigene Prompt schrumpfte; auch heutige Regeln sind Stützräder auf Zeit.",
+      "sprechtext": "Eine Nachricht an Sie, später. Unser eigener Quiz-Prompt schrumpfte auf weniger als die Hälfte. Auch die Regeln von heute gleichen nur aus, was Modelle heute noch nicht können. Wenn das nächste Modell kommt: Zettel hervorholen, Zeile für Zeile prüfen.",
+      "v3": "[calm, slightly echoing voice from the future] Eine Nachricht an Sie, später. [pause] Unser eigener Quiz-Prompt schrumpfte auf weniger als die Hälfte. [thoughtful] Auch die Regeln von heute gleichen nur aus, was Modelle heute noch nicht können. [pause] Wenn das nächste Modell kommt: Zettel hervorholen, Zeile für Zeile prüfen.",
+      "stimmhinweis": "Botschaft aus der Zukunft: ruhig, freundlich, leicht entrückt",
+      "bildtext": [
+        "Science-Fiction",
+        "Prompt",
+        "Ziel",
+        "Wozu",
+        "Material",
+        "Abnahme",
+        "vorher",
+        "weniger als ½",
+        "Stand: November 2026",
+        "prüfen",
+        "■ Labor"
+      ],
+      "bildobjekte": "Sternenhimmel; Zeitkapsel öffnet sich; alter Zettel (lang, viele graue Zeilen, „vorher“) neben neuem (kurz, „weniger als ½“ in Akzent); Stempel „Stand: November 2026“; Prüflinie fährt über den neuen Zettel",
+      "quellenmarke": [
+        {
+          "typ": "zaehlung",
+          "zitat": "Anhang B, eigene Zählung"
+        },
+        {
+          "typ": "labor",
+          "zitat": "Anthropic 2026 („kurz halten“); OpenAI 2026"
+        }
+      ],
+      "schematisch": "Zettelzeilen schematisch; Wortzahlen per Skript gezählt (275 → 119, Zählregel wie Streich-Test)",
+      "belege": [
+        {
+          "aussage": "Quiz-Ersteller (Anhang B) schrumpft auf weniger als die Hälfte: 275 → 119 Wörter (−57 %), Zählregel wie Streich-Test (P1).",
+          "beleg": "eigene Zählung, scripts/p6-quiz-woerter.py",
+          "zeile": "Q23"
+        },
+        {
+          "aussage": "Anweisungen kurz halten und regelmäßig kürzen; bei neuen Modellen mit frischer Basis beginnen.",
+          "beleg": "Anthropic (2026d); OpenAI (2026)",
+          "zeile": "Q24"
+        },
+        {
+          "aussage": "Stand: November 2026",
+          "beleg": "Stand der Quellen",
+          "zeile": "Q25"
+        }
+      ]
+    }
+  ],
+  "posterZeit": 2.6,
+  "posterHinweis": "Poster = Zwischentitel „2020“ (Szene 1); das Schlussbild würde die Eingangsvorhersage verraten."
+}

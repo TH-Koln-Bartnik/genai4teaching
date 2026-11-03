@@ -32,3 +32,18 @@ Ein Genrefilm erklärt eine Kette von Ideen in neun kurzen Szenen, jede in einem
 ## Werkzeuge
 
 HyperFrames 0.9.2 (npm, Apache-2.0), GSAP 3, gpt-tokenizer 4.1.0, ffmpeg ≥ 6, Piper (`pip install piper-tts`, Stimmen `de_DE-thorsten-high`, CC0), Playwright (Vorschau), Python: Pillow, qrcode, opencv-python-headless, faster-whisper (Wortzeiten, Modell „small“). Renderzeit im Container (2 Kerne, keine GPU): Faktor ≈ 3,8 (10 s Film in 38 s), S5 gesamt ≈ 10 min.
+
+## Optionale Manifest-Felder (seit P6 „Stützräder“)
+
+| Feld | Wirkung |
+|---|---|
+| `grenzen.woerter` | Wortgrenzen je Sprechtext im Test (Standard 35–55) |
+| `quellenliste` | Pfad einer Markdown-Tabelle mit Zeilen `Q01 …`; der Test prüft, dass jede Szene (`belege[].zeile`) auf bestätigte Zeilen verweist, jede Zahl aus Sprechtext/Bildtext dort steht und der sichtbare Text im Szenencode dem Feld `bildtext` entspricht |
+| `sicherheit` | Sicherheitsangabe 1–3 bei Vorhersage und Haltepunkten; bei Irrtum mit Stufe 3 erscheint der Hinweis `hyperkorrektur` |
+| `vorhersage.nachSzene` | Szene, nach der die Eingangsfrage aufgelöst wird; ist es die letzte, erscheint die Auflösung am Filmende |
+| `quellenmarken` | Legende der Quellenmarken unter dem Film (Form + Wort) |
+| `farben.player: true` | Akzentfarbe des Films auch im Player |
+| `makingof.schwaeche`, `makingof.stand` | benannte Schwäche und Stand im Making-of |
+| `vertonung` | Tresorit-Ordner, Zeitbedarf und Aussprachehinweise für das Vertonungsblatt (`drehbuch.mjs --vertonung`) |
+
+P6 bauen: `python3 scripts/genrefilm/stimme-piper.py --film kap02-stuetzraeder`, dann `node scripts/genrefilm/bauen.mjs --film kap02-stuetzraeder --audio _src/videos/p6-stuetzraeder/audio-platzhalter` (Sitzung B: `--audio _src/videos/p6-stuetzraeder/audio --stimme elevenlabs`), `python3 scripts/genrefilm/druckraster.py --film kap02-stuetzraeder --name stuetzraeder`.

@@ -638,6 +638,41 @@ Ablauf und Prompt: Online-Fassung von Anhang A. Quelle: @landfair2025 (AI Pedago
 ![](images/qr/qr-ab-playtesting.png){width="18%"}
 :::
 ::::
+[]{#vid-stuetzraeder}
+
+**Zum Wiederholen: der Film „Stützräder“.** Der Streich-Test am Anfang dieses Abschnitts fragte, welche Zeilen eines alten Prompts heute entfallen; der Film erzählt, woher diese Zeilen kamen. In neun Genres zieht er von den Beispiel-Prompts des Jahres 2020 bis zu den Leitfäden der Labore von 2026 und zeigt in jeder Szene mit einer Marke, ob ein Ratschlag aus einer Hersteller-Doku, aus einer Studie oder aus der Folklore stammt. Er nennt die alten Ratschläge ausdrücklich, bevor er sie ersetzt; solche Widerlegungstexte helfen, eine feste Vorstellung umzubauen [@tippett2010].
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und starten Sie dann den Film; an drei Stellen hält er an und fragt nach.
+
+```{=html}
+<iframe loading="lazy" id="genrefilm-kap02-stuetzraeder" src="interactions/genrefilm-player.html?film=kap02-stuetzraeder" width="100%" height="900px" frameborder="0" title="Film mit Haltepunkten: Stützräder – wie die Prompting-Ratschläge kamen und gingen"></iframe>
+<script>
+/* Der Player meldet seine Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "genrefilm-kap02-stuetzraeder") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+```
+
+::: {.callout-note title="So entstand dieser Film"}
+Der Bauauftrag passt in einen Satz: „Erzähle in neun Szenen, jede in einem anderen Filmgenre, wie die Prompting-Ratschläge von 2020 bis 2026 kamen und gingen, mit einem Prompt-Zettel als Hauptfigur und einer Quellenmarke je Szene.“
+Claude Code nutzte dafür die Bauanleitung des Token-Films aus @sec-gpt-bedeutung; jede Aussage ist einer geprüften Zeile in einer Quellenliste zugeordnet.
+Die Schwäche: Neun Bilder pressen sechs Jahre in eine saubere Abfolge, und die Grenze zwischen Labor-Empfehlung und Ratgeber-Folklore war 2023 unschärfer, als die Marken zeigen.
+:::
+:::
+
+::: {.content-visible unless-format="html"}
+![Neun Genres, eine Geschichte: Prompt-Tricks glichen Schwächen früherer Modelle aus und entfallen, sobald die Modelle sie nicht mehr brauchen. Standbilder aus einem Film von gut zweieinhalb Minuten mit drei Haltepunkten, erstellt mit Claude Code und HyperFrames 0.9.2 [@heygen2026hyperframes092]; Stimme KI-erzeugt (ElevenLabs v4); Quellenmarke je Szene: ■ Labor, ● Studie, ▲ Folklore. Den Film gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel02.html#vid-stuetzraeder> aufrufen.](images/druck/video-stuetzraeder.png){#fig-video-stuetzraeder width="100%" fig-pos="htbp"}
+
+**Selbsttest zum Film.** Beantworten Sie die drei Fragen, bevor Sie in @sec-loesung-stuetzraeder nachsehen.
+
+1. Warum halfen Tricks wie „Denke Schritt für Schritt“ früher? (a) Sie glichen eine Schwäche damaliger Modelle aus; (b) Modelle reagieren auf Höflichkeit; (c) sie verkürzten die Antwort.
+2. Welche Zeile streichen Sie in einem Arbeitsauftrag an ein Reasoning-Modell zuerst? (a) „Der Test dient Erstsemestern zur Klausurvorbereitung.“; (b) „Denke sorgfältig und prüfe deine Antwort zweimal.“; (c) „Höchstens eine Seite.“
+3. Ein Tutor-Prompt verlangt: „Erst nachfragen, dann einen Hinweis geben, nie die Lösung.“ Streichen? (a) Ja, das Modell plant selbst; (b) nein, hier ist der Ablauf das Produkt; (c) nur „nie die Lösung“ streichen.
+:::
+
 
 ## Discernment: Wie beurteile ich, was die KI liefert? {#sec-hallucinations}
 

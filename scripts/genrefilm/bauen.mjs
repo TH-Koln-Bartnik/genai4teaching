@@ -79,7 +79,8 @@ log(`Lautheit integriert: ${I} LUFS (Ziel ${manifest.ton.lufs})`);
 // 6 Untertitel, Kapitel, Poster, Standbilder
 writeFileSync(join(media, `${manifest.film}.de.vtt`), untertitel(manifest, zp));
 writeFileSync(join(media, `${manifest.film}-kapitel.vtt`), kapitelmarken(zp));
-poster(mp4, T, join(media, `${manifest.film}-poster.png`));
+// Poster: Schlussbild (Standard) oder ein fester Zeitpunkt aus dem Manifest, wenn das Schlussbild eine Vorhersage verraten würde
+poster(mp4, manifest.posterZeit ? manifest.posterZeit + 0.4 : T, join(media, `${manifest.film}-poster.png`));
 standbilder(mp4, zp, join(build, "standbilder"));
 log("Untertitel, Kapitelmarken, Poster, Standbilder geschrieben");
 
