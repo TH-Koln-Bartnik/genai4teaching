@@ -1,6 +1,10 @@
 # Online-Profil (Standard): lebende Seiten, die im Druck entfallen.
 # Aktivieren: quarto render (profile: default = web, s. _quarto.yml) oder --profile web
 book:
+  # Nur online: Schaufenster aller Praxisbeispiele (Lernpfad „Linie 5 · Erst schauen“, Vorwort).
+  # Die Profil-Liste wird an die Basisliste angehängt; die Seite steht daher nach Kapitel 6.
+  chapters:
+    - praxisbeispiele.qmd
   # Nur online: Hinweis auf die laufende Überarbeitung hinter dem Datum der Startseite.
   # Der Text steht in eckigen Klammern, damit das Datumsformat ihn wörtlich ausgibt; der Druck behält "MMMM YYYY".
   date-format: "MMMM YYYY [· Wird aktuell komplett überarbeitet, Zieldatum: Ende Nov 2026]"
