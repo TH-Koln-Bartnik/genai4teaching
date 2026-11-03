@@ -4,6 +4,8 @@ Grundlage: Gliederungsnotiz „Generative KI als Hilfe zum Lehren und Lernen –
 
 **Nachtrag Phase 0 (03.11.2026, nachmittags):** `main` @ `da80b9e` enthält jetzt S3 Bibliothek, den Rollen-Kasten 2.4.4 und die Vorwort-Galerie mit der Seite „Praxisbeispiele im Überblick“ (37 Beispiele). Druckwörter je Abschnitt stehen in Abschnitt 2.9, die Druckspalte in Abschnitt 1; Branch-Stand in Abschnitt 5.
 
+**Nachtrag Phase 1 (03.11.2026, abends, vorgezogen):** Umzug erledigt, `main` @ `4006a9c`. Vorher S2 gemergt (`808c52f`). Sieben Kapiteldateien `kapitel01-einleitung.qmd`, `kapitel02-grundlagen.qmd`, `kapitel03-automation.qmd`, `kapitel04-lernmechanismen.qmd`, `kapitel05-4d-phasen.qmd`, `kapitel06-rollen.qmd`, `kapitel07-artefakte.qmd`; Teil I/II in `_quarto.yml`; alte Adressen leiten mit Ankertabelle weiter. Die Dateien der Phase-2-Tabelle (Abschnitt 4) heißen jetzt so. Druckwörter je Datei und Abweichungen von Abschnitt 2 stehen in `claude/gliederung-neu/STATUS-phase1-umzug-2026-11-03.md`.
+
 Kurz zu den Werkzeugbegriffen: Ein *Branch* ist eine Arbeitskopie des Buchs, an der eine Sitzung ändert, ohne die veröffentlichte Fassung zu berühren; ein *Merge* führt sie in die Hauptfassung `main` zurück. *Rebase* heißt, eine ältere Arbeitskopie auf den neuesten Stand umzusetzen. *Rendern* baut aus dem Quelltext die Webseiten und das PDF. Ein *Redirect* ist eine Weiterleitung von einer alten Webadresse auf die neue.
 
 ## 1. Ausgangslage in Zahlen
@@ -335,7 +337,7 @@ Reihenfolge in Phase 2 (Pfeil = muss vorher fertig sein):
 | `vorwort-praxisbeispiele` | Vorwort, Praxisseite, +427 | **03.11. gemergt** (`7917ec1`); Seite um Bibliothek (S3) und Film „Stützräder“ (P6) ergänzt, jetzt 37 Beispiele. Galerie- und Seitenverweise „Kapitel 6“/„Kapitel 4“ im Umzug anpassen (`scripts/praxisbeispiele.py`, Linktexte) |
 | `mollick-s5-token-genres-b` | Kap. 2, +44 | in `main` (laut `git cherry` ein Commit ohne Gegenstück, 4.094 von 4.146 Zeilen in `main`, Rest durch spätere Fassung ersetzt); löschen |
 | `prompting-film-stuetzraeder-c` | Kap. 2, +41 | in `main` (Vorfahr); löschen |
-| `mollick-s2-podcast` | Kap. 4, +44 | offen: G2c (S2 oder S2-N) und G3, siehe `claude/mollick-formate/STATUS-s2-podcast-sitzungB-2026-11-03.md`; nach dem Umzug verpflanzen, falls nicht vorher gemergt (E3) |
+| `mollick-s2-podcast` | Kap. 4, +44 | **03.11. gemergt** (`808c52f`, vor dem Umzug; Podcast steht jetzt in Kap. 6 `sec-podcast-interviews`). Vorher offen: G2c (S2 oder S2-N) und G3, siehe `claude/mollick-formate/STATUS-s2-podcast-sitzungB-2026-11-03.md`; nach dem Umzug verpflanzen, falls nicht vorher gemergt (E3) |
 | `mollick-s2n-notebook` | nur Material | bleibt geparkt, hängt an G2c |
 | `zitierstil-apa7-de` | `apa.csl` offizielle APA-7-Fassung mit `de-DE`, `references.json` bereinigt | **nicht überholt** (in `main` steht das alte Zotero-`apa.csl` von 12/2025). MC 03.11.: behalten, Rebase und Merge in Phase 3 mit Druck-Testrender |
 | `audio-beispiele` | Hörbeispiele Kap. 2.3.1 (Player, Drehbuch), nie eingebaut, mp3 nie aufgenommen | MC 03.11.: gesichert als Branch `archiv/audio-beispiele` (Tags blockiert der Proxy), Original löschen |
@@ -352,7 +354,7 @@ Branches, die nach dem Umzug kommen, lassen sich nicht mehr einfach rebasen, wei
 | E1 | Umfangsziel | rund 54.000 Wörter (≈ 300 S.) | **03.11.: so entschieden** |
 | E2 | Ort von „Prüfen“ | Kap. 5, nach Diligence, mit Dokumentieren | **03.11.: so entschieden** |
 | E3 | Audio-Branches S2, S5, P6 | – | **03.11.: P6-Aufnahmen liegen vor, S2 und S5 werden heute aufgenommen; alle drei am 03.11. einbauen und vor dem Umzug mergen (Reihenfolge S5 → P6, S2 unabhängig). Was bis zum Abend nicht in `main` ist, wird nach dem Umzug verpflanzt.** |
-| E4 | Dateinamen | neue Namen (`kapitel01-einleitung.qmd` … `kapitel07-artefakte.qmd`) plus Weiterleitungen | in Phase 1 |
+| E4 | Dateinamen | neue Namen (`kapitel01-einleitung.qmd` … `kapitel07-artefakte.qmd`) plus Weiterleitungen | **03.11.: umgesetzt (Phase 1)** |
 | E5 | Mechanismen-Tabelle | in Kap. 4; im Vorwort Kurzfassung mit Verweis | in K1 |
 | E6 | Kurs-Integration (2.463) | Kasten etwa 400 in Kap. 7 | in K5 |
 | E7 | Titel Kap. 3 | in K3a | in K3a |
