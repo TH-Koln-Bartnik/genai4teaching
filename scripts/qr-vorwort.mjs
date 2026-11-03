@@ -1,4 +1,4 @@
-// QR-Code der Druckabbildung im Vorwort: Galerie „Zehn Praxisbeispiele“.
+// QR-Code der Druckabbildung im Vorwort: Galerie „Vierzehn Praxisbeispiele“.
 // Laiensicht: Ein QR-Code ist eine gedruckte Internetadresse, die das Smartphone abfotografiert
 // und öffnet. Er zeigt auf die Galerie (interactions/), die ohne Buchseite läuft.
 // Ausführen im Repo-Wurzelordner: node scripts/qr-vorwort.mjs

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Galerie: Zehn Praxisbeispiele, die mit generativer KI entstanden sind</title>
+<title>Galerie: Vierzehn Praxisbeispiele, die mit generativer KI entstanden sind</title>
 <link rel="stylesheet" href="scm-viz/scm-viz.css">
 <style>
   /* Graustufen plus genau eine Akzentfarbe (TH-Rot): "das, worum es gerade geht" */
@@ -69,7 +69,7 @@
 </style>
 </head>
 <body>
-<div class="g" id="galerie" role="region" aria-roledescription="Galerie" aria-label="Zehn Praxisbeispiele, die mit generativer KI entstanden sind">
+<div class="g" id="galerie" role="region" aria-roledescription="Galerie" aria-label="Vierzehn Praxisbeispiele, die mit generativer KI entstanden sind">
   <div class="g-head">
     <div class="g-count" id="count"></div>
     <h2 class="g-title" id="title"></h2>
@@ -87,35 +87,43 @@
 <script src="scm-viz/scm-viz.js"></script>
 <script>
 (function () {
-  /* Zehn Praxisbeispiele aus dem Buch, geordnet nach Reiz: ungewöhnlich, interaktiv, schön (Auswahl Claude, 02.11.2026). Typen: "page" (eingebettete Seite),
+  /* Vierzehn Praxisbeispiele aus dem Buch, Auswahl und Reihenfolge R. Bartnik (03.11.2026). Typen: "page" (eingebettete Seite),
      "video" (MP4 mit Untertiteln), "viz" (Animation aus scm-viz.js), "image" (Standbild),
      "karte" (Szenario-Karte aus Zeilen [Begriff, Text]). "slug" ist der Deep-Link (#slug).
      "hoehe" ist die Rückfallhöhe des Rahmens [breit, schmal]; gemessen wird, wenn möglich, die echte Seitenhöhe.
      "link" führt aus der Galerie (im Kapitel per iframe eingebettet) zur Stelle im Buch. */
   var SLIDES = [
     {
+      type: "page", slug: "harness", src: "harness-schichten.html", hoehe: [820, 1050],
+      kicker: "Kapitel 2 · Klick-Animation",
+      title: "Seit 2022 ist die Schicht um das Modell gewachsen",
+      about: "Werkzeuge, Gedächtnis und eine Arbeitsschleife legen sich Schritt für Schritt als Harness um das Modell; Freigaben und Haltepunkte regeln, wie weit es allein handelt.",
+      lehre: "Erst tippen Sie, wer 2026 den nächsten Arbeitsschritt wählt. Das Modell selbst setzt im ganzen Bild nur Text wahrscheinlich fort; gewachsen ist sein Geschirr.",
+      link: "../kapitel02-grundlagen.html#sec-harness",
+      cite: "Schematische Darstellung, keine Messung; Animation: Claude nach Vorgaben von R. Bartnik 2026. Schluntz, E., & Zhang, B. (2024, 19. Dezember). Building effective agents. Anthropic Engineering. https://www.anthropic.com/engineering/building-effective-agents · Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. ICLR 2023. https://doi.org/10.48550/arXiv.2210.03629 (weitere Quellen in der Animation)"
+    },
+    {
+      type: "page", slug: "grundbegriffe", src: "llm-game-standalone.html", hoehe: [700, 900],
+      kicker: "Kapitel 2 · Zuordnungsspiel",
+      title: "LLM-Konzepte zuordnen: Welche Grundbegriffe kennen Sie schon?",
+      about: "Begriffe zu Definitionen, in zwei Stufen: erst Sprachmodell, Token und Prompt, dann Agenten, mit einer Diagnoserunde am Schluss.",
+      lehre: "Abrufen vor dem Lesen: Wer zuerst zuordnet, sieht, welche Abschnitte von Kapitel 2 er überspringen kann.",
+      link: "../kapitel02-grundlagen.html#sec-definitionen",
+      cite: "Lernspiel: Claude nach Vorgaben von R. Bartnik 2026."
+    },
+    {
       type: "page", slug: "token-film", src: "genrefilm-player.html?film=kap02-token-genres", hoehe: [900, 1100],
       kicker: "Kapitel 2 · Film mit Haltepunkten",
-      title: "Ein Film erklärt das nächste Token in neun Genres und hält an, bis Sie vorhersagen",
+      title: "Das nächste Token, erzählt in neun Genres",
       about: "Vom Film noir über Kochshow und Wetterbericht bis zum Märchen: dieselbe Kette aus Tokens, Nummern, Aufmerksamkeit und Wahrscheinlichkeiten, gut drei Minuten lang.",
       lehre: "Wer vor der Auflösung rät, behält die richtige Antwort besser, auch wenn der eigene Tipp falsch war.",
       link: "../kapitel02-grundlagen.html#vid-naechstes-token-genres",
       cite: "Film: Claude Code und HyperFrames 0.9.2 (HeyGen, 2026, https://github.com/heygen-com/hyperframes); Stimme KI-erzeugt (ElevenLabs v4); Bedeutungskarte und Wahrscheinlichkeiten schematisch. Idee: Mollick, E. (2026, 26. September). How do you explain recursion? [Video]. X. https://x.com/emollick/status/2103688362960019567 · Richland, L. E., Kornell, N., & Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? Journal of Experimental Psychology: Applied, 15(3), 243–257. https://doi.org/10.1037/a0016496"
     },
     {
-      type: "video", slug: "lernsong", src: "media/lernsong-forecast.mp4",
-      poster: "media/lernsong-forecast-poster.webp", vtt: "media/lernsong-forecast.vtt", vttLang: "en", vttLabel: "English (lyrics)",
-      kicker: "Kapitel 7 · Lernsong",
-      title: "Ein Lernsong macht fünf Prognoseverfahren singbar",
-      about: "Fünf Verfahren an den Kaffeebechern eines erfundenen Campus-Cafés, mit Rechenpausen und mitlaufendem Diagramm.",
-      lehre: "Der Song sichert Namen und Reihenfolge; das Rechnen tragen Lösungsbeispiele.",
-      link: "../kapitel07-artefakte.html#sec-bsp-lernsong-forecast",
-      cite: "Every Forecast Is Wrong · How Many Cups Tomorrow? (5:15, englisch, Liedtext als Untertitel). Text, Beispieldaten und Animationscode: Claude; Musik: Suno; geprüft von R. Bartnik 2026."
-    },
-    {
       type: "page", slug: "detektor-duell", src: "detektor-duell.html", hoehe: [1000, 1300],
       kicker: "Kapitel 5 · Spiel",
-      title: "Im Duell mit einem Detektor zeigt sich, wie unsicher das Urteil über KI-Texte ist",
+      title: "Detektor-Duell: Wie unsicher das Urteil über KI-Texte ist",
       about: "Acht Auszüge aus Erörterungen, vier von Schülerinnen und Schülern, vier von einem Sprachmodell. Erst urteilen Sie, dann der Detektor.",
       lehre: "Der Lehr-Detektor erkennt manche KI-Texte und hält zugleich echte Aufsätze für maschinell; diesen Preis sieht man erst im Vergleich.",
       link: "../kapitel05-4d-phasen.html#sec-detektor-duell",
@@ -131,58 +139,86 @@
       cite: "KI-generiertes Video (LTX-2.5), R. Bartnik 2026. Willingham, D. T. (2009). Why don't students like school? Jossey-Bass."
     },
     {
-      type: "page", slug: "hoeher-tiefer", src: "hoeher-tiefer-ki-aufgaben.html", hoehe: [820, 1000],
-      kicker: "Kapitel 1 · Spiel mit echten Daten",
-      title: "Höher oder tiefer: Raten Sie, wofür Menschen KI wirklich nutzen",
-      about: "Paare von Arbeitsaufgaben aus Gesprächen mit Claude; Sie tippen, welche häufiger vorkommt, und nennen Ihre Sicherheit.",
-      lehre: "Beobachtete Nutzung statt Umfrage: Wo Sie sich sicher waren und falsch lagen, sitzt die Korrektur am tiefsten.",
-      link: "../kapitel01-einleitung.html#sec-spiel-ki-aufgaben",
-      cite: "Daten: Anthropic Economic Index, Release vom 26. Juni 2026 (Datenmonat Mai 2026), CC BY. Massenkoff, M., Lyubich, E., Sacher, S., Hitzig, Z., Zhang, S., Heller, R., & McCrory, P. (2026). Anthropic Economic Index report: Cadences. Anthropic. · Spiel: Claude nach Vorgaben von R. Bartnik 2026."
-    },
-    {
       type: "page", slug: "linien-widget", src: "line-widget.html", hoehe: [1150, 1500],
       kicker: "Kapitel 7 · Interaktives Widget",
-      title: "Am Linien-Widget finden Studierende den Engpass selbst",
+      title: "Linien-Widget zur Fallstudie Kaya: den Engpass finden",
       about: "Pizzalinie oder Brötchenlinie: Arbeitsschritte, Personal und Öfen verändern, Kapazität und Durchlaufzeit sofort ablesen (englisch).",
       lehre: "Drei Arbeitsaufträge lenken das Ausprobieren; freies Spielen an den Reglern allein lehrt weniger.",
       link: "../kapitel07-artefakte.html#sec-bsp-widgets",
       cite: "Widget aus Woche 2 des Moduls Sustainable Supply Chain Management (TH Köln), mit Claude nach Vorgaben von R. Bartnik 2026; jede Zahl in Python gerechnet."
     },
     {
-      type: "page", slug: "arbeitsweisen", src: "ki-arbeitsweisen-durchspiel.html", hoehe: [1400, 1900],
-      kicker: "Kapitel 3 · Durchspiel",
-      title: "Dieselbe Aufgabe in fünf Arbeitsweisen, vom Centaur bis zur dunklen Fabrik",
-      about: "Ein Übungsblatt, Projektberichte oder eine Vorlesung: Mit jeder Stufe spricht der Mensch weniger und die Agenten mehr miteinander.",
-      lehre: "Vor jedem Schritt steht eine Vorhersage: Wo fällt dem Menschen noch eine Entscheidung zu?",
+      type: "page", slug: "chatbot-agent", src: "chatbot-zu-agent.html", hoehe: [1050, 1350],
+      kicker: "Kapitel 2 · Klick-Animation",
+      title: "Vom Chatbot zum Agenten",
+      about: "Chatbot, fester Abruf eigener Quellen, Router, Werkzeug, Schleife: Mit jeder Stufe entscheidet das Modell mehr über den Ablauf, bis es selbst den nächsten Schritt wählt.",
+      lehre: "Die Vorhersage vorab prüft eine verbreitete Verwechslung: Ein Bot, der vor jeder Antwort in Ihren Skripten nachschlägt, folgt einem festen Ablauf und ist noch kein Agent.",
+      link: "../kapitel02-grundlagen.html#sec-patterns-usage",
+      cite: "Schematisch; Animation: Claude nach Vorgaben von R. Bartnik 2026. Skala nach Roucher, A., Noyan, M., & Wolf, T. (2024, 31. Dezember). Introducing smolagents, a simple library to build agents. Hugging Face Blog. https://huggingface.co/blog/smolagents · Bildfolge nach Grootendorst, M. (2025, 17. März). A visual guide to LLM agents. Exploring Language Models. https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents"
+    },
+    {
+      type: "page", slug: "arbeitsweisen-schema", src: "ki-entwicklung.html?zeige=arbeitsweisen", hoehe: [820, 1100],
+      kicker: "Kapitel 3 · Diagramm zum Umschalten",
+      title: "Wer übernimmt welchen Arbeitsschritt?",
+      about: "Centaur, Cyborg, Beschwörer, Dämmerfabrik, dunkle Fabrik: Mit jeder Arbeitsweise gibt der Mensch mehr Arbeitsschritte an die KI ab.",
+      lehre: "Das Schema fragt bei jeder Stufe, welche Entscheidung beim Menschen bleibt; „fragt“ markiert, wo der Agent ihn hinzuholt.",
       link: "../kapitel03-automation.html#sec-arbeitsweisen",
-      cite: "Dialoge nachgestellt und gekürzt, Denkspuren angenähert, Zähler als Lehrmodell. Dell'Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., & Lakhani, K. R. (2023). Navigating the jagged technological frontier (Working Paper 24-013). Harvard Business School. https://doi.org/10.2139/ssrn.4573321"
+      cite: "Konzeptschema, Zuordnung der Schritte eigene Lesart. Dell'Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., & Lakhani, K. R. (2023). Navigating the jagged technological frontier (Working Paper 24-013). Harvard Business School. https://doi.org/10.2139/ssrn.4573321 · Mollick, E. R. (2026, 31. August). Agency and agents. One Useful Thing. https://www.oneusefulthing.org/p/agency-and-agents"
     },
     {
-      type: "page", slug: "agenten-engpass", src: "agenten-engpass.html", hoehe: [1000, 1250],
-      kicker: "Kapitel 2 · Animation",
-      title: "Viele Agenten machen den Menschen zum Engpass",
-      about: "Acht Aufgaben gehen gleichzeitig an die Agenten. Verfolgen Sie Kugel A: Sie wartet am längsten auf die Entscheidung des Menschen.",
-      lehre: "Erst die eigene Vorhersage, dann die Animation: Bei Minute 22 liegt Kugel A in der Ablage „Zu entscheiden“, während die Agenten kaum zu tun haben.",
-      link: "../kapitel02-grundlagen.html#sec-agenten-praxis",
-      cite: "Lehrmodell, schematisch; Animation: Claude nach Vorgaben von R. Bartnik 2026."
-    },
-    {
-      type: "page", slug: "tutor-kosten", src: "tutor-kosten.html", hoehe: [950, 1200],
-      kicker: "Kapitel 5 · Rechner",
-      title: "Ein Tutor-Bot für 150 Studierende kostete 2025 rund 8.800 US-$, 2026 rund 12 US-$",
-      about: "Eigene Kursgröße eintragen und zusehen, wie die Semesterkosten mit jeder Preisstufe fallen.",
-      lehre: "Größenordnungen statt Preislisten: Die Frage ist nicht mehr, ob man sich einen Tutor leisten kann, sondern ob er das Lernen stärkt.",
+      type: "page", slug: "kosten", src: "ki-entwicklung.html?zeige=kosten", hoehe: [1100, 1400],
+      kicker: "Kapitel 5 · Diagramm",
+      title: "Expertenwissen wird 725-mal billiger",
+      about: "Niedrigste Kosten je Frage, mit denen ein Modell 75 % des GPQA Diamond richtig beantwortet, Januar 2025 bis Juli 2026; darunter ein Raster, wie viele Fragen 30 Cent jeweils kaufen.",
+      lehre: "Der letzte Preissprung bringt mehr Kästchen als alle früheren zusammen: So wird exponentielles Fallen zählbar statt abstrakt.",
       link: "../kapitel05-4d-phasen.html#sec-capabilities",
-      cite: "Kosten je Frage nach Epoch AI (Emberson & Roodman, 2026); API-Preise in US-Dollar; nur Größenordnungen. Rechner: Claude nach Vorgaben von R. Bartnik 2026."
+      cite: "Daten: Emberson, L., & Roodman, D. (2026, 22. September). The plunging price of thought. Epoch AI. https://epoch.ai/publications/the-plunging-price-of-thought · Rasterdarstellung nach Mollick, E. R. (2026, 20. Oktober). 30 months on the exponential (in charts). One Useful Thing. https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts"
     },
     {
-      type: "video", slug: "making-of", src: "media/kap04-making-of.mp4", poster: "media/kap04-making-of-poster.png",
-      kicker: "Kapitel 6 · Making-of",
-      title: "Was Code ist, schreibt die KI; prüfen bleibt Sache der Lehrperson",
-      about: "In 59 Sekunden vom Auftrag zum fertigen Erklärvideo: Datendatei, Code, automatische Prüfung, Sichtprüfung, Rendern.",
-      lehre: "Rekonstruiert aus dem Versionsprotokoll einer echten Arbeitssitzung, ohne Bildschirmaufnahme.",
-      link: "../kapitel06-rollen.html#sec-coding",
-      cite: "Video ohne Ton, erstellt mit Claude Code und HyperFrames (HeyGen, 2026, https://github.com/heygen-com/hyperframes); R. Bartnik 2026."
+      type: "page", slug: "4d-kreislauf", src: "4d-kreislauf.html", hoehe: [760, 1000],
+      kicker: "Kapitel 5 · Schema zum Anklicken",
+      title: "Der 4D-Kreislauf",
+      about: "Zwei Schleifen, vier Kompetenzen: Delegation und Diligence einmal je Vorhaben, Description und Discernment in jedem Arbeitsgang.",
+      lehre: "Wählen Sie eine Rolle der KI, Hiwi, Copilot, Tutor oder Simulator, und sehen Sie, an welcher Stufe ihr Kreislauf am ehesten reißt.",
+      link: "../kapitel05-4d-phasen.html#sec-4d",
+      cite: "Eigene Darstellung; Zuordnung der Engpässe eigene Lesart. Dakan, R., & Feller, J. (2025). The AI Fluency Framework: A descriptive and normative model of human-AI interaction for higher education (Version 1.1). https://aifluencyframework.org/ · Dakan, R., Feller, J., & Anthropic. (2025). Teaching AI Fluency [Onlinekurs]. Anthropic Academy. https://anthropic.skilljar.com/teaching-ai-fluency"
+    },
+    {
+      type: "page", slug: "modellwahl", src: "modellwahl-baum.html", hoehe: [820, 1050],
+      kicker: "Kapitel 2 · Entscheidungsbaum",
+      title: "Welches Modell für welche Aufgabe?",
+      about: "Drei Fragen zu Daten, Aufgabe und Häufigkeit führen zu einer Modellklasse und einer Preisstufe, nicht zu einem Produkt.",
+      lehre: "Produkte wechseln jedes Quartal, die Prüfregel bleibt: Muss das Ergebnis stimmen und können Sie es nicht selbst prüfen, dann das größte Modell, und ein Mensch prüft.",
+      link: "../kapitel02-grundlagen.html#sec-model-choice",
+      cite: "Eigene Darstellung nach Mollick, E. (2026, 23. Juli). An opinionated guide to which AI to use to do stuff: The Summer 2026 Edition. One Useful Thing. https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22 und den Preisseiten der Anbieter, Stand Oktober 2026."
+    },
+    {
+      type: "page", slug: "agenten-muster", src: "llm-agent-patterns-matching.html", hoehe: [760, 1100],
+      kicker: "Kapitel 2 · Zuordnungsspiel",
+      title: "Agenten-Muster erkennen",
+      about: "Eine Frage, mehrere Antworten: Sie ordnen jede Antwort dem Muster zu, das sie erzeugt hat, von Werkzeugnutzung bis Planung.",
+      lehre: "Wer Muster an ihren Antworten erkennt, kann einschätzen, welches Setup eine Lehraufgabe braucht.",
+      link: "../kapitel02-grundlagen.html#sec-patterns-usage",
+      cite: "Nach „AI by Hand“, © 2024 Tom Yeh, by-hand.ai/agent; Umsetzung: Claude nach Vorgaben von R. Bartnik."
+    },
+    {
+      type: "page", slug: "zwischenschritt", src: "zwischenschritt-texas.html", hoehe: [820, 1050],
+      kicker: "Kapitel 2 · Klick-Animation",
+      title: "Ein Zwischenschritt, der nie im Text steht",
+      about: "Aus „Dallas“ wird im Modell „Texas“ und daraus „Austin“; ersetzen Forschende „Texas“ durch „California“, antwortet das Modell „Sacramento“.",
+      lehre: "Die Vorhersage stellt drei Erklärungen zur Wahl; die Auflösung zeigt, dass der Umweg über „Texas“ nachweisbar ist, neben einer direkten Abkürzung.",
+      link: "../kapitel02-grundlagen.html#sec-blick-ins-modell",
+      cite: "Stark vereinfacht, kein Nachbau der Originalgraphen (Claude 3.5 Haiku). Lindsey, J., Gurnee, W., Ameisen, E., et al. (2025). On the biology of a large language model. Transformer Circuits Thread. https://transformer-circuits.pub/2025/attribution-graphs/biology.html · Anthropic. (2025, 27. März). Tracing the thoughts of a large language model. https://www.anthropic.com/research/tracing-thoughts-language-model"
+    },
+    {
+      type: "video", slug: "lernsong", src: "media/lernsong-forecast.mp4",
+      poster: "media/lernsong-forecast-poster.webp", vtt: "media/lernsong-forecast.vtt", vttLang: "en", vttLabel: "English (lyrics)",
+      kicker: "Kapitel 7 · Lernsong",
+      title: "Ein Lernsong macht fünf Prognoseverfahren singbar",
+      about: "Fünf Verfahren an den Kaffeebechern eines erfundenen Campus-Cafés, mit Rechenpausen und mitlaufendem Diagramm.",
+      lehre: "Der Song sichert Namen und Reihenfolge; das Rechnen tragen Lösungsbeispiele.",
+      link: "../kapitel07-artefakte.html#sec-bsp-lernsong-forecast",
+      cite: "Every Forecast Is Wrong · How Many Cups Tomorrow? (5:15, englisch, Liedtext als Untertitel). Text, Beispieldaten und Animationscode: Claude; Musik: Suno; geprüft von R. Bartnik 2026."
     }
   ];
 

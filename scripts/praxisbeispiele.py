@@ -18,8 +18,6 @@ GRUPPEN = [
      "Jede Animation baut ein Bild Schritt für Schritt auf und fragt vorher nach Ihrer Vorhersage."),
     ("diagramme", "Diagramme mit echten Daten",
      "Drei Diagramme zeigen, wie schnell sich Fähigkeiten und Preise der Modelle verschieben."),
-    ("galerien", "Galerie aus Kapitel 1",
-     "Die Galerie der Einleitung zeigt fünf Formate nebeneinander, darunter eine Präsentationsfolie nach Regelwerk und die Szenario-Karte eines KI-Rollenspiels."),
 ]
 
 # (Gruppe, Titel, Satz, Art, Quelle, Höhe in px, iframe-id, Link ins Buch, Linktext)
@@ -175,10 +173,6 @@ BEISPIELE = [
      "iframe", "ki-entwicklung.html?zeige=arbeitsweisen", 820, "pb-arbeitsweisen-schema",
      "kapitel03-automation.qmd#sec-arbeitsweisen", "Kapitel 3, Arbeitsweisen"),
 
-    ("galerien", "Fünf Formate, die 2026 mit KI entstehen",
-     "Prozessanimation, Präsentationsfolie, Lernsong, Lernspiel und Rollenspiel zum Durchblättern.",
-     "iframe", "galerie-kapitel01.html", 1100, "galerie-kapitel01",
-     "kapitel01-einleitung.qmd#sec-einleitung", "Kapitel 1, Einleitung"),
 ]
 
 KOPF = """# Praxisbeispiele im Überblick {{.unnumbered #sec-praxisbeispiele}}
