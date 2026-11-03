@@ -89,3 +89,8 @@ test('Jede Originalstelle steht wörtlich im genannten Transkript', { skip: !csv
     for (const s of liste) assert.ok(transkript(s.id).includes(ws(s.text)), `Auszug ${thema}: Stelle nicht wörtlich in ${s.id}`);
   }
 });
+
+test('Ton = Transkript: keine Zeile mehr in unkorrigierter Blockfassung', () => {
+  // Zeilen mit Feld blockfassung brauchen eine Ersatzaufnahme (Persönlichkeitsschutz-Korrekturen, Sitzung A)
+  assert.deepEqual(manifest.ersatz_offen ?? [], [], `Ersatzaufnahme fehlt für Zeile(n) ${(manifest.ersatz_offen ?? []).join(', ')}`);
+});

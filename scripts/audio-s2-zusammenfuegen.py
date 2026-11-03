@@ -139,7 +139,11 @@ def lade():
 
 # ---------- 2 Blöcke für ElevenLabs Text to Dialogue ----------
 def bloecke_bilden(m):
-    """Blöcke <= MAX_BLOCK Zeichen; bevorzugt an Themengrenzen, sonst an Sprecherwechseln."""
+    """Blöcke <= MAX_BLOCK Zeichen; bevorzugt an Themengrenzen, sonst an Sprecherwechseln.
+    Liegt im Manifest die Liste 'bloecke' (tatsächlich vertonte Aufteilung), gilt diese."""
+    if m.get("bloecke"):
+        nach_nr = {z["nr"]: z for z in m["zeilen"]}
+        return [[nach_nr[n] for n in b] for b in m["bloecke"]]
     bl, akt = [], []
     laenge = lambda zs: sum(len(z["tts"]) + 8 for z in zs)
     for z in m["zeilen"]:
@@ -159,16 +163,21 @@ def bloecke_schreiben():
          "Modell `eleven_v3`, Werkzeug „Text to Dialogue“. Je Block: Zeilen in dieser Reihenfolge als Dialogzeilen anlegen,",
          "Stimme nach Sprecher zuordnen (Lea / Jonas), erzeugen, als mp3 unter dem genannten Dateinamen speichern.", ""]
     for i, b in enumerate(bl, 1):
-        zeichen = sum(len(z["tts"]) for z in b)
+        # Ersatzzeilen (Feld blockfassung) werden einzeln per Text to Speech erzeugt und zählen nicht zum Block
+        im_block = [z for z in b if "blockfassung" not in z]
+        zeichen = sum(len(z["tts"]) for z in im_block)
         thema = next(x["titel"] for x in m["themen"] if x["id"] == b[0]["thema"])
         t += [f"## Block {i:02d} – {thema}", "", f"Datei: `s2-block-{i:02d}.mp3` · Zeilen {b[0]['nr']}–{b[-1]['nr']} · {zeichen} Zeichen", ""]
         for z in b:
-            t.append(f"- **{m['sprecher'][z['sprecher']]}:** {z['tts']}")
+            if "blockfassung" in z:
+                t.append(f"- **{m['sprecher'][z['sprecher']]}:** (Ersatzzeile `{z['datei']}`, Text to Speech, nicht im Block) {z['tts']}")
+            else:
+                t.append(f"- **{m['sprecher'][z['sprecher']]}:** {z['tts']}")
         t.append("")
         if zeichen > 2000:
             sys.exit(f"Block {i} hat {zeichen} Zeichen (> 2000)")
     (SRC / "elevenlabs-bloecke.md").write_text("\n".join(t), encoding="utf-8")
-    print(f"{len(bl)} Blöcke, größter {max(sum(len(z['tts']) for z in b) for b in bl)} Zeichen -> elevenlabs-bloecke.md")
+    print(f"{len(bl)} Blöcke, größter {max(sum(len(z['tts']) for z in b if 'blockfassung' not in z) for b in bl)} Zeichen -> elevenlabs-bloecke.md")
 
 
 # ---------- 3 Ton ----------
@@ -202,13 +211,103 @@ def pausen_im_block(pfad, n_grenzen):
     return sorted(mitte for _, mitte in beste)
 
 
+# ---------- 3b Ausrichtung per Spracherkennung (Sitzung B) ----------
+def asr_woerter(roh, teil, i):
+    """Wort-Zeitmarken des normierten Blocks (faster-whisper 'small', CPU). Zwischenspeicher je Rohdatei
+    in asr/block-NN.json, damit Folgeläufe ohne Spracherkennung auskommen. None, wenn nicht verfügbar."""
+    kenn = hashlib.sha1(Path(roh).read_bytes()).hexdigest()[:12]
+    cache = SRC / "asr" / f"block-{i:02d}.json"
+    if cache.exists():
+        c = json.loads(cache.read_text(encoding="utf-8"))
+        if c.get("roh_sha1") == kenn:
+            return c["woerter"]
+    try:
+        import numpy as np
+        from faster_whisper import WhisperModel
+    except ImportError:
+        return None
+    pcm = subprocess.run(["ffmpeg", "-v", "error", "-i", str(teil), "-f", "s16le", "-ac", "1", "-ar", "16000", "-"],
+                         capture_output=True, check=True).stdout
+    audio = np.frombuffer(pcm, np.int16).astype(np.float32) / 32768
+    modell = WhisperModel("small", device="cpu", compute_type="int8")
+    segs, _ = modell.transcribe(audio, language="de", word_timestamps=True, beam_size=3)
+    w = [[round(x.start, 3), round(x.end, 3), x.word] for s_ in segs for x in s_.words]
+    cache.parent.mkdir(exist_ok=True)
+    cache.write_text(json.dumps({"roh_sha1": kenn, "modell": "faster-whisper small int8", "woerter": w},
+                                ensure_ascii=False), encoding="utf-8")
+    return w
+
+
+def zeilen_ausrichten(b, asr):
+    """Ordnet die erwarteten Wörter jeder Zeile den erkannten Wörtern zu (difflib) und liefert je Zeile
+    (Sprechbeginn, Sprechende, Anteil wiedererkannter Wörter, Anfang fehlt, Ende fehlt) in Sekunden im Block.
+    'Anfang fehlt': die ersten Wörter der Zeile wurden nicht erkannt (Sprechbeginn liegt dann früher)."""
+    import difflib
+    hyp, zeit = [], []
+    for a_, e_, w in asr:
+        for x in woerter(w):
+            hyp.append(x); zeit.append((a_, e_))
+    ref, zu = [], []
+    for k, z in enumerate(b):
+        ws = woerter(z.get("blockfassung", z["tts"]))
+        ref += ws; zu += [k] * len(ws)
+    treffer = {}
+    for blk in difflib.SequenceMatcher(None, ref, hyp, autojunk=False).get_matching_blocks():
+        for j in range(blk.size):
+            treffer[blk.a + j] = blk.b + j
+    out = []
+    for k, z in enumerate(b):
+        idx = [i for i in range(len(ref)) if zu[i] == k and i in treffer]
+        n = sum(1 for i in range(len(ref)) if zu[i] == k)
+        if not idx:
+            out.append((None, None, 0.0, True, True)); continue
+        alle = [i for i in range(len(ref)) if zu[i] == k]
+        out.append((zeit[treffer[idx[0]]][0], zeit[treffer[idx[-1]]][1], len(idx) / n,
+                    idx[0] != alle[0], idx[-1] != alle[-1]))
+    return out
+
+
+def leiseste_stelle(wav, von, bis):
+    """Zeitpunkt der geringsten Lautstärke (20-ms-Fenster) zwischen von und bis."""
+    import numpy as np
+    import wave
+    with wave.open(str(wav)) as w:
+        sr = w.getframerate(); a = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32)
+    f = int(0.02 * sr)
+    i0, i1 = max(0, int(von * sr)), min(len(a) - f, int(bis * sr))
+    if i1 <= i0:
+        return (von + bis) / 2
+    best, beste = i0, None
+    for i in range(i0, i1, f // 2):
+        e = float(np.mean(a[i:i + f] ** 2))
+        if beste is None or e < beste:
+            best, beste = i, e
+    return (best + f / 2) / sr
+
+
+def ausschnitt(wav, a_, e_, ziel):
+    ff("-i", str(wav), "-af", f"atrim=start={a_:.3f}:end={e_:.3f},asetpts=PTS-STARTPTS", str(ziel))
+
+
+def ersatz_einsetzen(z, roh, a_sp, e_sp, a_cut, e_cut, tmp):
+    """Normierte Ersatzzeile mit denselben Ränder-Pausen wie die ersetzte Stelle."""
+    n = tmp / f"ersatz{z['nr']:02d}.wav"; normieren(roh, n)
+    vor, nach = tmp / f"ev{z['nr']:02d}.wav", tmp / f"en{z['nr']:02d}.wav"
+    stille(max(0.05, a_sp - a_cut), vor); stille(max(0.05, e_cut - e_sp), nach)
+    ziel = tmp / f"ez{z['nr']:02d}.wav"
+    liste = tmp / f"el{z['nr']:02d}.txt"
+    liste.write_text("".join(f"file '{p}'\n" for p in (vor, n, nach)))
+    ff("-f", "concat", "-safe", "0", "-i", str(liste), "-c", "copy", str(ziel))
+    return ziel
+
+
 def ton(platzhalter, stimmen):
     m = lade()
     fehler = [f"Zeile {z['nr']}: Transkript weicht vom Eingabetext ab" for z in m["zeilen"] if woerter(z["tts"]) != woerter(z["text"])]
     if fehler:
         print("\n".join(fehler)); sys.exit("Abbruch.")
     zeiten = {}
-    hinweise = []
+    hinweise, offen = [], []
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         teile, t = [], 0.0
@@ -243,18 +342,56 @@ def ton(platzhalter, stimmen):
                 normieren(roh, teil)
                 d = dauer(teil)
                 pa = tmp / f"bp{i:02d}.wav"; stille(b[0]["pause"], pa)
-                start = t + b[0]["pause"]
+                teile.append(pa); t += b[0]["pause"]
+                asr = asr_woerter(roh, teil, i)
+                ausr = zeilen_ausrichten(b, asr) if asr else None
+                if ausr and all(x[0] is not None for x in ausr):
+                    schnitte = [0.0]
+                    for (_, e1, _q, _, ende_fehlt), (a2, _, _q2, anfang_fehlt, _) in zip(ausr, ausr[1:]):
+                        lo, hi = min(e1, a2), max(e1, a2)
+                        # Unerkannte Wörter liegen in der Lücke: dann nur nahe am sicher erkannten Rand schneiden
+                        if anfang_fehlt and not ende_fehlt:
+                            hi = min(hi, lo + 0.8)
+                        elif ende_fehlt and not anfang_fehlt:
+                            lo = max(lo, hi - 0.8)
+                        schnitte.append(leiseste_stelle(teil, lo - 0.05, hi + 0.05))
+                    schnitte.append(d)
+                    for k, z in enumerate(b):
+                        a_cut, e_cut = schnitte[k], schnitte[k + 1]
+                        a_sp, e_sp, quote, anfang_fehlt, ende_fehlt = ausr[k]
+                        a_sp = min(a_sp, a_cut + 0.3) if anfang_fehlt else a_sp
+                        e_sp = max(e_sp, e_cut - 0.3) if ende_fehlt else e_sp
+                        if quote < 0.85:
+                            hinweise.append(f"Zeile {z['nr']}: nur {quote:.0%} der Wörter erkannt (Stichprobe anhören)")
+                        ersatz = SRC / "roh" / z["datei"] if "blockfassung" in z else None
+                        clip = tmp / f"c{z['nr']:02d}.wav"
+                        if ersatz and ersatz.exists():
+                            clip = ersatz_einsetzen(z, ersatz, a_sp, e_sp, a_cut, e_cut, tmp)
+                            hinweise.append(f"Zeile {z['nr']}: Ersatzzeile {z['datei']} eingesetzt")
+                        else:
+                            ausschnitt(teil, a_cut, e_cut, clip)
+                            if ersatz:
+                                hinweise.append(f"Zeile {z['nr']}: ERSATZ FEHLT ({z['datei']}); Blockfassung (unkorrigiert) bleibt")
+                                offen.append(z["nr"])
+                        dz = dauer(clip)
+                        zeiten[z["nr"]] = (round(t, 2), round(t + dz, 2))
+                        t += dz; teile.append(clip)
+                    continue
+                # Rückfall ohne Spracherkennung: Pausen bzw. Zeichenzahl
+                start = t
                 grenzen = pausen_im_block(teil, len(b) - 1)
                 if len(grenzen) < len(b) - 1:
                     gesamt = sum(len(z["text"]) for z in b); acc, grenzen = 0, []
                     for z in b[:-1]:
                         acc += len(z["text"]); grenzen.append(d * acc / gesamt)
                     hinweise.append(f"Block {i}: zu wenige Pausen, Zeitmarken nach Zeichenzahl verteilt")
+                else:
+                    hinweise.append(f"Block {i}: ohne Spracherkennung, Zeitmarken aus Pausen")
                 marken = [0.0] + grenzen + [d]
                 for z, a, e in zip(b, marken, marken[1:]):
                     zeiten[z["nr"]] = (round(start + a, 2), round(start + e, 2))
                 t = start + d
-                teile += [pa, teil]
+                teile.append(teil)
         aus = tmp / "ende.wav"; stille(0.6, aus); teile.append(aus)
         liste = tmp / "liste.txt"
         liste.write_text("".join(f"file '{p}'\n" for p in teile))
@@ -267,6 +404,7 @@ def ton(platzhalter, stimmen):
         z["start"], z["ende"] = zeiten[z["nr"]]
     m["dauer"] = round(gesamt, 2)
     m["platzhalter"] = platzhalter
+    m["ersatz_offen"] = offen
     (SRC / "manifest.json").write_text(json.dumps(m, ensure_ascii=False, indent=1), encoding="utf-8")
     for h in hinweise:
         print(h)
