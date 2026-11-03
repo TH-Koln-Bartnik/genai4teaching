@@ -1,4 +1,4 @@
-# Vier Szenarien der Nutzung von GenAI: Hiwi, Copilot, Tutor, Simulator {#sec-szenarien}
+# Rollen der KI: Hiwi, Copilot, Tutor, Simulator {#sec-szenarien}
 
 ::: kapitel-gliederung
 :::
@@ -62,131 +62,11 @@ Eine Testversion und der aktuelle Stand des Projekts sind über die Online-Fassu
 :::
 
 ## KI als Hiwi {#sec-hiwi}
-### Was sind unsere Aufgaben?
 
 Beschäftigte in Forschung und Lehre erfüllen eine Vielzahl sehr heterogener Aufgaben, mit einem wachsenden Teil an „Verwaltung“.
 Wer lehrt, merkt schnell, dass die Präsenzveranstaltung nur die Spitze eines ganzen Eisbergs an Aufgaben darstellt.
 Eine Umfrage unter Lehrenden in Österreich zeigt, dass sie etwa ein Drittel ihrer Zeit mit Lehraktivitäten verbringen (32 %) und etwa ein Fünftel mit Verwaltungstätigkeiten in der Hochschule (20 %) sowie ein weiteres Fünftel mit externen Verpflichtungen wie Gutachten oder Tätigkeiten in wissenschaftlichen Gesellschaften (9 %, 10 %) [@oesterreichischeruniversitaetsprofessor/innenverband2018].
 Wie Unkraut im Garten wächst der Anteil, den Lehrende mit „sonstigem“ verbringen: Vor allem der Zeitaufwand für Verwaltung stieg an [@schomburg2012].
-
-::: {#sec-bibliothek-prompts}
-**Bevor wir die Aufgaben der Lehre einzeln ansehen, ein Blick darauf, welchen Berufen Gespräche mit einer KI überhaupt zugeordnet werden.** Der *Anthropic Economic Index* ordnet Gespräche mit dem Assistenten Claude automatisch Berufen und Arbeitsaufgaben der US-Berufsdatenbank O\*NET zu und veröffentlicht, welcher Anteil der Gespräche eines Monats auf jeden Beruf entfällt [@massenkoff2026cadences; @onet2026database].[^aei-bibliothek] Die *Bibliothek der Prompts* macht daraus einen Raum: Jedes Regal ist eine von 22 Berufshauptgruppen, jedes Buch ein Beruf, die Buchbreite sein Anteil. Raten Sie zuerst, wo das Regal der Lehre steht, und machen Sie dann den Rundgang; wer vorher rät, behält die Auflösung besser, auch wenn der Tipp danebenlag [@richland2009]. Das dauert etwa fünf Minuten.
-
-[^aei-bibliothek]: Datensatz `Anthropic/EconomicIndex` auf Hugging Face, Release vom 26. Juni 2026, Datei `aei_claude_ai_2026-06-26.csv`, Datenmonat Mai 2026, Kennzahl `pct` der Kategorie `soc_occupation`, Lizenz CC BY; Aufgaben je Beruf aus der O\*NET 31.0 Database (`task_statements.csv`), Lizenz CC BY 4.0. Auszug und Übersetzung: `scripts/aei-bibliothek.py` im Repositorium des Buchs.
-
-::: {.content-visible when-format="html"}
-```{=html}
-<iframe loading="lazy" id="bibliothek-der-prompts" src="interactions/bibliothek-der-prompts.html" width="100%" height="1250px" frameborder="0" title="Leserübung: Die Bibliothek der Prompts – 22 Regale mit Berufen, denen Gespräche mit Claude zugeordnet wurden"></iframe>
-<script>
-/* Das Element meldet seine Inhaltshöhe; so entsteht kein Scrollbalken im Rahmen. */
-window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "bibliothek-der-prompts") return;
-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
-});
-</script>
-```
-
-Im Mai 2026 stand das Regal *Bildung, Ausbildung und Bibliothek* mit 12,79 % der Gespräche auf Platz 3 von 22, bei Gesprächen aus Deutschland mit 12,87 % auf Platz 2. Breit ist es vor allem durch den Bibliotheksberuf (4,22 %), dem O\*NET Auskunfts- und Rechercheaufgaben zuordnet; die Hochschullehrenden aller 35 Fächer kommen zusammen auf 2,12 %.
-:::
-
-::: {.content-visible unless-format="html"}
-```{=latex}
-% Kasten nicht mit allein stehendem Titel am Seitenende beginnen (bedingter Seitenumbruch ohne Zusatzpaket)
-\par\vspace{0pt plus 14\baselineskip}\pagebreak[3]\vspace{0pt plus -14\baselineskip}
-```
-
-::: {.callout-tip title="Raten Sie zuerst"}
-In einer Bibliothek stehen 22 Regale, eines je Berufshauptgruppe, sortiert nach dem Anteil der Gespräche mit Claude, die ihr im Mai 2026 zugeordnet wurden. Zu einem davon, *Bildung, Ausbildung und Bibliothek*, gehören auch Hochschullehrende.
-
-**Auf welchem Platz von 22 steht dieses Regal?**\
-$\square$ 1–3 $\quad$ $\square$ 4–8 $\quad$ $\square$ 9–15 $\quad$ $\square$ 16–22
-
-**Welcher Anteil der Gespräche wurde ihm zugeordnet?**\
-$\square$ unter 5 % $\quad$ $\square$ 5–10 % $\quad$ $\square$ 10–20 % $\quad$ $\square$ über 20 %
-
-Den Rundgang mit allen 22 Regalen gibt es in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#sec-bibliothek-prompts> aufrufen. Die Lösung steht in den Lösungshinweisen im Anhang (@fig-bibliothek-loesung).
-
-![](images/qr/qr-bibliothek-prompts.png){width="18%"}
-:::
-
-Was die Auflösung über die Lehre sagt und was nicht, steht bei der Lösung im Anhang.
-:::
-
-**Die Daten zeigen Gesprächsinhalte, nicht die Menschen dahinter.** Ein Gespräch über eine Klausur landet im Bildungsregal, auch wenn eine Studentin es geführt hat; und als Momentaufnahme eines Monats mit einem einzigen Assistenten sagt die Bibliothek nichts darüber, welche Berufe KI verändert.
-
-::: {.callout-note title="So entstand diese Bibliothek"}
-Gebaut hat sie ein Agent (Claude Opus 5.5) in einer Sitzung von rund 40 Minuten, auf einen Satz hin, der auf eine schriftliche Bauanleitung verwies: „Lies [die Regeln], [die Standards] und [den Auftrag] und führe den Auftrag aus.“ Er zog die Werte per Skript aus Economic Index und O\*NET und baute den Raum mit Three.js; 1.483 Berufsnamen und Aufgaben übersetzten fünf Teilagenten. Die Schwäche: Sie übersetzten uneinheitlich, „students“ etwa mal als „Studierende“, mal als „Lernende“. Schreibweisen ließen sich per Skript angleichen, Bedeutungen nicht. Eine Prompt-Vorlage steht am Ende des Rundgangs.
-:::
-:::
-
-Woraus besteht das im Detail und wo könnten große Sprachmodelle (LLMs) helfen?
-Vor- und Nachbereitung, Evaluation, Beratung, Planung und vieles mehr lassen die Stunden eines Tages schnell vergehen.
-@fig-onet-tasks zeigt die 25 Hauptaufgaben, die Lehrende nach Umfragen des US-Arbeitsministeriums verrichten (https://www.onetonline.org/link/summary/25-1011.00).
-Welche Auswirkungen können wir von LLM auf diese konkreten Aufgaben erwarten?
-
-![Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00) nach Umfragen des US-Arbeitsministeriums. Enthält Informationen aus O\*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<https://www.onetonline.org/help/license>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O\*NET® ist eine Marke von USDOL/ETA.](images/druck/onet-aufgaben.svg){#fig-onet-tasks}
-
-Historische Studien zeigen, dass Technologie typischerweise **Tätigkeiten** (*tasks*) beeinflusst und eher selten ganze Jobs ersetzt.
-Den Rahmen dafür liefert das Aufgabenmodell (*task model*), das der Nobelpreisträger Daron Acemoglu mit Fredric Kong und Pascual Restrepo im *Handbook of Labor Economics* zusammengefasst hat [@acemoglu2025tasks].
-Für Lehrende, die ihre eigene Arbeit planen, zählen drei Formen technologischen Wandels aus diesem Modell.
-Bei der **Automatisierung** (*automation*)[]{#sb-k4-automatisierung} wandert eine Aufgabe vom Menschen zur Technik.
-Bei der **Augmentierung** (*labor-augmenting technology*)[]{#sb-k4-augmentierung} bleibt die Aufgabe beim Menschen, der sie mit technischer Unterstützung schneller oder besser erledigt.
-Und Technik schafft **neue Aufgaben** (*new tasks*)[]{#sb-k4-neue-aufgaben}, die es vorher nicht gab.
-Die vierte Form des Modells, leistungsfähigere Maschinen in Aufgaben, die sie schon erledigen (*capital-augmenting technology*), lassen wir hier beiseite.
-Die Arbeitsmarktforschung beschreibt die Folgen aus Sicht der Beschäftigten und spricht von Verdrängung (*displacement effect*) und Wiedereinsetzung (*reinstatement effect*); wer die eigene Lehre plant, fragt dagegen, welche Aufgabe wohin wandert.
-
-| Form | Beschreibung | Aufgaben in der Lehre (Beispiele) |
-|:--------|:---------|:-----------------------|
-| **Automatisierung** (*automation*) | Aufgabe wandert vom Menschen zur KI | • Erstellung, Durchführung und Bewertung von Prüfungen (x)<br>• Verwaltung von Noten und Anwesenheit (x)<br>• Vorbereitung standardisierter Lehrmaterialien (x)<br>• Zusammenstellung von Bibliographien (x) |
-| **Augmentierung** (*labor-augmenting technology*) | KI unterstützt Menschen; dieselbe Aufgabe braucht weniger Zeit oder gelingt besser | • Vorbereitung und Durchführung von Vorlesungen (x)<br>• Durchführung von Seminaren und Diskussionen (x)<br>• Akademische und berufliche Beratung (?/x)<br>• Forschung und Publikation (x)<br>• Pflege von Webseiten und digitalen Ressourcen (?/x) |
-| **Neue Aufgaben** (*new tasks*) | KI schafft Aufgaben, die es vorher nicht gab | • Entwicklung KI-gestützter Lehrkonzepte (x)<br>• Qualitätskontrolle von KI-Materialien (x)<br>• Gestaltung individueller Lernpfade (x)<br>• Ethische und rechtliche Begleitung (x)<br>• Weiterbildung des Personals (x) |
-
-: Welche Aufgaben in der Lehre wandern zur KI, bei welchen unterstützt sie, und welche kommen neu hinzu? Legende: x = klarer Effekt, ? = gemischter Effekt. Quelle: Aufgabenmodell nach @acemoglu2025tasks {#tbl-acemoglu}
-
-In @tbl-acemoglu übertragen wir die drei Formen auf konkrete Aufgaben in der Hochschullehre.
-
-Das folgende Video spielt die drei Formen an den Aufgaben aus @tbl-acemoglu durch. Vier Kacheln wandern von der Lehrperson zur KI, fünf schrumpfen, weil dieselbe Aufgabe weniger Zeit braucht, und fünf neue kommen hinzu. Die Größen der Kacheln sind nicht gemessen; sie zeigen die Richtung der Effekte, nicht ihr Ausmaß.
-
-::: {.content-visible when-format="html"}
-```{=html}
-<video id="vid-acemoglu-restrepo" controls playsinline preload="metadata" style="width:100%;height:auto" poster="interactions/media/kap04-acemoglu-restrepo-poster.png" title="Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus Tabelle 4.1">
-  <source src="interactions/media/kap04-acemoglu-restrepo.mp4" type="video/mp4">
-</video>
-```
-
-*Video (60 s, ohne Ton): Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus @tbl-acemoglu. Erstellt mit Claude Code und HyperFrames; die Kachelgrößen sind nicht gemessen.*
-:::
-
-::: {.content-visible unless-format="html"}
-![Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus @tbl-acemoglu: Vier Aufgaben wandern zur KI, fünf schrumpfen, fünf neue kommen hinzu. Schlussbild eines Videos (60 s), erstellt mit Claude Code und HyperFrames; Kachelgrößen nicht gemessen. Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#vid-acemoglu-restrepo> aufrufen.](images/druck/video-acemoglu-restrepo.png){#fig-video-acemoglu-restrepo width="100%"}
-:::
-
-Die **Automatisierung** betrifft hauptsächlich administrative und stark standardisierte Tätigkeiten.
-Aufgaben wie das Erstellen, Durchführen und Bewerten von Prüfungen, die Verwaltung von Noten und Anwesenheiten sowie die Vorbereitung standardisierter Lehrmaterialien oder Literaturzusammenstellungen werden voraussichtlich vollständig oder überwiegend von KI übernommen.
-Anwendungsstudien und Umfragen der letzten zwei Jahre geben hierzu deutliche Hinweise [@morgan2024; @naddaf2025; @ogunleye2024; @ou2024; @tutton2025].
-Wie weit die Automatisierung bei der Bewertung tatsächlich reicht, lässt sich inzwischen präzise sagen. Sehfähige Sprachmodelle bewerten fotografierte handschriftliche Mathematik-Abgaben entlang der Rubriken der Lehrenden insgesamt zuverlässig, aber 87 % der verbleibenden Fehler des besten Modells sind **Transkriptionsfehler** (Handschrift lesen, äquivalente Umformungen erkennen, Bildqualität), nicht falsch angewandte Bewertungskriterien [@levine2026]. Automatisiert wird also die Rubrik-Anwendung; die menschliche Arbeit verlagert sich auf Erfassungsqualität und stichprobenartige Kontrolle, ein konkretes Beispiel für die neue Aufgabe „Qualitätskontrolle von KI-Materialien“ im Feld „Neue Aufgaben“ derselben Tabelle (zu den Grenzen KI-gestützten Benotens vgl. @sec-pruefen).
-
-Die **Augmentierung** betrifft zentrale Lehr-, Forschungs- und Betreuungstätigkeiten, die mit KI-Unterstützung effizienter werden.
-Dazu zählen die Vorbereitung und Durchführung von Vorlesungen, Seminaren und Diskussionen, akademische und berufliche Beratung der Studierenden sowie Forschung und Publikationen.
-KI unterstützt hier durch automatische Literaturauswertungen, personalisierte Lerninhalte oder Pflege digitaler Ressourcen, sodass Lehrende ihre Kernaufgaben besser und effektiver erfüllen können [@gottweis2025; @meincke2024; @mollick2024a; @mollick2023b; @schwarcz2025].
-
-**Gemischte Effekte** treten bei einigen Aufgaben wie der Entwicklung und Pflege von Kurswebseiten, dem digitalen Aufzeichnen von Vorträgen und der Auswahl von Lehrmaterialien auf, bei denen KI Teile der Aufgabe übernimmt und die Lehrenden beim Rest unterstützt.
-
-Schließlich schafft generative KI gänzlich **neue Aufgaben**.
-Dazu gehören beispielsweise die Entwicklung neuer KI-gestützter Lehrkonzepte und -methoden, Qualitätskontrollen von KI-generierten Lehrmaterialien, Gestaltung individueller Lernpfade, ethische und rechtliche Begleitung des KI-Einsatzes sowie die Weiterbildung des Lehrpersonals im Umgang mit KI-Technologien [@dihan2025; @mollick2024; @mollick2024a].
-
-Durch diese differenziertere Analyse der drei Formen wird klar, dass die Einführung von KI in die Lehre zwar mit hoher Sicherheit **deutliche Änderungen im Aufgaben-Mix** und der Zeitanteile bedeutet, die wir mit verschiedenen Aufgaben verbringen.
-Das ist nicht neu: Wer bestellt noch regelmäßig per Fernleihe, schickt Briefe oder kopiert in großem Umfang?
-Wir sehen, dass generative KI wahrscheinlich mittelfristig einen Teil der bisherigen Tätigkeiten automatisieren, Lehrende bei zentralen Kernaufgaben unterstützen und zugleich neue, spezialisierte Aufgaben in der Lehre schaffen wird.
-
-Ob das **insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher**, denn die neuen Aufgaben um die Einrichtung und Betreuung der KI-Unterstützung können sehr zeitintensiv sein, als Beispiel sei hier etwa die Einrichtung eines Physik-Tutor-Bots [@kestin2025] oder einer Startup-Simulation, in der KI in verschiedenen Rollen beim Aufsetzen und Verbessern von Geschäftsplänen hilft [@mollick2024].
-Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt es auch hier nicht umsonst.
-
-::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
-*„Wenn die KI Übungsblätter in einer Stunde statt einem Tag erstellt, haben Lehrende am Ende des Semesters Zeit gewonnen.“* []{.ez-ihre data-ez="ez-k4-1"}
-
-**Auflösung: eher nicht.** Sicher ist nur, dass sich der Aufgaben-Mix verschiebt: Einiges wandert zur KI, anderes geht schneller, und neue Aufgaben kommen hinzu, etwa die Qualitätskontrolle der Materialien und die Pflege eines Tutors. Ob am Ende Zeit übrig bleibt, hängt davon ab, wie viel diese neuen Aufgaben verschlingen; gemessen ist die Bilanz bisher nicht.
-:::
 
 ### Fachartikel finden und auswerten: Welches Werkzeug passt zu welcher Aufgabe? {#sec-recherche}
 

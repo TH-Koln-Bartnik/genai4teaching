@@ -1,0 +1,220 @@
+# Prinzipien der Automation von Aufgaben {#sec-automation}
+
+::: kapitel-gliederung
+:::
+
+## Was sind unsere Aufgaben? {#sec-aufgaben}
+
+::: {#sec-bibliothek-prompts}
+**Bevor wir die Aufgaben der Lehre einzeln ansehen, ein Blick darauf, welchen Berufen Gespräche mit einer KI überhaupt zugeordnet werden.** Der *Anthropic Economic Index* ordnet Gespräche mit dem Assistenten Claude automatisch Berufen und Arbeitsaufgaben der US-Berufsdatenbank O\*NET zu und veröffentlicht, welcher Anteil der Gespräche eines Monats auf jeden Beruf entfällt [@massenkoff2026cadences; @onet2026database].[^aei-bibliothek] Die *Bibliothek der Prompts* macht daraus einen Raum: Jedes Regal ist eine von 22 Berufshauptgruppen, jedes Buch ein Beruf, die Buchbreite sein Anteil. Raten Sie zuerst, wo das Regal der Lehre steht, und machen Sie dann den Rundgang; wer vorher rät, behält die Auflösung besser, auch wenn der Tipp danebenlag [@richland2009]. Das dauert etwa fünf Minuten.
+
+[^aei-bibliothek]: Datensatz `Anthropic/EconomicIndex` auf Hugging Face, Release vom 26. Juni 2026, Datei `aei_claude_ai_2026-06-26.csv`, Datenmonat Mai 2026, Kennzahl `pct` der Kategorie `soc_occupation`, Lizenz CC BY; Aufgaben je Beruf aus der O\*NET 31.0 Database (`task_statements.csv`), Lizenz CC BY 4.0. Auszug und Übersetzung: `scripts/aei-bibliothek.py` im Repositorium des Buchs.
+
+::: {.content-visible when-format="html"}
+```{=html}
+<iframe loading="lazy" id="bibliothek-der-prompts" src="interactions/bibliothek-der-prompts.html" width="100%" height="1250px" frameborder="0" title="Leserübung: Die Bibliothek der Prompts – 22 Regale mit Berufen, denen Gespräche mit Claude zugeordnet wurden"></iframe>
+<script>
+/* Das Element meldet seine Inhaltshöhe; so entsteht kein Scrollbalken im Rahmen. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "bibliothek-der-prompts") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+```
+
+Im Mai 2026 stand das Regal *Bildung, Ausbildung und Bibliothek* mit 12,79 % der Gespräche auf Platz 3 von 22, bei Gesprächen aus Deutschland mit 12,87 % auf Platz 2. Breit ist es vor allem durch den Bibliotheksberuf (4,22 %), dem O\*NET Auskunfts- und Rechercheaufgaben zuordnet; die Hochschullehrenden aller 35 Fächer kommen zusammen auf 2,12 %.
+:::
+
+::: {.content-visible unless-format="html"}
+```{=latex}
+% Kasten nicht mit allein stehendem Titel am Seitenende beginnen (bedingter Seitenumbruch ohne Zusatzpaket)
+\par\vspace{0pt plus 14\baselineskip}\pagebreak[3]\vspace{0pt plus -14\baselineskip}
+```
+
+::: {.callout-tip title="Raten Sie zuerst"}
+In einer Bibliothek stehen 22 Regale, eines je Berufshauptgruppe, sortiert nach dem Anteil der Gespräche mit Claude, die ihr im Mai 2026 zugeordnet wurden. Zu einem davon, *Bildung, Ausbildung und Bibliothek*, gehören auch Hochschullehrende.
+
+**Auf welchem Platz von 22 steht dieses Regal?**\
+$\square$ 1–3 $\quad$ $\square$ 4–8 $\quad$ $\square$ 9–15 $\quad$ $\square$ 16–22
+
+**Welcher Anteil der Gespräche wurde ihm zugeordnet?**\
+$\square$ unter 5 % $\quad$ $\square$ 5–10 % $\quad$ $\square$ 10–20 % $\quad$ $\square$ über 20 %
+
+Den Rundgang mit allen 22 Regalen gibt es in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#sec-bibliothek-prompts> aufrufen. Die Lösung steht in den Lösungshinweisen im Anhang (@fig-bibliothek-loesung).
+
+![](images/qr/qr-bibliothek-prompts.png){width="18%"}
+:::
+
+Was die Auflösung über die Lehre sagt und was nicht, steht bei der Lösung im Anhang.
+:::
+
+**Die Daten zeigen Gesprächsinhalte, nicht die Menschen dahinter.** Ein Gespräch über eine Klausur landet im Bildungsregal, auch wenn eine Studentin es geführt hat; und als Momentaufnahme eines Monats mit einem einzigen Assistenten sagt die Bibliothek nichts darüber, welche Berufe KI verändert.
+
+::: {.callout-note title="So entstand diese Bibliothek"}
+Gebaut hat sie ein Agent (Claude Opus 5.5) in einer Sitzung von rund 40 Minuten, auf einen Satz hin, der auf eine schriftliche Bauanleitung verwies: „Lies [die Regeln], [die Standards] und [den Auftrag] und führe den Auftrag aus.“ Er zog die Werte per Skript aus Economic Index und O\*NET und baute den Raum mit Three.js; 1.483 Berufsnamen und Aufgaben übersetzten fünf Teilagenten. Die Schwäche: Sie übersetzten uneinheitlich, „students“ etwa mal als „Studierende“, mal als „Lernende“. Schreibweisen ließen sich per Skript angleichen, Bedeutungen nicht. Eine Prompt-Vorlage steht am Ende des Rundgangs.
+:::
+:::
+
+Woraus besteht das im Detail und wo könnten große Sprachmodelle (LLMs) helfen?
+Vor- und Nachbereitung, Evaluation, Beratung, Planung und vieles mehr lassen die Stunden eines Tages schnell vergehen.
+@fig-onet-tasks zeigt die 25 Hauptaufgaben, die Lehrende nach Umfragen des US-Arbeitsministeriums verrichten (https://www.onetonline.org/link/summary/25-1011.00).
+Welche Auswirkungen können wir von LLM auf diese konkreten Aufgaben erwarten?
+
+![Was für Aufgaben erledigen Lehrende? 25 Einzelaufgaben am Beispiel „Business Teachers, Postsecondary“ (25-1011.00) nach Umfragen des US-Arbeitsministeriums. Enthält Informationen aus O\*NET OnLine des U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), verwendet unter der Lizenz CC BY 4.0 (<https://www.onetonline.org/help/license>); übersetzt und gekürzt, USDOL/ETA hat diese Änderungen weder geprüft noch gebilligt. O\*NET® ist eine Marke von USDOL/ETA.](images/druck/onet-aufgaben.svg){#fig-onet-tasks}
+
+Historische Studien zeigen, dass Technologie typischerweise **Tätigkeiten** (*tasks*) beeinflusst und eher selten ganze Jobs ersetzt.
+Den Rahmen dafür liefert das Aufgabenmodell (*task model*), das der Nobelpreisträger Daron Acemoglu mit Fredric Kong und Pascual Restrepo im *Handbook of Labor Economics* zusammengefasst hat [@acemoglu2025tasks].
+Für Lehrende, die ihre eigene Arbeit planen, zählen drei Formen technologischen Wandels aus diesem Modell.
+Bei der **Automatisierung** (*automation*)[]{#sb-k4-automatisierung} wandert eine Aufgabe vom Menschen zur Technik.
+Bei der **Augmentierung** (*labor-augmenting technology*)[]{#sb-k4-augmentierung} bleibt die Aufgabe beim Menschen, der sie mit technischer Unterstützung schneller oder besser erledigt.
+Und Technik schafft **neue Aufgaben** (*new tasks*)[]{#sb-k4-neue-aufgaben}, die es vorher nicht gab.
+Die vierte Form des Modells, leistungsfähigere Maschinen in Aufgaben, die sie schon erledigen (*capital-augmenting technology*), lassen wir hier beiseite.
+Die Arbeitsmarktforschung beschreibt die Folgen aus Sicht der Beschäftigten und spricht von Verdrängung (*displacement effect*) und Wiedereinsetzung (*reinstatement effect*); wer die eigene Lehre plant, fragt dagegen, welche Aufgabe wohin wandert.
+
+| Form | Beschreibung | Aufgaben in der Lehre (Beispiele) |
+|:--------|:---------|:-----------------------|
+| **Automatisierung** (*automation*) | Aufgabe wandert vom Menschen zur KI | • Erstellung, Durchführung und Bewertung von Prüfungen (x)<br>• Verwaltung von Noten und Anwesenheit (x)<br>• Vorbereitung standardisierter Lehrmaterialien (x)<br>• Zusammenstellung von Bibliographien (x) |
+| **Augmentierung** (*labor-augmenting technology*) | KI unterstützt Menschen; dieselbe Aufgabe braucht weniger Zeit oder gelingt besser | • Vorbereitung und Durchführung von Vorlesungen (x)<br>• Durchführung von Seminaren und Diskussionen (x)<br>• Akademische und berufliche Beratung (?/x)<br>• Forschung und Publikation (x)<br>• Pflege von Webseiten und digitalen Ressourcen (?/x) |
+| **Neue Aufgaben** (*new tasks*) | KI schafft Aufgaben, die es vorher nicht gab | • Entwicklung KI-gestützter Lehrkonzepte (x)<br>• Qualitätskontrolle von KI-Materialien (x)<br>• Gestaltung individueller Lernpfade (x)<br>• Ethische und rechtliche Begleitung (x)<br>• Weiterbildung des Personals (x) |
+
+: Welche Aufgaben in der Lehre wandern zur KI, bei welchen unterstützt sie, und welche kommen neu hinzu? Legende: x = klarer Effekt, ? = gemischter Effekt. Quelle: Aufgabenmodell nach @acemoglu2025tasks {#tbl-acemoglu}
+
+In @tbl-acemoglu übertragen wir die drei Formen auf konkrete Aufgaben in der Hochschullehre.
+
+Das folgende Video spielt die drei Formen an den Aufgaben aus @tbl-acemoglu durch. Vier Kacheln wandern von der Lehrperson zur KI, fünf schrumpfen, weil dieselbe Aufgabe weniger Zeit braucht, und fünf neue kommen hinzu. Die Größen der Kacheln sind nicht gemessen; sie zeigen die Richtung der Effekte, nicht ihr Ausmaß.
+
+::: {.content-visible when-format="html"}
+```{=html}
+<video id="vid-acemoglu-restrepo" controls playsinline preload="metadata" style="width:100%;height:auto" poster="interactions/media/kap04-acemoglu-restrepo-poster.png" title="Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus Tabelle 4.1">
+  <source src="interactions/media/kap04-acemoglu-restrepo.mp4" type="video/mp4">
+</video>
+```
+
+*Video (60 s, ohne Ton): Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus @tbl-acemoglu. Erstellt mit Claude Code und HyperFrames; die Kachelgrößen sind nicht gemessen.*
+:::
+
+::: {.content-visible unless-format="html"}
+![Automatisierung, Augmentierung und neue Aufgaben an den Aufgaben aus @tbl-acemoglu: Vier Aufgaben wandern zur KI, fünf schrumpfen, fünf neue kommen hinzu. Schlussbild eines Videos (60 s), erstellt mit Claude Code und HyperFrames; Kachelgrößen nicht gemessen. Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#vid-acemoglu-restrepo> aufrufen.](images/druck/video-acemoglu-restrepo.png){#fig-video-acemoglu-restrepo width="100%"}
+:::
+
+Die **Automatisierung** betrifft hauptsächlich administrative und stark standardisierte Tätigkeiten.
+Aufgaben wie das Erstellen, Durchführen und Bewerten von Prüfungen, die Verwaltung von Noten und Anwesenheiten sowie die Vorbereitung standardisierter Lehrmaterialien oder Literaturzusammenstellungen werden voraussichtlich vollständig oder überwiegend von KI übernommen.
+Anwendungsstudien und Umfragen der letzten zwei Jahre geben hierzu deutliche Hinweise [@morgan2024; @naddaf2025; @ogunleye2024; @ou2024; @tutton2025].
+Wie weit die Automatisierung bei der Bewertung tatsächlich reicht, lässt sich inzwischen präzise sagen. Sehfähige Sprachmodelle bewerten fotografierte handschriftliche Mathematik-Abgaben entlang der Rubriken der Lehrenden insgesamt zuverlässig, aber 87 % der verbleibenden Fehler des besten Modells sind **Transkriptionsfehler** (Handschrift lesen, äquivalente Umformungen erkennen, Bildqualität), nicht falsch angewandte Bewertungskriterien [@levine2026]. Automatisiert wird also die Rubrik-Anwendung; die menschliche Arbeit verlagert sich auf Erfassungsqualität und stichprobenartige Kontrolle, ein konkretes Beispiel für die neue Aufgabe „Qualitätskontrolle von KI-Materialien“ im Feld „Neue Aufgaben“ derselben Tabelle (zu den Grenzen KI-gestützten Benotens vgl. @sec-pruefen).
+
+Die **Augmentierung** betrifft zentrale Lehr-, Forschungs- und Betreuungstätigkeiten, die mit KI-Unterstützung effizienter werden.
+Dazu zählen die Vorbereitung und Durchführung von Vorlesungen, Seminaren und Diskussionen, akademische und berufliche Beratung der Studierenden sowie Forschung und Publikationen.
+KI unterstützt hier durch automatische Literaturauswertungen, personalisierte Lerninhalte oder Pflege digitaler Ressourcen, sodass Lehrende ihre Kernaufgaben besser und effektiver erfüllen können [@gottweis2025; @meincke2024; @mollick2024a; @mollick2023b; @schwarcz2025].
+
+**Gemischte Effekte** treten bei einigen Aufgaben wie der Entwicklung und Pflege von Kurswebseiten, dem digitalen Aufzeichnen von Vorträgen und der Auswahl von Lehrmaterialien auf, bei denen KI Teile der Aufgabe übernimmt und die Lehrenden beim Rest unterstützt.
+
+Schließlich schafft generative KI gänzlich **neue Aufgaben**.
+Dazu gehören beispielsweise die Entwicklung neuer KI-gestützter Lehrkonzepte und -methoden, Qualitätskontrollen von KI-generierten Lehrmaterialien, Gestaltung individueller Lernpfade, ethische und rechtliche Begleitung des KI-Einsatzes sowie die Weiterbildung des Lehrpersonals im Umgang mit KI-Technologien [@dihan2025; @mollick2024; @mollick2024a].
+
+Durch diese differenziertere Analyse der drei Formen wird klar, dass die Einführung von KI in die Lehre zwar mit hoher Sicherheit **deutliche Änderungen im Aufgaben-Mix** und der Zeitanteile bedeutet, die wir mit verschiedenen Aufgaben verbringen.
+Das ist nicht neu: Wer bestellt noch regelmäßig per Fernleihe, schickt Briefe oder kopiert in großem Umfang?
+Wir sehen, dass generative KI wahrscheinlich mittelfristig einen Teil der bisherigen Tätigkeiten automatisieren, Lehrende bei zentralen Kernaufgaben unterstützen und zugleich neue, spezialisierte Aufgaben in der Lehre schaffen wird.
+
+Ob das **insgesamt zu einer Zeitersparnis führt, ist keineswegs sicher**, denn die neuen Aufgaben um die Einrichtung und Betreuung der KI-Unterstützung können sehr zeitintensiv sein, als Beispiel sei hier etwa die Einrichtung eines Physik-Tutor-Bots [@kestin2025] oder einer Startup-Simulation, in der KI in verschiedenen Rollen beim Aufsetzen und Verbessern von Geschäftsplänen hilft [@mollick2024].
+Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt es auch hier nicht umsonst.
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Wenn die KI Übungsblätter in einer Stunde statt einem Tag erstellt, haben Lehrende am Ende des Semesters Zeit gewonnen.“* []{.ez-ihre data-ez="ez-k4-1"}
+
+**Auflösung: eher nicht.** Sicher ist nur, dass sich der Aufgaben-Mix verschiebt: Einiges wandert zur KI, anderes geht schneller, und neue Aufgaben kommen hinzu, etwa die Qualitätskontrolle der Materialien und die Pflege eines Tutors. Ob am Ende Zeit übrig bleibt, hängt davon ab, wie viel diese neuen Aufgaben verschlingen; gemessen ist die Bilanz bisher nicht.
+:::
+
+## Wer macht was: Arbeitsweisen von Centaur bis dunkle Fabrik {#sec-arbeitsweisen}
+
+Wer welchen Schritt einer Aufgabe übernimmt, ist die dritte Delegationsfrage.
+Das 4D-Modell unterscheidet drei Formen der Zusammenarbeit, die es *Modalitäten* nennt [@dakan2025]: In der **Automation** führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der **Augmentation** erledigen Mensch und KI sie gemeinsam und im Wechsel; in der **Agency** richtet der Mensch eine KI ein, die später selbstständig handelt, oft für andere (nicht zu verwechseln mit den Formen des Aufgabenmodells in @sec-hiwi).
+Der Hiwi aus @sec-szenarien arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency.
+
+Feiner unterscheidet die Studie zur Jagged Frontier [@dellacqua2023]. Der **Centaur**[]{#sb-k2-centaur-cyborg} teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest.
+Der **Cyborg** arbeitet in ständigem Wechsel mit der KI und nutzt ihre Rückmeldungen laufend.
+Beide setzen voraus, dass der Mensch die Stärken und Schwächen des Modells kennt.
+Eine spätere Studie des weitgehend selben Teams mit 776 Beschäftigten von Procter & Gamble fand, dass Einzelne mit KI-Unterstützung teils das Leistungsniveau ganzer Teams erreichten; die KI wirkte als „**Cybernetic Teammate**“ [@dellacqua2025].
+
+Mit stärkeren Agenten kommen Arbeitsweisen hinzu, in denen der Mensch nicht mehr in jeder Schleife sitzt.
+Als **Beschwörer** (*conjurer*) ruft er Agenten bei Bedarf herbei, weist ihnen Arbeit zu und bewertet, was zurückkommt, ohne den Weg dorthin zu begleiten.
+Mollick hält das für die leistungsfähigste Arbeitsweise, die aber neue Risiken bringt, weil niemand mehr genau sieht, wie die KI zu ihren Ergebnissen kommt [@mollick2026charts].
+Am Ende der Reihe steht die **dunkle Fabrik** (*dark factory*): Menschen legen fest, was entstehen soll, Maschinen führen aus und prüfen; das trägt nur dort, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt, etwa bei Software mit automatischen Tests [@mollick2026agents].
+Dazwischen liegt die **Dämmerfabrik** (*twilight factory*): Agenten arbeiten, aber ein vermittelnder Agent holt Menschen hinzu, wenn eine Freigabe nötig ist, Fachwissen fehlt, die Ideen zu gleichförmig werden oder eine Entscheidung interessant ist [@mollick2026agents].
+Für die Lehre wiegt eine Folge am schwersten: Wer nur Freigaben und Ausnahmen bearbeitet, übt nie das Urteilen, das eine gute Freigabe voraussetzt, und die Fachleute, die künftig prüfen sollen, wachsen nicht nach [@mollick2026agents].
+Das folgende Schema ordnet die fünf Arbeitsweisen den Schritten einer Aufgabe zu.
+
+::: {.content-visible when-format="html"}
+Im interaktiven Schema lassen sich die Anlässe der Dämmerfabrik einzeln abschalten.
+
+<iframe loading="lazy" src="interactions/ki-entwicklung.html?zeige=arbeitsweisen" width="100%" height="820px" frameborder="0" title="Schema: Wer übernimmt welchen Arbeitsschritt in den Arbeitsweisen Centaur, Cyborg, Beschwörer, Dämmerfabrik und dunkle Fabrik"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Mit jeder Arbeitsweise gibt der Mensch mehr Arbeitsschritte an die KI ab; „fragt“ markiert, wo der Agent in der Dämmerfabrik einen Menschen hinzuholt (Konzeptschema nach @dellacqua2023, @mollick2024d, @mollick2026charts und @mollick2026agents; Zuordnung der Schritte eigene Lesart). Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-entwicklung.html?zeige=arbeitsweisen> aufrufen.](images/druck/ki-arbeitsweisen-qr.png){#fig-ki-arbeitsweisen width="100%" fig-pos="htbp"}
+:::
+
+Das folgende Durchspiel zeigt die fünf Arbeitsweisen an einer einzigen Aufgabe, einem Übungsblatt zur optimalen Bestellmenge mit vier Gruppenvarianten.
+Als Centaur lässt die Professorin nur den Aufgabentext formulieren, als Cyborg entwickelt sie die Aufgabe in zwölf kurzen Wechseln mit der KI.
+Als Beschwörer schreibt sie einen einzigen Auftrag; ein **Orchestrator**, ein Programm, das eine Aufgabe zerlegt, verteilt und die Teile wieder zusammenführt, beauftragt **Unteragenten** (*subagents*) für die Zahlen, die Texte und die Prüfung [@schluntz2024agents; @anthropic2025research] (griechisch *orchēstra*, der Tanzplatz vor der Bühne; der Orchestrator ordnet, wer wann auftritt).
+In der Dämmerfabrik fragt ein Vermittler-Agent die Professorin bei den vier Anlässen; in der dunklen Fabrik bestehen alle Blätter die maschinelle Prüfung und werden doch still leichter, weil der Prüfer misst, ob die Lösungen stimmen, nicht ob die Aufgaben fordern.
+Die Online-Fassung spielt zwei weitere Fälle durch: Rückmeldungen auf Projektberichte, bei denen die KI-Verordnung menschliche Aufsicht verlangt [@eu2024aiact, Anhang III Nr. 3 lit. b] (@sec-ki-vo), und die Aktualisierung einer Vorlesung.
+Die Denkspuren darin sind angenähert; auch echte Denkspuren geben nicht verlässlich wieder, wie ein Modell zu seinem Ergebnis kommt [@chen2025reasoning].
+
+::: {.content-visible when-format="html"}
+Im interaktiven Durchspiel lassen sich Fall, Arbeitsweise und Ebene (Dialog, Denkspur, Protokoll) wählen.
+
+<iframe loading="lazy" src="interactions/ki-arbeitsweisen-durchspiel.html" width="100%" height="1500px" frameborder="0" title="Durchspiel: dieselbe Aufgabe in den Arbeitsweisen Centaur, Cyborg, Beschwörer, Dämmerfabrik und dunkle Fabrik, mit Dialogen, Denkspuren und Protokollen"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Dieselbe Aufgabe in fünf Arbeitsweisen: Je mehr die KI übernimmt, desto weniger spricht der Mensch und desto mehr sprechen die Agenten miteinander. Dialoge nachgestellt und gekürzt, Denkspuren angenähert, Zähler als Lehrmodell (Muster nach @schluntz2024agents). Interaktive Fassung mit zwei weiteren Fällen: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-arbeitsweisen-durchspiel.html> aufrufen.](images/druck/ki-durchspiel-qr.png){#fig-ki-durchspiel width="100%" fig-pos="htbp"}
+
+:::
+
+::: {.callout-tip title="Probieren Sie mal: Delegation an einem Berufsprofil"}
+Wählen Sie einen Beruf, für den Sie ausbilden, und lassen Sie sich von einem Sprachmodell zehn typische Tätigkeiten dieses Berufs auflisten, etwa nach dem Berufsprofil der US-Datenbank O\*NET.
+Ordnen Sie jede Tätigkeit selbst einer der drei Formen aus @tbl-acemoglu zu: Automatisierung, Augmentierung oder neue Aufgabe.
+Lassen Sie das Modell dieselbe Zuordnung vornehmen und vergleichen Sie.
+Wo Sie abweichen, steckt meist eine Annahme über den Beruf, die sich im Gespräch mit Studierenden lohnt.
+
+[Die vollständige Übung mit allen vier Phasen: @sec-ai-fluency-uebung.]{.content-visible when-format="html"}[Die vollständige Übung mit allen vier Phasen steht in der Online-Fassung von Anhang A: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel07-appendix02-prompt-sammlung.html#sec-ai-fluency-uebung> aufrufen.]{.content-visible unless-format="html"}
+
+::: {.content-visible unless-format="html"}
+![](images/qr/qr-ai-fluency-uebung.png){width="18%"}
+:::
+:::
+
+## Leitungsaufgabe Mensch–LLM {#sec-leitungsaufgabe}
+
+Die Konsequenz der Delegation ist weniger technisch als organisatorisch.
+Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält [@parasuraman2000].
+Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet, bei einer Literaturrecherche etwa beim Quellenkorb, beim Rechercheplan und bei der Stichprobe von Aussagen, die wir gegen das Original halten.
+Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte.
+
+Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Programmier-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig [@johnston2026the]. Das folgende Modell verfolgt eine einzelne Aufgabe, Kugel A, durch Auftrag, Recherche, Entscheidung, Rechnung und Freigabe, einmal allein und einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.
+
+::: {.content-visible when-format="html"}
+Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.
+:::
+
+::: {.content-visible when-format="html"}
+:::: {.column-page}
+```{=html}
+<iframe loading="lazy" id="agenten-engpass" src="interactions/agenten-engpass.html" width="100%" height="1000px" frameborder="0" title="Animation: Acht Aufgaben, viele Agenten, ein Mensch – wo Kugel A wartet"></iframe>
+<script>
+/* Die Animation meldet ihre Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+```
+::::
+:::
+
+::: {.content-visible unless-format="html"}
+![Mehr Agenten machen den Menschen zum Engpass. Standbild bei Minute 22 von acht gleichzeitig abgegebenen Aufgaben: Kugel A liegt in der Ablage „Zu entscheiden“, während die Agenten kaum zu tun haben; allein ist sie nach 24 Minuten fertig, als achte von acht nach 43,5 Minuten, davon 19,5 Minuten Warten (Lehrmodell, keine Messung). Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-engpass.html> aufrufen.](images/druck/agenten-engpass-qr.png){#fig-agenten-engpass width="100%" fig-pos="htbp"}
+:::
+
+Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet, denn der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station; ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.

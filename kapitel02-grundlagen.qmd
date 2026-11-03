@@ -1,4 +1,4 @@
-# Grundbegriffe und vier Kompetenzen {#sec-grundbegriffe}
+# Grundlagen von KI und LLMs {#sec-grundbegriffe}
 
 ::: kapitel-gliederung
 :::
@@ -46,84 +46,6 @@ Dass ein Chatbot Quellen erfindet, ist ein Programmfehler, den die nächsten Mod
 
 *Die Kernaussagen am Kapitelende sind nach diesen vier Zielen geordnet. Die Vertiefung zur Technik in @sec-vertiefung setzen sie nicht voraus; sie kann übersprungen werden.*
 :::
-
-## Mit KI arbeiten: vier Kompetenzen {#sec-schemas}
-
-Wer mit künstlicher Intelligenz (KI) arbeitet, trifft vier Arten von Entscheidungen.
-Vor dem Prompt, der Eingabe an die KI, steht die Frage, was überhaupt an die KI geht, dann die Beschreibung der Aufgabe, nach der Antwort die Prüfung des Ergebnisses und über allem die Verantwortung dafür.
-Ein Schema, das diese Schritte ordnet, macht aus einer Sammlung von Tipps eine Arbeitsweise, und weil es keine Werkzeuge nennt, übersteht es den nächsten Modellwechsel.
-Dieses Kapitel folgt dem Schema: Nach den Grundbegriffen in @sec-definitionen beantwortet jeder Abschnitt eine der vier Fragen, und die Technik im Inneren der Modelle steht am Ende als Vertiefung.
-
-### Das 4D-Modell {#sec-4d}
-
-AI Fluency (etwa: Gewandtheit im Umgang mit KI) ist die Fähigkeit, effektiv, effizient, ethisch und sicher mit KI zu arbeiten [@dakan2025].
-Das Modell zerlegt sie in vier Kompetenzen, die *4 D*, mit je drei Unterkompetenzen (@tbl-4d).
-
-::: {.tabelle-scroll}
-| Kompetenz | Leitfrage | Unterkompetenzen | Herkunft des Wortes |
-|---|---|---|---|
-| []{#sb-k2-delegation}**Delegation** | Was übernimmt der Mensch, was die KI? | Ziel- und Aufgabenbewusstsein (*goal and task awareness*), Kenntnis der Werkzeuge (*platform awareness*), Aufgabenverteilung (*task delegation*) | lat. *delegare*, übertragen |
-| []{#sb-k2-description}**Description** | Wie sage ich der KI klar, was ich will? | Ergebnis beschreiben (*product description*), Zusammenarbeit beschreiben (*process description*), Verhalten festlegen (*performance description*) | lat. *describere*, umreißen, aufzeichnen |
-| []{#sb-k2-discernment}**Discernment** | Wie beurteile ich, was die KI liefert? | Ergebnis beurteilen (*product discernment*), Zusammenarbeit beurteilen (*process discernment*), Verhalten beurteilen (*performance discernment*) | lat. *discernere*, unterscheiden, trennen |
-| []{#sb-k2-diligence}**Diligence** | Wie setze ich KI verantwortlich und offen ein? | Sorgfalt beim Erzeugen (*creation diligence*), Offenlegung (*transparency diligence*), Prüfung vor der Freigabe (*deployment diligence*) | lat. *diligentia*, Sorgfalt, von *diligere*, hochachten, sorgsam auswählen |
-
-: Die vier Kompetenzen des AI-Fluency-Modells mit ihren Unterkompetenzen. Übersetzung nach @dakan2025, CC BY-SA 4.0 {#tbl-4d tbl-colwidths="[16,24,40,20]"}
-:::
-
-Dakan und Feller nennen die vier D ausdrücklich vernetzte Kompetenzen, keine Reihenfolge [@dakan2025].
-In ihrem Kurs für Lehrende verbinden sie die vier aber zu zwei Schleifen [@dakan2025teaching], und daraus baut dieses Buch einen Kreislauf[ (@fig-4d-kreislauf)]{.content-visible unless-format="html"}[, den die Abbildung unten zum Anklicken zeigt]{.content-visible when-format="html"}.
-Die äußere Schleife zwischen **Delegation und Diligence** ist strategisch und läuft einmal je Vorhaben: Was soll die KI übernehmen, und welche Pflichten folgen daraus?
-Sie läuft in beide Richtungen, denn eine Pflicht zur Offenlegung oder zur Prüfung verändert, was man sinnvoll abgibt.
-Die innere Schleife zwischen **Description und Discernment** dreht sich in jedem Arbeitsgang viele Male: beschreiben, erzeugen lassen, prüfen, nachbessern.
-Das Buch liest die vier D damit als Stufen eines Arbeitsablaufs; es folgt der Lehrpraxis der Autoren, nicht dem Wortlaut ihrer Definition.
-
-::: {.content-visible when-format="html"}
-<iframe loading="lazy" src="interactions/4d-kreislauf.html" width="100%" height="760px" frameborder="0" title="Der 4D-Kreislauf: zwei Schleifen, vier Kompetenzen, Engpass je Rolle"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-![Der 4D-Kreislauf. Die äußere Schleife (Delegation und Diligence) entscheidet einmal je Vorhaben, was die KI übernimmt und welche Pflichten daraus folgen; die innere (Description und Discernment) dreht sich in jedem Arbeitsgang mehrmals. Eigene Darstellung nach @dakan2025 und den beiden Schleifen aus @dakan2025teaching. Die Fassung zum Anklicken mit Unterkompetenzen und dem Engpass je Rolle: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/4d-kreislauf.html> aufrufen.](images/druck/4d-kreislauf.svg){#fig-4d-kreislauf width="100%" fig-pos="htbp"}
-:::
-
-Das Schema beantwortet nicht, wie viel KI eine Aufgabe verträgt.
-Zu viel Einsatz kostet Kompetenz und Qualität, zu wenig kostet Übung mit Werkzeugen, die die Studierenden im Beruf vorfinden; die Mitte zwischen beiden muss man für jede Aufgabe neu suchen, und der Kreislauf zeigt, an welcher Stelle die Entscheidung fällt.
-Was die Forschung über die Kosten des Auslagerns weiß, zeigt @sec-evidenz.
-
-### Wie dieses Kapitel und das Buch das Schema nutzen {#sec-4d-nutzung}
-
-Im übrigen Buch endet jede der vier Rollen in @sec-szenarien mit einem Absatz, der den Kreislauf für diese Rolle durchläuft und die Stufe benennt, an der er am ehesten reißt; die Prompt-Sammlung in @sec-prompts liefert Material für die Stufe Description.
-
-```{=html}
-<span id="sec-schemas-rahmen"></span>
-```
-
-::::: {.callout-note title="Warum AI Fluency?"}
-Artikel 4 der KI-Verordnung verpflichtet Hochschulen, die KI-Systeme bereitstellen, zu Maßnahmen für die KI-Kompetenz (*AI literacy*) ihres Personals, sagt aber nicht, worin diese Kompetenz besteht; der Digital-Omnibus vom Juli 2026 hat die Pflicht entschärft und die Definition nicht nachgeliefert [@eu2024aiact; @eu2026omnibus] (@sec-ki-vo).
-Die Lücke füllen Kompetenzrahmen; einen Überblick über die Forschung zu *AI Literacy* gibt @pinski2024literacy.
-Von fünf neueren Rahmen für die Hochschullehre[ (@tbl-kompetenzrahmen)]{.content-visible when-format="html"}[, die die Online-Fassung vergleicht,]{.content-visible unless-format="html"} arbeitet dieses Buch mit *AI Fluency* von Rick Dakan und Joseph Feller: Es ordnet nach dem Arbeitsprozess, nennt keine Werkzeuge und führt als einziger die Verantwortung gegenüber Dritten als eigene Kompetenz.
-Alle fünf verlangen, dass Lernende KI-Ergebnisse kritisch beurteilen, kaum einer sagt, wie; die Prüfmethoden liefert dieses Buch dort nach, wo sie gebraucht werden (@sec-hallucinations).
-Die deutschen Definitionen sind eigene Übersetzungen der Fassung, die die irische Hochschulbehörde HEA (*Higher Education Authority*) herausgegeben hat; sie steht wie dieses Buch unter der Lizenz CC BY-SA 4.0.
-
-:::: {.content-visible when-format="html"}
-
-::: {.tabelle-scroll}
-| Rahmen | Zielgruppe | Ordnungsprinzip | Entstehung |
-|---|---|---|---|
-| AI Fluency [@dakan2025] | Hochschule | vier Kompetenzen entlang des Arbeitsprozesses, drei Formen der Zusammenarbeit | Lehrerfahrung zweier Hochschulen |
-| KI-Kompetenzrahmen Hochschule [@feil2026dlhn] | Hochschule einschließlich Verwaltung | vier Bereiche: Technologie sowie Recht und Ethik als Basis, darauf Anwendung und Reflexion; drei Niveaustufen | Recherche und Kriterienkatalog im Verbundprojekt Digitale Lehre Hub Niedersachsen (DLHN) |
-| AI Literacy Heptagon [@hackl2026heptagon] | Hochschule, fachbezogen anpassbar | sieben Dimensionen, vier Niveaustufen nach Bloom | Literaturreview nach PRISMA (Standard für systematische Übersichtsarbeiten) mit 27 Studien |
-| AILit Framework [@oecd2026ailit] | Schule | vier Domänen (mit KI umgehen, gestalten, steuern, die KI-Entwicklung mitprägen), je Wissen, Fähigkeiten und Haltungen | EU und die Industriestaaten-Organisation OECD mit Fachleuten und öffentlicher Konsultation |
-| Kompetenzen nach @gimpel2024competencies | Hochschule, Schwerpunkt Wirtschaftswissenschaften | Basiskompetenzen (AI Literacy, AI Reflection) und vier Felder vertiefter Kompetenzen | Konsortium von vier Hochschulen, Analyse von Curricula, Stellenmarkt und Literatur |
-
-: Fünf Kompetenzrahmen für den Umgang mit KI im Vergleich. Eigene Zusammenstellung nach den genannten Quellen {#tbl-kompetenzrahmen tbl-colwidths="[20,20,32,28]"}
-:::
-
-::::
-
-:::: {.content-visible unless-format="html"}
-![Vergleich der fünf Kompetenzrahmen (Zielgruppe, Ordnungsprinzip, Entstehung) in der Online-Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel02.html#sec-schemas-rahmen> aufrufen.](images/qr/qr-kompetenzrahmen.png){#fig-qr-kompetenzrahmen width="32%" fig-align="center"}
-::::
-:::::
 
 ## Grundbegriffe: Modell, Harness und Agent {#sec-definitionen}
 
@@ -254,143 +176,32 @@ Die Aufgaben bleiben, gleich wer sie erledigt: Jemand muss Werkzeuge anschließe
 
 Die Fachbegriffe des ganzen Buches mit ihrer Herkunft stehen im [Glossar](glossar.qmd).
 
-## Delegation: Was übernimmt die KI? {#sec-delegation}
+### Typische Aufgaben und Fragestellungen mit der KI durchspielen, Prompts anpassen, experimentieren {#sec-durchspielen}
 
-Delegation fragt, was der Mensch übernimmt und was die KI (@tbl-4d).
-Die Antwort hat drei Teile, die den Unterkompetenzen des Modells entsprechen: wissen, was die Modelle können (@sec-capabilities), Setup und Modell kennen (@sec-patterns-usage, @sec-model-choice) und die Arbeit zwischen Mensch und KI verteilen (@sec-arbeitsweisen).
-Den größten Teil des Harness liefert dabei der Hersteller; den Teil, den die Nutzenden selbst bauen, nennt @bockeler2026harness den äußeren Harness (*outer harness*): Anleitungsdateien, Skills (bei Bedarf geladene Gebrauchsanweisungen), eigene Wissensbasen und Prüfregeln.
-An diesem äußeren Harness gestalten Lehrende und Studierende; ein Übungstutor (@sec-fall-tutor-bwl), ein Karriereberater (@sec-fall-job-buddy) und eine Quellenanbindung mit Praxispartnern (@sec-fall-unternehmen) laufen auf denselben großen Modellen und unterscheiden sich in Anleitung, Quellen und Grenzen.
-Unsere Rolle verschiebt sich dabei: Wir setzen das Ziel, legen fest, wo der Agent anhält, und prüfen, was zurückkommt; OpenAI fasst das in den Leitsatz „Humans steer. Agents execute.“ [@lopopolo2026harness].
+Lehrende sollten zunächst Informationen sammeln, um zu verstehen, was KI mit den Aufgaben in ihrem Kurs bewirken kann [@mitteaching+learninglab2023]. Melden Sie sich bei einem der professionellen KI-Dienste wie ChatGPT oder Claude an und spielen Sie mit exemplarischen Konzepten, Fragen und Aufgabensets aus dem Kurs. Dabei ist es wichtig, nicht gleich bei der ersten schlechten Antwort aufzugeben, sondern Anpassungsmöglichkeiten durchzugehen: Lässt sich der **Input beschränken**? (Fragen auf einen Text-Input, eine gute Internetquelle oder eine hochgeladene PDF beschränken.) Lässt sich der **Prompt** (die Eingabe an die KI) **anpassen**? (Bearbeitung schrittweise durchführen lassen, Optionen und Szenarien durchgehen lassen usw., siehe @sec-how-to-speak zu Prompt Engineering, dem gezielten Formulieren von Prompts.)
 
-### Was die Modelle können und was nicht {#sec-capabilities}
-
-Was Sprachmodelle können, ist sehr uneinheitlich und **verändert sich schnell**.
-Mollick und Kollegen sprechen von einer „**Jagged Technological Frontier**“[]{#sb-k2-zerklueftete-grenze}, einer zerklüfteten Technik-Grenze: Zwei Aufgaben von ähnlicher Schwierigkeit für Menschen können auf verschiedenen Seiten der Grenze liegen; die eine löst die KI auf menschlichem Niveau oder besser, an der anderen scheitert sie [@dellacqua2023].
-In ihrem Experiment mit Consultants brachte KI bei den meisten von 18 Beratungsaufgaben große Vorteile; bei einer gezielt außerhalb der Grenze gewählten Aufgabe lagen die Consultants mit KI dagegen 19 Prozentpunkte seltener richtig als ohne [@dellacqua2023].
+Wichtig ist, sich zu überlegen, welches Lernziel jede Aufgabe hat und wie die KI damit umgeht. Es sollte bewertet werden, bei welchen Arten von Fragen die KI gut abschneidet und wo ihre Grenzen liegen [@mollick2025d]. Diese Erkenntnisse können dann genutzt werden, um etwa Aufgabensets und andere Aufgabenstellungen besser zu strukturieren.
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
-*„Wenn ein Modell die schwierigen Aufgaben Ihres Fachs löst, können Sie sich bei den leichteren erst recht auf es verlassen.“* []{.ez-ihre data-ez="ez-k2-3"}
+*„Liefert ein Sprachmodell auf eine Kursaufgabe beim ersten Versuch eine schwache Antwort, können Studierende die Aufgabe kaum mit KI lösen.“* []{.ez-ihre data-ez="ez-k5-1"}
 
-**Auflösung: nein.** Die Fähigkeiten der Modelle folgen nicht unserer Vorstellung von schwer und leicht. Zwei für Menschen ähnlich schwierige Aufgaben können auf verschiedenen Seiten der zerklüfteten Grenze liegen, und bei der Aufgabe jenseits der Grenze lagen die Consultants mit KI 19 Prozentpunkte seltener richtig als ohne. Wo die Grenze im eigenen Fach verläuft, zeigt nur der Test an den eigenen Aufgaben.
+**Auflösung: nein.** Eine schwache erste Antwort sagt wenig darüber, was die KI mit der Aufgabe kann. Wer den Input auf einen Text oder eine hochgeladene Datei begrenzt oder die Bearbeitung schrittweise anfordert, bekommt oft deutlich bessere Ergebnisse, und genau das tun auch die Studierenden. Erst nach solchen Versuchen zeigt sich, wo die Grenzen der KI bei der eigenen Aufgabe liegen.
 :::
 
-Zugleich wächst, was sich an die Modelle delegieren lässt.
-Ein anschauliches Maß dafür ist der **Zeithorizont**: die Dauer, die Fachleute für eine Aufgabe brauchen, die ein Modell in der Hälfte der Fälle löst [@kwa2025].
-Er stieg von rund 4 Minuten bei GPT-4 (März 2023) auf rund 17 Stunden bei einer frühen Fassung von Claude Mythos Preview (April 2026) und verdoppelte sich seit 2023 etwa alle 129 Tage, also gut alle vier Monate [@metr2026].
-Den letzten Wert ordnet METR selbst als unsicher ein, weil die Testaufgaben über 16 Stunden nicht mehr für eine verlässliche Messung reichen.
+### Wie bleiben Sie informiert? {#sec-informiert}
 
-::: {.content-visible when-format="html"}
-<iframe loading="lazy" src="interactions/ki-entwicklung.html?zeige=zeithorizont" width="100%" height="1000px" frameborder="0" title="Diagramm: Zeithorizont der KI-Modelle 2019 bis 2026 nach METR"></iframe>
-:::
+Bei einem Thema, das sich so schnell wandelt, sind gute Sammelstellen wertvoller als jede gedruckte Liste von Werkzeugen. Die folgenden Quellen haben sich bewährt (Stand 10/2026):
 
-::: {.content-visible unless-format="html"}
+* **Newsletter von Ethan Mollick** (Wharton School) mit sehr praktischen Übersichten und Empfehlungen: <https://www.oneusefulthing.org/>. Ein Abonnement lohnt sich.
+* **Didaktische Prompts** desselben Teams: <https://www.moreusefulthings.com/prompts>. Hervorzuheben sind die „Blueprints“, Vorlagen, die sich für die eigene Lehre anpassen lassen.
+* **Hochschulforum Digitalisierung**, Beiträge zu KI in Studium und Lehre: <https://hochschulforumdigitalisierung.de/dossier/generative-ki/>
+* **e-teaching.org**, Themenspecial KI in der Hochschulpraxis: <https://www.e-teaching.org/praxis/themenseiten/ki-in-studium-und-lehre>
+* **Derek Bok Center der Harvard University** mit Beispielen, wie Lehrende generative KI (GenAI) nutzen, darunter Simulationen und Sprachdidaktik: <https://bokcenter.harvard.edu/examples-and-ideas-for-using-AI-for-your-teaching>
+* **Wie Lehrende KI tatsächlich nutzen**: Anthropic hat rund 74.000 anonymisierte Unterhaltungen von Hochschullehrenden aus elf Tagen im Mai und Juni 2025 ausgewertet. Lehrende bauen darin unter anderem Simulationen, Lernspiele und Bewertungsraster selbst [@bent2025]: <https://www.anthropic.com/news/anthropic-education-report-how-educators-use-claude>
+* **Fortbildungen der Anbieter** zu den technischen Seiten der KI-Nutzung in der Lehre: Google (<https://grow.google/ai-for-educators/>), Anthropic (<https://anthropic.skilljar.com/ai-fluency-framework-foundations>) und OpenAI mit einem Newsletter für Hochschullehrende (<https://edunewsletter.openai.com/>).
 
-![KI-Agenten bewältigen immer längere Aufgaben: 50-%-Zeithorizont der Modelle 2019–2026 auf logarithmischer Achse, mit Trend ab 2023 (gestrichelt) und Lehraufgaben ähnlicher Dauer zur Orientierung (eigene Zuordnung). Über 16 Stunden ist die Messung nicht mehr verlässlich. Daten: METR (2026), Stand 8. Mai 2026. Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-entwicklung.html?zeige=zeithorizont> aufrufen.](images/druck/ki-zeithorizont-qr.png){#fig-performance width="100%" fig-pos="htbp"}
-
-:::
-
-Warum die Grenze so schnell wandert, beschreiben zwei **Skalierungsgesetze** (*scaling laws*) [@kaplan2020; @hoffmann2022; @openai2024; anschaulich bei @grootendorst2025].
-Erstens werden Modelle verlässlich besser, je mehr Daten, Rechenleistung und Parameter ins Training fließen: Jede Verzehnfachung des Rechenaufwands senkt den Vorhersagefehler um etwa denselben Anteil [@kaplan2020], sofern Daten und Modellgröße im Gleichschritt wachsen [@hoffmann2022].
-Zweitens liefert ein fertig trainiertes Modell bessere Lösungen, wenn es vor der Antwort mehr „**Denkzeit**“ (*test-time compute*) für zusätzliche Rechenschritte erhält [@openai2024; @snell2024]; auf diesem zweiten Gesetz beruhen die Reasoning-Modelle [@gottweis2025; @schwarcz2025].
-Wie bei einer Prüfung ist die Lernzeit einmal bezahlt, die Bearbeitungszeit fällt bei jeder Prüfung neu an; deshalb kosten Reasoning-Modelle je Antwort mehr.
-Trotzdem bleiben die **Grenzkosten der Nutzung sehr niedrig**, und personalisierte Lernangebote lassen sich kostengünstig skalieren [@mollick2025].
-
-::: {.content-visible when-format="html"}
-<iframe loading="lazy" src="interactions/scaling-laws.html" width="100%" height="1460px" frameborder="0" title="Animation: Zwei Skalierungsgesetze – Training und Denkzeit beim Antworten"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-
-![Zwei Skalierungsgesetze: Links sinkt der Vorhersagefehler mit dem Rechenaufwand im Training auf einer Geraden (beide Achsen logarithmisch); bei gleichem Budget schneidet das kleinere, mit mehr Daten trainierte Chinchilla besser ab als Gopher. Rechts steigt die Trefferquote mit der Denkzeit beim Antworten; bei mittelschweren Aufgaben schlägt ein kleines Modell mit Denkzeit ein 14-mal größeres. Lehrmodell, schematisch; Zahlen nach @kaplan2020, @hoffmann2022, @openai2024 und @snell2024. Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/scaling-laws.html> aufrufen.](images/druck/scaling-laws-qr.png){#fig-scaling-laws width="100%" fig-pos="htbp"}
-
-:::
-
-Wie schnell die Preise fallen, zeigt eine Auswertung von Epoch AI.
-Der GPQA Diamond (*Graduate-Level Google-Proof Q&A*, Fragen, die sich nicht ergoogeln lassen) ist eine Sammlung von 198 naturwissenschaftlichen Multiple-Choice-Fragen auf Promotionsniveau.
-Die niedrigsten Kosten, mit denen ein Modell 75 % davon richtig beantwortet, sanken von 29,9 US-Cent je Frage im Januar 2025 auf 0,04 Cent im Juli 2026, um den Faktor 725 oder 99,9 % in 17 Monaten [@emberson2026].
-Als mögliche Gründe nennt Epoch AI, ohne sie einzeln nachzuweisen, kleinere und je Token (Textbaustein) billigere Basismodelle unter den Reasoning-Modellen, weniger Denk-Token je Frage und den Wettbewerb, der den Aufpreis des ersten Modells auf einem Leistungsniveau rasch abschmelzen lässt [@emberson2026].
-
-::: {.content-visible when-format="html"}
-Im interaktiven Diagramm steht ein Kästchen für eine Frage zum o3-Preis vom Januar 2025. Zuerst ist eine eigene Schätzung gefragt, wie viele Fragen dieselben 30 Cent im Juli 2026 kaufen. Danach deckt jeder Klick auf „Weiter“ die nächste Preisstufe auf: Der Zeitstrahl rückt vor, und das Raster füllt sich, bis auf der letzten Stufe die Schätzung aufgelöst wird. Der Umschalter „Treppe“ zeigt dieselben Stufen auf logarithmischer Achse.
-
-<iframe loading="lazy" src="interactions/ki-entwicklung.html?zeige=kosten" width="100%" height="1100px" frameborder="0" title="Diagramm: Kosten je GPQA-Frage bei 75 % Genauigkeit 2025 bis 2026 nach Epoch AI"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-
-![Expertenwissen wird 725-mal billiger: niedrigste Kosten je Frage, mit denen ein Modell 75 % des GPQA Diamond richtig beantwortet, Januar 2025 bis Juli 2026 (logarithmische Achse). Darunter als Raster: Ein Kästchen ist eine Frage zum o3-Preis vom Januar 2025, gefüllt ist, was 30 Cent zum jeweiligen Zeitpunkt kaufen; der letzte Sprung (−66 %) bringt mit 479 Kästchen mehr als alle früheren zusammen. Rasterdarstellung nach einer Idee von @mollick2026charts. Daten: Emberson & Roodman (2026), Epoch AI. Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-entwicklung.html?zeige=kosten> aufrufen.](images/druck/ki-kosten-qr.png){#fig-ki-kosten width="100%" fig-pos="htbp"}
-
-:::
-
-Was das für die Lehre bedeutet, zeigt ein Tutor-Bot, dem 150 Studierende an den 98 Tagen eines Semesters je zwei Fragen pro Tag stellen, zusammen 29.400 Fragen.
-Auf der Rechengrundlage von Epoch AI kostete dieses Semester anfangs rund 8.800 US-Dollar und im Juli 2026 rund 12 US-Dollar, je Person also 59 US-Dollar und 8 Cent.
-Das ist nur eine Größenordnung, denn ein Tutorgespräch ist länger als eine Testfrage, aber sie verschiebt die Frage von „Können wir uns das leisten?“ zu „Wer prüft, was der Tutor sagt?“.
-
-::: {.content-visible when-format="html"}
-Im Rechner lassen sich die eigenen Kurszahlen eintragen. „Abspielen“ oder „Weiter“ zeigt die Semesterkosten Stufe für Stufe, in denselben Farben wie im Raster; der Umschalter „log“ macht auch die kleinen Beträge der letzten Stufen sichtbar.
-
-<iframe loading="lazy" src="interactions/tutor-kosten.html" width="100%" height="950px" frameborder="0" title="Rechner: Semesterkosten eines Tutor-Bots nach Preisstufen 2025 bis 2026"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-![Was ein Tutor-Bot im Semester kostet: 150 Studierende stellen je 2 Fragen pro Tag an 98 Tagen (29.400 Fragen), jede zum Preis einer GPQA-Diamond-Frage beim günstigsten Modell mit 75 % richtigen Antworten; von rund 8.800 US-$ (o3, Januar 2025) auf rund 12 US-$ (GPT-5.6 Luna, Juli 2026). Nur Größenordnung. Daten: @emberson2026. Interaktive Fassung mit eigenen Kurszahlen: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/tutor-kosten.html> aufrufen.](images/druck/tutor-kosten-qr.png){#fig-tutor-kosten width="100%" fig-pos="htbp"}
-:::
-
-Zum Standardumfang der großen Chat-Interfaces gehören inzwischen vier **Funktionsklassen**, die den Einsatz in der Lehre erweitern: **Bildgenerierung** für Visualisierungen, **Audio-Modelle** mit steuerbarem Tonfall für Rollenspiele und barrierefreie Inhalte, **Research-Harnesses** („Deep Research“, Recherche-Agenten) für Literatursichtung und Projektarbeiten sowie günstige **Mini-Varianten der Reasoning-Modelle** (s. die Beispiele in @sec-einleitung).
-
-### Welches Setup: LLM, RAG oder Agent? {#sec-patterns-usage}
-
-Auch das klügste Modell hilft nur, wenn es den **Kontext unserer Aufgabe kennt**.
-Diesen Kontext geben wir ihm auf zwei Arten, bildlich gesprochen mit ein paar **Büchern oder einem Werkzeugkoffer** [@huyen2025, Kapitel 6].
-Bei **RAG (Retrieval-Augmented Generation)**[]{#sb-k2-rag}, der in @sec-harness eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
-Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche.
-Die Unterschiede zwischen dem reinen Sprachmodell, dem Modell mit Bücherregal und dem Modell mit Werkzeugkoffer übt das folgende Spiel.
-
-::: {.callout-tip title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?"}
-Scrollen Sie nach unten, wählen Sie „Los geht’s!“ und dann nacheinander die Interaktionen für LLM, RAG und Agent, und beantworten Sie die Fragen.
-
-::: {.content-visible when-format="html"}
-<iframe loading="lazy" src="interactions/llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
-
-</iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-![Lernspiel „LLM, RAG oder Agent?“ (Probleme und Anwendungsfelder der drei Setups). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-rag-agent-game.html> aufrufen.](images/qr/qr-lernspiel-llm-rag-agent.png){#fig-qr-llm-rag-agent width="32%" fig-align="center"}
-:::
-:::
-
-In der Lehre stellt RAG Fachtexte oder aktuelle Informationen bereit.
-In einem Geschichtskurs etwa beantwortet NotebookLM Fragen allein aus einem historischen Tagebuch und erzeugt daraus Material bis hin zu Podcasts [@huffman2024].
-Wie Studierende mit Unternehmen Assistenten auf Firmendokumenten bauen, zeigt @sec-fall-unternehmen.
-
-Die drei Muster liegen auf einer Skala, und an ihr zählt, wer den Ablauf bestimmt: in einem Workflow das Programm, in einem Agenten das Modell [@roucher2024smolagents].
-Ein Chatbot, der vor jeder Antwort passende Stellen aus den Skripten holt, bleibt auf der untersten Stufe, denn die Suche läuft immer, gleich was das Modell schreibt.
-RAG macht das Modell kundiger, nicht selbstständiger.
-
-::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
-*„Ein Chatbot, der nur aus Ihrem Skript antworten soll, braucht keinen Agenten; es genügt ein Modell, das vor jeder Antwort passende Stellen aus dem Skript abruft.“* []{.ez-ihre data-ez="ez-k2-1"}
-
-**Auflösung: ja.** Ein Chatbot zum eigenen Skript ist ein Fall für RAG: Die Suche nach passenden Stellen läuft vor jeder Antwort, und das Modell bekommt ein Bücherregal, aber keinen Spielraum über den Ablauf. Einen Werkzeugkoffer und eigene Entscheidungen über die nächsten Schritte braucht diese Aufgabe nicht; ein Agent mit Internetzugang würde zudem Quellen jenseits des Skripts heranziehen.
-:::
-
-Die folgende Animation baut den Weg vom Chatbot zum Agenten in dreizehn Schritten auf; die Bildfolge stammt von @grootendorst2025agents, die Schleife aus Denken, Handeln und Beobachten von @yao2023react.
-
-::: {.content-visible when-format="html"}
-Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
-
-<iframe loading="lazy" src="interactions/chatbot-zu-agent.html" width="100%" height="1050px" frameborder="0" title="Animation: Vom Chatbot zum Agenten, wie der Spielraum des Modells über den Ablauf wächst"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-
-![Vom Chatbot zum Agenten wächst vor allem der Spielraum des Modells über den Ablauf: Im Chatbot und beim festen Abruf eigener Quellen ändert die Antwort nichts am Ablauf (☆☆☆), als Router wählt das Modell einen Abzweig (★☆☆), mit Werkzeugen das Werkzeug (★★☆), in der Schleife aus Denken, Handeln und Beobachten den nächsten Schritt (★★★) (Skala nach @roucher2024smolagents, Bildfolge nach @grootendorst2025agents; schematisch). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/chatbot-zu-agent.html> aufrufen.](images/druck/chatbot-zu-agent-qr.png){#fig-chatbot-zu-agent width="100%" fig-pos="htbp"}
-
-:::
-
-[Wer die Unterscheidung an Beispielantworten weiter üben will, findet ein zweites Lernspiel online: <https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html>.]{.content-visible when-format="html"}
-
-### Welches Modell? {#sec-model-choice}
+Wer neue Studien statt neuer Werkzeuge verfolgen will, findet den gepflegten Stand der Forschung auf der Online-Seite zu diesem Buch.
+## Welches Modell? {#sec-model-choice}
 
 **Was für Sprachmodelle gibt es?** Hinter der Flut an Produktnamen stehen wenige Klassen, und zwei Fragen sortieren sie: Wie leistungsfähig ist das Modell, und wer hat die Daten in der Hand (@fig-modellklassen)? Die großen KI-Labore bieten jeweils **große geschlossene Modelle** an, deren Gewichte beim Anbieter bleiben, und daneben **kleine Varianten**, die schneller und billiger sind und in den kostenlosen Zugängen den Standard stellen. **Frontier-Modelle** (Spitzenmodelle) heißen nur die wenigen großen Modelle, die in den Ranglisten deutlich vor allen anderen liegen; nicht jedes Labor hat eines, und die Spitze wechselt mit jeder Modellgeneration [@fmf2026about]. Die großen Modelle sind **Reasoning-Modelle**: Sie denken vor der Antwort in mehreren Schritten nach, und wie lange, lässt sich als Denkstufe (*reasoning effort*) einstellen. **Offene Modelle** (*open-weight models*) legen ihre Gewichte offen; Hochschulen betreiben sie auf eigenen Rechnern, und die Daten bleiben im Haus. Die besten offenen Modelle lagen 2026 im Mittel vier Monate hinter der Frontier [@edwards2026openclosed], Modelle für eine einzelne Grafikkarte sechs bis zwölf Monate [@somala2025consumergpu].
 
@@ -468,67 +279,6 @@ Quelle: @tobor2026usecases, S. 36–39.
 ::::::
 
 [Wie ein Kurs-Bot über die Materialien vieler Lehrveranstaltungen aussieht und warum er erst durch begleiteten Einsatz in der Veranstaltung wirkt, zeigt ein Anwendungsbeispiel aus Lübeck in der Online-Fassung dieses Abschnitts [@tobor2026usecases].]{.content-visible unless-format="html"}
-
-### Wer macht was: Arbeitsweisen von Centaur bis dunkle Fabrik {#sec-arbeitsweisen}
-
-Wer welchen Schritt einer Aufgabe übernimmt, ist die dritte Delegationsfrage.
-Das 4D-Modell unterscheidet drei Formen der Zusammenarbeit, die es *Modalitäten* nennt [@dakan2025]: In der **Automation** führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der **Augmentation** erledigen Mensch und KI sie gemeinsam und im Wechsel; in der **Agency** richtet der Mensch eine KI ein, die später selbstständig handelt, oft für andere (nicht zu verwechseln mit den Formen des Aufgabenmodells in @sec-hiwi).
-Der Hiwi aus @sec-szenarien arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency.
-
-Feiner unterscheidet die Studie zur Jagged Frontier [@dellacqua2023]. Der **Centaur**[]{#sb-k2-centaur-cyborg} teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest.
-Der **Cyborg** arbeitet in ständigem Wechsel mit der KI und nutzt ihre Rückmeldungen laufend.
-Beide setzen voraus, dass der Mensch die Stärken und Schwächen des Modells kennt.
-Eine spätere Studie des weitgehend selben Teams mit 776 Beschäftigten von Procter & Gamble fand, dass Einzelne mit KI-Unterstützung teils das Leistungsniveau ganzer Teams erreichten; die KI wirkte als „**Cybernetic Teammate**“ [@dellacqua2025].
-
-Mit stärkeren Agenten kommen Arbeitsweisen hinzu, in denen der Mensch nicht mehr in jeder Schleife sitzt.
-Als **Beschwörer** (*conjurer*) ruft er Agenten bei Bedarf herbei, weist ihnen Arbeit zu und bewertet, was zurückkommt, ohne den Weg dorthin zu begleiten.
-Mollick hält das für die leistungsfähigste Arbeitsweise, die aber neue Risiken bringt, weil niemand mehr genau sieht, wie die KI zu ihren Ergebnissen kommt [@mollick2026charts].
-Am Ende der Reihe steht die **dunkle Fabrik** (*dark factory*): Menschen legen fest, was entstehen soll, Maschinen führen aus und prüfen; das trägt nur dort, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt, etwa bei Software mit automatischen Tests [@mollick2026agents].
-Dazwischen liegt die **Dämmerfabrik** (*twilight factory*): Agenten arbeiten, aber ein vermittelnder Agent holt Menschen hinzu, wenn eine Freigabe nötig ist, Fachwissen fehlt, die Ideen zu gleichförmig werden oder eine Entscheidung interessant ist [@mollick2026agents].
-Für die Lehre wiegt eine Folge am schwersten: Wer nur Freigaben und Ausnahmen bearbeitet, übt nie das Urteilen, das eine gute Freigabe voraussetzt, und die Fachleute, die künftig prüfen sollen, wachsen nicht nach [@mollick2026agents].
-Das folgende Schema ordnet die fünf Arbeitsweisen den Schritten einer Aufgabe zu.
-
-::: {.content-visible when-format="html"}
-Im interaktiven Schema lassen sich die Anlässe der Dämmerfabrik einzeln abschalten.
-
-<iframe loading="lazy" src="interactions/ki-entwicklung.html?zeige=arbeitsweisen" width="100%" height="820px" frameborder="0" title="Schema: Wer übernimmt welchen Arbeitsschritt in den Arbeitsweisen Centaur, Cyborg, Beschwörer, Dämmerfabrik und dunkle Fabrik"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-![Mit jeder Arbeitsweise gibt der Mensch mehr Arbeitsschritte an die KI ab; „fragt“ markiert, wo der Agent in der Dämmerfabrik einen Menschen hinzuholt (Konzeptschema nach @dellacqua2023, @mollick2024d, @mollick2026charts und @mollick2026agents; Zuordnung der Schritte eigene Lesart). Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-entwicklung.html?zeige=arbeitsweisen> aufrufen.](images/druck/ki-arbeitsweisen-qr.png){#fig-ki-arbeitsweisen width="100%" fig-pos="htbp"}
-:::
-
-Das folgende Durchspiel zeigt die fünf Arbeitsweisen an einer einzigen Aufgabe, einem Übungsblatt zur optimalen Bestellmenge mit vier Gruppenvarianten.
-Als Centaur lässt die Professorin nur den Aufgabentext formulieren, als Cyborg entwickelt sie die Aufgabe in zwölf kurzen Wechseln mit der KI.
-Als Beschwörer schreibt sie einen einzigen Auftrag; ein **Orchestrator**, ein Programm, das eine Aufgabe zerlegt, verteilt und die Teile wieder zusammenführt, beauftragt **Unteragenten** (*subagents*) für die Zahlen, die Texte und die Prüfung [@schluntz2024agents; @anthropic2025research] (griechisch *orchēstra*, der Tanzplatz vor der Bühne; der Orchestrator ordnet, wer wann auftritt).
-In der Dämmerfabrik fragt ein Vermittler-Agent die Professorin bei den vier Anlässen; in der dunklen Fabrik bestehen alle Blätter die maschinelle Prüfung und werden doch still leichter, weil der Prüfer misst, ob die Lösungen stimmen, nicht ob die Aufgaben fordern.
-Die Online-Fassung spielt zwei weitere Fälle durch: Rückmeldungen auf Projektberichte, bei denen die KI-Verordnung menschliche Aufsicht verlangt [@eu2024aiact, Anhang III Nr. 3 lit. b] (@sec-ki-vo), und die Aktualisierung einer Vorlesung.
-Die Denkspuren darin sind angenähert; auch echte Denkspuren geben nicht verlässlich wieder, wie ein Modell zu seinem Ergebnis kommt [@chen2025reasoning].
-
-::: {.content-visible when-format="html"}
-Im interaktiven Durchspiel lassen sich Fall, Arbeitsweise und Ebene (Dialog, Denkspur, Protokoll) wählen.
-
-<iframe loading="lazy" src="interactions/ki-arbeitsweisen-durchspiel.html" width="100%" height="1500px" frameborder="0" title="Durchspiel: dieselbe Aufgabe in den Arbeitsweisen Centaur, Cyborg, Beschwörer, Dämmerfabrik und dunkle Fabrik, mit Dialogen, Denkspuren und Protokollen"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-
-![Dieselbe Aufgabe in fünf Arbeitsweisen: Je mehr die KI übernimmt, desto weniger spricht der Mensch und desto mehr sprechen die Agenten miteinander. Dialoge nachgestellt und gekürzt, Denkspuren angenähert, Zähler als Lehrmodell (Muster nach @schluntz2024agents). Interaktive Fassung mit zwei weiteren Fällen: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/ki-arbeitsweisen-durchspiel.html> aufrufen.](images/druck/ki-durchspiel-qr.png){#fig-ki-durchspiel width="100%" fig-pos="htbp"}
-
-:::
-
-::: {.callout-tip title="Probieren Sie mal: Delegation an einem Berufsprofil"}
-Wählen Sie einen Beruf, für den Sie ausbilden, und lassen Sie sich von einem Sprachmodell zehn typische Tätigkeiten dieses Berufs auflisten, etwa nach dem Berufsprofil der US-Datenbank O\*NET.
-Ordnen Sie jede Tätigkeit selbst einer der drei Formen aus @tbl-acemoglu zu: Automatisierung, Augmentierung oder neue Aufgabe.
-Lassen Sie das Modell dieselbe Zuordnung vornehmen und vergleichen Sie.
-Wo Sie abweichen, steckt meist eine Annahme über den Beruf, die sich im Gespräch mit Studierenden lohnt.
-
-[Die vollständige Übung mit allen vier Phasen: @sec-ai-fluency-uebung.]{.content-visible when-format="html"}[Die vollständige Übung mit allen vier Phasen steht in der Online-Fassung von Anhang A: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel07-appendix02-prompt-sammlung.html#sec-ai-fluency-uebung> aufrufen.]{.content-visible unless-format="html"}
-
-::: {.content-visible unless-format="html"}
-![](images/qr/qr-ai-fluency-uebung.png){width="18%"}
-:::
-:::
 
 ## Description: Wie sage ich der KI, was ich will? {#sec-access}
 
@@ -706,41 +456,178 @@ Die Schwäche: Neun Bilder pressen sechs Jahre in eine saubere Abfolge, und die 
 :::
 
 
-## Discernment: Wie beurteile ich, was die KI liefert? {#sec-hallucinations}
+## Das erweiterte LLM {#sec-erweitertes-llm}
 
-Discernment fragt, wie wir beurteilen, was die KI liefert (@tbl-4d).
-Die Grundlage ist ein nüchterner Befund: Ein Sprachmodell prüft keine Wahrheit, und über sein eigenes Vorgehen gibt es nicht verlässlich Auskunft.
+### Welches Setup: LLM, RAG oder Agent? {#sec-patterns-usage}
 
-**Können wir das Modell fragen, wie es zu einem Ergebnis gekommen ist?** Eher nicht.
-Eine Studie des KI-Labors Anthropic, die mit neuen Methoden in ein Modell hineinschaut, fand bei einfachen Rechnungen wie der Quadratwurzel von 0,64 klare interne Rechenschritte; bei schwierigeren, etwa dem Kosinus einer großen Zahl, gab das Modell Rechnungen an, für die keine internen Prozesse erkennbar waren [@lindsey2025].
-Es erfindet dann eine plausible Rechnung, ohne gerechnet zu haben; die Autoren nennen das mit dem Philosophen Harry Frankfurt *bullshitting*.
-Bekommt es einen Hinweis auf das gewünschte Ergebnis, rechnet es rückwärts darauf hin, ein Verhalten, das sie als „motiviertes Denken“ (*motivated reasoning*) bezeichnen.
-Weitere Befunde dieser Studie stellt die Vertiefung vor (@sec-blick-ins-modell).
+Auch das klügste Modell hilft nur, wenn es den **Kontext unserer Aufgabe kennt**.
+Diesen Kontext geben wir ihm auf zwei Arten, bildlich gesprochen mit ein paar **Büchern oder einem Werkzeugkoffer** [@huyen2025, Kapitel 6].
+Bei **RAG (Retrieval-Augmented Generation)**[]{#sb-k2-rag}, der in @sec-harness eingeführten Suche in eigenen Dokumenten, holt das System passende Stellen aus zusätzlichen Dokumenten wie Fachtexten, Statistiken oder Gesetzesbüchern und legt sie dem Modell zur Antwort vor: Die KI ist das Gehirn, die Dokumentsammlung das Bücherregal.
+Ein Agent beschafft sich Informationen dagegen selbst, mit Werkzeugen wie der Websuche.
+Die Unterschiede zwischen dem reinen Sprachmodell, dem Modell mit Bücherregal und dem Modell mit Werkzeugkoffer übt das folgende Spiel.
 
-**Was kann zu Halluzinationen führen?** Die erfundene Literaturangabe aus dem Kapitelauftakt hat einen erkennbaren Mechanismus.
-Im Modell ist standardmäßig ein Schaltkreis (*circuit*) aktiv, der die Antwort verweigert, wenn Informationen fehlen; erkennt das Modell einen bekannten Namen, hemmt ein konkurrierender Mechanismus diese Verweigerung und gibt die Antwort frei.
-Kennt das Modell den Namen, aber nicht die gesuchte Tatsache, entsteht eine Halluzination[]{#sb-k2-halluzination}: Nach einem Fachartikel des bekannten Forschers Karpathy gefragt, nennt es einen erfundenen Titel, bei weniger bekannten Namen sagt es, die Antwort nicht zu kennen [@lindsey2025].
+::: {.callout-tip title="Lernspiel: LLM, RAG oder Agent, was sind mögliche Probleme und Anwendungsfelder?"}
+Scrollen Sie nach unten, wählen Sie „Los geht’s!“ und dann nacheinander die Interaktionen für LLM, RAG und Agent, und beantworten Sie die Fragen.
 
-Wie man Ergebnisse prüft, zeigt dieses Buch dort, wo es gebraucht wird: in der Prüfregel der Modellwahl (@sec-model-choice), beim Tutor (@sec-tutor-betrieb) und bei KI-gebauten Simulationen (@sec-widget-pruefen).
+::: {.content-visible when-format="html"}
+<iframe loading="lazy" src="interactions/llm-rag-agent-game.html" width="100%" height="700px" frameborder="0">
 
-::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
-*„Dass ein Chatbot Quellen erfindet, ist ein Programmfehler, den die nächsten Modellversionen abstellen.“* []{.ez-ihre data-ez="ez-k2-2"}
-
-**Auflösung: nein.** Erfundene Quellen folgen aus der Funktionsweise: Ein Sprachmodell erzeugt das wahrscheinlichste nächste Wort und prüft dabei keine Wahrheit, und erkennt es einen Namen, unterdrückt das die Antwort „weiß ich nicht“, auch wenn ihm das Wissen fehlt. Abstellen lässt sich das nicht, eindämmen schon: mit eigenem Material als Grundlage (@sec-patterns-usage), Musterlösungen als Vorgabe und systematischer Prüfung der Ergebnisse (@sec-4d).
+</iframe>
 :::
 
-## Diligence: Verantwortung, Offenlegung, Ressourcen {#sec-diligence}
+::: {.content-visible unless-format="html"}
+![Lernspiel „LLM, RAG oder Agent?“ (Probleme und Anwendungsfelder der drei Setups). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-rag-agent-game.html> aufrufen.](images/qr/qr-lernspiel-llm-rag-agent.png){#fig-qr-llm-rag-agent width="32%" fig-align="center"}
+:::
+:::
 
-Diligence fragt, wie wir KI verantwortlich und offen einsetzen (@tbl-4d): mit Sorgfalt beim Erzeugen, mit Offenlegung gegenüber anderen und mit Prüfung, bevor ein Ergebnis oder ein System freigegeben wird.
+In der Lehre stellt RAG Fachtexte oder aktuelle Informationen bereit.
+In einem Geschichtskurs etwa beantwortet NotebookLM Fragen allein aus einem historischen Tagebuch und erzeugt daraus Material bis hin zu Podcasts [@huffman2024].
+Wie Studierende mit Unternehmen Assistenten auf Firmendokumenten bauen, zeigt @sec-fall-unternehmen.
 
-Die Technik verschiebt die Verantwortung, sie nimmt sie nicht ab.
-Das zeigt das Gedächtnis eines Agenten (@sec-agenten-gedaechtnis): Ein Fehler, der einmal dort steht, wirkt in allen folgenden Sitzungen fort, die menschliche Prüfung vorgeschlagener Änderungen wird leicht zum Abnicken, und eine Versionsgeschichte zeigt, *wer* etwas geändert hat, nicht, *ob* es stimmt [@bridgwater2026dream].
-Wer mehr Änderungen erzeugen lässt, als er lesen kann, hat kein geprüftes Gedächtnis, sondern ein ungeprüftes mit Freigabestempel.
+Die drei Muster liegen auf einer Skala, und an ihr zählt, wer den Ablauf bestimmt: in einem Workflow das Programm, in einem Agenten das Modell [@roucher2024smolagents].
+Ein Chatbot, der vor jeder Antwort passende Stellen aus den Skripten holt, bleibt auf der untersten Stufe, denn die Suche läuft immer, gleich was das Modell schreibt.
+RAG macht das Modell kundiger, nicht selbstständiger.
 
-Offenlegung heißt, zu sagen, wo KI mitgearbeitet hat: gegenüber Studierenden, wenn Material oder Feedback mit KI entsteht, und gegenüber allen, die mit KI erzeugte Texte, Bilder oder Stimmen lesen, sehen oder hören.
-Welche Pflichten die KI-Verordnung dafür vorsieht, steht in @sec-ki-vo.
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Ein Chatbot, der nur aus Ihrem Skript antworten soll, braucht keinen Agenten; es genügt ein Modell, das vor jeder Antwort passende Stellen aus dem Skript abruft.“* []{.ez-ihre data-ez="ez-k2-1"}
 
-### Ressourcenverbrauch der Modelle {#sec-energy}
+**Auflösung: ja.** Ein Chatbot zum eigenen Skript ist ein Fall für RAG: Die Suche nach passenden Stellen läuft vor jeder Antwort, und das Modell bekommt ein Bücherregal, aber keinen Spielraum über den Ablauf. Einen Werkzeugkoffer und eigene Entscheidungen über die nächsten Schritte braucht diese Aufgabe nicht; ein Agent mit Internetzugang würde zudem Quellen jenseits des Skripts heranziehen.
+:::
+
+Die folgende Animation baut den Weg vom Chatbot zum Agenten in dreizehn Schritten auf; die Bildfolge stammt von @grootendorst2025agents, die Schleife aus Denken, Handeln und Beobachten von @yao2023react.
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
+
+<iframe loading="lazy" src="interactions/chatbot-zu-agent.html" width="100%" height="1050px" frameborder="0" title="Animation: Vom Chatbot zum Agenten, wie der Spielraum des Modells über den Ablauf wächst"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Vom Chatbot zum Agenten wächst vor allem der Spielraum des Modells über den Ablauf: Im Chatbot und beim festen Abruf eigener Quellen ändert die Antwort nichts am Ablauf (☆☆☆), als Router wählt das Modell einen Abzweig (★☆☆), mit Werkzeugen das Werkzeug (★★☆), in der Schleife aus Denken, Handeln und Beobachten den nächsten Schritt (★★★) (Skala nach @roucher2024smolagents, Bildfolge nach @grootendorst2025agents; schematisch). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/chatbot-zu-agent.html> aufrufen.](images/druck/chatbot-zu-agent-qr.png){#fig-chatbot-zu-agent width="100%" fig-pos="htbp"}
+
+:::
+
+[Wer die Unterscheidung an Beispielantworten weiter üben will, findet ein zweites Lernspiel online: <https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html>.]{.content-visible when-format="html"}
+
+### Agenten in der Praxis: Skills und Werkzeuganschluss {#sec-agenten-praxis}
+
+Im Alltag der Lehre stellt sich die Frage nach dem Harness praktisch: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden?
+Der Unterschied zum Chat ist die Strecke, die die KI allein zurücklegt: Im Chat sehen wir jede Antwort nach Sekunden, ein Recherche-Agent arbeitet Minuten, ein automatisierter Ablauf Stunden.
+Drei Bausteine des äußeren Harness kommen dabei besonders oft vor: Skills, der Werkzeuganschluss und eigene Quellen.
+
+Ein **Skill** ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird.
+Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.
+
+Die Produktion kennt dieses Prinzip als Standardarbeit, bei der jede Tätigkeit nach Inhalt, Reihenfolge, Zeit und Ergebnis festgelegt ist, damit jede Verbesserung auf einem bekannten Stand aufsetzt [@spear1999]; ein Skill ist Standardarbeit für den Agenten.
+Wer einen Skill teilt, lässt ihn vorher von einer zweiten Person lesen, denn er verbreitet seinen Fehler ebenso vollständig wie seine Verbesserungen.
+
+Technisch ist ein Skill ein Ordner mit einer Anleitungsdatei und bei Bedarf weiteren Dateien. Damit fünfzig installierte Skills das Kontextfenster nicht füllen, liest der Agent beim Start nur Name und Kurzbeschreibung jedes Skills; die Anleitung lädt er erst, wenn eine Anfrage zur Beschreibung passt, und Zusatzdateien nur, wenn die Anleitung auf sie verweist [@zhang2025skills]. In den Nutzungsdaten eines verbreiteten Programmier-Agenten verwenden 26,6 % der Nutzenden solche Skills [@johnston2026the].
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
+
+<iframe loading="lazy" src="interactions/skills-handbuch.html" width="100%" height="820px" frameborder="0" title="Animation: Ein Skill lädt sein Wissen erst, wenn es gebraucht wird"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Ein Skill lädt sein Wissen erst, wenn es gebraucht wird: zuerst nur Name und Kurzbeschreibung, dann die Anleitung des passenden Skills, Zusatzdateien nur bei Bedarf, wie Inhaltsverzeichnis, Kapitel und Anhang eines Handbuchs (eigene Darstellung nach @zhang2025skills; schematisch). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/skills-handbuch.html> aufrufen.](images/druck/skills-handbuch-qr.png){#fig-skills-handbuch width="100%" fig-pos="htbp"}
+:::
+
+Der **Werkzeuganschluss** über MCP (@sec-harness) ist für Lehrende die Stelle, an der die KI aufhört, ein Textfenster zu sein, und in unseren Systemen handelt: im Bibliothekskatalog, auf der Lernplattform, im Kalender.
+
+Eigene Quellen sind der Sonderfall, der in der Lehre am häufigsten gebraucht wird: als Projekt oder Notebook im Chat-Interface mit Skript, Übungsblättern und Musterlösungen oder als eigener Tutor, der über RAG auf einer Dokumentablage sitzt [@lewis2020].
+Ob die KI aus den Quellen antwortet oder doch aus dem Training, prüft man mit Fragen, deren Antwort in den Quellen bewusst anders lautet als im Allgemeinwissen.
+
+Skill, Werkzeuganschluss und eigene Quellen sind drei von fünf Bausteinen, mit denen wir der KI dauerhaft beibringen, was sie über einen Kurs wissen soll. @tbl-bausteine ordnet sie danach, was das Modell wann liest, denn diese Spalte entscheidet, wohin eine Regel gehört.
+
+::: {.tabelle-scroll}
+| Baustein | Bild für die Lehre | Was das Modell wann liest |
+|:--|:--|:--|
+| System-Prompt (Personalisierung, benutzerdefinierte Anweisungen) | Einarbeitungsmappe einer neuen Hilfskraft | immer, vor jedem Gespräch, vollständig |
+| Projekt | Ordner mit Notizzettel obendrauf | die Anleitung jede Runde vollständig, die Dateien nur per Suche und gestückelt |
+| Skill | Kapitel im Handbuch | ständig nur Name und Kurzbeschreibung, den Rest, wenn die Anfrage passt |
+| Verbindung (App, Konnektor, MCP-Server) | Kabel mit Stecker zu einem fremden Gerät | wenn eine Aufgabe den Dienst braucht |
+| Plugin | Werkzeugkoffer | löst selbst nichts aus, bündelt Skills und Verbindungen |
+
+: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das Modell davon wann liest. Eigene Darstellung {#tbl-bausteine tbl-colwidths="[30,30,40]"}
+:::
+
+Daraus folgt eine Merkregel: Was immer gelten muss, steht im System-Prompt oder in der Projektanleitung; Beispiele und Material liegen als Datei daneben; ein wiederkehrender Ablauf mit eigenen Regeln wird zum Skill. Wer in seinem Tarif keine Skills hat, baut den Skill als Projekt nach.
+
+Ob ein Modell diese Regeln befolgt, hängt an ihrer Form. @nepal2026faithful prüften einen Reflexions-Bot Regel für Regel gegen seinen eigenen System-Prompt: Regeln, deren Einhaltung sich leicht feststellen ließ, befolgte er zuverlässig, vage Haltungsregeln nicht; die Studie ist ein Preprint ohne abgeschlossene Begutachtung. „Höchstens drei Sätze“ hält ein Modell ein, „sei ermutigend“ dehnt es wie eine neue Hilfskraft am ersten Tag. Ein Folien-Skill verlangt deshalb nicht „gute Folien“, sondern Regeln zum Abhaken: ein ganzer Satz als Titel, ein Bild, das ihn belegt, höchstens fünfzehn Wörter im Folienkörper und eine vollständige Quelle. Diese Folienform ist zugleich die besser belegte. Ingenieurstudierende, die denselben Vortrag mit Satztitel und Bildbeleg statt mit Themenüberschrift und Aufzählung sahen, verstanden mehr und hatten weniger Fehlvorstellungen [@garner2013]; Text, den die Vortragende zugleich spricht, unterdrückt dagegen die Aufnahme des Gesprochenen [@wecker2012].
+
+Wie Studierende eine solche Quellenanbindung mit Unternehmen selbst aufbauen, zeigt @sec-fall-unternehmen.
+
+### Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt {#sec-agenten-gedaechtnis}
+
+Ein Sprachmodell erinnert sich nicht.
+Alles, was es bei einer Antwort berücksichtigt, steht in seinem **Kontextfenster**: Prompt, bisheriger Gesprächsverlauf, hochgeladene Dateien und die Ergebnisse seiner Werkzeuge (lateinisch *contexere*, zusammenweben; der Kontext ist das Gewebe, in dem ein Satz erst Sinn ergibt).
+Das Kontextfenster ist ein Schreibtisch, kein Archiv: Was darauf liegt, sieht das Modell vollständig, was nicht darauf liegt, existiert für die Antwort nicht, und am Ende der Sitzung wird der Tisch abgeräumt.
+Ein Agent, der ein Semester lang Feedback schreibt, braucht deshalb ein Archiv und eine Regel, was wann auf den Tisch kommt.
+Alles auf einmal hinzulegen ist keine Lösung, denn ein voller Tisch kostet bei jeder Antwort Rechenzeit und Geld (@sec-gpt-bedeutung).
+
+Für diese Regel haben sich vier Stufen herausgebildet, die die folgende Abbildung nebeneinanderstellt: eine Anleitungsdatei, die der Agent zu Beginn jeder Sitzung liest, bis sie den Tisch füllt; Werkzeuge, mit denen er selbst entscheidet, wann er eine Erinnerung notiert, nachliest oder ändert; Skills, von denen zunächst nur Name und Kurzbeschreibung auf dem Tisch liegen [@zhang2025skills]; und ein gewöhnlicher Ordner mit Textdateien, den der Agent durchsucht und pflegt wie jedes andere Verzeichnis.
+Der rote Faden: immer weniger vorab auf den Tisch, immer gezielter bei Bedarf aus dem Archiv.
+Die vierte Stufe hat einen Nebeneffekt, der für die Lehre wichtiger ist als für die Technik: Einen Ordner mit Textdateien können Menschen öffnen, lesen und korrigieren.
+
+::: {.content-visible when-format="html"}
+<iframe loading="lazy" src="interactions/agenten-gedaechtnis.html" width="100%" height="620px" frameborder="0" title="Animation: Vier Stufen des Agenten-Gedächtnisses, von der Anleitungsdatei bis zum durchsuchbaren Ordner"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Vom Spickzettel zum prüfbaren Archiv: Die vier Stufen unterscheiden sich darin, was wann ins Kontextfenster gelangt, von der Anleitungsdatei (alles von Anfang an) bis zum Dateisystem (nur das gezielt Gesuchte) (schematische Darstellung). Die animierte Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-gedaechtnis.html> aufrufen.](images/druck/agenten-gedaechtnis-qr.png){#fig-agenten-gedaechtnis width="100%" fig-pos="htbp"}
+:::
+
+Wie aus Gesprächen überhaupt Erinnerungen werden, beschreiben @milam2025sessions mit zwei Speichern.
+Die **Sitzung** (*Session*) hält ein Gespräch vollständig und in Reihenfolge fest; aus ihr baut der Agent vor jeder Antwort den Kontext neu.
+Das **Gedächtnis** (*Memory*) bewahrt über viele Sitzungen hinweg nur das Verdichtete: Kernpunkte werden herausgezogen, mit dem Vorhandenen zusammengeführt, Veraltetes wird ersetzt, und in der nächsten Sitzung holt der Agent nur das Passende zurück.
+
+::: {.content-visible when-format="html"}
+Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
+
+<iframe loading="lazy" src="interactions/sitzung-und-gedaechtnis.html" width="100%" height="880px" frameborder="0" title="Animation: Die Sitzung schreibt alles mit, das Gedächtnis behält nur das Verdichtete"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Die Sitzung schreibt alles mit, das Gedächtnis behält nur das Verdichtete: Ein Statistik-Tutor baut den Kontext aus der laufenden Sitzung, Kernpunkte wandern ins Gedächtnis, und am vierten Abend holt er nur das Passende zurück (eigene Darstellung nach @milam2025sessions; schematisch). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/sitzung-und-gedaechtnis.html> aufrufen.](images/druck/sitzung-und-gedaechtnis-qr.png){#fig-sitzung-gedaechtnis width="100%" fig-pos="htbp"}
+:::
+
+Ein Gedächtnis ist etwas anderes als RAG: Bei RAG liest das Modell in Dokumenten, die wir ausgewählt haben; ins Gedächtnis schreibt der Agent selbst, und was er heute notiert, bestimmt, was er morgen für wahr hält.
+Die Anbieter sichern das mit den Mitteln jedes gemeinsam bearbeiteten Dokuments: Eine Änderung wird abgewiesen, wenn inzwischen eine andere Sitzung geschrieben hat, jede Änderung hinterlässt eine Version, und ein Speicher lässt sich nur zum Lesen einbinden, sodass ein Agent die Hausregeln kennt, aber nicht ändern kann [@anthropic2026memorystores].
+
+Wann der Agent ins Gedächtnis schreibt, ist die zweite Gestaltungsfrage.
+Auf Stufe 2 geschieht es *in-band*, mitten in der Sitzung, so wie man ein Laborbuch während des Versuchs führt.
+Seit Mai 2026 gibt es zusätzlich Läufe *out-of-band*, bei Anthropic „Dreaming“ genannt: Ein eigener Durchgang liest den Speicher und frühere Sitzungen und schlägt eine überarbeitete Fassung vor, über deren Übernahme der Betreiber entscheidet [@anthropic2026dreaming].
+Donald Schön unterschied bei Berufspraktikern *reflection-in-action*, das Umsteuern mitten im Handeln, von *reflection-on-action*, dem Blick zurück, wenn die Arbeit ruht [@schon1983]; Reflexion kommt vom lateinischen *reflectere*, zurückbeugen.
+Lerntagebuch und Nachbesprechung eines Praktikums sind genau diese beiden Formen, und die zweite hat ohne die erste wenig Stoff.
+Was daraus für die Verantwortung folgt, steht in @sec-diligence.
+
+::::: {.content-visible when-format="html"}
+
+::: {.callout-note title="Anwendungsbeispiel: Ein falscher Eintrag überlebt das Gespräch"}
+Eine Lehrende lässt einen Agenten ein Semester lang das Wochenfeedback auf die Berichte von sechs Projektteams vorbereiten.
+Damit er nicht jede Woche von vorn beginnt, führt er ein Gedächtnis: je Team eine Datei mit dem Stand der Arbeit, den offenen Punkten und den Hinweisen der Vorwochen.
+In Woche 3 liest er aus dem Entwurf von Team 4 heraus, die Stakeholder-Analyse sei abgeschlossen, und trägt das ein; tatsächlich hatte das Team nur die Gliederung angelegt.
+Von da an spricht das Feedback die Stakeholder-Analyse nicht mehr an, Woche für Woche, denn für den Agenten ist sie erledigt.
+Erst in Woche 6 fällt der Lehrenden die Lücke auf.
+Korrigierte sie nur das Feedback dieser Woche, käme der Fehler in Woche 7 zurück, mit der Autorität eines längst geprüften Stands.
+Sie korrigiert deshalb den Eintrag im Gedächtnis und liest seitdem bei jedem Durchgang die geänderten Zeilen der Teamdateien, nicht nur das fertige Feedback.
+Das Beispiel ist konstruiert, der Mechanismus nicht.
+:::
+
+:::::
+
+[Ein konstruiertes Anwendungsbeispiel in der Online-Fassung zeigt, wie ein falscher Eintrag im Gedächtnis ein Semester lang das Feedback prägt.]{.content-visible unless-format="html"}
+
+::: {.callout-tip title="Empfehlung für die Lehre"}
+Wenn Studierende über ein Semester mit einem Agenten an einem Projekt arbeiten, lassen Sie das Team ein gemeinsames Projektgedächtnis führen: eine Textdatei mit Entscheidungen, offenen Fragen und geprüften Quellen, jeder Eintrag mit Datum und Namen.
+Der Agent liest sie zu Beginn jeder Sitzung und schlägt Ergänzungen vor; eingetragen wird erst, was ein Teammitglied gelesen hat.
+Zu jedem Meilenstein geht das Team die Datei gemeinsam durch, wie ein Dream-Lauf von Hand: Was ist überholt, was doppelt, was falsch?
+Prüfkriterium: Kann ein neues Teammitglied allein aus der Datei sagen, was entschieden ist und warum?
+:::
+
+## Ressourcenverbrauch der Modelle {#sec-energy}
 
 Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen „Weltuntergang“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen.
 Eine einzelne Textanfrage ist billig: Schätzungen von 2025 liegen zwischen 0,3 Wattstunden für ein großes Chat-Modell und 0,03 Wattstunden für kleine Modelle, also etwa so viel wie zehn Sekunden Video-Streaming [@odonnell2025; @you2025; @elsworth2025].
@@ -847,155 +734,6 @@ Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte
 
 ::: {.content-visible unless-format="html"}
 ![Vor der Antwort entsteht im Modell ein Zwischenschritt, der nie im Text steht: Aus „Dallas“ wird intern „Texas“ und daraus „Austin“; ersetzen Forschende „Texas“ durch „California“, antwortet das Modell „Sacramento“ (eigene Darstellung nach @lindsey2025 und @anthropic2025tracing; Claude 3.5 Haiku, stark vereinfacht). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/zwischenschritt-texas.html> aufrufen.](images/druck/zwischenschritt-texas-qr.png){#fig-zwischenschritt-texas width="100%" fig-pos="htbp"}
-:::
-
-### Agenten in der Praxis: Skills und Werkzeuganschluss {#sec-agenten-praxis}
-
-Im Alltag der Lehre stellt sich die Frage nach dem Harness praktisch: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden?
-Der Unterschied zum Chat ist die Strecke, die die KI allein zurücklegt: Im Chat sehen wir jede Antwort nach Sekunden, ein Recherche-Agent arbeitet Minuten, ein automatisierter Ablauf Stunden.
-Drei Bausteine des äußeren Harness kommen dabei besonders oft vor: Skills, der Werkzeuganschluss und eigene Quellen.
-
-Ein **Skill** ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird.
-Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.
-
-Die Produktion kennt dieses Prinzip als Standardarbeit, bei der jede Tätigkeit nach Inhalt, Reihenfolge, Zeit und Ergebnis festgelegt ist, damit jede Verbesserung auf einem bekannten Stand aufsetzt [@spear1999]; ein Skill ist Standardarbeit für den Agenten.
-Wer einen Skill teilt, lässt ihn vorher von einer zweiten Person lesen, denn er verbreitet seinen Fehler ebenso vollständig wie seine Verbesserungen.
-
-Technisch ist ein Skill ein Ordner mit einer Anleitungsdatei und bei Bedarf weiteren Dateien. Damit fünfzig installierte Skills das Kontextfenster nicht füllen, liest der Agent beim Start nur Name und Kurzbeschreibung jedes Skills; die Anleitung lädt er erst, wenn eine Anfrage zur Beschreibung passt, und Zusatzdateien nur, wenn die Anleitung auf sie verweist [@zhang2025skills]. In den Nutzungsdaten eines verbreiteten Programmier-Agenten verwenden 26,6 % der Nutzenden solche Skills [@johnston2026the].
-
-::: {.content-visible when-format="html"}
-Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
-
-<iframe loading="lazy" src="interactions/skills-handbuch.html" width="100%" height="820px" frameborder="0" title="Animation: Ein Skill lädt sein Wissen erst, wenn es gebraucht wird"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-![Ein Skill lädt sein Wissen erst, wenn es gebraucht wird: zuerst nur Name und Kurzbeschreibung, dann die Anleitung des passenden Skills, Zusatzdateien nur bei Bedarf, wie Inhaltsverzeichnis, Kapitel und Anhang eines Handbuchs (eigene Darstellung nach @zhang2025skills; schematisch). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/skills-handbuch.html> aufrufen.](images/druck/skills-handbuch-qr.png){#fig-skills-handbuch width="100%" fig-pos="htbp"}
-:::
-
-Der **Werkzeuganschluss** über MCP (@sec-harness) ist für Lehrende die Stelle, an der die KI aufhört, ein Textfenster zu sein, und in unseren Systemen handelt: im Bibliothekskatalog, auf der Lernplattform, im Kalender.
-
-Eigene Quellen sind der Sonderfall, der in der Lehre am häufigsten gebraucht wird: als Projekt oder Notebook im Chat-Interface mit Skript, Übungsblättern und Musterlösungen oder als eigener Tutor, der über RAG auf einer Dokumentablage sitzt [@lewis2020].
-Ob die KI aus den Quellen antwortet oder doch aus dem Training, prüft man mit Fragen, deren Antwort in den Quellen bewusst anders lautet als im Allgemeinwissen.
-
-Skill, Werkzeuganschluss und eigene Quellen sind drei von fünf Bausteinen, mit denen wir der KI dauerhaft beibringen, was sie über einen Kurs wissen soll. @tbl-bausteine ordnet sie danach, was das Modell wann liest, denn diese Spalte entscheidet, wohin eine Regel gehört.
-
-::: {.tabelle-scroll}
-| Baustein | Bild für die Lehre | Was das Modell wann liest |
-|:--|:--|:--|
-| System-Prompt (Personalisierung, benutzerdefinierte Anweisungen) | Einarbeitungsmappe einer neuen Hilfskraft | immer, vor jedem Gespräch, vollständig |
-| Projekt | Ordner mit Notizzettel obendrauf | die Anleitung jede Runde vollständig, die Dateien nur per Suche und gestückelt |
-| Skill | Kapitel im Handbuch | ständig nur Name und Kurzbeschreibung, den Rest, wenn die Anfrage passt |
-| Verbindung (App, Konnektor, MCP-Server) | Kabel mit Stecker zu einem fremden Gerät | wenn eine Aufgabe den Dienst braucht |
-| Plugin | Werkzeugkoffer | löst selbst nichts aus, bündelt Skills und Verbindungen |
-
-: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das Modell davon wann liest. Eigene Darstellung {#tbl-bausteine tbl-colwidths="[30,30,40]"}
-:::
-
-Daraus folgt eine Merkregel: Was immer gelten muss, steht im System-Prompt oder in der Projektanleitung; Beispiele und Material liegen als Datei daneben; ein wiederkehrender Ablauf mit eigenen Regeln wird zum Skill. Wer in seinem Tarif keine Skills hat, baut den Skill als Projekt nach.
-
-Ob ein Modell diese Regeln befolgt, hängt an ihrer Form. @nepal2026faithful prüften einen Reflexions-Bot Regel für Regel gegen seinen eigenen System-Prompt: Regeln, deren Einhaltung sich leicht feststellen ließ, befolgte er zuverlässig, vage Haltungsregeln nicht; die Studie ist ein Preprint ohne abgeschlossene Begutachtung. „Höchstens drei Sätze“ hält ein Modell ein, „sei ermutigend“ dehnt es wie eine neue Hilfskraft am ersten Tag. Ein Folien-Skill verlangt deshalb nicht „gute Folien“, sondern Regeln zum Abhaken: ein ganzer Satz als Titel, ein Bild, das ihn belegt, höchstens fünfzehn Wörter im Folienkörper und eine vollständige Quelle. Diese Folienform ist zugleich die besser belegte. Ingenieurstudierende, die denselben Vortrag mit Satztitel und Bildbeleg statt mit Themenüberschrift und Aufzählung sahen, verstanden mehr und hatten weniger Fehlvorstellungen [@garner2013]; Text, den die Vortragende zugleich spricht, unterdrückt dagegen die Aufnahme des Gesprochenen [@wecker2012].
-
-Die Konsequenz der Delegation ist weniger technisch als organisatorisch.
-Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, dass sich für jede Stufe einer Aufgabe getrennt festlegen lässt, wie viel die Maschine entscheidet und wo der Mensch das Steuer behält [@parasuraman2000].
-Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet, bei einer Literaturrecherche etwa beim Quellenkorb, beim Rechercheplan und bei der Stichprobe von Aussagen, die wir gegen das Original halten.
-Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte.
-
-Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Programmier-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig [@johnston2026the]. Das folgende Modell verfolgt eine einzelne Aufgabe, Kugel A, durch Auftrag, Recherche, Entscheidung, Rechnung und Freigabe, einmal allein und einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.
-
-::: {.content-visible when-format="html"}
-Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.
-:::
-
-::: {.content-visible when-format="html"}
-:::: {.column-page}
-```{=html}
-<iframe loading="lazy" id="agenten-engpass" src="interactions/agenten-engpass.html" width="100%" height="1000px" frameborder="0" title="Animation: Acht Aufgaben, viele Agenten, ein Mensch – wo Kugel A wartet"></iframe>
-<script>
-/* Die Animation meldet ihre Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
-window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || d.typ !== "rahmen-hoehe") return;
-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
-});
-</script>
-```
-::::
-:::
-
-::: {.content-visible unless-format="html"}
-![Mehr Agenten machen den Menschen zum Engpass. Standbild bei Minute 22 von acht gleichzeitig abgegebenen Aufgaben: Kugel A liegt in der Ablage „Zu entscheiden“, während die Agenten kaum zu tun haben; allein ist sie nach 24 Minuten fertig, als achte von acht nach 43,5 Minuten, davon 19,5 Minuten Warten (Lehrmodell, keine Messung). Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-engpass.html> aufrufen.](images/druck/agenten-engpass-qr.png){#fig-agenten-engpass width="100%" fig-pos="htbp"}
-:::
-
-Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet, denn der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station; ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
-
-Wie Studierende eine solche Quellenanbindung mit Unternehmen selbst aufbauen, zeigt @sec-fall-unternehmen.
-
-### Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt {#sec-agenten-gedaechtnis}
-
-Ein Sprachmodell erinnert sich nicht.
-Alles, was es bei einer Antwort berücksichtigt, steht in seinem **Kontextfenster**: Prompt, bisheriger Gesprächsverlauf, hochgeladene Dateien und die Ergebnisse seiner Werkzeuge (lateinisch *contexere*, zusammenweben; der Kontext ist das Gewebe, in dem ein Satz erst Sinn ergibt).
-Das Kontextfenster ist ein Schreibtisch, kein Archiv: Was darauf liegt, sieht das Modell vollständig, was nicht darauf liegt, existiert für die Antwort nicht, und am Ende der Sitzung wird der Tisch abgeräumt.
-Ein Agent, der ein Semester lang Feedback schreibt, braucht deshalb ein Archiv und eine Regel, was wann auf den Tisch kommt.
-Alles auf einmal hinzulegen ist keine Lösung, denn ein voller Tisch kostet bei jeder Antwort Rechenzeit und Geld (@sec-gpt-bedeutung).
-
-Für diese Regel haben sich vier Stufen herausgebildet, die die folgende Abbildung nebeneinanderstellt: eine Anleitungsdatei, die der Agent zu Beginn jeder Sitzung liest, bis sie den Tisch füllt; Werkzeuge, mit denen er selbst entscheidet, wann er eine Erinnerung notiert, nachliest oder ändert; Skills, von denen zunächst nur Name und Kurzbeschreibung auf dem Tisch liegen [@zhang2025skills]; und ein gewöhnlicher Ordner mit Textdateien, den der Agent durchsucht und pflegt wie jedes andere Verzeichnis.
-Der rote Faden: immer weniger vorab auf den Tisch, immer gezielter bei Bedarf aus dem Archiv.
-Die vierte Stufe hat einen Nebeneffekt, der für die Lehre wichtiger ist als für die Technik: Einen Ordner mit Textdateien können Menschen öffnen, lesen und korrigieren.
-
-::: {.content-visible when-format="html"}
-<iframe loading="lazy" src="interactions/agenten-gedaechtnis.html" width="100%" height="620px" frameborder="0" title="Animation: Vier Stufen des Agenten-Gedächtnisses, von der Anleitungsdatei bis zum durchsuchbaren Ordner"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-![Vom Spickzettel zum prüfbaren Archiv: Die vier Stufen unterscheiden sich darin, was wann ins Kontextfenster gelangt, von der Anleitungsdatei (alles von Anfang an) bis zum Dateisystem (nur das gezielt Gesuchte) (schematische Darstellung). Die animierte Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-gedaechtnis.html> aufrufen.](images/druck/agenten-gedaechtnis-qr.png){#fig-agenten-gedaechtnis width="100%" fig-pos="htbp"}
-:::
-
-Wie aus Gesprächen überhaupt Erinnerungen werden, beschreiben @milam2025sessions mit zwei Speichern.
-Die **Sitzung** (*Session*) hält ein Gespräch vollständig und in Reihenfolge fest; aus ihr baut der Agent vor jeder Antwort den Kontext neu.
-Das **Gedächtnis** (*Memory*) bewahrt über viele Sitzungen hinweg nur das Verdichtete: Kernpunkte werden herausgezogen, mit dem Vorhandenen zusammengeführt, Veraltetes wird ersetzt, und in der nächsten Sitzung holt der Agent nur das Passende zurück.
-
-::: {.content-visible when-format="html"}
-Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.
-
-<iframe loading="lazy" src="interactions/sitzung-und-gedaechtnis.html" width="100%" height="880px" frameborder="0" title="Animation: Die Sitzung schreibt alles mit, das Gedächtnis behält nur das Verdichtete"></iframe>
-:::
-
-::: {.content-visible unless-format="html"}
-![Die Sitzung schreibt alles mit, das Gedächtnis behält nur das Verdichtete: Ein Statistik-Tutor baut den Kontext aus der laufenden Sitzung, Kernpunkte wandern ins Gedächtnis, und am vierten Abend holt er nur das Passende zurück (eigene Darstellung nach @milam2025sessions; schematisch). Die Fassung zum Durchklicken: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/sitzung-und-gedaechtnis.html> aufrufen.](images/druck/sitzung-und-gedaechtnis-qr.png){#fig-sitzung-gedaechtnis width="100%" fig-pos="htbp"}
-:::
-
-Ein Gedächtnis ist etwas anderes als RAG: Bei RAG liest das Modell in Dokumenten, die wir ausgewählt haben; ins Gedächtnis schreibt der Agent selbst, und was er heute notiert, bestimmt, was er morgen für wahr hält.
-Die Anbieter sichern das mit den Mitteln jedes gemeinsam bearbeiteten Dokuments: Eine Änderung wird abgewiesen, wenn inzwischen eine andere Sitzung geschrieben hat, jede Änderung hinterlässt eine Version, und ein Speicher lässt sich nur zum Lesen einbinden, sodass ein Agent die Hausregeln kennt, aber nicht ändern kann [@anthropic2026memorystores].
-
-Wann der Agent ins Gedächtnis schreibt, ist die zweite Gestaltungsfrage.
-Auf Stufe 2 geschieht es *in-band*, mitten in der Sitzung, so wie man ein Laborbuch während des Versuchs führt.
-Seit Mai 2026 gibt es zusätzlich Läufe *out-of-band*, bei Anthropic „Dreaming“ genannt: Ein eigener Durchgang liest den Speicher und frühere Sitzungen und schlägt eine überarbeitete Fassung vor, über deren Übernahme der Betreiber entscheidet [@anthropic2026dreaming].
-Donald Schön unterschied bei Berufspraktikern *reflection-in-action*, das Umsteuern mitten im Handeln, von *reflection-on-action*, dem Blick zurück, wenn die Arbeit ruht [@schon1983]; Reflexion kommt vom lateinischen *reflectere*, zurückbeugen.
-Lerntagebuch und Nachbesprechung eines Praktikums sind genau diese beiden Formen, und die zweite hat ohne die erste wenig Stoff.
-Was daraus für die Verantwortung folgt, steht in @sec-diligence.
-
-::::: {.content-visible when-format="html"}
-
-::: {.callout-note title="Anwendungsbeispiel: Ein falscher Eintrag überlebt das Gespräch"}
-Eine Lehrende lässt einen Agenten ein Semester lang das Wochenfeedback auf die Berichte von sechs Projektteams vorbereiten.
-Damit er nicht jede Woche von vorn beginnt, führt er ein Gedächtnis: je Team eine Datei mit dem Stand der Arbeit, den offenen Punkten und den Hinweisen der Vorwochen.
-In Woche 3 liest er aus dem Entwurf von Team 4 heraus, die Stakeholder-Analyse sei abgeschlossen, und trägt das ein; tatsächlich hatte das Team nur die Gliederung angelegt.
-Von da an spricht das Feedback die Stakeholder-Analyse nicht mehr an, Woche für Woche, denn für den Agenten ist sie erledigt.
-Erst in Woche 6 fällt der Lehrenden die Lücke auf.
-Korrigierte sie nur das Feedback dieser Woche, käme der Fehler in Woche 7 zurück, mit der Autorität eines längst geprüften Stands.
-Sie korrigiert deshalb den Eintrag im Gedächtnis und liest seitdem bei jedem Durchgang die geänderten Zeilen der Teamdateien, nicht nur das fertige Feedback.
-Das Beispiel ist konstruiert, der Mechanismus nicht.
-:::
-
-:::::
-
-[Ein konstruiertes Anwendungsbeispiel in der Online-Fassung zeigt, wie ein falscher Eintrag im Gedächtnis ein Semester lang das Feedback prägt.]{.content-visible unless-format="html"}
-
-::: {.callout-tip title="Empfehlung für die Lehre"}
-Wenn Studierende über ein Semester mit einem Agenten an einem Projekt arbeiten, lassen Sie das Team ein gemeinsames Projektgedächtnis führen: eine Textdatei mit Entscheidungen, offenen Fragen und geprüften Quellen, jeder Eintrag mit Datum und Namen.
-Der Agent liest sie zu Beginn jeder Sitzung und schlägt Ergänzungen vor; eingetragen wird erst, was ein Teammitglied gelesen hat.
-Zu jedem Meilenstein geht das Team die Datei gemeinsam durch, wie ein Dream-Lauf von Hand: Was ist überholt, was doppelt, was falsch?
-Prüfkriterium: Kann ein neues Teammitglied allein aus der Datei sagen, was entschieden ist und warum?
 :::
 
 ::: {.callout-tip title="Kernaussagen"}
