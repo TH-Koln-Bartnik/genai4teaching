@@ -15,7 +15,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 QUELLE = sys.argv[1]
-URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel05.html#sec-detektor-duell"
+URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel05-4d-phasen.html#sec-detektor-duell"
 HINWEIS = "<!-- Automatisch erzeugt von scripts/detektor-einbetten.py aus _src/detektor/. Nicht von Hand ändern. -->\n"
 
 modell = json.load(open(f"{QUELLE}/modell.json", encoding="utf-8"))

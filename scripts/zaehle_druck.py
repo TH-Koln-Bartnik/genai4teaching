@@ -1,6 +1,6 @@
 """Wortzahl je Abschnitt wie zaehle_kapitel.py, aber nur der Druckfassung (S1b, 01.11.2026):
 überspringt Blöcke ::: {.content-visible when-format="html"} und Spans [...]{.content-visible when-format="html"}.
-Aufruf: python3 zaehle_druck.py kapitel02.qmd"""
+Aufruf: python3 zaehle_druck.py kapitel02-grundlagen.qmd"""
 import re, sys
 L = open(sys.argv[1], encoding='utf-8').read().split('\n')
 def wc(s):

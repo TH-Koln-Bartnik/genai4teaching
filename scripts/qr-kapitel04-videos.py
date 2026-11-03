@@ -7,7 +7,7 @@ import cv2, qrcode
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
-BASE = "https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#"
+BASE = "https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#"
 VIDS = [("acemoglu-restrepo", "60 s"), ("making-of", "59 s"), ("eoq-vergleich", "30 s"), ("ps2pal-ablauf", "44 s")]
 F = "/usr/share/fonts/opentype/inter/"
 font, small = ImageFont.truetype(F + "Inter-Bold.otf", 34), ImageFont.truetype(F + "Inter-Regular.otf", 28)

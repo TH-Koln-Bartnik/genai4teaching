@@ -11,22 +11,23 @@ GAP = 8      # Abstand paralleler Linien
 BREITE = 5   # Linienstärke
 
 # Stationen: Schlüssel -> (x, y, Beschriftung, Ausrichtung, dx, dy, Link, Knoten)
-ST = {
-    "k1":  (140, 280, "1 Einleitung",       "end", -28, 6, "kapitel01.html#sec-einleitung", True),
-    "k2":  (280, 140, "2 Grundbegriffe",    "middle", 0, -26, "kapitel02.html#sec-grundbegriffe", False),
-    "k3":  (280, 420, "3.1–3.4 Lernmechanismen", "middle", 0, 38, "kapitel03.html#sec-didaktik", False),
-    "e35": (420, 280, "3.5 Evidenz",        "start", -14, 58, "kapitel03.html#sec-evidenz", True),
-    "k4":  (620, 280, "4 Vier Rollen",      "end", -16, -30, "kapitel04.html#sec-szenarien", True),
-    "k5":  (760, 140, "5 Umsetzung",        "middle", 0, -26, "kapitel05.html#sec-umsetzung", False),
-    "k6":  (900, 280, "6 Fallbeispiele",    "start", 26, -12, "kapitel06-fallbeispiele.html#sec-fallbeispiele", True),
+ST = {  # 04.11.2026: neue Gliederung, sieben Kapitel in zwei Teilen (Phase 1 Umzug)
+    "k1":  (140, 280, "1 Einleitung",       "end", -28, 6, "kapitel01-einleitung.html#sec-einleitung", True),
+    "k2":  (260, 140, "2 Grundlagen",       "end", -6, -26, "kapitel02-grundlagen.html#sec-grundbegriffe", False),
+    "k3":  (390, 140, "3 Automation",       "start", 6, -26, "kapitel03-automation.html#sec-automation", False),
+    "k4":  (390, 420, "4.1–4.4 Lernmechanismen", "middle", 0, 38, "kapitel04-lernmechanismen.html#sec-didaktik", False),
+    "e45": (520, 280, "4.5 Evidenz",        "start", -14, 58, "kapitel04-lernmechanismen.html#sec-evidenz", True),
+    "k5":  (650, 140, "5 Vier Phasen (4D)", "middle", 0, -26, "kapitel05-4d-phasen.html#sec-umsetzung", False),
+    "k6":  (780, 280, "6 Rollen",           "middle", 0, 50, "kapitel06-rollen.html#sec-szenarien", True),
+    "k7":  (910, 280, "7 Artefakte",        "middle", 0, -30, "kapitel07-artefakte.html#sec-fallbeispiele", True),
     "anh": (1040, 420, "Anhang A",           "middle", 0, 38, "kapitel07-appendix02-prompt-sammlung.html#sec-prompts", False),
 }
 
 LINIEN = {
-    1: ["k1", "k2", "k3", "e35", "k4", "k5", "k6"],
-    2: ["k1", "k2", "k3", "e35", "k4", "k5", "k6"],   # S1b 01.11.2026: hält an 2.1 (vier Kompetenzen)
-    3: ["k1", "k2", "e35", "k4", "k5", "k6"],   # 02.11.2026: Praxis-Primer (Anh. E) entfernt, Linie 3 hält an Kapitel 5
-    4: ["k1", "e35", "k4", "k6", "anh"],
+    1: ["k1", "k2", "k3", "k4", "e45", "k5", "k6", "k7"],
+    2: ["k1", "k3", "k4", "e45", "k5", "k6", "k7"],   # 04.11.2026: 4D steht jetzt in Kap. 5, Linie 2 überspringt Kap. 2
+    3: ["k1", "k2", "k3", "e45", "k5", "k6", "k7"],
+    4: ["k1", "e45", "k6", "k7", "anh"],
 }
 NAMEN = {
     1: "Neu in KI und Lernforschung",
@@ -102,8 +103,8 @@ def svg(fragment=False):
              f'class="lernpfade-karte" role="img" aria-labelledby="lp-titel lp-desc">')
     o.append('<title id="lp-titel">Lernpfade durch das Buch</title>')
     o.append('<desc id="lp-desc">Liniennetz mit vier Lernpfaden. Alle Linien halten an Kapitel 1, '
-             'Abschnitt 3.5, Kapitel 4 und Kapitel 6. Linie 1 hält an allen Hauptkapiteln, Linie 2 liest '
-             'aus Kapitel 2 nur Abschnitt 2.1, Linie 3 überspringt die Abschnitte 3.1 bis 3.4, '
+             'Abschnitt 4.5, Kapitel 6 und Kapitel 7. Linie 1 hält an allen Hauptkapiteln, Linie 2 '
+             'überspringt Kapitel 2, Linie 3 überspringt die Abschnitte 4.1 bis 4.4, '
              'Linie 4 geht von der Einleitung direkt zur Evidenz und endet in der Prompt-Sammlung in Anhang A.</desc>')
     if not fragment:
         o.append('<style>'

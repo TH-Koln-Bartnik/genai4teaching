@@ -5,7 +5,7 @@ from pathlib import Path
 import cv2, qrcode
 from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
-URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel02.html#sec-schemas-rahmen"
+URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel05-4d-phasen.html#sec-schemas-rahmen"
 q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=1, border=2)
 q.add_data(URL); q.make(fit=True)
 m = q.make_image(fill_color="black", back_color="white").convert("1")

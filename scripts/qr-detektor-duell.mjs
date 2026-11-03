@@ -4,7 +4,7 @@
 // Ausführen im Repo-Wurzelordner: node scripts/qr-detektor-duell.mjs
 import QRCode from "qrcode";
 
-const URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel05.html#sec-detektor-duell";
+const URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel05-4d-phasen.html#sec-detektor-duell";
 await QRCode.toFile("images/qr/qr-detektor-duell.png", URL, {
   errorCorrectionLevel: "M", margin: 2, width: 600, color: { dark: "#000000", light: "#ffffff" },
 });

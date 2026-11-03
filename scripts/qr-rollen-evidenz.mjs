@@ -4,7 +4,7 @@
 // Ausführen im Repo-Wurzelordner: node scripts/qr-rollen-evidenz.mjs
 import QRCode from "qrcode";
 
-const URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel02.html#sec-rollen-evidenz";
+const URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel02-grundlagen.html#sec-rollen-evidenz";
 await QRCode.toFile("images/qr/qr-rollen-evidenz.png", URL, {
   errorCorrectionLevel: "M", margin: 2, width: 600, color: { dark: "#000000", light: "#ffffff" },
 });

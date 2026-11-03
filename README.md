@@ -13,7 +13,7 @@ Online-Skript und Druckvorlage für das Open-Access-Lehrbuch (Logos Verlag Berli
 GitHub Pages wird aus dem Ordner `docs/` des Branches `main` bedient. Der frühere Workflow nach `gh-pages` wurde entfernt; der Branch `gh-pages` (Stand Dezember 2025) kann gelöscht werden.
 
 ## Struktur
-- `index.qmd`, `kapitel01.qmd` … `kapitel05.qmd`: Hauptkapitel
+- `index.qmd`, `kapitel01-einleitung.qmd` … `kapitel05-4d-phasen.qmd`: Hauptkapitel
 - `kapitel06-…`, `kapitel07-…`, `kapitel08-…`: Anhänge A–C; `references.qmd`: konsolidiertes Literaturverzeichnis
 - `references.json` (CSL-JSON, nur zitierte Einträge), `apa.csl`
 - `_filters/`: Lua-Filter (z. B. `<br>` → Zeilenumbruch in allen Formaten)

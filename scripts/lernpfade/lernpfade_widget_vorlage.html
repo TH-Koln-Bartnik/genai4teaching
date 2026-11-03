@@ -77,10 +77,10 @@
 </main>
 <script>
 const TEXT = {
-  1: "<b>Linie 1 · Neu in KI und Lernforschung.</b> Lesen Sie der Reihe nach. Kapitel 2 legt die Begriffe, Kapitel 3 die Lernmechanismen, auf die jede spätere Empfehlung zurückgreift.",
-  2: "<b>Linie 2 · Erfahren mit KI.</b> Kapitel 2 dürfen Sie überspringen und bei Bedarf nachschlagen. Kapitel 3 lesen Sie ganz: Dort steht, was Werkzeugwissen nicht ersetzt.",
-  3: "<b>Linie 3 · Vertraut mit Lernforschung.</b> Kapitel 2 holt die technischen Grundlagen nach; aus Kapitel 3 genügt die neue Evidenz in 3.5. Kapitel 5 zeigt danach, wie Sie die Befunde in Prüfung und Kurs umsetzen.",
-  4: "<b>Linie 4 · Vertraut mit beidem.</b> Von der Einleitung direkt zur Evidenz in 3.5, in Kapitel 4 vor allem Tutor und Simulator, dann die Fallbeispiele und die Prompt-Sammlung in Anhang A."
+  1: "<b>Linie 1 · Neu in KI und Lernforschung.</b> Lesen Sie der Reihe nach. Kapitel 2 legt die Begriffe, Kapitel 3 die Prinzipien der Automation, Kapitel 4 die Lernmechanismen, auf die jede spätere Empfehlung zurückgreift.",
+  2: "<b>Linie 2 · Erfahren mit KI.</b> Kapitel 2 dürfen Sie überspringen und bei Bedarf nachschlagen; die vier Kompetenzen, die das ganze Buch ordnen, stehen am Anfang von Kapitel 5. Kapitel 3 und 4 lesen Sie ganz: Dort steht, was Werkzeugwissen nicht ersetzt.",
+  3: "<b>Linie 3 · Vertraut mit Lernforschung.</b> Kapitel 2 holt die technischen Grundlagen nach, Kapitel 3 die Prinzipien der Automation; aus Kapitel 4 genügt die neue Evidenz in 4.5. Kapitel 5 zeigt danach, wie Sie die Befunde in Prüfung und Kurs umsetzen.",
+  4: "<b>Linie 4 · Vertraut mit beidem.</b> Von der Einleitung direkt zur Evidenz in 4.5, in Kapitel 6 vor allem Tutor und Simulator, dann die Artefakte in Kapitel 7 und die Prompt-Sammlung in Anhang A."
 };
 const antworten = {};
 const karte = document.querySelector("svg.lernpfade-karte");
@@ -119,7 +119,7 @@ function auswerten() {
   zeige(ki && did ? 4 : ki ? 2 : did ? 3 : 1);
 }
 
-/* Höhe an die einbettende Seite melden (Empfänger: Skript in kapitel01.qmd) */
+/* Höhe an die einbettende Seite melden (Empfänger: Skript in kapitel01-einleitung.qmd) */
 function melde() { try { parent.postMessage({ typ: "galerie-hoehe", id: "lernpfade", h: Math.ceil(document.querySelector("main").getBoundingClientRect().height) + 8 }, "*"); } catch (e) {} }
 window.addEventListener("load", melde); window.addEventListener("resize", melde);
 new MutationObserver(melde).observe(document.getElementById("ergebnis"), { childList: true, subtree: true });

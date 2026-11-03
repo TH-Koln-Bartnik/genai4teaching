@@ -7,7 +7,7 @@ import cv2, qrcode
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel04.html#sec-podcast-interviews"
+URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-podcast-interviews"
 ZIEL = ROOT / "images/qr/qr-podcast-forschende.png"
 
 q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=1, border=2)

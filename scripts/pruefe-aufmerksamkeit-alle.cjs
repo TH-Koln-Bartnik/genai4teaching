@@ -5,7 +5,7 @@
 //   --md      Ausgabedatei (Standard: reviews/aufmerksamkeit-messung.md)
 //   --bilder  Ordner für Farb-/Graustufenbilder je Ziel und je Schritt, dazu je Ziel eine Übersicht
 //   --wurzel  Ordner, der per HTTP ausgeliefert wird (Standard: Repository). Für die Ziele mit
-//             "gerendert": true eine Arbeitskopie mit frisch gerendertem docs/kapitel04.html angeben.
+//             "gerendert": true eine Arbeitskopie mit frisch gerendertem docs/kapitel06-rollen.html angeben.
 //   --nur     nur diese Ziele (Kommaliste der Nummern)
 // Alle Seiten werden über einen lokalen HTTP-Server geladen, weil OJS-Module unter file:// nicht laden.
 const { spawn } = require("node:child_process");

@@ -1,6 +1,6 @@
 """Erzeugt die Druckfassung von Tabelle 3.2 (eine Zeile je Kernaussage) als Pandoc-Grid-Tabelle
-und setzt sie in kapitel03.qmd ein: Online-Tabelle -> when-format="html", Druckfassung -> unless-format="html".
-Aufruf: python3 -I print_table.py <pfad/zu/kapitel03.qmd>"""
+und setzt sie in kapitel04-lernmechanismen.qmd ein: Online-Tabelle -> when-format="html", Druckfassung -> unless-format="html".
+Aufruf: python3 -I print_table.py <pfad/zu/kapitel04-lernmechanismen.qmd>"""
 import sys, textwrap
 
 W1, W2 = 40, 58  # Zeichenbreiten der Spalten (relativ; Pandoc rechnet Anteile daraus)
@@ -116,13 +116,13 @@ print_block = (
     '::: {.content-visible unless-format="html"}\n'
     'Fett gesetzte Aussagen tragen den Fließtext dieses Abschnitts, die übrigen sind weitere Belege.\n\n'
     + table + '\n\n'
-    ': Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 3, Stand November 2026. {#tbl-stand-kap3}\n'
+    ': Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 4, Stand November 2026. {#tbl-stand-kap3}\n'
     ':::\n'
 )
 
 p = sys.argv[1]
 s = open(p, encoding="utf-8").read()
-cap = ': Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 3, Stand November 2026. {#tbl-stand-kap3}\n'
+cap = ': Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 4, Stand November 2026. {#tbl-stand-kap3}\n'
 assert s.count(cap) == 1 and 'Fett gesetzte Aussagen tragen' not in s
 start = s.index('\n+----------------------+---', s.index('Stand der Forschung bei Drucklegung, November 2026')) + 1
 end = s.index(cap) + len(cap)

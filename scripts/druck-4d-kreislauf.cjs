@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path'); const REPO = path.resolve(__dirname, '..') + '/';
 const BASIS = 'https://th-koln-bartnik.github.io/genai4teaching/';
 const URL = BASIS + 'interactions/4d-kreislauf.html';
-const URL_UEBUNG = BASIS + 'kapitel07-appendix02-prompt-sammlung.html#sec-ai-fluency-uebung';
+const URL_UEBUNG = BASIS + 'kapitel05-4d-phasen.html#sec-ai-fluency-uebung';
 
 const TINTE = '#1b1b1b', GRAU = '#767676', ZURUECK = '#b5b5b5', FLAECHE = '#f2f2f2';
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');

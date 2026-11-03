@@ -25,7 +25,7 @@
 --   :::
 --   :::
 --
---   ::: {.sb-wiederkehr quellen="kapitel01.html" druck="k1-a k1-b"}   <- ab Kap. 2
+--   ::: {.sb-wiederkehr quellen="kapitel01-einleitung.html" druck="k1-a k1-b"}   <- ab Kap. 2
 --   :::
 --   :::
 --

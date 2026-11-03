@@ -4,7 +4,7 @@
 // Ausführen im Repo-Wurzelordner: node scripts/qr-streich-test.mjs
 import QRCode from "qrcode";
 
-const URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel02.html#sec-streichtest";
+const URL = "https://th-koln-bartnik.github.io/genai4teaching/kapitel02-grundlagen.html#sec-streichtest";
 await QRCode.toFile("images/qr/qr-streich-test.png", URL, {
   errorCorrectionLevel: "M", margin: 2, width: 600, color: { dark: "#000000", light: "#ffffff" },
 });

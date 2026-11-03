@@ -24,7 +24,7 @@ Auflösung: Szene 5 (Wetterbericht) zeigt es: Das Modell gibt eine Verteilung ü
 
 | Fachaussage | Beleg |
 |---|---|
-| Das Modell zerlegt Text in Tokens: ganze Wörter, Wortteile oder Satzzeichen. | kapitel02.qmd, @sec-gpt-bedeutung, Satz 1 (@jurafsky2025, Kap. 2) |
+| Das Modell zerlegt Text in Tokens: ganze Wörter, Wortteile oder Satzzeichen. | kapitel02-grundlagen.qmd, @sec-gpt-bedeutung, Satz 1 (@jurafsky2025, Kap. 2) |
 | „Lieferantenbewertung“ = 5 Tokens, „supplier evaluation“ = 2 (o200k_base, Textanfang). | Build-Skript, gpt-tokenizer 4.1.0 (tokenwerte im Manifest); T1 Vorhersagefrage |
 | Der Tokenizer hat sein Vokabular aus Texten gelernt, in denen Englisch überwiegt. | T1, Auflösung der Vorhersagefrage (interactions/vom-satz-zum-naechsten-wort.html) |
 
@@ -39,7 +39,7 @@ Auflösung: Szene 5 (Wetterbericht) zeigt es: Das Modell gibt eine Verteilung ü
 | Fachaussage | Beleg |
 |---|---|
 | „Die Bank steht unter einem Baum.“ = 7 Tokens; das Leerzeichen gehört zum folgenden Token. | Build-Skript, gpt-tokenizer 4.1.0; T1 Schritt 2 und Abschnitt „Was ist echt“ |
-| Jedes Token hat eine feste Nummer; „Die“ = 8796, „␣Bank“ = 9950. | kapitel02.qmd, @sec-gpt-bedeutung, Satz 2; Build-Skript (tokenwerte); T1 Schritt 3 |
+| Jedes Token hat eine feste Nummer; „Die“ = 8796, „␣Bank“ = 9950. | kapitel02-grundlagen.qmd, @sec-gpt-bedeutung, Satz 2; Build-Skript (tokenwerte); T1 Schritt 3 |
 
 ## Szene 3: Kochshow (41.5–56.9 s)
 
@@ -52,8 +52,8 @@ Auflösung: Szene 5 (Wetterbericht) zeigt es: Das Modell gibt eine Verteilung ü
 
 | Fachaussage | Beleg |
 |---|---|
-| Jedes Token wird in einen Vektor übersetzt, eine lange Zahlenreihe; der Vorgang heißt Embedding. | kapitel02.qmd, @sec-gpt-bedeutung, Sätze 2–3 |
-| Der Vektor beschreibt die Bedeutung als Ort auf einer Art Stadtplan; ähnliche Wörter liegen in der Nachbarschaft. | kapitel02.qmd, @sec-gpt-bedeutung, Satz 2 |
+| Jedes Token wird in einen Vektor übersetzt, eine lange Zahlenreihe; der Vorgang heißt Embedding. | kapitel02-grundlagen.qmd, @sec-gpt-bedeutung, Sätze 2–3 |
+| Der Vektor beschreibt die Bedeutung als Ort auf einer Art Stadtplan; ähnliche Wörter liegen in der Nachbarschaft. | kapitel02-grundlagen.qmd, @sec-gpt-bedeutung, Satz 2 |
 | Allein liegt „Bank“ zwischen den Nachbarschaften Geld und Park. | T1 Schritt 5 (Unterschrift „Allein liegt Bank zwischen zwei Nachbarschaften“) |
 
 ## Szene 4: Sportreportage (56.9–74.5 s)
@@ -67,7 +67,7 @@ Auflösung: Szene 5 (Wetterbericht) zeigt es: Das Modell gibt eine Verteilung ü
 
 | Fachaussage | Beleg |
 |---|---|
-| Aufmerksamkeit: Beim Token „Baum“ blickt das Modell auf „Bank“ zurück; ab dieser Stelle trägt die Rechnung die Bedeutung „Bank im Park“ weiter (neuer Punkt „Bank im Satz“, der Bank-Punkt selbst bleibt). | kapitel02.qmd, Absatz „Was heißt hier GPT?“ (@vaswani2017); T1 Schritt 6 und Abschnitt „Was ist echt“, Punkt „Vereinfacht“ |
+| Aufmerksamkeit: Beim Token „Baum“ blickt das Modell auf „Bank“ zurück; ab dieser Stelle trägt die Rechnung die Bedeutung „Bank im Park“ weiter (neuer Punkt „Bank im Satz“, der Bank-Punkt selbst bleibt). | kapitel02-grundlagen.qmd, Absatz „Was heißt hier GPT?“ (@vaswani2017); T1 Schritt 6 und Abschnitt „Was ist echt“, Punkt „Vereinfacht“ |
 | In Modellen der GPT-Art blickt jedes Token nur auf frühere Tokens zurück. | T1, Abschnitt „Was ist echt“, Punkt „Vereinfacht“ |
 | Echte Modelle rechnen in vielen Schichten mit vielen Aufmerksamkeitsköpfen. | T1, Abschnitt „Was ist echt“, Punkt „Vereinfacht“ |
 
@@ -122,7 +122,7 @@ Auflösung: Die Verteilung legt die Chancen fest, gezogen wird erst danach. Bei 
 
 | Fachaussage | Beleg |
 |---|---|
-| Das gezogene Token wird angehängt; die Schleife beginnt neu; gerechnet wird mit allem, was davor steht. | T1 Schritt 8; kapitel02.qmd, @sec-sprachmodell (sagt das nächste Wort gestützt auf die Wörter davor vorher, @jurafsky2025, Kap. 7, S. 2) |
+| Das gezogene Token wird angehängt; die Schleife beginnt neu; gerechnet wird mit allem, was davor steht. | T1 Schritt 8; kapitel02-grundlagen.qmd, @sec-sprachmodell (sagt das nächste Wort gestützt auf die Wörter davor vorher, @jurafsky2025, Kap. 7, S. 2) |
 | Vereinfachung: In der Praxis wird dank Zwischenspeicher (KV-Cache) nur das neue Token neu gerechnet; das Ergebnis hängt aber vom ganzen Text ab. | Hinweis Prüfagent 02.11.2026; im Film nicht behauptet, dass alles neu gerechnet wird |
 
 **Haltepunkt nach Szene 7:** Ein Token passt nicht ganz, wird aber gezogen. Was passiert damit?  
@@ -142,7 +142,7 @@ Auflösung: Ein angehängtes Token gilt als gesetzt. Die folgenden Tokens setzen
 
 | Fachaussage | Beleg |
 |---|---|
-| Ein Sprachmodell prüft keine Wahrheit, sondern schreibt fort, was wahrscheinlich ist. | kapitel02.qmd, @sec-sprachmodell, Satz 3; @sec-hallucinations, Satz 2 |
+| Ein Sprachmodell prüft keine Wahrheit, sondern schreibt fort, was wahrscheinlich ist. | kapitel02-grundlagen.qmd, @sec-sprachmodell, Satz 3; @sec-hallucinations, Satz 2 |
 | Jedes angehängte Token gilt als gesetzt, auch ein unpassendes; die folgenden bauen darauf auf; so kann eine flüssige, falsche Aussage entstehen: eine Halluzination. | T1, Abschnitt „Temperatur und Halluzinationen“ |
 
 ## Szene 9: Märchen (148.7–165.4 s)
@@ -155,7 +155,7 @@ Auflösung: Ein angehängtes Token gilt als gesetzt. Die folgenden Tokens setzen
 
 | Fachaussage | Beleg |
 |---|---|
-| Kette: Tokens → Nummern → Vektoren → Aufmerksamkeit → Wahrscheinlichkeiten → Auswahl → Anhängen → von vorn. | kapitel02.qmd, @sec-gpt-bedeutung; T1 Schritte 1–8 |
+| Kette: Tokens → Nummern → Vektoren → Aufmerksamkeit → Wahrscheinlichkeiten → Auswahl → Anhängen → von vorn. | kapitel02-grundlagen.qmd, @sec-gpt-bedeutung; T1 Schritte 1–8 |
 
 ## Selbsttest
 

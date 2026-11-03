@@ -1,5 +1,5 @@
 // Playwright-Prüfung S2 (Hörstück Kap. 4.1): Kapitelseite + iframe, 1200 und 390 px, Klick- und Tastaturdurchlauf, axe.
-// Vorher: quarto render kapitel04.qmd --to html; node scripts/testserver-range.cjs docs &   (Server mit Range-Anfragen,
+// Vorher: quarto render kapitel06-rollen.qmd --to html; node scripts/testserver-range.cjs docs &   (Server mit Range-Anfragen,
 // sonst springt das Audio nicht). axe-core liegt nicht im Repo: Pfad zu axe.min.js über AXE (npm install axe-core in einem Werkzeugordner).
 // Aufruf: AXE=/pfad/axe.min.js node scripts/pruefe-podcast-s2.cjs [ausgabeordner]
 const { chromium } = require('playwright');
@@ -17,7 +17,7 @@ async function lauf(browser, breite, modus) {
   const fehler = [];
   page.on('console', m => { if (m.type() === 'error') fehler.push(m.text()); });
   page.on('pageerror', e => fehler.push(String(e)));
-  await page.goto(BASIS + 'kapitel04.html#sec-podcast-interviews', { waitUntil: 'networkidle' });
+  await page.goto(BASIS + 'kapitel06-rollen.html#sec-podcast-interviews', { waitUntil: 'networkidle' });
   const rahmen = page.locator('#podcast-forschende-ki');
   await rahmen.scrollIntoViewIfNeeded();
   await page.waitForTimeout(800);

@@ -8,6 +8,13 @@ project:
     - downloads/**
     - interactions/**
     - images/druck/folie-mit-regeln.png   # Galerie Kap. 1 (iframe), seit Anhang E entfernt ist sonst nicht mehr kopiert
+    # Weiterleitungen der Adressen vor der neuen Gliederung (04.11.2026), erzeugt von scripts/umzug/weiterleitungen.py
+    - kapitel01.html
+    - kapitel02.html
+    - kapitel03.html
+    - kapitel04.html
+    - kapitel05.html
+    - kapitel06-fallbeispiele.html
 
 profile:
   default: web
@@ -44,12 +51,17 @@ book:
         href: https://buymeacoffee.com/roman.bartnik.th
   chapters:
     - index.qmd
-    - kapitel01.qmd
-    - kapitel02.qmd
-    - kapitel03.qmd
-    - kapitel04.qmd
-    - kapitel05.qmd
-    - kapitel06-fallbeispiele.qmd
+    - part: "Teil I: Grundlagen"
+      chapters:
+        - kapitel01-einleitung.qmd
+        - kapitel02-grundlagen.qmd
+        - kapitel03-automation.qmd
+        - kapitel04-lernmechanismen.qmd
+    - part: "Teil II: Anwendungen"
+      chapters:
+        - kapitel05-4d-phasen.qmd
+        - kapitel06-rollen.qmd
+        - kapitel07-artefakte.qmd
 
   appendices:  # Anhänge werden automatisch A, B, C ... nummeriert
     - kapitel07-appendix02-prompt-sammlung.qmd
