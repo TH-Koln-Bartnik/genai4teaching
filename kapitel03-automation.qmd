@@ -192,29 +192,6 @@ Die Forschung zur Automatisierung hat lange vor den Sprachmodellen beschrieben, 
 Für Agenten in der Lehre heißt das: Wir legen vor dem Start fest, an welchen Punkten der Ablauf anhält und auf uns wartet, bei einer Literaturrecherche etwa beim Quellenkorb, beim Rechercheplan und bei der Stichprobe von Aussagen, die wir gegen das Original halten.
 Je länger die Strecke ohne Blick, desto wichtiger werden diese Punkte.
 
-Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Programmier-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig [@johnston2026the]. Das folgende Modell verfolgt eine einzelne Aufgabe, Kugel A, durch Auftrag, Recherche, Entscheidung, Rechnung und Freigabe, einmal allein und einmal als achte von acht Aufgaben, die der Mensch auf einmal abgibt; jede Aufgabe bekommt dabei ihren eigenen Agenten.
+Jeder Haltepunkt kostet Zeit, und diese Zeit lässt sich nicht vervielfachen: Agenten kann man parallel starten, ihre Ergebnisse landen aber auf demselben Schreibtisch. Wie verschieden weit Organisationen dabei sind, zeigen Nutzungsdaten eines Programmier-Agenten: Bei seinen Organisationskunden arbeiten 67,4 % ohne parallele Agenten, bei OpenAI selbst steuern 28,6 % fünf oder mehr Agenten gleichzeitig [@johnston2026the].
 
-::: {.content-visible when-format="html"}
-Sagen Sie zuerst voraus, wo Kugel A die meiste Zeit verbringt, und klicken Sie sich dann durch die fünf Schritte.
-:::
-
-::: {.content-visible when-format="html"}
-:::: {.column-page}
-```{=html}
-<iframe loading="lazy" id="agenten-engpass" src="interactions/agenten-engpass.html" width="100%" height="1000px" frameborder="0" title="Animation: Acht Aufgaben, viele Agenten, ein Mensch – wo Kugel A wartet"></iframe>
-<script>
-/* Die Animation meldet ihre Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
-window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || d.typ !== "rahmen-hoehe") return;
-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
-});
-</script>
-```
-::::
-:::
-
-::: {.content-visible unless-format="html"}
-![Mehr Agenten machen den Menschen zum Engpass. Standbild bei Minute 22 von acht gleichzeitig abgegebenen Aufgaben: Kugel A liegt in der Ablage „Zu entscheiden“, während die Agenten kaum zu tun haben; allein ist sie nach 24 Minuten fertig, als achte von acht nach 43,5 Minuten, davon 19,5 Minuten Warten (Lehrmodell, keine Messung). Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/agenten-engpass.html> aufrufen.](images/druck/agenten-engpass-qr.png){#fig-agenten-engpass width="100%" fig-pos="htbp"}
-:::
-
-Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet, denn der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station; ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
+Vor dem Menschen füllt sich die Ablage, sobald die Ergebnisse schneller zurückkommen, als er entscheidet, denn der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station; ein weiterer Agent ändert daran nichts. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
