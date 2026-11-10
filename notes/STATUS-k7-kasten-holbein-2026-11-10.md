@@ -56,3 +56,7 @@ Wortlaut des Isley-Absatzes:
 - Projekt: `claude/mini-cases/STATUS-k7-kasten-holbein-2026-11-10.md`
 - Tresorit: `Projektnotizen-Claude/mini-cases/STATUS-k7-kasten-holbein-2026-11-10.md`, `…/k7-kasten-holbein-druckseiten-2026-11-10.pdf` (PDF-Seiten 262, 277, 278 der Druckvorlage)
 - Repo: `notes/STATUS-k7-kasten-holbein-2026-11-10.md` auf `k7-kasten-holbein`
+
+**Lücke auf Tresorit:** Der Ordner `Projektnotizen-Claude/mini-cases/` enthielt vor dieser Sitzung nichts. Die fünf Notizen vom 09.11. (`ENTWURF-fundstueck-kaesten-druck`, `UEBERSICHT-x-influencer-3-monate`, `VORSCHLAG-mini-cases-x-feed`, `ROHNOTIZEN-x-scan`) liegen nur im Projekt; die K3b-Sitzung, die zwei davon ohnehin korrigiert, kopiert sie mit.
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ (ältere mini-cases-Notizen fehlen dort) / Repo ✓ (`k7-kasten-holbein` auf origin, gepusht; gemergt: nein)
