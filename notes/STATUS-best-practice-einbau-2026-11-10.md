@@ -21,10 +21,10 @@ Auftrag: Startauftrag aus `VORSCHLAG-best-practice-harvard-mit-stanford-2026-11-
 |---|---|---|---|
 | P-B | `kapitel05-4d-phasen.qmd`, Anfang von „Formate nach den vier Säulen“ | zwei Sätze: eigene Aufgabe einem Sprachmodell stellen, Schritt 1 von 19 im TLL-Companion | +58 |
 | S-F | `kapitel05-4d-phasen.qmd`, `sec-kurs-integration`, vor dem Verweis auf Kap. 7; Anker `#bsp-astronomie-harvard` | Kasten „Anwendungsbeispiel“ nur online; im Druck ein Absatz mit QR | +80 |
-| S-A | `kapitel07-artefakte.qmd`, neuer Abschnitt `sec-bsp-papier-im-raum` am Ende von „Wissen übersetzen“ | online: Prinzip, Empfehlung, Kasten „Vorschlag, Stand 11/2026“ mit Tabelle `tbl-papier-im-raum`, drei Prüfschritte, Lernfrage; Druck: ein Absatz mit QR | +91 |
+| S-A | `kapitel07-artefakte.qmd`, neuer Abschnitt `sec-bsp-papier-im-raum` am Ende von „Wissen übersetzen“ | online: Prinzip, Empfehlung, Kasten „Vorschlag, Stand 11/2026“ mit Tabelle `tbl-papier-im-raum`, drei Prüfschritte, Lernfrage; Druck: ein Absatz mit QR | +89 |
 | P-A | `anhang-primer.qmd`, Einleitung vor Primer 0, nur online | ein Absatz „Arbeitsablauf mit KI: erst der Kursordner, dann der Auftrag“ | 0 |
 
-Druckwörter (`scripts/zaehle_druck.py`): Kap. 5 8.323 → 8.461; Kap. 7 7.913 → 8.004; Anhang C 3.645 → 3.645. Zusammen +229.
+Druckwörter (`scripts/zaehle_druck.py`): Kap. 5 8.323 → 8.461; Kap. 7 7.913 → 8.002; Anhang C 3.645 → 3.645. Zusammen +227.
 
 Neue Quellen in `references.json` (alle URLs am 10.11.2026 aufgerufen): `stubbs2026astronomy`, `bokcenterideas`, `bokcenter2026fall`, `bokcenter2026summer`, `mittllcompanion`. Zwei QR-Codes: `images/qr/qr-bsp-papier-im-raum.png`, `images/qr/qr-bsp-astronomie-harvard.png`.
 
@@ -45,7 +45,7 @@ Neue Quellen in `references.json` (alle URLs am 10.11.2026 aufgerufen): `stubbs2
 
 1. Merge beider Branches nach `main` und Render von `docs/` in der Primer-Sitzung (Startauftrag in `claude/primer/STATUS-primer-anhang-c-2026-11-10.md`; dort entfällt jetzt `git am`, der Branch `primer-anhang` liegt auf origin).
 2. Die QR-Anker `#sec-bsp-papier-im-raum` und `#bsp-astronomie-harvard` führen erst nach dem Merge und Render zum Ziel.
-3. Druckbudget: +229 Wörter bei 60.438 gegen Ziel 54.000. Kürzbar auf je einen Satz mit QR (rund −110).
+3. Druckbudget: +227 Wörter bei 60.438 gegen Ziel 54.000. Kürzbar auf je einen Satz mit QR (rund −110).
 4. Aus Abschnitt 0 der Vorschlagsnotiz nicht gebaut: Bok-Idee 11 „Slide Feedback Loop“ als Prüfschritt in Primer B; Bok-Idee 14 als Beleg für die Primer-Showcases D-1 und C-2.
 5. Vorschlagsnotiz Abschnitt 5: MIT-Umfragezahlen weiter nur aus The Tech; Stanford-Bibliothek nur Seite 1.
 
