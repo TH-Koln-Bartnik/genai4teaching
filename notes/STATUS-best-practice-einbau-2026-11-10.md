@@ -65,5 +65,7 @@ Neue Quellen in `references.json` (alle URLs am 10.11.2026 aufgerufen): `stubbs2
 ## Ablage
 
 - Projekt: `claude/best-practice-vorreiter/STATUS-best-practice-einbau-2026-11-10.md`, `…/best-practice-einbau-2026-11-10.diff`
-- Tresorit: `Projektnotizen-Claude/best-practice-vorreiter/` (Status, Diff), `Projektnotizen-Claude/primer/` (drei Dateien vom 10.11. nachgeholt)
+- Tresorit: `Projektnotizen-Claude/best-practice-vorreiter/` (Status, Diff), `Projektnotizen-Claude/primer/primer-anhang-c-2026-11-10.patch` (aus Commit `8ae8279` neu erzeugt). **Fehlen auf Tresorit weiter:** `STATUS-primer-anhang-c-2026-11-10.md` und `VORSCHLAG-primer-showcases-2026-11-10.md`; sie liegen nur im Projekt, die Primer-Sitzung kopiert sie
 - Repo: `notes/STATUS-best-practice-einbau-2026-11-10.md`, `notes/VORSCHLAG-best-practice-harvard-mit-stanford-2026-11-10.md` (mit Nachtrag Abschnitt 8)
+
+Ablage geprüft: Projekt ✓ / Tresorit ✓ (zwei Primer-Notizen der Vorsitzung fehlen dort weiter) / Repo ✓ (`best-practice-vorreiter`, `primer-anhang` auf origin; gemergt: nein)
