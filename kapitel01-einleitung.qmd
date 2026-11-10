@@ -146,6 +146,37 @@ Gebaut hat es ein Agent (Claude Opus 5.5) in einer Sitzung von gut einer halben 
 
 Auf der Ebene des Studiengangs kommen vier Hebel hinzu: Prüfungen nach den vier Säulen Mündlichkeit, Prozessorientierung, Kontextualisierung und Kollaboration (@sec-pruefen), Richtlinien im Rahmen der KI-Verordnung (*AI Act*) (@sec-ki-vo), eine Dokumentation der KI-Nutzung durch die Studierenden (@sec-dokumentation) und die Integration in den ganzen Kurs (@sec-kurs-integration).
 
+### Ein Semester als Professorin Albers {#sec-semester-simulator}
+
+**Zwölf Wochen, zwölf Entscheidungen.** Im Simulator übernehmen Sie Albers' Kurs aus der Eingangsszene: 120 Studierende, und in jeder Woche ein Zug. Sie geben den Chatbot frei, richten einen Tutor mit Leitplanken ein, lassen eine Abrufübung schreiben, üben unter Aufsicht oder ändern nichts. Schätzen Sie zuerst den Klausurschnitt; die Auflösung folgt nach der zwölften Woche. Der Simulator ist ein Lehrmodell und misst nichts. Die Größe der Effekte stammt aus drei Arbeiten [@bastani2025; @adesope2017; @cepeda2006]. Annahme ist, dass sie sich Woche für Woche aufsummieren und dass ein Test direkt nach vier Übungssitzungen an einer Schule für eine Klausur am Ende eines Semesters in Technischer Mechanik steht; Annahme sind auch Albers' Zeitkonto und die Regel, nach der Studierende aussteigen. Jede Annahme steht in der Tafel unter dem Bild; wo sie eine Zahl ist, hat sie einen Regler.
+
+::: {.content-visible when-format="html"}
+<iframe loading="lazy" id="semester-simulator" src="interactions/semester-simulator.html" width="100%" height="2350px" frameborder="0" title="Semester-Simulator: Sie sind Professorin Albers – zwölf Wochen, 120 Studierende, je Woche eine Entscheidung"></iframe>
+:::
+
+::: {.content-visible unless-format="html"}
+![Woche 8 eines Laufs im Semester-Simulator: Nach sechs Wochen mit frei gegebenem Chatbot und zwei Abrufübungen liegen die Abkürzenden (grau) hinter den Lernenden (schwarz); acht Studierende sind ausgestiegen. Lehrmodell, keine Messung: Effektgrößen aus @bastani2025, @adesope2017 und @cepeda2006, alle übrigen Stellgrößen sind Annahmen. Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/semester-simulator.html> aufrufen.](images/druck/semester-simulator-qr.png){#fig-semester-simulator width="100%" fig-pos="htbp"}
+
+| Stellgröße des Modells | Wert | Herkunft |
+|:-----------------------------|:-------------|:--------------------|
+| Test ohne Hilfsmittel nach Üben mit freiem Chatbot, gegenüber Klassen ohne KI | −17 % | @bastani2025 |
+| Derselbe Test nach Üben mit Tutor mit Leitplanken | kein belegter Unterschied | @bastani2025 |
+| Übungsleistung mit Chatbot und mit Tutor, gegenüber Klassen ohne KI | +48 % und +127 % | @bastani2025 |
+| Abrufübung statt Wiederlesen | *g* = 0,51 | @adesope2017 |
+| Abruf nach geballter statt verteilter Wiederholung | 36,7 % statt 47,3 % | @cepeda2006 |
+| Abrufübung direkt nach einer Abrufübung zählt nur anteilig | Faktor 0,78 | Annahme |
+| Je Abrufübung ein Zwölftel von *g* = 0,51; Effekte summieren sich | | Annahme |
+| Übertragung vom Test nach der Übungssitzung auf die Semesterklausur | | Annahme |
+| Klausurschnitt und Streuung, wenn niemand abkürzt; Bestehensgrenze | 60 und 15 Punkte; 50 Punkte | Annahme |
+| Hausübungsschnitt ohne KI | 30 % | Annahme |
+| Anteil, der abkürzt: mit freiem Chatbot und ohnehin privat | 50 % und 20 % | Annahme |
+| Ausstieg ab Woche 3 | unter 50 % des Stoffstands, je Woche 30 % | Annahme |
+| Unter Aufsicht und mit Tutor kürzt niemand ab; den Verlust tragen die Abkürzenden | | Annahme |
+| Zeitkonto; Kosten für Tutor, Abrufübung, Aufsicht | 18 h; 3 h, 3 h, 1 h | Annahme |
+
+: Was der Semester-Simulator annimmt. {#tbl-semester-simulator}
+:::
+
 ## Was Sie im Buch erwartet {#sec-kapiteluebersicht}
 
 **In den Workshops kehren drei Fragen immer wieder.** Seit 2024 führen diese Workshops, vor allem im Netzwerk für hochschuldidaktische Weiterbildung (hdw nrw), Lehrende aus nahezu allen Fächergruppen zusammen. Die erste Frage ist eine Sorge: Entwertet KI Hausarbeiten, deren Ergebnis ein Sprachmodell in Minuten liefert, die **„Homework Apocalypse“** [@mollick2023]? Die zweite ist praktisch: Wie hilft KI bei Recherche, Aufgabenerstellung und Rückmeldung? Die dritte ist Neugier: Was wird möglich, das bisher zu aufwendig war, etwa Simulationen, in denen Studierende verhandeln oder ein Unternehmen steuern [@mollick2024a]? Das Buch beantwortet sie über **vier Rollen der KI**[]{#sb-k1-vier-rollen} (@sec-szenarien): als **Hiwi**, der Ihnen zuarbeitet (@sec-hiwi), als **Copilot**, mit dem Studierende schreiben und programmieren (@sec-copilot), als **Tutor**, der erklärt und abfragt (@sec-tutor), und als **Simulator**, der ein Gegenüber spielt (@sec-simulator). Mit der Rolle wechselt, wer das Ergebnis prüft.
