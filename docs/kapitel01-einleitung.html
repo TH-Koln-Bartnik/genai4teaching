@@ -595,6 +595,30 @@ div.csl-indent {
 <p><em>Die Kernaussagen am Kapitelende sind nach diesen drei Zielen geordnet.</em></p>
 </div>
 </div>
+<p><span id="vid-stuetzraeder"></span></p>
+<p><strong>Zum Einstieg ein Film über Ratschläge, die heute nicht mehr gelten.</strong> „Denke Schritt für Schritt“, „Du bist ein Experte“, ein Trinkgeld von 200 Dollar: Solche Zeilen stehen noch in vielen Prompt-Sammlungen für die Lehre. Der Film „Stützräder“ erzählt in neun Genres, von den Beispiel-Prompts des Jahres 2020 bis zu den Leitfäden der KI-Labore von 2026, woher sie kamen und warum die meisten entfallen, seit die Modelle selbst schrittweise nachdenken. Eine Marke in jeder Szene zeigt, ob ein Ratschlag aus der Dokumentation eines Herstellers, aus einer Studie oder aus der Folklore stammt. Der Film nennt die alten Ratschläge ausdrücklich, bevor er sie ersetzt; solche Widerlegungstexte helfen, eine feste Vorstellung umzubauen <span class="citation" data-cites="tippett2010">(<a href="#ref-tippett2010" role="doc-biblioref">Tippett, 2010</a>)</span>. Wie ein Auftrag an ein heutiges Modell aussieht, zeigt <a href="kapitel02-grundlagen.html#sec-access" class="quarto-xref"><span>Kapitel 2.3</span></a>.</p>
+<p>Geben Sie zuerst Ihre Vorhersage ab und starten Sie dann den Film; an drei Stellen hält er an und fragt nach.</p>
+<iframe loading="lazy" id="genrefilm-kap02-stuetzraeder" src="interactions/genrefilm-player.html?film=kap02-stuetzraeder" width="100%" height="900px" frameborder="0" title="Film mit Haltepunkten: Stützräder – wie die Prompting-Ratschläge kamen und gingen"></iframe>
+<script>
+/* Der Player meldet seine Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
+window.addEventListener("message", function (e) {
+  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "genrefilm-kap02-stuetzraeder") return;
+  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
+});
+</script>
+<div class="callout callout-style-default callout-note callout-titled" title="So entstand dieser Film">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>So entstand dieser Film
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Bauauftrag passt in einen Satz: „Erzähle in neun Szenen, jede in einem anderen Filmgenre, wie die Prompting-Ratschläge von 2020 bis 2026 kamen und gingen, mit einem Prompt-Zettel als Hauptfigur und einer Quellenmarke je Szene.“ Claude Code nutzte dafür die Bauanleitung des Token-Films aus <a href="kapitel02-grundlagen.html#sec-gpt-bedeutung" class="quarto-xref"><span>Kapitel 2.6.1</span></a>; jede Aussage ist einer geprüften Zeile in einer Quellenliste zugeordnet. Die Schwäche: Neun Bilder pressen sechs Jahre in eine saubere Abfolge, und die Grenze zwischen Labor-Empfehlung und Ratgeber-Folklore war 2023 unschärfer, als die Marken zeigen.</p>
+</div>
+</div>
 <p><strong>Wie kann generative künstliche Intelligenz</strong> (KI, <em>generative AI</em>) <strong>in der Lehre helfen?</strong> Hoffnung besteht für die zwei Probleme, die Albers’ Montag prägen: Studierende haben individuelle Bedürfnisse, Lehrende nur begrenzt Zeit, und gerade wirksame Methoden wie häufige kleine Tests (<em>practice testing</em>)<span id="sb-k1-practice-testing"></span> oder individuelles Feedback kosten viel Vorbereitung <span class="citation" data-cites="hattie2023 brown2014 dunlosky2013">(<a href="#ref-brown2014" role="doc-biblioref">Brown et al., 2014</a>; <a href="#ref-dunlosky2013" role="doc-biblioref">Dunlosky et al., 2013</a>; <a href="#ref-hattie2023" role="doc-biblioref">Hattie, 2023, Kap.13</a>)</span>; ausführlich behandelt das <a href="kapitel04-lernmechanismen.html#sec-ziele-genai" class="quarto-xref"><span>Kapitel 4.1</span></a>. Für die Lehre sind große Sprachmodelle (<em>Large Language Models</em>, LLM) vor allem „<strong>generally faster</strong>“ <span class="citation" data-cites="mcafee2024">(<a href="#ref-mcafee2024" role="doc-biblioref">McAfee, 2024</a>)</span>: Übungsaufgaben, Anwendungsbeispiele, Quizfragen und Rollenspiele lassen sich mit KI in großer Zahl entwerfen <span class="citation" data-cites="meincke2024 mollick2023a">(<a href="#ref-meincke2024" role="doc-biblioref">Meincke et al., 2024</a>; <a href="#ref-mollick2023a" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2023</a>)</span>. Der Berg ist noch da, aber mit dem E-Bike kommt man weiter. Wie weit, hängt an drei Fragen, die dieses Kapitel der Reihe nach beantwortet: Wie verbreitet ist die Nutzung, was geht dabei schief, und was hilft?</p>
 <section id="sec-nutzung" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-nutzung"><span class="header-section-number">1.1</span> Wie verbreitet ist KI-Nutzung?</h2>
@@ -705,36 +729,90 @@ Abbildung&nbsp;1.1: Drei Viertel der Gespräche verlangen Denkleistungen der hö
 </section>
 <section id="sec-kapiteluebersicht" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="sec-kapiteluebersicht"><span class="header-section-number">1.4</span> Was Sie im Buch erwartet</h2>
-<p><strong>In den Workshops kehren drei Fragen immer wieder.</strong> Seit 2024 führen diese Workshops, vor allem im Netzwerk für hochschuldidaktische Weiterbildung (hdw nrw), Lehrende aus nahezu allen Fächergruppen zusammen. Die erste Frage ist eine Sorge: Entwertet KI Hausarbeiten, deren Ergebnis ein Sprachmodell in Minuten liefert, die <strong>„Homework Apocalypse“</strong> <span class="citation" data-cites="mollick2023">(<a href="#ref-mollick2023" role="doc-biblioref">E. R. Mollick, 2023</a>)</span>? Die zweite ist praktisch: Wie hilft KI bei Recherche, Aufgabenerstellung und Rückmeldung? Die dritte ist Neugier: Was wird möglich, das bisher zu aufwendig war, etwa Simulationen, in denen Studierende verhandeln oder ein Unternehmen steuern <span class="citation" data-cites="mollick2024a">(<a href="#ref-mollick2024a" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024</a>)</span>? Das Buch beantwortet sie über <strong>vier Rollen der KI</strong><span id="sb-k1-vier-rollen"></span> (<a href="kapitel06-rollen.html" class="quarto-xref"><span>Kapitel 6</span></a>): als <strong>Hiwi</strong>, der Ihnen zuarbeitet (<a href="kapitel06-rollen.html#sec-hiwi" class="quarto-xref"><span>Kapitel 6.1</span></a>), als <strong>Copilot</strong>, mit dem Studierende schreiben und programmieren (<a href="kapitel06-rollen.html#sec-copilot" class="quarto-xref"><span>Kapitel 6.2</span></a>), als <strong>Tutor</strong>, der erklärt und abfragt (<a href="kapitel06-rollen.html#sec-tutor" class="quarto-xref"><span>Kapitel 6.3</span></a>), und als <strong>Simulator</strong>, der ein Gegenüber spielt (<a href="kapitel06-rollen.html#sec-simulator" class="quarto-xref"><span>Kapitel 6.4</span></a>). Mit der Rolle wechselt, wer das Ergebnis prüft.</p>
-<p>Darunter liegen die Grundbegriffe (<a href="kapitel02-grundlagen.html" class="quarto-xref"><span>Kapitel 2</span></a>) und die Lernmechanismen (<a href="kapitel04-lernmechanismen.html" class="quarto-xref"><span>Kapitel 4</span></a>), darauf bauen die Umsetzung in Prüfung und Kurs (<a href="kapitel05-4d-phasen.html" class="quarto-xref"><span>Kapitel 5</span></a>) und die Beispiele aus der eigenen Lehre (<a href="kapitel07-artefakte.html" class="quarto-xref"><span>Kapitel 7</span></a>). Dort bauen Studierende mit Praxispartnern Assistenten, die auf den Dokumenten eines Unternehmens antworten (<a href="kapitel07-artefakte.html#sec-fall-unternehmen" class="quarto-xref"><span>Kapitel 7.3.5</span></a>), und entwickeln Tutoren, Planspiele und Karriereberater für andere Studierende (<a href="kapitel07-artefakte.html#sec-fall-tutor-bwl" class="quarto-xref"><span>Kapitel 7.2.2</span></a>, <a href="kapitel07-artefakte.html#sec-bsp-simulationen-studierende" class="quarto-xref"><span>Kapitel 7.3.3</span></a>, <a href="kapitel07-artefakte.html#sec-fall-job-buddy" class="quarto-xref"><span>Kapitel 7.3.4</span></a>). Die Anhänge sammeln Prompts, also Eingaben an die KI (<a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang A</span></a>), und Lösungshinweise (<a href="kapitel10-appendix05-loesungshinweise.html" class="quarto-xref"><span>Anhang B</span></a>). Welche Kapitel Sie davon brauchen, hängt von Ihrem Vorwissen ab; das Vorwort führt dazu mit einem Selbsttest zu einem von <a href="./index.html#sec-lernpfade">vier Lernpfaden</a>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Fünf Fragen, die dieses Buch beantwortet">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><strong>In den Workshops kehren drei Fragen immer wieder.</strong> Die erste Frage ist eine Sorge: Entwertet KI Hausarbeiten, deren Ergebnis ein Sprachmodell in Minuten liefert, die <strong>„Homework Apocalypse“</strong> <span class="citation" data-cites="mollick2023">(<a href="#ref-mollick2023" role="doc-biblioref">E. R. Mollick, 2023</a>)</span>? Die zweite ist praktisch: Wie hilft KI bei Recherche, Aufgabenerstellung und Rückmeldung? Die dritte ist Neugier: Was wird möglich, das bisher zu aufwendig war, etwa Simulationen, in denen Studierende verhandeln oder ein Unternehmen steuern <span class="citation" data-cites="mollick2024a">(<a href="#ref-mollick2024a" role="doc-biblioref">E. R. Mollick &amp; Mollick, 2024</a>)</span>? Das Buch beantwortet sie über <strong>vier Rollen der KI</strong><span id="sb-k1-vier-rollen"></span> (<a href="kapitel06-rollen.html" class="quarto-xref"><span>Kapitel 6</span></a>): als <strong>Hiwi</strong>, der Ihnen zuarbeitet, als <strong>Copilot</strong>, mit dem Studierende schreiben und programmieren, als <strong>Tutor</strong>, der erklärt und abfragt, und als <strong>Simulator</strong>, der ein Gegenüber spielt. Mit der Rolle wechselt, wer das Ergebnis prüft. <a href="#tbl-buchuebersicht" class="quarto-xref">Tabelle&nbsp;<span>1.1</span></a> zeigt, welche Frage jedes Kapitel beantwortet.</p>
+<div class="table-responsive">
+<div id="tbl-buchuebersicht" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-buchuebersicht-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;1.1: Aufbau des Buchs: sieben Kapitel in zwei Teilen und drei Anhänge. Eigene Darstellung.
+</figcaption>
+<div aria-describedby="tbl-buchuebersicht-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Kapitel</th>
+<th style="text-align: left;">Frage, die es beantwortet</th>
+<th style="text-align: left;">Was Sie dort finden</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Teil I: Grundlagen</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1 Einleitung</td>
+<td style="text-align: left;">Wie verbreitet ist KI, was geht schief, was hilft?</td>
+<td style="text-align: left;">Befunde zu Nutzung, Auslagerung des Denkens und Leitplanken</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2 Grundlagen von KI und LLMs (<a href="kapitel02-grundlagen.html" class="quarto-xref"><span>Kapitel 2</span></a>)</td>
+<td style="text-align: left;">Was muss beim Menschen bleiben, wenn man eine Aufgabe an einen Agenten delegiert?</td>
+<td style="text-align: left;">Werkzeugkasten, Modellwahl, Prompts, Agenten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3 Prinzipien der Automation (<a href="kapitel03-automation.html" class="quarto-xref"><span>Kapitel 3</span></a>)</td>
+<td style="text-align: left;">Welche Aufgaben von Lehrenden übernimmt die KI, welche verändert sie?</td>
+<td style="text-align: left;">Aufgabenmodell, fünf Arbeitsweisen vom Centaur bis zur dunklen Fabrik</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4 Lern- und Wirkmechanismen (<a href="kapitel04-lernmechanismen.html" class="quarto-xref"><span>Kapitel 4</span></a>)</td>
+<td style="text-align: left;">Warum schadet ein Chatbot, der jede Übungsfrage richtig beantwortet, dem Lernen?</td>
+<td style="text-align: left;">Lerntechniken und die Evidenz seit 2025</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Teil II: Anwendungen</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5 Phasen der Arbeit mit KI (<a href="kapitel05-4d-phasen.html" class="quarto-xref"><span>Kapitel 5</span></a>)</td>
+<td style="text-align: left;">Wie delegiere, beschreibe und prüfe ich, und wie passe ich Prüfungen an?</td>
+<td style="text-align: left;">4D-Kreislauf, Dokumentation, vier Säulen des Prüfens</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6 Rollen der KI (<a href="kapitel06-rollen.html" class="quarto-xref"><span>Kapitel 6</span></a>)</td>
+<td style="text-align: left;">Wann ist die KI Ihr Hiwi, wann der Tutor Ihrer Studierenden, und wie echt muss ein simuliertes Gegenüber sein?</td>
+<td style="text-align: left;">Recherche, Schreiben, Tutoren, Simulationen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7 Artefakte (<a href="kapitel07-artefakte.html" class="quarto-xref"><span>Kapitel 7</span></a>)</td>
+<td style="text-align: left;">Warum hilft ein Lied beim Merken einer Formel, aber nicht beim Anwenden?</td>
+<td style="text-align: left;">Quizspiele, Lernsong, Widgets; Projekte, in denen Studierende Assistenten, Tutoren und Karriereberater bauen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Anhänge</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A Prompts (<a href="kapitel07-appendix02-prompt-sammlung.html" class="quarto-xref"><span>Anhang A</span></a>), B Lösungshinweise (<a href="kapitel10-appendix05-loesungshinweise.html" class="quarto-xref"><span>Anhang B</span></a>), C Praxis-Primer (<a href="anhang-primer.html" class="quarto-xref"><span>Anhang C</span></a>)</td>
+<td style="text-align: left;">Wie fange ich an, und wie prüfe ich mich?</td>
+<td style="text-align: left;">Prompts, Lösungen, Anleitungen für Animationen, Folien, Lernsongs und Lernspiele</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hinweis</span>Fünf Fragen, die dieses Buch beantwortet
+</figure>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Warum schadet ein Chatbot, der jede Übungsfrage richtig beantwortet, dem Lernen? (<a href="kapitel04-lernmechanismen.html" class="quarto-xref"><span>Kapitel 4</span></a>)</li>
-<li>Wann ist die KI Ihr Hiwi, wann der Tutor Ihrer Studierenden, und warum wechselt damit die Verantwortung? (<a href="kapitel06-rollen.html" class="quarto-xref"><span>Kapitel 6</span></a>)</li>
-<li>Was muss beim Menschen bleiben, wenn man eine Aufgabe an einen Agenten delegiert? (<a href="kapitel02-grundlagen.html#sec-agenten-praxis" class="quarto-xref"><span>Kapitel 2.4.2</span></a>)</li>
-<li>Warum hilft ein Lied beim Merken einer Formel, aber nicht beim Anwenden? (<a href="kapitel07-artefakte.html#sec-bsp-lernsong-forecast" class="quarto-xref"><span>Kapitel 7.1.2</span></a>)</li>
-<li>Wie echt muss ein simuliertes Gegenüber sein, damit Studierende daran üben? (<a href="kapitel06-rollen.html#sec-simulator" class="quarto-xref"><span>Kapitel 6.4</span></a>)</li>
-</ol>
-</div>
-</div>
-<p><strong>Fünf Formate zeigen, was 2026 mit KI entsteht:</strong> eine Prozessanimation, in der sich vor dem Engpass die Arbeit staut <span class="citation" data-cites="goldratt2014 little1961">(<a href="#ref-goldratt2014" role="doc-biblioref">Goldratt &amp; Cox, 2014</a>; <a href="#ref-little1961" role="doc-biblioref">Little, 1961</a>)</span>, eine Präsentationsfolie nach Regelwerk, ein Lernsong, ein Lernspiel und ein Rollenspiel. Blättern Sie mit den Pfeilen; unter jedem Beitrag führt ein Link zur Stelle im Buch.</p>
-<iframe loading="lazy" id="galerie-kapitel01" src="interactions/galerie-kapitel01.html" width="100%" height="1100px" frameborder="0" title="Galerie: Fünf Formate, die 2026 mit generativer KI entstehen"></iframe>
-<script>
-/* Die Galerie meldet ihre Höhe; so entsteht kein Scrollbalken im Rahmen. */
-window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || d.typ !== "galerie-hoehe") return;
-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
-});
-</script>
+<p>Welche Kapitel Sie brauchen, zeigen die <a href="./index.html#sec-lernpfade">Lernpfade im Vorwort</a>. Was heute mit KI an Lehrmaterial entsteht, vom Film mit Haltepunkten bis zum Lernsong, zeigt <a href="./index.html#sec-neue-moeglichkeiten">online eine Galerie im Vorwort</a>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Kernaussagen">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -774,43 +852,43 @@ window.addEventListener("message", function (e) {
 <div class="sb-begriffe">
 <div class="sb-begriff" data-begriff="k1-practice-testing">
 <p>Häufige kleine Tests (<em>practice testing</em>)</p>
-<p>Kurze, niedrigschwellige Abfragen, bei denen Lernende ihr Wissen selbst abrufen. Sie gehören zu den wirksamsten Lerntechniken, kosten Lehrende aber viel Vorbereitung; genau dort setzt KI an.</p>
+<p><em>Beispiel:</em> Zu Beginn jeder Übung beantworten die Studierenden drei Kurzfragen zur letzten Sitzung, ohne Unterlagen; das sind häufige kleine Tests.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-faehigkeitsueberhang">
 <p>Fähigkeitsüberhang (<em>capability overhang</em>)</p>
-<p>Der Abstand zwischen dem, was Sprachmodelle können, und dem, was fast alle mit ihnen tun. Bei Lehrenden zeigt er sich in unsystematischer Nutzung im Chatfenster, ohne Vorlagen, Projekte oder Agenten.</p>
+<p><em>Beispiel:</em> Eine Kollegin nutzt seit zwei Jahren täglich das Chatfenster, hat aber nie ein Projekt mit eigenen Dateien angelegt; die Modelle könnten weit mehr, als sie abruft.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-agent">
 <p>Agent</p>
-<p>Ein Sprachmodell, das Werkzeuge einsetzt, mehrstufig arbeitet und Zwischenergebnisse selbst prüft. „KI nutzen“ heißt seit Ende 2025 zunehmend, Aufgaben an solche Agenten zu delegieren.</p>
+<p><em>Beispiel:</em> Die KI sucht selbst Studien zu einer Frage, liest die PDFs, legt eine Tabelle an und prüft, ob jede Zahl im Original steht; so arbeitet ein Agent.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-reasoning">
 <p>Reasoning (schrittweises Nachdenken)</p>
-<p>Das Modell erzeugt vor der Antwort Zwischenschritte und prüft sie. Kostenlose und automatisch gewählte Varianten antworten oft ohne diese Nachdenkphase und scheitern öfter an anspruchsvollen Aufgaben.</p>
+<p><em>Beispiel:</em> Vor der Antwort zeigt der Chatbot „Denkt nach …“ und rechnet die Aufgabe in Zwischenschritten durch, bevor er das Ergebnis nennt.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-harness">
 <p>Werkzeugkasten (<em>harness</em>)</p>
-<p>Die Ausstattung um ein Modell herum: Werkzeuge, Datenzugriffe und Ablaufregeln. Erst sie macht aus einem Modell einen Agenten; kostenlose Tarife bieten oft nur einen kleinen Werkzeugkasten.</p>
+<p><em>Beispiel:</em> Derselbe Chatbot sucht im einen Tarif im Web, liest Dateien und führt Code aus, im anderen antwortet er nur; der Unterschied liegt im Werkzeugkasten, nicht im Modell.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-erwuenschte-schwierigkeiten">
 <p>Erwünschte Schwierigkeiten (<em>desirable difficulties</em>)</p>
-<p>Lernhürden, die das Üben anstrengender, das Behalten aber dauerhafter machen, etwa selbst abrufen statt nachlesen. Ein Chatbot, der sofort die Lösung liefert, räumt sie weg.</p>
+<p><em>Beispiel:</em> Die Studierenden lösen die Übungsaufgabe erst ohne Skript und schlagen danach nach; das Üben fällt schwerer, das Behalten hält länger.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-anleitung">
 <p>Anleitung statt Ermutigung (<em>guidance</em>, <em>encouragement</em>)</p>
-<p>Zur KI-Nutzung nur zu ermutigen, ändert an der Lernwirkung nichts. Zu zeigen, wie man einen Tutor tutoriell befragt, hob in einer Studie die Prüfungsleistung.</p>
+<p><em>Beispiel:</em> Statt „Nutzen Sie gern den KI-Tutor“ zeigt die Lehrende in der ersten Sitzung, wie man ihn um Hinweise statt um Lösungen bittet.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-leitplanke">
 <p>Leitplanke (<em>guardrail</em>)</p>
-<p>Eine Vorgabe in Aufgabe, Werkzeug oder Rückmeldung, die das eigene Denken der Lernenden schützt, etwa ein Tutor, der Hinweise statt Lösungen gibt. Ohne Leitplanken steigt die Übungsleistung, und die Prüfungsleistung sinkt.</p>
+<p><em>Beispiel:</em> Auf „Sag mir einfach die Lösung“ gibt der Tutor-Bot nur einen Hinweis und fragt nach dem eigenen Ansatz.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-auslagerung">
 <p>Auslagerung des Denkens (<em>cognitive offloading</em>)</p>
-<p>Lernende überlassen der KI die Denkschritte, die sie selbst üben müssten. Die Übung ist gelöst, gelernt wird weniger; für das Lernen wiegt das schwerer als das Täuschen.</p>
+<p><em>Beispiel:</em> Ein Student lässt die Hausübung vom Chatbot lösen, gibt sie fehlerfrei ab und kann in der Sprechstunde keinen Schritt davon erklären.</p>
 </div>
 <div class="sb-begriff" data-begriff="k1-vier-rollen">
 <p>Vier Rollen der KI (Hiwi, Copilot, Tutor, Simulator)</p>
-<p>Ordnungsrahmen des Buchs: Als Hiwi arbeitet die KI Lehrenden zu, als Copilot schreibt und programmiert sie mit Studierenden, als Tutor erklärt und fragt sie ab, als Simulator spielt sie ein Gegenüber. Mit der Rolle wechselt, wer das Ergebnis prüft.</p>
+<p><em>Beispiel:</em> Entwirft die KI Ihre Quizfragen, ist sie Hiwi; fragt sie Ihre Studierenden ab, ist sie Tutor; spielt sie in der Verhandlungsübung den Lieferanten, ist sie Simulator.</p>
 </div>
 </div>
 <div class="sb-spiel" data-modus="fall" data-kapitel="1">
@@ -950,9 +1028,6 @@ Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T
 <div id="ref-gallegos2026" class="csl-entry" role="listitem">
 Gallegos, S. (2026). <em><a href="https://www.iza.org/publications/dp18513">Guidance over adoption: Experimental evidence on AI-assisted learning</a></em> (IZA Discussion Paper; Nr. 18513). Institute of Labor Economics (IZA).
 </div>
-<div id="ref-goldratt2014" class="csl-entry" role="listitem">
-Goldratt, E. M., &amp; Cox, J. (2014). <em>The goal: A process of ongoing improvement</em>. North River Press.
-</div>
 <div id="ref-handa2025" class="csl-entry" role="listitem">
 Handa, K., Bent, D., Tamkin, A., McCain, M., Durmus, E., Stern, M., Schiraldi, M., Huang, S., Ritchie, S., Syverud, S., Jagadish, K., Vo, M., Bell, M., &amp; Ganguli, D. (2025). <em><a href="https://www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude">Anthropic Education Report: How university students use Claude</a></em>. Anthropic.
 </div>
@@ -967,9 +1042,6 @@ Hüsch, M., Horstmann, N., &amp; Breiter, A. (2025). <em><a href="https://hochsc
 </div>
 <div id="ref-lee2025" class="csl-entry" role="listitem">
 Lee, H.-P. H., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R., &amp; Wilson, N. (2025). The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers. <a href="https://doi.org/10.1145/3706598.3713778">https://doi.org/10.1145/3706598.3713778</a>.
-</div>
-<div id="ref-little1961" class="csl-entry" role="listitem">
-Little, J. D. C. (1961). A proof for the queuing formula: L = λW. <em>Operations Research</em>, <em>9</em>(3), 383–387. <a href="https://doi.org/10.1287/opre.9.3.383">https://doi.org/10.1287/opre.9.3.383</a>.
 </div>
 <div id="ref-maier2026deskilling" class="csl-entry" role="listitem">
 Maier, S., Schwabe, K., Schneider, M., &amp; Feuerriegel, S. (2026). <em>Designing against deskilling: Metacognitive feedback reduces cognitive offloading to LLM assistants</em>. <a href="https://doi.org/10.48550/arXiv.2609.20143">https://doi.org/10.48550/arXiv.2609.20143</a>.
@@ -1012,6 +1084,9 @@ Schmidt, A. K. (2026, Juni 15). Erkenntnisse zu KI-Einsatz und KI-Bedarfen von L
 </div>
 <div id="ref-stephenson2026hepi" class="csl-entry" role="listitem">
 Stephenson, R., &amp; Armstrong, C. (2026). <em><a href="https://www.hepi.ac.uk/reports/student-generative-ai-survey-2026/">Student generative artificial intelligence survey 2026</a></em> (Nr. 199). Higher Education Policy Institute.
+</div>
+<div id="ref-tippett2010" class="csl-entry" role="listitem">
+Tippett, C. D. (2010). Refutation text in science education: A review of two decades of research. <em>International Journal of Science and Mathematics Education</em>, <em>8</em>(6), 951–970. <a href="https://doi.org/10.1007/s10763-010-9203-x">https://doi.org/10.1007/s10763-010-9203-x</a>.
 </div>
 <div id="ref-vongarrel2026" class="csl-entry" role="listitem">
 von Garrel, J., Mayer, J., &amp; Weber, L. S. (2026). Wie Hochschullehrende künstliche Intelligenz im Studium nutzen – Ergebnisse einer bundesweiten Befragung. <em>Die Neue Hochschule</em>, (1), 16–19. <a href="https://doi.org/10.5281/zenodo.18017027">https://doi.org/10.5281/zenodo.18017027</a>.
