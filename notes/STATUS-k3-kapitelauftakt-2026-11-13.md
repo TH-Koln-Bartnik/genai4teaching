@@ -27,6 +27,8 @@ Nebenbefund: Der Name Kessler war schon für die Szene in Kap. 2 vergeben, Optio
 - Druckpfad nicht gesetzt (kein TeX in der Cloud).
 
 ## Offen (Entscheidung Roman)
+
+*Nachtrag 13.11.: Punkt 1 erledigt (Szene, LZ1 und Kernaussage 2 in Kap. 6 angepasst), Punkt 2 entschieden: drei Aussagen bleiben. Merge nach `main` erledigt.*
 1. Kap. 6: Die Szene (Hoffmeister) nennt noch die Übungsblätter in einer Stunde, und Lernziel 1 nennt „welche Aufgaben wegfallen, schneller werden oder neu entstehen“, beides Inhalt von Kap. 3. Kürzen oder als Rückbezug lassen?
 2. Kap. 6 hat jetzt drei Einschätzungen (Schablone erlaubt 3–4). Eine vierte ergänzen?
 3. Druckbudget: Kapitelkopf und Kernaussagen kommen zu Kap. 3 hinzu; gegen die Kürzungsliste rechnen.

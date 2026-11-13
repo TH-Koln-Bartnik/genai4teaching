@@ -32,3 +32,5 @@ Kernaussagen gruppiert: `**Zu Lernziel 1: Stichwort**`, darunter die Aussagen (f
 
 ## Begründung (Kurzfassung)
 Vorab-Fragen verbessern das Behalten (St. Hilaire, Chan & Ahn, 2024, https://doi.org/10.3758/s13423-023-02353-8), auch verteilt vor einzelnen Textteilen (Kliegl & Bäuml, 2024, https://doi.org/10.1007/s00426-024-02042-8). Für Meinungsaussagen statt Wissensfragen ist der Effekt nicht eigens geprüft; die Aussagen hier haben eine belegte Auflösung und funktionieren damit wie Wissensfragen in Aussageform.
+
+- Nachtrag 13.11.2026 (neue Gliederung): Kap. 3 `kapitel03-automation.qmd` hat jetzt den Auftakt nach Schablone, Szene Prof. Dr. Malte Petersen (Operations Management, Wirtschaftsinformatik; acht Agenten). IDs `ez-k3b-1` bis `ez-k3b-3` und `ez-k4-1` (aus `kapitel06-rollen.qmd` verschoben, weil die Auflösung in Kap. 3 steht). `kapitel06-rollen.qmd` hat seither drei Aussagen; Szene (Hoffmeister) und Lernziel 1 ohne Übungsblätter und Aufgabenmodell.
