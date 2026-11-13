@@ -3,6 +3,48 @@
 ::: kapitel-gliederung
 :::
 
+Prof. Dr. Malte Petersen lehrt Operations Management in der Wirtschaftsinformatik und startet am Montag um acht Uhr acht Agenten. Einer aktualisiert die Folien zur Bestellmenge, einer schreibt Übungsblätter, drei bewerten die fotografierten Kurztests der letzten Übung, drei geben Rückmeldung auf Projektberichte. Jeder Agent braucht eine Viertelstunde. Um halb zehn ist kein einziger Auftrag abgeschlossen: Alle acht warten auf Petersens Freigabe, und er liest noch den ersten Bericht. Um elf beginnt die Vorlesung, also gibt er den Rest nach kurzem Überfliegen frei. Am Abend schreiben ihm zwei Studierende. Der eine findet in seinem Kurztest eine Sieben, wo er eine Eins geschrieben hat, die andere eine Rückmeldung zum Bericht einer fremden Gruppe.
+
+*Die Person ist erfunden; die Aufgaben stammen aus der eigenen Lehre, der Ablauf folgt dem Modell in @sec-leitungsaufgabe.*
+
+{{< pagebreak >}}
+
+::: {.callout-note .ez-block title="Bevor Sie weiterlesen: Wie sehen Sie das?"}
+*Wie sehr stimmen Sie den vier Aussagen zu? Jede Aussage wird an der Stelle im Kapitel aufgelöst, die sie beantwortet. Wer sich vorher festlegt, liest gezielter.*
+
+::: {.einschaetzung #ez-k3b-1}
+Wenn ein Sprachmodell handschriftliche Abgaben falsch bewertet, liegt das meist am Lesen der Handschrift, nicht am Bewertungsraster.
+
+[Auflösung in @sec-aufgaben]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k4-1}
+Wenn die KI Übungsblätter in einer Stunde statt einem Tag erstellt, haben Lehrende am Ende des Semesters Zeit gewonnen.
+
+[Auflösung in @sec-aufgaben]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k3b-2}
+Prüft ein zweiter Agent die Rückmeldungen des ersten, können Rückmeldungen auf Projektberichte ohne menschliche Freigabe an die Studierenden gehen.
+
+[Auflösung in @sec-arbeitsweisen]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k3b-3}
+Warten die Ergebnisse mehrerer Agenten auf Ihre Freigabe, werden Sie eher schneller fertig, wenn Sie Ihre Prüfkriterien vorab festlegen, als wenn Sie weitere Agenten starten.
+
+[Auflösung in @sec-leitungsaufgabe]{.ez-verweis}
+:::
+:::
+
+::: {.callout-note .lernziele title="Lernziele: Nach diesem Kapitel können Sie …"}
+1. die Aufgaben Ihrer Lehre nach dem Aufgabenmodell einordnen, also bestimmen, welche zur KI wandern, bei welchen sie unterstützt und welche neu hinzukommen, und begründen, warum daraus nicht von selbst Zeit frei wird;
+2. die Arbeitsweisen von Centaur bis dunkle Fabrik unterscheiden und für eine Aufgabe der Lehre entscheiden, wie viel Sie abgeben können, je nachdem, ob sich das Ergebnis maschinell prüfen lässt;
+3. für einen Agenten Haltepunkte festlegen und abschätzen, wie viele Agenten Ihre Prüfzeit verkraftet.
+
+*Die Kernaussagen am Kapitelende sind nach diesen drei Zielen geordnet.*
+:::
+
 ## Was sind unsere Aufgaben? {#sec-aufgaben}
 
 ::: {#sec-bibliothek-prompts}
@@ -129,6 +171,12 @@ Aufgaben wie das Erstellen, Durchführen und Bewerten von Prüfungen, die Verwal
 Anwendungsstudien und Umfragen der letzten zwei Jahre geben hierzu deutliche Hinweise [@morgan2024; @naddaf2025; @ogunleye2024; @ou2024; @tutton2025].
 Wie weit die Automatisierung bei der Bewertung tatsächlich reicht, lässt sich inzwischen präzise sagen. Sehfähige Sprachmodelle bewerten fotografierte handschriftliche Mathematik-Abgaben entlang der Rubriken der Lehrenden insgesamt zuverlässig, aber 87 % der verbleibenden Fehler des besten Modells sind **Transkriptionsfehler** (Handschrift lesen, äquivalente Umformungen erkennen, Bildqualität), nicht falsch angewandte Bewertungskriterien [@levine2026]. Automatisiert wird also die Rubrik-Anwendung; die menschliche Arbeit verlagert sich auf Erfassungsqualität und stichprobenartige Kontrolle, ein konkretes Beispiel für die neue Aufgabe „Qualitätskontrolle von KI-Materialien“ im Feld „Neue Aufgaben“ derselben Tabelle (zu den Grenzen KI-gestützten Benotens vgl. @sec-pruefen).
 
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Wenn ein Sprachmodell handschriftliche Abgaben falsch bewertet, liegt das meist am Lesen der Handschrift, nicht am Bewertungsraster.“* []{.ez-ihre data-ez="ez-k3b-1"}
+
+**Auflösung: ja.** Beim besten Modell gingen 87 % der verbleibenden Fehler auf das Lesen zurück, auf Handschrift, gleichwertige Umformungen und Bildqualität, nicht auf das Raster [@levine2026]. Untersucht wurden Mathematik-Abgaben. Wer Kurztests per Foto bewerten lässt, prüft deshalb in der Stichprobe zuerst, ob das Modell richtig gelesen hat.
+:::
+
 Die **Augmentierung** betrifft zentrale Lehr-, Forschungs- und Betreuungstätigkeiten, die mit KI-Unterstützung effizienter werden.
 Dazu zählen die Vorbereitung und Durchführung von Vorlesungen, Seminaren und Diskussionen, akademische und berufliche Beratung der Studierenden sowie Forschung und Publikationen.
 KI unterstützt hier durch automatische Literaturauswertungen, personalisierte Lerninhalte oder Pflege digitaler Ressourcen, sodass Lehrende ihre Kernaufgaben besser und effektiver erfüllen können [@gottweis2025; @meincke2024; @mollick2024a; @mollick2023b; @schwarcz2025].
@@ -154,7 +202,7 @@ Beide Konzepte führen sichtlich zu einer Verbesserung der Lehre, aber die gibt 
 ## Wer macht was: Arbeitsweisen von Centaur bis dunkle Fabrik {#sec-arbeitsweisen}
 
 Wer welchen Schritt einer Aufgabe übernimmt, ist die dritte Delegationsfrage.
-Das 4D-Modell unterscheidet drei Formen der Zusammenarbeit, die es *Modalitäten* nennt [@dakan2025]: In der **Automation** führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der **Augmentation** erledigen Mensch und KI sie gemeinsam und im Wechsel; in der **Agency** richtet der Mensch eine KI ein, die später selbstständig handelt, oft für andere (nicht zu verwechseln mit den Formen des Aufgabenmodells in @sec-hiwi).
+Das 4D-Modell unterscheidet drei Formen der Zusammenarbeit, die es *Modalitäten* nennt [@dakan2025]: In der **Automation** führt die KI eine Aufgabe aus, die der Mensch festgelegt hat; in der **Augmentation** erledigen Mensch und KI sie gemeinsam und im Wechsel; in der **Agency** richtet der Mensch eine KI ein, die später selbstständig handelt, oft für andere (nicht zu verwechseln mit den Formen des Aufgabenmodells in @sec-aufgaben).
 Der Hiwi aus @sec-szenarien arbeitet in der Automation, der Copilot in der Augmentation, Tutor und Simulator in der Agency.
 
 Feiner unterscheidet die Studie zur Jagged Frontier [@dellacqua2023]. Der **Centaur**[]{#sb-k2-centaur-cyborg} teilt die Aufgabe: Er überlässt der KI die Teilprobleme innerhalb der Grenze und konzentriert sich selbst auf den Rest.
@@ -186,6 +234,12 @@ Als Beschwörer schreibt sie einen einzigen Auftrag; ein **Orchestrator**, ein P
 In der Dämmerfabrik fragt ein Vermittler-Agent die Professorin bei den vier Anlässen; in der dunklen Fabrik bestehen alle Blätter die maschinelle Prüfung und werden doch still leichter, weil der Prüfer misst, ob die Lösungen stimmen, nicht ob die Aufgaben fordern.
 Die Online-Fassung spielt zwei weitere Fälle durch: Rückmeldungen auf Projektberichte, bei denen die KI-Verordnung menschliche Aufsicht verlangt [@eu2024aiact, Anhang III Nr. 3 lit. b] (@sec-ki-vo), und die Aktualisierung einer Vorlesung.
 Die Denkspuren darin sind angenähert; auch echte Denkspuren geben nicht verlässlich wieder, wie ein Modell zu seinem Ergebnis kommt [@chen2025reasoning].
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Prüft ein zweiter Agent die Rückmeldungen des ersten, können Rückmeldungen auf Projektberichte ohne menschliche Freigabe an die Studierenden gehen.“* []{.ez-ihre data-ez="ez-k3b-2"}
+
+**Auflösung: nein.** Die dunkle Fabrik trägt nur, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt. Ob eine Rückmeldung den Bericht trifft, kann der zweite Agent so wenig feststellen wie der Prüfer im Durchspiel, ob eine Aufgabe fordert. Hinzu kommt das Recht: Für KI, die Lernergebnisse bewertet, verlangt die KI-Verordnung menschliche Aufsicht [@eu2024aiact, Anhang III Nr. 3 lit. b].
+:::
 
 ::: {.content-visible when-format="html"}
 Im interaktiven Durchspiel lassen sich Fall, Arbeitsweise und Ebene (Dialog, Denkspur, Protokoll) wählen.
@@ -245,3 +299,27 @@ window.addEventListener("message", function (e) {
 :::
 
 Kugel A wartet länger auf den Menschen, als alle Agenten zusammen an ihr arbeiten: 19,5 gegen 16 Minuten. Vor dem Menschen füllt sich die Ablage, sobald die Kugeln schneller zurückkommen, als er entscheidet, denn der Durchsatz eines Ablaufs richtet sich nach seiner langsamsten Station; ein neunter Agent ändert daran nichts. Entscheidet der Mensch doppelt so schnell, ist Kugel A nach 28,5 statt 43,5 Minuten fertig. Für die Lehre folgt daraus eine einfache Regel: Wir starten nur so viele Agenten, wie wir in der verfügbaren Zeit ernsthaft prüfen und entscheiden können, und wir beschleunigen Entscheidungen, indem wir ihre Kriterien vorab festlegen, nicht indem wir sie überspringen. Wie man Bestand, Durchsatz und Wartezeit an einer solchen Station rechnet, zeigt das Little's-Law-Widget in @sec-widget-littles-law.
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Warten die Ergebnisse mehrerer Agenten auf Ihre Freigabe, werden Sie eher schneller fertig, wenn Sie Ihre Prüfkriterien vorab festlegen, als wenn Sie weitere Agenten starten.“* []{.ez-ihre data-ez="ez-k3b-3"}
+
+**Auflösung: eher ja.** Der Durchsatz richtet sich nach der langsamsten Station, und das ist hier der Mensch: Ein neunter Agent ändert nichts, eine doppelt so schnelle Entscheidung bringt Kugel A im Lehrmodell nach 28,5 statt 43,5 Minuten ans Ziel. Dass vorab festgelegte Kriterien die Entscheidung so beschleunigen, ist eine Annahme des Modells, keine Messung.
+:::
+
+::: {.callout-tip title="Kernaussagen"}
+**Zu Lernziel 1: Aufgaben statt Berufe**
+
+1. Technik verändert vor allem Aufgaben, selten ganze Berufe. In der Lehre wandern Prüfen und Verwalten eher zur KI, Lehren, Beraten und Forschen werden unterstützt, und Qualitätskontrolle, KI-gestützte Lehrkonzepte und Weiterbildung kommen neu hinzu.
+2. Ob am Ende Zeit übrig bleibt, ist offen, denn die neuen Aufgaben können die Ersparnis aufzehren.
+3. Beim Bewerten handschriftlicher Abgaben liegt die Schwachstelle im Lesen, nicht im Raster; die menschliche Arbeit verlagert sich auf Erfassung und Stichprobe.
+
+**Zu Lernziel 2: Arbeitsweisen**
+
+4. Von Centaur über Cyborg und Beschwörer bis zur dunklen Fabrik gibt der Mensch immer mehr Schritte ab. Die dunkle Fabrik trägt nur dort, wo eine Maschine feststellen kann, ob ein Ergebnis stimmt.
+5. Wer nur noch freigibt, übt das Urteilen nicht, das eine gute Freigabe voraussetzt.
+
+**Zu Lernziel 3: Leitungsaufgabe**
+
+6. Wo ein Agent anhält und auf uns wartet, legen wir vor dem Start fest.
+7. Agenten lassen sich vervielfachen, die Prüfzeit nicht. Wir starten nur so viele, wie wir ernsthaft prüfen können, und beschleunigen Entscheidungen durch vorab festgelegte Kriterien statt durch Weglassen der Prüfung.
+:::
