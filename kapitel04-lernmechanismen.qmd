@@ -40,7 +40,7 @@ Eine gut formulierte Anweisung an das Modell genügt, damit ein KI-Tutor zum Ler
 ::: {.callout-note .lernziele title="Lernziele: Nach diesem Kapitel können Sie …"}
 1. erklären, warum wirksame Lehrmethoden bekannt, aber selten umgesetzt sind, und wo generative KI den Aufwand senken kann;
 2. begründen, warum Chatbots ohne didaktische Bremsen dem Lernen eher schaden, mit Bezug auf erwünschte Schwierigkeiten und kognitive Belastung;
-3. je Wissensstufe und je gut belegter Lerntechnik einen passenden KI-Einsatz wählen und ihn mit der ICAP-Rangfolge (interaktiv vor konstruktiv, aktiv und passiv) bewerten;
+3. je Lernstufe (Erinnern, Verstehen, Anwenden) und je gut belegter Lerntechnik einen passenden KI-Einsatz wählen und ihn mit der ICAP-Rangfolge (interaktiv vor konstruktiv, aktiv und passiv) bewerten;
 4. den Stand der Evidenz seit 2025 wiedergeben: wann KI-Tutoren Lernen fördern und wann ungebremste Nutzung es senkt.
 
 *Die Kernaussagen am Kapitelende sind nach diesen vier Zielen geordnet.*
@@ -48,15 +48,7 @@ Eine gut formulierte Anweisung an das Modell genügt, damit ein KI-Tutor zum Ler
 
 ## Was für Ziele verfolgen wir mit dem Einsatz von GenAI in der Lehre? {#sec-ziele-genai}
 
-Bevor wir uns der konkreten Umsetzung zuwenden, müssen wir uns zunächst fragen, was wir überhaupt bezwecken: Was sind typische Probleme und was sind unsere Ziele für die konkrete Umsetzung in Lehrsituationen?
-
-Schauen wir uns zunächst ein zentrales Problem der Lernsituation an Hochschulen an [@freeman2014; @roediger2012]: **Wir wissen, was effektive Formen der Lehre sind, diese werden jedoch häufig nicht angewendet.** Studien deuten darauf hin, dass dies eher an situativen Hindernissen der Lernumgebung liegt als am Willen der Lehrenden [@henderson2007].
-
-Ein Beispiel ist die **Vorlesung**. Es ist gut belegt, dass diese Form des passiven Konsums eine sehr schwache Form der Wissensvermittlung ist. **Man lernt nicht nichts, aber anders würde man mehr lernen.** Empirisch und theoretisch ist sehr gut belegt, dass Studierende Wissen besser behalten, wenn sie dieselbe Zeit für aktives Üben (*active learning*), Frage-Antwort Interaktionen oder Diskussion in Kleingruppen verwenden [@freeman2014; @hake1998].
-
-Praktisch wird oft mit dem positiven Effekt der reinen Anwesenheit argumentiert (besser als wenn die Studierenden zu Hause Netflix schauen; wer zur Vorlesung kommt hat bessere Noten), aber **diese spezielle Form der Präsenzlehre hat durch mangelnde Interaktion klare Nachteile.** Der Harvard Physiker @kestin2025 fasst drei zentrale Probleme von Vorlesungen zusammen: Mangelnde Anpassung, mangelndes individuelles Feedback und mangelnde Aktivierung der Lernenden. Genauer [@kestin2025, S.2-3]: "1. They move too quickly for some students and too slowly for others because the teacher controls the pace of instruction; 2. Students do not receive personalized feedback to their questions as they arise; and 3. They fail to maintain consistent student engagement."
-
-**Warum werden trotzdem Vorlesungen sehr häufig und aktivere Lehrformen relativ selten eingesetzt** [@stains2018]? Studien deuten an, dass es oft nicht am Willen der Lehrenden liegt, sondern dass **situative Hindernisse** eine große Rolle spielen, vor allem Zeitmangel wird sehr häufig in Umfragen genannt [@shadle2017], außerdem bremsen Faktoren wie Gruppengröße oder ein ungünstiger Setup der Räume [@henderson2007]. Auch erfolgt die **Umsetzung oft zu optimistisch und ohne Berücksichtigung von Widerständen und Hindernissen** (z.B. Anreize für Studierende, zu Gruppenübungen auch zu kommen, oder nicht lieber ihr Wochenende in Kleingruppen zu besprechen als die Übungsaufgabe), so dass z.B. mangels notwendiger Anreizsetzung die erhoffte Lernwirkung ausbleibt und schnell Frust bei der Umsetzung entsteht [@henderson2007].
+**Wir wissen, was wirksame Lehre ist, und setzen es selten um** [@freeman2014; @roediger2012]. Die Vorlesung ist das bekannteste Beispiel. Man lernt in ihr nicht nichts, aber mit derselben Zeit für aktives Üben (*active learning*), Frage-Antwort-Runden oder Diskussion in Kleingruppen lernt man mehr [@freeman2014; @hake1998]. @kestin2025 [S. 2–3] nennt drei Schwächen: Das Tempo passt nur einem Teil des Saals, Fragen bekommen keine persönliche Rückmeldung, und die Aufmerksamkeit lässt nach. Dass Vorlesungen trotzdem vorherrschen [@stains2018], liegt selten am Willen der Lehrenden. In Befragungen nennen sie vor allem Zeitmangel [@shadle2017], dazu Gruppengröße und Räume; zudem wird die Umstellung oft zu optimistisch geplant, ohne Anreize für die Studierenden mitzudenken [@henderson2007].
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
 *„Dass wirksame Lehrmethoden selten eingesetzt werden, liegt vor allem daran, dass Lehrende die Forschung dazu nicht kennen oder ihr nicht trauen.“* []{.ez-ihre data-ez="ez-k3-1"}
@@ -64,12 +56,7 @@ Praktisch wird oft mit dem positiven Effekt der reinen Anwesenheit argumentiert 
 **Auflösung: eher nicht.** Die Befragungen deuten auf situative Hindernisse: Am häufigsten nennen Lehrende Zeitmangel, dazu bremsen Gruppengröße und Räume, und die Umsetzung wird oft zu optimistisch geplant. Genau beim Zeitproblem kann generative KI ansetzen.
 :::
 
-Wir argumentieren hier, dass GenAI **helfen kann, solche situativen Barrieren zu verringern,** speziell das häufig genannte **Zeitproblem** bei der Umsetzung effektiver Lehrmethoden [@shadle2017]. Bei sorgfältiger Umsetzung könnte GenAI so als "Kraftverstärker" (*force multiplier*) für Lehrkräfte dienen [@mollick2023b], indem es die Implementierung evidenzbasierter Lehransätze erleichtert, die sonst aufgrund von Zeit- und Arbeitsaufwand oft schwer umzusetzen sind.
-
-Auch hier gibt es allerdings nichts umsonst: Die **neuen Tools haben ihre eigenen Risiken und Nebenwirkungen** und **der Aufwand für Anpassung und Umsetzung** darf nicht unterschätzt werden. Einfach Sprachmodelle ohne Anpassung und didaktische 'Bremsen' einzusetzen ist oft nicht sinnvoll. Wie wir in der weiteren Diskussion sehen werden, nehmen sonst die KI-Chatbots den Studierenden erwünschte Schwierigkeiten ab (*desirable difficulties*), ermuntern sie nicht dazu, selbst Informationen abzuwägen, das eigene Verständnis zu vertiefen und so den eigenen Fähigkeitsstand aktiv zu verbessern (*growth mindset*) oder überfordern die kognitive Aufnahmefähigkeit der Lernenden durch Wissens-Dumps (*cognitive load*)[]{#sb-k3-kognitive-belastung}. Werden die Sprachmodelle nicht dazu angehalten, klar zu sagen, wenn sie zu etwas keine Informationen haben, so können sie die Lernenden durch überzeugend vorgetragene Halluzinationen oder Fehlschlüsse in die Irre führen. Um effektiv zu sein, müssen GenAI Lernhilfen insofern didaktisch gebremst, themenspezifisch angepasst und systematisch erprobt werden [@kestin2025]:
-
-> "AI chatbots are generally designed to be helpful, not to promote learning. They are not trained to follow pedagogical best practices (e.g., facilitating active learning, managing cognitive load and promoting
-> a growth mindset) (...) . Another well-known flaw of AI tutors is their uncanny confidence when giving an incorrect answer or when marking a correct reply as incorrect [@kestin2025]."
+**Generative KI kann genau beim Zeitproblem ansetzen.** Sorgfältig eingesetzt, wirkt sie als Kraftverstärker (*force multiplier*) für Lehrende [@mollick2023b], weil sie Übungsaufgaben, Rückmeldungen und Szenarien liefert, deren Vorbereitung bisher zu teuer war. Umsonst ist das nicht. Ein Chatbot ohne didaktische Bremsen nimmt Lernenden die erwünschten Schwierigkeiten (*desirable difficulties*) ab, überfordert mit Wissens-Dumps ihre kognitive Belastung (*cognitive load*)[]{#sb-k3-kognitive-belastung} und führt mit selbstsicher vorgetragenen Fehlern in die Irre. Chatbots sind darauf gebaut, hilfreich zu sein, nicht darauf, Lernen zu fördern; KI-Lernhilfen müssen deshalb didaktisch gebremst, an das Fach angepasst und erprobt werden [@kestin2025].
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
 *„Solange seine Lösungen fachlich richtig sind, schadet ein Chatbot, der jede Übungsfrage sofort vollständig löst, dem Lernen nicht.“* []{.ez-ihre data-ez="ez-k3-2"}
@@ -77,49 +64,11 @@ Auch hier gibt es allerdings nichts umsonst: Die **neuen Tools haben ihre eigene
 **Auflösung: nein.** Auch eine richtige Lösung nimmt die Anstrengung ab, die Behalten und Verstehen erst erzeugt, die erwünschten Schwierigkeiten. Wie groß der Schaden ist, zeigt @sec-evidenz: Mit einem Tutor im Stil des normalen ChatGPT stieg die Übungsleistung, und in der Prüfung ohne KI lagen dieselben Schüler 17 Prozent unter der Kontrollgruppe.
 :::
 
-Die nächsten Abschnitte geben eine theoriegestützte Orientierung, wie solche Anpassungen erfolgen könnten und welche Mechanismen die Lernforschung als besonders effektiv herausstellt. Zunächst führen wir zur genaueren Zielbestimmung Kategorien von Wissen und Lernmethoden ein. Dann können wir im Detail diskutieren, für welche Ziele und Methodenwahl welche Art der Unterstützung geeignet ist.
-
-## Wissenstypen {#sec-wissenstypen}
-
-@hattie2023 [S. 358, 340ff.] unterscheidet drei Stufen des Lernens (s. @tbl-wissenstypen).
-
-Zunächst geht es um **„knowing that“**[]{#sb-k3-wissen-dass}, also das reine **Fakten- und Begriffswissen**, das erworben und dann gefestigt werden muss: Hier soll eine belastbare Wissensbasis entstehen, weshalb Lehrkräfte häufig Vorwissensaktivierung oder Drill-and-Practice (wiederholtes Einüben) einsetzen und durch unmittelbares Feedback die korrekte Erinnerung verankern.
-
-Darauf baut **„knowing how“**[]{#sb-k3-wissen-wie} auf, das **prozedurale und strategische Können**. Auch hier müssen Abläufe zunächst erworben und dann gefestigt werden. Lernende erwerben Prozesswissen, indem sie modellierte Beispiele studieren, in gelenkten Übungen selbst anwenden und mithilfe von „worked examples“ (durchgearbeiteten Beispielen) sowie Fehleranalysen Schritt für Schritt ihre Vorgehensweisen optimieren. Festigen können Lernende dieses Prozesswissen besonders gut durch Interaktion oder Wettbewerb mit anderen Lernenden, da diese Auseinandersetzung ihnen dabei hilft, verschiedene Nutzungskontexte zu vergleichen [@chi2018].
-
-Die höchste Stufe nennt Hattie **„knowing with“**[]{#sb-k3-wissen-anwenden}: Wissen wird flexibel **auf neue Situationen übertragen**. Problembasiertes Lernen, authentische Fallstudien, bewusste Reflexionsphasen und kooperativ angelegte Projekte helfen dabei, Konzepte in unbekannten Kontexten sicher anzuwenden und weiterzuentwickeln.
-
-Wo können wir neue technische Hilfsmittel wie große Sprachmodelle (LLMs) zur Unterstützung dieser Methoden besonders effektiv einsetzen?
-
-| Kategorie | Phase | Typische Methoden |
-|:-----------------------|:-----------------------|:-----------------------|
-| **Wissen, dass** („Knowing that“) | **Erwerben** | Notizen zusammenführen; Zusammenfassen; Heft-/Notizbuch-Durchsicht; Bildhafte Notizen |
-| **Wissen, dass** („Knowing that“) | **Festigen** | Argumente prüfen; Fehler identifizieren; Einschränkungen formulieren; Formale Argumentstrukturen darstellen; Belege liefern; Durchgearbeitete Beispiele |
-| **Wissen, wie** („Knowing how“) | **Erwerben** | Aufgabenüberarbeitung; Häufiges Üben; Übungseinheit vor Tests; Zweispaltige Notizen; Problembasiertes Lernen |
-| **Wissen, wie** („Knowing how“) | **Festigen** | Peer-Feedback / Peer-Response-Gruppen; Peer-Tutoring; Studierenden-Turniere; Think-Pair-Share; Kumulative Wiederholung |
-| **Wissen anwenden** („Knowing with“) | **Transfer** | Sortieren, Zuordnen, Kategorisieren; Dichotome Schlüssel; Von Studierenden erstellte Klassifikationsmuster; Klassifikationsdiagramme |
-
-: Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle: Basierend auf @hattie2023, S. 358, 340ff. {#tbl-wissenstypen}
-
-## Anwendungsbeispiele nach Wissenskategorien {#sec-anwendungsbeispiele}
-
-Zur Unterstützung des **Aufbaus von Faktenwissen („knowing that“)** können starke LLMs gut grundlegende Konzepte erklären [@korinek2024, S. 48] und zum Selbststudium komplette Abruf-Übungen (*retrieval practice*) erzeugen: Sie formulieren Multiple-Choice- und Kurzantwortfragen, bewerten die Eingaben sofort und erklären fehlerhafte Distraktoren – ein Verfahren, das in einer Untersuchung zur automatischen Erzeugung deutschsprachiger Leseverständnis-Aufgaben überzeugende Validitätswerte zeigte [@sauberli2024].
-
-Ebenso lassen sich sehr schnell Definitionen, Paraphrasen oder Mini-Zusammenfassungen erzeugen, was personalisierte Glossare ermöglicht [@chen2024]. @wang2024 sprechen von KI als „Confusion Helper“. Um Halluzinationen zu vermeiden, wird das Modell häufig per Suche in eigenen Dokumenten (*Retrieval-Augmented Generation*, RAG) an externe Wissensbasen gekoppelt (also z. B. durch Beigabe von Skripten oder Fachartikeln als PDF. Siehe auch das Harvard-Tutor-Bot-Beispiel in @sec-complex-tutors, wo Musterlösungen beigegeben werden.).
-
-Zur **Festigung von Prozessen und Strategien („knowing how“)** dient das LLM als dialogischer Coach: Feingranulierte Prompts („Erkläre den Beschaffungsprozess in 5 Schritten und stelle nach jeder Stufe eine Kontrollfrage“) steigern die Lösungswahrscheinlichkeit in Tutorendialogen [@scarlatos2025]. Sprachmodelle können Lehrenden dabei helfen, komplette „worked examples“ mitsamt Zwischenschritten zu generieren [@hassany2024].
-
-Angepasste Sprachmodelle können Lernende zur Selbstkorrektur anleiten. Umso besser geht das, wenn das Sprachmodell **fachspezifische Lerntheorien** kennen (z.B.: typische Englischfehler von Deutschen oder typische Verhaltensfehler bei Verhandlungen oder beim Feedback-Gespräch im sozialen Bereich) und **die individuelle Lernhistorie** - sie also wissen, in welche Fallen ich als Lernender gerne tappe. @zhang2025 demonstrieren dies am Beispiel eines selbst entwickelten multimodalen **Mathematik-Tutor-Bots** (MathCCS, Mathematical Classification and Constructive Suggestions).
-
-Der **Teachable-Agent-Ansatz** (KI in der Schülerrolle) nutzt umgekehrt das Lernen-durch-Lehren-Prinzip: Studierende bringen dem LLM eine Methode bei und reflektieren dabei ihre eigene Strategie. Dies basiert auf der Annahme, dass Interaktionen besonders effektiv zum Lernen beitragen [@chi2018; @hayashi2025]. Wie auch in der persönlichen Interaktion scheint hierbei wichtig zu sein, welche „Persönlichkeit“ der KI-Bot hat, dem Studierende etwas beibringen sollen [@lyu2025] und mehr Anstrengung in der Interaktion (etwa durch ausführlicheres Formulieren beim Erklären) führt zu mehr Lernerfolg [@love2025].
-
-Sprachmodelle können genutzt werden, um komplexe (mathematische) Anwendungsprobleme mit einem simulierten User **„durchzuspielen“,** so dass **logische Fehler im Lösungsprozess sichtbar werden,** wie der Prototyp „MathChat“ von @wu2023a zeigt. Meta-Analysen zeigen starke positive Lerneffekte, deuten aber auch auf mögliche Einschränkungen hin. So gibt es Anzeichen dafür, dass die Effekte höher für Studierende sind als für Schüler und möglicherweise schwinden Motivationsschübe durch **abnehmende 'novelty effects'** (Neuheitseffekte) einfacher Chat-Interfaces über die Zeit der Nutzung. Die Autoren der Metastudie empfehlen, hier mit stärkerer **Gamifizierung und Personalisierung** der Chatbots gegenzusteuern [@wu2024a], was sich mit praktischen Ansätzen etwa von Duolingo deckt [@kazu2025] (z. B. Gamifizierung durch Streaks und Leaderboards, Challenges, Video-Chats mit dem Emo-Teen Lili usw.). Solche aufwändigen Setups sind im Hochschulkontext natürlich schwieriger abzudecken, ließen sich aber vielleicht graduell als Studierendenprojekt entwickeln?
-
-Für **Transfer und Anwendung („knowing with“)** entwirft das LLM realitätsnahe Szenarien – etwa Rollenspiele zu Lieferantenausfällen – und übernimmt Stakeholder-Rollen, wobei Analysen des Brookings-Instituts das Potenzial für kollaboratives Reasoning hervorheben [@korinek2024]. Cross-Domain-Prompts fördern Analogiebildung („Welche Parallelen bestehen zwischen agilem Projektmanagement und Lean-Procurement?“) [@mollick2023b].
-
-In Gruppenarbeiten funktioniert das Modell als Co-Autor: KI-unterstützte Schreibprozesse können die Menge und Vielfalt der Ideen steigern [@meincke2024; @shaer2024]. Auch hier ist jedoch die sorgfältige Gestaltung des Lernprozesses wichtig, so dass nicht erwünschte Schwierigkeiten an die KI delegiert und so kritisches Denken (*critical thinking*) nicht eingeübt wird [@lee2025].
+Die nächsten Abschnitte zeigen, welche Lerntechniken die Forschung als besonders wirksam ausweist und wo KI ihren Aufwand senkt.
 
 ## Effektive Lerntechniken und Unterstützung mit KI {#sec-lerntechniken}
+
+**Welcher KI-Einsatz passt, hängt davon ab, was gelernt werden soll.** Dieses Buch ordnet Lernziele nach drei Stufen der überarbeiteten Lernzieltaxonomie [@anderson2001]: Zum **Erinnern** von Begriffen und Fakten passen Abrufübungen und kurze Erklärungen, zum **Verstehen** Warum-Fragen, dialogisches Coaching und durchgearbeitete Beispiele (*worked examples*), zum **Anwenden** in neuen Lagen Szenarien, Fallstudien und Rollenspiele. @sec-fallbeispiele ordnet seine Beispiele nach denselben Stufen.
 
 ### Wie lernen wir besonders effektiv?
 
@@ -183,19 +132,12 @@ Quelle: @tobor2026usecases, S. 32–33.
 :::
 ::::
 
-### Ausrichtung der Anpassungen nach Empfehlungen der Lernforschung
-
-Um die Empfehlungen der Lernforschung in das Vorgehen mit Künstlicher Intelligenz (KI) und Aufgabensets zu integrieren, könnten folgende Schritte unternommen werden [@mitteaching+learninglab2023; Begriffe nach @roediger2012]:
-
-* **Zeitliche Verteilung und inhaltliche Mischung von Lerninhalten (*spacing & interleaving*)**: Die Aufgabensets sollten so gestaltet werden, dass sie über das Semester verteilt sind und eine Vielfalt an Themen abdecken. Dies fördert die Langzeiterinnerung und hilft den Studierenden, die Anwendung der Konzepte in verschiedenen Kontexten zu üben. KI kann genutzt werden, um personalisierte Lernpläne zu erstellen, die auf den individuellen Fortschritt der Studierenden abgestimmt sind und eine Mischung aus verschiedenen Aufgabentypen bieten.
-* **Testgestütztes Lernen (*test-enhanced learning*)**: Regelmäßige, durch KI unterstützte Quizze und Tests können in den Lehrplan integriert werden, um das Abrufen von Informationen zu fördern. Diese Tests könnten auch die kritische Bewertung von KI-generierten Antworten beinhalten, um die kritische Denkfähigkeit der Studierenden zu schärfen.
-* **Fragebasierte Ausarbeitung (*explanatory questioning*)**: KI-Tutor-Bots könnten entwickelt werden, um Studierende durch gezielte “Warum”-Fragen zu leiten, die ein tieferes Verständnis des Materials fördern. Diese Bots könnten in Simulationen und Rollenspielen eingesetzt werden, um die Studierenden dazu zu bringen, ihre Entscheidungen zu erklären und zu reflektieren, wodurch die Anwendung von Konzepten in realen oder simulierten Situationen vertieft wird.
 
 ## Was die Forschung seit 2025 zeigt: Lernwirkung und kognitive Auslagerung {#sec-evidenz}
 
 Die Mechanismen der vorigen Abschnitte sind seit Jahrzehnten belegt; ob sie mit Sprachmodellen tragen, war 2024 noch eine Vermutung. Seit 2025 gibt es Messungen mit den zwei stärksten verfügbaren Methoden, randomisierten Feldexperimenten und Paneldaten aus echten Kursen, und seit Sommer 2026 liegen die ersten großen Feldversuche vor, bei denen ein Tutor nicht als Laborprototyp, sondern als Teil eines laufenden Kurses getestet wurde. Vier Gestaltungsfragen ordnen die Befunde; je Frage stehen hier die belastbarsten oder neuesten Studien, weitere im Kasten am Ende des Abschnitts und auf der Online-Seite „Forschungsstand“.
 
-**Lernen Studierende mit KI-Tutoren mehr?** Die Antwort lautete 2025 noch „im Mittel ja“, seit 2026 lautet sie „nur unter Bedingungen“. Die Einzelstudie mit dem saubersten Design bleibt das Harvard-Experiment von @kestin2025, dessen Tutor mit Musterlösungen, Portionierung und Wachstumsdenken gebaut war (@sec-ziele-genai): Studierende lernten mit ihm in weniger Zeit mehr als in der aktiven Präsenzübung. Das bislang größte Hochschulexperiment zeigt das Gegenteil für den Normalfall: An der University of Maryland erhielten per Los 2.379 Studierende in den Kursen von 30 Lehrenden Zugang zu einem Tutor, der mit den Kursmaterialien aus dem Lernmanagementsystem arbeitete; ihre Abschlussnote lag 0,37 Standardabweichungen *unter* der Kontrollgruppe, ihre Beteiligung im Kurs 0,90 Standardabweichungen darunter, und bei Erstakademikerinnen und Erstakademikern war der Verlust doppelt so groß. Nur 15 Prozent der Berechtigten nutzten den Tutor überhaupt, und drei Viertel ihrer Anfragen verlangten eine direkte Antwort, weniger als ein Prozent Rückmeldung auf eigene Arbeit [@liu2026courseintegrated]. Dazwischen liegt das präregistrierte Schulexperiment von @oreopoulos2026productive mit 6.997 Lernenden und einem verzögerten Test: Weder ein Tutor allein noch ein Übungsablauf, der erst nach gezeigter Beherrschung weiterführt (*mastery-based practice*), verbesserten das Behalten; nur die Kombination tat es, und nach einem Fehler stieg mit Tutor die Trefferquote im nächsten Versuch um 8,5 Prozentpunkte. Die Meta-Analysen, die 2025 große positive Effekte berichteten, sind inzwischen methodisch geprüft: Die meisten ihrer Vergleiche setzen ChatGPT gegen Kontrollgruppen, die zugleich andere Methoden, weniger Übungszeit oder kürzere Interventionen hatten, so dass der Werkzeugeffekt nicht vom Methodeneffekt zu trennen ist [@lawson2026]; der Wissenschaftsrat nennt die Studienlage „(noch) nicht belastbar“ [@wissenschaftsrat2026]. Ein deutscher Hochschulbeleg mit sauberem Design existiert: 334 Studierende, die sich auf eine Prüfung mit Anreiz vorbereiteten, erreichten mit freiem Zugang zu einem Tutor 0,23 Standardabweichungen mehr als mit dem Lehrbuch allein, ohne weniger zu lesen [@fischer2025].
+**Lernen Studierende mit KI-Tutoren mehr?** Die Antwort lautete 2025 noch „im Mittel ja“, seit 2026 lautet sie „nur unter Bedingungen“. Die Einzelstudie mit dem saubersten Design bleibt das Harvard-Experiment von @kestin2025, dessen Tutor mit Musterlösungen, Portionierung und Wachstumsdenken gebaut war: Studierende lernten mit ihm in weniger Zeit mehr als in der aktiven Präsenzübung. Das bislang größte Hochschulexperiment zeigt das Gegenteil für den Normalfall: An der University of Maryland erhielten per Los 2.379 Studierende in den Kursen von 30 Lehrenden Zugang zu einem Tutor, der mit den Kursmaterialien aus dem Lernmanagementsystem arbeitete; ihre Abschlussnote lag 0,37 Standardabweichungen *unter* der Kontrollgruppe, ihre Beteiligung im Kurs 0,90 Standardabweichungen darunter, und bei Erstakademikerinnen und Erstakademikern war der Verlust doppelt so groß. Nur 15 Prozent der Berechtigten nutzten den Tutor überhaupt, und drei Viertel ihrer Anfragen verlangten eine direkte Antwort, weniger als ein Prozent Rückmeldung auf eigene Arbeit [@liu2026courseintegrated]. Dazwischen liegt das präregistrierte Schulexperiment von @oreopoulos2026productive mit 6.997 Lernenden und einem verzögerten Test: Weder ein Tutor allein noch ein Übungsablauf, der erst nach gezeigter Beherrschung weiterführt (*mastery-based practice*), verbesserten das Behalten; nur die Kombination tat es, und nach einem Fehler stieg mit Tutor die Trefferquote im nächsten Versuch um 8,5 Prozentpunkte. Die Meta-Analysen, die 2025 große positive Effekte berichteten, sind inzwischen methodisch geprüft: Die meisten ihrer Vergleiche setzen ChatGPT gegen Kontrollgruppen, die zugleich andere Methoden, weniger Übungszeit oder kürzere Interventionen hatten, so dass der Werkzeugeffekt nicht vom Methodeneffekt zu trennen ist [@lawson2026]; der Wissenschaftsrat nennt die Studienlage „(noch) nicht belastbar“ [@wissenschaftsrat2026]. Ein deutscher Hochschulbeleg mit sauberem Design existiert: 334 Studierende, die sich auf eine Prüfung mit Anreiz vorbereiteten, erreichten mit freiem Zugang zu einem Tutor 0,23 Standardabweichungen mehr als mit dem Lehrbuch allein, ohne weniger zu lesen [@fischer2025].
 
 **Was passiert ohne didaktische Bremse?** Hier ist die Evidenz eindeutig und sie kam zuerst. In einem Feldexperiment mit knapp tausend Oberstufenschülern verbesserte ein Tutor im Stil des normalen ChatGPT die Übungsleistung um 48 Prozent; als der Zugang in der Prüfung fehlte, lagen dieselben Schüler 17 Prozent *unter* der Kontrollgruppe, die nie Zugang hatte. Ein zweiter Tutor mit Leitplanken, der Hinweise statt Lösungen gab, hob die Übungsleistung um 127 Prozent und ließ in der Prüfung keinen Schaden zurück [@bastani2025]. Die Paneldaten einer Mathematik-Lernplattform zeigen denselben Mechanismus im Großen: Über 3,2 Millionen Lerninteraktionen sank nach dem Start von ChatGPT die Lernzeit auf Aufgaben, deren Text sich in einen Chatbot kopieren lässt, kumuliert um 27 Prozent bei Studierenden und 31 Prozent in der Oberstufe, und mit ihr der daraus gebaute Wissenszuwachs; unter Aufsicht verschwindet der Effekt vollständig [@rismanchian2026]. Die Dissoziation von Leistung und Behalten ist inzwischen im Labor repliziert: 59 Informatikstudierende lösten Programmieraufgaben mit ChatGPT zu 89 statt 69 Prozent, behielten den Stoff nach 48 Stunden aber nur zu 39 statt 52 Prozent und schrieben sich die Lösung seltener selbst zu [@bergh2026cognition]. Die Theorie dazu liefert @nakamura2026: Auslagerung an die KI (*cognitive offloading*) augmentiert, wenn sie Nebenoperationen abnimmt, und erodiert, wenn sie genau die Operationen umgeht, die das Lernziel ausmachen.
 
@@ -208,6 +150,35 @@ Die Mechanismen der vorigen Abschnitte sind seit Jahrzehnten belegt; ob sie mit 
 :::
 
 **Trägt die Einbettung oder das Werkzeug?** Die Einbettung, und der Engpass ist fast immer die Nutzung. In einer randomisierten Studie in 83 indischen Internatsschulen erhielten alle Zugang zur selben Lernplattform; große Lerngewinne entstanden nur dort, wo betreute Lernzeiten mit Aufsichtspersonen eingeplant waren [@oreopoulos2026]. Zwei Jahre Khanmigo an 18 Schulen brachten 0,06 bis 0,08 Standardabweichungen pro Jahr, nicht mehr als Khan Academy ohne KI, weil das mittlere Kind den Tutor an einem Drittel der Übungstage und in nur 17 Prozent der Sitzungen mit Fehler ansprach [@oreopoulos2026khanmigo]; der Anbieter hat den Nullbefund öffentlich eingeräumt und den Tutor umgebaut, in die Aufgabe hinein, ohne Antwort vor dem ersten Versuch (@sec-tutor). Für die Hochschule zeigt ein deutsches Wirtschaftsinformatik-Semester mit drei Bedingungen dasselbe von der anderen Seite: Alle 87 Studierenden lernten, der Tutor brachte keinen Zusatzgewinn, aber auch keine Erosion; was zählte, war die Rahmung der Nutzung, nicht der Zugang [@melanou2026]. Und wo die Nutzung angeleitet statt nur ermutigt wird, kehrt der Effekt zurück: Ermutigung zum Tutor änderte in einem Ökonometrie-Kurs nichts, eine Anleitung zur tutoriellen Nutzung hob die Prüfungsleistung um 0,21 Standardabweichungen und die Bestehensquote um zwölf Prozentpunkte [@gallegos2026]. Für die Gestaltung heißt das zusammengenommen: Ein KI-Tutor braucht Leitplanken in Aufgabe und Rückmeldung, die Hinweise vor Lösungen setzen, eine Einbettung in den Kurs, die seine Nutzung verbindlich und angeleitet macht, und einen Test vor dem Einsatz, ob er zu viel hilft (@sec-pruefen).
+
+**Ein Semester durchspielen.** Wie sich diese Befunde über ein Semester summieren könnten, zeigt der Semester-Simulator. Sie übernehmen den Kurs von Professorin Albers aus der Eingangsszene von @sec-einleitung, 120 Studierende in Technischer Mechanik, und wählen zwölf Wochen lang je einen Zug: Chatbot freigeben, Tutor mit Leitplanken, Abrufübung, Übung unter Aufsicht oder nichts ändern. Schätzen Sie vorher den Klausurschnitt. Der Simulator ist ein Lehrmodell und misst nichts. Die Effektgrößen stammen aus @bastani2025, @adesope2017 und @cepeda2006; dass sie sich Woche für Woche aufsummieren und vom Test nach der Übung auf eine Semesterklausur übertragen lassen, ist Annahme, ebenso Albers' Zeitkonto und die Regel, nach der Studierende aussteigen. Online steht jede Annahme in einer Tafel, jede Zahl mit Regler.
+
+::: {.content-visible when-format="html"}
+<iframe loading="lazy" id="semester-simulator" src="interactions/semester-simulator.html" width="100%" height="2350px" frameborder="0" title="Semester-Simulator: Sie sind Professorin Albers – zwölf Wochen, 120 Studierende, je Woche eine Entscheidung"></iframe>
+
+| Stellgröße des Modells | Wert | Herkunft |
+|:-----------------------------|:-------------|:--------------------|
+| Test ohne Hilfsmittel nach Üben mit freiem Chatbot, gegenüber Klassen ohne KI | −17 % | @bastani2025 |
+| Derselbe Test nach Üben mit Tutor mit Leitplanken | kein belegter Unterschied | @bastani2025 |
+| Übungsleistung mit Chatbot und mit Tutor, gegenüber Klassen ohne KI | +48 % und +127 % | @bastani2025 |
+| Abrufübung statt Wiederlesen | *g* = 0,51 | @adesope2017 |
+| Abruf nach geballter statt verteilter Wiederholung | 36,7 % statt 47,3 % | @cepeda2006 |
+| Abrufübung direkt nach einer Abrufübung zählt nur anteilig | Faktor 0,78 | Annahme |
+| Je Abrufübung ein Zwölftel von *g* = 0,51; Effekte summieren sich | | Annahme |
+| Übertragung vom Test nach der Übungssitzung auf die Semesterklausur | | Annahme |
+| Klausurschnitt und Streuung, wenn niemand abkürzt; Bestehensgrenze | 60 und 15 Punkte; 50 Punkte | Annahme |
+| Hausübungsschnitt ohne KI | 30 % | Annahme |
+| Anteil, der abkürzt: mit freiem Chatbot und ohnehin privat | 50 % und 20 % | Annahme |
+| Ausstieg ab Woche 3 | unter 50 % des Stoffstands, je Woche 30 % | Annahme |
+| Unter Aufsicht und mit Tutor kürzt niemand ab; den Verlust tragen die Abkürzenden | | Annahme |
+| Zeitkonto; Kosten für Tutor, Abrufübung, Aufsicht | 18 h; 3 h, 3 h, 1 h | Annahme |
+
+: Was der Semester-Simulator annimmt. {#tbl-semester-simulator}
+:::
+
+::: {.content-visible unless-format="html"}
+![Woche 8 eines Laufs im Semester-Simulator: Nach sechs Wochen mit frei gegebenem Chatbot und zwei Abrufübungen liegen die Abkürzenden (grau) hinter den Lernenden (schwarz); acht Studierende sind ausgestiegen. Lehrmodell, keine Messung. Interaktive Fassung: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/semester-simulator.html> aufrufen.](images/druck/semester-simulator-qr.png){#fig-semester-simulator width="100%" fig-pos="htbp"}
+:::
 
 :::: {.callout-note title="Anwendungsbeispiel: Studierende übernehmen KI-Texte, statt sich mit ihnen auseinanderzusetzen"}
 **Problem ohne KI.** Eine begründete eigene Position zu einem literarischen Thema entsteht durch wiederholtes Nachfragen, für das im Seminar wenig Zeit bleibt.
@@ -226,9 +197,9 @@ Ablauf und Prompt: @sec-prompt-sokratischer-dialog. Quelle: @yuen2025 (AI Pedago
 ::::
 
 ::: {.callout-note title="Stand der Forschung bei Drucklegung, November 2026"}
+::: {.content-visible when-format="html"}
 Die vier Gestaltungsfragen dieses Abschnitts, die Kernaussagen, die bei Drucklegung die Antwort trugen, und die weiteren Belege, nach Aussagen geordnet. Die Punkte geben an, wie belastbar eine Wirkungsaussage ist: ●●● hoch, ●●○ mittel, ●○○ begrenzt. Sie folgen den Designstufen der CAT-Leitlinie (*Critically Appraised Topic*, eine kurze, strukturierte Bewertung der Studienlage zu einer Frage) des Center for Evidence-Based Management [@cebma2017cat]. Ausgangspunkt ist das stärkste Design unter den Studien einer Aussage: Meta-Analyse randomisierter Studien oder randomisierte Studie (RCT, *randomized controlled trial*) drei Punkte, kontrollierte Studie ohne Zufallszuteilung oder Paneldaten zwei, Befragung, Fallbericht oder Synthese einen. Einen Punkt weniger gibt es, wenn keine der Studien begutachtet ist, wenn die Daten vom Anbieter stammen oder wenn die Vergleiche nachweislich konfundiert sind. Erklärungen und Methodenkritik tragen keine Punkte, weil die Stufen nur Wirkungsaussagen bewerten. Ob ein Befund aus der Schule auf die Hochschule übertragbar ist, steht in der Studienangabe, nicht in den Punkten. Abkürzungen in der Tabelle: Standardabweichung (SD), standardisierte Effektstärke (g), ganze Gruppen statt Einzelner zugelost (Cluster-RCT), Messung der Hirnströme (EEG), Managementstudium (MBA). Die Online-Seite „Forschungsstand“ führt alle Studien vollständig und wird halbjährlich fortgeschrieben.
 
-::: {.content-visible when-format="html"}
 +----------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
 | Gestaltungsfrage     | Kernaussagen und tragende Studien (Fließtext)                        | Weitere Belege, nach Kernaussage                                     |
 +:=====================+:=====================================================================+:=====================================================================+
@@ -304,145 +275,14 @@ Die vier Gestaltungsfragen dieses Abschnitts, die Kernaussagen, die bei Druckleg
 +----------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
 
 : Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 4, Stand November 2026. {#tbl-stand-kap3}
-:::
 
-::: {.content-visible unless-format="html"}
-Fett gesetzte Aussagen tragen den Fließtext dieses Abschnitts, die übrigen sind weitere Belege.
-
-+----------------------------------------+----------------------------------------------------------+
-| Kernaussage                            | Studien                                                  |
-+:=======================================+:=========================================================+
-| `\rule{0pt}{3.2ex}`{=latex}**Lernen Studierende mit KI-Tutoren mehr?**                            |
-+----------------------------------------+----------------------------------------------------------+
-| **Ein Tutor kann mehr Lernen bewirken  | - @kestin2025: RCT, Physik, Harvard; mehr gelernt in     |
-| als aktive Präsenzübung oder Lehrbuch  |   weniger Zeit                                           |
-| allein.** ●●●                          | - @fischer2025: RCT, 334 Studierende, Deutschland; +0,23 |
-|                                        |   SD in einer Prüfung mit Anreiz                         |
-+----------------------------------------+----------------------------------------------------------+
-| **Ein Tutor, der nur bereitgestellt    | - @liu2026courseintegrated: RCT, 2.379 Studierende,      |
-| wird, hebt die Leistung nicht und kann |   Maryland; −0,37 SD Abschlussnote, 15 % Nutzung         |
-| sie senken.** ●●○                      | - @oreopoulos2026productive: präregistrierter RCT, 6.997 |
-|                                        |   Schüler; Tutor allein ohne Wirkung auf das Behalten,   |
-|                                        |   wirksam nur im Mastery-Ablauf                          |
-+----------------------------------------+----------------------------------------------------------+
-| **Vorbehalt: Die großen Effekte der    | - @lawson2026: Kontrollgruppen unterscheiden sich        |
-| Meta-Analysen messen nicht das         |   zugleich in Methode, Übungszeit und Dauer              |
-| Werkzeug allein.**                     | - @wissenschaftsrat2026: Studienlage „(noch) nicht       |
-|                                        |   belastbar“                                             |
-+----------------------------------------+----------------------------------------------------------+
-| Meta-Analysen finden mittlere bis      | Der Vorbehalt oben gilt für sie: @ren2026 (47 RCTs, g =  |
-| große Durchschnittseffekte; nach etwa  | 0,68), @jing2026 (Hochschule, g = 0,46), @deng2025,      |
-| 23 Stunden steigt der Effekt nicht     | @wu2024a; @wuouyang2026 trennt KI-gestützte von          |
-| weiter. ●●○                            | unbegleiteter Programmierleistung.                       |
-+----------------------------------------+----------------------------------------------------------+
-| Weitere Feldversuche mit eigens        | @learnlm2025 (Herstellerangabe), @harrison2026medly      |
-| gebauten Tutoren zeigen Gewinne, oft   | (Sekundarstufe, g = 0,33), @northcutt2026studentbench    |
-| mit Beteiligung der Anbieter. ●●○      | (KI gleichauf mit menschlichem Tutoring,                 |
-|                                        | Industrieautoren), @kuo2026 (Tutor- plus Tutee-Bot       |
-|                                        | schlägt Antwort-Bot).                                    |
-+----------------------------------------+----------------------------------------------------------+
-| Gesprochene Antworten lehren nicht     | @yang2026speak (präregistriert, 86                       |
-| besser als geschriebene, kosten aber   | Online-MBA-Studierende).                                 |
-| das 2,8-Fache. ●●○                     |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| Die Rolle der KI bestimmt, was steigt: | @chakraborty2026 (vier Experimente in einem              |
-| als Tutor die Motivation, nicht die    | Programmierkurs).                                        |
-| Klausur; als Löser die Aufgabe, nicht  |                                                          |
-| der Transfer. ●●○                      |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| `\rule{0pt}{3.2ex}`{=latex}**Was passiert ohne didaktische Bremse?**                              |
-+----------------------------------------+----------------------------------------------------------+
-| **Ungebremster Zugang hebt die         | - @bastani2025: RCT, knapp 1.000 Oberstufenschüler; +48  |
-| Leistung mit KI und senkt, was ohne KI |   % Übung, −17 % Prüfung                                 |
-| bleibt.** ●●●                          | - @rismanchian2026: Paneldaten, 3,2 Mio. Interaktionen;  |
-|                                        |   −27 % Lernzeit bei kopierbaren Aufgaben                |
-|                                        | - @bergh2026cognition: Laborexperiment, 59 Studierende;  |
-|                                        |   Behalten nach 48 Stunden 39 statt 52 %                 |
-|                                        | - @stromberg2026penalty: Paneldaten, 26.811 Schülerinnen |
-|                                        |   und Schüler, 30 Monate; +18 % Hausaufgaben, −20 %      |
-|                                        |   Monatsklausuren                                        |
-+----------------------------------------+----------------------------------------------------------+
-| **Erklärung: Auslagerung schadet, wenn | - @nakamura2026: Theorie                                 |
-| sie die Operationen umgeht, die das    |                                                          |
-| Lernziel ausmachen.**                  |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| Wer per Chatbot recherchiert oder      | @mittal2026 (RCT, acht Tage, kritisches Denken am        |
-| schreibt, lernt weniger und denkt      | stärksten betroffen), @kosmyna2025 (EEG, 54              |
-| weniger selbst. ●●○                    | Teilnehmende, Preprint).                                 |
-+----------------------------------------+----------------------------------------------------------+
-| Was mit KI gelingt, bleibt ohne KI nur | @contractor2026learning (+0,27 SD, nach einer Woche nur  |
-| erhalten, wo die KI ergänzt statt      | bei ergänzender Nutzung), @autor2026expertise (133       |
-| ersetzt oder schon Expertise da ist.   | Patentanwälte, Fähigkeit ohne KI nach 90 Tagen nur bei   |
-| ●●○                                    | Erfahrenen).                                             |
-+----------------------------------------+----------------------------------------------------------+
-| Auch Lehrende lagern aus: Ein          | @sungu2026harmteaching (randomisiertes Feldexperiment,   |
-| KI-Werkzeug für die                    | 193 Lehrkräfte, −0,11 SD).                               |
-| Unterrichtsvorbereitung senkt die      |                                                          |
-| Lernmotivation ihrer Schülerinnen und  |                                                          |
-| Schüler. ●●○                           |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| `\rule{0pt}{3.2ex}`{=latex}**Welche Gestaltungsmerkmale schützen?**                               |
-+----------------------------------------+----------------------------------------------------------+
-| **Rückmeldung, die zuerst zum eigenen  | - @maier2026deskilling: präregistriert, 704              |
-| Denken auffordert, schützt das Können  |   Teilnehmende; metakognitive Rückmeldung halbiert die   |
-| ohne KI.** ●●●                         |   Auslagerung                                            |
-|                                        | - @ates2026: Cluster-RCT, 1.176 Erstsemester, vier       |
-|                                        |   Hochschulen; Reflexion vor Kritik gewinnt beim         |
-|                                        |   verzögerten Transfer                                   |
-+----------------------------------------+----------------------------------------------------------+
-| **Ein System-Prompt allein ändert das  | - @barth2026steering: präregistriertes Crossover, 1.059  |
-| Lernen nicht.** ●●●                    |   Programmieranfänger, ETH; kein Effekt auf vier Maße    |
-+----------------------------------------+----------------------------------------------------------+
-| Gerüste wirken, wenn Planen, Abrufen   | @hou2026 (Prompting-Gerüst bei offenen Aufgaben),        |
-| und Korrigieren bei den Lernenden      | @yang2026visar (Planungsschritte bleiben erhalten),      |
-| bleiben. ●●○                           | @ross2026 (Fehlvorstellungen weichen nur mit             |
-|                                        | korrigierender Rolle), @akgun2026 (Abruf-Übung schlägt   |
-|                                        | freies KI-Lernen nach sieben Wochen).                    |
-+----------------------------------------+----------------------------------------------------------+
-| Gemeinsam verarbeitetes KI-Feedback    | @chen2026transfer (Cluster-RCT, 16 Wochen, 108           |
-| fördert den Transfer stärker als       | Studierende, China).                                     |
-| allein verarbeitetes. ●●●              |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| Sokratische Führung wirkt nach, wenn   | @brender2026reflective (randomisiert, 66                 |
-| die Leitplanken fallen. ●●●            | Master-Studierende, danach freie KI-Nutzung im Projekt). |
-+----------------------------------------+----------------------------------------------------------+
-| `\rule{0pt}{3.2ex}`{=latex}**Trägt die Einbettung oder das Werkzeug?**                            |
-+----------------------------------------+----------------------------------------------------------+
-| **Gewinne entstehen, wo die Nutzung    | - @oreopoulos2026: RCT, 83 indische Internatsschulen;    |
-| eingeplant und angeleitet ist, nicht   |   Gewinne nur mit betreuten Lernzeiten                   |
-| durch den Zugang.** ●●○                | - @gallegos2026: zwei RCTs, Ökonometrie, Chile;          |
-|                                        |   Anleitung +0,21 SD, Ermutigung wirkungslos             |
-|                                        | - @melanou2026: Quasi-Experiment, 87 Studierende,        |
-|                                        |   Deutschland; die Rahmung zählt                         |
-+----------------------------------------+----------------------------------------------------------+
-| **Bereitgestellte Tutoren werden zu    | - @oreopoulos2026khanmigo: Cluster-RCT, 18 Schulen, zwei |
-| selten genutzt, um zu wirken.** ●●○    |   Jahre; Nutzung an einem Drittel der Übungstage         |
-+----------------------------------------+----------------------------------------------------------+
-| Menschliche Begleitung hebt die        | @robinson2026 (zwei RCTs, Grundschule, Beteiligung       |
-| Nutzung, nicht automatisch die         | +71–80 %, Lesen unverändert).                            |
-| Leistung. ●●○                          |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| Wo Tutoren an deutschsprachigen        | @stumpf2026 (OneTutor, 84 Lehrveranstaltungen),          |
-| Hochschulen laufen, fehlen Lernmaße;   | @tobler2026 (ETH, 407 Studierende).                      |
-| Befragungen zeigen keinen Unterschied  |                                                          |
-| im wahrgenommenen Lernerfolg. ●○○      |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| Reine KI-Tutoren erreichen viele nie:  | @turano2026monolith (Synthese).                          |
-| 40–47 Prozent nutzen sie nicht. ●○○    |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-| Anbieterstudien berichten Gewinne,     | @openai2026studymode, @ghahramani2026sierraleone         |
-| sind aber nicht unabhängig geprüft.    | (Herstellerangaben).                                     |
-| ●○○                                    |                                                          |
-+----------------------------------------+----------------------------------------------------------+
-
-: Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 4, Stand November 2026. {#tbl-stand-kap3}
-:::
-
-::: {.content-visible when-format="html"}
 Zur lebenden Seite [Forschungsstand](forschungsstand.qmd).
 :::
+
 ::: {.content-visible unless-format="html"}
-Die lebende Fassung finden Sie online unter <https://th-koln-bartnik.github.io/genai4teaching/forschungsstand.html>.
+Die vier Gestaltungsfragen dieses Abschnitts mit allen weiteren Belegen, nach Kernaussagen geordnet und nach Belastbarkeit gewichtet (Designstufen der CAT-Leitlinie des Center for Evidence-Based Management [@cebma2017cat]), führt die Online-Seite „Forschungsstand“; sie wird halbjährlich fortgeschrieben. QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/forschungsstand.html> aufrufen.
+
+![](images/qr/qr-forschungsstand.png){width="18%"}
 :::
 :::
 
@@ -455,9 +295,9 @@ Die lebende Fassung finden Sie online unter <https://th-koln-bartnik.github.io/g
 
 2. Chatbots sind darauf gebaut, hilfreich zu sein, nicht darauf, Lernen zu fördern. Ohne Anpassung nehmen sie Lernenden die Schwierigkeiten ab, die das Lernen ausmachen.
 
-**Zu Lernziel 3: Wissensstufen, Lerntechniken und ICAP**
+**Zu Lernziel 3: Lernstufen, Lerntechniken und ICAP**
 
-3. Welcher KI-Einsatz sinnvoll ist, hängt vom Wissenstyp ab: Abrufübungen und Erklärungen für Faktenwissen, dialogisches Coaching und durchgearbeitete Beispiele für Prozesswissen, Szenarien und Rollenspiele für Transfer.
+3. Welcher KI-Einsatz sinnvoll ist, hängt von der Lernstufe ab: Abrufübungen und kurze Erklärungen zum Erinnern, Warum-Fragen, dialogisches Coaching und durchgearbeitete Beispiele zum Verstehen, Szenarien, Fallstudien und Rollenspiele zum Anwenden.
 4. Verteiltes Üben, häufige Abruftests und Warum-Fragen sind die am besten belegten Lerntechniken. Ihr Haken ist der Aufwand, und den können Sprachmodelle drastisch senken.
 5. Interaktion schlägt Konstruktion schlägt aktive Beteiligung schlägt passives Zuhören. Eine KI-Lernaktivität ist umso wirksamer, je weiter oben sie auf dieser Leiter steht.
 
@@ -471,66 +311,48 @@ Die lebende Fassung finden Sie online unter <https://th-koln-bartnik.github.io/g
 ::: {.sb-begriff begriff="k3-kognitive-belastung"}
 Kognitive Belastung (*cognitive load*)
 
-Die begrenzte Verarbeitungskapazität des Arbeitsgedächtnisses. Ein Chatbot, der mit Wissens-Dumps überschüttet, überfordert sie; didaktische Prompts begrenzen deshalb die Antwortmenge, etwa auf eine Frage pro Zug.
-:::
-
-::: {.sb-begriff begriff="k3-wissen-dass"}
-Wissen, dass (*knowing that*)
-
-Fakten- und Begriffswissen, das erst erworben und dann gefestigt werden muss, die belastbare Wissensbasis. Dazu passen Abrufübungen und Erklärungen.
-:::
-
-::: {.sb-begriff begriff="k3-wissen-wie"}
-Wissen, wie (*knowing how*)
-
-Prozedurales und strategisches Können: Abläufe, die man an modellierten Beispielen erwirbt und in gelenkten Übungen festigt. Dazu passen dialogisches Coaching und durchgearbeitete Beispiele.
-:::
-
-::: {.sb-begriff begriff="k3-wissen-anwenden"}
-Wissen anwenden (*knowing with*)
-
-Die höchste Stufe nach Hattie: Wissen flexibel auf neue Situationen übertragen. Dazu passen Szenarien, Fallstudien und Rollenspiele.
+*Beispiel:* Die Folie zeigt die Formel erst, wenn die Dozentin sie erklärt, nicht schon zusammen mit Grafik und Fließtext; so bleibt die kognitive Belastung niedrig.
 :::
 
 ::: {.sb-begriff begriff="k3-verteiltes-ueben"}
 Verteiltes Üben (*spacing*)
 
-Übung über die Zeit verteilen statt in einer Sitzung bündeln. Abstände und wiederholte Aktivierung geben dem Gedächtnis Zeit und stärken die Langzeiterinnerung.
+*Beispiel:* Die Fachbegriffe der ersten Woche tauchen nach zwei Tagen, nach einer Woche und nach einem Monat wieder im Quiz auf; das ist verteiltes Üben.
 :::
 
 ::: {.sb-begriff begriff="k3-gemischtes-ueben"}
 Gemischtes Üben (*interleaving*)
 
-Aufgabentypen gemischt statt in Blöcken nacheinander üben. Der ständige Vergleich schult die Unterscheidung und damit die Wahl des passenden Lösungswegs.
+*Beispiel:* Die Statistikübung mischt t-Test, Chi-Quadrat-Test und Regression, so dass zuerst das passende Verfahren zu wählen ist; das ist gemischtes Üben.
 :::
 
 ::: {.sb-begriff begriff="k3-testgestuetzt"}
 Testgestütztes Lernen (*test-enhanced learning*)
 
-Wissen durch Fragen und Tests aktiv abrufen festigt es deutlich stärker als erneutes Lesen (Testeffekt). Für Studierende anstrengender, aber wirksamer; Sprachmodelle senken den Aufwand, die Fragen zu erstellen.
+*Beispiel:* Zu Beginn jeder Sitzung schreiben alle drei Minuten lang auf, was sie von der letzten Woche noch wissen; das ist testgestütztes Lernen.
 :::
 
 ::: {.sb-begriff begriff="k3-transfergerecht"}
 Transfergerechte Verarbeitung (*transfer-appropriate processing*)
 
-Beim Testen laufen ähnliche Denkprozesse ab wie beim späteren Abrufen; deshalb verbessert Üben in der Form der späteren Anforderung die Erinnerung. Einer der Gründe, warum häufige Abfragen wirken.
+*Beispiel:* Wer in der Klausur Rechenwege begründen muss, übt am besten das Begründen, nicht nur das Ankreuzen von Ergebnissen; dahinter steht transfergerechte Verarbeitung.
 :::
 
 ::: {.sb-begriff begriff="k3-ausarbeitung"}
 Fragebasierte Ausarbeitung (*explanatory questioning*)
 
-Lernende stellen und beantworten Warum- und Wie-Fragen zum Stoff und verknüpfen ihn so mit vorhandenem Wissen. Tutor-Bots und Simulationen können solche Fragen stellen.
+*Beispiel:* Nach der richtigen Antwort fragt der Tutor-Bot weiter: Warum sinkt die Nachfrage, wenn der Preis steigt, und wann nicht? Das ist fragebasierte Ausarbeitung.
 :::
 
 ::: {.sb-begriff begriff="k3-icap"}
 ICAP
 
-Rangfolge kognitiven Engagements nach Chi: interaktiv vor konstruktiv vor aktiv vor passiv (I > C > A > P). Eine KI-Lernaktivität wirkt umso stärker, je weiter oben sie auf dieser Leiter steht.
+*Beispiel:* Eine Vorlesung anhören ist passiv, mitschreiben aktiv, eine eigene Zusammenfassung schreiben konstruktiv; nach ICAP wirkt jede Stufe stärker als die vorige.
 :::
 :::
 
 ::: {.sb-spiel modus="fall" kapitel="3"}
-::: {.sb-aufgabe loesung="k3-testgestuetzt" ablenker="k3-kognitive-belastung k3-icap k3-wissen-anwenden"}
+::: {.sb-aufgabe loesung="k3-testgestuetzt" ablenker="k3-kognitive-belastung k3-icap k3-transfergerecht"}
 Statt am Ende der Vorlesung die Folien zusammenzufassen, lässt eine Dozentin einen Bot fünf Kurzfragen zum Stoff der Stunde erzeugen, die alle zuerst ohne Unterlagen beantworten.
 
 ::: sb-herkunft
@@ -542,7 +364,7 @@ Die Studierenden rufen ab, statt wiederzulesen; das festigt den Stoff stärker. 
 :::
 :::
 
-::: {.sb-aufgabe loesung="k3-gemischtes-ueben" ablenker="k3-wissen-dass k3-ausarbeitung k3-kognitive-belastung"}
+::: {.sb-aufgabe loesung="k3-gemischtes-ueben" ablenker="k3-verteiltes-ueben k3-ausarbeitung k3-kognitive-belastung"}
 Auf dem Übungsblatt vor der Klausur in Kostenrechnung stehen Aufgaben zu Zuschlagskalkulation, Deckungsbeitrag und Break-even nicht mehr in Blöcken, sondern durcheinander; zuerst muss man erkennen, welches Verfahren passt.
 
 ::: sb-herkunft
@@ -554,7 +376,7 @@ Weil die Aufgabentypen wechseln, üben die Studierenden die Unterscheidung mit, 
 :::
 :::
 
-::: {.sb-aufgabe loesung="k3-verteiltes-ueben" ablenker="k3-wissen-wie k3-icap k3-transfergerecht"}
+::: {.sb-aufgabe loesung="k3-verteiltes-ueben" ablenker="k3-gemischtes-ueben k3-icap k3-transfergerecht"}
 Ein Dozent streicht die lange Wiederholungssitzung vor der Klausur; dafür kehrt jedes Thema in drei kurzen Blöcken im Abstand mehrerer Wochen zurück.
 
 ::: sb-herkunft
@@ -566,7 +388,7 @@ Dieselbe Übungszeit, über das Semester verteilt statt gebündelt, stärkt die 
 :::
 :::
 
-::: {.sb-aufgabe loesung="k3-ausarbeitung" ablenker="k3-kognitive-belastung k3-wissen-dass k3-verteiltes-ueben"}
+::: {.sb-aufgabe loesung="k3-ausarbeitung" ablenker="k3-kognitive-belastung k3-icap k3-verteiltes-ueben"}
 Nach jeder Antwort im Lieferkettenkurs fragt ein Bot nach: Warum steigen die Bestellungen weiter oben in der Kette stärker, und was würde sich ändern, wenn alle Stufen dieselben Verkaufsdaten sähen?
 
 ::: sb-herkunft
@@ -578,7 +400,7 @@ Warum- und Was-wäre-wenn-Fragen zwingen dazu, den Stoff mit vorhandenem Wissen 
 :::
 :::
 
-::: {.sb-aufgabe loesung="k3-kognitive-belastung" ablenker="k3-wissen-anwenden k3-gemischtes-ueben k3-transfergerecht"}
+::: {.sb-aufgabe loesung="k3-kognitive-belastung" ablenker="k3-ausarbeitung k3-gemischtes-ueben k3-transfergerecht"}
 Ein Erstsemester fragt den Kurs-Bot nach dem Unterschied zwischen fixen und variablen Kosten und bekommt eine Antwort über anderthalb Seiten mit acht Unterpunkten und drei Exkursen.
 
 ::: sb-herkunft
@@ -590,15 +412,15 @@ Die Antwort überfordert das Arbeitsgedächtnis, das für das Wesentliche frei b
 :::
 :::
 
-::: {.sb-aufgabe loesung="k3-wissen-anwenden" ablenker="k3-wissen-dass k3-verteiltes-ueben k3-kognitive-belastung"}
-Eine KI spielt einen Lieferanten, der kurz vor Vertragsabschluss die Preise erhöht; die Studierenden müssen ihr Wissen über Verhandlungen in einer Lage einsetzen, die im Skript nicht vorkommt.
+::: {.sb-aufgabe loesung="k3-icap" ablenker="k3-ausarbeitung k3-testgestuetzt k3-kognitive-belastung"}
+Statt die Musterlösung zu lesen, erklären sich zwei Studierende gegenseitig ihren Lösungsweg und widersprechen, wo sie anders gerechnet haben; ein Bot markiert nur die Stellen, an denen ihre Wege auseinanderlaufen.
 
 ::: sb-herkunft
-Herkunft: konstruiert nach @tbl-wissenstypen und @sec-simulator.
+Herkunft: konstruiert nach @sec-lerntechniken.
 :::
 
 ::: sb-begruendung
-Das Wissen ist vorhanden und muss auf eine neue Situation übertragen werden. Das ist die höchste der drei Stufen nach Hattie.
+Wer einer anderen Person erklärt und auf ihre Einwände antwortet, arbeitet interaktiv, auf der obersten Stufe der Rangfolge. Der Bot liefert nur den Anlass, nicht die Erklärung.
 :::
 :::
 :::
@@ -610,13 +432,13 @@ Das Wissen ist vorhanden und muss auf eine neue Situation übertragen werden. Da
 ::: {.callout-note title="Lernfragen"}
 **Wiederholen**
 
-1. Nennen Sie die drei Wissensstufen nach Hattie und je einen passenden KI-Einsatz.
+1. Nennen Sie die drei Lernstufen, nach denen dieses Buch ordnet, und je einen passenden KI-Einsatz.
 2. Bringen Sie die vier Stufen der ICAP-Rangfolge in die richtige Reihenfolge.
 3. Erklären Sie ohne Nachschlagen, warum ein Chatbot, der sofort die richtige Antwort gibt, dem Testeffekt entgegenwirkt. Wie müsste der Bot stattdessen reagieren?
 
 **Anwenden**
 
-4. Ordnen Sie drei Lernziele Ihrer Veranstaltung den Stufen knowing that, knowing how und knowing with zu. Welche Stufe kommt bei Ihnen zu kurz, und welche KI-gestützte Methode aus diesem Kapitel würde sie stärken?
+4. Ordnen Sie drei Lernziele Ihrer Veranstaltung den Stufen Erinnern, Verstehen und Anwenden zu. Welche Stufe kommt bei Ihnen zu kurz, und welche KI-gestützte Methode aus diesem Kapitel würde sie stärken?
 5. Wo in Ihrem Semesterplan könnten Sie mit geringem Aufwand verteiltes und gemischtes Üben einbauen, wenn ein Sprachmodell die Aufgabenvarianten liefert?
 
 **Beurteilen**

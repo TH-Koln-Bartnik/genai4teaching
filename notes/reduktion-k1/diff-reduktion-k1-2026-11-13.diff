@@ -1,0 +1,402 @@
+diff --git a/glossar.qmd b/glossar.qmd
+index 88029f4..c88d2d5 100644
+--- a/glossar.qmd
++++ b/glossar.qmd
+@@ -79,6 +79,9 @@ Jagged Frontier
+ 
+     *Herkunft:* engl. *jagged*, „gezackt“; zu *frontier* s. Frontier-Modell.
+ 
++Fähigkeitsüberhang (*capability overhang*)
++:   Der Abstand zwischen dem, was Sprachmodelle können, und dem, was fast alle mit ihnen tun. Bei Lehrenden zeigt er sich in unsystematischer Nutzung im Chatfenster, ohne Vorlagen, Projekte oder Agenten; wer mehr erreichen will, muss nicht auf bessere Modelle warten (@sec-nutzung).
++
+ Centaur und Cyborg
+ :   Zwei Arbeitsweisen mit KI entlang der Jagged Frontier. Der Centaur teilt die Arbeit sauber auf: Dieses übernimmt der Mensch, jenes die Maschine. Der Cyborg verwebt beide in jedem Arbeitsschritt, etwa beim Schreiben Satz für Satz (@sec-arbeitsweisen; @sec-cyborg-writing).
+ 
+@@ -171,8 +174,17 @@ Erinnern, Verstehen, Anwenden
+ Erwünschte Schwierigkeiten (*desirable difficulties*)
+ :   Lernhürden, die das Lernen anstrengender, aber nachhaltiger machen: selbst abrufen statt nachlesen, selbst formulieren statt übernehmen. Ein Chatbot, der sofort die fertige Lösung liefert, räumt genau diese Hürden weg (@sec-was-hilft; @sec-ziele-genai).
+ 
++Auslagerung des Denkens (*cognitive offloading*)
++:   Lernende überlassen der KI die Denkschritte, die sie selbst üben müssten. Die Übung ist gelöst, gelernt wird weniger; für das Lernen wiegt das schwerer als das Täuschen in Prüfungen, weil die geprüften Schritte nie geübt werden (@sec-risiken).
++
++Leitplanke (*guardrail*)
++:   Eine Vorgabe in Aufgabe, Werkzeug oder Rückmeldung, die das eigene Denken der Lernenden schützt, etwa ein Tutor, der Hinweise statt Lösungen gibt. Ohne Leitplanken steigt die Übungsleistung, und die Prüfungsleistung sinkt (@sec-was-hilft).
++
++Anleitung statt Ermutigung (*guidance*, *encouragement*)
++:   Zur KI-Nutzung nur zu ermutigen, ändert an der Lernwirkung nichts; zu zeigen, wie man einen Tutor tutoriell befragt, hob in einer Studie die Prüfungsleistung. Die Lernwirkung hängt an der Einbettung, nicht am Zugang zum Werkzeug (@sec-was-hilft).
++
+ Testgestütztes Lernen (*test-enhanced learning*)
+-:   Das aktive Abrufen von Wissen durch Fragen und Tests festigt Gelerntes deutlich stärker als wiederholtes Lesen. Häufige, niedrigschwellige Abrufübungen gehören zu den am besten belegten Lerntechniken; Sprachmodelle senken den Aufwand, sie zu erstellen (@sec-lerntechniken).
++:   Das aktive Abrufen von Wissen durch Fragen und Tests festigt Gelerntes deutlich stärker als wiederholtes Lesen. Häufige, niedrigschwellige Abrufübungen gehören zu den am besten belegten Lerntechniken; Sprachmodelle senken den Aufwand, sie zu erstellen. Kapitel 1 nennt sie häufige kleine Tests (*practice testing*) (@sec-einleitung; @sec-lerntechniken).
+ 
+     *Herkunft:* *Test* über altfrz. *test* zu lat. *testum*, „Tontopf“, dem Tiegel, in dem man Edelmetall auf seine Reinheit prüfte.
+ 
+diff --git a/index.qmd b/index.qmd
+index b95f366..bdcaa38 100644
+--- a/index.qmd
++++ b/index.qmd
+@@ -15,11 +15,11 @@ Dieses Buch ist aus einem Skript gewachsen. Als die ersten Kolleginnen und Kolle
+ 
+ <!-- Abschnitt „Neue Möglichkeiten durch KI“ mit Galerie der zehn reizvollsten Praxisbeispiele (Claude, 02.11.2026, Auftrag Roman). Reihenfolge der Galerie: ungewöhnlich, interaktiv, schön. Alle Beispiele: praxisbeispiele.qmd (erzeugt von scripts/praxisbeispiele.py, nur online). -->
+ 
++::: {.content-visible when-format="html"}
+ ## Neue Möglichkeiten durch KI – Interaktionen und vieles mehr {#sec-neue-moeglichkeiten .unnumbered}
+ 
+-Vieles, was für eine einzelne Lehrveranstaltung früher zu aufwendig war, baue ich heute mit einem Sprachmodell in wenigen Stunden. In diesem Buch stecken deshalb 37 Beispiele, die Sie ansehen, hören und ausprobieren, statt nur über sie zu lesen: ein Film, der das nächste Token eines Sprachmodells in neun Genres erklärt und vor der Auflösung auf Ihre Vorhersage wartet, ein Lernsong über Prognoseverfahren, ein Duell gegen einen KI-Detektor, Rechner, Widgets und Animationen, in denen sich vor dem Engpass die Arbeit staut. Jedes Beispiel steht an der Stelle im Buch, deren Lernziel es dient, und jedes habe ich auf Zahlen und Quellen geprüft. Die Galerie zeigt die zehn, die am meisten überraschen; alle übrigen sammelt die Seite [Praxisbeispiele im Überblick]{.content-visible unless-format="html"}[[Praxisbeispiele im Überblick](praxisbeispiele.qmd)]{.content-visible when-format="html"}[ (<https://th-koln-bartnik.github.io/genai4teaching/praxisbeispiele.html>)]{.content-visible unless-format="html"}.
++Vieles, was für eine einzelne Lehrveranstaltung früher zu aufwendig war, baue ich heute mit einem Sprachmodell in wenigen Stunden. In den Kapiteln dieses Buchs stecken deshalb 29 Beispiele, die Sie ansehen, hören und ausprobieren, statt nur über sie zu lesen: ein Film, der das nächste Token eines Sprachmodells in neun Genres erklärt und vor der Auflösung auf Ihre Vorhersage wartet, ein Lernsong über Prognoseverfahren, ein Duell gegen einen KI-Detektor, Rechner, Widgets und Animationen, in denen sich vor dem Engpass die Arbeit staut. Jedes steht an der Stelle im Buch, deren Lernziel es dient, und jedes habe ich auf Zahlen und Quellen geprüft. Die Galerie zeigt eine Auswahl, die am meisten überrascht; alle Beispiele, auch die, die nur online stehen, sammelt die Seite [Praxisbeispiele im Überblick](praxisbeispiele.qmd).
+ 
+-::: {.content-visible when-format="html"}
+ ```{=html}
+ <iframe loading="lazy" id="galerie-vorwort" src="interactions/galerie-vorwort.html" width="100%" height="1000px" frameborder="0" title="Galerie: Zehn Praxisbeispiele, die mit generativer KI entstanden sind"></iframe>
+ <script>
+@@ -32,17 +32,13 @@ window.addEventListener("message", function (e) {
+ ```
+ :::
+ 
+-::: {.content-visible unless-format="html"}
+-![Galerie „Zehn Praxisbeispiele“: Film mit Haltepunkten zum nächsten Token, Lernsong zu Prognoseverfahren, Detektor-Duell, Teaser zur Fallstudie Backhaus Kaya, Spiel „Höher oder tiefer“, Linien-Widget, Arbeitsweisen-Durchspiel, Agenten-Engpass, Tutor-Kosten-Rechner und Making-of eines Erklärvideos. Die Galerie gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/galerie-vorwort.html> aufrufen.](images/qr/qr-galerie-vorwort.png){#fig-qr-galerie-vorwort width="32%" fig-align="center"}
+-:::
+-
+ <!-- Lernpfade (Claude, 01.11.2026; am 01.11. auf Wunsch Roman aus Kapitel 1 ins Vorwort verschoben) nach Entscheidung Roman: Option b, U-Bahn-Plan als Buchlandkarte, Selbsttest. Karte und Widget werden aus scripts/lernpfade/ erzeugt. -->
+ 
+ ## Wählen Sie Ihren Lernpfad {#sec-lernpfade .unnumbered}
+ 
++::: {.content-visible when-format="html"}
+ Sie brauchen nicht jede Etappe dieses Buchs. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also das Wissen, was beim Lernen wirkt, wie man es in einer Lehrveranstaltung umsetzt und welche Formen des KI-Einsatzes sich bewährt haben. Lehrerfahrung ersetzt diese Kenntnis nicht. Morehead und Kollegen befragten Hochschullehrende und Studierende zu wirksamen Lernstrategien; die Lehrenden wussten nur wenig mehr als ihre Studierenden und teilten deren verbreitete Fehlannahmen [@morehead2016]. Denken Sie an zwei Leser dieses Buchs: einen Informatiker, der täglich mit Agenten (eigenständig handelnden KI-Systemen) arbeitet, und eine Kollegin, die die Befunde zu Abrufübungen kennt und noch nie einen Agenten eingerichtet hat. Er braucht die Kapitel zur Lernforschung, sie die Grundbegriffe der KI, und keiner von beiden gewinnt etwas, wenn er Bekanntes noch einmal liest. Kalyuga und Kollegen haben Studien zusammengetragen, in denen Erklärungen, die Neulingen halfen, Erfahrene beim Lernen behinderten, weil sie Bekanntes ein zweites Mal verarbeiten mussten; sie nennen das den Expertise-Umkehreffekt (*expertise reversal effect*) [@kalyuga2003]. @fig-lernpfade zeigt die vier Kombinationen der beiden Arten von Vorwissen als Liniennetz, und ein Selbsttest führt Sie zu Ihrer Linie.
+ 
+-::: {.content-visible when-format="html"}
+ ::: {#fig-lernpfade}
+ ```{=html}
+ <iframe loading="lazy" id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
+@@ -57,21 +53,17 @@ window.addEventListener("message", function (e) {
+ 
+ Lernpfade durch das Buch. Nach den sechs Antworten tritt die passende Linie hervor; jede Station führt zum Kapitel. Eigene Darstellung.
+ :::
++
++Eine fünfte Linie steht neben dem Selbsttest, weil sie kein Vorwissen voraussetzt. **Linie 5 · Erst schauen** führt nicht durch die Kapitel, sondern an allen Praxisbeispielen entlang, von den Filmen über die Spiele bis zu den Rechnern. Unter jedem Beispiel führt ein Link in das Kapitel, das es erklärt; so kehren Sie dort ins Buch zurück, wo ein Beispiel Sie neugierig gemacht hat. Die Linie beginnt auf der Seite [Praxisbeispiele im Überblick](praxisbeispiele.qmd).
+ :::
+ 
+ ::: {.content-visible unless-format="html"}
+-![Lernpfade durch das Buch. Rot umrandet sind die Stationen, an denen alle Linien halten. Eigene Darstellung.](images/lernpfade/lernpfade-karte.svg){#fig-lernpfade width="100%" fig-pos="htbp"}
++Sie brauchen nicht jede Etappe dieses Buchs. Wer täglich mit Agenten arbeitet, braucht vor allem die Kapitel zur Lernforschung, wer die Lernforschung kennt, vor allem die Grundbegriffe der KI; Erklärungen, die Neulingen helfen, behindern Erfahrene sogar beim Lernen [@kalyuga2003]. @fig-lernpfade zeigt vier Linien durch das Buch. Zu Ihrer Linie führt online ein Selbsttest mit sechs Fragen: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/#sec-lernpfade> aufrufen.
+ 
+-::: {.callout-note title="Selbsttest: Welche Linie passt?"}
+-**Erfahrung mit KI.** (a) Ich nutze ein Sprachmodell mindestens einmal pro Woche für meine Arbeit. (b) Ich habe einen eigenen Assistenten eingerichtet, etwa ein Projekt mit festen Anweisungen und eigenen Dateien. (c) Ich habe einer KI eine mehrschrittige Aufgabe übertragen, bei der sie selbst sucht, Dateien liest oder Code ausführt.
+-
+-**Kenntnis der Lernforschung.** (d) Ich kenne zentrale Wirkmechanismen aus der Lernforschung und kann erklären, warum etwa Abrufübungen, verteiltes Üben und Selbsterklären das Behalten stärken. (e) Ich weiß, wie sich solche Mechanismen in einer Lehrveranstaltung umsetzen lassen, etwa mit kurzen Abfragen zu Beginn, Wiederholung über das Semester oder Aufgaben, in denen Studierende einander erklären. (f) Ich kenne erprobte Einsatzformen und Befunde zu KI in der Lehre, etwa wann ein KI-Tutor das Lernen stärkt und wann er es durch Auslagerung des Denkens schwächt.
++![Lernpfade durch das Buch. Rot umrandet sind die Stationen, an denen alle Linien halten. Eigene Darstellung.](images/lernpfade/lernpfade-karte.svg){#fig-lernpfade width="100%" fig-pos="htbp"}
+ 
+-Höchstens eine Zustimmung je Gruppe: Linie 1. Zwei oder mehr nur bei KI: Linie 2. Nur bei Lernforschung: Linie 3. In beiden Gruppen: Linie 4. Online prüft der Selbsttest die Antworten und hebt die Linie hervor: <https://th-koln-bartnik.github.io/genai4teaching/#sec-lernpfade>.
++![](images/qr/qr-lernpfade.png){width="18%"}
+ :::
+-:::
+-
+-Eine fünfte Linie steht neben dem Selbsttest, weil sie kein Vorwissen voraussetzt. **Linie 5 · Erst schauen** führt nicht durch die Kapitel, sondern an allen 37 Praxisbeispielen entlang, von den Filmen über die Spiele bis zu den Rechnern. Unter jedem Beispiel führt ein Link in das Kapitel, das es erklärt; so kehren Sie dort ins Buch zurück, wo ein Beispiel Sie neugierig gemacht hat. [Die Linie beginnt auf der Seite [Praxisbeispiele im Überblick](praxisbeispiele.qmd).]{.content-visible when-format="html"}[Die Linie beginnt online auf der Seite <https://th-koln-bartnik.github.io/genai4teaching/praxisbeispiele.html>.]{.content-visible unless-format="html"}
+ 
+ <!-- Abschnitt „Wie dieses Buch lehrt“ (Claude, 02.11.2026, Fassung 4: ganzes Vorwort in Ich-Stimme nach Classic Prose neu geschrieben, Fachbegriff fett als Subjekt; Fassung 3: Fachbegriff mit Beispiel im Fließtext, für Erstlesende beschrieben, Advance Organizer ergänzt; Fassung 2: gruppiert nach Lernzielen, je Mechanismus eine kanonische Quelle;
+ Grundlage claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md).
+@@ -81,14 +73,21 @@ Nach Merge ergänzen: „Höher oder tiefer“ (Kap. 1), Detektor-Duell (Kap. 5)
+ 
+ ## Wie dieses Buch lehrt {#sec-wie-dieses-buch-lehrt .unnumbered}
+ 
++::: {.content-visible when-format="html"}
+ Eine gute Regel lautet: Nutze selbst, was du anbietest – im Tech-Jargon sagt man *eat your own dog food*. Dem folgend finden Sie in diesem Buch alle Lernmechanismen, die es vorstellt, auch angewandt wieder. Jede seiner Lernhilfen beruht auf einem Mechanismus, den Kapitel 4 als belegt vorstellt (@sec-lerntechniken), und ich habe sie nach drei Lernzielen geordnet [@anderson2001]: Erinnern, Verstehen, Anwenden.
+ 
+ Am gründlichsten hat die Lernforschung untersucht, was beim **Erinnern** hilft. Die **Abrufübung** (*retrieval practice*) finden Sie in den Lernfragen am Ende jedes Kapitels. Beantworten Sie sie zuerst aus dem Gedächtnis und schlagen Sie erst dann die Lösungshinweise in Anhang B nach (@sec-loesungshinweise), denn wer abruft, behält mehr als wer wiederliest. Das **verteilte Wiederholen** (*spacing*) steckt im Kasten mit den Schlüsselbegriffen, der ebenfalls am Kapitelende steht. Markieren Sie online einen Begriff wie Fähigkeitsüberhang als nicht gewusst, lege ich ihn Ihnen einige Kapitel später wieder vor, und mit diesem Abstand hält er länger als nach gebündeltem Lernen. Den **Vortest** (*pretesting*) machen Sie am Anfang jedes Kapitels. Unter „Bevor Sie weiterlesen“ schätzen Sie Aussagen ein wie „Fast alle Studierenden nutzen KI inzwischen auch für Prüfungsleistungen“, und das Kapitel löst jede an der Stelle auf, die sie beantwortet. Wer sich vorher festlegt, auch falsch, behält die Antwort besser. Die **Melodie als Gedächtnisstütze** schließlich hören Sie im Lernsong zu Prognoseverfahren in Kapitel 7, wo Melodie und Rhythmus dem Wortlaut ein Gerüst geben, an dem Sie ihn wieder abrufen.
+ 
+-Für das **Verstehen** zeige ich Ihnen ein gelöstes Beispiel aus meiner Lehre, bevor ich eine Methode empfehle. **Ausgearbeitete Beispiele** (*worked examples*) finden Sie vor allem in Kapitel 7, etwa den Tutor-Bot für das Modul „Grundlagen der BWL“. Prinzip, Empfehlung und Umsetzung stehen dort hintereinander, sodass Ihr Arbeitsgedächtnis nicht zugleich den Lösungsweg und das Prinzip suchen muss. **Fehlvorstellungen widerlegen** (*refutation text*) heißt, eine verbreitete Vorstellung beim Namen zu nennen und mit Gründen zu ersetzen. Im [Streich-Test](kapitel02-grundlagen.qmd#sec-streichtest) zum Prompting in Kapitel 2 entscheiden Sie bei zehn Zeilen eines älteren Prompts, ob Sie sie streichen würden und wie sicher Sie sich sind; die Irrtümer, bei denen Sie sich sicher waren, korrigiert die Auflösung am gründlichsten. **Unterscheiden durch Vermischen** (*interleaving*) üben Sie in den Spielen zu den Schlüsselbegriffen. Zu einem kurzen Fall wählen Sie unter ähnlichen Begriffen den passenden, etwa zwischen Fähigkeitsüberhang und Auslagerung des Denkens, und im direkten Vergleich sehen Sie die Merkmale, die beide trennen. Eine **vorangestellte Ordnungshilfe** (*advance organizer*) zeigt Ihnen das Ganze, bevor die Einzelheiten kommen. Das Liniennetz oben ist eine solche Ordnungshilfe; in Kapitel 1 ordnen die vier Rollen der KI als Hiwi, Copilot, Tutor und Simulator alle folgenden Kapitel, und eine Galerie zeigt fünf Formate, deren Entstehung die späteren Kapitel erklären. Die **Geschichte als Einstieg** begegnet Ihnen am Anfang jedes Kapitels als kurze Szene aus dem Hochschulalltag, denn Ereignisse, die kausal verknüpft um eine Person kreisen, behält man besser als Sachtext.
++Für das **Verstehen** zeige ich Ihnen ein gelöstes Beispiel aus meiner Lehre, bevor ich eine Methode empfehle. **Ausgearbeitete Beispiele** (*worked examples*) finden Sie vor allem in Kapitel 7, etwa den Tutor-Bot für das Modul „Grundlagen der BWL“. Prinzip, Empfehlung und Umsetzung stehen dort hintereinander, sodass Ihr Arbeitsgedächtnis nicht zugleich den Lösungsweg und das Prinzip suchen muss. **Fehlvorstellungen widerlegen** (*refutation text*) heißt, eine verbreitete Vorstellung beim Namen zu nennen und mit Gründen zu ersetzen. Im [Streich-Test](kapitel02-grundlagen.qmd#sec-streichtest) zum Prompting in Kapitel 2 entscheiden Sie bei zehn Zeilen eines älteren Prompts, ob Sie sie streichen würden und wie sicher Sie sich sind; die Irrtümer, bei denen Sie sich sicher waren, korrigiert die Auflösung am gründlichsten. **Unterscheiden durch Vermischen** (*interleaving*) üben Sie in den Spielen zu den Schlüsselbegriffen. Zu einem kurzen Fall wählen Sie unter ähnlichen Begriffen den passenden, etwa zwischen Fähigkeitsüberhang und Auslagerung des Denkens, und im direkten Vergleich sehen Sie die Merkmale, die beide trennen. Eine **vorangestellte Ordnungshilfe** (*advance organizer*) zeigt Ihnen das Ganze, bevor die Einzelheiten kommen. Das Liniennetz oben ist eine solche Ordnungshilfe; in Kapitel 1 ordnen die vier Rollen der KI als Hiwi, Copilot, Tutor und Simulator alle folgenden Kapitel. Die **Geschichte als Einstieg** begegnet Ihnen am Anfang jedes Kapitels als kurze Szene aus dem Hochschulalltag, denn Ereignisse, die kausal verknüpft um eine Person kreisen, behält man besser als Sachtext.
+ 
+ Für das **Anwenden** prompten, prüfen und bauen Sie selbst. Zum **Selbst-Erzeugen** (*generative and constructive learning*) lade ich Sie in den Kästen „Ausprobiert“ ein, etwa wenn Sie in Kapitel 6 testen, ob ein Sprachmodell richtig zitiert; wer formuliert, erklärt oder baut, lernt tiefer als wer nur liest. **Scaffolding und Ausblenden** (*fading*) heißt, dass Hilfen Sie stützen, solange Sie sie brauchen, und dann zurücktreten. Wissen Sie schon viel, überspringen Sie auf Ihrem Lernpfad ganze Abschnitte, und die Vertiefung zur Technik in Kapitel 2 habe ich aus demselben Grund als überspringbar gekennzeichnet [@kalyuga2003]. @tbl-mechanismen nennt zu jedem Mechanismus die Wirkweise, die Stellen im Buch und eine kanonische Quelle.
++:::
+ 
++::: {.content-visible unless-format="html"}
++Eine gute Regel lautet: Nutze selbst, was du anbietest (*eat your own dog food*). Jede Lernhilfe dieses Buchs beruht auf einem Mechanismus, den Kapitel 4 als belegt vorstellt (@sec-lerntechniken); @tbl-mechanismen ordnet sie nach den Lernzielen Erinnern, Verstehen und Anwenden [@anderson2001]. Den größten Nutzen ziehen Sie, wenn Sie sich bei „Bevor Sie weiterlesen“ festlegen und die Lernfragen aus dem Gedächtnis beantworten, bevor Sie in Anhang B nachsehen (@sec-loesungshinweise).
++:::
++
++::: {.table-responsive}
+ | Mechanismus | Wirkweise | Wo im Buch | Kanonische Quelle |
+ |:---|:---|:---|:---|
+ | **Erinnern** | | | |
+@@ -100,16 +99,18 @@ Für das **Anwenden** prompten, prüfen und bauen Sie selbst. Zum **Selbst-Erzeu
+ | Ausgearbeitete Beispiele (*worked examples*) | Ein gelöstes Beispiel entlastet das Arbeitsgedächtnis | Kapitel 7; Anwendungsbeispiele in Kapitel 1–6 | @sweller1985 |
+ | Fehlvorstellungen widerlegen (*refutation text*) | Die alte Vorstellung wird genannt und mit Gründen ersetzt; sicher vertretene Irrtümer werden besonders gründlich korrigiert | [Prompting mit Streich-Test](kapitel02-grundlagen.qmd#sec-streichtest); Auflösungen „nein“ | @tippett2010 |
+ | Unterscheiden durch Vermischen (*interleaving*) | Im direkten Vergleich treten die trennenden Merkmale hervor | Fall-Zuordnung; [Lernspiel LLM, RAG oder Agent](kapitel02-grundlagen.qmd#sec-patterns-usage) | @kornell2008 |
+-| Vorangestellte Ordnungshilfe (*advance organizer*) | Ein übergeordneter Rahmen vor den Einzelheiten gibt dem Neuen einen Platz im Vorwissen | [Liniennetz der Lernpfade](#sec-lernpfade); [vier Rollen der KI](kapitel01-einleitung.qmd#sec-kapiteluebersicht); Galerie in Kapitel 1 | @ausubel1960 |
++| Vorangestellte Ordnungshilfe (*advance organizer*) | Ein übergeordneter Rahmen vor den Einzelheiten gibt dem Neuen einen Platz im Vorwissen | [Liniennetz der Lernpfade](#sec-lernpfade); [vier Rollen der KI](kapitel01-einleitung.qmd#sec-kapiteluebersicht) | @ausubel1960 |
+ | Geschichte als Einstieg | Kausal verknüpfte Ereignisse um eine Person werden besser behalten und verstanden | Szene am Kapitelanfang | @mar2021 |
+ | **Anwenden** | | | |
+ | Selbst-Erzeugen (*generative and constructive learning*) | Wer formuliert, erklärt oder baut, lernt tiefer als wer liest | Kästen „Ausprobiert“; eigene Erklärung vor der Musterantwort | @chi2014 |
+ | Scaffolding und Ausblenden (*fading*) | Hilfen stützen, solange sie nötig sind, und treten mit wachsendem Können zurück | Lernpfade; Lernfragen in drei Stufen; [Vertiefung](kapitel02-grundlagen.qmd#sec-vertiefung) in Kapitel 2 | @wood1976 |
+ 
+ : Didaktische Mechanismen in diesem Buch, geordnet nach Lernzielen und innerhalb jeder Gruppe nach Stärke der Befunde. Eigene Darstellung. {#tbl-mechanismen}
++:::
+ 
+ <!-- Bis 02.11.2026 eigene Seite „Übersicht“ (index.qmd) vor dem Vorwort; auf Wunsch Roman zusammengelegt: erst Vorwort, dann Übersicht. Die alte Adresse vorwort.html leitet hierher um (aliases). -->
+ 
++::: {.content-visible when-format="html"}
+ ## Übersicht {#sec-uebersicht .unnumbered}
+ 
+ Generative künstliche Intelligenz (GenAI) kann Lehrenden aufwendige Vorbereitung abnehmen und Studierenden beim Üben helfen; sie kann ihnen aber auch das Denken abnehmen. In diesem Buch zeige ich Lehrenden, Forschenden und Studierenden, wie sie **KI als Werkzeug der Hochschuldidaktik** so einsetzen, dass das Lernen gewinnt.
+@@ -133,14 +134,16 @@ Das Buch besteht aus sieben Kapiteln in zwei Teilen und drei Anhängen.
+ -   Anhang B: Lösungshinweise zu Lernfragen und Übungen
+ -   Anhang C: Praxis-Primer für Lehrende zu Animationen, Präsentationen, Lernsongs und Lernspielen
+ 
++Im Druck steht diese Übersicht als Tabelle in Kapitel 1 (@tbl-buchuebersicht).
++:::
++
+ ::: {.content-visible when-format="html"}
+ 
+ ## Updates seit der Vorversion vom September 2025 {.unnumbered}
+ 
+ - Erstellung dieser **Online-Version**.
+ - Mehrere **interaktive Elemente und Lernspiele** wurden in den ersten Kapiteln hinzugefügt.
+-- **Praxisbeispiele auf einen Blick** (November 2026): Im Vorwort zeigt eine [Galerie](#sec-neue-moeglichkeiten) die zehn reizvollsten der 37 Praxisbeispiele; alle zusammen stehen online auf der Seite „Praxisbeispiele im Überblick“, erreichbar auch als Lernpfad „Linie 5 · Erst schauen“.
+-- **Galerie mit Lernmedien**: Am Ende des ersten Kapitels zeigen fünf **Beiträge aus der Lehre**, was mit generativer KI entsteht: eine Prozessanimation, eine Präsentationsfolie, ein Lernsong, ein Lernspiel und ein Rollenspiel.
++- **Praxisbeispiele auf einen Blick** (November 2026): Im Vorwort zeigt eine [Galerie](#sec-neue-moeglichkeiten) eine Auswahl der Praxisbeispiele; alle zusammen stehen online auf der Seite „Praxisbeispiele im Überblick“, erreichbar auch als Lernpfad „Linie 5 · Erst schauen“.
+ - Am Anfang von Kapitel 6 ist ein **Tutor-Bot** verlinkt, den wir seit dem Wintersemester 2025/26 erproben.
+ - Anhang A sammelt **didaktische Prompts und integrierte Aufgabenstellungen** internationaler Hochschulen.
+ - Die Online-Fassung wird **laufend korrigiert und ergänzt**.
+diff --git a/kapitel01-einleitung.qmd b/kapitel01-einleitung.qmd
+index 6ea7877..7815a31 100644
+--- a/kapitel01-einleitung.qmd
++++ b/kapitel01-einleitung.qmd
+@@ -45,10 +45,46 @@ Ein KI-Tutor verbessert das Lernen, sobald die Studierenden Zugang zu ihm erhalt
+ *Die Kernaussagen am Kapitelende sind nach diesen drei Zielen geordnet.*
+ :::
+ 
++[]{#vid-stuetzraeder}
++
++**Zum Einstieg ein Film über Ratschläge, die heute nicht mehr gelten.** „Denke Schritt für Schritt“, „Du bist ein Experte“, ein Trinkgeld von 200 Dollar: Solche Zeilen stehen noch in vielen Prompt-Sammlungen für die Lehre. Der Film „Stützräder“ erzählt in neun Genres, von den Beispiel-Prompts des Jahres 2020 bis zu den Leitfäden der KI-Labore von 2026, woher sie kamen und warum die meisten entfallen, seit die Modelle selbst schrittweise nachdenken. Eine Marke in jeder Szene zeigt, ob ein Ratschlag aus der Dokumentation eines Herstellers, aus einer Studie oder aus der Folklore stammt. Der Film nennt die alten Ratschläge ausdrücklich, bevor er sie ersetzt; solche Widerlegungstexte helfen, eine feste Vorstellung umzubauen [@tippett2010]. Wie ein Auftrag an ein heutiges Modell aussieht, zeigt @sec-access.
++
++::: {.content-visible when-format="html"}
++Geben Sie zuerst Ihre Vorhersage ab und starten Sie dann den Film; an drei Stellen hält er an und fragt nach.
++
++```{=html}
++<iframe loading="lazy" id="genrefilm-kap02-stuetzraeder" src="interactions/genrefilm-player.html?film=kap02-stuetzraeder" width="100%" height="900px" frameborder="0" title="Film mit Haltepunkten: Stützräder – wie die Prompting-Ratschläge kamen und gingen"></iframe>
++<script>
++/* Der Player meldet seine Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
++window.addEventListener("message", function (e) {
++  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "genrefilm-kap02-stuetzraeder") return;
++  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
++});
++</script>
++```
++
++::: {.callout-note title="So entstand dieser Film"}
++Der Bauauftrag passt in einen Satz: „Erzähle in neun Szenen, jede in einem anderen Filmgenre, wie die Prompting-Ratschläge von 2020 bis 2026 kamen und gingen, mit einem Prompt-Zettel als Hauptfigur und einer Quellenmarke je Szene.“
++Claude Code nutzte dafür die Bauanleitung des Token-Films aus @sec-gpt-bedeutung; jede Aussage ist einer geprüften Zeile in einer Quellenliste zugeordnet.
++Die Schwäche: Neun Bilder pressen sechs Jahre in eine saubere Abfolge, und die Grenze zwischen Labor-Empfehlung und Ratgeber-Folklore war 2023 unschärfer, als die Marken zeigen.
++:::
++:::
++
++::: {.content-visible unless-format="html"}
++![Neun Genres, eine Geschichte: Prompt-Tricks glichen Schwächen früherer Modelle aus und entfallen, sobald die Modelle sie nicht mehr brauchen. Standbilder aus einem Film von gut zweieinhalb Minuten mit drei Haltepunkten, erstellt mit Claude Code und HyperFrames 0.9.2 [@heygen2026hyperframes092]; Stimme KI-erzeugt (ElevenLabs v4); Quellenmarke je Szene: ■ Labor, ● Studie, ▲ Folklore. Den Film gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel01-einleitung.html#vid-stuetzraeder> aufrufen.](images/druck/video-stuetzraeder.png){#fig-video-stuetzraeder width="100%" fig-pos="htbp"}
++
++**Selbsttest zum Film.** Beantworten Sie die drei Fragen, bevor Sie in @sec-loesung-stuetzraeder nachsehen.
++
++1. Warum halfen Tricks wie „Denke Schritt für Schritt“ früher? (a) Sie glichen eine Schwäche damaliger Modelle aus; (b) Modelle reagieren auf Höflichkeit; (c) sie verkürzten die Antwort.
++2. Welche Zeile streichen Sie in einem Arbeitsauftrag an ein Reasoning-Modell zuerst? (a) „Der Test dient Erstsemestern zur Klausurvorbereitung.“; (b) „Denke sorgfältig und prüfe deine Antwort zweimal.“; (c) „Höchstens eine Seite.“
++3. Ein Tutor-Prompt verlangt: „Erst nachfragen, dann einen Hinweis geben, nie die Lösung.“ Streichen? (a) Ja, das Modell plant selbst; (b) nein, hier ist der Ablauf das Produkt; (c) nur „nie die Lösung“ streichen.
++:::
++
+ **Wie kann generative künstliche Intelligenz** (KI, *generative AI*) **in der Lehre helfen?** Hoffnung besteht für die zwei Probleme, die Albers' Montag prägen: Studierende haben individuelle Bedürfnisse, Lehrende nur begrenzt Zeit, und gerade wirksame Methoden wie häufige kleine Tests (*practice testing*)[]{#sb-k1-practice-testing} oder individuelles Feedback kosten viel Vorbereitung [@hattie2023, Kap. 13; @brown2014; @dunlosky2013]; ausführlich behandelt das @sec-ziele-genai. Für die Lehre sind große Sprachmodelle (*Large Language Models*, LLM) vor allem „**generally faster**“ [@mcafee2024]: Übungsaufgaben, Anwendungsbeispiele, Quizfragen und Rollenspiele lassen sich mit KI in großer Zahl entwerfen [@meincke2024; @mollick2023a]. Der Berg ist noch da, aber mit dem E-Bike kommt man weiter. Wie weit, hängt an drei Fragen, die dieses Kapitel der Reihe nach beantwortet: Wie verbreitet ist die Nutzung, was geht dabei schief, und was hilft?
+ 
+ ## Wie verbreitet ist KI-Nutzung? {#sec-nutzung}
+ 
++::: {.content-visible when-format="html"}
+ **Für Studierende sind Sprachmodelle zum Standard geworden, und sie nutzen sie von Jahr zu Jahr intensiver.** In einer britischen Befragung (1.054 Vollzeitstudierende, Dezember 2025) nutzten 95 % KI in irgendeiner Form und 94 % auch für Prüfungsleistungen; der Anteil, der KI-Text direkt in die Abgabe übernahm, stieg binnen eines Jahres von 3 auf 12 % [@stephenson2026hepi]. Neuere deutsche Umfragen unter Studierenden zeigen denselben Trend: Im Wintersemester 2025/26 nutzten 81 Prozent KI-Werkzeuge mindestens wöchentlich (Vorjahr 65 Prozent) und 47 Prozent täglich (Vorjahr 25 Prozent); ganz ohne KI studierten nur noch 2 Prozent (Vorjahr 6 Prozent) (28.584 Studierende an 202 Hochschulen, vor allem Wirtschafts- und Rechtswissenschaften; im Vorjahr andere Fächer, der Vergleich ist daher nur ein Anhaltspunkt) [@horstmann2026check; @che2025ki]. Die Hälfte nutzte KI regelmäßig als Tutor oder Lernpartner, mit großen Fachunterschieden zwischen Wirtschaftsinformatik (72 Prozent) und Jura (19 Prozent) [@horstmann2026check]. Die britischen Befunde zeigen zugleich eine gespaltene Studierendenschaft: Die einen gewinnen Zeit für tieferes Lernen, andere lagern es aus („I'm not using my brain at all“) [@stephenson2026hepi].
+ 
+ **Genutzt wird vor allem auf den oberen Stufen.** Eine Auswertung von einer Million anonymisierter Chats mit Universitätskonto zeigt, dass Studierende die Modelle vor allem zum **Erstellen neuer Inhalte und zum Analysieren komplexer Themen** einsetzen, also auf den höheren Ebenen der Bloomschen Taxonomie (@fig-llm-nutzung-bloom) [@handa2025].
+@@ -56,6 +92,13 @@ Ein KI-Tutor verbessert das Lernen, sobald die Studierenden Zugang zu ihm erhalt
+ ![Drei Viertel der Gespräche verlangen Denkleistungen der höheren Stufen: Anteil der Gespräche von Studierenden mit Claude, in denen das Modell die jeweilige Stufe der Bloomschen Taxonomie zeigt. Daten: @handa2025; eigene Darstellung und Stufenbeschreibungen.](images/druck/bloom-nutzung.svg){#fig-llm-nutzung-bloom}
+ 
+ **Auf den produktiven Umgang fühlen sich viele Studierende noch schlecht vorbereitet, auch wenn die Hochschulen aufholen.** Das Angebot ihrer Hochschule zum Erwerb von KI-Kompetenzen bewerteten deutsche Studierende im Wintersemester 2025/26 mit 3,3 von 5 Sternen, ein Jahr zuvor mit 2,7; knapp ein Drittel vergab nur einen oder zwei Sterne (Stichproben wie oben) [@horstmann2026check; @che2025ki]. International hält nur ein knappes Drittel der Studierenden die eigenen Lehrenden für gut gerüstet, sie beim KI-Einsatz anzuleiten, und 57 Prozent finden die Hinweise zur KI-Nutzung bei ihren Prüfungen unzureichend (27.284 Studierende in 35 Ländern, 2026) [@dec2026survey]. Hochschulen müssen deshalb den Umgang mit den Werkzeugen lehren und, weil fast alle Studierenden KI auch für Prüfungsleistungen nutzen, ihre Prüfungen anpassen.
++:::
++
++::: {.content-visible unless-format="html"}
++**Für Studierende sind Sprachmodelle zum Standard geworden.** In einer britischen Befragung (1.054 Studierende, Dezember 2025) nutzten 95 % KI und 94 % auch für Prüfungsleistungen [@stephenson2026hepi]; in Deutschland nutzten im Wintersemester 2025/26 81 Prozent der Studierenden KI mindestens wöchentlich [@horstmann2026check]. Lehrende nutzen KI seltener und meist unsystematisch im Chatfenster [@bosse2026]; Ethan Mollick nennt den Abstand zwischen dem, was die Modelle können, und dem, was fast alle mit ihnen tun, den **Fähigkeitsüberhang** (*capability overhang*)[]{#sb-k1-faehigkeitsueberhang} [@mollick2026overhang]. Die Online-Fassung zeigt alle Befunde und ein Spiel, in dem Sie gegen die Daten des *Anthropic Economic Index* raten, wofür Menschen KI tatsächlich nutzen: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel01-einleitung.html#sec-nutzung> aufrufen.
++
++![](images/qr/qr-nutzung.png){width="18%"}
++:::
+ 
+ ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+ *„Fast alle Studierenden nutzen KI inzwischen auch für Prüfungsleistungen.“* []{.ez-ihre data-ez="ez-k1-1"}
+@@ -63,6 +106,7 @@ Ein KI-Tutor verbessert das Lernen, sobald die Studierenden Zugang zu ihm erhalt
+ **Auflösung: ja.** In einer britischen Befragung (1.054 Studierende, Dezember 2025) nutzten 94 % KI auch für Prüfungsleistungen. Auf den produktiven Umgang fühlen sich viele aber schlecht vorbereitet: Dass Studierende KI nutzen, heißt nicht, dass sie es gut tun.
+ :::
+ 
++::: {.content-visible when-format="html"}
+ **Bei den Lehrenden ist die Spanne weit, doch die Nutzung holt auf.** In einer bundesweiten Befragung (626 Hochschullehrende, Dezember 2024 bis Januar 2025) nutzten 12 Prozent KI in der Lehre gar nicht, weitere 33 Prozent selten oder sehr selten und knapp 15 Prozent sehr häufig. Mit Abstand am häufigsten genannt wurde die kostenlose Version von ChatGPT (66 Prozent), die Bezahlversion nur von 23 Prozent [@vongarrel2026]. International stieg der Anteil der Lehrenden, die KI in der Lehre einsetzen, binnen eines Jahres von 61 auf 77 Prozent, in Europa, Nahost und Afrika von 62 auf 78 Prozent; die Studierenden liegen mit 88 Prozent weiter vorn (18.114 Lehrende und 27.284 Studierende in 35 Ländern, 2026; Teilnahme über Mitgliedshochschulen, also keine Zufallsstichprobe) [@dec2025faculty; @dec2026survey]. Neuere deutsche Daten zeigen die Kehrseite: Rund 84 Prozent der Lehrenden nutzten KI im Zusammenhang mit ihrer Lehre, aber 65 Prozent untersagten sie Studierenden in Prüfungen ausdrücklich, und erst 35 Prozent hatten ihre Prüfungen an KI angepasst (1.243 Lehrende an 20 Hochschulen in Niedersachsen, September bis Dezember 2025; vermutlich überdurchschnittlich am Thema interessiert) [@schmidt2026dlhn]. Ein Review von fünfzehn deutschen Studien findet entsprechend, dass Lehrende KI seltener und selektiver nutzen als Studierende [@bosse2026].
+ 
+ In Workshops mit Lehrenden zeigt sich: Auch wer KI häufig nutzt, nutzt sie meist **unsystematisch**. Die Arbeit findet fast nur im **Chatfenster** statt, man übernimmt, was brauchbar wirkt, und beginnt beim nächsten Mal von vorn, ohne Vorlagen, eigene Quellensammlungen, Projekte oder Agenten. Ethan Mollick nennt diese Lücke den **Fähigkeitsüberhang** (*capability overhang*)[]{#sb-k1-faehigkeitsueberhang}: den Abstand zwischen dem, was die Modelle können, und dem, was fast alle mit ihnen tun [@mollick2026overhang]. Für die Lehre heißt das: Wer mehr erreichen will, muss nicht auf bessere Modelle warten, sondern die vorhandenen anders nutzen.
+@@ -73,42 +117,14 @@ In Workshops mit Lehrenden zeigt sich: Auch wer KI häufig nutzt, nutzt sie meis
+ 
+ [^aei-daten]: Datensatz `Anthropic/EconomicIndex` auf Hugging Face, Release vom 26. Juni 2026, Datei `aei_claude_ai_2026-06-26.csv`, Datenmonat Mai 2026, weltweit, Lizenz CC BY; abrufbar über [Hugging Face, Anthropic/EconomicIndex](https://huggingface.co/datasets/Anthropic/EconomicIndex). Auszug, Paarauswahl und Übersetzung: `scripts/aei-hoeher-tiefer.py` im Repositorium des Buchs.
+ 
+-::: {.content-visible when-format="html"}
+ <iframe loading="lazy" src="interactions/hoeher-tiefer-ki-aufgaben.html" width="100%" height="900px" frameborder="0" title="Leserübung: Höher oder tiefer – welche Arbeitsaufgabe kommt in Gesprächen mit Claude häufiger vor?"></iframe>
+-:::
+-
+-::: {.content-visible unless-format="html"}
+-```{=latex}
+-% Kasten nicht mit allein stehendem Titel am Seitenende beginnen (bedingter Seitenumbruch ohne Zusatzpaket)
+-\par\vspace{0pt plus 14\baselineskip}\pagebreak[3]\vspace{0pt plus -14\baselineskip}
+-```
+-
+-::: {.callout-tip title="Raten Sie zuerst"}
+-Welche der beiden Aufgaben kam im Mai 2026 in Gesprächen mit Claude häufiger vor? Kreuzen Sie A oder B an und notieren Sie, wie sicher Sie sind (1 geraten, 2 eher sicher, 3 sicher).
+-
+-**Paar 1.** A: Informationen in elektronischen oder gedruckten Quellen suchen · B: Texte schreiben, etwa Geschichten, Artikel, Kommentare oder Newsletter\
+-Ihr Tipp: $\square$ A $\quad$ $\square$ B $\qquad$ Sicherheit: $\square$ 1 $\quad$ $\square$ 2 $\quad$ $\square$ 3
+-
+-**Paar 2.** A: Unterrichtsmaterial entwickeln, etwa Stundenentwürfe, Handouts oder Prüfungen · B: Studentische Arbeiten, Aufgaben und Hausarbeiten bewerten und benoten\
+-Ihr Tipp: $\square$ A $\quad$ $\square$ B $\qquad$ Sicherheit: $\square$ 1 $\quad$ $\square$ 2 $\quad$ $\square$ 3
+-
+-**Paar 3.** A: Juristische Dokumente entwerfen oder prüfen, etwa Verträge, Schriftsätze, Testamente · B: Menschen ermutigen, über Gefühle und ihre Lebenslage zu sprechen\
+-Ihr Tipp: $\square$ A $\quad$ $\square$ B $\qquad$ Sicherheit: $\square$ 1 $\quad$ $\square$ 2 $\quad$ $\square$ 3
+-
+-**Wer fragt?** Wer hat die Gespräche zu „Studentische Arbeiten, Aufgaben und Hausarbeiten bewerten und benoten“ geführt?\
+-$\square$ (a) Lehrende $\quad$ $\square$ (b) Studierende $\quad$ $\square$ (c) Das lässt sich aus den Daten nicht sagen.
+-
+-Das vollständige Spiel mit sieben Paaren und Modell-Mitspieler gibt es in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel01-einleitung.html#sec-spiel-ki-aufgaben> aufrufen. Die Lösung steht in den Lösungshinweisen im Anhang (@sec-loesungshinweise).
+-
+-![](images/qr/qr-hoeher-tiefer.png){width="18%"}
+-:::
+-:::
+ 
+ **Die Daten zeigen Gesprächsinhalte, nicht die Menschen dahinter.** Was als Bewerten und Benoten zählt, kann eine Professorin ebenso geschrieben haben wie ein Student, der seinen Entwurf vorab prüfen lässt; und als Momentaufnahme eines Monats und eines Anbieters sagt der Index nichts darüber, welche Jobs KI verändert.
+ 
+ ::: {.callout-note title="So entstand dieses Spiel"}
+ Gebaut hat es ein Agent (Claude Opus 5.5) in einer Sitzung von gut einer halben Stunde, auf einen Auftrag hin, der auf eine schriftliche Bauanleitung verwies: „Lies [die Übersicht] und [den Auftrag] und setze S1 vollständig um.“ Er lud den öffentlichen Datensatz, zog die Werte per Skript und ließ ein frisches Modell die Paare tippen. Die Schwäche: Die Überraschungspaare wählte derselbe Modelltyp aus, der danach als Mitspieler tippte; er lag nur bei 2 von 15 Paaren richtig. Eine Prompt-Vorlage für ein solches Spiel in Ihrem Fach steht am Ende der Übung.
+ :::
++:::
+ 
+ ## Was geht schief? {#sec-risiken}
+ 
+@@ -148,35 +164,30 @@ Auf der Ebene des Studiengangs kommen vier Hebel hinzu: Prüfungen nach den vier
+ 
+ ## Was Sie im Buch erwartet {#sec-kapiteluebersicht}
+ 
+-**In den Workshops kehren drei Fragen immer wieder.** Seit 2024 führen diese Workshops, vor allem im Netzwerk für hochschuldidaktische Weiterbildung (hdw nrw), Lehrende aus nahezu allen Fächergruppen zusammen. Die erste Frage ist eine Sorge: Entwertet KI Hausarbeiten, deren Ergebnis ein Sprachmodell in Minuten liefert, die **„Homework Apocalypse“** [@mollick2023]? Die zweite ist praktisch: Wie hilft KI bei Recherche, Aufgabenerstellung und Rückmeldung? Die dritte ist Neugier: Was wird möglich, das bisher zu aufwendig war, etwa Simulationen, in denen Studierende verhandeln oder ein Unternehmen steuern [@mollick2024a]? Das Buch beantwortet sie über **vier Rollen der KI**[]{#sb-k1-vier-rollen} (@sec-szenarien): als **Hiwi**, der Ihnen zuarbeitet (@sec-hiwi), als **Copilot**, mit dem Studierende schreiben und programmieren (@sec-copilot), als **Tutor**, der erklärt und abfragt (@sec-tutor), und als **Simulator**, der ein Gegenüber spielt (@sec-simulator). Mit der Rolle wechselt, wer das Ergebnis prüft.
++**In den Workshops kehren drei Fragen immer wieder.** Die erste Frage ist eine Sorge: Entwertet KI Hausarbeiten, deren Ergebnis ein Sprachmodell in Minuten liefert, die **„Homework Apocalypse“** [@mollick2023]? Die zweite ist praktisch: Wie hilft KI bei Recherche, Aufgabenerstellung und Rückmeldung? Die dritte ist Neugier: Was wird möglich, das bisher zu aufwendig war, etwa Simulationen, in denen Studierende verhandeln oder ein Unternehmen steuern [@mollick2024a]? Das Buch beantwortet sie über **vier Rollen der KI**[]{#sb-k1-vier-rollen} (@sec-szenarien): als **Hiwi**, der Ihnen zuarbeitet, als **Copilot**, mit dem Studierende schreiben und programmieren, als **Tutor**, der erklärt und abfragt, und als **Simulator**, der ein Gegenüber spielt. Mit der Rolle wechselt, wer das Ergebnis prüft. @tbl-buchuebersicht zeigt, welche Frage jedes Kapitel beantwortet.
+ 
+-Darunter liegen die Grundbegriffe (@sec-grundbegriffe) und die Lernmechanismen (@sec-didaktik), darauf bauen die Umsetzung in Prüfung und Kurs (@sec-umsetzung) und die Beispiele aus der eigenen Lehre (@sec-fallbeispiele). Dort bauen Studierende mit Praxispartnern Assistenten, die auf den Dokumenten eines Unternehmens antworten (@sec-fall-unternehmen), und entwickeln Tutoren, Planspiele und Karriereberater für andere Studierende (@sec-fall-tutor-bwl, @sec-bsp-simulationen-studierende, @sec-fall-job-buddy). Die Anhänge sammeln Prompts, also Eingaben an die KI (@sec-prompts), und Lösungshinweise (@sec-loesungshinweise). Welche Kapitel Sie davon brauchen, hängt von Ihrem Vorwissen ab; das Vorwort führt dazu mit einem Selbsttest zu einem von [vier Lernpfaden](index.qmd#sec-lernpfade).
++::: {.table-responsive}
++| Kapitel | Frage, die es beantwortet | Was Sie dort finden |
++|:---|:---|:---|
++| **Teil I: Grundlagen** | | |
++| 1 Einleitung | Wie verbreitet ist KI, was geht schief, was hilft? | Befunde zu Nutzung, Auslagerung des Denkens und Leitplanken |
++| 2 Grundlagen von KI und LLMs (@sec-grundbegriffe) | Was muss beim Menschen bleiben, wenn man eine Aufgabe an einen Agenten delegiert? | Werkzeugkasten, Modellwahl, Prompts, Agenten |
++| 3 Prinzipien der Automation (@sec-automation) | Welche Aufgaben von Lehrenden übernimmt die KI, welche verändert sie? | Aufgabenmodell, fünf Arbeitsweisen vom Centaur bis zur dunklen Fabrik |
++| 4 Lern- und Wirkmechanismen (@sec-didaktik) | Warum schadet ein Chatbot, der jede Übungsfrage richtig beantwortet, dem Lernen? | Lerntechniken und die Evidenz seit 2025 |
++| **Teil II: Anwendungen** | | |
++| 5 Phasen der Arbeit mit KI (@sec-umsetzung) | Wie delegiere, beschreibe und prüfe ich, und wie passe ich Prüfungen an? | 4D-Kreislauf, Dokumentation, vier Säulen des Prüfens |
++| 6 Rollen der KI (@sec-szenarien) | Wann ist die KI Ihr Hiwi, wann der Tutor Ihrer Studierenden, und wie echt muss ein simuliertes Gegenüber sein? | Recherche, Schreiben, Tutoren, Simulationen |
++| 7 Artefakte (@sec-fallbeispiele) | Warum hilft ein Lied beim Merken einer Formel, aber nicht beim Anwenden? | Quizspiele, Lernsong, Widgets; Projekte, in denen Studierende Assistenten, Tutoren und Karriereberater bauen |
++| **Anhänge** | | |
++| A Prompts (@sec-prompts), B Lösungshinweise (@sec-loesungshinweise), C Praxis-Primer (@sec-anhang-primer) | Wie fange ich an, und wie prüfe ich mich? | Prompts, Lösungen, Anleitungen für Animationen, Folien, Lernsongs und Lernspiele |
+ 
+-::: {.callout-note title="Fünf Fragen, die dieses Buch beantwortet"}
+-1. Warum schadet ein Chatbot, der jede Übungsfrage richtig beantwortet, dem Lernen? (@sec-didaktik)
+-2. Wann ist die KI Ihr Hiwi, wann der Tutor Ihrer Studierenden, und warum wechselt damit die Verantwortung? (@sec-szenarien)
+-3. Was muss beim Menschen bleiben, wenn man eine Aufgabe an einen Agenten delegiert? (@sec-agenten-praxis)
+-4. Warum hilft ein Lied beim Merken einer Formel, aber nicht beim Anwenden? (@sec-bsp-lernsong-forecast)
+-5. Wie echt muss ein simuliertes Gegenüber sein, damit Studierende daran üben? (@sec-simulator)
++: Aufbau des Buchs: sieben Kapitel in zwei Teilen und drei Anhänge. Eigene Darstellung. {#tbl-buchuebersicht}
+ :::
+ 
+-**Fünf Formate zeigen, was 2026 mit KI entsteht:** eine Prozessanimation, in der sich vor dem Engpass die Arbeit staut [@goldratt2014; @little1961], eine Präsentationsfolie nach Regelwerk, ein Lernsong, ein Lernspiel und ein Rollenspiel. Blättern Sie mit den Pfeilen; unter jedem Beitrag führt ein Link zur Stelle im Buch.
+-
+-::: {.content-visible when-format="html"}
+-```{=html}
+-<iframe loading="lazy" id="galerie-kapitel01" src="interactions/galerie-kapitel01.html" width="100%" height="1100px" frameborder="0" title="Galerie: Fünf Formate, die 2026 mit generativer KI entstehen"></iframe>
+-<script>
+-/* Die Galerie meldet ihre Höhe; so entsteht kein Scrollbalken im Rahmen. */
+-window.addEventListener("message", function (e) {
+-  var d = e.data; if (!d || d.typ !== "galerie-hoehe") return;
+-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
+-});
+-</script>
+-```
+-:::
++Welche Kapitel Sie brauchen, zeigen die [Lernpfade im Vorwort](index.qmd#sec-lernpfade). Was heute mit KI an Lehrmaterial entsteht, vom Film mit Haltepunkten bis zum Lernsong, zeigt [online eine Galerie im Vorwort](index.qmd#sec-neue-moeglichkeiten)[: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/galerie-vorwort.html> aufrufen]{.content-visible unless-format="html"}.
+ 
+ ::: {.content-visible unless-format="html"}
+-![Galerie „Fünf Formate, die 2026 mit KI entstehen“: Engpass-Animation (@sec-widget-pruefen), Präsentationsfolie mit Regelwerk, Lernsong zu Prognoseverfahren (@sec-bsp-lernsong-forecast), Zuordnungsspiel (@sec-bsp-quizspiele) und KI-Rollenspiel (@sec-role-play). Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/interactions/galerie-kapitel01.html> aufrufen.](images/qr/qr-galerie-kapitel01.png){#fig-qr-galerie width="32%" fig-align="center"}
++![](images/qr/qr-galerie-vorwort.png){width="18%"}
+ :::
+ 
+ ::: {.callout-tip title="Kernaussagen"}
+@@ -200,61 +211,61 @@ window.addEventListener("message", function (e) {
+ ::: {.sb-begriff begriff="k1-practice-testing"}
+ Häufige kleine Tests (*practice testing*)
+ 
+-Kurze, niedrigschwellige Abfragen, bei denen Lernende ihr Wissen selbst abrufen. Sie gehören zu den wirksamsten Lerntechniken, kosten Lehrende aber viel Vorbereitung; genau dort setzt KI an.
++*Beispiel:* Zu Beginn jeder Übung beantworten die Studierenden drei Kurzfragen zur letzten Sitzung, ohne Unterlagen; das sind häufige kleine Tests.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-faehigkeitsueberhang"}
+ Fähigkeitsüberhang (*capability overhang*)
+ 
+-Der Abstand zwischen dem, was Sprachmodelle können, und dem, was fast alle mit ihnen tun. Bei Lehrenden zeigt er sich in unsystematischer Nutzung im Chatfenster, ohne Vorlagen, Projekte oder Agenten.
++*Beispiel:* Eine Kollegin nutzt seit zwei Jahren täglich das Chatfenster, hat aber nie ein Projekt mit eigenen Dateien angelegt; die Modelle könnten weit mehr, als sie abruft.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-agent"}
+ Agent
+ 
+-Ein Sprachmodell, das Werkzeuge einsetzt, mehrstufig arbeitet und Zwischenergebnisse selbst prüft. „KI nutzen“ heißt seit Ende 2025 zunehmend, Aufgaben an solche Agenten zu delegieren.
++*Beispiel:* Die KI sucht selbst Studien zu einer Frage, liest die PDFs, legt eine Tabelle an und prüft, ob jede Zahl im Original steht; so arbeitet ein Agent.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-reasoning"}
+ Reasoning (schrittweises Nachdenken)
+ 
+-Das Modell erzeugt vor der Antwort Zwischenschritte und prüft sie. Kostenlose und automatisch gewählte Varianten antworten oft ohne diese Nachdenkphase und scheitern öfter an anspruchsvollen Aufgaben.
++*Beispiel:* Vor der Antwort zeigt der Chatbot „Denkt nach …“ und rechnet die Aufgabe in Zwischenschritten durch, bevor er das Ergebnis nennt.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-harness"}
+ Werkzeugkasten (*harness*)
+ 
+-Die Ausstattung um ein Modell herum: Werkzeuge, Datenzugriffe und Ablaufregeln. Erst sie macht aus einem Modell einen Agenten; kostenlose Tarife bieten oft nur einen kleinen Werkzeugkasten.
++*Beispiel:* Derselbe Chatbot sucht im einen Tarif im Web, liest Dateien und führt Code aus, im anderen antwortet er nur; der Unterschied liegt im Werkzeugkasten, nicht im Modell.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-erwuenschte-schwierigkeiten"}
+ Erwünschte Schwierigkeiten (*desirable difficulties*)
+ 
+-Lernhürden, die das Üben anstrengender, das Behalten aber dauerhafter machen, etwa selbst abrufen statt nachlesen. Ein Chatbot, der sofort die Lösung liefert, räumt sie weg.
++*Beispiel:* Die Studierenden lösen die Übungsaufgabe erst ohne Skript und schlagen danach nach; das Üben fällt schwerer, das Behalten hält länger.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-anleitung"}
+ Anleitung statt Ermutigung (*guidance*, *encouragement*)
+ 
+-Zur KI-Nutzung nur zu ermutigen, ändert an der Lernwirkung nichts. Zu zeigen, wie man einen Tutor tutoriell befragt, hob in einer Studie die Prüfungsleistung.
++*Beispiel:* Statt „Nutzen Sie gern den KI-Tutor“ zeigt die Lehrende in der ersten Sitzung, wie man ihn um Hinweise statt um Lösungen bittet.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-leitplanke"}
+ Leitplanke (*guardrail*)
+ 
+-Eine Vorgabe in Aufgabe, Werkzeug oder Rückmeldung, die das eigene Denken der Lernenden schützt, etwa ein Tutor, der Hinweise statt Lösungen gibt. Ohne Leitplanken steigt die Übungsleistung, und die Prüfungsleistung sinkt.
++*Beispiel:* Auf „Sag mir einfach die Lösung“ gibt der Tutor-Bot nur einen Hinweis und fragt nach dem eigenen Ansatz.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-auslagerung"}
+ Auslagerung des Denkens (*cognitive offloading*)
+ 
+-Lernende überlassen der KI die Denkschritte, die sie selbst üben müssten. Die Übung ist gelöst, gelernt wird weniger; für das Lernen wiegt das schwerer als das Täuschen.
++*Beispiel:* Ein Student lässt die Hausübung vom Chatbot lösen, gibt sie fehlerfrei ab und kann in der Sprechstunde keinen Schritt davon erklären.
+ :::
+ 
+ ::: {.sb-begriff begriff="k1-vier-rollen"}
+ Vier Rollen der KI (Hiwi, Copilot, Tutor, Simulator)
+ 
+-Ordnungsrahmen des Buchs: Als Hiwi arbeitet die KI Lehrenden zu, als Copilot schreibt und programmiert sie mit Studierenden, als Tutor erklärt und fragt sie ab, als Simulator spielt sie ein Gegenüber. Mit der Rolle wechselt, wer das Ergebnis prüft.
++*Beispiel:* Entwirft die KI Ihre Quizfragen, ist sie Hiwi; fragt sie Ihre Studierenden ab, ist sie Tutor; spielt sie in der Verhandlungsübung den Lieferanten, ist sie Simulator.
+ :::
+ :::
+ 
