@@ -40,7 +40,7 @@ Umsetzung im Einzelnen:
 
 ## Ablage
 - Repo: Branch `reduktion-k5` (`37b364d` Text, `53ffcbd` docs), per Fast-forward nach `main` gemergt (`main` @ `53ffcbd`), gepusht. Branch `reduktion-k5` kann gelöscht werden.
-- Projekt und Tresorit (`Projektnotizen-Claude/zuspitzung-drei-ringe/`): diese Notiz und `reduktion-k5-kapitel05-2026-11-13.diff`.
+- Projekt (`claude/zuspitzung-drei-ringe/`): diese Notiz. Tresorit (`Projektnotizen-Claude/zuspitzung-drei-ringe/`): diese Notiz und `reduktion-k5-kapitel05-2026-11-13.diff` (66 KB; im Repo identisch als `git diff e0b4e56 37b364d -- kapitel05-4d-phasen.qmd`). Repo: Kopie als `notes/status-reduktion-k5-2026-11-13.md`.
 - Tresorit-Ordner liegt im verbundenen Ordner `0_GenAI`; eine eigene Freigabe war nicht nötig.
 
 ## Hinweise für die anderen Welle-1-Sitzungen (K2, K67)
