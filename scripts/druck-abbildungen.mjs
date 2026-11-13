@@ -11,8 +11,8 @@
 // Ergebnis:
 //   images/druck/littles-law-szenarien.svg, images/druck/bullwhip-szenarien.svg
 //   images/qr/qr-littles-law.png, images/qr/qr-bullwhip.png
-//   images/druck/hoeher-tiefer-ki-aufgaben.svg, images/qr/qr-hoeher-tiefer.png (Leserübung Kap. 1)
-//   images/druck/bibliothek-der-prompts.svg, images/qr/qr-bibliothek-prompts.png (S3, Kap. 4.1)
+//   images/druck/hoeher-tiefer-ki-aufgaben.svg, images/qr/qr-hoeher-tiefer.png (Leserübung Kap. 1; seit 13.11.2026 abgeschaltet)
+//   images/druck/bibliothek-der-prompts.svg, images/qr/qr-bibliothek-prompts.png (S3; seit 13.11.2026 abgeschaltet)
 
 import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { JSDOM } from "jsdom";
@@ -262,9 +262,11 @@ ${z}
 
 littlesLaw();
 bullwhip();
-hoeherTiefer();
-bibliothek();
+// Seit 13.11.2026 stehen „Höher oder tiefer“ (Lösungsabbildung) und die Bibliothek der Prompts nicht mehr
+// im Druck; ihre Druckbilder und QR-Codes sind gelöscht. Die Funktionen bleiben, die Aufrufe sind abgeschaltet.
+// hoeherTiefer();
+// bibliothek();
 await qr("images/qr/qr-littles-law.png", BASIS + "kapitel07-artefakte.html#sec-widget-littles-law");
 await qr("images/qr/qr-bullwhip.png", BASIS + "kapitel07-artefakte.html#sec-widget-bullwhip");
-await qr("images/qr/qr-hoeher-tiefer.png", BASIS + "kapitel01-einleitung.html#sec-spiel-ki-aufgaben");
-await qr("images/qr/qr-bibliothek-prompts.png", BASIS + "kapitel03-automation.html#sec-bibliothek-prompts");
+// await qr("images/qr/qr-hoeher-tiefer.png", BASIS + "kapitel01-einleitung.html#sec-spiel-ki-aufgaben");
+// await qr("images/qr/qr-bibliothek-prompts.png", BASIS + "kapitel03-automation.html#sec-bibliothek-prompts");

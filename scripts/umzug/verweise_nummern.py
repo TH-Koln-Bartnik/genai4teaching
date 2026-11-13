@@ -4,6 +4,9 @@ Drei Teile: (1) Galerien und Praxisbeispiel-Skript leiten die Nummer aus dem Lin
 (2) Einzelstellen im Fließtext per exaktem Textersatz (jede Stelle muss genau einmal passen),
 (3) Anhang B und Forschungsstand-Seite in neuer Kapitelfolge.
 Aufruf: python3 scripts/umzug/verweise_nummern.py
+
+Einmaliges Umzugsskript (03.11.2026), erledigt. Nicht erneut ausführen: Die Einzelstellen in Teil (2)
+sind bereits ersetzt, das Skript bricht dort ab. Es bleibt als Beleg des Umzugs im Repo.
 """
 import re
 import sys
@@ -20,7 +23,7 @@ def schreib(p, s):
 # ---- (1) Nummer aus dem Link ----
 NR = lambda datei: str(int(re.match(r"kapitel0(\d)", datei).group(1)))
 
-for p in ("interactions/galerie-vorwort.html", "interactions/galerie-kapitel01.html"):
+for p in ("interactions/galerie-vorwort.html",):  # galerie-kapitel01.html am 13.11.2026 gelöscht
     s = lies(p)
     def kicker(m):
         link = re.search(r'link: "\.\./(kapitel0\d-[\w-]+)\.html', m.group(0))
