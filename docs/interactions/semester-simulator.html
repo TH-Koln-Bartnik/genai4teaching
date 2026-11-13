@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semester-Simulator: Sie sind Professorin Albers</title>
+<!--
+  Leserübung in Kapitel 4 (sec-evidenz) zur Einstiegsszene in Kapitel 1 (Professorin Albers, 120 Studierende).
+  Laiensicht: Eine einzige Webseite, die ohne Internet und ohne KI-Modell läuft. Sie rechnet ein
+  kleines Lehrmodell durch – wie ein Brettspiel mit festen Regeln und gezinkten, immer gleichen
+  Würfeln (fester Zufallsstartwert), damit jeder Lauf wiederholbar ist.
+  Jede Stellgröße steht unten in PARAMETER: entweder mit Quelle (art:"quelle") oder als
+  Annahme (art:"annahme") mit Regler. Nichts davon ist eine Messung an echten Studierenden.
+  Gespeichert wird nur die eigene Schätzung und das letzte Ergebnis, als Notizzettel im
+  eigenen Browser (localStorage); nichts geht an einen Server.
+  Prüfung: node --test tests/semester-simulator.test.mjs · Druckbild: node scripts/druck-semester-simulator.cjs
+-->
+<style>
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#6b6b6b; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#a3a3a3; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  *{box-sizing:border-box}
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:18px 16px 36px; }
+  h1 { font-size:23px; line-height:1.25; margin:0 0 8px; font-weight:650; }
+  h2 { font-size:16px; margin:0 0 6px; }
+  .skizze { display:inline-block; border:1px solid var(--grau); border-radius:999px; padding:0 10px; font-size:12.5px; color:var(--grau); margin:0 0 8px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:6px 11px; cursor:pointer; }
+  button:hover:not(:disabled){ border-color:var(--tinte); }
+  button:focus-visible, input:focus-visible, summary:focus-visible { outline:3px solid var(--akzent); outline-offset:2px; }
+  button:disabled { opacity:.45; cursor:default; }
+  .vorhersage { border:1px solid var(--hell); border-radius:8px; padding:10px 12px; margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  .reihe { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; }
+  input[type=range]{ width:220px; accent-color:var(--tinte); }
+  output { font-variant-numeric:tabular-nums; font-weight:650; min-width:5.5em; }
+  svg { width:100%; height:auto; display:block; }
+  svg text { font-size:14px; fill:var(--tinte); font-variant-numeric:tabular-nums; paint-order:stroke; stroke:var(--grund); stroke-width:4px; }
+  svg text.leise { fill:var(--grau); font-size:13px; }
+  svg text.akz { fill:var(--akzent); font-weight:650; }
+  .achse { stroke:var(--tinte); stroke-width:1.5; }
+  .marke { stroke:var(--grau); stroke-width:1.2; stroke-dasharray:4 4; }
+  .marke.fest { stroke-dasharray:none; stroke:var(--zurueck); }
+  .marke.erg { stroke:var(--akzent); stroke-width:2.5; stroke-dasharray:none; }
+  .pkt { fill:var(--tinte); stroke:var(--grund); stroke-width:.8; transition:transform .9s ease, fill .4s; }
+  .pkt.kurz { fill:var(--akzent); }
+  .pkt.raus { fill:var(--grund); stroke:var(--grau); stroke-width:1.4; }
+  @media (prefers-reduced-motion: reduce) { .pkt { transition:none; } }
+  .unterschrift { min-height:3em; margin:6px 0 8px; max-width:72ch; font-size:16.5px; }
+  .akzt { color:var(--akzent); font-weight:650; }
+  .zuege { display:grid; grid-template-columns:repeat(auto-fit,minmax(165px,1fr)); gap:8px; margin:0 0 6px; }
+  .zuege button { text-align:left; padding:8px 10px; }
+  .zuege b { display:block; }
+  .zuege span { color:var(--grau); font-size:12.5px; }
+  .anzeige { display:flex; flex-wrap:wrap; gap:6px 22px; font-size:14px; margin:4px 0 10px; font-variant-numeric:tabular-nums; }
+  .anzeige b { font-size:17px; }
+  .tafel { border:1px solid var(--grau); border-radius:8px; padding:10px 12px; margin:14px 0 0; }
+  .tafel table { border-collapse:collapse; width:100%; font-size:13.5px; }
+  .tafel th, .tafel td { text-align:left; padding:4px 6px; border-top:1px solid var(--hell); vertical-align:top; }
+  .tafel th { border-top:0; color:var(--grau); font-weight:600; }
+  .tafel td.w { white-space:nowrap; font-variant-numeric:tabular-nums; font-weight:650; }
+  .tafel input[type=range]{ width:120px; vertical-align:middle; }
+  @media (max-width:600px){ .tafel thead { display:none; } .tafel table, .tafel tbody, .tafel tr, .tafel td { display:block; } .tafel td { border-top:0; padding:1px 0; } .tafel tr { border-top:1px solid var(--hell); padding:6px 0; } .tafel td.w { white-space:normal; } }
+  .art { display:inline-block; font-size:11.5px; border:1px solid var(--grau); border-radius:4px; padding:0 5px; white-space:nowrap; }
+  .art.q { background:var(--tinte); color:var(--grund); border-color:var(--tinte); }
+  .rueck { margin:12px 0 0; display:none; overflow-x:auto; } .rueck.an { display:block; }
+  .rueck table { border-collapse:collapse; font-size:14px; width:100%; }
+  @media (max-width:600px){ .rueck table { font-size:12px; } .rueck th, .rueck td { padding:3px 4px !important; } }
+  .rueck th, .rueck td { text-align:left; padding:4px 8px; border-top:1px solid var(--hell); font-variant-numeric:tabular-nums; }
+  .leiste { display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin:0 0 8px; padding:0; list-style:none; font-size:12px; }
+  .leiste li { border:1px solid var(--hell); border-radius:4px; padding:2px 0; text-align:center; color:var(--grau); min-height:2.9em; }
+  .leiste li b { display:block; color:var(--tinte); font-weight:600; }
+  .leiste li.jetzt { border-color:var(--tinte); }
+  @media (max-width:560px){ .leiste { grid-template-columns:repeat(6,1fr); } }
+  .bau ol { padding-left:1.3em; margin:6px 0; } .bau li { margin:0 0 4px; }
+  .bau pre { white-space:pre-wrap; border:1px solid var(--hell); border-radius:6px; padding:10px; font-size:12.5px; max-height:19em; overflow:auto; font-family:ui-monospace,Consolas,monospace; }
+  .bau .station { border-left:3px solid var(--tinte); padding:2px 0 2px 10px; margin:6px 0; min-height:5.5em; }
+  /* Druck ist meist schwarzweiß: Abkürzende mittelgrau statt Akzent, damit die Gruppen ohne Farbe unterscheidbar bleiben */
+  .druck .pkt.kurz { fill:#8c8c8c; } .druck svg text.akz { fill:#1b1b1b; }
+  .nurdruck { display:none; } .druck .nurdruck { display:inline; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:10px; }
+  .klein { font-size:12.5px; color:var(--grau); }
+  .klein p { margin:0 0 4px; padding-left:1.5em; text-indent:-1.5em; }
+  .druck .vorhersage, .druck .zuege, .druck .leiste, .druck .anzeige, .druck .rueck, .druck .tafel, .druck h1, .druck .unterschrift, .druck .steuer, .druck details, .druck .skizze, .druck .tafel input { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Semester-Simulator: Sie sind Professorin Albers</h1>
+  <span class="skizze">zwölf Wochen, je Woche ein Zug</span>
+
+  <div class="vorhersage" id="vorhersage">
+    <p><strong>Ihre Vorhersage:</strong> Welchen Klausurschnitt erreicht Ihr Kurs? Ein Kurs, in dem niemand abkürzt und niemand aussteigt, erreicht im Modell <span id="bezugtxt">60</span> von 100 Punkten.</p>
+    <div class="reihe">
+      <label for="tipp">Schätzung</label>
+      <input type="range" id="tipp" min="0" max="100" step="1" value="60">
+      <output id="tippwert" for="tipp">60 Punkte</output>
+      <button id="festlegen">Festlegen und beginnen</button>
+    </div>
+  </div>
+
+  <svg id="buehne" viewBox="0 0 900 400" role="img" aria-labelledby="bt">
+    <title id="bt">120 Studierende als Punkte auf einer Achse von 0 bis 100 Klausurpunkten; Punkte wandern Woche für Woche nach rechts, Abkürzende bleiben zurück, Ausgestiegene liegen unten.</title>
+    <g id="g-achse">
+      <line class="achse" x1="50" y1="300" x2="870" y2="300"/>
+      <g id="ticks"></g>
+      <text class="leise" x="870" y="338" text-anchor="end">Wissen in Klausurpunkten</text>
+    </g>
+    <g id="g-marken"></g>
+    <g id="g-legende">
+      <circle class="pkt" cx="60" cy="24" r="4.5"/><text x="71" y="29">lernt</text>
+      <circle class="pkt kurz" cx="130" cy="24" r="4.5"/><text x="141" y="29">kürzt ab</text>
+      <circle class="pkt raus" cx="222" cy="24" r="4.5"/><text x="233" y="29">ausgestiegen</text>
+    </g>
+    <text id="wochentxt" class="akz" x="870" y="29" text-anchor="end"></text>
+    <g id="punkte"></g>
+    <text id="raustxt" class="leise" x="50" y="392"></text>
+    <text class="leise" x="870" y="392" text-anchor="end">Lehrmodell, keine Messung</text>
+  </svg>
+
+  <p class="unterschrift" id="unterschrift" aria-live="polite"></p>
+
+  <div class="anzeige" aria-live="polite">
+    <span>Hausübung im Modell, wie Albers sie sieht: <b id="a-hu">–</b></span>
+    <span>Zeitkonto: <b id="a-zeit">–</b></span>
+    <span>im Kurs: <b id="a-n">120</b></span>
+  </div>
+
+  <ol class="leiste" id="leiste" aria-label="Ihre Züge in zwölf Wochen"></ol>
+
+  <div class="zuege" id="zuege" role="group" aria-label="Entscheidung für diese Woche"></div>
+  <div class="reihe steuer"><button id="rueckzug">Zug zurück</button><button id="neu">Neu beginnen</button><span class="klein" id="stand"></span></div>
+
+  <section class="rueck" id="rueck" aria-live="polite">
+    <h2>Rückblick auf Ihre Züge</h2>
+    <table><thead><tr><th>Woche</th><th>Ihr Zug</th><th>Hausübung</th><th>kürzen ab</th><th>Lernzuwachs im Schnitt</th><th>ausgestiegen</th></tr></thead><tbody id="rtab"></tbody></table>
+    <p id="rfazit"></p>
+  </section>
+
+  <section class="tafel" aria-labelledby="tafel-t">
+    <h2 id="tafel-t">Was dieses Modell annimmt</h2>
+    <table><thead><tr><th>Stellgröße</th><th>Wert</th><th>Herkunft</th></tr></thead><tbody id="ptab"></tbody></table>
+    <p class="klein" style="margin:8px 0 0">Aus Studien stammt nur die Größe der Effekte. Jede Zahl im Bild, in der Unterschrift und im Rückblick ist ein Rechenergebnis dieses Modells, keine Messung an Studierenden.</p>
+  </section>
+
+  <details class="bau" id="bauplan"><summary>Bauplan zum Mitnehmen</summary>
+    <h2 style="margin-top:8px">So entstand dieser Simulator</h2>
+    <div class="station" id="station" aria-live="polite"></div>
+    <div class="reihe"><button id="st-z">◀ Zurück</button><button id="st-w">Weiter ▶</button><span class="klein" id="st-n"></span></div>
+    <h2 style="margin-top:14px">Prompt zum Umstellen auf Ihr Fach</h2>
+    <pre id="prompt" tabindex="0">Baue mir einen Semester-Simulator für mein Fach als eine einzige HTML-Datei, die ohne Server und ohne Live-Modell läuft.
+
+Mein Kurs: [FACH, z. B. Statistik I], [ZAHL] Studierende, [ZAHL] Wochen, Prüfungsform [KLAUSUR / PROJEKT / MÜNDLICH].
+Meine Züge je Woche: [z. B. Chatbot frei · Tutor mit Leitplanken · Abrufübung · Aufsicht · nichts ändern].
+
+Regeln:
+1. Ich stelle keine Daten bereit. Suche zu jeder Stellgröße eine geprüfte Studie (DOI auflösen, Zahl im Original nachlesen) oder kennzeichne sie als Annahme und gib ihr einen Regler.
+2. Zeige eine Tafel „Was dieses Modell annimmt“ offen neben dem Bild: Stellgröße, Wert, Studie oder Annahme. Gib nichts als Messung aus, was Modell ist.
+3. Lesende schätzen vor dem ersten Lauf das Prüfungsergebnis; die Schätzung bleibt als Marke im Bild und wird am Ende aufgelöst.
+4. Studierende sind Punkte; Graustufen plus eine Akzentfarbe mit genau einer Bedeutung; höchstens acht neue Wörter je Schritt im Bild; Schritte im eigenen Tempo.
+5. Fester Zufallsstartwert, damit jeder Lauf wiederholbar ist. Der Zustand ist eine reine Funktion aus Startwert, Parametern und Zügen.
+6. Zeige mir zuerst eine klickbare Skizze mit drei Wochen und frage mich danach, was bleibt.
+7. Prüfe am Ende: Rechnet das Modell die Studienwerte nach? Bedienbar mit Tastatur? Kontraste? Lass eine zweite, frische Instanz jede Zahl gegen die Quelle prüfen.</pre>
+    <div class="reihe"><button id="kopieren">Prompt kopieren</button><span class="klein" id="kopiert" aria-live="polite"></span></div>
+  </details>
+  <details><summary>Quellen</summary><div class="klein">
+    <p>Adesope, O. O., Trevisan, D. A., &amp; Sundararajan, N. (2017). Rethinking the use of tests: A meta-analysis of practice testing. <em>Review of Educational Research, 87</em>(3), 659–701. https://doi.org/10.3102/0034654316689306</p>
+    <p>Yang, C., Luo, L., Vadillo, M. A., Yu, R., &amp; Shanks, D. R. (2021). Testing (quizzing) boosts classroom learning: A systematic and meta-analytic review. <em>Psychological Bulletin, 147</em>(4), 399–435. https://doi.org/10.1037/bul0000309</p>
+    <p>Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>Proceedings of the National Academy of Sciences, 122</em>(26), e2422633122. https://doi.org/10.1073/pnas.2422633122</p>
+    <p>Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., &amp; Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. <em>Psychological Bulletin, 132</em>(3), 354–380. https://doi.org/10.1037/0033-2909.132.3.354</p>
+  </div></details>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var WOCHEN = 12;
+  var N = 120, SEED = 20261110;
+  var KEY = "genai4teaching:semester-simulator:v1";
+
+  /*PARAMETER-START*/
+  var PARAMETER = [
+    { id:"exChat",  art:"quelle",  wert:-0.17, zeige:"−17 %", name:"Test ohne Hilfsmittel nach Üben mit freiem Chatbot, gegenüber Klassen ohne KI", quelle:"Bastani et al. (2025): eine Schule, Mathematik, vier Sitzungen" },
+    { id:"exTutor", art:"quelle",  wert:0,     zeige:"kein belegter Unterschied", name:"Derselbe Test nach Üben mit Tutor mit Leitplanken, gegenüber Klassen ohne KI", quelle:"Bastani et al. (2025)" },
+    { id:"huChat",  art:"quelle",  wert:0.48,  zeige:"+48 %", name:"Übungsleistung mit freiem Chatbot, gegenüber Klassen ohne KI", quelle:"Bastani et al. (2025)" },
+    { id:"huTutor", art:"quelle",  wert:1.27,  zeige:"+127 %", name:"Übungsleistung mit Tutor, gegenüber Klassen ohne KI", quelle:"Bastani et al. (2025)" },
+    { id:"gTest",   art:"quelle",  wert:0.51,  zeige:"g = 0,51", name:"Abrufübung statt Wiederlesen", quelle:"Adesope et al. (2017), zitiert nach Yang et al. (2021)" },
+    { id:"spaced",  art:"quelle",  wert:36.7/47.3, zeige:"36,7 % statt 47,3 %", name:"Abruf nach geballter statt verteilter Wiederholung", quelle:"Cepeda et al. (2006), Tab. 1; geballt heißt dort: ohne Pause wiederholt" },
+    { id:"bezug",   art:"annahme", wert:60, min:50, max:75, schritt:1, einheit:" Punkte", name:"Klausurschnitt, wenn niemand abkürzt und niemand aussteigt" },
+    { id:"sd",      art:"annahme", wert:15, min:5,  max:20, schritt:1, einheit:" Punkte", name:"Streuung der Klausurpunkte (Standardabweichung)" },
+    { id:"grenze",  art:"annahme", wert:50, min:30, max:60, schritt:5, einheit:" Punkte", name:"Bestehensgrenze" },
+    { id:"hu0",     art:"annahme", wert:30, min:15, max:40, schritt:1, einheit:" %", name:"Hausübungsschnitt ohne KI" },
+    { id:"pChat",   art:"annahme", wert:50, min:20, max:100, schritt:5, einheit:" %", name:"Anteil, der mit freiem Chatbot abkürzt" },
+    { id:"pPrivat", art:"annahme", wert:20, min:0,  max:50, schritt:5, einheit:" %", name:"Anteil, der ohnehin privat abkürzt (bei „Nichts ändern“ und in Abrufwochen)" },
+    { id:"folge",   art:"annahme", wert:0.78, min:0.5, max:1, schritt:0.01, dez:2, einheit:"", name:"Abrufübung direkt nach einer Abrufübung zählt mit diesem Faktor (0,78 ≈ 36,7 ÷ 47,3)" },
+    { id:"ausAb",   art:"annahme", wert:3, min:1, max:11, schritt:1, einheit:". Woche", name:"Ausstieg möglich ab" },
+    { id:"schwelle",art:"annahme", wert:50, min:0,  max:80, schritt:5, einheit:" %", name:"Ausstiegsgefahr: Wissen unter diesem Anteil des Stoffstands" },
+    { id:"pRaus",   art:"annahme", wert:30, min:0,  max:100, schritt:5, einheit:" %", name:"Gefährdete steigen je Woche mit dieser Wahrscheinlichkeit aus" },
+    { id:"zeit",    art:"annahme", wert:1.5, min:0.5, max:4, schritt:0.5, dez:1, einheit:" h je Woche", name:"Albers' Zeitkonto für die Lehrvorbereitung" },
+    { id:"hTutor",  art:"annahme", wert:3, min:0, max:5, schritt:0.5, dez:1, einheit:" h", name:"Zeit für eine Woche Tutor mit Leitplanken" },
+    { id:"hAbruf",  art:"annahme", wert:3, min:0, max:5, schritt:0.5, dez:1, einheit:" h", name:"Zeit für eine Abrufübung" },
+    { id:"hAufsicht",art:"annahme",wert:1, min:0, max:5, schritt:0.5, dez:1, einheit:" h", name:"Zeit für eine Woche Aufsicht" },
+    { art:"bauart", name:"Bastani et al. maßen mit einem Test direkt nach jeder Übungssitzung; das Modell überträgt den Wert auf eine Klausur am Semesterende." },
+    { art:"bauart", name:"Effekte summieren sich Woche für Woche. Zwölf verteilte Abrufübungen ergäben zusammen g = 0,51; jede einzelne zählt ein Zwölftel davon, umgerechnet in Punkte. Belegt ist der Gesamtwert, nicht die Aufteilung." },
+    { art:"bauart", name:"Den Verlust tragen allein die Abkürzenden; es kürzen stets dieselben Personen ab, unabhängig von ihrem Können. Wer privat abkürzt, verliert so viel wie mit freiem Chatbot." },
+    { art:"bauart", name:"Unter Aufsicht und mit dem Tutor kürzt niemand ab. Für die Aufsicht liegt keine geprüfte Studie zugrunde." },
+    { art:"bauart", name:"120 Studierende, zwölf Wochen, Können normalverteilt, höchstens 100 Punkte; in Woche 12 steigt niemand mehr aus. Wer aussteigt, schreibt nicht mit." }
+  ];
+  var ZUEGE = [
+    { id:"nichts",  name:"Nichts ändern",        kurz:"Hausübung wie bisher" },
+    { id:"chat",    name:"Chatbot frei",         kurz:"ohne Leitplanken" },
+    { id:"tutor",   name:"Tutor mit Leitplanken",kurz:"Hinweise statt Lösungen", h:"hTutor" },
+    { id:"abruf",   name:"Abrufübung",           kurz:"kurzer Test im Hörsaal", h:"hAbruf" },
+    { id:"aufsicht",name:"Aufsicht",             kurz:"Übung in Präsenz, ohne Geräte", h:"hAufsicht" }
+  ];
+  /*PARAMETER-ENDE*/
+  var STANDARD = ["chat","chat","abruf","chat","chat","abruf","chat","chat","abruf","tutor","tutor","abruf"];   // Züge für Druckbild und Prüfskript
+  var DRUCKSCHRITT = 8;
+  var KURZ = { nichts:"wie bisher", chat:"Chatbot", tutor:"Tutor", abruf:"Abruf", aufsicht:"Aufsicht" };
+
+  var P = {}; PARAMETER.forEach(function (p) { if (p.id) P[p.id] = p.wert; });
+  function zug(id) { return ZUEGE.filter(function (x) { return x.id === id; })[0]; }
+  function kosten(id, par) { var z = zug(id); return z && z.h ? (par || P)[z.h] : 0; }
+  function gespeichert() { try { return JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return null; } }
+  function speichere(o) { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {} }
+
+  // ---- Zufall: fester Startwert, je Person und Woche eine eigene, immer gleiche Zahl ----
+  function zufall(a, b) { var t = (SEED ^ (a * 2654435761) ^ (b * 40503 + 97)) >>> 0;
+    t += 0x6D2B79F5; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }
+
+  // ---- Das Modell: Zustand = f(Startwert, Parameter, Züge). Keine Seiteneffekte. ----
+  function simuliere(zuege, par) {
+    var p = par || P, B = p.bezug, cv = p.sd / B;
+    var pers = [];
+    var zs = [], m = 0, v = 0;
+    for (var i = 0; i < N; i++) {
+      var u1 = Math.max(zufall(i, 1), 1e-9), u2 = zufall(i, 2);
+      zs.push(Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2)); m += zs[i] / N;
+    }
+    zs.forEach(function (z) { v += (z - m) * (z - m) / N; });
+    // Die 120 Zufallswerte werden auf Mittel 0 und Streuung 1 gebracht, damit Bezugsschnitt und Streuung genau gelten
+    var oben = Math.min(1.8, 100 / B), ks = zs.map(function (z) { return Math.max(0.2, Math.min(oben, 1 + cv * (z - m) / Math.sqrt(v))); });
+    var km = ks.reduce(function (a, b) { return a + b; }, 0) / N;      // nach dem Deckeln das Mittel wieder genau auf 1 setzen
+    for (i = 0; i < N; i++) pers.push({ i:i, kann:Math.min(100 / B, ks[i] / km), neigung:zufall(i, 3), wissen:0, raus:0, kurz:false });
+    // Rangfolge der Neigung: die ersten k kürzen ab (immer dieselben Personen)
+    var rang = pers.slice().sort(function (a, b) { return a.neigung - b.neigung; });
+    rang.forEach(function (q, k) { q.rang = k; });
+    var pc = p.pChat / 100, kc = Math.round(pc * N), alle = 0, teil = 0;
+    pers.forEach(function (q) { alle += q.kann; if (q.rang < kc) teil += q.kann; });
+    var verlust = Math.min(1, -p.exChat * alle / teil);                  // Verlust je Abkürzer, so dass der Kurs als Ganzes −17 % verliert
+    var huPlus = p.huChat * alle / teil;                                 // Hausübungsplus je Abkürzer, so dass der Kurs als Ganzes +48 % zeigt
+    var wochen = [], zeit = p.zeit * WOCHEN;
+    zuege.forEach(function (zug, w) {
+      var anteil = zug === "chat" ? pc : (zug === "tutor" || zug === "aufsicht") ? 0 : p.pPrivat / 100;
+      var k = Math.round(anteil * N);
+      var bonus = 0;
+      if (zug === "abruf") bonus = p.gTest * p.sd / WOCHEN * (zuege[w - 1] === "abruf" ? p.folge : 1);
+      var hu = 0, n = 0, nk = 0, zuw = 0, raus = 0;
+      pers.forEach(function (q) {
+        if (q.raus) return;
+        q.kurz = q.rang < k;
+        var g = q.kann * B / WOCHEN * (q.kurz ? 1 - verlust : 1) + bonus;
+        q.wissen = Math.min(100, q.wissen + g);
+        var h = p.hu0 * q.kann * (zug === "tutor" ? 1 + p.huTutor : q.kurz ? 1 + huPlus : 1);
+        hu += h; n++; zuw += g; if (q.kurz) nk++;
+      });
+      var soll = B * (w + 1) / WOCHEN;
+      pers.forEach(function (q) {
+        if (q.raus || w + 1 < p.ausAb || w + 1 >= WOCHEN) return;          // erst ab der eingestellten Woche, in der letzten nicht mehr
+        if (q.wissen < p.schwelle / 100 * soll && zufall(q.i, 100 + w) < p.pRaus / 100) { q.raus = w + 1; q.kurz = false; raus++; }
+      });
+      zeit -= kosten(zug, p);
+      wochen.push({ zug:zug, hu:Math.min(100, hu / n), kurz:nk, zuwachs:zuw / n, raus:raus, n:n - raus });
+    });
+    var da = pers.filter(function (q) { return !q.raus; });
+    var summe = da.reduce(function (s, q) { return s + q.wissen; }, 0);
+    return { pers:pers, wochen:wochen, zeit:zeit, schnitt:da.length ? summe / da.length : 0,
+      schnittAlle:summe / N, bestanden:da.filter(function (q) { return q.wissen >= p.grenze; }).length, angetreten:da.length };
+  }
+
+  // ---- Darstellung ----
+  var NS = "http://www.w3.org/2000/svg";
+  function el(t, a, p) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+  var $ = function (id) { return document.getElementById(id); };
+  var X0 = 50, X1 = 870, Y0 = 300, R = 3.5, D = 7.7, REIHEN = 30, BIN = 2.5;
+  var xs = function (v) { return X0 + v / 100 * (X1 - X0); };
+  var fz = function (v, n) { return v.toLocaleString("de-DE", { minimumFractionDigits:n || 0, maximumFractionDigits:n || 0 }); };
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    el("line", { class:"achse", x1:xs(v), x2:xs(v), y1:Y0, y2:Y0 + 5 }, $("ticks"));
+    el("text", { class:"leise", x:xs(v), y:Y0 + 20, "text-anchor":"middle" }, $("ticks")).textContent = v;
+  });
+  var kreise = [];
+  for (var i = 0; i < N; i++) kreise.push(el("circle", { class:"pkt", r:R, cx:0, cy:0 }, $("punkte")));
+
+  var zuege = [], tipp = null, phase = "tipp";   // tipp → spiel → klausur
+  var druck = false;
+
+  function marken(erg) {
+    var g = $("g-marken"); g.innerHTML = "";
+    function m(v, kl, txt, y, tk) { el("line", { class:"marke " + kl, x1:xs(v), x2:xs(v), y1:y + 5, y2:Y0 }, g);
+      el("text", { class:tk || "leise", x:xs(v), y:y, "text-anchor":"middle" }, g).textContent = txt; }
+    m(P.grenze, "fest", "bestanden ab " + P.grenze, 58);
+    if (tipp != null) m(tipp, "", "Ihre Schätzung", 76);
+    if (erg != null) m(erg, "erg", "Schnitt " + fz(erg, 1), 94, "akz");
+  }
+
+  function zeichne() {
+    var S = simuliere(zuege), w = zuege.length, fertig = phase === "klausur";
+    // Punkte in Stapel legen
+    var nr = 0, frei = 0, binAlt = -1, start = 0, k = 0;
+    S.pers.slice().sort(function (a, b) { return a.wissen - b.wissen || a.i - b.i; }).forEach(function (q) {
+      var c = kreise[q.i], x, y;
+      if (q.raus) { x = X0 + 6 + (nr % 100) * D; y = 362 + Math.floor(nr / 100) * D; nr++; }
+      else { var b = Math.floor(q.wissen / BIN + 1e-9);
+        if (b !== binAlt) { binAlt = b; k = 0; start = Math.max(xs(b * BIN) + R + 1, frei); }   // volle Stapel weichen nach rechts aus
+        k++; x = start + Math.floor((k - 1) / REIHEN) * D; frei = x + D; y = Y0 - R - 1.5 - ((k - 1) % REIHEN) * D; }
+      c.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px)";
+      c.setAttribute("class", "pkt" + (q.raus ? " raus" : q.kurz && !fertig ? " kurz" : ""));
+    });
+    var rausN = N - S.angetreten;
+    $("raustxt").textContent = rausN ? "ausgestiegen · " + rausN : "";
+    marken(fertig ? S.schnitt : null);
+    var letzte = S.wochen[w - 1], zg = letzte && ZUEGE.filter(function (x) { return x.id === letzte.zug; })[0];
+    $("wochentxt").textContent = fertig ? "Klausur" : w ? "Woche " + w + " · " + zg.name : "Semesterbeginn";
+    // Anzeigen
+    $("a-hu").textContent = letzte ? fz(letzte.hu) + " %" : "–";
+    $("a-zeit").textContent = fz(S.zeit, 1) + " von " + fz(P.zeit * WOCHEN, 1) + " h";
+    $("a-n").textContent = S.angetreten + " von " + N;
+    var alt = gespeichert();
+    $("stand").textContent = phase === "tipp" ? (alt && alt.schnitt != null ? "Ihr letzter Lauf: Schnitt " + fz(alt.schnitt, 1) + ", geschätzt " + fz(alt.tipp) : "") : fertig ? "Semester beendet" : "Woche " + (w + 1) + " von " + WOCHEN + " steht an";
+    // Unterschrift: ein Satz
+    var t;
+    if (phase === "tipp") t = "Schätzen Sie zuerst den *Klausurschnitt*, dann treffen Sie Woche für Woche eine Entscheidung.";
+    else if (fertig) { var d = tipp == null ? null : S.schnitt - tipp;
+      t = "Klausur im Modell: *Schnitt " + fz(S.schnitt, 1) + " Punkte*, " + S.bestanden + " von " + S.angetreten + " Angetretenen bestehen" +
+        (d == null ? "." : "; Ihre Schätzung lag " + fz(Math.abs(d), 1) + " Punkte " + (d < 0 ? "darüber." : "darunter.")); }
+    else if (!w) t = "Montag, erste Woche: 120 Studierende am *Start*; wählen Sie Ihren ersten Zug.";
+    else t = "Woche " + w + ", " + zg.name + ": Hausübung " + fz(letzte.hu) + " %, *" + letzte.kurz + " kürzen ab*" +
+      (letzte.raus ? ", " + letzte.raus + " steigen aus." : ".");
+    $("unterschrift").innerHTML = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\*([^*]+)\*/g, '<strong class="akzt">$1</strong>');
+    // Zugknöpfe
+    var box = $("zuege"); box.innerHTML = "";
+    ZUEGE.forEach(function (z) {
+      var b = document.createElement("button");
+      var h = kosten(z.id);
+      b.innerHTML = "<b>" + z.name + "</b><span>" + z.kurz + " · " + (h ? fz(h, h % 1 ? 1 : 0) + " h" : "keine Zeit") + "</span>";
+      b.disabled = phase !== "spiel" || h > S.zeit + 1e-9;
+      b.onclick = function () { zuege.push(z.id); if (zuege.length >= WOCHEN) phase = "pruefung"; zeichne(); };
+      box.appendChild(b);
+    });
+    if (phase === "pruefung") { box.innerHTML = ""; var k = document.createElement("button");
+      k.innerHTML = "<b>Klausur schreiben</b><span>ohne Hilfsmittel</span>";
+      k.onclick = function () { phase = "klausur"; speichere({ tipp:tipp, schnitt:S.schnitt, zuege:zuege }); zeichne(); }; box.appendChild(k); }
+    $("vorhersage").style.display = phase === "tipp" ? "" : "none";
+    $("rueckzug").disabled = !w || fertig;
+    var L = ""; for (var j = 0; j < WOCHEN; j++) L += '<li' + (j === w && !fertig ? ' class="jetzt"' : "") + ">" + (j + 1) + "<b>" + (zuege[j] ? KURZ[zuege[j]] : "·") + "</b></li>";
+    $("leiste").innerHTML = L;
+    // Rückblick
+    $("rueck").classList.toggle("an", fertig || druck);
+    if (fertig || druck) {
+      $("rtab").innerHTML = S.wochen.map(function (x, j) { var z = ZUEGE.filter(function (y) { return y.id === x.zug; })[0];
+        return "<tr><td>" + (j + 1) + "</td><td>" + z.name + "</td><td>" + fz(x.hu) + " %</td><td>" + x.kurz + "</td><td>" + fz(x.zuwachs, 1) + " Punkte</td><td>" + x.raus + "</td></tr>"; }).join("");
+      var voll = function (z) { return simuliere(zuege.map(function () { return z; })); }, ohne = voll("aufsicht"), frei2 = voll("chat");
+      $("rfazit").textContent = "Schnitt der " + S.angetreten + " Angetretenen: " + fz(S.schnitt, 1) + " Punkte; auf alle 120 gerechnet " + fz(S.schnittAlle, 1) +
+        ". Zum Vergleich im selben Modell: zwölf Wochen Aufsicht, in denen niemand abkürzt, " + fz(ohne.schnitt, 1) + " Punkte bei " + ohne.angetreten + " Angetretenen, zwölf Wochen Chatbot frei " +
+        fz(frei2.schnitt, 1) + " Punkte bei " + frei2.angetreten + ". Wer aussteigt, schreibt nicht mit; das hebt den Schnitt der Übrigen. Alle Werte sind Rechenergebnisse des Lehrmodells, keine Messungen.";
+    }
+  }
+
+  // ---- Tafel der Annahmen ----
+  function tafel() {
+    var dez = function (p) { return p.dez != null ? p.dez : 0; };
+    $("ptab").innerHTML = PARAMETER.map(function (p) {
+      if (p.art === "bauart") return '<tr><td colspan="2">' + p.name + '</td><td><span class="art">Annahme</span> Bauart des Modells</td></tr>';
+      var wert = p.art === "quelle" ? p.zeige :
+        '<input type="range" id="r-' + p.id + '" min="' + p.min + '" max="' + p.max + '" step="' + p.schritt + '" value="' + P[p.id] + '" aria-label="' + p.name.replace(/"/g, "") + '"> <span id="v-' + p.id + '">' + fz(P[p.id], dez(p)) + p.einheit + "</span>";
+      return "<tr><td>" + p.name + '</td><td class="w">' + wert + "</td><td>" +
+        (p.art === "quelle" ? '<span class="art q">Studie</span> ' + p.quelle : '<span class="art">Annahme</span> verstellbar') + "</td></tr>";
+    }).join("");
+    PARAMETER.filter(function (p) { return p.art === "annahme"; }).forEach(function (p) {
+      $("r-" + p.id).oninput = function () { P[p.id] = +this.value; $("v-" + p.id).textContent = fz(P[p.id], dez(p)) + p.einheit;
+        $("bezugtxt").textContent = fz(P.bezug); zeichne(); };
+    });
+  }
+
+  $("tipp").oninput = function () { $("tippwert").textContent = this.value + " Punkte"; };
+  $("festlegen").onclick = function () { tipp = +$("tipp").value; phase = "spiel"; zeichne(); $("zuege").querySelector("button").focus(); };
+  $("neu").onclick = function () { zuege = []; phase = tipp == null ? "tipp" : "spiel"; zeichne(); };
+  $("rueckzug").onclick = function () { zuege.pop(); phase = "spiel"; zeichne(); };
+
+  // ---- Bauplan: Zeitraffer und Prompt ----
+  var STATIONEN = [
+    ["1 · Auftrag", "Ein Absatz Idee und acht Vorgaben: keine eigenen Daten, jede Stellgröße mit Quelle oder als Annahme mit Regler, Vorhersage vor dem ersten Lauf, eine HTML-Datei, erst eine Skizze."],
+    ["2 · Lesen", "Das Modell las die Einstiegsszene mit Professorin Albers, zwei Projektnotizen und den Rechner „Was ein Tutor-Bot kostet“ als Muster für Einbettung, Speicher und Druckfassung."],
+    ["3 · Quellen", "Drei Arbeiten liefern die Größen. Bastani et al. (2025) und Cepeda et al. (2006) wurden im Volltext gelesen; der Wert aus Adesope et al. (2017) ließ sich nur über Yang et al. (2021) bestätigen. Für Aufsicht, Ausstieg und Zeitkonto fand sich keine Studie; sie wurden Annahmen."],
+    ["4 · Skizze mit drei Wochen", "Zuerst entstand eine klickbare Fassung mit drei Wochen. Der Autor entschied per Auswahlfrage vier Punkte: Bildidee, Zeitkonto, Abstandsregel, Aufsicht."],
+    ["5 · Erste Fehler", "Der eigene Test zeigte −17,4 statt −17 Prozent und +117 statt +127 Prozent: Stichprobenfehler bei 120 Personen und ein Deckel bei 100 Prozent je Person. Beides wurde im Modell behoben, nicht in der Anzeige."],
+    ["6 · Ausbau", "Zwölf Wochen, Zugleiste, Rückblick, Druckbild mit QR-Code, dieser Kasten. Ein Testskript rechnet bei jeder Änderung die Studienwerte nach, mit abgeschaltetem Ausstieg; im Spiel verschiebt der Ausstieg die Schnitte."],
+    ["7 · Gegenprüfung", "Eine zweite, frische Instanz prüfte jede Zahl gegen die Quelle und fand vierzehn Mängel. Drei davon: Bastanis „Klausur“ war ein Test direkt nach der Übungssitzung; „80 von 120 bestehen“ hatte den falschen Nenner; Bestehensgrenze, Zugkosten und fünf Bauregeln fehlten in der Tafel. Alle wurden korrigiert. Offen bleibt, den Wert aus Adesope et al. am Original nachzulesen."]
+  ];
+  var st = 0;
+  function station() { $("station").innerHTML = "<b>" + STATIONEN[st][0] + "</b><br>" + STATIONEN[st][1];
+    $("st-n").textContent = "Station " + (st + 1) + " von " + STATIONEN.length; $("st-z").disabled = st === 0; $("st-w").disabled = st === STATIONEN.length - 1; }
+  $("st-z").onclick = function () { st--; station(); }; $("st-w").onclick = function () { st++; station(); };
+  $("kopieren").onclick = function () { var t = $("prompt").textContent;
+    function ok() { $("kopiert").textContent = "kopiert"; }
+    function hand() { var r = document.createRange(); r.selectNodeContents($("prompt")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); $("kopiert").textContent = "markiert; mit Strg+C kopieren"; }
+    try { navigator.clipboard.writeText(t).then(ok, hand); } catch (e) { hand(); } };
+  station();
+
+  // Für Prüfskript und Druck: gehe(n) spielt die Standardzüge bis Schritt n (0 = Beginn, WOCHEN + 1 = Klausur)
+  function gehe(n) { n = Math.max(0, Math.min(WOCHEN + 1, n)); if (tipp == null && !druck) tipp = 60;
+    zuege = STANDARD.slice(0, Math.min(n, WOCHEN)); phase = n > WOCHEN ? "klausur" : n === WOCHEN ? "pruefung" : "spiel"; zeichne(); }
+  function hash() { druck = location.hash === "#druck"; document.documentElement.classList.toggle("druck", druck);
+    if (druck) { kreise.forEach(function (c) { c.style.transition = "none"; }); gehe(DRUCKSCHRITT); } }
+  window.addEventListener("hashchange", hash);
+  tafel(); zeichne(); hash();
+  window.ANIM = { gehe:gehe, letzter:WOCHEN + 1 };
+  window.__sim = { simuliere:simuliere, P:P, PARAMETER:PARAMETER, ZUEGE:ZUEGE, WOCHEN:WOCHEN, N:N, STANDARD:STANDARD };
+})();
+</script>
+</body>
+</html>
