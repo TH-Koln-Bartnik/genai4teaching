@@ -8,8 +8,8 @@ Die Seite gehört nur zur Online-Fassung (_quarto-web.yml), nicht zum Druck.
 """
 
 GRUPPEN = [
-    ("filme", "Filme und Erklärvideos",
-     "Die meisten Filme entstanden als Programmtext: Ein Sprachmodell schrieb Szenen, Daten und Prüfungen, ein Werkzeug rechnete den Film Bild für Bild aus. Der Teaser zur Fallstudie ist ein KI-generiertes Video, die Musik des Lernsongs stammt von Suno."),
+    ("filme", "Filme, Hörstück und Erklärvideos",
+     "Die meisten Filme entstanden als Programmtext: Ein Sprachmodell schrieb Szenen, Daten und Prüfungen, ein Werkzeug rechnete den Film Bild für Bild aus. Der Teaser zur Fallstudie ist ein KI-generiertes Video, die Musik des Lernsongs stammt von Suno, das Drehbuch des Hörstücks schrieb ein KI-Agent."),
     ("spiele", "Spiele und Selbsttests",
      "In jedem Spiel geben Sie zuerst eine Vermutung ab; die Auflösung wirkt am stärksten dort, wo Sie sich sicher waren und falsch lagen."),
     ("widgets", "Durchspiele, Rechner und Widgets",
@@ -17,14 +17,18 @@ GRUPPEN = [
     ("animationen", "Animationen zum Durchklicken",
      "Jede Animation baut ein Bild Schritt für Schritt auf und fragt vorher nach Ihrer Vorhersage."),
     ("diagramme", "Diagramme mit echten Daten",
-     "Drei Diagramme zeigen, wie schnell sich Fähigkeiten und Preise der Modelle verschieben."),
-    ("galerien", "Galerie aus Kapitel 1",
-     "Die Galerie der Einleitung zeigt fünf Formate nebeneinander, darunter eine Präsentationsfolie nach Regelwerk und die Szenario-Karte eines KI-Rollenspiels."),
+     "Vier Diagramme zeigen, welche Aufgaben von Lehrenden schon in Gesprächen mit KI auftauchen und wie schnell sich Fähigkeiten und Preise der Modelle verschieben."),
+    ("praxis", "Folie und Rollenspiel",
+     "Zwei Formate ohne eigenes Beispiel im Kapitel: eine Präsentationsfolie, die ein Sprachmodell nach einem Regelwerk gebaut hat, und die Szenario-Karte eines KI-Rollenspiels."),
 ]
 
-# (Gruppe, Titel, Satz, Art, Quelle, Höhe in px, iframe-id, Link ins Buch, Linktext)
+# (Gruppe, Titel, Satz, Art, Quelle, Höhe in px, iframe-id, Link ins Buch, Linktext[, Ort])
 # Art: "iframe" (Seite aus interactions/), "video" (MP4; Quelle = Dateiname in interactions/media/),
-#      "link" (nur Verweis, etwa auf OJS-Rechner, die im Kapitel selbst laufen)
+#      "link" (nur Verweis, etwa auf OJS-Rechner, die im Kapitel selbst laufen),
+#      "bild" (Standbild; Quelle = Pfad, Höhe-Feld = Alternativtext),
+#      "karte" (Szenario-Karte; Quelle = Liste von Zeilen [Begriff, Text]).
+# Ort: "buch" (Standard; das Beispiel steht im Kapitel) oder "hier" (nur auf dieser Seite;
+#      der Link führt dann zum Abschnitt, der das Thema behandelt, oder fehlt).
 BEISPIELE = [
     ("filme", "Das nächste Token in neun Genres",
      "Ein Film von gut drei Minuten erklärt in neun Stilen, vom Film noir bis zum Märchen, wie ein Sprachmodell das nächste Token wählt, und fragt vor dem Start nach Ihrer Vorhersage.",
@@ -33,7 +37,7 @@ BEISPIELE = [
     ("filme", "Stützräder: wie die Prompting-Ratschläge kamen und gingen",
      "Ein Film von gut zweieinhalb Minuten erzählt in neun Genres, woher die Zeilen alter Prompts stammen und warum viele heute entfallen; an drei Stellen hält er an und fragt nach.",
      "iframe", "genrefilm-player.html?film=kap02-stuetzraeder", 900, "genrefilm-kap02-stuetzraeder",
-     "kapitel02-grundlagen.qmd#vid-stuetzraeder", "Kapitel 2, Prompts in der Lehre"),
+     "kapitel01-einleitung.qmd#vid-stuetzraeder", "Kapitel 1, Einleitung"),
     ("filme", "Every Forecast Is Wrong: ein Lernsong zu fünf Prognoseverfahren",
      "Fünf Verfahren an den Kaffeebechern eines erfundenen Campus-Cafés, gesungen auf Englisch, mit Rechenpausen und mitlaufendem Diagramm (5:15).",
      "video", "lernsong-forecast", 0, "pb-lernsong",
@@ -53,11 +57,15 @@ BEISPIELE = [
     ("filme", "Dieselbe Herleitung, zwei Werkzeuge",
      "Die optimale Bestellmenge links in Manim, rechts in HyperFrames, beide Fassungen von Claude programmiert (30 s, ohne Ton).",
      "video", "kap04-eoq-vergleich", 0, "pb-eoq-vergleich",
-     "kapitel06-rollen.qmd#vid-eoq-vergleich", "Kapitel 6, Jeder kann jetzt programmieren"),
+     "kapitel06-rollen.qmd#sec-coding", "Kapitel 6, Jeder kann jetzt programmieren", "hier"),
     ("filme", "Ablauf des Physik-Tutors PS2 Pal",
      "Lehrende legen Regeln und Musterlösungen im Prompt fest, Studierende arbeiten zu Hause Schritt für Schritt mit dem Tutor (44 s, ohne Ton).",
      "video", "kap04-ps2pal-ablauf", 0, "pb-ps2pal-ablauf",
      "kapitel06-rollen.qmd#sec-complex-tutors", "Kapitel 6, Komplexer Physik-Tutor"),
+    ("filme", "Hörstück mit Prüfauftrag: Was Forschende über KI sagen",
+     "Zwei Stimmen sprechen über 125 Interviews, in denen Forschende von ihrer Arbeit mit KI berichten; Sie sagen vorher ein Ergebnis voraus und prüfen danach drei Aussagen am Transkript.",
+     "iframe", "podcast-forschende-ki.html", 900, "podcast-forschende-ki",
+     "kapitel06-rollen.qmd#sec-podcast-interviews", "Kapitel 6, Interviews auswerten lassen"),
 
     ("spiele", "Höher oder tiefer: Wofür Menschen KI tatsächlich nutzen",
      "Welche von zwei Arbeitsaufgaben kommt in Gesprächen mit Claude häufiger vor? Die Daten stammen aus dem Anthropic Economic Index.",
@@ -66,7 +74,7 @@ BEISPIELE = [
     ("spiele", "Die Bibliothek der Prompts",
      "Ein begehbarer Raum mit 22 Regalen, eines je Berufsgruppe: Sie schätzen zuerst, wie breit das Regal der Bildung ist; dann zeigen Daten des Anthropic Economic Index, welche Aufgaben darin stehen.",
      "iframe", "bibliothek-der-prompts.html", 1250, "pb-bibliothek",
-     "kapitel03-automation.qmd#sec-bibliothek-prompts", "Kapitel 3, Was sind unsere Aufgaben?"),
+     "kapitel03-automation.qmd#sec-aufgaben", "Kapitel 3, Was sind unsere Aufgaben?", "hier"),
     ("spiele", "Detektor-Duell: Mensch oder KI?",
      "Acht Auszüge aus Erörterungen, vier von Schülerinnen und Schülern, vier von einem Sprachmodell; erst urteilen Sie, dann ein kleiner Lehr-Detektor.",
      "iframe", "detektor-duell.html", 1100, "detektor-duell",
@@ -86,12 +94,16 @@ BEISPIELE = [
     ("spiele", "Agenten-Muster erkennen",
      "Beispielantworten den passenden Mustern zuordnen, von Werkzeugnutzung bis Planung.",
      "iframe", "llm-agent-patterns-matching.html", 760, "pb-agenten-muster",
-     "kapitel02-grundlagen.qmd#sec-patterns-usage", "Kapitel 2, Welches Setup"),
+     "kapitel02-grundlagen.qmd#sec-patterns-usage", "Kapitel 2, Welches Setup", "hier"),
 
     ("widgets", "Dieselbe Aufgabe in fünf Arbeitsweisen",
      "Vom Centaur bis zur dunklen Fabrik: Je mehr die KI übernimmt, desto weniger spricht der Mensch und desto mehr sprechen die Agenten miteinander.",
      "iframe", "ki-arbeitsweisen-durchspiel.html", 1500, "pb-arbeitsweisen-durchspiel",
      "kapitel03-automation.qmd#sec-arbeitsweisen", "Kapitel 3, Arbeitsweisen"),
+    ("widgets", "Semester-Simulator: Sie sind Professorin Albers",
+     "Zwölf Wochen, 120 Studierende, je Woche eine Entscheidung: Sie schätzen den Klausurschnitt und sehen am Ende, was Ihre Züge im Lehrmodell bewirkt haben.",
+     "iframe", "semester-simulator.html", 2350, "pb-semester-simulator",
+     "kapitel04-lernmechanismen.qmd#semester-simulator", "Kapitel 4, Was die Forschung seit 2025 zeigt"),
     ("widgets", "Was ein Tutor-Bot im Semester kostet",
      "Tragen Sie Ihre Kursgröße ein: Von rund 8.800 US-$ im Januar 2025 fielen die Semesterkosten bis Juli 2026 auf rund 12 US-$.",
      "iframe", "tutor-kosten.html", 950, "pb-tutor-kosten",
@@ -103,7 +115,11 @@ BEISPIELE = [
     ("widgets", "Little's Law zählen",
      "Ankunft, Warteschlange, Bearbeitung, Abgang: Die Animation zählt mit, bis Bestand, Durchsatz und Durchlaufzeit zusammenpassen.",
      "iframe", "littles-law-animation.html", 420, "pb-littles-law",
-     "kapitel06-rollen.qmd#sec-widget-littles-law", "Kapitel 6, Little's Law selbst nachrechnen"),
+     "kapitel07-artefakte.qmd#sec-widget-littles-law", "Kapitel 7, Little's Law selbst nachrechnen", "hier"),
+    ("widgets", "Little's Law selbst nachrechnen",
+     "Ein Rechner direkt im Kapitel: Er vergleicht für eine Bearbeitungsstation den gezählten Bestand mit Durchsatz mal Durchlaufzeit und zeigt, wie weit die Gleichung in einem kurzen Beobachtungsfenster danebenliegt.",
+     "link", "", 0, "",
+     "kapitel07-artefakte.qmd#sec-widget-littles-law", "Kapitel 7, Little's Law selbst nachrechnen"),
     ("widgets", "Welches Modell für welche Aufgabe?",
      "Drei Fragen zu Daten, Aufgabe und Häufigkeit führen zu Modellklasse und Preisstufe.",
      "iframe", "modellwahl-baum.html", 820, "pb-modellwahl",
@@ -115,16 +131,12 @@ BEISPIELE = [
     ("widgets", "Den Bullwhip-Effekt zerlegen",
      "Ein Rechner direkt im Kapitel: Wie sich Bestellschwankungen entlang einer Lieferkette aufschaukeln.",
      "link", "", 0, "",
-     "kapitel06-rollen.qmd#sec-widget-bullwhip", "Kapitel 6, Bullwhip-Effekt"),
+     "kapitel07-artefakte.qmd#sec-widget-bullwhip", "Kapitel 7, Den Bullwhip-Effekt zerlegen"),
 
-    ("animationen", "Vom Satz zum nächsten Wort",
-     "Tokens mit echten Nummern, Aufmerksamkeit, Wahrscheinlichkeiten: Wie „Bank“ durch „Baum“ in die Nachbarschaft von „Park“ rückt.",
-     "iframe", "vom-satz-zum-naechsten-wort.html", 860, "pb-satz-wort",
-     "kapitel02-grundlagen.qmd#sec-gpt-bedeutung", "Kapitel 2, Tokens, Zahlen, Aufmerksamkeit"),
     ("animationen", "Ein Zwischenschritt, der nie im Text steht",
      "Aus „Dallas“ wird intern „Texas“ und daraus „Austin“; ersetzen Forschende „Texas“ durch „California“, antwortet das Modell „Sacramento“.",
      "iframe", "zwischenschritt-texas.html", 820, "pb-zwischenschritt",
-     "kapitel02-grundlagen.qmd#sec-blick-ins-modell", "Kapitel 2, Blick ins Modell"),
+     "kapitel02-grundlagen.qmd#sec-blick-ins-modell", "Kapitel 2, Blick ins Modell", "hier"),
     ("animationen", "Seit 2022 ist die Schicht um das Modell gewachsen",
      "Werkzeuge, Gedächtnis und eine Arbeitsschleife legen sich als Harness um das Modell.",
      "iframe", "harness-schichten.html", 820, "pb-harness",
@@ -132,11 +144,11 @@ BEISPIELE = [
     ("animationen", "Sechs Stufen der Selbstständigkeit",
      "Von der Handkorrektur ohne KI bis zum Agenten, der eine Aufgabe allein erledigt, mit Beispielen aus der Hochschullehre.",
      "iframe", "autonomiestufen.html", 860, "pb-autonomiestufen",
-     "kapitel02-grundlagen.qmd#sec-harness", "Kapitel 2, Was sich seit 2022 geändert hat"),
+     "kapitel02-grundlagen.qmd#sec-harness", "Kapitel 2, Was sich seit 2022 geändert hat", "hier"),
     ("animationen", "Drei Labore, ein Bauplan",
      "Modell, Werkzeuge und eine Schleife darum: Google, OpenAI und Anthropic bauen ihre Agenten nach demselben Muster.",
      "iframe", "drei-labs-ein-bauplan.html", 900, "pb-drei-labs",
-     "kapitel02-grundlagen.qmd#sec-harness", "Kapitel 2, Was sich seit 2022 geändert hat"),
+     "kapitel02-grundlagen.qmd#sec-harness", "Kapitel 2, Was sich seit 2022 geändert hat", "hier"),
     ("animationen", "Vom Chatbot zum Agenten",
      "Gewachsen ist vor allem der Spielraum des Modells über den Ablauf, vom festen Weg bis zur Schleife aus Denken, Handeln und Beobachten.",
      "iframe", "chatbot-zu-agent.html", 1050, "pb-chatbot-agent",
@@ -145,10 +157,6 @@ BEISPIELE = [
      "Erst Name und Kurzbeschreibung, dann die Anleitung, Zusatzdateien nur bei Bedarf, wie Inhaltsverzeichnis, Kapitel und Anhang eines Handbuchs.",
      "iframe", "skills-handbuch.html", 820, "pb-skills",
      "kapitel02-grundlagen.qmd#sec-agenten-praxis", "Kapitel 2, Agenten in der Praxis"),
-    ("animationen", "Viele Agenten machen den Menschen zum Engpass",
-     "Acht Aufgaben gehen gleichzeitig an die Agenten; Kugel A wartet am längsten, und zwar auf den Menschen.",
-     "iframe", "agenten-engpass.html", 1000, "agenten-engpass",
-     "kapitel02-grundlagen.qmd#sec-agenten-praxis", "Kapitel 2, Agenten in der Praxis"),
     ("animationen", "Vom Spickzettel zum prüfbaren Archiv",
      "Vier Stufen des Agenten-Gedächtnisses, von der Anleitungsdatei bis zum durchsuchbaren Ordner.",
      "iframe", "agenten-gedaechtnis.html", 620, "pb-agenten-gedaechtnis",
@@ -156,12 +164,16 @@ BEISPIELE = [
     ("animationen", "Die Sitzung schreibt alles mit, das Gedächtnis behält das Verdichtete",
      "Ein Statistik-Tutor holt am vierten Abend nur das Passende aus drei früheren Sitzungen zurück.",
      "iframe", "sitzung-und-gedaechtnis.html", 880, "pb-sitzung-gedaechtnis",
-     "kapitel02-grundlagen.qmd#sec-agenten-gedaechtnis", "Kapitel 2, Gedächtnis"),
+     "kapitel02-grundlagen.qmd#sec-agenten-gedaechtnis", "Kapitel 2, Gedächtnis", "hier"),
     ("animationen", "Zwei Skalierungsgesetze",
      "Modelle werden verlässlicher durch mehr Rechnen beim Training und durch mehr Nachdenken beim Antworten.",
      "iframe", "scaling-laws.html", 1460, "pb-scaling-laws",
      "kapitel05-4d-phasen.qmd#sec-capabilities", "Kapitel 5, Was die Modelle können"),
 
+    ("diagramme", "Welche Aufgaben Lehrender schon bei der KI landen",
+     "25 Aufgaben von Hochschullehrenden, einmal nach ihrer Häufigkeit im Beruf (O*NET), einmal nach ihrem Anteil an Gesprächen mit Claude (Anthropic Economic Index).",
+     "iframe", "onet-heatmap.html", 1340, "onet-heatmap",
+     "kapitel03-automation.qmd#sec-aufgaben", "Kapitel 3, Was sind unsere Aufgaben?"),
     ("diagramme", "KI-Agenten bewältigen immer längere Aufgaben",
      "Der Zeithorizont der Modelle von 2019 bis 2026 nach METR, mit Lehraufgaben ähnlicher Dauer zur Orientierung.",
      "iframe", "ki-entwicklung.html?zeige=zeithorizont", 1000, "pb-zeithorizont",
@@ -173,26 +185,38 @@ BEISPIELE = [
     ("diagramme", "Wer übernimmt welchen Arbeitsschritt?",
      "Das Schema der Arbeitsweisen von Centaur bis dunkle Fabrik als Diagramm zum Umschalten.",
      "iframe", "ki-entwicklung.html?zeige=arbeitsweisen", 820, "pb-arbeitsweisen-schema",
-     "kapitel03-automation.qmd#sec-arbeitsweisen", "Kapitel 3, Arbeitsweisen"),
+     "kapitel03-automation.qmd#sec-arbeitsweisen", "Kapitel 3, Arbeitsweisen", "hier"),
 
-    ("galerien", "Fünf Formate, die 2026 mit KI entstehen",
-     "Prozessanimation, Präsentationsfolie, Lernsong, Lernspiel und Rollenspiel zum Durchblättern.",
-     "iframe", "galerie-kapitel01.html", 1100, "galerie-kapitel01",
-     "kapitel01-einleitung.qmd#sec-einleitung", "Kapitel 1, Einleitung"),
+    ("praxis", "Mit Regelwerk belegt die Folie ihren Titel mit einem Diagramm",
+     "Eine Aussage zum Bullwhip-Effekt: Aussagetitel, ein Liniendiagramm mit direkt beschrifteten Kurven, kaum Text; die Erklärung übernimmt die Stimme. Gebaut von Claude nach einem Regelwerk für evidenzbasierte Folien, mit der Formel von @chen2000quantifying, geprüft von mir.",
+     "bild", "images/druck/folie-mit-regeln.png",
+     "Folie mit Aussagetitel zu Lieferzeit und Prognosefenster, Liniendiagramm mit zwei direkt beschrifteten Kurven, ein roter Punkt markiert den Wert 9,3; kaum Text.",
+     "", "", "", "hier"),
+    ("praxis", "Die KI spielt den skeptischen Mitarbeiter, alle Studierenden üben",
+     "Szenario-Karte eines KI-Rollenspiels an der Universität Leipzig: Statt zwei Aktiven und vielen Zuschauern übt jede und jeder selbst [@barton2026poster; @tobor2026usecases, S. 40–42].",
+     "karte", [
+         ["Studierende spielen", "die Führungskraft, die überzeugen soll"],
+         ["Die KI spielt", "einen erfahrenen Mitarbeiter über 50, skeptisch gegenüber einer Schulung zur Digitalisierung, mit Hinweisen auf Mimik und Gestik"],
+         ["Gesteuert durch", "einen rund zweiseitigen System-Prompt: Rolle, Gesprächsphasen, Schwierigkeit, Feedback am Ende"],
+         ["Ablauf", "fünf bis zehn Minuten, wiederholbar; danach Reflexion im Fragebogen"],
+         ["Lernziel", "Prinzipal-Agent-Theorie erfahren (BWL-Master, Personal- und Organisationsökonomik)"],
+     ], 0, "",
+     "kapitel06-rollen.qmd#sec-role-play", "Kapitel 6, Role Play", "hier"),
 ]
 
 KOPF = """# Praxisbeispiele im Überblick {{.unnumbered #sec-praxisbeispiele}}
 
-<!-- Erzeugt von scripts/praxisbeispiele.py (Claude, 02.11.2026, Auftrag Roman). Nicht von Hand ändern, sondern das Skript anpassen. Nur online (_quarto-web.yml). -->
+<!-- Erzeugt von scripts/praxisbeispiele.py (Claude, 02.11.2026, Auftrag Roman; Stand nach den Kapitelsitzungen 13.11.2026). Nicht von Hand ändern, sondern das Skript anpassen. Nur online (_quarto-web.yml). -->
 
 ::: {{.content-visible when-format="html"}}
-In diesem Buch stecken {anzahl} Beispiele, die Sie nicht lesen, sondern ansehen, hören und ausprobieren: Filme mit Haltepunkten, ein Lernsong, Spiele, Rechner und Animationen. Alle habe ich mit Sprachmodellen und anderen KI-Werkzeugen gebaut und geprüft, einige für meine eigene Lehre in Supply Management, die meisten für dieses Buch. Hier stehen sie ohne den Kapiteltext, nach Format geordnet; der Link unter jedem Beispiel führt zur Stelle im Buch, die erklärt, wofür es gedacht ist und was es nicht leistet. Wer so einsteigt, folgt der fünften Linie aus dem [Vorwort](index.qmd#sec-lernpfade) und kehrt von hier aus in die Kapitel zurück, die neugierig machen.
+In diesem Buch stecken {anzahl} Beispiele, die Sie nicht lesen, sondern ansehen, hören und ausprobieren: Filme mit Haltepunkten, ein Lernsong, Spiele, Rechner und Animationen. Alle habe ich mit Sprachmodellen und anderen KI-Werkzeugen gebaut und geprüft, einige für meine eigene Lehre in Supply Management, die meisten für dieses Buch. Hier stehen sie ohne den Kapiteltext, nach Format geordnet; der Link unter jedem Beispiel führt zur Stelle im Buch, die erklärt, wofür es gedacht ist und was es nicht leistet. Einige Beispiele stehen nur hier; unter ihnen führt der Link zum Abschnitt, der ihr Thema behandelt. Wer so einsteigt, folgt der fünften Linie aus dem [Vorwort](index.qmd#sec-lernpfade) und kehrt von hier aus in die Kapitel zurück, die neugierig machen.
 
 ```{{=html}}
 <script>
 /* Eingebettete Seiten melden ihre Inhaltshöhe; so entsteht kein Scrollbalken im Rahmen. */
 window.addEventListener("message", function (e) {{
-  var d = e.data; if (!d || (d.typ !== "rahmen-hoehe" && d.typ !== "galerie-hoehe")) return;
+  var d = e.data; if (d && d.typ === "onet-heatmap-hoehe") d = {{ id: "onet-heatmap", h: d.h }};
+  else if (!d || (d.typ !== "rahmen-hoehe" && d.typ !== "galerie-hoehe")) return;
   var f = document.getElementById(d.id); if (f && f.tagName === "IFRAME" && d.h > 200) f.style.height = (d.h + 2) + "px";
 }});
 </script>
@@ -201,7 +225,8 @@ window.addEventListener("message", function (e) {{
 
 
 def eintrag(b):
-    gruppe, titel, satz, art, quelle, hoehe, fid, link, linktext = b
+    gruppe, titel, satz, art, quelle, hoehe, fid, link, linktext = b[:9]
+    ort = b[9] if len(b) > 9 else "buch"
     z = [f"### {titel} {{.unnumbered}}", "", satz, ""]
     if art == "iframe":
         z += ["```{=html}",
@@ -216,7 +241,14 @@ def eintrag(b):
         if quelle == "lernsong-forecast":
             z.append('  <track kind="subtitles" srclang="en" label="English (lyrics)" src="interactions/media/lernsong-forecast.vtt" default>')
         z += ["</video>", "```", ""]
-    z += [f"Im Buch: [{linktext}]({link})", ""]
+    elif art == "bild":
+        z += [f"![]({quelle}){{fig-alt=\"{hoehe}\" width=\"100%\"}}", ""]
+    elif art == "karte":
+        z += ["| | |", "|---|---|"] + [f"| **{k}** | {v} |" for k, v in quelle] + [""]
+    if ort == "hier":
+        z += ["Nur auf dieser Seite." + (f" Zum Thema im Buch: [{linktext}]({link})" if link else ""), ""]
+    else:
+        z += [f"Im Buch: [{linktext}]({link})", ""]
     return z
 
 

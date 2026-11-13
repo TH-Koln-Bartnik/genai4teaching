@@ -1,23 +1,24 @@
 # Praxisbeispiele im Überblick {.unnumbered #sec-praxisbeispiele}
 
-<!-- Erzeugt von scripts/praxisbeispiele.py (Claude, 02.11.2026, Auftrag Roman). Nicht von Hand ändern, sondern das Skript anpassen. Nur online (_quarto-web.yml). -->
+<!-- Erzeugt von scripts/praxisbeispiele.py (Claude, 02.11.2026, Auftrag Roman; Stand nach den Kapitelsitzungen 13.11.2026). Nicht von Hand ändern, sondern das Skript anpassen. Nur online (_quarto-web.yml). -->
 
 ::: {.content-visible when-format="html"}
-In diesem Buch stecken 37 Beispiele, die Sie nicht lesen, sondern ansehen, hören und ausprobieren: Filme mit Haltepunkten, ein Lernsong, Spiele, Rechner und Animationen. Alle habe ich mit Sprachmodellen und anderen KI-Werkzeugen gebaut und geprüft, einige für meine eigene Lehre in Supply Management, die meisten für dieses Buch. Hier stehen sie ohne den Kapiteltext, nach Format geordnet; der Link unter jedem Beispiel führt zur Stelle im Buch, die erklärt, wofür es gedacht ist und was es nicht leistet. Wer so einsteigt, folgt der fünften Linie aus dem [Vorwort](index.qmd#sec-lernpfade) und kehrt von hier aus in die Kapitel zurück, die neugierig machen.
+In diesem Buch stecken 40 Beispiele, die Sie nicht lesen, sondern ansehen, hören und ausprobieren: Filme mit Haltepunkten, ein Lernsong, Spiele, Rechner und Animationen. Alle habe ich mit Sprachmodellen und anderen KI-Werkzeugen gebaut und geprüft, einige für meine eigene Lehre in Supply Management, die meisten für dieses Buch. Hier stehen sie ohne den Kapiteltext, nach Format geordnet; der Link unter jedem Beispiel führt zur Stelle im Buch, die erklärt, wofür es gedacht ist und was es nicht leistet. Einige Beispiele stehen nur hier; unter ihnen führt der Link zum Abschnitt, der ihr Thema behandelt. Wer so einsteigt, folgt der fünften Linie aus dem [Vorwort](index.qmd#sec-lernpfade) und kehrt von hier aus in die Kapitel zurück, die neugierig machen.
 
 ```{=html}
 <script>
 /* Eingebettete Seiten melden ihre Inhaltshöhe; so entsteht kein Scrollbalken im Rahmen. */
 window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || (d.typ !== "rahmen-hoehe" && d.typ !== "galerie-hoehe")) return;
+  var d = e.data; if (d && d.typ === "onet-heatmap-hoehe") d = { id: "onet-heatmap", h: d.h };
+  else if (!d || (d.typ !== "rahmen-hoehe" && d.typ !== "galerie-hoehe")) return;
   var f = document.getElementById(d.id); if (f && f.tagName === "IFRAME" && d.h > 200) f.style.height = (d.h + 2) + "px";
 });
 </script>
 ```
 
-## Filme und Erklärvideos {#sec-pb-filme .unnumbered}
+## Filme, Hörstück und Erklärvideos {#sec-pb-filme .unnumbered}
 
-Die meisten Filme entstanden als Programmtext: Ein Sprachmodell schrieb Szenen, Daten und Prüfungen, ein Werkzeug rechnete den Film Bild für Bild aus. Der Teaser zur Fallstudie ist ein KI-generiertes Video, die Musik des Lernsongs stammt von Suno.
+Die meisten Filme entstanden als Programmtext: Ein Sprachmodell schrieb Szenen, Daten und Prüfungen, ein Werkzeug rechnete den Film Bild für Bild aus. Der Teaser zur Fallstudie ist ein KI-generiertes Video, die Musik des Lernsongs stammt von Suno, das Drehbuch des Hörstücks schrieb ein KI-Agent.
 
 ### Das nächste Token in neun Genres {.unnumbered}
 
@@ -37,7 +38,7 @@ Ein Film von gut zweieinhalb Minuten erzählt in neun Genres, woher die Zeilen a
 <iframe loading="lazy" id="genrefilm-kap02-stuetzraeder" src="interactions/genrefilm-player.html?film=kap02-stuetzraeder" width="100%" height="900px" frameborder="0" title="Stützräder: wie die Prompting-Ratschläge kamen und gingen"></iframe>
 ```
 
-Im Buch: [Kapitel 2, Prompts in der Lehre](kapitel02-grundlagen.qmd#vid-stuetzraeder)
+Im Buch: [Kapitel 1, Einleitung](kapitel01-einleitung.qmd#vid-stuetzraeder)
 
 ### Every Forecast Is Wrong: ein Lernsong zu fünf Prognoseverfahren {.unnumbered}
 
@@ -98,7 +99,7 @@ Die optimale Bestellmenge links in Manim, rechts in HyperFrames, beide Fassungen
 </video>
 ```
 
-Im Buch: [Kapitel 6, Jeder kann jetzt programmieren](kapitel06-rollen.qmd#vid-eoq-vergleich)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 6, Jeder kann jetzt programmieren](kapitel06-rollen.qmd#sec-coding)
 
 ### Ablauf des Physik-Tutors PS2 Pal {.unnumbered}
 
@@ -111,6 +112,16 @@ Lehrende legen Regeln und Musterlösungen im Prompt fest, Studierende arbeiten z
 ```
 
 Im Buch: [Kapitel 6, Komplexer Physik-Tutor](kapitel06-rollen.qmd#sec-complex-tutors)
+
+### Hörstück mit Prüfauftrag: Was Forschende über KI sagen {.unnumbered}
+
+Zwei Stimmen sprechen über 125 Interviews, in denen Forschende von ihrer Arbeit mit KI berichten; Sie sagen vorher ein Ergebnis voraus und prüfen danach drei Aussagen am Transkript.
+
+```{=html}
+<iframe loading="lazy" id="podcast-forschende-ki" src="interactions/podcast-forschende-ki.html" width="100%" height="900px" frameborder="0" title="Hörstück mit Prüfauftrag: Was Forschende über KI sagen"></iframe>
+```
+
+Im Buch: [Kapitel 6, Interviews auswerten lassen](kapitel06-rollen.qmd#sec-podcast-interviews)
 
 ## Spiele und Selbsttests {#sec-pb-spiele .unnumbered}
 
@@ -134,7 +145,7 @@ Ein begehbarer Raum mit 22 Regalen, eines je Berufsgruppe: Sie schätzen zuerst,
 <iframe loading="lazy" id="pb-bibliothek" src="interactions/bibliothek-der-prompts.html" width="100%" height="1250px" frameborder="0" title="Die Bibliothek der Prompts"></iframe>
 ```
 
-Im Buch: [Kapitel 3, Was sind unsere Aufgaben?](kapitel03-automation.qmd#sec-bibliothek-prompts)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 3, Was sind unsere Aufgaben?](kapitel03-automation.qmd#sec-aufgaben)
 
 ### Detektor-Duell: Mensch oder KI? {.unnumbered}
 
@@ -184,7 +195,7 @@ Beispielantworten den passenden Mustern zuordnen, von Werkzeugnutzung bis Planun
 <iframe loading="lazy" id="pb-agenten-muster" src="interactions/llm-agent-patterns-matching.html" width="100%" height="760px" frameborder="0" title="Agenten-Muster erkennen"></iframe>
 ```
 
-Im Buch: [Kapitel 2, Welches Setup](kapitel02-grundlagen.qmd#sec-patterns-usage)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 2, Welches Setup](kapitel02-grundlagen.qmd#sec-patterns-usage)
 
 ## Durchspiele, Rechner und Widgets {#sec-pb-widgets .unnumbered}
 
@@ -199,6 +210,16 @@ Vom Centaur bis zur dunklen Fabrik: Je mehr die KI übernimmt, desto weniger spr
 ```
 
 Im Buch: [Kapitel 3, Arbeitsweisen](kapitel03-automation.qmd#sec-arbeitsweisen)
+
+### Semester-Simulator: Sie sind Professorin Albers {.unnumbered}
+
+Zwölf Wochen, 120 Studierende, je Woche eine Entscheidung: Sie schätzen den Klausurschnitt und sehen am Ende, was Ihre Züge im Lehrmodell bewirkt haben.
+
+```{=html}
+<iframe loading="lazy" id="pb-semester-simulator" src="interactions/semester-simulator.html" width="100%" height="2350px" frameborder="0" title="Semester-Simulator: Sie sind Professorin Albers"></iframe>
+```
+
+Im Buch: [Kapitel 4, Was die Forschung seit 2025 zeigt](kapitel04-lernmechanismen.qmd#semester-simulator)
 
 ### Was ein Tutor-Bot im Semester kostet {.unnumbered}
 
@@ -228,7 +249,13 @@ Ankunft, Warteschlange, Bearbeitung, Abgang: Die Animation zählt mit, bis Besta
 <iframe loading="lazy" id="pb-littles-law" src="interactions/littles-law-animation.html" width="100%" height="420px" frameborder="0" title="Little's Law zählen"></iframe>
 ```
 
-Im Buch: [Kapitel 6, Little's Law selbst nachrechnen](kapitel06-rollen.qmd#sec-widget-littles-law)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 7, Little's Law selbst nachrechnen](kapitel07-artefakte.qmd#sec-widget-littles-law)
+
+### Little's Law selbst nachrechnen {.unnumbered}
+
+Ein Rechner direkt im Kapitel: Er vergleicht für eine Bearbeitungsstation den gezählten Bestand mit Durchsatz mal Durchlaufzeit und zeigt, wie weit die Gleichung in einem kurzen Beobachtungsfenster danebenliegt.
+
+Im Buch: [Kapitel 7, Little's Law selbst nachrechnen](kapitel07-artefakte.qmd#sec-widget-littles-law)
 
 ### Welches Modell für welche Aufgabe? {.unnumbered}
 
@@ -254,21 +281,11 @@ Im Buch: [Kapitel 5, Das 4D-Modell](kapitel05-4d-phasen.qmd#sec-4d)
 
 Ein Rechner direkt im Kapitel: Wie sich Bestellschwankungen entlang einer Lieferkette aufschaukeln.
 
-Im Buch: [Kapitel 6, Bullwhip-Effekt](kapitel06-rollen.qmd#sec-widget-bullwhip)
+Im Buch: [Kapitel 7, Den Bullwhip-Effekt zerlegen](kapitel07-artefakte.qmd#sec-widget-bullwhip)
 
 ## Animationen zum Durchklicken {#sec-pb-animationen .unnumbered}
 
 Jede Animation baut ein Bild Schritt für Schritt auf und fragt vorher nach Ihrer Vorhersage.
-
-### Vom Satz zum nächsten Wort {.unnumbered}
-
-Tokens mit echten Nummern, Aufmerksamkeit, Wahrscheinlichkeiten: Wie „Bank“ durch „Baum“ in die Nachbarschaft von „Park“ rückt.
-
-```{=html}
-<iframe loading="lazy" id="pb-satz-wort" src="interactions/vom-satz-zum-naechsten-wort.html" width="100%" height="860px" frameborder="0" title="Vom Satz zum nächsten Wort"></iframe>
-```
-
-Im Buch: [Kapitel 2, Tokens, Zahlen, Aufmerksamkeit](kapitel02-grundlagen.qmd#sec-gpt-bedeutung)
 
 ### Ein Zwischenschritt, der nie im Text steht {.unnumbered}
 
@@ -278,7 +295,7 @@ Aus „Dallas“ wird intern „Texas“ und daraus „Austin“; ersetzen Forsc
 <iframe loading="lazy" id="pb-zwischenschritt" src="interactions/zwischenschritt-texas.html" width="100%" height="820px" frameborder="0" title="Ein Zwischenschritt, der nie im Text steht"></iframe>
 ```
 
-Im Buch: [Kapitel 2, Blick ins Modell](kapitel02-grundlagen.qmd#sec-blick-ins-modell)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 2, Blick ins Modell](kapitel02-grundlagen.qmd#sec-blick-ins-modell)
 
 ### Seit 2022 ist die Schicht um das Modell gewachsen {.unnumbered}
 
@@ -298,7 +315,7 @@ Von der Handkorrektur ohne KI bis zum Agenten, der eine Aufgabe allein erledigt,
 <iframe loading="lazy" id="pb-autonomiestufen" src="interactions/autonomiestufen.html" width="100%" height="860px" frameborder="0" title="Sechs Stufen der Selbstständigkeit"></iframe>
 ```
 
-Im Buch: [Kapitel 2, Was sich seit 2022 geändert hat](kapitel02-grundlagen.qmd#sec-harness)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 2, Was sich seit 2022 geändert hat](kapitel02-grundlagen.qmd#sec-harness)
 
 ### Drei Labore, ein Bauplan {.unnumbered}
 
@@ -308,7 +325,7 @@ Modell, Werkzeuge und eine Schleife darum: Google, OpenAI und Anthropic bauen ih
 <iframe loading="lazy" id="pb-drei-labs" src="interactions/drei-labs-ein-bauplan.html" width="100%" height="900px" frameborder="0" title="Drei Labore, ein Bauplan"></iframe>
 ```
 
-Im Buch: [Kapitel 2, Was sich seit 2022 geändert hat](kapitel02-grundlagen.qmd#sec-harness)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 2, Was sich seit 2022 geändert hat](kapitel02-grundlagen.qmd#sec-harness)
 
 ### Vom Chatbot zum Agenten {.unnumbered}
 
@@ -326,16 +343,6 @@ Erst Name und Kurzbeschreibung, dann die Anleitung, Zusatzdateien nur bei Bedarf
 
 ```{=html}
 <iframe loading="lazy" id="pb-skills" src="interactions/skills-handbuch.html" width="100%" height="820px" frameborder="0" title="Ein Skill lädt sein Wissen erst, wenn es gebraucht wird"></iframe>
-```
-
-Im Buch: [Kapitel 2, Agenten in der Praxis](kapitel02-grundlagen.qmd#sec-agenten-praxis)
-
-### Viele Agenten machen den Menschen zum Engpass {.unnumbered}
-
-Acht Aufgaben gehen gleichzeitig an die Agenten; Kugel A wartet am längsten, und zwar auf den Menschen.
-
-```{=html}
-<iframe loading="lazy" id="agenten-engpass" src="interactions/agenten-engpass.html" width="100%" height="1000px" frameborder="0" title="Viele Agenten machen den Menschen zum Engpass"></iframe>
 ```
 
 Im Buch: [Kapitel 2, Agenten in der Praxis](kapitel02-grundlagen.qmd#sec-agenten-praxis)
@@ -358,7 +365,7 @@ Ein Statistik-Tutor holt am vierten Abend nur das Passende aus drei früheren Si
 <iframe loading="lazy" id="pb-sitzung-gedaechtnis" src="interactions/sitzung-und-gedaechtnis.html" width="100%" height="880px" frameborder="0" title="Die Sitzung schreibt alles mit, das Gedächtnis behält das Verdichtete"></iframe>
 ```
 
-Im Buch: [Kapitel 2, Gedächtnis](kapitel02-grundlagen.qmd#sec-agenten-gedaechtnis)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 2, Gedächtnis](kapitel02-grundlagen.qmd#sec-agenten-gedaechtnis)
 
 ### Zwei Skalierungsgesetze {.unnumbered}
 
@@ -372,7 +379,17 @@ Im Buch: [Kapitel 5, Was die Modelle können](kapitel05-4d-phasen.qmd#sec-capabi
 
 ## Diagramme mit echten Daten {#sec-pb-diagramme .unnumbered}
 
-Drei Diagramme zeigen, wie schnell sich Fähigkeiten und Preise der Modelle verschieben.
+Vier Diagramme zeigen, welche Aufgaben von Lehrenden schon in Gesprächen mit KI auftauchen und wie schnell sich Fähigkeiten und Preise der Modelle verschieben.
+
+### Welche Aufgaben Lehrender schon bei der KI landen {.unnumbered}
+
+25 Aufgaben von Hochschullehrenden, einmal nach ihrer Häufigkeit im Beruf (O*NET), einmal nach ihrem Anteil an Gesprächen mit Claude (Anthropic Economic Index).
+
+```{=html}
+<iframe loading="lazy" id="onet-heatmap" src="interactions/onet-heatmap.html" width="100%" height="1340px" frameborder="0" title="Welche Aufgaben Lehrender schon bei der KI landen"></iframe>
+```
+
+Im Buch: [Kapitel 3, Was sind unsere Aufgaben?](kapitel03-automation.qmd#sec-aufgaben)
 
 ### KI-Agenten bewältigen immer längere Aufgaben {.unnumbered}
 
@@ -402,20 +419,32 @@ Das Schema der Arbeitsweisen von Centaur bis dunkle Fabrik als Diagramm zum Umsc
 <iframe loading="lazy" id="pb-arbeitsweisen-schema" src="interactions/ki-entwicklung.html?zeige=arbeitsweisen" width="100%" height="820px" frameborder="0" title="Wer übernimmt welchen Arbeitsschritt?"></iframe>
 ```
 
-Im Buch: [Kapitel 3, Arbeitsweisen](kapitel03-automation.qmd#sec-arbeitsweisen)
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 3, Arbeitsweisen](kapitel03-automation.qmd#sec-arbeitsweisen)
 
-## Galerie aus Kapitel 1 {#sec-pb-galerien .unnumbered}
+## Folie und Rollenspiel {#sec-pb-praxis .unnumbered}
 
-Die Galerie der Einleitung zeigt fünf Formate nebeneinander, darunter eine Präsentationsfolie nach Regelwerk und die Szenario-Karte eines KI-Rollenspiels.
+Zwei Formate ohne eigenes Beispiel im Kapitel: eine Präsentationsfolie, die ein Sprachmodell nach einem Regelwerk gebaut hat, und die Szenario-Karte eines KI-Rollenspiels.
 
-### Fünf Formate, die 2026 mit KI entstehen {.unnumbered}
+### Mit Regelwerk belegt die Folie ihren Titel mit einem Diagramm {.unnumbered}
 
-Prozessanimation, Präsentationsfolie, Lernsong, Lernspiel und Rollenspiel zum Durchblättern.
+Eine Aussage zum Bullwhip-Effekt: Aussagetitel, ein Liniendiagramm mit direkt beschrifteten Kurven, kaum Text; die Erklärung übernimmt die Stimme. Gebaut von Claude nach einem Regelwerk für evidenzbasierte Folien, mit der Formel von @chen2000quantifying, geprüft von mir.
 
-```{=html}
-<iframe loading="lazy" id="galerie-kapitel01" src="interactions/galerie-kapitel01.html" width="100%" height="1100px" frameborder="0" title="Fünf Formate, die 2026 mit KI entstehen"></iframe>
-```
+![](images/druck/folie-mit-regeln.png){fig-alt="Folie mit Aussagetitel zu Lieferzeit und Prognosefenster, Liniendiagramm mit zwei direkt beschrifteten Kurven, ein roter Punkt markiert den Wert 9,3; kaum Text." width="100%"}
 
-Im Buch: [Kapitel 1, Einleitung](kapitel01-einleitung.qmd#sec-einleitung)
+Nur auf dieser Seite.
+
+### Die KI spielt den skeptischen Mitarbeiter, alle Studierenden üben {.unnumbered}
+
+Szenario-Karte eines KI-Rollenspiels an der Universität Leipzig: Statt zwei Aktiven und vielen Zuschauern übt jede und jeder selbst [@barton2026poster; @tobor2026usecases, S. 40–42].
+
+| | |
+|---|---|
+| **Studierende spielen** | die Führungskraft, die überzeugen soll |
+| **Die KI spielt** | einen erfahrenen Mitarbeiter über 50, skeptisch gegenüber einer Schulung zur Digitalisierung, mit Hinweisen auf Mimik und Gestik |
+| **Gesteuert durch** | einen rund zweiseitigen System-Prompt: Rolle, Gesprächsphasen, Schwierigkeit, Feedback am Ende |
+| **Ablauf** | fünf bis zehn Minuten, wiederholbar; danach Reflexion im Fragebogen |
+| **Lernziel** | Prinzipal-Agent-Theorie erfahren (BWL-Master, Personal- und Organisationsökonomik) |
+
+Nur auf dieser Seite. Zum Thema im Buch: [Kapitel 6, Role Play](kapitel06-rollen.qmd#sec-role-play)
 
 :::
