@@ -7,7 +7,7 @@
 --   ::: {.sb-begriff begriff="k1-leitplanke"}
 --   Leitplanke (*guardrail*)                      <- erster Absatz: Begriff
 --
---   Musterantwort in ein, zwei Sätzen.            <- weitere Absätze: Musterantwort (nur online)
+--   *Beispiel:* ein Satz mit dem Begriff.         <- weitere Absätze: Beispielsatz (nur online; Definition im Glossar)
 --   :::
 --   :::
 --
