@@ -66,58 +66,9 @@ Eine gut formulierte Anweisung an das Modell genügt, damit ein KI-Tutor zum Ler
 
 Die nächsten Abschnitte zeigen, welche Lerntechniken die Forschung als besonders wirksam ausweist und wo KI ihren Aufwand senkt.
 
-## Wissenstypen {#sec-wissenstypen}
+## Effektive Lerntechniken und Unterstützung mit KI {#sec-lerntechniken}
 
 **Welcher KI-Einsatz passt, hängt davon ab, was gelernt werden soll.** Dieses Buch ordnet Lernziele nach drei Stufen der überarbeiteten Lernzieltaxonomie [@anderson2001]: Zum **Erinnern** von Begriffen und Fakten passen Abrufübungen und kurze Erklärungen, zum **Verstehen** Warum-Fragen, dialogisches Coaching und durchgearbeitete Beispiele (*worked examples*), zum **Anwenden** in neuen Lagen Szenarien, Fallstudien und Rollenspiele. @sec-fallbeispiele ordnet seine Beispiele nach denselben Stufen.
-
-::: {.content-visible when-format="html"}
-Feiner unterscheidet @hattie2023 [S. 358, 340ff.] Fakten-, Prozess- und Transferwissen; die folgenden Absätze und @tbl-wissenstypen ordnen ihnen Methoden und KI-Einsätze zu.
-
-Zunächst geht es um **„knowing that“**, also das reine **Fakten- und Begriffswissen**, das erworben und dann gefestigt werden muss: Hier soll eine belastbare Wissensbasis entstehen, weshalb Lehrkräfte häufig Vorwissensaktivierung oder Drill-and-Practice (wiederholtes Einüben) einsetzen und durch unmittelbares Feedback die korrekte Erinnerung verankern.
-
-Darauf baut **„knowing how“** auf, das **prozedurale und strategische Können**. Auch hier müssen Abläufe zunächst erworben und dann gefestigt werden. Lernende erwerben Prozesswissen, indem sie modellierte Beispiele studieren, in gelenkten Übungen selbst anwenden und mithilfe von „worked examples“ (durchgearbeiteten Beispielen) sowie Fehleranalysen Schritt für Schritt ihre Vorgehensweisen optimieren. Festigen können Lernende dieses Prozesswissen besonders gut durch Interaktion oder Wettbewerb mit anderen Lernenden, da diese Auseinandersetzung ihnen dabei hilft, verschiedene Nutzungskontexte zu vergleichen [@chi2018].
-
-Die höchste Stufe nennt Hattie **„knowing with“**: Wissen wird flexibel **auf neue Situationen übertragen**. Problembasiertes Lernen, authentische Fallstudien, bewusste Reflexionsphasen und kooperativ angelegte Projekte helfen dabei, Konzepte in unbekannten Kontexten sicher anzuwenden und weiterzuentwickeln.
-
-Wo können wir neue technische Hilfsmittel wie große Sprachmodelle (LLMs) zur Unterstützung dieser Methoden besonders effektiv einsetzen?
-
-| Kategorie | Phase | Typische Methoden |
-|:-----------------------|:-----------------------|:-----------------------|
-| **Wissen, dass** („Knowing that“) | **Erwerben** | Notizen zusammenführen; Zusammenfassen; Heft-/Notizbuch-Durchsicht; Bildhafte Notizen |
-| **Wissen, dass** („Knowing that“) | **Festigen** | Argumente prüfen; Fehler identifizieren; Einschränkungen formulieren; Formale Argumentstrukturen darstellen; Belege liefern; Durchgearbeitete Beispiele |
-| **Wissen, wie** („Knowing how“) | **Erwerben** | Aufgabenüberarbeitung; Häufiges Üben; Übungseinheit vor Tests; Zweispaltige Notizen; Problembasiertes Lernen |
-| **Wissen, wie** („Knowing how“) | **Festigen** | Peer-Feedback / Peer-Response-Gruppen; Peer-Tutoring; Studierenden-Turniere; Think-Pair-Share; Kumulative Wiederholung |
-| **Wissen anwenden** („Knowing with“) | **Transfer** | Sortieren, Zuordnen, Kategorisieren; Dichotome Schlüssel; Von Studierenden erstellte Klassifikationsmuster; Klassifikationsdiagramme |
-
-: Methoden nach Wissenstyp: Fakten, Prozess und Transfer. Quelle: Basierend auf @hattie2023, S. 358, 340ff. {#tbl-wissenstypen}
-
-### Anwendungsbeispiele nach Wissenskategorien {#sec-anwendungsbeispiele}
-
-Zur Unterstützung des **Aufbaus von Faktenwissen („knowing that“)** können starke LLMs gut grundlegende Konzepte erklären [@korinek2024, S. 48] und zum Selbststudium komplette Abruf-Übungen (*retrieval practice*) erzeugen: Sie formulieren Multiple-Choice- und Kurzantwortfragen, bewerten die Eingaben sofort und erklären fehlerhafte Distraktoren – ein Verfahren, das in einer Untersuchung zur automatischen Erzeugung deutschsprachiger Leseverständnis-Aufgaben überzeugende Validitätswerte zeigte [@sauberli2024].
-
-Ebenso lassen sich sehr schnell Definitionen, Paraphrasen oder Mini-Zusammenfassungen erzeugen, was personalisierte Glossare ermöglicht [@chen2024]. @wang2024 sprechen von KI als „Confusion Helper“. Um Halluzinationen zu vermeiden, wird das Modell häufig per Suche in eigenen Dokumenten (*Retrieval-Augmented Generation*, RAG) an externe Wissensbasen gekoppelt (also z. B. durch Beigabe von Skripten oder Fachartikeln als PDF. Siehe auch das Harvard-Tutor-Bot-Beispiel in @sec-complex-tutors, wo Musterlösungen beigegeben werden.).
-
-Zur **Festigung von Prozessen und Strategien („knowing how“)** dient das LLM als dialogischer Coach: Feingranulierte Prompts („Erkläre den Beschaffungsprozess in 5 Schritten und stelle nach jeder Stufe eine Kontrollfrage“) steigern die Lösungswahrscheinlichkeit in Tutorendialogen [@scarlatos2025]. Sprachmodelle können Lehrenden dabei helfen, komplette „worked examples“ mitsamt Zwischenschritten zu generieren [@hassany2024].
-
-Angepasste Sprachmodelle können Lernende zur Selbstkorrektur anleiten. Umso besser geht das, wenn das Sprachmodell **fachspezifische Lerntheorien** kennen (z.B.: typische Englischfehler von Deutschen oder typische Verhaltensfehler bei Verhandlungen oder beim Feedback-Gespräch im sozialen Bereich) und **die individuelle Lernhistorie** - sie also wissen, in welche Fallen ich als Lernender gerne tappe. @zhang2025 demonstrieren dies am Beispiel eines selbst entwickelten multimodalen **Mathematik-Tutor-Bots** (MathCCS, Mathematical Classification and Constructive Suggestions).
-
-Der **Teachable-Agent-Ansatz** (KI in der Schülerrolle) nutzt umgekehrt das Lernen-durch-Lehren-Prinzip: Studierende bringen dem LLM eine Methode bei und reflektieren dabei ihre eigene Strategie. Dies basiert auf der Annahme, dass Interaktionen besonders effektiv zum Lernen beitragen [@chi2018; @hayashi2025]. Wie auch in der persönlichen Interaktion scheint hierbei wichtig zu sein, welche „Persönlichkeit“ der KI-Bot hat, dem Studierende etwas beibringen sollen [@lyu2025] und mehr Anstrengung in der Interaktion (etwa durch ausführlicheres Formulieren beim Erklären) führt zu mehr Lernerfolg [@love2025].
-
-Sprachmodelle können genutzt werden, um komplexe (mathematische) Anwendungsprobleme mit einem simulierten User **„durchzuspielen“,** so dass **logische Fehler im Lösungsprozess sichtbar werden,** wie der Prototyp „MathChat“ von @wu2023a zeigt. Meta-Analysen zeigen starke positive Lerneffekte, deuten aber auch auf mögliche Einschränkungen hin. So gibt es Anzeichen dafür, dass die Effekte höher für Studierende sind als für Schüler und möglicherweise schwinden Motivationsschübe durch **abnehmende 'novelty effects'** (Neuheitseffekte) einfacher Chat-Interfaces über die Zeit der Nutzung. Die Autoren der Metastudie empfehlen, hier mit stärkerer **Gamifizierung und Personalisierung** der Chatbots gegenzusteuern [@wu2024a], was sich mit praktischen Ansätzen etwa von Duolingo deckt [@kazu2025] (z. B. Gamifizierung durch Streaks und Leaderboards, Challenges, Video-Chats mit dem Emo-Teen Lili usw.). Solche aufwändigen Setups sind im Hochschulkontext natürlich schwieriger abzudecken, ließen sich aber vielleicht graduell als Studierendenprojekt entwickeln?
-
-Für **Transfer und Anwendung („knowing with“)** entwirft das LLM realitätsnahe Szenarien – etwa Rollenspiele zu Lieferantenausfällen – und übernimmt Stakeholder-Rollen, wobei Analysen des Brookings-Instituts das Potenzial für kollaboratives Reasoning hervorheben [@korinek2024]. Cross-Domain-Prompts fördern Analogiebildung („Welche Parallelen bestehen zwischen agilem Projektmanagement und Lean-Procurement?“) [@mollick2023b].
-
-In Gruppenarbeiten funktioniert das Modell als Co-Autor: KI-unterstützte Schreibprozesse können die Menge und Vielfalt der Ideen steigern [@meincke2024; @shaer2024]. Auch hier ist jedoch die sorgfältige Gestaltung des Lernprozesses wichtig, so dass nicht erwünschte Schwierigkeiten an die KI delegiert und so kritisches Denken (*critical thinking*) nicht eingeübt wird [@lee2025].
-
-:::
-
-::: {.content-visible unless-format="html"}
-Eine feinere Einteilung nach @hattie2023 in Fakten-, Prozess- und Transferwissen, eine Methodentabelle und Studien zu jedem KI-Einsatz stehen online: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel04-lernmechanismen.html#sec-wissenstypen> aufrufen.
-
-![](images/qr/qr-wissenstypen.png){width="18%"}
-:::
-
-## Effektive Lerntechniken und Unterstützung mit KI {#sec-lerntechniken}
 
 ### Wie lernen wir besonders effektiv?
 
