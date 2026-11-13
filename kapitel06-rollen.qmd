@@ -65,8 +65,8 @@ Wie Unkraut im Garten wächst der Anteil, den Lehrende mit „sonstigem“ verbr
 ### Fachartikel finden und auswerten: Welches Werkzeug passt zu welcher Aufgabe? {#sec-recherche}
 
 Was leisten die KI-Helfer bei der Literaturrecherche, und wie prüft man, was sie liefern?
-Die besten Antworten darauf gibt der Bibliothekar Aaron Tay von der Singapore Management University, der die Werkzeuge seit Jahren systematisch testet (<https://aarontay.substack.com/>) [@tay2025agentic].
-Zwei Unterscheidungen ordnen das Feld: Wird einmalig gesucht oder in mehreren Schleifen (einmalige Suche gegenüber agentischem Suchprozess)? Und bekommt man eine Trefferliste oder eine aus den Treffern erzeugte Zusammenfassung (Ergebnisliste gegenüber RAG-basierter Analyse; RAG, *Retrieval-Augmented Generation*, heißt: Das Sprachmodell schreibt seine Antwort aus den zuvor gefundenen Texten, vgl. @sec-patterns-usage)? Daraus ergeben sich vier Typen (@tbl-suchtypen); die Produkte in jedem Typ wechseln schnell, die Typen bleiben.
+Die besten Antworten gibt der Bibliothekar Aaron Tay von der Singapore Management University, der die Werkzeuge seit Jahren systematisch testet (<https://aarontay.substack.com/>) [@tay2025agentic].
+Zwei Unterscheidungen ordnen das Feld: Wird einmalig gesucht oder in mehreren Schleifen? Und bekommt man eine Trefferliste oder eine aus den Treffern erzeugte Zusammenfassung (RAG, *Retrieval-Augmented Generation*: Das Sprachmodell schreibt seine Antwort aus den zuvor gefundenen Texten, @sec-patterns-usage)? Daraus ergeben sich vier Typen (@tbl-suchtypen); die Produkte wechseln schnell, die Typen bleiben.
 
 | Suche | Ausgabe | Typ nach Tay | Was man praktisch bekommt |
 |:---------|:------------------|:--------------|:----------------------------------------|
@@ -78,17 +78,14 @@ Zwei Unterscheidungen ordnen das Feld: Wird einmalig gesucht oder in mehreren Sc
 : Vier Typen von KI-Suchhelfern nach zwei Unterscheidungen. Quelle: @tay2025agentic {#tbl-suchtypen}
 
 
-Hinter dem Wort „iterativ“ verbirgt sich die wichtigere Frage, *wie* ein Werkzeug iteriert: als fest verdrahteter Ablauf mit ein paar KI-Entscheidungspunkten oder als Agent, der eine Aufgabe flexibel zerlegen kann.
-Tay beschreibt ein Agency-Spektrum (Grad der Eigenständigkeit) und ordnet die meisten akademischen Deep-Research-Tools am verdrahteten Ende ein: beeindruckend innerhalb ihrer Schablonen, spröde außerhalb [@tay2025agentic].
-Sein Stresstest macht das sichtbar: „Finde Arbeiten, die Paper X hätte zitieren sollen, aber nicht zitiert hat.“ Eine menschliche Hilfskraft zerlegt das in drei Schritte (ähnliche Arbeiten finden, deren Referenzen extrahieren, die Überlappung abziehen); allgemeine Sprachmodelle mit Werkzeugen führen diese Logik eher aus, während spezialisierte Tools scheitern, weil die Aufgabe nicht in ihren eingebauten Ablauf passt.
-Für die Lehre folgt daraus die Regel aus @sec-agenten-praxis: Je freier das Werkzeug arbeitet, desto klarer müssen die Kontrollpunkte sein, an denen wir das Ergebnis prüfen.
+Wichtiger als das Wort „iterativ“ ist, *wie* ein Werkzeug iteriert. Die meisten akademischen Deep-Research-Tools folgen einem fest verdrahteten Ablauf: beeindruckend innerhalb ihrer Schablone, spröde außerhalb [@tay2025agentic]. Für die Lehre gilt deshalb die Regel aus @sec-agenten-praxis: Je freier das Werkzeug arbeitet, desto klarer müssen die Kontrollpunkte sein, an denen wir das Ergebnis prüfen.
 
 :::: {.callout-note title="Aus der Lehre: Literaturrecherche in vier Phasen"}
 In unserer Übung zur Literaturrecherche im Wirtschaftsingenieurwesen arbeiten Studierende in vier Phasen: Thema eingrenzen, Quellen auswählen, suchen, auswerten [@bartnik2025recherche]. Die Werkzeugtypen haben darin feste Plätze (@tbl-werkzeugtyp-phase); die Entscheidungen fallen in den ersten beiden Phasen, bevor ein Werkzeug sucht.
 
-Beim Eingrenzen legen die Studierenden Hauptthema, Kontext, Variablen, Stichwörter, Ausschlussbegriffe und Zeitraum fest. Beim Auswählen bestimmen sie eine Liste anerkannter Zeitschriften, etwa nach dem VHB-Rating des Verbands der Hochschullehrerinnen und Hochschullehrer für Betriebswirtschaft, und suchen in Publish or Perish über deren ISSN, die internationale Kennnummer jeder Zeitschrift; die Sortierung „nach Relevanz“ in Google Scholar ist kein Qualitätsranking.
+Beim Eingrenzen legen die Studierenden Thema, Variablen, Stichwörter, Ausschlussbegriffe und Zeitraum fest. Beim Auswählen bestimmen sie eine Liste anerkannter Zeitschriften, etwa nach dem VHB-Rating für Betriebswirtschaft, und suchen über deren ISSN, die Kennnummer jeder Zeitschrift; die Sortierung „nach Relevanz“ in Google Scholar ist kein Qualitätsranking.
 
-Erst beim Suchen kommt das Sprachmodell dazu, als Übersetzer: Es schreibt aus den festgelegten Kriterien die Suchsyntax. Das ist Quick Search mit einem Sprachmodell davor, und die Suchstrategie bleibt bei den Studierenden. Gemessen ist das für systematische Reviews in der Medizin: ChatGPT schrieb Boolesche Suchanfragen mit hoher Präzision (wenig Unpassendes unter den Treffern), aber geringerem Recall (relevante Studien fehlen); wiederholte Läufe lieferten verschiedene Anfragen, ein Beispiel-Query im Prompt (der Eingabe an die KI) und mehrere Dialogrunden halfen [@wang2023boolean]. Die Nachprüfung fand den Ausschlag bei Modell- und Promptwahl und einen Vorteil durch gut gewählte Schlüsselstudien [@wang2025boolean]. Unsere Regel: Syntax lesen, Trefferzahl in einer zweiten Datenbank gegenprüfen, mit zwei bekannten Schlüsselstudien testen, ob die Suche sie findet. Fehlen sie, hat die Syntax eine Lücke, nicht die Forschung.
+Erst beim Suchen kommt das Sprachmodell dazu, als Übersetzer: Es schreibt aus den festgelegten Kriterien die Suchsyntax, und die Suchstrategie bleibt bei den Studierenden. Für systematische Reviews in der Medizin ist gemessen, dass solche Boolesche Suchanfragen wenig Unpassendes, aber nicht alle relevanten Studien finden [@wang2023boolean; @wang2025boolean]. Unsere Regel: Syntax lesen, Trefferzahl in einer zweiten Datenbank gegenprüfen, mit zwei bekannten Schlüsselstudien testen, ob die Suche sie findet. Fehlen sie, hat die Syntax eine Lücke, nicht die Forschung.
 
 ::::
 
@@ -104,13 +101,9 @@ Erst beim Suchen kommt das Sprachmodell dazu, als Übersetzer: Es schreibt aus d
 | Auswerten | Deep Research: Bericht, höchstes Fehlerrisiko | Deep-Research-Modi der Sprachmodelle |
 | Auswerten | Datenzugriff per API (Programmierschnittstelle): eigene Auswertungen mit Code | OpenAlex, Semantic Scholar API |
 
-: Werkzeugtypen je Phase der Literaturrecherche. Typen nach @tay2025agentic, ergänzt um drei Typen ohne erzeugten Text (Zitationsnetz, Zitationskontext, API); Produktnamen sind ein Schnappschuss (Stand 2026), die Typen bleiben. Quelle: eigene Zuordnung nach @bartnik2025recherche {#tbl-werkzeugtyp-phase}
+: Werkzeugtypen je Phase der Literaturrecherche. Typen nach @tay2025agentic, ergänzt um drei Typen ohne erzeugten Text; Produktnamen Stand 2026. Quelle: eigene Zuordnung nach @bartnik2025recherche {#tbl-werkzeugtyp-phase}
 
-Beim Auswerten gefundener Artikel gilt eine ähnliche Staffelung [@tay2024classifying].
-Die Zusammenfassung eines einzelnen Dokuments ist am wenigsten riskant und eignet sich für die schnelle Relevanzprüfung; die sequenzielle Auswertung vieler Dokumente nach denselben Fragen (Design, Stichprobe, Befund) ergibt eine Codier-Tabelle, deren Zellen man stichprobenartig gegen das PDF prüft; die Synthese über mehrere Dokumente zu einer Frage trägt das höchste Fehlerrisiko, weil sich Suchfehler, untreue Zusammenfassung und schwache Gewichtung der Evidenz addieren.
-Die Kurzform „Antwort mit Zitaten“ ist für wissenschaftliche Arbeit deshalb meist nur ein Teaser: Man braucht den Originaltext für Kontext, Operationalisierung und Geltungsgrenzen, und erzeugter Text kann Quellen etwas zuschreiben, das sie so nicht sagen [@tay2025agentic]; dann fehlt es an Quellentreue.
-Ein praktisches Problem der spezialisierten Suchwerkzeuge kommt hinzu: Sie kommen nicht hinter die Bezahlschranken der Verlage und arbeiten deshalb mit Abstracts oder Open-Access-Korpora.
-Akademische Konnektoren zu den großen Sprachmodellen verschieben die Arbeit hier von abstract-basiertem Raten zu passagenbasiertem Prüfen, weil das Modell über eine institutionelle Anmeldung lizenzierte Volltexte durchsuchen und Behauptungen an Fundstellen binden kann, begrenzt auf den Bestand des jeweiligen Anbieters [@tay2024mcp].
+Beim Auswerten gefundener Artikel wächst das Risiko mit dem Umfang [@tay2024classifying]. Die Zusammenfassung eines einzelnen Dokuments eignet sich für die schnelle Relevanzprüfung; die Auswertung vieler Dokumente nach denselben Fragen ergibt eine Codier-Tabelle, deren Zellen man stichprobenartig gegen das PDF prüft; die Synthese über mehrere Dokumente trägt das höchste Fehlerrisiko, weil sich Suchfehler, untreue Zusammenfassung und schwache Gewichtung der Evidenz addieren. Erzeugter Text kann Quellen etwas zuschreiben, das sie so nicht sagen; dann fehlt es an Quellentreue [@tay2025agentic]. Akademische Konnektoren, über die ein Sprachmodell lizenzierte Volltexte der eigenen Hochschule durchsucht, binden Behauptungen an Fundstellen statt an Abstracts [@tay2024mcp].
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
 *„Für einen Überblick über den Forschungsstand ist ein Deep-Research-Bericht die verlässlichste Form der KI-Recherche, weil er die meisten Quellen auswertet.“* []{.ez-ihre data-ez="ez-k4-2"}
@@ -130,17 +123,17 @@ Akademische Konnektoren zu den großen Sprachmodellen verschieben die Arbeit hie
 :::
 :::
 
-**Der 4D-Kreislauf beim Hiwi.** Beim Hiwi reißt der Kreislauf (@sec-schemas) an zwei Stellen, bei der Delegation und bei der Prüfung des Ergebnisses; die Beschreibung ist meist einfach.
-*Delegation:* @tbl-acemoglu ist bereits eine Delegationsanalyse, denn sie trennt, was zur KI wandern kann, von dem, wobei sie nur hilft.
-*Description* (Beschreiben): Wer Artikel auswerten lässt, legt die Spalten der Extraktion fest wie ein Codebuch; klar definierte Variablen werden zuverlässiger extrahiert als freie Zusammenfassungen [@tay2024classifying].
-*Discernment* (Beurteilen): Zwei gleich eingestellte KI-Läufe kamen in einem Scoping Review (kartierende Literaturübersicht) bei 94 Datensätzen zu unterschiedlichen Urteilen [@figalova2026evaluating]; ein zweiter Lauf ist deshalb die billigste Prüfregel.
-*Diligence* (Sorgfalt): Material für Studierende geht erst nach der Prüfung hinaus; geprüfte, quellengebundene Lernhilfen senkten in einem Kohortenvergleich vor allem den Anteil schwacher Prüfungsergebnisse [@dang2026verified, Preprint, also noch nicht begutachtet].
+**Der 4D-Kreislauf beim Hiwi.** Beim Hiwi reißt der Kreislauf (@sec-schemas) bei der Delegation und bei der Prüfung des Ergebnisses.
+*Delegation:* @tbl-acemoglu trennt, was zur KI wandern kann, von dem, wobei sie nur hilft.
+*Description* (Beschreiben): Wer Artikel auswerten lässt, legt die Spalten der Extraktion fest wie ein Codebuch.
+*Discernment* (Beurteilen): Zwei gleich eingestellte KI-Läufe kamen in einem Scoping Review bei 94 Datensätzen zu unterschiedlichen Urteilen [@figalova2026evaluating]; ein zweiter Lauf ist die billigste Prüfregel.
+*Diligence* (Sorgfalt): Material für Studierende geht erst nach der Prüfung hinaus.
 Was die Prüfung regelmäßig als unzuverlässig zeigt, wandert aus der Delegation wieder heraus.
 [Den Kreislauf mit hervorgehobenem Engpass zeigt die [interaktive Fassung](interactions/4d-kreislauf.html?rolle=hiwi).]{.content-visible when-format="html"}
 
 #### Interviews auswerten lassen – und prüfen {#sec-podcast-interviews}
 
-Literatur ist nicht die einzige Quelle, die ein Hiwi auswertet. Interviews aus einem Lehrprojekt, Freitexte der Lehrevaluation und Feedback am Semesterende sind qualitative Daten derselben Art, und Werkzeuge wie Gemini Notebook (früher NotebookLM) machen daraus in Minuten ein Gespräch zweier Stimmen. Das folgende Hörstück entstand so: Ein KI-Agent schrieb in einem Durchgang ein Drehbuch aus 125 Interviews, in denen Forschende über ihre Arbeit mit KI berichten [@handa2025interviewer].^[Datensatz: Anthropic Interviewer, Teil der Forschenden (*scientists*), <https://huggingface.co/datasets/Anthropic/AnthropicInterviewer>, Lizenz CC BY. Alle Teilnehmenden haben der Veröffentlichung ihrer Transkripte zugestimmt.] Das Drehbuch ist absichtlich ungeprüft. Ihre Aufgabe ist die der Betreuung: vorher eine Vermutung festhalten, zuhören, dann drei Aussagen an den Originalstellen prüfen. Die Vermutung zählt mit, denn wer vorab rät, behält die Auflösung oft besser [@pan2023prequestion]. Das Ganze dauert etwa zwölf Minuten.
+Interviews aus einem Lehrprojekt, Freitexte der Lehrevaluation und Feedback am Semesterende sind qualitative Daten wie Literatur, und Werkzeuge wie Gemini Notebook machen daraus in Minuten ein Gespräch zweier Stimmen. Für das folgende Hörstück schrieb ein KI-Agent in einem Durchgang ein Drehbuch aus 125 Interviews, in denen Forschende über ihre Arbeit mit KI berichten [@handa2025interviewer].^[Datensatz: Anthropic Interviewer, Teil der Forschenden (*scientists*), <https://huggingface.co/datasets/Anthropic/AnthropicInterviewer>, Lizenz CC BY. Alle Teilnehmenden haben der Veröffentlichung ihrer Transkripte zugestimmt.] Das Drehbuch ist absichtlich ungeprüft; Ihre Aufgabe ist die der Betreuung.[ Halten Sie vorher eine Vermutung fest, hören Sie zu und prüfen Sie dann drei Aussagen an den Originalstellen; wer vorab rät, behält die Auflösung oft besser [@pan2023prequestion]. Das Ganze dauert etwa zwölf Minuten.]{.content-visible when-format="html"}
 
 ::: {.content-visible when-format="html"}
 ```{=html}
@@ -168,27 +161,34 @@ Im Hörstück sagt der Moderator: „Viele ziehen klare persönliche Grenzen.“
 
 Ihr Urteil zur Aussage: $\square$ belegt $\square$ überzogen $\square$ nicht belegt. Den Befund des Prüfagenten finden Sie in @sec-loesungshinweise.
 
-Das Hörstück (sieben bis acht Minuten) mit Transkript und zwei weiteren Prüfaufgaben gibt es in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-podcast-interviews> aufrufen.
+Hörstück, Transkript und zwei weitere Prüfaufgaben stehen online: QR-Code oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-podcast-interviews>.
 
 ![](images/qr/qr-podcast-forschende.png){width="25mm"}
 :::
 :::
 
-Der Prüfagent, ein zweiter KI-Agent ohne Kenntnis des ersten Auftrags, zerlegte das Drehbuch in 39 Sachaussagen: 33 waren belegt, 6 überzogen, keine ohne Quelle. Die Zitate hielten, die Verallgemeinerungen nicht; aus 12 von 125 Interviews wurde „viele“. Für eigene Auswertungen heißt das: Zitate stichprobenartig prüfen, Wörter wie „viele“, „die meisten“ und „typisch“ ausnahmslos, und Zahlen nur nennen, wenn klar ist, was gezählt wurde.
+Der Prüfagent, ein zweiter KI-Agent ohne Kenntnis des ersten Auftrags, zerlegte das Drehbuch in 39 Sachaussagen: 33 waren belegt, 6 überzogen, keine ohne Quelle. Die Zitate hielten, die Verallgemeinerungen nicht; aus 12 von 125 Interviews wurde „viele“. Für eigene Auswertungen heißt das: Zitate stichprobenartig prüfen, Wörter wie „viele“ und „typisch“ ausnahmslos.
 
+::: {.content-visible when-format="html"}
 ::: {.callout-note title="So entstand dieses Hörstück" appearance="simple"}
 Der Drehbuch-Prompt begann: „Schreibe ein deutsches Podcast-Gespräch von etwa 1.150 Wörtern (8 Minuten) zwischen zwei Moderierenden, Lea und Jonas, über die angehängten Auszüge aus 125 Interviews mit Forschenden zu ihrer Arbeit mit KI.“ Ein Skript zog dafür 93 Originalstellen und eine Stichwortzählung aus den Transkripten. Das Drehbuch schrieb ein Agent in Claude Code in 75 Sekunden, die Prüfung dauerte fünfeinhalb Minuten; gesprochen haben zwei Stimmen aus ElevenLabs v3. Die Schwäche, die tatsächlich auftrat: Der Agent übernahm Stichwortzählungen als Aussagen über die Forschenden. Drei Stellen, die Teilnehmende verkürzt wiedergaben, wurden im Drehbuch korrigiert, alles andere nicht. Dass diese Korrekturen den Weg in die Sprachsynthese nicht gefunden hatten, zeigte erst ein Abgleich der fertigen Aufnahme mit dem Drehbuch per Spracherkennung; die drei Zeilen wurden nachgesprochen. Zum Vergleich entstand dasselbe Gespräch in Gemini Notebook aus allen 125 Interviews, ohne Vorauswahl: Es dauerte fast fünfzehn Minuten, von 37 Sachaussagen waren 24 überzogen oder ohne Beleg, und vier Interviewnummern stimmten nicht. Ob das am Werkzeug lag oder an der fehlenden Vorauswahl des Materials, lässt sich aus diesem einen Versuch nicht trennen.
+:::
 :::
 
 ## KI als Copilot {#sec-copilot}
 
 In dieser Kategorie hilft das Sprachmodell uns dabei, etwas zu tun, was wir sonst nicht könnten.
-@mollick2024a beschreiben mehrere solcher Ansätze: Bei der **"Case Co-Creation"** [@mollick2024a, S. 25–28] arbeiten Studierende mit der KI zusammen, um ein Fallbeispiel für Kommilitonen zu erstellen.
-Dies fördert die Artikulation von Ideen und die kritische Auseinandersetzung mit dem KI-Output, da die initialen Entwürfe oft oberflächlich sind und durch studentische Expertise verbessert werden müssen.
-Die Übung **"Critique the AI"** lässt die KI ein Szenario zu einem Konzept (z. B. Groupthink, Gruppendenken) erstellen, das die Studierenden dann kritisch bewerten und ggf. verbessern müssen.
-Dies schult das Erkennen von Konzeptmerkmalen und die Fähigkeit, Wissen durch Korrektur zu artikulieren.
-Eine Herausforderung ist, dass die KI Konzepte manchmal unvollständig oder fehlerhaft illustriert, was aber Teil des Lerneffekts sein kann [@mollick2024a].
+@mollick2024a beschreiben dafür zwei Übungen. Bei der **„Case Co-Creation“** [@mollick2024a, S. 25–28] erstellen Studierende mit der KI ein Fallbeispiel für Kommilitonen; weil die ersten Entwürfe oft oberflächlich sind, müssen sie ihre eigene Expertise einbringen.
+Bei **„Critique the AI“** schreibt die KI ein Szenario zu einem Konzept wie Gruppendenken (*groupthink*), und die Studierenden bewerten und verbessern es.
+Dass die KI ein Konzept dabei manchmal unvollständig oder falsch illustriert, gehört zum Lerneffekt: Wer den Fehler findet, muss das Konzept beherrschen [@mollick2024a].
 
+::: {.content-visible unless-format="html"}
+Zwei Anwendungsbeispiele stehen online: eine DuPont-Analyse, die Studierende erst selbst rechnen und dann mit dem Copiloten wiederholen, und ein Mediävistik-Seminar, in dem die Lehrenden bei Fehlern der KI bewusst nicht eingreifen. QR-Code oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-copilot>.
+
+![](images/qr/qr-k6-copilot.png){width="18%"}
+:::
+
+::: {.content-visible when-format="html"}
 :::: {.callout-note title="Anwendungsbeispiel: Wer nicht selbst rechnen kann, erkennt die Fehler des Copiloten nicht"}
 **Problem ohne KI.** Eine Kennzahlenanalyse am echten Geschäftsbericht ist mühsam: Zahlen aus Bilanz und Gewinn- und Verlustrechnung heraussuchen, die Komponenten der Eigenkapitalrendite berechnen, das Ergebnis deuten.
 
@@ -222,9 +222,17 @@ Quelle: @wannemacher2025, Case 146.
 ![](images/qr/qr-ab-saarbruecken.png){width="18%"}
 :::
 ::::
+:::
 
 ### Besser schreiben – als Cyborg {#sec-cyborg-writing}
 
+::: {.content-visible unless-format="html"}
+Studierende schreiben ihre Haus- und Abschlussarbeiten mit DeepL, Grammarly und Chat-Werkzeugen, die Vorschläge zu Wortwahl, Grammatik und Übersetzung machen; @ou2024 nennen sie deshalb räumlich erweiterte Cyborgs. Die saubere Argumentation zu üben, bleibt trotzdem nötig [@friedrich2023; @klein2023]. Für den Kurs zum wissenschaftlichen Arbeiten im Wirtschaftsingenieurwesen haben Julia Schmid und ich acht Schreibtrainer gebaut, die eine Abschlussarbeit Kapitel für Kapitel begleiten. Jeder ist ein Prompt, der den Zweck eines Textteils erklärt, abfragt, bei Fehlern einen Hinweis statt der Lösung gibt und einen eigenen Text verlangt. Beim Bau zeigte sich eine Regel zur Quellentreue: Ohne hinterlegte Datei erfindet ein Sprachmodell den Wortlaut echter Artikel, deshalb gehört der Originaltext als Datei in den Auftrag, und erfundene Übungsquellen tragen die Markierung „fiktiv“ [@bartnik2026schreibtrainer]. Die Trainer zum Kopieren und eine Übung zum Zitieren stehen online: QR-Code oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-cyborg-writing>.
+
+![](images/qr/qr-k6-schreiben.png){width="18%"}
+:::
+
+::: {.content-visible when-format="html"}
 Wer akademisch schreibt, lässt sich zunehmend von einer Vielzahl an unterstützenden KI-Systemen über die Schultern schauen – oder die Hand führen –, die Vorschläge zur besseren Sprachverwendung machen, wie DeepL, Grammarly, oder ChatGPT [@ou2024].
 @ou2024 sprechen von KI-gestützten Sprachwerkzeugen (*AI-powered language tools*, AILT), die Studierenden dabei helfen, ihre Sprachfähigkeiten etwa von einer in die andere Sprache zu übertragen und das Sprachniveau ihrer Schreibprodukte generell zu verbessern.
 In ihrer Studie analysieren sie die Kommentare von 1703 schwedischen Studierenden und stellen komplexe Muster der Nutzung fest: „…students align their own languages, writing skills and thinking with the algorithm-based language processes (e.g., lexical, grammatical, and textual corrections, word choice suggestions, language translation) within AI chatbots, writing assistance, and machine language translation to optimise the outcomes of their academic writing.
@@ -302,9 +310,17 @@ Drittens erzeugen Diskussions- und Strukturtrainer Abschnitte im Ton begutachtet
 :::
 
 Wie der nächste Abschnitt zeigt, findet eine ähnlich intensive Diskussion im Bereich der Informatik statt, wo speziell Programmieraufgaben ganz neu gedacht werden müssen.
+:::
 
 ### Jeder kann jetzt programmieren {#sec-coding}
 
+::: {.content-visible unless-format="html"}
+Seit 2025 verschiebt sich die Arbeitsteilung beim Programmieren ein zweites Mal. Ein Copilot ergänzt die Zeile, die man gerade schreibt. Ein **Programmier-Agent** (*coding agent*)[]{#sb-k4-programmier-agent} wie Claude Code oder Codex bekommt einen Auftrag in Alltagssprache, liest und ändert mehrere Dateien, startet Tests und meldet das Ergebnis; der Mensch beschreibt, prüft und entscheidet [@willison2025]. So bauen Lehrende ohne Programmierkenntnisse Lernspiele, Simulationen und Videos für die eigene Lehre (@sec-bsp-widgets). Was der Agent den Lehrenden abnimmt, kann er Studierenden beim Lernen wegnehmen; wie viel, hat ein erstes Experiment gemessen [@balepur2026agents]. Ein Making-of aus der Arbeit an diesem Buch, Beispiel-Prompts für Colab und weitere Studien stehen online: QR-Code oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-coding>.
+
+![](images/qr/qr-k6-programmieren.png){width="18%"}
+:::
+
+::: {.content-visible when-format="html"}
 Mit KI als Copilot können wir **viel umfangreicher und schneller mit Code arbeiten**. Ein Beispiel ist Programmieren: Professionelle Programmierer werden mit KI-Copiloten deutlich schneller [@peng2023], und Lehrbücher haben zunehmend Namen wie „Learn AI-assisted Python Programming“ [@porter2024].
 
 Studierende können so zum Beispiel viel schneller ein funktionierendes Spiel oder eine Simulation erstellen, was die Motivation erhöht. Der **Raum der kreativen Möglichkeiten weitet sich deutlich aus**.
@@ -371,25 +387,12 @@ Wie das im Alltag aussieht, zeigt ein Making-of aus der Arbeit an diesem Buch. C
 ![Making-of zum Video über @tbl-acemoglu: Auftrag, Datendatei, Code, automatische Prüfung, Sichtprüfung, Rendern, rekonstruiert aus Versionsprotokoll und Prüfausgaben. Schlussbild eines Videos (59 s), erstellt mit Claude Code und HyperFrames. Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#vid-making-of> aufrufen.](images/druck/video-making-of.png){#fig-video-making-of width="100%"}
 :::
 
-Wie verschieden zwei solche Werkzeuge dieselbe Herleitung umsetzen, zeigt der Vergleich zur optimalen Bestellmenge. Links läuft Manim, eine Python-Bibliothek für Mathematik-Animationen, rechts HyperFrames, das Webseiten-Code in Video umwandelt; beide Fassungen schrieb Claude. Für den Lernerfolg zählt die Machart womöglich weniger als erwartet: In einem Online-Experiment mit 447 Teilnehmenden lernten diese mit KI-erzeugten Lehrvideos, darunter eines zur optimalen Bestellmenge, gleich viel wie mit menschlich produzierten, erlebten die menschlichen aber etwas positiver [@netland2025aivideos].
-
-::: {.content-visible when-format="html"}
-```{=html}
-<video id="vid-eoq-vergleich" controls playsinline preload="metadata" style="width:100%;height:auto" poster="interactions/media/kap04-eoq-vergleich-poster.png" title="Optimale Bestellmenge: Manim und HyperFrames im Vergleich">
-  <source src="interactions/media/kap04-eoq-vergleich.mp4" type="video/mp4">
-</video>
-```
-
-*Video (30 s, ohne Ton): dieselbe Herleitung der optimalen Bestellmenge in Manim (links) und HyperFrames (rechts), beide von Claude programmiert.*
-:::
-
-::: {.content-visible unless-format="html"}
-![Dieselbe Herleitung der optimalen Bestellmenge in Manim (links) und HyperFrames (rechts), beide von Claude programmiert. Schlussbild eines Videos (30 s). Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#vid-eoq-vergleich> aufrufen.](images/druck/video-eoq-vergleich.png){#fig-video-eoq-vergleich width="100%"}
-:::
+Für den Lernerfolg zählt die Machart womöglich weniger als erwartet: In einem Online-Experiment mit 447 Teilnehmenden lernten diese mit KI-erzeugten Lehrvideos, darunter eines zur optimalen Bestellmenge, gleich viel wie mit menschlich produzierten, erlebten die menschlichen aber etwas positiver [@netland2025aivideos].
 
 Ob sich eine Animation überhaupt lohnt, entscheidet der Lernstoff, nicht das Werkzeug. Über 61 Studien hinweg schlugen Animationen statische Bilder nur knapp [@berney2016]; deutlich war ihr Vorteil dort, wo die Veränderung selbst Lernstoff war [@ploetzner2020]. In einem Experiment erkannten Studierende die Bewegungsabläufe eines Getriebes nach einer Animation am besten, die Anordnung der Zahnräder dagegen nach Standbildern [@ploetzner2021]. Bewegung gehört also an Prozesse, Dynamik und Wirkungsketten wie den Sägezahn des Lagerbestands, nicht an Aufbau und Struktur. Gestaltungsregeln und ein durchgebautes Beispiel stehen im Praxis-Primer (@sec-primer-animationen).
 
 Was der Agent den Lehrenden abnimmt, kann er Studierenden beim Lernen wegnehmen. In einem Experiment bauten 54 Informatikstudierende zweier US-Hochschulen ein kleines Browserspiel, die eine Hälfte mit einem Agenten, der ihren Code direkt änderte, die andere mit einem Chatbot, der nur allgemeine Codeschnipsel lieferte, so dass sie selbst schreiben mussten; beide liefen mit GPT-4.1. Die Agentengruppe war schneller und erfüllte mehr Anforderungen, verstand ihren eigenen Code aber deutlich schlechter. Als alle das Spiel danach ohne Agent erweitern sollten, kehrte sich ihr kleiner Vorsprung um, sobald man den besseren Ausgangscode herausrechnete: Er stammte aus dem Gerüst, das der Agent gebaut hatte, nicht aus Verständnis. Weniger verstand, wer die Aufgabenstellung in den Prompt kopierte oder alle Änderungen ungesehen übernahm, am meisten, wer den Auftrag in Fachbegriffe übersetzte und jede geänderte Datei einzeln annahm. Den Agenten bevorzugten die Studierenden trotzdem, weil er schnell und bequem ist [@balepur2026agents]. Die Studie ist klein und ausdrücklich explorativ, passt aber zu dem, was @sec-evidenz für den Chat zeigt: Mit KI lösen Studierende mehr Programmieraufgaben und behalten weniger [@bergh2026cognition]. Von sich aus arbeiten sie selten anders. In den Chatprotokollen eines Semesters aus einem Informatikkurs ging es in 78,8 % der Anfragen nicht ums Verstehen; die Studierenden ließen die KI die Arbeit tun oder sich von ihr bestätigen, und nur 11,1 % der Anfragen verbanden den Wunsch zu verstehen mit eigener Begründung [@wu2026epistemic].
+:::
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
 *„Studierende, die mit einem Programmier-Agenten arbeiten, kommen schneller zu einem lauffähigen Programm, verstehen ihren Code aber schlechter als Studierende, die ihn selbst schreiben müssen.“* []{.ez-ihre data-ez="ez-k4-3"}
@@ -399,75 +402,9 @@ Was der Agent den Lehrenden abnimmt, kann er Studierenden beim Lernen wegnehmen.
 
 Daraus folgt eine Arbeitsteilung, die sich am Lernziel ausrichtet. Wo das Produkt zählt, etwa ein Lernspiel, ein Prototyp oder eine Simulation für die eigene Lehre, darf der Agent schreiben, und die Prüfung des Ergebnisses bleibt Pflicht (@sec-widget-pruefen). Wo das Verstehen des Codes selbst Lernziel ist, gehören die Bremsen in die Aufgabe: Aufträge in Fachbegriffen statt kopierter Aufgabenstellung, jede Änderung einzeln annehmen, eine schriftliche Begründung für jede übernommene Änderung, wie sie beim Schreiben mit KI die Übernahme fehlerhafter Vorschläge senkt [@tao2026justification], und am Ende eine Erweiterung ohne Agent, die zeigt, was verstanden wurde.
 
-#### Beispiel: Little's Law selbst nachrechnen {#sec-widget-littles-law}
-
-Simulationen, an denen Studierende selbst drehen, haben in der Lehre zu Produktion und Logistik eine lange Tradition. @dobson2006web stellten drei Browser-Simulationen vor, eine Warteschlange, Little's Law in einem einstufigen Prozess und ein Bestellpunktsystem, alle über Schieberegler gesteuert, und erprobten sie in einer Web-Übung mit 74 Studierenden. Das R-Paket `bullwhipgame` simuliert den Bullwhip-Effekt (Peitscheneffekt) in einer vierstufigen Lieferkette, setzt aber eine eigene R-Installation voraus [@marchena2018bullwhipgame]. Solche Werkzeuge zu bauen, war lange Sache von Spezialisten. Mit einem Sprachmodell als Copilot können Lehrende sie selbst programmieren, und das folgende Widget (interaktives Lernelement) ist auf diesem Weg entstanden.
-
-Little's Law sagt: Bestand = Durchsatz × Durchlaufzeit, kurz L = λW [@little1961]. Wer jeden Monat zehn Flaschen Wein kauft und jede ein Jahr liegen lässt, hat im Mittel 120 Flaschen im Keller, ohne je eine einzelne Flasche zu verfolgen. Das Gesetz ist eine Bilanz, und Bilanzen stimmen nur über den ganzen Zeitraum. Wer den Keller einen Nachmittag lang beobachtet, sieht vielleicht keine einzige Flasche kommen oder gehen.
-
-::: {.content-visible when-format="html"}
-Die Animation zeigt zuerst, wie man den Bestand L zählt: Aufträge kommen an, warten, werden bearbeitet und verlassen das System.
-
-<iframe loading="lazy" src="interactions/littles-law-animation.html" width="100%" height="420px" frameborder="0" title="Animation: Little's Law zählen (Ankunft, Warteschlange, Bearbeitung, Abgang)"></iframe>
-
-Das Widget darunter rechnet dieselbe Station über ein frei wählbares Beobachtungsfenster durch. Es vergleicht den gezählten mittleren Bestand $\bar L$ mit dem, was die Gleichung aus beobachteter Ankunftsrate $\hat\lambda$ und mittlerer Verweilzeit $\hat W$ ergibt. Geben Sie zuerst Ihre Vorhersage ab, spielen Sie dann die drei Szenarien durch und würfeln Sie neu.
-
-{{< include _ojs/littles-law.qmd >}}
-:::
-
-::: {.content-visible unless-format="html"}
-![Little's Law in drei Szenarien: Über acht Stunden trifft die Rechnung $\hat\lambda \cdot \hat W$ (gestrichelt) den gezählten Bestand $\bar L$ (durchgezogen), im Prüfungsamt mit hoher Auslastung erst nach einigen Stunden; im Blick über 20 Minuten verfehlt sie ihn um 13 %. Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-widget-littles-law> aufrufen.](images/druck/littles-law-szenarien.svg){#fig-littles-law width="100%" fig-pos="H"}
-
-![](images/qr/qr-littles-law.png){width="18%"}
-:::
-
-::: {.callout-note title="Warum die Gleichung im kurzen Fenster danebenliegt"}
-Aufträge, die bei Fensterende noch im System sind, zählen im Bestand $\bar L$ mit, haben aber noch keine abgeschlossene Verweilzeit und fehlen deshalb in $\hat W$. Ist das System an beiden Fensterrändern leer, gilt $\bar L = \hat\lambda \cdot \hat W$ exakt; sonst entsteht die Abweichung am Rand. Je höher die Auslastung, desto länger die Verweilzeiten, desto breiter der Rand und desto langsamer nähert sich die Rechnung dem gezählten Bestand. Im kurzen Fenster entscheidet deshalb der Zufall, ob die Gleichung passt.
-:::
-
-::: {.callout-tip title="Probieren Sie mal" collapse="true"}
-Ein Studienbüro erhält im Mittel 40 Anträge pro Woche, im Stapel liegen 120. Wie lange wartet ein Antrag im Mittel, ohne dass jemand Zeiten misst?
-
-*Lösung:* W = L / λ = 120 / 40 = 3 Wochen. Die Rechnung gilt, wenn das Büro über die Zeit so viele Anträge abarbeitet, wie eingehen.
-:::
-
-#### Beispiel: Den Bullwhip-Effekt zerlegen {#sec-widget-bullwhip}
-
-Eine kleine Bewegung am Griff einer Peitsche wird an der Spitze zum großen Ausschlag. In einer Lieferkette geschieht dasselbe mit den Bestellungen: Sie schwanken umso stärker, je weiter eine Stufe vom Endkunden entfernt ist, obwohl die Kundennachfrage kaum schwankt. @lee1997information nannten das den Bullwhip-Effekt und führten ihn auf vier Ursachen zurück: die laufende Aktualisierung der Prognosen, das Bündeln von Bestellungen, Preisaktionen und das Horten bei Knappheit. Das zweite selbst gebaute Widget greift die erste Ursache heraus und verbindet sie mit zwei Stellgrößen, die jede Disponentin kennt, der Lieferzeit (*lead time*) und der Frage, wer welche Daten sieht.
-
-Das Modell hat vier Stufen: Händler, Großhandel, Verteilzentrum und Fabrik. Jede Stufe prognostiziert ihre Nachfrage als gleitenden Mittelwert (*moving average*) über die letzten $p$ Perioden und bestellt so viel, dass Bestand und offene Bestellungen die Prognose über die Lieferzeit $L$ decken. Für genau diese Kette haben @chen2000quantifying gezeigt, dass die Bestellungen des Händlers mindestens um den Faktor
-
-$$\frac{\operatorname{Var}(q)}{\operatorname{Var}(D)} \geq 1 + \frac{2L}{p} + \frac{2L^2}{p^2}$$
-
-stärker streuen als die Kundennachfrage $D$. Bei zwei Wochen Lieferzeit und einem Mittelwert über fünf Wochen ist das gut das Doppelte. Die Lieferzeit zählt dabei wie bei @chen1999bullwhip die Bestellperiode mit: Eine Bestellung vom Ende der Woche $t$ ist zu Beginn der Woche $t + L$ da. Ohne geteilte Information (*centralized demand information*) multiplizieren sich die Faktoren von Stufe zu Stufe; teilen alle Stufen die Kassendaten des Händlers, addieren sich nur noch die Lieferzeiten. Der Effekt wird dann kleiner, verschwindet aber nicht. Das Widget leitet sein Modell aus diesen Arbeiten ab und übernimmt keinen Code aus dem Paket `bullwhipgame`, das unter der freien Softwarelizenz GPL-3 steht.
-
-::: {.content-visible when-format="html"}
-Geben Sie zuerst Ihre Vorhersage ab. Spielen Sie dann das Grundszenario durch, verdoppeln Sie die Lieferzeit und schalten Sie schließlich auf geteilte Kassendaten. Die oberen Diagramme zeigen ein Jahr Bestellungen auf gleicher Skala, das untere das Varianzverhältnis jeder Stufe mit dem Wert nach Chen et al. als Strich.
-
-{{< include _ojs/bullwhip.qmd >}}
-:::
-
-::: {.content-visible unless-format="html"}
-![Bullwhip-Effekt in drei Szenarien mit derselben Kundennachfrage. Oben die Bestellungen eines Jahres auf gleicher Skala, unten das Varianzverhältnis jeder Stufe über 2000 Perioden (logarithmisch), der Strich markiert den Wert nach Chen et al. Verdoppelt sich die Lieferzeit, steigt die Varianz der Fabrikbestellungen vom 41- auf das 692-Fache der Kundennachfrage; geteilte Kassendaten senken sie auf das 9,7-Fache. Dieses interaktive Element gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#sec-widget-bullwhip> aufrufen.](images/druck/bullwhip-szenarien.svg){#fig-bullwhip width="100%" fig-pos="H"}
-
-![](images/qr/qr-bullwhip.png){width="18%"}
-:::
-
-::: {.callout-note title="Warum die Peitsche knallt"}
-Jede Bestellung besteht aus zwei Teilen: dem, was gerade verkauft wurde, und der Änderung der Bestellgrenze. Steigt die Prognose um ein Stück pro Woche, muss die Bestellgrenze um $L$ Stück steigen, weil sie $L$ Wochen abdeckt. Die Prognoseänderung kommt also mit der Lieferzeit vervielfacht in der Bestellung an. Die nächste Stufe hält diese schon verstärkte Bestellung für Nachfrage und verstärkt sie erneut. Geteilte Kassendaten unterbrechen die zweite Verstärkung, die erste bleibt.
-:::
-
-Das Modell zeigt die operativen Ursachen, nicht die menschlichen. In den Experimenten von @croson2006behavioral entstand der Bullwhip-Effekt auch dann, als Prognose, Bündelung und Preisaktionen ausgeschaltet waren, weil die Teilnehmenden die bereits bestellte, noch unterwegs befindliche Ware zu wenig berücksichtigten (*underweighting the supply line*). @sterman1989modeling hatte dieses Verhalten im Beer Game (Lieferketten-Planspiel) als Verankern und Anpassen (*anchoring and adjustment*) beschrieben. Wer das Widget allein zeigt, legt deshalb eine Fehlvorstellung nahe: dass bessere Prognoseverfahren das Problem lösten. In der Lehre passt es besser in die Nachbesprechung eines Beer Game, in der Studierende ihre eigenen Bestellkurven neben die Kurven des Modells legen. Simulationsspiele wirken als Ergänzung anderer Lehrformen stärker denn als alleinige Unterweisung [@sitzmann2011metaanalytic].
-
-::: {.callout-tip title="Probieren Sie mal" collapse="true"}
-Ein Händler bestellt bei drei Wochen Lieferzeit und prognostiziert mit dem Mittelwert der letzten sechs Wochen. Um welchen Faktor streuen seine Bestellungen mindestens stärker als die Nachfrage? Und wie viele Wochen muss er bei vier Wochen Lieferzeit mitteln, damit der Faktor unter 1,5 fällt?
-
-*Lösung:* 1 + 2·3/6 + 2·9/36 = 2,5; die Standardabweichung ist damit gut das 1,6-Fache. Bei L = 4 fällt der Faktor erst ab p = 20 Wochen unter 1,5 (1,48). Ein so langes Fenster reagiert aber träge auf echte Trendwechsel; die Dämpfung hat ihren Preis.
-:::
-
 #### Prüfen, ob eine KI-gebaute Simulation rechnet {#sec-widget-pruefen}
 
-Beide Widgets hat ein Sprachmodell nach meinen Vorgaben programmiert. Verlässlich macht sie die Reihenfolge, in der sie entstanden sind: zuerst das Rechenmodell als eigene Datei ohne Oberfläche, dazu Tests gegen Handrechnungen und veröffentlichte Formeln, erst danach Regler und Diagramme. Wer die Reihenfolge umkehrt, bekommt in kurzer Zeit etwas, das gut aussieht.
+Die Rechner zu Little's Law und zum Bullwhip-Effekt in Kap. 7 (@sec-widget-littles-law, @sec-widget-bullwhip) hat ein Sprachmodell nach meinen Vorgaben programmiert. Verlässlich macht sie die Reihenfolge, in der sie entstanden sind: zuerst das Rechenmodell als eigene Datei ohne Oberfläche, dazu Tests gegen Handrechnungen und veröffentlichte Formeln, erst danach Regler und Diagramme. Wer die Reihenfolge umkehrt, bekommt in kurzer Zeit etwas, das gut aussieht.
 
 :::: {.callout-note title="Anwendungsbeispiel: Die KI baut überzeugende Animationen, die nichts rechnen"}
 **Problem ohne KI.** Eine Prozessanimation, in der sich vor dem Engpass sichtbar eine Schlange bildet, erklärt Durchlaufzeiten besser als jede Folie. Sie zu programmieren, kostet Lehrende ohne Programmiererfahrung Wochen; deshalb bleibt es meist bei Kästchen und Pfeilen.
@@ -480,7 +417,7 @@ Beide Widgets hat ein Sprachmodell nach meinen Vorgaben programmiert. Verlässli
 ::::
 
 ::: {.callout-note title="Prüfliste: Rechnet die Simulation, oder spielt sie ab?"}
-Die fünf Prüfungen brauchen keine Programmierkenntnisse, nur die Regler und einen Taschenrechner. Beide Widgets dieses Abschnitts bestehen sie, und ihre Tests im Repositorium prüfen dieselben Punkte bei jeder Änderung automatisch.
+Die fünf Prüfungen brauchen keine Programmierkenntnisse, nur die Regler und einen Taschenrechner. Beide Rechner in Kap. 7 bestehen sie, und ihre Tests im Repositorium prüfen dieselben Punkte bei jeder Änderung automatisch.
 
 1. **Andere Eingabe, anderer Verlauf.** Wer einen Parameter ändert, muss eine andere Kurve sehen, nicht nur andere Zahlen an derselben Kurve. Im Bullwhip-Widget ändert die doppelte Lieferzeit die Form der Fabrikbestellungen, nicht nur ihre Höhe.
 2. **Grenzfälle.** Kommen fast keine Aufträge an, bleibt das System leer. Liegt die Auslastung bei 100 % oder darüber, warnt das Little's-Law-Widget, statt ein Gleichgewicht vorzutäuschen. Schwankt die Kundennachfrage nicht, bestellt im Bullwhip-Widget jede Stufe genau 100 Stück.
@@ -534,18 +471,13 @@ Die Begründungspflicht aus dem Prüfen wird so zur Regel der Delegation: Abgege
 
 ## KI als Tutor {#sec-tutor}
 
-Diese Kategorie umfasst KI-Systeme, die Studierende direkt beim Lernen anleiten, beraten oder ihnen Feedback geben. Sogenannte intelligente Tutorsysteme (*Intelligent Tutoring Systems*, ITS) werden in der Didaktik schon länger diskutiert, sie wurden klassischerweise regelbasiert als Entscheidungsbäume aufgebaut, ähnlich einem Fortsetzungs-Kinderbuch (A la: "Wenn Du die Tür öffnen willst, lies weiter auf S.145" ). Durch generative KI entstehen breitere Möglichkeiten der Interaktion, jedoch führt das "generative" Element auch etwas Unsicherheit in die Dialogsteuerung ein [@latif2026systematic].
+Diese Kategorie umfasst KI-Systeme, die Studierende direkt beim Lernen anleiten, beraten oder ihnen Feedback geben. Intelligente Tutorsysteme (*Intelligent Tutoring Systems*, ITS) waren klassisch regelbasierte Entscheidungsbäume, ähnlich einem Fortsetzungs-Kinderbuch („Wenn Du die Tür öffnen willst, lies weiter auf S. 145“). Generative KI erweitert die Interaktion und bringt zugleich Unsicherheit in die Dialogsteuerung [@latif2026systematic].
 
-Wo der Mehrwert eines solchen Tutors liegt, zeigt die Harvard-Studie zum Physik-Tutor PS2 Pal [@kestin2025]. Die Studierenden lernen **im eigenen Tempo**: Wer den Stoff schon kennt, kommt schneller durch die Aufgaben, wer mehr Zeit braucht, nimmt sie sich. Sie bekommen **Rückmeldung auf Abruf**: Während Lehrende in großen Veranstaltungen nur auf wenige Fragen eingehen können, antwortet der Tutor allen sofort und auf die konkrete Frage. Sie fühlten sich mit dem Tutor **stärker eingebunden und motivierter** als in der aktiven Präsenzstunde (*in-class active learning*). Und für die Lehrenden **verschiebt sich die Arbeit**: Die Einführung in die Grundlagen übernimmt der Tutor vor der Präsenzzeit, die Zeit im Hörsaal gehört anspruchsvolleren Aufgaben, das Einrichten des Tutors kostet dafür Vorarbeit (@sec-complex-tutors). Eine Diagnose des Lernstands, etwa über typische Fehler, beschreibt die Studie dagegen nicht; individuell sind Tempo und Rückmeldung, nicht der Stoff.
-Allerdings behält die Lehrkraft jederzeit die Oberaufsicht, indem sie zum Beispiel relevante KI-Antworten stichprobenartig überprüft oder spezielle Fälle selbst übernimmt (z. B. wenn die KI Auskünfte gibt, die nicht zur jeweiligen Kursstruktur passen).
+Wo der Mehrwert eines solchen Tutors liegt, zeigt die Harvard-Studie zum Physik-Tutor PS2 Pal [@kestin2025]. Die Studierenden lernen **im eigenen Tempo** und bekommen **Rückmeldung auf Abruf**, auch dort, wo Lehrende in großen Veranstaltungen nur wenige Fragen beantworten können. Sie fühlten sich **stärker eingebunden und motivierter** als in der aktiven Präsenzstunde. Und für die Lehrenden **verschiebt sich die Arbeit**: Die Einführung übernimmt der Tutor vor der Präsenzzeit, der Hörsaal gehört anspruchsvolleren Aufgaben. Eine Diagnose des Lernstands beschreibt die Studie nicht; individuell sind Tempo und Rückmeldung, nicht der Stoff. Die Lehrkraft behält die Aufsicht, prüft Antworten stichprobenartig und übernimmt Fälle, die nicht zur Kursstruktur passen.
 
-Dass ein Tutor sich darüber hinaus an den Gesprächsverlauf anpassen kann, zeigt ein Feldexperiment, in dem er diese Anpassung **selbst lernt**. Ein Prompt-Router, der aus vierzehn pädagogischen Merkmalen des Gesprächsverlaufs die Tutoring-Strategie wählt (eher analytisch oder eher gerüstbauend, *scaffolding*), schlug im A/B-Test (Zufallsvergleich zweier Varianten) mit 359 Oberstufenschülern statische Prompts bei gehaltener pädagogischer Qualität; die Variante, die zwischen Strategien streut, statt stur die beste zu wählen, hob die Quote begonnener Übungen von 19,6 auf 28,1 % [@chang2026]. Zusammen mit dem Musterlösungs-Ansatz von @kestin2025 ergeben sich damit zwei komplementäre Stellschrauben: Musterlösungen kontrollieren den **Inhalt**, adaptives Prompt-Routing die **Strategie**.
+Ein Tutor kann auch lernen, sich dem Gesprächsverlauf anzupassen. Ein Prompt-Router, der aus vierzehn pädagogischen Merkmalen des Gesprächs die Strategie wählt, eher analytisch oder eher gerüstbauend (*scaffolding*), schlug in einem Zufallsvergleich mit 359 Oberstufenschülern statische Prompts und hob die Quote begonnener Übungen von 19,6 auf 28,1 % [@chang2026]. Musterlösungen kontrollieren also den **Inhalt**, adaptives Routing die **Strategie**.
 
-Generell ist bei KI-Tutoren die **Gefahr von Fehlinformationen und Halluzinationen** zu beachten.
-Hierfür gibt es jedoch gute Gegenmaßnahmen, vor allem durch Kontrolle des Inputs und systematische Qualitätstests der LLM-Tools.
-Eine interessante Möglichkeit, die beim Physik-Tutor der Harvard Studie besprochen wird [@kestin2025], ist die **Bereitstellung von Musterlösungen als Input** (nicht nur der Fragen): Das Modell soll die Lösungswege nicht selbst erzeugen, damit Ungenauigkeiten, Halluzinationen und Inkonsistenzen gar nicht erst entstehen.
-Der Aufwand für die Erstaufsetzung steigt hier zwar, im Gegenzug sinkt die Qualitätsunsicherheit, die individuelle Anleitung durch ein Sprachmodell sonst begleitet.
-Insgesamt ist eine solche Durchsicht und intensive Qualitätskontrolle klar zu empfehlen (dieser Aspekt der intensiven Qualitätstests wird bei der Kurzvorstellung einiger deutscher Fallstudien in @wannemacher2025 vernachlässigt).
+Gegen Fehlinformationen und Halluzinationen hilft vor allem, den Input zu kontrollieren und den Tutor vor dem Einsatz systematisch zu testen. Der Physik-Tutor bekam die Musterlösungen als Input, damit das Modell die Lösungswege nicht selbst erzeugt (@sec-complex-tutors); das kostet Aufwand beim Einrichten und senkt die Qualitätsunsicherheit. Die Kurzvorstellungen deutscher Fallstudien bei @wannemacher2025 lassen diese Qualitätstests meist aus.
 
 ::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
 *„Ein KI-Tutor für Rechenaufgaben sollte die Musterlösungen als Vorgabe bekommen, statt die Lösungswege selbst zu erzeugen.“* []{.ez-ihre data-ez="ez-k4-4"}
@@ -555,6 +487,7 @@ Insgesamt ist eine solche Durchsicht und intensive Qualitätskontrolle klar zu e
 
 ### Beispiele für einfache Tutoren {#sec-simple-tutors}
 
+::: {.content-visible when-format="html"}
 @mollick2024a beschreiben eine Reihe allgemeiner Tutorenkonzepte: Der **"Integration Agent"** [@mollick2024a, S. 31–33] fordert Studierende durch offene Fragen heraus, Verbindungen zwischen verschiedenen Kurskonzepten herzustellen, was vernetztes Denken fördert.
 Der **"Reflection Coach"** [@mollick2024a, S. 30] regt zur Reflexion über Erfahrungen an, um das Gelernte zu konsolidieren.
 Der **"AI Tutor Blueprint"** [@mollick2024a, S. 38–40] ermöglicht es Lehrenden, eigene, auf ihre spezifischen Themen zugeschnittene Tutoren-Prompts zu erstellen.
@@ -564,11 +497,16 @@ An deutschen Hochschulen unterstützt etwa **„LISA“** (Hochschule Hof) die P
 Für all diese allgemeinen Tutoren gilt: Ihre Effektivität hängt von der Qualität des Prompts und der Fähigkeit der KI ab, die Tutor-Rolle konsistent und pädagogisch sinnvoll auszufüllen, was nicht immer gegeben ist und von Modell zu Modell variieren kann [@mollick2024a, S. 36].
 Die KI kann oberflächlich bleiben oder halluzinieren [@mollick2024a, S. 36].
 
-Über solche einzeln erdachten Prompts hinaus gibt es inzwischen systematisches Gestaltungswissen. @banh2026 leiten aus Interviews, Literatur und einem erprobten Prototyp drei übergeordnete Anforderungen an GenAI-Lernagenten ab, Selbststeuerung, Kollaboration und Assessment (von lateinisch *assidēre*, „sich danebensetzen“), sowie neun Design-Prinzipien; die beiden Feedback-Prinzipien geben den Fällen COFFEE und MIND nachträglich eine theoretische Grundlage: Antworten weisen ihre Quelle im Lernmaterial aus, und Feedback benennt Stärken und macht Wissenslücken sichtbar, um die Selbstbewertung der Lernenden zu stützen. Die Wirksamkeit hat allerdings eine Grenze, die im Modell selbst liegt. @perczel2025 messen die dialogische Qualität heutiger Sprachmodelle an echten Eins-zu-eins-Tutorien und finden sie systematisch schwächer als die menschlicher Tutorinnen und Tutoren: Die Modelle lassen Lernenden nur 5 bis 15 Prozent der Redezeit statt rund 30, stellen drei bis vier Fragen auf einmal und drängen früh zur Lösung. Die Ursache ist strukturell: Standard-Modelle sind darauf optimiert, als hilfreiche Assistenten Reibung zu minimieren, während gutes Unterrichten Reibung gezielt erzeugt. Prompt Engineering, das Feinschleifen der Anweisungen an das Modell, bleibt deshalb ein Notbehelf; erst das Nachtrainieren (*fine-tuning*) auf 100.000 Stunden echter Tutorien verdoppelte in der Studie die Redezeit der Lernenden. Für die Praxis schärft das den Vorbehalt dieses Abschnitts: Die Qualität eines GenAI-Tutors hängt am Prompt *und* am Modell, und die zuverlässigsten Gegenmaßnahmen liegen jenseits des Prompts, von Musterlösungen als Input bis zu systematischen Testläufen vor dem Einsatz.
+@banh2026 leiten aus Interviews, Literatur und einem erprobten Prototyp drei übergeordnete Anforderungen an GenAI-Lernagenten ab, Selbststeuerung, Kollaboration und Assessment (von lateinisch *assidēre*, „sich danebensetzen“), sowie neun Design-Prinzipien; die beiden Feedback-Prinzipien geben den Fällen COFFEE und MIND nachträglich eine theoretische Grundlage: Antworten weisen ihre Quelle im Lernmaterial aus, und Feedback benennt Stärken und macht Wissenslücken sichtbar, um die Selbstbewertung der Lernenden zu stützen.
+:::
+
+Einfache Tutoren sind Prompts in einem Chat-Fenster, etwa die allgemeinen Tutorenkonzepte von @mollick2024a. Ihre Wirksamkeit hat eine Grenze, die im Modell selbst liegt. @perczel2025 messen die dialogische Qualität heutiger Sprachmodelle an echten Eins-zu-eins-Tutorien und finden sie systematisch schwächer als die menschlicher Tutorinnen und Tutoren: Die Modelle lassen Lernenden nur 5 bis 15 Prozent der Redezeit statt rund 30, stellen drei bis vier Fragen auf einmal und drängen früh zur Lösung. Standard-Modelle sind darauf optimiert, als hilfreiche Assistenten Reibung zu minimieren, während gutes Unterrichten Reibung gezielt erzeugt. Prompt Engineering bleibt deshalb ein Notbehelf; erst das Nachtrainieren (*fine-tuning*) auf 100.000 Stunden echter Tutorien verdoppelte in der Studie die Redezeit der Lernenden.
 
 Die Regel „Hinweise vor Lösungen“ hat inzwischen selbst eine Grenze bekommen. Der größte Anbieter eines Schul-Tutors hat nach einem zweijährigen Feldexperiment ohne messbaren Zusatzeffekt (@sec-evidenz) öffentlich eingeräumt, dass ein Tutor, der neben der Aufgabe wartet, kaum angesprochen wird, und ihn umgebaut: in die Aufgabe hinein, keine Antwort vor dem ersten eigenen Versuch, aktives Eingreifen nach dem Fehler [@khan2026firstchapter, Herstellerangabe]. Was nach dem Fehler geschehen soll, zeigt eine Auswertung von 20.462 Tutor-Beiträgen in Sackgassen-Situationen (*impasses*): Bei festgefahrenen Lernenden hilft jede weitere Rückfrage weniger, das Benennen des Fehlers mehr [@ahtisham2026impasses]. Ein Tutor, der sein Gerüst kontingent eskaliert und abbaut, also mehr hilft, wenn die Person stockt, und weniger, sobald sie trägt, schlägt im Vergleich beide starren Varianten, den Lösungsgeber wie den Dauerfrager [@hou2026comet]. Die Gestaltungsregel für KI-Tutoren lautet deshalb: Hinweise vor Lösungen, aber mit Eskalation bei Sackgassen, und ohne die Erwartung, dass der Prompt sie allein durchsetzt (@sec-evidenz).
 
+::: {.content-visible when-format="html"}
 **Sprachen lernen und Gespräche üben** lässt sich mit dem Sprachmodus der großen Chat-Anwendungen: Die KI spricht über ein beliebiges Thema in einer beliebigen Sprache und gibt etwa Feedback auf eine englische Präsentation [@jurran2025]. Für den Sprachunterricht an Hochschulen empfiehlt @tutton2025, Stärken und Schwächen solcher Werkzeuge gemeinsam mit den Studierenden zu erproben und den Unterricht so anzulegen, dass sich KI und Präsenzlehre ergänzen.
+:::
 
 ::: {.callout-note title="Stand bei Drucklegung, November 2026: Tutor-Angebote der Anbieter"}
 Welche Tutor-Funktionen die großen Anbieter bei Drucklegung in ihren Bildungsprodukten boten, als historischer Schnappschuss; alle Angaben stammen von den Anbietern selbst. Die Online-Seite „Forschungsstand“ führt die Liste fort.
@@ -581,9 +519,7 @@ Welche Tutor-Funktionen die großen Anbieter bei Drucklegung in ihren Bildungspr
 
 ### Komplexer Physik Tutor mit Musterlösungen {#sec-complex-tutors}
 
-Wie ein solcher Tutor im Kurs arbeitet, zeigt der Physik-Tutor **„PS2 Pal“** der Harvard University [@kestin2025], dessen Evaluation @sec-evidenz einordnet. Im Einführungskurs Physical Sciences 2 arbeiten die Studierenden in jeder Stunde eine Folge von Aufgaben durch, sonst in Kleingruppen im Hörsaal, im Experiment allein mit dem Tutor; die beiden untersuchten Stunden behandelten Oberflächenspannung und Strömungen. Der Tutor kennt die Musterlösungen, beantwortet Fragen, gibt bei Bedarf Hinweise und bestätigt richtige Lösungsschritte, ohne die komplette Lösung vorwegzunehmen.
-
-Technisch ist PS2 Pal schlicht. Es nutzt GPT-4 mit einem System-Prompt (dauerhafte Grundanweisung), der die Didaktik festlegt: die Studierenden aktiv halten, die kognitive Belastung (*cognitive load*) dosieren und ein Wachstumsdenken (*growth mindset*) fördern. Zu jeder Aufgabe enthält der Prompt eine ausführliche Schritt-für-Schritt-Lösung; sie soll verhindern, dass das Modell falsche Lösungswege erfindet. Weil der Prompt allein mehrteilige Aufgaben nicht verlässlich portionierte, führt die Plattform selbst von Teilaufgabe zu Teilaufgabe. Von einer automatischen Anpassung des Schwierigkeitsgrads berichtet die Studie nichts; individuell sind das Tempo und die Rückmeldung auf die Fragen der Studierenden. Sie arbeiten zu Hause: Vorab-Test, kurzes Einführungsvideo, Aufgaben mit dem Tutor, Abschluss-Test. Im Crossover-Experiment (beide Gruppen durchliefen beide Formate) mit 194 Studierenden lag der Median im Abschlusstest bei 4,5 gegenüber 3,5 nach der aktiven Präsenzstunde, bei einem gemeinsamen Ausgangswert von 2,75; der Lernzuwachs war damit mehr als doppelt so hoch. Die Studierenden brauchten im Median 49 Minuten, für die Präsenzstunde setzt die Studie 60 Minuten an. Gemessen wurde direkt nach der Stunde; ob der Vorsprung anhält, lässt die Studie offen [@kestin2025].
+Im Einführungskurs Physical Sciences 2 der Harvard University arbeiten die Studierenden in jeder Stunde eine Folge von Aufgaben durch, sonst in Kleingruppen im Hörsaal, im Experiment allein mit dem Tutor **„PS2 Pal“** [@kestin2025]; die Evaluation ordnet @sec-evidenz ein. Technisch ist PS2 Pal schlicht. Es nutzt GPT-4 mit einem System-Prompt (dauerhafte Grundanweisung), der die Didaktik festlegt: die Studierenden aktiv halten, die kognitive Belastung (*cognitive load*) dosieren, ein Wachstumsdenken (*growth mindset*) fördern. Zu jeder Aufgabe enthält der Prompt eine ausführliche Schritt-für-Schritt-Lösung. Weil der Prompt allein mehrteilige Aufgaben nicht verlässlich portionierte, führt die Plattform von Teilaufgabe zu Teilaufgabe. Die Studierenden arbeiten zu Hause: Vorab-Test, kurzes Einführungsvideo, Aufgaben mit dem Tutor, Abschluss-Test. Im Crossover-Experiment (beide Gruppen durchliefen beide Formate) mit 194 Studierenden lag der Median im Abschlusstest bei 4,5 gegenüber 3,5 nach der aktiven Präsenzstunde, bei einem gemeinsamen Ausgangswert von 2,75; der Lernzuwachs war mehr als doppelt so hoch. Die Studierenden brauchten im Median 49 Minuten statt der angesetzten 60. Gemessen wurde direkt nach der Stunde; ob der Vorsprung anhält, lässt die Studie offen [@kestin2025].
 
 ::: {.content-visible when-format="html"}
 ```{=html}
@@ -601,10 +537,11 @@ Technisch ist PS2 Pal schlicht. Es nutzt GPT-4 mit einem System-Prompt (dauerhaf
 
 ### Vom Prototyp zum Betrieb: Tutoren mit eigenen Quellen {#sec-tutor-betrieb}
 
-Die bisher gezeigten Tutoren sind Prompts in einem Chat-Interface. Ein Tutor, der einen ganzen Kurs über ein Semester begleiten soll, braucht mehr: eine **Wissensbasis** aus den eigenen Kursmaterialien, damit er aus dem Skript antwortet statt aus dem Netz (das Verfahren dahinter heißt Retrieval-Augmented Generation); eine **Dialogschicht**, die Fragen entgegennimmt und die Antwort an die Studierenden zurückgibt; **Leitplanken**, die bei offensichtlichen Prüfungsfragen auf Lernmaterial verweisen statt zu lösen; und ein **Gedächtnis** über Sitzungen hinweg, damit der Tutor weiß, was eine Person zuletzt geübt hat und Wiederholungsfragen zum passenden Zeitpunkt stellen kann (verteiltes Üben, @sec-lerntechniken). Alle großen Cloud-Anbieter stellen diese vier Bausteine inzwischen als konfigurierbare Dienste bereit, so dass ein erster Tutor mit den eigenen Skripten an einem Nachmittag steht; Referenzarchitekturen für Hochschulen beschreibt zum Beispiel Amazon Web Services (AWS) für seine Dienste Bedrock, Lex und AgentCore [@aws2025agentcore; @aws2025companion]. Der BWL-Tutor aus der Kapiteleinleitung läuft als Web-Anwendung in einer solchen Cloud-Umgebung. Die Kosten eines Pilotbetriebs mit einem Kurs liegen bei kleinen Modellen im niedrigen zweistelligen Eurobereich pro Monat; die eigentliche Investition ist organisatorisch: digital vorliegende Materialien, ein didaktisch durchdachter System-Prompt, ein Datenschutzkonzept für studierendenbezogene Daten und ein Testplan, bevor Studierende den Tutor sehen. Wie das in konkreten Modulen gelaufen ist, zeigen die Fallbeispiele in @sec-fallbeispiele.
+Ein Tutor, der einen ganzen Kurs über ein Semester begleiten soll, braucht mehr als einen Prompt: eine **Wissensbasis** aus den eigenen Kursmaterialien, damit er aus dem Skript antwortet statt aus dem Netz (Retrieval-Augmented Generation); eine **Dialogschicht**, die Fragen entgegennimmt; **Leitplanken**, die bei offensichtlichen Prüfungsfragen auf Lernmaterial verweisen statt zu lösen; und ein **Gedächtnis** über Sitzungen hinweg, damit er Wiederholungsfragen zum passenden Zeitpunkt stellen kann (verteiltes Üben, @sec-lerntechniken). Alle großen Cloud-Anbieter stellen diese Bausteine als konfigurierbare Dienste bereit [@aws2025agentcore; @aws2025companion]; der BWL-Tutor aus der Kapiteleinleitung läuft so. Ein Pilotbetrieb mit kleinen Modellen kostet im niedrigen zweistelligen Eurobereich pro Monat. Die eigentliche Investition ist organisatorisch: digital vorliegende Materialien, ein didaktisch durchdachter System-Prompt, ein Datenschutzkonzept und ein Testplan, bevor Studierende den Tutor sehen.
 
-Drei Betriebserfahrungen aus dem Jahr 2026 zeigen, woran ein solcher Tutor im Semester scheitert oder gelingt, und keine davon liegt in der Technik. An der University of Maryland lief genau diese Architektur, ein Tutor über die Kursmaterialien im Lernmanagementsystem, in den Kursen von 30 Lehrenden; nur 15 Prozent der berechtigten Studierenden nutzten ihn, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Noten der Berechtigten sanken (@sec-evidenz). Der Grund war der Standardmodus: Die Lehrenden hatten den Tutor überwiegend als Antwortmaschine konfiguriert, und wer ihn nutzte, ersetzte damit das eigene Arbeiten am Material [@liu2026courseintegrated]. Das deutsche Gegenstück ist ein sokratisch gebauter Tutor mit eigenen Quellen auf einem lokal betriebenen offenen Modell an der Hochschule Rhein-Waal: Nach einem Semester mit 62 Studierenden war die Bereitschaft, Fragen zu stellen, gestiegen, die Neugier auf das Warum gesunken; die Studierenden nutzten auch den sokratisch gebauten Tutor als Antwortmaschine, sobald er es zuließ [@gerber2026]. Dass es anders geht, zeigt ein Assistent mit eigenen Quellen in einem Planspiel zum Operations Management: 61 Prozent der Teams nutzten ihn, seine Antworten waren zu 90 bis 95 Prozent korrekt, und ein Zusammenhang zwischen Nutzung und Note fehlte, weil die Nutzung über Teamvertreter lief und der Assistent die Regeln des Spiels erklärte statt die Entscheidungen zu treffen [@tani2026]. Die drei Fälle messen am selben Maßstab: Entscheidend ist nicht, ob der Tutor aus den eigenen Quellen antwortet, sondern was die Lehrenden als Standardverhalten eingestellt haben und welche Operationen er den Lernenden abnimmt.
+Drei Betriebserfahrungen aus dem Jahr 2026 zeigen, dass ein solcher Tutor nicht an der Technik scheitert oder gelingt. An der University of Maryland lief ein Tutor über die Kursmaterialien in den Kursen von 30 Lehrenden; nur 15 Prozent der berechtigten Studierenden nutzten ihn, drei Viertel ihrer Anfragen verlangten eine fertige Antwort, und die Noten der Berechtigten sanken, weil die Lehrenden ihn überwiegend als Antwortmaschine konfiguriert hatten [@liu2026courseintegrated]. An der Hochschule Rhein-Waal nutzten 62 Studierende auch einen sokratisch gebauten Tutor als Antwortmaschine, sobald er es zuließ [@gerber2026]. In einem Planspiel zum Operations Management dagegen nutzten 61 Prozent der Teams einen Assistenten mit eigenen Quellen, der die Regeln des Spiels erklärte statt die Entscheidungen zu treffen [@tani2026]. Entscheidend ist, was die Lehrenden als Standardverhalten einstellen und welche Operationen der Tutor den Lernenden abnimmt.
 
+::: {.content-visible when-format="html"}
 :::: {.callout-note title="Anwendungsbeispiel: Ein Tutor-Bot liefert Lösungen, statt das Lernen zu begleiten"}
 **Problem ohne KI.** In einer großen Grundlagenvorlesung erreichen Lehrende die Fragen der einzelnen Studierenden kaum.
 
@@ -622,15 +559,16 @@ Quelle: @tobor2026usecases, S. 34–35.
 ::::
 
 Offen bleibt bei alledem, wer den Tutor im Hörsaal steuert. Eine Design-Studie aus dem Labor von Vincent Aleven zu ko-orchestrierter Lehre (*co-orchestration*)[]{#sb-k4-co-orchestrierung}, in der die KI vorschlägt, wann Lernende zwischen Einzel- und Partnerarbeit wechseln, zeigt, dass Lehrendenkontrolle und studentische Agency (Entscheidungsspielraum der Studierenden) **kein einzelner Schieberegler** sind, sondern phasenweise variieren: Lehrende wollen ein Echtzeit-Vetorecht beim Wechsel selbst, akzeptieren aber Systemvorschläge für dessen Timing; Studierende wollen Mitsprache bei der Partnerwahl, erwarten die finale Autorität aber bei den Lehrenden [@yang2026orchestration]. Orchestrierungswerkzeuge, die einen einzigen Autonomiewert festlegen, werden deshalb beiden Seiten nicht gerecht.
+:::
 
 ::: {.callout-tip title="Einen Tutor vor der Freigabe testen: das Überhilfe-Audit"}
-Sprachmodelle helfen zu früh und zu viel. @lee2026llm ordneten 14.637 Antworten von KI-Tutoren je einer von vier Stufen zu, Frage, Hinweis, Erklären oder Lösen, und fanden über 95 Prozent auf den Stufen Erklären oder Lösen; ein Benchmark kommt zum selben Befund [@teo2026ai]. Beide Arbeiten sind Preprints und messen das Verhalten der Modelle, nicht das Lernen. Ob ein eigener Tutor so arbeitet, zeigt ein Test von 35 Minuten zu dritt: Eine Person spielt die Studierenden, zwei bewerten getrennt.
+Sprachmodelle helfen zu früh und zu viel. @lee2026llm ordneten 14.637 Antworten von KI-Tutoren je einer von vier Stufen zu, Frage, Hinweis, Erklären oder Lösen, und fanden über 95 Prozent beim Erklären oder Lösen; ein Benchmark kommt zum selben Befund [@teo2026ai]. Beides sind Preprints über das Verhalten der Modelle, nicht über das Lernen. Ob ein eigener Tutor so arbeitet, zeigt ein Test von 35 Minuten zu dritt: Eine Person spielt die Studierenden, zwei bewerten getrennt.
 
 1. **Mini-Goldstandard.** Drei gespielte Studierendentypen (unsicher; solide und will prüfen; „Gib mir einfach die Lösung“) mal zwei Aufgaben aus dem eigenen Fach, je mit dem erwarteten Verhalten, dazu eine Frage außerhalb des Stoffs: sieben Testfälle.
 2. **Audit.** Beide Bewertenden ordnen jede Antwort einer Hilfestufe zu und vergleichen. Erwartet sind Frage oder Hinweis; bei der Frage außerhalb des Stoffs sagt der Tutor, dass er es nicht weiß.
 3. **Testplan.** Dieselben sieben Fälle laufen nach jeder Änderung am Prompt erneut, wie ein TÜV-Termin nach jeder Reparatur.
 
-Der Prompt ist dabei nur eine Prüfschicht von mehreren. Wie im Schweizer-Käse-Modell der Sicherheitsforschung hat jede Schicht Löcher an anderer Stelle [@reason2000]: Ein Skript prüft mechanisch, ob die Antwort die Endzahl verrät, der Goldstandard fängt die fachlichen Fehler. Bauen Studierende selbst einen Tutor, geben sie drei Versionen ab, ein Änderungsprotokoll, das zu jeder Version sagt, welche Regel warum geändert wurde, und das Testprotokoll gegen den Goldstandard.
+Der Prompt ist dabei nur eine Prüfschicht von mehreren. Wie im Schweizer-Käse-Modell der Sicherheitsforschung hat jede Schicht Löcher an anderer Stelle [@reason2000]: Ein Skript prüft mechanisch, ob die Antwort die Endzahl verrät, der Goldstandard fängt die fachlichen Fehler.
 :::
 
 **Der 4D-Kreislauf beim Tutor.** Der Tutor wird einmal eingerichtet und dann von anderen genutzt; der Kreislauf hängt deshalb an der Beschreibung seines Verhaltens und an der Sorgfalt beim Einsatz, und er hat zwei Adressaten.
@@ -694,17 +632,13 @@ Als Herausforderung kann die KI manchmal vom Thema abweichen oder Fragen stellen
 
 ### Wie echt ist das Gegenüber? {#sec-sim-echtheit}
 
-Ein Rollenspiel übt nur, was das simulierte Gegenüber glaubhaft vorgibt. Wie weit Sprachmodelle Menschen tatsächlich nachbilden, prüfen seit 2026 Studien aus der Nutzer- und Umfrageforschung, die Sprachmodelle als Ersatz für Befragte (*synthetic participants*) einsetzen; in der Lehre ist keine von ihnen entstanden, ihr Befund lässt sich aber auf Rollenspiele übertragen. In zwölf Klicktests aus der Praxis der Nutzerforschung mit 3.431 Teilnehmenden sollte GPT vorhersagen, wohin Menschen auf einer Bildschirmseite zuerst klicken und warum; in 53 % der Aufgaben wich die Verteilung der simulierten Klicks deutlich von der echten ab. Ausführliche Personas, schrittweises Nachdenken des Modells und andere Zufallseinstellungen änderten daran wenig, sie machten die Antworten nur glaubwürdiger [@kuric2026synthetic]. Woran das liegt, zeigt eine Auswertung von vier Datensätzen mit über 400.000 Befragten und über 6.000 Fragen. Im Mittel treffen die Modelle die menschlichen Antworten gut. Wie eine bestimmte Person vom Mittel abweicht, erklären sie aber nur zu 3 %, obwohl die Wiederholungsbefragung derselben Menschen zeigt, dass 54 % dieser Abweichung stabil und damit vorhersagbar wären. Reichere Personabeschreibungen und Nachtraining schließen die Lücke nicht, und die simulierten Antworten streuen weniger als die echten [@ahn2026surrogates].
+Ein Rollenspiel übt nur, was das simulierte Gegenüber glaubhaft vorgibt. Wie weit Sprachmodelle Menschen nachbilden, prüft seit 2026 die Nutzer- und Umfrageforschung, die Sprachmodelle als Ersatz für Befragte (*synthetic participants*) einsetzt; der Befund lässt sich auf Rollenspiele übertragen. In zwölf Klicktests mit 3.431 Teilnehmenden wich die Verteilung simulierter Klicks in 53 % der Aufgaben deutlich von der echten ab, und ausführlichere Personas machten die Antworten nur glaubwürdiger, nicht richtiger [@kuric2026synthetic]. Über vier Datensätze mit über 400.000 Befragten treffen die Modelle die menschlichen Antworten im Mittel gut; wie eine bestimmte Person vom Mittel abweicht, erklären sie aber nur zu 3 %, obwohl 54 % dieser Abweichung stabil und damit vorhersagbar wären [@ahn2026surrogates].
 
-Für ein Rollenspiel heißt das: Die KI spielt verlässlich den typischen Kunden, die typische Patientin, den typischen skeptischen Mitarbeiter. Den eigenwilligen Einzelfall, an dem Gesprächsführung erst schwierig wird, spielt sie schlechter, und dass sie dabei überzeugend klingt, belegt keinen Realismus. Lehrende sagen den Studierenden deshalb, dass sie mit einem Durchschnitt üben, und fragen in der Nachbesprechung, wie ein echtes Gegenüber anders hätte reagieren können.
+Für ein Rollenspiel heißt das: Die KI spielt verlässlich den typischen Kunden, die typische Patientin, den typischen skeptischen Mitarbeiter, den eigenwilligen Einzelfall dagegen schlechter, und dass sie überzeugend klingt, belegt keinen Realismus. Lehrende sagen den Studierenden deshalb, dass sie mit einem Durchschnitt üben, und fragen in der Nachbesprechung, wie ein echtes Gegenüber anders hätte reagieren können.
 
-Gut trainieren kann ein Simulator trotzdem, wenn die Rollen sauber getrennt sind. In einem randomisierten Experiment mit 100 Medizinstudierenden in China übte die Versuchsgruppe Anamnesegespräche mit drei Agenten: einem Patienten, einem Tutor, der mit sokratischen Fragen zu Anamnese, klinischem Denken und Empathie anregte, ohne die Diagnose zu verraten, und einem Bewerter, der den Fortschritt verfolgte, ohne Punkte zu zeigen. Die Kontrollgruppe arbeitete die Fälle ohne Sprachmodell durch, mit schrittweise freigegebenen Informationen. In der Abschlussprüfung, einem Gespräch mit dem Patienten-Agenten allein, erreichte die Agentengruppe 71,8 % der Punkte gegenüber 55,6 %; den größten Vorsprung hatte sie in der Gesprächsführung, beim Ausdruck von Empathie lag sie 31 Prozentpunkte vorn. Die richtige Diagnose stellten beide Gruppen gleich oft (84 gegenüber 86 %) [@yang2026clinical]. Der Simulator trainiert also, was im Gespräch geübt wird, nicht das Fachwissen dahinter. Sein Bauprinzip kennt schon Pitch Quest: Wer spielt, lehrt nicht, und wer lehrt, bewertet nicht.
+Gut trainieren kann ein Simulator trotzdem, wenn die Rollen sauber getrennt sind. In einem randomisierten Experiment mit 100 Medizinstudierenden übte die Versuchsgruppe Anamnesegespräche mit drei Agenten: einem Patienten, einem sokratischen Tutor, der die Diagnose nicht verriet, und einem Bewerter, der den Fortschritt verfolgte. In der Abschlussprüfung mit dem Patienten-Agenten erreichte sie 71,8 % der Punkte gegenüber 55,6 % in der Kontrollgruppe, mit dem größten Vorsprung in der Gesprächsführung; die richtige Diagnose stellten beide Gruppen gleich oft [@yang2026clinical]. Der Simulator trainiert, was im Gespräch geübt wird, nicht das Fachwissen dahinter. Sein Bauprinzip kennt schon Pitch Quest: Wer spielt, lehrt nicht, und wer lehrt, bewertet nicht.
 
-Für Role Play wie Goal Play gilt: Die KI kann von der Rolle abweichen oder inkonsistent agieren, und die Qualität der Erfahrung kann variieren.
-Eine **sorgfältige Einbettung und Reflexion** durch Lehrende ist entscheidend [@mollick2024a].
-Bei allen Simulatoren ist die Notwendigkeit einer klaren didaktischen Rahmung und eines Debriefings (Nachbesprechung)[]{#sb-k4-debriefing} durch Lehrende (Mensch in der Schleife, *human in the loop*) zentral, um den Lernerfolg zu sichern und die Grenzen sowie potenzielle Fehler der KI zu reflektieren [@mollick2024a, S. 16].
-
-Der Simulator dieses Abschnitts ist ein Sprachmodell, das eine Rolle spielt, und deshalb nie ganz vorhersagbar. Für Zusammenhänge, die sich berechnen lassen, etwa Warteschlangen oder den Bullwhip-Effekt in einer Lieferkette, ist ein rechnendes Widget das verlässlichere Übungsfeld; zwei Beispiele und eine Prüfliste stehen am Ende von @sec-coding. Auch dort entscheidet die Nachbesprechung, was gelernt wird.
+Bei allen Simulatoren sichern eine klare didaktische Rahmung und ein Debriefing (Nachbesprechung)[]{#sb-k4-debriefing} durch Lehrende (Mensch in der Schleife, *human in the loop*) den Lernerfolg und machen Grenzen und Fehler der KI zum Thema [@mollick2024a, S. 16]. Für Zusammenhänge, die sich berechnen lassen, etwa Warteschlangen oder den Bullwhip-Effekt, ist ein rechnendes Widget das verlässlichere Übungsfeld als ein Sprachmodell, das eine Rolle spielt (@sec-widget-littles-law, @sec-widget-bullwhip).
 
 **Der 4D-Kreislauf beim Simulator.** Beim Simulator hängt der Kreislauf an der Beschreibung der Figur und an der Prüfung, wie echt sie ist.
 *Delegation:* Welche Übung verträgt ein simuliertes Gegenüber, und welche braucht Menschen?
@@ -739,72 +673,66 @@ Was die Prüfung der Echtheit nicht trägt, wird nicht als Übungsgegenüber del
 ::: {.sb-begriff begriff="k4-automatisierung"}
 Automatisierung (*automation*)
 
-Eine Aufgabe wandert vom Menschen zur Technik. In der Lehre betrifft das vor allem Standardisiertes, etwa die Aufbereitung von Materialien oder Verwaltungsarbeit.
+*Beispiel:* Die Terminbestätigungen für die Sprechstunde verschickt jetzt das Buchungssystem; das Sekretariat schreibt sie nicht mehr.
 :::
 
 ::: {.sb-begriff begriff="k4-augmentierung"}
 Augmentierung (*labor-augmenting technology*)
 
-Die Aufgabe bleibt beim Menschen, der sie mit technischer Unterstützung schneller oder besser erledigt, etwa beim Schreiben, Recherchieren oder Programmieren.
+*Beispiel:* Die Dozentin schreibt ihre Klausurfragen weiter selbst, lässt sich aber zu jeder Frage drei Varianten vorschlagen und wählt aus.
 :::
 
 ::: {.sb-begriff begriff="k4-neue-aufgaben"}
 Neue Aufgaben (*new tasks*)
 
-Technik schafft Aufgaben, die es vorher nicht gab, in der Lehre etwa die Qualitätskontrolle von KI-Materialien oder die Entwicklung KI-gestützter Lehrkonzepte. Sie kosten Zeit; ob am Ende Zeit gespart wird, ist deshalb offen.
+*Beispiel:* Seit Studierende KI nutzen dürfen, liest die Betreuerin zu jeder Abschlussarbeit auch das Protokoll der KI-Nutzung.
 :::
 
 ::: {.sb-begriff begriff="k4-deep-search"}
 Deep Search
 
-Suchhelfer-Typ nach Tay: mehrere Suchschleifen über Minuten mit Abfragevarianten und Zitationsverfolgung, ein Sprachmodell bewertet die Relevanz. Das Ergebnis bleibt eine Liste, meist eine bessere.
+*Beispiel:* Das Werkzeug suchte zwanzig Minuten in mehreren Schleifen und lieferte 40 nach Relevanz bewertete Treffer, aber keinen Bericht.
 :::
 
 ::: {.sb-begriff begriff="k4-deep-research"}
 Deep Research
 
-Deep Search plus Berichterstellung: eine längere Synthese auf Basis des iterativ gefundenen Korpus. Der Typ mit dem höchsten Fehlerrisiko, weil der Bericht mehr behauptet als eine Liste.
+*Beispiel:* Der Bericht zum Forschungsstand war in zehn Minuten fertig; jede seiner Aussagen muss jetzt noch zu ihrer Quelle zurückverfolgt werden.
 :::
 
 ::: {.sb-begriff begriff="k4-programmier-agent"}
 Programmier-Agent (*coding agent*)
 
-Bekommt einen Auftrag in Alltagssprache, liest die vorhandenen Dateien, ändert mehrere davon, startet Tests und meldet das Ergebnis. Der Mensch schreibt kaum noch Code, er beschreibt, prüft und entscheidet.
-:::
-
-::: {.sb-begriff begriff="k4-co-orchestrierung"}
-Co-Orchestrierung (*co-orchestration*)
-
-Lehrende, Studierende und KI teilen sich die Steuerung des Unterrichts, etwa wenn die KI vorschlägt, wann Lernende von Einzel- zu Partnerarbeit wechseln. Wer wie viel bestimmt, variiert je Phase; Lehrende wollen ein Vetorecht behalten.
+*Beispiel:* Die Dozentin beschreibt in zwei Sätzen ein Quiz zur Nutzwertanalyse; das Werkzeug legt die Dateien an, testet sie und meldet, was es geändert hat.
 :::
 
 ::: {.sb-begriff begriff="k4-role-play"}
 Role Play (Rollenspiel)
 
-Studierende nehmen eine fremde Rolle ein und üben risikofrei, etwa Verhandlungen oder Mitarbeitergespräche; die KI spielt das Gegenüber.
+*Beispiel:* Die Studentin spielt die Einkäuferin, die KI den Lieferanten, der eine Preiserhöhung durchsetzen will.
 :::
 
 ::: {.sb-begriff begriff="k4-goal-play"}
 Goal Play (zielgerichtetes Spiel)
 
-Studierende bleiben in ihrer eigenen Rolle und wenden Wissen oder ein Analyseraster an, indem sie einen KI-Charakter anleiten, dem dieses Wissen fehlt.
+*Beispiel:* Der Student bleibt er selbst und erklärt einer KI-Figur, die das Konzept nicht kennt, warum ein zweiter Lieferant das Risiko senkt.
 :::
 
 ::: {.sb-begriff begriff="k4-protege"}
 Protégé-Effekt (*protégé effect*)
 
-Wer anderen etwas erklären muss, lernt selbst am meisten und deckt dabei eigene Wissenslücken auf. Im Goal Play spielt die KI den Schützling, den die Studierenden anleiten.
+*Beispiel:* Erst als sie der KI-Figur den Bullwhip-Effekt erklären muss, merkt die Studentin, dass sie die Rolle der Lieferzeit nicht verstanden hat.
 :::
 
 ::: {.sb-begriff begriff="k4-debriefing"}
 Debriefing (Nachbesprechung)
 
-Die Nachbesprechung einer Simulation durch Lehrende, in der Verlauf, Fehler der KI und Lernertrag reflektiert werden. Sie hält den Menschen in der Schleife (*human in the loop*).
+*Beispiel:* Nach der Simulation vergleicht die Gruppe mit dem Dozenten ihre Entscheidungen mit dem Verlauf und hält fest, was sie beim nächsten Mal anders machen würde.
 :::
 :::
 
 ::: {.sb-spiel modus="fall" kapitel="4"}
-::: {.sb-aufgabe loesung="k4-automatisierung" ablenker="k4-augmentierung k4-neue-aufgaben k4-co-orchestrierung"}
+::: {.sb-aufgabe loesung="k4-automatisierung" ablenker="k4-augmentierung k4-neue-aufgaben k4-programmier-agent"}
 Die Rückmeldetexte zu den Einsendungen eines wöchentlichen Online-Quiz schrieb bisher eine studentische Hilfskraft; jetzt erzeugt sie ein Skript mit Sprachmodell, und die Hilfskraft ist dafür nicht mehr eingeplant.
 
 ::: sb-herkunft
@@ -828,7 +756,7 @@ Qualitätskontrolle von KI-Werkzeugen ist eine Aufgabe, die erst mit der Technik
 :::
 :::
 
-::: {.sb-aufgabe loesung="k4-deep-research" ablenker="k4-deep-search k4-programmier-agent k4-co-orchestrierung"}
+::: {.sb-aufgabe loesung="k4-deep-research" ablenker="k4-deep-search k4-programmier-agent k4-automatisierung"}
 Für den Literaturteil ihrer Projektarbeit lässt eine Gruppe ein Werkzeug eine halbe Stunde lang suchen und bekommt einen zwölfseitigen Text mit Fußnoten zurück. Welcher Typ von Suchhelfer ist das?
 
 ::: sb-herkunft
@@ -840,7 +768,7 @@ Iterative Suche und ein erzeugter Bericht: Das ist Deep Research. Er verlangt di
 :::
 :::
 
-::: {.sb-aufgabe loesung="k4-programmier-agent" ablenker="k4-deep-search k4-deep-research k4-co-orchestrierung"}
+::: {.sb-aufgabe loesung="k4-programmier-agent" ablenker="k4-deep-search k4-deep-research k4-augmentierung"}
 Im Simulationsprojekt beauftragt ein Team ein Werkzeug in einem Satz, das Lagermodell um eine zweite Lieferstufe zu erweitern. Es ändert vier Dateien, lässt die Tests laufen und meldet, dass alle bestehen.
 
 ::: sb-herkunft
@@ -852,7 +780,7 @@ Auftrag in Alltagssprache, Änderungen über mehrere Dateien, eigener Testlauf: 
 :::
 :::
 
-::: {.sb-aufgabe loesung="k4-goal-play" ablenker="k4-role-play k4-co-orchestrierung k4-debriefing"}
+::: {.sb-aufgabe loesung="k4-goal-play" ablenker="k4-role-play k4-protege k4-debriefing"}
 Im Einkaufsseminar beraten Studierende eine KI-Figur, einen Jungunternehmer, der nicht weiß, ob er ein Bauteil selbst fertigen oder zukaufen soll; sie bleiben dabei sie selbst und müssen die Transaktionskostenanalyse anwenden. Welche Form der Simulation ist das?
 
 ::: sb-herkunft
@@ -864,7 +792,7 @@ Die Studierenden übernehmen keine fremde Rolle, sie wenden ihr Wissen an, indem
 :::
 :::
 
-::: {.sb-aufgabe loesung="k4-debriefing" ablenker="k4-role-play k4-goal-play k4-co-orchestrierung"}
+::: {.sb-aufgabe loesung="k4-debriefing" ablenker="k4-role-play k4-goal-play k4-protege"}
 Nach der KI-Verhandlungssimulation fragt die Dozentin im Plenum, an welcher Stelle der simulierte Lieferant zu schnell nachgegeben hat und wie ein echter Verkaufsleiter reagiert hätte. Wie heißt dieser Schritt?
 
 ::: sb-herkunft

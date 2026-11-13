@@ -3364,18 +3364,23 @@ Yuen, N. (2025). <em>Questioning the bot: Socratic chats with AI</em>. <a href="
     return zeile;
   }
 
+  // Kästen nach der Reduktion (13.11.2026) zeigen statt der Musterantwort einen Beispielsatz („*Beispiel:* …“ oder in
+  // Anführungszeichen); die Definition steht dann im Glossar. Die Beschriftung folgt dem Inhalt.
+  function istBeispiel(muster) { return /^\s*(Beispiel:|[„"])/.test(muster.textContent || ""); }
+
   function aufdecken(muster) {
     var mid = neueId("muster");
+    var wort = istBeispiel(muster) ? "Beispiel" : "Musterantwort";
     muster.id = mid;
     muster.hidden = true;
-    var b = knopf("Beispiel zeigen", "sb-aufdecken");
+    var b = knopf(wort + " zeigen", "sb-aufdecken");
     b.setAttribute("aria-expanded", "false");
     b.setAttribute("aria-controls", mid);
     b.addEventListener("click", function () {
       var auf = muster.hidden;
       muster.hidden = !auf;
       b.setAttribute("aria-expanded", auf ? "true" : "false");
-      b.textContent = auf ? "Beispiel verbergen" : "Beispiel zeigen";
+      b.textContent = wort + (auf ? " verbergen" : " zeigen");
     });
     return b;
   }
@@ -3392,7 +3397,7 @@ Yuen, N. (2025). <em>Questioning the bot: Socratic chats with AI</em>. <a href="
     kopf.appendChild(link);
     var muster = el("div", "sb-muster");
     absaetze.forEach(function (p) { muster.appendChild(p); });
-    // Aufdecken und Einstufung in einer Zeile, Beispielsatz darunter
+    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
     var zeile = el("div", "sb-zeile");
     zeile.appendChild(aufdecken(muster));
     zeile.appendChild(stufen(id));
@@ -3401,9 +3406,20 @@ Yuen, N. (2025). <em>Questioning the bot: Socratic chats with AI</em>. <a href="
   }
 
   function begriffsListe(liste) {
-    var hinweis = el("p", "sb-anleitung",
-      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im Glossar. " +
-      "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    var beispiele = Array.prototype.some.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+      var p = d.children[1];
+      return p && /^\s*(Beispiel:|[„"])/.test(p.textContent || "");
+    });
+    var hinweis = el("p", "sb-anleitung", beispiele
+      ? "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im "
+      : "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+        "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    if (beispiele) {
+      var g = el("a", null, "Glossar");
+      g.href = "glossar.html";
+      hinweis.appendChild(g);
+      hinweis.appendChild(document.createTextNode(". Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder."));
+    }
     liste.insertBefore(hinweis, liste.firstChild);
     Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
   }

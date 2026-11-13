@@ -1107,7 +1107,7 @@ mir Fragen, eine nach der anderen.</code></pre>
 <p>Discernment fragt, wie wir beurteilen, was die KI liefert (<a href="#tbl-4d" class="quarto-xref">Tabelle&nbsp;<span>5.1</span></a>). Die Grundlage ist ein nüchterner Befund: Ein Sprachmodell prüft keine Wahrheit, und über sein eigenes Vorgehen gibt es nicht verlässlich Auskunft.</p>
 <p><strong>Können wir das Modell fragen, wie es zu einem Ergebnis gekommen ist?</strong> Eher nicht. Eine Studie des KI-Labors Anthropic, die mit neuen Methoden in ein Modell hineinschaut, fand bei einfachen Rechnungen wie der Quadratwurzel von 0,64 klare interne Rechenschritte; bei schwierigeren, etwa dem Kosinus einer großen Zahl, gab das Modell Rechnungen an, für die keine internen Prozesse erkennbar waren <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>. Es erfindet dann eine plausible Rechnung, ohne gerechnet zu haben; die Autoren nennen das mit dem Philosophen Harry Frankfurt <em>bullshitting</em>. Bekommt es einen Hinweis auf das gewünschte Ergebnis, rechnet es rückwärts darauf hin, ein Verhalten, das sie als „motiviertes Denken“ (<em>motivated reasoning</em>) bezeichnen. <span>Weitere Befunde dieser Studie stellt die Vertiefung vor (<a href="kapitel02-grundlagen.html#sec-blick-ins-modell" class="quarto-xref"><span>Kapitel 2.6.2</span></a>).</span></p>
 <p><strong>Was kann zu Halluzinationen führen?</strong> Die erfundene Literaturangabe aus dem Kapitelauftakt hat einen erkennbaren Mechanismus. Im Modell ist standardmäßig ein Schaltkreis (<em>circuit</em>) aktiv, der die Antwort verweigert, wenn Informationen fehlen; erkennt das Modell einen bekannten Namen, hemmt ein konkurrierender Mechanismus diese Verweigerung und gibt die Antwort frei. Kennt das Modell den Namen, aber nicht die gesuchte Tatsache, entsteht eine Halluzination<span id="sb-k2-halluzination"></span>: Nach einem Fachartikel des bekannten Forschers Karpathy gefragt, nennt es einen erfundenen Titel, bei weniger bekannten Namen sagt es, die Antwort nicht zu kennen <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>.</p>
-<p>Wie man Ergebnisse prüft, zeigt dieses Buch dort, wo es gebraucht wird: in der Prüfregel der Modellwahl (<a href="kapitel02-grundlagen.html#sec-model-choice" class="quarto-xref"><span>Kapitel 2.2</span></a>), beim Tutor (<a href="kapitel06-rollen.html#sec-tutor-betrieb" class="quarto-xref"><span>Kapitel 6.3.3</span></a>) und bei KI-gebauten Simulationen (<a href="kapitel06-rollen.html#sec-widget-pruefen" class="quarto-xref"><span>Kapitel 6.2.2.3</span></a>).</p>
+<p>Wie man Ergebnisse prüft, zeigt dieses Buch dort, wo es gebraucht wird: in der Prüfregel der Modellwahl (<a href="kapitel02-grundlagen.html#sec-model-choice" class="quarto-xref"><span>Kapitel 2.2</span></a>), beim Tutor (<a href="kapitel06-rollen.html#sec-tutor-betrieb" class="quarto-xref"><span>Kapitel 6.3.3</span></a>) und bei KI-gebauten Simulationen (<a href="kapitel06-rollen.html#sec-widget-pruefen" class="quarto-xref"><span>Kapitel 6.2.2.1</span></a>).</p>
 <div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2462,18 +2462,23 @@ Yusuf, H., Money, A., &amp; Daylamani-Zad, D. (2026). Exploring student anxiety 
     return zeile;
   }
 
+  // Kästen nach der Reduktion (13.11.2026) zeigen statt der Musterantwort einen Beispielsatz („*Beispiel:* …“ oder in
+  // Anführungszeichen); die Definition steht dann im Glossar. Die Beschriftung folgt dem Inhalt.
+  function istBeispiel(muster) { return /^\s*(Beispiel:|[„"])/.test(muster.textContent || ""); }
+
   function aufdecken(muster) {
     var mid = neueId("muster");
+    var wort = istBeispiel(muster) ? "Beispiel" : "Musterantwort";
     muster.id = mid;
     muster.hidden = true;
-    var b = knopf("Beispiel zeigen", "sb-aufdecken");
+    var b = knopf(wort + " zeigen", "sb-aufdecken");
     b.setAttribute("aria-expanded", "false");
     b.setAttribute("aria-controls", mid);
     b.addEventListener("click", function () {
       var auf = muster.hidden;
       muster.hidden = !auf;
       b.setAttribute("aria-expanded", auf ? "true" : "false");
-      b.textContent = auf ? "Beispiel verbergen" : "Beispiel zeigen";
+      b.textContent = wort + (auf ? " verbergen" : " zeigen");
     });
     return b;
   }
@@ -2490,7 +2495,7 @@ Yusuf, H., Money, A., &amp; Daylamani-Zad, D. (2026). Exploring student anxiety 
     kopf.appendChild(link);
     var muster = el("div", "sb-muster");
     absaetze.forEach(function (p) { muster.appendChild(p); });
-    // Aufdecken und Einstufung in einer Zeile, Beispielsatz darunter
+    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
     var zeile = el("div", "sb-zeile");
     zeile.appendChild(aufdecken(muster));
     zeile.appendChild(stufen(id));
@@ -2499,9 +2504,20 @@ Yusuf, H., Money, A., &amp; Daylamani-Zad, D. (2026). Exploring student anxiety 
   }
 
   function begriffsListe(liste) {
-    var hinweis = el("p", "sb-anleitung",
-      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im Glossar. " +
-      "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    var beispiele = Array.prototype.some.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+      var p = d.children[1];
+      return p && /^\s*(Beispiel:|[„"])/.test(p.textContent || "");
+    });
+    var hinweis = el("p", "sb-anleitung", beispiele
+      ? "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im "
+      : "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+        "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    if (beispiele) {
+      var g = el("a", null, "Glossar");
+      g.href = "glossar.html";
+      hinweis.appendChild(g);
+      hinweis.appendChild(document.createTextNode(". Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder."));
+    }
     liste.insertBefore(hinweis, liste.firstChild);
     Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
   }

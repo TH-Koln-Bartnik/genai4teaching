@@ -775,7 +775,7 @@ Abbildung&nbsp;4.3: Illustration Testgestütztes Lernen – test-enhanced learni
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="wie-können-llms-genutzt-werden-um-diese-lerntechniken-zu-unterstützen"><span class="header-section-number">4.4.2</span> Wie können LLMs genutzt werden, um diese Lerntechniken zu unterstützen?</h3>
 <p>Wir skizzieren das hier kurz an einem Seminar zum interkulturellen Management. Um <strong>zeitliche Verteilung und Mischung</strong> zu fördern, kann mit LLMs eine Serie von kurzen, thematisch variierenden Aufgaben und Fallstudien über das Semester verteilt erstellt werden. Diese könnten reale Szenarien abbilden, in denen Studierende ihre Fähigkeiten im interkulturellen Management anwenden müssen. Beispielsweise könnte das Sprachmodell Aufgaben generieren, bei denen Studierende Strategien für die Überwindung kultureller Barrieren in internationalen Teams entwickeln.</p>
 <p>Was sind Beispiele für <strong>testgestütztes Lernen</strong>? Regelmäßige, durch LLMs generierte Quizze bringen Studierende dazu, ihr Wissen häufiger aktiv abzurufen. Durch LLMs können Multiple-Choice-Fragen, Fallstudienanalysen und Szenariobeschreibungen zu interkulturellen Missverständnissen erzeugt werden, welche die Studierenden lösen müssen.</p>
-<p>Zur Unterstützung von <strong>fragebasierter Ausarbeitung</strong> können LLMs die Erstellung von Fallstudien, Simulationen und Rollenspielen unterstützen, damit Studierende über interkulturelle Dynamiken und Managementstrategien nachdenken. Diese könnten als Ausgangspunkt für Diskussionen im Kurs oder als Teil von Hausaufgaben dienen, wobei die Studierenden angehalten werden, über die Verbindungen zwischen dem Kursmaterial und den simulierten interkulturellen Interaktionen zu reflektieren. Ein rechnendes Beispiel aus der Logistik ist das Bullwhip-Widget in <a href="kapitel06-rollen.html#sec-widget-bullwhip" class="quarto-xref"><span>Kapitel 6.2.2.2</span></a>: Warum die Fabrik viel stärker schwankt als die Kundschaft, erklären Studierende erst, wenn sie Lieferzeit und Informationsfluss einzeln verändert und die Folgen gesehen haben. Viele weitere Beispiele hierfür besprechen wir im folgenden Kapitel, wo wir Anwendungsfälle von KI in der Lehre nach der didaktischen Rolle des Werkzeugs darstellen: Hilfskraft, Copilot, Tutor oder Simulator.</p>
+<p>Zur Unterstützung von <strong>fragebasierter Ausarbeitung</strong> können LLMs die Erstellung von Fallstudien, Simulationen und Rollenspielen unterstützen, damit Studierende über interkulturelle Dynamiken und Managementstrategien nachdenken. Diese könnten als Ausgangspunkt für Diskussionen im Kurs oder als Teil von Hausaufgaben dienen, wobei die Studierenden angehalten werden, über die Verbindungen zwischen dem Kursmaterial und den simulierten interkulturellen Interaktionen zu reflektieren. Ein rechnendes Beispiel aus der Logistik ist das Bullwhip-Widget in <a href="kapitel07-artefakte.html#sec-widget-bullwhip" class="quarto-xref"><span>Kapitel 7.3.2.1</span></a>: Warum die Fabrik viel stärker schwankt als die Kundschaft, erklären Studierende erst, wenn sie Lieferzeit und Informationsfluss einzeln verändert und die Folgen gesehen haben. Viele weitere Beispiele hierfür besprechen wir im folgenden Kapitel, wo wir Anwendungsfälle von KI in der Lehre nach der didaktischen Rolle des Werkzeugs darstellen: Hilfskraft, Copilot, Tutor oder Simulator.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Anwendungsbeispiel: KI-Feedback zum Schreiben kommt sofort, ist aber nicht immer richtig">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1073,7 +1073,7 @@ Tabelle&nbsp;4.2: Kernaussagen und Belege zu den Gestaltungsfragen in Kapitel 4,
 <div class="sb-aufgabe" data-loesung="k3-ausarbeitung" data-ablenker="k3-kognitive-belastung k3-wissen-dass k3-verteiltes-ueben">
 <p>Nach jeder Antwort im Lieferkettenkurs fragt ein Bot nach: Warum steigen die Bestellungen weiter oben in der Kette stärker, und was würde sich ändern, wenn alle Stufen dieselben Verkaufsdaten sähen?</p>
 <div class="sb-herkunft">
-<p>Herkunft: konstruiert nach <a href="#sec-lerntechniken" class="quarto-xref"><span>Kapitel 4.4</span></a> und dem Bullwhip-Widget (<a href="kapitel06-rollen.html#sec-widget-bullwhip" class="quarto-xref"><span>Kapitel 6.2.2.2</span></a>).</p>
+<p>Herkunft: konstruiert nach <a href="#sec-lerntechniken" class="quarto-xref"><span>Kapitel 4.4</span></a> und dem Bullwhip-Widget (<a href="kapitel07-artefakte.html#sec-widget-bullwhip" class="quarto-xref"><span>Kapitel 7.3.2.1</span></a>).</p>
 </div>
 <div class="sb-begruendung">
 <p>Warum- und Was-wäre-wenn-Fragen zwingen dazu, den Stoff mit vorhandenem Wissen zu verknüpfen. Es geht nicht um das Abrufen eines Fakts, sondern um die Begründung dahinter.</p>
@@ -1623,18 +1623,23 @@ Zhang, Y.-F., Li, H., Song, D., Sun, L., Xu, T., &amp; Wen, Q. (2025). <em>From 
     return zeile;
   }
 
+  // Kästen nach der Reduktion (13.11.2026) zeigen statt der Musterantwort einen Beispielsatz („*Beispiel:* …“ oder in
+  // Anführungszeichen); die Definition steht dann im Glossar. Die Beschriftung folgt dem Inhalt.
+  function istBeispiel(muster) { return /^\s*(Beispiel:|[„"])/.test(muster.textContent || ""); }
+
   function aufdecken(muster) {
     var mid = neueId("muster");
+    var wort = istBeispiel(muster) ? "Beispiel" : "Musterantwort";
     muster.id = mid;
     muster.hidden = true;
-    var b = knopf("Beispiel zeigen", "sb-aufdecken");
+    var b = knopf(wort + " zeigen", "sb-aufdecken");
     b.setAttribute("aria-expanded", "false");
     b.setAttribute("aria-controls", mid);
     b.addEventListener("click", function () {
       var auf = muster.hidden;
       muster.hidden = !auf;
       b.setAttribute("aria-expanded", auf ? "true" : "false");
-      b.textContent = auf ? "Beispiel verbergen" : "Beispiel zeigen";
+      b.textContent = wort + (auf ? " verbergen" : " zeigen");
     });
     return b;
   }
@@ -1651,7 +1656,7 @@ Zhang, Y.-F., Li, H., Song, D., Sun, L., Xu, T., &amp; Wen, Q. (2025). <em>From 
     kopf.appendChild(link);
     var muster = el("div", "sb-muster");
     absaetze.forEach(function (p) { muster.appendChild(p); });
-    // Aufdecken und Einstufung in einer Zeile, Beispielsatz darunter
+    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
     var zeile = el("div", "sb-zeile");
     zeile.appendChild(aufdecken(muster));
     zeile.appendChild(stufen(id));
@@ -1660,9 +1665,20 @@ Zhang, Y.-F., Li, H., Song, D., Sun, L., Xu, T., &amp; Wen, Q. (2025). <em>From 
   }
 
   function begriffsListe(liste) {
-    var hinweis = el("p", "sb-anleitung",
-      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im Glossar. " +
-      "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    var beispiele = Array.prototype.some.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), function (d) {
+      var p = d.children[1];
+      return p && /^\s*(Beispiel:|[„"])/.test(p.textContent || "");
+    });
+    var hinweis = el("p", "sb-anleitung", beispiele
+      ? "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im "
+      : "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+        "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
+    if (beispiele) {
+      var g = el("a", null, "Glossar");
+      g.href = "glossar.html";
+      hinweis.appendChild(g);
+      hinweis.appendChild(document.createTextNode(". Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder."));
+    }
     liste.insertBefore(hinweis, liste.firstChild);
     Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
   }
