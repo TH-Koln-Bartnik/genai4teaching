@@ -534,7 +534,7 @@ div.csl-indent {
   <li><a href="#sec-agenten-gedaechtnis" id="toc-sec-agenten-gedaechtnis" class="nav-link" data-scroll-target="#sec-agenten-gedaechtnis"><span class="header-section-number">2.4.3</span> Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt</a></li>
   </ul></li>
   <li><a href="#sec-energy" id="toc-sec-energy" class="nav-link" data-scroll-target="#sec-energy"><span class="header-section-number">2.5</span> Ressourcenverbrauch der Modelle</a></li>
-  <li><a href="#sec-vertiefung" id="toc-sec-vertiefung" class="nav-link" data-scroll-target="#sec-vertiefung"><span class="header-section-number">2.6</span> Vertiefung: Was im Modell und im Harness passiert</a>
+  <li><a href="#sec-vertiefung" id="toc-sec-vertiefung" class="nav-link" data-scroll-target="#sec-vertiefung"><span class="header-section-number">2.6</span> Vertiefung: Was im Modell passiert</a>
   <ul>
   <li><a href="#sec-gpt-bedeutung" id="toc-sec-gpt-bedeutung" class="nav-link" data-scroll-target="#sec-gpt-bedeutung"><span class="header-section-number">2.6.1</span> Tokens, Zahlen, Aufmerksamkeit</a></li>
   <li><a href="#sec-blick-ins-modell" id="toc-sec-blick-ins-modell" class="nav-link" data-scroll-target="#sec-blick-ins-modell"><span class="header-section-number">2.6.2</span> Blick ins Modell</a></li>
@@ -642,11 +642,11 @@ div.csl-indent {
 </section>
 <section id="sec-harness" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-harness"><span class="header-section-number">2.1.2</span> Was sich seit 2022 geändert hat</h3>
-<p>Wer 2022 mit ChatGPT gearbeitet hat und 2026 einem Agenten einen Rechercheauftrag gibt, erlebt zwei verschiedene Werkzeuge. Am Prinzip des Sprachmodells hat sich dabei wenig geändert; gewachsen ist vor allem die Schicht um das Modell herum. Sie hat Werkzeuge (<em>tools</em>) und Gedächtnis (<em>memory</em>) hinzugewonnen, und aus beiden folgt ein Drittes: Das Modell darf mehr Arbeitsschritte selbst wählen. Für diese Schicht setzt sich der Name <strong>Harness</strong> durch, für das, was beim Arbeiten aus Modell und Harness entsteht, der Name <strong>Agent</strong>. Die folgende Animation baut den Weg in acht Schritten auf.</p>
+<p>Wer 2022 mit ChatGPT gearbeitet hat und 2026 einem Agenten einen Rechercheauftrag gibt, erlebt zwei verschiedene Werkzeuge. Am Prinzip des Sprachmodells hat sich wenig geändert; gewachsen ist die Schicht um das Modell. Sie hat Werkzeuge (<em>tools</em>) und Gedächtnis (<em>memory</em>) hinzugewonnen, und aus beiden folgt ein Drittes: Das Modell darf mehr Arbeitsschritte selbst wählen. Für diese Schicht setzt sich der Name <strong>Harness</strong> durch, für das, was beim Arbeiten aus Modell und Harness entsteht, der Name <strong>Agent</strong>.</p>
 <p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
 <iframe loading="lazy" src="interactions/harness-schichten.html" width="100%" height="820px" frameborder="0" title="Animation: Wie Werkzeuge, Gedächtnis und Autonomie als Harness um das Modell gewachsen sind">
 </iframe>
-<p>Die drei Begriffe lassen sich an einem Bild auseinanderhalten, dem Fuhrwerk (<a href="#tbl-modell-harness-agent" class="quarto-xref">Tabelle&nbsp;<span>2.1</span></a>). Das Modell ist das Pferd, der Harness das Geschirr, der Agent das Gespann in Fahrt, und der Mensch sitzt auf dem Bock. Das Bild wirkt hier als <em>Advance Organizer</em> im Sinne Ausubels: eine Einführung auf höherer Abstraktionsebene, an die die folgenden Einzelbegriffe andocken können <span class="citation" data-cites="ausubel1960">(<a href="#ref-ausubel1960" role="doc-biblioref">Ausubel, 1960</a>)</span>.</p>
+<p>Die drei Begriffe lassen sich am Bild des Fuhrwerks auseinanderhalten (<a href="#tbl-modell-harness-agent" class="quarto-xref">Tabelle&nbsp;<span>2.1</span></a>): Das Modell ist das Pferd, der Harness das Geschirr, der Agent das Gespann in Fahrt, und der Mensch sitzt auf dem Bock. Das englische <em>harness</em> heißt Geschirr; dasselbe Pferd zieht mit anderem Geschirr einen Pflug oder eine Kutsche, und dasselbe Modell wird mit anderem Harness zum Lerntutor oder zum Karriereberater. Als <em>Advance Organizer</em> gibt das Bild den Einzelbegriffen einen Ort zum Andocken <span class="citation" data-cites="ausubel1960">(<a href="#ref-ausubel1960" role="doc-biblioref">Ausubel, 1960</a>)</span>.</p>
 <div class="tabelle-scroll">
 <div id="tbl-modell-harness-agent" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[16,28,28,28]">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -700,28 +700,16 @@ Tabelle&nbsp;2.1: Modell, Harness und Agent: zwei Bauteile und eine Betriebsweis
 </figure>
 </div>
 </div>
-<p>Daraus folgt: <strong>Jeder Agent braucht einen Harness, aber nicht jeder Harness macht einen Agenten.</strong> Ein Chatbot, der vor jeder Antwort fest Stellen aus dem Skript holt, hat einen Harness und bleibt doch ein fest programmierter Ablauf.</p>
-<p><strong>Ausgangspunkt: das Modell allein.</strong> Um 2022 war das Chatfenster die ganze Schnittstelle: Das Modell lieferte Text, Nachrechnen, Quellensuche und Prüfen blieben bei uns, und mit dem Fenster vergaß es das Gespräch. Im Bild des Fuhrwerks war es ein Pferd ohne Geschirr.</p>
-<p><strong>Erster Ermöglicher: Werkzeuge.</strong> Statt einer Antwort schreibt das Modell eine strukturierte Bitte, etwa „rechne 17 × 23“; ein gewöhnliches Programm führt sie aus und legt das Ergebnis zurück in den Text, den das Modell weiterschreibt. Dass Sprachmodelle selbst lernen können, wann sich ein solcher Aufruf lohnt, zeigten <span class="citation" data-cites="schick2023toolformer">Schick et al. (<a href="#ref-schick2023toolformer" role="doc-biblioref">2023</a>)</span>. Seit Ende 2024 schließt das Model Context Protocol (MCP) beliebige Dienste nach demselben Muster an, so wie der USB-Anschluss Drucker und Kameras <span class="citation" data-cites="anthropic2024mcp">(<a href="#ref-anthropic2024mcp" role="doc-biblioref">Anthropic, 2024</a>)</span>. Ein <strong>Werkzeug</strong> ist also ein Programm, das das Modell anfordern, aber nicht selbst ausführen kann (Vertiefung: <a href="#sec-agenten-praxis" class="quarto-xref"><span>Kapitel 2.4.2</span></a>).</p>
-<p><strong>Zweiter Ermöglicher: Gedächtnis.</strong> Vor der Antwort kann eine Suche in eigenen Dokumenten, etwa Skript, Folien oder Prüfungsordnung, die passenden Stellen heraussuchen und dem Modell mit der Frage vorlegen, so wie eine Bibliothekarin die richtigen Seiten aufgeschlagen auf den Tisch legt; Fachleute nennen das <em>Retrieval-Augmented Generation</em> (RAG), etwa „abrufgestützte Erzeugung“ <span class="citation" data-cites="lewis2020">(<a href="#ref-lewis2020" role="doc-biblioref">Lewis et al., 2020</a>)</span>. Die Kontextfenster (<em>context windows</em>)<span id="sb-k2-kontextfenster"></span>, also die Textmenge, die das Modell bei einer Antwort auf einmal überblickt, sind von wenigen Seiten auf ganze Bücher gewachsen, und eine Anleitungsdatei trägt Regeln und Zwischenstände von einer Sitzung in die nächste (Vertiefung: <a href="#sec-agenten-gedaechtnis" class="quarto-xref"><span>Kapitel 2.4.3</span></a>).</p>
-<p><strong>Die Folge: Autonomie im Vorgehen.</strong> Mit Werkzeugen und Gedächtnis wird aus einem Durchgang eine Schleife: Das Modell plant einen Schritt, ruft ein Werkzeug auf, liest das Ergebnis und plant den nächsten; <span class="citation" data-cites="yao2023react">Yao et al. (<a href="#ref-yao2023react" role="doc-biblioref">2023</a>)</span> nennen dieses Wechselspiel aus Denken und Handeln ReAct. <span class="citation" data-cites="schluntz2024agents">Schluntz &amp; Zhang (<a href="#ref-schluntz2024agents" role="doc-biblioref">2024</a>)</span> ziehen daraus die Grenze, die für dieses Buch gilt: In einem <strong>Workflow</strong> folgen Modell und Werkzeuge vorgegebenen Pfaden, ein <strong>Agent</strong> steuert seinen Ablauf und seine Werkzeugnutzung selbst. Das Wort kommt vom lateinischen <em>agere</em>, handeln, in Gang bringen. Wie weit diese Selbststeuerung reicht, misst das gemeinnützige Prüfinstitut METR (<em>Model Evaluation and Threat Research</em>) als Zeithorizont (<em>time horizon</em>) , <a href="kapitel05-4d-phasen.html#sec-capabilities" class="quarto-xref">s.&nbsp;<span>5.3.1</span></a>.</p>
-<p>„Autonom“ verlangt eine Einschränkung: Das griechische <em>autónomos</em> heißt, sich selbst das Gesetz (<em>nómos</em>) geben, und das tut ein Agent nicht, denn das Ziel setzt der Mensch. Wir nennen solche Systeme deshalb <strong>teilautonom</strong>; die Norm zum automatisierten Fahren meidet das Wort „autonom“ aus demselben Grund und spricht von Automatisierungsstufen <span class="citation" data-cites="sae2021j3016">(<a href="#ref-sae2021j3016" role="doc-biblioref">SAE International, 2021</a>)</span>. Wir sprechen von <strong>Autonomie im Vorgehen</strong>; „Autonomie der Lernenden“ (<em>learner autonomy</em>) meint dagegen die Fähigkeit, das eigene Lernen zu steuern <span class="citation" data-cites="holec1981">(<a href="#ref-holec1981" role="doc-biblioref">Holec, 1981</a>)</span>.</p>
-<p>Wie viel Autonomie ein Modell bekommt, entscheiden die Menschen, die es einsetzen, nicht das Modell. <span class="citation" data-cites="morris2024">Morris et al. (<a href="#ref-morris2024" role="doc-biblioref">2024</a>)</span> ordnen die Zusammenarbeit von Mensch und KI in sechs Stufen (<em>Levels of Autonomy</em>), von „keine KI“ bis zum vollständig selbstständigen Agenten, und betonen, dass für Bildung und Prüfungen auch die unterste Stufe ihren Platz behält.</p>
-<p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Stufen.</p>
-<iframe loading="lazy" src="interactions/autonomiestufen.html" width="100%" height="860px" frameborder="0" title="Animation: Sechs Stufen der Zusammenarbeit von Mensch und KI, von keiner KI bis zum Agenten">
-</iframe>
-<p><strong>Der Name für das Gewachsene: Harness.</strong> Anthropic definiert den <strong>Harness</strong> als das System, das ein Modell als Agent handeln lässt: Er nimmt Eingaben entgegen, ruft Werkzeuge auf und gibt Ergebnisse zurück <span class="citation" data-cites="grace2026evals">(<a href="#ref-grace2026evals" role="doc-biblioref">Grace et al., 2026</a>)</span>. Das englische <em>harness</em> ist das Geschirr eines Zugpferds; dasselbe Pferd zieht mit anderem Geschirr einen Pflug oder eine Kutsche, und dasselbe Modell wird mit anderem Harness zum Lerntutor oder zum Karriereberater. Google spricht von einer <em>Orchestrierungsschicht</em> (<em>orchestration layer</em>) <span class="citation" data-cites="wiesinger2024agents">(<a href="#ref-wiesinger2024agents" role="doc-biblioref">Wiesinger et al., 2024</a>)</span>, OpenAI beim Programmier-Agenten Codex von Harness <span class="citation" data-cites="bolin2026codex">(<a href="#ref-bolin2026codex" role="doc-biblioref">Bolin, 2026</a>)</span>, Anthropic vom „Gehirn“ aus Modell und Harness <span class="citation" data-cites="martin2026managed">(<a href="#ref-martin2026managed" role="doc-biblioref">Martin et al., 2026</a>)</span>; gemeint ist dasselbe Bauteil.</p>
-<p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
-<iframe loading="lazy" src="interactions/drei-labs-ein-bauplan.html" width="100%" height="900px" frameborder="0" title="Animation: Drei Labore, ein Bauplan aus Modell, Werkzeugen und einer Schleife darum">
-</iframe>
-<p>Der Harness ist zugleich der Regler der Autonomie: Welche Werkzeuge er anbietet, ob ein Werkzeug nur lesen oder auch schreiben darf und wo der Ablauf auf eine Freigabe wartet, legt den <strong>Handlungsspielraum</strong> des Modells fest. Wer den Harness pflegt, betreibt <em>Harness Engineering</em>; <span class="citation" data-cites="hashimoto2026adoption">Hashimoto (<a href="#ref-hashimoto2026adoption" role="doc-biblioref">2026</a>)</span>, der den Begriff geprägt hat, versteht darunter, aus jedem Fehler eines Agenten eine dauerhafte Verbesserung seiner Umgebung zu machen, damit der Fehler nicht wiederkehrt.</p>
-<p>Die Grenze zwischen Modell und Harness wandert allerdings: Jeder Harness enthält Annahmen darüber, was das Modell nicht allein kann, und bessere Modelle machen manche davon überflüssig <span class="citation" data-cites="martin2026managed">(<a href="#ref-martin2026managed" role="doc-biblioref">Martin et al., 2026</a>)</span>; Logan Kilpatrick von Google DeepMind sagt, das Modell fresse den Harness <span class="citation" data-cites="sequoia2026kilpatrick">(<a href="#ref-sequoia2026kilpatrick" role="doc-biblioref">Sequoia Capital, 2026</a>)</span>. Die Aufgaben bleiben, gleich wer sie erledigt: Jemand muss Werkzeuge anschließen, Kontext auswählen und Haltepunkte (<em>checkpoints</em>) setzen.</p>
-<p>Die Fachbegriffe des ganzen Buches mit ihrer Herkunft stehen im <a href="./glossar.html">Glossar</a>.</p>
+<p><strong>Jeder Agent braucht einen Harness, aber nicht jeder Harness macht einen Agenten</strong> (<a href="#sec-patterns-usage" class="quarto-xref"><span>Kapitel 2.4.1</span></a>).</p>
+<p><strong>Werkzeuge.</strong> Statt einer Antwort schreibt das Modell eine strukturierte Bitte, etwa „rechne 17 × 23“; ein gewöhnliches Programm führt sie aus und legt das Ergebnis zurück in den Text <span class="citation" data-cites="schick2023toolformer">(<a href="#ref-schick2023toolformer" role="doc-biblioref">Schick et al., 2023</a>)</span>. Seit Ende 2024 schließt das Model Context Protocol (MCP) beliebige Dienste nach demselben Muster an, so wie der USB-Anschluss Drucker und Kameras <span class="citation" data-cites="anthropic2024mcp">(<a href="#ref-anthropic2024mcp" role="doc-biblioref">Anthropic, 2024</a>)</span>.</p>
+<p><strong>Gedächtnis.</strong> Eine Suche in eigenen Dokumenten wie Skript oder Prüfungsordnung legt dem Modell vor der Antwort die passenden Stellen vor; Fachleute nennen das <em>Retrieval-Augmented Generation</em> (RAG) <span class="citation" data-cites="lewis2020">(<a href="#ref-lewis2020" role="doc-biblioref">Lewis et al., 2020</a>)</span>. Die Kontextfenster (<em>context windows</em>)<span id="sb-k2-kontextfenster"></span>, also die Textmenge, die das Modell bei einer Antwort auf einmal überblickt, sind von wenigen Seiten auf ganze Bücher gewachsen (<a href="#sec-agenten-gedaechtnis" class="quarto-xref"><span>Kapitel 2.4.3</span></a>).</p>
+<p><strong>Die Folge: Autonomie im Vorgehen.</strong> Mit Werkzeugen und Gedächtnis wird aus einem Durchgang eine Schleife: Das Modell plant einen Schritt, ruft ein Werkzeug auf, liest das Ergebnis und plant den nächsten <span class="citation" data-cites="yao2023react">(<a href="#ref-yao2023react" role="doc-biblioref">Yao et al., 2023</a>)</span>. In einem <strong>Workflow</strong> folgen Modell und Werkzeuge vorgegebenen Pfaden, ein <strong>Agent</strong> steuert Ablauf und Werkzeugnutzung selbst <span class="citation" data-cites="schluntz2024agents">(<a href="#ref-schluntz2024agents" role="doc-biblioref">Schluntz &amp; Zhang, 2024</a>)</span>; das Wort kommt vom lateinischen <em>agere</em>, handeln. Das Ziel setzt weiter der Mensch; wir nennen solche Systeme deshalb <strong>teilautonom</strong> <span class="citation" data-cites="sae2021j3016">(<a href="#ref-sae2021j3016" role="doc-biblioref">SAE International, 2021</a>)</span>. Davon zu trennen ist die Autonomie der Lernenden (<em>learner autonomy</em>), die Fähigkeit, das eigene Lernen zu steuern <span class="citation" data-cites="holec1981">(<a href="#ref-holec1981" role="doc-biblioref">Holec, 1981</a>)</span>; jeder Schritt, den ein Tutor-Agent selbst wählt, nimmt ihnen eine Entscheidung ab.</p>
+<p><strong>Der Harness als Regler.</strong> Welche Werkzeuge er anbietet, ob sie nur lesen oder auch schreiben dürfen und wo der Ablauf auf eine Freigabe wartet, legt den <strong>Handlungsspielraum</strong> des Modells fest, und das entscheiden Menschen. Bessere Modelle machen manche Vorkehrung des Harness überflüssig <span class="citation" data-cites="martin2026managed">(<a href="#ref-martin2026managed" role="doc-biblioref">Martin et al., 2026</a>)</span>, doch die Aufgaben bleiben: Jemand muss Werkzeuge anschließen, Kontext auswählen und Haltepunkte (<em>checkpoints</em>) setzen.</p>
 </section>
 <section id="sec-durchspielen" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="sec-durchspielen"><span class="header-section-number">2.1.3</span> Typische Aufgaben und Fragestellungen mit der KI durchspielen, Prompts anpassen, experimentieren</h3>
 <p>Lehrende sollten zunächst Informationen sammeln, um zu verstehen, was KI mit den Aufgaben in ihrem Kurs bewirken kann <span class="citation" data-cites="mitteaching+learninglab2023">(<a href="#ref-mitteaching+learninglab2023" role="doc-biblioref">MIT Teaching + Learning Lab, 2023</a>)</span>. Melden Sie sich bei einem der professionellen KI-Dienste wie ChatGPT oder Claude an und spielen Sie mit exemplarischen Konzepten, Fragen und Aufgabensets aus dem Kurs. Dabei ist es wichtig, nicht gleich bei der ersten schlechten Antwort aufzugeben, sondern Anpassungsmöglichkeiten durchzugehen: Lässt sich der <strong>Input beschränken</strong>? (Fragen auf einen Text-Input, eine gute Internetquelle oder eine hochgeladene PDF beschränken.) Lässt sich der <strong>Prompt</strong> (die Eingabe an die KI) <strong>anpassen</strong>? (Bearbeitung schrittweise durchführen lassen, Optionen und Szenarien durchgehen lassen usw., siehe <a href="#sec-how-to-speak" class="quarto-xref"><span>Kapitel 2.3.1</span></a> zu Prompt Engineering, dem gezielten Formulieren von Prompts.)</p>
-<p>Wichtig ist, sich zu überlegen, welches Lernziel jede Aufgabe hat und wie die KI damit umgeht. Es sollte bewertet werden, bei welchen Arten von Fragen die KI gut abschneidet und wo ihre Grenzen liegen <span class="citation" data-cites="mollick2025d">(<a href="#ref-mollick2025d" role="doc-biblioref">E. R. Mollick, 2025b</a>)</span>. Diese Erkenntnisse können dann genutzt werden, um etwa Aufgabensets und andere Aufgabenstellungen besser zu strukturieren.</p>
+<p>Wichtig ist, sich zu überlegen, welches Lernziel jede Aufgabe hat und wie die KI damit umgeht. Es sollte bewertet werden, bei welchen Arten von Fragen die KI gut abschneidet und wo ihre Grenzen liegen <span class="citation" data-cites="mollick2025d">(<a href="#ref-mollick2025d" role="doc-biblioref">E. R. Mollick, 2025</a>)</span>. Diese Erkenntnisse können dann genutzt werden, um etwa Aufgabensets und andere Aufgabenstellungen besser zu strukturieren.</p>
 <div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -739,6 +727,7 @@ Tabelle&nbsp;2.1: Modell, Harness und Agent: zwei Bauteile und eine Betriebsweis
 </section>
 <section id="sec-informiert" class="level3" data-number="2.1.4">
 <h3 data-number="2.1.4" class="anchored" data-anchor-id="sec-informiert"><span class="header-section-number">2.1.4</span> Wie bleiben Sie informiert?</h3>
+<div style="overflow-wrap: anywhere;">
 <p>Bei einem Thema, das sich so schnell wandelt, sind gute Sammelstellen wertvoller als jede gedruckte Liste von Werkzeugen. Die folgenden Quellen haben sich bewährt (Stand 10/2026):</p>
 <ul>
 <li><strong>Newsletter von Ethan Mollick</strong> (Wharton School) mit sehr praktischen Übersichten und Empfehlungen: <a href="https://www.oneusefulthing.org/" class="uri">https://www.oneusefulthing.org/</a>. Ein Abonnement lohnt sich.</li>
@@ -750,11 +739,12 @@ Tabelle&nbsp;2.1: Modell, Harness und Agent: zwei Bauteile und eine Betriebsweis
 <li><strong>Fortbildungen der Anbieter</strong> zu den technischen Seiten der KI-Nutzung in der Lehre: Google (<a href="https://grow.google/ai-for-educators/" class="uri">https://grow.google/ai-for-educators/</a>), Anthropic (<a href="https://anthropic.skilljar.com/ai-fluency-framework-foundations" class="uri">https://anthropic.skilljar.com/ai-fluency-framework-foundations</a>) und OpenAI mit einem Newsletter für Hochschullehrende (<a href="https://edunewsletter.openai.com/" class="uri">https://edunewsletter.openai.com/</a>).</li>
 </ul>
 <p>Wer neue Studien statt neuer Werkzeuge verfolgen will, findet den gepflegten Stand der Forschung auf der Online-Seite zu diesem Buch.</p>
+</div>
 </section>
 </section>
 <section id="sec-model-choice" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="sec-model-choice"><span class="header-section-number">2.2</span> Welches Modell?</h2>
-<p><strong>Was für Sprachmodelle gibt es?</strong> Hinter der Flut an Produktnamen stehen wenige Klassen, und zwei Fragen sortieren sie: Wie leistungsfähig ist das Modell, und wer hat die Daten in der Hand (<a href="#fig-modellklassen" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a>)? Die großen KI-Labore bieten jeweils <strong>große geschlossene Modelle</strong> an, deren Gewichte beim Anbieter bleiben, und daneben <strong>kleine Varianten</strong>, die schneller und billiger sind und in den kostenlosen Zugängen den Standard stellen. <strong>Frontier-Modelle</strong> (Spitzenmodelle) heißen nur die wenigen großen Modelle, die in den Ranglisten deutlich vor allen anderen liegen; nicht jedes Labor hat eines, und die Spitze wechselt mit jeder Modellgeneration <span class="citation" data-cites="fmf2026about">(<a href="#ref-fmf2026about" role="doc-biblioref">Frontier Model Forum, 2026</a>)</span>. Die großen Modelle sind <strong>Reasoning-Modelle</strong>: Sie denken vor der Antwort in mehreren Schritten nach, und wie lange, lässt sich als Denkstufe (<em>reasoning effort</em>) einstellen. <strong>Offene Modelle</strong> (<em>open-weight models</em>) legen ihre Gewichte offen; Hochschulen betreiben sie auf eigenen Rechnern, und die Daten bleiben im Haus. Die besten offenen Modelle lagen 2026 im Mittel vier Monate hinter der Frontier <span class="citation" data-cites="edwards2026openclosed">(<a href="#ref-edwards2026openclosed" role="doc-biblioref">Edwards &amp; Emberson, 2026</a>)</span>, Modelle für eine einzelne Grafikkarte sechs bis zwölf Monate <span class="citation" data-cites="somala2025consumergpu">(<a href="#ref-somala2025consumergpu" role="doc-biblioref">Somala &amp; Emberson, 2025</a>)</span>.</p>
+<p><strong>Was für Sprachmodelle gibt es?</strong> Hinter der Flut an Produktnamen stehen wenige Klassen, und zwei Fragen sortieren sie: Wie leistungsfähig ist das Modell, und wer hat die Daten in der Hand (<a href="#fig-modellklassen" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a>)? Die großen KI-Labore bieten <strong>große geschlossene Modelle</strong> an, deren Gewichte beim Anbieter bleiben, und daneben <strong>kleine Varianten</strong>, die in den kostenlosen Zugängen den Standard stellen. <strong>Frontier-Modelle</strong> heißen nur die wenigen an der Spitze der Ranglisten <span class="citation" data-cites="fmf2026about">(<a href="#ref-fmf2026about" role="doc-biblioref">Frontier Model Forum, 2026</a>)</span>. Die großen Modelle sind <strong>Reasoning-Modelle</strong>: Sie denken vor der Antwort in mehreren Schritten nach, wie lange, lässt sich als Denkstufe (<em>reasoning effort</em>) einstellen. <strong>Offene Modelle</strong> (<em>open-weight models</em>) legen ihre Gewichte offen und laufen auf eigenen Rechnern; die besten lagen 2026 im Mittel vier Monate hinter der Frontier <span class="citation" data-cites="edwards2026openclosed">(<a href="#ref-edwards2026openclosed" role="doc-biblioref">Edwards &amp; Emberson, 2026</a>)</span>.</p>
 <div id="fig-modellklassen" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="htbp">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-modellklassen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -765,49 +755,42 @@ Abbildung&nbsp;2.1: Vier Modellklassen nach Leistung und Kontrolle über die Dat
 </figcaption>
 </figure>
 </div>
-<p><strong>Was kauft ein Abonnement?</strong> Die großen Anbieter staffeln ihre Preise in drei Stufen: kostenlos, rund 20 € und rund 100 € im Monat.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Der Schritt auf 20 € öffnet das große Modell mit hoher Denkstufe, den Recherche-Agenten und die Arbeit in Projekten; der Schritt auf 100 € kauft kaum ein klügeres Modell, sondern Menge, etwa das Fünffache an Nachrichten und Agentenzeit (<a href="#fig-abo-stufen" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a>) <span class="citation" data-cites="mollick2026guide">(<a href="#ref-mollick2026guide" role="doc-biblioref">E. Mollick, 2026b</a>)</span>. Wer beurteilen will, was die Modelle können, etwa für die eigenen Prüfungen, bezahlt deshalb ein bis zwei Monate lang die 20-€-Stufe; die kostenlosen Zugänge zeigen ein zu schwaches Bild.</p>
+<p><strong>Was kauft ein Abonnement?</strong> Die großen Anbieter staffeln ihre Preise in drei Stufen: kostenlos, rund 20 € und rund 100 € im Monat.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Der Schritt auf 20 € öffnet das große Modell mit hoher Denkstufe, den Recherche-Agenten und die Arbeit in Projekten; der Schritt auf 100 € kauft kaum ein klügeres Modell, sondern Menge, etwa das Fünffache an Nachrichten und Agentenzeit (<a href="#fig-abo-stufen" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a>) <span class="citation" data-cites="mollick2026guide">(<a href="#ref-mollick2026guide" role="doc-biblioref">E. Mollick, 2026a</a>)</span>. Wer beurteilen will, was die Modelle können, etwa für die eigenen Prüfungen, bezahlt deshalb ein bis zwei Monate lang die 20-€-Stufe; die kostenlosen Zugänge zeigen ein zu schwaches Bild.</p>
 <div id="fig-abo-stufen" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="htbp">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-abo-stufen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/druck/modellwahl-stufen.svg" class="img-fluid figure-img" style="width:92.0%" data-fig-pos="htbp">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-abo-stufen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;2.2: Was ein Abo kauft: Ab rund 20 € im Monat arbeitet das große Modell mit hoher Denkstufe; die 100-€-Stufe bringt dasselbe Modell mit etwa fünfmal so viel Kontingent. Eigene Darstellung nach den Preisseiten von OpenAI, Anthropic und Google, Stand Oktober 2026, und <span class="citation" data-cites="mollick2026guide">E. Mollick (<a href="#ref-mollick2026guide" role="doc-biblioref">2026b</a>)</span>.
+Abbildung&nbsp;2.2: Was ein Abo kauft: Ab rund 20 € im Monat arbeitet das große Modell mit hoher Denkstufe; die 100-€-Stufe bringt dasselbe Modell mit etwa fünfmal so viel Kontingent. Eigene Darstellung nach den Preisseiten von OpenAI, Anthropic und Google, Stand Oktober 2026, und <span class="citation" data-cites="mollick2026guide">E. Mollick (<a href="#ref-mollick2026guide" role="doc-biblioref">2026a</a>)</span>.
 </figcaption>
 </figure>
 </div>
-<p>Seit der agentischen Wende Ende 2025, dem „Agentic Turn“ <span class="citation" data-cites="willison2025 steinberger2025 mollick2025">(<a href="#ref-mollick2025" role="doc-biblioref">E. R. Mollick, 2025a</a>; <a href="#ref-steinberger2025" role="doc-biblioref">Steinberger, 2025</a>; <a href="#ref-willison2025" role="doc-biblioref">Willison, 2025</a>)</span>, zählt dabei nicht das Modell allein, sondern das ganze <strong>Setup</strong>: ein starkes Modell, eine praktische Oberfläche und ein Harness mit sinnvollen Werkzeugen (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.1.2</span></a>) <span class="citation" data-cites="mollick2025e">(<a href="#ref-mollick2025e" role="doc-biblioref">E. Mollick, 2026a</a>)</span>.</p>
-<p><strong>Kostenfreie Zugänge über die Hochschule.</strong> Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, die Gesellschaft für wissenschaftliche Datenverarbeitung in Göttingen (GWDG) etwa über die Academic Cloud (https://chat-ai.academiccloud.de/), die TH Köln über ihre KI-Plattform THKI-Lab (https://ki.th-koeln.de/login.php). In Nordrhein-Westfalen (NRW) ist <strong>KI:connect.nrw</strong> der Zugang der ersten Wahl (https://chat.kiconnect.nrw/): Anmeldung mit dem Hochschul-Login, geschlossene Modelle großer Anbieter über Verträge des Landes, offene Modelle auf landeseigenen Rechnern, Modellwechsel in jedem Chat und ein API-Zugang für eigene Werkzeuge <span class="citation" data-cites="mkw2025kiconnect kiconnect2026inferenz persike2025apikeys">(<a href="#ref-kiconnect2026inferenz" role="doc-biblioref">KI:connect.nrw, 2026</a>; <a href="#ref-mkw2025kiconnect" role="doc-biblioref">Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen, 2025</a>; <a href="#ref-persike2025apikeys" role="doc-biblioref">Persike, 2025</a>)</span>. Über die API sprechen Programme statt Menschen mit dem Modell. Vor dem Einsatz lohnt der Blick, welche Modellgeneration hinter einem Hochschulzugang steht: Wer eine ältere Generation oder eine kleine Variante nutzt, fährt mit dem Fahrrad auf der Autobahn und bekommt ein falsches Bild davon, was die Modelle können.</p>
-<p><strong>Welches Modell für welche Aufgabe?</strong> Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel. Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.</p>
-<p><strong>Offene Modelle auf dem eigenen Laptop.</strong> Ein lokales Modell ist die eigene Küche statt des Lieferdienstes: Nichts verlässt das Haus, dafür sind die Töpfe kleiner. Programme wie LM Studio laden ein offenes Modell einmal herunter und führen es danach vollständig offline aus; die Topfgröße bestimmt der Arbeitsspeicher. Kleine Modelle fassen gut zusammen, formulieren um und sortieren, rechnen in mehreren Schritten aber unzuverlässig und kennen keine aktuellen Fakten. Sie gehören deshalb an Aufgaben, bei denen die Daten das Gerät nicht verlassen sollen und eine Stichprobe das Ergebnis prüft. Ein Beispiel sind Codenamen für anonyme Abgaben: Studierende reichen Tests unter einem Namen wie „Deming1900“ ein, KI-gestützte Rückmeldungen sehen nie einen echten Namen, und die Zuordnung zur Person steht allein in der Tabelle der Lehrenden.</p>
+<p><strong>Kostenfreie Zugänge über die Hochschule.</strong> Hochschulen und Länder stellen Lehrenden Modelle beider Klassen bereit, etwa die Academic Cloud in Göttingen oder das THKI-Lab der TH Köln. In Nordrhein-Westfalen ist <strong>KI:connect.nrw</strong> der Zugang der ersten Wahl: Anmeldung mit dem Hochschul-Login, geschlossene und offene Modelle, Modellwechsel in jedem Chat und eine Programmierschnittstelle für eigene Werkzeuge <span class="citation" data-cites="mkw2025kiconnect kiconnect2026inferenz">(<a href="#ref-kiconnect2026inferenz" role="doc-biblioref">KI:connect.nrw, 2026</a>; <a href="#ref-mkw2025kiconnect" role="doc-biblioref">Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen, 2025</a>)</span>. Vorher lohnt der Blick, welche Modellgeneration dahintersteht: Wer eine ältere Generation oder eine kleine Variante nutzt, fährt mit dem Fahrrad auf der Autobahn und bekommt ein falsches Bild davon, was die Modelle können.</p>
+<p><strong>Welches Modell für welche Aufgabe?</strong> Drei Fragen führen zur Wahl. Zuerst die Daten: Personenbezogene Daten, Prüfungsleistungen und unveröffentlichte Forschung gehören in einen Hochschulzugang oder in ein offenes Modell auf dem eigenen Rechner. Dann die Aufgabe: Für eine kurze Frage genügt ein kleines Modell, für eine Lerneinheit oder ein selbst gebautes Werkzeug braucht es das große Modell mit hoher Denkstufe. Zuletzt die Häufigkeit: Wer täglich mit Agenten arbeitet, braucht eine Stufe mehr. Über allen drei Fragen steht eine Prüfregel: Muss das Ergebnis stimmen und lässt es sich nicht selbst prüfen, gehört die Aufgabe an das größte Modell mit der höchsten Denkstufe, und ein Mensch prüft das Ergebnis.</p>
+<p><strong>Offene Modelle auf dem eigenen Laptop.</strong> Ein lokales Modell ist die eigene Küche statt des Lieferdienstes: Nichts verlässt das Haus, dafür sind die Töpfe kleiner. Kleine Modelle fassen gut zusammen und formulieren um, rechnen in mehreren Schritten aber unzuverlässig; sie gehören an Aufgaben, bei denen die Daten das Gerät nicht verlassen sollen und eine Stichprobe das Ergebnis prüft.</p>
 <p>Der folgende Entscheidungsbaum führt Frage für Frage zu Modellklasse und Preisstufe.</p>
 <iframe loading="lazy" src="interactions/modellwahl-baum.html" width="100%" height="820px" frameborder="0" title="Entscheidungsbaum: Welches Modell für welche Aufgabe?">
 </iframe>
-<div class="callout callout-style-default callout-note callout-titled" title="Stand bei Drucklegung, November 2026">
+<div class="callout callout-style-default callout-note callout-titled" title="Stand November 2026">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hinweis</span>Stand bei Drucklegung, November 2026
+<span class="screen-reader-only">Hinweis</span>Stand November 2026
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Die folgende Übersicht hält fest, welche Modelle bei Drucklegung die Klassen aus <a href="#fig-modellklassen" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a> füllten und was die Stufen aus <a href="#fig-abo-stufen" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a> kosteten. Sie ist ein historischer Schnappschuss: Namen und Preise ändern sich, Klassen und Stufen bleiben.</p>
+<p>Die folgende Übersicht hält fest, welche Modelle im November 2026 die Klassen aus <a href="#fig-modellklassen" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a> füllten und was die Stufen aus <a href="#fig-abo-stufen" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a> kosteten. Namen und Preise ändern sich, Klassen und Stufen bleiben.</p>
 <div class="tabelle-scroll">
 <div id="tbl-modellstand" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-modellstand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;2.2: Modelle und Preisstufen bei Drucklegung. Preise laut Preisseiten der Anbieter, Stand Oktober 2026, Euro-Beträge einschließlich Mehrwertsteuer. Quellen: <span class="citation" data-cites="openai2026pricing">OpenAI (<a href="#ref-openai2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="anthropic2026pricing">Anthropic (<a href="#ref-anthropic2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="google2026aiplans">Google (<a href="#ref-google2026aiplans" role="doc-biblioref">2026b</a>)</span>, <span class="citation" data-cites="mistral2026pricing">Mistral AI (<a href="#ref-mistral2026pricing" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="rwthitc2026changes">IT Center der RWTH Aachen (<a href="#ref-rwthitc2026changes" role="doc-biblioref">2026</a>)</span>.
+Tabelle&nbsp;2.2: Modelle und Preisstufen im November 2026. Preise laut Preisseiten der Anbieter, Stand Oktober 2026, Euro-Beträge einschließlich Mehrwertsteuer. Quellen: <span class="citation" data-cites="openai2026pricing">OpenAI (<a href="#ref-openai2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="anthropic2026pricing">Anthropic (<a href="#ref-anthropic2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="google2026aiplans">Google (<a href="#ref-google2026aiplans" role="doc-biblioref">2026b</a>)</span>, <span class="citation" data-cites="mistral2026pricing">Mistral AI (<a href="#ref-mistral2026pricing" role="doc-biblioref">2026</a>)</span>, <span class="citation" data-cites="rwthitc2026changes">IT Center der RWTH Aachen (<a href="#ref-rwthitc2026changes" role="doc-biblioref">2026</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-modellstand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 25%">
-<col style="width: 27%">
-<col style="width: 27%">
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Anbieter</th>
@@ -854,10 +837,10 @@ Tabelle&nbsp;2.2: Modelle und Preisstufen bei Drucklegung. Preise laut Preisseit
 <td style="text-align: left;">Erste Wahl in NRW; Modellwechsel je Chat; OpenAI-kompatible API über selbst erzeugte Schlüssel (Freigabe je Hochschule)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">GWDG und Hochschulen</td>
+<td style="text-align: left;">GWDG (Gesellschaft für wissenschaftliche Datenverarbeitung Göttingen) und Hochschulen</td>
 <td style="text-align: left;">wechselnde Auswahl offener und kommerzieller Modelle</td>
 <td style="text-align: left;">kostenlos für Nutzende</td>
-<td style="text-align: left;">Academic Cloud (Registrierung mit Hochschuladresse), THKI-Lab (TH Köln); vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist</td>
+<td style="text-align: left;">Academic Cloud (<a href="https://chat-ai.academiccloud.de/" class="uri">https://chat-ai.academiccloud.de/</a>, Registrierung mit Hochschuladresse), THKI-Lab (<a href="https://ki.th-koeln.de/login.php" class="uri">https://ki.th-koeln.de/login.php</a>, TH Köln); vor dem Einsatz prüfen, welche Modellgeneration hinterlegt ist</td>
 </tr>
 </tbody>
 </table>
@@ -865,8 +848,7 @@ Tabelle&nbsp;2.2: Modelle und Preisstufen bei Drucklegung. Preise laut Preisseit
 </figure>
 </div>
 </div>
-<p>Die lebende Fassung dieser Übersicht wird online semesterweise aktualisiert.</p>
-<p>Zur lebenden <a href="./modelluebersicht.html">Modellübersicht</a>.</p>
+<p>Die lebende Fassung dieser Übersicht wird semesterweise aktualisiert: <a href="./modelluebersicht.html">Modellübersicht</a>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Anwendungsbeispiel: Der Kurs-Bot steht bereit, aber kaum jemand lernt mit ihm">
@@ -913,12 +895,11 @@ window.addEventListener("message", function (e) {
 </section>
 <section id="sec-prompts-schreiben-lassen" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="sec-prompts-schreiben-lassen"><span class="header-section-number">2.3.3</span> Prompts schreiben lassen, ohne das Steuer abzugeben</h3>
-<p>Lange System-Prompts für Tutoren oder Simulationen muss niemand selbst schreiben. Die Arbeitsteilung folgt dem Lastenheft: Was der Bot leisten soll, für wen, was er nie tun darf und woran Sie Erfolg erkennen, entscheiden Sie; die Formulierung schlägt das Modell vor. Fünf Kontrollpunkte halten das Steuer bei Ihnen. Das Modell interviewt Sie und fasst Ihre Vorgaben zusammen, bevor es schreibt; Sie geben die Zusammenfassung frei. Im Entwurf markiert es alles, was es ergänzt hat, ohne dass Sie es gesagt haben. Eine frische Sitzung, die nur den Prompt kennt, beschreibt, wie sich der Bot verhalten wird; weicht das von Ihrer Absicht ab, ist der Prompt unklar <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026b</a>)</span>. Vor dem Einsatz testen Sie ihn mit sechs bis acht typischen Eingaben von Studierenden, auch unfreundlichen. Geht etwas schief, legen Sie Prompt, erwünschtes und tatsächliches Verhalten vor und bitten um die kleinste Änderung, die genügt <span class="citation" data-cites="kotha2025">(<a href="#ref-kotha2025" role="doc-biblioref">Kotha et al., 2025</a>)</span>. Dem Modell geben Sie dabei die Regeln dieses Kapitels mit, Gründe statt Befehle, keine Großbuchstaben, keine Rollenfloskeln, ein Wortbudget; sonst schreibt es genau die Ermahnungen, die die Labore heute zu streichen raten. Zwei Vorlagen dafür stehen in Anhang A (<a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-strukturierer" class="quarto-xref"><span>Kapitel A.1.3</span></a>, <a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-systemprompt" class="quarto-xref"><span>Kapitel A.1.5</span></a>).</p>
+<p>Lange System-Prompts für Tutoren oder Simulationen muss niemand selbst schreiben. Was der Bot leisten soll, für wen, was er nie tun darf und woran Sie Erfolg erkennen, entscheiden Sie; die Formulierung schlägt das Modell vor. Drei Kontrollpunkte halten das Steuer bei Ihnen. Das Modell fasst Ihre Vorgaben zusammen, bevor es schreibt, und markiert im Entwurf alles, was es ergänzt hat. Eine frische Sitzung, die nur den Prompt kennt, beschreibt, wie sich der Bot verhalten wird; weicht das von Ihrer Absicht ab, ist der Prompt unklar <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026b</a>)</span>. Vor dem Einsatz testen Sie ihn mit sechs bis acht typischen Eingaben von Studierenden, auch unfreundlichen. Zwei Vorlagen dafür stehen in Anhang A (<a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-strukturierer" class="quarto-xref"><span>Kapitel A.1.3</span></a>, <a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-systemprompt" class="quarto-xref"><span>Kapitel A.1.5</span></a>).</p>
 </section>
 <section id="sec-prompting-myths" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="sec-prompting-myths"><span class="header-section-number">2.3.4</span> Drohen und Bestechen bringt nichts: Hausrezepte im Test</h3>
-<p>Dieselbe Eingabe liefert nicht immer dieselbe Antwort, und <strong>so entsteht schnell anekdotische Evidenz</strong>, dass eine Formulierung „besser geklappt“ hätte.</p>
-<p>Meincke und Kollegen haben solche Hausrezepte systematisch geprüft; <strong>die wenigsten helfen zuverlässig</strong> <span class="citation" data-cites="meincke2025 meincke2025a meincke2025b">(<a href="#ref-meincke2025" role="doc-biblioref">Meincke et al., 2025b</a>, <a href="#ref-meincke2025a" role="doc-biblioref">2025a</a>, <a href="#ref-meincke2025b" role="doc-biblioref">2025c</a>)</span>. Die Aufforderung, Schritt für Schritt zu denken, half älteren Modellen ein wenig; Reasoning-Modelle tun das von sich aus, und dort kostet die Aufforderung vor allem Zeit <span class="citation" data-cites="meincke2025a">(<a href="#ref-meincke2025a" role="doc-biblioref">Meincke et al., 2025a</a>)</span>. Auch eine Expertenrolle („Du bist eine erfahrene Physikerin“) macht die Antworten nicht genauer <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>. Weil gerade diese Empfehlung lange das Gegenteil sagte, <span>zeigt der folgende Kasten, wie es zu dem Wechsel kam und wie gut jeder Schritt belegt ist.</span></p>
+<p>Dieselbe Eingabe liefert nicht immer dieselbe Antwort, und <strong>so entsteht schnell anekdotische Evidenz</strong>, dass eine Formulierung „besser geklappt“ hätte. Meincke und Kollegen haben solche Hausrezepte systematisch geprüft; <strong>die wenigsten helfen zuverlässig</strong> <span class="citation" data-cites="meincke2025 meincke2025a meincke2025b">(<a href="#ref-meincke2025" role="doc-biblioref">Meincke et al., 2025b</a>, <a href="#ref-meincke2025a" role="doc-biblioref">2025a</a>, <a href="#ref-meincke2025b" role="doc-biblioref">2025c</a>)</span>. Die Aufforderung, Schritt für Schritt zu denken, kostet bei Reasoning-Modellen vor allem Zeit <span class="citation" data-cites="meincke2025a">(<a href="#ref-meincke2025a" role="doc-biblioref">Meincke et al., 2025a</a>)</span>, und eine Expertenrolle („Du bist eine erfahrene Physikerin“) macht die Antworten nicht genauer <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Hintergrund: Warum die Rolle aus dem Arbeitsauftrag verschwindet">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -932,7 +913,8 @@ window.addEventListener("message", function (e) {
 <p><span id="sec-rollen-evidenz"></span></p>
 <p><strong>Was früher für Rollen sprach.</strong> In den Jahren 2023 und 2024 brachten Rollen bei den damaligen Modellen messbare Gewinne. Ein eigens gebauter Rollenspiel-Prompt hob die Trefferquote von ChatGPT bei Algebra-Textaufgaben von 53,5 auf 63,8 Prozent; die Autoren erklären den Effekt damit, dass die Rolle das Modell zum schrittweisen Denken anstieß <span class="citation" data-cites="kong2024roleplay">(<a href="#ref-kong2024roleplay" role="doc-biblioref">Kong et al., 2024</a>)</span>. Modelle, die eine Fachexpertin spielten, schnitten besser ab als solche, die eine fachfremde Expertin spielten <span class="citation" data-cites="salewski2023impersonation">(<a href="#ref-salewski2023impersonation" role="doc-biblioref">Salewski et al., 2023</a>)</span>, und die großen Anbieter nahmen die Rolle in ihre Leitfäden auf <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>. Belegt war damit weniger, als es schien: Die Gewinne betrafen Modelle, die noch nicht von sich aus nachdachten, und der zweite Befund verglich Rolle mit Rolle, nicht Rolle mit keiner Rolle.</p>
 <p><strong>Was sich geändert hat.</strong> Zwei große Prüfungen finden keinen verlässlichen Genauigkeitsgewinn mehr. Eine begutachtete Studie verglich 162 Rollen an vier Modellfamilien und 2.410 Sachfragen mit einem Prompt ohne Rolle; ihre erste Fassung von 2023 hatte noch einen Vorteil gemeldet <span class="citation" data-cites="zheng2024persona">(<a href="#ref-zheng2024persona" role="doc-biblioref">Zheng et al., 2024</a>)</span>. Der Wharton-Report mit sechs Modellen von 2025 und Fragen auf Promotionsniveau kommt zum selben Ergebnis, und Rollen, die wenig Wissen nahelegen („Laie“, „Kleinkind“), senkten die Genauigkeit sogar <span class="citation" data-cites="basil2025">(<a href="#ref-basil2025" role="doc-biblioref">Basil et al., 2025</a>)</span>. Soziodemografische Rollen wie „eine asiatische Person“ lösten verzerrtes Schlussfolgern aus, beim stärksten getesteten Modell noch bei 42 Prozent der Rollen <span class="citation" data-cites="gupta2024bias">(<a href="#ref-gupta2024bias" role="doc-biblioref">Gupta et al., 2024</a>)</span>. Zugleich denken heutige Reasoning-Modelle ohnehin, bevor sie antworten; der Weg, über den Rollen früher wirkten, führt ins Leere. Der fehlende Genauigkeitsgewinn und die Verzerrung sind durch begutachtete Studien mit mehreren Modellfamilien gut belegt; der Wharton-Report ist ein Arbeitspapier, und alle Tests liefen mit englischen Multiple-Choice-Fragen.</p>
-<p><strong>Was man jetzt empfiehlt.</strong> In einem Arbeitsauftrag streichen Sie die Rolle und schreiben hinein, was sie andeuten sollte: für wen, wozu, in welchem Ton („für Erstsemester, ermutigend, ohne Fachjargon“). Das lässt sich prüfen, eine zugeschriebene Identität nicht; für diese Empfehlung ist die Evidenz stark. Für Ton und Haltung empfehlen die Anbieter Rollen weiterhin <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026b</a>)</span>; kontrollierte Tests dazu fehlen, die Empfehlung beruht auf Erfahrung. In Tutor-Bots und Simulationen bleibt die Rolle, weil sie dort das Produkt ist (<a href="#sec-prompts-teaching" class="quarto-xref"><span>Kapitel 2.3.5</span></a>). Ihr Beitrag zur Echtheit ist allerdings klein: Personenmerkmale erklären weniger als ein Zehntel der Unterschiede in menschlichen Urteilen, und Persona-Prompts verbessern solche Simulationen nur wenig <span class="citation" data-cites="hu2024persona">(<a href="#ref-hu2024persona" role="doc-biblioref">Hu &amp; Collier, 2024</a>)</span>. Weil Rollen zudem Stereotype mitbringen können, gehört ein Test darauf in die Abnahme (<a href="#sec-prompts-schreiben-lassen" class="quarto-xref"><span>Kapitel 2.3.3</span></a>).</p>
+<p>Für Ton und Haltung empfehlen die Anbieter Rollen weiterhin <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026b</a>)</span>; kontrollierte Tests dazu fehlen, die Empfehlung beruht auf Erfahrung. Der Beitrag einer Rolle zur Echtheit von Simulationen ist klein: Personenmerkmale erklären weniger als ein Zehntel der Unterschiede in menschlichen Urteilen, und Persona-Prompts verbessern solche Simulationen nur wenig <span class="citation" data-cites="hu2024persona">(<a href="#ref-hu2024persona" role="doc-biblioref">Hu &amp; Collier, 2024</a>)</span>. Weil Rollen zudem Stereotype mitbringen können, gehört ein Test darauf in die Abnahme (<a href="#sec-prompts-schreiben-lassen" class="quarto-xref"><span>Kapitel 2.3.3</span></a>).</p>
+<p><strong>Was man jetzt empfiehlt.</strong> In einem Arbeitsauftrag streichen Sie die Rolle und schreiben hinein, was sie andeuten sollte: für wen, wozu, in welchem Ton („für Erstsemester, ermutigend, ohne Fachjargon“). In Tutor-Bots und Simulationen bleibt die Rolle, weil sie dort das Produkt ist (<a href="#sec-prompts-teaching" class="quarto-xref"><span>Kapitel 2.3.5</span></a>).</p>
 </div>
 </div>
 <div class="ez-pruefen callout callout-style-default callout-tip callout-titled" title="Ihre Einschätzung prüfen">
@@ -949,7 +931,7 @@ window.addEventListener("message", function (e) {
 <p><strong>Auflösung: ja.</strong> Die Experimente von Meincke und Kollegen finden für Höflichkeit, Drohungen und Trinkgeld keine verlässliche Wirkung. Was hilft, ist ein klarer Auftrag: Ziel, Grund, Material und ein Kriterium, an dem die Arbeit abgenommen wird (<a href="#sec-prompt-components" class="quarto-xref"><span>Kapitel 2.3.2</span></a>).</p>
 </div>
 </div>
-<p>Wie ein neuer Sportwagen bringen <strong>stärkere Modelle mit den größeren Fähigkeiten auch neue Anfälligkeiten</strong>. Wer ihnen den Denkweg vorschreibt, senkt teils ihre Leistung <span class="citation" data-cites="meincke2025a liu2025mindstep">(<a href="#ref-liu2025mindstep" role="doc-biblioref">R. Liu et al., 2025</a>; <a href="#ref-meincke2025a" role="doc-biblioref">Meincke et al., 2025a</a>)</span>; auf GROSSBUCHSTABEN überreagieren sie <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026b</a>)</span>, und ein „Prüf das nochmal“ kostet nur Zeit, denn sie prüfen selbst <span class="citation" data-cites="anthropic2026opus5">(<a href="#ref-anthropic2026opus5" role="doc-biblioref">Anthropic, 2026c</a>)</span>. Prompts aus dem Vorjahr verdienen deshalb alle paar Monate eine Durchsicht: Für eine neue Modellgeneration beginnt man besser schlank neu, als alte Anweisungen mitzuschleppen <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026b</a>)</span>.</p>
+<p>Stärkere Modelle bringen auch neue Anfälligkeiten: Wer ihnen den Denkweg vorschreibt, senkt teils ihre Leistung <span class="citation" data-cites="meincke2025a liu2025mindstep">(<a href="#ref-liu2025mindstep" role="doc-biblioref">R. Liu et al., 2025</a>; <a href="#ref-meincke2025a" role="doc-biblioref">Meincke et al., 2025a</a>)</span>, und auf GROSSBUCHSTABEN überreagieren sie <span class="citation" data-cites="anthropic2026prompting">(<a href="#ref-anthropic2026prompting" role="doc-biblioref">Anthropic, 2026b</a>)</span>. Prompts aus dem Vorjahr verdienen deshalb alle paar Monate eine Durchsicht; für eine neue Modellgeneration beginnt man besser schlank neu <span class="citation" data-cites="openai2026gpt55">(<a href="#ref-openai2026gpt55" role="doc-biblioref">OpenAI, 2026b</a>)</span>.</p>
 </section>
 <section id="sec-prompts-teaching" class="level3" data-number="2.3.5">
 <h3 data-number="2.3.5" class="anchored" data-anchor-id="sec-prompts-teaching"><span class="header-section-number">2.3.5</span> Was heißt das für Prompts in der Lehre?</h3>
@@ -1029,30 +1011,6 @@ Tabelle&nbsp;2.3: Sechs gezielte Einschränkungen in didaktischen Prompts. Eigen
 <p>Ablauf und Prompt: <a href="kapitel07-appendix02-prompt-sammlung.html#sec-prompt-testen" class="quarto-xref"><span>Kapitel A.5.3</span></a>. Quelle: <span class="citation" data-cites="landfair2025">Landfair (<a href="#ref-landfair2025" role="doc-biblioref">2025</a>)</span> (AI Pedagogy Project, metaLAB at Harvard).</p>
 </div>
 </div>
-<p><span id="vid-stuetzraeder"></span></p>
-<p><strong>Zum Wiederholen: der Film „Stützräder“.</strong> Der Streich-Test am Anfang dieses Abschnitts fragte, welche Zeilen eines alten Prompts heute entfallen; der Film erzählt, woher diese Zeilen kamen. In neun Genres zieht er von den Beispiel-Prompts des Jahres 2020 bis zu den Leitfäden der Labore von 2026 und zeigt in jeder Szene mit einer Marke, ob ein Ratschlag aus einer Hersteller-Doku, aus einer Studie oder aus der Folklore stammt. Er nennt die alten Ratschläge ausdrücklich, bevor er sie ersetzt; solche Widerlegungstexte helfen, eine feste Vorstellung umzubauen <span class="citation" data-cites="tippett2010">(<a href="#ref-tippett2010" role="doc-biblioref">Tippett, 2010</a>)</span>.</p>
-<p>Geben Sie zuerst Ihre Vorhersage ab und starten Sie dann den Film; an drei Stellen hält er an und fragt nach.</p>
-<iframe loading="lazy" id="genrefilm-kap02-stuetzraeder" src="interactions/genrefilm-player.html?film=kap02-stuetzraeder" width="100%" height="900px" frameborder="0" title="Film mit Haltepunkten: Stützräder – wie die Prompting-Ratschläge kamen und gingen"></iframe>
-<script>
-/* Der Player meldet seine Inhaltshöhe; so bleibt unter dem Rahmen kein Leerraum und im Rahmen kein Scrollbalken. */
-window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || d.typ !== "rahmen-hoehe" || d.id !== "genrefilm-kap02-stuetzraeder") return;
-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = (d.h + 2) + "px";
-});
-</script>
-<div class="callout callout-style-default callout-note callout-titled" title="So entstand dieser Film">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hinweis</span>So entstand dieser Film
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Der Bauauftrag passt in einen Satz: „Erzähle in neun Szenen, jede in einem anderen Filmgenre, wie die Prompting-Ratschläge von 2020 bis 2026 kamen und gingen, mit einem Prompt-Zettel als Hauptfigur und einer Quellenmarke je Szene.“ Claude Code nutzte dafür die Bauanleitung des Token-Films aus <a href="#sec-gpt-bedeutung" class="quarto-xref"><span>Kapitel 2.6.1</span></a>; jede Aussage ist einer geprüften Zeile in einer Quellenliste zugeordnet. Die Schwäche: Neun Bilder pressen sechs Jahre in eine saubere Abfolge, und die Grenze zwischen Labor-Empfehlung und Ratgeber-Folklore war 2023 unschärfer, als die Marken zeigen.</p>
-</div>
-</div>
 </section>
 </section>
 <section id="sec-erweitertes-llm" class="level2" data-number="2.4">
@@ -1095,20 +1053,16 @@ window.addEventListener("message", function (e) {
 <p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
 <iframe loading="lazy" src="interactions/chatbot-zu-agent.html" width="100%" height="1050px" frameborder="0" title="Animation: Vom Chatbot zum Agenten, wie der Spielraum des Modells über den Ablauf wächst">
 </iframe>
-<p><span>Wer die Unterscheidung an Beispielantworten weiter üben will, findet ein zweites Lernspiel online: <a href="https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html" class="uri">https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html</a>.</span></p>
+<p><span style="overflow-wrap: anywhere;">Wer die Unterscheidung an Beispielantworten weiter üben will, findet ein zweites Lernspiel online: <a href="https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html" class="uri">https://th-koln-bartnik.github.io/genai4teaching/interactions/llm-agent-patterns-matching.html</a>.</span></p>
 </section>
 <section id="sec-agenten-praxis" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-agenten-praxis"><span class="header-section-number">2.4.2</span> Agenten in der Praxis: Skills und Werkzeuganschluss</h3>
-<p>Im Alltag der Lehre stellt sich die Frage nach dem Harness praktisch: Wann lohnt es sich, der KI einen Auftrag zu geben statt einer Frage, und wo muss ich dabei selbst entscheiden? Der Unterschied zum Chat ist die Strecke, die die KI allein zurücklegt: Im Chat sehen wir jede Antwort nach Sekunden, ein Recherche-Agent arbeitet Minuten, ein automatisierter Ablauf Stunden. Drei Bausteine des äußeren Harness kommen dabei besonders oft vor: Skills, der Werkzeuganschluss und eigene Quellen.</p>
-<p>Ein <strong>Skill</strong> ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest: ein Textdokument mit den Regeln, wie eine bestimmte Aufgabe in unserem Kurs zu erledigen ist, etwa wie Folien auszusehen haben oder wie eine Übungsaufgabe aufgebaut wird. Der Skill macht aus einem allgemeinen Modell einen Mitarbeiter, der die Hausregeln kennt, ohne dass wir sie in jedem Prompt wiederholen.</p>
-<p>Die Produktion kennt dieses Prinzip als Standardarbeit, bei der jede Tätigkeit nach Inhalt, Reihenfolge, Zeit und Ergebnis festgelegt ist, damit jede Verbesserung auf einem bekannten Stand aufsetzt <span class="citation" data-cites="spear1999">(<a href="#ref-spear1999" role="doc-biblioref">Spear &amp; Bowen, 1999</a>)</span>; ein Skill ist Standardarbeit für den Agenten. Wer einen Skill teilt, lässt ihn vorher von einer zweiten Person lesen, denn er verbreitet seinen Fehler ebenso vollständig wie seine Verbesserungen.</p>
-<p>Technisch ist ein Skill ein Ordner mit einer Anleitungsdatei und bei Bedarf weiteren Dateien. Damit fünfzig installierte Skills das Kontextfenster nicht füllen, liest der Agent beim Start nur Name und Kurzbeschreibung jedes Skills; die Anleitung lädt er erst, wenn eine Anfrage zur Beschreibung passt, und Zusatzdateien nur, wenn die Anleitung auf sie verweist <span class="citation" data-cites="zhang2025skills">(<a href="#ref-zhang2025skills" role="doc-biblioref">Zhang et al., 2025</a>)</span>. In den Nutzungsdaten eines verbreiteten Programmier-Agenten verwenden 26,6 % der Nutzenden solche Skills <span class="citation" data-cites="johnston2026the">(<a href="#ref-johnston2026the" role="doc-biblioref">Johnston et al., 2026</a>)</span>.</p>
+<p>Ein Agent legt allein eine längere Strecke zurück als ein Chat, Minuten oder Stunden statt Sekunden. Drei Bausteine des äußeren Harness kommen dabei in der Lehre besonders oft vor.</p>
+<p>Ein <strong>Skill</strong> ist eine Gebrauchsanweisung, die der Agent bei Bedarf liest, etwa die Regeln, wie Folien oder Übungsaufgaben in unserem Kurs aussehen. Er ist Standardarbeit für den Agenten, wie die Produktion sie kennt <span class="citation" data-cites="spear1999">(<a href="#ref-spear1999" role="doc-biblioref">Spear &amp; Bowen, 1999</a>)</span>. Damit fünfzig installierte Skills das Kontextfenster nicht füllen, liest der Agent zunächst nur Name und Kurzbeschreibung und lädt die Anleitung erst, wenn eine Anfrage passt <span class="citation" data-cites="zhang2025skills">(<a href="#ref-zhang2025skills" role="doc-biblioref">Zhang et al., 2025</a>)</span>.</p>
 <p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
 <iframe loading="lazy" src="interactions/skills-handbuch.html" width="100%" height="820px" frameborder="0" title="Animation: Ein Skill lädt sein Wissen erst, wenn es gebraucht wird">
 </iframe>
-<p>Der <strong>Werkzeuganschluss</strong> über MCP (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.1.2</span></a>) ist für Lehrende die Stelle, an der die KI aufhört, ein Textfenster zu sein, und in unseren Systemen handelt: im Bibliothekskatalog, auf der Lernplattform, im Kalender.</p>
-<p>Eigene Quellen sind der Sonderfall, der in der Lehre am häufigsten gebraucht wird: als Projekt oder Notebook im Chat-Interface mit Skript, Übungsblättern und Musterlösungen oder als eigener Tutor, der über RAG auf einer Dokumentablage sitzt <span class="citation" data-cites="lewis2020">(<a href="#ref-lewis2020" role="doc-biblioref">Lewis et al., 2020</a>)</span>. Ob die KI aus den Quellen antwortet oder doch aus dem Training, prüft man mit Fragen, deren Antwort in den Quellen bewusst anders lautet als im Allgemeinwissen.</p>
-<p>Skill, Werkzeuganschluss und eigene Quellen sind drei von fünf Bausteinen, mit denen wir der KI dauerhaft beibringen, was sie über einen Kurs wissen soll. <a href="#tbl-bausteine" class="quarto-xref">Tabelle&nbsp;<span>2.4</span></a> ordnet sie danach, was das Modell wann liest, denn diese Spalte entscheidet, wohin eine Regel gehört.</p>
+<p>Der <strong>Werkzeuganschluss</strong> über MCP (<a href="#sec-harness" class="quarto-xref"><span>Kapitel 2.1.2</span></a>) ist die Stelle, an der die KI aufhört, ein Textfenster zu sein, und in unseren Systemen handelt: im Bibliothekskatalog, auf der Lernplattform, im Kalender. <strong>Eigene Quellen</strong> sind der häufigste Fall in der Lehre, als Projekt im Chat mit Skript und Musterlösungen oder als Tutor über RAG; ob die KI wirklich aus ihnen antwortet, prüfen Fragen, deren Antwort dort bewusst anders lautet als im Allgemeinwissen. <a href="#tbl-bausteine" class="quarto-xref">Tabelle&nbsp;<span>2.4</span></a> ordnet diese und zwei weitere Bausteine danach, was das Modell wann liest, denn diese Spalte entscheidet, wohin eine Regel gehört.</p>
 <div class="tabelle-scroll">
 <div id="tbl-bausteine" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[30,30,40]">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1131,23 +1085,23 @@ Tabelle&nbsp;2.4: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das 
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">System-Prompt (Personalisierung, benutzerdefinierte Anweisungen)</td>
+<td style="text-align: left;">System-Prompt</td>
 <td style="text-align: left;">Einarbeitungsmappe einer neuen Hilfskraft</td>
 <td style="text-align: left;">immer, vor jedem Gespräch, vollständig</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Projekt</td>
 <td style="text-align: left;">Ordner mit Notizzettel obendrauf</td>
-<td style="text-align: left;">die Anleitung jede Runde vollständig, die Dateien nur per Suche und gestückelt</td>
+<td style="text-align: left;">die Anleitung jede Runde, die Dateien nur per Suche</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Skill</td>
 <td style="text-align: left;">Kapitel im Handbuch</td>
-<td style="text-align: left;">ständig nur Name und Kurzbeschreibung, den Rest, wenn die Anfrage passt</td>
+<td style="text-align: left;">ständig nur Name und Kurzbeschreibung, den Rest bei Bedarf</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Verbindung (App, Konnektor, MCP-Server)</td>
-<td style="text-align: left;">Kabel mit Stecker zu einem fremden Gerät</td>
+<td style="text-align: left;">Verbindung (Konnektor, MCP-Server)</td>
+<td style="text-align: left;">Kabel zu einem fremden Gerät</td>
 <td style="text-align: left;">wenn eine Aufgabe den Dienst braucht</td>
 </tr>
 <tr class="odd">
@@ -1161,22 +1115,15 @@ Tabelle&nbsp;2.4: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das 
 </figure>
 </div>
 </div>
-<p>Daraus folgt eine Merkregel: Was immer gelten muss, steht im System-Prompt oder in der Projektanleitung; Beispiele und Material liegen als Datei daneben; ein wiederkehrender Ablauf mit eigenen Regeln wird zum Skill. Wer in seinem Tarif keine Skills hat, baut den Skill als Projekt nach.</p>
-<p>Ob ein Modell diese Regeln befolgt, hängt an ihrer Form. <span class="citation" data-cites="nepal2026faithful">Nepal et al. (<a href="#ref-nepal2026faithful" role="doc-biblioref">2026</a>)</span> prüften einen Reflexions-Bot Regel für Regel gegen seinen eigenen System-Prompt: Regeln, deren Einhaltung sich leicht feststellen ließ, befolgte er zuverlässig, vage Haltungsregeln nicht; die Studie ist ein Preprint ohne abgeschlossene Begutachtung. „Höchstens drei Sätze“ hält ein Modell ein, „sei ermutigend“ dehnt es wie eine neue Hilfskraft am ersten Tag. Ein Folien-Skill verlangt deshalb nicht „gute Folien“, sondern Regeln zum Abhaken: ein ganzer Satz als Titel, ein Bild, das ihn belegt, höchstens fünfzehn Wörter im Folienkörper und eine vollständige Quelle. Diese Folienform ist zugleich die besser belegte. Ingenieurstudierende, die denselben Vortrag mit Satztitel und Bildbeleg statt mit Themenüberschrift und Aufzählung sahen, verstanden mehr und hatten weniger Fehlvorstellungen <span class="citation" data-cites="garner2013">(<a href="#ref-garner2013" role="doc-biblioref">Garner &amp; Alley, 2013</a>)</span>; Text, den die Vortragende zugleich spricht, unterdrückt dagegen die Aufnahme des Gesprochenen <span class="citation" data-cites="wecker2012">(<a href="#ref-wecker2012" role="doc-biblioref">Wecker, 2012</a>)</span>. Das Regelwerk und einen Vergleich mit und ohne Regeln zeigt der Praxis-Primer (<a href="anhang-primer.html#sec-primer-praesentationen" class="quarto-xref"><span>Kapitel C.3</span></a>).</p>
-<p>Wie Studierende eine solche Quellenanbindung mit Unternehmen selbst aufbauen, zeigt <a href="kapitel07-artefakte.html#sec-fall-unternehmen" class="quarto-xref"><span>Kapitel 7.3.5</span></a>.</p>
+<p>Daraus folgt eine Merkregel: Was immer gelten muss, steht im System-Prompt oder in der Projektanleitung; Beispiele und Material liegen als Datei daneben; ein wiederkehrender Ablauf mit eigenen Regeln wird zum Skill. Ob ein Modell solche Regeln befolgt, hängt an ihrer Form: Ein Reflexions-Bot hielt Regeln, deren Einhaltung sich leicht feststellen ließ, zuverlässig ein, vage Haltungsregeln wie „sei ermutigend“ nicht; die Studie ist ein Preprint <span class="citation" data-cites="nepal2026faithful">(<a href="#ref-nepal2026faithful" role="doc-biblioref">Nepal et al., 2026</a>)</span>. Ein Folien-Skill verlangt deshalb Regeln zum Abhaken (<a href="anhang-primer.html#sec-primer-praesentationen" class="quarto-xref"><span>Kapitel C.3</span></a>).</p>
 </section>
 <section id="sec-agenten-gedaechtnis" class="level3" data-number="2.4.3">
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="sec-agenten-gedaechtnis"><span class="header-section-number">2.4.3</span> Gedächtnis: Was ein Agent von einer Sitzung in die nächste mitnimmt</h3>
-<p>Ein Sprachmodell erinnert sich nicht. Alles, was es bei einer Antwort berücksichtigt, steht in seinem <strong>Kontextfenster</strong>: Prompt, bisheriger Gesprächsverlauf, hochgeladene Dateien und die Ergebnisse seiner Werkzeuge (lateinisch <em>contexere</em>, zusammenweben; der Kontext ist das Gewebe, in dem ein Satz erst Sinn ergibt). Das Kontextfenster ist ein Schreibtisch, kein Archiv: Was darauf liegt, sieht das Modell vollständig, was nicht darauf liegt, existiert für die Antwort nicht, und am Ende der Sitzung wird der Tisch abgeräumt. Ein Agent, der ein Semester lang Feedback schreibt, braucht deshalb ein Archiv und eine Regel, was wann auf den Tisch kommt. Alles auf einmal hinzulegen ist keine Lösung, denn ein voller Tisch kostet bei jeder Antwort Rechenzeit und Geld (<a href="#sec-gpt-bedeutung" class="quarto-xref"><span>Kapitel 2.6.1</span></a>).</p>
-<p>Für diese Regel haben sich vier Stufen herausgebildet, die die folgende Abbildung nebeneinanderstellt: eine Anleitungsdatei, die der Agent zu Beginn jeder Sitzung liest, bis sie den Tisch füllt; Werkzeuge, mit denen er selbst entscheidet, wann er eine Erinnerung notiert, nachliest oder ändert; Skills, von denen zunächst nur Name und Kurzbeschreibung auf dem Tisch liegen <span class="citation" data-cites="zhang2025skills">(<a href="#ref-zhang2025skills" role="doc-biblioref">Zhang et al., 2025</a>)</span>; und ein gewöhnlicher Ordner mit Textdateien, den der Agent durchsucht und pflegt wie jedes andere Verzeichnis. Der rote Faden: immer weniger vorab auf den Tisch, immer gezielter bei Bedarf aus dem Archiv. Die vierte Stufe hat einen Nebeneffekt, der für die Lehre wichtiger ist als für die Technik: Einen Ordner mit Textdateien können Menschen öffnen, lesen und korrigieren.</p>
+<p>Ein Sprachmodell erinnert sich nicht. Alles, was es bei einer Antwort berücksichtigt, steht in seinem <strong>Kontextfenster</strong> (lateinisch <em>contexere</em>, zusammenweben): Prompt, Gesprächsverlauf, Dateien und die Ergebnisse seiner Werkzeuge. Das Kontextfenster ist ein Schreibtisch, kein Archiv: Was darauf liegt, sieht das Modell vollständig, was nicht darauf liegt, existiert für die Antwort nicht, und am Ende der Sitzung wird der Tisch abgeräumt. Ein Agent, der ein Semester lang Feedback schreibt, braucht deshalb ein Archiv und eine Regel, was wann auf den Tisch kommt.</p>
+<p>Vier Stufen haben sich herausgebildet: eine Anleitungsdatei, die der Agent zu Beginn jeder Sitzung liest; Werkzeuge, mit denen er selbst Erinnerungen notiert und nachliest; Skills, von denen zunächst nur die Kurzbeschreibung auf dem Tisch liegt; und ein gewöhnlicher Ordner mit Textdateien, den er durchsucht und pflegt. Von Stufe zu Stufe kommt weniger vorab auf den Tisch und mehr gezielt aus dem Archiv. Die vierte Stufe hat einen Nebeneffekt, der für die Lehre wichtiger ist als für die Technik: Einen Ordner mit Textdateien können Menschen öffnen, lesen und korrigieren.</p>
 <iframe loading="lazy" src="interactions/agenten-gedaechtnis.html" width="100%" height="620px" frameborder="0" title="Animation: Vier Stufen des Agenten-Gedächtnisses, von der Anleitungsdatei bis zum durchsuchbaren Ordner">
 </iframe>
-<p>Wie aus Gesprächen überhaupt Erinnerungen werden, beschreiben <span class="citation" data-cites="milam2025sessions">Milam &amp; Gulli (<a href="#ref-milam2025sessions" role="doc-biblioref">2025</a>)</span> mit zwei Speichern. Die <strong>Sitzung</strong> (<em>Session</em>) hält ein Gespräch vollständig und in Reihenfolge fest; aus ihr baut der Agent vor jeder Antwort den Kontext neu. Das <strong>Gedächtnis</strong> (<em>Memory</em>) bewahrt über viele Sitzungen hinweg nur das Verdichtete: Kernpunkte werden herausgezogen, mit dem Vorhandenen zusammengeführt, Veraltetes wird ersetzt, und in der nächsten Sitzung holt der Agent nur das Passende zurück.</p>
-<p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
-<iframe loading="lazy" src="interactions/sitzung-und-gedaechtnis.html" width="100%" height="880px" frameborder="0" title="Animation: Die Sitzung schreibt alles mit, das Gedächtnis behält nur das Verdichtete">
-</iframe>
-<p>Ein Gedächtnis ist etwas anderes als RAG: Bei RAG liest das Modell in Dokumenten, die wir ausgewählt haben; ins Gedächtnis schreibt der Agent selbst, und was er heute notiert, bestimmt, was er morgen für wahr hält. Die Anbieter sichern das mit den Mitteln jedes gemeinsam bearbeiteten Dokuments: Eine Änderung wird abgewiesen, wenn inzwischen eine andere Sitzung geschrieben hat, jede Änderung hinterlässt eine Version, und ein Speicher lässt sich nur zum Lesen einbinden, sodass ein Agent die Hausregeln kennt, aber nicht ändern kann <span class="citation" data-cites="anthropic2026memorystores">(<a href="#ref-anthropic2026memorystores" role="doc-biblioref">Anthropic, o. J.</a>)</span>.</p>
-<p>Wann der Agent ins Gedächtnis schreibt, ist die zweite Gestaltungsfrage. Auf Stufe 2 geschieht es <em>in-band</em>, mitten in der Sitzung, so wie man ein Laborbuch während des Versuchs führt. Seit Mai 2026 gibt es zusätzlich Läufe <em>out-of-band</em>, bei Anthropic „Dreaming“ genannt: Ein eigener Durchgang liest den Speicher und frühere Sitzungen und schlägt eine überarbeitete Fassung vor, über deren Übernahme der Betreiber entscheidet <span class="citation" data-cites="anthropic2026dreaming">(<a href="#ref-anthropic2026dreaming" role="doc-biblioref">Anthropic, 2026d</a>)</span>. Donald Schön unterschied bei Berufspraktikern <em>reflection-in-action</em>, das Umsteuern mitten im Handeln, von <em>reflection-on-action</em>, dem Blick zurück, wenn die Arbeit ruht <span class="citation" data-cites="schon1983">(<a href="#ref-schon1983" role="doc-biblioref">Schön, 1983</a>)</span>; Reflexion kommt vom lateinischen <em>reflectere</em>, zurückbeugen. Lerntagebuch und Nachbesprechung eines Praktikums sind genau diese beiden Formen, und die zweite hat ohne die erste wenig Stoff. Was daraus für die Verantwortung folgt, steht in <a href="kapitel05-4d-phasen.html#sec-diligence" class="quarto-xref"><span>Kapitel 5.5</span></a>.</p>
+<p>Ein Gedächtnis ist etwas anderes als RAG: Bei RAG liest das Modell in Dokumenten, die wir ausgewählt haben; ins Gedächtnis schreibt der Agent selbst, und was er heute notiert, bestimmt, was er morgen für wahr hält. Wer das Gedächtnis liest und korrigiert, trägt die Verantwortung für das, was der Agent daraus macht (<a href="kapitel05-4d-phasen.html#sec-diligence" class="quarto-xref"><span>Kapitel 5.5</span></a>).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Anwendungsbeispiel: Ein falscher Eintrag überlebt das Gespräch">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1200,26 +1147,23 @@ Tabelle&nbsp;2.4: Fünf Bausteine einer dauerhaften Arbeitsumgebung und was das 
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Wenn Studierende über ein Semester mit einem Agenten an einem Projekt arbeiten, lassen Sie das Team ein gemeinsames Projektgedächtnis führen: eine Textdatei mit Entscheidungen, offenen Fragen und geprüften Quellen, jeder Eintrag mit Datum und Namen. Der Agent liest sie zu Beginn jeder Sitzung und schlägt Ergänzungen vor; eingetragen wird erst, was ein Teammitglied gelesen hat. Zu jedem Meilenstein geht das Team die Datei gemeinsam durch, wie ein Dream-Lauf von Hand: Was ist überholt, was doppelt, was falsch? Prüfkriterium: Kann ein neues Teammitglied allein aus der Datei sagen, was entschieden ist und warum?</p>
+<p>Wenn Studierende über ein Semester mit einem Agenten an einem Projekt arbeiten, lassen Sie das Team ein gemeinsames Projektgedächtnis führen: eine Textdatei mit Entscheidungen, offenen Fragen und geprüften Quellen, jeder Eintrag mit Datum und Namen. Der Agent liest sie zu Beginn jeder Sitzung und schlägt Ergänzungen vor; eingetragen wird erst, was ein Teammitglied gelesen hat. Zu jedem Meilenstein geht das Team die Datei gemeinsam durch: Was ist überholt, was doppelt, was falsch? Prüfkriterium: Kann ein neues Teammitglied allein aus der Datei sagen, was entschieden ist und warum?</p>
 </div>
 </div>
 </section>
 </section>
 <section id="sec-energy" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-energy"><span class="header-section-number">2.5</span> Ressourcenverbrauch der Modelle</h2>
-<p>Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen „Weltuntergang“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen. Eine einzelne Textanfrage ist billig: Schätzungen von 2025 liegen zwischen 0,3 Wattstunden für ein großes Chat-Modell und 0,03 Wattstunden für kleine Modelle, also etwa so viel wie zehn Sekunden Video-Streaming <span class="citation" data-cites="odonnell2025 you2025 elsworth2025">(<a href="#ref-elsworth2025" role="doc-biblioref">Elsworth et al., 2025</a>; <a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="#ref-you2025" role="doc-biblioref">You, 2025</a>)</span>. Teuer sind die komplexen Aufträge: Ein hochwertiges Video von fünf Sekunden kann rund eine Kilowattstunde kosten, so viel wie eine Stunde Mikrowelle, und weil die Nutzerzahlen schneller wachsen als die Effizienz, übersteigt der Energiebedarf der Anfragen inzwischen den des Trainings <span class="citation" data-cites="odonnell2025 spencer2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>. Rechenzentren verbrauchten 2024 nach der Internationalen Energieagentur (IEA) rund 1,5 Prozent des weltweiten Stroms <span class="citation" data-cites="iea2025energyai">(<a href="#ref-iea2025energyai" role="doc-biblioref">International Energy Agency, 2025</a>)</span>; Sorge bereitet die Prognose, nach der sich ihr Verbrauch bis 2030 mehr als verdoppeln dürfte, oft aus fossilen Quellen <span class="citation" data-cites="iea2025energyai odonnell2025 spencer2025">(<a href="#ref-iea2025energyai" role="doc-biblioref">International Energy Agency, 2025</a>; <a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="#ref-spencer2025" role="doc-biblioref">Spencer &amp; Singh, 2025</a>)</span>. Gefordert ist deshalb Transparenz der Anbieter über ihren Energiebedarf, damit Politik und Nutzer die Kosten abschätzen können <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>. Für die Lehre heißt das: Eine Seminarsitzung mit Chat-Nutzung fällt energetisch nicht ins Gewicht; wer Bilder, Videos oder lange Agentenläufe erzeugen lässt, sollte das wissen und gegenüber den Studierenden benennen.</p>
+<p>Studierende fragen regelmäßig nach dem Energiehunger der KI, und zwischen „Weltuntergang“ und „keinerlei Problem“ lohnt ein Blick auf die Größenordnungen. Eine einzelne Textanfrage kostet nach Schätzungen von 2025 zwischen 0,03 und 0,3 Wattstunden, etwa so viel wie zehn Sekunden Video-Streaming <span class="citation" data-cites="odonnell2025 you2025 elsworth2025">(<a href="#ref-elsworth2025" role="doc-biblioref">Elsworth et al., 2025</a>; <a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>; <a href="#ref-you2025" role="doc-biblioref">You, 2025</a>)</span>. Teuer sind komplexe Aufträge: Ein hochwertiges Video von fünf Sekunden kann rund eine Kilowattstunde kosten, so viel wie eine Stunde Mikrowelle <span class="citation" data-cites="odonnell2025">(<a href="#ref-odonnell2025" role="doc-biblioref">O’Donnell &amp; Crownhart, 2025</a>)</span>. Rechenzentren verbrauchten 2024 rund 1,5 Prozent des weltweiten Stroms, und ihr Verbrauch dürfte sich bis 2030 mehr als verdoppeln, oft aus fossilen Quellen <span class="citation" data-cites="iea2025energyai">(<a href="#ref-iea2025energyai" role="doc-biblioref">International Energy Agency, 2025</a>)</span>. Eine Seminarsitzung mit Chat-Nutzung fällt deshalb energetisch nicht ins Gewicht; wer Bilder, Videos oder lange Agentenläufe erzeugen lässt, sollte das wissen und den Studierenden sagen.</p>
 <p>Der vollständige Exkurs mit allen Quellen und Rechenbeispielen steht in der Online-Version: <a href="./energie.html">Ressourcenverbrauch der Modelle</a>.</p>
 </section>
 <section id="sec-vertiefung" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="sec-vertiefung"><span class="header-section-number">2.6</span> Vertiefung: Was im Modell und im Harness passiert</h2>
-<p><em>Dieser Abschnitt vertieft die Technik hinter den Grundbegriffen und kann übersprungen werden; die Kernaussagen setzen ihn nicht voraus.</em> Er zeigt, wie ein Modell rechnet, was die Forschung in seinem Inneren findet und wie Skills, Werkzeuganschluss und Gedächtnis den Harness eines Agenten ausfüllen.</p>
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-vertiefung"><span class="header-section-number">2.6</span> Vertiefung: Was im Modell passiert</h2>
+<p><em>Dieser Abschnitt vertieft die Technik hinter den Grundbegriffen und kann übersprungen werden; die Kernaussagen setzen ihn nicht voraus.</em></p>
 <section id="sec-gpt-bedeutung" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="sec-gpt-bedeutung"><span class="header-section-number">2.6.1</span> Tokens, Zahlen, Aufmerksamkeit</h3>
-<p>Um das nächste Wort vorherzusagen, zerlegt das Modell den Text in <strong>Tokens</strong>, kleine Bausteine aus ganzen Wörtern, Wortteilen oder Satzzeichen <span class="citation" data-cites="jurafsky2025">(<a href="#ref-jurafsky2025" role="doc-biblioref">Jurafsky &amp; Martin, 2025, Kap.2</a>)</span>. Jedes Token hat eine feste Nummer und wird in einen <strong>Vektor</strong> übersetzt, eine lange Zahlenreihe, die seine Bedeutung als Ort auf einer Art Stadtplan beschreibt; ähnliche Wörter wohnen dort in der Nachbarschaft. Diesen Vorgang nennt man <strong>Embedding</strong> (englisch für Einbettung). Wie viele Tokens ein Text braucht, hängt von der Sprache ab, und das hat Folgen für Kosten und Länge, wie die Vorhersagefrage der folgenden Animation zeigt. Sie führt in acht Schritten vom Satz „Die Bank steht unter einem Baum.“ zum nächsten Wort.</p>
-<p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
-<iframe loading="lazy" src="interactions/vom-satz-zum-naechsten-wort.html" width="100%" height="860px" frameborder="0" title="Animation: Vom Satz zum nächsten Wort über Tokens, Zahlen und Aufmerksamkeit">
-</iframe>
-<p>Dieselbe Kette gibt es noch einmal als Film, diesmal in neun Genres: Ein Film noir zerlegt den Text in Tokens, eine Naturdokumentation beringt sie mit Nummern, eine Quizshow lässt das nächste Token ziehen, und ein Gerichtsdrama verhandelt, warum wahrscheinlich nicht wahr heißt. Der Film hält nach jedem Genre an und stellt Ihnen an drei Stellen eine Frage, bevor die nächste Szene sie auflöst; mit den Fragen dauert er etwa fünf Minuten. Die Idee stammt von Ethan Mollick, der ein Sprachmodell mit einem einzigen Prompt ein Video bauen ließ, das den Begriff Rekursion mit neun Stilwechseln erklärt <span class="citation" data-cites="mollick2026rekursion">(<a href="#ref-mollick2026rekursion" role="doc-biblioref">E. Mollick, 2026c</a>)</span>.</p>
+<p>Um das nächste Wort vorherzusagen, zerlegt das Modell den Text in <strong>Tokens</strong>, kleine Bausteine aus ganzen Wörtern, Wortteilen oder Satzzeichen <span class="citation" data-cites="jurafsky2025">(<a href="#ref-jurafsky2025" role="doc-biblioref">Jurafsky &amp; Martin, 2025, Kap.2</a>)</span>. Jedes Token hat eine feste Nummer und wird in einen <strong>Vektor</strong> übersetzt, eine lange Zahlenreihe, die seine Bedeutung als Ort auf einer Art Stadtplan beschreibt; ähnliche Wörter wohnen dort in der Nachbarschaft. Diesen Vorgang nennt man <strong>Embedding</strong> (englisch für Einbettung). Wie viele Tokens ein Text braucht, hängt von der Sprache ab: Deutsche Komposita zerfallen in mehr Stücke als englische Wörter, und das kostet Geld und Platz im Kontextfenster.</p>
+<p>Die ganze Kette vom Text bis zum nächsten Token erzählt ein Film in neun Genres: Ein Film noir zerlegt den Text in Tokens, eine Naturdokumentation beringt sie mit Nummern, eine Quizshow lässt das nächste Token ziehen, und ein Gerichtsdrama verhandelt, warum wahrscheinlich nicht wahr heißt. Der Film hält an drei Stellen an und stellt eine Frage, bevor die nächste Szene sie auflöst; mit den Fragen dauert er etwa fünf Minuten. Die Idee stammt von Ethan Mollick, der ein Sprachmodell mit einem einzigen Prompt ein Video bauen ließ, das den Begriff Rekursion mit neun Stilwechseln erklärt <span class="citation" data-cites="mollick2026rekursion">(<a href="#ref-mollick2026rekursion" role="doc-biblioref">E. Mollick, 2026b</a>)</span>.</p>
 <p><span id="vid-naechstes-token-genres"></span></p>
 <p>Geben Sie zuerst Ihre Vorhersage ab und starten Sie dann den Film.</p>
 <iframe loading="lazy" id="genrefilm-kap02-token-genres" src="interactions/genrefilm-player.html?film=kap02-token-genres" width="100%" height="900px" frameborder="0" title="Film mit Haltepunkten: Das nächste Token in neun Genres"></iframe>
@@ -1240,19 +1184,16 @@ window.addEventListener("message", function (e) {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Der Bauauftrag passt in einen Satz: „Erzähle die Kette aus diesem Abschnitt in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre, mit den echten Tokenwerten aus der Animation, und baue daraus einen Film mit HyperFrames.“ Claude Code schrieb Drehbuch, Szenen und eine Bauanleitung, die die Szenenlängen aus der Tonaufnahme ableitet und die Tokenwerte bei jedem Bau neu berechnet; das Rendern dauert rund sechs Minuten. Die Schwäche zeigte ein Prüfagent: Im ersten Drehbuch zog „Baum“ die „Bank“ selbst Richtung Park, obwohl die Aufmerksamkeit nur zurückblickt. Die Szene zeigt jetzt wie die Animation einen neuen Punkt „Bank im Satz“.</p>
+<p>Der Bauauftrag passt in einen Satz: „Erzähle die Kette aus diesem Abschnitt in neun Szenen à 20 Sekunden, jede in einem anderen Filmgenre, mit echten Tokenwerten, und baue daraus einen Film mit HyperFrames.“ Claude Code schrieb Drehbuch, Szenen und eine Bauanleitung, die die Szenenlängen aus der Tonaufnahme ableitet und die Tokenwerte bei jedem Bau neu berechnet; das Rendern dauert rund sechs Minuten. Die Schwäche zeigte ein Prüfagent: Im ersten Drehbuch zog „Baum“ die „Bank“ selbst Richtung Park, obwohl die Aufmerksamkeit nur zurückblickt. Die Szene zeigt jetzt einen neuen Punkt „Bank im Satz“.</p>
 </div>
 </div>
-<p><strong>Was heißt hier GPT?</strong> Die drei Buchstaben stehen für <em>Generative Pre-trained Transformer</em>. <em>Pre-trained</em> heißt, dass das Modell zuerst mit riesigen Textmengen <strong>vortrainiert</strong> wurde (<strong>Pretraining</strong>), und zwar <em>selbstüberwacht</em> (<em>self-supervised</em>): Die Aufgabe, das jeweils nächste Token vorherzusagen, steckt im Text selbst, niemand muss Lösungen beschriften. Danach bewerten Menschen verschiedene Antworten des Modells, und es lernt, die bevorzugten zu erzeugen (<em>Reinforcement Learning from Human Feedback</em>, <strong>RLHF</strong>); so wird aus einem Textfortsetzer ein Assistent. <em>Transformer</em> heißt das Rechenverfahren im Kern, und sein Herzstück ist die <strong>Aufmerksamkeit</strong> (<em>Attention</em>): Für jedes Token gewichtet das Modell, welche anderen Tokens für seine Bedeutung am wichtigsten sind; so zieht „Baum“ im Beispielsatz die „Bank“ in Richtung Park, wie Schritt 6 der Animation zeigt. Der Fachartikel von 2017, der das Verfahren vorstellte, trägt den knappen Titel „Attention is all you need“ <span class="citation" data-cites="vaswani2017">(<a href="#ref-vaswani2017" role="doc-biblioref">Vaswani et al., 2017</a>)</span>.</p>
-<p>Wer tiefer einsteigen will, findet im Transformer Explainer ein echtes kleines Sprachmodell zum Ausprobieren im Browser [<span class="citation" data-cites="cho2025">Cho et al. (<a href="#ref-cho2025" role="doc-biblioref">2025</a>)</span>; <a href="https://poloclub.github.io/transformer-explainer/" class="uri">https://poloclub.github.io/transformer-explainer/</a>], bei Grant Sanderson ein siebenminütiges Erklärvideo (<a href="https://youtu.be/LPZh9BOjkQs" class="uri">https://youtu.be/LPZh9BOjkQs</a>), bei Brendan Bycroft eine dreidimensionale Animation der Rechenschritte (<a href="https://bbycroft.net/llm" class="uri">https://bbycroft.net/llm</a>) und im frei verfügbaren Lehrbuch von <span class="citation" data-cites="jurafsky2025">Jurafsky &amp; Martin (<a href="#ref-jurafsky2025" role="doc-biblioref">2025</a>)</span> die technischen Grundlagen.</p>
+<p><strong>Was heißt hier GPT?</strong> Die drei Buchstaben stehen für <em>Generative Pre-trained Transformer</em>. <em>Pre-trained</em> heißt, dass das Modell zuerst mit riesigen Textmengen <strong>vortrainiert</strong> wurde (<strong>Pretraining</strong>), und zwar <em>selbstüberwacht</em>: Die Aufgabe, das jeweils nächste Token vorherzusagen, steckt im Text selbst, niemand muss Lösungen beschriften. Danach bewerten Menschen verschiedene Antworten des Modells, und es lernt, die bevorzugten zu erzeugen (<em>Reinforcement Learning from Human Feedback</em>, <strong>RLHF</strong>); so wird aus einem Textfortsetzer ein Assistent. <em>Transformer</em> heißt das Rechenverfahren im Kern, und sein Herzstück ist die <strong>Aufmerksamkeit</strong> (<em>Attention</em>): Für jedes Token gewichtet das Modell, welche anderen Tokens für seine Bedeutung am wichtigsten sind; so rückt im Satz „Die Bank steht unter einem Baum.“ die „Bank“ durch den „Baum“ in die Nachbarschaft von „Park“. Der Fachartikel von 2017, der das Verfahren vorstellte, trägt den knappen Titel „Attention is all you need“ <span class="citation" data-cites="vaswani2017">(<a href="#ref-vaswani2017" role="doc-biblioref">Vaswani et al., 2017</a>)</span>.</p>
 </section>
 <section id="sec-blick-ins-modell" class="level3" data-number="2.6.2">
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="sec-blick-ins-modell"><span class="header-section-number">2.6.2</span> Blick ins Modell</h3>
 <p>Eine Studie des KI-Labors Anthropic hat mit neuen Methoden nachgezeichnet, was in einem Sprachmodell zwischen Eingabe und Antwort geschieht <span class="citation" data-cites="lindsey2025">(<a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>. Das Modell nutzt <strong>einen gemeinsamen Bedeutungsraum für verschiedene Sprachen</strong>: Bei der Frage nach dem „Gegenteil von klein“ auf Englisch, Französisch oder Chinesisch aktivieren sich dieselben internen Merkmale (<em>features</em>) für „Kleinheit“ und „Gegenteil“, und erst spät wird die Antwort in die Zielsprache übersetzt. Es <strong>plant mehrere Wörter im Voraus</strong>: Soll eine Gedichtzeile auf ein bestimmtes Reimwort enden, wählt es dieses Wort früh und baut die Zeile darauf hin. Und es <strong>rechnet auf parallelen Pfaden</strong>: Bei einer Addition schätzt ein Pfad die Größenordnung, ein anderer bestimmt die letzte Ziffer; schaltet man diesen ab, bleibt nur die grobe Schätzung.</p>
 <p>Zwischen Eingabe und nächstem Token entstehen so Zwischenschritte, die nie im Text erscheinen. Gefragt nach der Hauptstadt des Bundesstaats, in dem Dallas liegt, bildet das Modell intern zuerst „Texas“ und kommt erst darüber auf „Austin“ <span class="citation" data-cites="lindsey2025 anthropic2025tracing">(<a href="#ref-anthropic2025tracing" role="doc-biblioref">Anthropic, 2025</a>; <a href="#ref-lindsey2025" role="doc-biblioref">Lindsey et al., 2025</a>)</span>. Dass es über solche Schritte selbst nicht verlässlich Auskunft gibt, zeigt <a href="kapitel05-4d-phasen.html#sec-hallucinations" class="quarto-xref"><span>Kapitel 5.4</span></a>.</p>
-<p>Geben Sie zuerst Ihre Vorhersage ab und klicken Sie sich dann durch die Schritte.</p>
-<iframe loading="lazy" src="interactions/zwischenschritt-texas.html" width="100%" height="820px" frameborder="0" title="Animation: Vor der Antwort entsteht im Modell ein Zwischenschritt, der nie im Text steht">
-</iframe>
+<p>Wer tiefer einsteigen will, findet im Transformer Explainer ein echtes kleines Sprachmodell zum Ausprobieren im Browser [<span class="citation" data-cites="cho2025">Cho et al. (<a href="#ref-cho2025" role="doc-biblioref">2025</a>)</span>; <a href="https://poloclub.github.io/transformer-explainer/" class="uri">https://poloclub.github.io/transformer-explainer/</a>], im frei verfügbaren Lehrbuch von <span class="citation" data-cites="jurafsky2025">Jurafsky &amp; Martin (<a href="#ref-jurafsky2025" role="doc-biblioref">2025</a>)</span> die technischen Grundlagen, bei Grant Sanderson ein siebenminütiges Erklärvideo (<a href="https://youtu.be/LPZh9BOjkQs" class="uri">https://youtu.be/LPZh9BOjkQs</a>) und bei Brendan Bycroft eine dreidimensionale Animation der Rechenschritte (<a href="https://bbycroft.net/llm" class="uri">https://bbycroft.net/llm</a>).</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Kernaussagen">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1271,7 +1212,7 @@ window.addEventListener("message", function (e) {
 <p><strong>Zu Lernziel 2: Delegation</strong></p>
 <ol start="3" type="1">
 <li>Kontext entscheidet über Nutzen: Ein Modell allein antwortet aus dem Trainingswissen, mit RAG bekommt es ein Bücherregal, als Agent einen Werkzeugkoffer. Für die Lehre ist meist das Setup mit eigenem Material der richtige Einstieg.</li>
-<li>Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne; je mehr Schritte der Mensch an Agenten abgibt, vom Centaur bis zur dunklen Fabrik, desto mehr hängt daran, dass er das Urteilen weiter übt.</li>
+<li>Die Fähigkeiten der Modelle bilden eine zerklüftete Grenze. Wer sie nicht kennt, wird mit KI schlechter als ohne; je mehr Schritte der Mensch an Agenten abgibt (<a href="kapitel03-automation.html#sec-arbeitsweisen" class="quarto-xref"><span>Kapitel 3.2</span></a>), desto mehr hängt daran, dass er das Urteilen weiter übt.</li>
 </ol>
 <p><strong>Zu Lernziel 3: Description</strong></p>
 <ol start="5" type="1">
@@ -1297,43 +1238,39 @@ window.addEventListener("message", function (e) {
 <div class="sb-begriffe">
 <div class="sb-begriff" data-begriff="k2-delegation">
 <p>Delegation</p>
-<p>Die erste Kompetenz im 4D-Modell: entscheiden, was der Mensch übernimmt und was die KI. Dazu gehört, das eigene Ziel und die verfügbaren Werkzeuge zu kennen und die Arbeit danach aufzuteilen.</p>
+<p><em>Beispiel:</em> Für das Wochenquiz entwirft die KI die Fragen, Auswahl und Rückmeldung behält die Lehrende; diese Aufteilung ist Delegation.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-description">
 <p>Description</p>
-<p>Die zweite Kompetenz im 4D-Modell: der KI klar sagen, welches Ergebnis, welche Art der Zusammenarbeit und welches Verhalten man will. Im Alltag heißt das, Prompts als Auftrag mit Ziel und Abnahmekriterium zu schreiben.</p>
+<p><em>Beispiel:</em> Statt „Mach mir ein Quiz“ nennt der Auftrag Lernziel, Zielgruppe, Skriptkapitel und Abnahmekriterium; das ist gute Description.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-discernment">
 <p>Discernment</p>
-<p>Die dritte Kompetenz im 4D-Modell: beurteilen, was die KI liefert, also Ergebnis, Verlauf der Zusammenarbeit und Verhalten der KI. Nötig, weil ein Sprachmodell keine Wahrheit prüft.</p>
+<p><em>Beispiel:</em> Bevor das Quiz online geht, rechnet die Lehrende jede Musterlösung selbst nach; das ist Discernment.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-diligence">
 <p>Diligence</p>
-<p>Die vierte Kompetenz im 4D-Modell: KI verantwortlich und offen einsetzen, sorgfältig beim Erzeugen, offen über die Mitarbeit der KI und prüfend vor der Freigabe. Die Technik verschiebt die Verantwortung, sie nimmt sie nicht ab.</p>
+<p><em>Beispiel:</em> Im Kursraum steht, welche Materialien mit KI entstanden sind und wer sie geprüft hat; so sieht Diligence aus.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-kontextfenster">
 <p>Kontextfenster (<em>context window</em>)</p>
-<p>Die Textmenge, die ein Modell bei einer Antwort auf einmal überblickt: bisherige Unterhaltung, hochgeladene Dokumente, aktuelle Frage. Was nicht hineinpasst, kennt das Modell in diesem Moment nicht.</p>
+<p><em>Beispiel:</em> Das Skript mit 300 Seiten passt ins Kontextfenster des großen Modells, die Foliensätze aller Semester nicht.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-zerklueftete-grenze">
 <p>Zerklüftete Grenze (<em>jagged frontier</em>)</p>
-<p>Modelle lösen manche Aufgaben auf Expertenniveau und scheitern an anderen, die für Menschen ähnlich schwer sind. Wo die Grenze im eigenen Fach verläuft, zeigt nur der Test an den eigenen Aufgaben.</p>
+<p><em>Beispiel:</em> Das Modell löst die Regressionsaufgabe fehlerfrei und verzählt sich danach bei den Buchstaben eines Fachbegriffs; so verläuft die zerklüftete Grenze.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-rag">
 <p>RAG (<em>Retrieval-Augmented Generation</em>)</p>
-<p>Das System holt vor der Antwort passende Stellen aus eigenem Material wie Skript oder Musterlösungen und legt sie dem Modell vor. Die KI ist das Gehirn, das Material das Bücherregal; in der Lehre der wichtigste Hebel gegen Halluzinationen.</p>
-</div>
-<div class="sb-begriff" data-begriff="k2-centaur-cyborg">
-<p>Centaur und Cyborg</p>
-<p>Zwei Arbeitsweisen entlang der zerklüfteten Grenze. Der Centaur teilt die Arbeit zwischen sich und der KI auf, der Cyborg verwebt beide in jedem Arbeitsschritt, etwa Satz für Satz beim Schreiben.</p>
+<p><em>Beispiel:</em> Weil der Kurs-Bot vor jeder Antwort die passenden Skriptstellen abruft, antwortet er per RAG aus dem Kursmaterial statt aus dem Trainingswissen.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-werkvertrag">
 <p>Prompt als Werkvertrag</p>
-<p>Ein guter Prompt legt wie ein Werkvertrag Erfolg und Abnahme fest: Ziel, Grund, Material und das Kriterium, an dem das Ergebnis abgenommen wird. Den Weg überlässt er dem Modell.</p>
+<p><em>Beispiel:</em> „Fünf Aufgaben zu Kapitel 3, jede mit Lösungsweg, keine Zahl, die nicht im Skript steht“ ist ein Prompt als Werkvertrag.</p>
 </div>
 <div class="sb-begriff" data-begriff="k2-halluzination">
 <p>Halluzination (<em>hallucination</em>)</p>
-<p>Eine sprachlich überzeugende, aber sachlich falsche oder erfundene Antwort, etwa eine Quelle, die es nicht gibt. Sie folgt aus der Funktionsweise: Das Modell erzeugt Plausibles, nicht Geprüftes.</p>
+<p><em>Beispiel:</em> Der Chatbot zitiert einen Paragrafen der Prüfungsordnung, den es dort nicht gibt; das ist eine Halluzination.</p>
 </div>
 </div>
 <div class="sb-spiel" data-modus="fall" data-kapitel="2">
@@ -1346,7 +1283,7 @@ window.addEventListener("message", function (e) {
 <p>Er entscheidet einmal für das Vorhaben, welche Arbeit an die KI geht und welche bei ihm bleibt. Wie er die Aufgabenvarianten anschließend in Auftrag gibt, wäre Description.</p>
 </div>
 </div>
-<div class="sb-aufgabe" data-loesung="k2-halluzination" data-ablenker="k2-kontextfenster k2-centaur-cyborg k2-rag">
+<div class="sb-aufgabe" data-loesung="k2-halluzination" data-ablenker="k2-kontextfenster k2-werkvertrag k2-rag">
 <p>Ein Student lässt sich für seine Hausarbeit Literatur empfehlen. Eine Angabe nennt Autorin, Jahr, Zeitschrift und Seitenzahlen; im Katalog ist der Aufsatz nicht zu finden.</p>
 <div class="sb-herkunft">
 <p>Herkunft: konstruiert nach dem Mechanismus in <a href="kapitel05-4d-phasen.html#sec-hallucinations" class="quarto-xref"><span>Kapitel 5.4</span></a>.</p>
@@ -1373,7 +1310,7 @@ window.addEventListener("message", function (e) {
 <p>Offen zu sagen, wo KI mitgearbeitet hat, gehört zum verantwortlichen Einsatz. Discernment fragte nach der Qualität der Abschnitte, nicht nach ihrer Kennzeichnung.</p>
 </div>
 </div>
-<div class="sb-aufgabe" data-loesung="k2-rag" data-ablenker="k2-werkvertrag k2-centaur-cyborg k2-diligence">
+<div class="sb-aufgabe" data-loesung="k2-rag" data-ablenker="k2-werkvertrag k2-kontextfenster k2-diligence">
 <p>Der Tutor-Bot im Modul „Grundlagen der BWL“ soll aus den Modulmaterialien antworten; vor jeder Antwort sucht das System die passenden Stellen aus Skript und Musterlösungen heraus.</p>
 <div class="sb-herkunft">
 <p>Herkunft: konstruiert nach dem Tutor-Bot (<a href="kapitel07-artefakte.html#sec-fall-tutor-bwl" class="quarto-xref"><span>Kapitel 7.2.2</span></a>; <a href="kapitel06-rollen.html#sec-tutor-betrieb" class="quarto-xref"><span>Kapitel 6.3.3</span></a>).</p>
@@ -1422,7 +1359,7 @@ window.addEventListener("message", function (e) {
 <ol start="6" type="1">
 <li>Welche Aufgabe in Ihrem Fach liegt vermutlich außerhalb der Jagged Frontier? Wie würden Sie das prüfen, bevor Sie Studierende damit arbeiten lassen?</li>
 <li>Der Energieverbrauch einer einzelnen Anfrage ist gering, der Bedarf der Infrastruktur wächst stark. Welche Folgerung ziehen Sie daraus für Ihre eigene Nutzung, und welche Entscheidung liegt nicht bei Ihnen?</li>
-<li>Ein Agent soll Ihre Sprechstundenanfragen ein Semester lang vorsortieren und sich dabei merken, welche Fragen schon beantwortet sind. Welche Stufe des Gedächtnisses wählen Sie, und an welcher Stelle prüfen Sie, was er sich gemerkt hat (Vertiefung, <a href="#sec-vertiefung" class="quarto-xref"><span>Kapitel 2.6</span></a>)?</li>
+<li>Ein Agent soll Ihre Sprechstundenanfragen ein Semester lang vorsortieren und sich dabei merken, welche Fragen schon beantwortet sind. Welche Stufe des Gedächtnisses wählen Sie, und an welcher Stelle prüfen Sie, was er sich gemerkt hat (<a href="#sec-agenten-gedaechtnis" class="quarto-xref"><span>Kapitel 2.4.3</span></a>)?</li>
 <li>Ein Studierendenteam baut auf einem großen Sprachmodell einen Lerntutor für Ihr Fach. Welche Teile davon gehören zum äußeren Harness, und an welchen zwei Stellen würden Sie den Handlungsspielraum des Modells begrenzen? Wessen Autonomie wächst dabei, wessen schrumpft?</li>
 <li>Gehen Sie eine Aufgabe, die Sie demnächst an eine KI geben wollen, durch beide Schleifen des 4D-Kreislaufs. An welcher der vier Stufen würde Ihr Vorhaben am ehesten scheitern, und was legen Sie deshalb vorher fest?</li>
 </ol>
@@ -1454,9 +1391,6 @@ window.addEventListener("message", function (e) {
 <section id="bibliography" class="level1 unnumbered">
 <h1 class="unnumbered">Literaturverzeichnis</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-anthropic2026memorystores" class="csl-entry" role="listitem">
-Anthropic (o. J.). Memory stores. <em>Claude Platform Docs</em>. <a href="https://platform.claude.com/docs/en/managed-agents/memory">https://platform.claude.com/docs/en/managed-agents/memory</a>.
-</div>
 <div id="ref-anthropic2024mcp" class="csl-entry" role="listitem">
 Anthropic (2024, November 25). Introducing the Model Context Protocol. <a href="https://www.anthropic.com/news/model-context-protocol">https://www.anthropic.com/news/model-context-protocol</a>.
 </div>
@@ -1472,9 +1406,6 @@ Anthropic (2026b). Prompting best practices. <em>Claude Platform Docs</em>. <a h
 <div id="ref-anthropic2026opus5" class="csl-entry" role="listitem">
 Anthropic (2026c). Prompting Claude Opus 5. <em>Claude Platform Docs</em>. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5</a>.
 </div>
-<div id="ref-anthropic2026dreaming" class="csl-entry" role="listitem">
-Anthropic (2026d, Mai 6). New in Claude Managed Agents: Dreaming, outcomes, and multiagent orchestration. <a href="https://claude.com/blog/new-in-claude-managed-agents">https://claude.com/blog/new-in-claude-managed-agents</a>.
-</div>
 <div id="ref-ausubel1960" class="csl-entry" role="listitem">
 Ausubel, D. P. (1960). The use of advance organizers in the learning and retention of meaningful verbal material. <em>Journal of Educational Psychology</em>, <em>51</em>(5), 267–272. <a href="https://doi.org/10.1037/h0046669">https://doi.org/10.1037/h0046669</a>.
 </div>
@@ -1489,9 +1420,6 @@ Berryman, J., &amp; Ziegler, A. (2025). <em>Prompt engineering for LLMs: the art
 </div>
 <div id="ref-bjork2011" class="csl-entry" role="listitem">
 Bjork, E. L., &amp; Bjork, R. A. (2011). Making things hard on yourself, but in a good way: Creating desirable difficulties to enhance learning. In M. A. Gernsbacher, R. W. Pew, L. M. Hough, &amp; J. R. Pomerantz (Hrsg.), <em>Psychology and the real world: Essays illustrating fundamental contributions to society</em>: (S. 56–64). Worth Publishers.
-</div>
-<div id="ref-bolin2026codex" class="csl-entry" role="listitem">
-Bolin, M. (2026, Januar 23). <em>Unrolling the Codex agent loop</em>. OpenAI. <a href="https://openai.com/index/unrolling-the-codex-agent-loop/">https://openai.com/index/unrolling-the-codex-agent-loop/</a>.
 </div>
 <div id="ref-butterfield2001" class="csl-entry" role="listitem">
 Butterfield, B., &amp; Metcalfe, J. (2001). Errors committed with high confidence are hypercorrected. <em>Journal of Experimental Psychology: Learning, Memory, and Cognition</em>, <em>27</em>(6), 1491–1494. <a href="https://doi.org/10.1037/0278-7393.27.6.1491">https://doi.org/10.1037/0278-7393.27.6.1491</a>.
@@ -1511,26 +1439,17 @@ Frontier Model Forum (2026). About us. <em>Frontier Model Forum</em>. <a href="h
 <div id="ref-gallegos2026" class="csl-entry" role="listitem">
 Gallegos, S. (2026). <em><a href="https://www.iza.org/publications/dp18513">Guidance over adoption: Experimental evidence on AI-assisted learning</a></em> (IZA Discussion Paper; Nr. 18513). Institute of Labor Economics (IZA).
 </div>
-<div id="ref-garner2013" class="csl-entry" role="listitem">
-Garner, J. K., &amp; Alley, M. (2013). <a href="https://www.ijee.ie/articles/Vol29-6/23_ijee2791ns.pdf">How the design of presentation slides affects audience comprehension: A case for the assertion–evidence approach</a>. <em>International Journal of Engineering Education</em>, <em>29</em>(6), 1564–1579.
-</div>
 <div id="ref-google2026gemini3" class="csl-entry" role="listitem">
 Google (2026a). Gemini 3 developer guide. <em>Gemini API Docs</em>. <a href="https://ai.google.dev/gemini-api/docs/gemini-3">https://ai.google.dev/gemini-api/docs/gemini-3</a>.
 </div>
 <div id="ref-google2026aiplans" class="csl-entry" role="listitem">
 Google (2026b). Google AI Pro und Ultra: Abos im Vergleich. <em>Gemini</em>. <a href="https://gemini.google/de/subscriptions/?hl=de">https://gemini.google/de/subscriptions/?hl=de</a>.
 </div>
-<div id="ref-grace2026evals" class="csl-entry" role="listitem">
-Grace, M., Hadfield, J., Olivares, R., &amp; De Jonghe, J. (2026, Januar 9). Demystifying evals for AI agents. <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents</a>.
-</div>
 <div id="ref-grootendorst2025agents" class="csl-entry" role="listitem">
 Grootendorst, M. (2025, März 17). A visual guide to LLM agents: Exploring the main components of single- and multi-agents. <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents">https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents</a>.
 </div>
 <div id="ref-gupta2024bias" class="csl-entry" role="listitem">
 Gupta, S., Shrivastava, V., Deshpande, A., Kalyan, A., Clark, P., Sabharwal, A., &amp; Khot, T. (2024). Bias Runs Deep: Implicit Reasoning Biases in Persona-Assigned LLMs. <a href="https://doi.org/10.48550/arXiv.2311.04892">https://doi.org/10.48550/arXiv.2311.04892</a>.
-</div>
-<div id="ref-hashimoto2026adoption" class="csl-entry" role="listitem">
-Hashimoto, M. (2026, Februar 5). <em>My AI adoption journey</em>. <a href="https://mitchellh.com/writing/my-ai-adoption-journey">https://mitchellh.com/writing/my-ai-adoption-journey</a>.
 </div>
 <div id="ref-holec1981" class="csl-entry" role="listitem">
 Holec, H. (1981). <em>Autonomy and foreign language learning</em>. Pergamon.
@@ -1553,9 +1472,6 @@ IT Center der RWTH Aachen (2026, Oktober 15). KI:connect – Changes (Versionshi
 <div id="ref-jemisin2010" class="csl-entry" role="listitem">
 Jemisin, N. K. (2010). <em>The hundred thousand kingdoms</em>. Orbit.
 </div>
-<div id="ref-johnston2026the" class="csl-entry" role="listitem">
-Johnston, D., Holtz, D., Richmond, A. M., Ong, C., Tambe, P., &amp; Chatterji, A. (2026). <em>The shift to agentic AI: Evidence from Codex</em>. <a href="https://doi.org/10.48550/arXiv.2606.26959">https://doi.org/10.48550/arXiv.2606.26959</a>.
-</div>
 <div id="ref-jurafsky2025" class="csl-entry" role="listitem">
 Jurafsky, D., &amp; Martin, J. H. (2025). <em><a href="https://web.stanford.edu/~jurafsky/slp3/">Speech and language processing: An introduction to natural language processing, computational linguistics, and speech recognition with language models</a></em>.
 </div>
@@ -1564,9 +1480,6 @@ KI:connect.nrw (2026, Mai 11). Souveräne KI für NRW: Offene Sprachmodelle übe
 </div>
 <div id="ref-kong2024roleplay" class="csl-entry" role="listitem">
 Kong, A., Zhao, S., Chen, H., Li, Q., Qin, Y., Sun, R., Zhou, X., Wang, E., &amp; Dong, X. (2024). Better Zero-Shot Reasoning with Role-Play Prompting. <a href="https://doi.org/10.18653/v1/2024.naacl-long.228">https://doi.org/10.18653/v1/2024.naacl-long.228</a>.
-</div>
-<div id="ref-kotha2025" class="csl-entry" role="listitem">
-Kotha, A., Lee, J., Zakariasson, E., et al. (2025). <em><a href="https://cookbook.openai.com/examples/gpt-5/gpt-5_prompting_guide">GPT-5 Prompting Guide</a></em>. OpenAI.
 </div>
 <div id="ref-landfair2025" class="csl-entry" role="listitem">
 Landfair, A. (2025). <em>Playtesting your ChatGPT prompt</em>. <a href="https://aipedagogy.org/assignment/playtesting-your-chatgpt-prompt/">https://aipedagogy.org/assignment/playtesting-your-chatgpt-prompt/</a>.
@@ -1598,9 +1511,6 @@ Meincke, L., Mollick, E., Mollick, L., &amp; Shapiro, D. (2025b). <em>Prompting 
 <div id="ref-meincke2025b" class="csl-entry" role="listitem">
 Meincke, L., Mollick, E., Mollick, L., &amp; Shapiro, D. (2025c). <em>Prompting Science Report 3: I’ll pay you or I’ll kill you -- but will you care?</em> arXiv. <a href="https://doi.org/10.48550/arXiv.2508.00614">https://doi.org/10.48550/arXiv.2508.00614</a>.
 </div>
-<div id="ref-milam2025sessions" class="csl-entry" role="listitem">
-Milam, K., &amp; Gulli, A. (2025). <em><a href="https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory">Context engineering: Sessions, memory</a></em> (Whitepaper). Google.
-</div>
 <div id="ref-mkw2025kiconnect" class="csl-entry" role="listitem">
 Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen (2025, Januar 31). Studieren und Forschen mit Künstlicher Intelligenz: Hochschulen in Nordrhein-Westfalen erhalten zentralen Zugang zu KI-Diensten. <em>Pressemitteilung des Landes Nordrhein-Westfalen</em>. <a href="https://www.land.nrw/pressemitteilung/studieren-und-forschen-mit-kuenstlicher-intelligenz-hochschulen-nordrhein">https://www.land.nrw/pressemitteilung/studieren-und-forschen-mit-kuenstlicher-intelligenz-hochschulen-nordrhein</a>.
 </div>
@@ -1610,23 +1520,14 @@ Mistral AI (2026). <em>Pricing</em>. <a href="https://mistral.ai/pricing/">https
 <div id="ref-mitteaching+learninglab2023" class="csl-entry" role="listitem">
 MIT Teaching + Learning Lab (2023). <em>Rethinking Your Problem Sets in the World of Generative AI | Teaching + Learning Lab</em>. <a href="https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/">https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/</a>.
 </div>
-<div id="ref-mollick2025e" class="csl-entry" role="listitem">
-Mollick, E. (2026a, Februar 18). A Guide to Which AI to Use in the Agentic Era. <a href="https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9">https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?post_id=188100833&amp;r=2248w9</a>.
-</div>
 <div id="ref-mollick2026guide" class="csl-entry" role="listitem">
-Mollick, E. (2026b, Juli 23). An opinionated guide to which AI to use to do stuff: The Summer 2026 Edition. <a href="https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22">https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22</a>.
+Mollick, E. (2026a, Juli 23). An opinionated guide to which AI to use to do stuff: The Summer 2026 Edition. <a href="https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22">https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22</a>.
 </div>
 <div id="ref-mollick2026rekursion" class="csl-entry" role="listitem">
-Mollick, E. (2026c, September 26). How do you explain recursion? This one is pretty fun [Video attached]. <em>X</em>. <a href="https://x.com/emollick/status/2103688362960019567">https://x.com/emollick/status/2103688362960019567</a>.
-</div>
-<div id="ref-mollick2025" class="csl-entry" role="listitem">
-Mollick, E. R. (2025a, Januar 26). A new generation of AIs: Claude 3.7 and Grok 3. <a href="https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37">https://www.oneusefulthing.org/p/a-new-generation-of-ais-claude-37</a>.
+Mollick, E. (2026b, September 26). How do you explain recursion? This one is pretty fun [Video attached]. <em>X</em>. <a href="https://x.com/emollick/status/2103688362960019567">https://x.com/emollick/status/2103688362960019567</a>.
 </div>
 <div id="ref-mollick2025d" class="csl-entry" role="listitem">
-Mollick, E. R. (2025b, Dezember 20). The Shape of AI: Jaggedness, Bottlenecks and Salients. <a href="https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks">https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks</a>.
-</div>
-<div id="ref-morris2024" class="csl-entry" role="listitem">
-Morris, M. R., Sohl-Dickstein, J., Fiedel, N., Warkentin, T., Dafoe, A., Faust, A., Farabet, C., &amp; Legg, S. (2024). <a href="https://proceedings.mlr.press/v235/morris24b.html">Position: Levels of AGI for operationalizing progress on the path to AGI</a>.
+Mollick, E. R. (2025, Dezember 20). The Shape of AI: Jaggedness, Bottlenecks and Salients. <a href="https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks">https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks</a>.
 </div>
 <div id="ref-nepal2026faithful" class="csl-entry" role="listitem">
 Nepal, S. K., Soh, S., Vinoya, N., Park, S., Roshanaei, M., &amp; Harari, G. (2026). <em>Faithful where it can be checked: Auditing a reflection agent against its system prompt in a randomized trial</em>. <a href="https://doi.org/10.48550/arXiv.2609.19635">https://doi.org/10.48550/arXiv.2609.19635</a>.
@@ -1639,9 +1540,6 @@ OpenAI (2026a). <em>ChatGPT pricing</em>. <a href="https://chatgpt.com/pricing/"
 </div>
 <div id="ref-openai2026gpt55" class="csl-entry" role="listitem">
 OpenAI (2026b). Using GPT-5.5. <em>Using GPT-6 (OpenAI API Docs)</em>. <a href="https://developers.openai.com/api/docs/guides/gpt-5.5">https://developers.openai.com/api/docs/guides/gpt-5.5</a>.
-</div>
-<div id="ref-persike2025apikeys" class="csl-entry" role="listitem">
-Persike, M. (2025, Dezember 5). Virtuelle API-Keys in KI:connect. <a href="https://kiconnect.pages.rwth-aachen.de/pages/blog/2025/12/05/2025-12-05_virtuelle-api-keys/">https://kiconnect.pages.rwth-aachen.de/pages/blog/2025/12/05/2025-12-05_virtuelle-api-keys/</a>.
 </div>
 <div id="ref-richland2009" class="csl-entry" role="listitem">
 Richland, L. E., Kornell, N., &amp; Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? <em>Journal of Experimental Psychology: Applied</em>, <em>15</em>(3), 243–257. <a href="https://doi.org/10.1037/a0016496">https://doi.org/10.1037/a0016496</a>.
@@ -1667,44 +1565,20 @@ Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Hambro, E., Ze
 <div id="ref-schluntz2024agents" class="csl-entry" role="listitem">
 Schluntz, E., &amp; Zhang, B. (2024, Dezember 19). Building effective agents. <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>.
 </div>
-<div id="ref-schon1983" class="csl-entry" role="listitem">
-Schön, D. A. (1983). <em>The reflective practitioner: How professionals think in action</em>. Basic Books.
-</div>
-<div id="ref-sequoia2026kilpatrick" class="csl-entry" role="listitem">
-Sequoia Capital (2026). <em>Google DeepMind’s Logan Kilpatrick: Why the model eats the harness</em>. <a href="https://sequoiacap.com/podcast/google-deepminds-logan-kilpatrick-why-the-model-eats-the-harness">https://sequoiacap.com/podcast/google-deepminds-logan-kilpatrick-why-the-model-eats-the-harness</a>.
-</div>
 <div id="ref-somala2025consumergpu" class="csl-entry" role="listitem">
 Somala, V., &amp; Emberson, L. (2025, August 15). Frontier AI performance becomes accessible on consumer hardware within a year. <em>Epoch AI</em>. <a href="https://epoch.ai/data-insights/consumer-gpu-model-gap">https://epoch.ai/data-insights/consumer-gpu-model-gap</a>.
 </div>
 <div id="ref-spear1999" class="csl-entry" role="listitem">
 Spear, S., &amp; Bowen, H. K. (1999). <a href="https://hbr.org/1999/09/decoding-the-dna-of-the-toyota-production-system">Decoding the DNA of the Toyota Production System</a>. <em>Harvard Business Review</em>, <em>77</em>(5), 96–106.
 </div>
-<div id="ref-spencer2025" class="csl-entry" role="listitem">
-Spencer, T., &amp; Singh, S. (2025). <em><a href="https://www.iea.org/reports/energy-and-ai">Energy and AI</a></em> (World Energy Outlook Special Report). International Energy Agency.
-</div>
-<div id="ref-steinberger2025" class="csl-entry" role="listitem">
-Steinberger, P. (2025, Oktober 14). <em>Just Talk To It - the no-bs Way of Agentic Engineering | Peter Steinberger</em>. <a href="https://steipete.me/posts/just-talk-to-it">https://steipete.me/posts/just-talk-to-it</a>.
-</div>
 <div id="ref-sweller2011" class="csl-entry" role="listitem">
 Sweller, J. (2011). Cognitive load theory. In <em>Psychology of learning and motivation</em>: (Bd. 55, 37–76). Elsevier.
-</div>
-<div id="ref-tippett2010" class="csl-entry" role="listitem">
-Tippett, C. D. (2010). Refutation text in science education: A review of two decades of research. <em>International Journal of Science and Mathematics Education</em>, <em>8</em>(6), 951–970. <a href="https://doi.org/10.1007/s10763-010-9203-x">https://doi.org/10.1007/s10763-010-9203-x</a>.
 </div>
 <div id="ref-tobor2026usecases" class="csl-entry" role="listitem">
 Tobor, J., Then Bergh, C., &amp; Lüthi, R. (2026). <em><a href="https://hochschulforumdigitalisierung.de/wp-content/uploads/2026/06/Blickpunkt-Use-Cases-in-Bewegung-2026.pdf">Use Cases in Bewegung: Wie KI Studium und Lehre weiter verändert</a></em> (Blickpunkt). Hochschulforum Digitalisierung.
 </div>
 <div id="ref-vaswani2017" class="csl-entry" role="listitem">
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., &amp; Polosukhin, I. (2017). Attention is all you need. <em>Advances in neural information processing systems</em>, <em>30</em>.
-</div>
-<div id="ref-wecker2012" class="csl-entry" role="listitem">
-Wecker, C. (2012). Slide presentations as speech suppressors: When and why learners miss oral information. <em>Computers &amp; Education</em>, <em>59</em>(2), 260–273. <a href="https://doi.org/10.1016/j.compedu.2012.01.013">https://doi.org/10.1016/j.compedu.2012.01.013</a>.
-</div>
-<div id="ref-wiesinger2024agents" class="csl-entry" role="listitem">
-Wiesinger, J., Marlow, P., &amp; Vuskovic, V. (2024). <em><a href="https://www.kaggle.com/whitepaper-agents">Agents</a></em> (Whitepaper). Google.
-</div>
-<div id="ref-willison2025" class="csl-entry" role="listitem">
-Willison, S. (2025, Oktober 5). Embracing the parallel coding agent lifestyle. <em>Simon Willison’s Weblog</em>. <a href="https://simonwillison.net/2025/Oct/5/parallel-coding-agents/">https://simonwillison.net/2025/Oct/5/parallel-coding-agents/</a>.
 </div>
 <div id="ref-yao2023react" class="csl-entry" role="listitem">
 Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., &amp; Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. <a href="https://doi.org/10.48550/arXiv.2210.03629">https://doi.org/10.48550/arXiv.2210.03629</a>.
@@ -1723,7 +1597,7 @@ Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <spa
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Stand Oktober 2026, Monatspreise einschließlich Mehrwertsteuer. 20-€-Stufe: ChatGPT Plus 23 €, Google AI Pro 21,99 €, Claude Pro 20 US-$ zuzüglich Steuer; 100-€-Stufe: ChatGPT Pro 103 €, Google AI Ultra 99,99 €, Claude Max 100 US-$ zuzüglich Steuer; weitere Stufen und Mistral in <a href="#tbl-modellstand" class="quarto-xref">Tabelle&nbsp;<span>2.2</span></a>. Ohne persönliches Abo geht es über den Hochschulzugang, über die API (<em>Application Programming Interface</em>, die Programmierschnittstelle des Anbieters) mit Abrechnung nach Verbrauch (s. den Tutor-Kosten-Rechner in <a href="kapitel05-4d-phasen.html#sec-capabilities" class="quarto-xref"><span>Kapitel 5.3.1</span></a>) oder mit offenen Modellen auf eigener Hardware. Quellen: <span class="citation" data-cites="openai2026pricing">OpenAI (<a href="#ref-openai2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="anthropic2026pricing">Anthropic (<a href="#ref-anthropic2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="google2026aiplans">Google (<a href="#ref-google2026aiplans" role="doc-biblioref">2026b</a>)</span>, <span class="citation" data-cites="mistral2026pricing">Mistral AI (<a href="#ref-mistral2026pricing" role="doc-biblioref">2026</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Stand Oktober 2026, Monatspreise einschließlich Mehrwertsteuer: ChatGPT Plus 23 €, Google AI Pro 21,99 €, Claude Pro 20 US-$ zuzüglich Steuer; ChatGPT Pro 103 €, Google AI Ultra 99,99 €, Claude Max 100 US-$ zuzüglich Steuer. Quellen: <span class="citation" data-cites="openai2026pricing">OpenAI (<a href="#ref-openai2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="anthropic2026pricing">Anthropic (<a href="#ref-anthropic2026pricing" role="doc-biblioref">2026a</a>)</span>, <span class="citation" data-cites="google2026aiplans">Google (<a href="#ref-google2026aiplans" role="doc-biblioref">2026b</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1832,7 +1706,7 @@ Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <spa
 </script>
 <!-- Kasten „Schlüsselbegriffe“ am Kapitelende (Gegenstück zu _filters/schluesselbegriffe.lua).
      Ein Skript für alle Modi, damit neue Kapitel nur Daten im .qmd brauchen:
-       .sb-begriffe     Begriffsliste: Begriff (Link zur Fundstelle), Musterantwort aufdecken,
+       .sb-begriffe     Begriffsliste: Begriff (Link zur Fundstelle), Beispielsatz aufdecken,
                         Selbsteinstufung gewusst / halb / nicht (Browser-Speicher, Präfix genai4teaching:sb:)
        .sb-spiel        modus="fall" | "paare" | "stapel" | "luecke" | "reihenfolge"
        .sb-wiederkehr   2–3 Begriffe früherer Kapitel als Erklärkarten; bevorzugt „nicht“, dann „halb“
@@ -1930,7 +1804,7 @@ Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <spa
   var zaehler = 0;
   function neueId(p) { zaehler += 1; return "sb-" + p + "-" + zaehler; }
 
-  // ---------- Begriffe: Musterantwort aufdecken und selbst einstufen ----------
+  // ---------- Begriffe: Beispielsatz aufdecken und selbst einstufen (Definition im Glossar) ----------
   function stufen(id) {
     var zeile = el("div", "sb-zeile sb-stufen");
     zeile.setAttribute("role", "group");
@@ -1952,14 +1826,14 @@ Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <spa
     var mid = neueId("muster");
     muster.id = mid;
     muster.hidden = true;
-    var b = knopf("Musterantwort zeigen", "sb-aufdecken");
+    var b = knopf("Beispiel zeigen", "sb-aufdecken");
     b.setAttribute("aria-expanded", "false");
     b.setAttribute("aria-controls", mid);
     b.addEventListener("click", function () {
       var auf = muster.hidden;
       muster.hidden = !auf;
       b.setAttribute("aria-expanded", auf ? "true" : "false");
-      b.textContent = auf ? "Musterantwort verbergen" : "Musterantwort zeigen";
+      b.textContent = auf ? "Beispiel verbergen" : "Beispiel zeigen";
     });
     return b;
   }
@@ -1976,7 +1850,7 @@ Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <spa
     kopf.appendChild(link);
     var muster = el("div", "sb-muster");
     absaetze.forEach(function (p) { muster.appendChild(p); });
-    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
+    // Aufdecken und Einstufung in einer Zeile, Beispielsatz darunter
     var zeile = el("div", "sb-zeile");
     zeile.appendChild(aufdecken(muster));
     zeile.appendChild(stufen(id));
@@ -1986,7 +1860,7 @@ Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <spa
 
   function begriffsListe(liste) {
     var hinweis = el("p", "sb-anleitung",
-      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im Glossar. " +
       "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
     liste.insertBefore(hinweis, liste.firstChild);
     Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
@@ -2188,7 +2062,7 @@ Zheng, M., Pei, J., Logeswaran, L., Lee, M., &amp; Jurgens, D. (2024). When <spa
       var karten = waehleKarten(alle, anzahl);
       wk.innerHTML = "";
       wk.appendChild(el("p", "sb-titel", "Wiederholung aus früheren Kapiteln"));
-      wk.appendChild(el("p", "sb-anleitung", "Erklären Sie die Begriffe in eigenen Worten, bevor Sie die Musterantwort aufdecken. Ausgewählt werden bevorzugt Begriffe, die Sie dort als nicht oder halb gewusst eingestuft haben."));
+      wk.appendChild(el("p", "sb-anleitung", "Erklären Sie die Begriffe in eigenen Worten, bevor Sie das Beispiel aufdecken. Ausgewählt werden bevorzugt Begriffe, die Sie dort als nicht oder halb gewusst eingestuft haben."));
       karten.forEach(function (b) {
         var karte = el("div", "sb-wk-karte");
         var kopf = el("p");

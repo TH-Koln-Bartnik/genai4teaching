@@ -679,7 +679,7 @@ Little, J. D. C. (1961). A proof for the queuing formula: L = λW. <em>Operation
 </script>
 <!-- Kasten „Schlüsselbegriffe“ am Kapitelende (Gegenstück zu _filters/schluesselbegriffe.lua).
      Ein Skript für alle Modi, damit neue Kapitel nur Daten im .qmd brauchen:
-       .sb-begriffe     Begriffsliste: Begriff (Link zur Fundstelle), Musterantwort aufdecken,
+       .sb-begriffe     Begriffsliste: Begriff (Link zur Fundstelle), Beispielsatz aufdecken,
                         Selbsteinstufung gewusst / halb / nicht (Browser-Speicher, Präfix genai4teaching:sb:)
        .sb-spiel        modus="fall" | "paare" | "stapel" | "luecke" | "reihenfolge"
        .sb-wiederkehr   2–3 Begriffe früherer Kapitel als Erklärkarten; bevorzugt „nicht“, dann „halb“
@@ -777,7 +777,7 @@ Little, J. D. C. (1961). A proof for the queuing formula: L = λW. <em>Operation
   var zaehler = 0;
   function neueId(p) { zaehler += 1; return "sb-" + p + "-" + zaehler; }
 
-  // ---------- Begriffe: Musterantwort aufdecken und selbst einstufen ----------
+  // ---------- Begriffe: Beispielsatz aufdecken und selbst einstufen (Definition im Glossar) ----------
   function stufen(id) {
     var zeile = el("div", "sb-zeile sb-stufen");
     zeile.setAttribute("role", "group");
@@ -799,14 +799,14 @@ Little, J. D. C. (1961). A proof for the queuing formula: L = λW. <em>Operation
     var mid = neueId("muster");
     muster.id = mid;
     muster.hidden = true;
-    var b = knopf("Musterantwort zeigen", "sb-aufdecken");
+    var b = knopf("Beispiel zeigen", "sb-aufdecken");
     b.setAttribute("aria-expanded", "false");
     b.setAttribute("aria-controls", mid);
     b.addEventListener("click", function () {
       var auf = muster.hidden;
       muster.hidden = !auf;
       b.setAttribute("aria-expanded", auf ? "true" : "false");
-      b.textContent = auf ? "Musterantwort verbergen" : "Musterantwort zeigen";
+      b.textContent = auf ? "Beispiel verbergen" : "Beispiel zeigen";
     });
     return b;
   }
@@ -823,7 +823,7 @@ Little, J. D. C. (1961). A proof for the queuing formula: L = λW. <em>Operation
     kopf.appendChild(link);
     var muster = el("div", "sb-muster");
     absaetze.forEach(function (p) { muster.appendChild(p); });
-    // Aufdecken und Einstufung in einer Zeile, Musterantwort darunter
+    // Aufdecken und Einstufung in einer Zeile, Beispielsatz darunter
     var zeile = el("div", "sb-zeile");
     zeile.appendChild(aufdecken(muster));
     zeile.appendChild(stufen(id));
@@ -833,7 +833,7 @@ Little, J. D. C. (1961). A proof for the queuing formula: L = λW. <em>Operation
 
   function begriffsListe(liste) {
     var hinweis = el("p", "sb-anleitung",
-      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie die Musterantwort auf und stufen sich ein. " +
+      "Erklären Sie jeden Begriff zuerst in eigenen Worten, dann decken Sie ein Beispiel auf und stufen sich ein; die Definition steht im Glossar. " +
       "Die Einstufung bleibt in diesem Browser gespeichert; was Sie nicht wussten, kehrt in späteren Kapiteln wieder.");
     liste.insertBefore(hinweis, liste.firstChild);
     Array.prototype.forEach.call(liste.querySelectorAll(".sb-begriff[data-begriff]"), richteBegriffEin);
@@ -1035,7 +1035,7 @@ Little, J. D. C. (1961). A proof for the queuing formula: L = λW. <em>Operation
       var karten = waehleKarten(alle, anzahl);
       wk.innerHTML = "";
       wk.appendChild(el("p", "sb-titel", "Wiederholung aus früheren Kapiteln"));
-      wk.appendChild(el("p", "sb-anleitung", "Erklären Sie die Begriffe in eigenen Worten, bevor Sie die Musterantwort aufdecken. Ausgewählt werden bevorzugt Begriffe, die Sie dort als nicht oder halb gewusst eingestuft haben."));
+      wk.appendChild(el("p", "sb-anleitung", "Erklären Sie die Begriffe in eigenen Worten, bevor Sie das Beispiel aufdecken. Ausgewählt werden bevorzugt Begriffe, die Sie dort als nicht oder halb gewusst eingestuft haben."));
       karten.forEach(function (b) {
         var karte = el("div", "sb-wk-karte");
         var kopf = el("p");
