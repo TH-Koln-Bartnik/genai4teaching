@@ -79,7 +79,7 @@ for buchst, e in zip("AB", druck):
                   f"> [{md_escape(e['text'])}]{{lang=\"en\"}}\n\n"
                   f"Mensch $\\square$ KI $\\square$ · Sicherheit: $\\square$ 1 geraten $\\square$ 2 $\\square$ 3 sicher\n")
 g = kz
-fig_cap = (f"Wen der Lehr-Detektor für KI hält: Anteil der Texte mit Urteil „KI“ (Schwelle 50 %), nur Texte, die er beim Lernen "
+fig_note = (f"Wen der Lehr-Detektor für KI hält: Anteil der Texte mit Urteil „KI“ (Schwelle 50 %), nur Texte, die er beim Lernen "
            f"nicht gesehen hat. Helle Balken: Texte von Menschen, jedes Urteil „KI“ ist ein Fehlalarm; dunkle Balken: KI-Texte, "
            f"jedes Urteil „KI“ ist ein Treffer. Schüleraufsätze aus PERSUADE 2.0 [@crossley2024persuade], ältere KI-Texte (GPT-3) sowie "
            f"TOEFL- und College-Aufsätze aus @liang2023detectors, aktuelle KI-Texte von Claude Opus 5.5 (eigene Läufe, "
@@ -98,7 +98,9 @@ Die Auflösung mit Herkunft und Detektorwert steht in den Lösungshinweisen (@se
 ![](images/qr/qr-detektor-duell.png){{width="16%"}}
 :::
 
-![{fig_cap}](images/druck/detektor-duell.svg){{#fig-detektor-duell width="100%"}}
+![Urteile eines Lehr-Detektors über Texte von Menschen und KI[^abb-detektor-duell]](images/druck/detektor-duell.svg){{#fig-detektor-duell width="100%"}}
+
+[^abb-detektor-duell]: {fig_note}
 :::
 """)
 open("_einbau/detektor-duell-druck.qmd", "w", encoding="utf-8").write(druck_qmd)

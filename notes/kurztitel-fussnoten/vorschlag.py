@@ -10,7 +10,7 @@ V = {
  'fig-llm-nutzung-bloom':("Gespräche von Studierenden mit Claude nach Stufen der Bloomschen Taxonomie","",None),
  'tbl-buchuebersicht':("Aufbau des Buchs","Aufbau des Buchs: ",None),
  'fig-qr-grundbegriffe':("Lernspiel zur Prüfung zentraler Begriffe","",None),
- 'fig-harness-schichten':("GenAI ist seit 2022 komplexer geworden: Werkzeuge und Gedächtnis kommen hinzu","",None),
+ 'fig-harness-schichten':("Sprachmodelle mit wachsender Umgebung: Werkzeuge, Gedächtnis, Arbeitsschleife","",None),
  'tbl-modell-harness-agent':("Modell, Harness und Agent im Vergleich",None,"Zwei Bauteile und eine Betriebsweise; eigene Zusammenstellung."),
  'fig-modellklassen':("Vier Klassen von Sprachmodellen nach Leistung und Datenkontrolle","Vier Modellklassen nach Leistung und Kontrolle über die Daten. ",None),
  'fig-abo-stufen':("Abo-Stufen der großen Anbieter: Modell, Denkstufe und Kontingent je Preis","",None),

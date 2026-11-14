@@ -4,32 +4,31 @@ Auftrag Roman (14.11.): Abbildungen und Tabellen bekommen Kurztitel; Detailbesch
 
 ## Entscheidungen (MC, 14.11.)
 - Fußnote in allen Ausgaben (online als Popup und am Seitenende, PDF, EPUB).
-- Kurztitel als kurzer Aussagesatz.
-- Kurztitel-Liste vorab freigeben, dann einbauen.
-- Repo-Zugriff mit Push erneut angefragt und erhalten.
-- Runde 2 (Roman zu Runde 1): Kurztitel deskriptiv und kurz statt Aussagesatz; Prüfkriterium: Titel allein sagt im Verzeichnis, was die Abbildung zeigt (Beispiele Roman: „Lernspiel zur Prüfung zentraler Begriffe“; „GenAI ist seit 2022 komplexer geworden: Werkzeuge und Gedächtnis kommen hinzu“). Abbildung Lernpfade entfällt, stattdessen Tabelle „Ziel / Empfohlene Lesefolge“ mit zusätzlichen Zielen „nur Anwendungsbeispiele“ und „GenAI systematisch einführen (4D)“.
+- Kurztitel deskriptiv und kurz (Runde 2); Prüfkriterium: Der Titel allein sagt im Verzeichnis, was die Abbildung zeigt. Runde 1 (Aussagesätze) verworfen.
+- Abbildung „Lernpfade“ (Liniennetz, online Selbsttest) entfällt in allen Ausgaben; dafür Tabelle „Hauptinteresse, ich will … / Empfohlene Lesefolge / Begründung“ mit sechs Zeilen, darunter „Anwendungsbeispiele ansehen“ und „GenAI systematisch einführen (4D)“. Skripte in `scripts/lernpfade/` bleiben.
+- Harness-Abbildung: Titel ohne Jahreszahl („Sprachmodelle mit wachsender Umgebung: Werkzeuge, Gedächtnis, Arbeitsschleife“).
 - Druck: Abbildungen mit Fußnote fest an der Textstelle (`fig-pos="H"`).
-- Einbau in derselben Sitzung.
 
-## Stand
-- Branch `kurztitel-fussnoten` von `pdf-testbau` @ `c0425b1` (`pdf-testbau` ist noch nicht auf `main`; dort steckt der Automatik-Kurztitel für das Abbildungsverzeichnis, `_filters/druck-satz.lua` Abschnitt 3).
-- Vorschlag Runde 2: `VORSCHLAG-kurztitel-fussnoten-2026-11-14.md` (44 Abbildungsunterschriften, 27 Tabellen, neue Tabelle Lernpfade; Web- und Druckfassungen getrennt). Wartet auf Freigabe. Daten zum Einbau: `vorschlag.json`, erzeugt mit `vorschlag.py`.
-- Noch nichts an Kapiteldateien geändert.
+## Umgesetzt (Branch `kurztitel-fussnoten`, von `pdf-testbau` @ `c0425b1`)
+- 70 Unterschriften in 10 Kapiteldateien per Skript (`notes/kurztitel-fussnoten/apply.py` aus `vorschlag.json`), dazu `fig-detektor-duell` über `scripts/detektor-einbetten.py` (Generator angepasst, `_einbau/` neu erzeugt). Fußnoten-Labels `[^abb-…]` / `[^tab-…]` direkt hinter dem Gleitobjekt.
+- Kap. 4: Zeilen „*Quelle: Erstellt mit Gemini 3 Pro …*“ unter den drei Illustrationen in die Fußnote verschoben.
+- Explizite `fig-scap` aus `pdf-testbau` (Abb. 2.4, 5.1, 6.2) entfernt; `druck-satz.lua` Abschnitt 3 (automatischer Kurztitel) ersetzt durch: Abbildungen mit Fußnote → `fig-pos H`. Grund: `fig-scap` außerhalb von Kästen verschluckt den Fußnotentext.
+- `include/preamble.tex`: `\footnotemark` robust, in Abbildungs- und Tabellenverzeichnis stumm (sonst Abbruch bei Tabellen in Kästen).
+- Vorwort: Tabelle `tbl-lernpfade`; Verweise in Tabelle der Mechanismen und auf der Seite „Praxisbeispiele“ (inkl. `scripts/praxisbeispiele.py`) angepasst.
+- Neues Prüfskript `scripts/pruefe-bildfussnoten.py`: listet Unterschriften, deren Fußnote auf einer anderen PDF-Seite steht.
 
-## Technischer Befund (Testbuch, Quarto 1.8.25, XeLaTeX)
-- Markdown-Fußnote in der Unterschrift funktioniert für Abbildungen und Tabellen außerhalb von Kästen: Verzeichnis zeigt nur den Kurztitel, `\footnotetext` folgt der Abbildung.
-- In Kästen (Callouts) bricht LaTeX ab („Argument of \caption@listentry@ has an extra }“), weil Quarto die Fußnote dort zu `\footnotemark` macht und kein Kurztitel fürs Verzeichnis entsteht. Abhilfe getestet: Filter setzt für Gleitobjekte in Kästen `fig-scap` bzw. `caption.short` = Unterschrift ohne Fußnote.
-- `fig-scap` außerhalb von Kästen verschluckt den Fußnotentext. Deshalb muss `druck-satz.lua` Abschnitt 3 (setzt `fig-scap` automatisch) entfallen oder auf Kästen beschränkt werden.
-- Gleitende Abbildungen (`fig-pos: htbp`) können auf die Folgeseite wandern, die Fußnote bleibt an der Quellposition. Plan: im PDF `fig-pos="H"` für Abbildungen mit Fußnote, Weißraum danach prüfen.
-- `fig-detektor-duell` wird von `scripts/detektor-einbetten.py` erzeugt: dort ändern, nicht in `_einbau/`.
-- Kap. 4: Die Zeilen „*Quelle: Erstellt mit Gemini 3 Pro …*“ unter den drei Illustrationen wandern in die Fußnote.
+## Prüfung
+- Druck-PDF (Quarto 1.8.25, XeLaTeX, deutsche Trennmuster): 280 Seiten (Basis `pdf-testbau`: 282, dort ohne deutsche Trennmuster gebaut). Abbildungs- und Tabellenverzeichnis zeigen nur noch Kurztitel, keine URLs. Keine `??`.
+- HTML: nur bekannte OJS-Warnungen; Fußnoten an den Unterschriften. EPUB: Fußnoten als Notenverweise; 35 fehlende Quellen wie bisher (Forschungsstand-Seite).
+- `docs/`: HTML neu gerendert; Download-PDF/EPUB unverändert (wie in `pdf-testbau`).
+- **Offen:** 9 Gleitobjekte, deren Fußnote auf die Folgeseite rutscht (PDF-Seiten 36, 50, 108, 113, 121, 125, 146, 184, 197). LaTeX kann eine Fußnote nicht an ein nicht gleitendes Bild am Seitenende binden; jede Textänderung davor verschiebt die Fälle.
+- Umgebungshinweis Cloud: `texlive-fonts-extra` und `texlive-lang-german` nachinstallieren, sonst fehlt `fontawesome5` bzw. trennt LaTeX englisch („Arbeitss-chritte“). Frühere Cloud-PDFs hatten dieses Trennproblem.
 
-## Startauftrag nächste Sitzung (falls diese endet)
+## Startauftrag nächste Sitzung
 ```
-Projekt Logos-Lehrbuch, Repo TH-Koln-Bartnik/genai4teaching (Push-Zugriff), Branch kurztitel-fussnoten.
-Lies notes/kurztitel-fussnoten/STATUS-kurztitel-fussnoten-2026-11-14.md und den VORSCHLAG daneben.
-Nach Romans Freigabe: Kurztitel + Fußnoten aus vorschlag.json einbauen (Skript, nicht von Hand),
-Filter für Gleitobjekte in Kästen, druck-satz.lua Abschnitt 3 ersetzen, fig-pos H im PDF,
-detektor-einbetten.py anpassen; HTML, PDF (--profile print), EPUB rendern; Verzeichnisse und
-Fußnotenseiten als Bild prüfen; docs/ aus Git zurückholen. Fragen nur als Multiple Choice.
+Projekt Logos-Lehrbuch, Repo TH-Koln-Bartnik/genai4teaching (Push), Branch kurztitel-fussnoten.
+Lies notes/kurztitel-fussnoten/STATUS-kurztitel-fussnoten-2026-11-14.md.
+Umgebung: Quarto 1.8.25, apt texlive-fonts-extra texlive-lang-german.
+Offen: Entscheidung zu den 9 Fußnoten auf der Folgeseite (siehe Status), danach Merge
+von pdf-testbau und kurztitel-fussnoten nach main. Fragen nur als Multiple Choice.
 ```

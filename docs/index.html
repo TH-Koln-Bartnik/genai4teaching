@@ -588,29 +588,66 @@ window.addEventListener("message", function (e) {
   var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
 });
 </script>
-<!-- Lernpfade (Claude, 01.11.2026; am 01.11. auf Wunsch Roman aus Kapitel 1 ins Vorwort verschoben) nach Entscheidung Roman: Option b, U-Bahn-Plan als Buchlandkarte, Selbsttest. Karte und Widget werden aus scripts/lernpfade/ erzeugt. -->
+<!-- Lernpfade: bis 14.11.2026 Liniennetz (Abbildung) und Selbsttest online; auf Wunsch Roman ersetzt durch die Tabelle „Hauptinteresse / Lesefolge / Begründung“ in allen Ausgaben. Skripte in scripts/lernpfade/ bleiben im Repo. -->
 </section>
 <section id="sec-lernpfade" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-lernpfade">Wählen Sie Ihren Lernpfad</h2>
-<p>Sie brauchen nicht jede Etappe dieses Buchs. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also das Wissen, was beim Lernen wirkt, wie man es in einer Lehrveranstaltung umsetzt und welche Formen des KI-Einsatzes sich bewährt haben. Lehrerfahrung ersetzt diese Kenntnis nicht. Morehead und Kollegen befragten Hochschullehrende und Studierende zu wirksamen Lernstrategien; die Lehrenden wussten nur wenig mehr als ihre Studierenden und teilten deren verbreitete Fehlannahmen <span class="citation" data-cites="morehead2016">(<a href="#ref-morehead2016" role="doc-biblioref">Morehead et al., 2016</a>)</span>. Denken Sie an zwei Leser dieses Buchs: einen Informatiker, der täglich mit Agenten (eigenständig handelnden KI-Systemen) arbeitet, und eine Kollegin, die die Befunde zu Abrufübungen kennt und noch nie einen Agenten eingerichtet hat. Er braucht die Kapitel zur Lernforschung, sie die Grundbegriffe der KI, und keiner von beiden gewinnt etwas, wenn er Bekanntes noch einmal liest. Kalyuga und Kollegen haben Studien zusammengetragen, in denen Erklärungen, die Neulingen halfen, Erfahrene beim Lernen behinderten, weil sie Bekanntes ein zweites Mal verarbeiten mussten; sie nennen das den Expertise-Umkehreffekt (<em>expertise reversal effect</em>) <span class="citation" data-cites="kalyuga2003">(<a href="#ref-kalyuga2003" role="doc-biblioref">Kalyuga et al., 2003</a>)</span>. <a href="#fig-lernpfade" class="quarto-xref">Abbildung&nbsp;<span>1</span></a> zeigt die vier Kombinationen der beiden Arten von Vorwissen als Liniennetz, und ein Selbsttest führt Sie zu Ihrer Linie.</p>
-<div id="fig-lernpfade" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-lernpfade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<iframe loading="lazy" id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
-<script>
-/* Das Lernpfad-Widget meldet seine Höhe; so entsteht kein Scrollbalken im Rahmen. */
-window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || d.typ !== "galerie-hoehe") return;
-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
-});
-</script>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lernpfade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;1: Lernpfade durch das Buch. Nach den sechs Antworten tritt die passende Linie hervor; jede Station führt zum Kapitel. Eigene Darstellung.
+<p>Sie brauchen nicht jede Etappe dieses Buchs. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also das Wissen, was beim Lernen wirkt, wie man es in einer Lehrveranstaltung umsetzt und welche Formen des KI-Einsatzes sich bewährt haben. Lehrerfahrung ersetzt diese Kenntnis nicht. Morehead und Kollegen befragten Hochschullehrende und Studierende zu wirksamen Lernstrategien; die Lehrenden wussten nur wenig mehr als ihre Studierenden und teilten deren verbreitete Fehlannahmen <span class="citation" data-cites="morehead2016">(<a href="#ref-morehead2016" role="doc-biblioref">Morehead et al., 2016</a>)</span>. Denken Sie an zwei Leser dieses Buchs: einen Informatiker, der täglich mit Agenten (eigenständig handelnden KI-Systemen) arbeitet, und eine Kollegin, die die Befunde zu Abrufübungen kennt und noch nie einen Agenten eingerichtet hat. Er braucht die Kapitel zur Lernforschung, sie die Grundbegriffe der KI, und keiner von beiden gewinnt etwas, wenn er Bekanntes noch einmal liest. Kalyuga und Kollegen haben Studien zusammengetragen, in denen Erklärungen, die Neulingen halfen, Erfahrene beim Lernen behinderten, weil sie Bekanntes ein zweites Mal verarbeiten mussten; sie nennen das den Expertise-Umkehreffekt (<em>expertise reversal effect</em>) <span class="citation" data-cites="kalyuga2003">(<a href="#ref-kalyuga2003" role="doc-biblioref">Kalyuga et al., 2003</a>)</span>. <a href="#tbl-lernpfade" class="quarto-xref">Tabelle&nbsp;<span>1</span></a> nennt für sechs Hauptinteressen eine Lesefolge, darunter die vier Kombinationen der beiden Arten von Vorwissen.</p>
+<div id="tbl-lernpfade" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[34,30,36]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lernpfade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;1: Lernpfade durch das Buch nach Hauptinteresse<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
 </figcaption>
+<div aria-describedby="tbl-lernpfade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 30%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Hauptinteresse, ich will …</th>
+<th style="text-align: left;">Empfohlene Lesefolge</th>
+<th style="text-align: left;">Begründung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">… mir Wirkprinzipien und Beispiele von KI in der Lehre systematisch erschließen</td>
+<td style="text-align: left;">Kapitel 1 bis 7 der Reihe nach</td>
+<td style="text-align: left;">Jedes Kapitel baut auf den Begriffen und Befunden der vorherigen auf.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">… KI-Werkzeuge, die ich schon nutze, lernwirksam einsetzen</td>
+<td style="text-align: left;">Kapitel 1, 3, 4, 5, 6, 7</td>
+<td style="text-align: left;">Kapitel 2 erklärt Grundbegriffe, die Sie kennen; Kapitel 4 liefert die Lernforschung, an der sich jeder Einsatz messen lässt.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">… die Technik hinter KI verstehen; die Lernforschung kenne ich</td>
+<td style="text-align: left;">Kapitel 1, 2, 3, Abschnitt 4.5, Kapitel 5, 6, 7</td>
+<td style="text-align: left;">Die Abschnitte 4.1 bis 4.4 fassen bekannte Lernforschung zusammen; 4.5 bringt die neuen Befunde zur Lernwirkung von KI.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">… nur Neues und die aktuellen Belege; KI und Lernforschung kenne ich</td>
+<td style="text-align: left;">Kapitel 1, Abschnitt 4.5, Kapitel 6, 7, Anhang A</td>
+<td style="text-align: left;">Bekanntes noch einmal zu lesen, behindert Erfahrene eher (Expertise-Umkehreffekt); Belege, Rollen, Beispiele und Prompts sind direkt verwendbar.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">… mir Anwendungsbeispiele ansehen und Ideen für meine Lehre sammeln</td>
+<td style="text-align: left;">Kapitel 7, dann die Beispiele in Kapitel 6 und die Praxis-Primer in Anhang C; online zusätzlich „Praxisbeispiele im Überblick“</td>
+<td style="text-align: left;">Kapitel 7 ordnet die Beispiele nach Lernstufe und nennt je Beispiel Lerntechnik und Rolle der KI.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">… GenAI systematisch in meine Lehrveranstaltung einführen</td>
+<td style="text-align: left;">Kapitel 5, Abschnitt 4.5, Kapitel 6, Anhang A</td>
+<td style="text-align: left;">Das 4D-Modell gibt die Reihenfolge der Entscheidungen vor; Kapitel 5 endet mit einem Plan in drei Phasen eines Semesters, Kapitel 6 beschreibt die Rollen, die KI darin übernimmt.</td>
+</tr>
+</tbody>
+</table>
+</div>
 </figure>
 </div>
-<p>Eine fünfte Linie steht neben dem Selbsttest, weil sie kein Vorwissen voraussetzt. <strong>Linie 5 · Erst schauen</strong> führt nicht durch die Kapitel, sondern an allen Praxisbeispielen entlang, von den Filmen über die Spiele bis zu den Rechnern. Unter jedem Beispiel führt ein Link in das Kapitel, das es erklärt; so kehren Sie dort ins Buch zurück, wo ein Beispiel Sie neugierig gemacht hat. Die Linie beginnt auf der Seite <a href="./praxisbeispiele.html">Praxisbeispiele im Überblick</a>.</p>
 <!-- Abschnitt „Wie dieses Buch lehrt“ (Claude, 02.11.2026, Fassung 4: ganzes Vorwort in Ich-Stimme nach Classic Prose neu geschrieben, Fachbegriff fett als Subjekt; Fassung 3: Fachbegriff mit Beispiel im Fließtext, für Erstlesende beschrieben, Advance Organizer ergänzt; Fassung 2: gruppiert nach Lernzielen, je Mechanismus eine kanonische Quelle;
 Grundlage claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md).
 Einstiegsszene und Einschätzungen seit 02.11.2026 in Kap. 1–6 umgesetzt. Zielzustand, vor Drucklegung prüfen:
@@ -622,12 +659,12 @@ Nach Merge ergänzen: „Höher oder tiefer“ (Kap. 1), Detektor-Duell (Kap. 5)
 <p>Eine gute Regel lautet: Nutze selbst, was du anbietest – im Tech-Jargon sagt man <em>eat your own dog food</em>. Dem folgend finden Sie in diesem Buch alle Lernmechanismen, die es vorstellt, auch angewandt wieder. Jede seiner Lernhilfen beruht auf einem Mechanismus, den Kapitel 4 als belegt vorstellt (<a href="kapitel04-lernmechanismen.html#sec-lerntechniken" class="quarto-xref"><span>Effektive Lerntechniken und Unterstützung mit KI</span></a>), und ich habe sie nach drei Lernzielen geordnet <span class="citation" data-cites="anderson2001">(<a href="#ref-anderson2001" role="doc-biblioref">Anderson &amp; Krathwohl, 2001</a>)</span>: Erinnern, Verstehen, Anwenden.</p>
 <p>Am gründlichsten hat die Lernforschung untersucht, was beim <strong>Erinnern</strong> hilft. Die <strong>Abrufübung</strong> (<em>retrieval practice</em>) finden Sie in den Lernfragen am Ende jedes Kapitels. Beantworten Sie sie zuerst aus dem Gedächtnis und schlagen Sie erst dann die Lösungshinweise in Anhang B nach (<a href="kapitel10-appendix05-loesungshinweise.html" class="quarto-xref"><span>Anhang B — Lösungshinweise zu Lernfragen und Übungen</span></a>), denn wer abruft, behält mehr als wer wiederliest. Das <strong>verteilte Wiederholen</strong> (<em>spacing</em>) steckt im Kasten mit den Schlüsselbegriffen, der ebenfalls am Kapitelende steht. Markieren Sie online einen Begriff wie Fähigkeitsüberhang als nicht gewusst, lege ich ihn Ihnen einige Kapitel später wieder vor, und mit diesem Abstand hält er länger als nach gebündeltem Lernen. Den <strong>Vortest</strong> (<em>pretesting</em>) machen Sie am Anfang jedes Kapitels. Unter „Bevor Sie weiterlesen“ schätzen Sie Aussagen ein wie „Fast alle Studierenden nutzen KI inzwischen auch für Prüfungsleistungen“, und das Kapitel löst jede an der Stelle auf, die sie beantwortet. Wer sich vorher festlegt, auch falsch, behält die Antwort besser. Die <strong>Melodie als Gedächtnisstütze</strong> schließlich hören Sie im Lernsong zu Prognoseverfahren in Kapitel 7, wo Melodie und Rhythmus dem Wortlaut ein Gerüst geben, an dem Sie ihn wieder abrufen.</p>
 <p>Für das <strong>Verstehen</strong> zeige ich Ihnen ein gelöstes Beispiel aus meiner Lehre, bevor ich eine Methode empfehle. <strong>Ausgearbeitete Beispiele</strong> (<em>worked examples</em>) finden Sie vor allem in Kapitel 7, etwa den Tutor-Bot für das Modul „Grundlagen der BWL“. Prinzip, Empfehlung und Umsetzung stehen dort hintereinander, sodass Ihr Arbeitsgedächtnis nicht zugleich den Lösungsweg und das Prinzip suchen muss. <strong>Fehlvorstellungen widerlegen</strong> (<em>refutation text</em>) heißt, eine verbreitete Vorstellung beim Namen zu nennen und mit Gründen zu ersetzen. Im <a href="./kapitel02-grundlagen.html#sec-streichtest">Streich-Test</a> zum Prompting in Kapitel 2 entscheiden Sie bei zehn Zeilen eines älteren Prompts, ob Sie sie streichen würden und wie sicher Sie sich sind; die Irrtümer, bei denen Sie sich sicher waren, korrigiert die Auflösung am gründlichsten. <strong>Unterscheiden durch Vermischen</strong> (<em>interleaving</em>) üben Sie in den Spielen zu den Schlüsselbegriffen. Zu einem kurzen Fall wählen Sie unter ähnlichen Begriffen den passenden, etwa zwischen Fähigkeitsüberhang und Auslagerung des Denkens, und im direkten Vergleich sehen Sie die Merkmale, die beide trennen. Eine <strong>vorangestellte Ordnungshilfe</strong> (<em>advance organizer</em>) zeigt Ihnen das Ganze, bevor die Einzelheiten kommen. Das Liniennetz oben ist eine solche Ordnungshilfe; in Kapitel 1 ordnen die vier Rollen der KI als Hiwi, Copilot, Tutor und Simulator alle folgenden Kapitel. Die <strong>Geschichte als Einstieg</strong> begegnet Ihnen am Anfang jedes Kapitels als kurze Szene aus dem Hochschulalltag, denn Ereignisse, die kausal verknüpft um eine Person kreisen, behält man besser als Sachtext.</p>
-<p>Für das <strong>Anwenden</strong> prompten, prüfen und bauen Sie selbst. Zum <strong>Selbst-Erzeugen</strong> (<em>generative and constructive learning</em>) lade ich Sie in den Kästen „Ausprobiert“ ein, etwa wenn Sie in Kapitel 6 testen, ob ein Sprachmodell richtig zitiert; wer formuliert, erklärt oder baut, lernt tiefer als wer nur liest. <strong>Scaffolding und Ausblenden</strong> (<em>fading</em>) heißt, dass Hilfen Sie stützen, solange Sie sie brauchen, und dann zurücktreten. Wissen Sie schon viel, überspringen Sie auf Ihrem Lernpfad ganze Abschnitte, und die Vertiefung zur Technik in Kapitel 2 habe ich aus demselben Grund als überspringbar gekennzeichnet <span class="citation" data-cites="kalyuga2003">(<a href="#ref-kalyuga2003" role="doc-biblioref">Kalyuga et al., 2003</a>)</span>. <a href="#tbl-mechanismen" class="quarto-xref">Tabelle&nbsp;<span>1</span></a> nennt zu jedem Mechanismus die Wirkweise, die Stellen im Buch und eine kanonische Quelle.</p>
+<p>Für das <strong>Anwenden</strong> prompten, prüfen und bauen Sie selbst. Zum <strong>Selbst-Erzeugen</strong> (<em>generative and constructive learning</em>) lade ich Sie in den Kästen „Ausprobiert“ ein, etwa wenn Sie in Kapitel 6 testen, ob ein Sprachmodell richtig zitiert; wer formuliert, erklärt oder baut, lernt tiefer als wer nur liest. <strong>Scaffolding und Ausblenden</strong> (<em>fading</em>) heißt, dass Hilfen Sie stützen, solange Sie sie brauchen, und dann zurücktreten. Wissen Sie schon viel, überspringen Sie auf Ihrem Lernpfad ganze Abschnitte, und die Vertiefung zur Technik in Kapitel 2 habe ich aus demselben Grund als überspringbar gekennzeichnet <span class="citation" data-cites="kalyuga2003">(<a href="#ref-kalyuga2003" role="doc-biblioref">Kalyuga et al., 2003</a>)</span>. <a href="#tbl-mechanismen" class="quarto-xref">Tabelle&nbsp;<span>2</span></a> nennt zu jedem Mechanismus die Wirkweise, die Stellen im Buch und eine kanonische Quelle.</p>
 <div class="table-responsive">
 <div id="tbl-mechanismen" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mechanismen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabelle&nbsp;1: Didaktische Mechanismen in diesem Buch, geordnet nach Lernzielen und innerhalb jeder Gruppe nach Stärke der Befunde. Eigene Darstellung.
+Tabelle&nbsp;2: Didaktische Mechanismen des Buchs nach Lernziel<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
 </figcaption>
 <div aria-describedby="tbl-mechanismen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -697,7 +734,7 @@ Tabelle&nbsp;1: Didaktische Mechanismen in diesem Buch, geordnet nach Lernzielen
 <tr class="even">
 <td style="text-align: left;">Vorangestellte Ordnungshilfe (<em>advance organizer</em>)</td>
 <td style="text-align: left;">Ein übergeordneter Rahmen vor den Einzelheiten gibt dem Neuen einen Platz im Vorwissen</td>
-<td style="text-align: left;"><a href="#sec-lernpfade">Liniennetz der Lernpfade</a>; <a href="./kapitel01-einleitung.html#sec-kapiteluebersicht">vier Rollen der KI</a></td>
+<td style="text-align: left;"><a href="#sec-lernpfade">Tabelle der Lernpfade</a>; <a href="./kapitel01-einleitung.html#sec-kapiteluebersicht">vier Rollen der KI</a></td>
 <td style="text-align: left;"><span class="citation" data-cites="ausubel1960">Ausubel (<a href="#ref-ausubel1960" role="doc-biblioref">1960</a>)</span></td>
 </tr>
 <tr class="odd">
@@ -843,6 +880,13 @@ Wallace, W. T. (1994). Memory for music: Effect of melody on recall of text. <em
 Wood, D., Bruner, J. S., &amp; Ross, G. (1976). The role of tutoring in problem solving. <em>Journal of Child Psychology and Psychiatry</em>, <em>17</em>(2), 89–100. <a href="https://doi.org/10.1111/j.1469-7610.1976.tb00381.x">https://doi.org/10.1111/j.1469-7610.1976.tb00381.x</a>.
 </div>
 </div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Eigene Darstellung.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Geordnet nach Lernzielen und innerhalb jeder Gruppe nach Stärke der Befunde. Eigene Darstellung.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

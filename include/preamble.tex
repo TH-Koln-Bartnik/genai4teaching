@@ -22,6 +22,14 @@
 % Abbildungsverzeichnis (_filters/druck-satz.lua)
 \DeclareRobustCommand{\druckrest}[1]{#1}
 \AtBeginDocument{\addtocontents{lof}{\protect\renewcommand{\protect\druckrest}[1]{}}}
+% Kurztitel mit Fußnote (seit 14.11.2026): In Kästen setzt Quarto die Fußnote einer
+% Abbildungs- oder Tabellenunterschrift als \footnotemark ohne Kurztitel fürs Verzeichnis.
+% Robust gemacht, gelangt das Zeichen unbeschadet in .lof/.lot; dort schaltet es der
+% folgende Eintrag stumm.
+\MakeRobust{\footnotemark}
+\AtBeginDocument{%
+  \addtocontents{lof}{\protect\renewcommand{\protect\footnotemark}[1][]{}}%
+  \addtocontents{lot}{\protect\renewcommand{\protect\footnotemark}[1][]{}}}
 \usepackage{ragged2e}
 \newcommand{\tabellenschrift}{\small}  % je Tabelle übersteuerbar, z. B. \renewcommand{\tabellenschrift}{\footnotesize} in einer Gruppe
 \AtBeginEnvironment{longtable}{\tabellenschrift\let\raggedright\RaggedRight}  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
@@ -205,3 +213,4 @@
 \renewcommand*{\TruncateMarker}{\,\textellipsis}
 \renewcommand*{\chaptermark}[1]{\markboth{\MakeMarkcase{\truncate{0.92\textwidth}{\ifnumbered{chapter}{\chaptermarkformat}{}#1}}}{}}
 \renewcommand*{\sectionmark}[1]{\markright{\MakeMarkcase{\truncate{0.92\textwidth}{\ifnumbered{section}{\sectionmarkformat}{}#1}}}}
+

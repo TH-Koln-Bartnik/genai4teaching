@@ -9,12 +9,15 @@
 --    ist im PDF selbst ein Kasten und kann im äußeren Kasten nicht über die
 --    Seite umbrechen. Im Druck steht deshalb eine fette Titelzeile, darunter der
 --    Inhalt ohne äußeren Kasten; der Codeblock darf umbrechen.
--- 3. Abbildungsverzeichnis: Ohne Kurztitel setzt LaTeX die ganze Bildunterschrift
---    samt URL ins Verzeichnis. Fehlt fig-scap, wird der Kopf der Bildunterschrift
---    (bis zum ersten Doppelpunkt, Punkt oder Semikolon) als Kurztitel gesetzt.
---    Ein fig-scap="..." im Quelltext hat Vorrang.
---    Bei Abbildungen aus Teilbildern (layout) endet der Verzeichniseintrag am
---    ersten Doppelpunkt der Bildunterschrift.
+-- 3. Kurztitel und Fußnoten (seit 14.11.2026): Abbildungen und Tabellen tragen einen
+--    Kurztitel als Unterschrift; Beschreibung, Quelle und Legende stehen in einer
+--    Markdown-Fußnote daran. Pandoc setzt dann den Kurztitel ins Verzeichnis und die
+--    Fußnote unter die Seite. Zwei Fälle brauchen Hilfe:
+--    a) Gleitobjekte in Kästen: Quarto macht die Fußnote dort selbst zu \footnotemark;
+--       include/preamble.tex hält das Zeichen aus den Verzeichnissen heraus.
+--    b) Abbildungen mit Fußnote stehen fest an ihrer Textstelle (fig-pos H), damit
+--       Bild und Fußnote auf derselben Seite bleiben.
+--    Kein fig-scap außerhalb von Kästen setzen: Dann verschluckt LaTeX den Fußnotentext.
 
 if not quarto.doc.is_format("latex") then
   return {}
@@ -66,50 +69,17 @@ local function kasten(el)
   return aus
 end
 
-local MIN = 20   -- kürzere Köpfe („Beispiel“) reichen bis zum nächsten Satzzeichen
-
-local function kurztitel(text)
-  local pos = 1
-  while true do
-    local a, b = text:find("[:%.;] ", pos)
-    if not a then return nil end
-    if a - 1 >= MIN then
-      return text:sub(1, a - 1)
-    end
-    pos = b + 1
-  end
+local function hat_note(inl)
+  local ja = false
+  pandoc.walk_inline(pandoc.Span(inl), { Note = function() ja = true end })
+  return ja
 end
 
+-- b) Abbildungen mit Fußnote festhalten
 local function abbildung(float)
-  if float.type ~= "Figure" then return nil end
-  local scap = float.attributes["fig-scap"]
-  if float.attributes["layout"] or float.attributes["layout-ncol"] then
-    -- Abbildungen aus mehreren Teilbildern: Quarto reicht dort keinen Kurztitel an
-    -- \caption weiter. Der Teil der Bildunterschrift nach dem ersten Doppelpunkt
-    -- steht deshalb in \druckrest{...}; im Abbildungsverzeichnis verschluckt das
-    -- Makro sein Argument (include/preamble.tex).
-    if not float.caption_long then return nil end
-    local inl = quarto.utils.as_inlines(float.caption_long)
-    local laenge = 0
-    for i, x in ipairs(inl) do
-      local txt = pandoc.utils.stringify(x)
-      laenge = laenge + #txt
-      if x.t == "Str" and txt:sub(-1) == ":" and laenge >= MIN and i < #inl then
-        x.text = txt:sub(1, -2)
-        inl:insert(i + 1, pandoc.RawInline("latex", "\\druckrest{:"))
-        inl:insert(pandoc.RawInline("latex", "}"))
-        float.caption_long = pandoc.Plain(inl)
-        return float
-      end
-    end
-    return nil
-  end
-  if scap or not float.caption_long then return nil end
-  local text = pandoc.utils.stringify(float.caption_long)
-  if #text < 90 then return nil end          -- kurze Unterschriften bleiben ganz
-  local kurz = kurztitel(text)
-  if not kurz or kurz:find("@") or kurz:find("%$") or #kurz > 140 then return nil end
-  float.attributes["fig-scap"] = kurz
+  if float.type ~= "Figure" or not float.caption_long then return nil end
+  if not hat_note(quarto.utils.as_inlines(float.caption_long)) then return nil end
+  float.attributes["fig-pos"] = "H"
   return float
 end
 

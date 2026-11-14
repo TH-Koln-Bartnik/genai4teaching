@@ -32,38 +32,31 @@ window.addEventListener("message", function (e) {
 ```
 :::
 
-<!-- Lernpfade (Claude, 01.11.2026; am 01.11. auf Wunsch Roman aus Kapitel 1 ins Vorwort verschoben) nach Entscheidung Roman: Option b, U-Bahn-Plan als Buchlandkarte, Selbsttest. Karte und Widget werden aus scripts/lernpfade/ erzeugt. -->
+<!-- Lernpfade: bis 14.11.2026 Liniennetz (Abbildung) und Selbsttest online; auf Wunsch Roman ersetzt durch die Tabelle „Hauptinteresse / Lesefolge / Begründung“ in allen Ausgaben. Skripte in scripts/lernpfade/ bleiben im Repo. -->
 
 ## Wählen Sie Ihren Lernpfad {#sec-lernpfade .unnumbered}
 
 ::: {.content-visible when-format="html"}
-Sie brauchen nicht jede Etappe dieses Buchs. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also das Wissen, was beim Lernen wirkt, wie man es in einer Lehrveranstaltung umsetzt und welche Formen des KI-Einsatzes sich bewährt haben. Lehrerfahrung ersetzt diese Kenntnis nicht. Morehead und Kollegen befragten Hochschullehrende und Studierende zu wirksamen Lernstrategien; die Lehrenden wussten nur wenig mehr als ihre Studierenden und teilten deren verbreitete Fehlannahmen [@morehead2016]. Denken Sie an zwei Leser dieses Buchs: einen Informatiker, der täglich mit Agenten (eigenständig handelnden KI-Systemen) arbeitet, und eine Kollegin, die die Befunde zu Abrufübungen kennt und noch nie einen Agenten eingerichtet hat. Er braucht die Kapitel zur Lernforschung, sie die Grundbegriffe der KI, und keiner von beiden gewinnt etwas, wenn er Bekanntes noch einmal liest. Kalyuga und Kollegen haben Studien zusammengetragen, in denen Erklärungen, die Neulingen halfen, Erfahrene beim Lernen behinderten, weil sie Bekanntes ein zweites Mal verarbeiten mussten; sie nennen das den Expertise-Umkehreffekt (*expertise reversal effect*) [@kalyuga2003]. @fig-lernpfade zeigt die vier Kombinationen der beiden Arten von Vorwissen als Liniennetz, und ein Selbsttest führt Sie zu Ihrer Linie.
-
-::: {#fig-lernpfade}
-```{=html}
-<iframe loading="lazy" id="lernpfade" src="interactions/lernpfade.html" width="100%" height="1000px" frameborder="0" title="Selbsttest und Liniennetz: Wählen Sie Ihren Lernpfad"></iframe>
-<script>
-/* Das Lernpfad-Widget meldet seine Höhe; so entsteht kein Scrollbalken im Rahmen. */
-window.addEventListener("message", function (e) {
-  var d = e.data; if (!d || d.typ !== "galerie-hoehe") return;
-  var f = document.getElementById(d.id); if (f && d.h > 200) f.style.height = d.h + "px";
-});
-</script>
-```
-
-Lernpfade durch das Buch. Nach den sechs Antworten tritt die passende Linie hervor; jede Station führt zum Kapitel. Eigene Darstellung.
-:::
-
-Eine fünfte Linie steht neben dem Selbsttest, weil sie kein Vorwissen voraussetzt. **Linie 5 · Erst schauen** führt nicht durch die Kapitel, sondern an allen Praxisbeispielen entlang, von den Filmen über die Spiele bis zu den Rechnern. Unter jedem Beispiel führt ein Link in das Kapitel, das es erklärt; so kehren Sie dort ins Buch zurück, wo ein Beispiel Sie neugierig gemacht hat. Die Linie beginnt auf der Seite [Praxisbeispiele im Überblick](praxisbeispiele.qmd).
+Sie brauchen nicht jede Etappe dieses Buchs. Lehrende bringen zwei Arten von Vorwissen mit, die wenig miteinander zu tun haben: Erfahrung mit KI-Werkzeugen und Kenntnis der Lernforschung, also das Wissen, was beim Lernen wirkt, wie man es in einer Lehrveranstaltung umsetzt und welche Formen des KI-Einsatzes sich bewährt haben. Lehrerfahrung ersetzt diese Kenntnis nicht. Morehead und Kollegen befragten Hochschullehrende und Studierende zu wirksamen Lernstrategien; die Lehrenden wussten nur wenig mehr als ihre Studierenden und teilten deren verbreitete Fehlannahmen [@morehead2016]. Denken Sie an zwei Leser dieses Buchs: einen Informatiker, der täglich mit Agenten (eigenständig handelnden KI-Systemen) arbeitet, und eine Kollegin, die die Befunde zu Abrufübungen kennt und noch nie einen Agenten eingerichtet hat. Er braucht die Kapitel zur Lernforschung, sie die Grundbegriffe der KI, und keiner von beiden gewinnt etwas, wenn er Bekanntes noch einmal liest. Kalyuga und Kollegen haben Studien zusammengetragen, in denen Erklärungen, die Neulingen halfen, Erfahrene beim Lernen behinderten, weil sie Bekanntes ein zweites Mal verarbeiten mussten; sie nennen das den Expertise-Umkehreffekt (*expertise reversal effect*) [@kalyuga2003]. @tbl-lernpfade nennt für sechs Hauptinteressen eine Lesefolge, darunter die vier Kombinationen der beiden Arten von Vorwissen.
 :::
 
 ::: {.content-visible unless-format="html"}
-Sie brauchen nicht jede Etappe dieses Buchs. Wer täglich mit Agenten arbeitet, braucht vor allem die Kapitel zur Lernforschung, wer die Lernforschung kennt, vor allem die Grundbegriffe der KI; Erklärungen, die Neulingen helfen, behindern Erfahrene sogar beim Lernen [@kalyuga2003]. @fig-lernpfade zeigt vier Linien durch das Buch. Zu Ihrer Linie führt online ein Selbsttest mit sechs Fragen: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/#sec-lernpfade> aufrufen.
-
-![Lernpfade durch das Buch. Rot umrandet sind die Stationen, an denen alle Linien halten. Eigene Darstellung.](images/lernpfade/lernpfade-karte.svg){#fig-lernpfade width="100%" fig-pos="htbp"}
-
-![](images/qr/qr-lernpfade.png){width="18%"}
+Sie brauchen nicht jede Etappe dieses Buchs. Wer täglich mit Agenten arbeitet, braucht vor allem die Kapitel zur Lernforschung, wer die Lernforschung kennt, vor allem die Grundbegriffe der KI; Erklärungen, die Neulingen helfen, behindern Erfahrene sogar beim Lernen [@kalyuga2003]. @tbl-lernpfade nennt für sechs Hauptinteressen eine Lesefolge.
 :::
+
+| Hauptinteresse, ich will … | Empfohlene Lesefolge | Begründung |
+|:---|:---|:---|
+| … mir Wirkprinzipien und Beispiele von KI in der Lehre systematisch erschließen | Kapitel 1 bis 7 der Reihe nach | Jedes Kapitel baut auf den Begriffen und Befunden der vorherigen auf. |
+| … KI-Werkzeuge, die ich schon nutze, lernwirksam einsetzen | Kapitel 1, 3, 4, 5, 6, 7 | Kapitel 2 erklärt Grundbegriffe, die Sie kennen; Kapitel 4 liefert die Lernforschung, an der sich jeder Einsatz messen lässt. |
+| … die Technik hinter KI verstehen; die Lernforschung kenne ich | Kapitel 1, 2, 3, Abschnitt 4.5, Kapitel 5, 6, 7 | Die Abschnitte 4.1 bis 4.4 fassen bekannte Lernforschung zusammen; 4.5 bringt die neuen Befunde zur Lernwirkung von KI. |
+| … nur Neues und die aktuellen Belege; KI und Lernforschung kenne ich | Kapitel 1, Abschnitt 4.5, Kapitel 6, 7, Anhang A | Bekanntes noch einmal zu lesen, behindert Erfahrene eher (Expertise-Umkehreffekt); Belege, Rollen, Beispiele und Prompts sind direkt verwendbar. |
+| … mir Anwendungsbeispiele ansehen und Ideen für meine Lehre sammeln | Kapitel 7, dann die Beispiele in Kapitel 6 und die Praxis-Primer in Anhang C; online zusätzlich „Praxisbeispiele im Überblick“ | Kapitel 7 ordnet die Beispiele nach Lernstufe und nennt je Beispiel Lerntechnik und Rolle der KI. |
+| … GenAI systematisch in meine Lehrveranstaltung einführen | Kapitel 5, Abschnitt 4.5, Kapitel 6, Anhang A | Das 4D-Modell gibt die Reihenfolge der Entscheidungen vor; Kapitel 5 endet mit einem Plan in drei Phasen eines Semesters, Kapitel 6 beschreibt die Rollen, die KI darin übernimmt. |
+
+: Lernpfade durch das Buch nach Hauptinteresse[^tab-lernpfade] {#tbl-lernpfade tbl-colwidths="[34,30,36]"}
+
+[^tab-lernpfade]: Eigene Darstellung.
+
 
 <!-- Abschnitt „Wie dieses Buch lehrt“ (Claude, 02.11.2026, Fassung 4: ganzes Vorwort in Ich-Stimme nach Classic Prose neu geschrieben, Fachbegriff fett als Subjekt; Fassung 3: Fachbegriff mit Beispiel im Fließtext, für Erstlesende beschrieben, Advance Organizer ergänzt; Fassung 2: gruppiert nach Lernzielen, je Mechanismus eine kanonische Quelle;
 Grundlage claude/didaktik/UEBERSICHT-didaktische-mechanismen-2026-11-02.md).
@@ -99,13 +92,15 @@ Eine gute Regel lautet: Nutze selbst, was du anbietest (*eat your own dog food*)
 | Ausgearbeitete Beispiele (*worked examples*) | Ein gelöstes Beispiel entlastet das Arbeitsgedächtnis | Kapitel 7; Anwendungsbeispiele in Kapitel 1–6 | @sweller1985 |
 | Fehlvorstellungen widerlegen (*refutation text*) | Die alte Vorstellung wird genannt und mit Gründen ersetzt; sicher vertretene Irrtümer werden besonders gründlich korrigiert | [Prompting mit Streich-Test](kapitel02-grundlagen.qmd#sec-streichtest); Auflösungen „nein“ | @tippett2010 |
 | Unterscheiden durch Vermischen (*interleaving*) | Im direkten Vergleich treten die trennenden Merkmale hervor | Fall-Zuordnung; [Lernspiel LLM, RAG oder Agent](kapitel02-grundlagen.qmd#sec-patterns-usage) | @kornell2008 |
-| Vorangestellte Ordnungshilfe (*advance organizer*) | Ein übergeordneter Rahmen vor den Einzelheiten gibt dem Neuen einen Platz im Vorwissen | [Liniennetz der Lernpfade](#sec-lernpfade); [vier Rollen der KI](kapitel01-einleitung.qmd#sec-kapiteluebersicht) | @ausubel1960 |
+| Vorangestellte Ordnungshilfe (*advance organizer*) | Ein übergeordneter Rahmen vor den Einzelheiten gibt dem Neuen einen Platz im Vorwissen | [Tabelle der Lernpfade](#sec-lernpfade); [vier Rollen der KI](kapitel01-einleitung.qmd#sec-kapiteluebersicht) | @ausubel1960 |
 | Geschichte als Einstieg | Kausal verknüpfte Ereignisse um eine Person werden besser behalten und verstanden | Szene am Kapitelanfang | @mar2021 |
 | **Anwenden** | | | |
 | Selbst-Erzeugen (*generative and constructive learning*) | Wer formuliert, erklärt oder baut, lernt tiefer als wer liest | Kästen „Ausprobiert“; eigene Erklärung vor der Musterantwort | @chi2014 |
 | Scaffolding und Ausblenden (*fading*) | Hilfen stützen, solange sie nötig sind, und treten mit wachsendem Können zurück | Lernpfade; Lernfragen in drei Stufen; [Vertiefung](kapitel02-grundlagen.qmd#sec-vertiefung) in Kapitel 2 | @wood1976 |
 
-: Didaktische Mechanismen in diesem Buch, geordnet nach Lernzielen und innerhalb jeder Gruppe nach Stärke der Befunde. Eigene Darstellung. {#tbl-mechanismen}
+: Didaktische Mechanismen des Buchs nach Lernziel[^tab-mechanismen] {#tbl-mechanismen}
+
+[^tab-mechanismen]: Geordnet nach Lernzielen und innerhalb jeder Gruppe nach Stärke der Befunde. Eigene Darstellung.
 :::
 
 <!-- Bis 02.11.2026 eigene Seite „Übersicht“ (index.qmd) vor dem Vorwort; auf Wunsch Roman zusammengelegt: erst Vorwort, dann Übersicht. Die alte Adresse vorwort.html leitet hierher um (aliases). -->

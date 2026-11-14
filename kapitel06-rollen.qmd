@@ -45,7 +45,9 @@ Wir sortieren die sehr vielfältigen Hilfestellungen der neuen Tools in vier Kat
 
 Hier ein Beispiel für einen Tutor-Bot, den wir seit dem Wintersemester 2025/26 als Hilfestellung für das Modul "Grundlagen der BWL" erproben; neue Themen werden laufend ergänzt.
 
-![Beispiel: Tutor-Bot BWL Grundlagen. Screenshot der Testversion, Januar 2026](images/tutor-bot-beispiel-bwl-th.jpg){#fig-tutor-bot-bwl}
+![Tutor-Bot für BWL-Grundlagen (Screenshot)[^abb-tutor-bot-bwl]](images/tutor-bot-beispiel-bwl-th.jpg){#fig-tutor-bot-bwl}
+
+[^abb-tutor-bot-bwl]: Screenshot der Testversion, Januar 2026.
 
 ::: {.content-visible when-format="html"}
 **Hier können Sie die Live-Version testen:** https://dev.d1czie2npcfbfs.amplifyapp.com
@@ -75,7 +77,9 @@ Zwei Unterscheidungen ordnen das Feld: Wird einmalig gesucht oder in mehreren Sc
 | iterativ | Liste | Deep Search[]{#sb-k4-deep-search} | Mehrere Suchschleifen über Minuten mit Abfragevarianten und Zitationsverfolgung; ein Sprachmodell bewertet die Relevanz; das Ergebnis bleibt eine Liste, meist eine bessere |
 | iterativ | Bericht | Deep Research[]{#sb-k4-deep-research} | Deep Search plus Berichterstellung: eine längere Synthese auf Basis des iterativ gefundenen Korpus |
 
-: Vier Typen von KI-Suchhelfern nach zwei Unterscheidungen. Quelle: @tay2025agentic {#tbl-suchtypen}
+: Vier Typen von KI-Suchhelfern[^tab-suchtypen] {#tbl-suchtypen}
+
+[^tab-suchtypen]: Nach zwei Unterscheidungen. Quelle: @tay2025agentic.
 
 
 Wichtiger als das Wort „iterativ“ ist, *wie* ein Werkzeug iteriert. Die meisten akademischen Deep-Research-Tools folgen einem fest verdrahteten Ablauf: beeindruckend innerhalb ihrer Schablone, spröde außerhalb [@tay2025agentic]. Für die Lehre gilt deshalb die Regel aus @sec-agenten-praxis: Je freier das Werkzeug arbeitet, desto klarer müssen die Kontrollpunkte sein, an denen wir das Ergebnis prüfen.
@@ -101,7 +105,9 @@ Erst beim Suchen kommt das Sprachmodell dazu, als Übersetzer: Es schreibt aus d
 | Auswerten | Deep Research: Bericht, höchstes Fehlerrisiko | Deep-Research-Modi der Sprachmodelle |
 | Auswerten | Datenzugriff per API (Programmierschnittstelle): eigene Auswertungen mit Code | OpenAlex, Semantic Scholar API |
 
-: Werkzeugtypen je Phase der Literaturrecherche. Typen nach @tay2025agentic, ergänzt um drei Typen ohne erzeugten Text; Produktnamen Stand 2026. Quelle: eigene Zuordnung nach @bartnik2025recherche {#tbl-werkzeugtyp-phase}
+: Werkzeugtypen je Phase der Literaturrecherche[^tab-werkzeugtyp-phase] {#tbl-werkzeugtyp-phase}
+
+[^tab-werkzeugtyp-phase]: Typen nach @tay2025agentic, ergänzt um drei Typen ohne erzeugten Text; Produktnamen Stand 2026. Quelle: eigene Zuordnung nach @bartnik2025recherche.
 
 Beim Auswerten gefundener Artikel wächst das Risiko mit dem Umfang [@tay2024classifying]. Die Zusammenfassung eines einzelnen Dokuments eignet sich für die schnelle Relevanzprüfung; die Auswertung vieler Dokumente nach denselben Fragen ergibt eine Codier-Tabelle, deren Zellen man stichprobenartig gegen das PDF prüft; die Synthese über mehrere Dokumente trägt das höchste Fehlerrisiko, weil sich Suchfehler, untreue Zusammenfassung und schwache Gewichtung der Evidenz addieren. Erzeugter Text kann Quellen etwas zuschreiben, das sie so nicht sagen; dann fehlt es an Quellentreue [@tay2025agentic]. Akademische Konnektoren, über die ein Sprachmodell lizenzierte Volltexte der eigenen Hochschule durchsucht, binden Behauptungen an Fundstellen statt an Abstracts [@tay2024mcp].
 
@@ -119,7 +125,9 @@ Beim Auswerten gefundener Artikel wächst das Risiko mit dem Umfang [@tay2024cla
 | **2. Sequential Single-Document Summarisation** (mehrere Dokumente, aber jeweils einzeln) | Mehrere Treffer werden nacheinander dokumentweise verarbeitet; typisch sind „Synthesis tables“/Matrizen. Extraktion klar definierter Variablen ist meist zuverlässiger als freie Zusammenfassung. Query-abhängige Ein-Zeilen-Zusammenfassungen dienen nebenbei als Relevanz-Signal. | Tabelle/Matrix über Top-K Treffer | **Elicit**: automatische Summary-Spalte plus frei definierbare Extraktions-Spalten (Design, Sample, Outcome etc.). | „Codier-Werkbank“: Konstrukte, Kontext, Designlogik und Findings als Spalten definieren, Paper für Paper füllen lassen; macht Muster, Cluster und Ausreißer sichtbar (wie ein standardisiertes Codebuch mit beschleunigter Erstbefüllung). | Stille Inkonsistenzen: driftende Begriffe/Einheiten, „Missingness“ wird mit Vermutungen gefüllt. Tests: Stichproben-Audit gegen PDF, Konsistenzchecks, „Missingness-Ehrlichkeit“, Provenance je Zelle (Textstelle muss rückverfolgbar sein). |
 | **3. Query-based Multi-Document Summarisation** (Synthese über mehrere Dokumente) | Synthese über mehrere Dokumente zur Beantwortung einer Frage; häufig RAG. Varianten: nur Suchtreffer, nur Uploads oder Hybrid. Manche Systeme fixieren zuerst ein Korpus (z. B. Top-25) und erlauben danach Folgefragen über dieses Set. | „Answer with citations“ / Report über mehrere Papers | **Ex Libris/Primo Research Assistant**; **Google NotebookLM** (Upload-Korpus); **Elicit Systematic Review** (Hybrid); **JSTOR Research Tool (beta)** (fixes Top-K-Set); **Undermind.ai** („Ask Expert“) nach iterativer Phase. | „Narrativ-Maschine“: gut für Landschaftsskizzen (Themencluster, Mechanismen, Kontroversen). Kann beim Strukturieren eines Review-Kapitels helfen (Abschnitte nach Mechanismen, Kontexten, Messansätzen). | Höchstes Fehlerrisiko durch Kombination aus Retrieval-Fehlern, kontextuntreuer Paper-Zusammenfassung und schwacher Evidenzgewichtung. In Sozialwissenschaften heikel wegen heterogener Designs. Tests: Claim-zu-Quelle-Mapping, Coverage („Must-cite“-Set), Widerspruchstest, „Not in sources“-Test, Retraktions-/Korrekturtest. |
 
-: Paper mit KI analysieren: Einfach oder sequenziell, ein Artikel oder Synthese mehrerer Artikel? Quelle: @tay2024classifying {#tbl-paper-analysis-types}
+: Arten der Paper-Analyse mit KI[^tab-paper-analysis-types] {#tbl-paper-analysis-types}
+
+[^tab-paper-analysis-types]: Einfach oder sequenziell, ein Artikel oder Synthese mehrerer Artikel. Quelle: @tay2024classifying.
 :::
 :::
 
@@ -257,7 +265,9 @@ Jeder Trainer ist eine ausführliche Anweisung, ein Prompt, der ein Sprachmodell
 | 7 Limitationen | Limitationen und Ausblick | Grenzen als begründete Designentscheidung mit Trade-offs darstellen | Vier Szenarien, Quiz zum Ausblick |
 | 8 Absätze | Jeder Absatz | Topic Sentence (Kernsatz des Absatzes), Belege und Abschlusssatz verbinden | Drei Sortierübungen, eigener Absatz, Analyse eines echten Absatzes |
 
-: Acht Schreibtrainer entlang der Abschlussarbeit (TH Köln, Wirtschaftsingenieurwesen; Julia Schmid und Roman Bartnik) {#tbl-schreibtrainer tbl-colwidths="[16,18,34,32]"}
+: Acht Schreibtrainer entlang der Abschlussarbeit[^tab-schreibtrainer] {#tbl-schreibtrainer tbl-colwidths="[16,18,34,32]"}
+
+[^tab-schreibtrainer]: TH Köln, Wirtschaftsingenieurwesen; Julia Schmid und Roman Bartnik.
 
 Alle acht folgen demselben Muster.
 Der Trainer erklärt kurz, wozu der Textteil dient, stellt Quizfragen und gibt bei falschen Antworten einen Hinweis statt der Lösung.
@@ -280,7 +290,9 @@ Zur Seite mit beiden Anweisungen: [Schreibtrainer zum Kopieren](schreibtrainer.h
 :::
 
 ::: {.content-visible unless-format="html"}
-![Schreibtrainer zum Kopieren: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/schreibtrainer.html> aufrufen.](images/qr/qr-schreibtrainer.png){#fig-qr-schreibtrainer width="32%" fig-align="center"}
+![Schreibtrainer zum Kopieren (online)[^abb-qr-schreibtrainer]](images/qr/qr-schreibtrainer.png){#fig-qr-schreibtrainer width="32%" fig-align="center"}
+
+[^abb-qr-schreibtrainer]: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/schreibtrainer.html> aufrufen.
 :::
 :::
 
@@ -384,7 +396,9 @@ Wie das im Alltag aussieht, zeigt ein Making-of aus der Arbeit an diesem Buch. C
 :::
 
 ::: {.content-visible unless-format="html"}
-![Making-of zum Video über @tbl-acemoglu: Auftrag, Datendatei, Code, automatische Prüfung, Sichtprüfung, Rendern, rekonstruiert aus Versionsprotokoll und Prüfausgaben. Schlussbild eines Videos (59 s), erstellt mit Claude Code und HyperFrames. Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#vid-making-of> aufrufen.](images/druck/video-making-of.png){#fig-video-making-of width="100%"}
+![Making-of eines Erklärvideos mit Claude Code[^abb-video-making-of]](images/druck/video-making-of.png){#fig-video-making-of width="100%"}
+
+[^abb-video-making-of]: Making-of zum Video über @tbl-acemoglu: Auftrag, Datendatei, Code, automatische Prüfung, Sichtprüfung, Rendern, rekonstruiert aus Versionsprotokoll und Prüfausgaben. Schlussbild eines Videos (59 s), erstellt mit Claude Code und HyperFrames. Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#vid-making-of> aufrufen.
 :::
 
 Für den Lernerfolg zählt die Machart womöglich weniger als erwartet: In einem Online-Experiment mit 447 Teilnehmenden lernten diese mit KI-erzeugten Lehrvideos, darunter eines zur optimalen Bestellmenge, gleich viel wie mit menschlich produzierten, erlebten die menschlichen aber etwas positiver [@netland2025aivideos].
@@ -532,7 +546,9 @@ Im Einführungskurs Physical Sciences 2 der Harvard University arbeiten die Stud
 :::
 
 ::: {.content-visible unless-format="html"}
-![Ablauf des Physik-Tutors PS2 Pal nach @kestin2025: Lehrende legen Regeln und Musterlösungen im Prompt fest, Studierende arbeiten zu Hause Schritt für Schritt mit dem Tutor. Schlussbild eines Videos (44 s); der Dialog ist ein sinngemäßes Beispiel. Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#vid-ps2pal-ablauf> aufrufen.](images/druck/video-ps2pal-ablauf.png){#fig-video-ps2pal-ablauf fig-scap="Ablauf des Physik-Tutors PS2 Pal" width="100%"}
+![Ablauf des Physik-Tutors PS2 Pal[^abb-video-ps2pal-ablauf]](images/druck/video-ps2pal-ablauf.png){#fig-video-ps2pal-ablauf width="100%"}
+
+[^abb-video-ps2pal-ablauf]: Lehrende legen Regeln und Musterlösungen im Prompt fest, Studierende arbeiten zu Hause Schritt für Schritt mit dem Tutor. Schlussbild eines Videos (44 s); der Dialog ist ein sinngemäßes Beispiel. Das Video gibt es nur in der Online-Version: QR-Code scannen oder <https://th-koln-bartnik.github.io/genai4teaching/kapitel06-rollen.html#vid-ps2pal-ablauf> aufrufen.
 :::
 
 ### Vom Prototyp zum Betrieb: Tutoren mit eigenen Quellen {#sec-tutor-betrieb}
