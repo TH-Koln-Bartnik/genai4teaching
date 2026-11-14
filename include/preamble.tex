@@ -11,6 +11,17 @@
 % Tabellen: kleinere Schrift (9 pt) und Flattersatz mit Silbentrennung in den Zellen.
 % Pandoc setzt Zellen mit \raggedright, was die Trennung praktisch abschaltet; \RaggedRight (ragged2e) trennt weiter.
 \usepackage{etoolbox}
+\usepackage{needspace}  % Titelzeile eines Prompts nicht allein am Seitenende (_filters/druck-satz.lua)
+% Zeichen, die TeX Gyre Pagella nicht enthält (sonst leere Kästchen im Druck)
+\usepackage{newunicodechar}
+\usepackage{pifont}
+\newunicodechar{★}{\ding{72}}
+\newunicodechar{☆}{\ding{73}}
+\newunicodechar{₂}{\textsubscript{2}}
+% Bildunterschriften aus Teilbildern: Rest nach dem Kurztitel, entfällt im
+% Abbildungsverzeichnis (_filters/druck-satz.lua)
+\DeclareRobustCommand{\druckrest}[1]{#1}
+\AtBeginDocument{\addtocontents{lof}{\protect\renewcommand{\protect\druckrest}[1]{}}}
 \usepackage{ragged2e}
 \newcommand{\tabellenschrift}{\small}  % je Tabelle übersteuerbar, z. B. \renewcommand{\tabellenschrift}{\footnotesize} in einer Gruppe
 \AtBeginEnvironment{longtable}{\tabellenschrift\let\raggedright\RaggedRight}  % kein vertikales Strecken, wenn ein Kasten nicht mehr auf die Seite passt
