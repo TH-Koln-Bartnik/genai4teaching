@@ -7,10 +7,13 @@ Auftrag Roman (14.11.): Abbildungen und Tabellen bekommen Kurztitel; Detailbesch
 - Kurztitel als kurzer Aussagesatz.
 - Kurztitel-Liste vorab freigeben, dann einbauen.
 - Repo-Zugriff mit Push erneut angefragt und erhalten.
+- Runde 2 (Roman zu Runde 1): Kurztitel deskriptiv und kurz statt Aussagesatz; Prüfkriterium: Titel allein sagt im Verzeichnis, was die Abbildung zeigt (Beispiele Roman: „Lernspiel zur Prüfung zentraler Begriffe“; „GenAI ist seit 2022 komplexer geworden: Werkzeuge und Gedächtnis kommen hinzu“). Abbildung Lernpfade entfällt, stattdessen Tabelle „Ziel / Empfohlene Lesefolge“ mit zusätzlichen Zielen „nur Anwendungsbeispiele“ und „GenAI systematisch einführen (4D)“.
+- Druck: Abbildungen mit Fußnote fest an der Textstelle (`fig-pos="H"`).
+- Einbau in derselben Sitzung.
 
 ## Stand
 - Branch `kurztitel-fussnoten` von `pdf-testbau` @ `c0425b1` (`pdf-testbau` ist noch nicht auf `main`; dort steckt der Automatik-Kurztitel für das Abbildungsverzeichnis, `_filters/druck-satz.lua` Abschnitt 3).
-- Vorschlag: `VORSCHLAG-kurztitel-fussnoten-2026-11-14.md` (46 Abbildungsunterschriften, 27 Tabellen; Web- und Druckfassungen getrennt). Daten zum Einbau: `vorschlag.json`, erzeugt mit `vorschlag.py`.
+- Vorschlag Runde 2: `VORSCHLAG-kurztitel-fussnoten-2026-11-14.md` (44 Abbildungsunterschriften, 27 Tabellen, neue Tabelle Lernpfade; Web- und Druckfassungen getrennt). Wartet auf Freigabe. Daten zum Einbau: `vorschlag.json`, erzeugt mit `vorschlag.py`.
 - Noch nichts an Kapiteldateien geändert.
 
 ## Technischer Befund (Testbuch, Quarto 1.8.25, XeLaTeX)
