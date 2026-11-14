@@ -3,7 +3,7 @@
 Auftrag Roman (14.11., 08:43): Korrekturliste zu Kap. 7 „Fallbeispiele aus der Lehre“.
 
 ## Stand
-- Branch `k7-korrekturen` von `pdf-testbau` @ `c0425b1`, **gepusht**, nicht gemergt. Zwei Commits:
+- Branch `k7-korrekturen` von `pdf-testbau` @ `c0425b1`, gepusht, **am 14.11. nach `main` gemergt** (siehe unten). Zwei Commits:
   - `edc3a72` Kap. 7: Korrekturen Roman 14.11.
   - `a416ad9` Anonymisierung außerhalb Kap. 7 (BWL-Tutor, SSCM-Modul)
 - Patch beider Commits (Sicherung): `claude/k7-korrekturen/k7-korrekturen-2026-11-14.patch`, auch in Tresorit. Passt auf `pdf-testbau`, `kurztitel-fussnoten` und `main` (`git apply --check` für Commit 1 geprüft).
@@ -33,11 +33,12 @@ Dateien: kapitel07-artefakte.qmd, Anhang B Lösungshinweise, index.qmd, kapitel0
 ## Hinweis für den Kurztitel-Einbau (Branch `kurztitel-fussnoten`)
 `vorschlag.json` enthält noch die alten Unterschriften von `fig-druck-widget-linie` („aus dem SSCM-Modul“) und `fig-tutor-bot-bwl` („BWL Grundlagen … Januar 2026“). Beim Einbau nach ID zuordnen und Fußnotentexte anpassen: „Lieferkettenmodul“; Tutor-Fußnote ohne „Januar 2026“.
 
-## Startauftrag nächste Sitzung (falls nötig)
-```
-Projekt Logos-Lehrbuch, Repo TH-Koln-Bartnik/genai4teaching. Branch k7-korrekturen (2 Commits auf pdf-testbau)
-nach Romans Freigabe zusammen mit pdf-testbau nach main mergen; HTML, PDF (--profile print) und EPUB rendern,
-docs/ aus Git zurückholen. Lies notes/k7-korrekturen/STATUS-k7-korrekturen-2026-11-14.md. Fragen nur als Multiple Choice.
-```
+## Merge nach main (14.11., ca. 10:30, Romans Wahl „a“)
+- `main` @ `01e2fdb` enthält jetzt `pdf-testbau` + `k7-korrekturen` und den parallel gemergten Stand Kap. 8 Bauanleitungen / Kap. 9 Ausblick (`db5a27d`).
+- Konflikte: Kapitelliste im Vorwort und Tabelle in Kap. 1 (neuer Kap.-7-Titel plus Kap. 8/9 übernommen); sonst nur erzeugte Dateien in `docs/`.
+- Weiterleitungsseite `kapitel06-fallbeispiele.html` (Quelle und docs) auf den neuen Kap.-7-Titel gesetzt.
+- Gerendert nach dem Merge: PDF (`--profile print`, mit `texlive-lang-german`): Exit 0, 282 Seiten, keine `??`; EPUB Exit 0; HTML Exit 0, `docs/` neu gerendert und gepusht (online live über GitHub Pages).
+- **Download-PDF und -EPUB in `docs/` nicht ersetzt** (Konvention: nur nach Rückfrage).
+- `kurztitel-fussnoten` ist **nicht** gemergt; der Startauftrag der Kurztitel-Sitzung gilt weiter. `main` enthält `pdf-testbau` jetzt schon, Konflikte erwartbar bei den Unterschriften `fig-druck-widget-linie`, `fig-tutor-bot-bwl` (siehe Hinweis oben) und in `docs/`.
 
-Ablage geprüft: siehe Abschlusszeile unten.
+Ablage geprüft: Projekt ✓ / Tresorit ✓ / Repo ✓ (gepusht, gemergt: ja, `main` @ `01e2fdb`)
