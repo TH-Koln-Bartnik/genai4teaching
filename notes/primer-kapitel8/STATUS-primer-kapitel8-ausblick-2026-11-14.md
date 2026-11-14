@@ -22,3 +22,20 @@ Auftrag Roman (14.11., 08:51): Primer als viertes Kapitel in Teil II statt Anhan
 - Dateiname: umbenannt in `kapitel08-bauanleitungen.qmd` (Roman, MC 14.11.); `anhang-primer.html` leitet mit Anker weiter; vier QR-Codes neu erzeugt und dekodiert.
 - Online steht „Praxisbeispiele im Überblick“ nach dem Ausblick (Profil-Liste wird angehängt).
 - Nach Merge: `docs/` rendern, live prüfen.
+
+## Nachtrag 14.11.2026, 10:30 (dieselbe Sitzung, Antworten Roman per MC)
+
+- **Umbenannt und gemergt:** `anhang-primer.qmd` → `kapitel08-bauanleitungen.qmd`; `anhang-primer.html` (Repo-Wurzel, unter `resources` in `_quarto.yml`) leitet mit gleichem Anker weiter, per Playwright geprüft (`#sec-primer-lernsongs` → 8.4). Vier QR-Codes (`scripts/qr-primer.mjs`) neu erzeugt und dekodiert. `main` @ `db5a27d` (Merge `8222ab2` auf `6613e17`, danach `docs/` mit `quarto render --to html`, Download-PDF/EPUB aus Git zurückgeholt; diese sind damit noch auf altem Stand). Live-Prüfung der Website steht aus (Abruf-Freigabe in der Sitzung unbeantwortet).
+- **Kapitelapparat Kap. 8** auf Branch `kap8-apparat` (`bfd130a`, von `main` @ `db5a27d`), **gepusht, nicht gemergt, wartet auf Freigabe**: Szene Dr. Miriam Lenz (Grundlagen der Elektrotechnik, erfunden), vier Einschätzungen `ez-k8-1` bis `ez-k8-4` mit Auflösung nach dem Prinzip-Kasten bzw. der Typtabelle jedes Abschnitts, drei Lernziele, sieben Kernaussagen, neun Schlüsselbegriffe `k8-*` (Wissensarten, Aussage-Beleg-Folie, Merkjingle, Abrufspiel, Planspiel, Gamification) mit sechs Fall-Aufgaben und Wiederkehr (`k3-testgestuetzt`, `k4-debriefing`, `k6-merkhilfe`), sechs Lernfragen; Lösungen in Anhang B (`## Kapitel 8 …`, `sb-loesungen kapitel="8"`). Nur vorhandene Quellen.
+- Prüfung: HTML ohne neue Warnungen, Playwright 1200/390 px ohne JS-Fehler, alle neun Anker vorhanden; PDF 304 Seiten (+6), Kap. 8 S. 203–216 (Buchseiten), Lösungen in Anhang B gesetzt, keine `??`. Querscrollen bei 390 px kommt von breiten Tabellen und besteht schon auf `main` (auch Kap. 7).
+
+## Startauftrag (falls neue Sitzung)
+```
+Projekt Logos-Lehrbuch, Repo TH-Koln-Bartnik/genai4teaching (Push-Zugriff).
+Lies notes/primer-kapitel8/STATUS-primer-kapitel8-ausblick-2026-11-14.md (Branch kap8-apparat).
+Nach Romans Freigabe: kap8-apparat nach main mergen, quarto render --to html, Download-PDF/EPUB
+in docs/ aus Git zurückholen, pushen, Live-Seite kapitel08-bauanleitungen.html und
+anhang-primer.html#sec-primer-lernsongs prüfen. Offen: Lernpfad-Karte/-Widget um Kap. 8 ergänzen
+(oder Tabelle aus kurztitel-fussnoten), k7-Patch einspielen (Konflikte Zeile 7 in index.qmd und
+Kap.-1-Tabelle). Fragen nur als Multiple Choice.
+```
