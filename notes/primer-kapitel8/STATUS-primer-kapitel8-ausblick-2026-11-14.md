@@ -19,6 +19,6 @@ Auftrag Roman (14.11., 08:51): Primer als viertes Kapitel in Teil II statt Anhan
 ## Offen
 - Kap. 8 hat keinen Kapitelapparat wie Kap. 1–7 (Lernziele, Einschätzungen, Kernaussagen, Schlüsselbegriffe, Lernfragen). Ergänzen oder bewusst weglassen?
 - Lernpfad-Karte (`images/lernpfade/lernpfade-karte.svg`, Widget `interactions/lernpfade.html`) kennt nur Kap. 1–7 und Anhang A; die Sitzung kurztitel-fussnoten plant, die Abbildung durch eine Tabelle zu ersetzen. Kap. 8 dort eintragen.
-- Dateiname: wahlweise später `kapitel08-bauanleitungen.qmd` mit Weiterleitung (`scripts/umzug/weiterleitungen.py`) und neu erzeugten QR-Codes (`scripts/qr-primer.mjs`).
+- Dateiname: umbenannt in `kapitel08-bauanleitungen.qmd` (Roman, MC 14.11.); `anhang-primer.html` leitet mit Anker weiter; vier QR-Codes neu erzeugt und dekodiert.
 - Online steht „Praxisbeispiele im Überblick“ nach dem Ausblick (Profil-Liste wird angehängt).
 - Nach Merge: `docs/` rendern, live prüfen.

@@ -4,7 +4,7 @@
 // Ausführen im Repo-Wurzelordner: npm install && node scripts/qr-primer.mjs
 import QRCode from "qrcode";
 
-const BASIS = "https://th-koln-bartnik.github.io/genai4teaching/anhang-primer.html#sec-primer-";
+const BASIS = "https://th-koln-bartnik.github.io/genai4teaching/kapitel08-bauanleitungen.html#sec-primer-";
 const ZIELE = ["animationen", "praesentationen", "lernsongs", "lernspiele"];
 for (const name of ZIELE) {
   const url = BASIS + name;
