@@ -8,6 +8,8 @@ Auftrag Roman (14.11.): Abbildungen und Tabellen bekommen Kurztitel; Detailbesch
 - Abbildung „Lernpfade“ (Liniennetz, online Selbsttest) entfällt in allen Ausgaben; dafür Tabelle „Hauptinteresse, ich will … / Empfohlene Lesefolge / Begründung“ mit sechs Zeilen, darunter „Anwendungsbeispiele ansehen“ und „GenAI systematisch einführen (4D)“. Skripte in `scripts/lernpfade/` bleiben.
 - Harness-Abbildung: Titel ohne Jahreszahl („Sprachmodelle mit wachsender Umgebung: Werkzeuge, Gedächtnis, Arbeitsschleife“).
 - Druck: Abbildungen mit Fußnote fest an der Textstelle (`fig-pos="H"`).
+- Fußnoten auf der Folgeseite (9 Fälle): erst beim Endsatz beheben; bis dahin nach jedem Druck-Render `python3 -I scripts/pruefe-bildfussnoten.py docs/downloads-genai4teaching.pdf`.
+- Merge: `kurztitel-fussnoten` (enthält `pdf-testbau`) nach `main`, in einer neuen Sitzung.
 
 ## Umgesetzt (Branch `kurztitel-fussnoten`, von `pdf-testbau` @ `c0425b1`)
 - 70 Unterschriften in 10 Kapiteldateien per Skript (`notes/kurztitel-fussnoten/apply.py` aus `vorschlag.json`), dazu `fig-detektor-duell` über `scripts/detektor-einbetten.py` (Generator angepasst, `_einbau/` neu erzeugt). Fußnoten-Labels `[^abb-…]` / `[^tab-…]` direkt hinter dem Gleitobjekt.
@@ -24,11 +26,16 @@ Auftrag Roman (14.11.): Abbildungen und Tabellen bekommen Kurztitel; Detailbesch
 - **Offen:** 9 Gleitobjekte, deren Fußnote auf die Folgeseite rutscht (PDF-Seiten 36, 50, 108, 113, 121, 125, 146, 184, 197). LaTeX kann eine Fußnote nicht an ein nicht gleitendes Bild am Seitenende binden; jede Textänderung davor verschiebt die Fälle.
 - Umgebungshinweis Cloud: `texlive-fonts-extra` und `texlive-lang-german` nachinstallieren, sonst fehlt `fontawesome5` bzw. trennt LaTeX englisch („Arbeitss-chritte“). Frühere Cloud-PDFs hatten dieses Trennproblem.
 
-## Startauftrag nächste Sitzung
+## Startauftrag nächste Sitzung (Merge)
 ```
-Projekt Logos-Lehrbuch, Repo TH-Koln-Bartnik/genai4teaching (Push), Branch kurztitel-fussnoten.
+Projekt Logos-Lehrbuch, Repo TH-Koln-Bartnik/genai4teaching (add_repo mit Push-Zugriff, frisch klonen).
 Lies notes/kurztitel-fussnoten/STATUS-kurztitel-fussnoten-2026-11-14.md.
+Auftrag (Roman, 14.11.): Branch kurztitel-fussnoten (@ 3d61408, enthält pdf-testbau) mit dem
+neuesten main zusammenführen. Parallele Sitzungen vom 14.11. (k7-korrekturen, k5-description,
+primer-kapitel8) können Unterschriften berührt haben: Konflikte in Unterschriften zugunsten
+Kurztitel + Fußnote lösen, neue Abbildungen/Tabellen aus main nach demselben Muster
+nachziehen (deskriptiver Kurztitel, Rest als [^abb-…]/[^tab-…]) und Roman die neuen Titel per MC zeigen.
 Umgebung: Quarto 1.8.25, apt texlive-fonts-extra texlive-lang-german.
-Offen: Entscheidung zu den 9 Fußnoten auf der Folgeseite (siehe Status), danach Merge
-von pdf-testbau und kurztitel-fussnoten nach main. Fragen nur als Multiple Choice.
+Rendern: PDF (--profile print), Prüfskript pruefe-bildfussnoten.py, EPUB, HTML; Download-PDF/EPUB
+in docs/ nur nach Rückfrage ersetzen. git fetch vor dem Push. Fragen nur als Multiple Choice.
 ```
