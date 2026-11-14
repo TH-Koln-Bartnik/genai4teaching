@@ -1,6 +1,6 @@
-// QR-Codes der Praxis-Primer (Anhang „Praxis-Primer für Lehrende“).
+// QR-Codes der Bauanleitungen (Kap. 8 „Konkrete Bauanleitungen für Lehr-Artefakte“, bis 14.11.2026 Anhang „Praxis-Primer“).
 // Laiensicht: Ein QR-Code ist eine gedruckte Internetadresse, die das Smartphone abfotografiert
-// und öffnet; jeder Code führt im Druck zur Vollfassung des Primers in der Online-Version.
+// und öffnet; jeder Code führt im Druck zur Vollfassung der Bauanleitung in der Online-Version.
 // Ausführen im Repo-Wurzelordner: npm install && node scripts/qr-primer.mjs
 import QRCode from "qrcode";
 
