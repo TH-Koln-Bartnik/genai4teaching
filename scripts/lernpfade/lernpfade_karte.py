@@ -19,7 +19,7 @@ ST = {  # 04.11.2026: neue Gliederung, sieben Kapitel in zwei Teilen (Phase 1 Um
     "e45": (520, 280, "4.5 Evidenz",        "start", -14, 58, "kapitel04-lernmechanismen.html#sec-evidenz", True),
     "k5":  (650, 140, "5 Vier Phasen (4D)", "middle", 0, -26, "kapitel05-4d-phasen.html#sec-umsetzung", False),
     "k6":  (780, 280, "6 Rollen",           "middle", 0, 50, "kapitel06-rollen.html#sec-szenarien", True),
-    "k7":  (910, 280, "7 Artefakte",        "middle", 0, -30, "kapitel07-artefakte.html#sec-fallbeispiele", True),
+    "k7":  (910, 280, "7 Fallbeispiele",    "middle", 0, -30, "kapitel07-artefakte.html#sec-fallbeispiele", True),
     "anh": (1040, 420, "Anhang A",           "middle", 0, 38, "kapitel07-appendix02-prompt-sammlung.html#sec-prompts", False),
 }
 
