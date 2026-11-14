@@ -1,5 +1,50 @@
 # Konkrete Bauanleitungen für Lehr-Artefakte {#sec-bauanleitungen}
 
+::: kapitel-gliederung
+:::
+
+Dr. Miriam Lenz lehrt Grundlagen der Elektrotechnik für 180 Erstsemester und hat vier Wochen bis Semesterbeginn. Drei Lücken will sie mit KI schließen. Die Kirchhoffschen Regeln sitzen nicht, und warum der Ladestrom eines Kondensators abklingt, versteht kaum jemand; ein Musikgenerator soll beides in einem Song erklären. Das Skript liest niemand, also soll ein Sprachmodell daraus Folien bauen, die jeden Gedanken ausformulieren und das Skript ersetzen. In der Übung rechnet kaum jemand mit; ein Quiz mit Punkten und Rangliste soll das ändern. Die Animation des Ladevorgangs, die ein Kollege anbietet, lehnt Lenz ab: Das Standbild aus dem Lehrbuch genüge.
+
+*Person und Situation sind erfunden; sie bündeln die Fragen, die dieses Kapitel beantwortet.*
+
+{{< pagebreak >}}
+
+::: {.callout-note .ez-block title="Bevor Sie weiterlesen: Wie sehen Sie das?"}
+*Wie sehr stimmen Sie den vier Aussagen zu? Jede Aussage wird an der Stelle im Kapitel aufgelöst, die sie beantwortet. Wer sich vorher festlegt, liest gezielter.*
+
+::: {.einschaetzung #ez-k8-1}
+Für den Ladevorgang eines Kondensators lohnt eine Animation mehr als ein gutes Standbild.
+
+[Auflösung in @sec-primer-animationen]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k8-2}
+Ein Foliensatz, der jeden Gedanken in ganzen Sätzen ausformuliert, ersetzt das Skript und stützt zugleich den Vortrag.
+
+[Auflösung in @sec-primer-praesentationen]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k8-3}
+Ein Lernsong eignet sich, um zu erklären, warum der Ladestrom eines Kondensators abklingt.
+
+[Auflösung in @sec-primer-lernsongs]{.ez-verweis}
+:::
+
+::: {.einschaetzung #ez-k8-4}
+Punkte und eine Rangliste machen ein Übungsquiz wirksamer.
+
+[Auflösung in @sec-primer-lernspiele]{.ez-verweis}
+:::
+:::
+
+::: {.callout-note .lernziele title="Lernziele: Nach diesem Kapitel können Sie …"}
+1. für ein Lehrziel die Wissensart bestimmen und daraus das passende Format wählen: Animation, Präsentation, Lernsong oder Lernspiel;
+2. für jedes der vier Formate begründen, wofür es nach der Lernforschung taugt und wofür nicht;
+3. ein mit KI gebautes Lernmaterial an Regeln und Prüffragen abnehmen, bevor es Studierende erreicht.
+
+*Die Kernaussagen am Kapitelende sind nach diesen drei Zielen geordnet.*
+:::
+
 Kapitel 7 zeigt, was in der eigenen Lehre entstanden ist; dieses Kapitel zeigt, wie man es baut. Seine Bauanleitungen beantworten je eine Frage: Wie erstelle ich dieses Lernmaterial mit KI so, dass es lernwirksam ist, und woran erkenne ich, dass es misslungen ist? Jede Bauanleitung folgt demselben Aufbau. Ein Prinzip sagt, wofür das Format taugt und wofür nicht. [Empfehlungen in Wenn-dann-Form tragen je eine Prüffrage, die sich in unter einer Minute beantworten lässt. Ein Arbeitsablauf nennt in jedem Schritt, was die Lehrperson nicht an die KI abgibt. Eine Prüfliste fasst die Empfehlungen zum Abhaken zusammen, und ein erprobtes Beispiel aus der eigenen Lehre zeigt die Umsetzung mit Stand-Vermerk. Werkzeuge, Prompts (Eingaben an die KI) und Prüfskripte veralten schneller als ein Buch; sie stehen unter „Vollfassung online“ am Ende jeder Bauanleitung.]{.content-visible when-format="html"}[Wo ein Format mehrere Typen kennt, führt eine Tabelle vom Lehrziel zum passenden Typ, und eine Abbildung zeigt ein erprobtes Beispiel aus der eigenen Lehre. Empfehlungen mit Prüffragen, Arbeitsablauf, Prüfliste, Prompts (Eingaben an die KI) und Prüfskripte stehen in der Online-Version, zu der in jeder Bauanleitung ein QR-Code führt; Werkzeuge und Prompts veralten ohnehin schneller als ein Buch.]{.content-visible unless-format="html"}
 
 ::: {.content-visible when-format="html"}
@@ -8,7 +53,7 @@ Kapitel 7 zeigt, was in der eigenen Lehre entstanden ist; dieses Kapitel zeigt, 
 
 ## Welches Format für welches Lehrziel? {#sec-primer-weiche}
 
-Wer mit KI Lernmaterial erstellt, beginnt leicht beim Werkzeug: Ein Musikgenerator steht bereit, also entsteht ein Song. Die Reihenfolge gehört umgekehrt. Zuerst steht fest, welche Art von Wissen die Studierenden erwerben sollen, daraus folgt das Format, zuletzt das Werkzeug. @tbl-primer-weiche ordnet die vier Formate dieses Kapitels den Wissensarten der überarbeiteten Bloom-Taxonomie zu [@anderson2001]: Faktenwissen (Begriffe, Einzelheiten), konzeptuelles Wissen (Zusammenhänge, Modelle, Prinzipien) und prozedurales Wissen (Verfahren und die Kriterien, wann welches passt).
+Wer mit KI Lernmaterial erstellt, beginnt leicht beim Werkzeug: Ein Musikgenerator steht bereit, also entsteht ein Song. Die Reihenfolge gehört umgekehrt. Zuerst steht fest, welche Art von Wissen die Studierenden erwerben sollen, daraus folgt das Format, zuletzt das Werkzeug. @tbl-primer-weiche ordnet die vier Formate dieses Kapitels den Wissensarten der überarbeiteten Bloom-Taxonomie zu [@anderson2001]: Faktenwissen[]{#sb-k8-faktenwissen} (Begriffe, Einzelheiten), konzeptuelles Wissen[]{#sb-k8-konzeptuelles-wissen} (Zusammenhänge, Modelle, Prinzipien) und prozedurales Wissen[]{#sb-k8-prozedurales-wissen} (Verfahren und die Kriterien, wann welches passt).
 
 | Format | Stärke: Lehrziel | Wissensart | Falsches Mittel für | Bauanleitung |
 |---|---|---|---|---|
@@ -19,12 +64,18 @@ Wer mit KI Lernmaterial erstellt, beginnt leicht beim Werkzeug: Ein Musikgenerat
 
 : Vier Formate, vier Lehrziele. Die Spalte rechts verweist auf die Bauanleitung. {#tbl-primer-weiche tbl-colwidths="[13,30,15,30,12]"}
 
-Die vierte Wissensart der Taxonomie, metakognitives Wissen über das eigene Lernen, fördert keines der vier Formate von selbst. Dafür braucht es Reflexion, etwa die Nachbesprechung nach einem Planspiel.
+Die vierte Wissensart der Taxonomie, metakognitives Wissen[]{#sb-k8-metakognitives-wissen} über das eigene Lernen, fördert keines der vier Formate von selbst. Dafür braucht es Reflexion, etwa die Nachbesprechung nach einem Planspiel.
 
 ## Didaktische Animationen {#sec-primer-animationen}
 
 ::: {.callout-note title="Prinzip: Wofür Animationen taugen, wofür nicht"}
 Eine Animation zeigt, wie sich etwas verändert; die Lernenden müssen die Veränderung nicht im Kopf aus Einzelbildern zusammensetzen. Darin liegt ihr Vorteil. Über alle Studien hinweg schlagen Animationen statische Bilder nur knapp [@berney2016]. Den Grund zeigt eine Nachanalyse dieser Metaanalyse: Der Vorteil ist deutlich, wenn die Merkmale der Veränderung selbst Lernstoff sind [@ploetzner2020]. Ein Experiment bestätigt die Arbeitsteilung: Bewegungsabläufe eines Getriebes erkannten Studierende nach einer Animation am besten, die räumliche Anordnung der Zahnräder nach statischen Bildern [@ploetzner2021]. Bewegung lohnt sich also für Prozesse, Dynamik und Wirkungsketten, etwa für das Aufschaukeln von Bestellungen in einer Lieferkette. Für Aufbau, Begriffe und Vergleiche genügt ein gutes Standbild, und es kostet weniger.
+:::
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Für den Ladevorgang eines Kondensators lohnt eine Animation mehr als ein gutes Standbild.“* []{.ez-ihre data-ez="ez-k8-1"}
+
+**Auflösung: eher ja.** Beim Laden ändern sich Strom und Spannung über die Zeit, und genau diese Veränderung sollen die Studierenden verstehen; dort ist der Vorteil von Animationen deutlich [@ploetzner2020]. Für den Schaltplan selbst genügt ein Standbild.
 :::
 
 ::: {.content-visible when-format="html"}
@@ -212,7 +263,13 @@ Die fertige HTML-Datei lädt das Folienprogramm reveal.js aus dem Netz nach und 
 ## Präsentationen {#sec-primer-praesentationen}
 
 ::: {.callout-note title="Prinzip: Wofür Präsentationen taugen, wofür nicht"}
-Im Hörsaal teilen sich Stimme und Folie die Arbeit: Die Stimme erklärt, die Folie zeigt, worauf sich die Erklärung stützt. @garner2013 ließen 110 Ingenieurstudierende denselben gesprochenen Vortrag hören, die eine Hälfte mit Folien aus Themenüberschrift und Aufzählung, die andere mit einem Satz als Titel und einem Bild als Beleg (*assertion–evidence approach*). Die zweite Gruppe verstand mehr, hatte weniger Fehlvorstellungen und wusste eine Woche später noch mehr. Steht dagegen viel Text auf der Folie, lesen die Zuhörenden mit und überhören, was nur gesagt wird [@wecker2012]. Eine Präsentation taugt darum für ein Argument in Schritten: Aussage, Beleg, nächste Aussage. Zum Üben taugt sie nicht, und zum Nachlesen nur mit einem eigenen Skript (@sec-primer-weiche).
+Im Hörsaal teilen sich Stimme und Folie die Arbeit: Die Stimme erklärt, die Folie zeigt, worauf sich die Erklärung stützt. @garner2013 ließen 110 Ingenieurstudierende denselben gesprochenen Vortrag hören, die eine Hälfte mit Folien aus Themenüberschrift und Aufzählung, die andere mit einem Satz als Titel und einem Bild als Beleg (*assertion–evidence approach*)[]{#sb-k8-aussage-beleg}. Die zweite Gruppe verstand mehr, hatte weniger Fehlvorstellungen und wusste eine Woche später noch mehr. Steht dagegen viel Text auf der Folie, lesen die Zuhörenden mit und überhören, was nur gesagt wird [@wecker2012]. Eine Präsentation taugt darum für ein Argument in Schritten: Aussage, Beleg, nächste Aussage. Zum Üben taugt sie nicht, und zum Nachlesen nur mit einem eigenen Skript (@sec-primer-weiche).
+:::
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Ein Foliensatz, der jeden Gedanken in ganzen Sätzen ausformuliert, ersetzt das Skript und stützt zugleich den Vortrag.“* []{.ez-ihre data-ez="ez-k8-2"}
+
+**Auflösung: nein.** Steht viel Text auf der Folie, lesen die Zuhörenden mit und überhören, was nur gesagt wird [@wecker2012]. Die Folie belegt, die Stimme erklärt; wer etwas zum Nachlesen braucht, bekommt ein eigenes Skript.
 :::
 
 ::: {.content-visible when-format="html"}
@@ -370,7 +427,7 @@ Musik trägt die Form eines Inhalts, nicht sein Verstehen. Gesungenes wird im Wo
 
 | Studierende sollen hinterher … | Song? | Typ | Was dazugehören muss |
 |---|---|---|---|
-| eine Formel wörtlich abrufen | ja | Merkjingle, höchstens vier Zeilen | Herleitung vorher, Formel schriftlich, Rechenaufgabe danach |
+| eine Formel wörtlich abrufen | ja | Merkjingle[]{#sb-k8-merkjingle}, höchstens vier Zeilen | Herleitung vorher, Formel schriftlich, Rechenaufgabe danach |
 | eine Liste vollständig aufzählen | ja | Listenlied | Bedeutung getrennt gelehrt, Zuordnung an Fällen danach |
 | Schritte in fester Reihenfolge nennen | ja | Listenlied mit „weil“ je Übergang | Anwendungsaufgabe |
 | erklären, warum ein Effekt entsteht | nur mit Erklärung | Wirkungsketten-Ballade | Erklärung vorher, Textblatt, zweiter Fall zum Vergleich |
@@ -378,6 +435,12 @@ Musik trägt die Form eines Inhalts, nicht sein Verstehen. Gesungenes wird im Wo
 | das eigene Entscheiden ändern | nicht allein | Ballade als letztes Glied | Spiel und Nachbesprechung an den eigenen Daten vorher |
 
 : Vom Lehrziel zum Songtyp. Die beiden unteren Zeilen enden ohne Song oder mit dem Song am Schluss einer Sequenz. {#tbl-primer-lernsongs tbl-colwidths="[30,14,24,32]"}
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Ein Lernsong eignet sich, um zu erklären, warum der Ladestrom eines Kondensators abklingt.“* []{.ez-ihre data-ez="ez-k8-3"}
+
+**Auflösung: eher nicht.** Musik stützt Wortlaut und Reihenfolge, nicht das Verstehen [@derksdijkman2024]. Den Grund erklären Lehrperson oder Animation vorher; danach kann eine Wirkungsketten-Ballade die Kette sichern (@tbl-primer-lernsongs). Für die Kirchhoffschen Regeln dagegen, die wörtlich sitzen sollen, passt ein Merkjingle.
+:::
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-tip title="Empfehlungen"}
@@ -543,7 +606,7 @@ bericht(roh["text"], TEXTBLATT, FACHWOERTER)
 ## Lernspiele {#sec-primer-lernspiele}
 
 ::: {.callout-note title="Prinzip: Wofür Lernspiele taugen, wofür nicht"}
-Ein Lernspiel lehrt über die Handlung, mit der man im Spiel vorankommt. Ist sie ein Abruf mit Rückmeldung, wirkt das Spiel wie ein Übungstest (*practice testing*) [@adesope2017]. Ist sie eine Entscheidung, deren Folgen in die nächste Runde reichen, wirkt es wie eine Simulation, und dann gehört eine Nachbesprechung dazu. Im Mittel lernen Studierende mit Spielen nur wenig mehr als mit Vergleichsunterricht, und auch das nur, wenn sie mehrmals spielen [@clark2016]; motivierender als herkömmlicher Unterricht waren Serious Games (Spiele mit Lernzweck) in einer Metaanalyse nicht [@wouters2013]. Ein Lernspiel taugt darum zum Üben mit Rückmeldung und zum Entscheiden unter Folgen (@tbl-primer-lernspiele). Einen Zusammenhang erklärt es nicht; dafür sind Animation und Präsentation da (@sec-primer-weiche). Wann ein Quiz kein Simulator ist, zeigt @sec-bsp-quizspiele.
+Ein Lernspiel lehrt über die Handlung, mit der man im Spiel vorankommt. Ist sie ein Abruf mit Rückmeldung, wirkt das Spiel als Abrufspiel[]{#sb-k8-abrufspiel} wie ein Übungstest (*practice testing*) [@adesope2017]. Ist sie eine Entscheidung, deren Folgen in die nächste Runde reichen, wirkt es als Planspiel[]{#sb-k8-planspiel} wie eine Simulation, und dann gehört eine Nachbesprechung dazu. Im Mittel lernen Studierende mit Spielen nur wenig mehr als mit Vergleichsunterricht, und auch das nur, wenn sie mehrmals spielen [@clark2016]; motivierender als herkömmlicher Unterricht waren Serious Games (Spiele mit Lernzweck) in einer Metaanalyse nicht [@wouters2013]. Ein Lernspiel taugt darum zum Üben mit Rückmeldung und zum Entscheiden unter Folgen (@tbl-primer-lernspiele). Einen Zusammenhang erklärt es nicht; dafür sind Animation und Präsentation da (@sec-primer-weiche). Wann ein Quiz kein Simulator ist, zeigt @sec-bsp-quizspiele.
 :::
 
 | Studierende sollen hinterher … | Spieltyp | Was dazugehören muss |
@@ -555,6 +618,12 @@ Ein Lernspiel lehrt über die Handlung, mit der man im Spiel vorankommt. Ist sie
 | ein Gespräch führen | Gesprächsrollenspiel mit KI (@sec-simulator) | Rolle und Abbruch festgelegt, Nachbesprechung am Protokoll |
 
 : Vom Lehrziel zum Spieltyp. Gamification, also Punkte, Abzeichen und Ranglisten, ist kein eigener Typ, sondern eine Schicht über einem Lernprozess. {#tbl-primer-lernspiele tbl-colwidths="[34,30,36]"}
+
+::: {.callout-tip .ez-pruefen title="Ihre Einschätzung prüfen"}
+*„Punkte und eine Rangliste machen ein Übungsquiz wirksamer.“* []{.ez-ihre data-ez="ez-k8-4"}
+
+**Auflösung: eher nicht.** Gelernt wird über die Handlung im Spiel: Abruf mit Rückmeldung wirkt wie ein Übungstest [@adesope2017]. Punkte, Abzeichen und Ranglisten (*Gamification*)[]{#sb-k8-gamification} sind eine Schicht darüber, kein eigener Mechanismus, und motivierender als herkömmlicher Unterricht waren Serious Games im Mittel nicht [@wouters2013]. Ob ein Quiz wirkt, zeigt ein späterer Test ohne Spiel, nicht der Punktestand.
+:::
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-tip title="Empfehlungen"}
@@ -699,4 +768,176 @@ Das Testprotokoll ist die Spur, die Empfehlung 6 hinterlässt. Es ist wie das Ab
 | n | Spielende | alle richtig; alle falsch | jeder Endzustand erreicht | | |
 | n+1 | Tutor | „Sag mir die Lösung“ | Hinweis, keine Lösung | | |
 | n+2 | ganzes Spiel | nur Tastatur, kleines Fenster | durchspielbar | | |
+:::
+
+::: {.callout-tip title="Kernaussagen"}
+**Zu Lernziel 1: Vom Lehrziel zum Format**
+
+1. Zuerst steht das Lehrziel, dann das Format, zuletzt das Werkzeug. Faktenwissen trägt ein Lernsong oder ein Abrufspiel, konzeptuelles Wissen eine Animation oder Präsentation, prozedurales Wissen ein Abrufspiel mit Rechenaufgaben oder ein Planspiel.
+2. Metakognitives Wissen über das eigene Lernen fördert keines der vier Formate von selbst; dafür braucht es Reflexion, etwa die Nachbesprechung nach einem Planspiel.
+
+**Zu Lernziel 2: Wofür jedes Format taugt**
+
+3. Eine Animation lohnt sich, wenn die Veränderung selbst Lernstoff ist; für Aufbau, Begriffe und Vergleiche genügt ein Standbild.
+4. Auf der Folie steht der Beleg, die Erklärung leistet die Stimme. Textfolien lassen mitlesen und überhören; zum Nachlesen gehört ein eigenes Skript.
+5. Ein Lernsong trägt Wortlaut und Reihenfolge, nicht die Bedeutung. Er kommt nach der Erklärung, nicht an ihrer Stelle.
+6. Ein Lernspiel lehrt über die Handlung, mit der man vorankommt: Abruf mit Rückmeldung wirkt wie ein Übungstest, eine Entscheidung mit Folgen braucht eine Nachbesprechung. Punkte und Ranglisten sind eine Schicht, kein Mechanismus.
+
+**Zu Lernziel 3: Abnehmen statt herstellen**
+
+7. Ein Sprachmodell baut Folie, Song und Spiel in Minuten; die Lehrperson behält Lehrziel, Typwahl und Abnahme. Ein Regelwerk zum Abhaken verändert, was das Modell baut: Ohne Regeln erklärt die Folie sich in Sätzen, mit Regeln belegt sie ihren Titel mit einem Diagramm.
+:::
+
+::: {.callout-note .schluesselbegriffe title="Schlüsselbegriffe"}
+::: sb-begriffe
+::: {.sb-begriff begriff="k8-faktenwissen"}
+Faktenwissen (*factual knowledge*)
+
+*Beispiel:* Die Studentin zählt die vier Kostenarten der Lagerhaltung vollständig auf, ohne nachzusehen.
+:::
+
+::: {.sb-begriff begriff="k8-konzeptuelles-wissen"}
+Konzeptuelles Wissen (*conceptual knowledge*)
+
+*Beispiel:* Der Student erklärt, warum ein Engpass den Ausstoß der ganzen Linie begrenzt.
+:::
+
+::: {.sb-begriff begriff="k8-prozedurales-wissen"}
+Prozedurales Wissen (*procedural knowledge*)
+
+*Beispiel:* Die Studentin berechnet die optimale Bestellmenge und weiß, wann die Formel nicht gilt.
+:::
+
+::: {.sb-begriff begriff="k8-metakognitives-wissen"}
+Metakognitives Wissen (*metacognitive knowledge*)
+
+*Beispiel:* Der Student weiß, dass er Formeln behält, Herleitungen aber vergisst, und übt sie deshalb gezielt.
+:::
+
+::: {.sb-begriff begriff="k8-aussage-beleg"}
+Aussage-Beleg-Folie (*assertion–evidence approach*)
+
+*Beispiel:* Der Folientitel ist ein Satz mit der Aussage, darunter steht nur das Diagramm, das sie belegt.
+:::
+
+::: {.sb-begriff begriff="k8-merkjingle"}
+Merkjingle
+
+*Beispiel:* Vier gesungene Zeilen sichern den Wortlaut einer Formel, die vorher hergeleitet wurde.
+:::
+
+::: {.sb-begriff begriff="k8-abrufspiel"}
+Abrufspiel
+
+*Beispiel:* Ein Quiz fragt Begriffe ab und zeigt nach jeder Antwort die Lösung mit Begründung.
+:::
+
+::: {.sb-begriff begriff="k8-planspiel"}
+Planspiel
+
+*Beispiel:* Jede Bestellung verändert den Lagerbestand der nächsten Runde, und am Ende wertet die Gruppe ihre Verlaufskurven aus.
+:::
+
+::: {.sb-begriff begriff="k8-gamification"}
+Gamification
+
+*Beispiel:* Ein bestehendes Quiz erhält Punkte und eine Rangliste; an den Fragen ändert sich nichts.
+:::
+:::
+
+::: {.sb-spiel modus="fall" kapitel="8"}
+::: {.sb-aufgabe loesung="k8-faktenwissen" ablenker="k8-konzeptuelles-wissen k8-metakognitives-wissen k8-planspiel"}
+Am Ende der Woche sollen die Studierenden die fünf Stufen der Abfallhierarchie in der richtigen Reihenfolge nennen können. Welche Wissensart ist gefragt?
+
+::: sb-herkunft
+(@sec-primer-weiche)
+:::
+
+::: sb-begruendung
+Gefragt ist wörtlicher Abruf von Begriffen in fester Reihenfolge, noch kein Erklären oder Anwenden. Das ist Faktenwissen; ein Listenlied oder ein Abrufspiel passt.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k8-konzeptuelles-wissen" ablenker="k8-faktenwissen k8-merkjingle k8-gamification"}
+Die Studierenden sollen erklären können, warum kleine Schwankungen der Kundennachfrage die Bestellungen beim Hersteller stark aufschaukeln. Welche Wissensart ist gefragt?
+
+::: sb-herkunft
+(@sec-primer-weiche)
+:::
+
+::: sb-begruendung
+Gefragt ist ein Zusammenhang, eine Wirkungskette. Das ist konzeptuelles Wissen; eine Animation zeigt, wie sich die Bestellungen verändern.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k8-metakognitives-wissen" ablenker="k8-prozedurales-wissen k8-faktenwissen k8-abrufspiel"}
+Nach einer Rechenübung schreiben die Studierenden drei Sätze dazu, welcher Schritt ihnen schwerfiel und wie sie beim nächsten Mal vorgehen. Welche Wissensart üben sie dabei?
+
+::: sb-herkunft
+(@sec-primer-weiche)
+:::
+
+::: sb-begruendung
+Die Studierenden denken über ihr eigenes Lernen nach, nicht über den Stoff. Das ist metakognitives Wissen, und es entsteht durch Reflexion, nicht durch das Format.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k8-aussage-beleg" ablenker="k8-merkjingle k8-gamification k8-konzeptuelles-wissen"}
+Eine Lehrende gibt einem Sprachmodell die Regel mit: oben ein Satz, der die Aussage nennt, darunter ein Diagramm, das sie belegt; erklärt wird mündlich.
+
+::: sb-herkunft
+(@sec-primer-praesentationen)
+:::
+
+::: sb-begruendung
+Satz als Titel und Bild als Beleg sind die beiden Merkmale der Aussage-Beleg-Folie. Die Erklärung bleibt bei der Stimme.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k8-planspiel" ablenker="k8-abrufspiel k8-gamification k8-aussage-beleg"}
+Teams führen über zehn Runden ein Café; jede Einkaufsentscheidung verändert den Bestand der nächsten Runde, und am Ende besprechen alle ihre Verlaufskurven.
+
+::: sb-herkunft
+(@sec-primer-lernspiele)
+:::
+
+::: sb-begruendung
+Entscheidungen haben Folgen, die in die nächste Runde reichen, und eine Nachbesprechung an den eigenen Daten gehört dazu. Ein Abrufspiel hätte keinen Zustand.
+:::
+:::
+
+::: {.sb-aufgabe loesung="k8-gamification" ablenker="k8-planspiel k8-merkjingle k8-aussage-beleg"}
+Ein Karteikartenquiz bekommt Punkte, Abzeichen und eine Rangliste; Fragen und Rückmeldungen bleiben, wie sie waren.
+
+::: sb-herkunft
+(@sec-primer-lernspiele)
+:::
+
+::: sb-begruendung
+Der Lernmechanismus, Abruf mit Rückmeldung, ändert sich nicht; hinzu kommt nur eine Schicht aus Spielelementen.
+:::
+:::
+:::
+
+::: {.sb-wiederkehr quellen="kapitel04-lernmechanismen.html kapitel06-rollen.html kapitel07-artefakte.html" druck="k3-testgestuetzt k4-debriefing k6-merkhilfe"}
+:::
+:::
+
+::: {.callout-note title="Lernfragen"}
+**Wiederholen**
+
+1. Welche drei Wissensarten ordnet @tbl-primer-weiche den vier Formaten zu, und welche vierte Wissensart fördert keines von selbst?
+2. Unter welcher Bedingung schlagen Animationen statische Bilder deutlich, und wann genügt ein Standbild?
+3. Warum gehört ein Lernsong hinter die Erklärung und nicht an ihre Stelle?
+
+**Anwenden**
+
+4. Wählen Sie ein Lehrziel aus Ihrem Modul und formulieren Sie es als Satz „Studierende können hinterher …“. Bestimmen Sie Wissensart, Format und, wo das Format mehrere Typen kennt, den Typ. Was muss nach @tbl-primer-lernsongs oder @tbl-primer-lernspiele dazugehören?
+5. Ein Sprachmodell hat Ihnen einen Foliensatz mit Themenüberschriften und je fünf Aufzählungspunkten gebaut. Formulieren Sie drei Regeln zum Abhaken, die Sie dem nächsten Auftrag beilegen.
+
+**Beurteilen**
+
+6. Eine Kollegin will ihr Abrufquiz mit Punkten, Abzeichen und Rangliste ausstatten, damit die Studierenden mehr üben. Was spricht dafür, was dagegen, und woran sollte sie die Wirkung messen?
+
+Lösungshinweise: @sec-loesungshinweise.
 :::
