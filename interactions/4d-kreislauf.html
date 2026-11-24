@@ -12,7 +12,15 @@
   }
   html, body { margin:0; background:var(--grund); color:var(--tinte);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
-  main { max-width:760px; margin:0 auto; padding:18px 16px 28px; }
+  main { max-width:980px; margin:0 auto; padding:18px 16px 28px; }
+  /* Diagramm und Detailtafel nebeneinander, damit ein Klick sichtbar etwas ändert */
+  .buehne { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:16px; align-items:start; }
+  .buehne .tafel { margin:0; position:sticky; top:8px; }
+  @media (max-width:699px) {
+    .buehne { display:block; }
+    .buehne svg { max-width:440px; margin:0 auto; }
+    .buehne .tafel { margin:10px 0 0; position:static; scroll-margin:8px; }
+  }
   h1 { font-size:22px; line-height:1.25; margin:0 0 6px; font-weight:650; }
   .lead { margin:0 0 12px; color:var(--grau); font-size:15px; }
   .rollen { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 6px; }
@@ -31,7 +39,8 @@
   .knoten { cursor:pointer; }
   .knoten:focus { outline:none; }
   .knoten:focus rect, .knoten:hover rect { stroke-width:3; }
-  .knoten.aktiv rect { fill:var(--flaeche); stroke-width:3; }
+  .knoten.aktiv rect { fill:var(--tinte); stroke-width:3; }
+  .knoten.aktiv .name, .knoten.aktiv .frage { fill:var(--grund); }
   .knoten.engpass rect { stroke:var(--akzent); stroke-width:4; }
   .knoten .name { font-size:18px; font-weight:650; }
   .knoten .frage { font-size:13px; fill:var(--grau); }
@@ -51,7 +60,7 @@
 <body>
 <main>
   <h1>Der 4D-Kreislauf</h1>
-  <p class="lead">Zwei Schleifen, vier Kompetenzen. Klicken Sie auf eine Stufe. Wählen Sie eine Rolle, um zu sehen, wo ihr Kreislauf am ehesten reißt.</p>
+  <p class="lead">Zwei Schleifen, vier Kompetenzen. Klicken Sie auf eine Stufe: Die Tafel zeigt Leitfrage, Teilkompetenzen und den Hinweis zur Rolle. Wählen Sie eine Rolle, um zu sehen, wo ihr Kreislauf am ehesten reißt.</p>
   <div class="rollen" role="group" aria-label="Rolle der KI wählen">
     <button data-rolle="" aria-pressed="true">Alle</button>
     <button data-rolle="hiwi" aria-pressed="false">Hiwi</button>
@@ -61,6 +70,7 @@
   </div>
   <p class="modus" id="modus" aria-live="polite"></p>
 
+  <div class="buehne">
   <svg viewBox="0 0 640 450" role="img" aria-labelledby="svg-titel">
     <title id="svg-titel">Äußere Schleife: Delegation oben, Diligence unten. Innere Schleife: Description links, Discernment rechts.</title>
     <defs>
@@ -112,6 +122,7 @@
     <ul id="t-unter"></ul>
     <p class="rolle" id="t-rolle" hidden></p>
   </section>
+  </div>
   <p class="klein" id="zurueck"></p>
   <p class="klein">Eigene Darstellung nach Dakan &amp; Feller (2025), The AI Fluency Framework, Version 1.1 (CC BY-SA 4.0), und den beiden Schleifen aus dem Kurs „Teaching AI Fluency“ (Dakan, Feller &amp; Anthropic, 2025). Die Zuordnung der Engpässe zu den Rollen ist eine eigene Lesart.</p>
 </main>
@@ -190,7 +201,15 @@
     zeige();
   }));
   knoten.forEach(k => {
-    const waehle = () => { stufe = k.dataset.d; zeige(); };
+    const waehle = () => {
+      stufe = k.dataset.d; zeige();
+      // schmale Ansicht: Tafel steht unter dem Diagramm, also ins Bild holen
+      const t = $('tafel'), r = t.getBoundingClientRect();
+      if (r.bottom > innerHeight || r.top < 0) {
+        const ruhig = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        t.scrollIntoView({ block:'nearest', behavior: ruhig ? 'auto' : 'smooth' });
+      }
+    };
     k.addEventListener('click', waehle);
     k.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); waehle(); } });
   });
