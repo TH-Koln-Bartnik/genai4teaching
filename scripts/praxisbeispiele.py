@@ -19,14 +19,19 @@ GRUPPEN = [
     ("diagramme", "Diagramme mit echten Daten",
      "Vier Diagramme zeigen, welche Aufgaben von Lehrenden schon in Gesprächen mit KI auftauchen und wie schnell sich Fähigkeiten und Preise der Modelle verschieben."),
     ("praxis", "Folie und Rollenspiel",
-     "Zwei Formate ohne eigenes Beispiel im Kapitel: eine Präsentationsfolie, die ein Sprachmodell nach einem Regelwerk gebaut hat, und die Szenario-Karte eines KI-Rollenspiels."),
+     "Zwei Formate ohne eigenes Beispiel im Kapitel: eine Präsentationsfolie, die ein Sprachmodell nach einem Regelwerk gebaut hat, und die Szenario-Karte eines KI-Rollenspiels."),    ("netz", "Aus dem Netz: Maßstäbe und Werkzeuge anderer",
+     "Vier Beispiele, die nicht von mir stammen: zwei Seiten als Maßstab, eine von Hand gebaut, eine aus einem Forschungsprojekt, und zwei Skills, mit denen ein KI-Agent solche Erklärstücke baut. Ein Skill ist eine Arbeitsanweisung mit Werkzeugkasten, die der Agent erst lädt, wenn er sie braucht. Alle Seiten habe ich am 26. November 2026 abgerufen."),
 ]
+
+# Gruppen, deren Beispiele nicht aus dem Buch stammen; sie zählen im Einleitungssatz nicht mit.
+FREMD = {"netz"}
 
 # (Gruppe, Titel, Satz, Art, Quelle, Höhe in px, iframe-id, Link ins Buch, Linktext[, Ort])
 # Art: "iframe" (Seite aus interactions/), "video" (MP4; Quelle = Dateiname in interactions/media/),
 #      "link" (nur Verweis, etwa auf OJS-Rechner, die im Kapitel selbst laufen),
 #      "bild" (Standbild; Quelle = Pfad, Höhe-Feld = Alternativtext),
 #      "karte" (Szenario-Karte; Quelle = Liste von Zeilen [Begriff, Text]).
+#      "netz" (fremde Seite; Quelle = Adresse, Höhe-Feld = Linktext, iframe-id-Feld = Bild als (Pfad, Alternativtext, Bildnachweis) oder "").
 # Ort: "buch" (Standard; das Beispiel steht im Kapitel) oder "hier" (nur auf dieser Seite;
 #      der Link führt dann zum Abschnitt, der das Thema behandelt, oder fehlt).
 BEISPIELE = [
@@ -202,6 +207,25 @@ BEISPIELE = [
          ["Lernziel", "Prinzipal-Agent-Theorie erfahren (BWL-Master, Personal- und Organisationsökonomik)"],
      ], 0, "",
      "kapitel06-rollen.qmd#sec-role-play", "Kapitel 6, Role Play", "hier"),
+    ("netz", "Inkworks: ein Skill baut Maschinen als bewegte Zeichnung",
+     "Aus einem Satz wie „zeige, wie ein Automotor arbeitet“ baut ein KI-Agent mit diesem Skill eine drehbare 3D-Seite im Stil einer technischen Zeichnung. Der Viertakt läuft in Zeitlupe; Sie halten ihn an, gehen Takt für Takt vor und drehen die Ansicht. Der Fall passt zur Regel aus der [Bauanleitung für Animationen](kapitel08-bauanleitungen.qmd#sec-primer-animationen): Bewegung lohnt sich, wo der Ablauf selbst Lernstoff ist. Drei Vorbehalte: Die Seite läuft beim Laden von selbst und stellt keine Vorhersagefrage, sie lädt Schriften von Google, und das Repository ist wenige Tage alt und stammt von einem Autor unter Pseudonym. Den Motor habe ich lokal gestartet und angesehen, die Physik nicht nachgerechnet.",
+     "netz", "https://github.com/Moh4696/inkworks-skill", "Repository auf GitHub (exploraX, 2026, MIT-Lizenz)",
+     ("images/netz/inkworks-motor.jpg",
+      "Vierzylindermotor als hellgraue 3D-Zeichnung mit zwölf nummerierten Beschriftungen, darunter Knöpfe für Pause, Schritt und Zeitlupe.",
+      "Bildschirmfoto der mitgelieferten Beispielseite, eigener Aufruf am 26.11.2026; Software von exploraX unter MIT-Lizenz."),
+     "kapitel08-bauanleitungen.qmd#sec-primer-animationen", "Kapitel 8, Didaktische Animationen", "hier"),
+    ("netz", "Ciechanowski: der Verbrennungsmotor, von Hand gebaut",
+     "Der Maßstab des Genres, ganz ohne KI entstanden: ein langer Aufsatz, in dem der Motor Teil für Teil hinzukommt. Die Modelle lassen sich drehen, ein Regler bewegt die Kurbelwelle von Hand, und ein Schalter hält alle Animationen an [@ciechanowski2021]. Wer wissen will, wie gut eine Erklärseite sein kann, liest hier.",
+     "netz", "https://ciechanow.ski/internal-combustion-engine/", "Internal Combustion Engine (ciechanow.ski)", "",
+     "kapitel08-bauanleitungen.qmd#sec-primer-animationen", "Kapitel 8, Didaktische Animationen", "hier"),
+    ("netz", "PhET: Stromkreise bauen, mit geprüfter Wirkung",
+     "Ein Baukasten für Gleichstromkreise am Bildschirm aus dem Projekt PhET der University of Colorado Boulder. Er ist eine Simulation, keine Erklär-Animation: Lernende stellen selbst etwas ein und beobachten die Folgen. Für diesen Baukasten liegt eine Vergleichsstudie vor. In einer Physik-Einführung arbeitete ein Teil der Studierenden im Praktikum mit der Simulation statt mit echten Glühbirnen, Messgeräten und Drähten; diese Gruppe schnitt im Konzepttest und beim Aufbau einer echten Schaltung besser ab [@finkelstein2005]. Der Beleg gilt für diese Simulation, nicht für die ganze Sammlung.",
+     "netz", "https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc", "Circuit Construction Kit: DC (phet.colorado.edu)", "",
+     "kapitel08-bauanleitungen.qmd#sec-primer-lernspiele", "Kapitel 8, Lernspiele", "hier"),
+    ("netz", "Remotion Agent Skills: Erklärvideos, Anleitung vom Hersteller",
+     "Remotion erzeugt Videos aus Programmtext, Bild für Bild. Der Hersteller pflegt dazu selbst eine Reihe von Skills, mit denen ein KI-Agent ein Projekt anlegt, die Vorschau startet und das Video ausrechnet. Das ist das Gegenstück zu Inkworks: bekannte Herkunft, aber ein Film zum Abspielen statt einer Seite zum Anhalten und Drehen. Kostenlos ist Remotion für Einzelpersonen und Teams bis drei Personen. Ausprobiert habe ich diese Skills nicht; im Buch stehen für denselben Zweck Manim und HyperFrames.",
+     "netz", "https://www.remotion.dev/docs/ai/skills", "Agent Skills in der Remotion-Dokumentation", "",
+     "kapitel06-rollen.qmd#fig-video-eoq-vergleich", "Kapitel 6, dieselbe Herleitung in zwei Werkzeugen", "hier"),
 ]
 
 KOPF = """# Praxisbeispiele im Überblick {{.unnumbered #sec-praxisbeispiele}}
@@ -209,7 +233,7 @@ KOPF = """# Praxisbeispiele im Überblick {{.unnumbered #sec-praxisbeispiele}}
 <!-- Erzeugt von scripts/praxisbeispiele.py (Claude, 02.11.2026, Auftrag Roman; Stand nach den Kapitelsitzungen 13.11.2026). Nicht von Hand ändern, sondern das Skript anpassen. Nur online (_quarto-web.yml). -->
 
 ::: {{.content-visible when-format="html"}}
-In diesem Buch stecken {anzahl} Beispiele, die Sie nicht lesen, sondern ansehen, hören und ausprobieren: Filme mit Haltepunkten, ein Lernsong, Spiele, Rechner und Animationen. Alle habe ich mit Sprachmodellen und anderen KI-Werkzeugen gebaut und geprüft, einige für meine eigene Lehre in Supply Management, die meisten für dieses Buch. Hier stehen sie ohne den Kapiteltext, nach Format geordnet; der Link unter jedem Beispiel führt zur Stelle im Buch, die erklärt, wofür es gedacht ist und was es nicht leistet. Einige Beispiele stehen nur hier; unter ihnen führt der Link zum Abschnitt, der ihr Thema behandelt. Wer so einsteigt, folgt der fünften Linie aus dem [Vorwort](index.qmd#sec-lernpfade) und kehrt von hier aus in die Kapitel zurück, die neugierig machen.
+In diesem Buch stecken {anzahl} Beispiele, die Sie nicht lesen, sondern ansehen, hören und ausprobieren: Filme mit Haltepunkten, ein Lernsong, Spiele, Rechner und Animationen. Alle habe ich mit Sprachmodellen und anderen KI-Werkzeugen gebaut und geprüft, einige für meine eigene Lehre in Supply Management, die meisten für dieses Buch. Hier stehen sie ohne den Kapiteltext, nach Format geordnet; der Link unter jedem Beispiel führt zur Stelle im Buch, die erklärt, wofür es gedacht ist und was es nicht leistet. Einige Beispiele stehen nur hier; unter ihnen führt der Link zum Abschnitt, der ihr Thema behandelt. Am Ende folgen {fremd} Beispiele anderer [aus dem Netz](#sec-pb-netz); sie zählen nicht mit. Wer so einsteigt, folgt der fünften Linie aus dem [Vorwort](index.qmd#sec-lernpfade) und kehrt von hier aus in die Kapitel zurück, die neugierig machen.
 
 ```{{=html}}
 <script>
@@ -243,6 +267,11 @@ def eintrag(b):
         z += ["</video>", "```", ""]
     elif art == "bild":
         z += [f"![]({quelle}){{fig-alt=\"{hoehe}\" width=\"100%\"}}", ""]
+    elif art == "netz":
+        if fid:
+            pfad, alttext, nachweis = fid
+            z += [f"![]({pfad}){{fig-alt=\"{alttext}\" width=\"100%\"}}", "", f"*{nachweis}*", ""]
+        z += [f"Zur Seite: [{hoehe}]({quelle}){{target=\"_blank\" rel=\"noopener\"}}", ""]
     elif art == "karte":
         z += ["| | |", "|---|---|"] + [f"| **{k}** | {v} |" for k, v in quelle] + [""]
     if ort == "hier":
@@ -253,7 +282,9 @@ def eintrag(b):
 
 
 def main():
-    out = [KOPF.format(anzahl=len(BEISPIELE))]
+    fremd = sum(1 for b in BEISPIELE if b[0] in FREMD)
+    zahlwort = {1: "ein", 2: "zwei", 3: "drei", 4: "vier", 5: "fünf", 6: "sechs"}.get(fremd, str(fremd))
+    out = [KOPF.format(anzahl=len(BEISPIELE) - fremd, fremd=zahlwort)]
     for gid, gtitel, gsatz in GRUPPEN:
         out += [f"## {gtitel} {{#sec-pb-{gid} .unnumbered}}", "", gsatz, ""]
         for b in BEISPIELE:
